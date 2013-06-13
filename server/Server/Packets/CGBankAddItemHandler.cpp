@@ -30,7 +30,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //ºÏ≤Èœﬂ≥Ã÷¥––◊ ‘¥ «∑Ò’˝»∑
+    //Ê£ÄÊü•Á∫øÁ®ãÊâßË°åËµÑÊ∫êÊòØÂê¶Ê≠£Á°Æ
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     UINT indexFrom = pPacket->GetIndexFrom();
@@ -54,7 +54,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
             ItemContainer *pBagContainer = HumanItemLogic::GetContainer(pHuman,indexFrom);
 
             Item *pBagItem  = pBagContainer->GetItem( pBagContainer->BagIndex2ConIndex(indexFrom) );
-            //∑¿÷π¡¨–¯µ„ª˜
+            //Èò≤Ê≠¢ËøûÁª≠ÁÇπÂáª
             if(pBagItem->IsEmpty())
             {
                 g_pLog->FastSaveLog( LOG_FILE_1, "CGBankAddItemHandler too many click") ;
@@ -62,24 +62,24 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
             }
             //Item *pBankItem = pBankContainer->GetItem( indexTo );
 
-            //∫œ≤¢±Í÷æ
+            //ÂêàÂπ∂Ê†áÂøó
             INT     bSplice = 0;
             INT  nSpliceTo = -1;
             UINT TempIndexTo = indexTo;
 
-            //◊‘∂ØÀ—À˜ø’∏Ò◊‚¡ﬁœ‰1
+            //Ëá™Âä®ÊêúÁ¥¢Á©∫Ê†ºÁßüËµÅÁÆ±1
             switch(TempIndexTo)
             {
             case CGBankAddItem::AUTO_POS_BOX1:
                 {
-                    //œ»≤È—Ø «≤ª «”–ø…“‘∫œ≤¢µƒŒÔ∆∑£¨£®÷ª‘⁄±æ◊‚¡ﬁœ‰÷–£©
+                    //ÂÖàÊü•ËØ¢ÊòØ‰∏çÊòØÊúâÂèØ‰ª•ÂêàÂπ∂ÁöÑÁâ©ÂìÅÔºåÔºàÂè™Âú®Êú¨ÁßüËµÅÁÆ±‰∏≠Ôºâ
                     if( pBagItem->IsCanLay() )
                     {
                         for( INT i=RENTBOX1_START_INDEX; i<RENTBOX2_START_INDEX; i++ )
                         {
                             Item *pBankItem = pBankContainer->GetItem(i);
                             
-                            // —È÷§ «∑Òø…“‘µ˛º”≥…π¶
+                            // È™åËØÅÊòØÂê¶ÂèØ‰ª•Âè†Âä†ÊàêÂäü
                             if( pBankItem->GetItemTableIndex() == pBagItem->GetItemTableIndex() && 
                                 pBankItem->GetLayedNum() + pBagItem->GetLayedNum() <= pBankItem->GetMaxLayedNum() )
                             {
@@ -90,7 +90,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                             }
                         }
                     }
-                    //√ª”–ø…“‘µ˛º”µƒŒÔ∆∑£¨æÕ—∞’““ª∏ˆø’∏Ò
+                    //Ê≤°ÊúâÂèØ‰ª•Âè†Âä†ÁöÑÁâ©ÂìÅÔºåÂ∞±ÂØªÊâæ‰∏Ä‰∏™Á©∫Ê†º
                     BYTE    indextemp = RENTBOX1_START_INDEX;
                     if(0 == bSplice)
                     {
@@ -115,14 +115,14 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
 
             case CGBankAddItem::AUTO_POS_BOX2:
                 {
-                    //œ»≤È—Ø «≤ª «”–ø…“‘∫œ≤¢µƒŒÔ∆∑£¨£®÷ª‘⁄±æ◊‚¡ﬁœ‰÷–£©
+                    //ÂÖàÊü•ËØ¢ÊòØ‰∏çÊòØÊúâÂèØ‰ª•ÂêàÂπ∂ÁöÑÁâ©ÂìÅÔºåÔºàÂè™Âú®Êú¨ÁßüËµÅÁÆ±‰∏≠Ôºâ
                     if( pBagItem->IsCanLay() )
                     {
                         for( INT i=RENTBOX2_START_INDEX; i<RENTBOX3_START_INDEX; i++ )
                         {
                             Item *pBankItem = pBankContainer->GetItem(i);
                             
-                            // —È÷§ «∑Òø…“‘µ˛º”≥…π¶
+                            // È™åËØÅÊòØÂê¶ÂèØ‰ª•Âè†Âä†ÊàêÂäü
                             if( pBankItem->GetItemTableIndex() == pBagItem->GetItemTableIndex() && 
                                 pBankItem->GetLayedNum() + pBagItem->GetLayedNum() <= pBankItem->GetMaxLayedNum() )
                             {
@@ -133,7 +133,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                             }
                         }
                     }
-                    //√ª”–ø…“‘µ˛º”µƒŒÔ∆∑£¨æÕ—∞’““ª∏ˆø’∏Ò
+                    //Ê≤°ÊúâÂèØ‰ª•Âè†Âä†ÁöÑÁâ©ÂìÅÔºåÂ∞±ÂØªÊâæ‰∏Ä‰∏™Á©∫Ê†º
                     BYTE    indextemp = RENTBOX2_START_INDEX;
                     if(0 == bSplice)
                     {
@@ -158,14 +158,14 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
 
             case CGBankAddItem::AUTO_POS_BOX3:
                 {
-                    //œ»≤È—Ø «≤ª «”–ø…“‘∫œ≤¢µƒŒÔ∆∑£¨£®÷ª‘⁄±æ◊‚¡ﬁœ‰÷–£©
+                    //ÂÖàÊü•ËØ¢ÊòØ‰∏çÊòØÊúâÂèØ‰ª•ÂêàÂπ∂ÁöÑÁâ©ÂìÅÔºåÔºàÂè™Âú®Êú¨ÁßüËµÅÁÆ±‰∏≠Ôºâ
                     if( pBagItem->IsCanLay() )
                     {
                         for( INT i=RENTBOX3_START_INDEX; i<RENTBOX4_START_INDEX; i++ )
                         {
                             Item *pBankItem = pBankContainer->GetItem(i);
                             
-                            // —È÷§ «∑Òø…“‘µ˛º”≥…π¶
+                            // È™åËØÅÊòØÂê¶ÂèØ‰ª•Âè†Âä†ÊàêÂäü
                             if( pBankItem->GetItemTableIndex() == pBagItem->GetItemTableIndex() && 
                                 pBankItem->GetLayedNum() + pBagItem->GetLayedNum() <= pBankItem->GetMaxLayedNum() )
                             {
@@ -176,7 +176,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                             }
                         }
                     }
-                    //√ª”–ø…“‘µ˛º”µƒŒÔ∆∑£¨æÕ—∞’““ª∏ˆø’∏Ò
+                    //Ê≤°ÊúâÂèØ‰ª•Âè†Âä†ÁöÑÁâ©ÂìÅÔºåÂ∞±ÂØªÊâæ‰∏Ä‰∏™Á©∫Ê†º
                     BYTE    indextemp = RENTBOX3_START_INDEX;
                     if(0 == bSplice)
                     {
@@ -201,14 +201,14 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
 
             case CGBankAddItem::AUTO_POS_BOX4:
                 {
-                    //œ»≤È—Ø «≤ª «”–ø…“‘∫œ≤¢µƒŒÔ∆∑£¨£®÷ª‘⁄±æ◊‚¡ﬁœ‰÷–£©
+                    //ÂÖàÊü•ËØ¢ÊòØ‰∏çÊòØÊúâÂèØ‰ª•ÂêàÂπ∂ÁöÑÁâ©ÂìÅÔºåÔºàÂè™Âú®Êú¨ÁßüËµÅÁÆ±‰∏≠Ôºâ
                     if( pBagItem->IsCanLay() )
                     {
                         for( INT i=RENTBOX4_START_INDEX; i<RENTBOX5_START_INDEX; i++ )
                         {
                             Item *pBankItem = pBankContainer->GetItem(i);
                             
-                            // —È÷§ «∑Òø…“‘µ˛º”≥…π¶
+                            // È™åËØÅÊòØÂê¶ÂèØ‰ª•Âè†Âä†ÊàêÂäü
                             if( pBankItem->GetItemTableIndex() == pBagItem->GetItemTableIndex() && 
                                 pBankItem->GetLayedNum() + pBagItem->GetLayedNum() <= pBankItem->GetMaxLayedNum() )
                             {
@@ -219,7 +219,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                             }
                         }
                     }
-                    //√ª”–ø…“‘µ˛º”µƒŒÔ∆∑£¨æÕ—∞’““ª∏ˆø’∏Ò
+                    //Ê≤°ÊúâÂèØ‰ª•Âè†Âä†ÁöÑÁâ©ÂìÅÔºåÂ∞±ÂØªÊâæ‰∏Ä‰∏™Á©∫Ê†º
                     BYTE    indextemp = RENTBOX4_START_INDEX;
                     if(0 == bSplice)
                     {
@@ -244,14 +244,14 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
 
             case CGBankAddItem::AUTO_POS_BOX5:
                 {
-                    //œ»≤È—Ø «≤ª «”–ø…“‘∫œ≤¢µƒŒÔ∆∑£¨£®÷ª‘⁄±æ◊‚¡ﬁœ‰÷–£©
+                    //ÂÖàÊü•ËØ¢ÊòØ‰∏çÊòØÊúâÂèØ‰ª•ÂêàÂπ∂ÁöÑÁâ©ÂìÅÔºåÔºàÂè™Âú®Êú¨ÁßüËµÅÁÆ±‰∏≠Ôºâ
                     if( pBagItem->IsCanLay() )
                     {
                         for( INT i=RENTBOX5_START_INDEX; i<MAX_BANK_SIZE; i++ )
                         {
                             Item *pBankItem = pBankContainer->GetItem(i);
                             
-                            // —È÷§ «∑Òø…“‘µ˛º”≥…π¶
+                            // È™åËØÅÊòØÂê¶ÂèØ‰ª•Âè†Âä†ÊàêÂäü
                             if( pBankItem->GetItemTableIndex() == pBagItem->GetItemTableIndex() && 
                                 pBankItem->GetLayedNum() + pBagItem->GetLayedNum() <= pBankItem->GetMaxLayedNum() )
                             {
@@ -262,7 +262,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                             }
                         }
                     }
-                    //√ª”–ø…“‘µ˛º”µƒŒÔ∆∑£¨æÕ—∞’““ª∏ˆø’∏Ò
+                    //Ê≤°ÊúâÂèØ‰ª•Âè†Âä†ÁöÑÁâ©ÂìÅÔºåÂ∞±ÂØªÊâæ‰∏Ä‰∏™Á©∫Ê†º
                     BYTE    indextemp = RENTBOX5_START_INDEX;
                     if(0 == bSplice)
                     {
@@ -284,7 +284,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                     }
                 }
                 break;
-            //ºÏ≤È÷±Ω”—°∂®µƒƒø±Í «≤ª «ø…“‘∫œ≤¢
+            //Ê£ÄÊü•Áõ¥Êé•ÈÄâÂÆöÁöÑÁõÆÊ†áÊòØ‰∏çÊòØÂèØ‰ª•ÂêàÂπ∂
             default:
                 {
                     if( pBagItem->IsCanLay() )
@@ -301,16 +301,16 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                 break;
             }
 
-            //—È÷§Œª÷√µƒ∫œ∑®–‘
+            //È™åËØÅ‰ΩçÁΩÆÁöÑÂêàÊ≥ïÊÄß
             if( indexFrom>=0 
                 && indexFrom<MAX_BAG_SIZE 
                 && indexTo>=0 
                 && (indexTo<(UINT)(pHuman->__GetBankEndIndex()) || (indexTo>=251 && indexTo<=255) )
                 )                 
             {
-                if(1 == bSplice)    //÷¥––∫œ≤¢
+                if(1 == bSplice)    //ÊâßË°åÂêàÂπ∂
                 {
-                    //—È÷§Œª÷√¿Ô «∑Ò”–∂´Œ˜
+                    //È™åËØÅ‰ΩçÁΩÆÈáåÊòØÂê¶Êúâ‰∏úË•ø
                     if(ITEMREFPTRISVALID(HumanItemLogic::GetItem(pHuman, indexFrom)))
                     {
                         if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, nSpliceTo)))
@@ -323,14 +323,14 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                             Item *pItemBag = pBagContainer->GetItem(pBagContainer->BagIndex2ConIndex(indexFrom));
                             Item *pItemBank= pBankContainer->GetItem(nSpliceTo);
 
-                            //∑¢“ª∏ˆÕ®÷™∏¸–¬“¯––µƒœ˚œ¢
+                            //Âèë‰∏Ä‰∏™ÈÄöÁü•Êõ¥Êñ∞Èì∂Ë°åÁöÑÊ∂àÊÅØ
                             GCBankItemInfo MsgBankItemInfo;
                             MsgBankItemInfo.setBankIndex((WORD)nSpliceTo);
                             MsgBankItemInfo.setIsNull(pItemBank->IsEmpty());
                             pItemBank->SaveValueTo(MsgBankItemInfo.getItem());
                             pGamePlayer->SendPacket( &MsgBankItemInfo );
 
-                            //∑¢ÀÕ“ª∏ˆÕ®÷™±≥∞¸∏¸–¬µƒœ˚œ¢
+                            //ÂèëÈÄÅ‰∏Ä‰∏™ÈÄöÁü•ËÉåÂåÖÊõ¥Êñ∞ÁöÑÊ∂àÊÅØ
                             GCItemInfo MsgBagItemInfo;
                             MsgBagItemInfo.setID((WORD)indexFrom);
                             MsgBagItemInfo.setIsNull(pItemBag->IsEmpty());
@@ -343,7 +343,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                 }
                 else if(2 == bSplice)
                 {
-                    //—È÷§Œª÷√¿Ô «∑Ò”–∂´Œ˜
+                    //È™åËØÅ‰ΩçÁΩÆÈáåÊòØÂê¶Êúâ‰∏úË•ø
                     if(ITEMREFPTRISVALID(HumanItemLogic::GetItem(pHuman, indexFrom)))
                     {
                         if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, nSpliceTo)))
@@ -356,14 +356,14 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                             Item *pItemBag = pBagContainer->GetItem(pBagContainer->BagIndex2ConIndex(indexFrom));
                             Item *pItemBank= pBankContainer->GetItem(nSpliceTo);
 
-                            //∑¢“ª∏ˆÕ®÷™∏¸–¬“¯––µƒœ˚œ¢
+                            //Âèë‰∏Ä‰∏™ÈÄöÁü•Êõ¥Êñ∞Èì∂Ë°åÁöÑÊ∂àÊÅØ
                             GCBankItemInfo MsgBankItemInfo;
                             MsgBankItemInfo.setBankIndex((WORD)nSpliceTo);
                             MsgBankItemInfo.setIsNull(pItemBank->IsEmpty());
                             pItemBank->SaveValueTo(MsgBankItemInfo.getItem());
                             pGamePlayer->SendPacket( &MsgBankItemInfo );
 
-                            //∑¢ÀÕ“ª∏ˆÕ®÷™±≥∞¸∏¸–¬µƒœ˚œ¢
+                            //ÂèëÈÄÅ‰∏Ä‰∏™ÈÄöÁü•ËÉåÂåÖÊõ¥Êñ∞ÁöÑÊ∂àÊÅØ
                             GCItemInfo MsgBagItemInfo;
                             MsgBagItemInfo.setID((WORD)indexFrom);
                             MsgBagItemInfo.setIsNull(pItemBag->IsEmpty());
@@ -374,28 +374,28 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                     g_pLog->FastSaveLog( LOG_FILE_1, "CGBankAddItemHandler Empty Item indexFrom = %d", indexFrom) ;
                     return PACKET_EXE_CONTINUE;
                 }
-                else                //≤ª÷¥––∫œ≤¢
+                else                //‰∏çÊâßË°åÂêàÂπ∂
                 {
-                    //—È÷§Œª÷√¿Ô «∑Ò”–∂´Œ˜
+                    //È™åËØÅ‰ΩçÁΩÆÈáåÊòØÂê¶Êúâ‰∏úË•ø
                     if(ITEMREFPTRISVALID(HumanItemLogic::GetItem(pHuman, indexFrom)))
                     {
-                        if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, indexTo))) //÷¥––¡ÀΩªªª
+                        if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, indexTo))) //ÊâßË°å‰∫Ü‰∫§Êç¢
                         {
-                            //≈–∂œ“¯––ƒ⁄µƒ’‚∏ˆŒÔ∆∑ «≤ª «ƒ‹πª∑≈»Î±≥∞¸÷–
+                            //Âà§Êñ≠Èì∂Ë°åÂÜÖÁöÑËøô‰∏™Áâ©ÂìÅÊòØ‰∏çÊòØËÉΩÂ§üÊîæÂÖ•ËÉåÂåÖ‰∏≠
                             ItemContainer* pBankContainer = pHuman->GetBankContain();
                             Item *pItem = pBankContainer->GetItem(indexTo); 
 
                             ItemContainer *pHumanCon = HumanItemLogic::GetItemContain(pHuman, pItem->GetItemTableIndex());
                             if( !pHumanCon )
                             {
-                                //∑µªÿ¥ÌŒÛ–≈œ¢
+                                //ËøîÂõûÈîôËØØ‰ø°ÊÅØ
                                 Msg.SetFromType(GCBankAddItem::ERROR_POS);
                                 break;
                             }
 
                             if( !pHumanCon->IsInContainer(indexFrom) )
                             {
-                                //∑µªÿ¥ÌŒÛ–≈œ¢
+                                //ËøîÂõûÈîôËØØ‰ø°ÊÅØ
                                 Msg.SetFromType(GCBankAddItem::ERROR_POS);
                                 break;
                             }
@@ -405,17 +405,17 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                                 pBankContainer,
                                 (UINT)indexTo);
 
-                            //÷¥––¡ÀΩªªª
+                            //ÊâßË°å‰∫Ü‰∫§Êç¢
                             Msg.SetOperateType(GCBankAddItem::OPERATE_SWAP);
                         }
-                        else //÷¥––¡À“∆∂Ø
+                        else //ÊâßË°å‰∫ÜÁßªÂä®
                         {
                             g_ItemOperator.MoveItem(pBagContainer,
                                 pBagContainer->BagIndex2ConIndex(indexFrom),
                                 pBankContainer,
                                 (UINT)indexTo);
 
-                            //÷¥––¡À“∆∂Ø
+                            //ÊâßË°å‰∫ÜÁßªÂä®
                             Msg.SetOperateType(GCBankAddItem::OPERATE_MOVE);
                         }
                         Msg.SetFromType(GCBankAddItem::BAG_POS);
@@ -429,7 +429,7 @@ UINT CGBankAddItemHandler::Execute( CGBankAddItem* pPacket, Player* pPlayer )
                     }
                 }
             }
-            else    // ˝æ›≤ª∫œ∑®
+            else    //Êï∞ÊçÆ‰∏çÂêàÊ≥ï
             {
                 Msg.SetFromType(GCBankAddItem::ERROR_POS);
             }

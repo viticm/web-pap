@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-worldÉÏ¶Ô³ÇÊĞÊôĞÔµÄĞŞ¸ÄÍ¨¹ı´ËÏûÏ¢Ë¢ĞÂµ½·şÎñÆ÷
+worldä¸Šå¯¹åŸå¸‚å±æ€§çš„ä¿®æ”¹é€šè¿‡æ­¤æ¶ˆæ¯åˆ·æ–°åˆ°æœåŠ¡å™¨
 */
 
 #include "WGCityAttr.h"
@@ -29,16 +29,16 @@ UINT WGCityAttrHandler::Execute( WGCityAttr* pPacket, Player* pPlayer )
         }
 
         if( pPlayer )
-        {//serverplayerÏß³Ì
+        {//serverplayerçº¿ç¨‹
             Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
             pScene->SendPacket(pPacket, INVALID_ID_EX);
             return PACKET_EXE_NOTREMOVE ;
         }
         else
-        {//³¡¾°Ïß³Ì
+        {//åœºæ™¯çº¿ç¨‹
             Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-            //È¡³öÕâ¸ö³¡¾°ÖĞËùÓĞÍæ¼Ò
+            //å–å‡ºè¿™ä¸ªåœºæ™¯ä¸­æ‰€æœ‰ç©å®¶
             ScenePlayerManager* pCurScenePlayerManager = pScene->GetScenePlayerManager();
             PlayerID_t PlayerInTheCity[MAX_PLAYER];
             INT PlayerNum = 0;
@@ -57,10 +57,10 @@ UINT WGCityAttrHandler::Execute( WGCityAttr* pPacket, Player* pPlayer )
             }
             if(pPacket->IsUpdateAttrib(CITY_UPDATE_BUILDING))
             {
-                //1.¸ü¸Ä±¾µØ³ÇÊĞÊôĞÔ
+                //1.æ›´æ”¹æœ¬åœ°åŸå¸‚å±æ€§
                 pScene->m_SceneInitData.m_CityData.m_Builds[pPacket->GetBuildingIndex()] = pPacket->GetBuildingData();
                                 
-                //2.Í¨Öª³¡¾°ÖĞËùÓĞÍæ¼Ò£¬½¨ÖşÎï·¢Éú±ä»¯
+                //2.é€šçŸ¥åœºæ™¯ä¸­æ‰€æœ‰ç©å®¶ï¼Œå»ºç­‘ç‰©å‘ç”Ÿå˜åŒ–
                 for(INT i =0 ;i<PlayerNum;i++ )
                 {
                     GamePlayer* pGamePlayer = g_pPlayerPool->GetPlayer(PlayerInTheCity[i]);

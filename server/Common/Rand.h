@@ -86,7 +86,7 @@ public :
     static MyLock        m_Lock ;
 };
 
-//Ëæ»úÊıÉú³ÉÀà
+//éšæœºæ•°ç”Ÿæˆç±»
 
 class RandGen
 {
@@ -103,7 +103,7 @@ public:
         Reset(p_Seed);
     }
     //ReSeed the random number generator
-    //ÖÖ×Ó´¦Àí
+    //ç§å­å¤„ç†
     VOID Reset(const SeedType p_Seed = 0)
     {        
         m_Seed[0] = (p_Seed ^ 0xFEA09B9DLU) & 0xFFFFFFFELU;
@@ -119,7 +119,7 @@ public:
     }
 
     //Returns an unsigned integer from 0..RandomMax
-    //0~RandMax UINT Ëæ»úÊı
+    //0~RandMax UINT éšæœºæ•°
     unsigned long RandUInt(VOID)
     {
         m_Seed[0] = (((m_Seed[0] & 0xFFFFFFFELU) << 24) & Max32BitLong)
@@ -134,7 +134,7 @@ public:
         return (m_Seed[0] ^ m_Seed[1] ^ m_Seed[2]);
     }
     //Returns a double in [0.0, 1.0]
-    //·µ»Ø0.0~1.0Ö®¼äµÄË«¾«¶È¸¡µã
+    //è¿”å›0.0~1.0ä¹‹é—´çš„åŒç²¾åº¦æµ®ç‚¹
     double RandDouble(VOID)
     {
         return static_cast<double>(RandUInt())

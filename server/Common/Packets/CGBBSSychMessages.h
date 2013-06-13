@@ -29,7 +29,7 @@ namespace Packets
         }
         virtual ~CGBBSSychMessages( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -89,12 +89,12 @@ namespace Packets
         {
             strncpy( m_MessageData, pSour, MAX_BBS_MESSAGE_LENGTH-1 ) ;
             m_MessageData[MAX_BBS_MESSAGE_LENGTH-1] = 0 ;
-            m_nLength = (BYTE)strlen(m_MessageData); //矫正长度
+            m_nLength = (BYTE)strlen(m_MessageData); //鐭闀垮害
         }
 
 
     private:
-        ObjID_t                    m_objID;        //申请者id
+        ObjID_t                    m_objID;        //鐢宠鑰卛d
         BYTE                    m_Opt;
         UINT                    m_nID;
         BYTE                    m_nLength;

@@ -1,6 +1,6 @@
 // CGCharPositionWarp.h
 // 
-// Î»ÖÃÆ«²î·¢Íù·şÎñÆ÷
+// ä½ç½®åå·®å‘å¾€æœåŠ¡å™¨
 // 
 //////////////////////////////////////////////////////
 
@@ -24,7 +24,7 @@ namespace Packets
         {
         }
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -40,7 +40,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                setObjID(ObjID_t id) { m_ObjID = id; }
         ObjID_t                getObjID(VOID)const { return m_ObjID; }
 
@@ -52,8 +52,8 @@ namespace Packets
 
     private:
         ObjID_t                m_ObjID;            // ObjID
-        WORLD_POS            m_posServer;        // ·şÎñÆ÷µ±Ç°Î»ÖÃ
-        WORLD_POS            m_posClient;        // ¿Í»§¶Ëµ±Ç°Î»ÖÃ
+        WORLD_POS            m_posServer;        // æœåŠ¡å™¨å½“å‰ä½ç½®
+        WORLD_POS            m_posClient;        // å®¢æˆ·ç«¯å½“å‰ä½ç½®
     };
 
 

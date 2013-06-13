@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¹ºÂòÌ¯Ö÷µÄ»õÎï
+è´­ä¹°æ‘Šä¸»çš„è´§ç‰©
 */
 
 #include "CGStallBuy.h"
@@ -31,7 +31,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     
     ObjID_t        ObjId        =    pPacket->GetObjID();
@@ -40,7 +40,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
     UINT        nSerial        =    pPacket->GetSerial();
     GCStallError MsgError;
 
-    //ÅĞ¶Ï¾àÀëÊÇ·ñ¿ÉÒÔ´ò¿ª
+    //åˆ¤æ–­è·ç¦»æ˜¯å¦å¯ä»¥æ‰“å¼€
     Obj_Character *pTarget = (Obj_Character*)(pScene->GetObjManager()->GetObj( ObjId ));
     if(pTarget->GetObjType() != Obj::OBJ_TYPE_HUMAN)
     {
@@ -58,14 +58,14 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         return PACKET_EXE_CONTINUE;
     }
 
-    // ²»Í¬ÕóÓª£¬²»ÈÃ²é¿´
+    // ä¸åŒé˜µè¥ï¼Œä¸è®©æŸ¥çœ‹
     if( pHuman->IsEnemy( pTargetHuman ) )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGStallBuyHandler: %s cann't ask %s's detailattr ", pHuman->GetName(), pTargetHuman->GetName() ) ;
         return    PACKET_EXE_CONTINUE;
     }
     if(pTargetHuman->m_StallBox.GetStallStatus() != ServerStallBox::STALL_OPEN)
-    {//Ä¿±êÃ»ÓĞ°ÚÌ¯
+    {//ç›®æ ‡æ²¡æœ‰æ‘†æ‘Š
         GCStallError    Msg;
         Msg.SetID(STALL_MSG::ERR_CLOSE);
         pGamePlayer->SendPacket(&Msg);
@@ -75,12 +75,12 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
     }
 
     if(PetGuid.IsNull())
-    {//ÂòÎïÆ·
-        //Ì¯Ö÷container
+    {//ä¹°ç‰©å“
+        //æ‘Šä¸»container
         ItemContainer*    pStallContainer = pTargetHuman->m_StallBox.GetContainer(); 
         INT    IndexInStall = pStallContainer->GetIndexByGUID(&ItemGuid);
         if(IndexInStall<0)
-        {//ÎïÆ·²»´æÔÚ
+        {//ç‰©å“ä¸å­˜åœ¨
             MsgError.SetID(STALL_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallBuyHandler::ObjID=%d, ERR_NEED_NEW_COPY:IndexInStall = %d"
@@ -89,7 +89,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         }
 
         if(pTargetHuman->m_StallBox.GetSerialByIndex(IndexInStall) > nSerial)
-        {//°æ±¾ÒÔ¸üĞÂ
+        {//ç‰ˆæœ¬ä»¥æ›´æ–°
             MsgError.SetID(STALL_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallBuyHandler::ObjID=%d, ERR_NEED_NEW_COPY: nSerial = %d, BoxSerial = %d"
@@ -97,7 +97,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //ÔÚ±³°üÖĞÕÒµ½¸ÃÎïÆ·
+        //åœ¨èƒŒåŒ…ä¸­æ‰¾åˆ°è¯¥ç‰©å“
         //ItemContainer* pMatContainer    = pTargetHuman->GetMatContain();
         ItemContainer* pBaseContainer    = pTargetHuman->GetBaseContain();
         //ItemContainer* pBagContainer    = NULL;
@@ -111,7 +111,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         //    pBagContainer = pBaseContainer;
         //}
         //else
-        //{//guid·Ç·¨
+        //{//guidéæ³•
         //    Assert(0);
         //    GCStallError    Msg;
         //    Msg.SetID(STALL_MSG::ERR_ILLEGAL);
@@ -127,13 +127,13 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         UINT    MessItemNum     =    pItem->GetLayedNum();
         
         UINT    ItemType        =    pItem->GetItemTableIndex();
-        //1.¼ÆËã¿Õ¼ä
+        //1.è®¡ç®—ç©ºé—´
         ItemContainer*        pMyContainer = HumanItemLogic::GetItemContain(pHuman, pItem->GetItemTableIndex());
         _EXCHANGE_ITEM_LIST            ItemListOtToMe;
         ItemListOtToMe.Init();
         ItemListOtToMe.AddItem(pItem);
         if( FALSE == HumanItemLogic::CanReceiveExchangeItemList( pHuman, ItemListOtToMe) )
-        {//¿Õ¼ä²»¹»
+        {//ç©ºé—´ä¸å¤Ÿ
             MsgError.SetID(STALL_MSG::ERR_NOT_ENOUGH_ROOM);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallBuyHandler::ObjID=%d, ERR_NOT_ENOUGH_ROOM"
@@ -141,10 +141,10 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //2.¼ÆËã½ğÇ®
+        //2.è®¡ç®—é‡‘é’±
         UINT    CurPrice = pTargetHuman->m_StallBox.GetPriceByIndex(IndexInStall);
         if(pHuman->GetMoney()<CurPrice)
-        {//½ğÇ®²»×ã
+        {//é‡‘é’±ä¸è¶³
             MsgError.SetID(STALL_MSG::ERR_NOT_ENOUGH_MONEY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallBuyHandler::ObjID=%d, ERR_NOT_ENOUGH_MONEY"
@@ -152,12 +152,12 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //3.ÒÆ¶¯ÎïÆ·
-        //ÏÈ½âËø
+        //3.ç§»åŠ¨ç‰©å“
+        //å…ˆè§£é”
         BOOL    bFlag = FALSE;
         g_ItemOperator.UnlockItem( pBaseContainer, IndexInBag );
 
-        //×Ô¶¯ÕÒ¸ñ,Ö§³Ö×Ô¶¯µş¼Ó
+        //è‡ªåŠ¨æ‰¾æ ¼,æ”¯æŒè‡ªåŠ¨å åŠ 
         INT result = 
             g_ItemOperator.MoveItem
             (
@@ -170,7 +170,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         
 
         if(result<0)
-        {//¿½±´Ê§°Ü
+        {//æ‹·è´å¤±è´¥
             MsgError.SetID(STALL_MSG::ERR_ILLEGAL);
             pGamePlayer->SendPacket(&MsgError);
             pTargetHuman->m_StallBox.CleanUp();
@@ -178,7 +178,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
                 ,pHuman->GetID(), IndexInBag, result) ;
             return PACKET_EXE_CONTINUE;
         }
-        //½»Ò×Log
+        //äº¤æ˜“Log
         ITEM_LOG_PARAM    ItemLogParam;
         ItemLogParam.OpType        =    ITEM_STALL_BOX_EXCHANGE;
         ItemLogParam.CharGUID    =    pTargetHuman->GetGUID();
@@ -190,7 +190,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
 
         UINT    ToIndex = pMyContainer->ConIndex2BagIndex(result);
 
-        //4.¿ÛÇ®
+        //4.æ‰£é’±
         FLOAT CurPriceTemp = (FLOAT)CurPrice;
         FLOAT TradeTax     = (FLOAT)pTargetHuman->m_StallBox.GetTradeTax();
         pHuman->SetMoney((UINT)(pHuman->GetMoney() - CurPriceTemp));
@@ -223,7 +223,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
 
         if(TradeTax > 100)
 
-        //5.¸üĞÂÌ¯Î»ºĞ
+        //5.æ›´æ–°æ‘Šä½ç›’
         pTargetHuman->m_StallBox.IncSerialByIndex(IndexInStall);
         pTargetHuman->m_StallBox.SetPriceByIndex(IndexInStall, 0);
         result = 
@@ -233,7 +233,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             IndexInStall
             );
         if(result<0)
-        {//¿½±´Ê§°Ü
+        {//æ‹·è´å¤±è´¥
             MsgError.SetID(STALL_MSG::ERR_ILLEGAL);
             pGamePlayer->SendPacket(&MsgError);
             pTargetHuman->m_StallBox.CleanUp();
@@ -244,7 +244,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         
         
 
-        //6.½»Ò×¼ÇÂ¼·ÅÈëÁôÑÔ°å
+        //6.äº¤æ˜“è®°å½•æ”¾å…¥ç•™è¨€æ¿
         ServerBBS* pBBS = pTargetHuman->m_StallBox.GetBBS();
         CHAR szExchangeMessage[MAX_BBS_MESSAGE_LENGTH];
         memset(szExchangeMessage,0, MAX_BBS_MESSAGE_LENGTH);
@@ -252,7 +252,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         UINT Gold        = (UINT)(CurPrice/10000);
         UINT Silver        = (UINT)((CurPrice%10000)/100);
         UINT copper        = (UINT)(CurPrice%100);
-        sprintf(szExchangeMessage,"%s¹ºÂò [#{_ITEM%d}] X %d, ¹²»¨·Ñ%d½ğ%dÒø%dÍ­", pHuman->GetName(), MessItemTBIndex, MessItemNum, Gold, Silver, copper);
+        sprintf(szExchangeMessage,"%sè´­ä¹° [#{_ITEM%d}] X %d, å…±èŠ±è´¹%dé‡‘%dé“¶%dé“œ", pHuman->GetName(), MessItemTBIndex, MessItemNum, Gold, Silver, copper);
         UINT    NewID = pBBS->NewMessageID();
         if(pBBS->AddNewMessageByID(NewID, szExchangeMessage, (INT)strlen(szExchangeMessage), "_SYSTEM") == FALSE)
         {
@@ -261,7 +261,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //7.Í¨Öª¿Í»§¶Ë
+        //7.é€šçŸ¥å®¢æˆ·ç«¯
         GCStallBuy    MsgBuy;
         MsgBuy.SetObjID(ObjId);
         MsgBuy.SetObjGUID(ItemGuid);
@@ -276,11 +276,11 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
 
     }
     else
-    {//Âò³èÎï
+    {//ä¹°å® ç‰©
         ItemContainer*    pStallPetContainer = pTargetHuman->m_StallBox.GetPetContainer(); 
         INT    PetIndexInStall = pStallPetContainer->GetIndexByGUID(&PetGuid);
         if(PetIndexInStall<0)
-        {//ÎïÆ·²»´æÔÚ
+        {//ç‰©å“ä¸å­˜åœ¨
             MsgError.SetID(STALL_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallBuyHandler::ObjName=%s, ERR_NEED_NEW_COPY:PetIndexInStall = %d"
@@ -289,7 +289,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         }
 
         if(pTargetHuman->m_StallBox.GetPetSerialByIndex(PetIndexInStall) != nSerial)
-        {//°æ±¾ÒÔ¸üĞÂ
+        {//ç‰ˆæœ¬ä»¥æ›´æ–°
             MsgError.SetID(STALL_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallBuyHandler::ObjName=%s, ERR_NEED_NEW_COPY: nSerial = %d, BoxSerial = %d"
@@ -301,13 +301,13 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         INT PetIndexInOtBag    =    pOtBagPetContainer->GetIndexByGUID(&PetGuid);
         Item* pItem = pOtBagPetContainer->GetItem(PetIndexInOtBag);    
 
-        //1.¼ÆËã¿Õ¼ä
+        //1.è®¡ç®—ç©ºé—´
         ItemContainer*        pMyBagPetContainer = pHuman->GetPetContain();
         _EXCHANGE_ITEM_LIST        ItemListOtToMe;
         ItemListOtToMe.Init();
         ItemListOtToMe.AddItem(pItem);
         if( FALSE == HumanItemLogic::CanReceiveExchangeItemList( pHuman, ItemListOtToMe) )
-        {//¿Õ¼ä²»¹»
+        {//ç©ºé—´ä¸å¤Ÿ
             MsgError.SetID(STALL_MSG::ERR_NOT_ENOUGH_ROOM);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallBuyHandler::ObjName=%s, ERR_NOT_ENOUGH_ROOM"
@@ -315,10 +315,10 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //2.¼ÆËã½ğÇ®
+        //2.è®¡ç®—é‡‘é’±
         UINT    CurPrice = pTargetHuman->m_StallBox.GetPetPriceByIndex(PetIndexInStall);
         if(pHuman->GetMoney()<CurPrice)
-        {//½ğÇ®²»×ã
+        {//é‡‘é’±ä¸è¶³
             MsgError.SetID(STALL_MSG::ERR_NOT_ENOUGH_MONEY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallBuyHandler::ObjName=%s, ERR_NOT_ENOUGH_MONEY"
@@ -326,7 +326,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //2.5¼ÆËã³èÎï¼¶±ğ
+        //2.5è®¡ç®—å® ç‰©çº§åˆ«
         INT nPetLevel = pItem->GetLevel();
         INT nHumanLevel = pHuman->GetLevel();
         if(nPetLevel>nHumanLevel)
@@ -338,7 +338,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //ÕÙ»Ø³èÎï
+        //å¬å›å® ç‰©
         Obj_Pet* pDestPet = pTargetHuman->GetPet();
         PET_GUID_t    DestPetGuid;
         if(pDestPet)
@@ -348,12 +348,12 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         if(DestPetGuid == pItem->GetPetGUID())
             pTargetHuman->ReCallPet();
     
-        //3.ÒÆ¶¯ÎïÆ·
-        //ÏÈ½âËø
+        //3.ç§»åŠ¨ç‰©å“
+        //å…ˆè§£é”
         BOOL    bFlag = FALSE;
         g_ItemOperator.UnlockItem( pOtBagPetContainer, PetIndexInOtBag );
 
-        //×Ô¶¯ÕÒ¸ñ,Ö§³Ö×Ô¶¯µş¼Ó
+        //è‡ªåŠ¨æ‰¾æ ¼,æ”¯æŒè‡ªåŠ¨å åŠ 
         INT result = 
             g_ItemOperator.MoveItem
             (
@@ -363,7 +363,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             );
 
         if(result<0)
-        {//¿½±´Ê§°Ü
+        {//æ‹·è´å¤±è´¥
             MsgError.SetID(STALL_MSG::ERR_ILLEGAL);
             pGamePlayer->SendPacket(&MsgError);
             pTargetHuman->m_StallBox.CleanUp();
@@ -385,7 +385,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         PetLogParam.ZPos        =    pHuman->getWorldPos()->m_fZ;
         SavePetLog(&PetLogParam);
 
-        //4.¿ÛÇ®
+        //4.æ‰£é’±
         FLOAT CurPriceTemp = (FLOAT)CurPrice;
         FLOAT TradeTax     = (FLOAT)pTargetHuman->m_StallBox.GetTradeTax();
         pHuman->SetMoney((UINT)(pHuman->GetMoney() - CurPriceTemp));
@@ -415,7 +415,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         MoneyLogParam.ZPos        =    pTargetHuman->getWorldPos()->m_fZ;
         SaveMoneyLog(&MoneyLogParam);
 
-        //5.¸üĞÂÌ¯Î»ºĞ
+        //5.æ›´æ–°æ‘Šä½ç›’
         pTargetHuman->m_StallBox.IncPetSerialByIndex(PetIndexInStall);
         pTargetHuman->m_StallBox.SetPetPriceByIndex(PetIndexInStall, 0);
         result = 
@@ -425,7 +425,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             PetIndexInStall
             );
         if(result<0)
-        {//¿½±´Ê§°Ü
+        {//æ‹·è´å¤±è´¥
             MsgError.SetID(STALL_MSG::ERR_ILLEGAL);
             pGamePlayer->SendPacket(&MsgError);
             pTargetHuman->m_StallBox.CleanUp();
@@ -434,7 +434,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //6.½»Ò×¼ÇÂ¼·ÅÈëÁôÑÔ°å
+        //6.äº¤æ˜“è®°å½•æ”¾å…¥ç•™è¨€æ¿
         ServerBBS* pBBS = pTargetHuman->m_StallBox.GetBBS();
         CHAR szExchangeMessage[MAX_BBS_MESSAGE_LENGTH];
         memset(szExchangeMessage,0, MAX_BBS_MESSAGE_LENGTH);
@@ -442,7 +442,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
         UINT Gold        = (UINT)(CurPrice/10000);
         UINT Silver        = (UINT)((CurPrice%10000)/100);
         UINT copper        = (UINT)(CurPrice%100);
-        sprintf(szExchangeMessage,"%s¹ºÂò ³èÎï[%s], ¹²»¨·Ñ%d½ğ%dÒø%dÍ­", pHuman->GetName(), pIt->GetName(), Gold, Silver, copper);
+        sprintf(szExchangeMessage,"%sè´­ä¹° å® ç‰©[%s], å…±èŠ±è´¹%dé‡‘%dé“¶%dé“œ", pHuman->GetName(), pIt->GetName(), Gold, Silver, copper);
         UINT    NewID = pBBS->NewMessageID();
         if(pBBS->AddNewMessageByID(NewID, szExchangeMessage, (INT)strlen(szExchangeMessage), "_SYSTEM") == FALSE)
         {
@@ -451,7 +451,7 @@ UINT CGStallBuyHandler::Execute( CGStallBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //7.Í¨Öª¿Í»§¶Ë
+        //7.é€šçŸ¥å®¢æˆ·ç«¯
         GCStallBuy    MsgBuy;
         MsgBuy.SetObjID(ObjId);
         MsgBuy.SetPetGUID(PetGuid);

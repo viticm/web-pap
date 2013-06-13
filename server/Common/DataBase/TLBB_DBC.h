@@ -1,17 +1,17 @@
 /*
 |==========================================
-|    DBCÊı¾İ¿âÎÄ¼şÀà
-|        (·şÎñÆ÷/¿Í»§¶ËÍ¨ÓÃ)
+|    DBCæ•°æ®åº“æ–‡ä»¶ç±»
+|        (æœåŠ¡å™¨/å®¢æˆ·ç«¯é€šç”¨)
 |==========================================
 |
 |        --------------------
-|        |  Êı¾İ¿âÎÄ¼ş¸ñÊ½  |
+|        |  æ•°æ®åº“æ–‡ä»¶æ ¼å¼  |
 |        --------------------
 |
 |        Offset |    Type  |  Description  
 |        -------+----------+------------------
 |    Head
-|        0X000      UINT        DBC File Identity£¬ always 0XDDBBCC00
+|        0X000      UINT        DBC File Identityï¼Œ always 0XDDBBCC00
 |        0X004      UINT      Number of records in the file 
 |        0X008     UINT      Number of 4-byte fields per record
 |        0X010     UINT      String block size 
@@ -42,27 +42,27 @@ namespace DBC
     class DBCFile    
     {
     public:
-        //ÎÄ¼şÍ·
+        //æ–‡ä»¶å¤´
         struct FILE_HEAD
         {
-            UINT        m_Identify;                //±êÊ¾    0XDDBBCC00
-            INT            m_nFieldsNum;            //ÁĞÊı
-            INT            m_nRecordsNum;            //ĞĞÊı
-            INT            m_nStringBlockSize;        //×Ö·û´®Çø´óĞ¡
+            UINT        m_Identify;                //æ ‡ç¤º    0XDDBBCC00
+            INT            m_nFieldsNum;            //åˆ—æ•°
+            INT            m_nRecordsNum;            //è¡Œæ•°
+            INT            m_nStringBlockSize;        //å­—ç¬¦ä¸²åŒºå¤§å°
         };
 
-        //×Ö¶ÎÊı¾İÀàĞÍ
+        //å­—æ®µæ•°æ®ç±»å‹
         enum FIELD_TYPE
         {
-            T_INT        = 0,    //ÕûÊı
-            T_FLOAT        = 1,    //¸¡µãÊı
-            T_STRING    = 2,    //×Ö·û´®
+            T_INT        = 0,    //æ•´æ•°
+            T_FLOAT        = 1,    //æµ®ç‚¹æ•°
+            T_STRING    = 2,    //å­—ç¬¦ä¸²
         };
 
-        //Êı¾İ¿â¸ñÊ½ÃèÊö
+        //æ•°æ®åº“æ ¼å¼æè¿°
         typedef vector< FIELD_TYPE >    FILEDS_TYPE;
 
-        //Êı¾İ¶Î
+        //æ•°æ®æ®µ
         union FIELD
         {
             FLOAT        fValue;
@@ -77,36 +77,36 @@ namespace DBC
             FIELD(FLOAT value) { fValue = value; }
             FIELD(const CHAR* value) { pString = value; }
         };
-        //Êı¾İÇø
+        //æ•°æ®åŒº
         typedef vector< FIELD >        DATA_BUF;
 
     public:
-        //´ò¿ªÎÄ±¾ÎÄ¼ş£¬Éú³ÉÒ»¸öÊı¾İ¿â
+        //æ‰“å¼€æ–‡æœ¬æ–‡ä»¶ï¼Œç”Ÿæˆä¸€ä¸ªæ•°æ®åº“
         BOOL                    OpenFromTXT(const CHAR* szFileName);
-        //¸ù¾İÄÚ´æÖĞµÄÎÄ¼ş´ò¿ª
+        //æ ¹æ®å†…å­˜ä¸­çš„æ–‡ä»¶æ‰“å¼€
         BOOL                    OpenFromMemory(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
     protected:
-        //¶ÁÈ¡ÎÄ±¾¸ñÊ½ÄÚÈİ
+        //è¯»å–æ–‡æœ¬æ ¼å¼å†…å®¹
         BOOL                    OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
-        //¶ÁÈ¡¶ş½øÖÆ¸ñÊ½ÄÚÈİ
+        //è¯»å–äºŒè¿›åˆ¶æ ¼å¼å†…å®¹
         BOOL                    OpenFromMemoryImpl_Binary(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
 
     public:
-        //°´Ë÷Òı²éÕÒ(µÚÒ»ÁĞÎªË÷Òı)
+        //æŒ‰ç´¢å¼•æŸ¥æ‰¾(ç¬¬ä¸€åˆ—ä¸ºç´¢å¼•)
         virtual const FIELD*    Search_Index_EQU(INT nValue) const;
-        //°´ÕÕÎ»ÖÃ²éÕÒ
+        //æŒ‰ç…§ä½ç½®æŸ¥æ‰¾
         virtual const FIELD*    Search_Posistion(INT nRecordLine, INT nColumNum) const;
-        //²éÕÒÄ³ÁĞµÈÓÚÖ¸¶¨ÖµµÄµÚÒ»ĞĞ
+        //æŸ¥æ‰¾æŸåˆ—ç­‰äºæŒ‡å®šå€¼çš„ç¬¬ä¸€è¡Œ
         virtual const FIELD*    Search_First_Column_Equ(INT nColumnNum, const FIELD& value) const;
 
     public:
-        //È¡µÃID
+        //å–å¾—ID
         UINT GetID(VOID) const                { return m_ID; }
-        //È¡µÃÁĞÊı
+        //å–å¾—åˆ—æ•°
         INT    GetFieldsNum(VOID) const        { return m_nFieldsNum; }
-        //È¡µÃ¼ÇÂ¼µÄÌõÊı
+        //å–å¾—è®°å½•çš„æ¡æ•°
         INT GetRecordsNum(VOID) const        { return m_nRecordsNum; }
-        //Éú³ÉË÷ÒıÁĞ
+        //ç”Ÿæˆç´¢å¼•åˆ—
         VOID CreateIndex(INT nColum = 0, const CHAR* szFileName=0);
 
     protected:
@@ -123,31 +123,31 @@ namespace DBC
     #endif
         
 #endif
-        //Êı¾İ¿â¸ñÊ½ÎÄ¼şÃû
+        //æ•°æ®åº“æ ¼å¼æ–‡ä»¶å
         UINT            m_ID;
-        //Êı¾İ¿â¸ñÊ½ÃèÊö
+        //æ•°æ®åº“æ ¼å¼æè¿°
         FILEDS_TYPE                m_theType;
-        //ĞĞÊı
+        //è¡Œæ•°
         INT                        m_nRecordsNum;
-        //ÁĞÊı
+        //åˆ—æ•°
         INT                        m_nFieldsNum;
-        //Êı¾İÇø
+        //æ•°æ®åŒº
         DATA_BUF                m_vDataBuf;        //size = m_nRecordsNum*m_nFieldsNum
-        //×Ö·û´®Çø
+        //å­—ç¬¦ä¸²åŒº
         CHAR*                    m_pStringBuf;
-        //×Ö·û´®Çø´óĞ¡
+        //å­—ç¬¦ä¸²åŒºå¤§å°
         INT                        m_nStringBufSize;
-        //Ë÷Òı±í
+        //ç´¢å¼•è¡¨
         FIELD_HASHMAP            m_hashIndex;
-        //Ë÷ÒıÁĞ
+        //ç´¢å¼•åˆ—
         INT                        m_nIndexColum;
 
     public:
 
         static INT            _ConvertStringToVector(const CHAR* strStrINTgSource, vector< std::string >& vRet, const CHAR* szKey, BOOL bOneOfKey, BOOL bIgnoreEmpty);
-        //´ÓÄÚ´æÖĞ×Ö·û´®¶ÁÈ¡Ò»ĞĞÎÄ±¾(°´ÕÕ»»ĞĞ·û)
+        //ä»å†…å­˜ä¸­å­—ç¬¦ä¸²è¯»å–ä¸€è¡Œæ–‡æœ¬(æŒ‰ç…§æ¢è¡Œç¬¦)
         static const CHAR*    _GetLineFromMemory(CHAR* pStringBuf, INT nBufSize, const CHAR* pMemory, const CHAR* pDeadEnd);
-        //±È½ÏÁ½¸öÖµÊÇ·ñÏàµÈ
+        //æ¯”è¾ƒä¸¤ä¸ªå€¼æ˜¯å¦ç›¸ç­‰
         template < FIELD_TYPE T>    
         static bool            _FieldEqu(const FIELD& a, const FIELD& b);
 

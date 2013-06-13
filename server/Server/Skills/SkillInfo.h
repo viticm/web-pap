@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºSkillInfo.h
-// ¹¦ÄÜËµÃ÷£º½ÇÉ«ÉíÉÏ¼¼ÄÜÊµÀı
+// æ–‡ä»¶åï¼šSkillInfo.h
+// åŠŸèƒ½è¯´æ˜ï¼šè§’è‰²èº«ä¸ŠæŠ€èƒ½å®ä¾‹
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -106,16 +106,16 @@ namespace Combat_Module
         SkillID_t GetInstanceID(VOID) const {return m_nInstanceID;};
         VOID SetInstanceID(SkillID_t const nID) {m_nInstanceID = nID;};
     private:
-        SkillID_t m_nSkillID; //¼¼ÄÜ±àºÅ
-        INT m_nInstanceID;        //ÊµÀı±àºÅ
-        INT m_nAccuracy;//ÃüÖĞÂÊ
-        INT m_nCriticalRate;//»áĞÄÂÊ,»òÕß½Ğ±©¼¸ÂÊ
-        INT m_nDepleteRefixByValue; //Ğ§¹ûÖµĞŞÕı
-        INT m_nDepleteRefixByRate; //ÏûºÄ%ĞŞÕı
-        INT m_nPowerRefixByValue; //ÏûºÄÖµĞŞÕı
-        INT m_nPowerRefixByRate;//ÍşÁ¦%ĞŞÕı
-        INT m_nTimeRefixByValue; //Ğ§¹û»òÏİÚåµÄÊ±¼äÖµĞŞÕı
-        INT m_nTimeRefixByRate; //Ğ§¹û»òÏİÚåµÄÊ±¼ä%ĞŞÕı
+        SkillID_t m_nSkillID; //æŠ€èƒ½ç¼–å·
+        INT m_nInstanceID;        //å®ä¾‹ç¼–å·
+        INT m_nAccuracy;//å‘½ä¸­ç‡
+        INT m_nCriticalRate;//ä¼šå¿ƒç‡,æˆ–è€…å«æš´å‡ ç‡
+        INT m_nDepleteRefixByValue; //æ•ˆæœå€¼ä¿®æ­£
+        INT m_nDepleteRefixByRate; //æ¶ˆè€—%ä¿®æ­£
+        INT m_nPowerRefixByValue; //æ¶ˆè€—å€¼ä¿®æ­£
+        INT m_nPowerRefixByRate;//å¨åŠ›%ä¿®æ­£
+        INT m_nTimeRefixByValue; //æ•ˆæœæˆ–é™·é˜±çš„æ—¶é—´å€¼ä¿®æ­£
+        INT m_nTimeRefixByRate; //æ•ˆæœæˆ–é™·é˜±çš„æ—¶é—´%ä¿®æ­£
         Time_t m_nCooldownTime;//
         Time_t m_nChargeTime;
         Time_t m_nChannelTime;

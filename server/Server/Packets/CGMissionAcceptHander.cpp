@@ -38,7 +38,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     if ( MyGetCurrentThreadID() != pScene->m_ThreadID )
     {

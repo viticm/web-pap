@@ -18,7 +18,7 @@ UINT LCRetDeleteCharHandler::Execute(LCRetDeleteChar* pPacket, Player* pPlayer )
                 Assert(FALSE) ;
                 return PACKET_EXE_CONTINUE ;
             }
-            //¼ì²éÕËºÅÊÇ·ñÕıÈ·
+            //æ£€æŸ¥è´¦å·æ˜¯å¦æ­£ç¡®
             if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount()) != 0)
             {
                 Log::SaveLog(LOGIN_LOGFILE,"LCRetDeleteCharHandler::Execute() ....OK acc=%s,packacc=%s",
@@ -31,7 +31,7 @@ UINT LCRetDeleteCharHandler::Execute(LCRetDeleteChar* pPacket, Player* pPlayer )
         }
         else
         {
-            AssertEx(FALSE,"LCRetDeleteCharHandler Ïß³Ì×ÊÔ´Ö´ĞĞ´íÎó!");
+            AssertEx(FALSE,"LCRetDeleteCharHandler çº¿ç¨‹èµ„æºæ‰§è¡Œé”™è¯¯!");
         }
 
         return PACKET_EXE_CONTINUE;

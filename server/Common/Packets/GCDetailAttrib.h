@@ -1,6 +1,6 @@
 // GCDetailAttrib.h
 // 
-// ½ÇÉ«µÄÏêÏ¸ÊôĞÔ
+// è§’è‰²çš„è¯¦ç»†å±æ€§
 // 
 //////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ namespace Packets
         }
         virtual ~GCDetailAttrib( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -223,79 +223,79 @@ namespace Packets
         VOID            SetGmRight(INT nRight){m_GmRight    = nRight; SetUpdateAttrib(DETAIL_ATTRIB_MAX_ENERGY,TRUE);}*/
 
     private:
-        ObjID_t            m_ObjID;    // ËùÓĞObjÀàĞÍµÄObjID
+        ObjID_t            m_ObjID;    // æ‰€æœ‰Objç±»å‹çš„ObjID
 
-        Flag64            m_Flags;        // Ã¿¸öÎ»±íÊ¾Ò»¸öÊôĞÔÊÇ·ñÒªË¢ĞÂ ENUM_DETAIL_ATTRIB
-
-
-        UINT            m_uLevel;        // µÈ¼¶
-        INT                m_nExp;            // ¾­ÑéÖµ
-        INT                m_nHP;            //ÉúÃüµã
-        INT                m_nMP;            //Ä§·¨µã
-        INT                m_nMAXHP;        //×î´óÉúÃüµã
-        INT                m_nMAXMP;        //×î´óÄ§·¨µã
-        FLOAT            m_fMoveSpeed;    //ÒÆ¶¯ËÙ¶È
+        Flag64            m_Flags;        // æ¯ä¸ªä½è¡¨ç¤ºä¸€ä¸ªå±æ€§æ˜¯å¦è¦åˆ·æ–° ENUM_DETAIL_ATTRIB
 
 
-        UINT            m_uMoney;        // ÓÎÏ·±ÒÊı
-
-        //Ò»¼¶Õ½¶·ÊôĞÔ
-
-
-        INT                m_Str;                    //Á¦Á¿ Á¦Á¿
-        INT                m_Spr;                    //ÁéÆø ÁéÁ¦
-        INT                m_Con;                    //ÌåÖÆ ÌåÖÆ
-        INT             m_Int;                    //¶¨Á¦ ÖÇÁ¦
-        INT             m_Dex;                    //Éí·¨ Ãô½İ
-        INT                m_nPoint_Remain;        //Ê£Óà´ı·ÖÅäµãÊı
-
-        //¶ş¼¶Õ½¶·ÊôĞÔ
-        INT                m_nHP_ReSpeed;        //HP»Ö¸´ËÙ¶È  µã/Ãë
-        INT                m_nMP_ReSpeed;        //MP»Ö¸´ËÙ¶È  µã/Ãë
-        INT                m_nAtt_Physics;        //ÎïÀí¹¥»÷Á¦
-        INT                m_nAtt_Magic;        //Ä§·¨¹¥»÷Á¦
-        INT                m_nDef_Physics;        //ÎïÀí·ÀÓùÁ¦
-        INT                m_nDef_Magic;        //Ä§·¨·ÀÓùÁ¦
-        INT                m_nHit;                //ÃüÖĞÂÊ
-        INT                m_nMiss;            //ÉÁ±ÜÂÊ
-        INT                m_nCritic;            //ÖÂÃüÒ»»÷ÂÊ
-
-        INT                m_nRage;            //Å­Æø
-        INT                m_nStrikePoint;        //Á¬¼¼µã
-
-        INT                m_nAttackSpeed;        //¹¥»÷ËÙ¶È
-
-        INT                m_nAttCold;            //±ù¹¥»÷
-        INT                m_nDefCold;            //±ù·ÀÓù
-        INT                m_nAttFire;            //»ğ¹¥»÷
-        INT                m_nDefFire;            //»ğ·ÀÓù
-        INT                m_nAttLight;        //µç¹¥»÷
-        INT                m_nDefLight;        //µç·ÀÓù
-
-        INT                m_nAttPoison;        //¶¾¹¥»÷
-        INT                m_nDefPoison;        //¶¾·ÀÓù
-
-        INT                m_nMenPai;            //ÃÅÅÉ
-        INT                m_nGuild;            //°ïÅÉ
+        UINT            m_uLevel;        // ç­‰çº§
+        INT                m_nExp;            // ç»éªŒå€¼
+        INT                m_nHP;            //ç”Ÿå‘½ç‚¹
+        INT                m_nMP;            //é­”æ³•ç‚¹
+        INT                m_nMAXHP;        //æœ€å¤§ç”Ÿå‘½ç‚¹
+        INT                m_nMAXMP;        //æœ€å¤§é­”æ³•ç‚¹
+        FLOAT            m_fMoveSpeed;    //ç§»åŠ¨é€Ÿåº¦
 
 
-        _CAMP_DATA        m_CampData;            // ÕóÓª    
+        UINT            m_uMoney;        // æ¸¸æˆå¸æ•°
+
+        //ä¸€çº§æˆ˜æ–—å±æ€§
+
+
+        INT                m_Str;                    //åŠ›é‡ åŠ›é‡
+        INT                m_Spr;                    //çµæ°” çµåŠ›
+        INT                m_Con;                    //ä½“åˆ¶ ä½“åˆ¶
+        INT             m_Int;                    //å®šåŠ› æ™ºåŠ›
+        INT             m_Dex;                    //èº«æ³• æ•æ·
+        INT                m_nPoint_Remain;        //å‰©ä½™å¾…åˆ†é…ç‚¹æ•°
+
+        //äºŒçº§æˆ˜æ–—å±æ€§
+        INT                m_nHP_ReSpeed;        //HPæ¢å¤é€Ÿåº¦  ç‚¹/ç§’
+        INT                m_nMP_ReSpeed;        //MPæ¢å¤é€Ÿåº¦  ç‚¹/ç§’
+        INT                m_nAtt_Physics;        //ç‰©ç†æ”»å‡»åŠ›
+        INT                m_nAtt_Magic;        //é­”æ³•æ”»å‡»åŠ›
+        INT                m_nDef_Physics;        //ç‰©ç†é˜²å¾¡åŠ›
+        INT                m_nDef_Magic;        //é­”æ³•é˜²å¾¡åŠ›
+        INT                m_nHit;                //å‘½ä¸­ç‡
+        INT                m_nMiss;            //é—ªé¿ç‡
+        INT                m_nCritic;            //è‡´å‘½ä¸€å‡»ç‡
+
+        INT                m_nRage;            //æ€’æ°”
+        INT                m_nStrikePoint;        //è¿æŠ€ç‚¹
+
+        INT                m_nAttackSpeed;        //æ”»å‡»é€Ÿåº¦
+
+        INT                m_nAttCold;            //å†°æ”»å‡»
+        INT                m_nDefCold;            //å†°é˜²å¾¡
+        INT                m_nAttFire;            //ç«æ”»å‡»
+        INT                m_nDefFire;            //ç«é˜²å¾¡
+        INT                m_nAttLight;        //ç”µæ”»å‡»
+        INT                m_nDefLight;        //ç”µé˜²å¾¡
+
+        INT                m_nAttPoison;        //æ¯’æ”»å‡»
+        INT                m_nDefPoison;        //æ¯’é˜²å¾¡
+
+        INT                m_nMenPai;            //é—¨æ´¾
+        INT                m_nGuild;            //å¸®æ´¾
+
+
+        _CAMP_DATA        m_CampData;            // é˜µè¥    
         INT                m_nDataID;            // DataID
-        INT                m_nPortraitID;        // Í·ÏñID
-        INT                m_nModelID;            // ÍâĞÎ
-        INT                m_nMountID;            //×ùÆï
-        PET_GUID_t        m_guidCurrentPet;    //µ±Ç°³èÎï
+        INT                m_nPortraitID;        // å¤´åƒID
+        INT                m_nModelID;            // å¤–å½¢
+        INT                m_nMountID;            //åº§éª‘
+        PET_GUID_t        m_guidCurrentPet;    //å½“å‰å® ç‰©
         
-        BOOL            m_bLimitMove;        //ÊÇ·ñÏŞÖÆ²»ÄÜÒÆ¶¯
-        BOOL            m_bCanActionFlag1;        //¼¼ÄÜÊÜÏŞ±ê¼Ç1,ÓÃÓÚ»èÃÔ´ßÃß
-        BOOL            m_bCanActionFlag2;        //¼¼ÄÜÊÜÏŞ±ê¼Ç2,ÓÃÓÚ³ÁÄ¬
+        BOOL            m_bLimitMove;        //æ˜¯å¦é™åˆ¶ä¸èƒ½ç§»åŠ¨
+        BOOL            m_bCanActionFlag1;        //æŠ€èƒ½å—é™æ ‡è®°1,ç”¨äºæ˜è¿·å‚¬çœ 
+        BOOL            m_bCanActionFlag2;        //æŠ€èƒ½å—é™æ ‡è®°2,ç”¨äºæ²‰é»˜
 
-        INT                m_RMBMoney;            //m_Vigor ;            // »îÁ¦  //Ôª±¦
-        INT                m_BankMoney;        //m_MaxVigor ;        // »îÁ¦ÉÏÏŞ //ÒøĞĞÖĞµÄÔª±¦
-        INT                m_DoubleExpTime_Num ;            // Ë«±¶¾­ÑéÊ±¼äºÍ±¶Êı;
-        INT                m_GmRight ;        // ¾«Á¦ÉÏÏŞ
+        INT                m_RMBMoney;            //m_Vigor ;            // æ´»åŠ›  //å…ƒå®
+        INT                m_BankMoney;        //m_MaxVigor ;        // æ´»åŠ›ä¸Šé™ //é“¶è¡Œä¸­çš„å…ƒå®
+        INT                m_DoubleExpTime_Num ;            // åŒå€ç»éªŒæ—¶é—´å’Œå€æ•°;
+        INT                m_GmRight ;        // ç²¾åŠ›ä¸Šé™
 
-        //INT                m_nGoodBadValue;    // ÉÆ¶ñÖµ
+        //INT                m_nGoodBadValue;    // å–„æ¶å€¼
     };
 
     class GCDetailAttribFactory : public PacketFactory 

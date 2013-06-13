@@ -1,6 +1,6 @@
 // MissionManager.h
 // 
-// ¹¦ÄÜ£ºÈÎÎñ¹ÜÀí£¬ÈÎÎñ½Å±¾Êý¾ÝµÄ²Ù×÷ÖÐÊà
+// åŠŸèƒ½ï¼šä»»åŠ¡ç®¡ç†ï¼Œä»»åŠ¡è„šæœ¬æ•°æ®çš„æ“ä½œä¸­æž¢
 // 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -39,11 +39,11 @@ struct MISSION_ITEM_INFO
 enum ENUM_MISSION_DATA_ITEM_TYPE
 {
     MISSION_DATA_ITEM_TYPE_INVALID    = -1,
-    MISSION_DATA_ITEM_TYPE_SECTION,            // ±êÌâ
-    MISSION_DATA_ITEM_TYPE_TEXT,            // ÎÄ±¾
-    MISSION_DATA_ITEM_TYPE_ITEM,            // ÎïÆ·
-    MISSION_DATA_ITEM_TYPE_ITEM_RAND,        // Ëæ»úÎïÆ·
-    MISSION_DATA_ITEM_TYPE_ITEM_RADIO,        // ¶àÑ¡1ÎïÆ·
+    MISSION_DATA_ITEM_TYPE_SECTION,            // æ ‡é¢˜
+    MISSION_DATA_ITEM_TYPE_TEXT,            // æ–‡æœ¬
+    MISSION_DATA_ITEM_TYPE_ITEM,            // ç‰©å“
+    MISSION_DATA_ITEM_TYPE_ITEM_RAND,        // éšæœºç‰©å“
+    MISSION_DATA_ITEM_TYPE_ITEM_RADIO,        // å¤šé€‰1ç‰©å“
 };
 
 #define MISSION_DATA_ITEM_STRING_LENGTH    (256)

@@ -23,8 +23,8 @@ namespace Packets
         GCDiscardItemResult()
         {
             m_Opt                =    FromBag;
-            m_Result            =    0;             //ÊÇ·ñ³É¹¦£¬²»³É¹¦°üº¬´íÎóĞÅÏ¢
-            m_BagIndex            =    0;            //³É¹¦ºó£¬¶ªÆúÎïÆ·µÄÎ»ÖÃ
+            m_Result            =    0;             //æ˜¯å¦æˆåŠŸï¼Œä¸æˆåŠŸåŒ…å«é”™è¯¯ä¿¡æ¯
+            m_BagIndex            =    0;            //æˆåŠŸåï¼Œä¸¢å¼ƒç‰©å“çš„ä½ç½®
             m_ItemTableIndex    =    0;
         };
         virtual                ~GCDiscardItemResult(){};
@@ -56,9 +56,9 @@ namespace Packets
         
 
     private:
-        BYTE            m_Opt;             //ÊÇ·ñ³É¹¦£¬²»³É¹¦°üº¬´íÎóĞÅÏ¢
-        BYTE            m_Result;             //ÊÇ·ñ³É¹¦£¬²»³É¹¦°üº¬´íÎóĞÅÏ¢
-        BYTE            m_BagIndex;            //³É¹¦ºó£¬¶ªÆúÎïÆ·µÄÎ»ÖÃ
+        BYTE            m_Opt;             //æ˜¯å¦æˆåŠŸï¼Œä¸æˆåŠŸåŒ…å«é”™è¯¯ä¿¡æ¯
+        BYTE            m_Result;             //æ˜¯å¦æˆåŠŸï¼Œä¸æˆåŠŸåŒ…å«é”™è¯¯ä¿¡æ¯
+        BYTE            m_BagIndex;            //æˆåŠŸåï¼Œä¸¢å¼ƒç‰©å“çš„ä½ç½®
         UINT            m_ItemTableIndex;
 
     };

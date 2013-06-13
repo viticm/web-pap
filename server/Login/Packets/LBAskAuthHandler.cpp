@@ -23,7 +23,7 @@ UINT    LBAskAuthHandler::Execute(LBAskAuth* pPacket, Player* pPlayer )
         }
         else
         {
-            AssertEx(FALSE,"LBAskAuthHandler 线程资源执行错误!");
+            AssertEx(FALSE,"LBAskAuthHandler 绾跨▼璧勬簮鎵ц閿欒!");
         }
         
         Log::SaveLog(LOGIN_LOGFILE,"LBAskAuthHandler::Execute() ....OK");

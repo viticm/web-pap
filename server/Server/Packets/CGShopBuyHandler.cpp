@@ -32,10 +32,10 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    BYTE        m_nndex            =    pPacket->GetIndex();    //×ÊÔ´Î»ÖÃË÷Òý
+    BYTE        m_nndex            =    pPacket->GetIndex();    //èµ„æºä½ç½®ç´¢å¼•
     UINT        UniqueID        =    pPacket->GetUniqueID();
     //_ITEM_GUID    ItemGuid        =    pPacket->GetItemGUID();
     //UINT        uBuyNum            =    pPacket->GetBuyNum();
@@ -49,7 +49,7 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
         return PACKET_EXE_CONTINUE ; 
     }
 
-    //¾àÀëÅÐ¶¨
+    //è·ç¦»åˆ¤å®š
     Obj* pNpcObj = (Obj*) (pScene->GetObjManager()->GetObj(NpcObjID));
     if(pNpcObj == NULL)
     {
@@ -65,7 +65,7 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
         return PACKET_EXE_CONTINUE ; 
     }
 
-    //ÕóÓªÅÐ¶Ï
+    //é˜µè¥åˆ¤æ–­
     if( pHuman->IsEnemy(  (Obj_Character*)pNpcObj  ) )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGShopBuyHandler GUID:%d buy item with wrong camp", pHuman->GetGUID() ) ;
@@ -73,29 +73,29 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
     }
 
     if(pHuman->Shop( )    == NULL)
-    {//Ã»ÓÐ´ò¿ª½»Ò×´°¿Ú¾ÍÂò
+    {//æ²¡æœ‰æ‰“å¼€äº¤æ˜“çª—å£å°±ä¹°
         g_pLog->FastSaveLog( LOG_FILE_1, "Empty Shop!!! GUID = %X",  pHuman->GetGUID()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
     //if( uBuyNum == 0 || uBuyNum > 20)
-    //{//¹ºÂòÊýÁ¿ºÏ·¨ÐÔÅÐ¶Ï
+    //{//è´­ä¹°æ•°é‡åˆæ³•æ€§åˆ¤æ–­
     //    g_pLog->FastSaveLog( LOG_FILE_1, "uBuyNum overflow !!! GUID = %X uBuyNum = %d",  pHuman->GetGUID(), uBuyNum) ;
     //    return PACKET_EXE_CONTINUE ;
     //}
 
-    //´ò¿ªÉÌµêÊ±£¬Õâ¸öÉÌµêµÄÖ¸ÕëÒÑ¾­±»´æÔÚhumanÉíÉÏÁË£¬¹Ø±ÕÉÌµêÊ±Ëü»á±»Çå¿Õ
+    //æ‰“å¼€å•†åº—æ—¶ï¼Œè¿™ä¸ªå•†åº—çš„æŒ‡é’ˆå·²ç»è¢«å­˜åœ¨humanèº«ä¸Šäº†ï¼Œå…³é—­å•†åº—æ—¶å®ƒä¼šè¢«æ¸…ç©º
     _SHOP*        pShop    =    pHuman->Shop( )    ;
     INT        itemNumber    =    0;
 
-    //ÔÝÊ±¹æ¶¨200ÒÔÉÏÎª»Ø¹ºµÄÉÌÆ·À¸
+    //æš‚æ—¶è§„å®š200ä»¥ä¸Šä¸ºå›žè´­çš„å•†å“æ 
     if(m_nndex >= BUY_BACK_INDEX)
-    {//ÔÚ»Ø¹º¶ÓÁÐÖÐ²éÕÒ
+    {//åœ¨å›žè´­é˜Ÿåˆ—ä¸­æŸ¥æ‰¾
         _ITEM tempItem;
         UINT  uPrice = 0;
         BYTE  uCoinType = 0;
 
-        //Ö»ÓÃÀ´ÅÐ¶¨³öÊÛ¶ÓÁÐÀïÃæÊÇ²»ÊÇÓÐ¶«Î÷
+        //åªç”¨æ¥åˆ¤å®šå‡ºå”®é˜Ÿåˆ—é‡Œé¢æ˜¯ä¸æ˜¯æœ‰ä¸œè¥¿
         if(!pHuman->GetCurFromSoldList(tempItem, uPrice, uCoinType))
         {
             g_pLog->FastSaveLog( LOG_FILE_1, "SoldList is empty GUID = %X",  pHuman->GetGUID()) ;
@@ -105,10 +105,10 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
         itemNumber = tempItem.GetItemCount();
         INT iPrice = (INT)uPrice;
 
-        if( uCoinType == 0 )//ÆÕÍ¨ÉÌµê
+        if( uCoinType == 0 )//æ™®é€šå•†åº—
         {
             if( ((INT)pHuman->GetMoney()) < iPrice )
-            {//½ðÇ®²»¹»
+            {//é‡‘é’±ä¸å¤Ÿ
                 GCShopBuy Msg ;
                 Msg.SetBuyOk((BYTE)GCShopBuy::BUY_MONEY_FAIL);
                 pHuman->GetPlayer()->SendPacket( &Msg ) ;
@@ -118,10 +118,10 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
                 return PACKET_EXE_CONTINUE ;
             }
         }
-        else if( uCoinType == 1 )//Ôª±¦ÉÌµê
+        else if( uCoinType == 1 )//å…ƒå®å•†åº—
         {
             if( ((INT)pHuman->GetRMB()) < iPrice )
-            {//Ôª±¦²»¹»
+            {//å…ƒå®ä¸å¤Ÿ
                 GCShopBuy Msg ;
                 Msg.SetBuyOk((BYTE)GCShopBuy::BUY_RMB_FAIL);
                 pHuman->GetPlayer()->SendPacket( &Msg ) ;
@@ -151,7 +151,7 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE ;
         }
         else
-        {//´Ó»Ø¹ºÁÐ±íÀïÃæ¹ºÂò³É¹¦    
+        {//ä»Žå›žè´­åˆ—è¡¨é‡Œé¢è´­ä¹°æˆåŠŸ    
             if( uCoinType == 0 )
                 pHuman->SetMoney( pHuman->GetMoney() - iPrice);
             else if( uCoinType == 1 )
@@ -174,13 +174,13 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
             Msg.SetNum( tempItem.GetItemCount() );
             pHuman->GetPlayer()->SendPacket( &Msg ) ;
 
-            //¸üÐÂ»Ø¹º°´Å¥
+            //æ›´æ–°å›žè´­æŒ‰é’®
             GCShopSoldList::_MERCHANDISE_ITEM    SoldItem;
             _ITEM tempit;
             UINT  uPrice = 0;
             BYTE  nCoinType = 0;
             if(pHuman->GetCurFromSoldList(tempit, uPrice, nCoinType))
-            {//»Ø¹º±íÖÐ»¹ÓÐ¶«Î÷
+            {//å›žè´­è¡¨ä¸­è¿˜æœ‰ä¸œè¥¿
                 SoldItem.item_data = tempit;
                 SoldItem.iPrice       = uPrice;
                 GCShopSoldList    MsgSold;
@@ -189,7 +189,7 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
                 pPlayer->SendPacket( &MsgSold );
             }
             else
-            {//»Ø¹º±íÒÑ¾­¿ÕÁË
+            {//å›žè´­è¡¨å·²ç»ç©ºäº†
                 GCShopSoldList    MsgSold;
                 MsgSold.SetMerchadiseNum(0);
                 pPlayer->SendPacket( &MsgSold );
@@ -197,17 +197,17 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
         }
     }
     else
-    {//ÔÚÉÌÈË¹ÒµÄÉÌµêÀï²éÕÒ
+    {//åœ¨å•†äººæŒ‚çš„å•†åº—é‡ŒæŸ¥æ‰¾
 
-        //Ò»´Îµã»÷¿ÉÒÔÂòµÄ¸öÊý
+        //ä¸€æ¬¡ç‚¹å‡»å¯ä»¥ä¹°çš„ä¸ªæ•°
         INT itemNumber    =    pShop->m_ItemList->m_TypeCount[m_nndex]; 
 
         if(pShop->m_ItemList->m_TypeMaxNum[m_nndex] == 0)
-        {//ÂôÍêÁË£¬Ö±½Ó·µ»Ø£¬
-            //Ó¦¸Ã²»»á×ßµ½ÕâÀï£¬
-            //Ê×ÏÈ±íÀï²»Ó¦¸Ã³öÏÖ0,
-            //Æä´ÎÂôÍêµÄÊ±ºò·þÎñÆ÷»áÍ¨ÖªËùÓÐÁ¬ÔÚËûÖ®ÉÏµÄ¿Í»§¶Ë
-            //ÔÚ½çÃæÉÏÉ¾µôÕâ¸öÉÌÆ·£¬ÕâÑùÍæ¼ÒÒ²²»¿ÉÄÜÔÙµãÕâ¸öÉÌÆ·ÁË
+        {//å–å®Œäº†ï¼Œç›´æŽ¥è¿”å›žï¼Œ
+            //åº”è¯¥ä¸ä¼šèµ°åˆ°è¿™é‡Œï¼Œ
+            //é¦–å…ˆè¡¨é‡Œä¸åº”è¯¥å‡ºçŽ°0,
+            //å…¶æ¬¡å–å®Œçš„æ—¶å€™æœåŠ¡å™¨ä¼šé€šçŸ¥æ‰€æœ‰è¿žåœ¨ä»–ä¹‹ä¸Šçš„å®¢æˆ·ç«¯
+            //åœ¨ç•Œé¢ä¸Šåˆ æŽ‰è¿™ä¸ªå•†å“ï¼Œè¿™æ ·çŽ©å®¶ä¹Ÿä¸å¯èƒ½å†ç‚¹è¿™ä¸ªå•†å“äº†
 
             GCShopBuy Msg ;
             Msg.SetBuyOk((BYTE)GCShopBuy::BUY_NO_MERCH);
@@ -216,7 +216,7 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE ;
         }
 
-        //¼ÆËã¼Û¸ñ
+        //è®¡ç®—ä»·æ ¼
         UINT BaseMoney = ShopMgr::ConvertItemType2Money(pShop->m_ItemList->m_ListType[m_nndex]);
         if(BaseMoney<0) BaseMoney = 0;
         BaseMoney *= static_cast<INT>(pShop->m_scale);
@@ -226,7 +226,7 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
         if( pShop->m_ShopType == 0 )
         {
             if( pHuman->GetMoney() < BaseMoney )
-            {//½ðÇ®²»¹»
+            {//é‡‘é’±ä¸å¤Ÿ
                 GCShopBuy Msg ;
                 Msg.SetBuyOk((BYTE)GCShopBuy::BUY_MONEY_FAIL);
                 pHuman->GetPlayer()->SendPacket( &Msg ) ;
@@ -236,7 +236,7 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
         else if( pShop->m_ShopType == 1 )
         {
             if( pHuman->GetRMB() < (INT)BaseMoney )
-            {//Ôª±¦²»¹»
+            {//å…ƒå®ä¸å¤Ÿ
                 GCShopBuy Msg ;
                 Msg.SetBuyOk((BYTE)GCShopBuy::BUY_RMB_FAIL);
                 pHuman->GetPlayer()->SendPacket( &Msg ) ;
@@ -249,7 +249,7 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
         else
         {
             if( pHuman->GetMoney() < BaseMoney )
-            {//½ðÇ®²»¹»
+            {//é‡‘é’±ä¸å¤Ÿ
                 GCShopBuy Msg ;
                 Msg.SetBuyOk((BYTE)GCShopBuy::BUY_MONEY_FAIL);
                 pHuman->GetPlayer()->SendPacket( &Msg ) ;
@@ -303,19 +303,19 @@ UINT CGShopBuyHandler::Execute( CGShopBuy* pPacket, Player* pPlayer )
             Msg.SetNum(itemNumber);
             pHuman->GetPlayer()->SendPacket( &Msg ) ;
 
-            //Òª¸üÐÂ´ËÉÌÈËµÄ¶¯Ì¬ÉÌÆ·±í£¬Ö»ÔÚ·þÎñÆ÷ÐÞ¸Ä£¬²»¸üÐÂÁË
+            //è¦æ›´æ–°æ­¤å•†äººçš„åŠ¨æ€å•†å“è¡¨ï¼Œåªåœ¨æœåŠ¡å™¨ä¿®æ”¹ï¼Œä¸æ›´æ–°äº†
             if(pShop->m_IsDyShop && pShop->m_ItemList->m_TypeMaxNum[m_nndex] > 0)
             {
-                //¼Ç×¡,Ö»ÓÐm_TypeMaxNumÊÇ¿ÉÐ´µÄ£¡£¡£¡£¡Ò»´ÎÂòÒ»×é
+                //è®°ä½,åªæœ‰m_TypeMaxNumæ˜¯å¯å†™çš„ï¼ï¼ï¼ï¼ä¸€æ¬¡ä¹°ä¸€ç»„
                 pShop->m_ItemList->m_TypeMaxNum[m_nndex] -= 1;
 
-                //Ìî³äÏûÏ¢,Ö»ÈÃ×Ô¼º¿´µ½
+                //å¡«å……æ¶ˆæ¯,åªè®©è‡ªå·±çœ‹åˆ°
                 GCShopUpdateMerchandiseList::_MERCHANDISE_ITEM    MerchandiseChanged;
                 MerchandiseChanged.byNumber = pShop->m_ItemList->m_TypeMaxNum[m_nndex];
                 MerchandiseChanged.idTable    = pShop->m_ItemList->m_ListTypeIndex[m_nndex];
 
                 GCShopUpdateMerchandiseList    Msg;
-                Msg.SetMerchadiseNum(1);//Ò»¶¨ÒªÏÈÉèÖÃÊýÁ¿ÔÙÉèÖÃList
+                Msg.SetMerchadiseNum(1);//ä¸€å®šè¦å…ˆè®¾ç½®æ•°é‡å†è®¾ç½®List
                 Msg.SetMerchadiseList(&MerchandiseChanged);
                 pHuman->GetPlayer()->SendPacket( &Msg ) ;
             }

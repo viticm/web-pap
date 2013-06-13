@@ -1,7 +1,7 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÇå³ý±¾µØ½»Ò×ºÐÊý¾Ý£¬¹Ø±Õ½çÃæ,·¢ËÍÏûÏ¢£¬
-·þÎñÆ÷ÊÕµ½´ËÏûÏ¢£¬Çå³ýË«·½½»Ò×ºÐÐÅÏ¢£¬·¢ÏûÏ¢15¸ø¶Ô·½
+å®¢æˆ·ç«¯æ¸…é™¤æœ¬åœ°äº¤æ˜“ç›’æ•°æ®ï¼Œå…³é—­ç•Œé¢,å‘é€æ¶ˆæ¯ï¼Œ
+æœåŠ¡å™¨æ”¶åˆ°æ­¤æ¶ˆæ¯ï¼Œæ¸…é™¤åŒæ–¹äº¤æ˜“ç›’ä¿¡æ¯ï¼Œå‘æ¶ˆæ¯15ç»™å¯¹æ–¹
 */
 
 #include "CGExchangeCancel.h"
@@ -28,20 +28,20 @@ UINT CGExchangeCancelHandler::Execute( CGExchangeCancel* pPacket, Player* pPlaye
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //ÑéÖ¤
+    //éªŒè¯
     EXCHANGE_CERTIFY_EACH_OTHER(pHuman)
     Obj_Human* pDestHuman = pScene->GetHumanManager()->GetHuman( pHuman->m_ExchangBox.m_ObjID );
 
-    //Çå¿Õ×´Ì¬
+    //æ¸…ç©ºçŠ¶æ€
     pHuman->m_ExchangBox.CleanUp();
     pDestHuman->m_ExchangBox.CleanUp();
 
-    g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] µ¥·½ÃæÈ¡ÏûÁË½»Ò×",    pHuman->GetName() ) ;
+    g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] å•æ–¹é¢å–æ¶ˆäº†äº¤æ˜“",    pHuman->GetName() ) ;
 
-    //·¢ËÍÈ¡ÏûÏûÏ¢¸øË«·½
+    //å‘é€å–æ¶ˆæ¶ˆæ¯ç»™åŒæ–¹
     GCExchangeCancel MsgToMe,MsgToOt;
     pHuman->GetPlayer()->SendPacket(&MsgToMe);
     pDestHuman->GetPlayer()->SendPacket(&MsgToOt);

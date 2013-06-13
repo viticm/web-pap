@@ -19,11 +19,11 @@ class SocketOutputStream;
 #define MAX_STR_SIZE 512
 struct X_PARAM
 {
-    BYTE        m_IntCount ;//ÕûĞÍ²ÎÊıÊıÁ¿
-    BYTE        m_StrCount ;//×Ö·ûĞÍ²ÎÊıÊıÁ¿
-    INT            m_aIntValue[MAX_PARAM_SZIE] ;//ÕûĞÎÊı¾İ
-    SHORT        m_aStrOffset[MAX_PARAM_SZIE] ;//×Ö·ûĞÍ²ÎÊı¼ä¸ô£¨\0£©ÔÚ×Ö·û»º´æÖĞµÄÆ«ÒÆÎ»ÖÃ
-    CHAR        m_aStrValue[MAX_STR_SIZE] ;//×Ö·û»º´æ
+    BYTE        m_IntCount ;//æ•´å‹å‚æ•°æ•°é‡
+    BYTE        m_StrCount ;//å­—ç¬¦å‹å‚æ•°æ•°é‡
+    INT            m_aIntValue[MAX_PARAM_SZIE] ;//æ•´å½¢æ•°æ®
+    SHORT        m_aStrOffset[MAX_PARAM_SZIE] ;//å­—ç¬¦å‹å‚æ•°é—´éš”ï¼ˆ\0ï¼‰åœ¨å­—ç¬¦ç¼“å­˜ä¸­çš„åç§»ä½ç½®
+    CHAR        m_aStrValue[MAX_STR_SIZE] ;//å­—ç¬¦ç¼“å­˜
 
 public :
     X_PARAM( ) ;
@@ -34,21 +34,21 @@ public :
     VOID        Read(SocketInputStream& iStream) ;
     VOID        Write(SocketOutputStream& oStream) const ;
 
-    INT            GetSize() const ;//È¡µÃX_PARAMµÄÓĞĞ§ÄÚ´æ´óĞ¡
+    INT            GetSize() const ;//å–å¾—X_PARAMçš„æœ‰æ•ˆå†…å­˜å¤§å°
 
-    INT            GetIntCount( ) ;//È¡µÃX_PARAMÖĞµÄÕûÊıĞÍ²ÎÊıÊıÁ¿
-    INT            GetIntValue( INT nIndex ) ;//È¡µÃµÚnIndex¸öX_PARAMÖĞµÄÕûÊıĞÍ²ÎÊı
+    INT            GetIntCount( ) ;//å–å¾—X_PARAMä¸­çš„æ•´æ•°å‹å‚æ•°æ•°é‡
+    INT            GetIntValue( INT nIndex ) ;//å–å¾—ç¬¬nIndexä¸ªX_PARAMä¸­çš„æ•´æ•°å‹å‚æ•°
     
-    INT            GetStrCount( ) ;//È¡µÃX_PARAMÖĞµÄ×Ö·û´®²ÎÊı¸öÊı
-    CHAR*        GetStrValue( INT nIndex ) ;//È¡µÃX_PARAMÖĞµÄµÚnIndex¸ö×Ö·û´®²ÎÊı
+    INT            GetStrCount( ) ;//å–å¾—X_PARAMä¸­çš„å­—ç¬¦ä¸²å‚æ•°ä¸ªæ•°
+    CHAR*        GetStrValue( INT nIndex ) ;//å–å¾—X_PARAMä¸­çš„ç¬¬nIndexä¸ªå­—ç¬¦ä¸²å‚æ•°
 
-    INT            AddIntValue( INT nValue ) ;//ÏòX_PARAMÖĞÌí¼ÓÒ»¸öÕûĞÍ²ÎÊı
-                                           //·µ»ØÖµÎª´Ë²ÎÊıµÄĞòºÅ
-    INT            SetIntValue( INT nIndex, INT nValue ) ;//ĞŞ¸ÄX_PARAMÖĞµÄµÚnIndex¸öÕûĞÎ²ÎÊı
+    INT            AddIntValue( INT nValue ) ;//å‘X_PARAMä¸­æ·»åŠ ä¸€ä¸ªæ•´å‹å‚æ•°
+                                           //è¿”å›å€¼ä¸ºæ­¤å‚æ•°çš„åºå·
+    INT            SetIntValue( INT nIndex, INT nValue ) ;//ä¿®æ”¹X_PARAMä¸­çš„ç¬¬nIndexä¸ªæ•´å½¢å‚æ•°
 
-    INT            AddStrValue( const CHAR* szIn ) ;//ÏòX_PARAMÖĞÌí¼ÓÒ»¸ö×Ö·û´®ĞÍ²ÎÊı
-                                           //·µ»ØÖµÎª´Ë²ÎÊıµÄĞòºÅ
-    INT            SetStrValue( INT nIndex, CHAR* szIn ) ;//ĞŞ¸ÄX_PARAMÖĞµÄµÚnIndex¸ö×Ö·û´®ĞÍ²ÎÊı
+    INT            AddStrValue( const CHAR* szIn ) ;//å‘X_PARAMä¸­æ·»åŠ ä¸€ä¸ªå­—ç¬¦ä¸²å‹å‚æ•°
+                                           //è¿”å›å€¼ä¸ºæ­¤å‚æ•°çš„åºå·
+    INT            SetStrValue( INT nIndex, CHAR* szIn ) ;//ä¿®æ”¹X_PARAMä¸­çš„ç¬¬nIndexä¸ªå­—ç¬¦ä¸²å‹å‚æ•°
 };
 
 
@@ -74,7 +74,7 @@ public :
     VOID        Read(SocketInputStream& iStream) ;
     VOID        Write(SocketOutputStream& oStream) const ;
 
-    INT            GetSize() const ;//È¡µÃX_SCRIPTµÄÓĞĞ§ÄÚ´æ´óĞ¡
+    INT            GetSize() const ;//å–å¾—X_SCRIPTçš„æœ‰æ•ˆå†…å­˜å¤§å°
 
     VOID        SetScriptID( ScriptID_t sid ){ m_ScriptID = sid ; }
     ScriptID_t    GetScriptID( ){ return m_ScriptID ; }

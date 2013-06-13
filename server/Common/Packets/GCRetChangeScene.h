@@ -18,7 +18,7 @@ public:
     GCRetChangeScene( ){ memset( m_IP, 0, sizeof(CHAR)*IP_SIZE ) ; } ;
     virtual ~GCRetChangeScene( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,13 +39,13 @@ public:
 public :
     enum CHANGESCENERETURN
     {
-        CSR_SUCCESS = 0 ,        //³É¹¦, ±¾³¡¾°
-        CSR_SUCCESS_DIFFSERVER ,//³É¹¦£¬ÆäËû·şÎñÆ÷¶Ë³ÌĞò
-        CSR_ERROR ,                //Ê§°Ü
+        CSR_SUCCESS = 0 ,        //æˆåŠŸ, æœ¬åœºæ™¯
+        CSR_SUCCESS_DIFFSERVER ,//æˆåŠŸï¼Œå…¶ä»–æœåŠ¡å™¨ç«¯ç¨‹åº
+        CSR_ERROR ,                //å¤±è´¥
     };
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID                    SetReturn( BYTE bRet ){ m_Return = bRet ; } ;
     BYTE                    GetReturn( ){ return m_Return ; } ;
 
@@ -63,7 +63,7 @@ public:
 
 
 private:
-    //Êı¾İ
+    //æ•°æ®
     BYTE                    m_Return ;    //enum CHANGESCENERETURN
     CHAR                    m_IP[IP_SIZE] ;
     WORD                    m_Port ;

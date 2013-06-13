@@ -17,7 +17,7 @@ namespace Packets
             }
             virtual        ~CGTeamInvite(){};
 
-            //公用接口
+            //鍏敤鎺ュ彛
             virtual BOOL            Read( SocketInputStream& iStream ) ;
             virtual BOOL            Write( SocketOutputStream& oStream )const ;
             virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ namespace Packets
 
 
     public :
-        //数据接口
+        //鏁版嵁鎺ュ彛
         VOID            SetSourObjID( ObjID_t objid ){    m_SourObjID = objid; }
         ObjID_t            GetSourObjID( ){ return m_SourObjID ; }
 
@@ -43,10 +43,10 @@ namespace Packets
 
 
     private :
-        //数据
-        ObjID_t            m_SourObjID;            //邀请人
+        //鏁版嵁
+        ObjID_t            m_SourObjID;            //閭�璇蜂汉
         UCHAR            m_DestNameSize;
-        CHAR            m_DestName[MAX_CHARACTER_NAME];            //被邀请人
+        CHAR            m_DestName[MAX_CHARACTER_NAME];            //琚個璇蜂汉
 
     };
 

@@ -24,7 +24,7 @@ using namespace Packets;
 
 static VOID BroadCast_HealAndDamageMsg(Obj_Character* pThis, Obj_Character* pTarget,GCDetailHealsAndDamages& rMsg);
 
-// ¼ÆËã¶Ô·½¶ÔÎÒÀ´ËµÊÇ·ñÎªÒşÉíµÄ
+// è®¡ç®—å¯¹æ–¹å¯¹æˆ‘æ¥è¯´æ˜¯å¦ä¸ºéšèº«çš„
 BOOL CalcIsTargetStealth(INT nThisLevel, INT nThisDetectLevel, const WORLD_POS *pThisPos, INT nTargetLevel, INT nTargetStealthLevel, const WORLD_POS *pTargetPos)
 {
     if(nTargetStealthLevel <= 0)
@@ -113,7 +113,7 @@ VOID Obj_Character::HealthIncrement(INT nIncrement, Obj_Character* pCharacter, B
         else
         {
             // set hp now
-            //´ò¶ÏºÍ¸ÉÈÅ¶¯×÷½øĞĞ
+            //æ‰“æ–­å’Œå¹²æ‰°åŠ¨ä½œè¿›è¡Œ
             GetGlobalActionDelegator().DisturbCurrentAction(*this);
             AI_Character *pAI = GetAIObj();
             INT nOldHP = GetHP();
@@ -382,11 +382,11 @@ __ENTER_FUNCTION
         {
             return FALSE;
         }
-        return TRUE; //²»´æÔÚÀäÈ´»òÒÑ¾­ÀäÈ´
+        return TRUE; //ä¸å­˜åœ¨å†·å´æˆ–å·²ç»å†·å´
     }
     else if(FALSE==IsCooldowned(nCooldownID))
     {
-        return FALSE;//ÀäÈ´ÖĞ
+        return FALSE;//å†·å´ä¸­
     }
     return TRUE;
 __LEAVE_FUNCTION
@@ -472,7 +472,7 @@ BOOL Obj_Character::Skill_CanUseThisSkillInThisStatus(SkillID_t nSkillID)
     {
         return FALSE;
     }
-    // ¼¼ÄÜÊÇ·ñÊÜµ½±ê¼Ç1ÏŞÖÆ
+    // æŠ€èƒ½æ˜¯å¦å—åˆ°æ ‡è®°1é™åˆ¶
     if(TRUE==pSkillTemplate->GetDisableByFlag1())
     {
         if(FALSE==CanActionFlag1())
@@ -480,7 +480,7 @@ BOOL Obj_Character::Skill_CanUseThisSkillInThisStatus(SkillID_t nSkillID)
             return FALSE;
         }
     }
-    // ¼¼ÄÜÊÇ·ñÊÜµ½±ê¼Ç2ÏŞÖÆ
+    // æŠ€èƒ½æ˜¯å¦å—åˆ°æ ‡è®°2é™åˆ¶
     if(TRUE==pSkillTemplate->GetDisableByFlag2())
     {
         if(FALSE==CanActionFlag2())
@@ -488,7 +488,7 @@ BOOL Obj_Character::Skill_CanUseThisSkillInThisStatus(SkillID_t nSkillID)
             return FALSE;
         }
     }
-    // ¼¼ÄÜÊÇ·ñÊÜµ½±ê¼Ç3ÏŞÖÆ
+    // æŠ€èƒ½æ˜¯å¦å—åˆ°æ ‡è®°3é™åˆ¶
     if(TRUE==pSkillTemplate->GetDisableByFlag3())
     {
         if(INVALID_ID != GetMountID())
@@ -606,7 +606,7 @@ static VOID BroadCast_HealAndDamageMsg(Obj_Character* pThis, Obj_Character* pTar
     {
         if(Obj::OBJ_TYPE_HUMAN==pThis->GetObjType())
         {
-            //¸øÍæ¼Ò×Ô¼º·¢ÏûÏ¢    
+            //ç»™ç©å®¶è‡ªå·±å‘æ¶ˆæ¯    
             pHuman = (Obj_Human*)pThis;
             Player* pGamePlayer = pHuman->GetPlayer();
             if(NULL!=pGamePlayer)

@@ -40,7 +40,7 @@ INT main(INT argc, CHAR* argv[])
         }    
         
         
-    //Ê±¼ä¹ÜÀíÆ÷
+    //æ—¶é—´ç®¡ç†å™¨
     g_pTimeManager    =    new TimeManager;
     g_pTimeManager->Init();
             

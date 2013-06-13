@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼þÃû£º    WGGuildHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\WGGuildHandler.cpp
- *    ´´½¨Ê±¼ä£º    2005 Äê 12 ÔÂ 14 ÈÕ    12:09
+ *    æ–‡ä»¶åï¼š    WGGuildHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\WGGuildHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 12 æœˆ 14 æ—¥    12:09
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ÐÞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "WGGuild.h"
@@ -46,7 +46,7 @@ __ENTER_FUNCTION
     }
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pScene->SendPacket( pPacket, PlayerID );
@@ -57,7 +57,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         GCGuild Msg;

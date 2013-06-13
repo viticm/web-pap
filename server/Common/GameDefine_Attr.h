@@ -4,167 +4,167 @@
 #include "GameDefine_Item.h"
 
 
-//½ÇÉ«»ù±¾ÊôÐÔ(Ò»¼¶ÊôÐÔ)
+//è§’è‰²åŸºæœ¬å±žæ€§(ä¸€çº§å±žæ€§)
 enum CHAR_ATTR_LEVEL1
 {
-    CATTR_LEVEL1_STR            =0, //Á¦Á¿ Á¦Á¿
-    CATTR_LEVEL1_SPR            =1,    //ÁéÆø ÁéÁ¦
-    CATTR_LEVEL1_CON            =2,    //ÌåÖÆ ÌåÖÆ
-    CATTR_LEVEL1_INT            =3,    //¶¨Á¦ ÖÇÁ¦
-    CATTR_LEVEL1_DEX            =4,    //Éí·¨ Ãô½Ý
+    CATTR_LEVEL1_STR            =0, //åŠ›é‡ åŠ›é‡
+    CATTR_LEVEL1_SPR            =1,    //çµæ°” çµåŠ›
+    CATTR_LEVEL1_CON            =2,    //ä½“åˆ¶ ä½“åˆ¶
+    CATTR_LEVEL1_INT            =3,    //å®šåŠ› æ™ºåŠ›
+    CATTR_LEVEL1_DEX            =4,    //èº«æ³• æ•æ·
 
-    CATTR_LEVEL1_NUMBER, //½ÇÉ«»ù±¾ÊôÐÔ×ÜÊý
+    CATTR_LEVEL1_NUMBER, //è§’è‰²åŸºæœ¬å±žæ€§æ€»æ•°
 };
 
 
 
-//½ÇÉ«¶þ¼¶ÊôÐÔ
+//è§’è‰²äºŒçº§å±žæ€§
 enum CHAR_ATTR_LEVEL2
 {
-    CATTR_LEVEL2_ATTACKRATE_P =0,    //ÎïÀí¹¥»÷
-    CATTR_LEVEL2_DEFENCE_P,            //ÎïÀí·ÀÓù
-    CATTR_LEVEL2_ATTACKRATE_M,        //Ä§·¨¹¥»÷
-    CATTR_LEVEL2_DEFENCE_M,            //Ä§·¨·ÀÓù
-    CATTR_LEVEL2_MAXHP,                //HPÉÏÏÞ
-    CATTR_LEVEL2_MAXMP,                //MPÉÏÏÞ
-    CATTR_LEVEL2_RESTOREHP,            //HP»Ø¸´
-    CATTR_LEVEL2_RESTOREMP,            //MP»Ø¸´
-    CATTR_LEVEL2_HIT,                //ÃüÖÐÂÊ
-    CATTR_LEVEL2_MISS,                //ÉÁ±Ü
-    CATTR_LEVEL2_CRITRATE,            //»áÐÄÂÊ
-    CATTR_LEVEL2_SPEED,                //ÒÆ¶¯ËÙ¶È
-    CATTR_LEVEL2_ATTACKSPEED,        //¹¥»÷ËÙ¶È
-    CATTR_LEVEL2_ATTACKCOLD    ,        //±ù¹¥»÷
-    CATTR_LEVEL2_DEFENCECOLD,        //±ù·ÀÓù
-    CATTR_LEVEL2_ATTACKFIRE,        //»ð¹¥»÷
-    CATTR_LEVEL2_DEFENCEFIRE,        //»ð·ÀÓù
-    CATTR_LEVEL2_ATTACKLIGHT,        //µç¹¥»÷
-    CATTR_LEVEL2_DEFENCELIGHT,        //µç·ÀÓù
-    CATTR_LEVEL2_ATTACKPOISON,        //¶¾¹¥»÷
-    CATTR_LEVEL2_DEFENCEPOISON,        //¶¾·ÀÓù
+    CATTR_LEVEL2_ATTACKRATE_P =0,    //ç‰©ç†æ”»å‡»
+    CATTR_LEVEL2_DEFENCE_P,            //ç‰©ç†é˜²å¾¡
+    CATTR_LEVEL2_ATTACKRATE_M,        //é­”æ³•æ”»å‡»
+    CATTR_LEVEL2_DEFENCE_M,            //é­”æ³•é˜²å¾¡
+    CATTR_LEVEL2_MAXHP,                //HPä¸Šé™
+    CATTR_LEVEL2_MAXMP,                //MPä¸Šé™
+    CATTR_LEVEL2_RESTOREHP,            //HPå›žå¤
+    CATTR_LEVEL2_RESTOREMP,            //MPå›žå¤
+    CATTR_LEVEL2_HIT,                //å‘½ä¸­çŽ‡
+    CATTR_LEVEL2_MISS,                //é—ªé¿
+    CATTR_LEVEL2_CRITRATE,            //ä¼šå¿ƒçŽ‡
+    CATTR_LEVEL2_SPEED,                //ç§»åŠ¨é€Ÿåº¦
+    CATTR_LEVEL2_ATTACKSPEED,        //æ”»å‡»é€Ÿåº¦
+    CATTR_LEVEL2_ATTACKCOLD    ,        //å†°æ”»å‡»
+    CATTR_LEVEL2_DEFENCECOLD,        //å†°é˜²å¾¡
+    CATTR_LEVEL2_ATTACKFIRE,        //ç«æ”»å‡»
+    CATTR_LEVEL2_DEFENCEFIRE,        //ç«é˜²å¾¡
+    CATTR_LEVEL2_ATTACKLIGHT,        //ç”µæ”»å‡»
+    CATTR_LEVEL2_DEFENCELIGHT,        //ç”µé˜²å¾¡
+    CATTR_LEVEL2_ATTACKPOISON,        //æ¯’æ”»å‡»
+    CATTR_LEVEL2_DEFENCEPOISON,        //æ¯’é˜²å¾¡
 
-    CATTR_LEVEL2_NUMBER,            //¶þ¼¶ÊôÐÔÊýÁ¿
+    CATTR_LEVEL2_NUMBER,            //äºŒçº§å±žæ€§æ•°é‡
 };
 
 
 
-//½ÇÉ«Èý¼¶ÊôÐÔ
+//è§’è‰²ä¸‰çº§å±žæ€§
 enum CHAR_ATTR_LEVEL3
 {
-    CATTR_LEVEL3_NUQI            =0,    //Å­ÆøÖµ
-    CATTR_LEVEL3_SKILLPOINT        =1,    //Á¬¼¼µã
-    CATTR_LEVEL3_XIANJIN        =2,    //ÏÝÚåÐÅÏ¢
-    CATTR_LEVEL3_YINSHEN        =3,    //ÒþÉíÐÅÏ¢
+    CATTR_LEVEL3_NUQI            =0,    //æ€’æ°”å€¼
+    CATTR_LEVEL3_SKILLPOINT        =1,    //è¿žæŠ€ç‚¹
+    CATTR_LEVEL3_XIANJIN        =2,    //é™·é˜±ä¿¡æ¯
+    CATTR_LEVEL3_YINSHEN        =3,    //éšèº«ä¿¡æ¯
 
-    CATTR_LEVEL3_NUMBER, //Èý¼¶ÊôÐÔÊýÁ¿
+    CATTR_LEVEL3_NUMBER, //ä¸‰çº§å±žæ€§æ•°é‡
 };
 
-//½ÇÉ«ÔÚÊý¾Ý¿âºÍShareMemÖÐ¶ÔÓ¦µÄÊôÐÔ
+//è§’è‰²åœ¨æ•°æ®åº“å’ŒShareMemä¸­å¯¹åº”çš„å±žæ€§
 enum    CHAR_ATTR_DB
 {
     //////////////////////////////////////////////////////////////////////////
-    //×îÈÝÒ×±ä»¯»ù±¾Êý¾Ý
-    CATTR_DB_HP                    =    0,                //ÉúÃü
-    CATTR_DB_MP                    ,                    //Ä§·¨
-    CATTR_DB_STRIKEPOINT        ,                    //Á¬»÷
-    CATTR_DB_RMB                ,                    //Ôª±¦
-    CATTR_DB_BANK_RMB            ,                    //ÒøÐÐÖÐµÄÔª±¦
-    CATTR_DB_VIGOR_REGENE_RATE    ,                    //»îÁ¦»Ö¸´ËÙ¶È
-    CATTR_DB_ENERGY                ,                    //¾«Á¦
-    CATTR_DB_MAX_ENERGY            ,                    //¾«Á¦ÉÏÏÞ
-    CATTR_DB_ENERGY_REGENE_RATE    ,                    //¾«Á¦»Ö¸´ËÙ¶È
-    CATTR_DB_RAGE                ,                    //Å­Æø
-    CATTR_DB_LEVEL                ,                    //µÈ¼¶
-    CATTR_DB_PKVALUE,                                //É±Æø
-    CATTR_DB_CURRENTPET,                            //µ±Ç°³èÎïGUID
-    CATTR_DB_EXP,                                    //¾­Ñé
-    CATTR_DB_AT_POSITION,                            //Íæ¼ÒÎ»ÖÃ
-    CATTR_DB_BK_POSITION,                            //Íæ¼Ò±¸·ÝÎ»ÖÃ
-    CATTR_DB_AT_SCENE,                                //Íæ¼Ò³¡¾°
-    CATTR_DB_BK_SCENE,                                //Íæ¼Ò±¸·Ý³¡¾°
+    //æœ€å®¹æ˜“å˜åŒ–åŸºæœ¬æ•°æ®
+    CATTR_DB_HP                    =    0,                //ç”Ÿå‘½
+    CATTR_DB_MP                    ,                    //é­”æ³•
+    CATTR_DB_STRIKEPOINT        ,                    //è¿žå‡»
+    CATTR_DB_RMB                ,                    //å…ƒå®
+    CATTR_DB_BANK_RMB            ,                    //é“¶è¡Œä¸­çš„å…ƒå®
+    CATTR_DB_VIGOR_REGENE_RATE    ,                    //æ´»åŠ›æ¢å¤é€Ÿåº¦
+    CATTR_DB_ENERGY                ,                    //ç²¾åŠ›
+    CATTR_DB_MAX_ENERGY            ,                    //ç²¾åŠ›ä¸Šé™
+    CATTR_DB_ENERGY_REGENE_RATE    ,                    //ç²¾åŠ›æ¢å¤é€Ÿåº¦
+    CATTR_DB_RAGE                ,                    //æ€’æ°”
+    CATTR_DB_LEVEL                ,                    //ç­‰çº§
+    CATTR_DB_PKVALUE,                                //æ€æ°”
+    CATTR_DB_CURRENTPET,                            //å½“å‰å® ç‰©GUID
+    CATTR_DB_EXP,                                    //ç»éªŒ
+    CATTR_DB_AT_POSITION,                            //çŽ©å®¶ä½ç½®
+    CATTR_DB_BK_POSITION,                            //çŽ©å®¶å¤‡ä»½ä½ç½®
+    CATTR_DB_AT_SCENE,                                //çŽ©å®¶åœºæ™¯
+    CATTR_DB_BK_SCENE,                                //çŽ©å®¶å¤‡ä»½åœºæ™¯
     //////////////////////////////////////////////////////////////////////////
-    //Ò»¼¶ÊôÐÔ
-    CATTR_DB_STR,                                    //Á¦Á¿ Á¦Á¿
-    CATTR_DB_SPR,                                    //ÁéÆø ÁéÁ¦
-    CATTR_DB_CON,                                    //ÌåÖÆ ÌåÖÆ
-    CATTR_DB_INT,                                    //¶¨Á¦ ÖÇÁ¦
-    CATTR_DB_DEX,                                    //Éí·¨ Ãô½Ý
-    CATTR_DB_REMAINPOINT,                            //Ê£ÓàµãÊý
+    //ä¸€çº§å±žæ€§
+    CATTR_DB_STR,                                    //åŠ›é‡ åŠ›é‡
+    CATTR_DB_SPR,                                    //çµæ°” çµåŠ›
+    CATTR_DB_CON,                                    //ä½“åˆ¶ ä½“åˆ¶
+    CATTR_DB_INT,                                    //å®šåŠ› æ™ºåŠ›
+    CATTR_DB_DEX,                                    //èº«æ³• æ•æ·
+    CATTR_DB_REMAINPOINT,                            //å‰©ä½™ç‚¹æ•°
     //////////////////////////////////////////////////////////////////////////
-    //½ÏÉÙ±ä»¯Êý¾Ý
-    CATTR_DB_CAMP,                                    //ÕóÓª±àºÅ
-    CATTR_DB_MENPAI,                                //ÃÅÅÉ±àºÅ
-    CATTR_DB_GUILDID,                                //°ï»áID
-    CATTR_DB_TEAMID,                                //¶ÓÎéºÅ
-    CATTR_DB_GUID,                                    //½ÇÉ«Î¨Ò»ºÅ
-    CATTR_DB_PORTRAITID,                            //½ÇÉ«Í·Ïñ
-    CATTR_DB_NAME,                                    //½ÇÉ«Ãû³Æ
-    CATTR_DB_SEX,                                    //½ÇÉ«ÐÔ±ð
-    CATTR_DB_CREATETIME,                            //´´½¨ÈÕÆÚ
-    CATTR_DB_TITLE,                                    //½ÇÉ«³ÆºÅ
-    CATTR_DB_PASSWORD,                                //½ÇÉ«¶þ¼¶ÃÜÂë
-    CATTR_DB_PWDDELTIME,                            //ÉèÖÃÇ¿ÖÆ½â³ýÃÜÂëµÄÊ±¼ä
-    CATTR_DB_HAIR_COLOR,                            //Í··¢ÑÕÉ«    
-    CATTR_DB_FACE_COLOR,                            //Á³ÐÎÑÕÉ«
-    CATTR_DB_HAIR_MODEL,                            //Í··¢Ä£ÐÍ
-    CATTR_DB_FACE_MODEL,                            //Á³ÐÎÄ£ÐÍ
-    CATTR_DB_ONLINETIME,                            //×ÜÔÚÏßÊ±¼ä
-    CATTR_DB_LASTLOGINTIME,                            //×îºóÒ»´ÎµÇÈëÊ±¼ä
-    CATTR_DB_LASTLOGOUTTIME,                        //×îºóÒ»´ÎµÇ³öÊ±¼ä
-    CATTR_DB_DBVERSION,                                //´æµµ°æ±¾
+    //è¾ƒå°‘å˜åŒ–æ•°æ®
+    CATTR_DB_CAMP,                                    //é˜µè¥ç¼–å·
+    CATTR_DB_MENPAI,                                //é—¨æ´¾ç¼–å·
+    CATTR_DB_GUILDID,                                //å¸®ä¼šID
+    CATTR_DB_TEAMID,                                //é˜Ÿä¼å·
+    CATTR_DB_GUID,                                    //è§’è‰²å”¯ä¸€å·
+    CATTR_DB_PORTRAITID,                            //è§’è‰²å¤´åƒ
+    CATTR_DB_NAME,                                    //è§’è‰²åç§°
+    CATTR_DB_SEX,                                    //è§’è‰²æ€§åˆ«
+    CATTR_DB_CREATETIME,                            //åˆ›å»ºæ—¥æœŸ
+    CATTR_DB_TITLE,                                    //è§’è‰²ç§°å·
+    CATTR_DB_PASSWORD,                                //è§’è‰²äºŒçº§å¯†ç 
+    CATTR_DB_PWDDELTIME,                            //è®¾ç½®å¼ºåˆ¶è§£é™¤å¯†ç çš„æ—¶é—´
+    CATTR_DB_HAIR_COLOR,                            //å¤´å‘é¢œè‰²    
+    CATTR_DB_FACE_COLOR,                            //è„¸å½¢é¢œè‰²
+    CATTR_DB_HAIR_MODEL,                            //å¤´å‘æ¨¡åž‹
+    CATTR_DB_FACE_MODEL,                            //è„¸å½¢æ¨¡åž‹
+    CATTR_DB_ONLINETIME,                            //æ€»åœ¨çº¿æ—¶é—´
+    CATTR_DB_LASTLOGINTIME,                            //æœ€åŽä¸€æ¬¡ç™»å…¥æ—¶é—´
+    CATTR_DB_LASTLOGOUTTIME,                        //æœ€åŽä¸€æ¬¡ç™»å‡ºæ—¶é—´
+    CATTR_DB_DBVERSION,                                //å­˜æ¡£ç‰ˆæœ¬
     
-    CATTR_DB_MONEY,                                    //½ðÇ®
-    //CATTR_DB_GOODBAD,                                //ÉÆ¶ñÖµ
-    CATTR_DB_BANK_MONEY,                            //ÒøÐÐ½ðÇ®
-    CATTR_DB_BANK_OFFSIZE,                            //ÒøÐÐend
+    CATTR_DB_MONEY,                                    //é‡‘é’±
+    //CATTR_DB_GOODBAD,                                //å–„æ¶å€¼
+    CATTR_DB_BANK_MONEY,                            //é“¶è¡Œé‡‘é’±
+    CATTR_DB_BANK_OFFSIZE,                            //é“¶è¡Œend
 
     //////////////////////////////////////////////////////////////////////////
-    //Íæ¼ÒÉÌµêÊý¾Ý
-    CATTR_DB_PLAYER_SHOP_BEGIN,                        //Íæ¼ÒÉÌµê¿ªÊ¼µÄÎ»ÖÃ
-    CATTR_DB_PLAYER_SHOP_END    =                    //Íæ¼ÒÉÌµê½áÊøÎ»ÖÃ
+    //çŽ©å®¶å•†åº—æ•°æ®
+    CATTR_DB_PLAYER_SHOP_BEGIN,                        //çŽ©å®¶å•†åº—å¼€å§‹çš„ä½ç½®
+    CATTR_DB_PLAYER_SHOP_END    =                    //çŽ©å®¶å•†åº—ç»“æŸä½ç½®
     CATTR_DB_PLAYER_SHOP_BEGIN+MAX_SHOP_NUM_PER_PLAYER-1,
-    CATTR_DB_PLAYER_SHOP_FAVORITE_BEGIN,            //Íæ¼ÒÉÌµêÊÕ²Ø¼ÐÆðÊ¼
+    CATTR_DB_PLAYER_SHOP_FAVORITE_BEGIN,            //çŽ©å®¶å•†åº—æ”¶è—å¤¹èµ·å§‹
     CATTR_DB_PLAYER_SHOP_FAVORITE_END = 
-    CATTR_DB_PLAYER_SHOP_FAVORITE_BEGIN + MAX_FAVORITE_SHOPS,//Íæ¼ÒÉÌµêÊÕ²Ø¼Ð½áÊø
+    CATTR_DB_PLAYER_SHOP_FAVORITE_BEGIN + MAX_FAVORITE_SHOPS,//çŽ©å®¶å•†åº—æ”¶è—å¤¹ç»“æŸ
 
     //////////////////////////////////////////////////////////////////////////
-    //±³°üÊý¾Ý
-    CATTR_DB_BAG_BEGIN,                                //±³°ü¿ªÊ¼Î»ÖÃ
-    CATTR_DB_BAG_END            =                    //±³°ü½áÊøÎ»ÖÃ
+    //èƒŒåŒ…æ•°æ®
+    CATTR_DB_BAG_BEGIN,                                //èƒŒåŒ…å¼€å§‹ä½ç½®
+    CATTR_DB_BAG_END            =                    //èƒŒåŒ…ç»“æŸä½ç½®
     CATTR_DB_BAG_BEGIN+MAX_BAG_SIZE+MAX_EXTBAG_SIZE-1,
     //////////////////////////////////////////////////////////////////////////
-    //×°±¸Êý¾Ý
-    CATTR_DB_EQUIP_BEGIN,                            //×°±¸¿ªÊ¼Î»ÖÃ
-    CATTR_DB_EQUIP_END        =                        //×°±¸½áÊøÎ»ÖÃ
+    //è£…å¤‡æ•°æ®
+    CATTR_DB_EQUIP_BEGIN,                            //è£…å¤‡å¼€å§‹ä½ç½®
+    CATTR_DB_EQUIP_END        =                        //è£…å¤‡ç»“æŸä½ç½®
     CATTR_DB_EQUIP_BEGIN+HEQUIP_NUMBER-1,    
     //////////////////////////////////////////////////////////////////////////
-    //ÒøÐÐÊý¾Ý
-    CATTR_DB_BANK_BEGIN,                            //ÒøÐÐ¿ªÊ¼Î»ÖÃ
-    CATTR_DB_BANK_END            =                    //ÒøÐÐ½áÊøÎ»ÖÃ
+    //é“¶è¡Œæ•°æ®
+    CATTR_DB_BANK_BEGIN,                            //é“¶è¡Œå¼€å§‹ä½ç½®
+    CATTR_DB_BANK_END            =                    //é“¶è¡Œç»“æŸä½ç½®
     CATTR_DB_BANK_BEGIN+MAX_BANK_SIZE-1,    
     //////////////////////////////////////////////////////////////////////////
-    //¼¼ÄÜÊý¾Ý
-    CATTR_DB_SKILL,                                    //¼¼ÄÜ
+    //æŠ€èƒ½æ•°æ®
+    CATTR_DB_SKILL,                                    //æŠ€èƒ½
     //////////////////////////////////////////////////////////////////////////
-    //CoolDownÊý¾Ý
-    CATTR_DB_COOLDOWN,                                //ÀäÈ´Ê±¼ä
-    CATTR_DB_XINFA,                                    //ÐÄ·¨Êý¾Ý
-    CATTR_DB_IMPACT,                                //Ð§¹ûÊý¾Ý
-    CATTR_DB_ABILITY,                                //Éú»î¼¼ÄÜ
-    CATTR_DB_MISSION,                                //ÈÎÎñÊý¾Ý
-    CATTR_DB_SETTING,                                //½ÇÉ«ÉèÖÃÊý¾Ý
-    CATTR_DB_PET,                                    //³èÎïÊý¾Ý
-    CATTR_DB_RELATION,                                //ÁªÏµÈËÊý¾Ý£¨ºÃÓÑ¡¢ºÚÃûµ¥µÈ£©
-    CATTR_DB_PRIVATEINFO,                            //Ë½ÈËÐÅÏ¢
-    CATTR_DB_TITLEINFO,                                //³ÆºÅÁÐ±í
-    CATTR_DB_RESERVE,                                //±£ÁôÐÅÏ¢
+    //CoolDownæ•°æ®
+    CATTR_DB_COOLDOWN,                                //å†·å´æ—¶é—´
+    CATTR_DB_XINFA,                                    //å¿ƒæ³•æ•°æ®
+    CATTR_DB_IMPACT,                                //æ•ˆæžœæ•°æ®
+    CATTR_DB_ABILITY,                                //ç”Ÿæ´»æŠ€èƒ½
+    CATTR_DB_MISSION,                                //ä»»åŠ¡æ•°æ®
+    CATTR_DB_SETTING,                                //è§’è‰²è®¾ç½®æ•°æ®
+    CATTR_DB_PET,                                    //å® ç‰©æ•°æ®
+    CATTR_DB_RELATION,                                //è”ç³»äººæ•°æ®ï¼ˆå¥½å‹ã€é»‘åå•ç­‰ï¼‰
+    CATTR_DB_PRIVATEINFO,                            //ç§äººä¿¡æ¯
+    CATTR_DB_TITLEINFO,                                //ç§°å·åˆ—è¡¨
+    CATTR_DB_RESERVE,                                //ä¿ç•™ä¿¡æ¯
 
     CATTR_DB_NUMBER,
 };
 
 #define HUMAN_DB_ATTR_FLAG_LENGTH    ((CATTR_DB_NUMBER>>3)+1)
 
-//³£Á¿: Ò»Ð©½ÇÉ«ÊôÐÔµÄ×î´óÖµ
+//å¸¸é‡: ä¸€äº›è§’è‰²å±žæ€§çš„æœ€å¤§å€¼
 enum CHAR_ATTR_CONSTANT1
 {
     MAX_STRIKE_POINT = 9,
@@ -178,7 +178,7 @@ enum CHAR_ATTR_CONSTANT1
     MAX_COOLDOWN_LIST_SIZE_FOR_HUMAN = 32,
     MAX_COOLDOWN_LIST_SIZE_FOR_PET = 8,
 };
-//³£Á¿: Ò»Ð©½ÇÉ«ÊôÐÔµÄ×î´óÖµ
+//å¸¸é‡: ä¸€äº›è§’è‰²å±žæ€§çš„æœ€å¤§å€¼
 enum CHAR_ATTR_CONSTANT2
 {
     MAX_EFFECTIVE_RESIST = 100,
@@ -194,7 +194,7 @@ enum CHAR_ATTR_CONSTANT3
     UL_CRITICAL = 100,
     UL_HIT_MISS = 1000,
 };
-//¹¤¾ßº¯Êý£¬Ð£ÑéÊôÐÔµÄÓÐÐ§Öµ
+//å·¥å…·å‡½æ•°ï¼Œæ ¡éªŒå±žæ€§çš„æœ‰æ•ˆå€¼
 inline INT Attr_VerifyGeneralAttack(INT nAttr)
 {
     if(LL_GENERAL_ATTACK_DEFENCE>nAttr)
@@ -257,24 +257,24 @@ inline INT Attr_VerifyCritical(INT nAttr)
 }
 
 
-//³£Á¿: Á¬»÷µã¶ÎµÄÁ¬»÷µãÊýÄ¿
+//å¸¸é‡: è¿žå‡»ç‚¹æ®µçš„è¿žå‡»ç‚¹æ•°ç›®
 enum
 {
     STRIKE_POINT_SEGMENT_SIZE = 3,
 };
-//³£Á¿: ×î´óÁ¬»÷µã¶ÎÊý
+//å¸¸é‡: æœ€å¤§è¿žå‡»ç‚¹æ®µæ•°
 enum
 {
     MAX_STRIKE_POINT_SEGMENT = MAX_STRIKE_POINT/STRIKE_POINT_SEGMENT_SIZE,
 };
-//³£Á¿: Ð§¹û×î´ó¼¶±ð
+//å¸¸é‡: æ•ˆæžœæœ€å¤§çº§åˆ«
 enum
 {
-    MAX_IMPACT_LEVEL = 12,//ÐÄ·¨level/10
+    MAX_IMPACT_LEVEL = 12,//å¿ƒæ³•level/10
 };
 
 
-//³èÎïÊôÐÔÏà¹Ø
+//å® ç‰©å±žæ€§ç›¸å…³
 enum ENUM_PET_ATTR
 {
     PET_ATTR_TAKELEVEL = 0,
@@ -294,13 +294,13 @@ enum ENUM_PET_ATTR
 
     PET_ATTR_NUM,
 };
-//³£Á¿: Ò»Ð©³èÎïÊôÐÔµÄ×î´óÖµ
+//å¸¸é‡: ä¸€äº›å® ç‰©å±žæ€§çš„æœ€å¤§å€¼
 enum PET_ATTR_CONSTANT1
 {
     PET_BASE_MAX_HAPPINESS = 100,
 };
 
-// ±íÇé×´Ì¬
-#define    INVALID_MOOD_STATE        (-1)    // ÎÞÐ§µÄ±íÇé×´Ì¬
+// è¡¨æƒ…çŠ¶æ€
+#define    INVALID_MOOD_STATE        (-1)    // æ— æ•ˆçš„è¡¨æƒ…çŠ¶æ€
 
 #endif

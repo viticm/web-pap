@@ -1,15 +1,15 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºDataRecords.cpp
-// ¹¦ÄÜËµÃ÷£º¼¼ÄÜºÍÐ§¹ûµÄ±í¼ÇÂ¼½á¹¹ºÍ¾ßÌåµÄ¹¦ÄÜÊµÏÖ
+// æ–‡ä»¶åï¼šDataRecords.cpp
+// åŠŸèƒ½è¯´æ˜Žï¼šæŠ€èƒ½å’Œæ•ˆæžœçš„è¡¨è®°å½•ç»“æž„å’Œå…·ä½“çš„åŠŸèƒ½å®žçŽ°
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
 /** \file DataRecords.cpp
-        \brief ¸÷ÖÖ¼¼ÄÜÏà¹Ø
+        \brief å„ç§æŠ€èƒ½ç›¸å…³
 */
 
 #include "DataRecords.h"
@@ -174,9 +174,9 @@ namespace Combat_Module
             INT column = 0;
             // Read Skill ID
             m_nSkillID    = pDB->Search_Posistion(nRow, column++)->iValue;
-            // Ìø¹ý²ß»®¹ÜÀíÓÃµÄID
+            // è·³è¿‡ç­–åˆ’ç®¡ç†ç”¨çš„ID
             ++column;
-            // ¶ÁÈ¡ÃÅÅÉID
+            // è¯»å–é—¨æ´¾ID
             m_nMenPai    = pDB->Search_Posistion(nRow, column++)->iValue;
             // Read Skill Name
             m_szName = pDB->Search_Posistion(nRow, column++)->pString;
@@ -213,23 +213,23 @@ namespace Combat_Module
             // Read Flag: this skill can use on dead flag or alive flag
             m_nTargetMustInSpecialState = pDB->Search_Posistion(nRow, column++)->iValue;
             // Read Flag: is a pet skill or human skill or item skill or common skil or ...
-            m_nClassByUser = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nClassByUser = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read Flag: is a passive skill
-            m_nPassiveFlag = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nPassiveFlag = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read Flag: mouse operation type
-            m_nSelectType = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nSelectType = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read the operat-mode for pet skill;
-            m_nOperateModeForPetSkill = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nOperateModeForPetSkill = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read the rate of pet skill;
-            m_nPetRateOfSkill = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nPetRateOfSkill = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read the type of pet skill;
-            m_nTypeOfPetSkill = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nTypeOfPetSkill = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read the ImpactID of pet skill;
-            m_nImpactIDOfSkill = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nImpactIDOfSkill = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Skip reversed fields and client data
             column += 7;
             // Read the Targeting logic id
-            m_nTargetingLogic = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nTargetingLogic = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read the action play time
             m_nPlayActionTime = pDB->Search_Posistion(nRow, column++)->iValue;
             // Read the Range info
@@ -238,9 +238,9 @@ namespace Combat_Module
             // Read the Camp and stand info
             m_nStandFlag = pDB->Search_Posistion(nRow, column++)->iValue;
             // Read the target Check logic id
-            m_nTargetLogicByStand = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nTargetLogicByStand = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read the target Check by OBJ_TYPE
-            m_nTargetCheckByObjType = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMÐÞ¸Ä
+            m_nTargetCheckByObjType = (SHORT)(pDB->Search_Posistion(nRow, column++)->iValue & 0xFFFF) ; //LMä¿®æ”¹
             // Read Is this skill only effect in party
             m_bPartyOnly = ((pDB->Search_Posistion(nRow, column++)->iValue)==0?FALSE:TRUE);
             // read the Charges of a multi-hits Skill or the interval of a channel skill
@@ -259,7 +259,7 @@ namespace Combat_Module
             m_fRadius = pDB->Search_Posistion(nRow, column++)->fValue;
             // read effective range Angle
             m_fAngle = pDB->Search_Posistion(nRow, column++)->fValue;
-            m_fAngle = 2*__PI*m_fAngle/360; //½Ç¶È×ª»¡¶È
+            m_fAngle = 2*__PI*m_fAngle/360; //è§’åº¦è½¬å¼§åº¦
             // read max number of the target being effected
             m_nMaxTargetNumber = pDB->Search_Posistion(nRow, column++)->iValue;
             // Skip Bullet ID
@@ -309,7 +309,7 @@ namespace Combat_Module
             m_nInstanceID = pDB->Search_Posistion(nRow, 0)->iValue;
             m_nGUID = pDB->Search_Posistion(nRow, 1)->iValue;
             m_szDesc = pDB->Search_Posistion(nRow, 2)->pString;
-            m_szDescDetail= pDB->Search_Posistion(nRow, 3)->pString;// LMÐÞ¸Ä
+            m_szDescDetail= pDB->Search_Posistion(nRow, 3)->pString;// LMä¿®æ”¹
             m_nStudyLevel = pDB->Search_Posistion(nRow, 4)->iValue;
             m_nStudyMoney = pDB->Search_Posistion(nRow, 5)->iValue;
             m_nLogicID = pDB->Search_Posistion(nRow, 6)->iValue;
@@ -317,16 +317,16 @@ namespace Combat_Module
             m_nCooldownTime = pDB->Search_Posistion(nRow, 7)->iValue;
             m_nChargeTime = pDB->Search_Posistion(nRow, 8)->iValue;
             m_nChannelTime = pDB->Search_Posistion(nRow, 9)->iValue;
-            column=10;// LMÐÞ¸Ä
+            column=10;// LMä¿®æ”¹
             for(INT i=0;CONDITION_AND_DEPLETE_TERM_NUMBER>i;++i)
             {
-                if(FALSE==m_aConDepTerms[i].InitFromDB(pDB, nRow, column))// LMÐÞ¸Ä
+                if(FALSE==m_aConDepTerms[i].InitFromDB(pDB, nRow, column))// LMä¿®æ”¹
                 {
                     AssertEx(NULL,"[SkillInstanceData_T::InitFromDB]:Load Skill Data Failed!");
                 }
             }
             m_nTargetLevel = pDB->Search_Posistion(nRow, column++)->iValue;
-            column +=2; //Ô¤Áô // LMÐÞ¸Ä
+            column +=2; //é¢„ç•™ // LMä¿®æ”¹
             for(INT i=0;DESCRIPTOR_NUMBER>i;++i)
             {
                 if(FALSE==m_aDescriptors[i].InitFromDB(pDB, nRow, column))
@@ -352,18 +352,18 @@ namespace Combat_Module
             m_nMutexID = pDB->Search_Posistion(nRow, column++)->iValue;
             m_nPriParam= pDB->Search_Posistion(nRow, column++)->iValue;
             ++column; //Skip Icon
-            ++column; //Skip ¼¤»îÌØÐ§
-            ++column; //Skip ¼¤»îÒôÐ§
-            ++column; //Skip ¼¤»îÌØÐ§°ó¶¨µã
-            ++column; //Skip ³ÖÐøÌØÐ§
-            ++column; //Skip ³ÖÐøÒôÐ§
-            ++column; //Skip ³ÖÐøÌØÐ§°ó¶¨µã    
+            ++column; //Skip æ¿€æ´»ç‰¹æ•ˆ
+            ++column; //Skip æ¿€æ´»éŸ³æ•ˆ
+            ++column; //Skip æ¿€æ´»ç‰¹æ•ˆç»‘å®šç‚¹
+            ++column; //Skip æŒç»­ç‰¹æ•ˆ
+            ++column; //Skip æŒç»­éŸ³æ•ˆ
+            ++column; //Skip æŒç»­ç‰¹æ•ˆç»‘å®šç‚¹    
             m_bStillOnWhenOwnerDead = (0!=(pDB->Search_Posistion(nRow, column++)->iValue));
             m_bCanBeDispeled = (0!=(pDB->Search_Posistion(nRow, column++)->iValue));
             m_bHostileFlag = (0!=(pDB->Search_Posistion(nRow, column++)->iValue));
             m_bCanBeManualCancel= (0!=(pDB->Search_Posistion(nRow, column++)->iValue));
-            ++column; //Skipp Ô¤ÁôÓò
-            ++column; //Skipp Ô¤ÁôÓò
+            ++column; //Skipp é¢„ç•™åŸŸ
+            ++column; //Skipp é¢„ç•™åŸŸ
             m_szDescription = pDB->Search_Posistion(nRow, column++)->pString;
             m_bInited = TRUE;
             return TRUE;

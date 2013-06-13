@@ -73,17 +73,17 @@ BOOL    Login::Loop()
     Log::SaveLog( LOGIN_LOGFILE, "\r\nLoop..." ) ;
 
     
-    //Á¬½Ó¿Í»§¶ËÏß³Ì
+    //è¿žæŽ¥å®¢æˆ·ç«¯çº¿ç¨‹
     Log::SaveLog( LOGIN_LOGFILE, "g_pConnectManager->start( )..." ) ;
     g_pConnectManager->start();
 
 
-    //Á¬½ÓWorld ºÍ BillingSystem µÄÏß³Ì
+    //è¿žæŽ¥World å’Œ BillingSystem çš„çº¿ç¨‹
     Log::SaveLog( LOGIN_LOGFILE, "g_pThreadManager->Start( )..." ) ;
     bRet = g_pThreadManager->Start( ) ;
     Assert( bRet ) ;
     
-    //Êý¾Ý¿â´¦Àí
+    //æ•°æ®åº“å¤„ç†
     //Log::SaveLog( LOGIN_LOGFILE, "g_pDataBaseManager->Start( )..." ) ;
     //g_pDataBaseManager->start();
     
@@ -91,13 +91,13 @@ BOOL    Login::Loop()
     g_pDBThreadManager->Start();
 
 
-    //Ö÷Ïß³Ì×ÊÔ´Áô¸ø ProcessManager
+    //ä¸»çº¿ç¨‹èµ„æºç•™ç»™ ProcessManager
     Log::SaveLog( LOGIN_LOGFILE, "g_pProcessManager->Loop( )..." ) ;
     g_pProcessManager->start();
 
     
 
-    //ÊØ»¤Ïß³Ì
+    //å®ˆæŠ¤çº¿ç¨‹
     while(TRUE)
     {
         MySleep(100);
@@ -161,52 +161,52 @@ BOOL    Login::Exit()
 
 
 /*
-*    ·ÖÅä¿Õ¼äÏà¹Ø
+*    åˆ†é…ç©ºé—´ç›¸å…³
 */
 BOOL    Login::NewLogin()
 {
     __ENTER_FUNCTION
 
     g_pDataBaseManager    =     new    LoginDBManager();
-    AssertEx(g_pDataBaseManager,"·ÖÅäÊý¾Ý¿â¹ÜÀíÆ÷Ê§°Ü!");
+    AssertEx(g_pDataBaseManager,"åˆ†é…æ•°æ®åº“ç®¡ç†å™¨å¤±è´¥!");
     Log::SaveLog(LOGIN_LOGFILE,"new LoginDBManager ...OK");
 
     g_pProcessManager    =     new  ProcessManager();
-    AssertEx( g_pProcessManager,"·ÖÅäg_pProcessManager Ê§°Ü!");
+    AssertEx( g_pProcessManager,"åˆ†é…g_pProcessManager å¤±è´¥!");
     Log::SaveLog( LOGIN_LOGFILE, "new ProcessManager...OK" ) ;
     
     g_pPlayerPool        =    new      PlayerPool ;
-    AssertEx( g_pPlayerPool,"·ÖÅäg_pPlayerPool Ê§°Ü!");
+    AssertEx( g_pPlayerPool,"åˆ†é…g_pPlayerPool å¤±è´¥!");
     Log::SaveLog( LOGIN_LOGFILE, "new PlayerPool...OK" ) ;
 
     g_pPacketFactoryManager = new PacketFactoryManager ;
-    AssertEx( g_pPacketFactoryManager,"·ÖÅäg_pFacketFactoryManager Ê§°Ü!") ;
+    AssertEx( g_pPacketFactoryManager,"åˆ†é…g_pFacketFactoryManager å¤±è´¥!") ;
     Log::SaveLog( LOGIN_LOGFILE, "new PacketFactoryManager...OK" ) ;
     
     g_pProcessPlayerQueue    = new TurnPlayerQueue;
-    AssertEx(g_pProcessPlayerQueue,"·ÖÅäÅÅ¶Ó¶ÓÁÐÊ§°Ü!");
+    AssertEx(g_pProcessPlayerQueue,"åˆ†é…æŽ’é˜Ÿé˜Ÿåˆ—å¤±è´¥!");
     Log::SaveLog(LOGIN_LOGFILE,"new g_pProcessPlayerQueue...OK");
 
 
     g_pWorldPlayerQueue    = new WorldPlayerQueue;
-    AssertEx(g_pWorldPlayerQueue,"·ÖÅäÅÅ¶Ó¶ÓÁÐÊ§°Ü!");
+    AssertEx(g_pWorldPlayerQueue,"åˆ†é…æŽ’é˜Ÿé˜Ÿåˆ—å¤±è´¥!");
     Log::SaveLog(LOGIN_LOGFILE,"new g_pWorldPlayerQueue...OK");
 
 
     g_pThreadManager    =     new ThreadManager();
-    AssertEx( g_pThreadManager,"·ÖÅäg_pThreadManager Ê§°Ü!");
+    AssertEx( g_pThreadManager,"åˆ†é…g_pThreadManager å¤±è´¥!");
     Log::SaveLog( LOGIN_LOGFILE, "new ThreadManager...OK" ) ;
 
     g_pServerManager    =     new ServerManager ;
-    AssertEx( g_pServerManager,"·ÖÅäg_pServerManager Ê§°Ü!" ) ;
+    AssertEx( g_pServerManager,"åˆ†é…g_pServerManager å¤±è´¥!" ) ;
     Log::SaveLog( LOGIN_LOGFILE, "new ServerManager...OK" ) ;
 
     g_pConnectManager   =    new ConnectManager ;
-    AssertEx( g_pConnectManager,"·ÖÅäg_pConnectManager Ê§°Ü!");
+    AssertEx( g_pConnectManager,"åˆ†é…g_pConnectManager å¤±è´¥!");
     Log::SaveLog( LOGIN_LOGFILE, "new ConnectManager...OK" ) ;
 
     g_pDBThreadManager    =    new DBThreadManager;
-    AssertEx(g_pDBThreadManager,"·ÖÅäg_pDBThreadManager Ê§°Ü!");
+    AssertEx(g_pDBThreadManager,"åˆ†é…g_pDBThreadManager å¤±è´¥!");
     Log::SaveLog( LOGIN_LOGFILE, "new DBThreadManager...OK" );
 
     return TRUE;
@@ -217,7 +217,7 @@ BOOL    Login::NewLogin()
 }
 
 /*
-*    Êý¾Ý¸³ÖµÏà¹Ø
+*    æ•°æ®èµ‹å€¼ç›¸å…³
 */
 BOOL    Login::InitLogin()
 {
@@ -226,7 +226,7 @@ BOOL    Login::InitLogin()
     BOOL    bRet = FALSE;
     INT        nTemp = 0;
 
-    //DB µÄ³õÊ¼»¯,Á¬½ÓÊý¾Ý¿â
+    //DB çš„åˆå§‹åŒ–,è¿žæŽ¥æ•°æ®åº“
     Assert(g_pDataBaseManager);
     bRet = g_pDataBaseManager->Init();
     Assert(bRet);
@@ -259,17 +259,17 @@ BOOL    Login::InitLogin()
     Log::SaveLog(LOGIN_LOGFILE,"g_pWorldPlayerQueue->Init() ... OK");
 
     
-    //¶Ô¿Í»§¶ËÍøÂç¹ÜÀíÀàµÄ³õÊ¼»¯
+    //å¯¹å®¢æˆ·ç«¯ç½‘ç»œç®¡ç†ç±»çš„åˆå§‹åŒ–
     bRet = g_pConnectManager->Init( ) ;
     Assert( bRet ) ;
     Log::SaveLog( LOGIN_LOGFILE, "g_pConnectManager->Init()...OK" ) ;
     
-    // µÇÂ¼Á÷³Ì¹ÜÀíÆ÷
+    // ç™»å½•æµç¨‹ç®¡ç†å™¨
     bRet    = g_pProcessManager->Init();
     Assert(bRet);
     Log::SaveLog( LOGIN_LOGFILE, "g_pProcessManager->Init()...OK" ) ;
 
-    // Ïß³Ì¹ÜÀíÆ÷
+    // çº¿ç¨‹ç®¡ç†å™¨
     bRet = g_pThreadManager->Init( ) ;
     Assert( bRet ) ;
     Log::SaveLog( LOGIN_LOGFILE, "g_pThreadManager->Init()...OK" ) ;

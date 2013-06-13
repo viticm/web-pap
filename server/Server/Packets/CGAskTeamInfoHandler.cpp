@@ -29,11 +29,11 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     if( pHuman->GetID() != pPacket->GetObjID() )
-    { // ÎªÒÔºóÁô½Ó¿Ú
+    { // ä¸ºä»¥åç•™æ¥å£
         Assert(FALSE);
         return PACKET_EXE_ERROR;
     }

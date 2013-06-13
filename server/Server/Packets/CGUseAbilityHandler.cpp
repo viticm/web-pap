@@ -33,12 +33,12 @@ UINT CGUseAbilityHandler::Execute(CGUseAbility* pPacket,Player* pPlayer)
         return PACKET_EXE_ERROR;
     }
 
-    // ¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    // æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
-    // Íæ¼Ò´¦ÓÚ²»¿ÉĞĞ¶¯×´Ì¬
+    // ç©å®¶å¤„äºä¸å¯è¡ŒåŠ¨çŠ¶æ€
     if( !pHuman->IsAlive() )
-    { // ·µ¸øÍæ¼ÒÒ»Ìõ´íÎóĞÅÏ¢
+    { // è¿”ç»™ç©å®¶ä¸€æ¡é”™è¯¯ä¿¡æ¯
         GCAbilityResult Msg ;
         Msg.SetAbilityID( pPacket->GetAbilityID() );
         Msg.SetPrescriptionID( pPacket->GetPrescriptionID() );
@@ -47,7 +47,7 @@ UINT CGUseAbilityHandler::Execute(CGUseAbility* pPacket,Player* pPlayer)
 
         return PACKET_EXE_CONTINUE ;
     }
-    //Íæ¼ÒÓĞÃ»ÓĞ±ğ»èÃÔ»ò³ÁÄ¬£¿
+    //ç©å®¶æœ‰æ²¡æœ‰åˆ«æ˜è¿·æˆ–æ²‰é»˜ï¼Ÿ
     if(FALSE==pHuman->CanActionFlag1() || FALSE==pHuman->CanActionFlag2())
     {
         GCAbilityResult Msg ;
@@ -57,7 +57,7 @@ UINT CGUseAbilityHandler::Execute(CGUseAbility* pPacket,Player* pPlayer)
         pGamePlayer->SendPacket( &Msg );
         return PACKET_EXE_CONTINUE;
     }
-    //Íæ¼ÒÓĞÃ»ÓĞÔÚ×ö±ğµÄÊÂ£¿
+    //ç©å®¶æœ‰æ²¡æœ‰åœ¨åšåˆ«çš„äº‹ï¼Ÿ
     if(FALSE==GetGlobalActionDelegator().CanDoNextAction(*pHuman))
     {
         GCAbilityResult Msg ;
@@ -73,7 +73,7 @@ UINT CGUseAbilityHandler::Execute(CGUseAbility* pPacket,Player* pPlayer)
 
     pAbility = g_pAbilityManager->GetAbility(pPacket->GetAbilityID());
     if( pAbility == NULL )
-    { // ²»´æÔÚ¸Ã¼¼ÄÜ
+    { // ä¸å­˜åœ¨è¯¥æŠ€èƒ½
         return PACKET_EXE_CONTINUE;
     }
 

@@ -1,6 +1,6 @@
 // GCShopUpdateMerchandiseList.h
 // 
-// ÉÌÈË·¢¸ø¿Í»§¶ËµÄÉÌÆ·ÁĞ±í
+// å•†äººå‘ç»™å®¢æˆ·ç«¯çš„å•†å“åˆ—è¡¨
 // 
 //////////////////////////////////////////////////////
 
@@ -17,11 +17,11 @@ namespace Packets
     class GCShopUpdateMerchandiseList: public Packet
     {
     public:
-        //ÉÌÈËËùÂôÉÌÆ·½á¹¹
+        //å•†äººæ‰€å–å•†å“ç»“æ„
         struct _MERCHANDISE_ITEM
         {
-            UINT        idTable;        //×ÊÔ´id
-            BYTE        byNumber;        //ÊıÁ¿
+            UINT        idTable;        //èµ„æºid
+            BYTE        byNumber;        //æ•°é‡
             _MERCHANDISE_ITEM()
             {
                 idTable = 0;
@@ -36,7 +36,7 @@ namespace Packets
         }
         virtual ~GCShopUpdateMerchandiseList( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -57,9 +57,9 @@ namespace Packets
 
 
     private:
-        //ÉÌÆ·¸öÊı
+        //å•†å“ä¸ªæ•°
         BYTE                        m_nMerchadiseNum;
-        //ËùÓĞÉÌÆ·ÁĞ±í
+        //æ‰€æœ‰å•†å“åˆ—è¡¨
         _MERCHANDISE_ITEM            m_MerchadiseList[MAX_BOOTH_NUMBER];
     };
 

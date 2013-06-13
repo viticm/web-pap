@@ -18,7 +18,7 @@ namespace Packets
         }
         virtual ~CGBBSApply( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -37,7 +37,7 @@ namespace Packets
         VOID                    SetSerial(UINT Serial) {m_Serial = Serial;};
 
     private:
-        ObjID_t                    m_objID;        //申请者id
+        ObjID_t                    m_objID;        //鐢宠鑰卛d
         UINT                    m_Serial;
 
     };

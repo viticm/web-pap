@@ -1,28 +1,28 @@
 #include "stdafx.h"
 // CGShopRepairHandler.cpp
 
-/*  ¾ÉµÄĞŞÀí·ÑÓÃ¹«Ê½
-ĞŞÀí·ÑÓÃ¼ÆËã£º
-V£ºÎïÆ·µÄ±ê×¼¼Û¸ñ£¬²éÑ¯µÀ¾ß±í
-L£º×î´óÄÍ¾Ã
-AÔİ¶¨A=6£¬½¨Òé¿ª·Å
-x£ºµ±Ç°ÄÍ¾Ã£¬0<=x<=L
-y£ºĞŞÀí·ÑÓÃ
-¹«Ê½£º
-µ±0<=x<1/3LÊ±£ºy= -7*V^2*x*A/£¨4*L£©+V^2
-µ±1/3L<=x<2/3LÊ±£ºy= -V^2*x*A/L+3*V^2/4
-µ±2/3L<=x<=LÊ±£ºy= -V^2*x*A/£¨4*L£©+V^2/4
+/*  æ—§çš„ä¿®ç†è´¹ç”¨å…¬å¼
+ä¿®ç†è´¹ç”¨è®¡ç®—ï¼š
+Vï¼šç‰©å“çš„æ ‡å‡†ä»·æ ¼ï¼ŒæŸ¥è¯¢é“å…·è¡¨
+Lï¼šæœ€å¤§è€ä¹…
+Aæš‚å®šA=6ï¼Œå»ºè®®å¼€æ”¾
+xï¼šå½“å‰è€ä¹…ï¼Œ0<=x<=L
+yï¼šä¿®ç†è´¹ç”¨
+å…¬å¼ï¼š
+å½“0<=x<1/3Læ—¶ï¼šy= -7*V^2*x*A/ï¼ˆ4*Lï¼‰+V^2
+å½“1/3L<=x<2/3Læ—¶ï¼šy= -V^2*x*A/L+3*V^2/4
+å½“2/3L<=x<=Læ—¶ï¼šy= -V^2*x*A/ï¼ˆ4*Lï¼‰+V^2/4
 */
 
 
-/*  ĞÂµÄĞŞÀí·ÑÓÃ¹«Ê½
-ĞŞÀí·ÑÓÃ¼ÆËã£º
-V£ºÎïÆ·µÄ±ê×¼¼Û¸ñ£¬²éÑ¯µÀ¾ß±í
-L£º×î´óÄÍ¾Ã
-x£ºµ±Ç°ÄÍ¾Ã£¬0<=x<=L
-y£ºĞŞÀí·ÑÓÃ
-¹«Ê½£º
-y=a*(1-x/L)*V£¬aÎª²ÎÊıÔİ¶¨a=1£¬½¨Òé¿ª·Å
+/*  æ–°çš„ä¿®ç†è´¹ç”¨å…¬å¼
+ä¿®ç†è´¹ç”¨è®¡ç®—ï¼š
+Vï¼šç‰©å“çš„æ ‡å‡†ä»·æ ¼ï¼ŒæŸ¥è¯¢é“å…·è¡¨
+Lï¼šæœ€å¤§è€ä¹…
+xï¼šå½“å‰è€ä¹…ï¼Œ0<=x<=L
+yï¼šä¿®ç†è´¹ç”¨
+å…¬å¼ï¼š
+y=a*(1-x/L)*Vï¼Œaä¸ºå‚æ•°æš‚å®ša=1ï¼Œå»ºè®®å¼€æ”¾
 */
 
 #define REPAIR_SPEND 1
@@ -54,12 +54,12 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     BYTE    Opt         =    pPacket->GetOpt();
-    BOOL    RepairAll    =    pPacket->IsRepairAll();        //ĞŞÀíÈ«²¿
-    BYTE    BagIndex    =    pPacket->GetBagIndex();        //°üÖĞµÄÎ»ÖÃ
+    BOOL    RepairAll    =    pPacket->IsRepairAll();        //ä¿®ç†å…¨éƒ¨
+    BYTE    BagIndex    =    pPacket->GetBagIndex();        //åŒ…ä¸­çš„ä½ç½®
     UINT    UniqueID    =    pPacket->GetUniqueID();
 
     SceneID_t    SceneID =    UniqueID>>16;
@@ -71,7 +71,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
         return PACKET_EXE_CONTINUE ; 
     }
 
-    //¾àÀëÅĞ¶¨
+    //è·ç¦»åˆ¤å®š
     Obj* pNpcObj = (Obj*) (pScene->GetObjManager()->GetObj(NpcObjID));
     if(pNpcObj == NULL)
     {
@@ -116,19 +116,19 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                     nEndPoint    = HEQUIP_RIDER;
                 }
                 break;
-            case SHOP_WEAPON:        //·À¾ß
+            case SHOP_WEAPON:        //é˜²å…·
                 {
                     nBeginPoint = HEQUIP_WEAPON;
                     nEndPoint    = HEQUIP_WEAPON;
                 }
                 break;
-            case SHOP_DEFENCE:        //ÊÎÎï
+            case SHOP_DEFENCE:        //é¥°ç‰©
                 {
                     nBeginPoint = HEQUIP_CAP;
                     nEndPoint    = HEQUIP_BOOT;
                 }
                 break;
-            case SHOP_ADORN:        //ÎäÆ÷
+            case SHOP_ADORN:        //æ­¦å™¨
                 {
                     nBeginPoint = HEQUIP_SASH;
                     nEndPoint    = HEQUIP_RIDER;
@@ -147,8 +147,8 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                 pCurItem    = HumanItemLogic::GetEquip(pHuman,(HUMAN_EQUIP)i);
                 //pCurItem = pHuman->GetEquip((HUMAN_EQUIP)i);
                 if(!pCurItem->IsEmpty())
-                {//ÓĞ¶«Î÷
-                    //ÅĞ¶¨ÊÇ·ñ¹·ĞŞÀíµÈ¼¶
+                {//æœ‰ä¸œè¥¿
+                    //åˆ¤å®šæ˜¯å¦ç‹—ä¿®ç†ç­‰çº§
                     if(pCurItem->GetRequireLevel() > pShop->m_nRepairLevel)
                     {
                         continue;
@@ -168,7 +168,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                         //    MoneySpent += (INT)(V*V*fCur*6/(4*fMax)+V*V/4);
                         MoneySpent += (INT) ( ((REPAIR_SPEND * (1- fCur/fMax) * V) * pShop->m_nRepairSpend) + 0.5);
 
-                        //ÁÙÊ±µÄĞŞÀí·Ñ¼ÆËã·½·¨
+                        //ä¸´æ—¶çš„ä¿®ç†è´¹è®¡ç®—æ–¹æ³•
 //                        FLOAT scale = (FLOAT)(fCur/fMax);
 //                        scale = 1-scale;
 //                        MoneySpent += static_cast<INT>(pCurItem->GetPrice()*scale);
@@ -184,7 +184,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
             }
 
             if(MoneyHave<MoneySpent)
-            {//break³öÀ´µÄ
+            {//breakå‡ºæ¥çš„
                 if(RepairedIndex)
                 {
                     pHuman->SetMoney(MoneyHave - MoneyLast);
@@ -212,7 +212,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                 return PACKET_EXE_CONTINUE ;
             }
             else if(MoneySpent != 0)
-            {//È«ĞŞÍêÁË
+            {//å…¨ä¿®å®Œäº†
                 pHuman->SetMoney(MoneyHave - MoneySpent);
                 MONEY_LOG_PARAM    MoneyLogParam;
                 MoneyLogParam.CharGUID    =    pHuman->GetGUID();
@@ -229,7 +229,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
             }
         }
         else
-        {//ĞŞÀíµ¥¸ö,Ò»¶¨Ó¦¸ÃÔÚ±³°üÖĞ
+        {//ä¿®ç†å•ä¸ª,ä¸€å®šåº”è¯¥åœ¨èƒŒåŒ…ä¸­
             pCurItem =    HumanItemLogic::GetItem(pHuman,BagIndex);
             if(!pCurItem->IsEmpty())
             {
@@ -245,7 +245,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                     {
                     }
                     break;
-                case SHOP_DEFENCE:        //·À¾ß
+                case SHOP_DEFENCE:        //é˜²å…·
                     {
                         if( pCurItem->GetEquipPoint() != HEQUIP_CAP &&
                             pCurItem->GetEquipPoint() != HEQUIP_ARMOR &&
@@ -256,7 +256,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                         }
                     }
                     break;
-                case SHOP_ADORN:        //ÊÎÎï
+                case SHOP_ADORN:        //é¥°ç‰©
                     {
                         if( pCurItem->GetEquipPoint() != HEQUIP_SASH &&
                             pCurItem->GetEquipPoint() != HEQUIP_RING &&
@@ -267,7 +267,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                         }
                     }
                     break;
-                case SHOP_WEAPON:        //ÎäÆ÷
+                case SHOP_WEAPON:        //æ­¦å™¨
                     {
                         if( pCurItem->GetEquipPoint() != HEQUIP_WEAPON )
                         {
@@ -304,7 +304,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
 
 
                     if(MoneyHave>=MoneySpent)
-                    {//¿ÉÒÔĞŞ
+                    {//å¯ä»¥ä¿®
                         pHuman->SetMoney(MoneyHave - MoneySpent);
                         
                         MONEY_LOG_PARAM    MoneyLogParam;
@@ -325,7 +325,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                         pHuman->GetPlayer()->SendPacket(&Msg);
                     }
                     else
-                    {//Ã»Ç®»¹µ·ÂÒ
+                    {//æ²¡é’±è¿˜æ£ä¹±
                         GCShopBuy Msg ;
                         Msg.SetBuyOk((BYTE)GCShopBuy::BUY_MONEY_FAIL);
                         pHuman->GetPlayer()->SendPacket( &Msg ) ;
@@ -346,7 +346,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
         pCurItem = HumanItemLogic::GetEquip(pHuman,(HUMAN_EQUIP)BagIndex);
 
         if(!pCurItem->IsEmpty())
-        {//ÓĞ¶«Î÷
+        {//æœ‰ä¸œè¥¿
             FLOAT fCur = (FLOAT)pCurItem->GetDurPoints();
             FLOAT fMax = (FLOAT)pCurItem->GetMaxDurPoint();
             FLOAT V       = (FLOAT)pCurItem->GetPrice();
@@ -364,7 +364,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                     {
                     }
                     break;
-                case SHOP_DEFENCE:        //·À¾ß
+                case SHOP_DEFENCE:        //é˜²å…·
                     {
                         if( pCurItem->GetEquipPoint() != HEQUIP_CAP &&
                             pCurItem->GetEquipPoint() != HEQUIP_ARMOR &&
@@ -375,7 +375,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                         }
                     }
                     break;
-                case SHOP_ADORN:        //ÊÎÎï
+                case SHOP_ADORN:        //é¥°ç‰©
                     {
                         if( pCurItem->GetEquipPoint() != HEQUIP_SASH &&
                             pCurItem->GetEquipPoint() != HEQUIP_RING &&
@@ -386,7 +386,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                         }
                     }
                     break;
-                case SHOP_WEAPON:        //ÎäÆ÷
+                case SHOP_WEAPON:        //æ­¦å™¨
                     {
                         if( pCurItem->GetEquipPoint() != HEQUIP_WEAPON )
                         {
@@ -421,7 +421,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                 MoneySpent += (INT) ( ((REPAIR_SPEND * (1- fCur/fMax) * V) * pShop->m_nRepairSpend) + 0.5);
 
                 if(MoneyHave>=MoneySpent)
-                {//¿ÉÒÔĞŞ
+                {//å¯ä»¥ä¿®
                     pHuman->SetMoney(MoneyHave - MoneySpent);
                     MONEY_LOG_PARAM    MoneyLogParam;
                     MoneyLogParam.CharGUID    =    pHuman->GetGUID();
@@ -441,7 +441,7 @@ UINT CGShopRepairHandler::Execute( CGShopRepair* pPacket, Player* pPlayer )
                     pHuman->GetPlayer()->SendPacket(&Msg);
                 }
                 else
-                {//Ã»Ç®»¹µ·ÂÒ
+                {//æ²¡é’±è¿˜æ£ä¹±
                     GCShopBuy Msg ;
                     Msg.SetBuyOk((BYTE)GCShopBuy::BUY_MONEY_FAIL);
                     pHuman->GetPlayer()->SendPacket( &Msg ) ;

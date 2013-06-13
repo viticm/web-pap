@@ -1,6 +1,6 @@
 // PetPlacard.h
 //
-// ¹¦ÄÜ£º³èÎï¹«¸æ°å
+// åŠŸèƒ½ï¼šå® ç‰©å…¬å‘Šæ¿
 // 
 ///////////////////////////////////////////////////////
 
@@ -34,7 +34,7 @@ public:
     const _PET_PLACARD_ITEM *NextValidItem(INT *pnIndex)const;
 
 protected:
-    // ´ıÓÅ»¯
+    // å¾…ä¼˜åŒ–
     _PET_PLACARD_ITEM        m_aItems[PET_PLACARD_ITEM_NUM];
 };
 
@@ -53,10 +53,10 @@ public:
 
     BOOL HeartBeat(UINT uTime);
 
-    // ·¢²¼¹«¸æ
+    // å‘å¸ƒå…¬å‘Š
     ORESULT IssuePlacard(Obj_Human *pIssuer, PET_GUID_t guidPet, const CHAR *pszMessage);
 
-    // È¡Ïû¹«¸æ
+    // å–æ¶ˆå…¬å‘Š
     VOID CancelPlacard(GUID_t guidHuman);
 
     const PetPlacard *GetPetPlacard(VOID)const

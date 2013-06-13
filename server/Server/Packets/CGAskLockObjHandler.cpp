@@ -28,7 +28,7 @@ UINT    CGAskLockObjHandler::Execute(CGAskLockObj* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     
     BYTE LockType = pPacket->GetLockType();
@@ -36,7 +36,7 @@ UINT    CGAskLockObjHandler::Execute(CGAskLockObj* pPacket, Player* pPlayer )
 
     GCAddLockObj msg;
 
-    // Èç¹ûÒªÖ´ÐÐ¼ÓËøÏÈ²éÑ¯Íæ¼ÒÊÇ²»ÊÇ»¹ÓÐ×ã¹»µÄ¾«Á¦£¨ÎªÒ»¸öÎïÆ·»òÕß³èÎï¼Ó±£»¤£¬ÐèÒª10µã¾«Á¦£©
+    // å¦‚æžœè¦æ‰§è¡ŒåŠ é”å…ˆæŸ¥è¯¢çŽ©å®¶æ˜¯ä¸æ˜¯è¿˜æœ‰è¶³å¤Ÿçš„ç²¾åŠ›ï¼ˆä¸ºä¸€ä¸ªç‰©å“æˆ–è€…å® ç‰©åŠ ä¿æŠ¤ï¼Œéœ€è¦10ç‚¹ç²¾åŠ›ï¼‰
     //if(pPacket->GetLockType() == CGAskLockObj::OPR_LOCK)
     //{
     //    if( LOCK_A_OBJ_NEED_ENERGY > pHuman->GetEnergy() )
@@ -52,7 +52,7 @@ UINT    CGAskLockObjHandler::Execute(CGAskLockObj* pPacket, Player* pPlayer )
 
     switch(lockObj)
     {
-    case CGAskLockObj::LOCK_ITEM:    //ÎïÆ·
+    case CGAskLockObj::LOCK_ITEM:    //ç‰©å“
         {
             msg.SetLockObj(GCAddLockObj::LOCK_ITEM);
 
@@ -75,11 +75,11 @@ UINT    CGAskLockObjHandler::Execute(CGAskLockObj* pPacket, Player* pPlayer )
                 return PACKET_EXE_CONTINUE ;
             }
 
-            if(LockType == CGAskLockObj::OPR_LOCK)            //¼ÓËø
+            if(LockType == CGAskLockObj::OPR_LOCK)            //åŠ é”
             {
                 if(g_ItemOperator.SetItemPWLock(pCon, pCon->BagIndex2ConIndex(nItemIndex), TRUE))
                 {
-                    //¿Û³ý¾«Á¦
+                    //æ‰£é™¤ç²¾åŠ›
                     //pHuman->SetEnergy(pHuman->GetEnergy() - LOCK_A_OBJ_NEED_ENERGY);
 
                     msg.SetResult(GCAddLockObj::RESULT_LOCK_OK);
@@ -91,7 +91,7 @@ UINT    CGAskLockObjHandler::Execute(CGAskLockObj* pPacket, Player* pPlayer )
                     pHuman->GetPlayer()->SendPacket(&MsgItem);
                 }
             }
-            else if(LockType == CGAskLockObj::OPR_UNLOCK)    //È¥Ëø
+            else if(LockType == CGAskLockObj::OPR_UNLOCK)    //åŽ»é”
             {
                 if(g_ItemOperator.SetItemPWLock(pCon, pCon->BagIndex2ConIndex(nItemIndex), FALSE))
                 {
@@ -106,7 +106,7 @@ UINT    CGAskLockObjHandler::Execute(CGAskLockObj* pPacket, Player* pPlayer )
             }
         }
         break;
-    case CGAskLockObj::LOCK_PET:    //³èÎï
+    case CGAskLockObj::LOCK_PET:    //å® ç‰©
         {
             msg.SetLockObj(GCAddLockObj::LOCK_PET);
 

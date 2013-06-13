@@ -24,7 +24,7 @@ UINT CGStallShopNameHandler::Execute( CGStallShopName* pPacket, Player* pPlayer 
             return PACKET_EXE_ERROR ;
         }
 
-        //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+        //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
         if(pHuman->m_StallBox.GetStallStatus() != ServerStallBox::STALL_OPEN)
@@ -36,7 +36,7 @@ UINT CGStallShopNameHandler::Execute( CGStallShopName* pPacket, Player* pPlayer 
                 ,pHuman->GetID()) ;
             return PACKET_EXE_CONTINUE;
         }
-        //ÐÞ¸Ä·þÎñÆ÷Êý¾Ý
+        //ä¿®æ”¹æœåŠ¡å™¨æ•°æ®
         pHuman->m_StallBox.SetStallName(pPacket->GetStallName(),pPacket->GetStallNameSize());
         
         g_pLog->FastSaveLog( LOG_FILE_1, "CGStallShopNameHandler::ObjID=%d"

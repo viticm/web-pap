@@ -16,7 +16,7 @@ namespace Packets
         CLAskCreateChar( ){} ;
         virtual ~CLAskCreateChar( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -38,7 +38,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID           SetName(const CHAR* pName)
         {
             strncpy(m_Name,pName,MAX_CHARACTER_NAME-1);
@@ -140,21 +140,21 @@ namespace Packets
         }
 
     private:
-        //Êı¾İ
-        CHAR            m_Name[MAX_CHARACTER_NAME];        //ĞÂ½ÇÉ«Ãû×Ö
-        BOOL            m_Sex;                            //ĞÂ½ÇÉ«ĞÔ±ğ
-        BYTE            m_HairColor;                    //ĞÂ½ÇÉ«Í··¢ÑÕÉ«    
-        BYTE            m_FaceColor;                    //ĞÂ½ÇÉ«Á³ĞÎÑÕÉ«
-        BYTE            m_HairModel;                    //ĞÂ½ÇÉ«Í··¢Ä£ĞÍ
-        BYTE            m_FaceModel;                    //ĞÂ½ÇÉ«Á³ĞÎÄ£ĞÍ
-        BYTE            m_HeadID;                        //ĞÂ½ÇÉ«Í·²¿±àºÅ
+        //æ•°æ®
+        CHAR            m_Name[MAX_CHARACTER_NAME];        //æ–°è§’è‰²åå­—
+        BOOL            m_Sex;                            //æ–°è§’è‰²æ€§åˆ«
+        BYTE            m_HairColor;                    //æ–°è§’è‰²å¤´å‘é¢œè‰²    
+        BYTE            m_FaceColor;                    //æ–°è§’è‰²è„¸å½¢é¢œè‰²
+        BYTE            m_HairModel;                    //æ–°è§’è‰²å¤´å‘æ¨¡å‹
+        BYTE            m_FaceModel;                    //æ–°è§’è‰²è„¸å½¢æ¨¡å‹
+        BYTE            m_HeadID;                        //æ–°è§’è‰²å¤´éƒ¨ç¼–å·
         GUID_t            m_GUID;                            //
-        CampID_t        m_Camp;                            //ĞÂ½ÇÉ«µÄÕóÓª
+        CampID_t        m_Camp;                            //æ–°è§’è‰²çš„é˜µè¥
         MenPaiID_t        m_MenPai;
         
-        //Íæ¼Ò³Øid£¬¿Í»§¶Ë²»ÓÃÌîĞ´
+        //ç©å®¶æ± idï¼Œå®¢æˆ·ç«¯ä¸ç”¨å¡«å†™
         PlayerID_t                PlayerID;
-        CHAR                    szAccount[MAX_ACCOUNT+1] ;    //ÓÃ»§Ãû³Æ
+        CHAR                    szAccount[MAX_ACCOUNT+1] ;    //ç”¨æˆ·åç§°
     };
 
     class CLAskCreateCharFactory : public PacketFactory 

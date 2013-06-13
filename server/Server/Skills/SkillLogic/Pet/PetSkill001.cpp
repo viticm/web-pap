@@ -1,10 +1,10 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºPetSkill001.cpp
-// ¹¦ÄÜËµÃ÷£º
+// æ–‡ä»¶åï¼šPetSkill001.cpp
+// åŠŸèƒ½è¯´æ˜ï¼š
 //
-// Ğ§¹ûÃèÊö²¿·ÖµÄ¸ñÊ½£º|Ğ§¹ûÊı¾İIndex|
-// ĞŞ¸Ä¼ÇÂ¼£º
+// æ•ˆæœæè¿°éƒ¨åˆ†çš„æ ¼å¼ï¼š|æ•ˆæœæ•°æ®Index|
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -40,7 +40,7 @@ namespace Combat_Module
             OWN_IMPACT impact;
             g_ImpactCore.InitImpactFromData(nDataIndex, impact);
 
-            // ¸ù¾İAI¹æÔò½øĞĞĞŞÕıÉúĞ§Öµ
+            // æ ¹æ®AIè§„åˆ™è¿›è¡Œä¿®æ­£ç”Ÿæ•ˆå€¼
             Obj_Pet& rPet = (Obj_Pet&)rMe;
             INT nActivateOdds = 0;
             switch (Impact_GetLogicID(impact))

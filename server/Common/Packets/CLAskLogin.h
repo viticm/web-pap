@@ -17,7 +17,7 @@ namespace Packets
         CLAskLogin( ){} ;
         virtual ~CLAskLogin( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -33,7 +33,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         const    CHAR*            GetAccount()    const;
         VOID                    SetAccount(CHAR*    pAccount);
         const    CHAR*            GetPassWord()    const;
@@ -42,10 +42,10 @@ namespace Packets
         VOID                    SetVersion(UINT version);
         
     private:
-        //Êı¾İ
-        CHAR                    szAccount[MAX_ACCOUNT+1] ;    //ÓÃ»§Ãû³Æ
-        CHAR                    szPassWord[MAX_PASSWORD+1];    //ÓÃ»§ÃÜÂë
-        UINT                    uVersion;                    //¿Í»§¶Ë°æ±¾
+        //æ•°æ®
+        CHAR                    szAccount[MAX_ACCOUNT+1] ;    //ç”¨æˆ·åç§°
+        CHAR                    szPassWord[MAX_PASSWORD+1];    //ç”¨æˆ·å¯†ç 
+        UINT                    uVersion;                    //å®¢æˆ·ç«¯ç‰ˆæœ¬
     };
 
     class CLAskLoginFactory : public PacketFactory 

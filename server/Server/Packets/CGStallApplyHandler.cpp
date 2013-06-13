@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÉêÇë°ÚÌ¯
+å®¢æˆ·ç«¯ç”³è¯·æ‘†æ‘Š
 */
 
 #include "CGStallApply.h"
@@ -29,21 +29,21 @@ UINT CGStallApplyHandler::Execute( CGStallApply* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-    //»ñµÃ±¾µØË°ÂÊ
+    //èŽ·å¾—æœ¬åœ°ç¨ŽçŽ‡
     UINT    PosTax        = 0;
     BYTE    TradeTax    = 0;
     GCStallApply    Msg;
 
-    //ÑéÖ¤ÊÇ·ñÓÐ×Ê¸ñ°ÚÌ¯
+    //éªŒè¯æ˜¯å¦æœ‰èµ„æ ¼æ‘†æ‘Š
     if(pHuman->GetLevel()<30)
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallApplyHandler::ObjID=%d level = %d ", pHuman->GetID(), pHuman->GetLevel()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
-    //°ÚÌ¯µØµãÅÐ¶Ï
+    //æ‘†æ‘Šåœ°ç‚¹åˆ¤æ–­
     StallInfoManager* pStallInfoMgr = pScene->GetStallInfoManager();
     if(pStallInfoMgr)
     {
@@ -69,7 +69,7 @@ UINT CGStallApplyHandler::Execute( CGStallApply* pPacket, Player* pPlayer )
         }
     }
 
-    //ÑéÖ¤Íê±Ï,Í¨Öª¿Í»§¶ËÈ·¶¨
+    //éªŒè¯å®Œæ¯•,é€šçŸ¥å®¢æˆ·ç«¯ç¡®å®š
     pGamePlayer->SendPacket(&Msg);
 
     g_pLog->FastSaveLog( LOG_FILE_1, "CGStallApplyHandler::ObjID=%d ", pHuman->GetID()) ;

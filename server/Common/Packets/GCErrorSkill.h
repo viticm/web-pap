@@ -18,7 +18,7 @@ public:
     GCErrorSkill( ){} ;
     virtual ~GCErrorSkill( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ public:
                                                             sizeof(SkillID_t) ; }
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     BYTE            getReason(VOID) { return m_byReason; }
     VOID            setReason(BYTE byReason) { m_byReason = byReason; }
 
@@ -43,11 +43,11 @@ public:
     VOID                    setSkillID(SkillID_t skillid) { m_SkillID = skillid; }
 
 private:
-    //数据
-    BYTE            m_byReason;        //失败原因 enum ATTACK_ERROR
-    ObjID_t            m_AttObjID;        //攻击方的ID
-    ObjID_t            m_TarObjID;        //被攻击方的ID
-    SkillID_t        m_SkillID ;                        //使用的技能ID
+    //鏁版嵁
+    BYTE            m_byReason;        //澶辫触鍘熷洜 enum ATTACK_ERROR
+    ObjID_t            m_AttObjID;        //鏀诲嚮鏂圭殑ID
+    ObjID_t            m_TarObjID;        //琚敾鍑绘柟鐨処D
+    SkillID_t        m_SkillID ;                        //浣跨敤鐨勬妧鑳絀D
 
 };
 

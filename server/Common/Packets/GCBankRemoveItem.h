@@ -1,6 +1,6 @@
 // GCBankRemoveItem.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -25,11 +25,11 @@ namespace Packets
         };
         enum
         {
-            OPERATE_ERROR    =0,        // ´íÎó²Ù×÷
-            OPERATE_MOVE,            // ÒÆ¶¯µ½¿Õ¸ñ
-            OPERATE_SWAP,            // ½»»»ÎïÆ·
-            OPERATE_SPLICE,            // µş¼Ó
-            OPERATE_SPLIT,            // ²ğ·Ö
+            OPERATE_ERROR    =0,        // é”™è¯¯æ“ä½œ
+            OPERATE_MOVE,            // ç§»åŠ¨åˆ°ç©ºæ ¼
+            OPERATE_SWAP,            // äº¤æ¢ç‰©å“
+            OPERATE_SPLICE,            // å åŠ 
+            OPERATE_SPLIT,            // æ‹†åˆ†
         };
     public:
         GCBankRemoveItem( )
@@ -41,7 +41,7 @@ namespace Packets
         }
         virtual ~GCBankRemoveItem( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

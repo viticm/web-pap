@@ -13,7 +13,7 @@ namespace Packets
         GWStopTeamFollow(){}
         virtual        ~GWStopTeamFollow(){}
 
-        //公用接口
+        //鍏敤鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -26,7 +26,7 @@ namespace Packets
         GUID_t                    GetGUID( ) { return m_GUID; }
 
     private :
-        GUID_t                    m_GUID;    // 停止跟随状态的玩家 GUID
+        GUID_t                    m_GUID;    // 鍋滄璺熼殢鐘舵�佺殑鐜╁ GUID
 
     };
 

@@ -8,7 +8,7 @@
 
 
 
-//·ÖÅäÍæ¼ÒÊý¾ÝµÄÊý¾Ý³Ø
+//åˆ†é…çŽ©å®¶æ•°æ®çš„æ•°æ®æ± 
 //
 
 class PlayerPool
@@ -19,14 +19,14 @@ public :
     PlayerPool( ) ;
     ~PlayerPool( ) ;
 
-    //³õÊ¼»¯Êý¾Ý³Ø
+    //åˆå§‹åŒ–æ•°æ®æ± 
     BOOL                Init( UINT MaxPlayerCount = MAX_POOL_SIZE ) ;
     
-    //È¡µÃShareMemµÄ³õÊ¼»¯
+    //å–å¾—ShareMemçš„åˆå§‹åŒ–
     //BOOL                PostInit();
 
 
-    //¸ù¾ÝÍæ¼ÒµÄPlayerIDÈ¡µÃÊý¾ÝÖ¸Õë
+    //æ ¹æ®çŽ©å®¶çš„PlayerIDå–å¾—æ•°æ®æŒ‡é’ˆ
     LoginPlayer*            GetPlayer( PlayerID_t PlayerID )
     {
         if( PlayerID==INVALID_ID || PlayerID>=(PlayerID_t)m_MaxPlayerCount || PlayerID<0 )
@@ -34,10 +34,10 @@ public :
         return &(m_pPlayer[PlayerID]) ;
     };
 
-    //´Ó¿ÕÏÐÊý¾Ý³ØÀï·ÖÅäÒ»¸öÍæ¼ÒÊý¾Ý
+    //ä»Žç©ºé—²æ•°æ®æ± é‡Œåˆ†é…ä¸€ä¸ªçŽ©å®¶æ•°æ®
     LoginPlayer*            NewPlayer( ) ;
     LoginPlayer*            NewPlayer(PlayerID_t PlayerID);
-    //½«Ò»¸öÍæ¼ÒÊý¾ÝÇå¿Õ»ØÊÕ
+    //å°†ä¸€ä¸ªçŽ©å®¶æ•°æ®æ¸…ç©ºå›žæ”¶
     VOID                DelPlayer( PlayerID_t PlayerID ) ;
 
 private :

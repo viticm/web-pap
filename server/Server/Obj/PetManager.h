@@ -21,37 +21,37 @@ public:
 
     Obj_Pet *GetPet( ObjID_t idObj );
 
-    // ´ÓÎÄ¼şLoad³èÎïĞÅÏ¢
+    // ä»æ–‡ä»¶Loadå® ç‰©ä¿¡æ¯
     BOOL    LoadPet( const CHAR *pszFileName );
-    // É¾³ıËùÓĞPet
+    // åˆ é™¤æ‰€æœ‰Pet
     BOOL    RemoveAllPet( VOID );
-    // É¾³ıÄ³¸öPet
+    // åˆ é™¤æŸä¸ªPet
     BOOL    RemovePet( ObjID_t idObj );
-    // ´´½¨Ò»¸öPet
+    // åˆ›å»ºä¸€ä¸ªPet
     BOOL    CreatePet( INT nDataID, WORLD_POS* pPos, ObjID_t& rPetID );
-    //// ³õÊ¼»¯Ò»¸öPetÄ£ĞÍ
+    //// åˆå§‹åŒ–ä¸€ä¸ªPetæ¨¡å‹
     //BOOL    InitPet(INT idModel, ItemContainer& rPetContainer, INT index);
-    // Éú³ÉÒ»¸ö²¶×½ºó³èÎïµÄGUID
+    // ç”Ÿæˆä¸€ä¸ªæ•æ‰åå® ç‰©çš„GUID
     BOOL    CreateGUIDOfPet(_PET_DB *pPetDB, ObjID_t idHuman, ObjID_t idPet);
-    // Éú³ÉÒ»¸ö³èÎïµÄÊôĞÔ --bNeedLevelFluctuate ÊÇ·ñĞèÒªµÈ¼¶¸¡¶¯ --bReturnToChild ÊÇ·ñÒª½øĞĞ»¹Í¯
+    // ç”Ÿæˆä¸€ä¸ªå® ç‰©çš„å±æ€§ --bNeedLevelFluctuate æ˜¯å¦éœ€è¦ç­‰çº§æµ®åŠ¨ --bReturnToChild æ˜¯å¦è¦è¿›è¡Œè¿˜ç«¥
     BOOL    MakeCapturePetAttrib(_PET_DB *pPetDB, BOOL bNeedLevelFluctuate=TRUE, BOOL bReturnToChild=FALSE);
-    // Í¨¹ıDataIDÈ¥¸¶ÖµÒ»¸öPET DB
+    // é€šè¿‡DataIDå»ä»˜å€¼ä¸€ä¸ªPET DB
     BOOL    InitPetDB( _PET_DB *pPetDB, INT nDataID );
 
 protected:
-    // Éú³É³èÎïµÄĞÔ¸ñÀàĞÍ
+    // ç”Ÿæˆå® ç‰©çš„æ€§æ ¼ç±»å‹
     VOID        CreateAITypeOfPet(_PET_DB& rPetDB);
-    // »ñµÃ³èÎïÀàĞÍ
+    // è·å¾—å® ç‰©ç±»å‹
     VOID        CreateTypeOfPet(_PET_DB& rPetDB, BOOL bNeedLevelFluctuate, BOOL bReturnToChild);
-    // »ñµÃ³èÎïÊôĞÔµã£¬ idDataÎª³èÎïµÄ±àºÅ²»ÊÇObjID
+    // è·å¾—å® ç‰©å±æ€§ç‚¹ï¼Œ idDataä¸ºå® ç‰©çš„ç¼–å·ä¸æ˜¯ObjID
     VOID        CreateRemainPointOfPet(_PET_DB& rPetDB);
-    // »ñµÃ³èÎï¼¼ÄÜ£¬idDataÎª³èÎïµÄ±àºÅ²»ÊÇObjID
+    // è·å¾—å® ç‰©æŠ€èƒ½ï¼ŒidDataä¸ºå® ç‰©çš„ç¼–å·ä¸æ˜¯ObjID
     VOID        CreateSkillOfPet(_PET_DB& rPetDB);
-    // »ñµÃ³èÎï³É³¤ÂÊ£¬idDataÎª³èÎïµÄ±àºÅ²»ÊÇObjID
+    // è·å¾—å® ç‰©æˆé•¿ç‡ï¼ŒidDataä¸ºå® ç‰©çš„ç¼–å·ä¸æ˜¯ObjID
     VOID        CreateGrowRateOfPet(_PET_DB& rPetDB);
-    // »ñµÃ³èÎï×ÊÖÊ£¬idDataÎª³èÎïµÄ±àºÅ²»ÊÇObjID
+    // è·å¾—å® ç‰©èµ„è´¨ï¼ŒidDataä¸ºå® ç‰©çš„ç¼–å·ä¸æ˜¯ObjID
     VOID        CreatePerceptionOfPet(_PET_DB& rPetDB);
-    // ¸¨Öúfunction
+    // è¾…åŠ©function
     VOID        AddPetSkill(_PET_SKILL *paSkillList, INT& rSkillIndex);
 
 };

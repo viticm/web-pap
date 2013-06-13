@@ -9,26 +9,26 @@ struct SPetConfig
         VARIANCEPET_LEVEL_NUM = 8,
     };
 
-    INT         m_VariancePetRate;        //Éú³É±äÒì³è¸ÅÂÊ
-    INT         m_BabyPetRate;            //Éú³É±¦±¦¸ÅÂÊ
+    INT         m_VariancePetRate;        //ç”Ÿæˆå˜å¼‚å® æ¦‚ç‡
+    INT         m_BabyPetRate;            //ç”Ÿæˆå®å®æ¦‚ç‡
 
-    //Ò°Éú³èµÈ¼¶Éú³É¸ÅÂÊ£¨ËÄ¸öÖµ£©
-    INT         m_WilenessPetRate_TakeLevel;    // Ğ¯´øµÈ¼¶¸ÅÂÊ
-    INT         m_WilenessPetRate_Delta1;        // Ğ¯´øµÈ¼¶+,-1¸ÅÂÊ    
-    INT         m_WilenessPetRate_Delta2;        // Ğ¯´øµÈ¼¶+,-2¸ÅÂÊ    
-    INT         m_WilenessPetRate_Delta3;        // Ğ¯´øµÈ¼¶+,-3¸ÅÂÊ    
+    //é‡ç”Ÿå® ç­‰çº§ç”Ÿæˆæ¦‚ç‡ï¼ˆå››ä¸ªå€¼ï¼‰
+    INT         m_WilenessPetRate_TakeLevel;    // æºå¸¦ç­‰çº§æ¦‚ç‡
+    INT         m_WilenessPetRate_Delta1;        // æºå¸¦ç­‰çº§+,-1æ¦‚ç‡    
+    INT         m_WilenessPetRate_Delta2;        // æºå¸¦ç­‰çº§+,-2æ¦‚ç‡    
+    INT         m_WilenessPetRate_Delta3;        // æºå¸¦ç­‰çº§+,-3æ¦‚ç‡    
 
-    //³É³¤ÂÊÉú³É¸ÅÂÊ£¨Îå¸öÖµ£©
+    //æˆé•¿ç‡ç”Ÿæˆæ¦‚ç‡ï¼ˆäº”ä¸ªå€¼ï¼‰
     INT         m_GrowRate0;
     INT         m_GrowRate1;
     INT         m_GrowRate2;
     INT         m_GrowRate3;
     INT         m_GrowRate4;
 
-    // ³èÎï±äÒìµÈ¼¶¼¸ÂÊ(10w)
+    // å® ç‰©å˜å¼‚ç­‰çº§å‡ ç‡(10w)
     INT        m_aRateOfLevelVariancePet[VARIANCEPET_LEVEL_NUM];
 
-    //¸ù¹ÇÏà¹Ø
+    //æ ¹éª¨ç›¸å…³
     struct SGenGu
     {
         INT        m_Begin;
@@ -37,22 +37,22 @@ struct SPetConfig
     };
     SGenGu    m_vGenGu[GENGU_NUM];
 
-    //×ÊÖÊ±ä¶¯·¶Î§£¨Èç¡À5£¥£©
+    //èµ„è´¨å˜åŠ¨èŒƒå›´ï¼ˆå¦‚Â±5ï¼…ï¼‰
     INT         m_IntelligenceRange;
 
-    //ÒÆ¶¯ËÙ¶È
+    //ç§»åŠ¨é€Ÿåº¦
     INT         m_MoveSpeed;
 
-    //¹¥»÷ËÙ¶È
+    //æ”»å‡»é€Ÿåº¦
     INT         m_AttackSpeed;
 
-    // AIÏà¹ØÊı¾İ
+    // AIç›¸å…³æ•°æ®
     INT        m_PetAI0_MagicRate;
     INT        m_PetAI1_MagicRate;
     INT        m_PetAI2_MagicRate;
     INT        m_PetAI3_MagicRate;
 
-    // ³õÊ¼HP¡¢Îï¹¥¡¢Ä§¹¥¡¢Îï·À¡¢Ä§·À¡¢ÃüÖĞ¡¢ÉÁ±Ü¡¢»áĞÄ£¨°Ë¸ö£©
+    // åˆå§‹HPã€ç‰©æ”»ã€é­”æ”»ã€ç‰©é˜²ã€é­”é˜²ã€å‘½ä¸­ã€é—ªé¿ã€ä¼šå¿ƒï¼ˆå…«ä¸ªï¼‰
     INT        m_BaseHP;
     INT        m_BasePhyAttack;
     INT        m_BaseMgcAttack;
@@ -62,8 +62,8 @@ struct SPetConfig
     INT        m_BaseMiss;
     INT        m_BaseCritical;
 
-    // ÌåÖÊ¶ÔHP£¬Á¦Á¿¶ÔÎï¹¥£¬ÁéÆø¶ÔÄ§¹¥£¬ÌåÖÊ¶ÔÎï·À£¬¶¨Á¦¶ÔÄ§·À£¬Ãô½İ¶ÔÉÁ±Ü£¬Ãô½İ¶Ô»á
-    // ĞÄ,Ãô½İ¶ÔÃüÖĞµÄÓ°ÏìÏµÊı
+    // ä½“è´¨å¯¹HPï¼ŒåŠ›é‡å¯¹ç‰©æ”»ï¼Œçµæ°”å¯¹é­”æ”»ï¼Œä½“è´¨å¯¹ç‰©é˜²ï¼Œå®šåŠ›å¯¹é­”é˜²ï¼Œæ•æ·å¯¹é—ªé¿ï¼Œæ•æ·å¯¹ä¼š
+    // å¿ƒ,æ•æ·å¯¹å‘½ä¸­çš„å½±å“ç³»æ•°
     FLOAT        m_Con_HP_Pram;
     FLOAT        m_Str_PhyAttack_Pram;
     FLOAT        m_Spr_MgcAttack_Pram;
@@ -73,7 +73,7 @@ struct SPetConfig
     FLOAT        m_Dex_Critical_Pram;
     FLOAT        m_Dex_Hit_Pram;
 
-    // µÈ¼¶¶ÔHP¡¢Îï¹¥¡¢Ä§¹¥¡¢Îï·À¡¢Ä§·À¡¢ÉÁ±Ü¡¢»áĞÄ¡¢ÃüÖĞµÄÓ°ÏìÏµÊı
+    // ç­‰çº§å¯¹HPã€ç‰©æ”»ã€é­”æ”»ã€ç‰©é˜²ã€é­”é˜²ã€é—ªé¿ã€ä¼šå¿ƒã€å‘½ä¸­çš„å½±å“ç³»æ•°
     FLOAT        m_Level_HP_Pram;
     FLOAT        m_Level_PhyAttack_Pram;
     FLOAT        m_Level_MgcAttack_Pram;

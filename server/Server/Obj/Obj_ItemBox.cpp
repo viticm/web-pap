@@ -83,7 +83,7 @@ BOOL    Obj_ItemBox::HeartBeat(UINT uTime/* =0  */)
 
     if( m_RecycleTimer.CountingTimer(uTime) )
     {
-        //回收操作
+        //鍥炴敹鎿嶄綔
         //
         Recycle();
         return TRUE;
@@ -103,13 +103,13 @@ BOOL    Obj_ItemBox::HeartBeat(UINT uTime/* =0  */)
             {
                 if(getScene() && getScene()->GetGrowPointManager()->CallScriptRecycleFunc(pGET->m_ScriptID,GetOwner(),GetID(),getScene()->SceneID()))
                 {    
-                    //可以Recycle
+                    //鍙互Recycle
                     Recycle();
                 }
             }
             _MY_CATCH
             {
-                //可以Recycle
+                //鍙互Recycle
                 SaveCodeLog( ) ;
                 Recycle();
             }
@@ -245,7 +245,7 @@ __LEAVE_FUNCTION
 VOID    Obj_ItemBox::Recycle()
 {
     __ENTER_FUNCTION
-    //回收日志
+    //鍥炴敹鏃ュ織
     ITEM_LOG_PARAM    ItemLogParam;
     ItemLogParam.OpType    =    ITEM_BOX_RECYCLE;
     ItemLogParam.SceneID    =    getScene()->SceneID();
@@ -263,7 +263,7 @@ VOID    Obj_ItemBox::Recycle()
     }
 
 
-    if(m_ItemBoxType != ITYPE_DROPBOX) //非DropBox 都应该由生长点管理器释放
+    if(m_ItemBoxType != ITYPE_DROPBOX) //闈濪ropBox 閮藉簲璇ョ敱鐢熼暱鐐圭鐞嗗櫒閲婃斁
     {
             BOOL bRet =
                 getScene()->GetGrowPointManager()->DecGrowPointTypeCount(m_ItemBoxType,getWorldPos()->m_fX,getWorldPos()->m_fZ);

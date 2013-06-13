@@ -19,7 +19,7 @@ UINT    CLAskCharListHandler::Execute(CLAskCharList* pPacket, Player* pPlayer )
     
     TID CurrentThreadID = MyGetCurrentThreadID();
     
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     if(CurrentThreadID == g_pProcessPlayerManager->m_ThreadID) 
     {    
         LoginPlayer* pLoginPlayer = static_cast<LoginPlayer*>(pPlayer);
@@ -32,7 +32,7 @@ UINT    CLAskCharListHandler::Execute(CLAskCharList* pPacket, Player* pPlayer )
             return PACKET_EXE_ERROR;
         }
 
-        //¼ì²éGUID ÊÇ·ñÕýÈ·
+        //æ£€æŸ¥GUID æ˜¯å¦æ­£ç¡®
         if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount())!= 0)
         {
             Log::SaveLog(LOGIN_LOGFILE, "ERROR: CLAskCharListHandler Get Guid Errors,acc = %s,Packet acc = %s",
@@ -56,16 +56,16 @@ UINT    CLAskCharListHandler::Execute(CLAskCharList* pPacket, Player* pPlayer )
         }
 
         pPacket->SetPlayerID(pLoginPlayer->PlayerID());
-        //½«Íæ¼Ò²Ù×÷¼ÓÈëDB ¶ÓÁÐ
-        //²¢ÇÒÉèÖÃ×îºó²Ù×÷Ê±¼ä
+        //å°†çŽ©å®¶æ“ä½œåŠ å…¥DB é˜Ÿåˆ—
+        //å¹¶ä¸”è®¾ç½®æœ€åŽæ“ä½œæ—¶é—´
 
         if(g_pDBThreadManager->SendPacket(pPacket,pLoginPlayer->PlayerID()))
-        {//¼ÓÈë³É¹¦£¬½«ÏûÏ¢·¢ËÍµ½DB´¦Àí
+        {//åŠ å…¥æˆåŠŸï¼Œå°†æ¶ˆæ¯å‘é€åˆ°DBå¤„ç†
             pLoginPlayer->m_LastDBOpTime = uTime;
             return PACKET_EXE_NOTREMOVE;    
         }
         else
-        {//DB Ñ¹Á¦¹ý´ó£¬ÈÃÓÃ»§ÖØÐÂ³¢ÊÔ
+        {//DB åŽ‹åŠ›è¿‡å¤§ï¼Œè®©ç”¨æˆ·é‡æ–°å°è¯•
             LCRetCharList Msg;
             Msg.SetResult(ASKCHARLIST_SERVER_BUSY);
             pLoginPlayer->SendPacket(&Msg);
@@ -83,8 +83,8 @@ UINT    CLAskCharListHandler::Execute(CLAskCharList* pPacket, Player* pPlayer )
         Assert(pLoginPlayer);
         LCRetCharList* pMsg = (LCRetCharList*)g_pPacketFactoryManager->CreatePacket(PACKET_LC_RETCHARLIST)    ;
         if(!pMsg)
-        {   //²»ÄÜ½øÐÐ²Ù×÷
-            AssertEx(FALSE,"´´½¨ LCRetCharList ÏûÏ¢Ê§°Ü");
+        {   //ä¸èƒ½è¿›è¡Œæ“ä½œ
+            AssertEx(FALSE,"åˆ›å»º LCRetCharList æ¶ˆæ¯å¤±è´¥");
 
         }
         if(pLoginPlayer->GetDBOperating() == TRUE||!g_pDBThreadManager->GetInterface(CurrentThreadID)->IsConnected())
@@ -93,15 +93,15 @@ UINT    CLAskCharListHandler::Execute(CLAskCharList* pPacket, Player* pPlayer )
             pMsg->SetResult(ASKCHARLIST_SERVER_BUSY);
             pMsg->SetCharNumber(0);
             g_pProcessManager->SendPacket(pMsg,PlayerID);
-            Log::SaveLog(LOGIN_LOGFILE, "CLAskCharListHandler::Execute()....Êý¾Ý¿â²Ù×÷³åÍ» ,Acc = %s",
+            Log::SaveLog(LOGIN_LOGFILE, "CLAskCharListHandler::Execute()....æ•°æ®åº“æ“ä½œå†²çª ,Acc = %s",
                 pLoginPlayer->GetAccount()) ;
             return PACKET_EXE_CONTINUE;
         }
 
-        //¼ì²éGUID ÊÇ·ñÕýÈ·
+        //æ£€æŸ¥GUID æ˜¯å¦æ­£ç¡®
         if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount())!= 0)
         {
-            //Ó¦¸ÃÊÇÒ»´Î´íÎó²Ù×÷
+            //åº”è¯¥æ˜¯ä¸€æ¬¡é”™è¯¯æ“ä½œ
             Log::SaveLog(LOGIN_LOGFILE, "ERROR: CLAskCharListHandler DBOperation Errors,acc = %s,Packet acc = %s",
                 pLoginPlayer->GetAccount(),pPacket->GetAccount()) ;
             return PACKET_EXE_CONTINUE;
@@ -129,13 +129,13 @@ UINT    CLAskCharListHandler::Execute(CLAskCharList* pPacket, Player* pPlayer )
             pLoginPlayer->SetDBOperating(FALSE);
             return PACKET_EXE_CONTINUE;
         }
-        //È¡½á¹û
+        //å–ç»“æžœ
         CharListObject.ParseResult(pMsg->GetCharBaseInfo()); 
 
-        //ÅÐ¶ÏÊÇ·ñÃ»ÓÐ½øÈë¹ý³¡¾°
+        //åˆ¤æ–­æ˜¯å¦æ²¡æœ‰è¿›å…¥è¿‡åœºæ™¯
         INT iCharNumber = CharListObject.GetCharNumber();
     
-        //°Ñ²ÎÊýÉèÖÃµ½pMsg
+        //æŠŠå‚æ•°è®¾ç½®åˆ°pMsg
         pMsg->SetAccount(pPacket->GetAccount());
         pMsg->SetResult(ASKCHARLIST_SUCCESS);
         pMsg->SetCharNumber(iCharNumber);

@@ -44,8 +44,8 @@ namespace Packets
         BOOL            getIsNull()    {return m_nsNull;}
     private:
         
-        WORD            m_BankIndex;        //item 的BagIndex
-        BOOL            m_nsNull;        //物品是否为空        TRUE 代表没有Item,FALSE 代表有Item    
+        WORD            m_BankIndex;        //item 鐨凚agIndex
+        BOOL            m_nsNull;        //鐗╁搧鏄惁涓虹┖        TRUE 浠ｈ〃娌℃湁Item,FALSE 浠ｈ〃鏈塈tem    
         _ITEM            m_ITEM;
 
     };

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-Í¨Öª·þÎñÆ÷ÒªÅÌÈëÉÌµê
+é€šçŸ¥æœåŠ¡å™¨è¦ç›˜å…¥å•†åº—
 */
 
 #include "CGPlayerShopBuyShop.h"
@@ -28,10 +28,10 @@ UINT CGPlayerShopBuyShopHandler::Execute( CGPlayerShopBuyShop* pPacket, Player* 
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    _PLAYERSHOP_GUID        nShopID        = pPacket->GetShopID();            //ÉÌµêID
+    _PLAYERSHOP_GUID        nShopID        = pPacket->GetShopID();            //å•†åº—ID
     BYTE                    nSerial        = pPacket->GetSerial();    
 
     PlayerShopManager*    pPlayerShopManager    = pScene->GetPlayerShopManager();
@@ -39,14 +39,14 @@ UINT CGPlayerShopBuyShopHandler::Execute( CGPlayerShopBuyShop* pPacket, Player* 
     Assert(pPlayerShop);
 
     if(nSerial!= pPlayerShop->GetSerial())
-    {//ÐòÁÐºÅ±ä»¯
+    {//åºåˆ—å·å˜åŒ–
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopBuyShopHandler::Name=%s Serial changed"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;        
     }
 
     if(pPlayerShop->GetShopStatus() != STATUS_PLAYER_SHOP_ON_SALE)
-    {//²»ÊÇÅÌ³ö×´Ì¬
+    {//ä¸æ˜¯ç›˜å‡ºçŠ¶æ€
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopBuyShopHandler::Name=%s Does not sale"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
@@ -58,14 +58,14 @@ UINT CGPlayerShopBuyShopHandler::Execute( CGPlayerShopBuyShop* pPacket, Player* 
     memcpy(szOldOwner, pPlayerShop->GetOwnerName(), MAX_CHARACTER_NAME);
 
     if(uSelfMoney < uShopPrice)
-    {//½ðÇ®²»×ã
+    {//é‡‘é’±ä¸è¶³
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopBuyShopHandler::Name=%s Short of money ,shopprice = %d, money = %d"
             ,pHuman->GetName(), uShopPrice, uSelfMoney) ;
         return PACKET_EXE_CONTINUE ;
     }
 
     if(pPlayerShop->GetShopType() == TYPE_PLAYER_SHOP_ITEM)
-    {//ÎïÆ·µê
+    {//ç‰©å“åº—
         if(pHuman->GetShopGuid(0).isNull() == FALSE)
         {
             PlayerShop* pCurShop = pPlayerShopManager->GetPlayerShopByGUID(pHuman->GetShopGuid(0));
@@ -82,7 +82,7 @@ UINT CGPlayerShopBuyShopHandler::Execute( CGPlayerShopBuyShop* pPacket, Player* 
         }
     }
     else if(pPlayerShop->GetShopType() == TYPE_PLAYER_SHOP_PET)
-    {//³èÎïµê
+    {//å® ç‰©åº—
         if(pHuman->GetShopGuid(1).isNull() == FALSE)
         {
             PlayerShop* pCurShop = pPlayerShopManager->GetPlayerShopByGUID(pHuman->GetShopGuid(1));
@@ -104,15 +104,15 @@ UINT CGPlayerShopBuyShopHandler::Execute( CGPlayerShopBuyShop* pPacket, Player* 
     pPlayerShop->SetSaleOutPrice(0);
     pPlayerShop->SetShopStatus(STATUS_PLAYER_SHOP_OPEN);
 
-    //¿ÛÇ®
+    //æ‰£é’±
     pHuman->SetMoney(uSelfMoney-uShopPrice);
 
-    //·¢¿ÉÖ´ÐÐÓÊ¼þ£¬¸øÍæ¼Ò¼ÓÇ®
+    //å‘å¯æ‰§è¡Œé‚®ä»¶ï¼Œç»™çŽ©å®¶åŠ é’±
     pScene->SendScriptMail(szOldOwner, MAIL_UPDATE_ATTR, MAIL_ATTR_MONEY, uShopPrice, pHuman->GetGUID());
 
-    //Í¨ÖªÓÊ¼þ
+    //é€šçŸ¥é‚®ä»¶
     CHAR szMsgContent[MAX_MAIL_CONTEX] = {0};
-    sprintf(szMsgContent, "%s ÅÌÈëÁËÄãµÄµêÆÌ", pHuman->GetName());
+    sprintf(szMsgContent, "%s ç›˜å…¥äº†ä½ çš„åº—é“º", pHuman->GetName());
     pScene->SendNormalMail(pHuman, szOldOwner, szMsgContent);
 
     MONEY_LOG_PARAM    MoneyLogParam;
@@ -127,22 +127,22 @@ UINT CGPlayerShopBuyShopHandler::Execute( CGPlayerShopBuyShop* pPacket, Player* 
 
     
 
-    //ÉÌµêÀàÐÍ
+    //å•†åº—ç±»åž‹
     if(pPlayerShop->GetShopType() == TYPE_PLAYER_SHOP_ITEM)
-    {//ÎïÆ·µê
+    {//ç‰©å“åº—
         pHuman->SetShopGuid(0,pPlayerShop->GetShopGUID());
     }
     else if(pPlayerShop->GetShopType() == TYPE_PLAYER_SHOP_PET)
-    {//³èÎïµê
+    {//å® ç‰©åº—
         pHuman->SetShopGuid(1,pPlayerShop->GetShopGUID());
     }
 
-    //Í¨Öª¿Í»§¶Ë¹ºÂòÉÌµê³É¹¦
+    //é€šçŸ¥å®¢æˆ·ç«¯è´­ä¹°å•†åº—æˆåŠŸ
     GCPlayerShopError Msg;
     Msg.SetID(PLAYERSHOP_MSG::ERR_SHOP_SUCCESS_SELL);
     pHuman->GetPlayer()->SendPacket(&Msg);
 
-    //±êÖ¾´ËµêÒÑ¾­ÊÛ³ö
+    //æ ‡å¿—æ­¤åº—å·²ç»å”®å‡º
     g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopSaleOutHandler::ObjName=%s"
         ,pHuman->GetName());
 

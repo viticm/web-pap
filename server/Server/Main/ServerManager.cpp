@@ -292,7 +292,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //Êı¾İ¶ÁÈ¡
+    //æ•°æ®è¯»å–
     do
     {
         if( !m_ServerPlayer.IsValid() )
@@ -309,7 +309,7 @@ __ENTER_FUNCTION
             {
                 _MY_TRY
                 {
-                    //´¦Àí·şÎñÆ÷·¢ËÍ¹ıÀ´µÄÏûÏ¢
+                    //å¤„ç†æœåŠ¡å™¨å‘é€è¿‡æ¥çš„æ¶ˆæ¯
                     ret = m_ServerPlayer.ProcessInput( ) ;
                     if( !ret )
                     {
@@ -345,7 +345,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //Êı¾İ·¢ËÍ
+    //æ•°æ®å‘é€
     do
     {
         if( !m_ServerPlayer.IsValid() )
@@ -362,7 +362,7 @@ __ENTER_FUNCTION
             {
                 _MY_TRY
                 {
-                    //·¢ËÍÊı¾İ
+                    //å‘é€æ•°æ®
                     ret = m_ServerPlayer.ProcessOutput( ) ;
                     if( !ret )
                     {
@@ -435,11 +435,11 @@ __ENTER_FUNCTION
             break ;
 
         if( m_ServerPlayer.GetSocket()->isSockError() )
-        {//Á¬½Ó³öÏÖ´íÎó
+        {//è¿æ¥å‡ºç°é”™è¯¯
             RemoveServer( ) ;
         }
         else
-        {//Á¬½ÓÕı³£
+        {//è¿æ¥æ­£å¸¸
             _MY_TRY
             {
                 ret = m_ServerPlayer.ProcessCommand( FALSE ) ;
@@ -472,7 +472,7 @@ __ENTER_FUNCTION
     Assert( fd!=INVALID_SOCKET ) ;
 
     if( m_nFDSize>=FD_SETSIZE )
-    {//ÒÑ¾­³¬³öÄÜ¹»¼ì²âµÄÍøÂç¾ä±ú×î´óÊı£»
+    {//å·²ç»è¶…å‡ºèƒ½å¤Ÿæ£€æµ‹çš„ç½‘ç»œå¥æŸ„æœ€å¤§æ•°ï¼›
         Assert(FALSE) ;
         return FALSE ;
     }
@@ -539,7 +539,7 @@ __ENTER_FUNCTION
     }
     else
     {
-        //Á¬½ÓTestServerIDµÄÄÚÍø¶Ë¿Ú
+        //è¿æ¥TestServerIDçš„å†…ç½‘ç«¯å£
         ret = ConnectWorldServer( ) ;
         if( ret==FALSE )
         {
@@ -658,7 +658,7 @@ __ENTER_FUNCTION
     Lock( ) ;
 
     if( m_PacketQue[m_Tail].m_pPacket )
-    {//»º³åÇøÂú
+    {//ç¼“å†²åŒºæ»¡
         BOOL ret = ResizeCache( ) ;
         Assert( ret ) ;
     }
@@ -687,7 +687,7 @@ __ENTER_FUNCTION
     Lock( ) ;
 
     if( m_PacketQue[m_Head].m_pPacket==NULL )
-    {//»º³åÇøÖĞÃ»ÓĞÏûÏ¢
+    {//ç¼“å†²åŒºä¸­æ²¡æœ‰æ¶ˆæ¯
         Unlock( ) ;
         return FALSE ;
     }

@@ -15,7 +15,7 @@ namespace Packets
         GWMail( ){} ;
         virtual ~GWMail( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -27,12 +27,12 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         VOID        SetMail( MAIL* pMail ){ m_Mail = *pMail ; }
         MAIL*        GetMail( ){ return &m_Mail ; }
 
     private:
-        //数据
+        //鏁版嵁
         MAIL        m_Mail ;
         
 

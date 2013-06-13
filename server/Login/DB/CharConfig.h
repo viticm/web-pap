@@ -4,10 +4,10 @@
 
 struct FULLUSERDATA;
 
-struct START_SCENE //³öÉúµØµã
+struct START_SCENE //å‡ºç”Ÿåœ°ç‚¹
 {
-    INT        nSceneNum ; //³¡¾°ºÅÂë
-    FLOAT    fStartX ; //³öÉúµØµã
+    INT        nSceneNum ; //åœºæ™¯å·ç 
+    FLOAT    fStartX ; //å‡ºç”Ÿåœ°ç‚¹
     FLOAT    fStartZ ;
 };
 
@@ -28,7 +28,7 @@ struct ATTR_DATA
 
 struct BASE_VALUE_TBL
 {
-    //ÊôĞÔÓ°ÏìÒòËØÊıÁ¿*ÃÅÅÉÊıÁ¿
+    //å±æ€§å½±å“å› ç´ æ•°é‡*é—¨æ´¾æ•°é‡
     INT        m_Table[AINFOTYPE_NUMBER][MATTRIBUTE_NUMBER] ;
 
     BASE_VALUE_TBL( )
@@ -48,7 +48,7 @@ public:
     CharConfig();
     ~CharConfig();
     BOOL        Init();
-    BOOL        InitCharAttr(FULLUSERDATA* pData);    //ÔÚLogin ÉÏ³õÊ¼»¯½ÇÉ«»ù±¾ĞÅÏ¢
+    BOOL        InitCharAttr(FULLUSERDATA* pData);    //åœ¨Login ä¸Šåˆå§‹åŒ–è§’è‰²åŸºæœ¬ä¿¡æ¯
 
 public:
 
@@ -60,14 +60,14 @@ public:
 
     VOID InitBaseValueTable();
 
-    FULLUSERDATA*    m_pUserData; //½ÇÉ«Êı¾İ
+    FULLUSERDATA*    m_pUserData; //è§’è‰²æ•°æ®
 
-    START_SCENE*    m_StartScene; //³¡¾°¡¢ÕóÓªÊı¾İ
+    START_SCENE*    m_StartScene; //åœºæ™¯ã€é˜µè¥æ•°æ®
 
-    SKILL_DATA*        m_SkillData; //¼¼ÄÜÊı¾İ
+    SKILL_DATA*        m_SkillData; //æŠ€èƒ½æ•°æ®
     INT                m_SkillData_Count;
 
-    ATTR_DATA        m_Level1Attr[MATTRIBUTE_NUMBER]; //µÈ¼¶1µÄÊôĞÔÊı¾İ
+    ATTR_DATA        m_Level1Attr[MATTRIBUTE_NUMBER]; //ç­‰çº§1çš„å±æ€§æ•°æ®
 
     BASE_VALUE_TBL    m_BaseValueTbl;
 };

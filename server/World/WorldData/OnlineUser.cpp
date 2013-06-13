@@ -97,7 +97,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-//�˺���������Ҫ��ܸߣ�Ŀǰֻ����ʱʹ��
+//此函数对性能要求很高，目前只是临时使用
 USER* OnlineUser::FindUser( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -118,7 +118,7 @@ __LEAVE_FUNCTION
 
     return NULL;
 }
-//�˺���������Ҫ��ܸߣ�Ŀǰֻ����ʱʹ��
+//此函数对性能要求很高，目前只是临时使用
 USER* OnlineUser::FindUser( const CHAR* szName )
 {
 __ENTER_FUNCTION
@@ -190,7 +190,7 @@ __ENTER_FUNCTION
 
     FILE* f = fopen( szFileName, "rb" );
     if( f==NULL )
-    {//û�������ļ�������һ����ɫ�ļ�
+    {//没有数据文件，创建一个角色文件
         InitUserData( pFullUserData, guid );        
 
         return pUser;
@@ -359,7 +359,7 @@ __ENTER_FUNCTION
     Ini f("./Config/DefaultChar.ini");
     char szTmp[32];
 
-    //��ʼ����Ӫ����
+    //初始化阵营数据
     for( INT i=0; i < MAX_CAMP_NUM; i ++)
     {
         char szTemp0[32];
@@ -371,10 +371,10 @@ __ENTER_FUNCTION
         m_StartScene[i].fStartZ = (FLOAT)(atof(szTmp));
     }
 
-    //���һ����Ӫ
+    //随机一个阵营
     pData->m_Human.m_CampData.m_nCampID = rand() % MAX_CAMP_NUM;
 
-    //�����������Ӫ����ʼ�������ص��λ��
+    //根据随机的阵营，初始化出生地点和位置
     pData->m_Human.m_StartScene = m_StartScene[pData->m_Human.m_CampData.m_nCampID].nSceneNum;
     pData->m_Human.m_Position.m_fX = m_StartScene[pData->m_Human.m_CampData.m_nCampID].fStartX;
     pData->m_Human.m_Position.m_fZ = m_StartScene[pData->m_Human.m_CampData.m_nCampID].fStartZ;
@@ -390,12 +390,12 @@ __ENTER_FUNCTION
     pData->m_Human.m_HairColor = 0;
     pData->m_Human.m_PortraitID = pData->m_Human.m_Sex ? 7 : 0;
 
-    pData->m_Human.m_RMBMoney = 0;//                = f.ReadInt( "baseinfo", "vigor" );                //����
-    pData->m_Human.m_BankRMB  = 0;//        = f.ReadInt( "baseinfo", "max_vigor" );            //��������
-    //pData->m_Human.m_VigorRegeneRate    = f.ReadInt( "baseinfo", "vigor_regenerate" );    //�����ָ��ٶ�
-    //pData->m_Human.m_Energy                = f.ReadInt( "baseinfo", "energy" );            //����
-    //pData->m_Human.m_MaxEnergy            = f.ReadInt( "baseinfo", "max_energy" );        //��������
-    //pData->m_Human.m_EnergyRegeneRate    = f.ReadInt( "baseinfo", "energy_regenerate" );    //�����ָ��ٶ�
+    pData->m_Human.m_RMBMoney = 0;//                = f.ReadInt( "baseinfo", "vigor" );                //活力
+    pData->m_Human.m_BankRMB  = 0;//        = f.ReadInt( "baseinfo", "max_vigor" );            //活力上限
+    //pData->m_Human.m_VigorRegeneRate    = f.ReadInt( "baseinfo", "vigor_regenerate" );    //活力恢复速度
+    //pData->m_Human.m_Energy                = f.ReadInt( "baseinfo", "energy" );            //精力
+    //pData->m_Human.m_MaxEnergy            = f.ReadInt( "baseinfo", "max_energy" );        //精力上限
+    //pData->m_Human.m_EnergyRegeneRate    = f.ReadInt( "baseinfo", "energy_regenerate" );    //精力恢复速度
 
     pData->m_Human.m_Exp = f.ReadInt( "baseinfo", "exp" );
 
@@ -444,7 +444,7 @@ __ENTER_FUNCTION
     //    pData->m_XinFa.m_aXinFa[i].m_nLevel = f.ReadInt( "xinfa", szKeyLevelTime );
     //}
 
-    //��ʼ����������
+    //初始化技能数据
     INT iTemp = 0;
     for( INT i = 0; i < g_SkillData_Count; i ++ )
     {
@@ -457,7 +457,7 @@ __ENTER_FUNCTION
     }
     pData->m_Skill.m_Count = pData->m_XinFa.m_Count = iTemp;
 
-    strncpy( pData->m_Relation.m_szMood, "��������������", MOOD_DATA_SIZE-1 );
+    strncpy( pData->m_Relation.m_szMood, "今天天气不错！", MOOD_DATA_SIZE-1 );
     
     INT iAbliCount = f.ReadInt( "ability", "count" );
     for( INT i=0; i<iAbliCount; i++ )
@@ -665,7 +665,7 @@ __ENTER_FUNCTION
     USER* pUser;
 
     if ( bPreciseFlag )
-    { // ���߾�ȷ����
+    { // 在线精确查找
         pUser = FindUser( szName );
         if ( pUser != NULL )
         {
@@ -702,7 +702,7 @@ __ENTER_FUNCTION
         }
 
         if ( i >= m_MaxWorldUsers )
-        { // ����
+        { // 爆了
             pPlayerList->SetFingerFlag( FALSE );
         }
         else
@@ -768,7 +768,7 @@ __ENTER_FUNCTION
     }
 
     if ( i >= m_MaxWorldUsers )
-    { // ����
+    { // 爆了
         pPlayerList->SetFingerFlag( FALSE );
     }
     else
@@ -888,7 +888,7 @@ __ENTER_FUNCTION
     g_pSceneInfo->DecScenePlayerCount( OldSceneID ) ;
     g_pSceneInfo->IncScenePlayerCount( NewSceneID ) ;
 
-    //���û�����ĳ������,��Ҫ֪ͨ
+    //此用户属于某个队伍,需要通知
     if( pUser->GetTeamID() != INVALID_ID )
     {
         Team* pTeam = g_pTeamList->GetTeam( pUser->GetTeamID() );
@@ -900,7 +900,7 @@ __ENTER_FUNCTION
             Msg.SetTeamID( pUser->GetTeamID() );
             Msg.SetSceneID( INVALID_ID );
 
-            //֪ͨ�������ڵ����
+            //通知所有组内的玩家
             for( INT i=0; i<pTeam->MemberCount(); i++ )
             {
                 TEAMMEMBER* pMember = pTeam->Member( i );
@@ -916,7 +916,7 @@ __ENTER_FUNCTION
                 USER* pTMUser = FindUser( pMember->m_Member );
                 if( pTMUser==NULL )
                 {
-                    AssertEx(FALSE, "���߶�Ա��");
+                    AssertEx(FALSE, "离线队员。");
                     continue;
                 }
 
@@ -942,7 +942,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ��Ҷ��ߴ����ӿ�
+// 玩家断线处理接口
 VOID OnlineUser::OnUserOffLine( USER* pUser )
 {
 __ENTER_FUNCTION
@@ -950,7 +950,7 @@ __ENTER_FUNCTION
     Assert( pUser );
 
     if( pUser->GetTeamID() != INVALID_ID )
-    { // ���������ĳ�����飬��Ҫ֪ͨ
+    { // 此玩家属于某个队伍，需要通知
 
         Team* pTeam = g_pTeamList->GetTeam( pUser->GetTeamID() );
         if( pTeam )
@@ -959,7 +959,7 @@ __ENTER_FUNCTION
             USER* pNewLeader = NULL;
 
             if( pTeam->Leader()->m_Member == pUser->GetGUID() )
-            { // ����Ƕӳ�����˳����һ�������ߵ����
+            { // 如果是队长，则顺序找一个不断线的玩家
                 bLeaderFlag = TRUE;
             }
 
@@ -968,7 +968,7 @@ __ENTER_FUNCTION
             Msg.SetGUID( pUser->GetGUID() );
             Msg.SetTeamID( pUser->GetTeamID() );
 
-            //֪ͨ�������ڵ����
+            //通知所有组内的玩家
             for( INT i=0; i<pTeam->MemberCount(); i++ )
             {
                 TEAMMEMBER* pMember = pTeam->Member( i );
@@ -984,7 +984,7 @@ __ENTER_FUNCTION
                 USER* pTMUser = FindUser( pMember->m_Member );
                 if( pTMUser==NULL )
                 {
-                    AssertEx(FALSE, "���߶�Ա��");
+                    AssertEx(FALSE, "离线队员。");
                     continue;
                 }
 
@@ -994,7 +994,7 @@ __ENTER_FUNCTION
                 }
 
                 if( bLeaderFlag && pNewLeader == NULL )
-                { // �¶ӳ�λ��
+                { // 新队长位置
                     pNewLeader = pTMUser;
                 }
 
@@ -1012,7 +1012,7 @@ __ENTER_FUNCTION
             }//end for
 
             if( bLeaderFlag && pNewLeader != NULL )
-            { // �����¶ӳ�
+            { // 提升新队长
                 AppointTeamLeader(pUser, pNewLeader);
             }
         }
@@ -1021,7 +1021,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ����˳������ӿ�
+// 玩家退出处理接口
 VOID OnlineUser::OnUserRemove( USER* pUser )
 {
 __ENTER_FUNCTION
@@ -1032,30 +1032,30 @@ __ENTER_FUNCTION
         return ;
     }
 
-    //���������仯����
+    //场景人数变化设置
     g_pSceneInfo->DecScenePlayerCount( pUser->GetSceneID() );
     m_UserCount -- ;
 
-    //���������ĳ�����飬��Ҫ֪ͨ
+    //此玩家属于某个队伍，需要通知
     if( pUser->GetTeamID() != INVALID_ID )
     { 
         Team* pTeam = g_pTeamList->GetTeam( pUser->GetTeamID() );
         if( pTeam )
         {
-            // �뿪����
+            // 离开队伍
             UserLeaveTeam( pUser );
 
             INT nFollowedMemberCount = pTeam->GetFollowedmemberCount();
             if( nFollowedMemberCount > 0 )
-            { // ���ܴ�����Ӹ���״̬
+            { // 可能处于组队跟随状态
                 GUID_t* pMembers = pTeam->GetFollowedMembers();
                 USER* pMember;
                 ServerPlayer* pServerPlayer;
 
                 if( pTeam->Leader()->m_Member == pUser->GetGUID() )
-                { // �ӳ�
+                { // 队长
                     for( INT i=1; i<nFollowedMemberCount; ++i )
-                    { // �ӳ������˾Ͳ�����
+                    { // 队长掉线了就不发了
                         pMember = FindUser( pMembers[i] );
                         if( pMember!=NULL && pMember->UserStatus()==US_NORMAL )
                         {
@@ -1118,7 +1118,7 @@ __ENTER_FUNCTION
 
 
     //////////////////////////////////////////////////////////////////////////
-    // �����Ѻöȴ���һ��ֵ�����������ʾ
+    // 处理友好度大于一定值的玩家下线提示
     //////////////////////////////////////////////////////////////////////////
     pUser->InformOfflineMsg();
 
@@ -1131,10 +1131,10 @@ __ENTER_FUNCTION
 
     _HUMAN_DB_LOAD* pDBHuman = &(pUser->GetFullUserData()->m_Human);
 
-    //�����û���ɫ����
+    //设置用户角色名称
     pUser->SetName( pDBHuman->m_Name );
 
-    //���û����ڵĳ����ż�¼���û�������
+    //将用户所在的场景号记录到用户数据里
     pUser->SetSceneID( pDBHuman->m_StartScene );
 
     pUser->SetMenpai( pDBHuman->m_MenPai );
@@ -1147,7 +1147,7 @@ __ENTER_FUNCTION
     pUser->SetTitle( pDBHuman->m_Title );
     pUser->SetUserCampData( &pDBHuman->m_CampData );
 
-    //���е�½����Ϸ���˶��ᱻ���ӽ�ȫ�û���Ϣ�⣬���ڲ�ѯ
+    //所有登陆过游戏的人都会被添加进全用户信息库，用于查询
     g_pAllUser->AddUser( pUser->GetUserSimpleData() ) ;
 
     Register( pUser );
@@ -1159,7 +1159,7 @@ __ENTER_FUNCTION
 
     /////////////////////////////////////////////////////////////////////////////////
     if( pDBHuman->m_GuildID != INVALID_ID )
-    { // �ж�һ������Ƿ�����һ�����
+    { // 判断一下玩家是否属于一个帮会
         Guild* pGuild = g_pGuildManager->GetGuild( pDBHuman->m_GuildID );
 
         if( pGuild == NULL )
@@ -1171,7 +1171,7 @@ __ENTER_FUNCTION
             const GUILDUSER* pGuildUser = pGuild->GetGuildUser( pUser->GetGUID() );
 
             if( pGuildUser == NULL )
-            { // ����ҵİ�� ID ����Ч
+            { // 该玩家的帮会 ID 号无效
                 pDBHuman->m_GuildID = INVALID_ID;
             }
             else
@@ -1188,27 +1188,27 @@ __ENTER_FUNCTION
     {
         Guild* pGuild = g_pGuildManager->GetGuild( guildID );
 
-        Assert( pGuild ); // �������Ӧ���Ѿ����������ˣ���Ӧ�ó���
+        Assert( pGuild ); // 这种情况应该已经被处理过了，不应该出现
 
         pGuild->OnUserLogin( pUser->GetGUID() );
     }
 
     //////////////////////////////////////////////////////////////////////////
-    // �Ѻöȴ���һ��ֵ����Ҵ洢�����������ܺ�����Ϣ֪ͨ
+    // 友好度大于一定值的玩家存储下来，给亲密好友信息通知
     //////////////////////////////////////////////////////////////////////////
     _RELATION_DB_LOAD* pRelation = &(pUser->GetFullUserData()->m_Relation);
     GUID_t RelationGUID;
 
-    // ����п����Ƕ������ϣ�����������Ҫ���һ�£�����һЩ���Ӳ���ִ�������⣬�ر��� IDTable
+    // 玩家有可能是断线重上，所以这里需要清楚一下，否则一些增加操作执行有问题，特别是 IDTable
     pUser->CleanUpRelationData();
 
     pUser->SetSettings( pUser->GetFullUserData()->m_Setting.m_aSetting[SETTING_TYPE_GAME].m_SettingData & 0xffff );
 
-    // OnlineUser ��������鸳ֵ���Ժ�ĳɴ����ݿ��ж�ȡ
+    // OnlineUser 的玩家心情赋值，以后改成从数据库中读取
     pUser->SetMood( pRelation->m_szMood );
 
     for( INT i = RELATION_FRIEND_OFFSET; i < MAX_RELATION_SIZE; ++i )
-    { // �����������
+    { // 将黑名单填好
         RelationGUID = pRelation->m_aRelation[i].m_Member.m_MemberGUID;
         if( RelationGUID != INVALID_ID )
         {
@@ -1231,7 +1231,7 @@ __LEAVE_FUNCTION
 }
 
 
-// ����뿪����ӿ�
+// 玩家离开队伍接口
 BOOL OnlineUser::UserLeaveTeam( USER* pUser )
 {
 __ENTER_FUNCTION
@@ -1248,12 +1248,12 @@ __ENTER_FUNCTION
 
     GUID_t LeaderGuid = pTeam->Leader()->m_Member;
 
-    //������������
+    //将玩家脱离队伍
     TEAMMEMBER Member;
     Member.m_Member = guid;
     pTeam->DelMember( &Member );
 
-    //������Ҷ�������
+    //设置玩家队伍数据
     pUser->SetTeamID( INVALID_ID );
 
     ServerPlayer* pServerPlayer;
@@ -1261,7 +1261,7 @@ __ENTER_FUNCTION
     pServerPlayer = g_pServerManager->GetServerPlayer( pUser->GetServerID() );
 
     if( pTeam->MemberCount()==0 )
-    {//��ǰ�����е��˶��뿪������
+    {//当前队伍中的人都离开队伍了
         WGTeamResult Msg;
         Msg.SetPlayerID( pUser->GetPlayerID() );
         Msg.SetReturn( TEAM_RESULT_TEAMDISMISS );
@@ -1269,7 +1269,7 @@ __ENTER_FUNCTION
 
         pServerPlayer->SendPacket( &Msg );
 
-        //���������Ϣ
+        //清除队伍信息
         g_pTeamList->DestoryTeam( tid );
 
         return TRUE;
@@ -1277,24 +1277,24 @@ __ENTER_FUNCTION
 
     WGTeamResult Msg;
     if( LeaderGuid == guid )
-    {//�뿪�����Ƕӳ�
+    {//离开的人是队长
         Msg.SetReturn( TEAM_RESULT_LEADERLEAVETEAM );
-        Msg.SetGUID( guid );                            //�뿪�������
-        Msg.SetGUIDEx( pTeam->Leader()->m_Member );    //�¶ӳ�
+        Msg.SetGUID( guid );                            //离开队伍的人
+        Msg.SetGUIDEx( pTeam->Leader()->m_Member );    //新队长
         Msg.SetTeamID( tid );
     }
     else
-    {//�뿪��������ͨ��Ա
+    {//离开的人是普通成员
         Msg.SetReturn( TEAM_RESULT_MEMBERLEAVETEAM );
-        Msg.SetGUID( guid );                            //�뿪�������
+        Msg.SetGUID( guid );                            //离开队伍的人
         Msg.SetTeamID( tid );
     }
 
     Msg.SetPlayerID( pUser->GetPlayerID() );
 
-    pServerPlayer->SendPacket( &Msg ); // ֪ͨ�Ѿ��뿪��������
+    pServerPlayer->SendPacket( &Msg ); // 通知已经离开队伍的玩家
 
-    //֪ͨ�������ڵ����
+    //通知所有组内的玩家
     for( INT i=0; i<pTeam->MemberCount(); i++ )
     {
         TEAMMEMBER* pMember = pTeam->Member( i );
@@ -1306,7 +1306,7 @@ __ENTER_FUNCTION
 
         USER* pUser = g_pOnlineUser->FindUser( pMember->m_Member );
         if( pUser==NULL )
-        {//�����Ա����,���û������ǿ�
+        {//如果队员离线,则用户数据是空
             continue;
         }
 
@@ -1330,7 +1330,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �����¶ӳ�
+// 提升新队长
 BOOL OnlineUser::AppointTeamLeader( USER* pOldLeader, USER* pNewLeader )
 {
 __ENTER_FUNCTION
@@ -1345,7 +1345,7 @@ __ENTER_FUNCTION
     Assert( pTeam );
 
     if( pTeam->Leader()->m_Member != pOldLeader->GetGUID() )
-    {//�ɶӳ����Ƕӳ���
+    {//旧队长不是队长了
         if( pServerPlayer!=NULL )
         {
             WGTeamError Msg;
@@ -1367,7 +1367,7 @@ __ENTER_FUNCTION
     Msg.SetGUID( pOldLeader->GetGUID() );
     Msg.SetGUIDEx( pNewLeader->GetGUID() );
 
-    //֪ͨ�������ڵ����
+    //通知所有组内的玩家
     for( INT i=0; i<pTeam->MemberCount(); i++ )
     {
         TEAMMEMBER* pMember = pTeam->Member( i );

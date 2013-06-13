@@ -1,12 +1,12 @@
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ1ÈÕ
-    ´´½¨Ê±¼ä:    9:30
-    ÎÄ¼şÃû³Æ:    ItemBoxManager.h
-    ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Item\ItemBoxManager.h
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ1æ—¥
+    åˆ›å»ºæ—¶é—´:    9:30
+    æ–‡ä»¶åç§°:    ItemBoxManager.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\ItemBoxManager.h
     
-    ÎÄ¼ş¹¦ÄÜ£º ÊµÏÖ¶ÔObj_ItemBoxµÄ¹ÜÀí
-               Ã¿¸ö³¡¾°Ò»¸ö¹ÜÀíÆ÷
-    ĞŞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š å®ç°å¯¹Obj_ItemBoxçš„ç®¡ç†
+               æ¯ä¸ªåœºæ™¯ä¸€ä¸ªç®¡ç†å™¨
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 #ifndef            _ITEMBOX_MANAGER_H_
@@ -17,7 +17,7 @@ class Scene;
 class Obj_ItemBox;
 struct ItemBoxContaner;
 /*
- *    ItemBox ¹ÜÀíÆ÷Àà
+ *    ItemBox ç®¡ç†å™¨ç±»
  */
 class ItemBoxManager
 {
@@ -28,32 +28,32 @@ public:
 public:
 
     VOID                Init();
-    //Çå³ıÊı¾İĞÅÏ¢
+    //æ¸…é™¤æ•°æ®ä¿¡æ¯
     VOID                CleanUp( ) ;
-    //Âß¼­½Ó¿Ú
+    //é€»è¾‘æ¥å£
     virtual BOOL        HeartBeat( UINT uTime=0 ) ;
     
-    //Ìí¼ÓItemBox µ½¹ÜÀíÆ÷
+    //æ·»åŠ ItemBox åˆ°ç®¡ç†å™¨
     BOOL                Add(Obj_ItemBox*    pItemBox);
 
-    //ÒÆ³ıItemBox µ½¹ÜÀíÆ÷
+    //ç§»é™¤ItemBox åˆ°ç®¡ç†å™¨
     BOOL                Remove(ObjID_t ObjID);
 
-    //²úÉúItemBox
+    //äº§ç”ŸItemBox
     Obj_ItemBox*        GenItemBox();
-    //»ØÊÕItemBox
+    //å›æ”¶ItemBox
     VOID                RecycleItemBox(ObjID_t ObjID);
 
-    //ÉèÖÃItemBoxManager ËùÊô³¡¾°
+    //è®¾ç½®ItemBoxManager æ‰€å±åœºæ™¯
     VOID                SetScene( Scene* pScene )
     {Assert( pScene ) ;
     m_pScene = pScene ;} ;
     
-    //»ñµÃItemBox ËùÊô³¡¾°
+    //è·å¾—ItemBox æ‰€å±åœºæ™¯
     Scene*                GetScene(){ return m_pScene ; } ;
 
     /*
-     *    ¸Ä±äµ½Ö¸¶¨´óĞ¡    
+     *    æ”¹å˜åˆ°æŒ‡å®šå¤§å°    
      */
     BOOL                Resize(UINT iSize);
     
@@ -64,13 +64,13 @@ public:
 
 
 
-    //¼ÆËã²¿·Ö·½·¨
+    //è®¡ç®—éƒ¨åˆ†æ–¹æ³•
     /*
-     *    ´Ó¹ÖÎï²úÉúµôÂäµÄÎïÆ·ÈİÆ÷
+     *    ä»æ€ªç‰©äº§ç”Ÿæ‰è½çš„ç‰©å“å®¹å™¨
      *
-     *    UINT    iMonsterLevel            ¹ÖÎï¼¶±ğ
-     *    UINT    iKillerLevel            É±¹Ö½ÇÉ«¼¶±ğ
-     *    INT        iMonsterType            ¹ÖÎïÀàĞÍ
+     *    UINT    iMonsterLevel            æ€ªç‰©çº§åˆ«
+     *    UINT    iKillerLevel            æ€æ€ªè§’è‰²çº§åˆ«
+     *    INT        iMonsterType            æ€ªç‰©ç±»å‹
      *
      */
     ItemBoxContaner            CaculateItemDropFromMonster( UINT iMonsterLevel,
@@ -85,24 +85,24 @@ public:
 
 
     /*
-     *    Éú³¤µãItemBox µÄ´´½¨
+     *    ç”Ÿé•¿ç‚¹ItemBox çš„åˆ›å»º
      */
     Obj_ItemBox*            CreateGrowPointItemBox(INT    IBType);
     
     
 private:
     /*
-     *    Âß¼­Ê±¼ä¼ÆÊı
+     *    é€»è¾‘æ—¶é—´è®¡æ•°
      */
     CMyTimer            m_LogicTimer;
 private:
-    // ItemBox id Êı×é
+    // ItemBox id æ•°ç»„
     ObjID_t*            m_pItemBoxObjID ;
-    // ItemBoxManager ×î´ó¹ÜÀí´óĞ¡
+    // ItemBoxManager æœ€å¤§ç®¡ç†å¤§å°
     UINT                m_TotalSize ;
-    // µ±Ç°¹ÜÀíµÄItemBoxÊıÁ¿
+    // å½“å‰ç®¡ç†çš„ItemBoxæ•°é‡
     UINT                m_Count ;
-    // ³¡¾°Ö¸Õë
+    // åœºæ™¯æŒ‡é’ˆ
     Scene*                m_pScene;
 
 

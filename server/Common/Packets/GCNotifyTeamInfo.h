@@ -13,7 +13,7 @@ namespace Packets
         GCNotifyTeamInfo(){};
         virtual        ~GCNotifyTeamInfo(){};
 
-        //¹«ÓÃ½Ó¿Ú
+        //å…¬ç”¨æ¥å£
         virtual BOOL        Read( SocketInputStream& iStream );
         virtual BOOL        Write( SocketOutputStream& oStream )const;
         virtual UINT        Execute( Player* pPlayer );
@@ -39,11 +39,11 @@ namespace Packets
         //UCHAR                GetTeamFollowFlag( ) { return m_uTeamFollowFlag; }
 
     public:
-        ObjID_t                m_ObjID;    // Íæ¼Ò ID ºÅ
-        UCHAR                m_uTeamFlag; // ¶ÓÎé±ê¼Ç
-        UCHAR                m_uTeamLeaderFlag; // ¶Ó³¤±ê¼Ç
-        UCHAR                m_uTeamFullFlag; // ¶ÓÎéÂúÔ±±ê¼Ç
-        //UCHAR                m_uTeamFollowFlag; // ÊÇ·ñ´¦ÓÚ×é¶Ó¸úËæ×´Ì¬
+        ObjID_t                m_ObjID;    // ç©å®¶ ID å·
+        UCHAR                m_uTeamFlag; // é˜Ÿä¼æ ‡è®°
+        UCHAR                m_uTeamLeaderFlag; // é˜Ÿé•¿æ ‡è®°
+        UCHAR                m_uTeamFullFlag; // é˜Ÿä¼æ»¡å‘˜æ ‡è®°
+        //UCHAR                m_uTeamFollowFlag; // æ˜¯å¦å¤„äºç»„é˜Ÿè·ŸéšçŠ¶æ€
     };
 
     class GCNotifyTeamInfoFactory: public    PacketFactory

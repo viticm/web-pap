@@ -309,27 +309,27 @@ BOOL FoxLuaScript::Load(char* FileName,char* buf , size_t bufSize)
     try{
         FoxPakFile fpk;
         if(fpk.Open(FileName)==FALSE)
-            throw "ÎÄ¼ş´ò¿ªÊ§°Ü";
+            throw "æ–‡ä»¶æ‰“å¼€å¤±è´¥";
  
         int fileSize=fpk.Size();
         char* pbuf;
         if( (pbuf =buf)==0 || bufSize != fileSize){
             pbuf=new char(fileSize+1);
-            if(pbuf ==0) throw "·ÖÅäÄÚ´æÊ§°Ü";
+            if(pbuf ==0) throw "åˆ†é…å†…å­˜å¤±è´¥";
             memset(pbuf,0,fileSize+1);
         }
         if(fpk.Read(pbuf,fileSize) != fileSize){
             delete pbuf;
-            throw "ÎÄ¼ş¶ÁÈ¡Ê§°Ü";
+            throw "æ–‡ä»¶è¯»å–å¤±è´¥";
         }
         fpk.Close();
         if(!LoadBuffer((PBYTE)pbuf,fileSize)){
             delete pbuf;
-            throw "×°ÔØ»º´æÊ§°Ü";
+            throw "è£…è½½ç¼“å­˜å¤±è´¥";
         }
         if(!ExecuteCode()){
             delete pbuf;
-            throw "½Å±¾Ö´ĞĞÊ§°Ü";
+            throw "è„šæœ¬æ‰§è¡Œå¤±è´¥";
         }
         if(pbuf!=0)
             delete pbuf;
@@ -389,7 +389,7 @@ void FoxLuaScript::SafeCallBegin(int * pIndex)
     return lua_gettopindex(m_LuaState,pIndex);
 }
 
-void FoxLuaScript::SafeCallEnd (int nIndex)//»Ö¸´ÖÁµ÷ÓÃÖ®Ç°Õ»¶¥Î»ÖÃ¡£
+void FoxLuaScript::SafeCallEnd (int nIndex)//æ¢å¤è‡³è°ƒç”¨ä¹‹å‰æ ˆé¡¶ä½ç½®ã€‚
 {
     if(m_LuaState==NULL)return;
     return lua_settop(m_LuaState,nIndex);

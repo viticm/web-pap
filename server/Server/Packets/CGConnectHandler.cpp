@@ -42,12 +42,12 @@ UINT CGConnectHandler::Execute( CGConnect* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==g_pIncomingPlayerManager->m_ThreadID ) ;
 
     GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
 
-    //¼ì²éGamePlayer×´Ì¬ÊÇ·ñÕý³£
+    //æ£€æŸ¥GamePlayerçŠ¶æ€æ˜¯å¦æ­£å¸¸
     if( pGamePlayer->GetPlayerStatus() != PS_SERVER_CONNECT )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGConnect::GetPlayerStatus! GUID=%X, Status=%d",
@@ -55,28 +55,28 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éIPµØÖ·ÊÇ·ñºÏ·¨
+    //æ£€æŸ¥IPåœ°å€æ˜¯å¦åˆæ³•
     if( !IsActiveIP(pGamePlayer->GetSocket()->m_Host ) )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGConnect::Not active ip address! " ) ;
         return PACKET_EXE_ERROR ;
     }
 
-    //ÑéÖ¤ÓÃ»§½ÓÈëµÄºÏ·¨ÐÔ£¨¿ÉÒÔ¼´Ê±Íê³É£©
+    //éªŒè¯ç”¨æˆ·æŽ¥å…¥çš„åˆæ³•æ€§ï¼ˆå¯ä»¥å³æ—¶å®Œæˆï¼‰
     if( !pGamePlayer->CheckKey(pPacket->GetKey()) )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGConnect::GamePlayer->CheckKey " ) ;
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²é²»ºÏ¸ñ
+    //æ£€æŸ¥ä¸åˆæ ¼
     if(    pPacket->GetCheckVer()!=CURRENT_VERSION )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGConnect::Versions FALSE " ) ;
         return PACKET_EXE_ERROR ;
     }
 
-    //ÅÐ¶Ïµ±Ç°ÐèÒªµÇÂ½µÄGUIDµÄÍæ¼ÒÊÇ·ñÕýÔÚ±£´æµµ°¸
+    //åˆ¤æ–­å½“å‰éœ€è¦ç™»é™†çš„GUIDçš„çŽ©å®¶æ˜¯å¦æ­£åœ¨ä¿å­˜æ¡£æ¡ˆ
     Obj_Human* pOldHuman = (Obj_Human*)(g_pGUIDManager->Get(pPacket->GetGUID())) ;
     if( pOldHuman )
     {
@@ -86,16 +86,16 @@ __ENTER_FUNCTION
             GCConnect *pMsg = (GCConnect*)(g_pPacketFactoryManager->CreatePacket(PACKET_GC_CONNECT)) ;
             pMsg->SetServerID(-1);
             pMsg->SetSceneID(-1);
-            pMsg->SetEstate(1);//1±íÊ¾·þÎñÆ÷ÕýÔÚ´æÅÌµ±Ç°Íæ¼Ò£¬ÇëÍæ¼ÒµÈ´ý
+            pMsg->SetEstate(1);//1è¡¨ç¤ºæœåŠ¡å™¨æ­£åœ¨å­˜ç›˜å½“å‰çŽ©å®¶ï¼Œè¯·çŽ©å®¶ç­‰å¾…
             pPlayer->SendPacket(pMsg);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGConnect::PS_SERVER_ENTER_RECYCLE GUID=%X", pPacket->GetGUID() ) ;
             return PACKET_EXE_CONTINUE ;
         }
     }
 
-    //È¡µÃÓÃ»§½ÇÉ«Êý¾Ý£¬²¢³õÊ¼»¯ÓÃ»§½ÇÉ«ÐÅÏ¢
-    //  Èç¹ûÊý¾ÝÔÚ±ðµÄ·þÎñÆ÷ÉÏ£¨»òÕßÔÚÊý¾Ý¿âÉÏ£©£¬
-    //  ÔòÐèÒªµÈ´ý±ðµÄ·þÎñÆ÷¶Ë½«Êý¾Ý·¢ËÍ¹ýÀ´
+    //å–å¾—ç”¨æˆ·è§’è‰²æ•°æ®ï¼Œå¹¶åˆå§‹åŒ–ç”¨æˆ·è§’è‰²ä¿¡æ¯
+    //  å¦‚æžœæ•°æ®åœ¨åˆ«çš„æœåŠ¡å™¨ä¸Šï¼ˆæˆ–è€…åœ¨æ•°æ®åº“ä¸Šï¼‰ï¼Œ
+    //  åˆ™éœ€è¦ç­‰å¾…åˆ«çš„æœåŠ¡å™¨ç«¯å°†æ•°æ®å‘é€è¿‡æ¥
 
     ID_t ServerID = pPacket->GetServerID() ;
 
@@ -109,7 +109,7 @@ __ENTER_FUNCTION
     AskMsg->SetGUID( pPacket->GetGUID() ) ;
     AskMsg->SetKey( pPacket->GetKey() ) ;
     AskMsg->SetAccount( pPacket->GetAccount() ) ;
-    AskMsg->SetGender( pPacket->GetGender() ) ;//ÐÔ±ð
+    AskMsg->SetGender( pPacket->GetGender() ) ;//æ€§åˆ«
     g_pServerManager->SendPacket( AskMsg, ServerID ) ;
 
     pGamePlayer->m_HumanGUID = pPacket->GetGUID() ;
@@ -118,7 +118,7 @@ __ENTER_FUNCTION
         Assert(FALSE);
     }
 
-    //½«Player×´Ì¬ÉèÖÃÎª¡°µÈ´ý·þÎñÆ÷È¡µÃ×ÊÁÏ¡±
+    //å°†PlayerçŠ¶æ€è®¾ç½®ä¸ºâ€œç­‰å¾…æœåŠ¡å™¨å–å¾—èµ„æ–™â€
     pGamePlayer->SetPlayerStatus( PS_SERVER_WAITING_FOR_SERVER_DATA ) ;
 
 

@@ -1,6 +1,6 @@
 // GCMissionRemove.h
 // 
-// É¾³ıÒ»¸öÈÎÎñ
+// åˆ é™¤ä¸€ä¸ªä»»åŠ¡
 // 
 //////////////////////////////////////////////////////
 
@@ -24,7 +24,7 @@ namespace Packets
         }
         virtual ~GCMissionRemove( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

@@ -35,7 +35,7 @@ namespace Packets
 
     private:
         
-        WORD            m_BagIndex;        //item 在包中的位置
+        WORD            m_BagIndex;        //item 鍦ㄥ寘涓殑浣嶇疆
 
     };
 

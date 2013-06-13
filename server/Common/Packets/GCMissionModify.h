@@ -1,6 +1,6 @@
 // GCMissionModify.h
 // 
-// ¸ü¸ÄÒ»¸öÈÎÎñ²ÎÊı
+// æ›´æ”¹ä¸€ä¸ªä»»åŠ¡å‚æ•°
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         virtual ~GCMissionModify( ){}
 
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -50,8 +50,8 @@ namespace Packets
     public :
         enum MISSIONMODIFY
         {
-            MISSIONMODIFY_MISSION = 0 ,//ĞŞ¸ÄMission
-            MISSIONMODIFY_MISSIONDATA ,//ĞŞ¸ÄMissonData
+            MISSIONMODIFY_MISSION = 0 ,//ä¿®æ”¹Mission
+            MISSIONMODIFY_MISSIONDATA ,//ä¿®æ”¹MissonData
         };
 
 

@@ -1,5 +1,5 @@
 // GCItemList.h
-// ½«ÎïÆ·ÁĞ±í·¢ËÍ¸ø¿Í»§¶Ë
+// å°†ç‰©å“åˆ—è¡¨å‘é€ç»™å®¢æˆ·ç«¯
 // 
 //////////////////////////////////////////////////////
 
@@ -37,11 +37,11 @@ namespace Packets
     public:
         struct _MSG_ITEM
         {
-            BYTE            nType;                            //ÎïÆ·ÀàĞÍ ÎïÆ· 0, ³èÎï 1, ĞòÁĞºÅ 2
-            BYTE            nIndex;                            //½çÃæÖĞµÄÎ»ÖÃ
-            _ITEM            item_data;                        //ÎïÆ·Êı¾İ
-            BYTE            ExtraLength;                    //¸½¼ÓĞÅÏ¢³¤¶È
-            CHAR            ExtraInfo[MAX_EXTRA_LENGTH];    //¸½¼ÓĞÅÏ¢ÄÚÈİ
+            BYTE            nType;                            //ç‰©å“ç±»å‹ ç‰©å“ 0, å® ç‰© 1, åºåˆ—å· 2
+            BYTE            nIndex;                            //ç•Œé¢ä¸­çš„ä½ç½®
+            _ITEM            item_data;                        //ç‰©å“æ•°æ®
+            BYTE            ExtraLength;                    //é™„åŠ ä¿¡æ¯é•¿åº¦
+            CHAR            ExtraInfo[MAX_EXTRA_LENGTH];    //é™„åŠ ä¿¡æ¯å†…å®¹
 
             _MSG_ITEM()
             {
@@ -92,7 +92,7 @@ namespace Packets
         }
         virtual ~GCItemList( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

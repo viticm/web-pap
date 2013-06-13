@@ -18,7 +18,7 @@ namespace Packets
         WGSystemMsg( ) { m_ContexSize=MAX_SYSTEM_MSG_SIZE-1; };
         virtual ~WGSystemMsg( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer) ;

@@ -32,7 +32,7 @@ namespace Packets
 
 
             private:
-                ObjID_t            m_ObjID;        //Obj_ItemBoxµÄObjID
+                ObjID_t            m_ObjID;        //Obj_ItemBoxçš„ObjID
 
             };
             

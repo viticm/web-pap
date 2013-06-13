@@ -4,15 +4,15 @@
 
 enum HUMAN_EQUIP
 {
-    HEQUIP_WEAPON        =0,        //ÎäÆ÷    WEAPON
-    HEQUIP_CAP            =1,        //Ã±×Ó    DEFENCE
-    HEQUIP_ARMOR        =2,        //¿ø¼×    DEFENCE
-    HEQUIP_CUFF            =3,        //»¤Íó    DEFENCE
-    HEQUIP_BOOT            =4,        //Ð¬    DEFENCE
-    HEQUIP_SASH            =5,        //Ñü´ø    ADORN
-    HEQUIP_RING            =6,        //½ä×Ó    ADORN
-    HEQUIP_NECKLACE        =7,        //ÏîÁ´    ADORN
-    HEQUIP_RIDER        =8,        //Æï³Ë    ADORN
+    HEQUIP_WEAPON        =0,        //æ­¦å™¨    WEAPON
+    HEQUIP_CAP            =1,        //å¸½å­    DEFENCE
+    HEQUIP_ARMOR        =2,        //ç›”ç”²    DEFENCE
+    HEQUIP_CUFF            =3,        //æŠ¤è…•    DEFENCE
+    HEQUIP_BOOT            =4,        //éž‹    DEFENCE
+    HEQUIP_SASH            =5,        //è…°å¸¦    ADORN
+    HEQUIP_RING            =6,        //æˆ’å­    ADORN
+    HEQUIP_NECKLACE        =7,        //é¡¹é“¾    ADORN
+    HEQUIP_RIDER        =8,        //éª‘ä¹˜    ADORN
     HEQUIP_UNKNOW1        =9,
     HEQUIP_UNKNOW2        =10,
     HEQUIP_UNKNOW3        =11,
@@ -25,169 +25,169 @@ enum HUMAN_EQUIP
     HEQUIP_UNKNOW10        =18,
     HEQUIP_UNKNOW11        =19,
     HEQUIP_TOTAL        =20,
-    HEQUIP_NUMBER        =9,        //Ö÷½Ç×°±¸µã×ÜÊý
+    HEQUIP_NUMBER        =9,        //ä¸»è§’è£…å¤‡ç‚¹æ€»æ•°
 };
 
 enum ITEM_ATTRIBUTE
 {
-    IATTRIBUTE_POINT_MAXHP        =0,        //°´µãÊýÔö¼ÓHPµÄÉÏÏÞ
-    IATTRIBUTE_RATE_MAXHP        =1,        //°´°Ù·Ö±ÈÔö¼ÓHPµÄÉÏÏÞ
-    IATTRIBUTE_RESTORE_HP        =2,        //¼Ó¿ìHPµÄ»Ø¸´ËÙ¶È
+    IATTRIBUTE_POINT_MAXHP        =0,        //æŒ‰ç‚¹æ•°å¢žåŠ HPçš„ä¸Šé™
+    IATTRIBUTE_RATE_MAXHP        =1,        //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ HPçš„ä¸Šé™
+    IATTRIBUTE_RESTORE_HP        =2,        //åŠ å¿«HPçš„å›žå¤é€Ÿåº¦
 
-    IATTRIBUTE_POINT_MAXMP        =3,        //°´µãÊýÔö¼ÓMPµÄÉÏÏÞ
-    IATTRIBUTE_RATE_MAXMP        =4,        //°´°Ù·Ö±ÈÔö¼ÓMPµÄÉÏÏÞ
-    IATTRIBUTE_RESTORE_MP        =5,        //¼Ó¿ìMPµÄ»Ø¸´ËÙ¶È
+    IATTRIBUTE_POINT_MAXMP        =3,        //æŒ‰ç‚¹æ•°å¢žåŠ MPçš„ä¸Šé™
+    IATTRIBUTE_RATE_MAXMP        =4,        //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ MPçš„ä¸Šé™
+    IATTRIBUTE_RESTORE_MP        =5,        //åŠ å¿«MPçš„å›žå¤é€Ÿåº¦
     
-    IATTRIBUTE_COLD_ATTACK        =6,        //±ù¹¥»÷
-    IATTRIBUTE_COLD_RESIST        =7,        //±ùµÖ¿¹
-    IATTRIBUTE_COLD_TIME        =8,        //¼õÉÙ±ù¶³³Ù»ºÊ±¼ä
-    IATTRIBUTE_FIRE_ATTACK        =9,        //»ð¹¥»÷
-    IATTRIBUTE_FIRE_RESIST        =10,    //»ðµÖ¿¹
-    IATTRIBUTE_FIRE_TIME        =11,    //¼õÉÙ»ðÉÕ³ÖÐøÊ±¼ä
-    IATTRIBUTE_LIGHT_ATTACK        =12,    //µç¹¥»÷
-    IATTRIBUTE_LIGHT_RESIST        =13,    //µçµÖ¿¹
-    IATTRIBUTE_LIGHT_TIME        =14,    //¼õÉÙµç»÷Ñ£ÔÎÊ±¼ä
-    IATTRIBUTE_POISON_ATTACK    =15,    //¶¾¹¥»÷
-    IATTRIBUTE_POISON_RESIST    =16,    //¶¾µÖ¿¹
-    IATTRIBUTE_POISON_TIME        =17,    //¼õÉÙÖÐ¶¾Ê±¼ä
-    IATTRIBUTE_RESIST_ALL        =18,    //°´°Ù·Ö±ÈµÖÏûËùÓÐÊôÐÔ¹¥»÷
+    IATTRIBUTE_COLD_ATTACK        =6,        //å†°æ”»å‡»
+    IATTRIBUTE_COLD_RESIST        =7,        //å†°æŠµæŠ—
+    IATTRIBUTE_COLD_TIME        =8,        //å‡å°‘å†°å†»è¿Ÿç¼“æ—¶é—´
+    IATTRIBUTE_FIRE_ATTACK        =9,        //ç«æ”»å‡»
+    IATTRIBUTE_FIRE_RESIST        =10,    //ç«æŠµæŠ—
+    IATTRIBUTE_FIRE_TIME        =11,    //å‡å°‘ç«çƒ§æŒç»­æ—¶é—´
+    IATTRIBUTE_LIGHT_ATTACK        =12,    //ç”µæ”»å‡»
+    IATTRIBUTE_LIGHT_RESIST        =13,    //ç”µæŠµæŠ—
+    IATTRIBUTE_LIGHT_TIME        =14,    //å‡å°‘ç”µå‡»çœ©æ™•æ—¶é—´
+    IATTRIBUTE_POISON_ATTACK    =15,    //æ¯’æ”»å‡»
+    IATTRIBUTE_POISON_RESIST    =16,    //æ¯’æŠµæŠ—
+    IATTRIBUTE_POISON_TIME        =17,    //å‡å°‘ä¸­æ¯’æ—¶é—´
+    IATTRIBUTE_RESIST_ALL        =18,    //æŒ‰ç™¾åˆ†æ¯”æŠµæ¶ˆæ‰€æœ‰å±žæ€§æ”»å‡»
     
-    IATTRIBUTE_ATTACK_P            =19,    //ÎïÀí¹¥»÷
-    IATTRIBUTE_RATE_ATTACK_P    =20,    //°´°Ù·Ö±ÈÔö¼ÓÎïÀí¹¥»÷
-    IATTRIBUTE_RATE_ATTACK_EP    =21,    //¶Ô×°±¸»ù´¡ÎïÀí¹¥»÷°Ù·Ö±È¼Ó³É
-    IATTRIBUTE_DEFENCE_P        =22,    //ÎïÀí·ÀÓù
-    IATTRIBUTE_RATE_DEFENCE_P    =23,    //°´°Ù·Ö±ÈÔö¼ÓÎïÀí·ÀÓù
-    IATTRIBUTE_RATE_DEFENCE_EP    =24,    //¶Ô×°±¸»ù´¡ÎïÀí·ÀÓù°Ù·Ö±È¼Ó³É
-    IATTRIBUTE_IMMUNITY_P        =25,    //°´°Ù·Ö±ÈµÖÏûÎïÀíÉËº¦
+    IATTRIBUTE_ATTACK_P            =19,    //ç‰©ç†æ”»å‡»
+    IATTRIBUTE_RATE_ATTACK_P    =20,    //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ ç‰©ç†æ”»å‡»
+    IATTRIBUTE_RATE_ATTACK_EP    =21,    //å¯¹è£…å¤‡åŸºç¡€ç‰©ç†æ”»å‡»ç™¾åˆ†æ¯”åŠ æˆ
+    IATTRIBUTE_DEFENCE_P        =22,    //ç‰©ç†é˜²å¾¡
+    IATTRIBUTE_RATE_DEFENCE_P    =23,    //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ ç‰©ç†é˜²å¾¡
+    IATTRIBUTE_RATE_DEFENCE_EP    =24,    //å¯¹è£…å¤‡åŸºç¡€ç‰©ç†é˜²å¾¡ç™¾åˆ†æ¯”åŠ æˆ
+    IATTRIBUTE_IMMUNITY_P        =25,    //æŒ‰ç™¾åˆ†æ¯”æŠµæ¶ˆç‰©ç†ä¼¤å®³
     
-    IATTRIBUTE_ATTACK_M            =26,    //Ä§·¨¹¥»÷
-    IATTRIBUTE_RATE_ATTACK_M    =27,    //°´°Ù·Ö±ÈÔö¼ÓÄ§·¨¹¥»÷
-    IATTRIBUTE_RATE_ATTACK_EM    =28,    //¶Ô×°±¸»ù´¡Ä§·¨¹¥»÷°Ù·Ö±È¼Ó³É
-    IATTRIBUTE_DEFENCE_M        =29,    //Ä§·¨·ÀÓù
-    IATTRIBUTE_RATE_DEFENCE_M    =30,    //°´°Ù·Ö±ÈÔö¼ÓÄ§·¨·ÀÓù
-    IATTRIBUTE_RATE_DEFENCE_EM    =31,    //¶Ô×°±¸»ù´¡Ä§·¨·ÀÓù°Ù·Ö±È¼Ó³É
-    IATTRIBUTE_IMMUNITY_M        =32,    //°´°Ù·Ö±ÈµÖÏûÄ§·¨ÉËº¦
+    IATTRIBUTE_ATTACK_M            =26,    //é­”æ³•æ”»å‡»
+    IATTRIBUTE_RATE_ATTACK_M    =27,    //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ é­”æ³•æ”»å‡»
+    IATTRIBUTE_RATE_ATTACK_EM    =28,    //å¯¹è£…å¤‡åŸºç¡€é­”æ³•æ”»å‡»ç™¾åˆ†æ¯”åŠ æˆ
+    IATTRIBUTE_DEFENCE_M        =29,    //é­”æ³•é˜²å¾¡
+    IATTRIBUTE_RATE_DEFENCE_M    =30,    //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ é­”æ³•é˜²å¾¡
+    IATTRIBUTE_RATE_DEFENCE_EM    =31,    //å¯¹è£…å¤‡åŸºç¡€é­”æ³•é˜²å¾¡ç™¾åˆ†æ¯”åŠ æˆ
+    IATTRIBUTE_IMMUNITY_M        =32,    //æŒ‰ç™¾åˆ†æ¯”æŠµæ¶ˆé­”æ³•ä¼¤å®³
     
-    IATTRIBUTE_ATTACK_SPEED        =33,    //¹¥»÷ËÙ¶È
-    IATTRIBUTE_SKILL_TIME        =34,    //Ä§·¨ÀäÈ´ËÙ¶È
+    IATTRIBUTE_ATTACK_SPEED        =33,    //æ”»å‡»é€Ÿåº¦
+    IATTRIBUTE_SKILL_TIME        =34,    //é­”æ³•å†·å´é€Ÿåº¦
     
-    IATTRIBUTE_HIT                =35,    //ÃüÖÐ
-    IATTRIBUTE_MISS                =36,    //ÉÁ±Ü
-    IATTRIBUTE_2ATTACK_RATE        =37,    //»áÐÄÒ»»÷£¨Ë«±¶¹¥»÷£©µÄ°Ù·Ö±È
-    IATTRIBUTE_NO_DEFENCE_RATE    =38,    //ÎÞÊÓ¶Ô·½·ÀÓùµÄ¸ÅÂÊ
+    IATTRIBUTE_HIT                =35,    //å‘½ä¸­
+    IATTRIBUTE_MISS                =36,    //é—ªé¿
+    IATTRIBUTE_2ATTACK_RATE        =37,    //ä¼šå¿ƒä¸€å‡»ï¼ˆåŒå€æ”»å‡»ï¼‰çš„ç™¾åˆ†æ¯”
+    IATTRIBUTE_NO_DEFENCE_RATE    =38,    //æ— è§†å¯¹æ–¹é˜²å¾¡çš„æ¦‚çŽ‡
 
-    IATTRIBUTE_SPEED_RATE        =39,    //ÒÆ¶¯ËÙ¶È°Ù·Ö±È
+    IATTRIBUTE_SPEED_RATE        =39,    //ç§»åŠ¨é€Ÿåº¦ç™¾åˆ†æ¯”
 
-    IATTRIBUTE_DAMAGE_RET        =40,    //ÉËº¦·´Éä
-    IATTRIBUTE_DAMAGE2MANA        =41,    //ÉËº¦ÓÉÄÚÁ¦µÖÏû
+    IATTRIBUTE_DAMAGE_RET        =40,    //ä¼¤å®³åå°„
+    IATTRIBUTE_DAMAGE2MANA        =41,    //ä¼¤å®³ç”±å†…åŠ›æŠµæ¶ˆ
     
-    IATTRIBUTE_STR                =42,    //Ôö¼ÓÁ¦Á¿
-    IATTRIBUTE_SPR                =43,    //Ôö¼ÓÁéÆø
-    IATTRIBUTE_CON                =44,    //Ôö¼ÓÌåÖÆ
-    IATTRIBUTE_INT                =45,    //Ôö¼Ó¶¨Á¦
-    IATTRIBUTE_DEX                =46,    //Ôö¼ÓÉí·¨
-    IATTRIBUTE_LUK                =47,    //Ôö¼ÓÎòÐÔ
-    IATTRIBUTE_ALL                =48,    //Ôö¼ÓËùÓÐµÄÈËÎïÒ»¼¶ÊôÐÔ
+    IATTRIBUTE_STR                =42,    //å¢žåŠ åŠ›é‡
+    IATTRIBUTE_SPR                =43,    //å¢žåŠ çµæ°”
+    IATTRIBUTE_CON                =44,    //å¢žåŠ ä½“åˆ¶
+    IATTRIBUTE_INT                =45,    //å¢žåŠ å®šåŠ›
+    IATTRIBUTE_DEX                =46,    //å¢žåŠ èº«æ³•
+    IATTRIBUTE_LUK                =47,    //å¢žåŠ æ‚Ÿæ€§
+    IATTRIBUTE_ALL                =48,    //å¢žåŠ æ‰€æœ‰çš„äººç‰©ä¸€çº§å±žæ€§
     
-    IATTRIBUTE_HP_THIEVE        =49,    //ÉúÃüÍµÈ¡(´ÓÉËº¦Àï)
-    IATTRIBUTE_MP_THIEVE        =50,    //ÄÚÁ¦ÍµÈ¡(´ÓÉËº¦Àï)
+    IATTRIBUTE_HP_THIEVE        =49,    //ç”Ÿå‘½å·å–(ä»Žä¼¤å®³é‡Œ)
+    IATTRIBUTE_MP_THIEVE        =50,    //å†…åŠ›å·å–(ä»Žä¼¤å®³é‡Œ)
 
-    IATTRIBUTE_USESKILL            =51,    //Ôö¼ÓÄ³¸öÊ¹ÓÃ¼¼ÄÜ
-    IATTRIBUTE_RAND_SKILL        =52,    //Ôö¼ÓÄ³¸öËæ»ú¼¼ÄÜ
-    IATTRIBUTE_SKILL_RATE        =53,    //Ëæ»ú¼¼ÄÜ·¢¶¯¸ÅÂÊ
+    IATTRIBUTE_USESKILL            =51,    //å¢žåŠ æŸä¸ªä½¿ç”¨æŠ€èƒ½
+    IATTRIBUTE_RAND_SKILL        =52,    //å¢žåŠ æŸä¸ªéšæœºæŠ€èƒ½
+    IATTRIBUTE_SKILL_RATE        =53,    //éšæœºæŠ€èƒ½å‘åŠ¨æ¦‚çŽ‡
 
-    IATTRIBUTE_BASE_ATTACK_P    =54,    //»ù´¡ÎïÀí¹¥»÷
-    IATTRIBUTE_BASE_ATTACK_M    =55,    //»ù´¡Ä§·¨¹¥»÷
-    IATTRIBUTE_BASE_ATTACK_TIME =56,    //»ù´¡¹¥»÷ËÙ¶È£¨Ö»¶ÔÆÕÍ¨¹¥»÷£©
-    IATTRIBUTE_BASE_DEFENCE_P    =57,    //»ù´¡ÎïÀí·ÀÓù
-    IATTRIBUTE_BASE_DEFENCE_M    =58,    //»ù´¡Ä§·¨·ÀÓù
-    IATTRIBUTE_BASE_MISS        =59,    //»ù´¡ÉÁ±Ü
+    IATTRIBUTE_BASE_ATTACK_P    =54,    //åŸºç¡€ç‰©ç†æ”»å‡»
+    IATTRIBUTE_BASE_ATTACK_M    =55,    //åŸºç¡€é­”æ³•æ”»å‡»
+    IATTRIBUTE_BASE_ATTACK_TIME =56,    //åŸºç¡€æ”»å‡»é€Ÿåº¦ï¼ˆåªå¯¹æ™®é€šæ”»å‡»ï¼‰
+    IATTRIBUTE_BASE_DEFENCE_P    =57,    //åŸºç¡€ç‰©ç†é˜²å¾¡
+    IATTRIBUTE_BASE_DEFENCE_M    =58,    //åŸºç¡€é­”æ³•é˜²å¾¡
+    IATTRIBUTE_BASE_MISS        =59,    //åŸºç¡€é—ªé¿
 
 
 
-    IATTRIBUTE_NUMBER, //ÎïÆ·ÊôÐÔÀàÐÍ×ÜÊý
+    IATTRIBUTE_NUMBER, //ç‰©å“å±žæ€§ç±»åž‹æ€»æ•°
 };
 
 enum ITEM_CLASS
 {
-    ICLASS_EQUIP        =1,    //ÎäÆ÷WEAPON¡¢·À¾ßDEFENCE¡¢ÊÎÎïADORN
-    ICLASS_MATERIAL        =2,    //Ô­ÁÏ
-    ICLASS_COMITEM        =3,    //Ò©Æ·
-    ICLASS_TASKITEM        =4,    //ÈÎÎñÎïÆ·
-    ICLASS_GEM            =5, //±¦Ê¯
-    ICLASS_STOREMAP        =6,    //²Ø±¦Í¼
-    ICLASS_TALISMAN        =7,    //·¨±¦---???
-    ICLASS_GUILDITEM    =8,    //°ï»áÎïÆ·
-    ICLASS_NUMBER, //ÎïÆ·µÄÀà±ðÊýÁ¿
+    ICLASS_EQUIP        =1,    //æ­¦å™¨WEAPONã€é˜²å…·DEFENCEã€é¥°ç‰©ADORN
+    ICLASS_MATERIAL        =2,    //åŽŸæ–™
+    ICLASS_COMITEM        =3,    //è¯å“
+    ICLASS_TASKITEM        =4,    //ä»»åŠ¡ç‰©å“
+    ICLASS_GEM            =5, //å®çŸ³
+    ICLASS_STOREMAP        =6,    //è—å®å›¾
+    ICLASS_TALISMAN        =7,    //æ³•å®---???
+    ICLASS_GUILDITEM    =8,    //å¸®ä¼šç‰©å“
+    ICLASS_NUMBER, //ç‰©å“çš„ç±»åˆ«æ•°é‡
 };
 
 // ICLASS_COMITEM
 enum COMMON_ITEM_TYPE
 {
     COMMON_ITEM_TYPE    =0,
-    COMMON_ITEM_1,            // ÔÝÊ±Î´¶¨Òå ÓÉ²ß»®¶¨
-    COMMON_ITEM_2,            // ÔÝÊ±Î´¶¨Òå
-    COMMON_ITEM_3,            // ÔÝÊ±Î´¶¨Òå
-    COMITEM_PRESCR        =4, // Åä·½
-    COMITEM_WPIDENT        =6,    // ÎäÆ÷¼ø¶¨¾íÖá
-    COMITEM_ARIDENT        =7,    // ·À¾ß¼ø¶¨¾íÖá
-    COMITEM_NCIDENT        =8,    // ÏîÁ´¼ø¶¨¾íÖá
+    COMMON_ITEM_1,            // æš‚æ—¶æœªå®šä¹‰ ç”±ç­–åˆ’å®š
+    COMMON_ITEM_2,            // æš‚æ—¶æœªå®šä¹‰
+    COMMON_ITEM_3,            // æš‚æ—¶æœªå®šä¹‰
+    COMITEM_PRESCR        =4, // é…æ–¹
+    COMITEM_WPIDENT        =6,    // æ­¦å™¨é‰´å®šå·è½´
+    COMITEM_ARIDENT        =7,    // é˜²å…·é‰´å®šå·è½´
+    COMITEM_NCIDENT        =8,    // é¡¹é“¾é‰´å®šå·è½´
 };
 
 enum COMMON_ITEM_QUAL
 {
-    COMITEM_QUAL_MIS    =5,    //ÔÓÎï
+    COMITEM_QUAL_MIS    =5,    //æ‚ç‰©
 };
 
 enum EQUIP_QUALITY
 {
     EQUIP_QUALITY        =0,
-    EQUALITY_NORMAL        =1,    //ÆÕÍ¨°ÙÉ«×°±¸
-    EQUALITY_BLUE        =2,    //À¶É«×°±¸
-    EQUALITY_YELLOW        =3,    //»ÆÉ«×°±¸
-    EQUALITY_GREEN        =4,    //ÂÌÉ«Ì××°
+    EQUALITY_NORMAL        =1,    //æ™®é€šç™¾è‰²è£…å¤‡
+    EQUALITY_BLUE        =2,    //è“è‰²è£…å¤‡
+    EQUALITY_YELLOW        =3,    //é»„è‰²è£…å¤‡
+    EQUALITY_GREEN        =4,    //ç»¿è‰²å¥—è£…
 
-    EQUALITY_NUMBER, //×°±¸Æ·ÖÊÊýÁ¿
+    EQUALITY_NUMBER, //è£…å¤‡å“è´¨æ•°é‡
 };
 
 enum WEAPON_TYPE
 {
-    WTYPE_DAO            =0,    //´óµ¶
-    WTYPE_QIANG            =1,    //³¤Ç¹
-    WTYPE_1DUAN            =2,    //µ¥¶Ì
-    WTYPE_2DUAN            =3,    //Ë«¶Ì
-    WTYPE_SHAN            =4,    //ÉÈ
-    WTYPE_HUAN            =5,    //»·
+    WTYPE_DAO            =0,    //å¤§åˆ€
+    WTYPE_QIANG            =1,    //é•¿æžª
+    WTYPE_1DUAN            =2,    //å•çŸ­
+    WTYPE_2DUAN            =3,    //åŒçŸ­
+    WTYPE_SHAN            =4,    //æ‰‡
+    WTYPE_HUAN            =5,    //çŽ¯
 
-    WTYPE_NUMBER, //ÎäÆ÷ÖÖÀà×ÜÊý WEAPON
+    WTYPE_NUMBER, //æ­¦å™¨ç§ç±»æ€»æ•° WEAPON
 };
 
 enum DEFENCE_TYPE
 {
-    DTYPE_CAP            =0,    //Ã±×Ó
-    DTYPE_ARMOR            =1,    //îø¼×
-    DTYPE_CUFF            =2,    //»¤Íó
-    DTYPE_BOOT            =3,    //Ð¬
+    DTYPE_CAP            =0,    //å¸½å­
+    DTYPE_ARMOR            =1,    //é“ ç”²
+    DTYPE_CUFF            =2,    //æŠ¤è…•
+    DTYPE_BOOT            =3,    //éž‹
 
-    DTYPE_NUMBER, //·À¾ßÖÖÀàÊýÁ¿ DEFENCE
+    DTYPE_NUMBER, //é˜²å…·ç§ç±»æ•°é‡ DEFENCE
 };
 
 enum ADORN_TYPE
 {
-    ATYPE_NECKLACE        =0,    //ÏîÁ´
-    ATYPE_SASH            =1,    //Ñü´ø
-    ATYPE_RING            =2,    //½ä×Ó
+    ATYPE_NECKLACE        =0,    //é¡¹é“¾
+    ATYPE_SASH            =1,    //è…°å¸¦
+    ATYPE_RING            =2,    //æˆ’å­
 
-    ATYPE_NUMBER, //ÊÎÎïÖÖÀàÊýÁ¿ ADORN
+    ATYPE_NUMBER, //é¥°ç‰©ç§ç±»æ•°é‡ ADORN
 };
 
 enum ENUM_UPDATE_EQIPMENT
 {
-    UPDATE_EQIPMENT_WEAPON_ID    = 0,    // ÎäÆ÷
-    UPDATE_EQIPMENT_CAP_ID,                // Ã±×Ó
-    UPDATE_EQIPMENT_ARMOUR_ID,            // ÒÂ·þ
-    UPDATE_EQIPMENT_WRIST_ID,            // »¤Íó
-    UPDATE_EQIPMENT_FOOT_ID,            // Ñ¥×Ó
+    UPDATE_EQIPMENT_WEAPON_ID    = 0,    // æ­¦å™¨
+    UPDATE_EQIPMENT_CAP_ID,                // å¸½å­
+    UPDATE_EQIPMENT_ARMOUR_ID,            // è¡£æœ
+    UPDATE_EQIPMENT_WRIST_ID,            // æŠ¤è…•
+    UPDATE_EQIPMENT_FOOT_ID,            // é´å­
     UPDATE_EQIPMENT_NUMBERS
 };
 
@@ -198,16 +198,16 @@ enum ITEMBOX_TYPE
 
 };
 
-//Ê°È¡¹æÔò
+//æ‹¾å–è§„åˆ™
 enum    PICK_RULER
 {
-    IPR_FREE_PICK,    //×ÔÓÉÊ°È¡
-    IPR_BET_PICK,    //Í¶Èû×ÓÊ°È¡
-    IPR_TURN_PICK,    //ÂÖÁ÷Ê°È¡
+    IPR_FREE_PICK,    //è‡ªç”±æ‹¾å–
+    IPR_BET_PICK,    //æŠ•å¡žå­æ‹¾å–
+    IPR_TURN_PICK,    //è½®æµæ‹¾å–
 
 };
 
-//·ÖÅä¹æÔò
+//åˆ†é…è§„åˆ™
 enum    BOX_DISTRIBUTE_RULER
 {
     BDR_COMMON    =     0,
@@ -215,14 +215,14 @@ enum    BOX_DISTRIBUTE_RULER
     BDR_UNKNOW    =     0xFFFF
 };
 
-//ÎïÆ··ÖÅä¹æÔò
+//ç‰©å“åˆ†é…è§„åˆ™
 enum    ITEM_DISTRIBUTE_RULER
 {
     ITEMDR_RANDOM,
     ITEMDR_ALLGET
 };
 
-//ItemContainer ÀàÐÍ
+//ItemContainer ç±»åž‹
 enum    ITEM_CONTAINER_TYPE
 {
     ICT_UNKNOW_CONTAINER,
@@ -236,107 +236,107 @@ enum    ITEM_CONTAINER_TYPE
     ICT_HUMAN_PET_CONTAINER,
 };
 
-// Ä¿±êÀàÐÍ
+// ç›®æ ‡ç±»åž‹
 enum ENUM_ITEM_TARGET_TYPE
 {
     ITEM_TARGET_TYPE_INVALID    = -1,
-    ITEM_TARGET_TYPE_NONE,                // ÎÞÐèÄ¿±ê        :    ÎÞ
-    ITEM_TARGET_TYPE_POS,                // Î»ÖÃ            :    TargetPos
-    ITEM_TARGET_TYPE_DIR,                // ·½Ïò            :    TargetDir
-    ITEM_TARGET_TYPE_ITEM,                // µÀ¾ß            :    TargetItemIndex
-    ITEM_TARGET_TYPE_SELF,                // ×ÔÒÑ            :    TargetObj
-    ITEM_TARGET_TYPE_SELF_PET,            // ×ÔÒÑµÄ³èÎï    :    TargetObj,TargetPetGUID
-    ITEM_TARGET_TYPE_FRIEND,            // ÓÑºÃÄ¿±ê        :    TargetObj
-    ITEM_TARGET_TYPE_FRIEND_PLAYER,        // ÓÑºÃÍæ¼Ò        :    TargetObj
-    ITEM_TARGET_TYPE_FRIEND_MONSTER,    // ÓÑºÃ¹ÖÎï        :    TargetObj
-    ITEM_TARGET_TYPE_FRIEND_PET,        // ÓÑºÃ³èÎï        :    TargetObj
-    ITEM_TARGET_TYPE_ENEMY,                // µÐ¶ÔÄ¿±ê        :    TargetObj
-    ITEM_TARGET_TYPE_ENEMY_PLAYER,        // µÐ¶ÔÍæ¼Ò        :    TargetObj
-    ITEM_TARGET_TYPE_ENEMY_MONSTER,        // µÐ¶Ô¹ÖÎï        :    TargetObj
-    ITEM_TARGET_TYPE_ENEMY_PET,            // µÐ¶Ô³èÎï        :    TargetObj
-    ITEM_TARGET_TYPE_ALL_CHARACTER,        // ËùÓÐ½ÇÉ«        :    TargetObj
+    ITEM_TARGET_TYPE_NONE,                // æ— éœ€ç›®æ ‡        :    æ— 
+    ITEM_TARGET_TYPE_POS,                // ä½ç½®            :    TargetPos
+    ITEM_TARGET_TYPE_DIR,                // æ–¹å‘            :    TargetDir
+    ITEM_TARGET_TYPE_ITEM,                // é“å…·            :    TargetItemIndex
+    ITEM_TARGET_TYPE_SELF,                // è‡ªå·²            :    TargetObj
+    ITEM_TARGET_TYPE_SELF_PET,            // è‡ªå·²çš„å® ç‰©    :    TargetObj,TargetPetGUID
+    ITEM_TARGET_TYPE_FRIEND,            // å‹å¥½ç›®æ ‡        :    TargetObj
+    ITEM_TARGET_TYPE_FRIEND_PLAYER,        // å‹å¥½çŽ©å®¶        :    TargetObj
+    ITEM_TARGET_TYPE_FRIEND_MONSTER,    // å‹å¥½æ€ªç‰©        :    TargetObj
+    ITEM_TARGET_TYPE_FRIEND_PET,        // å‹å¥½å® ç‰©        :    TargetObj
+    ITEM_TARGET_TYPE_ENEMY,                // æ•Œå¯¹ç›®æ ‡        :    TargetObj
+    ITEM_TARGET_TYPE_ENEMY_PLAYER,        // æ•Œå¯¹çŽ©å®¶        :    TargetObj
+    ITEM_TARGET_TYPE_ENEMY_MONSTER,        // æ•Œå¯¹æ€ªç‰©        :    TargetObj
+    ITEM_TARGET_TYPE_ENEMY_PET,            // æ•Œå¯¹å® ç‰©        :    TargetObj
+    ITEM_TARGET_TYPE_ALL_CHARACTER,        // æ‰€æœ‰è§’è‰²        :    TargetObj
 
     ITEM_TARGET_TYPE_NUMBERS
 };
 
-// µÀ¾ß·ÖÀà±àºÅ
-#define ITEM_PET_SKILL_STUDY_BEGIN        30402000    //³èÎï¼¼ÄÜÊé×îÐ¡±àºÅ
-#define ITEM_PET_SKILL_STUDY_END        30403000    //³èÎï¼¼ÄÜÊé×î´ó±àºÅ
+// é“å…·åˆ†ç±»ç¼–å·
+#define ITEM_PET_SKILL_STUDY_BEGIN        30402000    //å® ç‰©æŠ€èƒ½ä¹¦æœ€å°ç¼–å·
+#define ITEM_PET_SKILL_STUDY_END        30403000    //å® ç‰©æŠ€èƒ½ä¹¦æœ€å¤§ç¼–å·
 
-#define ITEM_PET_RETURN_BABAY_BEGIN        30503011    //³èÎï»¹Í¯µ¤×îÐ¡±àºÅ£¨×¢Òâ30503011±¾ÉíÒ²ÊÇºÏ·¨µÄ»¹Í¯µ¤±àºÅ£©
-#define ITEM_PET_RETURN_BABAY_END        30503020    //³èÎï»¹Í¯µ¤×î´ó±àºÅ£¨×¢Òâ30503020±¾ÉíÒ²ÊÇºÏ·¨µÄ»¹Í¯µ¤±àºÅ£©
+#define ITEM_PET_RETURN_BABAY_BEGIN        30503011    //å® ç‰©è¿˜ç«¥ä¸¹æœ€å°ç¼–å·ï¼ˆæ³¨æ„30503011æœ¬èº«ä¹Ÿæ˜¯åˆæ³•çš„è¿˜ç«¥ä¸¹ç¼–å·ï¼‰
+#define ITEM_PET_RETURN_BABAY_END        30503020    //å® ç‰©è¿˜ç«¥ä¸¹æœ€å¤§ç¼–å·ï¼ˆæ³¨æ„30503020æœ¬èº«ä¹Ÿæ˜¯åˆæ³•çš„è¿˜ç«¥ä¸¹ç¼–å·ï¼‰
 
-#define    ITEM_DOME_MEDICINE                30601000    //Ñ±ÑøµÀ¾ß 
-#define    ITEM_MEAT_MEDICINE                30602000    //ÈâÊ³³èÁ¸ 
-#define    ITEM_GRASS_MEDICINE                30603000    //²ÝÀà³èÁ¸ 
-#define    ITEM_WORM_MEDICINE                30604000    //³æÀà³èÁ¸ 
-#define    ITEM_PADDY_MEDICINE                30605000    //¹ÈÀà³èÁ¸
+#define    ITEM_DOME_MEDICINE                30601000    //é©¯å…»é“å…· 
+#define    ITEM_MEAT_MEDICINE                30602000    //è‚‰é£Ÿå® ç²® 
+#define    ITEM_GRASS_MEDICINE                30603000    //è‰ç±»å® ç²® 
+#define    ITEM_WORM_MEDICINE                30604000    //è™«ç±»å® ç²® 
+#define    ITEM_PADDY_MEDICINE                30605000    //è°·ç±»å® ç²®
 
 #define ITEM_PET_FEED_MEDICINE_MAX        ITEM_PADDY_MEDICINE+1000
 
-#define ITEM_PET_ADD_LIFE_BEGIN            ITEM_PET_FEED_MEDICINE_MAX    //³èÎïÑÓ³¤ÊÙÃü×îÐ¡±àºÅ
-#define ITEM_PET_ADD_LIFE_END            30607000    //³èÎïÑÓ³¤ÊÙÃü×î´ó±àºÅ
+#define ITEM_PET_ADD_LIFE_BEGIN            ITEM_PET_FEED_MEDICINE_MAX    //å® ç‰©å»¶é•¿å¯¿å‘½æœ€å°ç¼–å·
+#define ITEM_PET_ADD_LIFE_END            30607000    //å® ç‰©å»¶é•¿å¯¿å‘½æœ€å¤§ç¼–å·
 
-//ÅÜÉÌ
-//×î´ó¹ÙÆ±½ð¶î
+//è·‘å•†
+//æœ€å¤§å®˜ç¥¨é‡‘é¢
 #define    MAX_TICKET_VALUE    10000000    
 
-//ÅÜÉÌ¹ÙÆ±Ë÷Òý(´ËÖÖÎïÆ·ÊÇÒ»ÖÖÌØÊâµÄÈÎÎñÎïÆ·)
+//è·‘å•†å®˜ç¥¨ç´¢å¼•(æ­¤ç§ç‰©å“æ˜¯ä¸€ç§ç‰¹æ®Šçš„ä»»åŠ¡ç‰©å“)
 #define TICKET_ITEM_INDEX     40002000
 
-//äîÔË¹ÙÆ±Ë÷Òý(´ËÖÖÎïÆ·ÊÇÒ»ÖÖÌØÊâµÄÈÎÎñÎïÆ·)
+//æ¼•è¿å®˜ç¥¨ç´¢å¼•(æ­¤ç§ç‰©å“æ˜¯ä¸€ç§ç‰¹æ®Šçš„ä»»åŠ¡ç‰©å“)
 #define TICKET_RIVER_TRANSPORTATION_INDEX     30001000
 
-//ÅÜÉÌÉÌÆ·Ë÷Òý¿ªÊ¼
+//è·‘å•†å•†å“ç´¢å¼•å¼€å§‹
 #define TICKET_MERCHANDISE_INDEX_BEGIN     20400001
 
-//ÅÜÉÌÉÌÆ·Ë÷Òý½áÎ²
+//è·‘å•†å•†å“ç´¢å¼•ç»“å°¾
 #define TICKET_MERCHANDISE_INDEX_END     20400200
 
-//Ë÷ÒýÊÇ·ñÊôÓÚÅÜÉÌÉÌÆ·Ë÷ÒýÇø¼ä
+//ç´¢å¼•æ˜¯å¦å±žäºŽè·‘å•†å•†å“ç´¢å¼•åŒºé—´
 #define IS_TICKET_MERCHANDISE_INDEX(idx)    ((idx>=TICKET_MERCHANDISE_INDEX_BEGIN && idx<TICKET_MERCHANDISE_INDEX_END)? TRUE : FALSE)
 
-//´ËÎïÆ·ÊÇ·ñÊÇÅÜÉÌ¹ÙÆ±
+//æ­¤ç‰©å“æ˜¯å¦æ˜¯è·‘å•†å®˜ç¥¨
 #define ITEM_IS_TICKET(pitem)    ((pitem != NULL) ? ((pitem->GetItemTableIndex() == TICKET_ITEM_INDEX) ? TRUE:FALSE):FALSE)
 
-//ÉíÉÏµÄ¹ÙÆ±ÊýÁ¿ÊÇ·ñºÏ·¨
+//èº«ä¸Šçš„å®˜ç¥¨æ•°é‡æ˜¯å¦åˆæ³•
 #define    TICKET_NUM_IS_IN_LAW(phuman) ((HumanItemLogic::CalcBagItemCount(phuman,TICKET_ITEM_INDEX) == 1)? TRUE:FALSE)
 
-//´æÔÚÅÜÉÌ»õÎïÉÏµÄ¼Û¸ñÊý¾ÝµÄstart
+//å­˜åœ¨è·‘å•†è´§ç‰©ä¸Šçš„ä»·æ ¼æ•°æ®çš„start
 #define    TICKET_MERCHANDISE_ITEM_PARAM_BUY_PRICE_START    0        
 
-//´æÔÚÅÜÉÌ»õÎïÉÏµÄ¼Û¸ñÊý¾ÝµÄÀàÐÍ
+//å­˜åœ¨è·‘å•†è´§ç‰©ä¸Šçš„ä»·æ ¼æ•°æ®çš„ç±»åž‹
 #define    TICKET_MERCHANDISE_ITEM_PARAM_BUY_PRICE_TYPE    IPV_INT
 
-//´æÔÚÅÜÉÌ»õÎïÉÏµÄ³öÊÛ¼Û¸ñµÄstart
+//å­˜åœ¨è·‘å•†è´§ç‰©ä¸Šçš„å‡ºå”®ä»·æ ¼çš„start
 #define    TICKET_MERCHANDISE_ITEM_PARAM_SALE_PRICE_START    4        
 
-//´æÔÚÅÜÉÌ»õÎïÉÏµÄ³öÊÛ¼Û¸ñµÄÀàÐÍ
+//å­˜åœ¨è·‘å•†è´§ç‰©ä¸Šçš„å‡ºå”®ä»·æ ¼çš„ç±»åž‹
 #define    TICKET_MERCHANDISE_ITEM_PARAM_SALE_PRICE_TYPE    IPV_INT    
 
-//´æÔÚÅÜÉÌ»õÎïÉÏµÄ³¡¾°IDÊý¾ÝµÄstart
+//å­˜åœ¨è·‘å•†è´§ç‰©ä¸Šçš„åœºæ™¯IDæ•°æ®çš„start
 #define    TICKET_MERCHANDISE_ITEM_PARAM_SCENE_START    8        
 
-//´æÔÚÅÜÉÌ»õÎïÉÏµÄ¼Û¸ñÊý¾ÝµÄÀàÐÍ
+//å­˜åœ¨è·‘å•†è´§ç‰©ä¸Šçš„ä»·æ ¼æ•°æ®çš„ç±»åž‹
 #define    TICKET_MERCHANDISE_ITEM_PARAM_SCENE_TYPE    IPV_SHORT
 
-//´æÔÚÅÜÉÌÒøÆ±ÉÏµÄµ±Ç°ÏÖ½ðÊý¾ÝµÄstart
+//å­˜åœ¨è·‘å•†é“¶ç¥¨ä¸Šçš„å½“å‰çŽ°é‡‘æ•°æ®çš„start
 #define    TICKET_ITEM_PARAM_CUR_MONEY_START    0        
 
-//´æÔÚÅÜÉÌÒøÆ±ÉÏµÄµ±Ç°ÏÖ½ðÊý¾ÝµÄtype
+//å­˜åœ¨è·‘å•†é“¶ç¥¨ä¸Šçš„å½“å‰çŽ°é‡‘æ•°æ®çš„type
 #define    TICKET_ITEM_PARAM_CUR_MONEY_TYPE    IPV_INT
 
-//´æÔÚÅÜÉÌÒøÆ±ÉÏµÄµ±Ç°ÏÖ½ðÉÏÏÞµÄstart
+//å­˜åœ¨è·‘å•†é“¶ç¥¨ä¸Šçš„å½“å‰çŽ°é‡‘ä¸Šé™çš„start
 #define    TICKET_ITEM_PARAM_MAX_MONEY_START    4        
 
-//´æÔÚÅÜÉÌÒøÆ±ÉÏµÄµ±Ç°ÏÖ½ðÉÏÏÞµÄtype
+//å­˜åœ¨è·‘å•†é“¶ç¥¨ä¸Šçš„å½“å‰çŽ°é‡‘ä¸Šé™çš„type
 #define    TICKET_ITEM_PARAM_MAX_MONEY_TYPE    IPV_INT
 
 
-//´ËÎïÆ·ÊÇ·ñÊÇ¹ÙÆ±ÉÌÆ·
+//æ­¤ç‰©å“æ˜¯å¦æ˜¯å®˜ç¥¨å•†å“
 #define    ITEM_IS_TICKET_MERCHANDISE(pitem)    ((pitem != NULL) ? ((pitem->GetItemTableIndex() >= TICKET_MERCHANDISE_INDEX_BEGIN && pitem->GetItemTableIndex() < TICKET_MERCHANDISE_INDEX_END) ? TRUE:FALSE):FALSE)    
 
-//´ËÎïÆ·Ë÷ÒýÊÇ·ñÊÇ¹ÙÆ±ÉÌÆ·
+//æ­¤ç‰©å“ç´¢å¼•æ˜¯å¦æ˜¯å®˜ç¥¨å•†å“
 #define    ITEM_IDX_IS_TICKET_MERCHANDISE(itemidx)    ( (itemidx >= TICKET_MERCHANDISE_INDEX_BEGIN && itemidx < TICKET_MERCHANDISE_INDEX_END) ? TRUE:FALSE)    
 
 enum    REFRESH_ITEM_TYPE
@@ -345,14 +345,14 @@ enum    REFRESH_ITEM_TYPE
     REFRESH_MAX,
 };
 
-//ÎïÆ·ÐÅÏ¢Î»¶¨Òå
+//ç‰©å“ä¿¡æ¯ä½å®šä¹‰
 enum ITEM_EXT_INFO
 {
-    IEI_BIND_INFO        =    0x00000001,    //°ó¶¨ÐÅÏ¢
-    IEI_IDEN_INFO        =    0x00000002, //¼ø¶¨ÐÅÏ¢
-    IEI_PLOCK_INFO        =    0x00000004, //¶þ¼¶ÃÜÂëÒÑ¾­´¦Àí
-    IEI_BLUE_ATTR        =    0x00000008, //ÊÇ·ñÓÐÀ¶ÊôÐÔ
-    IEL_CREATOR            =    0x00000010,    //ÊÇ·ñÓÐ´´ÔìÕß
+    IEI_BIND_INFO        =    0x00000001,    //ç»‘å®šä¿¡æ¯
+    IEI_IDEN_INFO        =    0x00000002, //é‰´å®šä¿¡æ¯
+    IEI_PLOCK_INFO        =    0x00000004, //äºŒçº§å¯†ç å·²ç»å¤„ç†
+    IEI_BLUE_ATTR        =    0x00000008, //æ˜¯å¦æœ‰è“å±žæ€§
+    IEL_CREATOR            =    0x00000010,    //æ˜¯å¦æœ‰åˆ›é€ è€…
 };
 
 

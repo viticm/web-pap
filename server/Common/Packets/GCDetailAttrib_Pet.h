@@ -1,6 +1,6 @@
 // GCDetailAttrib_Pet.h
 // 
-// Ö»ÊÇÍ¨ÖªÍæ¼Ò³èÎïÁÐ±íÖÐµÄÐÅÏ¢, ³èÎïµÄ¸üÐÂÏûÏ¢ÒÀÈ»ÓÃGCCharBaseAttrib
+// åªæ˜¯é€šçŸ¥çŽ©å®¶å® ç‰©åˆ—è¡¨ä¸­çš„ä¿¡æ¯, å® ç‰©çš„æ›´æ–°æ¶ˆæ¯ä¾ç„¶ç”¨GCCharBaseAttrib
 // 
 //////////////////////////////////////////////////////
 
@@ -29,51 +29,51 @@ namespace Packets
         PET_DETAIL_ATTR_INVALID        = -1,
         PET_DETAIL_ATTR_OBJ_ID,                // ObjID
         PET_DETAIL_ATTR_DATA_ID,            // DataID
-        PET_DETAIL_ATTR_NAME,                // Ãû³Æ
-        PET_DETAIL_ATTR_AI_TYPE,            // ÐÔ¸ñ
-        PET_DETAIL_ATTR_SPOUSE_GUID,        // ÅäÅ¼ID
-        PET_DETAIL_ATTR_LEVEL,                // µÈ¼¶
-        PET_DETAIL_ATTR_EXP,                // ¾­Ñé
-        PET_DETAIL_ATTR_HP,                    // Ñªµ±Ç°Öµ
-        PET_DETAIL_ATTR_HPMAX,                // Ñª×î´óÖµ
+        PET_DETAIL_ATTR_NAME,                // åç§°
+        PET_DETAIL_ATTR_AI_TYPE,            // æ€§æ ¼
+        PET_DETAIL_ATTR_SPOUSE_GUID,        // é…å¶ID
+        PET_DETAIL_ATTR_LEVEL,                // ç­‰çº§
+        PET_DETAIL_ATTR_EXP,                // ç»éªŒ
+        PET_DETAIL_ATTR_HP,                    // è¡€å½“å‰å€¼
+        PET_DETAIL_ATTR_HPMAX,                // è¡€æœ€å¤§å€¼
 
-        PET_DETAIL_ATTR_LIFE,                // µ±Ç°ÊÙÃü
-        PET_DETAIL_ATTR_GENERATION,            // ¼¸´ú³è
-        PET_DETAIL_ATTR_HAPPINESS,            // ¿ìÀÖ¶È
+        PET_DETAIL_ATTR_LIFE,                // å½“å‰å¯¿å‘½
+        PET_DETAIL_ATTR_GENERATION,            // å‡ ä»£å® 
+        PET_DETAIL_ATTR_HAPPINESS,            // å¿«ä¹åº¦
 
-        PET_DETAIL_ATTR_ATT_PHYSICS,        // ÎïÀí¹¥»÷Á¦
-        PET_DETAIL_ATTR_ATT_MAGIC,            // Ä§·¨¹¥»÷Á¦
-        PET_DETAIL_ATTR_DEF_PHYSICS,        // ÎïÀí·ÀÓùÁ¦
-        PET_DETAIL_ATTR_DEF_MAGIC,            // Ä§·¨·ÀÓùÁ¦
+        PET_DETAIL_ATTR_ATT_PHYSICS,        // ç‰©ç†æ”»å‡»åŠ›
+        PET_DETAIL_ATTR_ATT_MAGIC,            // é­”æ³•æ”»å‡»åŠ›
+        PET_DETAIL_ATTR_DEF_PHYSICS,        // ç‰©ç†é˜²å¾¡åŠ›
+        PET_DETAIL_ATTR_DEF_MAGIC,            // é­”æ³•é˜²å¾¡åŠ›
 
-        PET_DETAIL_ATTR_HIT,                // ÃüÖÐÂÊ
-        PET_DETAIL_ATTR_MISS,                // ÉÁ±ÜÂÊ
-        PET_DETAIL_ATTR_CRITICAL,            // »áÐÄÂÊ
+        PET_DETAIL_ATTR_HIT,                // å‘½ä¸­çŽ‡
+        PET_DETAIL_ATTR_MISS,                // é—ªé¿çŽ‡
+        PET_DETAIL_ATTR_CRITICAL,            // ä¼šå¿ƒçŽ‡
 
-        PET_DETAIL_ATTR_MODELID,            // ÍâÐÎ
-        PET_DETAIL_ATTR_MOUNTID,            // ×ùÆïID
+        PET_DETAIL_ATTR_MODELID,            // å¤–å½¢
+        PET_DETAIL_ATTR_MOUNTID,            // åº§éª‘ID
         
-        PET_DETAIL_ATTR_STRPERCEPTION,        // Á¦Á¿×ÊÖÊ
-        PET_DETAIL_ATTR_CONPERCEPTION,        // ÌåÁ¦×ÊÖÊ
-        PET_DETAIL_ATTR_DEXPERCEPTION,        // Éí·¨×ÊÖÊ
-        PET_DETAIL_ATTR_SPRPERCEPTION,        // ÁéÆø×ÊÖÊ
-        PET_DETAIL_ATTR_INTPERCEPTION,        // ¶¨Á¦×ÊÖÊ
+        PET_DETAIL_ATTR_STRPERCEPTION,        // åŠ›é‡èµ„è´¨
+        PET_DETAIL_ATTR_CONPERCEPTION,        // ä½“åŠ›èµ„è´¨
+        PET_DETAIL_ATTR_DEXPERCEPTION,        // èº«æ³•èµ„è´¨
+        PET_DETAIL_ATTR_SPRPERCEPTION,        // çµæ°”èµ„è´¨
+        PET_DETAIL_ATTR_INTPERCEPTION,        // å®šåŠ›èµ„è´¨
 
-        PET_DETAIL_ATTR_STR,                // Á¦Á¿
-        PET_DETAIL_ATTR_CON,                // ÌåÁ¦
-        PET_DETAIL_ATTR_DEX,                // Éí·¨
-        PET_DETAIL_ATTR_SPR,                // ÁéÆø
-        PET_DETAIL_ATTR_INT,                // ¶¨Á¦
-        PET_DETAIL_ATTR_GENGU,                // ¸ù¹Ç
+        PET_DETAIL_ATTR_STR,                // åŠ›é‡
+        PET_DETAIL_ATTR_CON,                // ä½“åŠ›
+        PET_DETAIL_ATTR_DEX,                // èº«æ³•
+        PET_DETAIL_ATTR_SPR,                // çµæ°”
+        PET_DETAIL_ATTR_INT,                // å®šåŠ›
+        PET_DETAIL_ATTR_GENGU,                // æ ¹éª¨
 
-        PET_DETAIL_ATTR_POINT_REMAIN,        // Ç±ÄÜµã
+        PET_DETAIL_ATTR_POINT_REMAIN,        // æ½œèƒ½ç‚¹
 
-        PET_DETAIL_ATTR_SKILL_0,            // ¼¼ÄÜ0
-        PET_DETAIL_ATTR_SKILL_1,            // ¼¼ÄÜ1
-        PET_DETAIL_ATTR_SKILL_2,            // ¼¼ÄÜ2
-        PET_DETAIL_ATTR_SKILL_3,            // ¼¼ÄÜ3
-        PET_DETAIL_ATTR_SKILL_4,            // ¼¼ÄÜ4
-        PET_DETAIL_ATTR_SKILL_5,            // ¼¼ÄÜ5
+        PET_DETAIL_ATTR_SKILL_0,            // æŠ€èƒ½0
+        PET_DETAIL_ATTR_SKILL_1,            // æŠ€èƒ½1
+        PET_DETAIL_ATTR_SKILL_2,            // æŠ€èƒ½2
+        PET_DETAIL_ATTR_SKILL_3,            // æŠ€èƒ½3
+        PET_DETAIL_ATTR_SKILL_4,            // æŠ€èƒ½4
+        PET_DETAIL_ATTR_SKILL_5,            // æŠ€èƒ½5
 
 
         PET_DETAIL_ATTR_NUMBERS
@@ -91,7 +91,7 @@ namespace Packets
         }
         virtual ~GCDetailAttrib_Pet( ){}
 
-        //¹«ÓÃ¼Ì³Ð½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æŽ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -284,56 +284,56 @@ namespace Packets
 
     private:
         PET_GUID_t        m_GUID;                            // ID
-        INT                m_nTradeIndex;                    // ½»Ò×ÓÃµ½µÄË÷ÒýÖµ
+        INT                m_nTradeIndex;                    // äº¤æ˜“ç”¨åˆ°çš„ç´¢å¼•å€¼
 
-        Flag64            m_Flags;                        // Ã¿¸öÎ»±íÊ¾Ò»¸öÊôÐÔÊÇ·ñÒªË¢ÐÂ ENUM_DETAIL_ATTRIB
+        Flag64            m_Flags;                        // æ¯ä¸ªä½è¡¨ç¤ºä¸€ä¸ªå±žæ€§æ˜¯å¦è¦åˆ·æ–° ENUM_DETAIL_ATTRIB
 
-        ObjID_t            m_ObjID;                        // ËùÓÐObjÀàÐÍµÄObjID
-        INT                m_nDataID;                        // Ä£ÐÍID,³èÎïÀàÐÍ
-        BYTE            m_byNameSize;                    // Ãû³Æ³¤¶È,²»°üÀ¨×îºóµÄ'\0'
-        CHAR            m_szName[MAX_CHARACTER_NAME];    // Ãû³Æ
-        INT                m_nAIType;                        // ÐÔ¸ñ
-        PET_GUID_t        m_SpouseGUID;                    // ÅäÅ¼µÄGUID
-        INT                m_nLevel;                        // µÈ¼¶
-        INT                m_nExp;                            // ¾­Ñé
-        INT                m_nHP;                            // Ñªµ±Ç°Öµ
-        INT                m_nHPMax;                        // Ñª×î´óÖµ
+        ObjID_t            m_ObjID;                        // æ‰€æœ‰Objç±»åž‹çš„ObjID
+        INT                m_nDataID;                        // æ¨¡åž‹ID,å® ç‰©ç±»åž‹
+        BYTE            m_byNameSize;                    // åç§°é•¿åº¦,ä¸åŒ…æ‹¬æœ€åŽçš„'\0'
+        CHAR            m_szName[MAX_CHARACTER_NAME];    // åç§°
+        INT                m_nAIType;                        // æ€§æ ¼
+        PET_GUID_t        m_SpouseGUID;                    // é…å¶çš„GUID
+        INT                m_nLevel;                        // ç­‰çº§
+        INT                m_nExp;                            // ç»éªŒ
+        INT                m_nHP;                            // è¡€å½“å‰å€¼
+        INT                m_nHPMax;                        // è¡€æœ€å¤§å€¼
 
-        INT                m_nLife;                        // µ±Ç°ÊÙÃü
-        BYTE            m_byGeneration;                    // ¼¸´ú³è
-        BYTE            m_byHappiness;                    // ¿ìÀÖ¶È
+        INT                m_nLife;                        // å½“å‰å¯¿å‘½
+        BYTE            m_byGeneration;                    // å‡ ä»£å® 
+        BYTE            m_byHappiness;                    // å¿«ä¹åº¦
 
-        INT                m_nAtt_Physics;                    // ÎïÀí¹¥»÷Á¦
-        INT                m_nAtt_Magic;                    // Ä§·¨¹¥»÷Á¦
-        INT                m_nDef_Physics;                    // ÎïÀí·ÀÓùÁ¦
-        INT                m_nDef_Magic;                    // Ä§·¨·ÀÓùÁ¦
+        INT                m_nAtt_Physics;                    // ç‰©ç†æ”»å‡»åŠ›
+        INT                m_nAtt_Magic;                    // é­”æ³•æ”»å‡»åŠ›
+        INT                m_nDef_Physics;                    // ç‰©ç†é˜²å¾¡åŠ›
+        INT                m_nDef_Magic;                    // é­”æ³•é˜²å¾¡åŠ›
 
-        INT                m_nHit;                            // ÃüÖÐÂÊ
-        INT                m_nMiss;                        // ÉÁ±ÜÂÊ
-        INT                m_nCritical;                    // »áÐÄÂÊ
+        INT                m_nHit;                            // å‘½ä¸­çŽ‡
+        INT                m_nMiss;                        // é—ªé¿çŽ‡
+        INT                m_nCritical;                    // ä¼šå¿ƒçŽ‡
 
-        INT                m_nModelID;                        // ÍâÐÎ
-        INT                m_nMountID;                        // ×ùÆïID
+        INT                m_nModelID;                        // å¤–å½¢
+        INT                m_nMountID;                        // åº§éª‘ID
 
-        INT                m_StrPerception;                // Á¦Á¿×ÊÖÊ
-        INT                m_ConPerception;                // ÌåÁ¦×ÊÖÊ
-        INT             m_DexPerception;                // Éí·¨×ÊÖÊ
-        INT                m_SprPerception;                // ÁéÆø×ÊÖÊ
-        INT             m_IntPerception;                // ¶¨Á¦×ÊÖÊ
+        INT                m_StrPerception;                // åŠ›é‡èµ„è´¨
+        INT                m_ConPerception;                // ä½“åŠ›èµ„è´¨
+        INT             m_DexPerception;                // èº«æ³•èµ„è´¨
+        INT                m_SprPerception;                // çµæ°”èµ„è´¨
+        INT             m_IntPerception;                // å®šåŠ›èµ„è´¨
 
-        INT                m_Str;                            // Á¦Á¿
-        INT                m_Con;                            // ÌåÁ¦
-        INT             m_Dex;                            // Éí·¨
-        INT                m_Spr;                            // ÁéÆø
-        INT             m_Int;                            // ¶¨Á¦
-        INT             m_GenGu;                        // ¸ù¹Ç
+        INT                m_Str;                            // åŠ›é‡
+        INT                m_Con;                            // ä½“åŠ›
+        INT             m_Dex;                            // èº«æ³•
+        INT                m_Spr;                            // çµæ°”
+        INT             m_Int;                            // å®šåŠ›
+        INT             m_GenGu;                        // æ ¹éª¨
 
-        INT                m_nRemainPoint;                    // Ç±ÄÜµã
+        INT                m_nRemainPoint;                    // æ½œèƒ½ç‚¹
 
-        _OWN_SKILL        m_aSkill[MAX_PET_SKILL_COUNT];    // ¼¼ÄÜÁÐ±í
+        _OWN_SKILL        m_aSkill[MAX_PET_SKILL_COUNT];    // æŠ€èƒ½åˆ—è¡¨
 
-        BYTE            m_ExtraInfoLength;                            // ¸½¼ÓÐÅÏ¢³¤¶È
-        BYTE            m_ExtraInfoData[MAX_EXTRAINFO_LENGTH];        // ¸½¼ÓÐÅÏ¢ÄÚÈÝ
+        BYTE            m_ExtraInfoLength;                            // é™„åŠ ä¿¡æ¯é•¿åº¦
+        BYTE            m_ExtraInfoData[MAX_EXTRAINFO_LENGTH];        // é™„åŠ ä¿¡æ¯å†…å®¹
 
 
     };

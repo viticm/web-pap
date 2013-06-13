@@ -10,20 +10,20 @@
 
 
 
-//ÓÃÀ´´¦ÀíÃüÁîĞĞÊı¾İ
+//ç”¨æ¥å¤„ç†å‘½ä»¤è¡Œæ•°æ®
 class CommandThread : public Thread
 {
 public :
     CommandThread( ){m_Active = TRUE;} 
     ~CommandThread( ){} ;
 
-    //Ö÷Ñ­»·
+    //ä¸»å¾ªç¯
     virtual VOID    run( ) ;
 
-    //Í£Ö¹Ïß³ÌÖ´ĞĞ
+    //åœæ­¢çº¿ç¨‹æ‰§è¡Œ
     virtual VOID    stop( ) { m_Active = FALSE ; } ;
 
-    //ÅĞ¶Ïµ±Ç°Ïß³ÌÊÇ·ñ¼¤»î
+    //åˆ¤æ–­å½“å‰çº¿ç¨‹æ˜¯å¦æ¿€æ´»
     BOOL            IsActive( ){ return m_Active ; } ;
 
     GLOBAL_CONFIG    m_SMConfig;    

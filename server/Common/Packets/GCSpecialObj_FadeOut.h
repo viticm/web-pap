@@ -1,6 +1,6 @@
 // GCSpecialObj_FadeOut.h
 // 
-// 技能没击中
+// 鎶�鑳芥病鍑讳腑
 // 
 //////////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ namespace Packets
         GCSpecialObj_FadeOut() : m_nObjID(INVALID_ID){}
         virtual ~GCSpecialObj_FadeOut( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,12 +29,12 @@ namespace Packets
         virtual PacketID_t        GetPacketID()const { return PACKET_GC_SPECIAL_OBJ_FADE_OUT; }
         virtual UINT            GetPacketSize()const {return sizeof(m_nObjID);}
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         ObjID_t        GetObjID(VOID) const {return m_nObjID;}
         VOID        SetObjID(ObjID_t nObjID) {m_nObjID=nObjID;}
 
     private:
-        ObjID_t        m_nObjID;    // 特殊对象的ID
+        ObjID_t        m_nObjID;    // 鐗规畩瀵硅薄鐨処D
     };
 
 

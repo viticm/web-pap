@@ -27,7 +27,7 @@ __ENTER_FUNCTION
 
         pUser = g_pOnlineUser->FindUser( mail.m_szDestName );
         if( pUser )
-        {//当前用户在线
+        {//褰撳墠鐢ㄦ埛鍦ㄧ嚎
             if( pUser->RecvMail( &mail ) == FALSE )
             {
                 Log::SaveLog( WORLD_LOGFILE, "GWBatchMailHandler...dName=%s refuse sName=%s's mail.",

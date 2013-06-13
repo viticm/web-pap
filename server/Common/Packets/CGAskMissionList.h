@@ -1,6 +1,6 @@
 // CGAskMissionList.h
 // 
-// 请求刷新任务列表
+// 璇锋眰鍒锋柊浠诲姟鍒楄〃
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         CGAskMissionList( ){}
         virtual ~CGAskMissionList( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,12 +28,12 @@ namespace Packets
         virtual UINT            GetPacketSize()const { return sizeof(ObjID_t) ; }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         ObjID_t                    getTargetID(VOID) { return m_ObjID; }
         VOID                    setTargetID(ObjID_t idTarget) { m_ObjID = idTarget; }
 
     private:
-        //数据
+        //鏁版嵁
         ObjID_t                    m_ObjID;
     };
 

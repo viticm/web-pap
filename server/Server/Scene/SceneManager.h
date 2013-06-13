@@ -10,7 +10,7 @@
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//¹ÖÎïÊı¾İ
+//æ€ªç‰©æ•°æ®
 struct _OBJ_MONSTER_INIT ;
 struct FLOAT_POS
 {
@@ -74,16 +74,16 @@ struct _OBJ_MONSTER_DATA
 };
 struct MONSTER_FILE
 {
-    CHAR                m_szFileName[_MAX_PATH] ;    //monster.iniÎÄ¼şÃû
-    _OBJ_MONSTER_INIT*    m_pMonsterInitData ;        //¹ÖÎï³õÊ¼»¯Êı¾İ½á¹¹£¨±à¼­Æ÷¶¨ÒåµÄ×ÜÁ¿£©
-    BOOL*                m_pAllocFlag ;                //Ã¿¸ö¹ÖÎïÊÇ·ñ·ÖÅäÊ¹ÓÃµÄ±êÖ¾
-    INT                    m_Count ;                    //¹ÖÎïÊıÁ¿
-    _OBJ_MONSTER_INIT*    m_pInitUsing ;                //Êµ¼ÊÊ¹ÓÃµÄ¹ÖÎï³õÊ¼»¯Êı¾İ
-    INT                    m_CountUsing ;                //Êµ¼ÊÊ¹ÓÃµÄ¹ÖÎïÊıÁ¿
-    INT                    m_OperateCount ;            //×ª»»²Ù×÷ÊıÁ¿
-    _OBJ_MONSTER_OPT*    m_pOperate ;                //×ª»»²Ù×÷Êı¾İ½á¹¹
-    INT                    m_DataCount ;                //Êı¾İÇøÊıÁ¿
-    _OBJ_MONSTER_DATA*    m_pData ;                    //Êı¾İÇø½á¹¹
+    CHAR                m_szFileName[_MAX_PATH] ;    //monster.iniæ–‡ä»¶å
+    _OBJ_MONSTER_INIT*    m_pMonsterInitData ;        //æ€ªç‰©åˆå§‹åŒ–æ•°æ®ç»“æ„ï¼ˆç¼–è¾‘å™¨å®šä¹‰çš„æ€»é‡ï¼‰
+    BOOL*                m_pAllocFlag ;                //æ¯ä¸ªæ€ªç‰©æ˜¯å¦åˆ†é…ä½¿ç”¨çš„æ ‡å¿—
+    INT                    m_Count ;                    //æ€ªç‰©æ•°é‡
+    _OBJ_MONSTER_INIT*    m_pInitUsing ;                //å®é™…ä½¿ç”¨çš„æ€ªç‰©åˆå§‹åŒ–æ•°æ®
+    INT                    m_CountUsing ;                //å®é™…ä½¿ç”¨çš„æ€ªç‰©æ•°é‡
+    INT                    m_OperateCount ;            //è½¬æ¢æ“ä½œæ•°é‡
+    _OBJ_MONSTER_OPT*    m_pOperate ;                //è½¬æ¢æ“ä½œæ•°æ®ç»“æ„
+    INT                    m_DataCount ;                //æ•°æ®åŒºæ•°é‡
+    _OBJ_MONSTER_DATA*    m_pData ;                    //æ•°æ®åŒºç»“æ„
 
     MONSTER_FILE( )
     {
@@ -111,13 +111,13 @@ protected :
 };
 
 /////////////////////////////////////////////////////////////////////////////////
-//Ñ²ÂßÂ·¾¶Êı¾İ
+//å·¡é€»è·¯å¾„æ•°æ®
 struct PatrolPath ;
 struct PATROL_FILE
 {
-    CHAR                m_szFileName[_MAX_PATH] ;    //patrol.iniÎÄ¼şÃû
-    PatrolPath*            m_PatrolPathList ;            //Â·¾¶ÊıÁ¿
-    INT                    m_PatrolPathCount ;            //Â·¾¶ÊıÁ¿
+    CHAR                m_szFileName[_MAX_PATH] ;    //patrol.iniæ–‡ä»¶å
+    PatrolPath*            m_PatrolPathList ;            //è·¯å¾„æ•°é‡
+    INT                    m_PatrolPathCount ;            //è·¯å¾„æ•°é‡
 
     PATROL_FILE()
     {
@@ -130,11 +130,11 @@ struct PATROL_FILE
 };
 
 /////////////////////////////////////////////////////////////////////////////////
-//²Ù×÷Ì¨Êı¾İ
+//æ“ä½œå°æ•°æ®
 struct _OBJ_PLATFORM_INIT ;
 struct PLATFORM_FILE
 {
-    CHAR                    m_szFileName[_MAX_PATH] ;    //platform.iniÎÄ¼şÃû
+    CHAR                    m_szFileName[_MAX_PATH] ;    //platform.iniæ–‡ä»¶å
     _OBJ_PLATFORM_INIT*        m_pInit ;
     INT                        m_Count ;
 
@@ -149,11 +149,11 @@ struct PLATFORM_FILE
 };
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÊÂ¼şÇøÊı¾İ
+//äº‹ä»¶åŒºæ•°æ®
 struct Area ;
 struct AREA_FILE
 {
-    CHAR        m_szFileName[_MAX_PATH] ;    //area.iniÎÄ¼şÃû
+    CHAR        m_szFileName[_MAX_PATH] ;    //area.iniæ–‡ä»¶å
     Area*        m_pArea ;
     INT            m_Count ;
 
@@ -168,11 +168,11 @@ struct AREA_FILE
 };
 
 /////////////////////////////////////////////////////////////////////////////////
-//Éú³¤µãÊı¾İ
+//ç”Ÿé•¿ç‚¹æ•°æ®
 struct GROWPOINT_LOAD ;
 struct GROWPOINT_FILE
 {
-    CHAR            m_szFileName[_MAX_PATH] ;    //growpoint.iniÎÄ¼şÃû
+    CHAR            m_szFileName[_MAX_PATH] ;    //growpoint.iniæ–‡ä»¶å
     GROWPOINT_LOAD*    m_pGrowpoint ;
     INT                m_Count ;
 
@@ -196,29 +196,29 @@ public :
     SceneManager( ) ;
     ~SceneManager( ) ;
 
-    //³õÊ¼»¯½Ó¿Ú
+    //åˆå§‹åŒ–æ¥å£
     BOOL            Init( UINT MaxSceneCount = MAX_SCENE ) ;
 
-    //¸ù¾İ³¡¾°ºÅÈ¡µÃ³¡¾°¶ÔÏóÖ¸Õë
+    //æ ¹æ®åœºæ™¯å·å–å¾—åœºæ™¯å¯¹è±¡æŒ‡é’ˆ
     Scene*            GetScene( SceneID_t SceneID ) ;
-    //¸ù¾İ³¡¾°ºÅÈ¡µÃ³¡¾°ÅäÖÃĞÅÏ¢
+    //æ ¹æ®åœºæ™¯å·å–å¾—åœºæ™¯é…ç½®ä¿¡æ¯
     _SCENE_DATA*    GetSceneInfo( SceneID_t SceneID ) ;
-    //¸ù¾İ³¡¾°ºÅÅĞ¶Ï´Ë³¡¾°ÊÇ·ñÔÚµ±Ç°·şÎñÆ÷¶Ë³ÌĞò´¦Àí
+    //æ ¹æ®åœºæ™¯å·åˆ¤æ–­æ­¤åœºæ™¯æ˜¯å¦åœ¨å½“å‰æœåŠ¡å™¨ç«¯ç¨‹åºå¤„ç†
     BOOL            IsInCurServer( SceneID_t SceneID ) ;
-    //¸ù¾İ³¡¾°ºÅÅĞ¶Ï´Ë³¡¾°ÊÇ·ñ±»µ±Ç°·şÎñÆ÷ÉÏµÄÄ³¸ö·şÎñÆ÷¶Ë³ÌĞò´¦Àí
+    //æ ¹æ®åœºæ™¯å·åˆ¤æ–­æ­¤åœºæ™¯æ˜¯å¦è¢«å½“å‰æœåŠ¡å™¨ä¸Šçš„æŸä¸ªæœåŠ¡å™¨ç«¯ç¨‹åºå¤„ç†
     BOOL            IsInCurMachine( SceneID_t SceneID ) ;
 
-    //ÏòÏµÍ³ÄÚÌí¼ÓÒ»¸ö³¡¾°
+    //å‘ç³»ç»Ÿå†…æ·»åŠ ä¸€ä¸ªåœºæ™¯
     BOOL            AddScene( Scene* pScene ) ;
-    //½«Ò»¸ö³¡¾°´ÓÏµÍ³ÖĞÉ¾³ı
+    //å°†ä¸€ä¸ªåœºæ™¯ä»ç³»ç»Ÿä¸­åˆ é™¤
     BOOL            DelScene( SceneID_t SceneID ) ;
 
-    //ÉèÖÃÄ³¸ö³¡¾°ÖĞµÄÈËÊı
+    //è®¾ç½®æŸä¸ªåœºæ™¯ä¸­çš„äººæ•°
     VOID            SetScenePlayerCount( SceneID_t SceneID, INT count ){
         if( SceneID < 0 && SceneID>=MAX_SCENE ) return ;
         m_aScenePlayerCount[SceneID] = count ;
     };
-    //¶ÁÈ¡Ä³¸ö³¡¾°ÖĞµÄÈËÊı
+    //è¯»å–æŸä¸ªåœºæ™¯ä¸­çš„äººæ•°
     INT                GetScenePlayerCount( SceneID_t SceneID ){
         if( SceneID < 0 && SceneID>=MAX_SCENE ) return 0 ;
         return m_aScenePlayerCount[SceneID] ;
@@ -244,19 +244,19 @@ public :
     GROWPOINT_FILE*    FindEmptyGrowpointFile( ) ;
 
     BOOL            BroadCast_Scene(Packet* pMsg);
-    SceneID_t        GetSpecialSceneIDFromCurServer( ) ;//È¡µ½Ò»¸öÔÚµ±Ç°ServerÉÏµÄÓÎÏ·Âß¼­³¡¾°
+    SceneID_t        GetSpecialSceneIDFromCurServer( ) ;//å–åˆ°ä¸€ä¸ªåœ¨å½“å‰Serverä¸Šçš„æ¸¸æˆé€»è¾‘åœºæ™¯
 private :
-    Scene*            m_pScene[MAX_SCENE] ;            //³¡¾°Êı¾İÖ¸Õë
-    INT                m_aScenePlayerCount[MAX_SCENE] ;//³¡¾°ÖĞÈËÊı
-    UINT            m_Count ;//µ±Ç°ÏµÍ³ÖĞµÄ³¡¾°ÊıÁ¿
+    Scene*            m_pScene[MAX_SCENE] ;            //åœºæ™¯æ•°æ®æŒ‡é’ˆ
+    INT                m_aScenePlayerCount[MAX_SCENE] ;//åœºæ™¯ä¸­äººæ•°
+    UINT            m_Count ;//å½“å‰ç³»ç»Ÿä¸­çš„åœºæ™¯æ•°é‡
 
-    MONSTER_FILE    m_aMonsterFile[MAX_SCENE] ;//¹ÖÎï*_monster.iniµÄÊı¾İ£¬Ô­Ê¼Êı¾İ
-    PATROL_FILE        m_aPatrolFile[MAX_SCENE] ;//Ñ²ÂßÂ·¾¶*partrol.iniµÄÊı¾İ£¬Ô­Ê¼Êı¾İ
-    PLATFORM_FILE    m_aPlatformFile[MAX_SCENE] ;//²Ù×÷Ì¨*platform.iniµÄÊı¾İ£¬Ô­Ê¼Êı¾İ
-    AREA_FILE        m_aAreaFile[MAX_SCENE] ;//ÊÂ¼şÇø*area.iniµÄÊı¾İ£¬Ô­Ê¼Êı¾İ
-    GROWPOINT_FILE    m_aGrowpointFile[MAX_SCENE] ;//Éú³¤µãÔ­Ê¼Êı¾İ
+    MONSTER_FILE    m_aMonsterFile[MAX_SCENE] ;//æ€ªç‰©*_monster.iniçš„æ•°æ®ï¼ŒåŸå§‹æ•°æ®
+    PATROL_FILE        m_aPatrolFile[MAX_SCENE] ;//å·¡é€»è·¯å¾„*partrol.iniçš„æ•°æ®ï¼ŒåŸå§‹æ•°æ®
+    PLATFORM_FILE    m_aPlatformFile[MAX_SCENE] ;//æ“ä½œå°*platform.iniçš„æ•°æ®ï¼ŒåŸå§‹æ•°æ®
+    AREA_FILE        m_aAreaFile[MAX_SCENE] ;//äº‹ä»¶åŒº*area.iniçš„æ•°æ®ï¼ŒåŸå§‹æ•°æ®
+    GROWPOINT_FILE    m_aGrowpointFile[MAX_SCENE] ;//ç”Ÿé•¿ç‚¹åŸå§‹æ•°æ®
 
-    INT                m_nTotalPlayerCount ;//Õû¸öÓÎÏ·ÊÀ½çµÄÈËÊı×ÜºÍ
+    INT                m_nTotalPlayerCount ;//æ•´ä¸ªæ¸¸æˆä¸–ç•Œçš„äººæ•°æ€»å’Œ
 };
 
 extern SceneManager* g_pSceneManager ;

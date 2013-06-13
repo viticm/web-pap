@@ -10,8 +10,8 @@
 // include files
 #include "BaseType.h"
 
-extern int g_Command_Assert ;//¿ØÖÆ²ÎÊı£¬²»ÌáÊ¾AssertµÄ¶Ô»°¿ò£¬Ö±½ÓºöÂÔ
-extern int g_Command_IgnoreMessageBox ;//¿ØÖÆ²ÎÊı£¬Ìø¹ıMyMessageBoxµÄÖĞ¶Ï
+extern int g_Command_Assert ;//æ§åˆ¶å‚æ•°ï¼Œä¸æç¤ºAssertçš„å¯¹è¯æ¡†ï¼Œç›´æ¥å¿½ç•¥
+extern int g_Command_IgnoreMessageBox ;//æ§åˆ¶å‚æ•°ï¼Œè·³è¿‡MyMessageBoxçš„ä¸­æ–­
 
 //--------------------------------------------------------------------------------
 //

@@ -15,7 +15,7 @@ namespace Packets
         WGChannelResult( ){} ;
         virtual ~WGChannelResult( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ namespace Packets
     public :
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                SetPlayerID( PlayerID_t pid ){ m_PlayerID = pid ; } ;
         PlayerID_t            GetPlayerID( ){ return m_PlayerID ; } ;
 
@@ -43,8 +43,8 @@ namespace Packets
         ChannelID_t            GetChannelID( ){ return m_ChannelID ; }
 
     private:
-        //Êı¾İ
-        PlayerID_t            m_PlayerID ;    //Á¬½ÓÕß
+        //æ•°æ®
+        PlayerID_t            m_PlayerID ;    //è¿æ¥è€…
         BYTE                m_Return ;
         GUID_t                m_GUID ;
         ChannelID_t            m_ChannelID ;

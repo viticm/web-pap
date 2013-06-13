@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºObj_Monster_Attributes.cpp
-// ¹¦ÄÜËµÃ÷£º½ÇÉ«²ãÊôĞÔ
+// æ–‡ä»¶åï¼šObj_Monster_Attributes.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šè§’è‰²å±‚å±æ€§
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -16,7 +16,7 @@
 #include "AI_Monster.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-//½ÇÉ«ÊôĞÔ²¿·Ö
+//è§’è‰²å±æ€§éƒ¨åˆ†
 //StrikePoint
 INT    Obj_Monster::GetMaxStrikePoint(VOID)
 {
@@ -240,7 +240,7 @@ __LEAVE_FUNCTION
 
 INT Obj_Monster::GetBaseCampID(VOID) const
 {
-    //return 1;//ÁÙÊ±²âÊÔ
+    //return 1;//ä¸´æ—¶æµ‹è¯•
     return m_CampData.m_nCampID;
 }
 
@@ -308,14 +308,14 @@ __ENTER_FUNCTION
         SetIntAttr(CharIntAttrs_T::ATTR_MOVE_SPEED, nValue);
         ClearMoveSpeedDirtyFlag();
     }
-    FLOAT fMoveSpeed = GetIntAttr(CharIntAttrs_T::ATTR_MOVE_SPEED)/10.0f;//LMĞŞ¸Ä
+    FLOAT fMoveSpeed = GetIntAttr(CharIntAttrs_T::ATTR_MOVE_SPEED)/10.0f;//LMä¿®æ”¹
     ENUM_MOVE_MODE eMoveMode = GetMoveMode();
     if(eMoveMode == MOVE_MODE_HOBBLE)
-    {//±ä³É»ù´¡ËÙ¶ÈµÄ50%
+    {//å˜æˆåŸºç¡€é€Ÿåº¦çš„50%
         fMoveSpeed = fMoveSpeed*0.5f;
     }
     else if(eMoveMode == MOVE_MODE_RUN)
-    {//±ä³É»ù´¡ËÙ¶ÈµÄ150%
+    {//å˜æˆåŸºç¡€é€Ÿåº¦çš„150%
         fMoveSpeed = fMoveSpeed*1.5f;
     }
     return fMoveSpeed;

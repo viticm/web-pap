@@ -34,7 +34,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //����߳�ִ����Դ�Ƿ���ȷ
+    //检查线程执行资源是否正确
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
     
     BYTE    GemBagIndex        =    pPacket->GetGemBagIndex();
@@ -46,7 +46,7 @@ __ENTER_FUNCTION
 
     pAbility = g_pAbilityManager->GetAbility(g_pAbilityManager->ABILITY_CLASS_INLAY);
     if( pAbility == NULL )
-    { // �����ڸü���
+    { // 不存在该技能
         return PACKET_EXE_CONTINUE;
     }
 

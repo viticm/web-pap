@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-�����¼������ӿ�
+帮派事件处理接口
 */
 #include "ServerPlayer.h"
 #include "ServerManager.h"
@@ -38,7 +38,7 @@ __ENTER_FUNCTION
     switch( pGuildPacket->m_uPacketType )
     {
     case GUILD_PACKET_GW_ASKLIST:
-        { // ���ذ����Ϣ�б�
+        { // 返回帮会信息列表
             GUILD_CGW_ASKLIST* pAskList = (GUILD_CGW_ASKLIST*)(pGuildPacket->GetPacket(GUILD_PACKET_GW_ASKLIST));
 
             WGGuild Msg;
@@ -63,7 +63,7 @@ __ENTER_FUNCTION
     case GUILD_PACKET_GW_CREATE:
         {
             if( guildID != INVALID_ID )
-            { // ���а�ᣬ����Ӧ���Ѿ��� Server ��ȷ���������Բ����ش�����
+            { // 已有帮会，这里应该已经由 Server 正确处理，所以不返回错误结果
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User GUID=%X attempt to create an extra guild!", 
                     guid );
                 GuildErr = GUILD_ERROR_GUILD_ALREADY_EXIST;
@@ -75,9 +75,9 @@ __ENTER_FUNCTION
 
             GuildErr = g_pGuildManager->CreateGuild(pUser, pGuildCreate->m_szGuildName, pGuildCreate->m_Camp);
             if( GuildErr == GUILD_ERROR_NOTHING )
-            { // �����ɹ�
+            { // 创建成功
 
-                //ȫ�������а���е������б�����һ�ߣ��Ǻǣ�����
+                //全世界所有帮会中的申请列表遍历一边，呵呵，够狠
                 for( INT i=0; i<MAX_GUILD_SIZE; i++ )
                 {
                     Guild* pDeleteGuild = g_pGuildManager->GetGuild( i );
@@ -90,7 +90,7 @@ __ENTER_FUNCTION
                             {
                                 if(pDeleteUser->m_UserGUID == guid
                                     &&pDeleteUser->m_Position == GUILD_POSITION_TRAINEE)
-                                {//ɾ������
+                                {//删掉此人
                                     pDeleteGuild->OnUserLeaveByIndex(j);
                                     break;
                                 }
@@ -99,9 +99,9 @@ __ENTER_FUNCTION
                     }
                 }
 
-                //��ϲ�������%s��ᴴ���ɹ�����ʹ�ÿ�ݼ���ĸO��ͨ���������Խ���ġ���ᡱ�鿴�͹�����İ�ᡣ
+                //恭喜你申请的%s帮会创建成功，可使用快捷键字母O或通过人物属性界面的“帮会”查看和管理你的帮会。
                 CHAR szMailContent[MAX_MAIL_CONTEX] = {0};
-                sprintf(szMailContent, "��ϲ�������%s��ᴴ���ɹ�����ʹ�ÿ�ݼ���ĸO��ͨ���������Խ���ġ���ᡱ�鿴�͹�����İ�ᡣ", pGuildCreate->m_szGuildName);
+                sprintf(szMailContent, "恭喜你申请的%s帮会创建成功，可使用快捷键字母O或通过人物属性界面的“帮会”查看和管理你的帮会。", pGuildCreate->m_szGuildName);
                 g_pMailCenter->SendNormalMail(pUser->GetName(), szMailContent);
 
                 WGGuildReturn Msg;
@@ -129,7 +129,7 @@ __ENTER_FUNCTION
     case GUILD_PACKET_GW_JOIN:
         {
             if( guildID != INVALID_ID )
-            { // ���а�ᣬ����Ӧ���Ѿ��� Server ��ȷ���������Բ����ش�����
+            { // 已有帮会，这里应该已经由 Server 正确处理，所以不返回错误结果
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User GUID=%X attempt to join an extra guild!", 
                     guid );
                 GuildErr = GUILD_ERROR_IN_GUILD;
@@ -152,7 +152,7 @@ __ENTER_FUNCTION
                     {
                         GuildErr = pGuild->OnUserEnter(pUser, pGuildJoin->m_Camp);
                         if( GuildErr == GUILD_ERROR_NOTHING )
-                        { // �ɹ�
+                        { // 成功
                             pUser->SetGuildID( pGuild->GetGuildID() );
 
                             WGGuildReturn Msg;
@@ -200,9 +200,9 @@ __ENTER_FUNCTION
                 return PACKET_EXE_CONTINUE;
             }
 
-            //���������������ɲ�ͬ�İ�
+            //根据请求类型生成不同的包
             if(pAskInfo->m_Type == GUILD_CGW_ASKINFO::GUILD_SELF_INFO)
-            {//���˰�����Ϣ,�����ʼ��ʱ����
+            {//本人帮派信息,人物初始化时请求
                 WGGuild Msg;
                 Msg.SetPlayerID( pUser->GetPlayerID() );
                 Msg.SetGUID(guid);
@@ -217,7 +217,7 @@ __ENTER_FUNCTION
                 Msg.GetGuildPacket()->m_uPacketType = GUILD_PACKET_WG_SELF_GUILD_INFO;
                 GUILD_WGC_SELF_GUILD_INFO* pSelfGuildInfo = (GUILD_WGC_SELF_GUILD_INFO*)(Msg.GetGuildPacket()->GetPacket(GUILD_PACKET_WG_SELF_GUILD_INFO));
 
-                //��ǰֻ��Ҫ������
+                //当前只需要帮派名
                 memcpy(pSelfGuildInfo->m_GuildName, pGuild->GetGuildName(),MAX_GUILD_NAME_SIZE );
                 pSelfGuildInfo->m_GuildName[MAX_GUILD_NAME_SIZE - 1] = 0;
                 pSelfGuildInfo->m_GuildNameSize = (BYTE)strlen(pSelfGuildInfo->m_GuildName);
@@ -229,7 +229,7 @@ __ENTER_FUNCTION
                 return PACKET_EXE_CONTINUE;
             }
             else if(pAskInfo->m_Type == GUILD_CGW_ASKINFO::GUILD_MEMBER_INFO)
-            {//��Ա�б�
+            {//成员列表
                 WGGuild Msg;
                 Msg.SetPlayerID( pUser->GetPlayerID() );
                 Msg.SetGUID(guid);
@@ -267,7 +267,7 @@ __ENTER_FUNCTION
                         pMemberList->m_GuildMemberData[CurNum].m_iJoinTime        =    pUser->m_iJoinTime;
                         pMemberList->m_GuildMemberData[CurNum].m_iLogOutTime    =    pUser->m_uLastLoginTime;
                         pMemberList->m_GuildMemberData[CurNum].m_bIsOnline        =    pUser->m_bOnlineFlag;
-                        //�������
+                        //如果在线
                         if(pUser->m_bOnlineFlag && pUser->m_Position>GUILD_POSITION_TRAINEE)
                         {
                             pMemberList->m_uValidMemberCount++;                            
@@ -284,7 +284,7 @@ __ENTER_FUNCTION
                 return PACKET_EXE_CONTINUE;
             }
             else if(pAskInfo->m_Type == GUILD_CGW_ASKINFO::GUILD_INFO)
-            {//�����Ϣ
+            {//帮会信息
                 WGGuild Msg;
                 Msg.SetPlayerID( pUser->GetPlayerID() );
                 Msg.SetGUID(guid);
@@ -315,15 +315,15 @@ __ENTER_FUNCTION
                 pGuildInfo->m_nLevel        =    pGuild->GetGuildLevel();
                 pGuildInfo->m_MemNum        =    pGuild->GetGuildUserCount();
                 pGuildInfo->m_Longevity        =    pGuild->GetLongevity();
-                pGuildInfo->m_Contribute    =    pGuild->GetContribute();        //���׶�
-                pGuildInfo->m_Honor            =    pGuild->GetHonor();                //����
-                pGuildInfo->m_FoundedMoney    =    pGuild->GetMoney();                //�����ʽ�
-                pGuildInfo->m_nIndustryLevel=    pGuild->GetIndustry();            //��ҵ��
-                pGuildInfo->m_nAgrLevel        =    pGuild->GetAgr();                //ũҵ��
-                pGuildInfo->m_nComLevel        =    pGuild->GetCom();                //��ҵ��
-                pGuildInfo->m_nDefLevel        =    pGuild->GetDef();                //������
-                pGuildInfo->m_nTechLevel    =    pGuild->GetTech();                //�Ƽ���
-                pGuildInfo->m_nAmbiLevel    =    pGuild->GetAmbi();                //���Ŷ�
+                pGuildInfo->m_Contribute    =    pGuild->GetContribute();        //贡献度
+                pGuildInfo->m_Honor            =    pGuild->GetHonor();                //人气
+                pGuildInfo->m_FoundedMoney    =    pGuild->GetMoney();                //帮派资金
+                pGuildInfo->m_nIndustryLevel=    pGuild->GetIndustry();            //工业度
+                pGuildInfo->m_nAgrLevel        =    pGuild->GetAgr();                //农业度
+                pGuildInfo->m_nComLevel        =    pGuild->GetCom();                //商业度
+                pGuildInfo->m_nDefLevel        =    pGuild->GetDef();                //防卫度
+                pGuildInfo->m_nTechLevel    =    pGuild->GetTech();                //科技度
+                pGuildInfo->m_nAmbiLevel    =    pGuild->GetAmbi();                //扩张度
                 pGuildInfo->m_bAccess        =    pGuildUser->m_uAccess;
 
                 pServerPlayer->SendPacket( &Msg );
@@ -349,7 +349,7 @@ __ENTER_FUNCTION
 
                 INT iPosNum = 0;
                 for(INT i = GUILD_POSITION_MEMBER; i<=GUILD_POSITION_ASS_CHIEFTAIN; i++ )
-                {//ְλ��ȫ������
+                {//职位名全发过来
                     pAppointInfo->m_PosList[iPosNum].m_PosID = i;
                     if(pGuild->GetPosName(i))
                     {
@@ -400,7 +400,7 @@ __ENTER_FUNCTION
                 GuildErr = GUILD_ERROR_UNAUTHORIZED;
             }
 
-            //��������Լ�
+            //如果任命自己
             if(pGuildUser == pCandGuildUser)
             {
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User Name=%s appoint himself!", 
@@ -423,7 +423,7 @@ __ENTER_FUNCTION
                 WGGuildReturn Msg;
                 _GUILD_RETURN GuildReturn;
                 if(OldPos>pAppointInfo->m_NewPosition)
-                {//��ְ
+                {//降职
                     GuildReturn.m_ReturnType = GUILD_RETURN_DEMOTE;
                     GuildReturn.m_GuildID    =    pAppointInfo->m_GuildGUID;
                     GuildReturn.m_GUID        =    pAppointInfo->m_CandidateGUID;
@@ -443,12 +443,12 @@ __ENTER_FUNCTION
                     
                     Msg.SetGuildReturn( &GuildReturn );
 
-                    //֪ͨ�Լ�
+                    //通知自己
                     Msg.SetPlayerID( pUser->GetPlayerID() );
                     Msg.SetGUID(guid);
                     pServerPlayer->SendPacket( &Msg );
 
-                    //֪ͨ����������
+                    //通知被任命的人
                     USER* pNewUser = g_pOnlineUser->FindUser( pAppointInfo->m_CandidateGUID );
                     if(pNewUser)
                     {
@@ -463,7 +463,7 @@ __ENTER_FUNCTION
 
                 }
                 else
-                {//��ְ
+                {//升职
                     GuildReturn.m_ReturnType = GUILD_RETURN_PROMOTE;
                     GuildReturn.m_GuildID    =    pAppointInfo->m_GuildGUID;
                     GuildReturn.m_GUID        =    pAppointInfo->m_CandidateGUID;
@@ -483,11 +483,11 @@ __ENTER_FUNCTION
                     
                     Msg.SetGuildReturn( &GuildReturn );
 
-                    //֪ͨ�Լ�
+                    //通知自己
                     Msg.SetPlayerID( pUser->GetPlayerID() );
                     pServerPlayer->SendPacket( &Msg );
 
-                    //֪ͨ����������
+                    //通知被任命的人
                     USER* pNewUser = g_pOnlineUser->FindUser( pAppointInfo->m_CandidateGUID );
                     if(pNewUser)
                     {
@@ -524,7 +524,7 @@ __ENTER_FUNCTION
     case GUILD_PACKET_GW_RECRUIT:
         {
             if( guildID == INVALID_ID )
-            { // ���а�ᣬ����Ӧ���Ѿ��� Server ��ȷ���������Բ����ش�����
+            { // 已有帮会，这里应该已经由 Server 正确处理，所以不返回错误结果
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User GUID=%X attempt to recruit a user!", 
                     guid );
                 break;
@@ -559,12 +559,12 @@ __ENTER_FUNCTION
                                 GuildErr = GUILD_ERROR;
                             }
                             else if( pGuildUser->m_Position != GUILD_POSITION_TRAINEE )
-                            { // ��һ����ʽ���ڽ��д˲�����Ҳ����һ����ǡ�ý��������˲���
+                            { // 对一个正式帮众进行此操作，也许另一个人恰好进行了招人操作
                                 GuildErr = GUILD_ERROR_ALREADY_MEMBER;
                             }
                             else
                             {
-                                //ȫ�������а���е������б�����һ�ߣ��Ǻǣ�����
+                                //全世界所有帮会中的申请列表遍历一边，呵呵，够狠
                                 for( INT i=0; i<MAX_GUILD_SIZE; i++ )
                                 {
                                     Guild* pDeleteGuild = g_pGuildManager->GetGuild( i );
@@ -577,7 +577,7 @@ __ENTER_FUNCTION
                                             {
                                                 if(pDeleteUser->m_UserGUID == pGuildRecruit->m_ProposerGUID
                                                     &&pDeleteUser->m_Position == GUILD_POSITION_TRAINEE)
-                                                {//ɾ������
+                                                {//删掉此人
                                                     pDeleteGuild->OnUserLeaveByIndex(j);
                                                     break;
                                                 }
@@ -592,14 +592,14 @@ __ENTER_FUNCTION
                                     USER* pRecruitUser = g_pOnlineUser->FindUser( pGuildUser->m_szUserName );
                                     if( !pRecruitUser )
                                     {
-                                        //��һ���ִ���ʼ�
-                                        //���´δ��������ʱ����Serverִ�д��ʼ���Ӧ�Ľű�������ֻ�Ǹ��Ĵ��˵Ĺ���ID
+                                        //发一封可执行邮件
+                                        //在下次次玩家上线时会由Server执行此邮件对应的脚本，这里只是更改此人的工会ID
                                         g_pMailCenter->SendScriptMail( pGuildUser->m_szUserName,
                                             MAIL_UPDATE_ATTR, MAIL_ATTR_GUILD, guildID);
 
-                                        //��ӭ�����BB�����ͬ�۹�����Я���߽�����
+                                        //欢迎你加入BB，大家同舟共济相携行走江湖。
                                         CHAR szMailContent[MAX_MAIL_CONTEX] = {0};
-                                        sprintf(szMailContent, "��ӭ�����%s�����ͬ�۹�����Я���߽�����", pGuild->GetGuildName());
+                                        sprintf(szMailContent, "欢迎你加入%s，大家同舟共济相携行走江湖。", pGuild->GetGuildName());
                                         g_pMailCenter->SendNormalMail(pGuildUser->m_szUserName, szMailContent);
                                     }
 
@@ -642,7 +642,7 @@ __ENTER_FUNCTION
     case GUILD_PACKET_GW_EXPEL:
         {
             if( guildID == INVALID_ID )
-            { // ���а�ᣬ����Ӧ���Ѿ��� Server ��ȷ���������Բ����ش�����
+            { // 已有帮会，这里应该已经由 Server 正确处理，所以不返回错误结果
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User GUID=%X attempt to expel a user!", 
                     guid );
                 break;
@@ -678,8 +678,8 @@ __ENTER_FUNCTION
                             }
                             else if( pGuildUser->m_Position
                                 >= pGuild->GetGuildUser(pUser->GetGUID())->m_Position )
-                            { //ֻ�ܶԱ��Լ�����͵��˽��в������Ժ���������жϿ���Ҫ����ϸ��
-                                //ֻ�������ͨ����
+                            { //只能对比自己级别低的人进行操作，以后这个条件判断可能要进行细化
+                                //只能清除普通帮众
                                 GuildErr = GUILD_ERROR_UNAUTHORIZED;
                             }
                             else
@@ -740,23 +740,23 @@ __ENTER_FUNCTION
                                     }
                                     else
                                     {
-                                        //��һ���ִ���ʼ�
-                                        //���´δ��������ʱ����Serverִ�д��ʼ���Ӧ�Ľű�������ֻ�Ǹ��Ĵ��˵Ĺ���ID
+                                        //发一封可执行邮件
+                                        //在下次次玩家上线时会由Server执行此邮件对应的脚本，这里只是更改此人的工会ID
                                         g_pMailCenter->SendScriptMail( szTempName,
                                             MAIL_UPDATE_ATTR, MAIL_ATTR_GUILD, INVALID_ID);
 
                                         if(bIsPropose)
                                         {
-                                            //BB���ܾ���������롣
+                                            //BB帮会拒绝了你的申请。
                                             CHAR szMailContent[MAX_MAIL_CONTEX] = {0};
-                                            sprintf(szMailContent, "%s���ܾ���������롣", pGuild->GetGuildName());
+                                            sprintf(szMailContent, "%s帮会拒绝了你的申请。", pGuild->GetGuildName());
                                             g_pMailCenter->SendNormalMail(szTempName, szMailContent);
                                         }
                                         else
                                         {
-                                            //����BB־��ͬ�����ϣ����Ѿ��뿪��BB�ˡ�
+                                            //你与BB志不同道不合，你已经离开了BB了。
                                             CHAR szMailContent[MAX_MAIL_CONTEX] = {0};
-                                            sprintf(szMailContent, "����%s־��ͬ�����ϣ����Ѿ��뿪��%s�ˡ�", pGuild->GetGuildName(), pGuild->GetGuildName());
+                                            sprintf(szMailContent, "你与%s志不同道不合，你已经离开了%s了。", pGuild->GetGuildName(), pGuild->GetGuildName());
                                             g_pMailCenter->SendNormalMail(szTempName, szMailContent);
 
                                         }
@@ -790,7 +790,7 @@ __ENTER_FUNCTION
     case GUILD_PACKET_GW_LEAVE:
         {
             if( guildID == INVALID_ID )
-            { // ���а�ᣬ����Ӧ���Ѿ��� Server ��ȷ���������Բ����ش�����
+            { // 已有帮会，这里应该已经由 Server 正确处理，所以不返回错误结果
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User GUID=%X attempt to leave from nil guild!", 
                     guid );
                 break;
@@ -842,7 +842,7 @@ __ENTER_FUNCTION
     case GUILD_PACKET_GW_DISMISS:
         {
             if( guildID == INVALID_ID )
-            { // ���а�ᣬ����Ӧ���Ѿ��� Server ��ȷ���������Բ����ش�����
+            { // 已有帮会，这里应该已经由 Server 正确处理，所以不返回错误结果
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User GUID=%X attempt to leave from nil guild!", 
                     guid );
                 break;
@@ -873,7 +873,7 @@ __ENTER_FUNCTION
     case GUILD_PACKET_GW_DEMISE:
         {
             if( guildID == INVALID_ID )
-            { // ���а�ᣬ����Ӧ���Ѿ��� Server ��ȷ���������Բ����ش�����
+            { // 已有帮会，这里应该已经由 Server 正确处理，所以不返回错误结果
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User GUID=%X attempt to leave from nil guild!", 
                     guid );
                 break;
@@ -898,9 +898,9 @@ __ENTER_FUNCTION
                 USER* pNewChief = g_pOnlineUser->FindUser( pGuild->GetChieftainGUID( ) );
                 if(pNewChief == NULL)
                 {
-                    //���Ȩ�޸ı��ˣ���ϲ���Ϊ��������
+                    //你的权限改变了，恭喜你成为帮会帮主。
                     CHAR szMailContent[MAX_MAIL_CONTEX] = {0};
-                    sprintf(szMailContent, "���Ȩ�޸ı��ˣ���ϲ���Ϊ��������");
+                    sprintf(szMailContent, "你的权限改变了，恭喜你成为帮会帮主。");
                     g_pMailCenter->SendNormalMail(pGuild->GetGuildChiefName(), szMailContent);
                 }
 
@@ -941,7 +941,7 @@ __ENTER_FUNCTION
     case GUILD_PACKET_GW_CHANGEDESC:
         {
             if( guildID != INVALID_ID )
-            { // ���а�ᣬ����Ӧ���Ѿ��� Server ��ȷ���������Բ����ش�����
+            { // 已有帮会，这里应该已经由 Server 正确处理，所以不返回错误结果
                 Log::SaveLog( WORLD_LOGFILE, "GWGuildHandler...User GUID=%X attempt to create an extra guild!", 
                     guid );
                 GuildErr = GUILD_ERROR_GUILD_ALREADY_EXIST;

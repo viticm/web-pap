@@ -123,7 +123,7 @@ __LEAVE_FUNCTION
     return TRUE ;
 }
 
-//еп╤о╢кнОф╥йг╥Ян╙р╩╪Чв╟╠╦
+//Е┬╓Ф√╜Ф╜╓Г┴╘Е⌠│Ф≤╞Е░╕Д╦╨Д╦─Д╩╤Хё┘Е╓┤
 BOOL    Item::IsEquip( ) const
 {
 __ENTER_FUNCTION
@@ -138,7 +138,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-BOOL    Item::IsCanLay()    const //йг╥Я©ирт╣Ч╥е╣деп╤о
+BOOL    Item::IsCanLay()    const //Ф≤╞Е░╕Е▐╞Д╩╔Е▐═Ф■╬Г └Е┬╓Ф√╜
 {
     __ENTER_FUNCTION
     

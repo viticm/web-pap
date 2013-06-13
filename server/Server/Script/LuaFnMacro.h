@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// ÎÄ¼şÃû : LuaFnMacro.h
-// Ä£¿é    :    Script
-// ¹¦ÄÜ     :  ¶¨Òå½Å±¾ÏµÍ³ĞèÒªµÄºê
-// ĞŞ¸ÄÀúÊ·:
+// æ–‡ä»¶å : LuaFnMacro.h
+// æ¨¡å—    :    Script
+// åŠŸèƒ½     :  å®šä¹‰è„šæœ¬ç³»ç»Ÿéœ€è¦çš„å®
+// ä¿®æ”¹å†å²:
 //-----------------------------------------------------------------------------
 #ifndef __LUAFNMACRO_H__
 #define __LUAFNMACRO_H__
@@ -12,66 +12,66 @@ namespace LuaFnTbl
 {
 #ifdef  __WINDOWS__
     #define BEGINSCENEDEFINE(FUNCNAME)      { \
-        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"³¡¾°ID³ö´í "##FUNCNAME);    if(pScene) {    \
+        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"åœºæ™¯IDå‡ºé”™ "##FUNCNAME);    if(pScene) {    \
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;\
         }
     #define ENDSCENEDEFINE } 
 
     #define BEGINCHARCTERDEFINE(FUNCNAME)      { \
-        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"³¡¾°ID³ö´í "##FUNCNAME);    if(pScene) { \
+        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"åœºæ™¯IDå‡ºé”™ "##FUNCNAME);    if(pScene) { \
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;\
-        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));    AssertEx(pObj,"selfId³ö´í "##FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) { \
-        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objµ½Obj_CharacterÖ¸Õë×ª»»³ö´í "##FUNCNAME);            if(pCharacter) {\
+        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));    AssertEx(pObj,"selfIdå‡ºé”™ "##FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) { \
+        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objåˆ°Obj_CharacteræŒ‡é’ˆè½¬æ¢å‡ºé”™ "##FUNCNAME);            if(pCharacter) {\
         }
     #define ENDCHARCTERDEFINE         }    } }
 
     #define  BEGINHUMANDEFINE(FUNCNAME)      { \
-        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));        AssertEx(pScene,"³¡¾°ID³ö´í "##FUNCNAME);   if(pScene) { \
+        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));        AssertEx(pScene,"åœºæ™¯IDå‡ºé”™ "##FUNCNAME);   if(pScene) { \
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;\
-        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));        AssertEx(pObj,"selfId³ö´í "##FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) { \
-        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objµ½Obj_CharacterÖ¸Õë×ª»»³ö´í "##FUNCNAME);            if(pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_HUMAN) { \
-        Obj_Human* pHuman = (Obj_Human*)pCharacter; AssertEx(pHuman,"Obj_Characterµ½Obj_HumanÖ¸Õë×ª»»³ö´í "##FUNCNAME);if(pHuman) {\
+        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));        AssertEx(pObj,"selfIdå‡ºé”™ "##FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) { \
+        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objåˆ°Obj_CharacteræŒ‡é’ˆè½¬æ¢å‡ºé”™ "##FUNCNAME);            if(pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_HUMAN) { \
+        Obj_Human* pHuman = (Obj_Human*)pCharacter; AssertEx(pHuman,"Obj_Characteråˆ°Obj_HumanæŒ‡é’ˆè½¬æ¢å‡ºé”™ "##FUNCNAME);if(pHuman) {\
         }
     #define  ENDHUMANDEFINE }    }    }    } 
 
     #define  BEGINMONSTERDEFINE(FUNCNAME)      {\
-        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"³¡¾°ID³ö´í "##FUNCNAME);    if(pScene) {\
+        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"åœºæ™¯IDå‡ºé”™ "##FUNCNAME);    if(pScene) {\
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;\
-        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));        AssertEx(pObj,"selfId³ö´í "##FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) {\
-        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objµ½Obj_CharacterÖ¸Õë×ª»»³ö´í "##FUNCNAME);            if(pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_MONSTER) { \
-        Obj_Monster* pMonster = (Obj_Monster*)pCharacter;    AssertEx(pMonster,"Obj_Characterµ½Obj_MonsterÖ¸Õë×ª»»³ö´í "##FUNCNAME);    if(pMonster) {\
+        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));        AssertEx(pObj,"selfIdå‡ºé”™ "##FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) {\
+        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objåˆ°Obj_CharacteræŒ‡é’ˆè½¬æ¢å‡ºé”™ "##FUNCNAME);            if(pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_MONSTER) { \
+        Obj_Monster* pMonster = (Obj_Monster*)pCharacter;    AssertEx(pMonster,"Obj_Characteråˆ°Obj_MonsteræŒ‡é’ˆè½¬æ¢å‡ºé”™ "##FUNCNAME);    if(pMonster) {\
         }
     #define  ENDMONSTERDEFINE }    }    }    } 
 #elif __LINUX__
     #define BEGINSCENEDEFINE(FUNCNAME)      { \
-        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"³¡¾°ID³ö´í "FUNCNAME);    if(pScene) {    \
+        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"åœºæ™¯IDå‡ºé”™ "FUNCNAME);    if(pScene) {    \
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;\
         }
     #define ENDSCENEDEFINE } 
 
     #define BEGINCHARCTERDEFINE(FUNCNAME)      { \
-        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"³¡¾°ID³ö´í "FUNCNAME);    if(pScene) { \
+        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"åœºæ™¯IDå‡ºé”™ "FUNCNAME);    if(pScene) { \
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;\
-        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));    AssertEx(pObj,"selfId³ö´í "FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) { \
-        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objµ½Obj_CharacterÖ¸Õë×ª»»³ö´í "FUNCNAME);            if(pCharacter) {\
+        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));    AssertEx(pObj,"selfIdå‡ºé”™ "FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) { \
+        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objåˆ°Obj_CharacteræŒ‡é’ˆè½¬æ¢å‡ºé”™ "FUNCNAME);            if(pCharacter) {\
         }
     #define ENDCHARCTERDEFINE         }    } }
 
     #define  BEGINHUMANDEFINE(FUNCNAME)      { \
-        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));        AssertEx(pScene,"³¡¾°ID³ö´í "FUNCNAME);   if(pScene) { \
+        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));        AssertEx(pScene,"åœºæ™¯IDå‡ºé”™ "FUNCNAME);   if(pScene) { \
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;\
-        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));        AssertEx(pObj,"selfId³ö´í "FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) { \
-        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objµ½Obj_CharacterÖ¸Õë×ª»»³ö´í "FUNCNAME);            if(pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_HUMAN) { \
-        Obj_Human* pHuman = (Obj_Human*)pCharacter; AssertEx(pHuman,"Obj_Characterµ½Obj_HumanÖ¸Õë×ª»»³ö´í "FUNCNAME);if(pHuman) {\
+        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));        AssertEx(pObj,"selfIdå‡ºé”™ "FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) { \
+        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objåˆ°Obj_CharacteræŒ‡é’ˆè½¬æ¢å‡ºé”™ "FUNCNAME);            if(pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_HUMAN) { \
+        Obj_Human* pHuman = (Obj_Human*)pCharacter; AssertEx(pHuman,"Obj_Characteråˆ°Obj_HumanæŒ‡é’ˆè½¬æ¢å‡ºé”™ "FUNCNAME);if(pHuman) {\
         }
     #define  ENDHUMANDEFINE }    }    }    } 
 
     #define  BEGINMONSTERDEFINE(FUNCNAME)      {\
-        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"³¡¾°ID³ö´í "FUNCNAME);    if(pScene) {\
+        Scene* pScene = (Scene*)(g_pSceneManager->GetScene(sceneId));    AssertEx(pScene,"åœºæ™¯IDå‡ºé”™ "FUNCNAME);    if(pScene) {\
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;\
-        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));        AssertEx(pObj,"selfId³ö´í "FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) {\
-        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objµ½Obj_CharacterÖ¸Õë×ª»»³ö´í "FUNCNAME);            if(pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_MONSTER) { \
-        Obj_Monster* pMonster = (Obj_Monster*)pCharacter;    AssertEx(pMonster,"Obj_Characterµ½Obj_MonsterÖ¸Õë×ª»»³ö´í "FUNCNAME);    if(pMonster) {\
+        Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(selfId));        AssertEx(pObj,"selfIdå‡ºé”™ "FUNCNAME);        if(pObj && IsCharacterObj( pObj->GetObjType() )) {\
+        Obj_Character* pCharacter = (Obj_Character*)pObj;            AssertEx(pCharacter,"Objåˆ°Obj_CharacteræŒ‡é’ˆè½¬æ¢å‡ºé”™ "FUNCNAME);            if(pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_MONSTER) { \
+        Obj_Monster* pMonster = (Obj_Monster*)pCharacter;    AssertEx(pMonster,"Obj_Characteråˆ°Obj_MonsteræŒ‡é’ˆè½¬æ¢å‡ºé”™ "FUNCNAME);    if(pMonster) {\
         }
     #define  ENDMONSTERDEFINE }    }    }    } 
 
@@ -85,7 +85,7 @@ namespace LuaFnTbl
 
 
 
-//²ÉÓÃQuake3µÄstrncpyº¯Êı
+//é‡‡ç”¨Quake3çš„strncpyå‡½æ•°
 VOID Q_strncpyz( CHAR *dest, const CHAR *src, INT destsize ) 
 {
     __ENTER_FUNCTION

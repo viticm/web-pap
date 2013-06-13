@@ -1,6 +1,6 @@
 // GCSplitItemResult .h
 // 
-// 拆分物品
+// 鎷嗗垎鐗╁搧
 // 
 //////////////////////////////////////////////////////
 
@@ -32,7 +32,7 @@ namespace Packets
         GCSplitItemResult(){};
         virtual ~GCSplitItemResult(){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read(SocketInputStream& iStream) ;
         virtual BOOL            Write(SocketOutputStream& oStream)const ;
         virtual UINT            Execute(Player* pPlayer) ;
@@ -63,10 +63,10 @@ namespace Packets
         BYTE            getResult(VOID)            {return m_Result;}
 
     private:
-        WORD            m_ConIndex;        //item 的BagIndex
-        BOOL            m_nsNull;        //物品是否为空        TRUE 代表没有Item,FALSE 代表有Item
-        INT                m_Container;    //容器
-        BYTE            m_Result;        //结果
+        WORD            m_ConIndex;        //item 鐨凚agIndex
+        BOOL            m_nsNull;        //鐗╁搧鏄惁涓虹┖        TRUE 浠ｈ〃娌℃湁Item,FALSE 浠ｈ〃鏈塈tem
+        INT                m_Container;    //瀹瑰櫒
+        BYTE            m_Result;        //缁撴灉
         _ITEM            m_ITEM;
 
     };

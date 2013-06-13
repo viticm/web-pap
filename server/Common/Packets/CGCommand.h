@@ -19,7 +19,7 @@ public:
     CGCommand( ){ m_CommandSize=0; } ;
     virtual ~CGCommand( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,22 +29,22 @@ public:
                                                             m_CommandSize ; }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID                    SetCommandSize( BYTE size ){ m_CommandSize = size ; } ;
     BYTE                    GetCommandSize( ){ return m_CommandSize ; } ;
 
     VOID                    SetCommand( CHAR* command ){
         strncpy( m_Command, command, MAX_COMMAND_SIZE-1) ;
         m_Command[MAX_COMMAND_SIZE-1] = 0 ;
-        m_CommandSize = (BYTE)strlen(m_Command); //½ÃÕı³¤¶È
+        m_CommandSize = (BYTE)strlen(m_Command); //çŸ«æ­£é•¿åº¦
     }
     CHAR*                    GetCommand( ){ return m_Command ; } ;
 
 
 private:
-    //Êı¾İ
-    BYTE                    m_CommandSize ;                    //µ±Ç°ÃüÁîµÄ³¤¶È
-    CHAR                    m_Command[MAX_COMMAND_SIZE] ;    //ÃüÁîÊı¾İ
+    //æ•°æ®
+    BYTE                    m_CommandSize ;                    //å½“å‰å‘½ä»¤çš„é•¿åº¦
+    CHAR                    m_Command[MAX_COMMAND_SIZE] ;    //å‘½ä»¤æ•°æ®
 
 };
 

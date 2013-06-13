@@ -1,8 +1,8 @@
 #include "stdafx.h"
 /*
-Ì¯Î»ĞÅÏ¢¹ÜÀíÆ÷£¬Ã¿¸ö³¡¾°¹ÒÒ»¸ö¡£
-¸ºÔğÌ¯Î»ĞÅÏ¢ÎÄ¼şµÄ¶ÁÈ¡¡£
-Ì¯Î»·ÑÓÃµÄ¹ÜÀí£¬°üÀ¨µÚÒ»´Î°ÚÌ¯µÄÌ¯Î»·Ñ£¬Ã¿´Î½»Ò×µÄ½»Ò×Ë°£¬´ËµØÊÇ·ñ¿ÉÒÔ°ÚÌ¯¡£
+æ‘Šä½ä¿¡æ¯ç®¡ç†å™¨ï¼Œæ¯ä¸ªåœºæ™¯æŒ‚ä¸€ä¸ªã€‚
+è´Ÿè´£æ‘Šä½ä¿¡æ¯æ–‡ä»¶çš„è¯»å–ã€‚
+æ‘Šä½è´¹ç”¨çš„ç®¡ç†ï¼ŒåŒ…æ‹¬ç¬¬ä¸€æ¬¡æ‘†æ‘Šçš„æ‘Šä½è´¹ï¼Œæ¯æ¬¡äº¤æ˜“çš„äº¤æ˜“ç¨ï¼Œæ­¤åœ°æ˜¯å¦å¯ä»¥æ‘†æ‘Šã€‚
 */
 
 #include "StallInfoManager.h"
@@ -31,13 +31,13 @@ BOOL        StallInfoManager::Init(UINT uMapWidth, UINT uMapHeight)
     if( uMapWidth>MAX_STALL_MAP_SIZE || uMapHeight>MAX_STALL_MAP_SIZE )
         return FALSE;
 
-    //¶¼µÈÓÚ0´ú±íËùÓĞÇå¿Õ
+    //éƒ½ç­‰äº0ä»£è¡¨æ‰€æœ‰æ¸…ç©º
     if(uMapWidth == 0 && uMapHeight == 0)
     {
         return TRUE;
     }
 
-    //·ÇÁã£¬newÄÚ´æ
+    //éé›¶ï¼Œnewå†…å­˜
     m_nMapHeight    =    uMapHeight;
     m_nMapWidth        =    uMapWidth;
 
@@ -99,27 +99,27 @@ BOOL        StallInfoManager::Load( CHAR* filename )
         return FALSE;
     }
 
-    // ¶ÁÈ¡°æ±¾ºÅ
+    // è¯»å–ç‰ˆæœ¬å·
     ::fread(&dwVersion, sizeof(dwVersion), 1, pFile);
-    // °æ±¾²»¶Ô
+    // ç‰ˆæœ¬ä¸å¯¹
     if(dwVersion!=CurVersion)
     {
         ::fclose(pFile);
         return FALSE;
     }
 
-    // Ì¯Î»µÄ´óĞ¡
+    // æ‘Šä½çš„å¤§å°
     ::fread(&dwStallWidth,  sizeof(dwStallWidth),  1, pFile);
     ::fread(&dwStallHeight, sizeof(dwStallHeight), 1, pFile);
 
     if(dwStallWidth != m_nMapWidth || dwStallHeight != m_nMapHeight)
-    {//Ì¯Î»ÎÄ¼şµÄµØÍ¼´óĞ¡ÓëÊµ¼ÊµØÍ¼´óĞ¡²»Ò»Ñù¡£
+    {//æ‘Šä½æ–‡ä»¶çš„åœ°å›¾å¤§å°ä¸å®é™…åœ°å›¾å¤§å°ä¸ä¸€æ ·ã€‚
         Assert(0);
         ::fclose(pFile);
         return FALSE;
     }
 
-    //µØÍ¼Ã»ÓĞ±»³õÊ¼»¯
+    //åœ°å›¾æ²¡æœ‰è¢«åˆå§‹åŒ–
     if(NULL == m_StallMap)
     {
         ::fclose(pFile);

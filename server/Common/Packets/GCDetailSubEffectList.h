@@ -1,6 +1,6 @@
 // GCDetailSubEffectList.h
 // 
-// ¼¼ÄÜÒıµ¼
+// æŠ€èƒ½å¼•å¯¼
 // 
 //////////////////////////////////////////////////////
 
@@ -20,21 +20,21 @@ public:
     enum ENUM_BUFF_HANDLE
     {
         BUFF_HANDLE_INVALID    = -1,
-        BUFF_HANDLE_ADD,            // Ìí¼Ó
-        BUFF_HANDLE_REMOVE,            // É¾³ı
-        BUFF_HANDLE_RESET,            // ÖØÖÃ²¢Ìí¼Ó
+        BUFF_HANDLE_ADD,            // æ·»åŠ 
+        BUFF_HANDLE_REMOVE,            // åˆ é™¤
+        BUFF_HANDLE_RESET,            // é‡ç½®å¹¶æ·»åŠ 
     };
 
     struct _BUFF_EFFECT
     {
         UINT    m_uID;                    // Buff ID
-        UINT    m_uResiduaryTime;        // Ê£ÓàÊ±¼ä
+        UINT    m_uResiduaryTime;        // å‰©ä½™æ—¶é—´
     };
 public:
     GCDetailSubEffectList( ){}
     virtual ~GCDetailSubEffectList( ){}
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -45,7 +45,7 @@ public:
 public:
     //VOID SetHandleType( BYTE yT
 private:
-    BYTE                    m_nHandleType;        // ²Ù×÷ÀàĞÍ ENUM_BUFF_HANDLE
+    BYTE                    m_nHandleType;        // æ“ä½œç±»å‹ ENUM_BUFF_HANDLE
     BYTE                    m_yEffectCount;
     _BUFF_EFFECT            m_aBuffEffect[MAX_PLAYER_BUFF_NUM];
 };

@@ -155,7 +155,7 @@ ORESULT State::UseSkill(const AI_Character* pAI, ObjID_t idSkill, BYTE nLevel, O
 
     Obj_Character* pCharacter = pAI->GetCharacter();
     if (pCharacter->GetObjType() == Obj::OBJ_TYPE_HUMAN) {
-        // Èç¹ûÊÇHumanÔò²»Ö±½ÓÊ¹ÓÃ¼¼ÄÜ,¶øÊÇ½«ÒªÊ¹ÓÃµÄ¼¼ÄÜpushµ½¼¼ÄÜ¶ÓÁĞ, ÓÉai_humanÀ´Ö´ĞĞ!
+        // å¦‚æœæ˜¯Humanåˆ™ä¸ç›´æ¥ä½¿ç”¨æŠ€èƒ½,è€Œæ˜¯å°†è¦ä½¿ç”¨çš„æŠ€èƒ½pushåˆ°æŠ€èƒ½é˜Ÿåˆ—, ç”±ai_humanæ¥æ‰§è¡Œ!
         return OR_OK;
     }
     if (pCharacter && pCharacter->CanUseSkillNow()) {
@@ -183,7 +183,7 @@ ORESULT State::UseItem(const AI_Character* pAI, ID_t nBagIndex, ObjID_t nTargetO
     }
     Obj_Character* pCharacter = pAI->GetCharacter();
     if (pCharacter && pCharacter->GetObjType() == Obj::OBJ_TYPE_HUMAN) {
-        // Èç¹ûÊÇHumanÔò²»Ö±½ÓÊ¹ÓÃitem,¶øÊÇ½«ÒªÊ¹ÓÃµÄitem pushµ½¼¼ÄÜ¶ÓÁĞ, ÓÉai_humanÀ´Ö´ĞĞ!
+        // å¦‚æœæ˜¯Humanåˆ™ä¸ç›´æ¥ä½¿ç”¨item,è€Œæ˜¯å°†è¦ä½¿ç”¨çš„item pushåˆ°æŠ€èƒ½é˜Ÿåˆ—, ç”±ai_humanæ¥æ‰§è¡Œ!
         return OR_OK;
     }
 

@@ -23,7 +23,7 @@ public:
     WGRetUserData( ){} ;
     virtual ~WGRetUserData( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -46,7 +46,7 @@ public:
 public :
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID                    SetPlayerID( PlayerID_t pid ){ m_PlayerID = pid ; } ;
     PlayerID_t                GetPlayerID( ){ return m_PlayerID ; } ;
 
@@ -62,11 +62,11 @@ public:
     BYTE                    GetPlayerAge( ){ return m_Age ; } ;
 
 private:
-    //Êı¾İ
-    PlayerID_t                m_PlayerID ;    //Á¬½ÓÕß
-    BYTE                    m_Return ;        //·µ»ØÏûÏ¢µÄÀàĞÍ enum UDRETURN
-    FULLUSERDATA            m_UserData ;    //ÍêÕûµÄÓÃ»§Êı¾İ
-    BYTE                    m_Age;            //Íæ¼ÒÄêÁä
+    //æ•°æ®
+    PlayerID_t                m_PlayerID ;    //è¿æ¥è€…
+    BYTE                    m_Return ;        //è¿”å›æ¶ˆæ¯çš„ç±»å‹ enum UDRETURN
+    FULLUSERDATA            m_UserData ;    //å®Œæ•´çš„ç”¨æˆ·æ•°æ®
+    BYTE                    m_Age;            //ç©å®¶å¹´é¾„
 };
 
 

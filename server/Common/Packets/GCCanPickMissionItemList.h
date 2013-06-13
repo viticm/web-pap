@@ -1,6 +1,6 @@
 // GCCanPickMissionItemList.h
 // 
-// ¿ÉÒÔÊ°È¡µÄÈÎÎñÎïÆ·ÁĞ±í
+// å¯ä»¥æ‹¾å–çš„ä»»åŠ¡ç‰©å“åˆ—è¡¨
 // 
 //////////////////////////////////////////////////////
 
@@ -22,7 +22,7 @@ namespace Packets
         }
         virtual ~GCCanPickMissionItemList( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

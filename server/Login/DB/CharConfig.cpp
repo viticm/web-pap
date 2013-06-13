@@ -24,7 +24,7 @@ CharConfig::~CharConfig()
 
 BOOL CharConfig::Init()
 {
-    //³õÊ¼»¯Ä¬ÈÏ½ÇÉ«Êı¾İ
+    //åˆå§‹åŒ–é»˜è®¤è§’è‰²æ•°æ®
     InitDefaultCharData();
     InitSkillData();
     InitLevel1Attr();
@@ -59,7 +59,7 @@ VOID CharConfig::InitDefaultCharData()
     Ini f("./Config/DefaultChar.ini");
     char szTmp[32];
 
-    //³õÊ¼»¯ÕóÓªÊı¾İ
+    //åˆå§‹åŒ–é˜µè¥æ•°æ®
     INT camp_Num=f.ReadInt( "startscene", "scenecount" );
     if(camp_Num > MAX_CAMP_NUM) camp_Num=MAX_CAMP_NUM;
     for( INT i=0; i < camp_Num; i ++)
@@ -75,36 +75,36 @@ VOID CharConfig::InitDefaultCharData()
         m_StartScene[i].fStartZ = (FLOAT)(atof(szTmp));
     }
 
-    //Ëæ»úÒ»¸öÕóÓª
+    //éšæœºä¸€ä¸ªé˜µè¥
     INT nRand = rand() % MAX_CAMP_NUM;
     if( nRand == 0 )
         m_pUserData->m_Human.m_CampData.m_nCampID = CAMP1_PLAYER;
     else
         m_pUserData->m_Human.m_CampData.m_nCampID = CAMP2_PLAYER;
 
-    //¸ù¾İËæ»úµÄÕóÓª£¬³õÊ¼»¯³öÉúµØµãºÍÎ»ÖÃ
+    //æ ¹æ®éšæœºçš„é˜µè¥ï¼Œåˆå§‹åŒ–å‡ºç”Ÿåœ°ç‚¹å’Œä½ç½®
     m_pUserData->m_Human.m_StartScene = m_StartScene[nRand].nSceneNum;
     m_pUserData->m_Human.m_Position.m_fX = m_StartScene[nRand].fStartX;
     m_pUserData->m_Human.m_Position.m_fZ = m_StartScene[nRand].fStartZ;
 
-    //¶ÁÈ¡ÆäËûµÄ³õÊ¼»¯Êı¾İ
+    //è¯»å–å…¶ä»–çš„åˆå§‹åŒ–æ•°æ®
     m_pUserData->m_Human.m_HP = f.ReadInt( "baseinfo", "hp" );
     m_pUserData->m_Human.m_MP = f.ReadInt( "baseinfo", "mp" );
     m_pUserData->m_Human.m_Level = f.ReadInt( "baseinfo", "level" );
     m_pUserData->m_Human.m_HairColor = 0;
-    m_pUserData->m_Human.m_RMBMoney  = 0;//                = f.ReadInt( "baseinfo", "vigor" );                //»îÁ¦
-    m_pUserData->m_Human.m_BankRMB   = 0;//            = f.ReadInt( "baseinfo", "max_vigor" );            //»îÁ¦ÉÏÏŞ
-    //m_pUserData->m_Human.m_VigorRegeneRate    = f.ReadInt( "baseinfo", "vigor_regenerate" );    //»îÁ¦»Ö¸´ËÙ¶È
-    //m_pUserData->m_Human.m_Energy                = f.ReadInt( "baseinfo", "energy" );            //¾«Á¦
-    //m_pUserData->m_Human.m_MaxEnergy            = f.ReadInt( "baseinfo", "max_energy" );        //¾«Á¦ÉÏÏŞ
-    //m_pUserData->m_Human.m_EnergyRegeneRate    = f.ReadInt( "baseinfo", "energy_regenerate" );    //¾«Á¦»Ö¸´ËÙ¶È
+    m_pUserData->m_Human.m_RMBMoney  = 0;//                = f.ReadInt( "baseinfo", "vigor" );                //æ´»åŠ›
+    m_pUserData->m_Human.m_BankRMB   = 0;//            = f.ReadInt( "baseinfo", "max_vigor" );            //æ´»åŠ›ä¸Šé™
+    //m_pUserData->m_Human.m_VigorRegeneRate    = f.ReadInt( "baseinfo", "vigor_regenerate" );    //æ´»åŠ›æ¢å¤é€Ÿåº¦
+    //m_pUserData->m_Human.m_Energy                = f.ReadInt( "baseinfo", "energy" );            //ç²¾åŠ›
+    //m_pUserData->m_Human.m_MaxEnergy            = f.ReadInt( "baseinfo", "max_energy" );        //ç²¾åŠ›ä¸Šé™
+    //m_pUserData->m_Human.m_EnergyRegeneRate    = f.ReadInt( "baseinfo", "energy_regenerate" );    //ç²¾åŠ›æ¢å¤é€Ÿåº¦
     m_pUserData->m_Human.m_Exp = f.ReadInt( "baseinfo", "exp" );
     m_pUserData->m_Human.m_MenPai = f.ReadInt( "baseinfo", "menpai" );
     m_pUserData->m_Human.m_Money = f.ReadInt( "baseinfo", "money" );
 
     int iTmp;
 
-    //¶ÁÈë¼¼ÄÜÊı¾İ
+    //è¯»å…¥æŠ€èƒ½æ•°æ®
     iTmp = f.ReadInt( "skill", "number" );
     m_pUserData->m_Skill.m_Count = iTmp;
     iTmp>MAX_CHAR_SKILL_NUM?iTmp=MAX_CHAR_SKILL_NUM:NULL;
@@ -118,10 +118,10 @@ VOID CharConfig::InitDefaultCharData()
 
     }
 
-    //¶ÁÈëĞÄÇéÊı¾İ
-    strncpy( m_pUserData->m_Relation.m_szMood, "ÎäÏÀÊÀ½ç£¬¾«Æ·Ãñ×åÍøÓÎ£¡", MOOD_DATA_SIZE-1 );
+    //è¯»å…¥å¿ƒæƒ…æ•°æ®
+    strncpy( m_pUserData->m_Relation.m_szMood, "æ­¦ä¾ ä¸–ç•Œï¼Œç²¾å“æ°‘æ—ç½‘æ¸¸ï¼", MOOD_DATA_SIZE-1 );
 
-    //¶ÁÈëÉú»î¼¼ÄÜÊı¾İ
+    //è¯»å…¥ç”Ÿæ´»æŠ€èƒ½æ•°æ®
     INT iAbliCount = f.ReadInt( "ability", "count" );
     for( INT i=0; i<iAbliCount; i++ )
     {
@@ -135,7 +135,7 @@ VOID CharConfig::InitDefaultCharData()
         m_pUserData->m_Ability.m_aABility[iSkillAbility].m_Exp = f.ReadInt("ability", szExp);
     }
 
-    //¶ÁÈëÅä·½Êı¾İ
+    //è¯»å…¥é…æ–¹æ•°æ®
     iTmp = f.ReadInt( "table", "number" );
     for(INT i=0; i<iTmp; i++ )
     {
@@ -150,7 +150,7 @@ VOID CharConfig::InitDefaultCharData()
         m_pUserData->m_Ability.m_aPrescr[iByte] |= (1<<iSet);
     }
 
-    //¶ÁÈë¿ì½İÀ¸Êı¾İ
+    //è¯»å…¥å¿«æ·æ æ•°æ®
     iTmp = f.ReadInt( "setting", "count" );
     for(INT i=0; i<iTmp; i++ )
     {
@@ -287,39 +287,39 @@ BOOL    CharConfig::InitCharAttr(FULLUSERDATA* pData)
     Assert(pData);
     Assert(m_pUserData);
 
-    INT                PortraitID = pData->m_Human.m_PortraitID;                    //½ÇÉ«Í·Ïñ
-    CHAR            Name[MAX_CHARACTER_NAME];                                    //½ÇÉ«Ãû×Ö
+    INT                PortraitID = pData->m_Human.m_PortraitID;                    //è§’è‰²å¤´åƒ
+    CHAR            Name[MAX_CHARACTER_NAME];                                    //è§’è‰²åå­—
     strncpy(Name,pData->m_Human.m_Name,MAX_CHARACTER_NAME);
-    CHAR            Title[MAX_CHARACTER_TITLE];                                    //½ÇÉ«Ãû×Ö
+    CHAR            Title[MAX_CHARACTER_TITLE];                                    //è§’è‰²åå­—
     strncpy(Title,pData->m_Human.m_Title,MAX_CHARACTER_TITLE);
-    GUID_t            GUID = pData->m_Human.m_GUID;                                //½ÇÉ«ÍêÈ«Î¨Ò»ºÅ
-    BOOL            Sex    = pData->m_Human.m_Sex;                                    //½ÇÉ«ĞÔ±ğ
-    UINT            CreateDate    = pData->m_Human.m_CreateDate;                    //½ÇÉ«´´½¨ÈÕÆÚ
-    UINT            HairColor    = pData->m_Human.m_HairColor;                    //Í··¢ÑÕÉ«    
-    BYTE            FaceColor    = pData->m_Human.m_FaceColor;                    //Á³ĞÎÑÕÉ«
-    BYTE            HairModel    = pData->m_Human.m_HairModel;                    //Í··¢Ä£ĞÍ
-    BYTE            FaceModel    = pData->m_Human.m_FaceModel;                    //Á³ĞÎÄ£ĞÍ
-    CampID_t        CampID        = pData->m_Human.m_CampData.m_nCampID;            //ÕóÓª
+    GUID_t            GUID = pData->m_Human.m_GUID;                                //è§’è‰²å®Œå…¨å”¯ä¸€å·
+    BOOL            Sex    = pData->m_Human.m_Sex;                                    //è§’è‰²æ€§åˆ«
+    UINT            CreateDate    = pData->m_Human.m_CreateDate;                    //è§’è‰²åˆ›å»ºæ—¥æœŸ
+    UINT            HairColor    = pData->m_Human.m_HairColor;                    //å¤´å‘é¢œè‰²    
+    BYTE            FaceColor    = pData->m_Human.m_FaceColor;                    //è„¸å½¢é¢œè‰²
+    BYTE            HairModel    = pData->m_Human.m_HairModel;                    //å¤´å‘æ¨¡å‹
+    BYTE            FaceModel    = pData->m_Human.m_FaceModel;                    //è„¸å½¢æ¨¡å‹
+    CampID_t        CampID        = pData->m_Human.m_CampData.m_nCampID;            //é˜µè¥
     MenPaiID_t        MenPaiID    = pData->m_Human.m_MenPai;
     
     pData->CleanUp();
 
     memcpy( pData, m_pUserData, sizeof(FULLUSERDATA) );
 
-    pData->m_Human.m_PortraitID = PortraitID;                     //½ÇÉ«Í·Ïñ
+    pData->m_Human.m_PortraitID = PortraitID;                     //è§’è‰²å¤´åƒ
     strncpy(pData->m_Human.m_Name,Name,MAX_CHARACTER_NAME);
     strncpy(Title,pData->m_Human.m_Title,MAX_CHARACTER_TITLE);
-    pData->m_Human.m_GUID = GUID ;                                //½ÇÉ«ÍêÈ«Î¨Ò»ºÅ
-    pData->m_Human.m_Sex = Sex;                                    //½ÇÉ«ĞÔ±ğ
-    pData->m_Human.m_CreateDate = CreateDate;                    //½ÇÉ«´´½¨ÈÕÆÚ
-    pData->m_Human.m_HairColor = HairColor;                    //Í··¢ÑÕÉ«    
-    pData->m_Human.m_FaceColor = FaceColor;                    //Á³ĞÎÑÕÉ«
-    pData->m_Human.m_HairModel = HairModel;                    //Í··¢Ä£ĞÍ
-    pData->m_Human.m_FaceModel = FaceModel;                    //Á³ĞÎÄ£ĞÍ
-    pData->m_Human.m_CampData.m_nCampID = CampID;            //ÕóÓª
+    pData->m_Human.m_GUID = GUID ;                                //è§’è‰²å®Œå…¨å”¯ä¸€å·
+    pData->m_Human.m_Sex = Sex;                                    //è§’è‰²æ€§åˆ«
+    pData->m_Human.m_CreateDate = CreateDate;                    //è§’è‰²åˆ›å»ºæ—¥æœŸ
+    pData->m_Human.m_HairColor = HairColor;                    //å¤´å‘é¢œè‰²    
+    pData->m_Human.m_FaceColor = FaceColor;                    //è„¸å½¢é¢œè‰²
+    pData->m_Human.m_HairModel = HairModel;                    //å¤´å‘æ¨¡å‹
+    pData->m_Human.m_FaceModel = FaceModel;                    //è„¸å½¢æ¨¡å‹
+    pData->m_Human.m_CampData.m_nCampID = CampID;            //é˜µè¥
     pData->m_Human.m_MenPai = MenPaiID;
 
-    //³õÊ¼»¯ÕóÓªÊı¾İ
+    //åˆå§‹åŒ–é˜µè¥æ•°æ®
     if( pData->m_Human.m_CampData.m_nCampID == CAMP1_PLAYER )
     {
         pData->m_Human.m_StartScene = m_StartScene[0].nSceneNum;
@@ -333,7 +333,7 @@ BOOL    CharConfig::InitCharAttr(FULLUSERDATA* pData)
         pData->m_Human.m_Position.m_fZ = m_StartScene[1].fStartZ;
     }
 
-    //³õÊ¼»¯¼¼ÄÜÊı¾İ
+    //åˆå§‹åŒ–æŠ€èƒ½æ•°æ®
     INT iTemp = 0;
     for( INT i = 0; i < m_SkillData_Count; i ++ )
     {
@@ -346,14 +346,14 @@ BOOL    CharConfig::InitCharAttr(FULLUSERDATA* pData)
     }
     pData->m_Skill.m_Count = pData->m_XinFa.m_Count = iTemp;
 
-    //³õÊ¼»¯»ù´¡ÊôĞÔÊı¾İ
+    //åˆå§‹åŒ–åŸºç¡€å±æ€§æ•°æ®
     pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_STR, m_Level1Attr[MenPaiID].str1 );
     pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_SPR, m_Level1Attr[MenPaiID].spr1 );
     pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_CON, m_Level1Attr[MenPaiID].con1 );
     pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_INT, m_Level1Attr[MenPaiID].int1 );
     pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_DEX, m_Level1Attr[MenPaiID].dex1 );
 
-    //ĞŞÕıHP
+    //ä¿®æ­£HP
     INT nInitAttr = m_BaseValueTbl.Get(AINFOTYPE_BASE_HP, MenPaiID);
     INT nAttrLevel1Refix = m_BaseValueTbl.Get(AINFOTYPE_CON_HP, MenPaiID);
     INT nLevelRefix = m_BaseValueTbl.Get(AINFOTYPE_LEVEL_HP, MenPaiID);
@@ -361,7 +361,7 @@ BOOL    CharConfig::InitCharAttr(FULLUSERDATA* pData)
     nMaxValue=Float2Int((nMaxValue)/100.0f);
     pData->m_Human.m_HP = nMaxValue;
 
-    //ĞŞÕıMP
+    //ä¿®æ­£MP
     nInitAttr = m_BaseValueTbl.Get(AINFOTYPE_BASE_MP, MenPaiID);
     nAttrLevel1Refix = m_BaseValueTbl.Get(AINFOTYPE_INT_MP, MenPaiID);
     nLevelRefix = m_BaseValueTbl.Get(AINFOTYPE_LEVEL_MP, MenPaiID);
@@ -372,7 +372,7 @@ BOOL    CharConfig::InitCharAttr(FULLUSERDATA* pData)
     //pData->m_PrivateInfo.m_aPrivateData.m_bFirstLogined = 1;
 
     //
-    //ÈËÎï³õÊ¼»¯Íê±Ï....
+    //äººç‰©åˆå§‹åŒ–å®Œæ¯•....
     //
 
     return TRUE;

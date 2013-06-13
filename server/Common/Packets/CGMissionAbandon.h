@@ -1,6 +1,6 @@
 // CGMissionAbandon.h
 // 
-// 放弃任务
+// 鏀惧純浠诲姟
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         CGMissionAbandon( ){}
         virtual ~CGMissionAbandon( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -32,7 +32,7 @@ namespace Packets
         VOID                    setScriptID( ScriptID_t idScript ) { m_idMissionScript = idScript; }
 
     private:
-        ScriptID_t                m_idMissionScript;        // 任务的脚本ID
+        ScriptID_t                m_idMissionScript;        // 浠诲姟鐨勮剼鏈琁D
     };
 
 

@@ -17,8 +17,8 @@ __ENTER_FUNCTION
     return PACKET_EXE_CONTINUE;
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
-        //Èë¿Ú³¡¾°ID
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
+        //å…¥å£åœºæ™¯ID
         SceneID_t        PortSceneID    = pPacket->GetSceneID();
         GUID_t            PlayerGuid    = pPacket->GetPlayerGuid();
     
@@ -30,7 +30,7 @@ __ENTER_FUNCTION
         DySelect.m_CitySelect        = cityselect;
         DySelect.m_SceneDataType    = (INT)SCENE_TYPE_CIT;
 
-        //ÓÉdamonÏß³ÌÈ¥load³ÇÊÐ
+        //ç”±damonçº¿ç¨‹åŽ»loadåŸŽå¸‚
         g_pDynamicSceneManager->SelectScene(&DySelect);
     }
 

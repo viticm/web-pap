@@ -1,6 +1,6 @@
 // CGCityAskAttr.h
 // 
-// Ïò·şÎñÆ÷ÇëÇó³ÇÊĞÊôĞÔ
+// å‘æœåŠ¡å™¨è¯·æ±‚åŸå¸‚å±æ€§
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         CGCityAskAttr( ){} ;
         virtual ~CGCityAskAttr( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,7 +28,7 @@ namespace Packets
         virtual UINT            GetPacketSize() const { return 0; }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
 
     private:
 

@@ -1,6 +1,6 @@
 // GCCityError.h
 // 
-// 城市错误
+// 鍩庡競閿欒
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~GCCityError( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -36,7 +36,7 @@ namespace Packets
         VOID                    SetID(BYTE EID) {m_ID = EID;};
 
     private:
-        BYTE                    m_ID;        //成功与否
+        BYTE                    m_ID;        //鎴愬姛涓庡惁
     };
 
     class GCCityErrorFactory : public PacketFactory 

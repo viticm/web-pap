@@ -8,27 +8,27 @@
 
 
 
-//³ıÁËÖ÷Ïß³ÌÒÔÍâ£¬ÆäËûÏß³Ì¶¼ÓÉ´ËÄ£¿éÀ´µ÷¶È
-//Login ¶ËµÄ ThreadManager È¡ÏûThreadPool
-//ÒòÎª²»ĞèÒªÅÜ³¡¾° 
+//é™¤äº†ä¸»çº¿ç¨‹ä»¥å¤–ï¼Œå…¶ä»–çº¿ç¨‹éƒ½ç”±æ­¤æ¨¡å—æ¥è°ƒåº¦
+//Login ç«¯çš„ ThreadManager å–æ¶ˆThreadPool
+//å› ä¸ºä¸éœ€è¦è·‘åœºæ™¯ 
 class ThreadManager
 {
 public :
     ThreadManager( ) ;
     ~ThreadManager( ) ;
 
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     BOOL                Init( ) ;
-    //Æô¶¯ËùÓĞÏß³Ì
+    //å¯åŠ¨æ‰€æœ‰çº¿ç¨‹
     BOOL                Start( ) ;
-    //Í£Ö¹ËùÓĞÏß³Ì
+    //åœæ­¢æ‰€æœ‰çº¿ç¨‹
     BOOL                Stop( ) ;
     
-    //È¡µÃµ±Ç°µÄ·şÎñÆ÷Ïß³Ì
+    //å–å¾—å½“å‰çš„æœåŠ¡å™¨çº¿ç¨‹
     ServerThread*        GetServerThread(){ 
         return m_pServerThread ; 
     } ;
-    //È¡µÃµ±Ç°ÔËĞĞµÄÏß³Ì×ÜÊı
+    //å–å¾—å½“å‰è¿è¡Œçš„çº¿ç¨‹æ€»æ•°
     UINT                GetTotalThreads(){ return m_nThreads ; } ;
 protected :
     ServerThread*        m_pServerThread ;

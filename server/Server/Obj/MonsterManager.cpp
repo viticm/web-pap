@@ -14,7 +14,7 @@
 #include "MonsterManager.h"
 #include "SceneManager.h"
 
-extern INT    g_Command_AlwaysLoadMonsterIni ;//Ã¿´Î¶¼¶ÁÈ¡monster.iniÎÄ¼ş
+extern INT    g_Command_AlwaysLoadMonsterIni ;//æ¯æ¬¡éƒ½è¯»å–monster.iniæ–‡ä»¶
 
 
 #define SECSIZE 64
@@ -68,23 +68,23 @@ __ENTER_FUNCTION
     INT i ;
     pScene = GetScene();
 
-    //¸ù¾İ¹ÖÎïÅäÖÃiniÎÄ¼şÃû£¬²éÕÒÊı¾İÔ´£¬Èç¹ûÃ»ÓĞÊı¾İÔò´ÓÅäÖÃÎÄ¼şÀï¶Á³öÀ´
+    //æ ¹æ®æ€ªç‰©é…ç½®iniæ–‡ä»¶åï¼ŒæŸ¥æ‰¾æ•°æ®æºï¼Œå¦‚æœæ²¡æœ‰æ•°æ®åˆ™ä»é…ç½®æ–‡ä»¶é‡Œè¯»å‡ºæ¥
     MONSTER_FILE* pMonsterFile = g_pSceneManager->FindMonsterFile( pszFileName ) ;
     if( pMonsterFile==NULL || g_Command_AlwaysLoadMonsterIni==TRUE )
     {
-        //ÕÒ³öÒ»¸ö¿ÕµÄ¹ÖÎïÅäÖÃÊı¾İÔ´
+        //æ‰¾å‡ºä¸€ä¸ªç©ºçš„æ€ªç‰©é…ç½®æ•°æ®æº
         pMonsterFile = g_pSceneManager->FindEmptyMonsterFile( ) ;
 
         Ini f(pszFileName) ;
         ///////////////////////////////////////////////////////////////////////////
-        //¶ÁÈ¡¹ÖÎïµ÷ÕûÊı¾İ
+        //è¯»å–æ€ªç‰©è°ƒæ•´æ•°æ®
         ///////////////////////////////////////////////////////////////////////////
         INT iOperateCount=0;
         BOOL bRet = f.ReadIntIfExist( "setting", "operatecount", iOperateCount ) ;
         if( bRet )
-        {//ÓĞĞèÒªµ÷ÕûµÄÊı¾İ´æÔÚ
+        {//æœ‰éœ€è¦è°ƒæ•´çš„æ•°æ®å­˜åœ¨
             /////////////////////////////////////////////////////
-            //¶ÁÈ¡¶¨ÒåÉèÖÃÊı¾İ
+            //è¯»å–å®šä¹‰è®¾ç½®æ•°æ®
             pMonsterFile->m_OperateCount = iOperateCount ;
 
             INT iDataCount=0 ;
@@ -106,7 +106,7 @@ __ENTER_FUNCTION
             }
 
             //////////////////////////////////////////////////////
-            //¶ÁÈ¡²Ù×÷Êı¾İ
+            //è¯»å–æ“ä½œæ•°æ®
             for( i=0; i<iOperateCount; i++ )
             {
                 sprintf( szSection, "operate%d", i ) ;
@@ -177,7 +177,7 @@ __ENTER_FUNCTION
             }//end for
 
             ///////////////////////////////////////////////////
-            //¶ÁÈ¡Êı¾İÔ¤½á¹¹
+            //è¯»å–æ•°æ®é¢„ç»“æ„
             for( i=0; i<iDataCount; i++ )
             {
                 sprintf( szSection, "data_def%d", i ) ;
@@ -262,10 +262,10 @@ __ENTER_FUNCTION
         }//end if
 
         ///////////////////////////////////////////////////////////////////////////
-        //¶ÁÈ¡¹ÖÎïÊı¾İ
+        //è¯»å–æ€ªç‰©æ•°æ®
         ///////////////////////////////////////////////////////////////////////////
         
-        //¹ÖÎï¸öÊı
+        //æ€ªç‰©ä¸ªæ•°
         INT iMonsterCount = f.ReadInt( "info", "monstercount" ) ;
         pMonsterFile->m_Count = iMonsterCount ;
         
@@ -489,7 +489,7 @@ __ENTER_FUNCTION
             }
             else
             {
-                init.m_bNPC = FALSE;//±íÖĞÎ´ÕÒµ½£¬Ä¬ÈÏÎª¹ÖÎï
+                init.m_bNPC = FALSE;//è¡¨ä¸­æœªæ‰¾åˆ°ï¼Œé»˜è®¤ä¸ºæ€ªç‰©
             }        
 
             if ( 0 != f.ReadTextIfExist( szSection, "camp", szReadText, sizeof ( szReadText ) ) )
@@ -498,7 +498,7 @@ __ENTER_FUNCTION
             }
             else
             {
-                init.m_nCamp = CAMP3_MONSTER;//±íÖĞÎ´ÕÒµ½£¬Ä¬ÈÏÎªÓÑºÃµÄ¹ÖÎï
+                init.m_nCamp = CAMP3_MONSTER;//è¡¨ä¸­æœªæ‰¾åˆ°ï¼Œé»˜è®¤ä¸ºå‹å¥½çš„æ€ªç‰©
             }
             if ( 0 !=f.ReadTextIfExist( szSection, "scripttimer", szReadText, sizeof (szReadText) ) )
             {
@@ -524,7 +524,7 @@ __ENTER_FUNCTION
             //        init.m_nCamp = CAMP3_MONSTER;
             //}
 
-            //ĞŞÕıÎ»ÖÃ
+            //ä¿®æ­£ä½ç½®
             pScene->GetMap()->VerifyPos( &(init.m_Pos) ) ;
 
             pMonsterFile->m_pMonsterInitData[i] = init ;
@@ -532,7 +532,7 @@ __ENTER_FUNCTION
 
     }//end if
 
-    //¹¹ÔìÊµ¼ÊÉú³É¹ÖÎïÊı¾İ
+    //æ„é€ å®é™…ç”Ÿæˆæ€ªç‰©æ•°æ®
     if( pMonsterFile->m_OperateCount>0  )
     {
         if( !pMonsterFile->Do( ) )
@@ -547,7 +547,7 @@ __ENTER_FUNCTION
         memcpy( pMonsterFile->m_pInitUsing, pMonsterFile->m_pMonsterInitData, sizeof(_OBJ_MONSTER_INIT)*pMonsterFile->m_Count ) ;
     }
 
-    //Éú³É¹ÖÎï
+    //ç”Ÿæˆæ€ªç‰©
     for( i=0; i<pMonsterFile->m_CountUsing; i++ )
     {
         if (pMonsterFile->m_pInitUsing[i].m_bPet == TRUE)
@@ -724,7 +724,7 @@ BOOL MonsterManager::InitMonsterData(_MONSTER_INIT *pInit, INT nDataID)
 {
 __ENTER_FUNCTION
 
-    // »¹Ã»ÓĞĞ´
+    // è¿˜æ²¡æœ‰å†™
     Assert(FALSE && "MonsterManager::InitMonsterData");
 
     if(pInit == NULL || nDataID == INVALID_ID)

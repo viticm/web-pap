@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºConditionAndDeplete_Core.cpp
-// ¹¦ÄÜËµÃ÷£º
+// æ–‡ä»¶åï¼šConditionAndDeplete_Core.cpp
+// åŠŸèƒ½è¯´æ˜ï¼š
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -528,7 +528,7 @@ namespace Combat_Module
     }
     BOOL CDCore_T::C_TargetMustBeMySpouse_T::Deplete(Obj_Character& rMe, ConDepTerm_T const& rData) const
     {
-        return TRUE; //²»ĞèÒªÏûºÄ
+        return TRUE; //ä¸éœ€è¦æ¶ˆè€—
     }
     BOOL CDCore_T::CD_HpByRate_T::ConditionCheck(Obj_Character& rMe, ConDepTerm_T const& rData) const
     {

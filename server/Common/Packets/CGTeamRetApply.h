@@ -13,7 +13,7 @@ namespace Packets
         CGTeamRetApply(){};
         virtual        ~CGTeamRetApply(){};
 
-        //π´”√Ω”ø⁄
+        //ÂÖ¨Áî®Êé•Âè£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -31,7 +31,7 @@ namespace Packets
 
     public :
         BYTE            m_Return ;
-        GUID_t            m_SourGUID ;        //…Í«Î»À
+        GUID_t            m_SourGUID ;        //Áî≥ËØ∑‰∫∫
     };
 
     class CGTeamRetApplyFactory: public    PacketFactory

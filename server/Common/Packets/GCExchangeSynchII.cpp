@@ -13,7 +13,7 @@ BOOL GCExchangeSynchII::Read( SocketInputStream& iStream )
     iStream.Read( (CHAR*)(&m_Opt), sizeof(BYTE));
 
     if(m_IsMyself)
-    {//¸ø×Ô¼ººĞ×ÓÀï¼Ó¶«Î÷
+    {//ç»™è‡ªå·±ç›’å­é‡ŒåŠ ä¸œè¥¿
         switch (m_Opt)
         {
         case EXCHANGE_MSG::OPT_ADDITEM:
@@ -56,7 +56,7 @@ BOOL GCExchangeSynchII::Read( SocketInputStream& iStream )
         }
     }
     else
-    {//¸ø¶Ô·½ºĞ×ÓÀï¼Ó¶«Î÷
+    {//ç»™å¯¹æ–¹ç›’å­é‡ŒåŠ ä¸œè¥¿
         switch (m_Opt)
         {
         case EXCHANGE_MSG::OPT_ADDITEM:
@@ -116,7 +116,7 @@ BOOL GCExchangeSynchII::Write( SocketOutputStream& oStream )const
     oStream.Write( (CHAR*)(&m_Opt), sizeof(BYTE));
 
     if(m_IsMyself)
-    {//¸ø×Ô¼ººĞ×ÓÀï¼Ó¶«Î÷
+    {//ç»™è‡ªå·±ç›’å­é‡ŒåŠ ä¸œè¥¿
         switch (m_Opt)
         {
         case EXCHANGE_MSG::OPT_ADDITEM:
@@ -159,7 +159,7 @@ BOOL GCExchangeSynchII::Write( SocketOutputStream& oStream )const
         }
     }
     else
-    {//¸ø¶Ô·½ºĞ×ÓÀï¼Ó¶«Î÷
+    {//ç»™å¯¹æ–¹ç›’å­é‡ŒåŠ ä¸œè¥¿
         switch (m_Opt)
         {
         case EXCHANGE_MSG::OPT_ADDITEM:

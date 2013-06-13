@@ -1,9 +1,9 @@
 #include "stdafx.h"
 //-----------------------------------------------------------------------------
-// ÎÄ¼þÃû : LuaInterface.cpp
-// Ä£¿é    :    Script
-// ¹¦ÄÜ     :    ½Å±¾ÏµÍ³Ìá¹©¸øÍâ½çÊ¹ÓÃµÄLuaµÄ½Ó¿Ú
-// ÐÞ¸ÄÀúÊ·:
+// æ–‡ä»¶å : LuaInterface.cpp
+// æ¨¡å—    :    Script
+// åŠŸèƒ½     :    è„šæœ¬ç³»ç»Ÿæä¾›ç»™å¤–ç•Œä½¿ç”¨çš„Luaçš„æŽ¥å£
+// ä¿®æ”¹åŽ†å²:
 //-----------------------------------------------------------------------------
 #include "LuaInterface.h"
 #include "Scene.h"
@@ -38,7 +38,7 @@ VOID LuaInterface::Init(Scene* pScene)
     __ENTER_FUNCTION
     SetOwner(pScene);
 
-    //GetOwner()->mMisBuf.ResetMisBuf();//LM ÐÞ¸Ä
+    //GetOwner()->mMisBuf.ResetMisBuf();//LM ä¿®æ”¹
     //
     //BOOL bRet = mLua.Init( ) ;
 
@@ -47,7 +47,7 @@ VOID LuaInterface::Init(Scene* pScene)
     //    Assert(FALSE && "Lua init failed");
     //}
     //
-    ////×¢²áCº¯Êý
+    ////æ³¨å†ŒCå‡½æ•°
     //mFuncRegister.SetOwner(this);
     //mFuncRegister.RegisterCFunction();
 
@@ -66,7 +66,7 @@ VOID LuaInterface::Destroy()
 {
     __ENTER_FUNCTION
 
-    //Çå¿ÕLuaState
+    //æ¸…ç©ºLuaState
     //mLua.Exit( ) ;
 
     __LEAVE_FUNCTION

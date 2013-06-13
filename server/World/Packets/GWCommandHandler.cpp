@@ -16,16 +16,16 @@ __ENTER_FUNCTION
 
     ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer ;
 
-    CHAR szName[] = "ĞÅÏ¢²éÑ¯" ;
+    CHAR szName[] = "ä¿¡æ¯æŸ¥è¯¢" ;
     CHAR szContex[256] ;
     memset( szContex, 0, 256 ) ;
     switch( pPacket->GetServerCommand()->m_Command )
     {
-    case COMMAND_TYPE_ALLWHO://»ñÈ¡µ±Ç°ÓÎÏ·ÊÀ½ç×ÜÈËĞÅÏ¢¼°Ò»Ğ©½ÇÉ«ĞÅÏ¢
+    case COMMAND_TYPE_ALLWHO://è·å–å½“å‰æ¸¸æˆä¸–ç•Œæ€»äººä¿¡æ¯åŠä¸€äº›è§’è‰²ä¿¡æ¯
         {
-            //È«¾ÖĞÅÏ¢
+            //å…¨å±€ä¿¡æ¯
             sprintf( szContex, "Total:%d", g_pOnlineUser->GetTotalCount() ) ;
-            //Ëæ»úÈ¡²¿·ÖÍæ¼ÒĞÅÏ¢
+            //éšæœºå–éƒ¨åˆ†ç©å®¶ä¿¡æ¯
             INT fromindex = rand()%MAX_WORLD_USER ;
             INT cansend=5 ;
             for( int i=0; i<MAX_WORLD_USER; i++ )
@@ -61,10 +61,10 @@ __ENTER_FUNCTION
             pServerPlayer->SendPacket( &Msg ) ;
         }
         break ;
-    case COMMAND_TYPE_CATCHPLAYER://»ñÈ¡Ä³¸öÍæ¼ÒµÄ»ù±¾ĞÅÏ¢
+    case COMMAND_TYPE_CATCHPLAYER://è·å–æŸä¸ªç©å®¶çš„åŸºæœ¬ä¿¡æ¯
         {
             if( pPacket->GetServerCommand()->m_Param0==0 )
-            {//°´ÕÕÃû×Ö²éÑ¯
+            {//æŒ‰ç…§åå­—æŸ¥è¯¢
                 USER* pUser = g_pOnlineUser->FindUser(pPacket->GetServerCommand()->m_szName) ;
                 if( pUser==NULL )
                 {
@@ -80,7 +80,7 @@ __ENTER_FUNCTION
                 }
             }
             else if( pPacket->GetServerCommand()->m_Param0==1 )
-            {//°´ÕÕGUID²éÑ¯
+            {//æŒ‰ç…§GUIDæŸ¥è¯¢
                 USER* pUser = g_pOnlineUser->FindUser((GUID_t)pPacket->GetServerCommand()->m_Param1) ;
                 if( pUser==NULL )
                 {

@@ -28,7 +28,7 @@ __ENTER_FUNCTION
     Item* pPetItem = pPetContainer->GetItem(m_nIndex);
     Assert(pPetItem);
 
-    // ÀûÓÃÁìÎò¼¼ÄÜµÄ¹æÔò×îÖÕ¾ö¶¨ÊÇ·ñÁìÎòµ½Î´Ñ§µÄ¼¼ÄÜ
+    // åˆ©ç”¨é¢†æ‚ŸæŠ€èƒ½çš„è§„åˆ™æœ€ç»ˆå†³å®šæ˜¯å¦é¢†æ‚Ÿåˆ°æœªå­¦çš„æŠ€èƒ½
     INT nSkillCount = Skill_GetMaxCount_CortrolByAI() + Skill_GetMaxCount_CortrolByPlayer();
     INT nLearnedVoluntarySkillCount = Skill_GetCount_CortrolByPlayer();
     INT nLearnedPassiveSkillCount = Skill_GetCount_CortrolByAI();
@@ -45,7 +45,7 @@ __ENTER_FUNCTION
             INT nRet = rand() % 100;
             nRet *= MULTIPLE_VALUE;
             if (nRet < nVoluntaryRate)
-            {// Ö÷¶¯¼¼ÄÜµÄÁìÎò
+            {// ä¸»åŠ¨æŠ€èƒ½çš„é¢†æ‚Ÿ
                 PET_ATTR* pAttr = g_PetAttrTbl.GetAttr(pPetItem->GetDataID());
                 if (pAttr)
                 {
@@ -56,7 +56,7 @@ __ENTER_FUNCTION
             {
                 PET_ATTR* pAttr = g_PetAttrTbl.GetAttr(pPetItem->GetDataID());
                 if (pAttr)
-                {// ÕÒµ½Ò»¸öÎ´Ñ§Ï°µÄ¼¼ÄÜ¾Í½«Ëû¼ÓÈëSkillListÖĞ
+                {// æ‰¾åˆ°ä¸€ä¸ªæœªå­¦ä¹ çš„æŠ€èƒ½å°±å°†ä»–åŠ å…¥SkillListä¸­
                     SkillID_t idSkill = INVALID_ID;
                     if (pAttr->m_PassiveSkill1 != INVALID_ID && !Skill_HaveSkill(pAttr->m_PassiveSkill1,1))
                         idSkill = pAttr->m_PassiveSkill1;
@@ -74,7 +74,7 @@ __ENTER_FUNCTION
                 }
             }
             else
-            {// Ê²Ã´¶¼²»×ö
+            {// ä»€ä¹ˆéƒ½ä¸åš
                 return FALSE;
             }
 
@@ -89,7 +89,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// µÃµ½¿ÉÒÔÓÉÍæ¼Ò¿ØÖÆµÄ·¨ÊõµÄÊıÁ¿
+// å¾—åˆ°å¯ä»¥ç”±ç©å®¶æ§åˆ¶çš„æ³•æœ¯çš„æ•°é‡
 INT Obj_Pet::Skill_GetCount_CortrolByPlayer(VOID)
 {
     __ENTER_FUNCTION
@@ -118,13 +118,13 @@ INT Obj_Pet::Skill_GetCount_CortrolByPlayer(VOID)
     return 0;
 }
 
-// µÃµ½¿ÉÒÔÓÉÍæ¼Ò¿ØÖÆµÄ·¨ÊõµÄ×î´óÊıÁ¿
+// å¾—åˆ°å¯ä»¥ç”±ç©å®¶æ§åˆ¶çš„æ³•æœ¯çš„æœ€å¤§æ•°é‡
 INT Obj_Pet::Skill_GetMaxCount_CortrolByPlayer(VOID)
 {
     return 1;
 }
 
-// µÃµ½ÓÉAI¿ØÖÆµÄ·¨ÊõµÄÊıÁ¿
+// å¾—åˆ°ç”±AIæ§åˆ¶çš„æ³•æœ¯çš„æ•°é‡
 INT Obj_Pet::Skill_GetCount_CortrolByAI(VOID)
 {
     __ENTER_FUNCTION
@@ -147,7 +147,7 @@ INT Obj_Pet::Skill_GetCount_CortrolByAI(VOID)
     INT nMaxAISkillCount = Skill_GetMaxCount_CortrolByAI();
     INT nCount = 0;
     for (INT i = PET_SKILL_INDEX_CONTROL_BY_AI0; i < PET_SKILL_INDEX_CONTROL_BY_AI0 + nMaxAISkillCount; ++i)
-    {// ±»¶¯·¨¹¥£¬±»¶¯ÔÌº¬¶¼ÊôÓÚ±»¶¯¼¼ÄÜ
+    {// è¢«åŠ¨æ³•æ”»ï¼Œè¢«åŠ¨è•´å«éƒ½å±äºè¢«åŠ¨æŠ€èƒ½
         const _PET_SKILL *pPetSkill = Skill_GetSkill( i );
         if ( pPetSkill->m_nSkillID != INVALID_ID )
         {
@@ -160,7 +160,7 @@ INT Obj_Pet::Skill_GetCount_CortrolByAI(VOID)
     return 0;
 }
 
-// µÃµ½ÓÉAI¿ØÖÆµÄ·¨ÊõµÄ×î´óÊıÁ¿
+// å¾—åˆ°ç”±AIæ§åˆ¶çš„æ³•æœ¯çš„æœ€å¤§æ•°é‡
 INT Obj_Pet::Skill_GetMaxCount_CortrolByAI(VOID)
 {
     __ENTER_FUNCTION
@@ -297,7 +297,7 @@ BOOL    Obj_Pet::HeartBeat_Recover(UINT uTime)
     }
     if(0<nCount)
     {
-        /** ½øĞĞ»Øºì²Ù×÷ */
+        /** è¿›è¡Œå›çº¢æ“ä½œ */
         INT nCur = GetHP( ); 
         INT nMax = GetMaxHP();
         INT nRegenerate = GetHPRegenerate();
@@ -387,7 +387,7 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    //ÑéÖ¤ÊÇ·ñÊÇºÏ·¨µÄ¼¼ÄÜID
+    //éªŒè¯æ˜¯å¦æ˜¯åˆæ³•çš„æŠ€èƒ½ID
     for(INT i=0; PET_MAX_SKILL_COUNT>i; ++i)
     {
         const _PET_SKILL *pPetSkill = Skill_GetSkill( i );
@@ -397,7 +397,7 @@ __ENTER_FUNCTION
         }
     }
 
-    // Íæ¼Ò²Ù×÷»¹ÊÇAI²Ù×÷
+    // ç©å®¶æ“ä½œè¿˜æ˜¯AIæ“ä½œ
     BOOL bContrlByPlayer = pSkillTemplateData->GetOperateModeForPetSkill();
     if ( bContrlByPlayer )
     {
@@ -471,7 +471,7 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    //ÑéÖ¤ÊÇ·ñÊÇºÏ·¨µÄ¼¼ÄÜID
+    //éªŒè¯æ˜¯å¦æ˜¯åˆæ³•çš„æŠ€èƒ½ID
     for(INT i=0; PET_MAX_SKILL_COUNT>i; ++i)
     {
         const _PET_SKILL *pPetSkill = Skill_GetSkill( i );
@@ -481,7 +481,7 @@ __ENTER_FUNCTION
         }
     }
 
-    // Íæ¼Ò²Ù×÷»¹ÊÇAI²Ù×÷
+    // ç©å®¶æ“ä½œè¿˜æ˜¯AIæ“ä½œ
     BOOL bContrlByPlayer = pSkillTemplateData->GetOperateModeForPetSkill();
     if ( bContrlByPlayer )
     {

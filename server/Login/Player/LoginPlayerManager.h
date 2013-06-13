@@ -14,49 +14,49 @@ public :
     LoginPlayerManager() ;
     ~LoginPlayerManager() ;
 
-    //ģ���ʼ���ӿ�
+    //模块初始化接口
     BOOL                Init( ) ;
-    //�������
+    //网络侦测
     BOOL                Select( ) ;
-    //���ݽ��ܽӿ�
+    //数据接受接口
     BOOL                ProcessInputs( ) ;
-    //���ݷ��ͽӿ�
+    //数据发送接口
     BOOL                ProcessOutputs( ) ;
-    //�쳣���Ӵ���
+    //异常连接处理
     BOOL                ProcessExceptions( ) ;
-    //��Ϣִ��
+    //消息执行
     BOOL                ProcessCommands( ) ;
-    //�����ӽ��մ���
+    //新连接接收处理
     BOOL                AcceptNewConnection( ) ;
-    //�߼��ӿ�
+    //逻辑接口
     virtual BOOL        HeartBeat( ) ;
-    //����������Ϣ
+    //处理缓存消息
     BOOL                ProcessCacheCommands( ) ;
-    //��ȡ������Ϣ
+    //读取缓存消息
     BOOL                RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& Flag ) ;
-    //���µ��������С
+    //重新调整缓存大小
     BOOL                ResizeCache( ) ;
-    //ɾ����ЧPlayer����Ϣ
+    //删除无效Player的消息
     BOOL                MovePacket( PlayerID_t PlayerID ) ;
 
 public :
-    //ͨ�ýӿ�
+    //通用接口
 
-    //��Player���ݼ���ϵͳ��
+    //将Player数据加入系统中
     BOOL                AddPlayer( Player* pPlayer ) ;
-    //��ӵ��fd�����������ݴӵ�ǰϵͳ�����
+    //将拥有fd句柄的玩家数据从当前系统中清除
     BOOL                DelPlayer( PlayerID_t pid ) ;
 
-    //�����쳣��Player��Ϣ���������ϵͳ�е���ϢҲ���
-    //�Ͽ���ҵ�����
+    //出现异常后将Player信息清除，并将系统中的信息也清除
+    //断开玩家的连接
     BOOL                RemovePlayer( Player* pPlayer ) ;
     VOID                RemoveAllPlayer( ) ;
 
     //*********
     //*********
-    //�˽ӿ�֧������ͬ�����������ڲ�ͬ�߳��ڵ���
-    //�˽ӿ����첽ͨѶ��Ψһ�ӿ�
-    //ע�⣺pPacket��Ϣ��Ҫ��g_pPacketFactoryManager�����������������ɾ��
+    //此接口支持数据同步，即可以在不同线程内调用
+    //此接口是异步通讯的唯一接口
+    //注意：pPacket消息需要用g_pPacketFactoryManager创建出来，用完后不能删除
     BOOL                SendPacket( Packet* pPacket, 
                                     PlayerID_t PlayerID, 
                                     UINT Flag=PF_NONE ) ;
@@ -64,17 +64,17 @@ public :
     //*********
 
 private :
-    //���������ķ�����Socket
+    //用于侦听的服务器Socket
     ServerSocket*        m_pServerSocket ;
-    //���������ķ�����SOCKET���ֵ�������ݼ�m_pServerSocket��ӵ�е�SOCKET���ֵ��
+    //用于侦听的服务器SOCKET句柄值（此数据即m_pServerSocket内拥有的SOCKET句柄值）
     SOCKET                m_SocketID ;
 
     //
-    //�����������
+    //网络相关数据
     enum{
-        SELECT_BAK = 0,    //��ǰϵͳ��ӵ�е������������
-        SELECT_USE = 1,    //����select���õľ������
-        SELECT_MAX = 2, //�ṹʹ������
+        SELECT_BAK = 0,    //当前系统中拥有的完整句柄数据
+        SELECT_USE = 1,    //用于select调用的句柄数据
+        SELECT_MAX = 2, //结构使用数量
     };
     fd_set        m_ReadFDs[SELECT_MAX];
     fd_set        m_WriteFDs[SELECT_MAX];
@@ -86,13 +86,13 @@ private :
     SOCKET                    m_MaxFD;
 
     INT                        m_nFDSize ;
-    //�����������
+    //网络相关数据
     //
 
     MyLock                    m_Lock ;
 
 
-    //��ǰ����Ϣ����
+    //当前的消息缓存
     ASYNC_PACKET*            m_PacketQue ;
     UINT                    m_QueSize ;
     UINT                    m_Head ;

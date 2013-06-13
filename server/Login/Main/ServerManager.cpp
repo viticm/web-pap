@@ -297,7 +297,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //Êı¾İ¶ÁÈ¡
+    //æ•°æ®è¯»å–
     do
     {
         for(int i = WORLD_PLAYER_ID;i<=BILLING_PLAYER_ID;i++)
@@ -317,7 +317,7 @@ __ENTER_FUNCTION
                     {
                         _MY_TRY
                         {
-                            //´¦Àí·şÎñÆ÷·¢ËÍ¹ıÀ´µÄÏûÏ¢
+                            //å¤„ç†æœåŠ¡å™¨å‘é€è¿‡æ¥çš„æ¶ˆæ¯
                             ret = pPlayer->ProcessInput( ) ;
                             if( !ret )
                             {
@@ -356,7 +356,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //Êı¾İ·¢ËÍ
+    //æ•°æ®å‘é€
     do
     {
 
@@ -377,7 +377,7 @@ __ENTER_FUNCTION
                     {
                         _MY_TRY
                         {
-                            //·¢ËÍÊı¾İ
+                            //å‘é€æ•°æ®
                             ret = pPlayer->ProcessOutput( ) ;
                             if( !ret )
                             {
@@ -462,11 +462,11 @@ __ENTER_FUNCTION
             if( pPlayer->IsValid() )
             {
                 if( pPlayer->GetSocket()->isSockError() )
-                {//Á¬½Ó³öÏÖ´íÎó
+                {//è¿æ¥å‡ºç°é”™è¯¯
                     RemoveServer( i ) ;
                 }
                 else
-                {//Á¬½ÓÕı³£
+                {//è¿æ¥æ­£å¸¸
                     _MY_TRY
                     {
                         ret = pPlayer->ProcessCommand( FALSE ) ;
@@ -502,7 +502,7 @@ __ENTER_FUNCTION
     Assert( fd!=INVALID_SOCKET ) ;
 
     if( m_nFDSize>=FD_SETSIZE )
-    {//ÒÑ¾­³¬³öÄÜ¹»¼ì²âµÄÍøÂç¾ä±ú×î´óÊı£»
+    {//å·²ç»è¶…å‡ºèƒ½å¤Ÿæ£€æµ‹çš„ç½‘ç»œå¥æŸ„æœ€å¤§æ•°ï¼›
         Assert(FALSE) ;
         return FALSE ;
     }
@@ -564,7 +564,7 @@ __ENTER_FUNCTION
     
     if(!IsWorldServerActive())
     {
-        //Á¬½ÓTestServerIDµÄÄÚÍø¶Ë¿Ú
+        //è¿æ¥TestServerIDçš„å†…ç½‘ç«¯å£
         ret = ConnectWorldServer( ) ;
         if( ret==FALSE )
         {
@@ -574,7 +574,7 @@ __ENTER_FUNCTION
     
     if(!IsBillingServerActive())
     {
-        //Á¬½ÓTestServerIDµÄÄÚÍø¶Ë¿Ú
+        //è¿æ¥TestServerIDçš„å†…ç½‘ç«¯å£
         ret = ConnectBillingServer( ) ;
         if( ret==FALSE )
         {
@@ -834,7 +834,7 @@ BOOL ServerManager::SendQueuePlayerToWorld()
                 }
                 else
                 {
-                    //´íÎó²Ù×÷
+                    //é”™è¯¯æ“ä½œ
                 }
 
                 BOOL bCleanPlayer = g_pWorldPlayerQueue->GetOutPlayer(QueuePos);
@@ -859,7 +859,7 @@ __ENTER_FUNCTION
     AutoLock_T autolock(m_Lock);
 
     if( m_PacketQue[m_Tail].m_pPacket )
-    {//»º³åÇøÂú
+    {//ç¼“å†²åŒºæ»¡
         BOOL ret = ResizeCache( ) ;
         Assert( ret ) ;
     }
@@ -885,7 +885,7 @@ __ENTER_FUNCTION
     AutoLock_T autolock(m_Lock);
 
     if( m_PacketQue[m_Head].m_pPacket==NULL )
-    {//»º³åÇøÖĞÃ»ÓĞÏûÏ¢
+    {//ç¼“å†²åŒºä¸­æ²¡æœ‰æ¶ˆæ¯
         return FALSE ;
     }
 
@@ -968,8 +968,8 @@ __ENTER_FUNCTION
                 }
                 else
                 {
-                    //ÓÃ»§ÒÑ¾­²»ÔÚÁËÕâ¸öÏûÏ¢²»ÓÃ´¦Àí
-                    //µ«ÊÇ±ØĞëÉ¾³ı
+                    //ç”¨æˆ·å·²ç»ä¸åœ¨äº†è¿™ä¸ªæ¶ˆæ¯ä¸ç”¨å¤„ç†
+                    //ä½†æ˜¯å¿…é¡»åˆ é™¤
                 }
                 
                 
@@ -978,7 +978,7 @@ __ENTER_FUNCTION
             {
             }
         }
-        //·şÎñÆ÷Ö®¼äµÄÏûÏ¢ÓÀÔ¶¶¼»ØÊÕ
+        //æœåŠ¡å™¨ä¹‹é—´çš„æ¶ˆæ¯æ°¸è¿œéƒ½å›æ”¶
         g_pPacketFactoryManager->RemovePacket( pPacket ) ;
     }
 

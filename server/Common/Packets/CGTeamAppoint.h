@@ -13,7 +13,7 @@ namespace Packets
             CGTeamAppoint(){};
             virtual        ~CGTeamAppoint(){};
 
-            //¹«ÓÃ½Ó¿Ú
+            //å…¬ç”¨æ¥å£
             virtual BOOL            Read( SocketInputStream& iStream ) ;
             virtual BOOL            Write( SocketOutputStream& oStream )const ;
             virtual UINT            Execute( Player* pPlayer ) ;
@@ -23,7 +23,7 @@ namespace Packets
 
 
     public :
-        //Êı¾İ½Ó¿Ú
+        //æ•°æ®æ¥å£
         VOID            SetSourGUID( GUID_t guid ){    m_SourGUID = guid ; }
         GUID_t            GetSourGUID( ){ return m_SourGUID ; }
 
@@ -32,9 +32,9 @@ namespace Packets
 
 
     public :
-        //Êı¾İ
-        GUID_t            m_SourGUID ;        //¾É¶Ó³¤
-        GUID_t            m_DestGUID ;        //ĞÂ¶Ó³¤
+        //æ•°æ®
+        GUID_t            m_SourGUID ;        //æ—§é˜Ÿé•¿
+        GUID_t            m_DestGUID ;        //æ–°é˜Ÿé•¿
 
     };
 

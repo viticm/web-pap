@@ -1,6 +1,6 @@
 // GCPlayerShopError.h
 // 
-// ¸æËß¿Í»§¶ËÍæ¼ÒÉÌµê·¢ÉúµÄ´íÎó
+// å‘Šè¯‰å®¢æˆ·ç«¯ç©å®¶å•†åº—å‘ç”Ÿçš„é”™è¯¯
 // 
 //////////////////////////////////////////////////////
 
@@ -60,18 +60,18 @@ namespace PLAYERSHOP_MSG
 
     struct SHOP_INFO_t
     {
-        CHAR                        m_ShopName[MAX_SHOP_NAME];        //Ãû×ÖÄÚÈİ
-        BYTE                        m_StallNumOpened;                //¿ª·ÅµÄÌ¯Î»Êı
-        BYTE                        m_StallNumOnSale;                //¿ªÕÅµÄÌ¯Î»Êı
-        BYTE                        m_Type;                            //µêÆÌµÄÀàĞÍ
-        _PLAYERSHOP_GUID            m_ID;                            //µêÆÌµÄÎ¨Ò»ID
-        GUID_t                        m_OwnerGuid;                    //µêÖ÷GUID
-        CHAR                        m_OwnerName[MAX_CHARACTER_NAME];//µêÖ÷Ãû
-        UINT                        m_Year;                            //´´½¨Äê
-        BYTE                        m_Month;                        //´´½¨ÔÂ
-        BYTE                        m_Day;                            //´´½¨ÈÕ
-        CHAR                        m_ShopDesc[MAX_SHOP_DESC_SIZE];    //ÉÌµêÃèÊö
-        BYTE                        m_bIsInFavor;                    //ÊÇ·ñÔÚ´ËÈËµÄÊÕ²Ø¼ÒÄÚ
+        CHAR                        m_ShopName[MAX_SHOP_NAME];        //åå­—å†…å®¹
+        BYTE                        m_StallNumOpened;                //å¼€æ”¾çš„æ‘Šä½æ•°
+        BYTE                        m_StallNumOnSale;                //å¼€å¼ çš„æ‘Šä½æ•°
+        BYTE                        m_Type;                            //åº—é“ºçš„ç±»å‹
+        _PLAYERSHOP_GUID            m_ID;                            //åº—é“ºçš„å”¯ä¸€ID
+        GUID_t                        m_OwnerGuid;                    //åº—ä¸»GUID
+        CHAR                        m_OwnerName[MAX_CHARACTER_NAME];//åº—ä¸»å
+        UINT                        m_Year;                            //åˆ›å»ºå¹´
+        BYTE                        m_Month;                        //åˆ›å»ºæœˆ
+        BYTE                        m_Day;                            //åˆ›å»ºæ—¥
+        CHAR                        m_ShopDesc[MAX_SHOP_DESC_SIZE];    //å•†åº—æè¿°
+        BYTE                        m_bIsInFavor;                    //æ˜¯å¦åœ¨æ­¤äººçš„æ”¶è—å®¶å†…
         
         SHOP_INFO_t()
         {
@@ -91,7 +91,7 @@ namespace Packets
         }
         virtual ~GCPlayerShopError( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -104,7 +104,7 @@ namespace Packets
         VOID                    SetID(BYTE EID) {m_ID = EID;};
 
     private:
-        BYTE                    m_ID;        //³É¹¦Óë·ñ
+        BYTE                    m_ID;        //æˆåŠŸä¸å¦
     };
 
     class GCPlayerShopErrorFactory : public PacketFactory 

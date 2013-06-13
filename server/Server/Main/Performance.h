@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºPerformance.h
-//¹¦ÄÜÃèÊö£º±£´æºÍÍ³¼ÆÏµÍ³ÖĞ¸÷¸öÄ£¿éÖ´ĞĞĞ§ÂÊ¼°ÔËĞĞÇé¿ö
-//ĞŞ¸Ä¼ÇÂ¼£º
+//æ–‡ä»¶åï¼šPerformance.h
+//åŠŸèƒ½æè¿°ï¼šä¿å­˜å’Œç»Ÿè®¡ç³»ç»Ÿä¸­å„ä¸ªæ¨¡å—æ‰§è¡Œæ•ˆç‡åŠè¿è¡Œæƒ…å†µ
+//ä¿®æ”¹è®°å½•ï¼š
 /////////////////////////////////////////////////////////////////////////////////
 
 #ifndef __PERFORMANCE_H__
@@ -42,8 +42,8 @@ enum SCENE_PERFOR_TYPE
 
 struct SCENE_PERFOR
 {
-    UINT            m_aPerfor[SPT_NUMBER] ;    //¸÷¸öÎ»ÖÃµÄÏìÓ¦Öµ
-    SceneID_t        m_SceneID ;                //¼à¿ØµÄ³¡¾°ºÅ
+    UINT            m_aPerfor[SPT_NUMBER] ;    //å„ä¸ªä½ç½®çš„å“åº”å€¼
+    SceneID_t        m_SceneID ;                //ç›‘æ§çš„åœºæ™¯å·
 
     SCENE_PERFOR( )
     {
@@ -64,13 +64,13 @@ public :
 
     VOID            CleanUp( ) ;
 
-    BOOL            Init( ) ;//³õÊ¼»¯
+    BOOL            Init( ) ;//åˆå§‹åŒ–
 
-    BOOL            HeartBeat( UINT uTime ) ;//ĞÄÌøÂß¼­´¦Àí
+    BOOL            HeartBeat( UINT uTime ) ;//å¿ƒè·³é€»è¾‘å¤„ç†
 
-    INT                Scene2Index( SceneID_t sceneid ) ;//³¡¾°ºÅÓ³Éäµ½ĞÔÄÜÊı¾İ¿éË÷Òı
+    INT                Scene2Index( SceneID_t sceneid ) ;//åœºæ™¯å·æ˜ å°„åˆ°æ€§èƒ½æ•°æ®å—ç´¢å¼•
 
-    VOID            CompareScenePerformance( INT index ) ;//´¦ÀíÒ»¸ö³¡¾°µÄÊı¾İĞÅÏ¢
+    VOID            CompareScenePerformance( INT index ) ;//å¤„ç†ä¸€ä¸ªåœºæ™¯çš„æ•°æ®ä¿¡æ¯
 
 
 public :

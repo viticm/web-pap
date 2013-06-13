@@ -1,6 +1,6 @@
 // CGStallApply.h
 // 
-// ¿Í»§¶ËÏò·şÎñÆ÷ÉêÇë°ÚÌ¯
+// å®¢æˆ·ç«¯å‘æœåŠ¡å™¨ç”³è¯·æ‘†æ‘Š
 // 
 //////////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ namespace Packets
         CGStallApply( ){};
         virtual ~CGStallApply( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

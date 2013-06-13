@@ -4,9 +4,9 @@
 #include "Type.h"
 #include "LoginPlayerManager.h"
 #include "Thread.h"
-//¸ºÔğ´¦ÀíÁ¬½Ó½øÈëºó¿Í»§¶ËÂß¼­
-//¿Í»§¶ËÁ÷³Ì¹ÜÀí
-//Í¨¹ı¿Í»§¶Ë×´Ì¬½øĞĞÂß¼­Ç¨ÒÆ
+//è´Ÿè´£å¤„ç†è¿æ¥è¿›å…¥åå®¢æˆ·ç«¯é€»è¾‘
+//å®¢æˆ·ç«¯æµç¨‹ç®¡ç†
+//é€šè¿‡å®¢æˆ·ç«¯çŠ¶æ€è¿›è¡Œé€»è¾‘è¿ç§»
 
 class ProcessPlayerManager;
 
@@ -17,25 +17,25 @@ public:
     ProcessManager();
     ~ProcessManager();
     
-    //³õÊ¼»¯²Ù×÷
+    //åˆå§‹åŒ–æ“ä½œ
     BOOL            Init();
     
-    //Ä£¿é´¦ÀíÑ­»·
+    //æ¨¡å—å¤„ç†å¾ªç¯
     virtual VOID    run();
 
-    //Ä£¿éÍË³ö
+    //æ¨¡å—é€€å‡º
     virtual VOID    stop(){    m_Active = FALSE;}
     
-    //ÍË³ö´¦Àí
+    //é€€å‡ºå¤„ç†
     VOID            Quit();
 
     BOOL            IsActive()    {return m_Active;}
 
     //*********
     //*********
-    //´Ë½Ó¿ÚÖ§³ÖÊı¾İÍ¬²½£¬¼´¿ÉÒÔÔÚ²»Í¬Ïß³ÌÄÚµ÷ÓÃ
-    //´Ë½Ó¿ÚÊÇÒì²½Í¨Ñ¶µÄÎ¨Ò»½Ó¿Ú
-    //×¢Òâ£ºpPacketÏûÏ¢ĞèÒªÓÃg_pPacketFactoryManager´´½¨³öÀ´£¬ÓÃÍêºó²»ÄÜÉ¾³ı
+    //æ­¤æ¥å£æ”¯æŒæ•°æ®åŒæ­¥ï¼Œå³å¯ä»¥åœ¨ä¸åŒçº¿ç¨‹å†…è°ƒç”¨
+    //æ­¤æ¥å£æ˜¯å¼‚æ­¥é€šè®¯çš„å”¯ä¸€æ¥å£
+    //æ³¨æ„ï¼špPacketæ¶ˆæ¯éœ€è¦ç”¨g_pPacketFactoryManageråˆ›å»ºå‡ºæ¥ï¼Œç”¨å®Œåä¸èƒ½åˆ é™¤
     BOOL            SendPacket( Packet* pPacket, 
                                 PlayerID_t PlayerID, 
                                 UINT Flag=PF_NONE ) ;
@@ -45,7 +45,7 @@ private:
 
 private :
     
-    //µ±Ç°Ä£¿éµÄÏûÏ¢»º´æ
+    //å½“å‰æ¨¡å—çš„æ¶ˆæ¯ç¼“å­˜
     ASYNC_PACKET*            m_PacketQue ;
     UINT                    m_QueSize ;
     UINT                    m_Head ;
@@ -55,19 +55,19 @@ private :
 private:
     BOOL                    DoTick(UINT uTime);
 
-    //´¦Àí»º´æÏûÏ¢
+    //å¤„ç†ç¼“å­˜æ¶ˆæ¯
     BOOL                    ProcessCacheCommands( ) ;
 
-    //¶ÁÈ¡»º´æÏûÏ¢
+    //è¯»å–ç¼“å­˜æ¶ˆæ¯
     BOOL                    RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& Flag ) ;
 
-    //ÖØĞÂµ÷Õû»º´æ´óĞ¡
+    //é‡æ–°è°ƒæ•´ç¼“å­˜å¤§å°
     BOOL                    ResizeCache( ) ;
 
-    //É¾³ıÄ³¸öPlayerµÄÔÚÏûÏ¢»º´æÖĞµÄÏûÏ¢
+    //åˆ é™¤æŸä¸ªPlayerçš„åœ¨æ¶ˆæ¯ç¼“å­˜ä¸­çš„æ¶ˆæ¯
     BOOL                    MovePacket( PlayerID_t PlayerID ) ;
 
-    //½«¶ÓÁĞÖĞÍæ¼Ò¼ÓÈëµ½Âß¼­¹ÜÀí
+    //å°†é˜Ÿåˆ—ä¸­ç©å®¶åŠ å…¥åˆ°é€»è¾‘ç®¡ç†
     BOOL                    MoveQueuePlayer();
 
     

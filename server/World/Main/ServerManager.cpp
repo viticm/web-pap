@@ -131,23 +131,23 @@ __ENTER_FUNCTION
     BOOL    bUseShareMem    =   FALSE;    
     
     bUseShareMem = g_Config.m_WorldInfo.m_EnableShareMem;
-    //µÚÒ»²½£ºÇå³ıPlayerManagerÖĞµÄĞÅÏ¢
+    //ç¬¬ä¸€æ­¥ï¼šæ¸…é™¤PlayerManagerä¸­çš„ä¿¡æ¯
     ret = DelPlayer( pPlayer ) ;
     Assert( ret ) ;
 
-    //µÚ¶ş²½£ºÇå³ıPlayerPoolÖĞµÄĞÅÏ¢£¬×¢Òâ´Ë²½Öè±ØĞë·ÅÔÚ×îºó£¬
-    //µ±µ÷ÓÃ´Ë²Ù×÷ºó£¬µ±Ç°Player¾ÍÓĞ¿ÉÄÜ»á±»ÂíÉÏ·ÖÅä¸øĞÂ½ÓÈëÍæ¼Ò
+    //ç¬¬äºŒæ­¥ï¼šæ¸…é™¤PlayerPoolä¸­çš„ä¿¡æ¯ï¼Œæ³¨æ„æ­¤æ­¥éª¤å¿…é¡»æ”¾åœ¨æœ€åï¼Œ
+    //å½“è°ƒç”¨æ­¤æ“ä½œåï¼Œå½“å‰Playerå°±æœ‰å¯èƒ½ä¼šè¢«é©¬ä¸Šåˆ†é…ç»™æ–°æ¥å…¥ç©å®¶
     ((ServerPlayer*)pPlayer)->FreeOwn( ) ;
 
-    //µÚÈı²½£º´¦Àí´Ë·şÎñÆ÷ÉÏÍæ¼ÒµÄ×´Ì¬
+    //ç¬¬ä¸‰æ­¥ï¼šå¤„ç†æ­¤æœåŠ¡å™¨ä¸Šç©å®¶çš„çŠ¶æ€
     if(bUseShareMem)
-    {//¿ªÁË¹²ÏíÄÚ´æµÄ·şÎñÆ÷Ö»´¦ÀíÕı³£ShutDown
+    {//å¼€äº†å…±äº«å†…å­˜çš„æœåŠ¡å™¨åªå¤„ç†æ­£å¸¸ShutDown
         g_pOnlineUser->ChangeUserStatus( ServerID ,US_WAIT_SHUTDOWN) ;
     }
     else
         g_pOnlineUser->RemoveUser(ServerID);
 
-    //µÚËÄ²½: ĞŞ¸Äm_aServerHash ±£´æµÄPlayerID ÎªINVALID_ID
+    //ç¬¬å››æ­¥: ä¿®æ”¹m_aServerHash ä¿å­˜çš„PlayerID ä¸ºINVALID_ID
     Assert( ServerID>=0 && ServerID<OVER_MAX_SERVER ) ;
     m_aServerHash[ServerID] = INVALID_ID ;
 
@@ -174,7 +174,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //ĞÂÁ¬½Ó½ÓÈë£º
+    //æ–°è¿æ¥æ¥å…¥ï¼š
     if( FD_ISSET(m_SocketID,&m_ReadFDs[SELECT_USE]) )
     {
         for( int i=0; i<ACCEPT_ONESTEP; i++ )
@@ -184,7 +184,7 @@ __ENTER_FUNCTION
         }
     }
 
-    //Êı¾İ¶ÁÈ¡
+    //æ•°æ®è¯»å–
     UINT nPlayerCount = GetPlayerNumber() ;
     for( UINT i=0; i<nPlayerCount; i++ )
     {
@@ -201,11 +201,11 @@ __ENTER_FUNCTION
         if( FD_ISSET( s, &m_ReadFDs[SELECT_USE] ) )
         {
             if( pPlayer->GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
+            {//è¿æ¥å‡ºç°é”™è¯¯
                 RemovePlayer( pPlayer ) ;
             }
             else
-            {//Á¬½ÓÕı³£
+            {//è¿æ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = pPlayer->ProcessInput( ) ;
@@ -241,7 +241,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //Êı¾İ·¢ËÍ
+    //æ•°æ®å‘é€
     UINT nPlayerCount = GetPlayerNumber() ;
     for( UINT i=0; i<nPlayerCount; i++ )
     {
@@ -258,11 +258,11 @@ __ENTER_FUNCTION
         if( FD_ISSET( s, &m_WriteFDs[SELECT_USE] ) )
         {
             if( pPlayer->GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
+            {//è¿æ¥å‡ºç°é”™è¯¯
                 RemovePlayer( pPlayer ) ;
             }
             else
-            {//Á¬½ÓÕı³£
+            {//è¿æ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = pPlayer->ProcessOutput( ) ;
@@ -301,14 +301,14 @@ __ENTER_FUNCTION
         if( m_pPlayers[i]==INVALID_ID )
             continue ;
 
-        //Ä³¸öÍæ¼Ò¶Ï¿ªÍøÂçÁ¬½Ó
+        //æŸä¸ªç©å®¶æ–­å¼€ç½‘ç»œè¿æ¥
 
         ServerPlayer* pPlayer = g_pPlayerPool->GetPlayer(m_pPlayers[i]) ;
         Assert( pPlayer ) ;
 
         SOCKET s = pPlayer->GetSocket()->getSOCKET() ;
         if( s == m_SocketID )
-        {//ÕìÌı¾ä±ú³öÏÖÎÊÌâ£¬ÄÑ¡£¡£¡£
+        {//ä¾¦å¬å¥æŸ„å‡ºç°é—®é¢˜ï¼Œéš¾ã€‚ã€‚ã€‚
             Assert( FALSE ) ;
             continue ;
         }
@@ -355,11 +355,11 @@ __ENTER_FUNCTION
             continue ;
 
         if( pPlayer->GetSocket()->isSockError() )
-        {//Á¬½Ó³öÏÖ´íÎó
+        {//è¿æ¥å‡ºç°é”™è¯¯
             RemovePlayer( pPlayer ) ;
         }
         else
-        {//Á¬½ÓÕı³£
+        {//è¿æ¥æ­£å¸¸
             _MY_TRY
             {
                 ret = pPlayer->ProcessCommand( FALSE ) ;
@@ -385,7 +385,7 @@ __ENTER_FUNCTION
     int iStep = 0 ;
     BOOL ret = FALSE ;
 
-    //´ÓÍæ¼Ò³ØÖĞÕÒ³öÒ»¸ö¿ÕÏĞµÄÍæ¼ÒÊı¾İ¼¯
+    //ä»ç©å®¶æ± ä¸­æ‰¾å‡ºä¸€ä¸ªç©ºé—²çš„ç©å®¶æ•°æ®é›†
     ServerPlayer* client = g_pPlayerPool->NewPlayer() ;
 //    Assert( client ) ;
     if( client==NULL )
@@ -399,7 +399,7 @@ __ENTER_FUNCTION
     iStep = 10 ;
     _MY_TRY
     {
-        //½ÓÊÜ¿Í»§¶Ë½ÓÈëSocket¾ä±ú
+        //æ¥å—å®¢æˆ·ç«¯æ¥å…¥Socketå¥æŸ„
         ret = m_pServerSocket->accept( client->GetSocket() ) ;
         if( !ret )
         {
@@ -443,9 +443,9 @@ __ENTER_FUNCTION
         }
 
         iStep = 70 ;
-        //³õÊ¼»¯»ù±¾Íæ¼ÒĞÅÏ¢
+        //åˆå§‹åŒ–åŸºæœ¬ç©å®¶ä¿¡æ¯
         client->Init( ) ;
-        //ÉèÖÃµ±Ç°¿Í»§¶ËÁ¬½ÓµÄ×´Ì¬
+        //è®¾ç½®å½“å‰å®¢æˆ·ç«¯è¿æ¥çš„çŠ¶æ€
         client->SetPlayerStatus( PS_WORLD_CONNECT ) ;
 
         iStep = 80 ;
@@ -492,7 +492,7 @@ BOOL ServerManager::AddPlayer( Player* pPlayer )
 __ENTER_FUNCTION
 
     if( m_iFDSize>=FD_SETSIZE )
-    {//ÒÑ¾­³¬³öÄÜ¹»¼ì²âµÄÍøÂç¾ä±ú×î´óÊı£»
+    {//å·²ç»è¶…å‡ºèƒ½å¤Ÿæ£€æµ‹çš„ç½‘ç»œå¥æŸ„æœ€å¤§æ•°ï¼›
         return FALSE ;
     }
 
@@ -666,7 +666,7 @@ __ENTER_FUNCTION
 
         ret = pPlayer->HeartBeat( dwTime ) ;
         if( !ret )
-        {//Èç¹ûÂß¼­²Ù×÷·µ»ØÊ§°Ü£¬ÔòĞèÒª¶Ï¿ªµ±Ç°Á¬½Ó
+        {//å¦‚æœé€»è¾‘æ“ä½œè¿”å›å¤±è´¥ï¼Œåˆ™éœ€è¦æ–­å¼€å½“å‰è¿æ¥
             ret = RemovePlayer( pPlayer ) ;
             Assert( ret ) ;
         }

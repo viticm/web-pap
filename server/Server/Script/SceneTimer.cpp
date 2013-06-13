@@ -1,9 +1,9 @@
 #include "stdafx.h"
 //-----------------------------------------------------------------------------
-// ÎÄ¼şÃû : SceneTimer.cpp
-// Ä£¿é    :    Script
-// ¹¦ÄÜ     :  Á¥ÊôÓÚ³¡¾°µÄ¼ÆÊ±Æ÷,½Å±¾ÏµÍ³×¨ÓÃ
-// ĞŞ¸ÄÀúÊ·:
+// æ–‡ä»¶å : SceneTimer.cpp
+// æ¨¡å—    :    Script
+// åŠŸèƒ½     :  éš¶å±äºåœºæ™¯çš„è®¡æ—¶å™¨,è„šæœ¬ç³»ç»Ÿä¸“ç”¨
+// ä¿®æ”¹å†å²:
 //-----------------------------------------------------------------------------
 #include "SceneTimer.h"
 #include "LuaInterface.h"
@@ -37,7 +37,7 @@ VOID SceneTimer::CleanUp( )
     mRefeshTimer.BeginTimer(1000,Now);
 }
 
-//³¡¾°Ê±³õÊ¼»¯ËùÓĞµÄ¼ÆÊ±Æ÷
+//åœºæ™¯æ—¶åˆå§‹åŒ–æ‰€æœ‰çš„è®¡æ—¶å™¨
 VOID SceneTimer::CreateTimer(INT maxCount,Scene* pScene)
 {
     this->maxCount = maxCount;
@@ -99,7 +99,7 @@ VOID SceneTimer::FreeTimer(INT index)
         return ;
     }
 
-    InitOne(index);//ÊÍ·ÅÊ±³õÊ¼»¯
+    InitOne(index);//é‡Šæ”¾æ—¶åˆå§‹åŒ–
 
     MyTimer* temp = (MyTimer*)&(m_pTimers[index]);
 

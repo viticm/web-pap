@@ -47,37 +47,37 @@ public :
 
     BOOL            Init( ) ;
 
-    //����־����д����־��Ϣ
+    //向日志缓存写入日志信息
     VOID            FastSaveLog( INT logid, CHAR* msg, ... ) ;
 
-    //����־�ڴ�����д���ļ�
+    //将日志内存数据写入文件
     VOID            FlushLog( INT logid ) ;
 
-    //ȡ����־��Ч���ݴ�С
+    //取得日志有效数据大小
     INT                GetLogSize( INT logid ){ return m_LogPos[logid] ; }
 
-    //ȡ�ñ�����־���ļ�����
+    //取得保存日志的文件名称
     VOID            GetLogName( INT logid, CHAR* szName ) ;
 
-    //ˢ��ÿ����־�ļ�
+    //刷新每个日志文件
     VOID            FlushLog_All( ) ;
 
-    //ȡ����������
+    //取得日期天数
     UINT            GetDayTime( ){ return m_DayTime ; }
-    //������������
+    //设置日期天数
     VOID            SetDayTime( UINT daytime ){ m_DayTime = daytime ; }
 
 
-    //֧���첽д���������־д��
+    //支持异步写入操作的日志写入
     static VOID        SaveLog( CHAR* filename, CHAR* msg, ... ) ;    
-    //ɾ����־����
+    //删除日志内容
     static VOID        RemoveLog( CHAR* filename ) ;
 
 
 private :
-    CHAR*            m_LogCache[LOG_FILE_NUMBER] ;    //��־�ڴ���
-    INT                m_LogPos[LOG_FILE_NUMBER] ;        //��־��ǰ��Ч����λ��
-    MyLock            m_LogLock[LOG_FILE_NUMBER] ;    //��־��д��
+    CHAR*            m_LogCache[LOG_FILE_NUMBER] ;    //日志内存区
+    INT                m_LogPos[LOG_FILE_NUMBER] ;        //日志当前有效数据位置
+    MyLock            m_LogLock[LOG_FILE_NUMBER] ;    //日志读写锁
     INT                m_CacheSize ;
     UINT            m_DayTime ;
 };

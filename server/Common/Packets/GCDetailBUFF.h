@@ -28,7 +28,7 @@ namespace Packets
             m_nContinuance        = -1;
         }
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read(SocketInputStream& iStream);
         virtual BOOL            Write(SocketOutputStream& oStream)const;
         virtual UINT            Execute(Player* pPlayer);
@@ -55,7 +55,7 @@ namespace Packets
                                 }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID            SetReceiverID(ObjID_t id) {m_nReceiverID = id;}
         ObjID_t            GetReceiverID(VOID)const {return m_nReceiverID;}
 
@@ -81,14 +81,14 @@ namespace Packets
         Time_t            GetContinuance(VOID) const {return m_nContinuance;};
 
     private:
-        ObjID_t            m_nReceiverID;    // Ğ§¹û½ÓÊÜÕßµÄID
-        ObjID_t            m_nSenderID;    // Ğ§¹ûÊÍ·ÅÕßµÄID
-        ImpactID_t        m_nBuffID;        // ÌØĞ§Êı¾İµÄID(Ë÷Òı)
+        ObjID_t            m_nReceiverID;    // æ•ˆæœæ¥å—è€…çš„ID
+        ObjID_t            m_nSenderID;    // æ•ˆæœé‡Šæ”¾è€…çš„ID
+        ImpactID_t        m_nBuffID;        // ç‰¹æ•ˆæ•°æ®çš„ID(ç´¢å¼•)
         SkillID_t        m_nSkillID;      // Skill ID
-        BOOL            m_bEnable;         // ÊÇĞ§¹ûÉúĞ§ÏûÏ¢»¹ÊÇĞ§¹ûÏûÊ§µÄÏûÏ¢
-        INT                m_nSenderLogicCount; //Ğ§¹û´´½¨ÕßµÄÂß¼­¼ÆÊı
-        UINT            m_nSN;            // Ğ§¹ûĞòÁĞºÅ
-        Time_t            m_nContinuance; // Ğ§¹ûµÄ³ÖĞøÊ±¼ä
+        BOOL            m_bEnable;         // æ˜¯æ•ˆæœç”Ÿæ•ˆæ¶ˆæ¯è¿˜æ˜¯æ•ˆæœæ¶ˆå¤±çš„æ¶ˆæ¯
+        INT                m_nSenderLogicCount; //æ•ˆæœåˆ›å»ºè€…çš„é€»è¾‘è®¡æ•°
+        UINT            m_nSN;            // æ•ˆæœåºåˆ—å·
+        Time_t            m_nContinuance; // æ•ˆæœçš„æŒç»­æ—¶é—´
     };
 
     class GCDetailBuffFactory : public PacketFactory 

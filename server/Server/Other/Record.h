@@ -1,13 +1,13 @@
 /*
-操作记录：用来记录所有的用户操作供用户查询，
-不依赖任何结构，只是一个简单的存储结构，必须用RecordOpt操作
+鎿嶄綔璁板綍锛氱敤鏉ヨ褰曟墍鏈夌殑鐢ㄦ埛鎿嶄綔渚涚敤鎴锋煡璇紝
+涓嶄緷璧栦换浣曠粨鏋勶紝鍙槸涓�涓畝鍗曠殑瀛樺偍缁撴瀯锛屽繀椤荤敤RecordOpt鎿嶄綔
 */
 
 #ifndef _RECORD_H_
 #define _RECORD_H_
 
 //-------------------------------------------------------------------------------------------------
-//每条记录
+//姣忔潯璁板綍
 struct RecordEntry_t
 {
     CHAR    m_szRecord[MAX_RECORD_LEN_ENTRY];
@@ -24,7 +24,7 @@ struct RecordEntry_t
 };
 
 //-------------------------------------------------------------------------------------------------
-//记录保存容器
+//璁板綍淇濆瓨瀹瑰櫒
 struct    RecordContainer_t
 {
     RecordEntry_t    m_szRecordContent[MAX_RECORD_NUM_ENTRY];    

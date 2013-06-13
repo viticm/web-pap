@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /*
-ServerÊ×ÏÈ½«Ö´ÐÐÈ¨×ªµ½³¡¾°Ïß³Ì£¬
-³¡¾°Ïß³ÌÇ¿ÐÐ½«´Ë³¡¾°ÖÐËùÓÐÍæ¼ÒÒÆµ½´Ë³ÇÊÐµÄÈë¿Ú³¡¾°ÖÐ£¬£¨ÔÝÊ±²»¿¼ÂÇÄÇÃ´¶à£¬Ç¿ÐÐÒÆ¶¯£©
-Çå¿ÕÈë¿Ú³¡¾°µÄCityPortListÖÐÖ¸Ïò×Ô¼ºÕâÏî
-Çå¿Õ×Ô¼ºµÄSCENE_INT_DATA,
-ÉèÖÃm_DynamicSceneQuitTimer,µÈ´ý¹Ø±Õ,Âß¼­»á×Ô¶¯°Ñ³¡¾°ÉèÖÃ³ÉË¯Ãß×´Ì¬
-·µ»ØÏûÏ¢16, GWCityCloseSuccess¸øWorld
+Serveré¦–å…ˆå°†æ‰§è¡Œæƒè½¬åˆ°åœºæ™¯çº¿ç¨‹ï¼Œ
+åœºæ™¯çº¿ç¨‹å¼ºè¡Œå°†æ­¤åœºæ™¯ä¸­æ‰€æœ‰çŽ©å®¶ç§»åˆ°æ­¤åŸŽå¸‚çš„å…¥å£åœºæ™¯ä¸­ï¼Œï¼ˆæš‚æ—¶ä¸è€ƒè™‘é‚£ä¹ˆå¤šï¼Œå¼ºè¡Œç§»åŠ¨ï¼‰
+æ¸…ç©ºå…¥å£åœºæ™¯çš„CityPortListä¸­æŒ‡å‘è‡ªå·±è¿™é¡¹
+æ¸…ç©ºè‡ªå·±çš„SCENE_INT_DATA,
+è®¾ç½®m_DynamicSceneQuitTimer,ç­‰å¾…å…³é—­,é€»è¾‘ä¼šè‡ªåŠ¨æŠŠåœºæ™¯è®¾ç½®æˆç¡çœ çŠ¶æ€
+è¿”å›žæ¶ˆæ¯16, GWCityCloseSuccessç»™World
 
 */
 
@@ -42,7 +42,7 @@ UINT WGCityCloseHandler::Execute( WGCityClose* pPacket, Player* pPlayer )
         if( pScene==NULL ) return PACKET_EXE_CONTINUE;
 
         if( pPlayer->IsServerPlayer() )
-        {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+        {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
             Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
             pCityScene->SendPacket(pPacket,PlayerID);
             return PACKET_EXE_NOTREMOVE ;
@@ -51,7 +51,7 @@ UINT WGCityCloseHandler::Execute( WGCityClose* pPacket, Player* pPlayer )
         {
             Assert( MyGetCurrentThreadID()==pCityScene->m_ThreadID ) ;
 
-            //1.³¡¾°ÖÐËùÓÐÍæ¼ÒÒÆ×ß
+            //1.åœºæ™¯ä¸­æ‰€æœ‰çŽ©å®¶ç§»èµ°
             ScenePlayerManager* pCurScenePlayerManager = pCityScene->GetScenePlayerManager();
             PlayerID_t PlayerInTheCity[MAX_PLAYER];
             UINT PlayerNum = 0;
@@ -77,18 +77,18 @@ UINT WGCityCloseHandler::Execute( WGCityClose* pPacket, Player* pPlayer )
                 pHuman->ChangeScene( SceneID, PortSceneID, pos, 9 ) ;
             }
 
-            //2.Çå¿ÕÈë¿Ú³¡¾°µÄCityPortListÖÐÖ¸Ïò×Ô¼ºÕâÏî
+            //2.æ¸…ç©ºå…¥å£åœºæ™¯çš„CityPortListä¸­æŒ‡å‘è‡ªå·±è¿™é¡¹
             if(!pPortScene->m_CityData.RemovePort(SceneID))
             {
                 Assert(FALSE);
                 return PACKET_EXE_CONTINUE;
             }
 
-            //3.Çå¿Õ×Ô¼ºµÄSCENE_INT_DATA
+            //3.æ¸…ç©ºè‡ªå·±çš„SCENE_INT_DATA
             _CITY_GUID CityGuid = pCityScene->m_SceneInitData.m_CityData.m_Guid;
             pCityScene->m_SceneInitData.m_CityData.CleanUp(); 
 
-            //Í¨Öªworld³¡¾°ÒÑ¾­É¾³ýÍê±Ï
+            //é€šçŸ¥worldåœºæ™¯å·²ç»åˆ é™¤å®Œæ¯•
             GWCityCloseSuccess* pMsgToWorld = (GWCityCloseSuccess*)g_pPacketFactoryManager->CreatePacket(PACKET_GW_CITYCLOSESUCCESS);
             pMsgToWorld->SetCityGuid(CityGuid);
             g_pServerManager->SendPacket( pMsgToWorld, INVALID_ID ) ;

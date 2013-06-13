@@ -7,7 +7,7 @@
 #include "Packet.h"
 #include "PacketFactory.h"
 
-#include "WGRetUserData.h" //为了使用FULLUSERDATA结构
+#include "WGRetUserData.h" //涓轰簡浣跨敤FULLUSERDATA缁撴瀯
 
 
 namespace Packets
@@ -20,7 +20,7 @@ public:
     GWAskChangeScene( ){} ;
     virtual ~GWAskChangeScene( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -55,7 +55,7 @@ public :
     };
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     VOID                    SetStatus( BYTE bStatus ){ m_Status = bStatus ; } ;
     BYTE                    GetStatus( ){ return m_Status ; } ;
 
@@ -81,10 +81,10 @@ public:
 
 
 private:
-    //数据
+    //鏁版嵁
     BYTE                    m_Status ;
-    PlayerID_t                m_PlayerID ;    //当前连接的玩家号
-    GUID_t                    m_GUID ;        //玩家的GUID
+    PlayerID_t                m_PlayerID ;    //褰撳墠杩炴帴鐨勭帺瀹跺彿
+    GUID_t                    m_GUID ;        //鐜╁鐨凣UID
     SceneID_t                m_SourSceneID ;
     SceneID_t                m_DestSceneID ;
     FULLUSERDATA            m_UserData ;

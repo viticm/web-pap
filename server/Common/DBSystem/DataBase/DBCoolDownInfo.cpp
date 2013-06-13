@@ -57,7 +57,7 @@ BOOL DBCoolDownInfo::Save(VOID* pSource)
     FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
     Assert(pCharFullData);
     
-    //±£´æCoolDownÊı¾İ
+    //ä¿å­˜CoolDownæ•°æ®
     do
     {
         CHAR    CoolDownInfo[2048];
@@ -122,7 +122,7 @@ BOOL DBCoolDownInfo::ParseResult(VOID* pResult)
                 DB_CoolDownInfo,
             };
 
-            //¼ÓÔØ¼¼ÄÜÊôĞÔ
+            //åŠ è½½æŠ€èƒ½å±æ€§
             //Assert(mResultCount<MAX_CHAR_MISSION_NUM);
             Assert(mInterface);
             INT ErrorCode;

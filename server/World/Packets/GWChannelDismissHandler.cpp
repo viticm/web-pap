@@ -52,7 +52,7 @@ __ENTER_FUNCTION
     Msg.SetReturn( CHANNEL_RESULT_DISMISS ) ;
     Msg.SetChannelID( pUser->GetChannelID() ) ;
 
-    //Í¨ÖªËùÓĞÆµµÀÄÚµÄÍæ¼Ò
+    //é€šçŸ¥æ‰€æœ‰é¢‘é“å†…çš„ç©å®¶
     for( int i=0; i<pChannel->MemberCount(); i++ )
     {
         GUID_t guid = pChannel->Member( i ) ;
@@ -64,7 +64,7 @@ __ENTER_FUNCTION
 
         USER* pUser = g_pOnlineUser->FindUser( guid ) ;
         if( pUser==NULL )
-        {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êı¾İÊÇ¿Õ
+        {//å¦‚æœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
             continue ;
         }
         
@@ -81,10 +81,10 @@ __ENTER_FUNCTION
         pServerPlayer->SendPacket( &Msg ) ;
     }
 
-    //Çå³ı×Ô½¨ÁÄÌìÆµµÀĞÅÏ¢
+    //æ¸…é™¤è‡ªå»ºèŠå¤©é¢‘é“ä¿¡æ¯
     g_pChatCenter->DestoryChatChannel( pUser->GetChannelID() ) ;
 
-    //Çå³ıÓÃ»§Êı¾İ
+    //æ¸…é™¤ç”¨æˆ·æ•°æ®
     pUser->SetChannelID( INVALID_ID );
 
     Log::SaveLog( WORLD_LOGFILE, "GWChannelDismissHandler...User GUID=%X ChatChannel Dismiss!", 

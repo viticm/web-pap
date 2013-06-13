@@ -165,11 +165,11 @@ __ENTER_FUNCTION
 
     Guild* pGuild = NULL;
 
-    // ÑéÒ»ÏÂÃû×ÖÊÇ·ñºÏ·¨£¬²»ºÏ·¨¾Í·µ»Ø GUILD_ERROR_INVALID_NAME
-    // ²»¹ýÕâÒ»²½Ò²¿ÉÒÔ·Åµ½ Server ×ö
+    // éªŒä¸€ä¸‹åå­—æ˜¯å¦åˆæ³•ï¼Œä¸åˆæ³•å°±è¿”å›ž GUILD_ERROR_INVALID_NAME
+    // ä¸è¿‡è¿™ä¸€æ­¥ä¹Ÿå¯ä»¥æ”¾åˆ° Server åš
     
     if( m_GuildCount >= MAX_GUILD_SIZE )
-    { // Ã»ÓÐ¿ÕµØ·½ÁË
+    { // æ²¡æœ‰ç©ºåœ°æ–¹äº†
         return GUILD_ERROR_GUILD_FULL;
     }
     
@@ -188,17 +188,17 @@ __ENTER_FUNCTION
     }
 
     if(i >= MAX_GUILD_SIZE )
-    { // Ã»ÓÐ¿ÕµØ·½ÁË
+    { // æ²¡æœ‰ç©ºåœ°æ–¹äº†
         return GUILD_ERROR_GUILD_FULL;
     }
 
     pGuild = GetGuild(szName);
     if( pGuild != NULL )
-    { // ÖØÃûÁË
+    { // é‡åäº†
         return GUILD_ERROR_DUPLICATED_NAME;
     }
 
-    GuildID_t guildID = m_GuildMallocIndex;  // ÔÝÊ±²»¿¼ÂÇ¼ÓÈëÊÀ½ç¡¢·þÎñÆ÷±àºÅ
+    GuildID_t guildID = m_GuildMallocIndex;  // æš‚æ—¶ä¸è€ƒè™‘åŠ å…¥ä¸–ç•Œã€æœåŠ¡å™¨ç¼–å·
 
     pGuild = GetGuild(guildID);
     if( pGuild == NULL )
@@ -271,13 +271,13 @@ __LEAVE_FUNCTION
     return NULL;
 }
 
-// ²éÕÒÒ»¸ö°ï»á
+// æŸ¥æ‰¾ä¸€ä¸ªå¸®ä¼š
 Guild* GuildManager::GetGuild( const CHAR* szName )
 {
     return (Guild*)(m_NameTable.Get(szName));
 }
 
-// ¸ù¾ÝÒ»¸ö guildid ºÅÂëµÃµ½°ï»áÃû×Ö£¬Èç¹û²»´æÔÚÔò·µ»Ø ""
+// æ ¹æ®ä¸€ä¸ª guildid å·ç å¾—åˆ°å¸®ä¼šåå­—ï¼Œå¦‚æžœä¸å­˜åœ¨åˆ™è¿”å›ž ""
 const CHAR* GuildManager::GetGuildName( GuildID_t guildID )
 {
 __ENTER_FUNCTION
@@ -293,13 +293,13 @@ __LEAVE_FUNCTION
     return "";
 }
 
-// »ñÈ¡°ï»áÁÐ±í
+// èŽ·å–å¸®ä¼šåˆ—è¡¨
 BOOL GuildManager::GetGuildList( GUILD_WGC_LIST* pGuildList, INT nStartIndex, CampID_t nCamp )
 {
 __ENTER_FUNCTION
 
-    int nMaxListCount; // pGuildList ×î¶àÄÜ·Å¼¸¸ö°ï»áÊý¾Ý
-    int nNowIndex = 0; // ±éÀúµ½µÄµÚ n ¸ö°ï»á
+    int nMaxListCount; // pGuildList æœ€å¤šèƒ½æ”¾å‡ ä¸ªå¸®ä¼šæ•°æ®
+    int nNowIndex = 0; // éåŽ†åˆ°çš„ç¬¬ n ä¸ªå¸®ä¼š
 
     Assert( nStartIndex >= 0 );
     Assert( nStartIndex <= m_GuildCount );
@@ -320,22 +320,22 @@ __ENTER_FUNCTION
         }
 
         if( nNowIndex >= nStartIndex )
-        { // ´ÓÕâÀï¿ªÊ¼¼ÇÂ¼
+        { // ä»Žè¿™é‡Œå¼€å§‹è®°å½•
             if( nNowIndex >= nStartIndex + nMaxListCount )
-            { // ¹»ÊýÍË³ö
+            { // å¤Ÿæ•°é€€å‡º
                 break;
             }
 
             GUILD_WGC_LIST::s* pGuildInfo = &(pGuildList->m_uGuild[pGuildList->m_uGuildListCount++]);
-            //¹¤»áID
+            //å·¥ä¼šID
             pGuildInfo->m_GuildID = m_aGuilds[i].GetGuildID();
-            //¹¤»áÃû
+            //å·¥ä¼šå
             strncpy(pGuildInfo->m_GuildName, m_aGuilds[i].GetGuildName(), MAX_GUILD_NAME_SIZE);
-            //¹¤»á×ÚÖ¼
+            //å·¥ä¼šå®—æ—¨
             strncpy(pGuildInfo->m_GuildDesc, m_aGuilds[i].GetGuildDesc(), MAX_GUILD_DESC_SIZE);
-            //°ïÖ÷Ãû
+            //å¸®ä¸»å
             strncpy(pGuildInfo->m_ChiefName, m_aGuilds[i].GetGuildChiefName(), MAX_CHARACTER_NAME);
-            //³ÇÊÐÃû
+            //åŸŽå¸‚å
             if(m_aGuilds[i].GetCity())
             {
                 strncpy(pGuildInfo->m_CityName, m_aGuilds[i].GetCity()->GetCityName(), MAX_CITY_NAME_SIZE);
@@ -346,13 +346,13 @@ __ENTER_FUNCTION
                 memset(pGuildInfo->m_CityName, 0, MAX_CITY_NAME_SIZE);
                 pGuildInfo->m_PortSceneID = -1;
             }
-            //¹¤»á×´Ì¬
+            //å·¥ä¼šçŠ¶æ€
             pGuildInfo->m_uGuildStatus        =    m_aGuilds[i].GetGuildStatus();
-            //¹¤»á¼¶±ð
+            //å·¥ä¼šçº§åˆ«
             pGuildInfo->m_bGuildLevel        =    m_aGuilds[i].GetGuildLevel();
-            //°ïÖÚÊýÁ¿
+            //å¸®ä¼—æ•°é‡
             pGuildInfo->m_uGuildUserCount    =    m_aGuilds[i].GetGuildUserCount();
-            //³ÉÁ¢Ê±¼ä
+            //æˆç«‹æ—¶é—´
             pGuildInfo->m_nFoundedTime        =    m_aGuilds[i].GetFoundedTime();
         }
 
@@ -369,13 +369,13 @@ __LEAVE_FUNCTION
 
 }
 
-// ×¢²áÒ»¸ö°ï»áÃû³Æ£¨²»ÔÊÐí±»ÖØ¸´Ê¹ÓÃ£©
+// æ³¨å†Œä¸€ä¸ªå¸®ä¼šåç§°ï¼ˆä¸å…è®¸è¢«é‡å¤ä½¿ç”¨ï¼‰
 VOID GuildManager::RegisterGuildName( Guild* pGuild )
 {
     m_NameTable.Add( pGuild->GetGuildName(), pGuild );
 }
 
-// ×¢ÏúÒ»¸ö°ï»áÃû³Æ£¨¿É±»ÔÙ´ÎÊ¹ÓÃ£©
+// æ³¨é”€ä¸€ä¸ªå¸®ä¼šåç§°ï¼ˆå¯è¢«å†æ¬¡ä½¿ç”¨ï¼‰
 VOID GuildManager::UnregisterGuildName( Guild* pGuild )
 {
     m_NameTable.Remove( pGuild->GetGuildName() );

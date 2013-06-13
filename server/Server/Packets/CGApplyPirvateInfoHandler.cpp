@@ -25,10 +25,10 @@ __ENTER_FUNCTION
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //Ö»ÄÜÌá½»×Ô¼ºµÄÊý¾Ý£¬ËùÒÔ²»ÐèÒªÔÚÏûÏ¢ÖÐ¼ÓObjID
+    //åªèƒ½æäº¤è‡ªå·±çš„æ•°æ®ï¼Œæ‰€ä»¥ä¸éœ€è¦åœ¨æ¶ˆæ¯ä¸­åŠ ObjID
     //_PRIVATE_INFO_DB_LOAD PrivateData;
 
     //PrivateData.m_Age = pPacket->GetAge();

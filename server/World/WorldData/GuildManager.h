@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºGuildManager.h
-//¹¦ÄÜÃèÊö£º°ï»á¹ÜÀíÂß¼­
+//æ–‡ä»¶åï¼šGuildManager.h
+//åŠŸèƒ½æè¿°ï¼šå¸®ä¼šç®¡ç†é€»è¾‘
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -39,31 +39,31 @@ public :
     GuildManager( );
     ~GuildManager( );
 
-    BOOL                Load( CHAR* pGuildFile );//´Ó´ÅÅÌ¶ÁÈ¡°ï»áĞÅÏ¢£¨ÁÙÊ±Ê¹ÓÃ£©
-    VOID                Save( CHAR* pGuildFile );//½«µ±Ç°°ï»áĞÅÏ¢±£´æµ½´ÅÅÌ£¨ÁÙÊ±Ê¹ÓÃ£©
+    BOOL                Load( CHAR* pGuildFile );//ä»ç£ç›˜è¯»å–å¸®ä¼šä¿¡æ¯ï¼ˆä¸´æ—¶ä½¿ç”¨ï¼‰
+    VOID                Save( CHAR* pGuildFile );//å°†å½“å‰å¸®ä¼šä¿¡æ¯ä¿å­˜åˆ°ç£ç›˜ï¼ˆä¸´æ—¶ä½¿ç”¨ï¼‰
 
     BOOL                Init( );
-    //BOOL                Init( _GUILD_MANAGER_INIT* pInit );//³õÊ¼»¯°ï»áĞÅÏ¢
+    //BOOL                Init( _GUILD_MANAGER_INIT* pInit );//åˆå§‹åŒ–å¸®ä¼šä¿¡æ¯
     VOID                CleanUp( );
 
-    BOOL                HeartBeat( UINT uTime=0 );//Âß¼­´¦Àí
+    BOOL                HeartBeat( UINT uTime=0 );//é€»è¾‘å¤„ç†
 
-    GUILD_ERROR_TYPE    CreateGuild( USER* pUser, const CHAR* szName, CampID_t nCamp );//´´½¨Ò»¸ö°ï»á
-    GUILD_ERROR_TYPE    DestroyGuild( GUID_t userGUID, GuildID_t guildID );//É¾³ıÒ»¸ö°ï»á
+    GUILD_ERROR_TYPE    CreateGuild( USER* pUser, const CHAR* szName, CampID_t nCamp );//åˆ›å»ºä¸€ä¸ªå¸®ä¼š
+    GUILD_ERROR_TYPE    DestroyGuild( GUID_t userGUID, GuildID_t guildID );//åˆ é™¤ä¸€ä¸ªå¸®ä¼š
 
-    Guild*                GetGuild( GuildID_t guildID );//¶ÁÈ¡°ï»á
-    Guild*                GetGuild( const CHAR* szName ); // ²éÕÒÒ»¸ö°ï»á
+    Guild*                GetGuild( GuildID_t guildID );//è¯»å–å¸®ä¼š
+    Guild*                GetGuild( const CHAR* szName ); // æŸ¥æ‰¾ä¸€ä¸ªå¸®ä¼š
 
-    // ¸ù¾İÒ»¸ö guildid ºÅÂëµÃµ½°ï»áÃû×Ö£¬Èç¹û²»´æÔÚÔò·µ»Ø ""
+    // æ ¹æ®ä¸€ä¸ª guildid å·ç å¾—åˆ°å¸®ä¼šåå­—ï¼Œå¦‚æœä¸å­˜åœ¨åˆ™è¿”å› ""
     const CHAR*            GetGuildName( GuildID_t guildID );
 
-    // »ñÈ¡°ï»áÁĞ±í
+    // è·å–å¸®ä¼šåˆ—è¡¨
     BOOL                GetGuildList( GUILD_WGC_LIST* pGuildList, INT nStartIndex, CampID_t nCamp );
 
-    // ×¢²áÒ»¸ö°ï»áÃû³Æ£¨²»ÔÊĞí±»ÖØ¸´Ê¹ÓÃ£©
+    // æ³¨å†Œä¸€ä¸ªå¸®ä¼šåç§°ï¼ˆä¸å…è®¸è¢«é‡å¤ä½¿ç”¨ï¼‰
     VOID                RegisterGuildName( Guild* pGuild );
 
-    // ×¢ÏúÒ»¸ö°ï»áÃû³Æ£¨¿É±»ÔÙ´ÎÊ¹ÓÃ£©
+    // æ³¨é”€ä¸€ä¸ªå¸®ä¼šåç§°ï¼ˆå¯è¢«å†æ¬¡ä½¿ç”¨ï¼‰
     VOID                UnregisterGuildName( Guild* pGuild );
 
 protected :

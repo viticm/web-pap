@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 /*
-¿Í»§¶ËÍ¨Öª·þÎñÆ÷´ÓÌ¯Î»ÖÐÄÃ×ß´ËÎïÆ·
+å®¢æˆ·ç«¯é€šçŸ¥æœåŠ¡å™¨ä»Žæ‘Šä½ä¸­æ‹¿èµ°æ­¤ç‰©å“
 */
 #include "CGStallRemoveItem.h"
 #include "GCStallRemoveItem.h"
@@ -31,7 +31,7 @@ UINT CGStallRemoveItemHandler::Execute( CGStallRemoveItem* pPacket, Player* pPla
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     _ITEM_GUID    ItemGuid    = pPacket->GetObjGUID();
@@ -91,10 +91,10 @@ UINT CGStallRemoveItemHandler::Execute( CGStallRemoveItem* pPacket, Player* pPla
                 return PACKET_EXE_CONTINUE;
             }
 
-            //½âËøÔ­±³°üÖÐµÄÎïÆ·
+            //è§£é”åŽŸèƒŒåŒ…ä¸­çš„ç‰©å“
             g_ItemOperator.UnlockItem( pBagContainer, IndexInBag );
 
-            //¸ÉµôÎïÆ·
+            //å¹²æŽ‰ç‰©å“
             if(g_ItemOperator.EraseItem(pStallContainer, IndexInStall)>0)
             {
                 pHuman->m_StallBox.IncSerialByIndex(IndexInStall);
@@ -110,7 +110,7 @@ UINT CGStallRemoveItemHandler::Execute( CGStallRemoveItem* pPacket, Player* pPla
                 return PACKET_EXE_CONTINUE;
             }
 
-            //Í¨Öª¿Í»§¶Ë
+            //é€šçŸ¥å®¢æˆ·ç«¯
             MsgRemoveItem.SetObjGUID( ItemGuid );
             MsgRemoveItem.SetSerial( pHuman->m_StallBox.GetSerialByIndex(IndexInStall) );
             MsgRemoveItem.SetToType( STALL_MSG::POS_BAG );
@@ -156,10 +156,10 @@ UINT CGStallRemoveItemHandler::Execute( CGStallRemoveItem* pPacket, Player* pPla
                 return PACKET_EXE_CONTINUE;
             }
 
-            //½âËøÔ­±³°üÖÐµÄÎïÆ·
+            //è§£é”åŽŸèƒŒåŒ…ä¸­çš„ç‰©å“
             g_ItemOperator.UnlockItem( pPetContainer, IndexInBag );
 
-            //¸ÉµôÎïÆ·
+            //å¹²æŽ‰ç‰©å“
             if(g_ItemOperator.EraseItem(pStallPetContainer, IndexInStall)>0)
             {
                 pHuman->m_StallBox.IncPetSerialByIndex(IndexInStall);
@@ -175,7 +175,7 @@ UINT CGStallRemoveItemHandler::Execute( CGStallRemoveItem* pPacket, Player* pPla
                 return PACKET_EXE_CONTINUE;
             }
 
-            //Í¨Öª¿Í»§¶Ë
+            //é€šçŸ¥å®¢æˆ·ç«¯
             MsgRemoveItem.SetPetGUID( PetGuid );
             MsgRemoveItem.SetSerial( pHuman->m_StallBox.GetPetSerialByIndex(IndexInStall) );
             MsgRemoveItem.SetToType( STALL_MSG::POS_PET );

@@ -5,9 +5,9 @@
 BOOL GetMacByCmd(char *lpszMac);
 
 /*
-µ÷ÓÃ·½·¨
+è°ƒç”¨æ–¹æ³•
 
-µÚÒ»ÖÖ·½·¨:(Ìí¼Ólib)
+ç¬¬ä¸€ç§æ–¹æ³•:(æ·»åŠ lib)
 #define DLL_GETMAC _declspec(dllimport)
 #include "DllNet.h"
 
@@ -15,7 +15,7 @@ char lpszMac[128];
 memset(lpszMac, 0x00, sizeof(lpszMac));
 GetMacByCmd(lpszMac);
 
-µÚ¶şÖÖ·½·¨:
+ç¬¬äºŒç§æ–¹æ³•:
 
 char lpszMac[128];
 HINSTANCE hinst;

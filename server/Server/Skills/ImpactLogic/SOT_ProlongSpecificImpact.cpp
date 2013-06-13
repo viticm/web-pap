@@ -1,11 +1,11 @@
 #include "stdafx.h"
 
 ///////////////////////////////////////////////////////////////////////////////
-// �ļ�����SOT_ProlongSpecificImpact.cpp
-// ����Ա������
-// ����˵����Ч��--����ָ��Ч���ĳ���ʱ��
+// 文件名：SOT_ProlongSpecificImpact.cpp
+// 程序员：高骐
+// 功能说明：效果--增加指定效果的持续时间
 //
-// �޸ļ�¼��
+// 修改记录：
 //
 //
 //
@@ -92,7 +92,7 @@ namespace Combat_Module
                 {
                     if(-1==nContinuance)
                     {
-                        return; //-1Ϊ����ʱ�����޳�
+                        return; //-1为持续时间无限长
                     }
                     if(0<nContinuance)
                     {

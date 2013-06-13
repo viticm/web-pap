@@ -21,11 +21,11 @@ UINT WGCityCloseSuccessHandler::Execute( WGCityCloseSuccess* pPacket, Player* pP
         SceneID_t    nSceneID    =    pPacket->GetSceneID();
 
         if( pPlayer->IsServerPlayer() )
-        {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+        {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
             Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
             Obj_Human* pHuman = (Obj_Human*)(g_pGUIDManager->Get(PlayerGuid)) ;
             Scene* pScene = pHuman->getScene();
-            pScene->SendPacket(pPacket, pHuman->GetPlayerID());//Íæ¼ÒËùÔÚ³¡¾°
+            pScene->SendPacket(pPacket, pHuman->GetPlayerID());//çŽ©å®¶æ‰€åœ¨åœºæ™¯
             return PACKET_EXE_NOTREMOVE ;
         }
         else if( pPlayer->IsGamePlayer() )
@@ -45,17 +45,17 @@ UINT WGCityCloseSuccessHandler::Execute( WGCityCloseSuccess* pPacket, Player* pP
 
             Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
-            Scene*    pCityScene    = g_pSceneManager->GetScene( nSceneID ) ;//³ÇÊÐ³¡¾°
+            Scene*    pCityScene    = g_pSceneManager->GetScene( nSceneID ) ;//åŸŽå¸‚åœºæ™¯
             if(!pCityScene)
             {
                 Assert(FALSE) ;
                 return PACKET_EXE_ERROR ;
             }
 
-            //Æô¶¯³ÇÊÐ¹Ø±ÕÂß¼­
+            //å¯åŠ¨åŸŽå¸‚å…³é—­é€»è¾‘
             pCityScene->m_CityData.m_bClose = TRUE;
 
-            //Í¨ÖªÉêÇëÈË£¬ÒÑ¾­³É¹¦¹Ø±Õ³ÇÊÐ
+            //é€šçŸ¥ç”³è¯·äººï¼Œå·²ç»æˆåŠŸå…³é—­åŸŽå¸‚
             GCCityNotify MsgNotifySuccess;
             pGamePlayer->SendPacket(&MsgNotifySuccess);
 

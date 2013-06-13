@@ -60,7 +60,7 @@ __ENTER_FUNCTION
     PLATFORM_FILE* pPlatformFile = g_pSceneManager->FindPlatformFile( pszFileName ) ;
     if( pPlatformFile==NULL )
     {
-        //урЁЖр╩╦Ж©у╣д
+        //Ф┴╬Е┤╨Д╦─Д╦╙Г╘╨Г └
         pPlatformFile = g_pSceneManager->FindEmptyPlatformFile( ) ;
         if( pPlatformFile==NULL )
         {
@@ -69,7 +69,7 @@ __ENTER_FUNCTION
         }
 
         Ini        f(pszFileName);
-        //╤ах║╡ывВл╗йЩ╬щ
+        //Х╞╩Е▐√Ф⌠█Д╫°Е▐╟Ф∙╟Ф█╝
         INT iPlatformCount = f.ReadInt( "info", "platformcount" );
         pPlatformFile->m_Count = iPlatformCount ;
         pPlatformFile->m_pInit = new _OBJ_PLATFORM_INIT[iPlatformCount] ;
@@ -116,7 +116,7 @@ __ENTER_FUNCTION
         strncpy( pPlatformFile->m_szFileName, pszFileName, _MAX_PATH-1 ) ;
     }
 
-    //иЗЁи╡ывВл╗
+    //Г■÷Ф┬░Ф⌠█Д╫°Е▐╟
     for( INT i=0; i<pPlatformFile->m_Count; i++ )
     {
         Obj_Platform* pPlatform = (Obj_Platform*)(GetScene()->NewObject( Obj::OBJ_TYPE_PLATFORM ));

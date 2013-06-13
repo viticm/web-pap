@@ -1,5 +1,5 @@
 /*
-·şÎñÆ÷¶Î½»Ò×ºĞ
+æœåŠ¡å™¨æ®µäº¤æ˜“ç›’
 */
 
 #ifndef _EXCHANGE_BOX_H_
@@ -12,7 +12,7 @@
 class Obj_Human;
 
 /*
-ÑéÖ¤µ±Ç°ÈËÎïµÄ½»Ò××´Ì¬ÊÇ·ñÒÑ¾­ÉÏËø.
+éªŒè¯å½“å‰äººç‰©çš„äº¤æ˜“çŠ¶æ€æ˜¯å¦å·²ç»ä¸Šé”.
 */
 #define    EXCHANGE_CERTIFY_ISLOCK(pHuman)\
         if(pHuman->m_ExchangBox.m_IsLocked == TRUE)\
@@ -20,12 +20,12 @@ class Obj_Human;
             GCExchangeError Msg;\
             Msg.SetID(EXCHANGE_MSG::ERR_ALREADY_LOCKED);\
             pHuman->GetPlayer()->SendPacket(&Msg);\
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ÒÑËø¶¨½»Ò×´°¿Ú£¬²Ù×÷ÎŞĞ§ ", pHuman->GetName() ) ;\
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] å·²é”å®šäº¤æ˜“çª—å£ï¼Œæ“ä½œæ— æ•ˆ ", pHuman->GetName() ) ;\
             return PACKET_EXE_CONTINUE;\
         }\
 
 /*
-ÑéÖ¤½»Ò×Ë«·½ÊÇ·ñµôÏßºÏ·¨
+éªŒè¯äº¤æ˜“åŒæ–¹æ˜¯å¦æ‰çº¿åˆæ³•
 */
 #define EXCHANGE_CERTIFY_EACH_OTHER(pHuman)\
         ObjID_t    TargetID = pHuman->m_ExchangBox.m_ObjID;\
@@ -36,7 +36,7 @@ class Obj_Human;
             Msg.SetID(EXCHANGE_MSG::ERR_DROP);\
             pHuman->GetPlayer()->SendPacket(&Msg);\
             pHuman->m_ExchangBox.CleanUp();\
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ÒÑµôÏß£¬²Ù×÷ÎŞĞ§ ", pHuman->GetName() ) ;\
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] å·²æ‰çº¿ï¼Œæ“ä½œæ— æ•ˆ ", pHuman->GetName() ) ;\
             return PACKET_EXE_CONTINUE;\
         }\
         ObjID_t    SourceID = pTargetHuman->m_ExchangBox.m_ObjID;\
@@ -46,12 +46,12 @@ class Obj_Human;
             Msg.SetID(EXCHANGE_MSG::ERR_ILLEGAL);\
             pHuman->GetPlayer()->SendPacket(&Msg);\
             pHuman->m_ExchangBox.CleanUp();\
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ÔÚÓëÆäËûÈË½»Ò×£¬²Ù×÷ÎŞĞ§ ", pTargetHuman->GetName() ) ;\
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åœ¨ä¸å…¶ä»–äººäº¤æ˜“ï¼Œæ“ä½œæ— æ•ˆ ", pTargetHuman->GetName() ) ;\
             return PACKET_EXE_CONTINUE;\
         }\
 
 /*
-ÑéÖ¤µ±Ç°ÈËÎïµÄ½»Ò××´Ì¬ÊÇ·ñÕıÈ·.
+éªŒè¯å½“å‰äººç‰©çš„äº¤æ˜“çŠ¶æ€æ˜¯å¦æ­£ç¡®.
 */
 #define    EXCHANGE_CERTIFY_STATUS(pHuman, status)\
         if(pHuman->m_ExchangBox.m_Status != ServerExchangeBox::status)\
@@ -63,22 +63,22 @@ class Obj_Human;
             Obj_Human* pDestHuman = pScene->GetHumanManager()->GetHuman( DestID );\
             pHuman->m_ExchangBox.CleanUp();\
             pDestHuman->m_ExchangBox.CleanUp();\
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ½»Ò××´Ì¬³ö´í status = %d ", pHuman->GetName(), pHuman->m_ExchangBox.m_Status );\
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] äº¤æ˜“çŠ¶æ€å‡ºé”™ status = %d ", pHuman->GetName(), pHuman->m_ExchangBox.m_Status );\
             return PACKET_EXE_CONTINUE;\
         }\
 
 /*
-·şÎñÆ÷¶Ë½»Ò×ºĞ½á¹¹.
+æœåŠ¡å™¨ç«¯äº¤æ˜“ç›’ç»“æ„.
 */
 class ServerExchangeBox
 {
 public:
     enum ExchangeStatus
     {
-        EXCHANGE_NONE = 0,                                        //Ã»ÓĞ½»Ò×·¢Éú
-        EXCHANGE_SYNCH_DATA,                                    //×Ô¼º´¦ÓÚÍ¬²½Êı¾İ½×¶Î¡£
-        EXCHANGE_WAIT_FOR_CONFIRM,                                //×Ô¼º´¦ÓÚµÈ´ı×Ô¼º×îºóÈ·ÈÏ½×¶Î¡£
-        EXCHANGE_CONFIRM_READY,                                    //×Ô¼º´¦ÓÚµÈ´ı¶Ô·½È·ÈÏ½×¶Î
+        EXCHANGE_NONE = 0,                                        //æ²¡æœ‰äº¤æ˜“å‘ç”Ÿ
+        EXCHANGE_SYNCH_DATA,                                    //è‡ªå·±å¤„äºåŒæ­¥æ•°æ®é˜¶æ®µã€‚
+        EXCHANGE_WAIT_FOR_CONFIRM,                                //è‡ªå·±å¤„äºç­‰å¾…è‡ªå·±æœ€åç¡®è®¤é˜¶æ®µã€‚
+        EXCHANGE_CONFIRM_READY,                                    //è‡ªå·±å¤„äºç­‰å¾…å¯¹æ–¹ç¡®è®¤é˜¶æ®µ
     };    
 public:
     ServerExchangeBox()
@@ -89,16 +89,16 @@ public:
     VOID CleanUp();
     VOID UnLockAllItem();
 public:
-    ExchangeStatus        m_Status;                                //½»Ò××´Ì¬
-    ObjID_t                m_ObjID;                                //µ±Ç°½»Ò×¶ÔÏó
-    Obj_Human*             m_pMySelf;                                //×Ô¼º
-    BOOL                m_IsLocked;                                //±êÊ¾½çÃæÉÏlockÑ¡ÏîÊÇ·ñ¹³ÉÏ
-    BOOL                m_CanConform;                            //±êÊ¾ÊÇ·ñÏÔÊ¾È·¶¨°´Å¥
-    UINT                m_Money;                                //±êÊ¾½»Ò×µÄ½ğÇ®
-    ItemContainer        m_Container;                            //½»Ò×ºĞÖĞµÄÎïÆ·
-    _ITEM                m_ItemList[EXCHANGE_BOX_SIZE];            //ÎïÆ·µÄÕæÊµÊı¾İ
-    ItemContainer        m_PetContainer;                            //½»Ò×ºĞÖĞµÄ³èÎïÈİÆ÷
-    _PET_DB_LOAD        m_PetItemList[EXCHANGE_PET_BOX_SIZE];    //³èÎïµÄÕæÊµÊı¾İ
+    ExchangeStatus        m_Status;                                //äº¤æ˜“çŠ¶æ€
+    ObjID_t                m_ObjID;                                //å½“å‰äº¤æ˜“å¯¹è±¡
+    Obj_Human*             m_pMySelf;                                //è‡ªå·±
+    BOOL                m_IsLocked;                                //æ ‡ç¤ºç•Œé¢ä¸Šlocké€‰é¡¹æ˜¯å¦é’©ä¸Š
+    BOOL                m_CanConform;                            //æ ‡ç¤ºæ˜¯å¦æ˜¾ç¤ºç¡®å®šæŒ‰é’®
+    UINT                m_Money;                                //æ ‡ç¤ºäº¤æ˜“çš„é‡‘é’±
+    ItemContainer        m_Container;                            //äº¤æ˜“ç›’ä¸­çš„ç‰©å“
+    _ITEM                m_ItemList[EXCHANGE_BOX_SIZE];            //ç‰©å“çš„çœŸå®æ•°æ®
+    ItemContainer        m_PetContainer;                            //äº¤æ˜“ç›’ä¸­çš„å® ç‰©å®¹å™¨
+    _PET_DB_LOAD        m_PetItemList[EXCHANGE_PET_BOX_SIZE];    //å® ç‰©çš„çœŸå®æ•°æ®
     
 };
 #endif

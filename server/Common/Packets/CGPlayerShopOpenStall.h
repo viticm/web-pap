@@ -24,7 +24,7 @@ namespace Packets
         }
         virtual ~CGPlayerShopOpenStall( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -48,10 +48,10 @@ namespace Packets
         BYTE                    GetShopSerial( ){ return m_nShopSerial; } ;
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
         BYTE                    m_nStallIndex;
         BYTE                    m_bOpen;
-        BYTE                    m_nShopSerial;        //ÉÌµêĞòÁĞºÅ
+        BYTE                    m_nShopSerial;        //å•†åº—åºåˆ—å·
     };
 
     class CGPlayerShopOpenStallFactory : public PacketFactory 

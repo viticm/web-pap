@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºItemContainer.h
-//¹¦ÄÜÃèÊö£ºÎïÆ·ÈİÆ÷µÄ·â×°Àà£¬Í¨¹ı´ËÀàÀ´¶ÁÈ¡¼°ÉèÖÃ¶à¸öÎïÆ·µÄÏà¹ØĞÅÏ¢
-//ĞŞ¸Ä¼ÇÂ¼£º2005-11-2´´½¨
+//æ–‡ä»¶åï¼šItemContainer.h
+//åŠŸèƒ½æè¿°ï¼šç‰©å“å®¹å™¨çš„å°è£…ç±»ï¼Œé€šè¿‡æ­¤ç±»æ¥è¯»å–åŠè®¾ç½®å¤šä¸ªç‰©å“çš„ç›¸å…³ä¿¡æ¯
+//ä¿®æ”¹è®°å½•ï¼š2005-11-2åˆ›å»º
 //
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -15,7 +15,7 @@
 
 struct _ITEMCONTAINER_INIT
 {
-    INT                        m_nContainerSize ;//ÈİÆ÷´óĞ¡
+    INT                        m_nContainerSize ;//å®¹å™¨å¤§å°
     
 };
 
@@ -31,144 +31,144 @@ public :
     virtual ~ItemContainer( ) ;
 
     /*
-     *    ITEM Ê¹ÓÃ·½·¨
+     *    ITEM ä½¿ç”¨æ–¹æ³•
      */
 
-    //Í¨¹ıÎïÆ·µÄGUIDÈ¡µÃ´ËÎïÆ·ÔÚÈİÆ÷ÖĞµÄÎ»ÖÃ
+    //é€šè¿‡ç‰©å“çš„GUIDå–å¾—æ­¤ç‰©å“åœ¨å®¹å™¨ä¸­çš„ä½ç½®
     INT                    GetIndexByGUID( const _ITEM_GUID* pGuid ) ;
-    //Í¨¹ı³èÎïµÄGUIDÈ¡µÃ´ËÎïÆ·ÔÚÈİÆ÷ÖĞµÄÎ»ÖÃ
+    //é€šè¿‡å® ç‰©çš„GUIDå–å¾—æ­¤ç‰©å“åœ¨å®¹å™¨ä¸­çš„ä½ç½®
     INT                    GetIndexByGUID( const PET_GUID_t* pGuid ) ;
-    //Í¨¹ıÎïÆ·µÄÀàĞÍÈ¡µÃ´ËÎïÆ·ÔÚÈİÆ÷ÖĞµÄÎ»ÖÃ
+    //é€šè¿‡ç‰©å“çš„ç±»å‹å–å¾—æ­¤ç‰©å“åœ¨å®¹å™¨ä¸­çš„ä½ç½®
     INT                    GetIndexByType( const UINT uType ) ;
-    //Í¨¹ıÎïÆ·µÄÀàĞÍÈ¡µÃ´ËÎïÆ·ÔÚÈİÆ÷ÖĞµÄÎ»ÖÃ
+    //é€šè¿‡ç‰©å“çš„ç±»å‹å–å¾—æ­¤ç‰©å“åœ¨å®¹å™¨ä¸­çš„ä½ç½®
     INT                    GetIndexByType( const UINT uType ,UINT emptyCount) ;
 
-    //Í¨¹ıÈİÆ÷µÄÎ»ÖÃÈ¡µÃÎïÆ·
+    //é€šè¿‡å®¹å™¨çš„ä½ç½®å–å¾—ç‰©å“
     Item*                GetItem( const INT nIndex ) ;
 
     
 
     
-    //È¡µÃÒ»¸öÃ»ÂúµÄÎïÆ·Î»ÖÃ,Èç¹ûINVALID_INDEX Ôò±íÊ¾Ã»ÕÒµ½
+    //å–å¾—ä¸€ä¸ªæ²¡æ»¡çš„ç‰©å“ä½ç½®,å¦‚æœINVALID_INDEX åˆ™è¡¨ç¤ºæ²¡æ‰¾åˆ°
     INT                    GetNoFullItemIndex( UINT uItemIndex);
-    //ÈİÆ÷±àºÅµ½Bag±àºÅ
+    //å®¹å™¨ç¼–å·åˆ°Bagç¼–å·
     virtual        UINT    ConIndex2BagIndex(UINT uConIndex){return uConIndex;}
-    //±³°ü±àºÅµ½ÈİÆ÷±àºÅ
+    //èƒŒåŒ…ç¼–å·åˆ°å®¹å™¨ç¼–å·
     virtual        UINT    BagIndex2ConIndex(UINT uBagIndex){return uBagIndex;}
-    //²âÊÔÒ»¸önIndexÊÇ²»ÊÇÔÚÕâ¸öContainerÖĞ
+    //æµ‹è¯•ä¸€ä¸ªnIndexæ˜¯ä¸æ˜¯åœ¨è¿™ä¸ªContainerä¸­
     virtual        BOOL    IsInContainer(UINT uBagIndex);
 
     
 public:
     /*
-     *    PET ºÍ ITEM ¹«ÓÃ·½·¨
+     *    PET å’Œ ITEM å…¬ç”¨æ–¹æ³•
      */
 
-    virtual BOOL        Init( const _ITEMCONTAINER_INIT* pInit ) ;//³õÊ¼»¯ÈİÆ÷
+    virtual BOOL        Init( const _ITEMCONTAINER_INIT* pInit ) ;//åˆå§‹åŒ–å®¹å™¨
 
-    VOID                CleanUp( ) ;//Çå³ıÈİÆ÷ÄÚµÄËùÓĞÎïÆ·Êı¾İ
-    //¼ÆËãÈİÆ÷¿Õ¸ñ¸öÊı
+    VOID                CleanUp( ) ;//æ¸…é™¤å®¹å™¨å†…çš„æ‰€æœ‰ç‰©å“æ•°æ®
+    //è®¡ç®—å®¹å™¨ç©ºæ ¼ä¸ªæ•°
     virtual        UINT    CalcItemSpace();    
-    //½»Ò×ÖĞ¼ÆËãÈİÆ÷¿Õ¸ñ¸öÊı
-    //½»Ò×Ê±µÄÎïÆ·±»½»Ò×ËøËø×¡£¬¼ÆËã¿Õ¼äÊ±ºöÂÔ±»½»Ò×ËøËø×¡µÄÎïÆ·£¬ÕâÑùÎïÆ·¾Í¿ÉÒÔ½»»»ÁË¡£
+    //äº¤æ˜“ä¸­è®¡ç®—å®¹å™¨ç©ºæ ¼ä¸ªæ•°
+    //äº¤æ˜“æ—¶çš„ç‰©å“è¢«äº¤æ˜“é”é”ä½ï¼Œè®¡ç®—ç©ºé—´æ—¶å¿½ç•¥è¢«äº¤æ˜“é”é”ä½çš„ç‰©å“ï¼Œè¿™æ ·ç‰©å“å°±å¯ä»¥äº¤æ¢äº†ã€‚
     UINT                CalcExchangeItemSpace();    
-    //È¡µÃÒ»¸ö¿ÕµÄÎïÆ·Î»ÖÃ, Èç¹û·µ»ØINVALID_INDEX±íÃ÷ÂúÁË
+    //å–å¾—ä¸€ä¸ªç©ºçš„ç‰©å“ä½ç½®, å¦‚æœè¿”å›INVALID_INDEXè¡¨æ˜æ»¡äº†
     INT                    GetEmptyItemIndex( ) ;
-    //È¡µÃÈİÆ÷´óĞ¡
+    //å–å¾—å®¹å™¨å¤§å°
     INT                    GetContainerSize( ){ return m_nContainerSize ; }
 
     BOOL                SetItemPWLock(INT nIndex,BOOL bLock);
 
 public:
     /*
-     *    PET Ê¹ÓÃ·½·¨
+     *    PET ä½¿ç”¨æ–¹æ³•
      */
 
 protected :
-    //½«ÎïÆ·ÉèÖÃµ½¶ÔÓ¦ÈİÆ÷Î»ÖÃ
+    //å°†ç‰©å“è®¾ç½®åˆ°å¯¹åº”å®¹å™¨ä½ç½®
     virtual BOOL        SetItem( const INT nIndex, const Item* pItem );
 
-    //¸Ä±äContainer µÄ´óĞ¡
+    //æ”¹å˜Container çš„å¤§å°
     BOOL                ChangeSize(const INT nSize);
 
-    //ÉèÖÃÎïÆ·ÖØµşÊıÁ¿
+    //è®¾ç½®ç‰©å“é‡å æ•°é‡
     virtual VOID        SetItemLayCount(INT nIndex, INT nCount) ;
-    //¼õÉÙÎïÆ·ÖØµşÊıÁ¿
+    //å‡å°‘ç‰©å“é‡å æ•°é‡
     virtual BOOL        DecItemLayCount(INT nIndex, INT nCount=1) ;
-    //Ôö¼ÓÎïÆ·ÖØµşÊıÁ¿
+    //å¢åŠ ç‰©å“é‡å æ•°é‡
     virtual BOOL        IncItemLayCount(INT nIndex, INT nCount=1);
-    //É¾³ıÎïÆ·
+    //åˆ é™¤ç‰©å“
     virtual    BOOL        EraseItem(UINT uIndex);
-    //ÉèÖÃÎïÆ·ÄÍ¾Ã¶È
+    //è®¾ç½®ç‰©å“è€ä¹…åº¦
     virtual    BOOL        SetItemDur(INT nIndex, INT nDur);
-    //ÉèÖÃÎïÆ·ËğÉËµã
+    //è®¾ç½®ç‰©å“æŸä¼¤ç‚¹
     virtual    BOOL        SetItemDamagePoint(INT nIndex, INT nPoint);
-    //ÉèÖÃÎïÆ·ÄÍ¾Ã¶È
+    //è®¾ç½®ç‰©å“è€ä¹…åº¦
     virtual    BOOL        SetItemMaxDur(INT nIndex, INT nDur);
-    //ÉèÖÃÎïÆ·ÊôĞÔ
+    //è®¾ç½®ç‰©å“å±æ€§
     virtual    BOOL        SetItemValue(INT nIndex,_ITEM*    pItem);
-    //ÉèÖÃÎïÆ·°ï¶¨
+    //è®¾ç½®ç‰©å“å¸®å®š
     virtual    BOOL        SetItemBind(INT nIndex);
-    //ÉèÖÃÎïÆ·¼ø¶¨ĞÅÏ¢
+    //è®¾ç½®ç‰©å“é‰´å®šä¿¡æ¯
     virtual BOOL        SetItemIdent(INT nIndex);
-    //ÉèÖÃÎïÆ·ĞŞÀí´ÎÊı
+    //è®¾ç½®ç‰©å“ä¿®ç†æ¬¡æ•°
     virtual BOOL        SetItemFailTimes(INT nIndex, INT nTimes);
 
-    //Ôö¼ÓÎïÆ·ÊôĞÔ
+    //å¢åŠ ç‰©å“å±æ€§
     virtual BOOL        AddItemAttr(INT nIndex,_ITEM_ATTR iA);
-    //É¾³ıÎïÆ·ÊôĞÔ
+    //åˆ é™¤ç‰©å“å±æ€§
     virtual    BOOL        DelItemAttr(INT nIndex,_ITEM_ATTR iA);
-    //É¾³ı±¦Ê¯ĞÅÏ¢
+    //åˆ é™¤å®çŸ³ä¿¡æ¯
     virtual BOOL        DelGemInfo(INT nIndex,INT GemIndex);
-    //Ìí¼Ó±¦Ê¯ĞÅÏ¢
+    //æ·»åŠ å®çŸ³ä¿¡æ¯
     virtual    BOOL        AddGemInfo(INT nIndex,INT& GemIndex,UINT GemType);
-    //ÉèÖÃÎïÆ·GUID
+    //è®¾ç½®ç‰©å“GUID
     virtual BOOL        SetItemGuid(INT nIndex,_ITEM_GUID* pGUID);
-    //ÉèÖÃÎïÆ·GUID
+    //è®¾ç½®ç‰©å“GUID
     virtual BOOL        SetItemGuid(INT nIndex,PET_GUID_t* pGUID);
-    //´´ÔìÕß
+    //åˆ›é€ è€…
     virtual    BOOL        SetItemCreator(INT nIndex,const CHAR* CreatorName);
-    //ÎïÆ·²ÎÊı
+    //ç‰©å“å‚æ•°
     virtual BOOL        SetItemParam(INT nIndex,UINT start,INT type,INT value);
     
-    //ÉèÖÃPET ÊôĞÔ
-    //ÉèÖÃÎïÆ·ÊôĞÔ
+    //è®¾ç½®PET å±æ€§
+    //è®¾ç½®ç‰©å“å±æ€§
     virtual    BOOL        SetItemValue(INT nIndex,const _PET_DB_LOAD*    pPet);
 
 
 
-    virtual BOOL          SetPetGUID(INT nIndex,PET_GUID_t GUID) ;                //ÉèÖÃ³èÎïGUID
-    virtual BOOL          SetSpouseGUID(INT nIndex,PET_GUID_t GUID) ;                //ÉèÖÃ³èÎïÅäÅ¼GUID
-    virtual BOOL        SetDataID(INT nIndex,INT ID);                            //ÉèÖÃ³èÎïÄ£ĞÍ        
-    virtual BOOL         SetName(INT nIndex,const CHAR* pName);                    //ÉèÖÃÃû×Ö
-    virtual BOOL           SetNick(INT nIndex,const CHAR* pNick);                    //ÉèÖÃêÇ³Æ
-    virtual BOOL          SetLevel(INT nIndex,INT level);                            //ÉèÖÃµÈ¼¶
-    virtual BOOL          SetTakeLevel(INT nIndex,INT takeLevel);                    //ÉèÖÃĞ¯´øµÈ¼¶
-    virtual BOOL          SetAttackType(INT nIndex,INT attackType);                //ÉèÖÃ½ø¹¥ÀàĞÍ£¨Îï/·¨£©
-    virtual BOOL          SetAIType(INT nIndex,INT AIType);                        //ÉèÖÃAIÀàĞÍ
-    virtual BOOL          SetCampData(INT nIndex,const _CAMP_DATA* pCamp);        //ÉèÖÃÕóÓª
-    virtual BOOL          SetHP(INT nIndex,INT hp);                                //ÉèÖÃÉúÃüÖµ
-    virtual BOOL          SetLife(INT nIndex,INT Life);                            //ÉèÖÃµ±Ç°ÊÙÃü
-    virtual BOOL          SetPetType(INT nIndex,BYTE PetType);                    //±¦±¦£¬±äÒì£¬Ò°Éú
-    virtual BOOL          SetGeneration(INT nIndex,BYTE Gen);                        //¼¸´ú³è
-    virtual BOOL          SetHappiness(INT nIndex,BYTE byHappiness);                //¿ìÀÖ¶È        
-    virtual BOOL          SetStrPer(INT nIndex,INT strper);                        //Á¦Á¿×ÊÖÊ    
-    virtual BOOL          SetConPer(INT nIndex,INT conper);                        //ÌåÁ¦×ÊÖÊ    
-    virtual BOOL           SetDexPer(INT nIndex,INT dexper);                        //Éí·¨×ÊÖÊ
-    virtual BOOL          SetSprPer(INT nIndex,INT sprper);                        //ÁéÆø×ÊÖÊ
-    virtual BOOL           SetIntPer(INT nIndex,INT intper);                        //¶¨Á¦×ÊÖÊ
-    virtual BOOL        SetGenGu(INT nIndex,INT gengu);                            //¸ù¹Ç
-    virtual BOOL          SetGrowRate(INT nIndex,FLOAT rate);                        //³É³¤ÂÊ
-    virtual BOOL          SetRemainPoint(INT nIndex,INT rPoint);                    //Ò»¼¶ÊôĞÔÊ£ÓàµãÊı
-    virtual BOOL          SetExp(INT nIndex,INT exp) ;                            //¾­ÑéÖµ
-    virtual BOOL          SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value);//»ù´¡Ò»¼¶Õ½¶·ÊôĞÔ£¨²»°üÀ¨¼¼ÄÜºÍ×°±¸Ôö¼ÓµÄ²¿·Ö£©
-    virtual BOOL          SetSkill(INT nIndex,UINT SkillIndex,_PET_SKILL skill);    //³èÎï¼¼ÄÜ
+    virtual BOOL          SetPetGUID(INT nIndex,PET_GUID_t GUID) ;                //è®¾ç½®å® ç‰©GUID
+    virtual BOOL          SetSpouseGUID(INT nIndex,PET_GUID_t GUID) ;                //è®¾ç½®å® ç‰©é…å¶GUID
+    virtual BOOL        SetDataID(INT nIndex,INT ID);                            //è®¾ç½®å® ç‰©æ¨¡å‹        
+    virtual BOOL         SetName(INT nIndex,const CHAR* pName);                    //è®¾ç½®åå­—
+    virtual BOOL           SetNick(INT nIndex,const CHAR* pNick);                    //è®¾ç½®æ˜µç§°
+    virtual BOOL          SetLevel(INT nIndex,INT level);                            //è®¾ç½®ç­‰çº§
+    virtual BOOL          SetTakeLevel(INT nIndex,INT takeLevel);                    //è®¾ç½®æºå¸¦ç­‰çº§
+    virtual BOOL          SetAttackType(INT nIndex,INT attackType);                //è®¾ç½®è¿›æ”»ç±»å‹ï¼ˆç‰©/æ³•ï¼‰
+    virtual BOOL          SetAIType(INT nIndex,INT AIType);                        //è®¾ç½®AIç±»å‹
+    virtual BOOL          SetCampData(INT nIndex,const _CAMP_DATA* pCamp);        //è®¾ç½®é˜µè¥
+    virtual BOOL          SetHP(INT nIndex,INT hp);                                //è®¾ç½®ç”Ÿå‘½å€¼
+    virtual BOOL          SetLife(INT nIndex,INT Life);                            //è®¾ç½®å½“å‰å¯¿å‘½
+    virtual BOOL          SetPetType(INT nIndex,BYTE PetType);                    //å®å®ï¼Œå˜å¼‚ï¼Œé‡ç”Ÿ
+    virtual BOOL          SetGeneration(INT nIndex,BYTE Gen);                        //å‡ ä»£å® 
+    virtual BOOL          SetHappiness(INT nIndex,BYTE byHappiness);                //å¿«ä¹åº¦        
+    virtual BOOL          SetStrPer(INT nIndex,INT strper);                        //åŠ›é‡èµ„è´¨    
+    virtual BOOL          SetConPer(INT nIndex,INT conper);                        //ä½“åŠ›èµ„è´¨    
+    virtual BOOL           SetDexPer(INT nIndex,INT dexper);                        //èº«æ³•èµ„è´¨
+    virtual BOOL          SetSprPer(INT nIndex,INT sprper);                        //çµæ°”èµ„è´¨
+    virtual BOOL           SetIntPer(INT nIndex,INT intper);                        //å®šåŠ›èµ„è´¨
+    virtual BOOL        SetGenGu(INT nIndex,INT gengu);                            //æ ¹éª¨
+    virtual BOOL          SetGrowRate(INT nIndex,FLOAT rate);                        //æˆé•¿ç‡
+    virtual BOOL          SetRemainPoint(INT nIndex,INT rPoint);                    //ä¸€çº§å±æ€§å‰©ä½™ç‚¹æ•°
+    virtual BOOL          SetExp(INT nIndex,INT exp) ;                            //ç»éªŒå€¼
+    virtual BOOL          SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value);//åŸºç¡€ä¸€çº§æˆ˜æ–—å±æ€§ï¼ˆä¸åŒ…æ‹¬æŠ€èƒ½å’Œè£…å¤‡å¢åŠ çš„éƒ¨åˆ†ï¼‰
+    virtual BOOL          SetSkill(INT nIndex,UINT SkillIndex,_PET_SKILL skill);    //å® ç‰©æŠ€èƒ½
     
-    INT                    m_nContainerSize ;                    //ÈİÆ÷´óĞ¡
+    INT                    m_nContainerSize ;                    //å®¹å™¨å¤§å°
 private :
     
     
-    Item                m_aItem[MAX_ITEMCONTAINER_SIZE] ;    //ÈİÆ÷ÄÚÎïÆ·¿Õ¼ä
+    Item                m_aItem[MAX_ITEMCONTAINER_SIZE] ;    //å®¹å™¨å†…ç‰©å“ç©ºé—´
     
 };
 

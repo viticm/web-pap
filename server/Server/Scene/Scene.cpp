@@ -35,7 +35,7 @@ __ENTER_FUNCTION
         return FALSE ;
     }
     if( GetSceneStatus()!=SCENE_STATUS_RUNNING )
-    {//²»Òò¸Ã³¢ÊÔ½øÈëÎ´¿ªÆôµÄ³¡¾°
+    {//ä¸å› è¯¥å°è¯•è¿›å…¥æœªå¼€å¯çš„åœºæ™¯
         Assert(FALSE) ;
         return FALSE ;
     }
@@ -64,26 +64,26 @@ __LEAVE_FUNCTION
     return TRUE ;
 }
 
-//ÅĞ¶ÏÓÃ»§ÓĞÎŞ½øÈë³¡¾°µÄÈ¨ÏŞ, 0:²»ÄÜ½ø£¬1:¿ÉÒÔ½øÈë£¬-1:Æô¶¯±¸·İ³¡¾°
+//åˆ¤æ–­ç”¨æˆ·æœ‰æ— è¿›å…¥åœºæ™¯çš„æƒé™, 0:ä¸èƒ½è¿›ï¼Œ1:å¯ä»¥è¿›å…¥ï¼Œ-1:å¯åŠ¨å¤‡ä»½åœºæ™¯
 INT Scene::CheckEnter( PlayerID_t PlayerID )
 {
 __ENTER_FUNCTION
 
-    if( GetSceneType()==SCENE_TYPE_COPY )//Èç¹û´Ë³¡¾°ÊÇ¸±±¾³¡¾°
+    if( GetSceneType()==SCENE_TYPE_COPY )//å¦‚æœæ­¤åœºæ™¯æ˜¯å‰¯æœ¬åœºæ™¯
     {
         GamePlayer* pGamePlayer = g_pPlayerPool->GetPlayer(PlayerID) ;
         INT nSceneStatus = GetSceneStatus() ;
         TeamID_t nHumanTeamID = pGamePlayer->GetHuman()->GetDB()->GetDBTeamID() ;
 
         if( nSceneStatus!=SCENE_STATUS_RUNNING )
-        {//»òÕß¸±±¾³¡¾°Î´±»·ÖÅäÊ¹ÓÃ
+        {//æˆ–è€…å‰¯æœ¬åœºæ™¯æœªè¢«åˆ†é…ä½¿ç”¨
             g_pLog->FastSaveLog( LOG_FILE_1, "CheckEnter No Scene S=%d HT=%d ST=%d HG=%X SG=%X", 
                 nSceneStatus,nHumanTeamID,m_CopyData.m_TeamID,pGamePlayer->m_HumanGUID,m_CopyData.m_TeamLeader ) ;
             return -1 ;
         }
 
         if( m_CopyData.IsHaveMember( pGamePlayer->m_HumanGUID) )
-        {//ÄÜ¹»½øÈë¸±±¾
+        {//èƒ½å¤Ÿè¿›å…¥å‰¯æœ¬
             return 1 ;
         }
 
@@ -91,19 +91,19 @@ __ENTER_FUNCTION
             nSceneStatus,nHumanTeamID,m_CopyData.m_TeamID,pGamePlayer->m_HumanGUID,m_CopyData.m_TeamLeader ) ;
         return -1 ;
         //if(    nHumanTeamID!=m_CopyData.m_TeamID )
-        //{//µ±Ç°¸±±¾³¡¾°ÒÑ¾­²»ÊÇ´ËÓÃ»§µÄËù½øÈë¹ıµÄ³¡¾°ÁË
+        //{//å½“å‰å‰¯æœ¬åœºæ™¯å·²ç»ä¸æ˜¯æ­¤ç”¨æˆ·çš„æ‰€è¿›å…¥è¿‡çš„åœºæ™¯äº†
         //    g_pLog->FastSaveLog( LOG_FILE_1, "CheckEnter S=%d HT=%d ST=%d HG=%X SG=%X", 
         //        nSceneStatus,nHumanTeamID,m_CopyData.m_TeamID,pGamePlayer->m_HumanGUID,m_CopyData.m_TeamLeader ) ;
         //    return -1 ;
         //}
     }
 
-    if( GetSceneType()==SCENE_TYPE_CIT )//Èç¹û´Ë³¡¾°ÊÇ¸±±¾³¡¾°
+    if( GetSceneType()==SCENE_TYPE_CIT )//å¦‚æœæ­¤åœºæ™¯æ˜¯å‰¯æœ¬åœºæ™¯
     {
         if( m_SceneInitData.m_CityData.m_Guid.isNull()
             || GetSceneStatus()!=SCENE_STATUS_RUNNING
             )
-        {//³¡¾°»¹Î´±»·ÖÅä
+        {//åœºæ™¯è¿˜æœªè¢«åˆ†é…
             return -1;
 
         }
@@ -199,7 +199,7 @@ __ENTER_FUNCTION
         return ;
     }
 
-    //Çå¿Õ½ÇÉ«µÄ³¡¾°Ö¸ÕëĞÅÏ¢
+    //æ¸…ç©ºè§’è‰²çš„åœºæ™¯æŒ‡é’ˆä¿¡æ¯
     pObj->OnLeaveScene();
     pObj->setScene( NULL );
 
@@ -208,7 +208,7 @@ __ENTER_FUNCTION
     {
     case Obj::OBJ_TYPE_HUMAN:
         {
-            //¹ã²¥Íæ¼ÒÀë¿ªÏûÏ¢
+            //å¹¿æ’­ç©å®¶ç¦»å¼€æ¶ˆæ¯
             GCLeaveScene Msg ;
             Msg.setLeaveCode(0) ;
             Msg.setObjID( pObj->GetID() ) ;
@@ -240,7 +240,7 @@ __ENTER_FUNCTION
         break;
     }
 
-    //×¢Ïú¹ÖÎïObjµÄIDĞÅÏ¢£¬´Ë²Ù×÷ºóOBJµÄID»á±»ÉèÖÃ³ÉINVALID_ID
+    //æ³¨é”€æ€ªç‰©Objçš„IDä¿¡æ¯ï¼Œæ­¤æ“ä½œåOBJçš„IDä¼šè¢«è®¾ç½®æˆINVALID_ID
     m_pObjManager->RemoveObj( pObj->GetID() );
 
 __LEAVE_FUNCTION
@@ -272,7 +272,7 @@ __ENTER_FUNCTION
     if(pRect->nEndz >= m_ZoneInfo.m_wZoneH)
         pRect->nEndz = m_ZoneInfo.m_wZoneH-1;    
 
-    /*  Õâ¸öËã·¨ÓĞÎÊÌâ£¿
+    /*  è¿™ä¸ªç®—æ³•æœ‰é—®é¢˜ï¼Ÿ
     nRadius -= 1;
 
     pRect->nStartx = nW-nRadius;
@@ -330,14 +330,14 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    // Ë¢ĞÂObjÏûÏ¢µ½¿Í»§¶Ë
+    // åˆ·æ–°Objæ¶ˆæ¯åˆ°å®¢æˆ·ç«¯
     Packet *pPacket = pObj->CreateNewObjPacket();
     if ( pPacket != NULL )
     {
         HUMANLIST listHuman;
         ScanHuman( idZone, MAX_REFESH_OBJ_ZONE_RADIUS, &(listHuman) );
 
-        // ¿É¼ûĞÔ¹ıÂË
+        // å¯è§æ€§è¿‡æ»¤
         BYTE yNewCount, i;
         yNewCount = 0;
         for ( i = 0; i < listHuman.m_Count; i++ )
@@ -364,7 +364,7 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    // ĞÂ½øÈëÇøÓò£¬°ÑĞÂ½øÈëµÄÇøÓòÖĞµÄËùÓĞ½ÇÉ«·¢ÍùĞÂ½øÀ´µÄ¿Í»§¶Ë
+    // æ–°è¿›å…¥åŒºåŸŸï¼ŒæŠŠæ–°è¿›å…¥çš„åŒºåŸŸä¸­çš„æ‰€æœ‰è§’è‰²å‘å¾€æ–°è¿›æ¥çš„å®¢æˆ·ç«¯
     if ( pObj->GetObjType() == Obj::OBJ_TYPE_HUMAN  )
     {
         OBJLIST listObj;
@@ -415,14 +415,14 @@ __ENTER_FUNCTION
 
     m_pZone[idZone].OnObjectLeave( pObj );
 
-    // Ë¢ĞÂObjÏûÏ¢µ½¿Í»§¶Ë
+    // åˆ·æ–°Objæ¶ˆæ¯åˆ°å®¢æˆ·ç«¯
     Packet *pPacket = pObj->CreateDeleteObjPacket();
     if ( pPacket != NULL )
     {
         HUMANLIST listHuman;
         ScanHuman( idZone, MAX_REFESH_OBJ_ZONE_RADIUS, &(listHuman) );
 
-        // ¿É¼ûĞÔ¹ıÂË
+        // å¯è§æ€§è¿‡æ»¤
         BYTE yNewCount, i;
         yNewCount = 0;
         for ( i = 0; i < listHuman.m_Count; i++ )
@@ -447,7 +447,7 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    // °ÑÔ­À´ÇøÓòÖĞµÄËùÓĞ½ÇÉ«µÄÉ¾³ıÏûÏ¢·¢ÍùµÄ¿Í»§¶Ë
+    // æŠŠåŸæ¥åŒºåŸŸä¸­çš„æ‰€æœ‰è§’è‰²çš„åˆ é™¤æ¶ˆæ¯å‘å¾€çš„å®¢æˆ·ç«¯
     if ( pObj->GetObjType() == Obj::OBJ_TYPE_HUMAN  )
     {
         OBJLIST listObj;
@@ -501,7 +501,7 @@ __ENTER_FUNCTION
     {
         m_pZone[idOld].OnObjectLeave( pObj );
 
-        // Ë¢ĞÂObjÉ¾³ıÏûÏ¢µ½¿Í»§¶Ë
+        // åˆ·æ–°Objåˆ é™¤æ¶ˆæ¯åˆ°å®¢æˆ·ç«¯
         Packet *pPacket = pObj->CreateDeleteObjPacket();
         if ( pPacket != NULL )
         {
@@ -515,7 +515,7 @@ __ENTER_FUNCTION
                 ScanHuman( idOld, MAX_REFESH_OBJ_ZONE_RADIUS, &(listHuman) );
             }
 
-            // ¿É¼ûĞÔ¹ıÂË
+            // å¯è§æ€§è¿‡æ»¤
             BYTE yNewCount, i;
             yNewCount = 0;
             for ( i = 0; i < listHuman.m_Count; i++ )
@@ -536,11 +536,11 @@ __ENTER_FUNCTION
         }
         else
         {
-            Assert( pPacket == NULL && "Scene::ObjZone_Changed Ë¢ĞÂObjÉ¾³ıÏûÏ¢µ½¿Í»§¶Ë CreateNewObjPacket return NULL" );
+            Assert( pPacket == NULL && "Scene::ObjZone_Changed åˆ·æ–°Objåˆ é™¤æ¶ˆæ¯åˆ°å®¢æˆ·ç«¯ CreateNewObjPacket return NULL" );
             return FALSE;
         }
 
-        // Èç¹ûÊÇÍæ¼Ò,°Ñ³¬³öÊÓ¿ÚµÄ½ÇÉ«É¾³ıÏûÏ¢·¢µ½¿Í»§¶Ë
+        // å¦‚æœæ˜¯ç©å®¶,æŠŠè¶…å‡ºè§†å£çš„è§’è‰²åˆ é™¤æ¶ˆæ¯å‘åˆ°å®¢æˆ·ç«¯
         if ( pObj->GetObjType() == Obj::OBJ_TYPE_HUMAN )
         {
             OBJLIST listObj;
@@ -570,7 +570,7 @@ __ENTER_FUNCTION
                     }
                     else
                     {
-                        Assert( pPacket == NULL && "Scene::ObjZone_Changed °Ñ³¬³öÊÓ¿ÚµÄ½ÇÉ«É¾³ıÏûÏ¢·¢µ½¿Í»§¶Ë CreateDeleteObjPacket return NULL" );
+                        Assert( pPacket == NULL && "Scene::ObjZone_Changed æŠŠè¶…å‡ºè§†å£çš„è§’è‰²åˆ é™¤æ¶ˆæ¯å‘åˆ°å®¢æˆ·ç«¯ CreateDeleteObjPacket return NULL" );
                         return FALSE;
                     }
                 }
@@ -584,7 +584,7 @@ __ENTER_FUNCTION
     }
     else
     {
-        // Ë¢ĞÂObj´´½¨ÏûÏ¢µ½¿Í»§¶Ë
+        // åˆ·æ–°Objåˆ›å»ºæ¶ˆæ¯åˆ°å®¢æˆ·ç«¯
         Packet *pPacket = pObj->CreateNewObjPacket();
         if ( pPacket != NULL )
         {
@@ -598,7 +598,7 @@ __ENTER_FUNCTION
                 ScanHuman( idNew, MAX_REFESH_OBJ_ZONE_RADIUS, &(listHuman) );
             }
 
-            // ¿É¼ûĞÔ¹ıÂË
+            // å¯è§æ€§è¿‡æ»¤
             BYTE yNewCount, i;
             yNewCount = 0;
             for ( i = 0; i < listHuman.m_Count; i++ )
@@ -613,7 +613,7 @@ __ENTER_FUNCTION
             if ( listHuman.m_Count > 0 )
             {
                 SendPacket( pPacket, &listHuman );
-                // µ±·¢ÏÖÍæ¼ÒÊ±²Å¿ªÊ¼ÅİÅİËµ»°
+                // å½“å‘ç°ç©å®¶æ—¶æ‰å¼€å§‹æ³¡æ³¡è¯´è¯
                 if (pObj->GetObjType() == Obj::OBJ_TYPE_MONSTER)
                 {
                     ((Obj_Monster*)pObj)->ProcessPaoPao();
@@ -624,14 +624,14 @@ __ENTER_FUNCTION
         }
         else
         {
-            Assert( pPacket == NULL && "Scene::ObjZone_Changed Ë¢ĞÂObj´´½¨ÏûÏ¢µ½¿Í»§¶Ë CreateNewObjPacket return NULL" );
+            Assert( pPacket == NULL && "Scene::ObjZone_Changed åˆ·æ–°Objåˆ›å»ºæ¶ˆæ¯åˆ°å®¢æˆ·ç«¯ CreateNewObjPacket return NULL" );
             return FALSE;
         }
 
-        // Èç¹ûÊÇÍæ¼Ò
+        // å¦‚æœæ˜¯ç©å®¶
         if ( pObj->GetObjType() == Obj::OBJ_TYPE_HUMAN )
         {
-            // ĞÂ½øÈëÇøÓò£¬°ÑĞÂ½øÈëµÄÇøÓòÖĞµÄËùÓĞ½ÇÉ«·¢ÍùĞÂ½øÀ´µÄ¿Í»§¶Ë
+            // æ–°è¿›å…¥åŒºåŸŸï¼ŒæŠŠæ–°è¿›å…¥çš„åŒºåŸŸä¸­çš„æ‰€æœ‰è§’è‰²å‘å¾€æ–°è¿›æ¥çš„å®¢æˆ·ç«¯
             OBJLIST listObj;
             if ( idOld != INVALID_ID )
             {
@@ -659,7 +659,7 @@ __ENTER_FUNCTION
                     }
                     else
                     {
-                        Assert( pPacket == NULL && "Scene::ObjZone_Changed °ÑĞÂ½øÈëµÄÇøÓòÖĞµÄËùÓĞ½ÇÉ«·¢ÍùĞÂ½øÀ´µÄ¿Í»§¶Ë CreateDeleteObjPacket return NULL" );
+                        Assert( pPacket == NULL && "Scene::ObjZone_Changed æŠŠæ–°è¿›å…¥çš„åŒºåŸŸä¸­çš„æ‰€æœ‰è§’è‰²å‘å¾€æ–°è¿›æ¥çš„å®¢æˆ·ç«¯ CreateDeleteObjPacket return NULL" );
                         return FALSE;
                     }
                 }
@@ -681,13 +681,13 @@ __ENTER_FUNCTION
     Assert(pArea);
     FLOAT ox, oz, maxX, maxZ;
 
-    ox = pArea->m_rcArea.m_fLeft; // Area ×óÉÏ½Çµã x Öµ
-    oz = pArea->m_rcArea.m_fTop; // Area ×óÉÏ½Çµã z Öµ
-    maxX = pArea->m_rcArea.m_fRight; // ÓÒ±ßµÄ x Öµ
-    maxZ = pArea->m_rcArea.m_fBottom; // ÏÂ±ßµÄ z Öµ
+    ox = pArea->m_rcArea.m_fLeft; // Area å·¦ä¸Šè§’ç‚¹ x å€¼
+    oz = pArea->m_rcArea.m_fTop; // Area å·¦ä¸Šè§’ç‚¹ z å€¼
+    maxX = pArea->m_rcArea.m_fRight; // å³è¾¹çš„ x å€¼
+    maxZ = pArea->m_rcArea.m_fBottom; // ä¸‹è¾¹çš„ z å€¼
 
-    Assert( m_pMap->CX() >= maxX && "Oops... area ÅÜµ½µØÍ¼ÍâÃæÈ¥Äñ~~" );
-    Assert( m_pMap->CZ() >= maxZ && "Oops... area ÅÜµ½µØÍ¼ÍâÃæÈ¥Äñ~~" );
+    Assert( m_pMap->CX() >= maxX && "Oops... area è·‘åˆ°åœ°å›¾å¤–é¢å»é¸Ÿ~~" );
+    Assert( m_pMap->CZ() >= maxZ && "Oops... area è·‘åˆ°åœ°å›¾å¤–é¢å»é¸Ÿ~~" );
     INT ZoneSize = g_Config.m_ConfigInfo.m_ZoneSize;
     UINT uX = (UINT)(ox / ZoneSize);
     UINT uZ = (UINT)(oz / ZoneSize);
@@ -869,7 +869,7 @@ VOID Scene::EndSceneTimer( )
     m_SceneTimer.CleanUp() ;
 }
 
-// ·¢ËÍÆÕÍ¨ÓÊ¼ş
+// å‘é€æ™®é€šé‚®ä»¶
 VOID Scene::SendNormalMail(const Obj_Human* pHuman, const CHAR* szReceiverName, const CHAR* szContent)
 {
 __ENTER_FUNCTION
@@ -901,7 +901,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ·¢ËÍÏµÍ³ÓÊ¼ş
+// å‘é€ç³»ç»Ÿé‚®ä»¶
 VOID Scene::SendSystemMail(const CHAR* szReceiverName, const CHAR* szContent)
 {
     __ENTER_FUNCTION
@@ -930,7 +930,7 @@ VOID Scene::SendSystemMail(const CHAR* szReceiverName, const CHAR* szContent)
     __LEAVE_FUNCTION
 }
 
-// ·¢ËÍ¿ÉÖ´ĞĞÓÊ¼ş
+// å‘é€å¯æ‰§è¡Œé‚®ä»¶
 VOID Scene::SendScriptMail(const CHAR* szReceiverName, UINT uParam0, UINT uParam1, UINT uParam2, UINT uParam3 )
 {
 __ENTER_FUNCTION
@@ -982,7 +982,7 @@ Obj* Scene::GetSpecificObjByID(ObjID_t nID)const
     return NULL;
 }
 
-//Õâ¸öº¯ÊıÃ»Íê³É
+//è¿™ä¸ªå‡½æ•°æ²¡å®Œæˆ
 CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Human* pHuman, const _MISSION_LIST_t* pMis, const _MISSION_DATA_t* pData, const _MISSION_REWARD_t* pReward, BOOL& bConvert)
 {
     __ENTER_FUNCTION
@@ -1030,7 +1030,7 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
         memcpy( strOut, szTemp, pFind - szTemp );
         strOut[pFind - szTemp] = 0;
         strcat( strOut, g_Config.m_SceneInfo.m_pScene[pMis->nDestScene].m_szName );
-        strcat( strOut, "µÄ" );
+        strcat( strOut, "çš„" );
         strcat( strOut, GetMonsterManager()->GetMonster(pMis->nSubmitorID)->GetName() );
         strcat( strOut, szNum );
         strcat( strOut, pFind + 9 );
@@ -1046,7 +1046,7 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
         memcpy( strOut, szTemp, pFind - szTemp );
         strOut[pFind - szTemp] = 0;
         strcat( strOut, g_Config.m_SceneInfo.m_pScene[pMis->nDestScene].m_szName );
-        strcat( strOut, "µÄ" );
+        strcat( strOut, "çš„" );
         const MONSTER_EXT_ATTR* pExtAttr = g_MonsterAttrExTbl.GetExtAttr( pData->nMonster1ID );
         strcat( strOut, pExtAttr->m_Name );
         //strcat( strOut, szNum );
@@ -1074,7 +1074,7 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
         memcpy( strOut, szTemp, pFind - szTemp );
         strOut[pFind - szTemp] = 0;
         strcat( strOut, g_Config.m_SceneInfo.m_pScene[pMis->nDestScene].m_szName );
-        strcat( strOut, "µÄ" );
+        strcat( strOut, "çš„" );
         const MONSTER_EXT_ATTR* pExtAttr = g_MonsterAttrExTbl.GetExtAttr( pData->nMonster2ID );
         strcat( strOut, pExtAttr->m_Name );
         //strcat( strOut, szNum );
@@ -1102,7 +1102,7 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
         memcpy( strOut, szTemp, pFind - szTemp );
         strOut[pFind - szTemp] = 0;
         strcat( strOut, g_Config.m_SceneInfo.m_pScene[pMis->nDestScene].m_szName );
-        strcat( strOut, "µÄ" );
+        strcat( strOut, "çš„" );
         const MONSTER_EXT_ATTR* pExtAttr = g_MonsterAttrExTbl.GetExtAttr( pData->nMonster3ID );
         strcat( strOut, pExtAttr->m_Name );
         //strcat( strOut, szNum );
@@ -1130,7 +1130,7 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
         memcpy( strOut, szTemp, pFind - szTemp );
         strOut[pFind - szTemp] = 0;
         strcat( strOut, g_Config.m_SceneInfo.m_pScene[pMis->nDestScene].m_szName );
-        strcat( strOut, "µÄ" );
+        strcat( strOut, "çš„" );
         const MONSTER_EXT_ATTR* pExtAttr = g_MonsterAttrExTbl.GetExtAttr( pData->nMonster4ID );
         strcat( strOut, pExtAttr->m_Name );
         //strcat( strOut, szNum );
@@ -1494,7 +1494,7 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
             strOut[pFind - szTemp] = 0;
             strcat( strOut, "#G" );
             strcat( strOut, szNextSceneName );
-            strcat( strOut, "µÄ#Y" );
+            strcat( strOut, "çš„#Y" );
             strcat( strOut, szNextNpcName );
             strcat( strOut, "#W" );
             strcat( strOut, pFind + 9 );
@@ -1518,7 +1518,7 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
         {
             UINT uMisIndex = pHuman->GetMissionIndexByID( RealMissionID );
             Assert(UINT_MAX != uMisIndex);
-            strcat( strOut, "#Yµ±Ç°µÚ#R" );
+            strcat( strOut, "#Yå½“å‰ç¬¬#R" );
             UINT uNonceTach = pHuman->GetMissionParam(uMisIndex, 4);
             tsnprintf( szNum, 30, "%d", uNonceTach );
             strcat( strOut, szNum );
@@ -1526,7 +1526,7 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
             UINT uMaxTach = pHuman->GetMissionParam(uMisIndex, 3);
             tsnprintf( szNum, 30, "%d", uMaxTach );
             strcat( strOut, szNum );
-            strcat( strOut, "»·#W" );
+            strcat( strOut, "ç¯#W" );
             strcat( strOut, pFind + 8 );
             strcpy( szTemp, strOut );
         }

@@ -4,14 +4,14 @@
 #define __GAMESTRUCT_CAMP_H__
 #include "Type.h"
 /////////////////////////////////////////////////////////////////////////////////
-// 客户端用的DBC结构
+// 瀹㈡埛绔敤鐨凞BC缁撴瀯
 
-// 阵营结构
+// 闃佃惀缁撴瀯
 struct _DBC_CAMP_DATA
 {
     enum
     {
-        MAX_CAMP_ID = 15, //最大阵营ID
+        MAX_CAMP_ID = 15, //鏈�澶ч樀钀D
         CAMP_LIST_SIZE = MAX_CAMP_ID +1,
     };
     VOID    ClearUp(VOID)

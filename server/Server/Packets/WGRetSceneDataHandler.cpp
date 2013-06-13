@@ -14,7 +14,7 @@ UINT WGRetSceneDataHandler::Execute( WGRetSceneData* pPacket, Player* pPlayer )
 __ENTER_FUNCTION
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID ) ;
 
         SceneID_t SceneID = pPacket->GetSceneID() ;
@@ -27,7 +27,7 @@ __ENTER_FUNCTION
 
         pScene->m_SceneInitData = *pPacket->GetSceneInitData() ;
         pScene->Init( ) ;
-        //Í¨Öª³ÇÊÐ´´½¨ÈË,³ÇÊÐÒÑ¾­³É¹¦´´½¨
+        //é€šçŸ¥åŸŽå¸‚åˆ›å»ºäºº,åŸŽå¸‚å·²ç»æˆåŠŸåˆ›å»º
         pScene->SetSceneStatus( SCENE_STATUS_INIT ) ;
     }
     else

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÉêÇëÎïÆ·ÉÏ¼Ü
+å®¢æˆ·ç«¯ç”³è¯·ç‰©å“ä¸Šæž¶
 */
 
 #include "CGPlayerShopFavorite.h"
@@ -30,11 +30,11 @@ UINT CGPlayerShopFavoriteHandler::Execute( CGPlayerShopFavorite* pPacket, Player
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     BYTE             bOpt            =    pPacket->GetOpt();
-    _PLAYERSHOP_GUID nFavoriteID    =    pPacket->GetFavoriteID();            //ÉÌµêID
+    _PLAYERSHOP_GUID nFavoriteID    =    pPacket->GetFavoriteID();            //å•†åº—ID
 
     GCPlayerShopError MsgError;
     GCPlayerShopUpdateFavorite    MsgToClient;

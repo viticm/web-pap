@@ -39,7 +39,7 @@ __ENTER_FUNCTION
     WG_RELATION* pRelationPacket = pPacket->GetRelation();
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pScene->SendPacket( pPacket, PlayerID );
@@ -50,7 +50,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         GCRelation Msg;
@@ -62,7 +62,7 @@ __ENTER_FUNCTION
         switch( pRelationPacket->m_Type )
         {
         case RET_RELATIONINFO:
-            { // ¸üÐÂ Server µÄ»º´æ²¢´«¸ø¿Í»§¶Ë
+            { // æ›´æ–° Server çš„ç¼“å­˜å¹¶ä¼ ç»™å®¢æˆ·ç«¯
                 _RELATION* pRelationData = pRelationPacket->m_RelationInfo.GetRelationData();
                 const _OWN_RELATION* pRelation = pMyRelation->UpdateRelationInfo( pRelationData );
                 RETURN_RELATION_INFO& RelationInfo = Msg.GetRelation()->m_RelationInfo;
@@ -98,7 +98,7 @@ __ENTER_FUNCTION
             }
             break;
         case RET_TARGETNOTONLINE:
-            { // ²»ÔÚÏß£¬Ôò´Ó Server »º´æÀïÃæÕÒ×îºóÒ»´ÎµÄ¹ØÏµÈËÐÅÏ¢
+            { // ä¸åœ¨çº¿ï¼Œåˆ™ä»Ž Server ç¼“å­˜é‡Œé¢æ‰¾æœ€åŽä¸€æ¬¡çš„å…³ç³»äººä¿¡æ¯
                 Msg.GetRelation()->m_Type = RET_RELATIONINFO;
 
                 if( pRelationPacket->m_RelationGUID.GetTargetGUID() == INVALID_ID )
@@ -132,7 +132,7 @@ __ENTER_FUNCTION
                 pRelationData->SetGuildID( Member.m_GuildID );
 
                 if ( Member.m_GuildID != INVALID_ID )
-                { // ÕâÀïÐèÒªÕÒµ½°ï»áÃû³Æ
+                { // è¿™é‡Œéœ€è¦æ‰¾åˆ°å¸®ä¼šåç§°
                     //pRelationData->SetGuildName( pGuild->GetGuildName() );
                 }
 
@@ -147,16 +147,16 @@ __ENTER_FUNCTION
             {
                 RETURN_ADD_RELATION& AddRelation = pRelationPacket->m_AddRelation;
 
-                // ¿´¿´ÊÇ·ñ»¹ÓÐ¿ÕÎ»
+                // çœ‹çœ‹æ˜¯å¦è¿˜æœ‰ç©ºä½
                 if( pMyRelation->IsGroupFull( (RELATION_GROUP)AddRelation.GetGroup() ) )
-                { // Ã»ÓÐ¿ÕÎ»ÁË
+                { // æ²¡æœ‰ç©ºä½äº†
                     uErr = RET_ERR_GROUPISFULL;
                     break;
                 }
 
                 _RELATION* pRelationData = AddRelation.GetRelationData();
 
-                // ¿´¿´Ä¿Ç°¹ØÏµ±íÖÐÒÑ¾­ÓÐ¸ÃÍæ¼Ò£¨²»¹ÜÊÇÅóÓÑ»¹ÊÇºÚÃûµ¥£©
+                // çœ‹çœ‹ç›®å‰å…³ç³»è¡¨ä¸­å·²ç»æœ‰è¯¥çŽ©å®¶ï¼ˆä¸ç®¡æ˜¯æœ‹å‹è¿˜æ˜¯é»‘åå•ï¼‰
                 RELATION_TYPE RelationType = pMyRelation->GetRelationType( pRelationData->GetGUID() );
 
                 switch( RelationType )
@@ -172,8 +172,8 @@ __ENTER_FUNCTION
                     uErr = RET_ERR_ISBLACKNAME;
                     break;
                 case RELATION_TYPE_STRANGER:
-                    { // ÕýÈ·¹ØÏµ
-                        // ½«ÊÕµ½µÄÊý¾Ý²¿·Ö»º´æµ½ Server
+                    { // æ­£ç¡®å…³ç³»
+                        // å°†æ”¶åˆ°çš„æ•°æ®éƒ¨åˆ†ç¼“å­˜åˆ° Server
                         if( pMyRelation->AddRelation(RELATION_TYPE_FRIEND, pRelationData) != TRUE )
                         {
                             uErr = RET_ERR_RELATIONUNKNOWN;
@@ -182,7 +182,7 @@ __ENTER_FUNCTION
                         {
                             pMyRelation->SetFriendGroup( pRelationData->GetGUID(), (RELATION_GROUP)AddRelation.GetGroup() );
 
-                            // ½«±ØÒªÐÅÏ¢×ª´æµ½ÐÂÏûÏ¢
+                            // å°†å¿…è¦ä¿¡æ¯è½¬å­˜åˆ°æ–°æ¶ˆæ¯
                             Msg.GetRelation()->m_NewRelation.CleanUp();
                             Msg.GetRelation()->m_NewRelation.SetRelationType(AddRelation.GetRelationType());
                             Msg.GetRelation()->m_NewRelation.SetGroup(AddRelation.GetGroup());
@@ -208,14 +208,14 @@ __ENTER_FUNCTION
                 RETURN_ADD_RELATION& AddRelation = pRelationPacket->m_AddRelation;
                 _RELATION* pRelationData = AddRelation.GetRelationData();
 
-                // ¿´¿´ÊÇ·ñ»¹ÓÐ¿ÕÎ»
+                // çœ‹çœ‹æ˜¯å¦è¿˜æœ‰ç©ºä½
                 if( pMyRelation->IsGroupFull( RELATION_GROUP_BLACK ) )
-                { // Ã»ÓÐ¿ÕÎ»ÁË
+                { // æ²¡æœ‰ç©ºä½äº†
                     uErr = RET_ERR_GROUPISFULL;
                     break;
                 }
 
-                // ¿´¿´Ä¿Ç°¹ØÏµ±íÖÐÒÑ¾­ÓÐ¸ÃÍæ¼Ò£¨²»¹ÜÊÇÅóÓÑ»¹ÊÇºÚÃûµ¥£©
+                // çœ‹çœ‹ç›®å‰å…³ç³»è¡¨ä¸­å·²ç»æœ‰è¯¥çŽ©å®¶ï¼ˆä¸ç®¡æ˜¯æœ‹å‹è¿˜æ˜¯é»‘åå•ï¼‰
                 RELATION_TYPE RelationType = pMyRelation->GetRelationType( pRelationData->GetGUID() );
 
                 switch( RelationType )
@@ -224,7 +224,7 @@ __ENTER_FUNCTION
                     uErr = RET_ERR_ISBLACKNAME;
                     break;
                 case RELATION_TYPE_FRIEND:
-                    { // ÓÃ×ª»»
+                    { // ç”¨è½¬æ¢
                         if( pMyRelation->RelationTransition( RELATION_TYPE_BLACKNAME, pRelationData->GetGUID() ) != TRUE )
                         {
                             uErr = RET_ERR_RELATIONUNKNOWN;
@@ -247,14 +247,14 @@ __ENTER_FUNCTION
                     }
                     break;
                 case RELATION_TYPE_STRANGER:
-                    { // ÕýÈ·¹ØÏµ
+                    { // æ­£ç¡®å…³ç³»
                         if( pMyRelation->AddRelation(RELATION_TYPE_BLACKNAME, pRelationData) != TRUE )
-                        { // ½«ÊÕµ½µÄÊý¾Ý²¿·Ö»º´æµ½ Server
+                        { // å°†æ”¶åˆ°çš„æ•°æ®éƒ¨åˆ†ç¼“å­˜åˆ° Server
                             uErr = RET_ERR_RELATIONUNKNOWN;
                         }
                         else
                         {
-                            // ½«±ØÒªÐÅÏ¢×ª´æµ½ÐÂÏûÏ¢
+                            // å°†å¿…è¦ä¿¡æ¯è½¬å­˜åˆ°æ–°æ¶ˆæ¯
                             Msg.GetRelation()->m_NewRelation.CleanUp();
                             Msg.GetRelation()->m_NewRelation.SetRelationType(AddRelation.GetRelationType());
                             Msg.GetRelation()->m_NewRelation.SetRelationData(pRelationData);

@@ -1,8 +1,8 @@
 /*************************************************************************
- ÎÄ¼şÃû    :     AIScriptFunction.h
- °æ±¾ºÅ :    0.0.1
- ¹¦  ÄÜ    :    AIScriptµÄ×¨ÓÃº¯Êı
- ĞŞ¸Ä¼ÇÂ¼:    
+ æ–‡ä»¶å    :     AIScriptFunction.h
+ ç‰ˆæœ¬å· :    0.0.1
+ åŠŸ  èƒ½    :    AIScriptçš„ä¸“ç”¨å‡½æ•°
+ ä¿®æ”¹è®°å½•:    
  *************************************************************************/
 
 
@@ -29,7 +29,7 @@ struct AISMacroMap
 const PLAISFunc GetFuncPtrbyName( const CHAR* funcName );
 const CHAR*        GetFuncNamebyPtr( const PLAISFunc FuncPtr );
 const INT        GetMacrobyName( const CHAR* MacroName );
-// ½Ó¿Ú²¿·Ö
+// æ¥å£éƒ¨åˆ†
 //////////////////////////////////////////////////////////////////////////
 INT     AIS_GetBuffState( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 

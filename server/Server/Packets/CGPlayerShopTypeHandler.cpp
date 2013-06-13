@@ -24,10 +24,10 @@ UINT CGPlayerShopTypeHandler::Execute( CGPlayerShopType* pPacket, Player* pPlaye
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-    _PLAYERSHOP_GUID    nShopID    =    pPacket->GetShopID();            //ÉÌµêID
-    BYTE                nType    =    pPacket->GetType();                //´æµ½ÄÄ
+    _PLAYERSHOP_GUID    nShopID    =    pPacket->GetShopID();            //å•†åº—ID
+    BYTE                nType    =    pPacket->GetType();                //å­˜åˆ°å“ª
     
     PlayerShopManager*    pPlayerShopManager = pScene->GetPlayerShopManager();
     PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
@@ -35,16 +35,16 @@ UINT CGPlayerShopTypeHandler::Execute( CGPlayerShopType* pPacket, Player* pPlaye
 
 
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE)
-    {//ÉÌµêÎ´¿ªÕÅ
+    {//å•†åº—æœªå¼€å¼ 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopMoneyHandler::Name=%s shop close"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-    //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
     BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
     if(bIsMine == FALSE )

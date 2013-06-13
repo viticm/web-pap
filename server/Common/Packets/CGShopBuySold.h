@@ -1,6 +1,6 @@
 // CGShopBuySold.h
 // 
-// ¿Í»§¶ËÍ¨Öª·şÎñÆ÷ÂòÊ²Ã´¶«Î÷
+// å®¢æˆ·ç«¯é€šçŸ¥æœåŠ¡å™¨ä¹°ä»€ä¹ˆä¸œè¥¿
 // 
 //////////////////////////////////////////////////////
 
@@ -20,7 +20,7 @@ namespace Packets
         CGShopBuySold( ){};
         virtual ~CGShopBuySold( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -36,8 +36,8 @@ namespace Packets
         VOID                    SetBuyTableID(UINT idSour){m_idTable = idSour;}
 
     private:
-        UINT                    m_idTable;        //×ÊÔ´id
-        BYTE                    m_byNumber;        //ÊıÁ¿
+        UINT                    m_idTable;        //èµ„æºid
+        BYTE                    m_byNumber;        //æ•°é‡
     };
 
     class CGShopBuyFactory : public PacketFactory 

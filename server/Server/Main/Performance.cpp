@@ -114,12 +114,12 @@ __ENTER_FUNCTION
     }
 
     if( pScene->GetSceneStatus()!=SCENE_STATUS_RUNNING )
-    {//Î´¼¤»îµÄ³¡¾°²»ÐèÒª¼à¿Ø
+    {//æœªæ¿€æ´»çš„åœºæ™¯ä¸éœ€è¦ç›‘æŽ§
         return ;
     }
 
     if( memcmp(&pScene->m_Perfor, pPerfor, sizeof(SCENE_PERFOR) )==0 )
-    {//³¡¾°ËøËÀ£¬Òì³£
+    {//åœºæ™¯é”æ­»ï¼Œå¼‚å¸¸
 
         Log::SaveLog( SERVER_ERRORFILE, "SceneID=%d Dead Lock!", pPerfor->m_SceneID ) ;
         for( INT i=0; i<SPT_NUMBER; i++ )

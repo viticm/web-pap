@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// ÎÄ¼þÃû : LuaFnTbl_Team.h
-// Ä£¿é    :    Script
-// ¹¦ÄÜ     :    ×é¶ÓÏà¹Øµ¼³öº¯Êý
-// ÐÞ¸ÄÀúÊ·:
+// æ–‡ä»¶å : LuaFnTbl_Team.h
+// æ¨¡å—    :    Script
+// åŠŸèƒ½     :    ç»„é˜Ÿç›¸å…³å¯¼å‡ºå‡½æ•°
+// ä¿®æ”¹åŽ†å²:
 //-----------------------------------------------------------------------------
 #ifndef __LUAFNTBL_TEAM_H__
 #define __LUAFNTBL_TEAM_H__
@@ -21,19 +21,19 @@
 namespace LuaFnTbl
 {
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetTeamId
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetTeamId
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ·µ»ØÍæ¼Ò¶ÓÎéID
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è¿”å›žçŽ©å®¶é˜Ÿä¼ID
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnGetTeamId(Lua_State* L)    
     {
@@ -53,19 +53,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetTeamSize
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetTeamSize
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ·µ»ØÍæ¼ÒËùÔÚ¶ÓÎéÈËÊý
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è¿”å›žçŽ©å®¶æ‰€åœ¨é˜Ÿä¼äººæ•°
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnGetTeamSize(Lua_State* L)    
     {    
@@ -85,19 +85,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnLeaveTeam
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnLeaveTeam
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÈÃÍæ¼ÒÀë¿ª×ÔÉí¶ÓÎé
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®©çŽ©å®¶ç¦»å¼€è‡ªèº«é˜Ÿä¼
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnLeaveTeam(Lua_State* L)    
     {
@@ -119,37 +119,37 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnMsg2Player
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnMsg2Player
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                msg
-    *                    ÁÄÌìÄÚÈÝ,×Ö·û´®Ö¸ÕëÀàÐÍ
+    *                    èŠå¤©å†…å®¹,å­—ç¬¦ä¸²æŒ‡é’ˆç±»åž‹
     *                type
-    *                    CHAT_TYPE_NORMAL =0 ,    //ÆÕÍ¨Ëµ»°ÏûÏ¢
-    *                    CHAT_TYPE_TEAM = 1,        //¶ÓÁÄÏûÏ¢
-    *                    CHAT_TYPE_SCENE = 2,        //³¡¾°ÏûÏ¢
-    *                    CHAT_TYPE_TELL = 3,        //Ë½ÁÄÏûÏ¢
-    *                    CHAT_TYPE_SYSTEM = 4,        //ÏµÍ³ÏûÏ¢
-    *                    CHAT_TYPE_CHANNEL = 5,        //×Ô½¨ÁÄÌìÆµµÀÏûÏ¢
-    *                    CHAT_TYPE_GUILD = 6,        //°ïÅÉÏûÏ¢
-    *                    CHAT_TYPE_MENPAI = 7 ,        //ÃÅÅÉÏûÏ¢
-    *                    CHAT_TYPE_SELF = 8,            //½ö¿Í»§¶ËÊ¹ÓÃµÄÏûÏ¢
+    *                    CHAT_TYPE_NORMAL =0 ,    //æ™®é€šè¯´è¯æ¶ˆæ¯
+    *                    CHAT_TYPE_TEAM = 1,        //é˜ŸèŠæ¶ˆæ¯
+    *                    CHAT_TYPE_SCENE = 2,        //åœºæ™¯æ¶ˆæ¯
+    *                    CHAT_TYPE_TELL = 3,        //ç§èŠæ¶ˆæ¯
+    *                    CHAT_TYPE_SYSTEM = 4,        //ç³»ç»Ÿæ¶ˆæ¯
+    *                    CHAT_TYPE_CHANNEL = 5,        //è‡ªå»ºèŠå¤©é¢‘é“æ¶ˆæ¯
+    *                    CHAT_TYPE_GUILD = 6,        //å¸®æ´¾æ¶ˆæ¯
+    *                    CHAT_TYPE_MENPAI = 7 ,        //é—¨æ´¾æ¶ˆæ¯
+    *                    CHAT_TYPE_SELF = 8,            //ä»…å®¢æˆ·ç«¯ä½¿ç”¨çš„æ¶ˆæ¯
     *                    
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ½«ÏûÏ¢·¢ËÍ¸øÍæ¼Ò
-    *                ÏûÏ¢ÏÔÊ¾ÔÚ×óÏÂ½ÇµÄÁÄÌì¿òÄÚ
-    *                typeÄ¬ÈÏÖµÎªCHAT_TYPE_NORMAL,¼´0
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å°†æ¶ˆæ¯å‘é€ç»™çŽ©å®¶
+    *                æ¶ˆæ¯æ˜¾ç¤ºåœ¨å·¦ä¸‹è§’çš„èŠå¤©æ¡†å†…
+    *                typeé»˜è®¤å€¼ä¸ºCHAT_TYPE_NORMAL,å³0
     *
-    *                ½ðÇ®ÌáÊ¾ÐÅÏ¢£¬ÐèÒªÐ´³É#{_MONEY%d}·½Ê½
-    *                ÀýÈç£ºÄã»ñµÃÁË#{_MONEY208934}¡£ 
-    *                Õâ¾ä»°ÔÚ¿Í»§¶ËÌáÊ¾µÄÊ±ºò»á×Ô¶¯¼ÆËã³ö½ð¡¢Òø¡¢Í­µÄÊýÁ¿£¬²¢ÓÃ¶ÔÓ¦µÄÍ¼±ê±íÊ¾³öÀ´¡£
+    *                é‡‘é’±æç¤ºä¿¡æ¯ï¼Œéœ€è¦å†™æˆ#{_MONEY%d}æ–¹å¼
+    *                ä¾‹å¦‚ï¼šä½ èŽ·å¾—äº†#{_MONEY208934}ã€‚ 
+    *                è¿™å¥è¯åœ¨å®¢æˆ·ç«¯æç¤ºçš„æ—¶å€™ä¼šè‡ªåŠ¨è®¡ç®—å‡ºé‡‘ã€é“¶ã€é“œçš„æ•°é‡ï¼Œå¹¶ç”¨å¯¹åº”çš„å›¾æ ‡è¡¨ç¤ºå‡ºæ¥ã€‚
     *                
     */
     INT LuaFnMsg2Player(Lua_State* L)    
@@ -189,21 +189,21 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± :
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnMsg2Team
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ :
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnMsg2Team
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                msg
-    *                    ÁÄÌìÄÚÈÝ,×Ö·û´®Ö¸ÕëÀàÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ½«ÏûÏ¢·¢ËÍ¸øÍæ¼ÒËùÔÚ×éµÄËùÓÐ³ÉÔ±
-    *                º¯ÊýÌåÉÐÎ´ÌîÐ´
+    *                    èŠå¤©å†…å®¹,å­—ç¬¦ä¸²æŒ‡é’ˆç±»åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å°†æ¶ˆæ¯å‘é€ç»™çŽ©å®¶æ‰€åœ¨ç»„çš„æ‰€æœ‰æˆå‘˜
+    *                å‡½æ•°ä½“å°šæœªå¡«å†™
     */
     INT LuaFnMsg2Team(Lua_State* L)    
     {
@@ -216,17 +216,17 @@ namespace LuaFnTbl
     }
 
     /****************************************************************************
-     *    ¿ª·¢ÈËÔ±£º    
-     *    ±àÐ´Ê±¼ä£º    2006-1-17    17:53
-     *    º¯ÊýÃû³Æ£º    LuaFnIsTeamFollow
-     *    ²ÎÊýËµÃ÷£º
+     *    å¼€å‘äººå‘˜ï¼š    
+     *    ç¼–å†™æ—¶é—´ï¼š    2006-1-17    17:53
+     *    å‡½æ•°åç§°ï¼š    LuaFnIsTeamFollow
+     *    å‚æ•°è¯´æ˜Žï¼š
      *                sceneId
-     *                    ³¡¾°±àºÅ
+     *                    åœºæ™¯ç¼–å·
      *                selfId
-     *                    µ÷ÓÃÕß ID£¬ÎÞ·ûºÅÕûÐÍ
+     *                    è°ƒç”¨è€… IDï¼Œæ— ç¬¦å·æ•´åž‹
      *
-     *    ¹¦ÄÜËµÃ÷£º    µÃµ½ selfId ¶ÔÓ¦µÄÍæ¼ÒÊÇ·ñ´¦ÓÚ×é¶Ó¸úËæ×´Ì¬
-     *    ÐÞ¸Ä¼ÇÂ¼£º
+     *    åŠŸèƒ½è¯´æ˜Žï¼š    å¾—åˆ° selfId å¯¹åº”çš„çŽ©å®¶æ˜¯å¦å¤„äºŽç»„é˜Ÿè·ŸéšçŠ¶æ€
+     *    ä¿®æ”¹è®°å½•ï¼š
     *****************************************************************************/
     INT LuaFnIsTeamFollow(Lua_State* L)    
     {
@@ -247,19 +247,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-12-14
-    *     º¯ÊýÃû³Æ : LuaFnGetFollowedMembersCount
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-12-14
+    *     å‡½æ•°åç§° : LuaFnGetFollowedMembersCount
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½¸úËæ×´Ì¬µÄ¶ÓÓÑÊýÁ¿
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°è·ŸéšçŠ¶æ€çš„é˜Ÿå‹æ•°é‡
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnGetFollowedMembersCount(Lua_State* L)    
     {
@@ -279,21 +279,21 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     º¯ÊýÃû³Æ : LuaFnGetFollowedMember
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     å‡½æ•°åç§° : LuaFnGetFollowedMember
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                memberIndex
-    *                    ÔÚ¸úËæ¶ÓÎéÖÐµÄÏÂ±êË÷Òý,´Ó0ÆðÊ¼,ÕûÐÍ            
+    *                    åœ¨è·Ÿéšé˜Ÿä¼ä¸­çš„ä¸‹æ ‡ç´¢å¼•,ä»Ž0èµ·å§‹,æ•´åž‹            
 
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½¸úËæ×´Ì¬µÄmemberIndexÏÂ±êµÄ¶ÓÓÑobjId
-    *                Ã»ÓÐ²âÊÔ
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°è·ŸéšçŠ¶æ€çš„memberIndexä¸‹æ ‡çš„é˜Ÿå‹objId
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnGetFollowedMember(Lua_State* L)    
     {
@@ -318,19 +318,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-12-14
-    *     º¯ÊýÃû³Æ : LuaFnStopTeamFollow
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-12-14
+    *     å‡½æ•°åç§° : LuaFnStopTeamFollow
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                Í£Ö¹¸úËæ,Õë¶ÔselfId±êÖ¾µÄÍæ¼Ò
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åœæ­¢è·Ÿéš,é’ˆå¯¹selfIdæ ‡å¿—çš„çŽ©å®¶
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnStopTeamFollow(Lua_State* L)
     {
@@ -350,19 +350,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-12-14
-    *     º¯ÊýÃû³Æ : LuaFnClearFollowedMembers
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-12-14
+    *     å‡½æ•°åç§° : LuaFnClearFollowedMembers
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                Çå³ýËùÓÐµÄ¸úËæ¶ÓÓÑÁÐ±í
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                æ¸…é™¤æ‰€æœ‰çš„è·Ÿéšé˜Ÿå‹åˆ—è¡¨
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnClearFollowedMembers(Lua_State* L)
     {
@@ -384,19 +384,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-12-14
-    *     º¯ÊýÃû³Æ : LuaFnGetTeamSceneMemberCount
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-12-14
+    *     å‡½æ•°åç§° : LuaFnGetTeamSceneMemberCount
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ¶ÓÎéÖÐÍ¬³¡¾°³ÉÔ±ÊýÁ¿ human
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                é˜Ÿä¼ä¸­åŒåœºæ™¯æˆå‘˜æ•°é‡ human
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnGetTeamSceneMemberCount(Lua_State* L)
     {
@@ -418,21 +418,21 @@ namespace LuaFnTbl
     }
     
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-12-14
-    *     º¯ÊýÃû³Æ : LuaFnGetTeamSceneMember
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-12-14
+    *     å‡½æ•°åç§° : LuaFnGetTeamSceneMember
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ    
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹    
     *                memberIndex
-    *                    ÔÚ¶ÓÎéÖÐµÄÏÂ±êË÷Òý,´Ó0ÆðÊ¼,ÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡µÃ¶ÓÎéÖÐÄ³Í¬³¡¾°³ÉÔ±µÄ OBJID
-    *                Ã»ÓÐ²âÊÔ
+    *                    åœ¨é˜Ÿä¼ä¸­çš„ä¸‹æ ‡ç´¢å¼•,ä»Ž0èµ·å§‹,æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–å¾—é˜Ÿä¼ä¸­æŸåŒåœºæ™¯æˆå‘˜çš„ OBJID
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnGetTeamSceneMember(Lua_State* L)
     {
@@ -455,19 +455,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-12-14
-    *     º¯ÊýÃû³Æ : LuaFnSetTeamFollowSpeed
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-12-14
+    *     å‡½æ•°åç§° : LuaFnSetTeamFollowSpeed
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃ×é¶Ó¸úËæµÄËÙ¶È
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®ç»„é˜Ÿè·Ÿéšçš„é€Ÿåº¦
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnSetTeamFollowSpeed(Lua_State* L)
     {
@@ -491,21 +491,21 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-12-14
-    *     º¯ÊýÃû³Æ : LuaFnIsTeamLeader
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-12-14
+    *     å‡½æ•°åç§° : LuaFnIsTeamLeader
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                selfIdÍæ¼ÒÊÇ·ñÎª¶Ó³¤
-    *                ·µ»Ø1,ÊÇ
-    *                ·µ»Ø0,·ñ
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                selfIdçŽ©å®¶æ˜¯å¦ä¸ºé˜Ÿé•¿
+    *                è¿”å›ž1,æ˜¯
+    *                è¿”å›ž0,å¦
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnIsTeamLeader(Lua_State* L)
     {
@@ -526,21 +526,21 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-12-14
-    *     º¯ÊýÃû³Æ : LuaFnGetTeamMemberGuid
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-12-14
+    *     å‡½æ•°åç§° : LuaFnGetTeamMemberGuid
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ    
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹    
     *                memberIndex
-    *                    ÔÚ¶ÓÎéÖÐµÄÏÂ±êË÷Òý,´Ó0ÆðÊ¼,ÕûÐÍ            
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃselfIdËùÔÚTeamÖÐµÚmemberIndex¸öÏÂ±êÍæ¼ÒµÄGuid
-    *                Ã»ÓÐ²âÊÔ
+    *                    åœ¨é˜Ÿä¼ä¸­çš„ä¸‹æ ‡ç´¢å¼•,ä»Ž0èµ·å§‹,æ•´åž‹            
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—selfIdæ‰€åœ¨Teamä¸­ç¬¬memberIndexä¸ªä¸‹æ ‡çŽ©å®¶çš„Guid
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnGetTeamMemberGuid(Lua_State* L)
     {
@@ -562,19 +562,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-1-10
-    *     º¯ÊýÃû³Æ : LuaFnHasTeam
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-1-10
+    *     å‡½æ•°åç§° : LuaFnHasTeam
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ    
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÅÐ¶ÏselfIdÍæ¼ÒÊÇ·ñÔÚ×é¶Ó×´Ì¬
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹    
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ¤æ–­selfIdçŽ©å®¶æ˜¯å¦åœ¨ç»„é˜ŸçŠ¶æ€
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnHasTeam(Lua_State* L)
     {    
@@ -596,19 +596,19 @@ namespace LuaFnTbl
         RETURNFALSE
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-3-17
-    *     º¯ÊýÃû³Æ : LuaFnGetNearTeamCount
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-3-17
+    *     å‡½æ•°åç§° : LuaFnGetNearTeamCount
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ    
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡µÃselfIdÍæ¼Ò¸½½üµÄ¶ÓÓÑÊýÁ¿(°üÀ¨×Ô¼º)
-    *                Èç¹ûÍæ¼Ò²»ÊôÓÚÄ³¸ö¶ÓÎé£¬Ôò·µ»Ø-1
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹    
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–å¾—selfIdçŽ©å®¶é™„è¿‘çš„é˜Ÿå‹æ•°é‡(åŒ…æ‹¬è‡ªå·±)
+    *                å¦‚æžœçŽ©å®¶ä¸å±žäºŽæŸä¸ªé˜Ÿä¼ï¼Œåˆ™è¿”å›ž-1
     */
     INT LuaFnGetNearTeamCount(Lua_State* L)
     {    
@@ -653,20 +653,20 @@ namespace LuaFnTbl
         RETURNFALSE
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-1-10
-    *     º¯ÊýÃû³Æ : LuaFnGetNearTeamMember
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-1-10
+    *     å‡½æ•°åç§° : LuaFnGetNearTeamMember
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ    
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹    
     *                index
-    *                    ¸½½ü¶ÓÓÑµÄË÷ÒýºÅ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡µÃselfIdÍæ¼Ò¸½½ü¶ÓÓÑµÄobjid(°üÀ¨×Ô¼º)
+    *                    é™„è¿‘é˜Ÿå‹çš„ç´¢å¼•å·
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–å¾—selfIdçŽ©å®¶é™„è¿‘é˜Ÿå‹çš„objid(åŒ…æ‹¬è‡ªå·±)
     */
     INT LuaFnGetNearTeamMember(Lua_State* L)
     {    
@@ -699,18 +699,18 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-3-33
-    *     º¯ÊýÃû³Æ : LuaFnGetMonsterGroupID
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-3-33
+    *     å‡½æ•°åç§° : LuaFnGetMonsterGroupID
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    ÐèÒªÈ¡µÃÊý¾ÝµÄ¹ÖÎïµÄobjid
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡µÃselfId¹ÖÎïµÄGroupID, monster.iniÀïÃæÅäÖÃ
+    *                    éœ€è¦å–å¾—æ•°æ®çš„æ€ªç‰©çš„objid
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–å¾—selfIdæ€ªç‰©çš„GroupID, monster.inié‡Œé¢é…ç½®
     */
     INT LuaFnGetMonsterGroupID(Lua_State* L)
     {    
@@ -732,18 +732,18 @@ namespace LuaFnTbl
         RETURNFALSE
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-3-33
-    *     º¯ÊýÃû³Æ : LuaFnGetMonsterTeamID
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-3-33
+    *     å‡½æ•°åç§° : LuaFnGetMonsterTeamID
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    ÐèÒªÈ¡µÃÊý¾ÝµÄ¹ÖÎïµÄobjid
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡µÃselfId¹ÖÎïµÄTeamID, monster.iniÀïÃæÅäÖÃ
+    *                    éœ€è¦å–å¾—æ•°æ®çš„æ€ªç‰©çš„objid
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–å¾—selfIdæ€ªç‰©çš„TeamID, monster.inié‡Œé¢é…ç½®
     */
     INT LuaFnGetMonsterTeamID(Lua_State* L)
     {    
@@ -765,18 +765,18 @@ namespace LuaFnTbl
         RETURNFALSE
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-3-23
-    *     º¯ÊýÃû³Æ : LuaFnGetMonsterDataID
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-3-23
+    *     å‡½æ•°åç§° : LuaFnGetMonsterDataID
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    ÐèÒªÈ¡µÃÊý¾ÝµÄ¹ÖÎïµÄobjid
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡µÃselfId¹ÖÎïµÄDataID, monster.iniÀïÃæÅäÖÃ
+    *                    éœ€è¦å–å¾—æ•°æ®çš„æ€ªç‰©çš„objid
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–å¾—selfIdæ€ªç‰©çš„DataID, monster.inié‡Œé¢é…ç½®
     */
     INT LuaFnGetMonsterDataID(Lua_State* L)
     {    

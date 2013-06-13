@@ -1,6 +1,6 @@
 // CGPlayerShopMoney.h
 // 
-// Í¨Öª·şÎñÆ÷½ğÇ®´æÈëÈ¡³ö
+// é€šçŸ¥æœåŠ¡å™¨é‡‘é’±å­˜å…¥å–å‡º
 // 
 //////////////////////////////////////////////////////
 
@@ -29,14 +29,14 @@ namespace Packets
     public:
         CGPlayerShopMoney( )
         {
-            m_Opt        =    OPT_SAVE_MONEY;        //²Ù×÷
-            m_Type        =    TYPE_BASE_MONEY;    //´æµ½ÄÄ
-            m_Amount    =    0;                    //ÊıÁ¿
+            m_Opt        =    OPT_SAVE_MONEY;        //æ“ä½œ
+            m_Type        =    TYPE_BASE_MONEY;    //å­˜åˆ°å“ª
+            m_Amount    =    0;                    //æ•°é‡
 
         };
         virtual ~CGPlayerShopMoney( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -64,11 +64,11 @@ namespace Packets
         VOID                    SetShopSerial(BYTE nSerial) {m_nSerial = nSerial;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
-        BYTE                    m_Opt;                //²Ù×÷
-        BYTE                    m_Type;                //´æµ½ÄÄ
-        UINT                    m_Amount;            //ÊıÁ¿
-        BYTE                    m_nSerial;            //ÉÌµêĞòÁĞºÅ
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
+        BYTE                    m_Opt;                //æ“ä½œ
+        BYTE                    m_Type;                //å­˜åˆ°å“ª
+        UINT                    m_Amount;            //æ•°é‡
+        BYTE                    m_nSerial;            //å•†åº—åºåˆ—å·
     };
 
     class CGPlayerShopMoneyFactory : public PacketFactory 

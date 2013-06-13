@@ -20,7 +20,7 @@ namespace Packets
         }
         virtual ~WBRetValidateUser( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -67,12 +67,12 @@ namespace Packets
         VOID                    SetAge(SHORT NewAge){m_Age = NewAge;}
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
 
     private:
-        //数据
-        CHAR            szAccount[MAX_ACCOUNT+1] ;    //用户名称
-        CHAR            szPassWord[MAX_PASSWORD+1];    //用户密码
+        //鏁版嵁
+        CHAR            szAccount[MAX_ACCOUNT+1] ;    //鐢ㄦ埛鍚嶇О
+        CHAR            szPassWord[MAX_PASSWORD+1];    //鐢ㄦ埛瀵嗙爜
         LOGIN_RESULT    m_uFettle;
         PlayerID_t        m_PID;
         PlayerID_t        m_LoginID;

@@ -5,8 +5,8 @@
 
 class SimpleImpactList
 {
-    INT                        m_nNumOfImpacts;                // BUFF ÊıÁ¿
-    ImpactID_t                m_aBuffID[MAX_IMPACT_NUM];        // BUFF ÁĞ±í
+    INT                        m_nNumOfImpacts;                // BUFF æ•°é‡
+    ImpactID_t                m_aBuffID[MAX_IMPACT_NUM];        // BUFF åˆ—è¡¨
 
 public:
     SimpleImpactList()        { CleanUp(); }
@@ -62,7 +62,7 @@ public:
         }
 
         for( INT i=0; i<ImpactList.m_Count; ++i )
-        { // ²éÕÒÊÇ·ñ Buff ÁĞ±íÒÑ¾­¸Ä±ä£¬Ã¿¸öµ±Ç° ID ÄÃÈ¥ Cache ÖĞ±È½ÏÒ»ÏÂÊÇ·ñ´æÔÚ
+        { // æŸ¥æ‰¾æ˜¯å¦ Buff åˆ—è¡¨å·²ç»æ”¹å˜ï¼Œæ¯ä¸ªå½“å‰ ID æ‹¿å» Cache ä¸­æ¯”è¾ƒä¸€ä¸‹æ˜¯å¦å­˜åœ¨
             INT j;
             for( j=0; j<m_nNumOfImpacts; ++j )
             {
@@ -73,7 +73,7 @@ public:
             }
 
             if ( j >= m_nNumOfImpacts )
-            { // Õâ¸ö ID ²»´æÔÚ
+            { // è¿™ä¸ª ID ä¸å­˜åœ¨
                 return FALSE;
             }
         }

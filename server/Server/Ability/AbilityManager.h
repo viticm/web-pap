@@ -1,10 +1,10 @@
 /********************************************************************************
- *    ÎÄ¼þÃû£º    AbilityManager.h
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Ability\AbilityManager.h
- *    ´´½¨Ê±¼ä£º    
+ *    æ–‡ä»¶åï¼š    AbilityManager.h
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Ability\AbilityManager.h
+ *    åˆ›å»ºæ—¶é—´ï¼š    
  *
- *    ¹¦ÄÜËµÃ÷£º    ÓÃÓÚ¹ÜÀíËùÓÐÉú»î¼¼ÄÜÊµÀý¡¢Åä·½±íÒÔ¼°¾­Ñé±í
- *    ÐÞ¸Ä¼ÇÂ¼£º    2005 Äê 11 ÔÂ 6 ÈÕ    16:52£¬µ÷ÕûÁËÒ»ÏÂ½á¹¹
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    ç”¨äºŽç®¡ç†æ‰€æœ‰ç”Ÿæ´»æŠ€èƒ½å®žä¾‹ã€é…æ–¹è¡¨ä»¥åŠç»éªŒè¡¨
+ *    ä¿®æ”¹è®°å½•ï¼š    2005 å¹´ 11 æœˆ 6 æ—¥    16:52ï¼Œè°ƒæ•´äº†ä¸€ä¸‹ç»“æž„
 *********************************************************************************/
 
 #ifndef __ABILITYMANAGER_H__
@@ -28,45 +28,45 @@ public:
 
     enum AbilityClass
     {
-        ABILITY_CLASS_INVALID            = -1,    // ·Ç·¨
-        ABILITY_CLASS_NOUSE                = 0,    // Õ¼Î»¼¼ÄÜ
-        ABILITY_CLASS_COOKING,                    // Åëâ¿
-        ABILITY_CLASS_PHARMACY,                    // ÖÆÒ©
-        ABILITY_CLASS_INLAY,                    // ÏâÇ¶
-        ABILITY_CLASS_FOUNDRY,                    // ÖýÔì
-        ABILITY_CLASS_TAILOR,                    // ·ìÈÒ
-        ABILITY_CLASS_ARTWORK,                    // ¹¤ÒÕ
-        ABILITY_CLASS_GATHERMINE,                // ²É¿ó
-        ABILITY_CLASS_GATHERMEDIC,                // ²ÉÒ©
-        ABILITY_CLASS_FISH,                        // µöÓã
-        ABILITY_CLASS_PLANT,                    // ÖÖÖ²
-        ABILITY_CLASS_SHAOLINDRUG,                // ÉÙÁÖÖÆÒ©£¨¿ª¹â£©
-        ABILITY_CLASS_HOLYFIRE,                    // Ã÷½Ì£¨Ê¥»ðÊõ£©
-        ABILITY_CLASS_BREWING,                    // Ø¤°ï£¨Äð¾Æ£©
-        ABILITY_CLASS_THICKICE,                    // ÌìÉ½£¨Ðþ±ùÊõ£©
-        ABILITY_CLASS_INSECTCULTURING,            // ´óÀí£¨ÖÆ¹Æ£©
-        ABILITY_CLASS_POISON,                    // ÐÇËÞ£¨ÖÆ¶¾£©
-        ABILITY_CLASS_INCANTATION,                // ¶ëáÒ£¨ÖÆ·û£©
-        ABILITY_CLASS_ALCHEMY,                    // Îäµ±£¨Á¶µ¤£©
-        ABILITY_CLASS_THAUMATURGY,                // åÐÒ££¨ÆæÃÅ¶Ý¼×£©
-        ABILITY_CLASS_ENGINEERING,                // ¹¤³ÌÑ§
-        ABILITY_CLASS_FIGHTGHOST,                // Çý¹í
-        ABILITY_CLASS_SEARCHTSTORE,                // ÍÚ±¦
-        ABILITY_CLASS_TRADE,                    // ÅÜÉÌ
-        ABILITY_CLASS_HAGGLE,                    // É±¼Û
-        ABILITY_CLASS_EXCESSPROFIT,                // ÈÈÂô
-        ABILITY_CLASS_PROCESSING,                // ´¦ÀíÓÃµ½µÄ½ø¶ÈÌõ
-        ABILITY_CLASS_PHARMACOLOGY,                // Ò©Àí
-        ABILITY_CLASS_REGIMEN,                    // ÑøÉú·¨
-        ABILITY_CLASS_BUDDHOLOGY,                // ·ð·¨
-        ABILITY_CLASS_FIREMAKING,                // ²É»ðÊõ
-        ABILITY_CLASS_BEGSKILL,                    // Á«»¨Âä
-        ABILITY_CLASS_ICEMAKING,                // ²É±ùÊõ
-        ABILITY_CLASS_VENATIONFORMULA,            // ¾­Âö°Ù¾÷
-        ABILITY_CLASS_INSECTENTICING,            // Òý³æÊõ
-        ABILITY_CLASS_MENTALTELEPATHY,            // ÁéÐÄÊõ
-        ABILITY_CLASS_TAOISM,                    // µÀ·¨
-        ABILITY_CLASS_BODYBUILDING,                // ÁùÒÕ·ç¹Ç
+        ABILITY_CLASS_INVALID            = -1,    // éžæ³•
+        ABILITY_CLASS_NOUSE                = 0,    // å ä½æŠ€èƒ½
+        ABILITY_CLASS_COOKING,                    // çƒ¹é¥ª
+        ABILITY_CLASS_PHARMACY,                    // åˆ¶è¯
+        ABILITY_CLASS_INLAY,                    // é•¶åµŒ
+        ABILITY_CLASS_FOUNDRY,                    // é“¸é€ 
+        ABILITY_CLASS_TAILOR,                    // ç¼çº«
+        ABILITY_CLASS_ARTWORK,                    // å·¥è‰º
+        ABILITY_CLASS_GATHERMINE,                // é‡‡çŸ¿
+        ABILITY_CLASS_GATHERMEDIC,                // é‡‡è¯
+        ABILITY_CLASS_FISH,                        // é’“é±¼
+        ABILITY_CLASS_PLANT,                    // ç§æ¤
+        ABILITY_CLASS_SHAOLINDRUG,                // å°‘æž—åˆ¶è¯ï¼ˆå¼€å…‰ï¼‰
+        ABILITY_CLASS_HOLYFIRE,                    // æ˜Žæ•™ï¼ˆåœ£ç«æœ¯ï¼‰
+        ABILITY_CLASS_BREWING,                    // ä¸å¸®ï¼ˆé…¿é…’ï¼‰
+        ABILITY_CLASS_THICKICE,                    // å¤©å±±ï¼ˆçŽ„å†°æœ¯ï¼‰
+        ABILITY_CLASS_INSECTCULTURING,            // å¤§ç†ï¼ˆåˆ¶è›Šï¼‰
+        ABILITY_CLASS_POISON,                    // æ˜Ÿå®¿ï¼ˆåˆ¶æ¯’ï¼‰
+        ABILITY_CLASS_INCANTATION,                // å³¨åµ‹ï¼ˆåˆ¶ç¬¦ï¼‰
+        ABILITY_CLASS_ALCHEMY,                    // æ­¦å½“ï¼ˆç‚¼ä¸¹ï¼‰
+        ABILITY_CLASS_THAUMATURGY,                // é€é¥ï¼ˆå¥‡é—¨éç”²ï¼‰
+        ABILITY_CLASS_ENGINEERING,                // å·¥ç¨‹å­¦
+        ABILITY_CLASS_FIGHTGHOST,                // é©±é¬¼
+        ABILITY_CLASS_SEARCHTSTORE,                // æŒ–å®
+        ABILITY_CLASS_TRADE,                    // è·‘å•†
+        ABILITY_CLASS_HAGGLE,                    // æ€ä»·
+        ABILITY_CLASS_EXCESSPROFIT,                // çƒ­å–
+        ABILITY_CLASS_PROCESSING,                // å¤„ç†ç”¨åˆ°çš„è¿›åº¦æ¡
+        ABILITY_CLASS_PHARMACOLOGY,                // è¯ç†
+        ABILITY_CLASS_REGIMEN,                    // å…»ç”Ÿæ³•
+        ABILITY_CLASS_BUDDHOLOGY,                // ä½›æ³•
+        ABILITY_CLASS_FIREMAKING,                // é‡‡ç«æœ¯
+        ABILITY_CLASS_BEGSKILL,                    // èŽ²èŠ±è½
+        ABILITY_CLASS_ICEMAKING,                // é‡‡å†°æœ¯
+        ABILITY_CLASS_VENATIONFORMULA,            // ç»è„‰ç™¾è¯€
+        ABILITY_CLASS_INSECTENTICING,            // å¼•è™«æœ¯
+        ABILITY_CLASS_MENTALTELEPATHY,            // çµå¿ƒæœ¯
+        ABILITY_CLASS_TAOISM,                    // é“æ³•
+        ABILITY_CLASS_BODYBUILDING,                // å…­è‰ºé£Žéª¨
 
         ABILITY_CLASS_SIZE,
     };
@@ -75,7 +75,7 @@ public:
 
     BOOL                                Init();
 
-    // »ñµÃ
+    // èŽ·å¾—
     Ability*                            GetAbility( AbilityID_t aid )
     {
         INT idx;

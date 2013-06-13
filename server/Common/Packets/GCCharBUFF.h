@@ -25,7 +25,7 @@ public:
         m_nSN = 0;
     }
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream );
     virtual BOOL            Write( SocketOutputStream& oStream )const;
     virtual UINT            Execute( Player* pPlayer );
@@ -51,7 +51,7 @@ public:
                                 }
                             }
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            SetReceiverID(ObjID_t id) {m_nReceiverID = id;}
     ObjID_t            GetReceiverID(VOID)const {return m_nReceiverID;}
 
@@ -73,13 +73,13 @@ public:
     VOID            SetSN(UINT nSN) {m_nSN=nSN;}
     UINT            GetSN(VOID) const {return m_nSN;}
 private:
-    ObjID_t            m_nReceiverID;        // Ğ§¹û½ÓÊÜÕßµÄID
-    ObjID_t            m_nSenderID;        // Ğ§¹ûÊ©·ÅÕßµÄID
-    ImpactID_t        m_nBuffID;            // ÌØĞ§Êı¾İµÄID(Ë÷Òı)
-    SkillID_t        m_nSkillID;            // ¼¼ÄÜID
-    BOOL            m_bEnable;             // ÊÇĞ§¹ûÉúĞ§ÏûÏ¢»¹ÊÇ
-    INT                m_nSenderLogicCount; //Ğ§¹û·¢ÆğÕßµÄÂß¼­¼ÆÊı
-    UINT            m_nSN;                //³ÖĞøĞÔĞ§¹ûµÄĞòÁĞºÅ(ÓÃÓÚÊ¶±ğ)
+    ObjID_t            m_nReceiverID;        // æ•ˆæœæ¥å—è€…çš„ID
+    ObjID_t            m_nSenderID;        // æ•ˆæœæ–½æ”¾è€…çš„ID
+    ImpactID_t        m_nBuffID;            // ç‰¹æ•ˆæ•°æ®çš„ID(ç´¢å¼•)
+    SkillID_t        m_nSkillID;            // æŠ€èƒ½ID
+    BOOL            m_bEnable;             // æ˜¯æ•ˆæœç”Ÿæ•ˆæ¶ˆæ¯è¿˜æ˜¯
+    INT                m_nSenderLogicCount; //æ•ˆæœå‘èµ·è€…çš„é€»è¾‘è®¡æ•°
+    UINT            m_nSN;                //æŒç»­æ€§æ•ˆæœçš„åºåˆ—å·(ç”¨äºè¯†åˆ«)
 };
 
 

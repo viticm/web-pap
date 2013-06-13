@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////
-//�ļ�����ScanOperator_Chat.h
-//����������������Χ�ķ���Ҫ���obj���û�����������Ϣ
-//�޸ļ�¼��2005-12-08����
+//文件名：ScanOperator_Chat.h
+//功能描述：搜索周围的符合要求的obj，用户发送聊天信息
+//修改记录：2005-12-08创建
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -37,15 +37,15 @@ public :
     ScanOperator_Chat( ) ;
     virtual ~ScanOperator_Chat( ) ;
 
-    //��ʼ��ɨ�������
+    //初始化扫描控制器
     virtual BOOL                Init( SCANOPERATOR_CHAT_INIT* pInit ) ;
-    //ɨ�������ʼǰ�ص�
+    //扫描操作开始前回调
     virtual BOOL                On_BeforeScan( ) ;
-    //�жϲ����е�Zone�Ƿ���Ҫɨ��
+    //判断参数中的Zone是否需要扫描
 //    virtual BOOL                On_IsNeedScan( ZoneID_t ZoneID ) ;
-    //������һ��Obj, ����ֵ�� SCANRETURN
+    //搜索到一个Obj, 返回值见 SCANRETURN
     virtual UINT                On_FindObj( Obj* pObj ) ;
-    //ɨ�������ɺ�ص�
+    //扫描操作完成后回调
 //    virtual VOID                On_AfterScan( ) ;
 
 

@@ -42,7 +42,7 @@ __ENTER_FUNCTION
     }
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID ) ;
 
         pScene->SendPacket( pPacket, PlayerID ) ;
@@ -53,12 +53,12 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE ;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
         MAIL_LIST* pMailList = pPacket->GetMailList() ;
         if( pMailList->m_Count>0 && pMailList->m_aMail[0].m_uFlag==MAIL_TYPE_SCRIPT )
-        {//·þÎñÆ÷ÊÕµ½½Å±¾ÓÊ¼þ£¬Ö´ÐÐÖ®
+        {//æœåŠ¡å™¨æ”¶åˆ°è„šæœ¬é‚®ä»¶ï¼Œæ‰§è¡Œä¹‹
             for( INT i=0; i<pMailList->m_Count; i++ )
             {
                 MAIL* pMail = &(pMailList->m_aMail[i]) ;
@@ -73,7 +73,7 @@ __ENTER_FUNCTION
             }
 
             if( pMailList->m_TotalLeft>0 )
-            {//Èç¹û»¹ÓÐ½Å±¾ÓÊ¼þ£¬Ôò¼ÌÐøÏòÊÀ½çÊý¾Ý·þÎñÆ÷ÇëÇó
+            {//å¦‚æžœè¿˜æœ‰è„šæœ¬é‚®ä»¶ï¼Œåˆ™ç»§ç»­å‘ä¸–ç•Œæ•°æ®æœåŠ¡å™¨è¯·æ±‚
                 GWAskMail Msg ;
                 Msg.SetAskType( ASK_TYPE_LOGIN ) ;
                 Msg.SetGUID( pHuman->GetGUID() ) ;
@@ -81,7 +81,7 @@ __ENTER_FUNCTION
             }
         }
         else
-        {//·þÎñÆ÷ÊÕµ½ÆÕÍ¨ÓÊ¼þ£¬·¢¸ø¿Í»§¶Ë
+        {//æœåŠ¡å™¨æ”¶åˆ°æ™®é€šé‚®ä»¶ï¼Œå‘ç»™å®¢æˆ·ç«¯
             GCMail Msg ;
             Msg.SetMailList( pMailList ) ;
             pGamePlayer->SendPacket( &Msg ) ;

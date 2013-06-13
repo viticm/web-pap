@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºTianShanSkill010.cpp
-// ¹¦ÄÜËµÃ÷£º
+// æ–‡ä»¶åï¼šTianShanSkill010.cpp
+// åŠŸèƒ½è¯´æ˜ï¼š
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -32,7 +32,7 @@ namespace Combat_Module
             SkillInfo_T& rSkillInfo = rMe.GetSkillInfo();
             TargetingAndDepletingParams_T& rParams = rMe.GetTargetingAndDepletingParams();
             ID_t nID = rSkillInfo.GetConDepTermByIndex(1)->GetParam0();
-            //²»ÄÜÔÚ·ÖÉí×´Ì¬
+            //ä¸èƒ½åœ¨åˆ†èº«çŠ¶æ€
             if(FALSE==rMe.Impact_HaveImpactOfSpecificImpactID(nID))
             {
                 return TRUE;
@@ -53,7 +53,7 @@ namespace Combat_Module
             impact.m_nImpactID = rSkillInfo.GetDescriptorByIndex(0)->GetValue();
             logic.SetContinuance(impact, rSkillInfo.GetDescriptorByIndex(1)->GetValue());
             INT nDataID = rSkillInfo.GetDescriptorByIndex(2)->GetValue();
-            //Call ·ÖÉí½Ó¿Ú,Ä¿Ç°Ğ´¸öÒâÏò
+            //Call åˆ†èº«æ¥å£,ç›®å‰å†™ä¸ªæ„å‘
             Obj_Character* pGuard = rMe.CreateGuard(nDataID);
             if(NULL==pGuard)
             {

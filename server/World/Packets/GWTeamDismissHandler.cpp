@@ -18,7 +18,7 @@ __ENTER_FUNCTION
 
     ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer ;
 
-    GUID_t guid = pPacket->GetGUID() ;//½âÉ¢¶ÓÎéµÄÈË
+    GUID_t guid = pPacket->GetGUID() ;//è§£æ•£é˜Ÿä¼çš„äºº
 
     USER* pUser = g_pOnlineUser->FindUser( guid ) ;
     if( pUser==NULL )
@@ -40,7 +40,7 @@ __ENTER_FUNCTION
     }
 
     if( pTeam->Leader()->m_Member != guid )
-    {//½âÉ¢¶ÓÎéµÄÈË²»ÊÇ¶Ó³¤
+    {//è§£æ•£é˜Ÿä¼çš„äººä¸æ˜¯é˜Ÿé•¿
         WGTeamError Msg ;
         Msg.SetPlayerID( pUser->GetPlayerID() ) ;
         Msg.SetGUID(pPacket->GetGUID());
@@ -58,7 +58,7 @@ __ENTER_FUNCTION
     Msg.SetReturn( TEAM_RESULT_TEAMDISMISS ) ;
     Msg.SetTeamID( tid ) ;
 
-    //Í¨ÖªËùÓÐ×éÄÚµÄÍæ¼Ò
+    //é€šçŸ¥æ‰€æœ‰ç»„å†…çš„çŽ©å®¶
     for( int i=0; i<pTeam->MemberCount(); i++ )
     {
         TEAMMEMBER* pMember = pTeam->Member( i ) ;
@@ -70,7 +70,7 @@ __ENTER_FUNCTION
 
         USER* pUser = g_pOnlineUser->FindUser( pMember->m_Member ) ;
         if( pUser==NULL )
-        {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êý¾ÝÊÇ¿Õ
+        {//å¦‚æžœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
             continue ;
         }
         
@@ -86,11 +86,11 @@ __ENTER_FUNCTION
 
         pServerPlayer->SendPacket( &Msg ) ;
 
-        //ÉèÖÃÓÃ»§¶ÓÎéÐÅÏ¢
+        //è®¾ç½®ç”¨æˆ·é˜Ÿä¼ä¿¡æ¯
         pUser->SetTeamID( INVALID_ID );
     }
     
-    //Çå³ý¶ÓÎéÐÅÏ¢
+    //æ¸…é™¤é˜Ÿä¼ä¿¡æ¯
     g_pTeamList->DestoryTeam( tid );
 
     Log::SaveLog( WORLD_LOGFILE, "GWTeamDismissHandler...User GUID=%X TeamID=%d Success!", 

@@ -1,6 +1,6 @@
 // CGCharJump.h
 // 
-// Ìø
+// è·³
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
     CGCharJump( ){}
     virtual ~CGCharJump( ){}
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,7 +28,7 @@ public:
     virtual UINT            GetPacketSize()const { return    sizeof(ObjID_t); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 

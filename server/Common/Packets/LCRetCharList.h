@@ -15,7 +15,7 @@ namespace Packets
         LCRetCharList( ){} ;
         virtual ~LCRetCharList( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -37,7 +37,7 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
 
         const    CHAR*                GetAccount()    const;
         VOID                        SetAccount(const CHAR*    pAccount);
@@ -72,12 +72,12 @@ namespace Packets
         }
 
     private:
-        //数据
+        //鏁版嵁
     
         ASKCHARLIST_RESULT            Result;
         UCHAR                        uCharNumber;
         DB_CHAR_BASE_INFO            CharList[DB_CHAR_NUMBER];
-        CHAR                        szAccount[MAX_ACCOUNT+1] ;    //用户名称        
+        CHAR                        szAccount[MAX_ACCOUNT+1] ;    //鐢ㄦ埛鍚嶇О        
     };
 
     class LCRetCharListFactory : public PacketFactory 

@@ -39,10 +39,10 @@ UINT CGUseEquipHandler::Execute(CGUseEquip* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //ÇÐ³¡¾°Ê±¶ªÆú»»×°ÏûÏ¢
+    //åˆ‡åœºæ™¯æ—¶ä¸¢å¼ƒæ¢è£…æ¶ˆæ¯
     if(pGamePlayer->GetPlayerStatus()!=PS_SERVER_NORMAL ||
         !pHuman->IsActiveObj() )
     {
@@ -54,7 +54,7 @@ UINT CGUseEquipHandler::Execute(CGUseEquip* pPacket, Player* pPlayer )
 
     if( BagIndex == INVALID_BAG_INDEX )
     {
-        Assert(FALSE) ; //°ü·¢´íÁË
+        Assert(FALSE) ; //åŒ…å‘é”™äº†
         return PACKET_EXE_CONTINUE ;
     }
         
@@ -63,18 +63,18 @@ UINT CGUseEquipHandler::Execute(CGUseEquip* pPacket, Player* pPlayer )
     GCUseEquipResult Msg;
 
     //////////////////////////////////////////////////////////////////////////
-    //×°ÅäÌõ¼þÅÐ¶Ï
+    //è£…é…æ¡ä»¶åˆ¤æ–­
     UCHAR    itemClass = pUseItem->GetItemClass();
 
     if(itemClass == ICLASS_EQUIP)
     {
-        //ÐèÇóµÈ¼¶ÅÐ¶Ï
+        //éœ€æ±‚ç­‰çº§åˆ¤æ–­
         if(pUseItem->GetRequireLevel()>pHuman->GetLevel())
         {
             Msg.setResult(USEEQUIP_IDENT_FAIL);
             pGamePlayer->SendPacket( &Msg ) ;
         }
-        //¼ø¶¨ÅÐ¶Ï
+        //é‰´å®šåˆ¤æ–­
         else if(pUseItem->GetItemQual() == EQUALITY_BLUE && pUseItem->GetItemIdent() == FALSE)
         {
             Msg.setResult(USEEQUIP_LEVEL_FAIL);
@@ -109,7 +109,7 @@ UINT CGUseEquipHandler::Execute(CGUseEquip* pPacket, Player* pPlayer )
 
             if(bEquipStatus)
             {
-                //×°±¸ÉÏÎïÆ·,Ìæ»»ÏÂÀ´×°±¸µãÊý¾Ý
+                //è£…å¤‡ä¸Šç‰©å“,æ›¿æ¢ä¸‹æ¥è£…å¤‡ç‚¹æ•°æ®
                 
                 g_ItemOperator.ExchangeItem(pBagContainer,
                                             pBagContainer->BagIndex2ConIndex(BagIndex),
@@ -148,11 +148,11 @@ UINT CGUseEquipHandler::Execute(CGUseEquip* pPacket, Player* pPlayer )
             
             pGamePlayer->SendPacket( &Msg ) ;
             pHuman->SetEquipVer(pHuman->GetEquipVer()+1);
-            //Ë¢ÐÂ×°±¸¶ÔÈËÎïµÄÊôÐÔÓ°Ïì
+            //åˆ·æ–°è£…å¤‡å¯¹äººç‰©çš„å±žæ€§å½±å“
 
             pHuman->ItemEffectFlush();
 
-            //Èç¹û¿É¼û
+            //å¦‚æžœå¯è§
             if(pHuman->IsVisualPart(Equip_Point))
             {    
                 GCCharEquipment OtherMsg;

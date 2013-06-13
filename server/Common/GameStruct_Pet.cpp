@@ -6,7 +6,7 @@
 
 
 ////////////////////////////////////////////////
-// _PET_DETAIL_ATTRIB ³èÎïÊôĞÔ
+// _PET_DETAIL_ATTRIB å® ç‰©å±æ€§
 ////////////////////////////////////////////////
 _PET_DETAIL_ATTRIB::_PET_DETAIL_ATTRIB(VOID)
 {
@@ -185,20 +185,20 @@ VOID _PET_DETAIL_ATTRIB::CleanUp(VOID)
 ////////////////////////////////////////////////
 _PET_PLACARD_ITEM::_PET_PLACARD_ITEM(VOID)
 {
-    // ´´½¨ĞÅÏ¢
+    // åˆ›å»ºä¿¡æ¯
     m_uCreateTime    = 0;
 
-    // ³èÖ÷ĞÅÏ¢
+    // å® ä¸»ä¿¡æ¯
     m_HumanGUID        = INVALID_GUID;
     memset(m_szHumanName, 0, sizeof(m_szHumanName));
     m_nHumanLevel    = -1;
     memset(m_szHumanGuildName, 0, sizeof(m_szHumanGuildName));
     m_nHumanMenPai    = -1;
 
-    // ³èÎïĞÅÏ¢
+    // å® ç‰©ä¿¡æ¯
     //m_PetAttr;
 
-    // ÁôÑÔ
+    // ç•™è¨€
     memset(m_szMessage, 0, sizeof(m_szMessage));
 }
 
@@ -216,10 +216,10 @@ BOOL _PET_PLACARD_ITEM::Init(GUID_t HumanGUID,
                     const CHAR *pszMessage,
                     UINT uCreateTime)
 {
-    // ´´½¨ĞÅÏ¢
+    // åˆ›å»ºä¿¡æ¯
     m_uCreateTime    = uCreateTime;
 
-    // ³èÖ÷ĞÅÏ¢
+    // å® ä¸»ä¿¡æ¯
     m_HumanGUID        = HumanGUID;
 
     if(pszHumanName != NULL)
@@ -236,13 +236,13 @@ BOOL _PET_PLACARD_ITEM::Init(GUID_t HumanGUID,
 
     m_nHumanMenPai    = nHumanMenPai;
 
-    // ³èÎïĞÅÏ¢
+    // å® ç‰©ä¿¡æ¯
     if(pPetAttr != NULL)
         m_PetAttr        = *pPetAttr;
     else
         m_PetAttr.CleanUp();
 
-    // ÁôÑÔ
+    // ç•™è¨€
     if(pszMessage != NULL)
     {
         strncpy(m_szMessage, pszMessage, sizeof(m_szMessage));
@@ -256,19 +256,19 @@ BOOL _PET_PLACARD_ITEM::Init(GUID_t HumanGUID,
 
 VOID _PET_PLACARD_ITEM::CleanUp(VOID)
 {
-    // ´´½¨ĞÅÏ¢
+    // åˆ›å»ºä¿¡æ¯
     m_uCreateTime    = 0;
 
-    // ³èÖ÷ĞÅÏ¢
+    // å® ä¸»ä¿¡æ¯
     m_HumanGUID        = INVALID_GUID;
     memset(m_szHumanName, 0, sizeof(m_szHumanName));
     m_nHumanLevel    = -1;
     memset(m_szHumanGuildName, 0, sizeof(m_szHumanGuildName));
     m_nHumanMenPai    = -1;
 
-    // ³èÎïĞÅÏ¢
+    // å® ç‰©ä¿¡æ¯
     m_PetAttr.CleanUp();
 
-    // ÁôÑÔ
+    // ç•™è¨€
     memset(m_szMessage, 0, sizeof(m_szMessage));
 }

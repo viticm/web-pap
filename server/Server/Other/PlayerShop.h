@@ -1,12 +1,12 @@
 /************************************************************************/
 /*
-    ´´½¨ÈÕÆÚ:    2006Äê2ÔÂ13ÈÕ
-    ´´½¨Ê±¼ä:    11:54
-    ÎÄ¼şÃû³Æ:    PlayerShop.h
-    ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Other\PlayerShop.h
+    åˆ›å»ºæ—¥æœŸ:    2006å¹´2æœˆ13æ—¥
+    åˆ›å»ºæ—¶é—´:    11:54
+    æ–‡ä»¶åç§°:    PlayerShop.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Other\PlayerShop.h
 
-    ÎÄ¼ş¹¦ÄÜ£º    Íæ¼ÒÉÌµê
-    ĞŞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š    ç©å®¶å•†åº—
+    ä¿®æ”¹çºªå½•ï¼š
 */
 /************************************************************************/
 
@@ -16,7 +16,7 @@
 #include "PlayerShopDefine.h"
 #include "PlayerStallBox.h"
 /*
-Íæ¼ÒÉÌµê
+ç©å®¶å•†åº—
 */
 using namespace PLAYER_SHOP;
 class PlayerShop
@@ -24,12 +24,12 @@ class PlayerShop
     friend class PlayerShopPool;
 public:
     //-------------------------------------------------------------------------------------------------
-    //ÔËĞĞÊ±½á¹¹
+    //è¿è¡Œæ—¶ç»“æ„
     struct PlayerShopRT_t
     {
-        PlayerStallBox                    m_StallList[MAX_STALL_NUM_PER_SHOP];        //ÔËĞĞÊ±¹ñÌ¨ÁĞ±í
-        BYTE                            m_bSerial;                                    //ÉÌµê×Ô¼ºµÄĞòÁĞºÅ,ÓÃÓÚÉÌµêµÄ½»Ò×
-        BOOL                            m_PlayerShopChanged;                        //ÉÌµêÊı¾İ¸Ä±ä
+        PlayerStallBox                    m_StallList[MAX_STALL_NUM_PER_SHOP];        //è¿è¡Œæ—¶æŸœå°åˆ—è¡¨
+        BYTE                            m_bSerial;                                    //å•†åº—è‡ªå·±çš„åºåˆ—å·,ç”¨äºå•†åº—çš„äº¤æ˜“
+        BOOL                            m_PlayerShopChanged;                        //å•†åº—æ•°æ®æ”¹å˜
 
     };
 public:
@@ -37,13 +37,13 @@ public:
     ~PlayerShop();
 public:
     //-------------------------------------------------------------------------------------------------
-    //³õÊ¼»¯,Çå¿ÕÍæ¼ÒÉÌµê
+    //åˆå§‹åŒ–,æ¸…ç©ºç©å®¶å•†åº—
     VOID Init();
 
     VOID CleanUp();
 public:
     //-------------------------------------------------------------------------------------------------
-    //Ò»¸öÉÌµêµÄÎ¨Ò»ID
+    //ä¸€ä¸ªå•†åº—çš„å”¯ä¸€ID
     INT                    GetID(){return GetPoolPos();}
     SceneID_t            GetSceneID(){return m_pPlayerShopDB->m_ShopGUID.m_Scene;}
 
@@ -126,7 +126,7 @@ public:
     }
     
     //-------------------------------------------------------------------------------------------------
-    //´ò¿ªµÄ,¿ªÕÅµÄ¹ñÌ¨
+    //æ‰“å¼€çš„,å¼€å¼ çš„æŸœå°
     BYTE                GetNumStallOpened(){ return m_pPlayerShopDB->m_NumStallOpened; }
     VOID                SetNumStallOpened(BYTE NumStallOpened)
     {
@@ -149,7 +149,7 @@ public:
     }
 
     //-------------------------------------------------------------------------------------------------
-    //½¨µêÊ±¼ä
+    //å»ºåº—æ—¶é—´
     UINT                GetFoundedYear(){ return m_pPlayerShopDB->m_FoundedYear; }
     VOID                SetFoundedYear(UINT nFoundedYear)
     {
@@ -186,38 +186,38 @@ public:
     }
 
     //-------------------------------------------------------------------------------------------------
-    //ĞòÁĞºÅ
+    //åºåˆ—å·
     BYTE                GetSerial(){ return m_PlayerShopRT.m_bSerial; }
     VOID                SetSerial(BYTE nSerial){ m_PlayerShopRT.m_bSerial = nSerial; }
     BYTE                IncSerial(){return ++m_PlayerShopRT.m_bSerial;}
 
     //-------------------------------------------------------------------------------------------------
-    //»ñµÃ½»Ò×¼ÇÂ¼
+    //è·å¾—äº¤æ˜“è®°å½•
     RecordContainer_t*    GetExchangeRecord() {return &m_pPlayerShopDB->m_ExchangeRecord;}
 
     //-------------------------------------------------------------------------------------------------
-    //»ñµÃ¹ÜÀí¼ÇÂ¼
+    //è·å¾—ç®¡ç†è®°å½•
     RecordContainer_t*    GetManagerRecord() {return &m_pPlayerShopDB->m_ManagerRecord;}
 
     //-------------------------------------------------------------------------------------------------
-    //Ìí¼ÓºÏ×÷»ï°é
+    //æ·»åŠ åˆä½œä¼™ä¼´
     RET_TYPE_PARTNER    AddPartner( GUID_t Guid);
 
     //-------------------------------------------------------------------------------------------------
-    //É¾³ıºÏ×÷»ï°é
+    //åˆ é™¤åˆä½œä¼™ä¼´
     RET_TYPE_PARTNER    RemovePartner( GUID_t Guid );
 
     //-------------------------------------------------------------------------------------------------
-    //ºÏ×÷»ï°éÁĞ±í
+    //åˆä½œä¼™ä¼´åˆ—è¡¨
     Partner_t*            GetPartnerList(){return m_pPlayerShopDB->m_PartnerList;}
 
     //-------------------------------------------------------------------------------------------------
-    //ÊÇ·ñÊÇºÏ×÷»ï°é
+    //æ˜¯å¦æ˜¯åˆä½œä¼™ä¼´
     BOOL                IsPartner(GUID_t Guid);
 
 
     //-------------------------------------------------------------------------------------------------
-    //ĞÄÌø
+    //å¿ƒè·³
     BOOL                HeartBeat(UINT uTime, FLOAT    fComFactor);
     
     PlayerStallBox*        GetPlayerStallBoxByIndex(UINT uIndex);
@@ -225,24 +225,24 @@ public:
     /*ServerBBS*            GetServerBBS(){return &m_pPlayerShopDB->m_StallBBS;}*/
 
     //-------------------------------------------------------------------------------------------------
-    //Êı¾İ¸Ä±äĞèÒª´æÅÌ
+    //æ•°æ®æ”¹å˜éœ€è¦å­˜ç›˜
     VOID                DataChanged(){    m_PlayerShopRT.m_PlayerShopChanged = TRUE;}
 
 private:
     //-------------------------------------------------------------------------------------------------
-    //³ØÎ»ÖÃ,Ò»¸öÉÌµêµÄÎ¨Ò»ID
+    //æ± ä½ç½®,ä¸€ä¸ªå•†åº—çš„å”¯ä¸€ID
     INT                    GetPoolPos(){ return m_pPlayerShopDB->m_ShopGUID.m_PoolPos;}
     VOID                SetPoolPos(INT    nPoolPos){m_pPlayerShopDB->m_ShopGUID.m_PoolPos = nPoolPos;}
 
 private:
     //-------------------------------------------------------------------------------------------------
-    //ĞèÒª´æ´¢Êı¾İ¿âµÄĞÅÏ¢
+    //éœ€è¦å­˜å‚¨æ•°æ®åº“çš„ä¿¡æ¯
     PlayerShopDB_t*        m_pPlayerShopDB;
     //-------------------------------------------------------------------------------------------------
-    //ShareMemory Êı¾İ
+    //ShareMemory æ•°æ®
     PlayerShopSM*        m_pPlayerShopSM;
     //-------------------------------------------------------------------------------------------------
-    //ÔËĞĞÊ±ĞÅÏ¢
+    //è¿è¡Œæ—¶ä¿¡æ¯
     PlayerShopRT_t        m_PlayerShopRT;
 };
 

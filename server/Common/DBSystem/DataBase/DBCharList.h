@@ -9,7 +9,7 @@
 
 class DBCharList:public ODBCBase
 {
-    CHAR            szAccount[MAX_ACCOUNT+1] ;    //”√ªß√˚≥∆
+    CHAR            szAccount[MAX_ACCOUNT+1] ;    //Áî®Êà∑ÂêçÁß∞
     UINT            m_CharNumber;
     GUID_t            m_GuidList[DB_CHAR_NUMBER];
 public:

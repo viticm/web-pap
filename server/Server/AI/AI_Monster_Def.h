@@ -21,44 +21,44 @@ enum MONSTERAI_CHAR_STATUS
 
 enum MONSTERAI_FLEE_TYPE
 {
-    MONSTERAI_FLEE_RANDOM = 0,        //Ëæ»úÌÓÅÜ
-    MONSTERAI_FLEE_NEARESTFRIEND,    //Ïò×î½üµÄ¶ÓÓÑÌÓÅÜ
-    MONSTERAI_FLEE_NEARESTPOINT,    //Ïò×î½üµÄ¹Ì¶¨µãÌÓÅÜ
+    MONSTERAI_FLEE_RANDOM = 0,        //éšæœºé€ƒè·‘
+    MONSTERAI_FLEE_NEARESTFRIEND,    //å‘æœ€è¿‘çš„é˜Ÿå‹é€ƒè·‘
+    MONSTERAI_FLEE_NEARESTPOINT,    //å‘æœ€è¿‘çš„å›ºå®šç‚¹é€ƒè·‘
 };
 
 //enum MONSTERAI_STATUS
 //{
-//    MONSTERAI_IDLE = 0 ,            //·¢´ô
-//    MONSTERAI_APPROACH  ,            //×·¸Ï
-//    MONSTERAI_FLEE ,                //ÌÓÅÜ
-//    MONSTERAI_USESKILL ,            //Ê¹ÓÃ¼¼ÄÜ
-//    MONSTERAI_ATTACK ,                //¹¥»÷
-//    MONSTERAI_CHANGEENEMY ,            //¸Ä±äµÐÈË
-//    MONSTERAI_WAIT ,                //µÈ´ý
-//    MONSTERAI_FASTFLEE ,            //¿ìËÙÌÓÅÜ
-//    MONSTERAI_ARRIVE ,                //µ½´ïÄ¿µÄµØ
-//    MONSTERAI_FOLLOW ,                //¸úËæ
-//    MONSTERAI_PATROL ,                //Ñ²Âß
-//    MONSTERAI_RETURN,                //·ÅÆú×·¸Ï
-//    MONSTERAI_DEAD,                    //ËÀÍö
-//    MONSTERAI_TALK,                    //½»Ì¸
+//    MONSTERAI_IDLE = 0 ,            //å‘å‘†
+//    MONSTERAI_APPROACH  ,            //è¿½èµ¶
+//    MONSTERAI_FLEE ,                //é€ƒè·‘
+//    MONSTERAI_USESKILL ,            //ä½¿ç”¨æŠ€èƒ½
+//    MONSTERAI_ATTACK ,                //æ”»å‡»
+//    MONSTERAI_CHANGEENEMY ,            //æ”¹å˜æ•Œäºº
+//    MONSTERAI_WAIT ,                //ç­‰å¾…
+//    MONSTERAI_FASTFLEE ,            //å¿«é€Ÿé€ƒè·‘
+//    MONSTERAI_ARRIVE ,                //åˆ°è¾¾ç›®çš„åœ°
+//    MONSTERAI_FOLLOW ,                //è·Ÿéš
+//    MONSTERAI_PATROL ,                //å·¡é€»
+//    MONSTERAI_RETURN,                //æ”¾å¼ƒè¿½èµ¶
+//    MONSTERAI_DEAD,                    //æ­»äº¡
+//    MONSTERAI_TALK,                    //äº¤è°ˆ
 //
-//    MONSTERAI_NUMBER ,                //¹ÖÎïAIµÄ×´Ì¬ÊýÁ¿
+//    MONSTERAI_NUMBER ,                //æ€ªç‰©AIçš„çŠ¶æ€æ•°é‡
 //};
 
 enum MONSTERAI_ARRIVE_TYPE
 {
-    MONSTERAI_ARRIVE_ATTACK = 0 ,    //µ½´ïÄ¿µÄµØÊ±½øÐÐ¹¥»÷
-    MONSTERAI_ARRIVE_PICKUP ,        //µ½´ïÄ¿µÄµØÊ±½øÐÐµôÂäÎïµÄÊ°È¡
-    MONSTERAI_ARRIVE_FOLLOW ,        //µ½´ïÄ¿µÄµØÊ±½øÐÐ¸úËæ
+    MONSTERAI_ARRIVE_ATTACK = 0 ,    //åˆ°è¾¾ç›®çš„åœ°æ—¶è¿›è¡Œæ”»å‡»
+    MONSTERAI_ARRIVE_PICKUP ,        //åˆ°è¾¾ç›®çš„åœ°æ—¶è¿›è¡ŒæŽ‰è½ç‰©çš„æ‹¾å–
+    MONSTERAI_ARRIVE_FOLLOW ,        //åˆ°è¾¾ç›®çš„åœ°æ—¶è¿›è¡Œè·Ÿéš
 
     MONSTERAI_ARRIVE_NUMBER ,
 };
 
 enum MONSTERAI_SUMMON_TYPE
 {
-    MONSTERAI_SUMMON_REGION = 0 ,    //ÇøÓòÕÙ»½
-    MONSTERAI_SUMMON_TEAM ,            //×éÈºÕÙ»½
+    MONSTERAI_SUMMON_REGION = 0 ,    //åŒºåŸŸå¬å”¤
+    MONSTERAI_SUMMON_TEAM ,            //ç»„ç¾¤å¬å”¤
 
     MONSTERAI_SUMMON_NUMBER,
 };

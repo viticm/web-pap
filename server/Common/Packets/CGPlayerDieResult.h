@@ -1,6 +1,6 @@
 // CGPlayerDieResult.h
 // 
-// Ö÷½ÇËÀÍöµÄ²Ù×÷½á¹û
+// ä¸»è§’æ­»äº¡çš„æ“ä½œç»“æœ
 //
 //////////////////////////////////////////////////////
 
@@ -14,8 +14,8 @@
 enum ENUM_DIE_RESULT_CODE
 {
     DIE_RESULT_CODE_INVALID    = -1,
-    DIE_RESULT_CODE_OUT_GHOST,        // ÊÍ·ÅÁé»ê
-    DIE_RESULT_CODE_RELIVE,            // ½ÓÊÜ¸´»î
+    DIE_RESULT_CODE_OUT_GHOST,        // é‡Šæ”¾çµé­‚
+    DIE_RESULT_CODE_RELIVE,            // æ¥å—å¤æ´»
     DIE_RESULT_CODE_NUMBERS
 };
 
@@ -30,7 +30,7 @@ namespace Packets
         }
         virtual ~CGPlayerDieResult( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,7 +39,7 @@ namespace Packets
         virtual UINT            GetPacketSize()const { return    sizeof(INT); }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                SetResultCode(INT nResult) { m_nResultCode = nResult; }
         INT                    GetResultCode(VOID)const { return m_nResultCode; }
 

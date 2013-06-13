@@ -16,7 +16,7 @@ public:
     WGFinger( ){}
     virtual ~WGFinger( ){}
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream );
     virtual BOOL            Write( SocketOutputStream& oStream ) const;
     virtual UINT            Execute( Player* pPlayer );
@@ -28,7 +28,7 @@ public:
     }
 
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     WG_FINGER*                GetFinger( ){ return &m_Finger; }
     VOID                    SetFinger( WG_FINGER* pFinger ){ m_Finger = *pFinger; };
 
@@ -36,7 +36,7 @@ public:
     GUID_t                    GetGUID() { return m_GUID; }
 
 private:
-    //数据
+    //鏁版嵁
     WG_FINGER                m_Finger;
 
     GUID_t                    m_GUID;

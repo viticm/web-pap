@@ -1,10 +1,10 @@
 /********************************************************************************
- *    ÎÄ¼şÃû£º    Team.h
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Team\Team.h
- *    ´´½¨Ê±¼ä£º    2005 Äê 11 ÔÂ 4 ÈÕ    9:25
+ *    æ–‡ä»¶åï¼š    Team.h
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Team\Team.h
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 11 æœˆ 4 æ—¥    9:25
  *
- *    ¹¦ÄÜËµÃ÷£º    ¶ÓÎé
- *    ĞŞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜ï¼š    é˜Ÿä¼
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #ifndef __TEAM_H__
@@ -12,7 +12,7 @@
 
 #include "Type.h"
 
-//×é¶Ó³ÉÔ±
+//ç»„é˜Ÿæˆå‘˜
 
 struct TEAMMEMBER
 {
@@ -62,114 +62,114 @@ public:
 
     inline VOID                        CleanUp( );
 
-    // ÉèÖÃ×Ô¼ºµÄ GUID
+    // è®¾ç½®è‡ªå·±çš„ GUID
     inline VOID                        SetMyGUID( GUID_t guid );
 
-    // ÉèÖÃ×Ô¼ºËùÔÚµÄ³¡¾°£¬Íæ¼ÒµÚÒ»´Î×é¶ÓµÄÊ±ºòÒªÉèÒ»´Î£¨Éè TeamID µÄÊ±ºò£©
+    // è®¾ç½®è‡ªå·±æ‰€åœ¨çš„åœºæ™¯ï¼Œç©å®¶ç¬¬ä¸€æ¬¡ç»„é˜Ÿçš„æ—¶å€™è¦è®¾ä¸€æ¬¡ï¼ˆè®¾ TeamID çš„æ—¶å€™ï¼‰
     inline VOID                        SetMySceneID( SceneID_t sid );
 
     inline VOID                        DisMiss( );
 
-    // ÅĞ¶ÏÊÇ·ñÔÚ¶ÓÎéÖĞ
+    // åˆ¤æ–­æ˜¯å¦åœ¨é˜Ÿä¼ä¸­
     inline BOOL                        HasTeam( ) const;
 
-    // ÅĞ¶Ï¶ÓÎéÊÇ·ñÒÑ¾­ÂúÔ±
+    // åˆ¤æ–­é˜Ÿä¼æ˜¯å¦å·²ç»æ»¡å‘˜
     inline BOOL                        IsFull( );
 
-    // ÅĞ¶ÏÊÇ·ñ¶Ó³¤
+    // åˆ¤æ–­æ˜¯å¦é˜Ÿé•¿
     inline BOOL                        IsLeader( ) const;
 
-    // µÃµ½¶ÓÎé ID
+    // å¾—åˆ°é˜Ÿä¼ ID
     inline TeamID_t                    GetTeamID( ) const;
 
-    // ÉèÖÃ¶ÓÎé ID
+    // è®¾ç½®é˜Ÿä¼ ID
     inline VOID                        SetTeamID( const TeamID_t teamid );
 
-    // µÃµ½¶ÓÎéÈËÊı
+    // å¾—åˆ°é˜Ÿä¼äººæ•°
     inline INT                        GetTeamMemberCount( ) const;
 
-    // µÃµ½Í¬³¡¾°¶ÓÓÑµÄÊıÁ¿£¨²»°üº¬×Ô¼º£©
+    // å¾—åˆ°åŒåœºæ™¯é˜Ÿå‹çš„æ•°é‡ï¼ˆä¸åŒ…å«è‡ªå·±ï¼‰
     inline INT                        GetSceneMemberCount() const;
 
-    // µÃµ½Í¬³¡¾°¶ÓÓÑµÄ ObjID ÁĞ±í£¨²»°üº¬×Ô¼º£©
+    // å¾—åˆ°åŒåœºæ™¯é˜Ÿå‹çš„ ObjID åˆ—è¡¨ï¼ˆä¸åŒ…å«è‡ªå·±ï¼‰
     inline const ObjID_t            GetSceneMemberObjID( const INT memberindex ) const;
 
-    // Ôö¼ÓÒ»¸ö¶ÓÓÑ
+    // å¢åŠ ä¸€ä¸ªé˜Ÿå‹
     VOID                            AddMember( const TEAMMEMBER* pMember );
 
-    // ¼õÉÙÒ»¸ö¶ÓÓÑ
+    // å‡å°‘ä¸€ä¸ªé˜Ÿå‹
     VOID                            DelMember( GUID_t guid );
 
-    // ÈÎÃüĞÂ¶Ó³¤
+    // ä»»å‘½æ–°é˜Ÿé•¿
     VOID                            Appoint( GUID_t guid );
 
-    // ¶ÓÔ±¿ªÊ¼ÇĞ»»³¡¾°
+    // é˜Ÿå‘˜å¼€å§‹åˆ‡æ¢åœºæ™¯
     VOID                            StartChangeScene( GUID_t guid );
     
-    // ¶ÓÔ±½øÈëĞÂ³¡¾°
+    // é˜Ÿå‘˜è¿›å…¥æ–°åœºæ™¯
     VOID                            EnterScene( GUID_t guid, SceneID_t SceneID, ObjID_t oid );
 
-    // ¶ÓÓÑ¶ÏÏß
+    // é˜Ÿå‹æ–­çº¿
     VOID                            MemberOffLine( GUID_t guid );
 
-    // µÃµ½¶Ó³¤µÄĞÅÏ¢
+    // å¾—åˆ°é˜Ÿé•¿çš„ä¿¡æ¯
     inline const TEAMMEMBER*        Leader( ) const;
 
-    // µÃµ½Ä³¸ö¶ÓÔ±µÄĞÅÏ¢
+    // å¾—åˆ°æŸä¸ªé˜Ÿå‘˜çš„ä¿¡æ¯
     inline const TEAMMEMBER*        GetTeamMember( const INT memberindex ) const;
 
-    // Í¨¹ı GUID µÃµ½Ä³¸ö¶ÓÔ±
+    // é€šè¿‡ GUID å¾—åˆ°æŸä¸ªé˜Ÿå‘˜
     inline const TEAMMEMBER*        GetTeamMemberByGUID( const GUID_t guid ) const;
 
-    // ÉèÖÃ×Ô¼ºµÄ¶ÓÎé¸úËæ×´Ì¬
+    // è®¾ç½®è‡ªå·±çš„é˜Ÿä¼è·ŸéšçŠ¶æ€
     inline VOID                        SetTeamFollowFlag(BOOL flag);
 
-    // »ñµÃ×Ô¼ºµÄ¶ÓÎé¸úËæ×´Ì¬
+    // è·å¾—è‡ªå·±çš„é˜Ÿä¼è·ŸéšçŠ¶æ€
     inline const BOOL                GetTeamFollowFlag() const;
 
-    // Ôö¼ÓÒ»¸ö¸úËæ¶ÓÔ±
+    // å¢åŠ ä¸€ä¸ªè·Ÿéšé˜Ÿå‘˜
     VOID                            AddFollowedMember( const _FOLLOWEDMEMBER& FollowedMember );
 
-    // ÒÆ³öÄ³¸ö¸úËæ¶ÓÔ±
+    // ç§»å‡ºæŸä¸ªè·Ÿéšé˜Ÿå‘˜
     VOID                            DelFollowedMember( GUID_t guid );
-    // µÃµ½¸úËæ¶ÓÔ±µÄÊıÁ¿
+    // å¾—åˆ°è·Ÿéšé˜Ÿå‘˜çš„æ•°é‡
     inline const INT                GetFollowedMembersCount() const;
 
-    // µÃµ½µÚi¸ö¸úËæµÄ¶ÓÓÑ
+    // å¾—åˆ°ç¬¬iä¸ªè·Ÿéšçš„é˜Ÿå‹
     inline const _FOLLOWEDMEMBER*    GetFollowedMember( INT i ) const;
 
-    // µÃµ½×Ô¼º¸úËæµÄ¶ÓÓÑ
+    // å¾—åˆ°è‡ªå·±è·Ÿéšçš„é˜Ÿå‹
     const Obj_Human*                GetMyGuide() const;
 
-    // µÃµ½¸úËæ×Ô¼ºµÄ¶ÓÓÑ
+    // å¾—åˆ°è·Ÿéšè‡ªå·±çš„é˜Ÿå‹
     const Obj_Human*                GetGuideMe() const;
 
-    // Çå³ıËùÓĞµÄ¸úËæ¶ÓÓÑÁĞ±í
+    // æ¸…é™¤æ‰€æœ‰çš„è·Ÿéšé˜Ÿå‹åˆ—è¡¨
     inline VOID                        ClearFollowedMembers();
 
 protected:
 
-    // Ôö¼Óµ½Í¬³¡¾°¶ÓÓÑÁĞ±í    
+    // å¢åŠ åˆ°åŒåœºæ™¯é˜Ÿå‹åˆ—è¡¨    
     inline VOID                        AddSceneMember( ObjID_t oid );
 
-    // ¼õµôÒ»¸öÍ¬³¡¾°¶ÓÓÑ
+    // å‡æ‰ä¸€ä¸ªåŒåœºæ™¯é˜Ÿå‹
     inline VOID                        DelSceneMember( ObjID_t oid );
 
-    // Çå³ı¸úËæÕßÖ¸Õë
+    // æ¸…é™¤è·Ÿéšè€…æŒ‡é’ˆ
     inline VOID                        EraseFollowedMemberPointer( GUID_t guid );
 private:
-    TeamID_t                        m_TeamID;                        // ¶ÓÎéºÅ
-    INT                                m_MemberCount;                    // ³ÉÔ±ÊıÁ¿
-    TEAMMEMBER                        m_aMember[MAX_TEAM_MEMBER];        // ¶ÓÔ±»ù±¾ĞÅÏ¢
+    TeamID_t                        m_TeamID;                        // é˜Ÿä¼å·
+    INT                                m_MemberCount;                    // æˆå‘˜æ•°é‡
+    TEAMMEMBER                        m_aMember[MAX_TEAM_MEMBER];        // é˜Ÿå‘˜åŸºæœ¬ä¿¡æ¯
 
-    GUID_t                            m_MyGUID;                        // ×Ô¼ºµÄ GUID
-    SceneID_t                        m_MySceneID;                    // ×Ô¼ºµÄ³¡¾° ID
-    INT                                m_SceneMemberCount;                // Í¬³¡¾°³ÉÔ±ÊıÁ¿
-    ObjID_t                            m_aScenePlayer[MAX_TEAM_MEMBER];// Í¬³¡¾°³ÉÔ±µÄ ObjID ÁĞ±í
+    GUID_t                            m_MyGUID;                        // è‡ªå·±çš„ GUID
+    SceneID_t                        m_MySceneID;                    // è‡ªå·±çš„åœºæ™¯ ID
+    INT                                m_SceneMemberCount;                // åŒåœºæ™¯æˆå‘˜æ•°é‡
+    ObjID_t                            m_aScenePlayer[MAX_TEAM_MEMBER];// åŒåœºæ™¯æˆå‘˜çš„ ObjID åˆ—è¡¨
 
-    BOOL                            m_bTeamFollowFlag;                // ¶ÓÎéÊÇ·ñ³öÓÚ×é¶Ó¸úËæ×´Ì¬µÄ±ê¼Ç
+    BOOL                            m_bTeamFollowFlag;                // é˜Ÿä¼æ˜¯å¦å‡ºäºç»„é˜Ÿè·ŸéšçŠ¶æ€çš„æ ‡è®°
     INT                                m_nFollowedMembersCount;
-    _FOLLOWEDMEMBER                    m_FollowedMembers[MAX_TEAM_MEMBER];    // ¸úËæÕßÁĞ±í
+    _FOLLOWEDMEMBER                    m_FollowedMembers[MAX_TEAM_MEMBER];    // è·Ÿéšè€…åˆ—è¡¨
 };
 
 #include "Team.inl"

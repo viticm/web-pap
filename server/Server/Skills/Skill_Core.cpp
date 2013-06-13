@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºSkill_Core.cpp
-// ¹¦ÄÜËµÃ÷£º¼¼ÄÜÄÚºËÄ£¿é
+// æ–‡ä»¶åï¼šSkill_Core.cpp
+// åŠŸèƒ½è¯´æ˜Žï¼šæŠ€èƒ½å†…æ ¸æ¨¡å—
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -53,7 +53,7 @@ namespace Combat_Module
                 rParams.SetErrCode(OR_DIE);
                 return FALSE;
             }
-            //ÊÇ·ñµ±Ç°×´Ì¬²»ÔÊÐíÊ¹ÓÃÕâ¸ö¼¼ÄÜ
+            //æ˜¯å¦å½“å‰çŠ¶æ€ä¸å…è®¸ä½¿ç”¨è¿™ä¸ªæŠ€èƒ½
             if(FALSE==rMe.Skill_CanUseThisSkillInThisStatus(nSkillID))
             {
                 rParams.SetErrCode(OR_LIMIT_USE_SKILL);
@@ -62,7 +62,7 @@ namespace Combat_Module
             if(Obj::OBJ_TYPE_HUMAN == rMe.GetObjType()&&A_SKILL_FOR_PLAYER==pSkillTemplate->GetClassByUser())
             {
                 if(FALSE == rMe.Skill_HaveSkill(nSkillID, nLevel)&&FALSE==rParams.GetIgnoreConditionCheckFlag())
-                {    //½ÇÉ«²»»áÕâ¸ö¼¼ÄÜ
+                {    //è§’è‰²ä¸ä¼šè¿™ä¸ªæŠ€èƒ½
                     rParams.SetErrCode(OR_INVALID_SKILL);
                     return FALSE;
                 }
@@ -123,13 +123,13 @@ namespace Combat_Module
                 AssertEx(FALSE,"[CombatCore_T::InstanceSkill]: Can't find skill date in the SkillTemplateDateMgr!");
                 return FALSE;
             }
-            //¸´ÖÆ¼¼ÄÜÄ£°åÐÅÏ¢
+            //å¤åˆ¶æŠ€èƒ½æ¨¡æ¿ä¿¡æ¯
 
             rSkillInfoOut= *pSkillTemplate; // Copy Skill data to output buffer
-            //¸ù¾Ý¼¼ÄÜÄ£°åÐÅÏ¢È¡ÐÄ·¨ÐÅÏ¢
+            //æ ¹æ®æŠ€èƒ½æ¨¡æ¿ä¿¡æ¯å–å¿ƒæ³•ä¿¡æ¯
             //ID_t nSkillClass = rSkillInfoOut.GetSkillClass();
             //INT nXinFaParam = rSkillInfoOut.GetXinFaParam();
-            //¼ÆËãÐÄ·¨µÈ¼¶: Ã»ÓÐÐÄ·¨µÄ,ÐÄ·¨¼¶±ðÎª0
+            //è®¡ç®—å¿ƒæ³•ç­‰çº§: æ²¡æœ‰å¿ƒæ³•çš„,å¿ƒæ³•çº§åˆ«ä¸º0
             //INT nXinFaLvl = 0;
             //if(Obj::OBJ_TYPE_HUMAN == rMe.GetObjType())
             //{
@@ -140,7 +140,7 @@ namespace Combat_Module
             //    }
             //    else
             //    {
-            //        nXinFaLvl = 0;//ÔÝÊ±ÏÈÕâÑù
+            //        nXinFaLvl = 0;//æš‚æ—¶å…ˆè¿™æ ·
             //    }
             //}
             //if(0>nXinFaLvl)
@@ -152,7 +152,7 @@ namespace Combat_Module
             //    nXinFaLvl = MAX_XINFA_LEVEL_NUM/10 -1;
             //}
 
-            //±£´æÏà¹ØµÄÐÄ·¨µÈ¼¶
+            //ä¿å­˜ç›¸å…³çš„å¿ƒæ³•ç­‰çº§
             if( nLevel == 0 || nLevel > MAX_CHAR_SKILL_LEVEL )
             {
                 GUID_t nGUID = 0;
@@ -166,7 +166,7 @@ namespace Combat_Module
                 nLevel = 1;
             }
             rParams.SetSkillLevel(nLevel);
-            //¸ù¾ÝÐÄ·¨µÈ¼¶,È¡Êµ¼Ê¼¼ÄÜÊý¾Ý
+            //æ ¹æ®å¿ƒæ³•ç­‰çº§,å–å®žé™…æŠ€èƒ½æ•°æ®
             SkillID_t    nSkillInstance = pSkillTemplate->GetSkillInstance( rParams.GetSkillLevel()-1 );
             Skill_Module::SkillInstanceData_T const* pSkillInstance = GetSkillInstanceByID(nSkillInstance);
             if(NULL == pSkillInstance)

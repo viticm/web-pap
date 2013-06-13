@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// �ļ�����Obj_Character_Impact.cpp
-// ����˵������ɫ���ϵ�Ч������
+// 文件名：Obj_Character_Impact.cpp
+// 功能说明：角色身上的效果处理
 //
-// �޸ļ�¼��
+// 修改记录：
 //
 //
 //
@@ -1016,7 +1016,7 @@ VOID    Obj_Character::Impact_OnImpactFadeOut(OWN_IMPACT& rImp)
         {
             pScene->BroadCast(&Msg2Other, this, TRUE);
         }
-        // ��ɢ��buff�������������֧�ֵģ���ֹ��������
+        // 消散的buff如果是引导技能支持的，中止引导技能
         if(TRUE==Impact_NeedChannelSupport(rImp))
         {
             Obj* pObj = Impact_GetCaster(*this, rImp);
@@ -1079,12 +1079,12 @@ BOOL     Obj_Character::Impact_ReplaceMutuallyExclusiveImpact(OWN_IMPACT& rImpac
                             pScene->BroadCast(&Msg2All, this, TRUE);
                         }
                     }
-                    return TRUE;//����滻����,����Ҫ�¼�Ч����.
+                    return TRUE;//完成替换操作,不需要新加效果了.
                 }
             }
         }
     }
-    return FALSE;//û���κ��滻����,��Ȼ��Ҫ�¼�Ч����.
+    return FALSE;//没有任何替换操作,仍然需要新加效果了.
     __LEAVE_FUNCTION
     return FALSE;
 }

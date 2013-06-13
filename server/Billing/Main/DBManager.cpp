@@ -23,21 +23,21 @@ BOOL    DBManager::Init()
 {
     __ENTER_FUNCTION
     
-    //´ÓConfig ¶ÁÈ¡Login DB Ïà¹ØµÄÊı¾İ
+    //ä»Config è¯»å–Login DB ç›¸å…³çš„æ•°æ®
     CHAR    Host[HOST_STR_LEN];
-    strncpy(Host,g_Config.m_BillingInfo.m_DBIP,HOST_STR_LEN);                        //Á¬½Ó¶Ô¶ËIP
+    strncpy(Host,g_Config.m_BillingInfo.m_DBIP,HOST_STR_LEN);                        //è¿æ¥å¯¹ç«¯IP
     Host[HOST_STR_LEN-1] = '\0';
 
-    UINT    Port                            =    g_Config.m_BillingInfo.m_DBPort;    //Á¬½Ó¶Ô¶Ë¶Ë¿Ú
+    UINT    Port                            =    g_Config.m_BillingInfo.m_DBPort;    //è¿æ¥å¯¹ç«¯ç«¯å£
     CHAR    Database[DATABASE_STR_LEN];
-    strncpy(Database,g_Config.m_BillingInfo.m_DBName,DATABASE_STR_LEN);            //Êı¾İ¿âÃû³Æ
+    strncpy(Database,g_Config.m_BillingInfo.m_DBName,DATABASE_STR_LEN);            //æ•°æ®åº“åç§°
     Database[DATABASE_STR_LEN-1] = '\0';
 
-    CHAR    User[DB_USE_STR_LEN];                                                //ÓÃ»§Ãû³Æ
+    CHAR    User[DB_USE_STR_LEN];                                                //ç”¨æˆ·åç§°
     strncpy(User,g_Config.m_BillingInfo.m_DBUser,DB_USE_STR_LEN);
     User[DB_USE_STR_LEN-1] = '\0';
 
-    CHAR    Password[DB_PASSWORD_STR_LEN];                                        //ÃÜÂë
+    CHAR    Password[DB_PASSWORD_STR_LEN];                                        //å¯†ç 
     strncpy(Password,g_Config.m_BillingInfo.m_DBPassword,DB_PASSWORD_STR_LEN);
     Password[DB_PASSWORD_STR_LEN-1] = '\0';
     

@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~CGPlayerShopDesc( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -42,12 +42,12 @@ namespace Packets
         VOID                    SetPlayerShopDesc( CHAR* pName ){
             strncpy( m_PlayerShopDesc, pName, MAX_SHOP_DESC_SIZE-1 ) ;
             m_PlayerShopDesc[MAX_SHOP_DESC_SIZE-1] = 0 ;
-            m_PlayerShopDescSize = (BYTE)strlen(m_PlayerShopDesc); //矫正长度
+            m_PlayerShopDescSize = (BYTE)strlen(m_PlayerShopDesc); //鐭闀垮害
         };
         CHAR*                    GetPlayerShopDesc(){ return (CHAR*)m_PlayerShopDesc; } ;
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //商店ID
+        _PLAYERSHOP_GUID        m_ShopID;            //鍟嗗簵ID
         BYTE                    m_PlayerShopDescSize;
         CHAR                    m_PlayerShopDesc[MAX_SHOP_DESC_SIZE];
     };

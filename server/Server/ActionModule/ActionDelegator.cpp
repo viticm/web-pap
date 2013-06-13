@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºActionDelegator_T
-// ¹¦ÄÜËµÃ÷£º¶¯×÷µÄ´úÀíÀà , ½ÇÉ«¶¯×÷µÄ¹«¹²½Ó¿ÚºÍ³£ÓÃ¹¦ÄÜ
+// æ–‡ä»¶åï¼šActionDelegator_T
+// åŠŸèƒ½è¯´æ˜ï¼šåŠ¨ä½œçš„ä»£ç†ç±» , è§’è‰²åŠ¨ä½œçš„å…¬å…±æ¥å£å’Œå¸¸ç”¨åŠŸèƒ½
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -37,8 +37,8 @@ namespace Action_Module
     {
         MIN_ACTION_TIME = 500,
     };
-    //×¢:ÕâÀïÊÇÉèÖÃaction²ÎÊıµÄ½Ó¿Ú£¬²»ÊÇÉèÖÃ½ÇÉ«Âß¼­×´Ì¬×´Ì¬µÄ½Ó¿Ú
-    //Òò´ËÀïÃæ²»¸ºÔğÉèÖÃ·şÎñÆ÷½ÇÉ«µÄÂß¼­×´Ì¬
+    //æ³¨:è¿™é‡Œæ˜¯è®¾ç½®actionå‚æ•°çš„æ¥å£ï¼Œä¸æ˜¯è®¾ç½®è§’è‰²é€»è¾‘çŠ¶æ€çŠ¶æ€çš„æ¥å£
+    //å› æ­¤é‡Œé¢ä¸è´Ÿè´£è®¾ç½®æœåŠ¡å™¨è§’è‰²çš„é€»è¾‘çŠ¶æ€
     BOOL ActionDelegator_T::IsPerformingTheSpecificSkill(Obj_Character& rActor, SkillID_t nSkillID) const
     {
         __ENTER_FUNCTION
@@ -253,10 +253,10 @@ namespace Action_Module
     BOOL ActionDelegator_T::RegisterEmoteAction(Obj_Character& rActor, ActionID_t nAction) const
     {
         __ENTER_FUNCTION
-        //Õâ¸ö½Ó¿Ú×¨ÃÅÁô¸øÒ»Ğ©±íÇé¶¯×÷£¬ÒÔºóÔÙ¿¼ÂÇÊÇ·ñ±£Áô¡£
+        //è¿™ä¸ªæ¥å£ä¸“é—¨ç•™ç»™ä¸€äº›è¡¨æƒ…åŠ¨ä½œï¼Œä»¥åå†è€ƒè™‘æ˜¯å¦ä¿ç•™ã€‚
         if(FALSE==CanDoNextAction(rActor))
         {
-            return TRUE; //·µ»ØÖµÓÀÔ¶³É¹¦,²»ÄÜÊ¹ÓÃ¶¯×÷µÄÊ±ºò,¶¯×÷µÄĞÅÏ¢×ÔÈ»±»¹ıÂË.
+            return TRUE; //è¿”å›å€¼æ°¸è¿œæˆåŠŸ,ä¸èƒ½ä½¿ç”¨åŠ¨ä½œçš„æ—¶å€™,åŠ¨ä½œçš„ä¿¡æ¯è‡ªç„¶è¢«è¿‡æ»¤.
         }        
         ActionParams_T&    rActionParams = rActor.GetActionParams();
         rActionParams.Reset();
@@ -271,7 +271,7 @@ namespace Action_Module
         //info client Charge action start
         rActor.AddLogicCount();
         BroadcastUnitStartInstantAction(rActor,nAction, pSkill->GetPlayActionTime());
-        //ÕâÀï²»ÉèÖÃ¶¯×÷Ê±¼ä,ÕâÒâÎ¶×ÅÕâ¸ö¶¯×÷¿ÉÒÔ±»ËæÊ±´ò¶Ï.
+        //è¿™é‡Œä¸è®¾ç½®åŠ¨ä½œæ—¶é—´,è¿™æ„å‘³ç€è¿™ä¸ªåŠ¨ä½œå¯ä»¥è¢«éšæ—¶æ‰“æ–­.
         rActor.OnActionStarted();
         return TRUE;
         __LEAVE_FUNCTION
@@ -376,7 +376,7 @@ namespace Action_Module
     VOID ActionDelegator_T::BroadcastUnitStartChargeAction(Obj_Character& rActor, ActionID_t nAction, Time_t nContinuance) const
     {
         __ENTER_FUNCTION
-        //ÏÈÓÃ¼¼ÄÜµÄÏûÏ¢ÔËĞĞÒ»ÏÂ£¬½«À´»»³É¶¯×÷µÄÏûÏ¢
+        //å…ˆç”¨æŠ€èƒ½çš„æ¶ˆæ¯è¿è¡Œä¸€ä¸‹ï¼Œå°†æ¥æ¢æˆåŠ¨ä½œçš„æ¶ˆæ¯
         // send msg to client...
         SkillInfo_T& rSkillInfo = rActor.GetSkillInfo();
         TargetingAndDepletingParams_T& rParams = rActor.GetTargetingAndDepletingParams();
@@ -400,7 +400,7 @@ namespace Action_Module
     }
     VOID ActionDelegator_T::BroadcastUnitStartChannelAction(Obj_Character& rActor, ActionID_t nAction, Time_t nContinuance) const
     {
-        //ÏÈÓÃ¼¼ÄÜµÄÏûÏ¢ÔËĞĞÒ»ÏÂ£¬½«À´»»³É¶¯×÷µÄÏûÏ¢
+        //å…ˆç”¨æŠ€èƒ½çš„æ¶ˆæ¯è¿è¡Œä¸€ä¸‹ï¼Œå°†æ¥æ¢æˆåŠ¨ä½œçš„æ¶ˆæ¯
         __ENTER_FUNCTION
         SkillInfo_T& rSkillInfo = rActor.GetSkillInfo();
         TargetingAndDepletingParams_T& rParams = rActor.GetTargetingAndDepletingParams();
@@ -425,7 +425,7 @@ namespace Action_Module
     }
     VOID ActionDelegator_T::BroadcastUnitStartInstantAction(Obj_Character& rActor, ActionID_t nAction, Time_t nActionTime) const
     {
-        //ÏÈÓÃ¼¼ÄÜµÄÏûÏ¢ÔËĞĞÒ»ÏÂ£¬½«À´»»³É¶¯×÷µÄÏûÏ¢
+        //å…ˆç”¨æŠ€èƒ½çš„æ¶ˆæ¯è¿è¡Œä¸€ä¸‹ï¼Œå°†æ¥æ¢æˆåŠ¨ä½œçš„æ¶ˆæ¯
         __ENTER_FUNCTION
         SkillInfo_T& rSkillInfo = rActor.GetSkillInfo();
         TargetingAndDepletingParams_T& rParams = rActor.GetTargetingAndDepletingParams();
@@ -449,7 +449,7 @@ namespace Action_Module
     }
     VOID ActionDelegator_T::BroadcastUnitChargeTimeChanged(Obj_Character& rActor, Time_t nDeltaTime) const
     {
-        //ÏÈÓÃ¼¼ÄÜµÄÏûÏ¢ÔËĞĞÒ»ÏÂ£¬½«À´»»³É¶¯×÷µÄÏûÏ¢
+        //å…ˆç”¨æŠ€èƒ½çš„æ¶ˆæ¯è¿è¡Œä¸€ä¸‹ï¼Œå°†æ¥æ¢æˆåŠ¨ä½œçš„æ¶ˆæ¯
         __ENTER_FUNCTION
         SkillInfo_T& rSkillInfo = rActor.GetSkillInfo();
         TargetingAndDepletingParams_T& rParams = rActor.GetTargetingAndDepletingParams();
@@ -473,7 +473,7 @@ namespace Action_Module
     }
     VOID ActionDelegator_T::BroadcastUnitChannelTimeChanged(Obj_Character& rActor, Time_t nDeltaTime) const
     {
-        //ÏÈÓÃ¼¼ÄÜµÄÏûÏ¢ÔËĞĞÒ»ÏÂ£¬½«À´»»³É¶¯×÷µÄÏûÏ¢
+        //å…ˆç”¨æŠ€èƒ½çš„æ¶ˆæ¯è¿è¡Œä¸€ä¸‹ï¼Œå°†æ¥æ¢æˆåŠ¨ä½œçš„æ¶ˆæ¯
         __ENTER_FUNCTION
         SkillInfo_T& rSkillInfo = rActor.GetSkillInfo();
         TargetingAndDepletingParams_T& rParams = rActor.GetTargetingAndDepletingParams();

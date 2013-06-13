@@ -9,7 +9,7 @@
 class DBDeleteCharOp:public ODBCBase
 {
     UINT            m_AID;
-    CHAR            m_Account[MAX_ACCOUNT+1];    //”√ªß√˚≥∆
+    CHAR            m_Account[MAX_ACCOUNT+1];    //Áî®Êà∑ÂêçÁß∞
     GUID_t            m_CharGuid;
 public:
     DBDeleteCharOp(ODBCInterface* pInterface);

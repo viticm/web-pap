@@ -8,7 +8,7 @@
 
 
 
-//³¡¾°ÖĞµÄÍæ¼ÒÈº¹ÜÀíÄ£¿é
+//åœºæ™¯ä¸­çš„ç©å®¶ç¾¤ç®¡ç†æ¨¡å—
 //
 class ScenePlayerManager : public PlayerManager
 {
@@ -16,36 +16,36 @@ public :
     ScenePlayerManager( ) ;
     ~ScenePlayerManager( ) ;
 
-    //ÍøÂçÕì²â½Ó¿Ú
+    //ç½‘ç»œä¾¦æµ‹æ¥å£
     BOOL                Select( ) ;
-    //Êı¾İ½ÓÊÕ´¦Àí
+    //æ•°æ®æ¥æ”¶å¤„ç†
     BOOL                ProcessInputs( ) ;
-    //Êı¾İ·¢ËÍ´¦Àí
+    //æ•°æ®å‘é€å¤„ç†
     BOOL                ProcessOutputs( ) ;
-    //Òì³£Á¬½Ó´¦Àí
+    //å¼‚å¸¸è¿æ¥å¤„ç†
     BOOL                ProcessExceptions( ) ;
-    //ÏûÏ¢´¦Àí
+    //æ¶ˆæ¯å¤„ç†
     BOOL                ProcessCommands( ) ;
-    //Âß¼­´¦Àí
+    //é€»è¾‘å¤„ç†
     virtual BOOL        HeartBeat( UINT uTime=0 ) ;
 
 
 public :
-    //Í¨ÓÃ½Ó¿Ú
+    //é€šç”¨æ¥å£
 
-    //ÉèÖÃµ±Ç°³¡¾°ID
+    //è®¾ç½®å½“å‰åœºæ™¯ID
     VOID                SetSceneID( SceneID_t SceneID ){ m_SceneID = SceneID ; } ;
-    //¶ÁÈ¡³¡¾°ID
+    //è¯»å–åœºæ™¯ID
     SceneID_t            GetSceneID( ){ return m_SceneID ; } ;
 
-    //Ôö¼ÓÒ»¸öÍæ¼Ò
+    //å¢åŠ ä¸€ä¸ªç©å®¶
     BOOL                AddPlayer( Player* pPlayer ) ;
     BOOL                AddPlayerSocket( SOCKET fd ) ;
-    //É¾³ıÒ»¸öÍæ¼Ò£¨²¢²»¶ÏÍø£¬ÓĞ¿ÉÄÜ×ªÒÆµ½±ğµÄ³¡¾°£©
+    //åˆ é™¤ä¸€ä¸ªç©å®¶ï¼ˆå¹¶ä¸æ–­ç½‘ï¼Œæœ‰å¯èƒ½è½¬ç§»åˆ°åˆ«çš„åœºæ™¯ï¼‰
     BOOL                DelPlayer( PlayerID_t pid ) ;
     BOOL                DelPlayerSocket( SOCKET fd ) ;
 
-    //¶Ï¿ªÒ»¸öÍæ¼Ò¡¢²¢ÇåÀíÊı¾İ
+    //æ–­å¼€ä¸€ä¸ªç©å®¶ã€å¹¶æ¸…ç†æ•°æ®
     BOOL                RemovePlayer( Player* pPlayer, char* szReason, BOOL bReal=FALSE ) ;
     VOID                RemoveAllPlayer( ) ;
 
@@ -58,11 +58,11 @@ public :
 
 private :
     //
-    //ÍøÂçÊı¾İ
+    //ç½‘ç»œæ•°æ®
     enum{
-        SELECT_BAK = 0,    //µ±Ç°ÏµÍ³ÖĞÓµÓĞµÄÍêÕû¾ä±úÊı¾İ
-        SELECT_USE = 1,    //ÓÃÓÚselectµ÷ÓÃµÄ¾ä±úÊı¾İ
-        SELECT_MAX = 2, //½á¹¹Ê¹ÓÃÊıÁ¿
+        SELECT_BAK = 0,    //å½“å‰ç³»ç»Ÿä¸­æ‹¥æœ‰çš„å®Œæ•´å¥æŸ„æ•°æ®
+        SELECT_USE = 1,    //ç”¨äºselectè°ƒç”¨çš„å¥æŸ„æ•°æ®
+        SELECT_MAX = 2, //ç»“æ„ä½¿ç”¨æ•°é‡
     };
     fd_set        m_ReadFDs[SELECT_MAX];
     fd_set        m_WriteFDs[SELECT_MAX];
@@ -74,7 +74,7 @@ private :
     SOCKET        m_MaxFD;
 
     INT                m_nFDSize ;
-    //ÍøÂçÊı¾İ
+    //ç½‘ç»œæ•°æ®
     //
 
     SceneID_t    m_SceneID ;

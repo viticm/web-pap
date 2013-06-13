@@ -15,7 +15,7 @@ namespace Packets
         CGChannelDismiss( ){} ;
         virtual ~CGChannelDismiss( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,7 +28,7 @@ namespace Packets
         GUID_t                GetGUID( ){ return m_GUID ; }
 
     private :
-        GUID_t                m_GUID ;    //½âÉ¢×Ô½¨ÁÄÌìÊÒµÄÈË
+        GUID_t                m_GUID ;    //è§£æ•£è‡ªå»ºèŠå¤©å®¤çš„äºº
 
     };
 

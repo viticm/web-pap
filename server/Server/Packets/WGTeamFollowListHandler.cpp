@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼þÃû£º    WGTeamFollowListHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\WGTeamFollowListHandler.cpp
- *    ´´½¨Ê±¼ä£º    2005 Äê 11 ÔÂ 23 ÈÕ    23:46
+ *    æ–‡ä»¶åï¼š    WGTeamFollowListHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\WGTeamFollowListHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 11 æœˆ 23 æ—¥    23:46
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ÐÞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "WGTeamFollowList.h"
@@ -48,7 +48,7 @@ __ENTER_FUNCTION
     }
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pScene->SendPacket( pPacket, PlayerID );
@@ -59,7 +59,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         TeamInfo* pTeamInfo = pHuman->GetTeamInfo();
@@ -69,7 +69,7 @@ __ENTER_FUNCTION
             return PACKET_EXE_CONTINUE;
         }
 
-        pHuman->__ClearFollowedMembers(); // Çå¿Õ¾ÉÐÅÏ¢
+        pHuman->__ClearFollowedMembers(); // æ¸…ç©ºæ—§ä¿¡æ¯
 
         _FOLLOWEDMEMBER myInfo;
         myInfo.m_GUID = pHuman->GetGUID();
@@ -91,11 +91,11 @@ __ENTER_FUNCTION
                 if ( info.m_pHuman!=NULL )
                 {
                     if ( info.m_pHuman->GetGUID()!=pMember->m_GUID )
-                    { // ÄþÈ±ÎðÀÄ
+                    { // å®ç¼ºå‹¿æ»¥
                         info.m_pHuman = NULL;
                     }
                     else
-                    { // ÈÃ¸úËæ¶ÓÓÑ°Ñ×Ô¼º¼Ó½øÈ¥£¬ÒÔ¸üÐÂ pHuman Ö¸Õë
+                    { // è®©è·Ÿéšé˜Ÿå‹æŠŠè‡ªå·±åŠ è¿›åŽ»ï¼Œä»¥æ›´æ–° pHuman æŒ‡é’ˆ
                         info.m_pHuman->__AddFollowedMember( myInfo );
                     }
                 }
@@ -108,24 +108,24 @@ __ENTER_FUNCTION
         {
             pHuman->__SetTeamFollowFlag( TRUE );
 
-            GCReturnTeamFollow Msg; // Í¨Öª¿Í»§¶Ë½øÈë¸úËæ×´Ì¬
+            GCReturnTeamFollow Msg; // é€šçŸ¥å®¢æˆ·ç«¯è¿›å…¥è·ŸéšçŠ¶æ€
             Msg.SetGUID( pHuman->GetGUID() );
             Msg.SetReturn( TF_RESULT_FOLLOW_FLAG );
             pGamePlayer->SendPacket( &Msg );
         }
         else
-        { // ¶Ó³¤¶ÏÏßÍË³ö£¬World ¿ÉÄÜ·¢ËÍÒ»¸ö¿ÕµÄÁÐ±í¹ýÀ´
+        { // é˜Ÿé•¿æ–­çº¿é€€å‡ºï¼ŒWorld å¯èƒ½å‘é€ä¸€ä¸ªç©ºçš„åˆ—è¡¨è¿‡æ¥
             pHuman->__SetTeamFollowFlag( FALSE );
             pHuman->GetHumanAI()->PushCommand_StopTeamFollow();
 
-            GCReturnTeamFollow Msg; // Í¨Öª¿Í»§¶Ë½øÈë¸úËæ×´Ì¬
+            GCReturnTeamFollow Msg; // é€šçŸ¥å®¢æˆ·ç«¯è¿›å…¥è·ŸéšçŠ¶æ€
             Msg.SetGUID( pHuman->GetGUID() );
             Msg.SetReturn( TF_RESULT_STOP_FOLLOW );
             pGamePlayer->SendPacket( &Msg );
         }
 
         if ( pTeamInfo->IsLeader() )
-        { // ¶Ó³¤
+        { // é˜Ÿé•¿
             GCTeamFollowList Msg;
             Msg.SetObjID( pHuman->GetID() );
 
@@ -137,7 +137,7 @@ __ENTER_FUNCTION
                 Msg.AddFollowMember( pHuman->__GetFollowedMember(i)->m_GUID );
 
                 if ( pMember!=NULL && pMember->getZoneID()!=INVALID_ID )
-                { // ±ØÐë½øÈëÁË³¡¾°²Å¸úËæ
+                { // å¿…é¡»è¿›å…¥äº†åœºæ™¯æ‰è·Ÿéš
                     pMember->GetHumanAI()->PushCommand_TeamFollow();
                 }
             }
@@ -148,11 +148,11 @@ __ENTER_FUNCTION
             }
         }
         else if ( pPacket->GetMemberCount()>0 )
-        { // ÊÇ¸úËæÕß
+        { // æ˜¯è·Ÿéšè€…
             Obj_Human* pLeader = pHuman->__GetFollowedMember(0)->m_pHuman;
 
             if ( pLeader!=NULL && pLeader->getZoneID()!=INVALID_ID )
-            { // ±ØÐë½øÈëÁË³¡¾°²Å¸úËæ
+            { // å¿…é¡»è¿›å…¥äº†åœºæ™¯æ‰è·Ÿéš
                 pHuman->GetHumanAI()->PushCommand_TeamFollow();
             }
         }

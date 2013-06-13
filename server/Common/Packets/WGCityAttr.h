@@ -1,6 +1,6 @@
 // WGCityAttr.h
 // 
-// ÇëÇóÉêÇë½¨Á¢ĞÂµÄ³ÇÊĞ
+// è¯·æ±‚ç”³è¯·å»ºç«‹æ–°çš„åŸå¸‚
 // 
 //////////////////////////////////////////////////////
 
@@ -19,15 +19,15 @@ namespace Packets
         WGCityAttr( )
         {
             m_SceneID = INVALID_ID;
-            m_uFlags    =    0;                                //Ã¿¸öÎ»±íÊ¾Ò»¸öÊôĞÔÊÇ·ñÒªË¢ĞÂ ENUM_UPDATE_CITY_ATT
-            m_Level        =    0;                                //³ÇÊĞ¼¶±ğ
-            memset(m_szCityName, 0, MAX_CITY_NAME_SIZE);    //³ÇÊĞÃû³Æ
-            m_BuildingIndex    =    0;                            //½¨ÖşË÷Òı
-            m_BuildingData.CleanUp();                        //½¨ÖşÎïÊı¾İ
+            m_uFlags    =    0;                                //æ¯ä¸ªä½è¡¨ç¤ºä¸€ä¸ªå±æ€§æ˜¯å¦è¦åˆ·æ–° ENUM_UPDATE_CITY_ATT
+            m_Level        =    0;                                //åŸå¸‚çº§åˆ«
+            memset(m_szCityName, 0, MAX_CITY_NAME_SIZE);    //åŸå¸‚åç§°
+            m_BuildingIndex    =    0;                            //å»ºç­‘ç´¢å¼•
+            m_BuildingData.CleanUp();                        //å»ºç­‘ç‰©æ•°æ®
         }
         virtual ~WGCityAttr( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -84,11 +84,11 @@ namespace Packets
 
     private:
         SceneID_t        m_SceneID;
-        UINT            m_uFlags;                            //Ã¿¸öÎ»±íÊ¾Ò»¸öÊôĞÔÊÇ·ñÒªË¢ĞÂ ENUM_UPDATE_CITY_ATT
-        BYTE            m_Level;                            //³ÇÊĞ¼¶±ğ
-        CHAR            m_szCityName[MAX_CITY_NAME_SIZE];    //³ÇÊĞÃû³Æ
-        BYTE            m_BuildingIndex;                    //½¨ÖşË÷Òı
-        CityBuilding_t    m_BuildingData;                        //½¨ÖşÎïÊı¾İ
+        UINT            m_uFlags;                            //æ¯ä¸ªä½è¡¨ç¤ºä¸€ä¸ªå±æ€§æ˜¯å¦è¦åˆ·æ–° ENUM_UPDATE_CITY_ATT
+        BYTE            m_Level;                            //åŸå¸‚çº§åˆ«
+        CHAR            m_szCityName[MAX_CITY_NAME_SIZE];    //åŸå¸‚åç§°
+        BYTE            m_BuildingIndex;                    //å»ºç­‘ç´¢å¼•
+        CityBuilding_t    m_BuildingData;                        //å»ºç­‘ç‰©æ•°æ®
     };
 
     class WGCityAttrFactory : public PacketFactory 

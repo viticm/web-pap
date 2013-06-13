@@ -13,7 +13,7 @@ namespace Packets
         CGReturnTeamFollow(){}
         virtual        ~CGReturnTeamFollow(){}
 
-        //公用接口
+        //鍏敤鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -26,7 +26,7 @@ namespace Packets
         BOOL                    GetReturn( ) { return (m_uRet>0); }
 
     private :
-        UCHAR                    m_uRet;    // 进入跟随状态的玩家 GUID
+        UCHAR                    m_uRet;    // 杩涘叆璺熼殢鐘舵�佺殑鐜╁ GUID
 
     };
 

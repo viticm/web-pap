@@ -26,7 +26,7 @@ UINT CGCharUpdateCurTitleHandler::Execute( CGCharUpdateCurTitle* pPacket, Player
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
     BYTE        titleType    = pPacket->getTitleType();
@@ -40,7 +40,7 @@ UINT CGCharUpdateCurTitleHandler::Execute( CGCharUpdateCurTitle* pPacket, Player
         pHuman->SetTitleType(_TITLE::NO_TITLE);
     }
     else if(titleType>=_TITLE::NICK_TITLE )
-    {//×Ö·û´®
+    {//å­—ç¬¦ä¸²
         switch(titleType)
         {
         case     _TITLE::NICK_TITLE :

@@ -84,7 +84,7 @@ __ENTER_FUNCTION
     FLOAT fDistSq = MyLengthSq(&m_CentrePoint, pObj->getWorldPos());
     if( fDistSq>(m_fRadius*m_fRadius))
     {
-        //²»ÔÚAE·¶Î§
+        //ä¸åœ¨AEèŒƒå›´
         return SCANRETURN_CONTINUE;
     }
     SkillLogic_T const* pSkillLogic = Skill_GetLogic(*m_pSkillInfo);

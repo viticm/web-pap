@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////
-//�ļ�����
-//����������������Χ�ĵ���obj
-//�޸ļ�¼��2005-11-9����
+//文件名：
+//功能描述：搜索周围的敌人obj
+//修改记录：2005-11-9创建
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -20,8 +20,8 @@ struct SCANOPERATOR_TEAMMATE_INIT : public SCANOPERATOR_INIT
     FLOAT                        m_fRadius ;
     INT                            m_nCount;
     INT                            m_Type;
-    BOOL                        m_bOnlyNoEnemy; //ֻ��û�е��˵�ͬ��
-    BOOL                        m_bScanAllMonster; //ɨ���������͵Ĺ�
+    BOOL                        m_bOnlyNoEnemy; //只找没有敌人的同伴
+    BOOL                        m_bScanAllMonster; //扫描所以类型的怪
 
     SCANOPERATOR_TEAMMATE_INIT( )
     {
@@ -42,15 +42,15 @@ public :
     ScanOperator_Teammate( ) ;
     virtual ~ScanOperator_Teammate( ) ;
 
-    //��ʼ��ɨ�������
+    //初始化扫描控制器
     virtual BOOL                Init( SCANOPERATOR_TEAMMATE_INIT* pInit ) ;
-    //ɨ�������ʼǰ�ص�
+    //扫描操作开始前回调
     //    virtual BOOL                On_BeforeScan( ) ;
-    //�жϲ����е�Zone�Ƿ���Ҫɨ��
+    //判断参数中的Zone是否需要扫描
     //    virtual BOOL                On_IsNeedScan( ZoneID_t ZoneID ) ;
-    //������һ��Obj, ����ֵ�� SCANRETURN
+    //搜索到一个Obj, 返回值见 SCANRETURN
     virtual UINT                On_FindObj( Obj* pObj ) ;
-    //ɨ�������ɺ�ص�
+    //扫描操作完成后回调
     //    virtual VOID                On_AfterScan( ) ;
 
 
@@ -59,8 +59,8 @@ public :
     FLOAT                        m_fRadius ;
     INT                            m_nCount;
     INT                            m_Type;
-    BOOL                        m_bOnlyNoEnemy; //ֻ��û�е��˵�ͬ��
-    BOOL                        m_bScanAllMonster; //ɨ���������͵Ĺ�
+    BOOL                        m_bOnlyNoEnemy; //只找没有敌人的同伴
+    BOOL                        m_bScanAllMonster; //扫描所以类型的怪
 
 };
 

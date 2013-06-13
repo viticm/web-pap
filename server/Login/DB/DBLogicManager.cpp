@@ -42,7 +42,7 @@ BOOL DBLogicManager::HeartBeat(UINT uTime)
 }
 
 /*
- *  ÏûÏ¢»º´æµÄ´¦Àí£¬ÕâÊÇDB Î¨Ò»µÄ¹¤×÷
+ *  æ¶ˆæ¯ç¼“å­˜çš„å¤„ç†ï¼Œè¿™æ˜¯DB å”¯ä¸€çš„å·¥ä½œ
  */
 BOOL    DBLogicManager::ProcessCacheCommands()
 {
@@ -72,7 +72,7 @@ BOOL    DBLogicManager::ProcessCacheCommands()
 
         if( PlayerID==INVALID_ID )
         {
-            //ÕâÖÖÇé¿ö¿ÉÄÜÊÇWorld ²éÑ¯Êı¾İ¿â
+            //è¿™ç§æƒ…å†µå¯èƒ½æ˜¯World æŸ¥è¯¢æ•°æ®åº“
             _MY_TRY
             {
                 UINT uret = pPacket->Execute(NULL);
@@ -108,7 +108,7 @@ BOOL    DBLogicManager::ProcessCacheCommands()
                 UINT uret = pPacket->Execute(pPlayer) ;
                 if( uret == PACKET_EXE_ERROR )
                 {
-                    //DB Ã»ÓĞÌßÓÃ»§µÄÈ¨ÏŞ
+                    //DB æ²¡æœ‰è¸¢ç”¨æˆ·çš„æƒé™
                     MovePacket( PlayerID ) ;
                 }
                 else if( uret == PACKET_EXE_BREAK )
@@ -132,7 +132,7 @@ BOOL    DBLogicManager::ProcessCacheCommands()
             }
         }
 
-        //»ØÊÕÏûÏ¢
+        //å›æ”¶æ¶ˆæ¯
         if( bNeedRemove )
             g_pPacketFactoryManager->RemovePacket( pPacket ) ;
     }
@@ -152,7 +152,7 @@ BOOL DBLogicManager::RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& F
     AutoLock_T autolock(m_Lock);
 
     if( m_PacketQue[m_Head].m_pPacket==NULL )
-    {//»º³åÇøÖĞÃ»ÓĞÏûÏ¢
+    {//ç¼“å†²åŒºä¸­æ²¡æœ‰æ¶ˆæ¯
         return FALSE ;
     }
 
@@ -213,8 +213,8 @@ BOOL    DBLogicManager::SendPacket(Packet* pPacket,
     AutoLock_T autolock(m_Lock);
 
     if( m_PacketQue[m_Tail].m_pPacket )
-    {//»º³åÇøÂú
-        return FALSE; //ÕâÀï²»ÄÜresize ÒòÎªDBLogic ´¦ÀíÏûÏ¢ÄÜÁ¦ÓĞÑ¹Á¦¿ØÖÆ
+    {//ç¼“å†²åŒºæ»¡
+        return FALSE; //è¿™é‡Œä¸èƒ½resize å› ä¸ºDBLogic å¤„ç†æ¶ˆæ¯èƒ½åŠ›æœ‰å‹åŠ›æ§åˆ¶
         
     }
 

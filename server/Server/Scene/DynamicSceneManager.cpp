@@ -68,9 +68,9 @@ __ENTER_FUNCTION
         if( pScene==NULL )
             continue ;
 
-        //Ñ¡Ôñ³¡¾°¹æÔò
-        //ÔÚSceneInfo.iniÖÐÑ¡ÔñType = 4µÄ
-        //³¡¾°ÎÄ¼þÃû=CityInfo.txtÖÐ¶ÔÓ¦Èë¿Ú³¡¾°µÄsceneÎÄ¼þÃûµÄ³¡¾°
+        //é€‰æ‹©åœºæ™¯è§„åˆ™
+        //åœ¨SceneInfo.iniä¸­é€‰æ‹©Type = 4çš„
+        //åœºæ™¯æ–‡ä»¶å=CityInfo.txtä¸­å¯¹åº”å…¥å£åœºæ™¯çš„sceneæ–‡ä»¶åçš„åœºæ™¯
         if(pSelect->m_SceneDataType == pScene->GetSceneType()&& 
             !tstricmp(g_Config.m_SceneInfo.m_pScene[i].m_szFileName, g_CitySceneTbl.GetszFileNameByPort(pSelect->m_CitySelect.m_PortSceneID)))
         {
@@ -86,7 +86,7 @@ __ENTER_FUNCTION
     {
         pScene = aTemp[i] ;
 
-        //×´Ì¬´¦Àí
+        //çŠ¶æ€å¤„ç†
         if( pScene->GetSceneStatus() == SCENE_STATUS_SLEEP )
         {
             pScene->SetSceneStatus( SCENE_STATUS_SELECT ) ;
@@ -100,11 +100,11 @@ __ENTER_FUNCTION
 
     if( pScene==NULL )
     {
-        m_Lock.Unlock() ;//½âËø
+        m_Lock.Unlock() ;//è§£é”
         return INVALID_ID ;
     }
 
-    //½«³¡¾°·ÅÈë×°ÔØ¶ÓÁÐ
+    //å°†åœºæ™¯æ”¾å…¥è£…è½½é˜Ÿåˆ—
     DynamicSceneManager::LOAD_NODE NewNode;
     NewNode.m_SceneDataType    = pSelect->m_SceneDataType;
     if(NewNode.m_SceneDataType    == SCENE_TYPE_CIT )
@@ -118,14 +118,14 @@ __ENTER_FUNCTION
     if( ret==FALSE )
     {
         Assert( FALSE ) ;
-        m_Lock.Unlock() ;//½âËø
+        m_Lock.Unlock() ;//è§£é”
         return INVALID_ID ;
     }
 
 
 __LEAVE_FUNCTION
 
-    m_Lock.Unlock() ;//½âËø
+    m_Lock.Unlock() ;//è§£é”
     return INVALID_ID ;
 }
 
@@ -190,7 +190,7 @@ __ENTER_FUNCTION
     if(CurNode.m_SceneDataType == SCENE_TYPE_CIT)
     {
         pScene = CurNode.m_CityData.m_pScene;
-        //ÉèÖÃ×°ÔØ²ÎÊý
+        //è®¾ç½®è£…è½½å‚æ•°
         pScene->m_SceneInitData.m_nDataType = SCENE_TYPE_CIT;
         pScene->m_SceneInitData.m_CityData.m_PortSceneID    = CurNode.m_CityData.m_PortSceneID;
     }
@@ -198,7 +198,7 @@ __ENTER_FUNCTION
     if( pScene == NULL )
         return FALSE ;
 
-    //¶ÁÈ¡³¡¾°µÄÅäÖÃÐÅÏ¢²¢×°ÔØ
+    //è¯»å–åœºæ™¯çš„é…ç½®ä¿¡æ¯å¹¶è£…è½½
     SCENE_LOAD load ;
     if(CurNode.m_SceneDataType == SCENE_TYPE_CIT)
     {
@@ -206,13 +206,13 @@ __ENTER_FUNCTION
             load ) ;
     }
 
-    //×°ÔØ
+    //è£…è½½
     pScene->Load( &load ) ;
     pScene->SetSceneStatus( SCENE_STATUS_LOAD ) ;
-    pScene->GetCityData()->m_Creator = CurNode.m_CityData.m_PlayerGuid;//¼ÇÂ¼ÔÚ×Ô¼ºµÄ³¡¾°ÐÅÏ¢ÖÐ£¬¹©Í¨Öª´´½¨Õß³ÇÊÐ½¨Á¢³É¹¦ÓÃ
+    pScene->GetCityData()->m_Creator = CurNode.m_CityData.m_PlayerGuid;//è®°å½•åœ¨è‡ªå·±çš„åœºæ™¯ä¿¡æ¯ä¸­ï¼Œä¾›é€šçŸ¥åˆ›å»ºè€…åŸŽå¸‚å»ºç«‹æˆåŠŸç”¨
     Obj_Human* pHuman = (Obj_Human*)(g_pGUIDManager->Get(CurNode.m_CityData.m_PlayerGuid)) ;
     
-    //ÏòÊÀ½çÊý¾Ý·þÎñÆ÷·¢ËÍ³¡¾°Êý¾ÝÇëÇóÏûÏ¢
+    //å‘ä¸–ç•Œæ•°æ®æœåŠ¡å™¨å‘é€åœºæ™¯æ•°æ®è¯·æ±‚æ¶ˆæ¯
     GWAskSceneData* pMsg = (GWAskSceneData*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_ASKSCENEDATA));
 
     GWAskSceneData::CITY_DATA CityData;

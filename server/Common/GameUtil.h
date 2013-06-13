@@ -11,10 +11,10 @@
 #define __QUARTER_PI    __PI / 4
 
 ///////////////////////////////////////////////////////////////////////
-//»ù±¾¹¦ÄÜĞÔÄ£¿é¶¨Òå
+//åŸºæœ¬åŠŸèƒ½æ€§æ¨¡å—å®šä¹‰
 ///////////////////////////////////////////////////////////////////////
 
-//¹²ÏíËø
+//å…±äº«é”
 #if defined(__WINDOWS__)
 class MyLock
 {
@@ -36,7 +36,7 @@ public :
     VOID    Unlock( ){ pthread_mutex_unlock(&m_Mutex); } ;
 };
 #endif
-//×Ô¶¯¼ÓËø½âËøÆ÷
+//è‡ªåŠ¨åŠ é”è§£é”å™¨
 class AutoLock_T
 {
 public:
@@ -105,7 +105,7 @@ public:
 
         return TRUE;
     }
-    UINT GetLeaveTime(UINT uNow)//Ê£ÓàÊ±¼ä;
+    UINT GetLeaveTime(UINT uNow)//å‰©ä½™æ—¶é—´;
     {
         if(!CountingTimer(uNow))
         {
@@ -116,10 +116,10 @@ public:
 };
 
 ///////////////////////////////////////////////////////////////////////
-//»ù±¾¹¦ÄÜĞÔº¯Êı¶¨Òå
+//åŸºæœ¬åŠŸèƒ½æ€§å‡½æ•°å®šä¹‰
 ///////////////////////////////////////////////////////////////////////
 
-//µ±Ç°Ïß³Ì¹ÒÆğÒ»¶¨Ê±¼ä
+//å½“å‰çº¿ç¨‹æŒ‚èµ·ä¸€å®šæ—¶é—´
 extern VOID            MySleep( UINT millionseconds=0 ) ;
 
 extern TID            MyGetCurrentThreadID( ) ;
@@ -139,7 +139,7 @@ extern CHAR*        MySocketError( ) ;
 extern UINT            MyCRC( const CHAR* szString ) ;
 
 //////////////////////////////////////////////////////////////////////////
-//ÊıÑ§°ïÖúº¯Êı
+//æ•°å­¦å¸®åŠ©å‡½æ•°
 //////////////////////////////////////////////////////////////////////////
 template<class T>
 
@@ -207,13 +207,13 @@ struct Flag64
     }
 };
 
-#define        SM_FREE                    0x00    //¹²ÏíÄÚ´æ¿ÕÏĞ
-#define        SM_C_READ                0x01    //¹²ÏíÄÚ´æ×Ô¼º¶ÁÈ¡
-#define        SM_C_WRITE                0x02    //¹²ÏíÄÚ´æ×Ô¼ºĞ´
-#define        SM_S_READ                0x03    //Server¶Á
-#define        SM_S_WRITE                0x04    //ServerĞ´
-#define        SM_W_READ                0x05    //World ¶Á
-#define        SM_W_WRITE                0x06    //World Ğ´
+#define        SM_FREE                    0x00    //å…±äº«å†…å­˜ç©ºé—²
+#define        SM_C_READ                0x01    //å…±äº«å†…å­˜è‡ªå·±è¯»å–
+#define        SM_C_WRITE                0x02    //å…±äº«å†…å­˜è‡ªå·±å†™
+#define        SM_S_READ                0x03    //Serverè¯»
+#define        SM_S_WRITE                0x04    //Serverå†™
+#define        SM_W_READ                0x05    //World è¯»
+#define        SM_W_WRITE                0x06    //World å†™
 
 
 VOID        sm_lock(CHAR&    flag,CHAR type);
@@ -264,43 +264,43 @@ struct Flag16
 };
 
 
-//¿ÉÒÔ¶¨Òå³¤¶ÈµÄÎ»±ê¼Ç¼¯ºÏ
+//å¯ä»¥å®šä¹‰é•¿åº¦çš„ä½æ ‡è®°é›†åˆ
 template <UINT nSize>
     class BitFlagSet_T
 {
     public:
         enum
         {
-            BIT_SIZE = nSize, //Î»±ê¼ÇµÄ³¤¶È£¬µ¥Î»ÊÇ¶ş½øÖÆÎ»
-            BYTE_SIZE = 1+BIT_SIZE/8, //ĞÅÏ¢ÇøÕ¼ÓÃµÄ×Ö½ÚÊı
+            BIT_SIZE = nSize, //ä½æ ‡è®°çš„é•¿åº¦ï¼Œå•ä½æ˜¯äºŒè¿›åˆ¶ä½
+            BYTE_SIZE = 1+BIT_SIZE/8, //ä¿¡æ¯åŒºå ç”¨çš„å­—èŠ‚æ•°
         };
         BitFlagSet_T(VOID)
         {
             memset((VOID*)m_aBitFlags, '\0', sizeof(m_aBitFlags));
         };
-        //¸´ÖÆ¹¹ÔìÆ÷
+        //å¤åˆ¶æ„é€ å™¨
         BitFlagSet_T(BitFlagSet_T const& rhs)
         {
             memcpy((VOID*)m_aBitFlags, (VOID*)(rhs.GetFlags()), sizeof(m_aBitFlags));
         };
         ~BitFlagSet_T() {};
-        //¸´ÖÆ²Ù×÷·û
+        //å¤åˆ¶æ“ä½œç¬¦
         BitFlagSet_T& operator=(BitFlagSet_T const& rhs)
         {
             memcpy((VOID*)m_aBitFlags, (VOID*)(rhs.GetFlags()), sizeof(m_aBitFlags));
             return *this;
         };
-        //ÉèÖÃËùÓĞ±ê¼ÇÎ»
+        //è®¾ç½®æ‰€æœ‰æ ‡è®°ä½
         VOID MarkAllFlags(VOID)
         {
             memset((VOID*)m_aBitFlags, 0xFF, sizeof(m_aBitFlags));
         };
-        //Çå³ıËùÓĞ±ê¼ÇÎ»
+        //æ¸…é™¤æ‰€æœ‰æ ‡è®°ä½
         VOID ClearAllFlags(VOID)
         {
             memset((VOID*)m_aBitFlags, 0x00, sizeof(m_aBitFlags));
         };
-        //È¡Ö¸¶¨µÄ±ê¼ÇÎ»
+        //å–æŒ‡å®šçš„æ ‡è®°ä½
         BOOL GetFlagByIndex(INT const nIdx) const
         {
             if(0>nIdx||BIT_SIZE<=nIdx)
@@ -311,7 +311,7 @@ template <UINT nSize>
             unsigned int nIndex = nIdx;
             return 0!=(m_aBitFlags[nIdx>>3]&(char)(1<<nIdx%8));
         }
-        //Çå³ıÖ¸¶¨µÄ±ê¼ÇÎ»
+        //æ¸…é™¤æŒ‡å®šçš„æ ‡è®°ä½
         void ClearFlagByIndex(INT const nIdx)
         {
             if(0>nIdx||BIT_SIZE<=nIdx)
@@ -321,7 +321,7 @@ template <UINT nSize>
             }
             m_aBitFlags[nIdx>>3] &= ~(0x01<<(nIdx%8));
         }
-        //Éè¶¨Ö¸¶¨µÄ±ê¼ÇÎ»
+        //è®¾å®šæŒ‡å®šçš„æ ‡è®°ä½
         VOID MarkFlagByIndex(INT const nIdx)
         {
             if(0>nIdx||BIT_SIZE<=nIdx)
@@ -331,24 +331,24 @@ template <UINT nSize>
             }
             m_aBitFlags[nIdx>>3] |=    0x01<<(nIdx%8);
         }
-        //ËùÕ¼ÓÃµÄ×Ö½ÚÊı
+        //æ‰€å ç”¨çš„å­—èŠ‚æ•°
         UINT GetByteSize(VOID) const {return BYTE_SIZE;}
-        //ËùÖ§³ÖµÄ±ê¼ÇÊı
+        //æ‰€æ”¯æŒçš„æ ‡è®°æ•°
         UINT GetBitSize(VOID) const {return BIT_SIZE;}
-        //È¡Êı¾İÇøµÄÖ¸Õë
+        //å–æ•°æ®åŒºçš„æŒ‡é’ˆ
         CHAR const* const GetFlags(VOID) const {return m_aBitFlags;}
     protected:
     private:
-        CHAR m_aBitFlags[BYTE_SIZE]; //Êı¾İ´æ´¢Çø
+        CHAR m_aBitFlags[BYTE_SIZE]; //æ•°æ®å­˜å‚¨åŒº
 };
-//×Ô¶¯¿ØÖÆÄÚ´æÕ¼ÓÃµÄvector
+//è‡ªåŠ¨æ§åˆ¶å†…å­˜å ç”¨çš„vector
 template <typename U, size_t nSizeLimit>
     class ResizableVector_T
 {
     public:
         enum
         {
-            SIZE_LIMIT = nSizeLimit, //ĞÅÏ¢Çø×î´óµ¥Ôª¸öÊı£¬Ö÷Òª¹¦ÄÜÊÇÏŞÖÆÊı×éÎŞÏŞÔö³¤
+            SIZE_LIMIT = nSizeLimit, //ä¿¡æ¯åŒºæœ€å¤§å•å…ƒä¸ªæ•°ï¼Œä¸»è¦åŠŸèƒ½æ˜¯é™åˆ¶æ•°ç»„æ— é™å¢é•¿
         };
         ResizableVector_T(VOID) : m_nCurrentSize(0), m_pUnits(NULL)
         {
@@ -429,14 +429,14 @@ template <typename U, size_t nSizeLimit>
             }
             return FALSE;
         }
-        //µ±Ç°µÄÊı×é³¤¶È
+        //å½“å‰çš„æ•°ç»„é•¿åº¦
         size_t GetCurrentVectorSize(VOID) const {return m_nCurrentSize;}
-        //µ±Ç°Õ¼ÓÃµÄÄÚ´æ×Ö½ÚÊı
+        //å½“å‰å ç”¨çš„å†…å­˜å­—èŠ‚æ•°
         UINT GetByteSize(VOID) const {return sizeof(U)* m_nCurrentSize;}
     protected:
     private:
-        size_t m_nCurrentSize; //µ±Ç°µÄÊı×é³ß´ç
-        U* m_pUnits; //Êı¾İ´æ´¢ÇøÖ¸Õë
+        size_t m_nCurrentSize; //å½“å‰çš„æ•°ç»„å°ºå¯¸
+        U* m_pUnits; //æ•°æ®å­˜å‚¨åŒºæŒ‡é’ˆ
 };
 
 #if defined(__WINDOWS__)

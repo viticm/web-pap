@@ -17,21 +17,21 @@ public :
     ServerManager() ;
     ~ServerManager() ;
 
-    //Ä£¿é³õÊ¼»¯½Ó¿Ú
+    //æ¨¡å—åˆå§‹åŒ–æ¥å£
     BOOL                Init( ) ;
-    //ÍøÂçÕì²â
+    //ç½‘ç»œä¾¦æµ‹
     BOOL                Select( ) ;
-    //Êı¾İ½ÓÊÜ½Ó¿Ú
+    //æ•°æ®æ¥å—æ¥å£
     BOOL                ProcessInputs( ) ;
-    //Êı¾İ·¢ËÍ½Ó¿Ú
+    //æ•°æ®å‘é€æ¥å£
     BOOL                ProcessOutputs( ) ;
-    //Òì³£Á¬½Ó´¦Àí
+    //å¼‚å¸¸è¿æ¥å¤„ç†
     BOOL                ProcessExceptions( ) ;
-    //ÏûÏ¢Ö´ĞĞ
+    //æ¶ˆæ¯æ‰§è¡Œ
     BOOL                ProcessCommands( ) ;
-    //ĞÂÁ¬½Ó½ÓÊÕ´¦Àí
+    //æ–°è¿æ¥æ¥æ”¶å¤„ç†
     BOOL                AcceptNewConnection( ) ;
-    //Âß¼­½Ó¿Ú
+    //é€»è¾‘æ¥å£
     virtual BOOL        HeartBeat( ) ;
 
     void                Loop( ) ;
@@ -40,39 +40,39 @@ public :
     void                SetActive( BOOL bActive ){ m_bActive = bActive ; } ;
 
 public :
-    //Í¨ÓÃ½Ó¿Ú
+    //é€šç”¨æ¥å£
 
-    //½«PlayerÊı¾İ¼ÓÈëÏµÍ³ÖĞ
+    //å°†Playeræ•°æ®åŠ å…¥ç³»ç»Ÿä¸­
     BOOL                AddPlayer( Player* pPlayer ) ;
-    //½«ÓµÓĞfd¾ä±úµÄÍæ¼ÒÊı¾İ´Óµ±Ç°ÏµÍ³ÖĞÇå³ı
+    //å°†æ‹¥æœ‰fdå¥æŸ„çš„ç©å®¶æ•°æ®ä»å½“å‰ç³»ç»Ÿä¸­æ¸…é™¤
     BOOL                DelPlayer( Player* pPlayer ) ;
 
-    //³öÏÖÒì³£ºó½«PlayerĞÅÏ¢Çå³ı£¬²¢½«ÏµÍ³ÖĞµÄĞÅÏ¢Ò²Çå³ı
-    //¶Ï¿ªÍæ¼ÒµÄÁ¬½Ó
+    //å‡ºç°å¼‚å¸¸åå°†Playerä¿¡æ¯æ¸…é™¤ï¼Œå¹¶å°†ç³»ç»Ÿä¸­çš„ä¿¡æ¯ä¹Ÿæ¸…é™¤
+    //æ–­å¼€ç©å®¶çš„è¿æ¥
     BOOL                RemovePlayer( Player* pPlayer ) ;
     void                RemoveAllPlayer( ) ;
 
-    //Í¨¹ıServerIDÈ¡µÃServerPlayer
+    //é€šè¿‡ServerIDå–å¾—ServerPlayer
     ServerPlayer*        GetServerPlayer( ID_t ServerID ) ;
 
-    //ÏòËùÓĞ·şÎñÆ÷¶Ë³ÌĞò¹ã²¥ÏûÏ¢
+    //å‘æ‰€æœ‰æœåŠ¡å™¨ç«¯ç¨‹åºå¹¿æ’­æ¶ˆæ¯
     void                BroadCast( Packet* pPacket ) ;
-    void                BroadCastServer(Packet* pPacket); //Ö»ÏòServer¹ã²¥
-    void                BroadCastLogin(Packet* pPacket);//Ö»ÏòLogin¹ã²¥
+    void                BroadCastServer(Packet* pPacket); //åªå‘Serverå¹¿æ’­
+    void                BroadCastLogin(Packet* pPacket);//åªå‘Loginå¹¿æ’­
 
 
 private :
-    //ÓÃÓÚÕìÌıµÄ·şÎñÆ÷Socket
+    //ç”¨äºä¾¦å¬çš„æœåŠ¡å™¨Socket
     ServerSocket*        m_pServerSocket ;
-    //ÓÃÓÚÕìÌıµÄ·şÎñÆ÷SOCKET¾ä±úÖµ£¨´ËÊı¾İ¼´m_pServerSocketÄÚÓµÓĞµÄSOCKET¾ä±úÖµ£©
+    //ç”¨äºä¾¦å¬çš„æœåŠ¡å™¨SOCKETå¥æŸ„å€¼ï¼ˆæ­¤æ•°æ®å³m_pServerSocketå†…æ‹¥æœ‰çš„SOCKETå¥æŸ„å€¼ï¼‰
     SOCKET                m_SocketID ;
 
     //
-    //ÍøÂçÏà¹ØÊı¾İ
+    //ç½‘ç»œç›¸å…³æ•°æ®
     enum{
-        SELECT_BAK = 0,    //µ±Ç°ÏµÍ³ÖĞÓµÓĞµÄÍêÕû¾ä±úÊı¾İ
-        SELECT_USE = 1,    //ÓÃÓÚselectµ÷ÓÃµÄ¾ä±úÊı¾İ
-        SELECT_MAX = 2, //½á¹¹Ê¹ÓÃÊıÁ¿
+        SELECT_BAK = 0,    //å½“å‰ç³»ç»Ÿä¸­æ‹¥æœ‰çš„å®Œæ•´å¥æŸ„æ•°æ®
+        SELECT_USE = 1,    //ç”¨äºselectè°ƒç”¨çš„å¥æŸ„æ•°æ®
+        SELECT_MAX = 2, //ç»“æ„ä½¿ç”¨æ•°é‡
     };
     fd_set        m_ReadFDs[SELECT_MAX];
     fd_set        m_WriteFDs[SELECT_MAX];
@@ -84,7 +84,7 @@ private :
     SOCKET        m_MaxFD;
 
     int            m_iFDSize ;
-    //ÍøÂçÏà¹ØÊı¾İ
+    //ç½‘ç»œç›¸å…³æ•°æ®
     //
 
     BOOL        m_bActive ;
@@ -92,7 +92,7 @@ private :
 
 public :
     TID            m_ThreadID ;
-    //´ËÊı×éµÄÏÂ±êÖµÎªServerID, Êı×éÖµÎªPlayerID
+    //æ­¤æ•°ç»„çš„ä¸‹æ ‡å€¼ä¸ºServerID, æ•°ç»„å€¼ä¸ºPlayerID
     PlayerID_t    m_aServerHash[OVER_MAX_SERVER] ;    
 
 };

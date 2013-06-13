@@ -1,12 +1,12 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// �ļ�����StdImpact023.cpp
-// ����˵�������������DS
+// 文件名：StdImpact023.cpp
+// 功能说明：宠物防御性DS
 //
-// Ч���������ֵĸ�ʽ��|Ч��ID|��Ч����|�ܻ�ʱ��Ч|����ʱ��Ч|�ܻ�ʱ�˺�����
-//                       |����ʱ��ȡ����MP�ٷ���|����ʱ��ȡ����ŭ���ٷ���|
+// 效果描述部分的格式：|效果ID|生效几率|受击时有效|命中时有效|受击时伤害修正
+//                       |命中时吸取敌人MP百分率|命中时吸取敌人怒气百分率|
 //
-// �޸ļ�¼��
+// 修改记录：
 //
 //
 //
@@ -45,14 +45,14 @@ namespace Combat_Module
             {
                 return;
             }
-            // ��Ч���� 
+            // 生效几率 
             INT nActivateOdds = GetActivateOdds(rImp);
             INT nRet = pScene->GetRand100();
             if (nRet > nActivateOdds)
-            {// û����Ч��ֱ�ӷ���
+            {// 没有生效则直接返回
                 return;
             }
-            // ���˺���������
+            // 对伤害进行修正
             rDamage = Float2Int((rDamage*GetDamageIgnoreRate(rImp))/100.0f);
             __LEAVE_FUNCTION
         }
@@ -75,20 +75,20 @@ namespace Combat_Module
             {
                 return;
             }
-            // ��Ч���� 
+            // 生效几率 
             INT nActivateOdds = GetActivateOdds(rImp);
             INT nRet = pScene->GetRand100();
             if (nRet > nActivateOdds)
-            {// û����Ч��ֱ�ӷ���
+            {// 没有生效则直接返回
                 return;
             }
-            // ����ʱ��ȡ����MP�ٷ���
+            // 命中时吸取敌人MP百分率
             if(0<nMpDamageRate)
             {
                 INT nMP = Float2Int((nMpDamageRate*rDamage)/100.0f);
                 rTar.ManaIncrement(-nMP, &rMe);
             }
-            // ����ʱ��ȡ����ŭ���ٷ���
+            // 命中时吸取敌人怒气百分率
             if(0<nRageDamageRate)
             {
                 INT nRage = rTar.GetRage();

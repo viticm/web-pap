@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// �ļ�����ConditionAndDepleteCore.h
-// ����˵�������ܵĻ����࣬�������ܵĹ����ӿںͳ��ù���
+// 文件名：ConditionAndDepleteCore.h
+// 功能说明：技能的基础类，声明技能的公共接口和常用功能
 //
-// �޸ļ�¼��
+// 修改记录：
 //
 //
 //
@@ -19,8 +19,8 @@ namespace Combat_Module
 {
     typedef enum _ConditionAndDepleteID
     {
-        //C��ʾ����
-        //D��ʾ����
+        //C表示条件
+        //D表示消耗
         CD_INVALID = INVALID_ID,
         C_UNIT_MUST_HAVE_IMPACT = 0,
         C_UNIT_HP_MUST_LESS_THAN_BY_RATE,

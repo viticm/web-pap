@@ -152,17 +152,17 @@ __ENTER_FUNCTION
     _MY_TRY
     {
         if( Option ) 
-        {//Ö´ÐÐ²¿·ÖÑ¡Ïî²Ù×÷
+        {//æ‰§è¡Œéƒ¨åˆ†é€‰é¡¹æ“ä½œ
         }
 
         for( ;; )
         {
             if( !m_pSocketInputStream->Peek(&header[0], PACKET_HEADER_SIZE) )
-            {//Êý¾Ý²»ÄÜÌî³äÏûÏ¢Í·
+            {//æ•°æ®ä¸èƒ½å¡«å……æ¶ˆæ¯å¤´
                 break ;
             }
 
-            this->DecryptHead_CS(header);//·â°üÍ·½âÃÜ
+            this->DecryptHead_CS(header);//å°åŒ…å¤´è§£å¯†
 
             memcpy( &packetID, &header[0], sizeof(PacketID_t) ) ;    
             memcpy( &packetTick, &header[sizeof(UINT)], sizeof(UINT) ) ;
@@ -171,12 +171,12 @@ __ENTER_FUNCTION
             packetIndex = GET_PACKET_INDEX(packetuint) ;
 
             if( packetID >= (PacketID_t)PACKET_MAX )
-            {//ÎÞÐ§µÄÏûÏ¢ÀàÐÍ
+            {//æ— æ•ˆçš„æ¶ˆæ¯ç±»åž‹
                 Assert( FALSE ) ;
                 return FALSE ;
             }
 
-            //ÏûÏ¢½âÃÜ´¦Àí--Begin
+            //æ¶ˆæ¯è§£å¯†å¤„ç†--Begin
             {
                 UINT t_uSize = packetSize+PACKET_HEADER_SIZE;
                 UINT t_uHead = m_pSocketInputStream->GetHead();
@@ -201,18 +201,18 @@ __ENTER_FUNCTION
                     }
                 }
             }
-            //ÏûÏ¢½âÃÜ´¦Àí--End
+            //æ¶ˆæ¯è§£å¯†å¤„ç†--End
 
             _MY_TRY
             {
 
                 if( m_pSocketInputStream->Length()<PACKET_HEADER_SIZE+packetSize )
-                {//ÏûÏ¢Ã»ÓÐ½ÓÊÕÈ«
+                {//æ¶ˆæ¯æ²¡æœ‰æŽ¥æ”¶å…¨
                     break;
                 }
 
                 if( packetSize>g_pPacketFactoryManager->GetPacketMaxSize(packetID) )
-                {//ÏûÏ¢µÄ´óÐ¡³öÏÖÒì³££¬ÊÕµ½µÄÏûÏ¢±ÈÔ¤¶¨ÒåÏûÏ¢µÄ×î´óÖµ»¹Òª´ó
+                {//æ¶ˆæ¯çš„å¤§å°å‡ºçŽ°å¼‚å¸¸ï¼Œæ”¶åˆ°çš„æ¶ˆæ¯æ¯”é¢„å®šä¹‰æ¶ˆæ¯çš„æœ€å¤§å€¼è¿˜è¦å¤§
                     Assert( FALSE ) ;
 //                    m_pSocketInputStream->Skip( PACKET_HEADER_SIZE+packetSize ) ;
                     return FALSE ;
@@ -220,56 +220,56 @@ __ENTER_FUNCTION
 
                 Packet* pPacket = g_pPacketFactoryManager->CreatePacket( packetID ) ;
                 if( pPacket==NULL )
-                {//²»ÄÜ·ÖÅäµ½×ã¹»µÄÄÚ´æ
+                {//ä¸èƒ½åˆ†é…åˆ°è¶³å¤Ÿçš„å†…å­˜
                     Assert( FALSE ) ;
 //                    m_pSocketInputStream->Skip( PACKET_HEADER_SIZE+packetSize ) ;
                     return FALSE ;
                 }
 
-                //ÉèÖÃÏûÏ¢ÐòÁÐºÅ
+                //è®¾ç½®æ¶ˆæ¯åºåˆ—å·
                 pPacket->SetPacketIndex( packetIndex ) ;
 
                 ret = m_pSocketInputStream->ReadPacket( pPacket ) ;
                 if( ret==FALSE )
-                {//¶ÁÈ¡ÏûÏ¢ÄÚÈÝ´íÎó
+                {//è¯»å–æ¶ˆæ¯å†…å®¹é”™è¯¯
                     Assert( FALSE ) ;
                     g_pPacketFactoryManager->RemovePacket( pPacket ) ;
                     return FALSE ;
                 }
 
-        Log::SaveLog( "./Log/Login°ü.txt", "½ÓÊÕ°ü [À´Ô´¶Ë¿Ú£º%d, ID=%d£¬size=%d]", 
+        Log::SaveLog( "./Log/LoginåŒ….txt", "æŽ¥æ”¶åŒ… [æ¥æºç«¯å£ï¼š%d, ID=%dï¼Œsize=%d]", 
             m_pSocketInputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
 
                 BOOL bNeedRemove = TRUE ;
 
                 _MY_TRY
                 {
-                    //ÐÞÕým_KickTimeÐÅÏ¢£¬m_KickTimeÐÅÏ¢ÖÐµÄÖµÎªÅÐ¶ÏÊÇ·ñÐèÒªÌßµô
-                    //¿Í»§¶ËµÄÒÀ¾Ý
+                    //ä¿®æ­£m_KickTimeä¿¡æ¯ï¼Œm_KickTimeä¿¡æ¯ä¸­çš„å€¼ä¸ºåˆ¤æ–­æ˜¯å¦éœ€è¦è¸¢æŽ‰
+                    //å®¢æˆ·ç«¯çš„ä¾æ®
                     this->ResetKick( ) ;
 
                     UINT uret = pPacket->Execute( this ) ;
                     if( uret==PACKET_EXE_ERROR )
-                    {//³öÏÖÒì³£´íÎó£¬¶Ï¿ª´ËÍæ¼ÒÁ¬½Ó
+                    {//å‡ºçŽ°å¼‚å¸¸é”™è¯¯ï¼Œæ–­å¼€æ­¤çŽ©å®¶è¿žæŽ¥
                         if( pPacket ) 
                             g_pPacketFactoryManager->RemovePacket( pPacket ) ;
                         return FALSE ;
                     }
                     else if( uret==PACKET_EXE_BREAK )
-                    {//µ±Ç°ÏûÏ¢µÄ½âÎöÖ´ÐÐ½«Í£Ö¹
-                     //Ö±µ½ÏÂ¸öÑ­»·Ê±²Å¼ÌÐø¶Ô»º´æÖÐµÄÊý¾Ý½øÐÐÏûÏ¢¸ñÊ½
-                     //»¯ºÍÖ´ÐÐ¡£
-                     //µ±ÐèÒª½«¿Í»§¶ËµÄÖ´ÐÐ´ÓÒ»¸ö³¡¾°×ªÒÆµ½ÁíÍâÒ»¸ö³¡¾°Ê±£º
-                     //ÐèÒªÔÚ·¢ËÍ×ªÒÆÏûÏ¢ºó½«Ö´ÐÐÔÚ±¾Ïß³ÌÖÐÍ£Ö¹¡£
+                    {//å½“å‰æ¶ˆæ¯çš„è§£æžæ‰§è¡Œå°†åœæ­¢
+                     //ç›´åˆ°ä¸‹ä¸ªå¾ªçŽ¯æ—¶æ‰ç»§ç»­å¯¹ç¼“å­˜ä¸­çš„æ•°æ®è¿›è¡Œæ¶ˆæ¯æ ¼å¼
+                     //åŒ–å’Œæ‰§è¡Œã€‚
+                     //å½“éœ€è¦å°†å®¢æˆ·ç«¯çš„æ‰§è¡Œä»Žä¸€ä¸ªåœºæ™¯è½¬ç§»åˆ°å¦å¤–ä¸€ä¸ªåœºæ™¯æ—¶ï¼š
+                     //éœ€è¦åœ¨å‘é€è½¬ç§»æ¶ˆæ¯åŽå°†æ‰§è¡Œåœ¨æœ¬çº¿ç¨‹ä¸­åœæ­¢ã€‚
                         if( pPacket ) 
                             g_pPacketFactoryManager->RemovePacket( pPacket ) ;
                         break ;
                     }
                     else if( uret==PACKET_EXE_CONTINUE )
-                    {//¼ÌÐø½âÎöÊ£ÏÂµÄÏûÏ¢
+                    {//ç»§ç»­è§£æžå‰©ä¸‹çš„æ¶ˆæ¯
                     }
                     else if( uret==PACKET_EXE_NOTREMOVE )
-                    {//¼ÌÐø½âÎöÊ£ÏÂµÄÏûÏ¢£¬²¢ÇÒ²»»ØÊÕµ±Ç°ÏûÏ¢
+                    {//ç»§ç»­è§£æžå‰©ä¸‹çš„æ¶ˆæ¯ï¼Œå¹¶ä¸”ä¸å›žæ”¶å½“å‰æ¶ˆæ¯
                         bNeedRemove = FALSE ;
                     }
                     else if( uret == PACKET_EXE_NOTREMOVE_ERROR )
@@ -277,7 +277,7 @@ __ENTER_FUNCTION
                         return FALSE ;
                     }
                     else
-                    {//Î´ÖªµÄ·µ»ØÖµ
+                    {//æœªçŸ¥çš„è¿”å›žå€¼
                         Assert(FALSE) ;
                     }
                 }
@@ -361,7 +361,7 @@ __ENTER_FUNCTION
             w = m_pSocketOutputStream->Write( PACK_COMPART , PACK_COMPART_SIZE ) ;
         }
 
-        UINT t_uTail_Begin = m_pSocketOutputStream->GetTail();//²éÑ¯µ±Ç°°üÎ²Î»ÖÃ¡£¼ÇÂ¼Ð´°üÇ°Î»ÖÃ
+        UINT t_uTail_Begin = m_pSocketOutputStream->GetTail();//æŸ¥è¯¢å½“å‰åŒ…å°¾ä½ç½®ã€‚è®°å½•å†™åŒ…å‰ä½ç½®
 
         w = m_pSocketOutputStream->Write( (CHAR*)&packetID , sizeof(PacketID_t) ) ;
 
@@ -379,12 +379,12 @@ __ENTER_FUNCTION
 
         BOOL ret = pPacket->Write( *m_pSocketOutputStream ) ;
 
-        UINT t_uTail_End = m_pSocketOutputStream->GetTail();//²éÑ¯µ±Ç°°üÎ²Î»ÖÃ¡£¼ÇÂ¼Ð´°üºóÎ»ÖÃ
+        UINT t_uTail_End = m_pSocketOutputStream->GetTail();//æŸ¥è¯¢å½“å‰åŒ…å°¾ä½ç½®ã€‚è®°å½•å†™åŒ…åŽä½ç½®
 
-        Log::SaveLog( "./Log/Login°ü.txt", "·¢ËÍ°ü [Ä¿±ê¶Ë¿Ú£º%d, ID=%d£¬size=%d]", 
+        Log::SaveLog( "./Log/LoginåŒ….txt", "å‘é€åŒ… [ç›®æ ‡ç«¯å£ï¼š%d, ID=%dï¼Œsize=%d]", 
             m_pSocketOutputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
 
-        //ÏûÏ¢¼ÓÃÜ´¦Àí--Begin
+        //æ¶ˆæ¯åŠ å¯†å¤„ç†--Begin
         {
             UINT t_uSize = t_uTail_End - t_uTail_Begin;
             UINT t_uHead = m_pSocketOutputStream->GetHead();
@@ -409,7 +409,7 @@ __ENTER_FUNCTION
                 }
             }
         }
-        //ÏûÏ¢¼ÓÃÜ´¦Àí--End
+        //æ¶ˆæ¯åŠ å¯†å¤„ç†--End
 
         //BOOL ret = m_pSocketOutputStream->WritePacket( pPacket ) ;
         Assert( ret ) ;

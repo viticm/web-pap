@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// ÎÄ¼þÃû : LuaFnTbl_Attr.h
-// Ä£¿é    :    Script
-// ¹¦ÄÜ     :  ÊôÐÔÏà¹Øº¯Êý
-// ÐÞ¸ÄÀúÊ·:
+// æ–‡ä»¶å : LuaFnTbl_Attr.h
+// æ¨¡å—    :    Script
+// åŠŸèƒ½     :  å±žæ€§ç›¸å…³å‡½æ•°
+// ä¿®æ”¹åŽ†å²:
 //-----------------------------------------------------------------------------
 
 #ifndef __LUAFNTBL_ATTR_H__
@@ -26,23 +26,23 @@
 namespace LuaFnTbl
 {
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnSetPos
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnSetPos
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,shortÀàÐÍ
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,shortç±»åž‹
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                x
-    *                    ÐèÒªwarpµ½µÄÐÂÎ»ÖÃµÄX×ø±êÖµ
+    *                    éœ€è¦warpåˆ°çš„æ–°ä½ç½®çš„Xåæ ‡å€¼
     *                z
-    *                    ÐèÒªwarpµ½µÄÐÂÎ»ÖÃµÄZ×ø±êÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ½ÇÉ«µÄÍ¬³¡¾°×ªÒÆ
-    *                ÉèÖÃ½ÇÉ«(Íæ¼ÒºÍ¹ÖÎï)Ìø×ªµ½µ±Ç°µØÍ¼ÉÏµÄÄ³µã
+    *                    éœ€è¦warpåˆ°çš„æ–°ä½ç½®çš„Zåæ ‡å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è§’è‰²çš„åŒåœºæ™¯è½¬ç§»
+    *                è®¾ç½®è§’è‰²(çŽ©å®¶å’Œæ€ªç‰©)è·³è½¬åˆ°å½“å‰åœ°å›¾ä¸Šçš„æŸç‚¹
     */
     INT LuaFnSetPos(Lua_State* L)    
     {
@@ -81,23 +81,23 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnSetRevPos
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnSetRevPos
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                x
-    *                    Î»ÖÃx×ø±ê
+    *                    ä½ç½®xåæ ‡
     *                z
-    *                    Î»ÖÃz×ø±ê
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼ÒµÄÖØÉúµã£¨ÔÙ´ÎµÇÈëµ±Ç°ÊÀ½çµÄÎ»ÖÃ£©
-    *                Õâ¸öº¯ÊýÓÐ´ýÏ¸¾¿
+    *                    ä½ç½®zåæ ‡
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶çš„é‡ç”Ÿç‚¹ï¼ˆå†æ¬¡ç™»å…¥å½“å‰ä¸–ç•Œçš„ä½ç½®ï¼‰
+    *                è¿™ä¸ªå‡½æ•°æœ‰å¾…ç»†ç©¶
     */
     INT LuaFnSetRevPos(Lua_State* L)
     {
@@ -121,26 +121,26 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnNewWorld
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnNewWorld
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                targetSceneId
-    *                ½«ÒªÌø×ª³¡¾°ID,short
+    *                å°†è¦è·³è½¬åœºæ™¯ID,short
     *                x
-    *                    Î»ÖÃx×ø±ê
+    *                    ä½ç½®xåæ ‡
     *                z
-    *                    Î»ÖÃz×ø±ê
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÓÃÓÚÇÐ»»³¡¾°
-    *                °ÑselfIdµÄÍæ¼Ò´ÓsceneId±êÖ¾µÄ³¡¾°Ìø×ªµ½targetSceneId±êÖ¾µÄ³¡¾°µÄ(x,z)Î»ÖÃ
-    *                Ê¾Àý:NewWorld(sceneId,selfId,4,100,102)
+    *                    ä½ç½®zåæ ‡
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                ç”¨äºŽåˆ‡æ¢åœºæ™¯
+    *                æŠŠselfIdçš„çŽ©å®¶ä»ŽsceneIdæ ‡å¿—çš„åœºæ™¯è·³è½¬åˆ°targetSceneIdæ ‡å¿—çš„åœºæ™¯çš„(x,z)ä½ç½®
+    *                ç¤ºä¾‹:NewWorld(sceneId,selfId,4,100,102)
     */
     INT LuaFnNewWorld(Lua_State* L)
     {
@@ -170,20 +170,20 @@ namespace LuaFnTbl
 
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetWorldPos
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetWorldPos
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½½ÇÉ«(character)µ±Ç°×ø±ê
-    *                ·µ»ØxºÍzµÄFLOATÀàÐÍÖµ
-    *                Ê¾Àý: x,z = GetWorldPos(sceneId,selfId) 
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°è§’è‰²(character)å½“å‰åæ ‡
+    *                è¿”å›žxå’Œzçš„FLOATç±»åž‹å€¼
+    *                ç¤ºä¾‹: x,z = GetWorldPos(sceneId,selfId) 
     */
     INT LuaFnGetWorldPos(Lua_State* L)    
     {
@@ -211,21 +211,21 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnSetPatrolId
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnSetPatrolId
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃObj_MonsterµÄÑ²ÂßÂ·¾¶
-    *                Ê¾Àý:SetPatrolId(sceneId,selfId,0)
-    *                patrolIdµÄÓÐÐ§ÖµÊÇ 
-    *                0 µ½ ¸ÃsceneIdËùÖ¸³¡¾°_patrolpoint.iniÎÄ¼þPATROLNUMBER(²»°üÀ¨)Ö®¼äµÄÖµ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®Obj_Monsterçš„å·¡é€»è·¯å¾„
+    *                ç¤ºä¾‹:SetPatrolId(sceneId,selfId,0)
+    *                patrolIdçš„æœ‰æ•ˆå€¼æ˜¯ 
+    *                0 åˆ° è¯¥sceneIdæ‰€æŒ‡åœºæ™¯_patrolpoint.iniæ–‡ä»¶PATROLNUMBER(ä¸åŒ…æ‹¬)ä¹‹é—´çš„å€¼
     */
     INT LuaFnSetPatrolId(Lua_State* L)    
     {
@@ -256,19 +256,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnIsCaptain
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnIsCaptain
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÅÐ¶Ïµ±Ç°Íæ¼ÒÊÇ·ñÎª¶Ó³¤£¬·µ»ØÖµÎª0£º²»ÊÇ¶Ó³¤£»·µ»ØÖµÎª1£º¶Ó³¤¡£
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ¤æ–­å½“å‰çŽ©å®¶æ˜¯å¦ä¸ºé˜Ÿé•¿ï¼Œè¿”å›žå€¼ä¸º0ï¼šä¸æ˜¯é˜Ÿé•¿ï¼›è¿”å›žå€¼ä¸º1ï¼šé˜Ÿé•¿ã€‚
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnIsCaptain(Lua_State* L)    
     {
@@ -295,21 +295,21 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± :
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnAddXinFa
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ :
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnAddXinFa
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                xinfaId
-    *                    ÐÄ·¨±àºÅ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ¸øµ±Ç°Íæ¼Ò¼ÓÄ³¸öÐÄ·¨
-    *                Ã»ÓÐ²âÊÔ
+    *                    å¿ƒæ³•ç¼–å·
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                ç»™å½“å‰çŽ©å®¶åŠ æŸä¸ªå¿ƒæ³•
+    *                æ²¡æœ‰æµ‹è¯•
     */
     //INT LuaFnAddXinFa(Lua_State* L)    
     //{
@@ -349,21 +349,21 @@ namespace LuaFnTbl
     //}
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± :
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnAddSkill
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ :
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnAddSkill
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                skillId
-    *                    ¼¼ÄÜ±àºÅ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ¸øµ±Ç°Íæ¼Ò¼ÓÄ³¸ö¼¼ÄÜ
-    *                Ã»ÓÐ²âÊÔ
+    *                    æŠ€èƒ½ç¼–å·
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                ç»™å½“å‰çŽ©å®¶åŠ æŸä¸ªæŠ€èƒ½
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnAddSkill(Lua_State* L)    
     {
@@ -405,21 +405,21 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± :
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnDelXinFa
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ :
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnDelXinFa
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                xinfaId
-    *                    ÐÄ·¨±àºÅ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                É¾³ýµ±Ç°Íæ¼ÒµÄÄ³¸öÐÄ·¨
-    *                Ã»ÓÐ²âÊÔ
+    *                    å¿ƒæ³•ç¼–å·
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ é™¤å½“å‰çŽ©å®¶çš„æŸä¸ªå¿ƒæ³•
+    *                æ²¡æœ‰æµ‹è¯•
     */
     //INT LuaFnDelXinFa(Lua_State* L)    
     //{
@@ -458,21 +458,21 @@ namespace LuaFnTbl
     //}
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnDelSkill
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnDelSkill
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                skillId
-    *                    ¼¼ÄÜ±àºÅ                
-    *     ¹¦ÄÜËµÃ÷ :
-    *                É¾³ýµ±Ç°Íæ¼ÒµÄÄ³¸ö¼¼ÄÜ
-    *                Ã»ÓÐ²âÊÔ
+    *                    æŠ€èƒ½ç¼–å·                
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ é™¤å½“å‰çŽ©å®¶çš„æŸä¸ªæŠ€èƒ½
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnDelSkill(Lua_State* L)    
     {
@@ -514,21 +514,21 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnHaveXinFa
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnHaveXinFa
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                xinfaId
-    *                    ÐÄ·¨±àºÅ                
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÅÐ¶Ïµ±Ç°Íæ¼ÒÊÇ·ñÓÐÄ³¸öÐÄ·¨¡£Î´Ñ§¹ý¸Ã¼¼ÄÜ·µ»Ø-1£¬·ñÔò·µ»ØÐÄ·¨µÈ¼¶
-    *                Ã»ÓÐ²âÊÔ
+    *                    å¿ƒæ³•ç¼–å·                
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ¤æ–­å½“å‰çŽ©å®¶æ˜¯å¦æœ‰æŸä¸ªå¿ƒæ³•ã€‚æœªå­¦è¿‡è¯¥æŠ€èƒ½è¿”å›ž-1ï¼Œå¦åˆ™è¿”å›žå¿ƒæ³•ç­‰çº§
+    *                æ²¡æœ‰æµ‹è¯•
     */
     //INT LuaFnHaveXinFa(Lua_State* L)    
     //{
@@ -541,7 +541,7 @@ namespace LuaFnTbl
     //    BEGINCHARCTERDEFINE("LuaFnHaveXinFa")
     //    if(FALSE==((Obj_Human*)pCharacter)->Skill_GetXinFaLevel(xinfaId))
     //    {
-    //        Lua_PushNumber(L,((Obj_Human*)pCharacter)->Skill_GetXinFaLevel(xinfaId));//: ÕâÀïÊÇ²»ÊÇÓÐÎÊÌâ?
+    //        Lua_PushNumber(L,((Obj_Human*)pCharacter)->Skill_GetXinFaLevel(xinfaId));//: è¿™é‡Œæ˜¯ä¸æ˜¯æœ‰é—®é¢˜?
     //        return    1;
     //    }
     //    ENDCHARCTERDEFINE
@@ -552,20 +552,20 @@ namespace LuaFnTbl
     //}
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± :
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnHaveSkill
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ :
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnHaveSkill
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                skillId
-    *                    ¼¼ÄÜ±àºÅ                
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÅÐ¶Ïµ±Ç°Íæ¼ÒÊÇ·ñÓÐÄ³¸ö¼¼ÄÜ¡£Î´Ñ§¹ý¸Ã¼¼ÄÜ·µ»Ø-1£¬·ñÔò·µ»Ø¼¼ÄÜµÈ¼¶¡£//? ¼¼ÄÜÃ»ÓÐµÈ¼¶
+    *                    æŠ€èƒ½ç¼–å·                
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ¤æ–­å½“å‰çŽ©å®¶æ˜¯å¦æœ‰æŸä¸ªæŠ€èƒ½ã€‚æœªå­¦è¿‡è¯¥æŠ€èƒ½è¿”å›ž-1ï¼Œå¦åˆ™è¿”å›žæŠ€èƒ½ç­‰çº§ã€‚//? æŠ€èƒ½æ²¡æœ‰ç­‰çº§
     */
     INT LuaFnHaveSkill(Lua_State* L)    
     {
@@ -578,7 +578,7 @@ namespace LuaFnTbl
         BEGINCHARCTERDEFINE("LuaFnHaveSkill")
         if(pCharacter->Skill_HaveSkill(skillId))
         {
-            Lua_PushNumber(L,1);//: ÕâÀïÊÇ²»ÊÇÓÐÎÊÌâ?
+            Lua_PushNumber(L,1);//: è¿™é‡Œæ˜¯ä¸æ˜¯æœ‰é—®é¢˜?
             return 1;
         }
         else
@@ -594,20 +594,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± :
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnUseSkill
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ :
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnUseSkill
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                skillId
-    *                    ¼¼ÄÜ±àºÅ                
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÓÐ´ýÓë²ß»®ÉÌÈ¶
+    *                    æŠ€èƒ½ç¼–å·                
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                æœ‰å¾…ä¸Žç­–åˆ’å•†æ¦·
     */
     INT LuaFnUseSkill(Lua_State* L)    
     {
@@ -618,10 +618,10 @@ namespace LuaFnTbl
         INT skillId = Lua_ValueToNumber(L,3);
 
         BEGINCHARCTERDEFINE("LuaFnUseSkill")
-            AssertEx(FALSE,"´Ëº¯ÊýÓÐÎÊÌâ") ;
+            AssertEx(FALSE,"æ­¤å‡½æ•°æœ‰é—®é¢˜") ;
             if(1)
             {
-                Lua_PushNumber(L,1);//: ÕâÀïÊÇ²»ÊÇÓÐÎÊÌâ?
+                Lua_PushNumber(L,1);//: è¿™é‡Œæ˜¯ä¸æ˜¯æœ‰é—®é¢˜?
                 return 1;
             }
             ENDCHARCTERDEFINE
@@ -632,19 +632,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetCurCamp
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetCurCamp
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃÍæ¼ÒµÄµ±Ç°ÕóÓª
-    *                Ã»ÓÐ²âÊÔ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—çŽ©å®¶çš„å½“å‰é˜µè¥
+    *                æ²¡æœ‰æµ‹è¯•
     */
     INT LuaFnGetCurCamp(Lua_State* L)    
     {
@@ -663,20 +663,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnSetCurCamp
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnSetCurCamp
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                campIndex
-    *                    ÕóÓª±àºÅ,INTÀàÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÐÞ¸ÄÍæ¼ÒÕóÓª,º¯ÊýÌåÉÐÎ´ÌîÐ´
+    *                    é˜µè¥ç¼–å·,INTç±»åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                ä¿®æ”¹çŽ©å®¶é˜µè¥,å‡½æ•°ä½“å°šæœªå¡«å†™
     */
     INT LuaFnSetCurCamp (Lua_State* L)    
     {
@@ -696,17 +696,17 @@ namespace LuaFnTbl
     }
 
     /****************************************************************************
-     *    ¿ª·¢ÈËÔ±£º    
-     *    ±àÐ´Ê±¼ä£º    2006-3-10    19:42
-     *    º¯ÊýÃû³Æ£º    LuaFnGetGUID
-     *    ²ÎÊýËµÃ÷£º
+     *    å¼€å‘äººå‘˜ï¼š    
+     *    ç¼–å†™æ—¶é—´ï¼š    2006-3-10    19:42
+     *    å‡½æ•°åç§°ï¼š    LuaFnGetGUID
+     *    å‚æ•°è¯´æ˜Žï¼š
      *                sceneId
-     *                    ³¡¾°±àºÅ
+     *                    åœºæ™¯ç¼–å·
      *                selfId
-     *                    µ÷ÓÃÕß ID£¬ÎÞ·ûºÅÕûÐÍ
+     *                    è°ƒç”¨è€… IDï¼Œæ— ç¬¦å·æ•´åž‹
      *
-     *    ¹¦ÄÜËµÃ÷£º    µÃµ½µ÷ÓÃÕßµÄ GUID
-     *    ÐÞ¸Ä¼ÇÂ¼£º
+     *    åŠŸèƒ½è¯´æ˜Žï¼š    å¾—åˆ°è°ƒç”¨è€…çš„ GUID
+     *    ä¿®æ”¹è®°å½•ï¼š
     *****************************************************************************/
     INT LuaFnGetGUID(Lua_State* L)    
     {
@@ -726,18 +726,18 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetExp
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetExp
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃÍæ¼ÒµÄµ±Ç°Õ½¶·¾­ÑéÖµ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—çŽ©å®¶çš„å½“å‰æˆ˜æ–—ç»éªŒå€¼
     */
     INT LuaFnGetExp(Lua_State* L)    
     {
@@ -757,19 +757,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± :
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnAddExp
+    *     å¼€å‘äººå‘˜ :
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnAddExp
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                exp
-    *                    ¾­ÑéÖµÔö¼Ó,INT
-    *     ¹¦ÄÜËµÃ÷ :
-    *                Ôö¼ÓÍæ¼ÒµÄÕ½¶·¾­ÑéÖµ
+    *                    ç»éªŒå€¼å¢žåŠ ,INT
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¢žåŠ çŽ©å®¶çš„æˆ˜æ–—ç»éªŒå€¼
     */
     INT LuaFnAddExp(Lua_State* L)    
     {    
@@ -789,19 +789,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetHp
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetHp
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃÍæ¼ÒµÄÉúÃüÖµ
-    *                ·µ»ØÍæ¼ÒµÄHPÖµ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—çŽ©å®¶çš„ç”Ÿå‘½å€¼
+    *                è¿”å›žçŽ©å®¶çš„HPå€¼
     */
     INT LuaFnGetHp(Lua_State* L)    
     {
@@ -821,19 +821,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnRestoreHp
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnRestoreHp
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »Ö¸´½ÇÉ«µÄÉúÃüÈ«Âú
-    *                °Ñ½ÇÉ«µÄÉúÃüÖµÉèÎªMaxHPÖµ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                æ¢å¤è§’è‰²çš„ç”Ÿå‘½å…¨æ»¡
+    *                æŠŠè§’è‰²çš„ç”Ÿå‘½å€¼è®¾ä¸ºMaxHPå€¼
     */
     INT LuaFnRestoreHp(Lua_State* L)    
     {
@@ -852,19 +852,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetMp
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetMp
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃ½ÇÉ«µÄÄÚÁ¦Öµ
-    *                ·µ»Ø½ÇÉ«µÄMPÖµ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—è§’è‰²çš„å†…åŠ›å€¼
+    *                è¿”å›žè§’è‰²çš„MPå€¼
     */
     INT LuaFnGetMp(Lua_State* L)    
     {
@@ -884,18 +884,18 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnRestoreMp
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnRestoreMp
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »Ö¸´Íæ¼ÒµÄÄÚÁ¦È«Âú
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                æ¢å¤çŽ©å®¶çš„å†…åŠ›å…¨æ»¡
     */
     INT LuaFnRestoreMp(Lua_State* L)    
     {
@@ -914,18 +914,18 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetCon
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetCon
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃÍæ¼ÒµÄÌåÁ¦Öµ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—çŽ©å®¶çš„ä½“åŠ›å€¼
     */
     INT LuaFnGetCon(Lua_State* L)    
     {
@@ -945,20 +945,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetSex
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetSex
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃÍæ¼ÒµÄÐÔ±ð
-    *                ·µ»ØÖµÎª0£ºÅ®
-    *                ·µ»ØÖµÎª1£ºÄÐ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—çŽ©å®¶çš„æ€§åˆ«
+    *                è¿”å›žå€¼ä¸º0ï¼šå¥³
+    *                è¿”å›žå€¼ä¸º1ï¼šç”·
     */
     INT LuaFnGetSex(Lua_State* L)    
     {
@@ -978,20 +978,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetName
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetName
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃ½ÇÉ«(Obj_Character)Ãû×Ö£¬·µ»ØÒ»¸ö×Ö·û´®
-    *                ½ÇÉ«°üÀ¨Íæ¼ÒºÍObj_Monster
-    *                Ê¾Àý: npcName = GetName(sceneId,npcId)
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—è§’è‰²(Obj_Character)åå­—ï¼Œè¿”å›žä¸€ä¸ªå­—ç¬¦ä¸²
+    *                è§’è‰²åŒ…æ‹¬çŽ©å®¶å’ŒObj_Monster
+    *                ç¤ºä¾‹: npcName = GetName(sceneId,npcId)
     */
     INT LuaFnGetName(Lua_State* L)    
     {
@@ -1014,19 +1014,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetMoney
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetMoney
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃÍæ¼ÒµÄÏÖ½ð
-    *                ·µ»ØÍæ¼ÒÓµÓÐµÄ½ðÇ®Êý
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å¾—çŽ©å®¶çš„çŽ°é‡‘
+    *                è¿”å›žçŽ©å®¶æ‹¥æœ‰çš„é‡‘é’±æ•°
     */
     INT LuaFnGetMoney(Lua_State* L)    
     {
@@ -1046,24 +1046,24 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnCostMoney
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnCostMoney
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                payment
-    *                    ½ðÇ®ÏûºÄ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ¿Û³ýÍæ¼Ò½ðÇ®
-    *                ³É¹¦·µ»Ø1
-    *                ÒÔºóÊÇ·ñ¿¼ÂÇ·µ»ØÐÞ¸ÄºóµÄÍæ¼Ò½ðÇ®Êý?
-    *                Ä¿Ç°paymentÓ¦¸ÃÎªÕýÖµ
-    *                Ê§°Ü·µ»Ø-1
+    *                    é‡‘é’±æ¶ˆè€—
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                æ‰£é™¤çŽ©å®¶é‡‘é’±
+    *                æˆåŠŸè¿”å›ž1
+    *                ä»¥åŽæ˜¯å¦è€ƒè™‘è¿”å›žä¿®æ”¹åŽçš„çŽ©å®¶é‡‘é’±æ•°?
+    *                ç›®å‰paymentåº”è¯¥ä¸ºæ­£å€¼
+    *                å¤±è´¥è¿”å›ž-1
     */
     INT LuaFnCostMoney(Lua_State* L)    
     {
@@ -1101,23 +1101,23 @@ namespace LuaFnTbl
     }                
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnAddMoney
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnAddMoney
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                profit
-    *                    ½ðÇ®Ôö¼ÓÊýÄ¿
-    *     ¹¦ÄÜËµÃ÷ :
-    *                Ôö¼ÓÍæ¼Ò½ðÇ®
-    *                ·µ»Ø1,³É¹¦
-    *                ÒÔºóÊÇ·ñ¿¼ÂÇ·µ»ØÐÞ¸ÄºóµÄÍæ¼Ò½ðÇ®Êý?
-    *                ·µ»Ø-1,Ê§°Ü
+    *                    é‡‘é’±å¢žåŠ æ•°ç›®
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¢žåŠ çŽ©å®¶é‡‘é’±
+    *                è¿”å›ž1,æˆåŠŸ
+    *                ä»¥åŽæ˜¯å¦è€ƒè™‘è¿”å›žä¿®æ”¹åŽçš„çŽ©å®¶é‡‘é’±æ•°?
+    *                è¿”å›ž-1,å¤±è´¥
     */
     INT LuaFnAddMoney(Lua_State* L)    
     {
@@ -1150,20 +1150,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetLevel
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetLevel
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡µÃÍæ¼Òµ±Ç°µÈ¼¶
-    *                LevelµÄºÏ·¨·¶Î§ÔÚ?-?
-    *                ·µ»Ø-1,Ê§°Ü
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–å¾—çŽ©å®¶å½“å‰ç­‰çº§
+    *                Levelçš„åˆæ³•èŒƒå›´åœ¨?-?
+    *                è¿”å›ž-1,å¤±è´¥
     */
     INT LuaFnGetLevel(Lua_State* L)    
     {
@@ -1185,22 +1185,22 @@ namespace LuaFnTbl
     
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : ¡¡
-    *     ±àÐ´Ê±¼ä : 2005-10-20
-    *     º¯ÊýÃû³Æ : LuaFnSetLevel
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : ã€€
+    *     ç¼–å†™æ—¶é—´ : 2005-10-20
+    *     å‡½æ•°åç§° : LuaFnSetLevel
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                level
-    *                    ½ÇÉ«¼¶±ð,INT
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼ÒÍæ¼ÒµÈ¼¶
-    *                LevelµÄºÏ·¨·¶Î§ÔÚ1-60
-    *                ·µ»Ø-1,Ê§°Ü
+    *                    è§’è‰²çº§åˆ«,INT
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶çŽ©å®¶ç­‰çº§
+    *                Levelçš„åˆæ³•èŒƒå›´åœ¨1-60
+    *                è¿”å›ž-1,å¤±è´¥
     */
     INT LuaFnSetLevel(Lua_State* L)
     {
@@ -1230,17 +1230,17 @@ namespace LuaFnTbl
     }
 
     /****************************************************************************
-     *    ¿ª·¢ÈËÔ±£º    
-     *    ±àÐ´Ê±¼ä£º    2006-3-7    16:36
-     *    º¯ÊýÃû³Æ£º    LuaFnCanLevelUp
-     *    ²ÎÊýËµÃ÷£º
+     *    å¼€å‘äººå‘˜ï¼š    
+     *    ç¼–å†™æ—¶é—´ï¼š    2006-3-7    16:36
+     *    å‡½æ•°åç§°ï¼š    LuaFnCanLevelUp
+     *    å‚æ•°è¯´æ˜Žï¼š
      *                sceneId
-     *                    ³¡¾°±àºÅ
+     *                    åœºæ™¯ç¼–å·
      *                selfId
-     *                    µ÷ÓÃÕß ID£¬ÎÞ·ûºÅÕûÐÍ
+     *                    è°ƒç”¨è€… IDï¼Œæ— ç¬¦å·æ•´åž‹
      *
-     *    ¹¦ÄÜËµÃ÷£º    ÅÐ¶Ï¸ÃÍæ¼ÒÊÇ·ñ¿ÉÒÔÉý¼¶
-     *    ÐÞ¸Ä¼ÇÂ¼£º
+     *    åŠŸèƒ½è¯´æ˜Žï¼š    åˆ¤æ–­è¯¥çŽ©å®¶æ˜¯å¦å¯ä»¥å‡çº§
+     *    ä¿®æ”¹è®°å½•ï¼š
     *****************************************************************************/
     INT LuaFnCanLevelUp(Lua_State* L)    
     {
@@ -1270,20 +1270,20 @@ namespace LuaFnTbl
 
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-11-28
-    *     º¯ÊýÃû³Æ : LuaFnGetItemTableIndexByIndex
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-11-28
+    *     å‡½æ•°åç§° : LuaFnGetItemTableIndexByIndex
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                itemIndex
-    *                    ÎïÆ·ÔÚÉíÉÏµÄÎ»ÖÃË÷Òý
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡µ±Ç°Î»ÖÃµÄÎïÆ·ÖÖÀà
+    *                    ç‰©å“åœ¨èº«ä¸Šçš„ä½ç½®ç´¢å¼•
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–å½“å‰ä½ç½®çš„ç‰©å“ç§ç±»
     *                
     */
     INT LuaFnGetItemTableIndexByIndex(Lua_State* L)
@@ -1310,17 +1310,17 @@ namespace LuaFnTbl
     }
 
     /****************************************************************************
-     *    ¿ª·¢ÈËÔ±£º    
-     *    ±àÐ´Ê±¼ä£º    2006-3-30    14:47
-     *    º¯ÊýÃû³Æ£º    LuaFnGetMaterialStartBagPos
-     *    ²ÎÊýËµÃ÷£º
+     *    å¼€å‘äººå‘˜ï¼š    
+     *    ç¼–å†™æ—¶é—´ï¼š    2006-3-30    14:47
+     *    å‡½æ•°åç§°ï¼š    LuaFnGetMaterialStartBagPos
+     *    å‚æ•°è¯´æ˜Žï¼š
      *                sceneId
-     *                    ³¡¾°±àºÅ
+     *                    åœºæ™¯ç¼–å·
      *                selfId
-     *                    µ÷ÓÃÕß ID£¬ÎÞ·ûºÅÕûÐÍ
+     *                    è°ƒç”¨è€… IDï¼Œæ— ç¬¦å·æ•´åž‹
      *
-     *    ¹¦ÄÜËµÃ÷£º    µÃµ½±³°üÖÐ²ÄÁÏµÄÆðÊ¼Î»ÖÃ
-     *    ÐÞ¸Ä¼ÇÂ¼£º
+     *    åŠŸèƒ½è¯´æ˜Žï¼š    å¾—åˆ°èƒŒåŒ…ä¸­ææ–™çš„èµ·å§‹ä½ç½®
+     *    ä¿®æ”¹è®°å½•ï¼š
     *****************************************************************************/
     //INT LuaFnGetMaterialStartBagPos(Lua_State* L)    
     //{
@@ -1341,17 +1341,17 @@ namespace LuaFnTbl
     //}
 
     /****************************************************************************
-     *    ¿ª·¢ÈËÔ±£º    
-     *    ±àÐ´Ê±¼ä£º    2006-3-30    14:47
-     *    º¯ÊýÃû³Æ£º    LuaFnGetMaterialEndBagPos
-     *    ²ÎÊýËµÃ÷£º
+     *    å¼€å‘äººå‘˜ï¼š    
+     *    ç¼–å†™æ—¶é—´ï¼š    2006-3-30    14:47
+     *    å‡½æ•°åç§°ï¼š    LuaFnGetMaterialEndBagPos
+     *    å‚æ•°è¯´æ˜Žï¼š
      *                sceneId
-     *                    ³¡¾°±àºÅ
+     *                    åœºæ™¯ç¼–å·
      *                selfId
-     *                    µ÷ÓÃÕß ID£¬ÎÞ·ûºÅÕûÐÍ
+     *                    è°ƒç”¨è€… IDï¼Œæ— ç¬¦å·æ•´åž‹
      *
-     *    ¹¦ÄÜËµÃ÷£º    µÃµ½±³°üÖÐ²ÄÁÏµÄ½áÊøÎ»ÖÃ
-     *    ÐÞ¸Ä¼ÇÂ¼£º
+     *    åŠŸèƒ½è¯´æ˜Žï¼š    å¾—åˆ°èƒŒåŒ…ä¸­ææ–™çš„ç»“æŸä½ç½®
+     *    ä¿®æ”¹è®°å½•ï¼š
     *****************************************************************************/
     //INT LuaFnGetMaterialEndBagPos(Lua_State* L)    
     //{
@@ -1372,19 +1372,19 @@ namespace LuaFnTbl
     //}
 
     /****************************************************************************
-     *    ¿ª·¢ÈËÔ±£º    
-     *    ±àÐ´Ê±¼ä£º    2006-3-30    19:30
-     *    º¯ÊýÃû³Æ£º    LuaFnGetItemCountInBagPos
-     *    ²ÎÊýËµÃ÷£º
+     *    å¼€å‘äººå‘˜ï¼š    
+     *    ç¼–å†™æ—¶é—´ï¼š    2006-3-30    19:30
+     *    å‡½æ•°åç§°ï¼š    LuaFnGetItemCountInBagPos
+     *    å‚æ•°è¯´æ˜Žï¼š
      *                sceneId
-     *                    ³¡¾°±àºÅ
+     *                    åœºæ™¯ç¼–å·
      *                selfId
-     *                    µ÷ÓÃÕß ID£¬ÎÞ·ûºÅÕûÐÍ
+     *                    è°ƒç”¨è€… IDï¼Œæ— ç¬¦å·æ•´åž‹
      *                uBagPos
-     *                    ±³°üÖÐÎ»ÖÃ
+     *                    èƒŒåŒ…ä¸­ä½ç½®
      *
-     *    ¹¦ÄÜËµÃ÷£º    µÃµ½±³°üÄ³¸ñÖÐÎïÆ·µÄÊýÁ¿
-     *    ÐÞ¸Ä¼ÇÂ¼£º
+     *    åŠŸèƒ½è¯´æ˜Žï¼š    å¾—åˆ°èƒŒåŒ…æŸæ ¼ä¸­ç‰©å“çš„æ•°é‡
+     *    ä¿®æ”¹è®°å½•ï¼š
     *****************************************************************************/
     INT LuaFnGetItemCountInBagPos(Lua_State* L)
     {
@@ -1411,21 +1411,21 @@ namespace LuaFnTbl
 
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetItemCount
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetItemCount
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                itemTypeSn
-    *                    ItemTypeµÄ9Î»ÊýºÅ(Êµ¼ÊÎª8Î»)
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÅÐ¶Ïµ±Ç°Íæ¼ÒÓÐ¶àÉÙ¸öµÀ¾ß
-    *                Ö»´ÓÍæ¼ÒµÄ×°±¸ºÍÎïÆ·°üÖÐ²éÕÒ
+    *                    ItemTypeçš„9ä½æ•°å·(å®žé™…ä¸º8ä½)
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ¤æ–­å½“å‰çŽ©å®¶æœ‰å¤šå°‘ä¸ªé“å…·
+    *                åªä»ŽçŽ©å®¶çš„è£…å¤‡å’Œç‰©å“åŒ…ä¸­æŸ¥æ‰¾
     */
     INT LuaFnGetItemCount(Lua_State* L)
     {
@@ -1453,22 +1453,22 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-1-22
-    *     º¯ÊýÃû³Æ : LuaFnHaveItemInBag
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-1-22
+    *     å‡½æ•°åç§° : LuaFnHaveItemInBag
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                itemTypeSn
-    *                    ItemTypeµÄ9Î»ÊýºÅ(Êµ¼ÊÎª8Î»)
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÅÐ¶Ïµ±Ç°Íæ¼Ò°üÖÐÊÇ·ñÓµÓÐÄ³¸öµÀ¾ß
-    *                Èç¹û³É¹¦,·µ»Ø´óÓÚ0
-    *                Èç¹ûÊ§°Ü,·µ»Ø-1
+    *                    ItemTypeçš„9ä½æ•°å·(å®žé™…ä¸º8ä½)
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ¤æ–­å½“å‰çŽ©å®¶åŒ…ä¸­æ˜¯å¦æ‹¥æœ‰æŸä¸ªé“å…·
+    *                å¦‚æžœæˆåŠŸ,è¿”å›žå¤§äºŽ0
+    *                å¦‚æžœå¤±è´¥,è¿”å›ž-1
     */
     INT LuaFnHaveItemInBag (Lua_State* L)
     {
@@ -1498,22 +1498,22 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnHaveItem
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnHaveItem
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                itemTypeSn
-    *                    ItemTypeµÄ9Î»ÊýºÅ(Êµ¼ÊÎª8Î»)
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÅÐ¶Ïµ±Ç°Íæ¼ÒÊÇ·ñÓµÓÐÄ³¸öµÀ¾ß
-    *                Èç¹û³É¹¦,·µ»Ø´óÓÚ0
-    *                Èç¹ûÊ§°Ü,·µ»Ø-1
+    *                    ItemTypeçš„9ä½æ•°å·(å®žé™…ä¸º8ä½)
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ¤æ–­å½“å‰çŽ©å®¶æ˜¯å¦æ‹¥æœ‰æŸä¸ªé“å…·
+    *                å¦‚æžœæˆåŠŸ,è¿”å›žå¤§äºŽ0
+    *                å¦‚æžœå¤±è´¥,è¿”å›ž-1
     */
     INT LuaFnHaveItem (Lua_State* L)
     {
@@ -1526,7 +1526,7 @@ namespace LuaFnTbl
         BEGINHUMANDEFINE("LuaFnHaveItem")
         //INT count = 0;
     
-        //ÏÈ´Ó×°±¸À¸²éÕÒ
+        //å…ˆä»Žè£…å¤‡æ æŸ¥æ‰¾
         for(INT i=0;i<HEQUIP_NUMBER;i++)
         {
             if( pHuman->GetDB()->GetEquipItem((HUMAN_EQUIP)i)->m_ItemIndex == itemTypeSn)
@@ -1550,26 +1550,26 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnDelItem
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnDelItem
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                itemTypeSn
-    *                    ItemTypeµÄ9Î»ÊýºÅ(Êµ¼ÊÎª8Î»)
+    *                    ItemTypeçš„9ä½æ•°å·(å®žé™…ä¸º8ä½)
     *                delCount
-    *                    É¾³ýÊýÄ¿
-    *     ¹¦ÄÜËµÃ÷ :
-    *                É¾³ýµ±Ç°Íæ¼ÒµÄÄ³¸öµÀ¾ß    
-    *                ²»½öÊÇÖ¸ÈÎÎñµÀ¾ß    
-    *                ²»¶ÔÒÑ×°±¸µÄµÀ¾ßÉ¾³ý
-    *                É¾³ý³É¹¦,·µ»Ø1
-    *                É¾³ýÊ§°Ü,·µ»Ø-1
+    *                    åˆ é™¤æ•°ç›®
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ é™¤å½“å‰çŽ©å®¶çš„æŸä¸ªé“å…·    
+    *                ä¸ä»…æ˜¯æŒ‡ä»»åŠ¡é“å…·    
+    *                ä¸å¯¹å·²è£…å¤‡çš„é“å…·åˆ é™¤
+    *                åˆ é™¤æˆåŠŸ,è¿”å›ž1
+    *                åˆ é™¤å¤±è´¥,è¿”å›ž-1
     */
     INT LuaFnDelItem (Lua_State* L)    
     {
@@ -1606,22 +1606,22 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnEraseItem
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnEraseItem
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                bagIndex
-    *                    ±³°üµÄ¸ñ×Ó
-    *     ¹¦ÄÜËµÃ÷ :
-    *                É¾³ýµ±Ç°Íæ¼Ò±³°üÄ³Ò»¸ñµÄµÀ¾ß
-    *                É¾³ý³É¹¦,·µ»Ø1
-    *                É¾³ýÊ§°Ü,·µ»Ø-1
+    *                    èƒŒåŒ…çš„æ ¼å­
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                åˆ é™¤å½“å‰çŽ©å®¶èƒŒåŒ…æŸä¸€æ ¼çš„é“å…·
+    *                åˆ é™¤æˆåŠŸ,è¿”å›ž1
+    *                åˆ é™¤å¤±è´¥,è¿”å›ž-1
     */
     INT LuaFnEraseItem (Lua_State* L)    
     {
@@ -1655,18 +1655,18 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetMenPai
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetMenPai
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñÈ¡Íæ¼Òµ±Ç°ËùÊôÃÅÅÉID
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å–çŽ©å®¶å½“å‰æ‰€å±žé—¨æ´¾ID
     */
     INT LuaFnGetMenPai(Lua_State* L)
     {
@@ -1686,20 +1686,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-10-13
-    *     º¯ÊýÃû³Æ : LuaFnSetMenPai
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-10-13
+    *     å‡½æ•°åç§° : LuaFnSetMenPai
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                menpaiId
-    *                    ÃÅÅÉID,INT
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼Òµ±Ç°ËùÊôÃÅÅÉÎªmenpaiId
+    *                    é—¨æ´¾ID,INT
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶å½“å‰æ‰€å±žé—¨æ´¾ä¸ºmenpaiId
     */
     INT LuaFnSetMenPai(Lua_State* L)
     {
@@ -1711,7 +1711,7 @@ namespace LuaFnTbl
 
         BEGINHUMANDEFINE("LuaFnSetMenPai")
         
-        AssertEx(menpaiId < MATTRIBUTE_NUMBER && menpaiId >= MATTRIBUTE_SHAOLIN ,"ÃÅÅÉÉèÖÃÔ½½ç");
+        AssertEx(menpaiId < MATTRIBUTE_NUMBER && menpaiId >= MATTRIBUTE_SHAOLIN ,"é—¨æ´¾è®¾ç½®è¶Šç•Œ");
         if ( menpaiId >= MATTRIBUTE_NUMBER && menpaiId < MATTRIBUTE_SHAOLIN)
         {
             RETURNFALSE
@@ -1724,19 +1724,19 @@ namespace LuaFnTbl
         return 0 ;
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : yangei
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetMenPaiMaster
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : yangei
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetMenPaiMaster
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñÈ¡Íæ¼ÒËùÔÚ°ï»áµÄ°ïÖ÷Ãû³Æ£¨×Ö·û´®£©
-    *                º¯ÊýÌåÃ»ÓÐÊµÏÖ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                èŽ·å–çŽ©å®¶æ‰€åœ¨å¸®ä¼šçš„å¸®ä¸»åç§°ï¼ˆå­—ç¬¦ä¸²ï¼‰
+    *                å‡½æ•°ä½“æ²¡æœ‰å®žçŽ°
     */
     INT LuaFnGetMenPaiMaster(Lua_State* L)    
     {
@@ -1756,19 +1756,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetMenPaiFigure
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetMenPaiFigure
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ·µ»ØÍæ¼ÒÔÚ°ï»áÖÐµÄ½×¼¶£º0°ïÖÚ£¬1¶Ó³¤£¬2³¤ÀÏ£¬4°ïÖ÷
-    *                º¯ÊýÌåÃ»ÓÐÊµÏÖ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è¿”å›žçŽ©å®¶åœ¨å¸®ä¼šä¸­çš„é˜¶çº§ï¼š0å¸®ä¼—ï¼Œ1é˜Ÿé•¿ï¼Œ2é•¿è€ï¼Œ4å¸®ä¸»
+    *                å‡½æ•°ä½“æ²¡æœ‰å®žçŽ°
     */
     INT LuaFnGetMenPaiFigure(Lua_State* L)    
     {
@@ -1788,19 +1788,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnGetMenPaiTitle
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnGetMenPaiTitle
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ·µ»ØÍæ¼ÒÔÚ°ï»áÖÐµÄÍ·ÏÎ£¬·µ»ØÍ·ÏÎÖÐ²»°üÀ¨°ï»áÃû
-    *                º¯ÊýÌåÃ»ÓÐÊµÏÖ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è¿”å›žçŽ©å®¶åœ¨å¸®ä¼šä¸­çš„å¤´è¡”ï¼Œè¿”å›žå¤´è¡”ä¸­ä¸åŒ…æ‹¬å¸®ä¼šå
+    *                å‡½æ•°ä½“æ²¡æœ‰å®žçŽ°
     */
     INT LuaFnGetMenPaiTitle(Lua_State* L)    
     {
@@ -1821,21 +1821,21 @@ namespace LuaFnTbl
 
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnDestroyMenPai
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnDestroyMenPai
+    *     å‚æ•°è¯´æ˜Ž : 
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êý³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                menpaiId
-    *                    °ï»á±àºÅ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ½âÉ¢°ï»á
-    *                º¯ÊýÌåÃ»ÓÐÊµÏÖ
+    *                    å¸®ä¼šç¼–å·
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è§£æ•£å¸®ä¼š
+    *                å‡½æ•°ä½“æ²¡æœ‰å®žçŽ°
     */
     INT LuaFnDestroyMenPai(Lua_State* L)    
     {
@@ -1856,12 +1856,12 @@ namespace LuaFnTbl
 
     
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnSetNpcCurCamp
-    *     ²ÎÊýËµÃ÷ : 
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ¸Ä±äNPCµÄÕóÓª,º¯ÊýÌåÉÐÎ´ÌîÐ´
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnSetNpcCurCamp
+    *     å‚æ•°è¯´æ˜Ž : 
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                æ”¹å˜NPCçš„é˜µè¥,å‡½æ•°ä½“å°šæœªå¡«å†™
     */
     INT LuaFnSetNpcCurCamp(Lua_State* L)    
     {
@@ -1875,12 +1875,12 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2005-9-28
-    *     º¯ÊýÃû³Æ : LuaFnRestoreNpcCamp
-    *     ²ÎÊýËµÃ÷ : 
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »Ö¸´NPCÔ­ÓÐµÄÕóÓª,º¯ÊýÌåÉÐÎ´ÌîÐ´
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-9-28
+    *     å‡½æ•°åç§° : LuaFnRestoreNpcCamp
+    *     å‚æ•°è¯´æ˜Ž : 
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                æ¢å¤NPCåŽŸæœ‰çš„é˜µè¥,å‡½æ•°ä½“å°šæœªå¡«å†™
     */
     INT LuaFnRestoreNpcCamp(Lua_State* L)    
     {
@@ -1893,22 +1893,22 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-1-23
-    *     º¯ÊýÃû³Æ : LuaFnSetDamage
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-1-23
+    *     å‡½æ•°åç§° : LuaFnSetDamage
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                selfId
-    *                    ×Ô¼ºµÄObjID
+    *                    è‡ªå·±çš„ObjID
     *                targetId
-    *                    Ä¿±êµÄObjID
+    *                    ç›®æ ‡çš„ObjID
     *                damage
-    *                    ÐèÒªÉèÖÃµÄÉËº¦
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÄ³¸öobjµÄÉËº¦
+    *                    éœ€è¦è®¾ç½®çš„ä¼¤å®³
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®æŸä¸ªobjçš„ä¼¤å®³
     */
     INT LuaFnSetDamage(Lua_State* L)    
     {
@@ -1933,20 +1933,20 @@ namespace LuaFnTbl
         return 0 ;
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-3-7
-    *     º¯ÊýÃû³Æ : LuaFnGmKillObj
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-3-7
+    *     å‡½æ•°åç§° : LuaFnGmKillObj
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                selfId
-    *                    ×Ô¼ºµÄObjID
+    *                    è‡ªå·±çš„ObjID
     *                targetId
-    *                    Ä¿±êµÄObjID
-    *     ¹¦ÄÜËµÃ÷ :
-    *                Ö±½ÓÉ±ËÀÖ¸¶¨µÄobj;
+    *                    ç›®æ ‡çš„ObjID
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                ç›´æŽ¥æ€æ­»æŒ‡å®šçš„obj;
     */
     INT LuaFnGmKillObj(Lua_State* L)    
     {
@@ -1971,18 +1971,18 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-1-23
-    *     º¯ÊýÃû³Æ : LuaFnFindMonsterByGUID
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-1-23
+    *     å‡½æ•°åç§° : LuaFnFindMonsterByGUID
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                guid
-    *                    ÐèÒªÑ°ÕÒµÄ¹ÖÎïGUID
-    *     ¹¦ÄÜËµÃ÷ :
-    *                Ñ°ÕÒ³¡¾°ÖÐµÄÄ³¸ö¹ÖÎï,¸ù¾ÝGUID
+    *                    éœ€è¦å¯»æ‰¾çš„æ€ªç‰©GUID
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¯»æ‰¾åœºæ™¯ä¸­çš„æŸä¸ªæ€ªç‰©,æ ¹æ®GUID
     */
     INT LuaFnFindMonsterByGUID(Lua_State* L)    
     {
@@ -2002,18 +2002,18 @@ namespace LuaFnTbl
         RETURNFALSE
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnGetHumanMaxVigor
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnGetHumanMaxVigor
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½Íæ¼Ò»îÁ¦×î´óÖµ
+    *                    çŽ©å®¶ID
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°çŽ©å®¶æ´»åŠ›æœ€å¤§å€¼
     */
     //INT LuaFnGetHumanMaxVigor(Lua_State* L)    
     //{
@@ -2036,18 +2036,18 @@ namespace LuaFnTbl
     //    RETURNFALSE
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnGetHumanMaxEnergy
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnGetHumanMaxEnergy
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½Íæ¼Ò¾«Á¦×î´óÖµ
+    *                    çŽ©å®¶ID
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°çŽ©å®¶ç²¾åŠ›æœ€å¤§å€¼
     */
     //INT LuaFnGetHumanMaxEnergy(Lua_State* L)    
     //{
@@ -2070,18 +2070,18 @@ namespace LuaFnTbl
     //    RETURNFALSE
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnGetHumanVigor
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnGetHumanVigor
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½Íæ¼Ò»îÁ¦Öµ
+    *                    çŽ©å®¶ID
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°çŽ©å®¶æ´»åŠ›å€¼
     */
     //INT LuaFnGetHumanVigor(Lua_State* L)    
     //{
@@ -2104,18 +2104,18 @@ namespace LuaFnTbl
     //    RETURNFALSE
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnGetHumanEnergy
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnGetHumanEnergy
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½Íæ¼Ò¾«Á¦Öµ
+    *                    çŽ©å®¶ID
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°çŽ©å®¶ç²¾åŠ›å€¼
     */
     //INT LuaFnGetHumanEnergy(Lua_State* L)    
     //{
@@ -2138,20 +2138,20 @@ namespace LuaFnTbl
     //    RETURNFALSE
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnSetHumanMaxVigor
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnSetHumanMaxVigor
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼Ò»îÁ¦×î´óÖµ
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶æ´»åŠ›æœ€å¤§å€¼
     */
     //INT LuaFnSetHumanMaxVigor(Lua_State* L)    
     //{
@@ -2174,20 +2174,20 @@ namespace LuaFnTbl
     //    return 0;
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnSetHumanMaxEnergy
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnSetHumanMaxEnergy
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼Ò¾«Á¦×î´óÖµ
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶ç²¾åŠ›æœ€å¤§å€¼
     */
     //INT LuaFnSetHumanMaxEnergy(Lua_State* L)    
     //{
@@ -2211,20 +2211,20 @@ namespace LuaFnTbl
     //    return 0 ;
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnSetHumanVigor
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnSetHumanVigor
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼Ò»îÁ¦
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶æ´»åŠ›
     */
     //INT LuaFnSetHumanVigor(Lua_State* L)    
     //{
@@ -2247,20 +2247,20 @@ namespace LuaFnTbl
     //    return 0 ;
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnSetHumanEnergy
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnSetHumanEnergy
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼Ò¾«Á¦
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶ç²¾åŠ›
     */
     //INT LuaFnSetHumanEnergy(Lua_State* L)    
     //{
@@ -2283,18 +2283,18 @@ namespace LuaFnTbl
     //    return 0 ;
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnGetHumanVigorRegeneRate
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnGetHumanVigorRegeneRate
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½Íæ¼Ò»îÁ¦»Ö¸´ËÙ¶È
+    *                    çŽ©å®¶ID
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°çŽ©å®¶æ´»åŠ›æ¢å¤é€Ÿåº¦
     */
     //INT LuaFnGetHumanVigorRegeneRate(Lua_State* L)    
     //{
@@ -2317,18 +2317,18 @@ namespace LuaFnTbl
     //    RETURNFALSE
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnGetHumanEnergyRegeneRate
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnGetHumanEnergyRegeneRate
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
-    *     ¹¦ÄÜËµÃ÷ :
-    *                µÃµ½Íæ¼Ò¾«Á¦»Ö¸´ËÙ¶È
+    *                    çŽ©å®¶ID
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å¾—åˆ°çŽ©å®¶ç²¾åŠ›æ¢å¤é€Ÿåº¦
     */
     //INT LuaFnGetHumanEnergyRegeneRate(Lua_State* L)    
     //{
@@ -2351,20 +2351,20 @@ namespace LuaFnTbl
     //    RETURNFALSE
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnSetHumanVigorRegeneRate
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnSetHumanVigorRegeneRate
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼Ò»îÁ¦»Ö¸´ËÙ¶È
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶æ´»åŠ›æ¢å¤é€Ÿåº¦
     */
     //INT LuaFnSetHumanVigorRegeneRate(Lua_State* L)    
     //{
@@ -2387,20 +2387,20 @@ namespace LuaFnTbl
     //    return 0 ;
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnSetHumanEnergyRegeneRate
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnSetHumanEnergyRegeneRate
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼Ò¾«Á¦»Ö¸´ËÙ¶È
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶ç²¾åŠ›æ¢å¤é€Ÿåº¦
     */
     //INT LuaFnSetHumanEnergyRegeneRate(Lua_State* L)    
     //{
@@ -2423,20 +2423,20 @@ namespace LuaFnTbl
     //    return 0 ;
     //}
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnSetHumanHairColor
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnSetHumanHairColor
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼ÒÍ··¢ÑÕÉ«
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶å¤´å‘é¢œè‰²
     */
     INT LuaFnSetHumanHairColor(Lua_State* L)    
     {
@@ -2456,20 +2456,20 @@ namespace LuaFnTbl
         return 0 ;
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnGetHumanHairColor
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnGetHumanHairColor
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼ÒÍ··¢ÑÕÉ«
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶å¤´å‘é¢œè‰²
     */
     INT LuaFnGetHumanHairColor(Lua_State* L)    
     {
@@ -2489,20 +2489,20 @@ namespace LuaFnTbl
         RETURNFALSE
     }
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnSetHumanHairModel
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnSetHumanHairModel
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                uHairStyle
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼ÒÍ··¢Ä£ÐÍ
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶å¤´å‘æ¨¡åž‹
     */
     INT LuaFnSetHumanHairModel(Lua_State* L)    
     {
@@ -2524,19 +2524,19 @@ namespace LuaFnTbl
     }
 
     /****************************************************************************
-     *    ¿ª·¢ÈËÔ±£º    
-     *    ±àÐ´Ê±¼ä£º    2006-5-15    14:36
-     *    º¯ÊýÃû³Æ£º    LuaFnChangeHumanHairModel
-     *    ²ÎÊýËµÃ÷£º
+     *    å¼€å‘äººå‘˜ï¼š    
+     *    ç¼–å†™æ—¶é—´ï¼š    2006-5-15    14:36
+     *    å‡½æ•°åç§°ï¼š    LuaFnChangeHumanHairModel
+     *    å‚æ•°è¯´æ˜Žï¼š
      *                sceneId
-     *                    ³¡¾°±àºÅ
+     *                    åœºæ™¯ç¼–å·
      *                selfId
-     *                    µ÷ÓÃÕß ID£¬ÎÞ·ûºÅÕûÐÍ
+     *                    è°ƒç”¨è€… IDï¼Œæ— ç¬¦å·æ•´åž‹
      *                uHairStyle
-     *                    ·¢ÐÍÖµ
+     *                    å‘åž‹å€¼
      *
-     *    ¹¦ÄÜËµÃ÷£º    ½«Íæ¼ÒµÄ·¢ÐÍ»»³É uHairStyle
-     *    ÐÞ¸Ä¼ÇÂ¼£º
+     *    åŠŸèƒ½è¯´æ˜Žï¼š    å°†çŽ©å®¶çš„å‘åž‹æ¢æˆ uHairStyle
+     *    ä¿®æ”¹è®°å½•ï¼š
     *****************************************************************************/
     INT LuaFnChangeHumanHairModel(Lua_State* L)    
     {
@@ -2603,20 +2603,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-02-20
-    *     º¯ÊýÃû³Æ : LuaFnGetHumanHairModel
-    *     ²ÎÊýËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-02-20
+    *     å‡½æ•°åç§° : LuaFnGetHumanHairModel
+    *     å‚æ•°è¯´æ˜Ž :
     *                L
-    *                    LuaStateÖ´ÐÐ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡ŒçŽ¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    ³¡¾°ºÅ
+    *                    åœºæ™¯å·
     *                humanId
-    *                    Íæ¼ÒID
+    *                    çŽ©å®¶ID
     *                value
-    *                    ÉèÖµµÄÖµ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÉèÖÃÍæ¼ÒÍ··¢Ä£ÐÍ
+    *                    è®¾å€¼çš„å€¼
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è®¾ç½®çŽ©å®¶å¤´å‘æ¨¡åž‹
     */
     INT LuaFnGetHumanHairModel(Lua_State* L)    
     {
@@ -2637,17 +2637,17 @@ namespace LuaFnTbl
     }
 
     /****************************************************************************
-     *    ¿ª·¢ÈËÔ±£º    
-     *    ±àÐ´Ê±¼ä£º    2006-5-15    14:26
-     *    º¯ÊýÃû³Æ£º    LuaFnGetHumanGoodBadValue
-     *    ²ÎÊýËµÃ÷£º
+     *    å¼€å‘äººå‘˜ï¼š    
+     *    ç¼–å†™æ—¶é—´ï¼š    2006-5-15    14:26
+     *    å‡½æ•°åç§°ï¼š    LuaFnGetHumanGoodBadValue
+     *    å‚æ•°è¯´æ˜Žï¼š
      *                sceneId
-     *                    ³¡¾°±àºÅ
+     *                    åœºæ™¯ç¼–å·
      *                selfId
-     *                    µ÷ÓÃÕß ID£¬ÎÞ·ûºÅÕûÐÍ
+     *                    è°ƒç”¨è€… IDï¼Œæ— ç¬¦å·æ•´åž‹
      *
-     *    ¹¦ÄÜËµÃ÷£º    µÃµ½ selfId µÄÉÆ¶ñÖµ
-     *    ÐÞ¸Ä¼ÇÂ¼£º
+     *    åŠŸèƒ½è¯´æ˜Žï¼š    å¾—åˆ° selfId çš„å–„æ¶å€¼
+     *    ä¿®æ”¹è®°å½•ï¼š
     *****************************************************************************/
     //INT LuaFnGetHumanGoodBadValue(Lua_State* L)    
     //{
@@ -2871,7 +2871,7 @@ namespace LuaFnTbl
     }
 
 
-    //·µ»ØÓÐ¼¸ÌõÉÌÆ·ÐÅÏ¢£¬Ä¿Ç°×î¶à1Ìõ
+    //è¿”å›žæœ‰å‡ æ¡å•†å“ä¿¡æ¯ï¼Œç›®å‰æœ€å¤š1æ¡
     INT LuaFnGetWebShopInfoNum(Lua_State* L)    
     {
         LUA_ENTER_FUNCTION
@@ -2913,7 +2913,7 @@ namespace LuaFnTbl
         RETURNFALSE
     }
 
-    //µÃµ½Ä³ÌõÉÌÆ·¹²¶àÉÙ¸öÎïÆ·¡«¡«
+    //å¾—åˆ°æŸæ¡å•†å“å…±å¤šå°‘ä¸ªç‰©å“ï½žï½ž
     INT LuaFnGetWebShopItemNum(Lua_State* L)    
     {
         LUA_ENTER_FUNCTION
@@ -2952,7 +2952,7 @@ namespace LuaFnTbl
         RETURNFALSE
     }
 
-    //µÃµ½Ä³ÌõÉÌÆ·¹²¶àÉÙ¸öÔª±¦¡«¡«
+    //å¾—åˆ°æŸæ¡å•†å“å…±å¤šå°‘ä¸ªå…ƒå®ï½žï½ž
     INT LuaFnGetWebShopMoney(Lua_State* L)    
     {
         LUA_ENTER_FUNCTION
@@ -2978,7 +2978,7 @@ namespace LuaFnTbl
         RETURNFALSE
     }
 
-    //µÃµ½Ä³ÌõÉÌÆ·µÄÄ³¸öÎïÆ·¡«¡«Ë÷Òý´Ó1¿ªÊ¼
+    //å¾—åˆ°æŸæ¡å•†å“çš„æŸä¸ªç‰©å“ï½žï½žç´¢å¼•ä»Ž1å¼€å§‹
     INT LuaFnGetWebShopItem(Lua_State* L)    
     {
         LUA_ENTER_FUNCTION
@@ -3072,7 +3072,7 @@ namespace LuaFnTbl
         RETURNFALSE
     }
 
-    //½«ÉÌÆ··Åµ½ÈËÉíÉÏ
+    //å°†å•†å“æ”¾åˆ°äººèº«ä¸Š
     INT LuaFnWebShopReceive(Lua_State* L)    
     {
         LUA_ENTER_FUNCTION
@@ -3137,7 +3137,7 @@ namespace LuaFnTbl
             RETURNFALSE
         }
 
-        //µÃµ½ÎïÆ·
+        //å¾—åˆ°ç‰©å“
         ITEM_LOG_PARAM ItemLogParam;
         ItemLogParam.OpType        = ITEM_CREATE_FROM_SCRIPT;
         ItemLogParam.CharGUID    = pHuman->GetGUID();
@@ -3167,9 +3167,9 @@ namespace LuaFnTbl
 
 
     /*
-        ÉèÖÃË«±¶¾­Ñé×´Ì¬
-        nExpTime            ¾­ÑéÊ±¼ä
-        nExpDoubleNum        ¾­Ñé±¶Êý
+        è®¾ç½®åŒå€ç»éªŒçŠ¶æ€
+        nExpTime            ç»éªŒæ—¶é—´
+        nExpDoubleNum        ç»éªŒå€æ•°
 
     */
     INT LuaFnSetDoubleExp(Lua_State* L)    
@@ -3184,22 +3184,22 @@ namespace LuaFnTbl
         BEGINHUMANDEFINE("LuaFnSetDoubleExp")
         Assert( nExpTime>0 && nExpDoubleNum >1 );
         nExpTime=nExpTime*1000;
-        //Èç¹ûÒÑ¾­ÉèÖÃ¹ýË«±¶¾­Ñé
+        //å¦‚æžœå·²ç»è®¾ç½®è¿‡åŒå€ç»éªŒ
         if(pHuman->m_ExpTimer.IsSetTimer())
         {
-            //Èç¹û¾­Ñé±¶ÊýÐ¡ÓÚÒÑ¾­ÉèÖÃ¹ýµÄ¾Í²»»áÖØÐÂÉèÖÃ
+            //å¦‚æžœç»éªŒå€æ•°å°äºŽå·²ç»è®¾ç½®è¿‡çš„å°±ä¸ä¼šé‡æ–°è®¾ç½®
             if(nExpDoubleNum < GETLOW(pHuman->GetDoubleExpTime_Num()))
             {
                 Lua_PushNumber( L, 0 );
                 return 1;
 
             }
-            //Èç¹û¾­Ñé±¶ÊýÏàµÈ¾ÍÔö¼ÓÊ±¼ä
+            //å¦‚æžœç»éªŒå€æ•°ç›¸ç­‰å°±å¢žåŠ æ—¶é—´
             if(nExpDoubleNum == GETLOW(pHuman->GetDoubleExpTime_Num()))
             {
                 pHuman->m_ExpTimer.SetTermTime(pHuman->m_ExpTimer.GetTermTime()+nExpTime);
             }
-            //Èç¹û¾­Ñé±¶Êý´óÓÚÒÑ¾­ÉèÖÃ¹ýµÄ¾Í¸üÐÂË«±¶¾­Ñé
+            //å¦‚æžœç»éªŒå€æ•°å¤§äºŽå·²ç»è®¾ç½®è¿‡çš„å°±æ›´æ–°åŒå€ç»éªŒ
             if(nExpDoubleNum > GETLOW(pHuman->GetDoubleExpTime_Num()))
             {
                 pHuman->m_ExpTimer.CleanUp();
@@ -3210,7 +3210,7 @@ namespace LuaFnTbl
         }
         else
         {
-            //ÉèÖÃË«±¶¾­Ñé;
+            //è®¾ç½®åŒå€ç»éªŒ;
             pHuman->m_ExpTimer.BeginTimer(nExpTime,g_pTimeManager->CurrentTime());
             pHuman->SetDoubleExpTime_Num(((nExpTime/1000)<<16)+nExpDoubleNum);
 

@@ -13,22 +13,22 @@ public :
     BOOL                        Init( );
     VOID                        CleanUp( );
 
-    //ÏòÊı¾İ¿âÀïÔö¼ÓÒ»¸öÉÏÏßÍæ¼Ò¼ÇÂ¼
+    //å‘æ•°æ®åº“é‡Œå¢åŠ ä¸€ä¸ªä¸Šçº¿ç©å®¶è®°å½•
     BOOL                        AddUser( const USER_SIMPLE_DATA* pSimpleUser );
 
-    //¸ù¾İ½ÇÉ«guidËÑË÷Íæ¼Ò
+    //æ ¹æ®è§’è‰²guidæœç´¢ç©å®¶
     UINT                        Select( GUID_t guid, RETURN_FINGER_PLAYERLIST* pPlayerList );
 
-    //¸ù¾İÍêÕû½ÇÉ«Ãû×ÖËÑË÷Íæ¼Ò
+    //æ ¹æ®å®Œæ•´è§’è‰²åå­—æœç´¢ç©å®¶
     UINT                        Select( const CHAR* szName, RETURN_FINGER_PLAYERLIST* pPlayerList, BOOL bPreciseFlag, INT nPosition = 0 );
 
 protected:
-    USER_SIMPLE_DATA*            m_pUsers;            //ÓÃ»§Êı¾İ³Ø
-    UINT                        m_uMaxUserCount;    //ÓÃ»§Êı¾İ³Ø´óĞ¡
-    UINT                        m_uCurUserCount;    //µ±Ç°ÓÃ»§ÊıÁ¿
-    UINT                        m_uSelectOffset;    //µ±Ç°ËÑË÷ÆğÊ¼Î»ÖÃ
+    USER_SIMPLE_DATA*            m_pUsers;            //ç”¨æˆ·æ•°æ®æ± 
+    UINT                        m_uMaxUserCount;    //ç”¨æˆ·æ•°æ®æ± å¤§å°
+    UINT                        m_uCurUserCount;    //å½“å‰ç”¨æˆ·æ•°é‡
+    UINT                        m_uSelectOffset;    //å½“å‰æœç´¢èµ·å§‹ä½ç½®
 
-    IDTable                        m_IDTable;    //¿ìËÙË÷Òı±í
+    IDTable                        m_IDTable;    //å¿«é€Ÿç´¢å¼•è¡¨
 
 };
 

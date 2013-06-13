@@ -9,22 +9,22 @@
 
 #define MAX_SCENE_PER_THREAD 128
 
-//�����߳�
-//ÿ��������һ���������߳�������ִ��
+//场景线程
+//每个场景由一个独立的线程来驱动执行
 class SceneThread : public Thread
 {
 public :
     SceneThread( ) ;
     ~SceneThread( ) ;
 
-    //�߳�ִ����ѭ��
+    //线程执行主循环
     virtual VOID    run( ) ;
 
-    //ִֹͣ��
-    //���ô˽ӿں��������߳̾���ֹͣ����������һ��ѭ������ʱ�˳�
+    //停止执行
+    //调用此接口后不是马上线程就能停止，而且在下一个循环操作时退出
     virtual VOID    stop( ) { m_Active = FALSE ; } ;
 
-    //�жϵ�ǰ�߳��Ƿ���Ч�������Ч�����˳�ѭ��
+    //判断当前线程是否有效，如果无效，则退出循环
     BOOL            IsActive( ){ return m_Active ; } ;
 
     VOID            Quit( ) ;

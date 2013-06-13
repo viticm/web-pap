@@ -1,6 +1,6 @@
 // WGCityError.h
 // 
-// 城市出错信息
+// 鍩庡競鍑洪敊淇℃伅
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         WGCityError( ){} ;
         virtual ~WGCityError( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,12 +28,12 @@ namespace Packets
         virtual UINT            GetPacketSize() const { return sizeof(BYTE); }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         BYTE                    GetErrorID(){return m_ErrorID;}
         VOID                    SetErrorID(BYTE nErrorID){m_ErrorID = nErrorID;}
 
     private:
-        //数据
+        //鏁版嵁
         BYTE                    m_ErrorID;
 
     };

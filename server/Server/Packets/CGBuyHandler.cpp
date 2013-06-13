@@ -27,15 +27,15 @@ uint CGBuyHandler::Execute( CGBuy* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    DWORD    m_idTable    =    pPacket->GetBuyTableID();        //×ÊÔ´id
-    BYTE    m_byNumber    =    pPacket->GetBuyNum();        //ÊýÁ¿
+    DWORD    m_idTable    =    pPacket->GetBuyTableID();        //èµ„æºid
+    BYTE    m_byNumber    =    pPacket->GetBuyNum();        //æ•°é‡
 
 
     if(pHuman->GetCurrentShopId( ) == -1)
-    {//Ã»ÓÐ´ò¿ª½»Ò×´°¿Ú¾ÍÂò
+    {//æ²¡æœ‰æ‰“å¼€äº¤æ˜“çª—å£å°±ä¹°
         Assert(0);
         return PACKET_EXE_CONTINUE ;
     }
@@ -54,13 +54,13 @@ uint CGBuyHandler::Execute( CGBuy* pPacket, Player* pPlayer )
         return PACKET_EXE_CONTINUE ;
     }
 
-    //¼ÆËã¼Û¸ñ
+    //è®¡ç®—ä»·æ ¼
     uint BaseMoney = ShopManager::ConvertItemType2Money(pShop->m_ItemList->m_ListType[i]);
     BaseMoney *= static_cast<uint>(pShop->m_scale);
     //
     BaseMoney = 0;
     if( pHuman->GetMoney() < BaseMoney )
-    {//½ðÇ®²»¹»
+    {//é‡‘é’±ä¸å¤Ÿ
         GCBuy Msg ;
         Msg.SetBuyOk((BYTE)GCBuy::BUY_FAIL);
         pHuman->GetPlayer()->SendPacket( &Msg ) ;
@@ -77,7 +77,7 @@ uint CGBuyHandler::Execute( CGBuy* pPacket, Player* pPlayer )
         pHuman->GetPlayer()->SendPacket( &Msg ) ;
     }
 
-    //Í¨Öª
+    //é€šçŸ¥
     GCNotifyEquip Msg ;
     Msg.SetBagIndex( BagIndex ) ;
     Msg.SetItem( &item ) ;

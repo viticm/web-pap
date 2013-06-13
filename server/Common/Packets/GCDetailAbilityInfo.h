@@ -1,6 +1,6 @@
 // GCDetailAbilityInfo.h
 // 
-// 当前主角的详细技能表
+// 褰撳墠涓昏鐨勮缁嗘妧鑳借〃
 // 
 //////////////////////////////////////////////////////
 
@@ -20,7 +20,7 @@ public:
     GCDetailAbilityInfo( ){}
     virtual ~GCDetailAbilityInfo( ){}
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -60,7 +60,7 @@ public:
         memcpy( m_aPrescr, paPrescr, sizeof(CHAR) * MAX_CHAR_PRESCRIPTION_BYTE );
     }
 private:
-    ObjID_t                    m_ObjID;    // 所有Obj类型的ObjID
+    ObjID_t                    m_ObjID;    // 鎵�鏈塐bj绫诲瀷鐨凮bjID
     BYTE                    m_wNumAbility;
     UCHAR                    m_uAbilityIDList[MAX_CHAR_ABILITY_NUM];
     _OWN_ABILITY            m_aAbility[MAX_CHAR_ABILITY_NUM];

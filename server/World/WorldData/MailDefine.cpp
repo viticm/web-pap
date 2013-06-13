@@ -116,7 +116,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-INT UserNode::GetMailCount( )//返回此用户的邮件数量
+INT UserNode::GetMailCount( )//杩斿洖姝ょ敤鎴风殑閭欢鏁伴噺
 {
 __ENTER_FUNCTION
 
@@ -127,7 +127,7 @@ __LEAVE_FUNCTION
     return 0 ;
 }
 
-INT UserNode::GetScriptMailCount( )//返回此用户的邮件数量
+INT UserNode::GetScriptMailCount( )//杩斿洖姝ょ敤鎴风殑閭欢鏁伴噺
 {
 __ENTER_FUNCTION
 

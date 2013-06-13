@@ -16,7 +16,7 @@ namespace Packets
         CGModifySetting( ){} ;
         virtual ~CGModifySetting( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,7 +28,7 @@ namespace Packets
     public :
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         VOID                    SetType( BYTE type ){ m_Type = type ; }
         BYTE                    GetType( ){ return m_Type ; }
 
@@ -36,7 +36,7 @@ namespace Packets
         _OWN_SETTING*            GetValue( ){ return &m_Value ; }
 
     private:
-        //数据
+        //鏁版嵁
         BYTE                    m_Type ;//enum SETTING_TYPE
         _OWN_SETTING            m_Value ;
     };

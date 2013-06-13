@@ -39,7 +39,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     
@@ -104,7 +104,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
     {    
 
         /*
-         *    Éú³¤µãÀàÐÍItemBox Ê°È¡Á÷³Ì
+         *    ç”Ÿé•¿ç‚¹ç±»åž‹ItemBox æ‹¾å–æµç¨‹
          */
         if(pItemBox->GetOpenFlag())
         {
@@ -117,7 +117,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
 
                     if(!pIBContainer)
                     {
-                        AssertEx(FALSE,"ItemBox µÄIItemContainer Òì³£");        
+                        AssertEx(FALSE,"ItemBox çš„IItemContainer å¼‚å¸¸");        
                         return PACKET_EXE_CONTINUE;
                     }
 
@@ -126,7 +126,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
 
                     if(pSourItem->GetGUID() == ItemObjID)
                     {
-                            //²éÕÒºÏÊÊµÄÎ»ÖÃ
+                            //æŸ¥æ‰¾åˆé€‚çš„ä½ç½®
 
                         
                         ITEM_LOG_PARAM    ItemLogParam;
@@ -151,7 +151,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
                                 Msg.setItemID(ItemObjID);
                                 Msg.setBagItemGUID(pBagItem->GetGUID());
                                 
-                                //¼õÉÙÊýÁ¿
+                                //å‡å°‘æ•°é‡
                                 pItemBox->SetItemCount(pItemBox->GetItemCount()-1);
                                 
 
@@ -167,27 +167,27 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
 
                                         if(pScene->GetGrowPointManager()->CallScriptRecycleFunc(pGET->m_ScriptID,pHuman->GetID(),ItemBoxObjID,pScene->SceneID()))
                                         {    
-                                            //¿ÉÒÔRecycle
+                                            //å¯ä»¥Recycle
                                             pItemBox->Recycle();
                                         }
                                         else
-                                        {    //¼ÌÐø¿ª²É
+                                        {    //ç»§ç»­å¼€é‡‡
 
                                         }
 
                                     }
                                     else
                                     {
-                                        Assert(FALSE); //Ã»ÓÐÌá¹©»ØÊÕº¯Êý
+                                        Assert(FALSE); //æ²¡æœ‰æä¾›å›žæ”¶å‡½æ•°
                                     }
                                     
                                 }
                                 
-                                //¼ì²éÊýÁ¿±ä»¯
+                                //æ£€æŸ¥æ•°é‡å˜åŒ–
                                 Item* pItem =    HumanItemLogic::GetItem(pHuman,uBagIndex);
                                 Assert(pItem);
                                 
-                                //°ó¶¨ÉèÖÃ
+                                //ç»‘å®šè®¾ç½®
                                 if(pItem->IsRuler(IRL_PICKBIND))
                                 {
                                     
@@ -245,7 +245,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
     else
     {
         /*
-         *    µôÂä°üÊ°È¡Á÷³Ì
+         *    æŽ‰è½åŒ…æ‹¾å–æµç¨‹
          */
             if(pItemBox->CanPickBox(pHuman->GetGUID(),pHuman->GetID()))
             {
@@ -258,7 +258,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
 
                     if(!pIBContainer)
                     {
-                        AssertEx(FALSE,"ItemBox µÄIItemContainer Òì³£");        
+                        AssertEx(FALSE,"ItemBox çš„IItemContainer å¼‚å¸¸");        
                         return PACKET_EXE_CONTINUE;
                     }
 
@@ -266,7 +266,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
                     
                     if(pSourItem->GetGUID() == ItemObjID)
                     {
-                        //È¨ÏÞ¼ì²é
+                        //æƒé™æ£€æŸ¥
                         if(!(pItemBox->CanPickBox(pHuman->GetGUID(),pHuman->GetID())))
                             return    PICK_INVALID_OWNER;
 
@@ -277,7 +277,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
                         ItemLogParam.SceneID    = pHuman->getScene()->SceneID();
                         ItemLogParam.XPos        = pHuman->getWorldPos()->m_fX;
                         ItemLogParam.ZPos        = pHuman->getWorldPos()->m_fZ;
-                        //²éÕÒºÏÊÊµÄÎ»ÖÃ
+                        //æŸ¥æ‰¾åˆé€‚çš„ä½ç½®
 
                         if(HumanItemLogic::MoveItem(&ItemLogParam,pHuman,pIBContainer,i,uBagIndex))
                         {
@@ -296,7 +296,7 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
                             Msg.setItemID(ItemObjID);
                             Msg.setBagItemGUID(pBagItem->GetGUID());        
                         
-                            //¼õÉÙÊýÁ¿
+                            //å‡å°‘æ•°é‡
                             pItemBox->SetItemCount(pItemBox->GetItemCount()-1);
 
                             if(pItemBox->GetItemCount()<=0)
@@ -304,12 +304,12 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
                                 pItemBox->Recycle();    
                             }
 
-                            //¼ì²éÊýÁ¿±ä»¯
+                            //æ£€æŸ¥æ•°é‡å˜åŒ–
                             //const    _ITEM* pBagItem = pHuman->GetItem(uBagIndex);
                             Item* pItem =    HumanItemLogic::GetItem(pHuman,uBagIndex);
                             Assert(pItem);
 
-                            //°ó¶¨ÉèÖÃ
+                            //ç»‘å®šè®¾ç½®
                             if(pItem->IsRuler(IRL_PICKBIND))
                             {
 
@@ -361,10 +361,10 @@ UINT CGPickBoxItemHandler::Execute(CGPickBoxItem* pPacket, Player* pPlayer )
             }
             
             Msg.setResult(ResultCode);
-            //·¢ËÍ½á¹û
+            //å‘é€ç»“æžœ
             pGamePlayer->SendPacket( &Msg ) ;
             
-            //·¢ËÍÎïÆ·±ä»¯
+            //å‘é€ç‰©å“å˜åŒ–
             if(ResultCode == PICK_SUCCESS) pGamePlayer->SendPacket(&ChangeItemMsg);
     }
 

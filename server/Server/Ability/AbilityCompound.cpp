@@ -34,40 +34,40 @@ __ENTER_FUNCTION
     Assert( pAbilityOpera );
 
     if( (pAbilityOpera->m_PresID > 0) && (pAbilityOpera->m_PresID <= pPrescriptionList->m_Count) )
-    { // ÊôÓÚÅä·½ºÏ³ÉÇé¿ö
+    { // å±äºé…æ–¹åˆæˆæƒ…å†µ
 
         const _PRESCRIPTION_DATA* pPrescrData;
         pPrescrData = pPrescriptionList->Get_Prescription(pAbilityOpera->m_PresID);
 
-        // ÅĞ¶ÏÕâÌõÅä·½ÊÇ·ñÊôÓÚÕâÏî¼¼ÄÜ
+        // åˆ¤æ–­è¿™æ¡é…æ–¹æ˜¯å¦å±äºè¿™é¡¹æŠ€èƒ½
         if( pPrescrData->m_AbilityID != m_AbilityID )
         {
             return OR_WARNING;
         }
 
-        // ÅĞ¶ÏÍæ¼ÒÊÇ·ñÒÑ¾­Ñ§»á´ËÅä·½
+        // åˆ¤æ–­ç©å®¶æ˜¯å¦å·²ç»å­¦ä¼šæ­¤é…æ–¹
         if( pHuman->__IsPrescrHaveLearned( pAbilityOpera->m_PresID ) == FALSE )
         {
             return OR_WARNING;
         }
 
         if( pPrescrData->m_nOperaTime > 0 )
-        { // Ê¹ÓÃÃ¿¸öÅä·½×Ô¶¨ÒåµÄ²Ù×÷Ê±¼ä
+        { // ä½¿ç”¨æ¯ä¸ªé…æ–¹è‡ªå®šä¹‰çš„æ“ä½œæ—¶é—´
             pAbilityOpera->m_nMaxTime = pPrescrData->m_nOperaTime;
         }
 
         if( pPrescrData->m_ScriptID != INVALID_ID )
-        { // ÆÕÍ¨Åä·½µÄÖ´ĞĞ
+        { // æ™®é€šé…æ–¹çš„æ‰§è¡Œ
 
             LuaInterface* pLuaInterface;
             pLuaInterface = pHuman->getScene()->GetLuaInterface();
 
-            // µ÷ÓÃ½Å±¾½øĞĞÅĞ¶Ï²¢È¡µÃ·µ»ØÖµ
+            // è°ƒç”¨è„šæœ¬è¿›è¡Œåˆ¤æ–­å¹¶å–å¾—è¿”å›å€¼
             ORESULT res;
             res = (ORESULT)pLuaInterface->ExeScript_DD( pPrescrData->m_ScriptID, DEF_ABILITY_CHECK,
                 (INT)pHuman->getScene()->SceneID(), (INT)pHuman->GetID() );
 
-            // ·µ»Ø·µ»ØÖµ
+            // è¿”å›è¿”å›å€¼
             return res;
         }
         else
@@ -76,7 +76,7 @@ __ENTER_FUNCTION
         }
 
     }
-    // else if(...) // ÎŞÅä·½ºÏ³ÉÇé¿ö
+    // else if(...) // æ— é…æ–¹åˆæˆæƒ…å†µ
 
     return OR_WARNING;
 
@@ -146,12 +146,12 @@ __ENTER_FUNCTION
     if( (pPrescrData->m_ColddownID >= 0))
     {
         if(FALSE==pHuman->IsCooldowned( pPrescrData->m_ColddownID ))
-        { // ÀäÈ´Ê±¼äÊÇ·ñ»¹Ã»ÓĞ½áÊø
+        { // å†·å´æ—¶é—´æ˜¯å¦è¿˜æ²¡æœ‰ç»“æŸ
             return OR_COOL_DOWNING;
         }
     }
 
-    // ÅĞ¶ÏÊÇ·ñÉíÉÏ»¹ÓĞÊ£Óà¿Õ¼ä
+    // åˆ¤æ–­æ˜¯å¦èº«ä¸Šè¿˜æœ‰å‰©ä½™ç©ºé—´
     INT ns;
     if( HumanItemLogic::CalcItemSpace(pHuman, pPrescrData->m_CompoundID, pPrescrData->m_CompoundNum, ns)
      == FALSE
@@ -180,7 +180,7 @@ __ENTER_FUNCTION
     Assert( pAbilityOpera );
 
     if( (pAbilityOpera->m_PresID > 0) && (pAbilityOpera->m_PresID <= pPrescriptionList->m_Count) )
-    { // ÊôÓÚÅä·½ºÏ³ÉÇé¿ö
+    { // å±äºé…æ–¹åˆæˆæƒ…å†µ
         const _PRESCRIPTION_DATA* pPrescrData;
         pPrescrData = pPrescriptionList->Get_Prescription(pAbilityOpera->m_PresID);
 
@@ -190,16 +190,16 @@ __ENTER_FUNCTION
         pLuaInterface = pHuman->getScene()->GetLuaInterface();
 
         if( pPrescrData->m_ScriptID != INVALID_ID )
-        { // ÆÕÍ¨Åä·½µÄÖ´ĞĞ
-            // µ÷ÓÃ½Å±¾½øĞĞÅĞ¶Ï²¢È¡µÃ·µ»ØÖµ
+        { // æ™®é€šé…æ–¹çš„æ‰§è¡Œ
+            // è°ƒç”¨è„šæœ¬è¿›è¡Œåˆ¤æ–­å¹¶å–å¾—è¿”å›å€¼
             res = (ORESULT)pLuaInterface->ExeScript_DD( pPrescrData->m_ScriptID, DEF_ABILITY_CHECK,
                 (INT)pHuman->getScene()->SceneID(), (INT)pHuman->GetID() );
             if( res != OR_OK )
-            { // ÔÙ´Î¼ì²é£¬ÒÔÃâºÏ³É¹ı³ÌÖĞ³öÏÖÎïÆ·ÊıÁ¿ºÍ±³°ü¿Õ¼ä±ä»¯µÈµÈ
+            { // å†æ¬¡æ£€æŸ¥ï¼Œä»¥å…åˆæˆè¿‡ç¨‹ä¸­å‡ºç°ç‰©å“æ•°é‡å’ŒèƒŒåŒ…ç©ºé—´å˜åŒ–ç­‰ç­‰
                 return res;
             }
 
-            // ÏûºÄÎïÆ·
+            // æ¶ˆè€—ç‰©å“
             pLuaInterface->ExeScript_DD( pPrescrData->m_ScriptID, DEF_ABILITY_CONSUME,
                 (INT)pHuman->getScene()->SceneID(), (INT)pHuman->GetID() );
         }
@@ -207,15 +207,15 @@ __ENTER_FUNCTION
         {
             res = IsFitPrescr(pHuman, pPrescrData);
             if( res != OR_OK )
-            { // ÔÙ´Î¼ì²é£¬ÒÔÃâºÏ³É¹ı³ÌÖĞ³öÏÖÎïÆ·ÊıÁ¿ºÍ±³°ü¿Õ¼ä±ä»¯µÈµÈ
+            { // å†æ¬¡æ£€æŸ¥ï¼Œä»¥å…åˆæˆè¿‡ç¨‹ä¸­å‡ºç°ç‰©å“æ•°é‡å’ŒèƒŒåŒ…ç©ºé—´å˜åŒ–ç­‰ç­‰
                 return res;
             }
 
-            // ÏûºÄÎïÆ·
+            // æ¶ˆè€—ç‰©å“
             AbilityConsume(pHuman, pPrescrData);
         }
 
-        // »ñµÃÊìÁ·¶È
+        // è·å¾—ç†Ÿç»ƒåº¦
         pLuaInterface->ExeScript_DDDD( ABILITY_LOGIC_SCRIPT, DEF_ABILITY_GAIN_EXPERIENCE,
             (INT)pHuman->getScene()->SceneID(), (INT)pHuman->GetID(),
             pPrescrData->m_AbilityID, pPrescrData->m_AbilityLevel );
@@ -224,17 +224,17 @@ __ENTER_FUNCTION
             (INT)pHuman->getScene()->SceneID(), (INT)pHuman->GetID(),
             pPrescrData->m_AbilityID, pPrescrData->m_AbilityLevel );
         if( res == OR_FAILURE )
-        { // ºÏ³É½áÊøÊ±µÄ³É¹¦ĞÔÍ³Ò»ÅĞ¶Ï£¬Èç¹ûÅĞ¶Ï½á¹ûÊÇºÏ³ÉÊ§°Ü£¬Ôò...
+        { // åˆæˆç»“æŸæ—¶çš„æˆåŠŸæ€§ç»Ÿä¸€åˆ¤æ–­ï¼Œå¦‚æœåˆ¤æ–­ç»“æœæ˜¯åˆæˆå¤±è´¥ï¼Œåˆ™...
             return OnProcFailure( pHuman, pPrescrData );
         }
 
         if( pPrescrData->m_ScriptID != INVALID_ID )
-        { // ÆÕÍ¨Åä·½µÄÖ´ĞĞ
-            // µ÷ÓÃ½Å±¾½øĞĞÅĞ¶Ï²¢È¡µÃ·µ»ØÖµ
+        { // æ™®é€šé…æ–¹çš„æ‰§è¡Œ
+            // è°ƒç”¨è„šæœ¬è¿›è¡Œåˆ¤æ–­å¹¶å–å¾—è¿”å›å€¼
             res = (ORESULT)pLuaInterface->ExeScript_DD( pPrescrData->m_ScriptID, DEF_ABILITY_PRODUCE,
                 (INT)pHuman->getScene()->SceneID(), (INT)pHuman->GetID() );
 
-            // ·µ»Ø·µ»ØÖµ
+            // è¿”å›è¿”å›å€¼
             return res;
         }
         else
@@ -262,7 +262,7 @@ __ENTER_FUNCTION
 
     if( pPrescrData->m_CompoundNum > 0 )
     {
-        // Quality ¿ÉÒÔÓÃÒ»¸ö½Å±¾À´Éú³É
+        // Quality å¯ä»¥ç”¨ä¸€ä¸ªè„šæœ¬æ¥ç”Ÿæˆ
         LuaInterface* pLuaInterface;
         pLuaInterface = pHuman->getScene()->GetLuaInterface();
 
@@ -275,7 +275,7 @@ __ENTER_FUNCTION
         CreateItemToHuman(pHuman, pPrescrData->m_CompoundID, pPrescrData->m_CompoundNum, nQuality);
     }
 
-    // ·¢ËÍ³É¹¦ÏûÏ¢ÒÔ¼°ÎïÆ·ºÍ×´Ì¬±ä»¯
+    // å‘é€æˆåŠŸæ¶ˆæ¯ä»¥åŠç‰©å“å’ŒçŠ¶æ€å˜åŒ–
     GCAbilitySucc SuccMsg;
     SuccMsg.SetAbilityID( pPrescrData->m_AbilityID );
     SuccMsg.SetPrescriptionID( pPrescrData->m_PrescriptionID );
@@ -300,11 +300,11 @@ __ENTER_FUNCTION
 
     if( pPrescrData->m_ReplicaID != INVALID_ID )
     {
-        // Ìæ´úÆ·µÄ Quality ¾ÍÊÇ 1£¬¼´Ê¹ÊÇÀ¶×°Ò²ÔİÊ±²»¿¼ÂÇÉú³É´øÊôĞÔµÄÀ¶×°
+        // æ›¿ä»£å“çš„ Quality å°±æ˜¯ 1ï¼Œå³ä½¿æ˜¯è“è£…ä¹Ÿæš‚æ—¶ä¸è€ƒè™‘ç”Ÿæˆå¸¦å±æ€§çš„è“è£…
         CreateItemToHuman(pHuman, pPrescrData->m_ReplicaID, 1, 1);
     }
 
-    // ·¢ËÍ³É¹¦ÏûÏ¢ÒÔ¼°ÎïÆ·ºÍ×´Ì¬±ä»¯
+    // å‘é€æˆåŠŸæ¶ˆæ¯ä»¥åŠç‰©å“å’ŒçŠ¶æ€å˜åŒ–
     GCAbilitySucc SuccMsg;
     SuccMsg.SetAbilityID( pPrescrData->m_AbilityID );
     SuccMsg.SetPrescriptionID( pPrescrData->m_PrescriptionID );
@@ -325,7 +325,7 @@ __ENTER_FUNCTION
     Assert( pHuman );
     Assert( pPrescrData );
 
-    // ¿Û³ı±ØÒªÎïÆ·
+    // æ‰£é™¤å¿…è¦ç‰©å“
     for( INT i=0; i<MAX_PRESCRIPTION_STUFF; ++i )
     {
         if( pPrescrData->m_Stuff_ID[i] == INVALID_ID )
@@ -358,7 +358,7 @@ __ENTER_FUNCTION
     if( (pPrescrData->m_ColddownID >= 0)
      && (pPrescrData->m_ColddownTime > 0)
      )
-    { // Ôö¼ÓÀäÈ´Ê±¼ä
+    { // å¢åŠ å†·å´æ—¶é—´
         pHuman->SetCooldown( pPrescrData->m_ColddownID, pPrescrData->m_ColddownTime );
     }
 
@@ -405,7 +405,7 @@ __ENTER_FUNCTION
 
             Item* pItem = HumanItemLogic::GetItem(pHuman, uBagPos);
             if ( pItem->IsEquip() )
-            { // Èç¹ûÊÇ×°±¸£¬Ôò¼ÓÉÏÖÆÔìÕßÃû³Æ
+            { // å¦‚æœæ˜¯è£…å¤‡ï¼Œåˆ™åŠ ä¸Šåˆ¶é€ è€…åç§°
                 ItemContainer* pContainer;
 
                 pContainer = HumanItemLogic::GetItemContain( pHuman, uItemSN );

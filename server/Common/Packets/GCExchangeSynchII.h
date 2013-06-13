@@ -1,6 +1,6 @@
 // GCExchangeSynchII.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -30,7 +30,7 @@ namespace Packets
         }
         virtual ~GCExchangeSynchII( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -40,7 +40,7 @@ namespace Packets
         {
             UINT length = 0;
             if(m_IsMyself)
-            {//¸ø×Ô¼ººĞ×ÓÀï¼Ó¶«Î÷
+            {//ç»™è‡ªå·±ç›’å­é‡ŒåŠ ä¸œè¥¿
                 switch (m_Opt)
                 {
                 case EXCHANGE_MSG::OPT_ADDITEM:
@@ -88,7 +88,7 @@ namespace Packets
                 }
             }
             else
-            {//¸ø¶Ô·½ºĞ×ÓÀï¼Ó¶«Î÷
+            {//ç»™å¯¹æ–¹ç›’å­é‡ŒåŠ ä¸œè¥¿
                 switch (m_Opt)
                 {
                 case EXCHANGE_MSG::OPT_ADDITEM:

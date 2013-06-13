@@ -24,7 +24,7 @@ namespace Packets
                                                         sizeof(WORLD_POS)+sizeof(INT); }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID            setObjID(ObjID_t id) { m_ObjID = id; }
         ObjID_t            getObjID(VOID) const { return m_ObjID; }
 
@@ -48,11 +48,11 @@ namespace Packets
         }
     
     private:
-        INT                m_OBJType;        //ItemBoxµÄÀàĞÍ
-        ObjID_t            m_ObjID;        //ÎïÆ·µÄObjID
-        GUID_t            m_idOwner;        //ÎïÆ·Ö÷ÈËµÄObjID,»òÕß×é¶ÓµÄID
-        ObjID_t            m_MonsterID;    //²úÉúµôÂä°üµÄ¹ÖÎïid
-        WORLD_POS        m_posWorld;        //ÎïÆ·µÄÎ»ÖÃ
+        INT                m_OBJType;        //ItemBoxçš„ç±»å‹
+        ObjID_t            m_ObjID;        //ç‰©å“çš„ObjID
+        GUID_t            m_idOwner;        //ç‰©å“ä¸»äººçš„ObjID,æˆ–è€…ç»„é˜Ÿçš„ID
+        ObjID_t            m_MonsterID;    //äº§ç”Ÿæ‰è½åŒ…çš„æ€ªç‰©id
+        WORLD_POS        m_posWorld;        //ç‰©å“çš„ä½ç½®
     };
 
 

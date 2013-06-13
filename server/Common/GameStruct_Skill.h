@@ -7,76 +7,76 @@
 #include "GameDefine2.h"
 
 /////////////////////////////////////////////////////////////////////////////////
-// �ͻ�������������õ�DBC�ṹ
+// 客户端与服务器共用的DBC结构
 
-// �����˺��ṹ
+// 技能伤害结构
 struct _DBC_DIRECT_IMPACT
 {
     UINT                m_uID;                    // ID
-    CHAR                *m_pszEffect;            // ��ЧID
-    CHAR                *m_pszSound;            // ��ЧID
-    CHAR                *m_pszEffectLocator;    // ��Ч�󶨵�
-    CHAR                *m_pszReserved1;        // Ԥ��1
-    CHAR                *m_pszReserved2;        // Ԥ��2
-    CHAR                *m_pszInfo;                // Ч������
+    CHAR                *m_pszEffect;            // 特效ID
+    CHAR                *m_pszSound;            // 音效ID
+    CHAR                *m_pszEffectLocator;    // 特效绑定点
+    CHAR                *m_pszReserved1;        // 预留1
+    CHAR                *m_pszReserved2;        // 预留2
+    CHAR                *m_pszInfo;                // 效果描述
 };
 typedef _DBC_DIRECT_IMPACT    SDirectImpact;
 typedef _DBC_DIRECT_IMPACT    _DIRECT_IMPACT;
 
 
-// ����BUFF�ṹ
+// 技能BUFF结构
 struct _DBC_BUFF_IMPACT
 {
     UINT                m_uID;                        // ID
-    UINT                m_uMutexID;                    // ������
-    INT                    m_nPri;                        // ���ȼ�����
-    LPCSTR                m_szIconName;                // ͼ����ļ���
-    LPCSTR                m_lpszEffect_Active;        // ������ЧID
-    LPCSTR                m_lpszSound_Active;            // ������Ч����ЧID
-    LPCSTR                m_lpszBind_Active;            // ������Ч�İ󶨵�
-    LPCSTR                m_lpszEffect_Continuous;    // ������ЧID
-    LPCSTR                m_lpszSound_Continuous;        // ������Ч����ЧID
-    LPCSTR                m_lpszBind_Continuous;        // ������Ч�İ󶨵�
-    BOOL                m_bStillOnWhenOwnerDead;    // ���������Ƿ���
-    BOOL                m_bCanBeDispeled;            // �Ƿ���Ա���ɢ
-    BOOL                m_bHostileFlag;                // �Ƿ��Ǹ���Ч��
-    BOOL                m_bCanBeManualCancel;        // �Ƿ���Ա��ֶ�ȡ��
-    BOOL                m_bLineEffect;                // �Ƿ�Ϊ������Ч
-    CHAR                *m_pszCreatorLocator;        // ������Ч��Ŀ��󶨵�
-    CHAR                *m_pszInfo;                    // Ч������
+    UINT                m_uMutexID;                    // 互斥标记
+    INT                    m_nPri;                        // 优先级参数
+    LPCSTR                m_szIconName;                // 图标的文件名
+    LPCSTR                m_lpszEffect_Active;        // 激活特效ID
+    LPCSTR                m_lpszSound_Active;            // 激活特效的音效ID
+    LPCSTR                m_lpszBind_Active;            // 激活特效的绑定点
+    LPCSTR                m_lpszEffect_Continuous;    // 持续特效ID
+    LPCSTR                m_lpszSound_Continuous;        // 持续特效的音效ID
+    LPCSTR                m_lpszBind_Continuous;        // 持续特效的绑定点
+    BOOL                m_bStillOnWhenOwnerDead;    // 主人死后是否保留
+    BOOL                m_bCanBeDispeled;            // 是否可以被驱散
+    BOOL                m_bHostileFlag;                // 是否是负面效果
+    BOOL                m_bCanBeManualCancel;        // 是否可以被手动取消
+    BOOL                m_bLineEffect;                // 是否为线性特效
+    CHAR                *m_pszCreatorLocator;        // 线性特效的目标绑定点
+    CHAR                *m_pszInfo;                    // 效果描述
 };
 typedef _DBC_BUFF_IMPACT SBuffImpact;
 typedef _DBC_BUFF_IMPACT _BUFF_IMPACT;
 
-// �ӵ��켣����
+// 子弹轨迹类型
 enum ENUM_BULLET_CONTRAIL_TYPE
 {
     BULLET_CONTRAIL_TYPE_INVALID = -1,
-    BULLET_CONTRAIL_TYPE_BEELINE,            // ֱ��
-    BULLET_CONTRAIL_TYPE_PARABOLA,            // ������
-    BULLET_CONTRAIL_TYPE_NONE,                // �޹켣��ֱ�ӱ�ը
+    BULLET_CONTRAIL_TYPE_BEELINE,            // 直线
+    BULLET_CONTRAIL_TYPE_PARABOLA,            // 抛物线
+    BULLET_CONTRAIL_TYPE_NONE,                // 无轨迹，直接爆炸
 
     BULLET_CONTRAIL_TYPE_NUMBERS
 };
 
-// �ӵ�
+// 子弹
 struct _DBC_BULLET_DATA
 {
     INT                m_nID;                    // ID
-    INT                m_nContrailType;        // �켣���� ENUM_BULLET_CONTRAIL_TYPE
-    FLOAT            m_fContrailParam;        // �켣����(��������Ϊ���������߶�)
-    CHAR const*        m_szFlyEffect;            // ������Ч
-    CHAR const*        m_szFlySound;            // ������Ч
-    FLOAT            m_fSpeed;                // �ٶ�(m/s)
-    CHAR const*        m_szHitEffect;            // ������Ч
-    CHAR const*     m_szHitSound;            // ������Ч
-    CHAR const*        m_szHitEffectLocator;    // ������Ч�İ󶨵�
-    CHAR const*     m_szReserved1;            // Ԥ��1
-    CHAR const*     m_szReserved2;            // Ԥ��1
-    CHAR const*     m_szReserved3;            // Ԥ��1
-    CHAR const*     m_szReserved4;            // Ԥ��1
-    CHAR const*     m_szReserved5;            // Ԥ��1
-    CHAR const*     m_szDesc;                // ˵��������
+    INT                m_nContrailType;        // 轨迹类型 ENUM_BULLET_CONTRAIL_TYPE
+    FLOAT            m_fContrailParam;        // 轨迹参数(对抛物线为上升的最大高度)
+    CHAR const*        m_szFlyEffect;            // 飞行特效
+    CHAR const*        m_szFlySound;            // 飞行音效
+    FLOAT            m_fSpeed;                // 速度(m/s)
+    CHAR const*        m_szHitEffect;            // 击中特效
+    CHAR const*     m_szHitSound;            // 击中音效
+    CHAR const*        m_szHitEffectLocator;    // 击中特效的绑定点
+    CHAR const*     m_szReserved1;            // 预留1
+    CHAR const*     m_szReserved2;            // 预留1
+    CHAR const*     m_szReserved3;            // 预留1
+    CHAR const*     m_szReserved4;            // 预留1
+    CHAR const*     m_szReserved5;            // 预留1
+    CHAR const*     m_szDesc;                // 说明和描述
 };
 typedef _DBC_BULLET_DATA SSkillObjData;
 typedef _DBC_BULLET_DATA _SKILLOBJ_DATA;
@@ -95,41 +95,41 @@ enum ENUM_SKILL_TYPE
 enum ENUM_SELECT_TYPE
 {
     SELECT_TYPE_INVALID    = -1,
-    SELECT_TYPE_NONE,            // ����ѡ��
-    SELECT_TYPE_CHARACTER,        // ��ɫ
-    SELECT_TYPE_POS,            // λ��
-    SELECT_TYPE_DIR,            // ����
-    SELECT_TYPE_SELF,            // ���Լ����в���
-    SELECT_TYPE_HUMAN_GUID,        // ���
+    SELECT_TYPE_NONE,            // 无需选择
+    SELECT_TYPE_CHARACTER,        // 角色
+    SELECT_TYPE_POS,            // 位置
+    SELECT_TYPE_DIR,            // 方向
+    SELECT_TYPE_SELF,            // 对自己进行操作
+    SELECT_TYPE_HUMAN_GUID,        // 玩家
     SELECT_TYPE_NUMBERS
 };
 enum ENUM_TARGET_LOGIC
 {
     TARGET_LOGIC_INVALID    = -1,
-    TARGET_SELF,    //ֻ���Լ���Ч
-    TARGET_MY_PET,  //ֻ���Լ��ĳ�����Ч
-    TARGET_MY_SHADOW_GUARD, //ֻ���Լ��ķ�����Ч
-    TARGET_MY_MASTER, //ֻ���Լ���������Ч������ר��
-    TARGET_AE_AROUND_SELF, //���Լ�Ϊ���ģ���Χ��Ч
-    TARGET_SPECIFIC_UNIT, //��׼�Ķ�����Ч
-    TARGET_AE_AROUND_UNIT, //����׼�Ķ���Ϊ���ģ���Χ��Ч
-    TARGET_AE_AROUND_POSITION, //����׼��λ�õ�Ϊ���ģ���Χ��Ч
-    TARGET_LOGIC_NUMBERS //�߼�����
+    TARGET_SELF,    //只对自己有效
+    TARGET_MY_PET,  //只对自己的宠物有效
+    TARGET_MY_SHADOW_GUARD, //只对自己的分身有效
+    TARGET_MY_MASTER, //只对自己的主人有效，宠物专用
+    TARGET_AE_AROUND_SELF, //以自己为中心，范围有效
+    TARGET_SPECIFIC_UNIT, //瞄准的对象有效
+    TARGET_AE_AROUND_UNIT, //以瞄准的对象为中心，范围有效
+    TARGET_AE_AROUND_POSITION, //以瞄准的位置点为中心，范围有效
+    TARGET_LOGIC_NUMBERS //逻辑总数
 };
 
 enum ENUM_BEHAVIOR_TYPE
 {
-    BEHAVIOR_TYPE_HOSTILITY = -1, //�ж���Ϊ
-    BEHAVIOR_TYPE_NEUTRALITY = 0, //������Ϊ
-    BEHAVIOR_TYPE_AMITY = 1, //�Ѻ���Ϊ
+    BEHAVIOR_TYPE_HOSTILITY = -1, //敌对行为
+    BEHAVIOR_TYPE_NEUTRALITY = 0, //中立行为
+    BEHAVIOR_TYPE_AMITY = 1, //友好行为
 };
-// ��ʽ����
+// 招式类型
 enum ENUM_SKILL_ACTION_TYPE
 {
     SKILL_ACTION_TYPE_INVALID    = -1,
-    SKILL_ACTION_TYPE_NONE,                    // ��ͨ��ʽ(�������)
-    SKILL_ACTION_TYPE_CONCATENATION_EX,        // ����(1,2,2,2,2,3)
-    SKILL_ACTION_TYPE_CONCATENATION,        // ����(1,2,3,1,2,3)
+    SKILL_ACTION_TYPE_NONE,                    // 普通招式(无序随机)
+    SKILL_ACTION_TYPE_CONCATENATION_EX,        // 连招(1,2,2,2,2,3)
+    SKILL_ACTION_TYPE_CONCATENATION,        // 连招(1,2,3,1,2,3)
 
     SKILL_ACTION_TYPE_NUMBERS
 };
@@ -137,96 +137,96 @@ enum ENUM_SKILL_ACTION_TYPE
 #define MAX_SKILL_FRIEND_TMPACT        (2)
 #define MAX_SKILL_ENEMY_TMPACT        (2)
 
-// ���� ֻ�ǹ��ͻ���ʹ�õļ���ģ��ṹ
+// 技能 只是供客户端使用的技能模板结构
 struct _DBC_SKILL_DATA
 {
-    // �ۺ�
+    // 综合
     INT                m_nID;                                // ID
-    INT                m_nIDForManagement;                    // �߻��ڲ�ʹ�õĹ�����ID
-    INT                m_nMenPai;                            // ����ID
-    const CHAR        *m_lpszName;                        // ����
-    const CHAR        *m_lpszIconName;                    // Icon����
-    INT                m_nLevelRequirement;                // ���ܵĵȼ�Ҫ��
-    INT                m_nSkillActionType;                    // ��ʽ����ENUM_SKILL_ACTION_TYPE
-    INT                m_bMustUseWeapon;                     // �Ƿ��Ǳ���ʹ�������ļ���
-    INT                m_nDisableByFlag1;                     // ���������Ʊ��1, ���ڻ���,�Ȼ��
-    INT                m_nDisableByFlag2;                     // ���������Ʊ��2, ���ڳ�Ĭ����
-    INT                m_nDisableByFlag3;                     // ���������Ʊ��3, ���ڱ������
-    INT                m_nSkillClass;                        // ����ϵ
-    INT                m_nXinFaParam_Nouse;                // �ķ���������
-    INT                m_nRangeSkillFlag;                    // �Ƿ���Զ�̼���
-    BOOL            m_bBreakPreSkill;                    // �Ƿ��ж��Լ���ǰʹ�õļ���
-    INT                m_nType;                            // �������� ENUM_SKILL_TYPE
-    INT                m_nCooldownID;                        // ��ȴ��ID
-    const CHAR*        m_lpszGatherLeadActionSetID;        // ����/����������ID 
-    const CHAR*        m_lpszSendActionSetID;                // ������ʽID
-    INT                m_nEnvironmentSpecialEffect;        // ������ЧID
-    INT                m_nTargetMustInSpecialState;        // Ŀ������ǣ� 0:��ģ�1:����; -1:û��Ҫ��
-    INT                m_nClassByUser;                        // ��ʹ�������ͷ��࣬0:���, 1:����, 2:����, 3:��Ʒ,
-    INT                m_nPassiveFlag;                        // �������Ǳ������ܣ�0:��������,1:��������;
-    INT                m_nSelectType;                        // ��ѡ���� ENUM_SELECT_TYPE
-    INT                m_nOperateModeForPetSkill;            // ���＼��ר�ã�����ģʽ: PET_SKILL_OPERATEMODE
-    INT                m_nPetRateOfSkill;                     // ���ܷ�������,ֻ�Գ��＼����Ч
-    INT                m_nTypeOfPetSkill;                     // ���＼������,0:�﹦,1:����,2:����,3:����,4:����;
-    ID_t            m_nImpactIDOfSkill;                    // ���＼�ܲ�����Ч��ID
-    INT                m_nReserved1;                        // Ԥ��������1
-    INT                m_nReserved2;                        // Ԥ��������2
-    INT                m_nReserved3;                        // Ԥ��������3
-    INT                m_nReserved4;                        // Ԥ��������4
-    INT                m_nBulletID;                        // �ӵ�ID
-    const CHAR        *m_pszBulletSendLocator;            // �ӵ������İ󶨵�
-    INT                m_nReserved5;                        // Ԥ��
-    INT                m_nTargetingLogic;                    // Ŀ��ѡ���߼�
-    INT                m_nSendTime;                        // ����ʱ��(ms)
-    FLOAT            m_fMinAttackRange;                    // ��С��������(m)
-    FLOAT            m_fMaxAttackRange;                    // ��󹥻�����(m)
-    INT                m_nFriendness;                        // �����Ѻöȣ�=0Ϊ���Լ��ܣ�>0Ϊ���漼�ܣ�<0Ϊ ���漼��
-    INT                m_nRelationshipLogic;                // Ŀ���ʹ���߹�ϵ�ĺϷ����ж�ID���ο�����ӱ���
-    INT                m_nTargetCheckByObjType;            // Ŀ�������ĳһָ����obj_type�Ľ�ɫ
-    INT                m_nIsPartyOnly;                        // �Ƿ���Զ�����Ч��ע�����ѳ����������ѡ�1Ϊֻ�Զ�����Ч��0Ϊ�޴����ơ�
-    INT                m_nHitsOrINTerval;                    // �����Ĺ���������������ʱ����
-    BOOL            m_bAutoRedo;                        // �Զ������ͷ�
-    INT                m_nHitRate;                            // ������
-    INT                m_nCriticalRate;                     // ������
-    BOOL            m_bUseNormalAttackRate;                // ��ȴʱ���Ƿ��ܹ����ٶ�Ӱ��
-    INT                m_nActiveTime;                        // ����ʱ��
-    FLOAT            m_fDamageRange;                        // ɱ�˷�Χ(m)
-    INT                m_nDamageAngle;                        // ɱ�˽Ƕ�(0~360)
-    INT                m_nTargetNum;                        // Ӱ��Ŀ��������
-    INT                m_nReserved7;                        // Ԥ��������5
-    INT                m_nCanInterruptAutoShot;             // �Ƿ��ܴ���Զ����ܵ������ͷ�
-    Time_t            m_nDelayTime;                         // �ӳ�ʱ��
-    INT                m_anSkillByLevel[12];                // �����Ӧ�ļ���ID
-    CHAR            *m_pszDesc;                            // ��������
+    INT                m_nIDForManagement;                    // 策划内部使用的管理性ID
+    INT                m_nMenPai;                            // 门派ID
+    const CHAR        *m_lpszName;                        // 名称
+    const CHAR        *m_lpszIconName;                    // Icon名称
+    INT                m_nLevelRequirement;                // 技能的等级要求
+    INT                m_nSkillActionType;                    // 招式类型ENUM_SKILL_ACTION_TYPE
+    INT                m_bMustUseWeapon;                     // 是否是必须使用武器的技能
+    INT                m_nDisableByFlag1;                     // 受限于限制标记1, 用于昏迷,魅惑等
+    INT                m_nDisableByFlag2;                     // 受限于限制标记2, 用于沉默类似
+    INT                m_nDisableByFlag3;                     // 受限于限制标记3, 用于变身骑乘
+    INT                m_nSkillClass;                        // 技能系
+    INT                m_nXinFaParam_Nouse;                // 心法修正参数
+    INT                m_nRangeSkillFlag;                    // 是否是远程技能
+    BOOL            m_bBreakPreSkill;                    // 是否中断自己当前使用的技能
+    INT                m_nType;                            // 技能类型 ENUM_SKILL_TYPE
+    INT                m_nCooldownID;                        // 冷却组ID
+    const CHAR*        m_lpszGatherLeadActionSetID;        // 引导/聚气动作组ID 
+    const CHAR*        m_lpszSendActionSetID;                // 发招招式ID
+    INT                m_nEnvironmentSpecialEffect;        // 环境特效ID
+    INT                m_nTargetMustInSpecialState;        // 目标必须是， 0:活的；1:死的; -1:没有要求
+    INT                m_nClassByUser;                        // 按使用者类型分类，0:玩家, 1:怪物, 2:宠物, 3:物品,
+    INT                m_nPassiveFlag;                        // 主动还是被动技能，0:主动技能,1:被动技能;
+    INT                m_nSelectType;                        // 点选类型 ENUM_SELECT_TYPE
+    INT                m_nOperateModeForPetSkill;            // 宠物技能专用，操作模式: PET_SKILL_OPERATEMODE
+    INT                m_nPetRateOfSkill;                     // 技能发动几率,只对宠物技能有效
+    INT                m_nTypeOfPetSkill;                     // 宠物技能类型,0:物功,1:法功,2:护主,3:防御,4:复仇;
+    ID_t            m_nImpactIDOfSkill;                    // 宠物技能产生的效果ID
+    INT                m_nReserved1;                        // 预留数据域1
+    INT                m_nReserved2;                        // 预留数据域2
+    INT                m_nReserved3;                        // 预留数据域3
+    INT                m_nReserved4;                        // 预留数据域4
+    INT                m_nBulletID;                        // 子弹ID
+    const CHAR        *m_pszBulletSendLocator;            // 子弹发出的绑定点
+    INT                m_nReserved5;                        // 预留
+    INT                m_nTargetingLogic;                    // 目标选择逻辑
+    INT                m_nSendTime;                        // 发招时间(ms)
+    FLOAT            m_fMinAttackRange;                    // 最小攻击距离(m)
+    FLOAT            m_fMaxAttackRange;                    // 最大攻击距离(m)
+    INT                m_nFriendness;                        // 技能友好度，=0为中性技能，>0为正面技能，<0为 负面技能
+    INT                m_nRelationshipLogic;                // 目标和使用者关系的合法性判断ID，参考相关子表格。
+    INT                m_nTargetCheckByObjType;            // 目标必须是某一指定的obj_type的角色
+    INT                m_nIsPartyOnly;                        // 是否仅对队友有效。注：队友宠物算作队友。1为只对队友有效，0为无此限制。
+    INT                m_nHitsOrINTerval;                    // 连击的攻击次数或引导的时间间隔
+    BOOL            m_bAutoRedo;                        // 自动连续释放
+    INT                m_nHitRate;                            // 命中率
+    INT                m_nCriticalRate;                     // 会心率
+    BOOL            m_bUseNormalAttackRate;                // 冷却时间是否受攻击速度影响
+    INT                m_nActiveTime;                        // 激活时间
+    FLOAT            m_fDamageRange;                        // 杀伤范围(m)
+    INT                m_nDamageAngle;                        // 杀伤角度(0~360)
+    INT                m_nTargetNum;                        // 影响目标的最大数
+    INT                m_nReserved7;                        // 预留数据域5
+    INT                m_nCanInterruptAutoShot;             // 是否能打断自动技能的连续释放
+    Time_t            m_nDelayTime;                         // 延迟时间
+    INT                m_anSkillByLevel[12];                // 级别对应的技能ID
+    CHAR            *m_pszDesc;                            // 技能描述
 };
 typedef _DBC_SKILL_DATA SSkillData;
 typedef _DBC_SKILL_DATA _SKILL_DATA;
 
 ///////////////////////////////////////////////////////////////////////
-// �ķ�
+// 心法
 struct _DBC_XINFA_DATA
 {
     //
     UINT        m_uID;                            // ID
-    UINT        m_uIDMenpai;                    // ����ID
-    const CHAR    *m_lpszName;                    // ����
-    CHAR        *m_pszDesc;                        // ��������
-    const CHAR    *m_lpszIconName;                // Icon����
+    UINT        m_uIDMenpai;                    // 门派ID
+    const CHAR    *m_lpszName;                    // 名称
+    CHAR        *m_pszDesc;                        // 技能描述
+    const CHAR    *m_lpszIconName;                // Icon名称
 };
 ///////////////////////////////////////////////////////////////////////
 struct _SKILL_EXPERIENCE
 {
-    BYTE        m_SkillLevel;    //���ܵȼ�
-    BYTE        m_SkillExp;        //����������
-    USHORT        m_SkillPoints;    //����ʹ�ô���
+    BYTE        m_SkillLevel;    //技能等级
+    BYTE        m_SkillExp;        //技能熟练度
+    USHORT        m_SkillPoints;    //技能使用次数
 };
 
 struct _OWN_SKILL
 {
-    SkillID_t        m_nSkillID;            //ӵ�еļ���ID
+    SkillID_t        m_nSkillID;            //拥有的技能ID
     union
     {
-        UINT                m_nSkillTime;        //һ��INT������Ŀǰû��ʹ�ã����Դ���
+        UINT                m_nSkillTime;        //一个INT，但是目前没有使用，可以存盘
         _SKILL_EXPERIENCE    m_SkillExp;        
     };
 
@@ -267,15 +267,15 @@ struct _OWN_SKILL
     }
 };
 
-//����ṹ��ʱ�����ˡ�������
+//这个结构暂时不用了。。。。
 struct _OWN_XINFA
 {
     union
     {
-        SkillID_t        m_nXinFaID ;        //ӵ�е��ķ�ID
+        SkillID_t        m_nXinFaID ;        //拥有的心法ID
         //BYTE            m_SkillPoint[2];    
     };
-    USHORT                m_nXinFaLevel ;            //�ķ��ȼ�
+    USHORT                m_nXinFaLevel ;            //心法等级
 
     //VOID        SetSkillPointBelow( INT nPoint )
     //{
@@ -298,7 +298,7 @@ struct _OWN_XINFA
 
 
 ////////////////////////////////////////////
-// �˺��Ľṹ
+// 伤害的结构
 #define DAMAGE_INFO_PARAM_NUMBER    (8)
 
 struct _DAMAGE_INFO
@@ -312,12 +312,12 @@ struct _DAMAGE_INFO
         TYPE_SKILL_TEXT = 3,
         TYPE_DIE = 4,
     };
-    SkillID_t        m_nSkillID;                // ����ID
-    ObjID_t         m_nTargetID;            // Ŀ������ID
-    ObjID_t            m_nSenderID;            // �����ߵ�ID
-    INT                m_nSenderLogicCount;    // �����ߵ��߼�����
-    ImpactID_t        m_nImpactID;            // Ч��ID //�ο�GameStruct_Impact.h��DIRECT_IMPACT_SEID
-    ID_t            m_nType;                // Ч�����˺���������ֵ�������
+    SkillID_t        m_nSkillID;                // 技能ID
+    ObjID_t         m_nTargetID;            // 目标对象的ID
+    ObjID_t            m_nSenderID;            // 攻击者的ID
+    INT                m_nSenderLogicCount;    // 攻击者的逻辑计数
+    ImpactID_t        m_nImpactID;            // 效果ID //参考GameStruct_Impact.h的DIRECT_IMPACT_SEID
+    ID_t            m_nType;                // 效果、伤害和治疗数值、掉落盒
     INT                m_nHealthIncrement;
     BOOL            m_bHealthDirty;
     INT                m_nManaIncrement;
@@ -328,7 +328,7 @@ struct _DAMAGE_INFO
     BOOL            m_bStrikePointDirty;
     BOOL            m_bIsCriticalHit;
 
-    INT             m_aAttachedParams[DAMAGE_INFO_PARAM_NUMBER]; // ���ӵĲ���
+    INT             m_aAttachedParams[DAMAGE_INFO_PARAM_NUMBER]; // 附加的参数
 
     _DAMAGE_INFO( VOID )
     {
@@ -380,18 +380,18 @@ struct _DAMAGE_INFO
 };
 
 ////////////////////////////////////////////
-// ����BUFF�Ľṹ
+// 技能BUFF的结构
 #define BUFF_IMPACT_INFO_PARAM_NUMBER    (8)
 
 struct _BUFF_IMPACT_INFO
 {
-    ObjID_t            m_nReceiverID;                                        // Ч�������ߵ�ID
-    ObjID_t            m_nSenderID;                                        // Ч���ͷ��ߵ�ID
-    ImpactID_t        m_nBuffID;                                            // ��Ч���ݵ�ID(����)
+    ObjID_t            m_nReceiverID;                                        // 效果接受者的ID
+    ObjID_t            m_nSenderID;                                        // 效果释放者的ID
+    ImpactID_t        m_nBuffID;                                            // 特效数据的ID(索引)
     SkillID_t        m_nSkillID;                                          // Skill ID
-    INT                m_nSenderLogicCount;                                // Ч�������ߵ��߼�����
-    UINT            m_nSN;                                                // Ч�����к�
-    INT                m_nTimer;                                            // ʣ��ʱ��
+    INT                m_nSenderLogicCount;                                // 效果创建者的逻辑计数
+    UINT            m_nSN;                                                // 效果序列号
+    INT                m_nTimer;                                            // 剩余时间
 
     _BUFF_IMPACT_INFO( VOID )
     {
@@ -425,13 +425,13 @@ struct _BUFF_IMPACT_INFO
     }
 };
 
-// ��˵�е����˵���Ϣ�ṹ
+// 传说中的拉人的信息结构
 struct _CALLOF_INFO
 {
-    GUID_t            m_guidCaller;    // �ٻ��ߵ�GUID
-    SceneID_t        m_SceneID;        // ����ID
-    WORLD_POS        m_Pos;            // ����λ��
-    UINT            m_uDuration;    // ����ʱ��
+    GUID_t            m_guidCaller;    // 召唤者的GUID
+    SceneID_t        m_SceneID;        // 场景ID
+    WORLD_POS        m_Pos;            // 场景位置
+    UINT            m_uDuration;    // 持续时间
 
     _CALLOF_INFO( VOID )
     {

@@ -1,7 +1,7 @@
 
 //
-//�ļ����ƣ�    SocketOutputStream.h
-//����������    ��Ϣ���ݵ�������棬�ṩ���ݵĸ�ʽ��д��ͷ��͹���
+//文件名称：    SocketOutputStream.h
+//功能描述：    消息数据的输出缓存，提供数据的格式化写入和发送功能
 //                
 //                
 //
@@ -15,9 +15,9 @@
 
 
 
-//��ʼ���ķ��ͻ��泤��
+//初始化的发送缓存长度
 #define DEFAULTSOCKETOUTPUTBUFFERSIZE 8192
-//�����������Ļ��泤�ȣ������������ֵ����Ͽ�����
+//最大可以允许的缓存长度，如果超过此数值，则断开连接
 #define DISCONNECTSOCKETOUTPUTSIZE 100*1024
 
 

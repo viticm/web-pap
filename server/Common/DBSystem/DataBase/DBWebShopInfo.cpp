@@ -51,10 +51,10 @@ BOOL DBWebShopInfo::Save(VOID* pSource)
     FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
     Assert(pCharFullData);
 
-    //²»ĞèÒª±£´æ
+    //ä¸éœ€è¦ä¿å­˜
     if( pCharFullData->m_PrivateInfo.pi.wsInfo[0].IsSucceed == FALSE ) return TRUE;
     
-    //±£´æÉÌÆ·ĞÅÏ¢
+    //ä¿å­˜å•†å“ä¿¡æ¯
     do
     {
         DB_QUERY* pQuery = GetInternalQuery();
@@ -122,7 +122,7 @@ BOOL DBWebShopInfo::ParseResult(VOID* pResult)
                 DB_ItemCount_5,
             };
 
-            //¼ÓÔØË½ÈËÊôĞÔ
+            //åŠ è½½ç§äººå±æ€§
             Assert(mResultCount<MAX_WEBSHOPINFO_NUMBER);
             Assert(mInterface);
             INT ErrorCode;

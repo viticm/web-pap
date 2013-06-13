@@ -24,14 +24,14 @@ public:
     virtual VOID Term( VOID );
 
 //====================================================================
-// È«²¿Action²¿·Ö
+// å…¨éƒ¨Actionéƒ¨åˆ†
 //====================================================================
 protected:
     ORESULT Obj_Move(const WORLD_POS* pTar);
     ORESULT Obj_UseSkill(ObjID_t idSkill, BYTE nLevel, ObjID_t idTarget, FLOAT fTargetX, FLOAT fTargetZ, FLOAT fDir = -1.f, GUID_t guidTarget=INVALID_ID);
     ORESULT Obj_UseItem(ID_t nBagIndex, ObjID_t nTargetObj, WORLD_POS const& posTarget, PET_GUID_t const& guidTargetPet, ID_t nTargetItem);
 
-public: // ±Ø½«¾­¹ıState¹ıÂËµÄ²Ù×÷
+public: // å¿…å°†ç»è¿‡Stateè¿‡æ»¤çš„æ“ä½œ
     ORESULT Jump(VOID);
     ORESULT    Stop(VOID);
     ORESULT Stall(VOID);
@@ -49,7 +49,7 @@ public: // ±Ø½«¾­¹ıState¹ıÂËµÄ²Ù×÷
     }
 
 //====================================================================
-// È«²¿AIÂß¼­²¿·Ö
+// å…¨éƒ¨AIé€»è¾‘éƒ¨åˆ†
 //====================================================================
 public:
     BOOL Logic(UINT uTime) {
@@ -89,7 +89,7 @@ private:
     INT    m_nIntervalTime;
 
 //====================================================================
-// È«²¿ÊÂ¼şÏà¹Ø
+// å…¨éƒ¨äº‹ä»¶ç›¸å…³
 //====================================================================
 public:
     VOID OnDie(Obj *pKiller = NULL);
@@ -104,7 +104,7 @@ protected:
 
     
 //====================================================================
-// ÆäËû²¿·ÖÏà¹Ø
+// å…¶ä»–éƒ¨åˆ†ç›¸å…³
 //====================================================================
 public:
     VOID    SetAIState(State* s) {

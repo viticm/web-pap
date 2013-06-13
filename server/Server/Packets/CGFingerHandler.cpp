@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼þÃû£º    CGFingerHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\CGFingerHandler.cpp
- *    ´´½¨Ê±¼ä£º    2006 Äê 4 ÔÂ 17 ÈÕ    21:49
+ *    æ–‡ä»¶åï¼š    CGFingerHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\CGFingerHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2006 å¹´ 4 æœˆ 17 æ—¥    21:49
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ÐÞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "CGFinger.h"
@@ -34,7 +34,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID() == pScene->m_ThreadID );
 
     if( pGamePlayer->GetPlayerStatus() == PS_SERVER_NORMAL )
@@ -49,13 +49,13 @@ __ENTER_FUNCTION
 
         switch( pRecv->m_Type )
         {
-        case FREQ_GUID:    // GUID ËÑË÷
+        case FREQ_GUID:    // GUID æœç´¢
             pSend->m_FingerByGUID.CleanUp();
             pSend->m_FingerByGUID.SetTargetGUID( pRecv->m_FingerByGUID.GetTargetGUID() );
             pSend->m_FingerByGUID.SetOnlineFlag( pRecv->m_FingerByGUID.GetOnlineFlag() );
             g_pLog->FastSaveLog( LOG_FILE_1, "CGFingerHandler: Name:%s make a GUID finger.", pHuman->GetName() );
             break;
-        case FREQ_NAME: // NAME ËÑË÷
+        case FREQ_NAME: // NAME æœç´¢
             pSend->m_FingerByName.CleanUp();
             pSend->m_FingerByName.SetTargetName( pRecv->m_FingerByName.GetTargetName() );
             pSend->m_FingerByName.SetPreciseFlag( pRecv->m_FingerByName.GetPreciseFlag() );
@@ -63,12 +63,12 @@ __ENTER_FUNCTION
             pSend->m_FingerByName.SetPosition( pRecv->m_FingerByName.GetPosition() );
             g_pLog->FastSaveLog( LOG_FILE_1, "CGFingerHandler: Name:%s make a Name finger.", pHuman->GetName() );
             break;
-        case FREQ_ADVANCED:    // ¸ß¼¶ËÑË÷
+        case FREQ_ADVANCED:    // é«˜çº§æœç´¢
             pSend->m_AdvancedFinger.CleanUp();
             pSend->m_AdvancedFinger.SetPosition( pRecv->m_AdvancedFinger.GetPosition() );
 
             for( int i=AFT_INVALID+1; i<AFT_NUMBER; ++i )
-            { // ÉèÖÃËÑË÷Ìõ¼þ
+            { // è®¾ç½®æœç´¢æ¡ä»¶
                 if( pRecv->m_AdvancedFinger.IsFingerCondition( (ADVANCED_FINGER_TYPE)i ) )
                 {
                     switch(i)

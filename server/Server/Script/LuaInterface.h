@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// ÎÄ¼şÃû : LuaInterface.h
-// Ä£¿é    :    Script
-// ¹¦ÄÜ     :    ½Å±¾ÏµÍ³Ìá¹©¸øÍâ½çÊ¹ÓÃµÄLuaµÄ½Ó¿Ú
-// ĞŞ¸ÄÀúÊ·:
+// æ–‡ä»¶å : LuaInterface.h
+// æ¨¡å—    :    Script
+// åŠŸèƒ½     :    è„šæœ¬ç³»ç»Ÿæä¾›ç»™å¤–ç•Œä½¿ç”¨çš„Luaçš„æ¥å£
+// ä¿®æ”¹å†å²:
 //-----------------------------------------------------------------------------
 #ifndef __LUAINTERFACE_H_
 #define __LUAINTERFACE_H_
@@ -28,20 +28,20 @@ class Scene;
 class LuaInterface
 {
 public:
-    //½Å±¾ÒıÇæ
+    //è„šæœ¬å¼•æ“
     FoxLuaScript        mLua ;
-    //×¢²áÆ÷
+    //æ³¨å†Œå™¨
     LuaCFuncRegister    mFuncRegister;
-    //³¡¾°¹ØÁª
+    //åœºæ™¯å…³è”
     Scene*                mOwner;
-    //ÒÑ¾­¶ÁÈ¡µÄ½Å±¾±í
+    //å·²ç»è¯»å–çš„è„šæœ¬è¡¨
     IDTable                m_ScriptTable ;
 
 public:
     LuaInterface();
     ~LuaInterface();
 
-    VOID    Init(Scene* pScene);//Íê³ÉLua½Å±¾»·¾³µÄ³õÊ¼»¯ºÍCµ¼³öº¯ÊıµÄ×¢²á
+    VOID    Init(Scene* pScene);//å®ŒæˆLuaè„šæœ¬ç¯å¢ƒçš„åˆå§‹åŒ–å’ŒCå¯¼å‡ºå‡½æ•°çš„æ³¨å†Œ
     VOID    Destroy();
 
     Scene* GetOwner();
@@ -63,7 +63,7 @@ public:
     BOOL    PrefixCall(Lua_State* L,char** funcname); 
 
 protected :
-    //µ×²ã¹¦ÄÜ½Ó¿Ú
+    //åº•å±‚åŠŸèƒ½æ¥å£
     INT        ExeFile( CHAR* filename, CHAR* funcname, BOOL bLoad ) ;
     INT        ExeFile_D( CHAR* filename, CHAR* funcname, INT Param0, BOOL bLoad ) ;
     INT        ExeFile_DD( CHAR* filename, CHAR* funcname, INT Param0, INT Param1, BOOL bLoad ) ;

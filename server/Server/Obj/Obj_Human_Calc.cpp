@@ -36,7 +36,7 @@ VOID Obj_Human::Levelup(VOID)
     SHORT nValue = 0;
     if(DEFAULT_WASHPOINT_LEVEL>GetLevel())
     {
-        //×Ô¶¯¼Óµã
+        //è‡ªåŠ¨åŠ ç‚¹
         //STR
         nValue = pMenPaiLogic->GetStrLevelupRefix(GetLevel());
         SetBaseStr(GetBaseStr()+nValue);
@@ -55,8 +55,8 @@ VOID Obj_Human::Levelup(VOID)
     }
     else
     {
-        //Ôö¼ÓÊ£ÓàµãÊý
-        nValue += Get_RemainPoints(); //Ô­À´Ã»Ê¹ÓÃµÄÊ£ÓàµãÊý
+        //å¢žåŠ å‰©ä½™ç‚¹æ•°
+        nValue += Get_RemainPoints(); //åŽŸæ¥æ²¡ä½¿ç”¨çš„å‰©ä½™ç‚¹æ•°
         //STR
         nValue += pMenPaiLogic->GetStrLevelupRefix(GetLevel());
         //SPR
@@ -82,7 +82,7 @@ VOID Obj_Human::Levelup(VOID)
     __LEAVE_FUNCTION;
 }
 
-//×ª»»ÃÅÅÉµÄÊ±ºòÐèÒª½øÐÐµÄµãÊý´ÓÐÂ¼ÆËã
+//è½¬æ¢é—¨æ´¾çš„æ—¶å€™éœ€è¦è¿›è¡Œçš„ç‚¹æ•°ä»Žæ–°è®¡ç®—
 VOID Obj_Human::ChangeMenpaiPoints(VOID)
 {
     if(GetLevel() >= DEFAULT_WASHPOINT_LEVEL)
@@ -128,7 +128,7 @@ VOID Obj_Human::ChangeMenpaiPoints(VOID)
     SetBaseInt(nInt);
     SetBaseDex(nDex);
 
-    // ¸øÍæ¼Ò¼ÓÂúHPºÍMP
+    // ç»™çŽ©å®¶åŠ æ»¡HPå’ŒMP
     SetMP(GetMaxMP());
     SetHP(GetMaxHP());
 }
@@ -257,7 +257,7 @@ VOID Obj_Human::ItemEffectFlush( )
 {
 __ENTER_FUNCTION
 
-    //½«ÎïÆ·µÄÓ°ÏìÒòËØÖµÇåÁã£»
+    //å°†ç‰©å“çš„å½±å“å› ç´ å€¼æ¸…é›¶ï¼›
     memset( m_pItemEffect, 0, sizeof(_ITEM_EFFECT)*IATTRIBUTE_NUMBER );
     memset(m_EquipUseSkillEffect,0,sizeof(_ITEM_SKILL)*(HEQUIP_NUMBER+MAX_ITEM_SET_ATTR));    
     memset(m_EquipRandSkillEffect,0,sizeof(_ITEM_SKILL)*(HEQUIP_NUMBER+MAX_ITEM_SET_ATTR));    
@@ -268,7 +268,7 @@ __ENTER_FUNCTION
     {
         
         /*
-        if( !m_DB.GetEquipDB()->IsSet( (HUMAN_EQUIP)i ) )//Ã»ÓÐ×°±¸´ËÎïÆ·
+        if( !m_DB.GetEquipDB()->IsSet( (HUMAN_EQUIP)i ) )//æ²¡æœ‰è£…å¤‡æ­¤ç‰©å“
             continue ;
         */
         ItemContainer* pEquipContainer = GetEquipContain();
@@ -285,20 +285,20 @@ __ENTER_FUNCTION
         }
         if(TRUE==pEquipItem->IsEmpty())
         {
-            continue;//Õâ¸öÎ»ÖÃÊÇ¿ÕµÄ
+            continue;//è¿™ä¸ªä½ç½®æ˜¯ç©ºçš„
         }
         if(0==pEquipItem->GetDurPoints())
         {
             continue;
         }
-        //Õâ¸öÎ»ÖÃ×°±¸ÓÐÎïÆ·
+        //è¿™ä¸ªä½ç½®è£…å¤‡æœ‰ç‰©å“
         const    _ITEM* pCurItem = m_DB.GetEquipItem((HUMAN_EQUIP)i);
-        // ÎäÆ÷ÀàÐÍ
+        // æ­¦å™¨ç±»åž‹
         INT nItemClass = pCurItem->ItemClass();
-        // ·À¾ßÀàÐÍ
+        // é˜²å…·ç±»åž‹
         INT nItemType = pCurItem->ItemType();
-         Assert(ICLASS_EQUIP==nItemClass) ; //Ö»ÄÜÎª×°±¸£¬²»ÄÜÎª±ðµÄÎïÆ·
-        //È¡µÃÃ¿¸öÎïÆ·µÄ¸÷¸öÊôÐÔ
+         Assert(ICLASS_EQUIP==nItemClass) ; //åªèƒ½ä¸ºè£…å¤‡ï¼Œä¸èƒ½ä¸ºåˆ«çš„ç‰©å“
+        //å–å¾—æ¯ä¸ªç‰©å“çš„å„ä¸ªå±žæ€§
         for( INT j=0; j<pCurItem->GetEquipData()->m_AttrCount; j++ )
         {
             
@@ -328,10 +328,10 @@ VOID        Obj_Human::CaculateEffect(_ITEM_ATTR& Attr,INT EquipOffset, INT nIte
         switch(type) 
         {
 
-        case IATTRIBUTE_BASE_ATTACK_P:            //»ù´¡ÎïÀí¹¥»÷
-        case IATTRIBUTE_BASE_ATTACK_M:            //»ù´¡Ä§·¨¹¥»÷
-        case IATTRIBUTE_BASE_DEFENCE_P:            //»ù´¡ÎïÀí·ÀÓù
-        case IATTRIBUTE_BASE_DEFENCE_M:            //»ù´¡Ä§·¨·ÀÓù
+        case IATTRIBUTE_BASE_ATTACK_P:            //åŸºç¡€ç‰©ç†æ”»å‡»
+        case IATTRIBUTE_BASE_ATTACK_M:            //åŸºç¡€é­”æ³•æ”»å‡»
+        case IATTRIBUTE_BASE_DEFENCE_P:            //åŸºç¡€ç‰©ç†é˜²å¾¡
+        case IATTRIBUTE_BASE_DEFENCE_M:            //åŸºç¡€é­”æ³•é˜²å¾¡
             {
                 //passive skill refixs value here
                 Skill_RefixItemAttr(EquipOffset, nItemType, type, value);
@@ -345,61 +345,61 @@ VOID        Obj_Human::CaculateEffect(_ITEM_ATTR& Attr,INT EquipOffset, INT nIte
     switch(type) 
     {
     
-        case IATTRIBUTE_POINT_MAXHP:            //°´µãÊýÔö¼ÓHPµÄÉÏÏÞ
-        case IATTRIBUTE_RATE_MAXHP:                //°´°Ù·Ö±ÈÔö¼ÓHPµÄÉÏ
-        case IATTRIBUTE_RESTORE_HP:                //¼Ó¿ìHPµÄ»Ø¸´ËÙ¶È
-        case IATTRIBUTE_POINT_MAXMP:            //°´µãÊýÔö¼ÓMPµÄÉÏÏÞ
-        case IATTRIBUTE_RATE_MAXMP:                //°´°Ù·Ö±ÈÔö¼ÓMPµÄÉÏ
-        case IATTRIBUTE_RESTORE_MP:                //¼Ó¿ìMPµÄ»Ø¸´ËÙ¶È
-        case IATTRIBUTE_COLD_ATTACK:            //±ù¹¥»÷
-        case IATTRIBUTE_COLD_RESIST:            //±ùµÖ¿¹
-        case IATTRIBUTE_COLD_TIME:                //¼õÉÙ±ù¶³³Ù»ºÊ±¼ä
-        case IATTRIBUTE_FIRE_ATTACK:            //»ð¹¥»÷
-        case IATTRIBUTE_FIRE_RESIST:            //»ðµÖ¿¹
-        case IATTRIBUTE_FIRE_TIME:                //¼õÉÙ»ðÉÕ³ÖÐøÊ±¼ä
-        case IATTRIBUTE_LIGHT_ATTACK:            //µç¹¥»÷
-        case IATTRIBUTE_LIGHT_RESIST:            //µçµÖ¿¹
-        case IATTRIBUTE_LIGHT_TIME:                //¼õÉÙµç»÷Ñ£ÔÎÊ±¼ä
-        case IATTRIBUTE_POISON_ATTACK:            //¶¾¹¥»÷
-        case IATTRIBUTE_POISON_RESIST:            //¶¾µÖ¿¹    
-        case IATTRIBUTE_POISON_TIME:            //¼õÉÙÖÐ¶¾Ê±¼ä
-        case IATTRIBUTE_ATTACK_P:                //ÎïÀí¹¥»÷
-        case IATTRIBUTE_RATE_ATTACK_P:            //°´°Ù·Ö±ÈÔö¼ÓÎïÀí¹¥»÷
-        case IATTRIBUTE_RATE_ATTACK_EP:            //¶Ô×°±¸»ù´¡ÎïÀí¹¥»÷°Ù·Ö±È¼Ó³É
-        case IATTRIBUTE_DEFENCE_P:                //ÎïÀí·ÀÓù
-        case IATTRIBUTE_RATE_DEFENCE_P:            //°´°Ù·Ö±ÈÔö¼ÓÎïÀí·ÀÓù
-        case IATTRIBUTE_RATE_DEFENCE_EP:        //¶Ô×°±¸»ù´¡ÎïÀí·ÀÓù°Ù·Ö±È¼Ó³É
-        case IATTRIBUTE_IMMUNITY_P:                //°´°Ù·Ö±ÈµÖÏûÎïÀíÉËº¦
-        case IATTRIBUTE_ATTACK_M:                //Ä§·¨¹¥»÷
-        case IATTRIBUTE_RATE_ATTACK_M:            //°´°Ù·Ö±ÈÔö¼ÓÄ§·¨¹¥»÷
-        case IATTRIBUTE_RATE_ATTACK_EM:            //¶Ô×°±¸»ù´¡Ä§·¨¹¥»÷°Ù·Ö±È¼Ó³É
-        case IATTRIBUTE_DEFENCE_M:                //Ä§·¨·ÀÓù
-        case IATTRIBUTE_RATE_DEFENCE_M:            //°´°Ù·Ö±ÈÔö¼ÓÄ§·¨·ÀÓù
-        case IATTRIBUTE_RATE_DEFENCE_EM:        //¶Ô×°±¸»ù´¡Ä§·¨·ÀÓù°Ù·Ö±È¼Ó³É
-        case IATTRIBUTE_IMMUNITY_M:                //°´°Ù·Ö±ÈµÖÏûÄ§·¨ÉËº¦
-        case IATTRIBUTE_ATTACK_SPEED:            //¹¥»÷ËÙ¶È
-        case IATTRIBUTE_SKILL_TIME:                //Ä§·¨ÀäÈ´ËÙ¶È
-        case IATTRIBUTE_HIT:                    //ÃüÖÐ
-        case IATTRIBUTE_MISS:                    //ÉÁ±Ü
-        case IATTRIBUTE_2ATTACK_RATE:            //»áÐÄÒ»»÷£¨Ë«±¶¹¥»÷£©µÄ°Ù·Ö±È
-        case IATTRIBUTE_NO_DEFENCE_RATE:        //ÎÞÊÓ¶Ô·½·ÀÓù±ÈÂÊ
-        case IATTRIBUTE_SPEED_RATE:                //ÒÆ¶¯ËÙ¶È°Ù·Ö±È
-        case IATTRIBUTE_DAMAGE_RET:                //ÉËº¦·´Éä
-        case IATTRIBUTE_DAMAGE2MANA:            //ÉËº¦ÓÉÄÚÁ¦µÖÏû
-        case IATTRIBUTE_STR:                    //Ôö¼ÓÁ¦Á¿
-        case IATTRIBUTE_SPR:                    //Ôö¼ÓÁéÆø
-        case IATTRIBUTE_CON:                    //Ôö¼ÓÌåÖÆ
-        case IATTRIBUTE_INT:                    //Ôö¼Ó¶¨Á¦
-        case IATTRIBUTE_DEX:                    //Ôö¼ÓÉí·¨
-        case IATTRIBUTE_LUK:                    //Ôö¼ÓÎòÐÔ
-        case IATTRIBUTE_HP_THIEVE:                //ÉúÃüÍµÈ¡(´ÓÉËº¦Àï)
-        case IATTRIBUTE_MP_THIEVE:                //ÄÚÁ¦ÍµÈ¡(´ÓÉËº¦Àï)
-        case IATTRIBUTE_BASE_ATTACK_P:            //»ù´¡ÎïÀí¹¥»÷
-        case IATTRIBUTE_BASE_ATTACK_M:            //»ù´¡Ä§·¨¹¥»÷
-        case IATTRIBUTE_BASE_ATTACK_TIME:        //»ù´¡¹¥»÷ËÙ¶È£¨Ö»¶ÔÆÕÍ¨¹¥»÷£©
-        case IATTRIBUTE_BASE_DEFENCE_P:            //»ù´¡ÎïÀí·ÀÓù
-        case IATTRIBUTE_BASE_DEFENCE_M:            //»ù´¡Ä§·¨·ÀÓù
-        case IATTRIBUTE_BASE_MISS:                //»ù´¡ÉÁ±Ü
+        case IATTRIBUTE_POINT_MAXHP:            //æŒ‰ç‚¹æ•°å¢žåŠ HPçš„ä¸Šé™
+        case IATTRIBUTE_RATE_MAXHP:                //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ HPçš„ä¸Š
+        case IATTRIBUTE_RESTORE_HP:                //åŠ å¿«HPçš„å›žå¤é€Ÿåº¦
+        case IATTRIBUTE_POINT_MAXMP:            //æŒ‰ç‚¹æ•°å¢žåŠ MPçš„ä¸Šé™
+        case IATTRIBUTE_RATE_MAXMP:                //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ MPçš„ä¸Š
+        case IATTRIBUTE_RESTORE_MP:                //åŠ å¿«MPçš„å›žå¤é€Ÿåº¦
+        case IATTRIBUTE_COLD_ATTACK:            //å†°æ”»å‡»
+        case IATTRIBUTE_COLD_RESIST:            //å†°æŠµæŠ—
+        case IATTRIBUTE_COLD_TIME:                //å‡å°‘å†°å†»è¿Ÿç¼“æ—¶é—´
+        case IATTRIBUTE_FIRE_ATTACK:            //ç«æ”»å‡»
+        case IATTRIBUTE_FIRE_RESIST:            //ç«æŠµæŠ—
+        case IATTRIBUTE_FIRE_TIME:                //å‡å°‘ç«çƒ§æŒç»­æ—¶é—´
+        case IATTRIBUTE_LIGHT_ATTACK:            //ç”µæ”»å‡»
+        case IATTRIBUTE_LIGHT_RESIST:            //ç”µæŠµæŠ—
+        case IATTRIBUTE_LIGHT_TIME:                //å‡å°‘ç”µå‡»çœ©æ™•æ—¶é—´
+        case IATTRIBUTE_POISON_ATTACK:            //æ¯’æ”»å‡»
+        case IATTRIBUTE_POISON_RESIST:            //æ¯’æŠµæŠ—    
+        case IATTRIBUTE_POISON_TIME:            //å‡å°‘ä¸­æ¯’æ—¶é—´
+        case IATTRIBUTE_ATTACK_P:                //ç‰©ç†æ”»å‡»
+        case IATTRIBUTE_RATE_ATTACK_P:            //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ ç‰©ç†æ”»å‡»
+        case IATTRIBUTE_RATE_ATTACK_EP:            //å¯¹è£…å¤‡åŸºç¡€ç‰©ç†æ”»å‡»ç™¾åˆ†æ¯”åŠ æˆ
+        case IATTRIBUTE_DEFENCE_P:                //ç‰©ç†é˜²å¾¡
+        case IATTRIBUTE_RATE_DEFENCE_P:            //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ ç‰©ç†é˜²å¾¡
+        case IATTRIBUTE_RATE_DEFENCE_EP:        //å¯¹è£…å¤‡åŸºç¡€ç‰©ç†é˜²å¾¡ç™¾åˆ†æ¯”åŠ æˆ
+        case IATTRIBUTE_IMMUNITY_P:                //æŒ‰ç™¾åˆ†æ¯”æŠµæ¶ˆç‰©ç†ä¼¤å®³
+        case IATTRIBUTE_ATTACK_M:                //é­”æ³•æ”»å‡»
+        case IATTRIBUTE_RATE_ATTACK_M:            //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ é­”æ³•æ”»å‡»
+        case IATTRIBUTE_RATE_ATTACK_EM:            //å¯¹è£…å¤‡åŸºç¡€é­”æ³•æ”»å‡»ç™¾åˆ†æ¯”åŠ æˆ
+        case IATTRIBUTE_DEFENCE_M:                //é­”æ³•é˜²å¾¡
+        case IATTRIBUTE_RATE_DEFENCE_M:            //æŒ‰ç™¾åˆ†æ¯”å¢žåŠ é­”æ³•é˜²å¾¡
+        case IATTRIBUTE_RATE_DEFENCE_EM:        //å¯¹è£…å¤‡åŸºç¡€é­”æ³•é˜²å¾¡ç™¾åˆ†æ¯”åŠ æˆ
+        case IATTRIBUTE_IMMUNITY_M:                //æŒ‰ç™¾åˆ†æ¯”æŠµæ¶ˆé­”æ³•ä¼¤å®³
+        case IATTRIBUTE_ATTACK_SPEED:            //æ”»å‡»é€Ÿåº¦
+        case IATTRIBUTE_SKILL_TIME:                //é­”æ³•å†·å´é€Ÿåº¦
+        case IATTRIBUTE_HIT:                    //å‘½ä¸­
+        case IATTRIBUTE_MISS:                    //é—ªé¿
+        case IATTRIBUTE_2ATTACK_RATE:            //ä¼šå¿ƒä¸€å‡»ï¼ˆåŒå€æ”»å‡»ï¼‰çš„ç™¾åˆ†æ¯”
+        case IATTRIBUTE_NO_DEFENCE_RATE:        //æ— è§†å¯¹æ–¹é˜²å¾¡æ¯”çŽ‡
+        case IATTRIBUTE_SPEED_RATE:                //ç§»åŠ¨é€Ÿåº¦ç™¾åˆ†æ¯”
+        case IATTRIBUTE_DAMAGE_RET:                //ä¼¤å®³åå°„
+        case IATTRIBUTE_DAMAGE2MANA:            //ä¼¤å®³ç”±å†…åŠ›æŠµæ¶ˆ
+        case IATTRIBUTE_STR:                    //å¢žåŠ åŠ›é‡
+        case IATTRIBUTE_SPR:                    //å¢žåŠ çµæ°”
+        case IATTRIBUTE_CON:                    //å¢žåŠ ä½“åˆ¶
+        case IATTRIBUTE_INT:                    //å¢žåŠ å®šåŠ›
+        case IATTRIBUTE_DEX:                    //å¢žåŠ èº«æ³•
+        case IATTRIBUTE_LUK:                    //å¢žåŠ æ‚Ÿæ€§
+        case IATTRIBUTE_HP_THIEVE:                //ç”Ÿå‘½å·å–(ä»Žä¼¤å®³é‡Œ)
+        case IATTRIBUTE_MP_THIEVE:                //å†…åŠ›å·å–(ä»Žä¼¤å®³é‡Œ)
+        case IATTRIBUTE_BASE_ATTACK_P:            //åŸºç¡€ç‰©ç†æ”»å‡»
+        case IATTRIBUTE_BASE_ATTACK_M:            //åŸºç¡€é­”æ³•æ”»å‡»
+        case IATTRIBUTE_BASE_ATTACK_TIME:        //åŸºç¡€æ”»å‡»é€Ÿåº¦ï¼ˆåªå¯¹æ™®é€šæ”»å‡»ï¼‰
+        case IATTRIBUTE_BASE_DEFENCE_P:            //åŸºç¡€ç‰©ç†é˜²å¾¡
+        case IATTRIBUTE_BASE_DEFENCE_M:            //åŸºç¡€é­”æ³•é˜²å¾¡
+        case IATTRIBUTE_BASE_MISS:                //åŸºç¡€é—ªé¿
             {
 
                 _ITEM_EFFECT* pEffect = &(m_pItemEffect[type]);
@@ -413,8 +413,8 @@ VOID        Obj_Human::CaculateEffect(_ITEM_ATTR& Attr,INT EquipOffset, INT nIte
                 }
                 break;
             }
-        //ÌØÊâÊôÐÔ
-        case IATTRIBUTE_RESIST_ALL:                //°´°Ù·Ö±ÈµÖÏûËùÓÐÊôÐÔ¹¥»÷
+        //ç‰¹æ®Šå±žæ€§
+        case IATTRIBUTE_RESIST_ALL:                //æŒ‰ç™¾åˆ†æ¯”æŠµæ¶ˆæ‰€æœ‰å±žæ€§æ”»å‡»
             {
 
                 _ITEM_EFFECT* pEffect = &(m_pItemEffect[IATTRIBUTE_COLD_RESIST]);
@@ -452,7 +452,7 @@ VOID        Obj_Human::CaculateEffect(_ITEM_ATTR& Attr,INT EquipOffset, INT nIte
 
                 break;
             }
-        case IATTRIBUTE_ALL:                    //Ôö¼ÓËùÓÐµÄÈËÎïÒ»¼¶ÊôÐÔ
+        case IATTRIBUTE_ALL:                    //å¢žåŠ æ‰€æœ‰çš„äººç‰©ä¸€çº§å±žæ€§
             {
                 _ITEM_EFFECT* pEffect = &(m_pItemEffect[IATTRIBUTE_STR]);
 
@@ -506,14 +506,14 @@ VOID        Obj_Human::CaculateEffect(_ITEM_ATTR& Attr,INT EquipOffset, INT nIte
                 }            
                 break;
             }
-        case IATTRIBUTE_USESKILL:                //Ôö¼ÓÄ³¸öÊ¹ÓÃ¼¼ÄÜ
+        case IATTRIBUTE_USESKILL:                //å¢žåŠ æŸä¸ªä½¿ç”¨æŠ€èƒ½
             {
                 
                 _ITEM_SKILL*    pSkill = &(m_EquipUseSkillEffect[EquipOffset]);
                 
                 if(pSkill->IsActive()) 
                 {
-                    Assert(FALSE);                //Ò»¼þ×°±¸²»Í¬Ê±´æÔÚ2¸ö¼¼ÄÜ
+                    Assert(FALSE);                //ä¸€ä»¶è£…å¤‡ä¸åŒæ—¶å­˜åœ¨2ä¸ªæŠ€èƒ½
                 }
                 else
                 {
@@ -523,13 +523,13 @@ VOID        Obj_Human::CaculateEffect(_ITEM_ATTR& Attr,INT EquipOffset, INT nIte
                 }
                 break;
             }
-        case IATTRIBUTE_RAND_SKILL:                //Ôö¼ÓÄ³¸öËæ»ú¼¼ÄÜ
+        case IATTRIBUTE_RAND_SKILL:                //å¢žåŠ æŸä¸ªéšæœºæŠ€èƒ½
             {
                 _ITEM_SKILL*    pSkill = &(m_EquipRandSkillEffect[EquipOffset]);
 
                 if(pSkill->IsActive()) 
                 {
-                    Assert(FALSE);            //Ò»¼þ×°±¸²»Í¬Ê±´æÔÚ2¸ö¼¼ÄÜ
+                    Assert(FALSE);            //ä¸€ä»¶è£…å¤‡ä¸åŒæ—¶å­˜åœ¨2ä¸ªæŠ€èƒ½
                 }
                 else
                 {

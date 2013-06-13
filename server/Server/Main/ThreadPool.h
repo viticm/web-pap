@@ -6,7 +6,7 @@
 #include "Type.h"
 #include "Thread.h"
 
-//ÏµÍ³ÄÚ×î´ó¿ÉÒÔÓµÓĞµÄÏß³ÌÊıÁ¿
+//ç³»ç»Ÿå†…æœ€å¤§å¯ä»¥æ‹¥æœ‰çš„çº¿ç¨‹æ•°é‡
 #define MAX_THREAD MAX_SCENE
 
 
@@ -16,21 +16,21 @@ public :
     ThreadPool( ) ;
     ~ThreadPool( ) ;
 
-    //Æô¶¯ËùÓĞÏß³Ì
+    //å¯åŠ¨æ‰€æœ‰çº¿ç¨‹
     BOOL            Start( ) ;
-    //Í£Ö¹ËùÓĞÏß³Ì
+    //åœæ­¢æ‰€æœ‰çº¿ç¨‹
     BOOL            Stop( ) ;
 
-    //Ìí¼ÓÒ»¸öÏß³Ìµ½Ïß³Ì³Ø
+    //æ·»åŠ ä¸€ä¸ªçº¿ç¨‹åˆ°çº¿ç¨‹æ± 
     BOOL            AddThread( Thread* pThread ) ;
 
-    //É¾³ıÒ»¸öÏß³Ì
+    //åˆ é™¤ä¸€ä¸ªçº¿ç¨‹
     BOOL            DelThread( TID id ) ;
 
-    //¸ù¾İÏß³ÌIDÈ¡µÃÏß³ÌÖ¸Õë
+    //æ ¹æ®çº¿ç¨‹IDå–å¾—çº¿ç¨‹æŒ‡é’ˆ
     Thread*            GetThread( TID id ) ;
 
-    //¸ù¾İÏß³ÌË÷ÒıÈ¡µÃÏß³ÌÖ¸Õë
+    //æ ¹æ®çº¿ç¨‹ç´¢å¼•å–å¾—çº¿ç¨‹æŒ‡é’ˆ
     Thread*            GetThreadByIndex( UINT index ) ;
 
 

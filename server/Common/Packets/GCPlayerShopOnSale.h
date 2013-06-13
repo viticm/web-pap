@@ -1,6 +1,6 @@
 // GCPlayerShopOnSale.h
 // 
-// Í¨Öª¿Í»§¶ËÎïÆ·ÉÏ¼Ü
+// é€šçŸ¥å®¢æˆ·ç«¯ç‰©å“ä¸Šæ¶
 // 
 //////////////////////////////////////////////////////
 
@@ -19,15 +19,15 @@ namespace Packets
     public:
         GCPlayerShopOnSale( )
         {
-            m_StallIndex=    0;        //¹ñÌ¨ID
-            m_nSerial    =    0;        //µ±Ç°ĞòÁĞºÅ
-            m_bIsOnSale    =    0;        //ÊÇ·ñÉÏ¼Ü
-            m_uPrice    =    0;        //ÉÌÆ·¼Û¸ñ
-            m_nShopSerial = 0;        //ÉÌµêĞòÁĞºÅ
+            m_StallIndex=    0;        //æŸœå°ID
+            m_nSerial    =    0;        //å½“å‰åºåˆ—å·
+            m_bIsOnSale    =    0;        //æ˜¯å¦ä¸Šæ¶
+            m_uPrice    =    0;        //å•†å“ä»·æ ¼
+            m_nShopSerial = 0;        //å•†åº—åºåˆ—å·
         };
         virtual ~GCPlayerShopOnSale( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -67,14 +67,14 @@ namespace Packets
         VOID                    SetShopSerial(BYTE nShopSerial) {m_nShopSerial = nShopSerial;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
-        BYTE                    m_StallIndex;        //¹ñÌ¨ID
-        _ITEM_GUID                m_ItemGuid;            //ÎïÆ·GUID
-        PET_GUID_t                m_PetGuid;            //³èÎïGUID
-        UINT                    m_nSerial;            //µ±Ç°ĞòÁĞºÅ
-        BYTE                    m_bIsOnSale;        //ÊÇ·ñÉÏ¼Ü
-        UINT                    m_uPrice;            //ÉÌÆ·¼Û¸ñ
-        BYTE                    m_nShopSerial;        //ÉÌµêĞòÁĞºÅ
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
+        BYTE                    m_StallIndex;        //æŸœå°ID
+        _ITEM_GUID                m_ItemGuid;            //ç‰©å“GUID
+        PET_GUID_t                m_PetGuid;            //å® ç‰©GUID
+        UINT                    m_nSerial;            //å½“å‰åºåˆ—å·
+        BYTE                    m_bIsOnSale;        //æ˜¯å¦ä¸Šæ¶
+        UINT                    m_uPrice;            //å•†å“ä»·æ ¼
+        BYTE                    m_nShopSerial;        //å•†åº—åºåˆ—å·
 
     };
 

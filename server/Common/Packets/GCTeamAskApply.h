@@ -20,7 +20,7 @@ namespace Packets
         }
         virtual        ~GCTeamAskApply(){}
 
-        //π´”√Ω”ø⁄
+        //ÂÖ¨Áî®Êé•Âè£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -103,27 +103,27 @@ namespace Packets
         UINT                    GetHairColor() const { return m_uHairColor; }
 
     public :
-        GUID_t                    m_SourGUID;        //…Í«Î»À
-        GUID_t                    m_DestGUID;        //±ª…Í«Î»À
+        GUID_t                    m_SourGUID;        //Áî≥ËØ∑‰∫∫
+        GUID_t                    m_DestGUID;        //Ë¢´Áî≥ËØ∑‰∫∫
         UCHAR                    m_SourNameSize;
         UCHAR                    m_DestNameSize;
-        CHAR                    m_SourName[MAX_CHARACTER_NAME];            // 1.…Í«Î»À√˚◊÷
-        CHAR                    m_DestName[MAX_CHARACTER_NAME];            // ±ª…Í«Î»À√˚◊÷
-        UINT                    m_uFamily;                                // 2.√≈≈…
-        SceneID_t                m_Scene;                                // 3.≥°æ∞
-        INT                        m_Level;                                // 4.µ»º∂
-        USHORT                    m_uDataID;                                // 5.ÕÊº“–‘±
-        UCHAR                    m_DetailFlag;                            //  «∑Ò∑¢ÀÕœÍœ∏–≈œ¢
+        CHAR                    m_SourName[MAX_CHARACTER_NAME];            // 1.Áî≥ËØ∑‰∫∫ÂêçÂ≠ó
+        CHAR                    m_DestName[MAX_CHARACTER_NAME];            // Ë¢´Áî≥ËØ∑‰∫∫ÂêçÂ≠ó
+        UINT                    m_uFamily;                                // 2.Èó®Ê¥æ
+        SceneID_t                m_Scene;                                // 3.Âú∫ÊôØ
+        INT                        m_Level;                                // 4.Á≠âÁ∫ß
+        USHORT                    m_uDataID;                                // 5.Áé©ÂÆ∂ÊÄßÂà´
+        UCHAR                    m_DetailFlag;                            // ÊòØÂê¶ÂèëÈÄÅËØ¶ÁªÜ‰ø°ÊÅØ
 
-        // “‘œ¬ «œÍœ∏–≈œ¢
-        UINT                    m_WeaponID;                                // 7.Œ‰∆˜
-        UINT                    m_CapID;                                // 8.√±◊”
-        UINT                    m_ArmourID;                                // 9.“¬∑˛
-        UINT                    m_CuffID;                                // 10.ª§ÕÛ
-        UINT                    m_FootID;                                // 11.—•◊”
-        UINT                    m_uFaceMeshID;                            // 12.√Ê≤øƒ£–Õ
-        UINT                    m_uHairMeshID;                            // 13.Õ∑∑¢ƒ£–Õ
-        UINT                    m_uHairColor;                            // 14.Õ∑∑¢—’…´
+        // ‰ª•‰∏ãÊòØËØ¶ÁªÜ‰ø°ÊÅØ
+        UINT                    m_WeaponID;                                // 7.Ê≠¶Âô®
+        UINT                    m_CapID;                                // 8.Â∏ΩÂ≠ê
+        UINT                    m_ArmourID;                                // 9.Ë°£Êúç
+        UINT                    m_CuffID;                                // 10.Êä§ËÖï
+        UINT                    m_FootID;                                // 11.Èù¥Â≠ê
+        UINT                    m_uFaceMeshID;                            // 12.Èù¢ÈÉ®Ê®°Âûã
+        UINT                    m_uHairMeshID;                            // 13.Â§¥ÂèëÊ®°Âûã
+        UINT                    m_uHairColor;                            // 14.Â§¥ÂèëÈ¢úËâ≤
     };
 
     class GCTeamAskApplyFactory: public    PacketFactory

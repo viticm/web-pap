@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 /*
- *    Êı¾İ¿âÏß³Ì¹ÜÀíÆ÷
+ *    æ•°æ®åº“çº¿ç¨‹ç®¡ç†å™¨
  */
 
 
@@ -17,8 +17,8 @@ DBThreadManager::DBThreadManager()
 {
     __ENTER_FUNCTION
     
-        mDBThreadCount    = DB_CONNECTION_COUNT;                        //µ±Ç°ÅäÖÃµÄÊı¾İ¿âÁ¬½ÓÊı
-        memset(mpDBThread,0,sizeof(DBThread*)*MAX_DB_THREAD_POOL);    //×î´óµÄÊı¾İ¿âÁ¬½ÓÊı
+        mDBThreadCount    = DB_CONNECTION_COUNT;                        //å½“å‰é…ç½®çš„æ•°æ®åº“è¿æ¥æ•°
+        memset(mpDBThread,0,sizeof(DBThread*)*MAX_DB_THREAD_POOL);    //æœ€å¤§çš„æ•°æ®åº“è¿æ¥æ•°
         for(UINT i=0;i<mDBThreadCount;i++)
         {
             mpDBThread[i]        = new DBThread;

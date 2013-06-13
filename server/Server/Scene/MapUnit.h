@@ -5,18 +5,18 @@
 
 /*
 
-    .map �ļ�
+    .map 文件
 
-�ļ�ͷ
+文件头
 
     struct MAP_UNIT_FILEHEAD
     {
         UINT        uMagic;        // 'MAPU'   0X5550414D
-        INT            nXSize;            // X�����С
-        INT            nZSize;            // Z�����С
+        INT            nXSize;            // X方向大小
+        INT            nZSize;            // Z方向大小
     };
     
-�ļ��ṹ
+文件结构
 
      [MAP_UNIT_FILEHEAD] [_MAP_UNIT] [_MAP_UNIT] [_MAP_UNIT] ...
                          \   ___________________________ ...
@@ -24,18 +24,18 @@
 
 */
 
-//�����༭�����ɵ�ÿ����ͼ���е���Ϣ
+//场景编辑器生成的每个地图块中的信息
 struct _MAP_UNIT
 {
-    WORD    m_Flag ;    //��־��Ϣ
-                        // ���ISSET0(m_Flag)��ֵλ�棬���ͼ��λ������ 
+    WORD    m_Flag ;    //标志信息
+                        // 如果ISSET0(m_Flag)的值位真，则地图块位不可走 
                         //            
                         //     00000000|00000000
-                        //                    ||_  WalkDisable  -�Ƿ��ֹ���������ߵ�OBJ��Խ  [0 �ɴ�Խ  1���ɴ�Խ]
-                        //                    |__  FlyDisable   -�Ƿ��ֹ���з��е�OBJ��Խ    [0 �ɴ�Խ  1���ɴ�Խ]
+                        //                    ||_  WalkDisable  -是否禁止地面上行走的OBJ穿越  [0 可穿越  1不可穿越]
+                        //                    |__  FlyDisable   -是否禁止空中飞行的OBJ穿越    [0 可穿越  1不可穿越]
                         //
 
-    BYTE    m_Height ;    //�߶���Ϣ
+    BYTE    m_Height ;    //高度信息
     BYTE    m_Reserved ;
 
 

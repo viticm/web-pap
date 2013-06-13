@@ -19,7 +19,7 @@ public:
     GCAttack( ){} ;
     virtual ~GCAttack( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -32,13 +32,13 @@ public:
 public:
     struct _DAMAGE_INFO
     {
-        ObjID_t m_idTarget;        //Ä¿±ê¶ÔÏóµÄID
-        WORD     m_wDamage;        //¸ÃÄ¿±êÒò±¾´Î¹¥»÷ËğÊ§µÄHP
-        WORD     m_wLeftHP;        //¸ÃÄ¿±êµ±Ç°µÄHP
+        ObjID_t m_idTarget;        //ç›®æ ‡å¯¹è±¡çš„ID
+        WORD     m_wDamage;        //è¯¥ç›®æ ‡å› æœ¬æ¬¡æ”»å‡»æŸå¤±çš„HP
+        WORD     m_wLeftHP;        //è¯¥ç›®æ ‡å½“å‰çš„HP
     };
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     UINT                    getExp(VOID) { return m_uExp; }
     VOID                    setExp(UINT uExp) { m_uExp =uExp; }
 
@@ -54,10 +54,10 @@ public:
         memcpy(m_listDam, pSour, sizeof(_DAMAGE_INFO)*m_byListNum);
     }
 private:
-    //Êı¾İ
-    UINT                    m_uExp;                        //×Ô¼ºÄ¿Ç°µÄ¾­ÑéÖµ
-    BYTE                    m_byListNum;                    //ÊÜµ½¹¥»÷µÄ¶ÔÏóµÄ¸öÊı[0, 128]
-    _DAMAGE_INFO                m_listDam[MAX_DAM_LIST_NUM];    //ÊÜµ½¹¥»÷µÄ¶ÔÏóÁĞ±í
+    //æ•°æ®
+    UINT                    m_uExp;                        //è‡ªå·±ç›®å‰çš„ç»éªŒå€¼
+    BYTE                    m_byListNum;                    //å—åˆ°æ”»å‡»çš„å¯¹è±¡çš„ä¸ªæ•°[0, 128]
+    _DAMAGE_INFO                m_listDam[MAX_DAM_LIST_NUM];    //å—åˆ°æ”»å‡»çš„å¯¹è±¡åˆ—è¡¨
 };
 
 

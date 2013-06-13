@@ -1,6 +1,6 @@
 // GCStallOpen.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -20,12 +20,12 @@ namespace Packets
     public:
         struct _STALL_ITEM
         {
-            BYTE        bIsPet;        //´ËÎïÆ·ÊÇ·ñÊÇ³èÎï
-            BYTE        nIndex;        //Ì¯Î»ÖĞµÄÎ»ÖÃ
-            UINT        nSerial;    //ĞòÁĞºÅ
-            UINT        nPrice;        //¼Û¸ñ
-            _ITEM        item;        //ÎïÆ·ÏêÏ¸ĞÅÏ¢
-            PET_GUID_t    PetGuid;    //³èÎïGUID
+            BYTE        bIsPet;        //æ­¤ç‰©å“æ˜¯å¦æ˜¯å® ç‰©
+            BYTE        nIndex;        //æ‘Šä½ä¸­çš„ä½ç½®
+            UINT        nSerial;    //åºåˆ—å·
+            UINT        nPrice;        //ä»·æ ¼
+            _ITEM        item;        //ç‰©å“è¯¦ç»†ä¿¡æ¯
+            PET_GUID_t    PetGuid;    //å® ç‰©GUID
 
             _STALL_ITEM()
             {
@@ -47,7 +47,7 @@ namespace Packets
         }
         virtual ~GCStallOpen( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -87,17 +87,17 @@ namespace Packets
         VOID                    SetGUID(GUID_t OwnerGuid) {m_OwnerGuid = OwnerGuid;};
 
     private:
-        //ÉÌÆ·¸öÊı
+        //å•†å“ä¸ªæ•°
         BYTE                    m_nStallItemNum;
-        //ËùÓĞÉÌÆ·ÁĞ±í
+        //æ‰€æœ‰å•†å“åˆ—è¡¨
         _STALL_ITEM                m_StallItemList[STALL_BOX_SIZE];
-        //ÉÌµêÃû
+        //å•†åº—å
         CHAR                    m_ShopName[MAX_STALL_NAME];
-        //Ê×Ò³
+        //é¦–é¡µ
         BYTE                    m_nFirstPage;
-        //Ì¯Ö÷id
+        //æ‘Šä¸»id
         ObjID_t                    m_OwnerObjId;
-        //Ì¯Ö÷GUID
+        //æ‘Šä¸»GUID
         GUID_t                    m_OwnerGuid;
 
     };

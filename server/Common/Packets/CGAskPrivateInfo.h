@@ -1,6 +1,6 @@
 // CGAskPrivateInfo.h
 // 
-// 取当前主角的技能表
+// 鍙栧綋鍓嶄富瑙掔殑鎶�鑳借〃
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
     CGAskPrivateInfo( ){}
     virtual ~CGAskPrivateInfo( ){}
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,12 +28,12 @@ public:
     virtual UINT            GetPacketSize()const { return sizeof(ObjID_t) ; }
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     ObjID_t                    GetPlayerID(VOID) { return m_PlayerID; }
     VOID                    SetPlayerID(ObjID_t PlayerID) { m_PlayerID = PlayerID; }
 
 private:
-    //数据
+    //鏁版嵁
     ObjID_t                    m_PlayerID;
 };
 

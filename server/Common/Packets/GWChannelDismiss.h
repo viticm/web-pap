@@ -15,7 +15,7 @@ namespace Packets
         GWChannelDismiss( ){} ;
         virtual ~GWChannelDismiss( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,7 +28,7 @@ namespace Packets
         GUID_t                GetGUID( ){ return m_GUID ; }
 
     private :
-        GUID_t                m_GUID ;    //解散队伍的人
+        GUID_t                m_GUID ;    //瑙ｆ暎闃熶紞鐨勪汉
 
     };
 

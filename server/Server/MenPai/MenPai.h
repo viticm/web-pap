@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºMenPai.h
-// ¹¦ÄÜËµÃ÷£ºËùÓÐÃÅÅÉµÄ½Ó¿ÚÉùÃ÷
+// æ–‡ä»¶åï¼šMenPai.h
+// åŠŸèƒ½è¯´æ˜Žï¼šæ‰€æœ‰é—¨æ´¾çš„æŽ¥å£å£°æ˜Ž
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -21,18 +21,18 @@ namespace MenPai_Module
     public:
         typedef enum
         {
-            ID_INVALID = -1, //ÎÞÐ§ÃÅÅÉID, ³õÊ¼»¯ÓÃºÍÅÐ¶Ï·Ç·¨ÓÃ
-            ID_SHAOLIN     = MATTRIBUTE_SHAOLIN,    //ÉÙÁÖ
-            ID_MINGJIAO = MATTRIBUTE_MINGJIAO,    //Ã÷½Ì
-            ID_GAIBANG = MATTRIBUTE_GAIBANG,    //Ø¤°ï
-            ID_WUDANG = MATTRIBUTE_WUDANG,    //Îäµ±
-            ID_EMEI = MATTRIBUTE_EMEI,    //¶ëáÒ
-            ID_XINGXIU = MATTRIBUTE_XINGXIU,    //ÐÇËÞ
-            ID_DALI = MATTRIBUTE_DALI,    //´óÀí
-            ID_TIANSHAN = MATTRIBUTE_TIANSHAN,    //ÌìÉ½
-            ID_XIAOYAO = MATTRIBUTE_XIAOYAO,    //åÐÒ£
-            ID_WUMENPAI = MATTRIBUTE_WUMENPAI, //ÎÞÃÅÅÉ£¬ÈçÐÂÊÖ¡£¡£µÈ
-            NUMBER_OF_MENPAI,    //ÃÅÅÉÊýÄ¿
+            ID_INVALID = -1, //æ— æ•ˆé—¨æ´¾ID, åˆå§‹åŒ–ç”¨å’Œåˆ¤æ–­éžæ³•ç”¨
+            ID_SHAOLIN     = MATTRIBUTE_SHAOLIN,    //å°‘æž—
+            ID_MINGJIAO = MATTRIBUTE_MINGJIAO,    //æ˜Žæ•™
+            ID_GAIBANG = MATTRIBUTE_GAIBANG,    //ä¸å¸®
+            ID_WUDANG = MATTRIBUTE_WUDANG,    //æ­¦å½“
+            ID_EMEI = MATTRIBUTE_EMEI,    //å³¨åµ‹
+            ID_XINGXIU = MATTRIBUTE_XINGXIU,    //æ˜Ÿå®¿
+            ID_DALI = MATTRIBUTE_DALI,    //å¤§ç†
+            ID_TIANSHAN = MATTRIBUTE_TIANSHAN,    //å¤©å±±
+            ID_XIAOYAO = MATTRIBUTE_XIAOYAO,    //é€é¥
+            ID_WUMENPAI = MATTRIBUTE_WUMENPAI, //æ— é—¨æ´¾ï¼Œå¦‚æ–°æ‰‹ã€‚ã€‚ç­‰
+            NUMBER_OF_MENPAI,    //é—¨æ´¾æ•°ç›®
 
         } MenPaiID_T;
         enum

@@ -85,7 +85,7 @@ __ENTER_FUNCTION
         else
         {
             if (m_pCharacter && !m_pCharacter->IsMoving() )
-            {// �鿴��������û��Ҫ�����ļ��ܣ������ʱ����
+            {// 查看缓存中有没有要发动的技能，有则此时发动
                 m_pCharacter->SetMoveMode(Obj_Pet::MOVE_MODE_WALK);
                 ProcessSkillInCache(FALSE);
             }
@@ -106,32 +106,32 @@ __ENTER_FUNCTION
         AssertEx(FALSE,"[AI_Pet::Logic_Attack]: NULL m_pCharacter Found!! check it now.");
         return ;
     }
-    // �Ƿ����ս��
+    // 是否结束战斗
     if (IsCombatBeOver())
     {
         ChangeState(ESTATE_IDLE);
         pPet->SetTargetID(INVALID_ID);
         return ;
     }
-    // �����ǰ������û�����򲻽����κβ���
+    // 如果当前攻击还没结束则不进行任何操作
     if ( FALSE == m_pCharacter->CanUseSkillNow())
     {
         return ;
     }
 
     if ( m_pCharacter->IsMoving() ) 
-    {// �������Moving�򲻽��й���
+    {// 如果还在Moving则不进行攻击
         return ;
     }
 
 
-    // ִ�л����е��﹦�ͻ򷨹��͵ļ���
+    // 执行缓存中的物功型或法功型的技能
     if (FALSE == ProcessSkillInCache() )
-    {// Ĭ��ʹ��0����ͨ����
-        // �ж�Ŀ�����Ч��
+    {// 默认使用0号普通技能
+        // 判断目标的有效性
         Obj* pTarObj = m_pCharacter->getScene()->GetObjManager()->GetObj( pPet->GetTargetID() );
         if ( pTarObj == NULL || !((Obj_Character*)pTarObj)->IsAlive() )
-        {// Ŀ����Ч
+        {// 目标无效
             pPet->SetTargetID( INVALID_ID );
 
             ChangeState(ESTATE_IDLE);
@@ -175,7 +175,7 @@ __ENTER_FUNCTION
                     }
                 }
                 pCreator->SetPetHP(pPet->GetPetGUID(), pCreator->GetPetMaxHP(pPet->GetPetGUID()));
-                // ���³����һЩ��Ϣ
+                // 更新宠物的一些信息
                 pCreator->RefeshPetDetailAttrib(pPet->GetPetGUID());
             }                
             pPet->SetActiveFlag( FALSE );
@@ -201,9 +201,9 @@ __ENTER_FUNCTION
     }
     FLOAT fDistSqr = CalcDistSqrOfToOwner();
     if ( fDistSqr > REFOLLOW_DISTSQR_C ) 
-    {// �������15m��˲��
+    {// 距离大于15m则瞬移
         if (pPet->CanMove()) 
-        {// ��ǿ�����²���˲��:�綨��, ѣ��...
+        {// 非强控制下才能瞬移:如定身, 眩晕...
             FLOAT fDir = pOwner->getDir()-__PI/2;
 
             FLOAT fX = pOwner->getWorldPos()->m_fX - (-(2*sin(fDir)) );
@@ -219,16 +219,16 @@ __ENTER_FUNCTION
         }
     }
     else if (fDistSqr > REFOLLOW_DISTSQR_B) 
-    {// �������8m�������
+    {// 距离大于8m则快速跑
         pPet->SetMoveMode(Obj_Pet::MOVE_MODE_SPRINT);
     }
     else if (fDistSqr > REFOLLOW_DISTSQR_A)
-    {// �������3m��С��
+    {// 距离大于3m则小跑
         if (pPet->GetMoveMode() != Obj_Pet::MOVE_MODE_SPRINT)
             pPet->SetMoveMode(Obj_Pet::MOVE_MODE_RUN);
     }
     else
-    {// ������3m���ڣ���������
+    {// 距离在3m以内，正常跟随
         if (pPet->GetMoveMode() != Obj_Pet::MOVE_MODE_WALK)
             pPet->SetMoveMode(Obj_Pet::MOVE_MODE_HOBBLE);
     }
@@ -273,7 +273,7 @@ __ENTER_FUNCTION
     After_Die();
 
     //////////////////////////////////////////////////////////////////
-    // �������︴�����
+    // 处理宠物复活过程
     UINT nTermTime = 0;
     Obj_Pet* pPet = GetCharacter();
     if (pPet)
@@ -325,7 +325,7 @@ __ENTER_FUNCTION
     WORLD_POS pos;
     pos.m_fX = fX;
     pos.m_fZ = fZ;
-    // ȷ��λ�õĺϷ���
+    // 确保位置的合法性
     m_pCharacter->getScene()->GetMap()->VerifyPos(&pos);
     if (m_pCharacter->getScene()->GetMap()->IsCanGo(pos,m_pCharacter->GetDriverLevel())) {
         Move( &pos );
@@ -379,7 +379,7 @@ __ENTER_FUNCTION
             }
         }
 
-        // ��֤һ���Ḵ��
+        // 保证一定会复活
         if(pPet->GetHP() <= 0)
         {
             pPet->SetHP(1);
@@ -415,7 +415,7 @@ __ENTER_FUNCTION
             }
         }
         
-        // ����Ҫ���ó�����߶�
+        // 至少要设置成最低线度
         pPet->SetHappiness(g_Config.m_ConfigInfo.m_PetCallUpHappiness+1);
 
         SceneID_t idCurScene;
@@ -432,7 +432,7 @@ __ENTER_FUNCTION
     }
     pPet->ResetReliveInfo();
 
-    // ����к�����Ч�򽫸ó������еļ��ܻ�������
+    // 如果招呼者有效则将该宠物所有的技能缓存起来
     Item* pPetItem = pCreator->GetPetItem(pPet->GetPetGUID());
     if (pPetItem)
     {
@@ -454,7 +454,7 @@ __ENTER_FUNCTION
     Obj_Pet* pPet = GetCharacter();
     if (pPet)
     {
-        // �����ڲ�׽������ҷ���ʧ����Ϣ����ϵ�ǰʦ��
+        // 向正在捕捉他的玩家发送失败消息并打断当前师法
         pPet->SendCaptureFailedToOthers(INVALID_ID);
         Obj_Character* pOwner = pPet->GetOwner();
         if (pOwner && pOwner->GetObjType() == Obj::OBJ_TYPE_HUMAN)
@@ -464,10 +464,10 @@ __ENTER_FUNCTION
                 return;
             }
             PET_GUID_t guidPet = pPet->GetPetGUID();
-            // ���ջس���ʱ�������������г����ֵ�BUFFͳͳ���
+            // 当收回宠物时将主人身上所有宠物种的BUFF统统清掉
             pHuman->Impact_CleanAllImpactWhenPetDead(pPet->GetID());
             pPet->Impact_CleanAllImpactWhenPetDead(pPet->GetID());
-            // ǿ��ˢ�³�����Ϣ
+            // 强行刷新宠物信息
             pPet->SendMsg_RefeshAttrib();
             
             INT nIndex = pHuman->GetPetIndexByGUID(guidPet);
@@ -479,10 +479,10 @@ __ENTER_FUNCTION
                 {
                     pHuman->SetPetHappiness(guidPet, 50);
                 }
-                // ���³����һЩ��Ϣ���������ֶ�
+                // 更新宠物的一些信息，如宠物快乐度
                 pHuman->RefeshPetDetailAttrib(guidPet);
             }
-            // �������˵�ǰ�ĳ���guid
+            // 重置主人当前的宠物guid
             pHuman->CleanupPet();
             guidPet.Reset();
             pHuman->SetCurrentPetGUID(guidPet);
@@ -534,14 +534,14 @@ __ENTER_FUNCTION
     }
     Obj_Human* pCreator = pPet->GetCreator();
     if (!pCreator)
-    {// ������Ч��ֱ�ӷ���
+    {// 主人无效则直接返回
         return FALSE;
     }
     if (FALSE == pPet->CanUseSkillNow() )
     {
         return FALSE;
     }
-    // ��ִ�л����еļ���--m_SkillID
+    // 先执行缓存中的技能--m_SkillID
     const SLogicSkill_Param& SkillParam = GetSkillParamCache();
     if (SkillParam.IsValid() == TRUE)
     {
@@ -562,7 +562,7 @@ __ENTER_FUNCTION
         {
             BOOL bCooldowned = pPet->Skill_IsSkillCooldowned(pPet->m_aCacheOfSkill[i]);
             if (!bCooldowned)
-            {// �ü��ܵ�CD��û�е�
+            {// 该技能的CD还没有到
                 continue;
             }
             const SkillTemplateData_T* pSkillData_T = g_SkillTemplateDataMgr.GetInstanceByID(pPet->m_aCacheOfSkill[i]);
@@ -575,7 +575,7 @@ __ENTER_FUNCTION
             ID_t OperateMode = pSkillData_T->GetOperateModeForPetSkill();
             ID_t TypeOfSkill = pSkillData_T->GetTypeOfPetSkill();
 
-            // ����ǽ���״̬��ֻ�ͷ��﹦�ͻ򷨹��͵ļ���
+            // 如果是进攻状态则只释放物功型或法功型的技能
             if (TRUE == IsAttackState)
             {
                 ID_t RateOfSkill = pSkillData_T->GetPetRateOfSkill();
@@ -584,17 +584,17 @@ __ENTER_FUNCTION
                 INT nUseSkillRate = (INT)(RateOfSkill * fLaunchRate);
 
                 if (rand() % 100 > nUseSkillRate)
-                {// ��������ü���ʧ�����ж���һ��
+                {// 如果发动该技能失败则判断下一个
                     continue;
                 }
 
                 if (PET_SKILL_OPERATE_AISTRATEGY == OperateMode && 
                     (PET_TYPE_AISKILL_PHYSICATTACK == TypeOfSkill || PET_TYPE_AISKILL_MAGICATTACK == TypeOfSkill) )
                 {
-                    // �ж�Ŀ�����Ч��
+                    // 判断目标的有效性
                     Obj* pTarObj = m_pCharacter->getScene()->GetObjManager()->GetObj( pPet->GetTargetID() );
                     if ( pTarObj == NULL || !((Obj_Character*)pTarObj)->IsAlive() )
-                    {// Ŀ����Ч���л��ɸ���״̬
+                    {// 目标无效，切换成跟随状态
                         pPet->SetTargetID( INVALID_ID );
 //                        SetAIState( AI_PET_FOLLOW );
                         return FALSE;
@@ -611,7 +611,7 @@ __ENTER_FUNCTION
                 }
             }
             if (PET_SKILL_OPERATE_INCEACEATTR == OperateMode || PET_SKILL_OPERATE_AISTRATEGY == OperateMode)
-            {// �������ǿ�������Ե���ν�����Եı������ܣ�ִ��һ�ξͽ��ӻ�����ɾ��
+            {// 如果是增强自身属性的所谓持续性的被动技能，执行一次就将从缓存中删除
                 ORESULT oResult =UseSkill(pPet->m_aCacheOfSkill[i], 1, pPet->GetID(), 
                     pPet->getWorldPos()->m_fX, pPet->getWorldPos()->m_fZ);
 
@@ -626,7 +626,7 @@ __ENTER_FUNCTION
             if (PET_SKILL_OPERATE_AISTRATEGY == OperateMode)
             {
                 if (PET_TYPE_AISKILL_PROTECTEOWNER == TypeOfSkill)
-                {// ����ǻ����͵ļ��ܣ���Ҫ�������������û�иü��ܲ�����ImpactID
+                {// 如果是护主型的技能，则要检测主人身上有没有该技能产生的ImpactID
                     UINT uTime = g_pTimeManager->CurrentTime();
                     if (!m_ScanImpactOfOwnerTimer.IsSetTimer() )
                     {
@@ -639,7 +639,7 @@ __ENTER_FUNCTION
 
                     BOOL bHaveImpact = pPet->Impact_HaveImpactOfSpecificImpactID(pSkillData_T->GetImpactIDOfSkill() );
                     if (!bHaveImpact)
-                    {// û�и�Ч����ʩ���ü���
+                    {// 没有该效果则施法该技能
                         ORESULT oResult = UseSkill(pPet->m_aCacheOfSkill[i], 1, pCreator->GetID(), 
                             pCreator->getWorldPos()->m_fX, pCreator->getWorldPos()->m_fZ);
 
@@ -715,7 +715,7 @@ __ENTER_FUNCTION
         if (pObj && IsCharacterObj(pObj->GetObjType())==TRUE)
         {
             if ( ((Obj_Character*)pObj)->IsCanViewMe(pCreator) == FALSE )
-            {// �����������˿�����Ŀ����ս������
+            {// 如果宠物的主人看不到目标则战斗结束
                 return TRUE;
             }
             FLOAT fDeltaX = pObj->getWorldPos()->m_fX - pPet->getWorldPos()->m_fX;
@@ -723,7 +723,7 @@ __ENTER_FUNCTION
             FLOAT fDistSqr = fDeltaX*fDeltaX + fDeltaZ*fDeltaZ;
 
             if ( fDistSqr > REFOLLOW_DISTSQR_C ) 
-            {// �������15m���Զ�����ս��
+            {// 距离大于15m则自动结束战斗
                 return TRUE;            
             }
         }

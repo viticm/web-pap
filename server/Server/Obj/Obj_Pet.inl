@@ -120,7 +120,7 @@ ObjID_t Obj_Pet::GetOwnerID(VOID)const
 }
 
 //////////////////////////////////////////////////////////////
-// ÊôĞÔ·ÃÎÊ
+// å±æ€§è®¿é—®
 //////////////////////////////////////////////////////////////
 VOID Obj_Pet::SetDataID(const UINT dataID)
 {
@@ -250,7 +250,7 @@ INT Obj_Pet::GetHP( VOID )
 }
 
 VOID Obj_Pet::SetMP( INT nMP )
-{// ³èÎïÃ»ÓĞMP
+{// å® ç‰©æ²¡æœ‰MP
     return;
     /*
     if (m_pdbPet)
@@ -260,7 +260,7 @@ VOID Obj_Pet::SetMP( INT nMP )
 
 INT Obj_Pet::GetMP( VOID )
 {
-    // ³èÎïÃ»ÓĞMP
+    // å® ç‰©æ²¡æœ‰MP
     //if (m_pdbPet)
     //{
     //    if(m_pdbPet->m_nMP>GetMaxMP())
@@ -491,7 +491,7 @@ VOID Obj_Pet::SetExp( INT nExp )
     }
 
     if (GetLevel() > (GetCreator()->GetLevel() + LEVELDELTA_GETEXP) )
-    {// µ±³èÎïµÈ¼¶¸ßÓÚÍæ¼ÒµÈ¼¶5¼¶Ê±½«²»ÄÜ»ñµÃ¾­Ñé
+    {// å½“å® ç‰©ç­‰çº§é«˜äºç©å®¶ç­‰çº§5çº§æ—¶å°†ä¸èƒ½è·å¾—ç»éªŒ
 
         Obj_Human* pHuman = static_cast<Obj_Human*>(GetCreator());
         if(NULL!=pHuman)

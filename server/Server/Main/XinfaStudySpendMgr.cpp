@@ -19,7 +19,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ╢снд╪Ч".\PUBLIC\Config\XinFaStudySpend_V1.txt"жп╤ах║йЩ╬щ
+// Д╩▌Ф√┤Д╩╤".\PUBLIC\Config\XinFaStudySpend_V1.txt"Д╦╜Х╞╩Е▐√Ф∙╟Ф█╝
 BOOL XinfaStudySpendMgr::Init()
 {
 __ENTER_FUNCTION

@@ -14,7 +14,7 @@ public:
     GCPlayerRealMove( ){} ;
     virtual ~GCPlayerRealMove( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -26,7 +26,7 @@ public:
                                                             sizeof(WORD); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -47,14 +47,14 @@ public:
 
 
 private:
-    //Êı¾İ
+    //æ•°æ®
 
-    ObjID_t        m_ObjID;            //Íæ¼ÒµÄObjID
-    WORLD_POS    m_posCur;        //Íæ¼Òµ±Ç°µÄÎ»ÖÃ
-    WORLD_POS    m_posTar;        //Íæ¼ÒÕıÔÚÇ°ÍùµÄÎ»ÖÃ
-    BYTE        m_byRace;        //Íæ¼ÒµÄÖÖ×å
-    BYTE        m_byStateFlag;    //Íæ¼ÒµÄ×´Ì¬±êÖ¾
-    WORD        m_wEquipVer;    //Íæ¼ÒµÄµ±Ç°×°±¸°æ±¾ºÅ
+    ObjID_t        m_ObjID;            //ç©å®¶çš„ObjID
+    WORLD_POS    m_posCur;        //ç©å®¶å½“å‰çš„ä½ç½®
+    WORLD_POS    m_posTar;        //ç©å®¶æ­£åœ¨å‰å¾€çš„ä½ç½®
+    BYTE        m_byRace;        //ç©å®¶çš„ç§æ—
+    BYTE        m_byStateFlag;    //ç©å®¶çš„çŠ¶æ€æ ‡å¿—
+    WORD        m_wEquipVer;    //ç©å®¶çš„å½“å‰è£…å¤‡ç‰ˆæœ¬å·
 
 };
 

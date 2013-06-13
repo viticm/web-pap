@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºItem.inl
-//¹¦ÄÜÃèÊö£ºÎïÆ·Êı¾İ¶ÁÈ¡Ğ´ÈëµÄinlineº¯Êı
-//ĞŞ¸Ä¼ÇÂ¼£º2005-11-2´´½¨
+//æ–‡ä»¶åï¼šItem.inl
+//åŠŸèƒ½æè¿°ï¼šç‰©å“æ•°æ®è¯»å–å†™å…¥çš„inlineå‡½æ•°
+//ä¿®æ”¹è®°å½•ï¼š2005-11-2åˆ›å»º
 //
 /////////////////////////////////////////////////////////////////////////////////
 #ifndef __ITEM_INL__
@@ -22,7 +22,7 @@ inline _ITEM_GUID Item::GetGUID( )
     return    ig;
 };
 
-inline UINT Item::GetItemTableIndex( ) const//È¡µÃÎïÆ·±íÀïµÄÎïÆ·Ë÷Òı±àºÅ
+inline UINT Item::GetItemTableIndex( ) const//å–å¾—ç‰©å“è¡¨é‡Œçš„ç‰©å“ç´¢å¼•ç¼–å·
 {
     __ENTER_FUNCTION
 
@@ -84,7 +84,7 @@ inline UCHAR    Item::GetItemIndex() const
     return    0;
 }
 
-inline INT Item::GetLayedNum( ) const//È¡µÃµş·ÅÎïÆ·µÄÊıÁ¿
+inline INT Item::GetLayedNum( ) const//å–å¾—å æ”¾ç‰©å“çš„æ•°é‡
 {
     __ENTER_FUNCTION
 
@@ -144,7 +144,7 @@ inline BOOL Item::IsPWLock() const
     return TRUE;
 }
 
-inline INT Item::GetMaxLayedNum( ) const//È¡µÃÄÜ¹»µş·ÅÎïÆ·µÄ×î´óÊıÁ¿
+inline INT Item::GetMaxLayedNum( ) const//å–å¾—èƒ½å¤Ÿå æ”¾ç‰©å“çš„æœ€å¤§æ•°é‡
 {
     __ENTER_FUNCTION
 
@@ -207,43 +207,43 @@ BOOL    Item::IsFull() const
 
 
 
-USHORT                    Item::GetSetNum()            const                //Ì××°±àºÅ
+USHORT                    Item::GetSetNum()            const                //å¥—è£…ç¼–å·
 {
     Assert(m_pItem);
     return    m_pItem->GetEquipData()->m_SetNum;
 }
-BYTE                    Item::GetMaxSetCount()            const                //Ì××°¸öÊı
+BYTE                    Item::GetMaxSetCount()            const                //å¥—è£…ä¸ªæ•°
 {
     Assert(m_pItem);
     return m_pItem->GetEquipData()->m_MaxNum;
 }
-BYTE                    Item::GetEquipPoint()        const                //ÎïÆ·×°Ååµã
+BYTE                    Item::GetEquipPoint()        const                //ç‰©å“è£…ä½©ç‚¹
 {
     Assert(m_pItem);
     return m_pItem->GetEquipData()->m_EquipPoint;
 }
-BYTE                    Item::GetMaxDurPoint()        const            //×î´óÄÍ¾ÃÖµ
+BYTE                    Item::GetMaxDurPoint()        const            //æœ€å¤§è€ä¹…å€¼
 {
     Assert(m_pItem);
     return m_pItem->GetEquipData()->m_MaxDurPoint;
 }
-BYTE                    Item::GetRequireLevel()        const            //ĞèÇóµÈ¼¶
+BYTE                    Item::GetRequireLevel()        const            //éœ€æ±‚ç­‰çº§
 {
     Assert(m_pItem);
     return m_pItem->GetEquipData()->m_NeedLevel;
 }
-BYTE                    Item::GetGemSlotMax()        const            //×î´ó±¦Ê¯¸öÊı
+BYTE                    Item::GetGemSlotMax()        const            //æœ€å¤§å®çŸ³ä¸ªæ•°
 {
     Assert(m_pItem);
     return m_pItem->GetEquipData()->m_GemMax;
 }
-BYTE                    Item::GetFailTimes()        const                //ĞŞÀíÊ§°Ü´ÎÊı
+BYTE                    Item::GetFailTimes()        const                //ä¿®ç†å¤±è´¥æ¬¡æ•°
 {
     Assert(m_pItem);
     return m_pItem->GetEquipData()->m_FaileTimes;
 
 }
-BYTE                    Item::GetDurPoints()        const                 //µ±Ç°ÄÍ¾ÃÖµ
+BYTE                    Item::GetDurPoints()        const                 //å½“å‰è€ä¹…å€¼
 {
     Assert(m_pItem);
     return m_pItem->GetEquipData()->m_CurDurPoint;
@@ -272,100 +272,100 @@ BOOL                    Item::GetItemIdent()    const
     
 }
 
-BYTE                    Item::GetAttrCount()        const                //ÊôĞÔµÄÊıÁ¿
+BYTE                    Item::GetAttrCount()        const                //å±æ€§çš„æ•°é‡
 {
     Assert(m_pItem);
     return m_pItem->GetEquipData()->m_AttrCount;
 }
-BYTE                    Item::GetEquipGemCount()    const                //ÏâÇ¶±¦Ê¯µÄÊıÁ¿
+BYTE                    Item::GetEquipGemCount()    const                //é•¶åµŒå®çŸ³çš„æ•°é‡
 {
     Assert(m_pItem);
     Assert(m_pItem->ItemClass()==ICLASS_EQUIP);
     return m_pItem->GetEquipData()->m_StoneCount;
 }
-const _ITEM_ATTR                Item::GetEquipAttr(UCHAR    nIndex)        const    //»ñµÃ×°±¸ÊôĞÔ
+const _ITEM_ATTR                Item::GetEquipAttr(UCHAR    nIndex)        const    //è·å¾—è£…å¤‡å±æ€§
 {    
     Assert(m_pItem);
     Assert(nIndex<m_pItem->GetEquipData()->m_AttrCount);
     return m_pItem->GetEquipData()->m_pAttr[nIndex];
 }
-const _ITEM_GEMINFO            Item::GetEquipGemInfo(UCHAR nIndex)    const        //»ñµÃ±¦Ê¯ĞÅÏ¢
+const _ITEM_GEMINFO            Item::GetEquipGemInfo(UCHAR nIndex)    const        //è·å¾—å®çŸ³ä¿¡æ¯
 {
     Assert(m_pItem);
     Assert(nIndex<m_pItem->GetEquipData()->m_GemMax);
     return m_pItem->GetEquipData()->m_pGemInfo[nIndex];
 }
 
-BYTE                        Item::GetItemLevel()        const                //ÎïÆ·¼¶±ğ,²ß»®ĞèÇó
+BYTE                        Item::GetItemLevel()        const                //ç‰©å“çº§åˆ«,ç­–åˆ’éœ€æ±‚
 {
     Assert(m_pItem);
     return m_pItem->GetMedicData()->m_nLevel;
 }
-BYTE                        Item::GetReqSkillLevel()    const                //»ñµÃ¼¼ÄÜ¼¶±ğĞèÇó
+BYTE                        Item::GetReqSkillLevel()    const                //è·å¾—æŠ€èƒ½çº§åˆ«éœ€æ±‚
 {
     Assert(m_pItem);
     return    m_pItem->GetMedicData()->m_nReqSkillLevel;
 }
-INT                            Item::GetReqSkill()            const                //ĞèÒªÓµÓĞµÄ¼¼ÄÜºÅ
+INT                            Item::GetReqSkill()            const                //éœ€è¦æ‹¥æœ‰çš„æŠ€èƒ½å·
 {
     Assert(m_pItem);
     return m_pItem->GetMedicData()->m_nReqSkill;
 }
-INT                            Item::GetScriptID()            const                //»ñµÃÏà¹Ø½Å±¾±àºÅ
+INT                            Item::GetScriptID()            const                //è·å¾—ç›¸å…³è„šæœ¬ç¼–å·
 {
     Assert(m_pItem);
     return m_pItem->GetMedicData()->m_nScriptID;
 }
-INT                            Item::GetSkillID()            const                //»ñµÃÏà¹Ø¼¼ÄÜ±àºÅ
+INT                            Item::GetSkillID()            const                //è·å¾—ç›¸å…³æŠ€èƒ½ç¼–å·
 {
     Assert(m_pItem);
     return m_pItem->GetMedicData()->m_nSkillID;
 }
-BOOL                        Item::IsCosSelf()            const                //ÊÇ·ñÏûºÄ×Ô¼º
+BOOL                        Item::IsCosSelf()            const                //æ˜¯å¦æ¶ˆè€—è‡ªå·±
 {
     Assert(m_pItem);
     return m_pItem->GetMedicData()->m_bCosSelf;
 }
-BYTE                        Item::GetTargetType()        const               //ÎïÆ·Ñ¡Ôñ¶ÔÏóÀàĞÍ
+BYTE                        Item::GetTargetType()        const               //ç‰©å“é€‰æ‹©å¯¹è±¡ç±»å‹
 {
     Assert(m_pItem);
     return    m_pItem->GetMedicData()->m_TargetType;
 }
 
 
-const _ITEM_ATTR                Item::GetGemAttr()        const                //±¦Ê¯ÊôĞÔ
+const _ITEM_ATTR                Item::GetGemAttr()        const                //å®çŸ³å±æ€§
 {
     Assert(m_pItem);
     return m_pItem->GetGemData()->m_Attr;
 }
 
-INT                        Item::GetMapLevel()            const                //²Ø±¦Í¼¼¶±ğ
+INT                        Item::GetMapLevel()            const                //è—å®å›¾çº§åˆ«
 {
     Assert(m_pItem);
     return m_pItem->GetStoreMapData()->m_nLevel;
 }
-FLOAT                    Item::GetXPos()                const                //x×ø±ê
+FLOAT                    Item::GetXPos()                const                //xåæ ‡
 {
     Assert(m_pItem);
     return m_pItem->GetStoreMapData()->m_xPos;
 }
-FLOAT                    Item::GetZPos()                const                //z×ø±ê
+FLOAT                    Item::GetZPos()                const                //zåæ ‡
 {
     Assert(m_pItem);
     return m_pItem->GetStoreMapData()->m_zPos;
 }
-INT                        Item::GetSceneID()            const                //³¡¾°±àºÅ
+INT                        Item::GetSceneID()            const                //åœºæ™¯ç¼–å·
 {
     Assert(m_pItem);
     return m_pItem->GetStoreMapData()->m_SceneID;
 }
-INT                        Item::GetGrowType()            const                //¶ÔÓ¦Éú³¤µãÀàĞÍ
+INT                        Item::GetGrowType()            const                //å¯¹åº”ç”Ÿé•¿ç‚¹ç±»å‹
 {
     Assert(m_pItem);
     return m_pItem->GetStoreMapData()->m_GrowType;
 }
 
-inline  PET_GUID_t        Item::GetPetGUID( )                                //È¡µÃ³èÎïGUID
+inline  PET_GUID_t        Item::GetPetGUID( )                                //å–å¾—å® ç‰©GUID
 {
     Assert(m_pPet);
     return m_pPet->m_GUID;
@@ -378,52 +378,52 @@ inline  PET_GUID_t        Item::GetSpouseGUID( )
 }
 
 
-inline    INT                Item::GetDataID()                    //È¡µÃ³èÎïÄ£ĞÍ        
+inline    INT                Item::GetDataID()                    //å–å¾—å® ç‰©æ¨¡å‹        
 {
     Assert(m_pPet);
     return m_pPet->m_nDataID;
 }
-inline  const CHAR*        Item::GetName()    const                //È¡µÃÃû×Ö
+inline  const CHAR*        Item::GetName()    const                //å–å¾—åå­—
 {
     Assert(m_pPet);
     return m_pPet->m_szName;    
 }
-inline  const CHAR*        Item::GetNick() const                //È¡µÃêÇ³Æ
+inline  const CHAR*        Item::GetNick() const                //å–å¾—æ˜µç§°
 {
     Assert(m_pPet);
     return m_pPet->m_szNick;
 }
-inline  INT                Item::GetLevel() const                //È¡µÃµÈ¼¶
+inline  INT                Item::GetLevel() const                //å–å¾—ç­‰çº§
 {
     Assert(m_pPet);
     return m_pPet->m_nLevel;
 }
-inline  INT                Item::GetTakeLevel() const            //È¡µÃĞ¯´øµÈ¼¶
+inline  INT                Item::GetTakeLevel() const            //å–å¾—æºå¸¦ç­‰çº§
 {
     Assert(m_pPet);
     return m_pPet->m_nTakeLevel;
 }
-inline  INT                Item::GetAttackType() const            //È¡µÃ½ø¹¥ÀàĞÍ£¨Îï/·¨£©
+inline  INT                Item::GetAttackType() const            //å–å¾—è¿›æ”»ç±»å‹ï¼ˆç‰©/æ³•ï¼‰
 {
     Assert(m_pPet);
     return m_pPet->m_nAttackType;
 }
-inline  INT                Item::GetAIType() const                //È¡µÃAIÀàĞÍ
+inline  INT                Item::GetAIType() const                //å–å¾—AIç±»å‹
 {
     Assert(m_pPet);
     return m_pPet->m_AIType;
 }
-inline  const _CAMP_DATA *Item::GetCampData() const                //È¡µÃÕóÓª
+inline  const _CAMP_DATA *Item::GetCampData() const                //å–å¾—é˜µè¥
 {
     Assert(m_pPet);
     return &(m_pPet->m_CampData);
 }
-inline  INT                Item::GetHP() const                    //È¡µÃÉúÃüÖµ
+inline  INT                Item::GetHP() const                    //å–å¾—ç”Ÿå‘½å€¼
 {
     Assert(m_pPet);
     return m_pPet->m_nHP;
 }
-inline  INT                Item::GetBaseMaxHP() const                //È¡µÃÉúÃüÖµÉÏÏŞ
+inline  INT                Item::GetBaseMaxHP() const                //å–å¾—ç”Ÿå‘½å€¼ä¸Šé™
 {
     Assert(m_pPet);
 
@@ -443,77 +443,77 @@ inline  INT                Item::GetBaseMaxHP() const                //È¡µÃÉúÃüÖ
     nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
     return nValue;
 }
-inline  INT                Item::GetLife() const                //È¡µÃµ±Ç°ÊÙÃü
+inline  INT                Item::GetLife() const                //å–å¾—å½“å‰å¯¿å‘½
 {
     Assert(m_pPet);
     return m_pPet->m_nLife;
 }
-inline  BYTE            Item::GetPetType() const                // ±¦±¦£¬±äÒì£¬Ò°Éú
+inline  BYTE            Item::GetPetType() const                // å®å®ï¼Œå˜å¼‚ï¼Œé‡ç”Ÿ
 {
     Assert(m_pPet);
     return m_pPet->m_byPetType;
 }
-inline  BYTE            Item::GetGeneration() const            // ¼¸´ú³è
+inline  BYTE            Item::GetGeneration() const            // å‡ ä»£å® 
 {
     Assert(m_pPet);
     return m_pPet->m_byGeneration;
 }
-inline  BYTE            Item::GetHappiness() const                // ¿ìÀÖ¶È        
+inline  BYTE            Item::GetHappiness() const                // å¿«ä¹åº¦        
 {
     Assert(m_pPet);
     return m_pPet->m_byHappiness;
 }
-inline  INT                Item::GetStrPer() const                // Á¦Á¿×ÊÖÊ    
+inline  INT                Item::GetStrPer() const                // åŠ›é‡èµ„è´¨    
 {
     Assert(m_pPet);
     return m_pPet->m_nStrPerception;
 }
-inline  INT                Item::GetConPer() const                // ÌåÁ¦×ÊÖÊ    
+inline  INT                Item::GetConPer() const                // ä½“åŠ›èµ„è´¨    
 {
     Assert(m_pPet);
     return m_pPet->m_nConPerception;
 }
-inline  INT             Item::GetDexPer() const                // Éí·¨×ÊÖÊ
+inline  INT             Item::GetDexPer() const                // èº«æ³•èµ„è´¨
 {
     Assert(m_pPet);
     return m_pPet->m_nDexPerception;
 }
-inline  INT                Item::GetSprPer() const                // ÁéÆø×ÊÖÊ
+inline  INT                Item::GetSprPer() const                // çµæ°”èµ„è´¨
 {
     Assert(m_pPet);
     return m_pPet->m_nSprPerception;
 }
-inline  INT             Item::GetIntPer() const                // ¶¨Á¦×ÊÖÊ
+inline  INT             Item::GetIntPer() const                // å®šåŠ›èµ„è´¨
 {
     Assert(m_pPet);
     return m_pPet->m_nIntPerception;
 }
-inline    INT                Item::GetGenGu() const                // ¸ù¹Ç
+inline    INT                Item::GetGenGu() const                // æ ¹éª¨
 {
     Assert(m_pPet);
     return m_pPet->m_nGenGu;
 }
-inline  FLOAT            Item::GetGrowRate() const            // ³É³¤ÂÊ
+inline  FLOAT            Item::GetGrowRate() const            // æˆé•¿ç‡
 {
     Assert(m_pPet);
     return m_pPet->m_fGrowRate;
 }
-inline  INT                Item::GetRemainPoint() const            // Ò»¼¶ÊôĞÔÊ£ÓàµãÊı
+inline  INT                Item::GetRemainPoint() const            // ä¸€çº§å±æ€§å‰©ä½™ç‚¹æ•°
 {
     Assert(m_pPet);
     return m_pPet->m_nRemainPoint;
 }
-inline  INT                Item::GetExp() const                    // ¾­ÑéÖµ
+inline  INT                Item::GetExp() const                    // ç»éªŒå€¼
 {
     Assert(m_pPet);
     return m_pPet->m_nExp;
 }
-inline  INT                Item::GetLvl1Attr(CHAR_ATTR_LEVEL1 type)const// »ù´¡Ò»¼¶Õ½¶·ÊôĞÔ£¨²»°üÀ¨¼¼ÄÜºÍ×°±¸Ôö¼ÓµÄ²¿·Ö£©
+inline  INT                Item::GetLvl1Attr(CHAR_ATTR_LEVEL1 type)const// åŸºç¡€ä¸€çº§æˆ˜æ–—å±æ€§ï¼ˆä¸åŒ…æ‹¬æŠ€èƒ½å’Œè£…å¤‡å¢åŠ çš„éƒ¨åˆ†ï¼‰
 {
     Assert(m_pPet);
     return m_pPet->m_BaseAttrLevel1.Get(type);
 }
-inline  _PET_SKILL        Item::GetSkill(UINT SkillIndex)        //³èÎï¼¼ÄÜ
+inline  _PET_SKILL        Item::GetSkill(UINT SkillIndex)        //å® ç‰©æŠ€èƒ½
 {
     Assert(m_pPet);
     Assert(SkillIndex<PET_MAX_SKILL_COUNT);
@@ -541,7 +541,7 @@ inline    Time_t            Item::GetCooldownRemained(CooldownID_t nID) const
 }
 
 /*
-inline    _IMPACT_LIST&    Item::GetImpactList()                // µÃµ½³èÎïBUFFÁĞ±í
+inline    _IMPACT_LIST&    Item::GetImpactList()                // å¾—åˆ°å® ç‰©BUFFåˆ—è¡¨
 {
     Assert(m_pPet);
     return m_pPet->m_ImpactList;

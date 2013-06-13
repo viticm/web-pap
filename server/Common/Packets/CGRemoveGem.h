@@ -13,7 +13,7 @@ namespace Packets
         CGRemoveGem(){};
         virtual        ~CGRemoveGem(){};
 
-        //公用接口
+        //鍏敤鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,9 +28,9 @@ namespace Packets
         BYTE                    GetGemIndex(){return m_GemIndex;}
 
     private:
-        BYTE                    m_EquipBagIndex;  //装备在包中的位置
+        BYTE                    m_EquipBagIndex;  //瑁呭鍦ㄥ寘涓殑浣嶇疆
 
-        BYTE                    m_GemIndex;          //宝石编号
+        BYTE                    m_GemIndex;          //瀹濈煶缂栧彿
 
     };
 

@@ -9,7 +9,7 @@
 #include "Config.h"
 
 
-//·şÎñÆ÷Íæ¼ÒÖ¸µÄÊÇÁíÍâµÄ·şÎñÆ÷¶Ë³ÌĞòÔÚµ±Ç°³ÌĞòÄÚµÄÊı¾İ±íÏÖ
+//æœåŠ¡å™¨ç©å®¶æŒ‡çš„æ˜¯å¦å¤–çš„æœåŠ¡å™¨ç«¯ç¨‹åºåœ¨å½“å‰ç¨‹åºå†…çš„æ•°æ®è¡¨ç°
 
 class ServerPlayer : public Player
 {
@@ -19,34 +19,34 @@ public :
 
     BOOL            Init( ) ;
 
-    //Êı¾İ½ÓÊÕ
+    //æ•°æ®æ¥æ”¶
     virtual BOOL    ProcessInput( ) ;
-    //Êı¾İ·¢ËÍ
+    //æ•°æ®å‘é€
     virtual BOOL    ProcessOutput( ) ;
-    //ÏûÏ¢´¦Àí
+    //æ¶ˆæ¯å¤„ç†
     virtual BOOL    ProcessCommand( bool Option = true ) ;
 
-    //Çå³ı
+    //æ¸…é™¤
     virtual void    CleanUp( ) ;
 
-    //Âß¼­½Ó¿Ú
+    //é€»è¾‘æ¥å£
     virtual BOOL    HeartBeat( DWORD dwTime=0 ) ;
 
 
 public :
-    //Í¨ÓÃ½Ó¿Ú
+    //é€šç”¨æ¥å£
 
     virtual BOOL    IsGamePlayer( ){ return FALSE ; } ;
     virtual BOOL    IsServerPlayer( ){ return TRUE ; } ;
 
-    //ÉèÖÃµ±Ç°·şÎñÆ÷¶ËÍæ¼ÒµÄ×´Ì¬
+    //è®¾ç½®å½“å‰æœåŠ¡å™¨ç«¯ç©å®¶çš„çŠ¶æ€
     void            SetPlayerStatus( UINT status ){ m_Status = status ; } ;
 
-    //ÅĞ¶Ïµ±Ç°·şÎñÆ÷¶ËÍæ¼ÒÊÇ·ñÓĞĞ§
+    //åˆ¤æ–­å½“å‰æœåŠ¡å™¨ç«¯ç©å®¶æ˜¯å¦æœ‰æ•ˆ
     virtual BOOL    IsValid( ) ;
 
-    //Ïò´Ë·şÎñÆ÷¶Ë³ÌĞò·¢ËÍÏûÏ¢
-    //´Ë½Ó¿Ú²»Ö§³ÖÏß³Ì¼äÍ¬²½£¬Òò´ËÖ»ÄÜÓĞµ±Ç°Ïß³ÌÀ´µ÷ÓÃÖ´ĞĞ
+    //å‘æ­¤æœåŠ¡å™¨ç«¯ç¨‹åºå‘é€æ¶ˆæ¯
+    //æ­¤æ¥å£ä¸æ”¯æŒçº¿ç¨‹é—´åŒæ­¥ï¼Œå› æ­¤åªèƒ½æœ‰å½“å‰çº¿ç¨‹æ¥è°ƒç”¨æ‰§è¡Œ
     virtual BOOL    SendPacket( Packet* pPacket ) ;
 
     _SERVER_DATA*    GetServerData(){ return m_pServerData ; } ;
@@ -55,9 +55,9 @@ public :
     void            FreeOwn( ) ;
 
 private :
-    //·şÎñÆ÷¶Ë×´Ì¬
+    //æœåŠ¡å™¨ç«¯çŠ¶æ€
     UINT            m_Status ;
-    //Ö¸ÕëµÄÄÚÈİÊÇÔÚg_ConfigÖĞµÄÊı¾İ
+    //æŒ‡é’ˆçš„å†…å®¹æ˜¯åœ¨g_Configä¸­çš„æ•°æ®
     _SERVER_DATA*    m_pServerData ;
 
 

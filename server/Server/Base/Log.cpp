@@ -61,7 +61,7 @@ BOOL Log::Init( )
 __ENTER_FUNCTION
 
     m_CacheSize = DEFAULT_LOG_CACHE_SIZE ;
-    //最小化内存占用
+    //鏈�灏忓寲鍐呭瓨鍗犵敤
     //______________________
     if( g_Config.m_ConfigInfo.m_SystemModel != 0 )
     {
@@ -123,7 +123,7 @@ __ENTER_FUNCTION
     if( iLen<=0 )
         return ;
 
-    //最小化内存占用
+    //鏈�灏忓寲鍐呭瓨鍗犵敤
     //______________________
     if( g_Config.m_ConfigInfo.m_SystemModel == 0 )
     {

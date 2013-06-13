@@ -12,11 +12,11 @@ __ENTER_FUNCTION
 
     USER* pUser = g_pOnlineUser->FindUser( pPacket->GetGUID() );
     if( pUser==NULL )
-    {//√ª”–∑¢œ÷‘⁄°∞‘⁄œﬂ”√ªß¡–±Ì°±¿Ô∂‘”¶¥ÀGUIDµƒ”√ªß
+    {//Ê≤°ÊúâÂèëÁé∞Âú®‚ÄúÂú®Á∫øÁî®Êà∑ÂàóË°®‚ÄùÈáåÂØπÂ∫îÊ≠§GUIDÁöÑÁî®Êà∑
         Log::SaveLog( WORLD_LOGFILE, "GWChangeMenpaiHandler...User GUID=%X not find!",
             pPacket->GetGUID() );
 
-        Assert( FALSE && "’“≤ªµΩ¥À»À" );
+        Assert( FALSE && "Êâæ‰∏çÂà∞Ê≠§‰∫∫" );
         return PACKET_EXE_CONTINUE;
     }
 

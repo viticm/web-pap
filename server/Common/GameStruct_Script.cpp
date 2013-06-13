@@ -157,7 +157,7 @@ INT    X_PARAM::AddStrValue( const CHAR* szIn )
 
 INT    X_PARAM::SetStrValue( INT nIndex, CHAR* szIn )
 {
-    Assert("Ä¿Ç°´Ëº¯Êı»¹Ã»Ö§³Ö") ;
+    Assert("ç›®å‰æ­¤å‡½æ•°è¿˜æ²¡æ”¯æŒ") ;
     return INVALID_INDEX ;
 }
 

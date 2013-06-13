@@ -14,7 +14,7 @@ public:
     GCLeaveScene( ){} ;
     virtual ~GCLeaveScene( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -23,7 +23,7 @@ public:
     virtual UINT            GetPacketSize()const { return    sizeof(ObjID_t) + sizeof(BYTE); } 
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     ObjID_t            getObjID( ){ return m_ObjID ; } ;
     VOID            setObjID( ObjID_t id ){ m_ObjID = id ; } ;
 
@@ -31,11 +31,11 @@ public:
     VOID            setLeaveCode(BYTE byLeaveCode) { m_byLeaveCode = byLeaveCode; }
 
 private:
-    //Êı¾İ
-    ObjID_t            m_ObjID;            //Íæ¼ÒµÄObjID
-    BYTE            m_byLeaveCode;        //Àë¿ªµÄÔ­Òò
-                                        // 0 - Íæ¼ÒÖ÷¶¯ÍË³ö
-                                        // 1 - ³¤Ê±¼äÎªÏìÓ¦£¬¶ÏÏß
+    //æ•°æ®
+    ObjID_t            m_ObjID;            //ç©å®¶çš„ObjID
+    BYTE            m_byLeaveCode;        //ç¦»å¼€çš„åŸå› 
+                                        // 0 - ç©å®¶ä¸»åŠ¨é€€å‡º
+                                        // 1 - é•¿æ—¶é—´ä¸ºå“åº”ï¼Œæ–­çº¿
                                         // ...
 };
 

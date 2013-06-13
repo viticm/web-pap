@@ -25,7 +25,7 @@ VOID OnBeAssisted(Obj_Character& rAssistor)
 VOID Obj_Character::OnBeSkill(Obj_Character& rAttacker, INT nBehaviorType)
 {
 __ENTER_FUNCTION
-    // ÔÚ½ÇÉ«ÊÜµ½¹¥»÷Ê±»Øµ÷Íæ¼ÒµÄBabyToAttack-->µ÷ÓÃÍæ¼ÒµÄ³èÎïÈ¥¹¥»÷
+    // åœ¨è§’è‰²å—åˆ°æ”»å‡»æ—¶å›žè°ƒçŽ©å®¶çš„BabyToAttack-->è°ƒç”¨çŽ©å®¶çš„å® ç‰©åŽ»æ”»å‡»
     if (BEHAVIOR_TYPE_HOSTILITY== nBehaviorType)
     {
         if (rAttacker.GetObjType() == Obj::OBJ_TYPE_HUMAN)
@@ -68,7 +68,7 @@ VOID Obj_Character::OnDamages(INT const* const pDamage, ObjID_t nAttackerID, BOO
                 + DamageList[DAMAGE_TYPE_FIRE]
                 + DamageList[DAMAGE_TYPE_LIGHT]
                 + DamageList[DAMAGE_TYPE_POISON];
-    // ÉËº¦×îÐ¡Îª1
+    // ä¼¤å®³æœ€å°ä¸º1
     0>=nDamage?nDamage=1:NULL;
     //non-type damage shield here
     Impact_OnDamage(nDamage, pAttacker, nSkillID);
@@ -97,7 +97,7 @@ VOID Obj_Character::OnDamage(INT nDamage, ObjID_t nAttackerID, BOOL bCritical, S
             pAttacker = (Obj_Character*)(pObjManager->GetObj(nAttackerID));
         }
     }
-    // ÉËº¦×îÐ¡Îª1
+    // ä¼¤å®³æœ€å°ä¸º1
     0>=nDamage?nDamage=1:NULL;
     //non-type damage shield here
     Impact_OnDamage(nDamage, pAttacker, nSkillID);
@@ -106,7 +106,7 @@ VOID Obj_Character::OnDamage(INT nDamage, ObjID_t nAttackerID, BOOL bCritical, S
         pAttacker->OnDamageTarget(nDamage, *this, nSkillID);
     }
     HealthIncrement(-nDamage, pAttacker, bCritical);
-    // ÈËÎïÃÅÅÉÌØÐÔµÄ´¦Àí
+    // äººç‰©é—¨æ´¾ç‰¹æ€§çš„å¤„ç†
     if(Obj::OBJ_TYPE_HUMAN==GetObjType())
     {
         MenPai_OnDamage(nDamage);
@@ -174,7 +174,7 @@ VOID Obj_Character::OnBeCriticalHit(SkillID_t const nSkill, Obj_Character& rAtta
 VOID Obj_Character::OnDepleteStrikePoints(INT nStrikePoints)
 {
     __ENTER_FUNCTION
-    // ÈËÎïÃÅÅÉÌØÐÔµÄ´¦Àí
+    // äººç‰©é—¨æ´¾ç‰¹æ€§çš„å¤„ç†
     if(Obj::OBJ_TYPE_HUMAN==GetObjType())
     {
         MenPai_OnDepleteStrikePoints(nStrikePoints);
@@ -185,7 +185,7 @@ VOID Obj_Character::OnDepleteStrikePoints(INT nStrikePoints)
 VOID Obj_Character::OnHealTarget(SkillID_t const nSkill, Obj_Character& rTarget, INT nHealedHP)
 {
     __ENTER_FUNCTION
-    // ÈËÎïÃÅÅÉÌØÐÔµÄ´¦Àí
+    // äººç‰©é—¨æ´¾ç‰¹æ€§çš„å¤„ç†
     if(Obj::OBJ_TYPE_HUMAN==GetObjType())
     {
         MenPai_OnHealTarget(nHealedHP);
@@ -214,9 +214,9 @@ VOID Obj_Character::OnDie( ObjID_t idKiller )
 {
 __ENTER_FUNCTION
 
-    //Ð§¹û½ÓÈëµã
+    //æ•ˆæžœæŽ¥å…¥ç‚¹
     Impact_OnDie();
-    ////ÆäËû½ÓÈëµã
+    ////å…¶ä»–æŽ¥å…¥ç‚¹
     //Obj *pObj = getScene()->GetObjManager()->GetObj( idKiller );
     //if ( pObj != NULL )
     //{

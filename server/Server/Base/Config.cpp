@@ -65,7 +65,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 VOID Config::LoadConfigInfo_Only( )
-{//²»ÄÜ±»ÖØ¸´¶ÁÈ¡µÄÊı¾İ
+{//ä¸èƒ½è¢«é‡å¤è¯»å–çš„æ•°æ®
 __ENTER_FUNCTION
 
     Ini ini( FILE_CONFIG_INFO ) ;
@@ -86,7 +86,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 VOID Config::LoadConfigInfo_ReLoad( )
-{//¿ÉÒÔÖØ¸´¶ÁÈ¡µÄÊı¾İ
+{//å¯ä»¥é‡å¤è¯»å–çš„æ•°æ®
 __ENTER_FUNCTION
 
     Ini ini( FILE_CONFIG_INFO ) ;
@@ -191,7 +191,7 @@ VOID Config::LoadLoginInfo( )
     __LEAVE_FUNCTION
 }
 VOID Config::LoadLoginInfo_Only( )
-{//²»ÄÜ±»ÖØ¸´¶ÁÈ¡µÄÊı¾İ
+{//ä¸èƒ½è¢«é‡å¤è¯»å–çš„æ•°æ®
     __ENTER_FUNCTION
 
     Ini ini( FILE_LOGIN_INFO ) ;
@@ -211,7 +211,7 @@ VOID Config::LoadLoginInfo_Only( )
     __LEAVE_FUNCTION
 }
 VOID Config::LoadLoginInfo_Reload( )
-{//¿ÉÒÔÖØ¸´¶ÁÈ¡µÄÊı¾İ
+{//å¯ä»¥é‡å¤è¯»å–çš„æ•°æ®
     __ENTER_FUNCTION
         Log::SaveLog( CONFIG_LOGFILE, "Load LoginInfo.ini ...ReLoad OK! " ) ;
     __LEAVE_FUNCTION
@@ -310,7 +310,7 @@ VOID    Config::LoadShareMemInfo_Only()
 
         Ini ini( FILE_SHARE_MEM_INFO );
         m_ShareMemInfo.m_SMUObjCount=(UINT)ini.ReadInt( "ShareMem", "KeyCount" );
-        //m_ShareMemInfo.m_SMUObjCount++; //Ìí¼ÓItemSerial¹Ì¶¨Key
+        //m_ShareMemInfo.m_SMUObjCount++; //æ·»åŠ ItemSerialå›ºå®šKey
         m_ShareMemInfo.m_pShareData    = new _SHAREMEM_DATA[m_ShareMemInfo.m_SMUObjCount];
         
 
@@ -374,10 +374,10 @@ __ENTER_FUNCTION
         CHAR szSection[256] ;
         memset( szSection, 0, 256 ) ;
 
-        //³õÊ¼»¯Êı¾İ
+        //åˆå§‹åŒ–æ•°æ®
         m_MachineInfo.m_pMachine[i].Init( ) ;
 
-        //¶ÁÈ¡³¡¾°¡°i¡±
+        //è¯»å–åœºæ™¯â€œiâ€
         sprintf( szSection, "Machine%d", i ) ;
         m_MachineInfo.m_pMachine[i].m_MachineID = (ID_t)(ini.ReadInt( szSection, "MachineId" )) ;
     }
@@ -419,10 +419,10 @@ __ENTER_FUNCTION
         CHAR szSection[256] ;
         memset( szSection, 0, 256 ) ;
 
-        //³õÊ¼»¯Êı¾İ
+        //åˆå§‹åŒ–æ•°æ®
         m_ServerInfo.m_pServer[i].Init( ) ;
 
-        //¶ÁÈ¡³¡¾°¡°i¡±
+        //è¯»å–åœºæ™¯â€œiâ€
         sprintf( szSection, "Server%d", i ) ;
         m_ServerInfo.m_pServer[i].m_ServerID = (ID_t)(ini.ReadInt( szSection, "ServerId" )) ;
         m_ServerInfo.m_pServer[i].m_MachineID = (ID_t)(ini.ReadInt( szSection, "MachineId" )) ;
@@ -484,7 +484,7 @@ __ENTER_FUNCTION
 
     Ini ini( FILE_SCENE_INFO ) ;
 
-    //¶ÁÈ¡³¡¾°ÊıÁ¿
+    //è¯»å–åœºæ™¯æ•°é‡
     m_SceneInfo.m_SceneCount = (UINT)(ini.ReadInt( "system", "scenenumber" )) ;
 
     m_SceneInfo.m_pScene = new _SCENE_DATA[m_SceneInfo.m_SceneCount] ;
@@ -496,7 +496,7 @@ __ENTER_FUNCTION
         CHAR szSection[256] ;
         memset( szSection, 0, 256 ) ;
 
-        //¶ÁÈ¡³¡¾°¡°i¡±
+        //è¯»å–åœºæ™¯â€œiâ€
         sprintf( szSection, "scene%d", i ) ;
         m_SceneInfo.m_pScene[i].m_SceneID = i ;
         m_SceneInfo.m_pScene[i].m_IsActive = ini.ReadInt( szSection, "active" ) ;

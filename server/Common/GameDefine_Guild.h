@@ -13,19 +13,19 @@ enum GUILD_POSITION
 {
     GUILD_POSITION_INVALID            = 0,
 
-    GUILD_POSITION_TRAINEE,                    // Ô¤±¸°ïÖÚ£¬´ýÅú×¼
-    GUILD_POSITION_MEMBER,                    // ÆÕÍ¨°ïÖÚ
+    GUILD_POSITION_TRAINEE,                    // é¢„å¤‡å¸®ä¼—ï¼Œå¾…æ‰¹å‡†
+    GUILD_POSITION_MEMBER,                    // æ™®é€šå¸®ä¼—
 
-    GUILD_POSITION_ELITE_MEMBER,            // ¾«Ó¢°ïÖÚ
-    GUILD_POSITION_COM,                        // ÉÌÒµ¹ÙÔ±
-    GUILD_POSITION_AGRI,                    // Å©Òµ¹ÙÔ±
-    GUILD_POSITION_INDUSTRY,                // ¹¤Òµ¹ÙÔ±
-    GUILD_POSITION_HR,                        // ÈËÊÂ¹ÙÔ±
+    GUILD_POSITION_ELITE_MEMBER,            // ç²¾è‹±å¸®ä¼—
+    GUILD_POSITION_COM,                        // å•†ä¸šå®˜å‘˜
+    GUILD_POSITION_AGRI,                    // å†œä¸šå®˜å‘˜
+    GUILD_POSITION_INDUSTRY,                // å·¥ä¸šå®˜å‘˜
+    GUILD_POSITION_HR,                        // äººäº‹å®˜å‘˜
 
-    GUILD_POSITION_ASS_CHIEFTAIN,            // ¸±°ïÖ÷
-    GUILD_POSITION_CHIEFTAIN,                // °ïÖ÷
+    GUILD_POSITION_ASS_CHIEFTAIN,            // å‰¯å¸®ä¸»
+    GUILD_POSITION_CHIEFTAIN,                // å¸®ä¸»
 
-    GUILD_POSITION_SIZE,                    // Ö°Î»¼¶±ðÊý
+    GUILD_POSITION_SIZE,                    // èŒä½çº§åˆ«æ•°
 };
 
 
@@ -34,152 +34,152 @@ enum GUILD_AUTHORITY
 {
     GUILD_AUTHORITY_INVALID            = 0,
 
-    GUILD_AUTHORITY_ASSIGN            = 0x1,        // Ö°Îñµ÷¶¯È¨
-    GUILD_AUTHORITY_AUTHORIZE        = 0x2,        // È¨ÏÞµ÷ÕûÈ¨
-    GUILD_AUTHORITY_RECRUIT            = 0x4,        // ½ÓÊÕ°ïÖÚÈ¨
-    GUILD_AUTHORITY_EXPEL            = 0x8,        // ¿ª³ý°ïÖÚÈ¨
-    GUILD_AUTHORITY_DEMISE            = 0x10,        // ìøÈÃÈ¨
-    GUILD_AUTHORITY_WITHDRAW        = 0x20,        // Ö§È¡°ï×ÊÈ¨
-    GUILD_AUTHORITY_DEPOSIT            = 0x40,        // ´æÈë½ð¶îÈ¨
-    GUILD_AUTHORITY_LEAVE            = 0x80,        // Àë¿ª°ï»áÈ¨£¨Õâ¸öÈ¨ÏÞÓÐµã¶àÓà£©
-    GUILD_AUTHORITY_DIMISS            = 0x100,    // ½âÉ¢°ï»áÈ¨
+    GUILD_AUTHORITY_ASSIGN            = 0x1,        // èŒåŠ¡è°ƒåŠ¨æƒ
+    GUILD_AUTHORITY_AUTHORIZE        = 0x2,        // æƒé™è°ƒæ•´æƒ
+    GUILD_AUTHORITY_RECRUIT            = 0x4,        // æŽ¥æ”¶å¸®ä¼—æƒ
+    GUILD_AUTHORITY_EXPEL            = 0x8,        // å¼€é™¤å¸®ä¼—æƒ
+    GUILD_AUTHORITY_DEMISE            = 0x10,        // ç¦…è®©æƒ
+    GUILD_AUTHORITY_WITHDRAW        = 0x20,        // æ”¯å–å¸®èµ„æƒ
+    GUILD_AUTHORITY_DEPOSIT            = 0x40,        // å­˜å…¥é‡‘é¢æƒ
+    GUILD_AUTHORITY_LEAVE            = 0x80,        // ç¦»å¼€å¸®ä¼šæƒï¼ˆè¿™ä¸ªæƒé™æœ‰ç‚¹å¤šä½™ï¼‰
+    GUILD_AUTHORITY_DIMISS            = 0x100,    // è§£æ•£å¸®ä¼šæƒ
 
 
-    GUILD_AUTHORITY_NUMBER            = 8,    // È¨ÏÞÊýÁ¿
+    GUILD_AUTHORITY_NUMBER            = 8,    // æƒé™æ•°é‡
 
-    // °ïÖÚµÄÍ¨ÓÃÈ¨ÏÞ
+    // å¸®ä¼—çš„é€šç”¨æƒé™
     GUILD_AUTHORITY_MEMBER            = GUILD_AUTHORITY_DEPOSIT | GUILD_AUTHORITY_LEAVE,
     GUILD_AUTHORITY_ASSCHIEFTAIN    = GUILD_AUTHORITY_ASSIGN | GUILD_AUTHORITY_RECRUIT | GUILD_AUTHORITY_EXPEL | GUILD_AUTHORITY_LEAVE,
-    GUILD_AUTHORITY_CHIEFTAIN        = 0x17F,    // Ã»ÓÐÀë¿ª°ï»áµÄÈ¨ÏÞ
+    GUILD_AUTHORITY_CHIEFTAIN        = 0x17F,    // æ²¡æœ‰ç¦»å¼€å¸®ä¼šçš„æƒé™
 };
 
 enum GUILD_RETURN_TYPE
 {
     GUILD_RETURN_INVALID            = -1,
 
-    // ´´½¨²¿·Ö
-    GUILD_RETURN_CREATE,                    // ´´½¨³É¹¦
-    GUILD_RETURN_RESPONSE,                    // ÏìÓ¦³É¹¦
+    // åˆ›å»ºéƒ¨åˆ†
+    GUILD_RETURN_CREATE,                    // åˆ›å»ºæˆåŠŸ
+    GUILD_RETURN_RESPONSE,                    // å“åº”æˆåŠŸ
 
-    // ¼ÓÈë²¿·Ö
-    GUILD_RETURN_JOIN,                        // ¼ÓÈëÉêÇëÁÐ±íµÈ´ýÅú×¼
+    // åŠ å…¥éƒ¨åˆ†
+    GUILD_RETURN_JOIN,                        // åŠ å…¥ç”³è¯·åˆ—è¡¨ç­‰å¾…æ‰¹å‡†
 
-    // È¨ÏÞ²Ù×÷
-    GUILD_RETURN_PROMOTE,                    // 0001£¬ÈÎÃâÖ°Îñ£¬ÉýÖ°
-    GUILD_RETURN_DEMOTE,                    // 0001£¬ÈÎÃâÖ°Îñ£¬½µÖ°
-    GUILD_RETURN_AUTHORIZE,                    // 0002£¬µ÷ÕûÈ¨ÏÞ£¬ÊÚÈ¨
-    GUILD_RETURN_DEPRIVE_AUTHORITY,            // 0002£¬µ÷ÕûÈ¨ÏÞ£¬½â³ýÈ¨ÏÞ
-    GUILD_RETURN_RECRUIT,                    // 0003£¬½ÓÊÕ°ïÖÚ
-    GUILD_RETURN_EXPEL,                        // 0004£¬¿ª³ý°ïÖÚ
-    GUILD_RETURN_DEMISE,                    // 0005£¬ìøÈÃ
-    GUILD_RETURN_WITHDRAW,                    // 0006£¬Ö§È¡½ð¶î
-    GUILD_RETURN_DEPOSIT,                    // 0007£¬´æÈë½ð¶î
-    GUILD_RETURN_LEAVE,                        // 0008£¬Àë¿ª°ï»á
-    GUILD_RETURN_REJECT,                    // 0009£¬¾Ü¾øÉêÇë
+    // æƒé™æ“ä½œ
+    GUILD_RETURN_PROMOTE,                    // 0001ï¼Œä»»å…èŒåŠ¡ï¼Œå‡èŒ
+    GUILD_RETURN_DEMOTE,                    // 0001ï¼Œä»»å…èŒåŠ¡ï¼Œé™èŒ
+    GUILD_RETURN_AUTHORIZE,                    // 0002ï¼Œè°ƒæ•´æƒé™ï¼ŒæŽˆæƒ
+    GUILD_RETURN_DEPRIVE_AUTHORITY,            // 0002ï¼Œè°ƒæ•´æƒé™ï¼Œè§£é™¤æƒé™
+    GUILD_RETURN_RECRUIT,                    // 0003ï¼ŒæŽ¥æ”¶å¸®ä¼—
+    GUILD_RETURN_EXPEL,                        // 0004ï¼Œå¼€é™¤å¸®ä¼—
+    GUILD_RETURN_DEMISE,                    // 0005ï¼Œç¦…è®©
+    GUILD_RETURN_WITHDRAW,                    // 0006ï¼Œæ”¯å–é‡‘é¢
+    GUILD_RETURN_DEPOSIT,                    // 0007ï¼Œå­˜å…¥é‡‘é¢
+    GUILD_RETURN_LEAVE,                        // 0008ï¼Œç¦»å¼€å¸®ä¼š
+    GUILD_RETURN_REJECT,                    // 0009ï¼Œæ‹’ç»ç”³è¯·
     
-    GUILD_RETURN_FOUND,                        // ÕýÊ½³ÉÁ¢£¨ÈËÊý´ïµ½£©
-    GUILD_RETURN_DISMISS,                    // ½âÉ¢°ï»á
-    GUILD_RETURN_CHANGEDESC,                // ÐÞ¸Ä°ï»á×ÚÖ¼
+    GUILD_RETURN_FOUND,                        // æ­£å¼æˆç«‹ï¼ˆäººæ•°è¾¾åˆ°ï¼‰
+    GUILD_RETURN_DISMISS,                    // è§£æ•£å¸®ä¼š
+    GUILD_RETURN_CHANGEDESC,                // ä¿®æ”¹å¸®ä¼šå®—æ—¨
 
-    GUILD_RETURN_NAME,                        // Ë¢ÐÂ°ï»áÃû
+    GUILD_RETURN_NAME,                        // åˆ·æ–°å¸®ä¼šå
 
     GUILD_RETURN_SIZE,
 };
 
 enum GUILD_ERROR_TYPE
 {
-    // ´´½¨²¿·Ö
-    GUILD_ERROR_NOTHING                = 0,    // Ã»Ê²Ã´´íÎó¡­¡­
-    GUILD_ERROR_WANTING                = -1,    // ²»·ûºÏ´´½¨Ìõ¼þ£¬Ö»¸ø³ö´íÎó·û£¬¾ßÌåµÄ´íÎóÃèÊöÓÉ½Å±¾·¢ËÍ
-    GUILD_ERROR_INVALID_NAME        = -2,    // Ãû×Ö·Ç·¨
-    GUILD_ERROR_DUPLICATED_NAME        = -3,    // ÖØÃû
-    GUILD_ERROR_GUILD_FULL            = -4,    // ²»ÄÜ´´½¨¸ü¶à°ï»á
+    // åˆ›å»ºéƒ¨åˆ†
+    GUILD_ERROR_NOTHING                = 0,    // æ²¡ä»€ä¹ˆé”™è¯¯â€¦â€¦
+    GUILD_ERROR_WANTING                = -1,    // ä¸ç¬¦åˆåˆ›å»ºæ¡ä»¶ï¼Œåªç»™å‡ºé”™è¯¯ç¬¦ï¼Œå…·ä½“çš„é”™è¯¯æè¿°ç”±è„šæœ¬å‘é€
+    GUILD_ERROR_INVALID_NAME        = -2,    // åå­—éžæ³•
+    GUILD_ERROR_DUPLICATED_NAME        = -3,    // é‡å
+    GUILD_ERROR_GUILD_FULL            = -4,    // ä¸èƒ½åˆ›å»ºæ›´å¤šå¸®ä¼š
 
-    // ¼ÓÈë²¿·Ö
-    GUILD_ERROR_MEMBER_FULL            = -5,    // °ï»áÂúÔ±ÁË
-    GUILD_ERROR_PROPOSER_FULL        = -6,    // ÉêÇëÈËÒÑÂú
-    GUILD_ERROR_IN_GUILD            = -7,    // Íæ¼ÒÒÑ¼ÓÈë°ï»á
-    GUILD_ERROR_NOT_EXIST            = -8,    // °ï»á²»´æÔÚ
+    // åŠ å…¥éƒ¨åˆ†
+    GUILD_ERROR_MEMBER_FULL            = -5,    // å¸®ä¼šæ»¡å‘˜äº†
+    GUILD_ERROR_PROPOSER_FULL        = -6,    // ç”³è¯·äººå·²æ»¡
+    GUILD_ERROR_IN_GUILD            = -7,    // çŽ©å®¶å·²åŠ å…¥å¸®ä¼š
+    GUILD_ERROR_NOT_EXIST            = -8,    // å¸®ä¼šä¸å­˜åœ¨
 
-    // È¨ÏÞ²Ù×÷
-    GUILD_ERROR_UNAUTHORIZED        = -9,    // Ã»ÓÐÈ¨ÏÞ
-    GUILD_ERROR_NO_VACANCY            = -10,    // 0001£¬ÈÎÃâÖ°Îñ£¬Ã»ÓÐÖ°Î»¿ÕÈ±
-    GUILD_ERROR_NO_QUALIFICATION    = -11,    // 0002£¬µ÷ÕûÈ¨ÏÞ£¬±»µ÷ÕûÈËÔ±£¨Ö°Î»£©²»¹»×Ê¸ñ
-    GUILD_ERROR_CASHBOX_FULL        = -12,    // 0007£¬´æÈë½ð¶î£¬°ï»á½ð¿âÒÑÂú
+    // æƒé™æ“ä½œ
+    GUILD_ERROR_UNAUTHORIZED        = -9,    // æ²¡æœ‰æƒé™
+    GUILD_ERROR_NO_VACANCY            = -10,    // 0001ï¼Œä»»å…èŒåŠ¡ï¼Œæ²¡æœ‰èŒä½ç©ºç¼º
+    GUILD_ERROR_NO_QUALIFICATION    = -11,    // 0002ï¼Œè°ƒæ•´æƒé™ï¼Œè¢«è°ƒæ•´äººå‘˜ï¼ˆèŒä½ï¼‰ä¸å¤Ÿèµ„æ ¼
+    GUILD_ERROR_CASHBOX_FULL        = -12,    // 0007ï¼Œå­˜å…¥é‡‘é¢ï¼Œå¸®ä¼šé‡‘åº“å·²æ»¡
 
-    GUILD_ERROR_ALREADY_MEMBER        = -13,    // ´ËÈËÒÑ¾­ÊÇ°ï»á³ÉÔ±
-    GUILD_ERROR_MEMBER_NOT_EXIST    = -14,    // ´ËÈË²»ÔÚ°ï»áÖÐ
+    GUILD_ERROR_ALREADY_MEMBER        = -13,    // æ­¤äººå·²ç»æ˜¯å¸®ä¼šæˆå‘˜
+    GUILD_ERROR_MEMBER_NOT_EXIST    = -14,    // æ­¤äººä¸åœ¨å¸®ä¼šä¸­
 
-    //ìøÈÃ
-    GUILD_ERROR_NO_ASS_CHIEF        = -15,    // Ã»ÓÐ¸±°ïÖ÷
-    GUILD_ERROR_GUILD_ALREADY_EXIST = -16,    //    °ï»áÒÑ´æÔÚ
+    //ç¦…è®©
+    GUILD_ERROR_NO_ASS_CHIEF        = -15,    // æ²¡æœ‰å‰¯å¸®ä¸»
+    GUILD_ERROR_GUILD_ALREADY_EXIST = -16,    //    å¸®ä¼šå·²å­˜åœ¨
 
-    //Õâ¸öÖ°Î»ÈËÊýÒÑÂú£¬²»ÄÜÈÎÃü
-    GUILD_ERROR_POS_FULL            = -17,    //Õâ¸öÖ°Î»ÈËÊýÒÑÂú£¬²»ÄÜÈÎÃü
+    //è¿™ä¸ªèŒä½äººæ•°å·²æ»¡ï¼Œä¸èƒ½ä»»å‘½
+    GUILD_ERROR_POS_FULL            = -17,    //è¿™ä¸ªèŒä½äººæ•°å·²æ»¡ï¼Œä¸èƒ½ä»»å‘½
 
-    GUILD_ERROR_ALREADY_IN_PROPOSER_LIST = -18,        //ÉêÇëÈËÒÑ¾­ÔÚÉêÇëÁÐ±íÖÐÁË
+    GUILD_ERROR_ALREADY_IN_PROPOSER_LIST = -18,        //ç”³è¯·äººå·²ç»åœ¨ç”³è¯·åˆ—è¡¨ä¸­äº†
 
-    GUILD_ERROR_INVALID_CAMP            = -19,        //ÉêÇëÈËµÄÕóÓª·Ç·¨
+    GUILD_ERROR_INVALID_CAMP            = -19,        //ç”³è¯·äººçš„é˜µè¥éžæ³•
 
 
 
-    // ½âÉ¢²¿·Ö
+    // è§£æ•£éƒ¨åˆ†
 
-    GUILD_ERROR                        = -64,    // ²»Ã÷´íÎó
+    GUILD_ERROR                        = -64,    // ä¸æ˜Žé”™è¯¯
 };
 
 enum GUILD_PACKET_TYPE
 {
     GUILD_PACKET_INVALID            = -1,
-    GUILD_PACKET_CG_ASKLIST,                // Ñ¯ÎÊ°ï»áÁÐ±í(UCHAR)
-    GUILD_PACKET_CG_CREATE,                    // ´´½¨°ï»á
-    GUILD_PACKET_CG_JOIN,                    // ¼ÓÈë°ï»á
-    GUILD_PACKET_CG_ASKINFO,                // Ñ¯ÎÊ°ï»áÐÅÏ¢
-    GUILD_PACKET_CG_APPOINT,                // °ï»áÈÎÃâ
-    GUILD_PACKET_CG_ADJUSTAUTHORITY,        // µ÷Õû°ï»áÈ¨ÏÞ
-    GUILD_PACKET_CG_RECRUIT,                // °ï»áÊÕÈË
-    GUILD_PACKET_CG_EXPEL,                    // °ï»áÌßÈË
-    GUILD_PACKET_CG_WITHDRAW,                // ÌáÈ¡°ï×Ê
-    GUILD_PACKET_CG_DEPOSIT,                // ´æÈë°ï×Ê
-    GUILD_PACKET_CG_LEAVE,                    // Àë¿ª°ï»á
-    GUILD_PACKET_CG_DISMISS,                // ½âÉ¢°ï»á
-    GUILD_PACKET_CG_DEMISE,                    // ½âÉ¢°ï»á
+    GUILD_PACKET_CG_ASKLIST,                // è¯¢é—®å¸®ä¼šåˆ—è¡¨(UCHAR)
+    GUILD_PACKET_CG_CREATE,                    // åˆ›å»ºå¸®ä¼š
+    GUILD_PACKET_CG_JOIN,                    // åŠ å…¥å¸®ä¼š
+    GUILD_PACKET_CG_ASKINFO,                // è¯¢é—®å¸®ä¼šä¿¡æ¯
+    GUILD_PACKET_CG_APPOINT,                // å¸®ä¼šä»»å…
+    GUILD_PACKET_CG_ADJUSTAUTHORITY,        // è°ƒæ•´å¸®ä¼šæƒé™
+    GUILD_PACKET_CG_RECRUIT,                // å¸®ä¼šæ”¶äºº
+    GUILD_PACKET_CG_EXPEL,                    // å¸®ä¼šè¸¢äºº
+    GUILD_PACKET_CG_WITHDRAW,                // æå–å¸®èµ„
+    GUILD_PACKET_CG_DEPOSIT,                // å­˜å…¥å¸®èµ„
+    GUILD_PACKET_CG_LEAVE,                    // ç¦»å¼€å¸®ä¼š
+    GUILD_PACKET_CG_DISMISS,                // è§£æ•£å¸®ä¼š
+    GUILD_PACKET_CG_DEMISE,                    // è§£æ•£å¸®ä¼š
 
-    GUILD_PACKET_CG_CHANGEDESC,                // ¸ü¸Ä°ï»á×ÚÖ¼
+    GUILD_PACKET_CG_CHANGEDESC,                // æ›´æ”¹å¸®ä¼šå®—æ—¨
 
-    GUILD_PACKET_CG_GW_SEPARATOR,            // ·Ö¸ô·û
+    GUILD_PACKET_CG_GW_SEPARATOR,            // åˆ†éš”ç¬¦
 
-    GUILD_PACKET_GW_ASKLIST,                // Ñ¯ÎÊ°ï»áÁÐ±í(GUID_t, UCHAR)
-    GUILD_PACKET_GW_CREATE,                    // ´´½¨°ï»á
-    GUILD_PACKET_GW_JOIN,                    // ¼ÓÈë°ï»á
-    GUILD_PACKET_GW_ASKINFO,                // Ñ¯ÎÊ°ï»áÐÅÏ¢
-    GUILD_PACKET_GW_APPOINT,                // °ï»áÈÎÃâ
-    GUILD_PACKET_GW_ADJUSTAUTHORITY,        // µ÷Õû°ï»áÈ¨ÏÞ
-    GUILD_PACKET_GW_RECRUIT,                // °ï»áÊÕÈË
-    GUILD_PACKET_GW_EXPEL,                    // °ï»áÌßÈË
-    GUILD_PACKET_GW_WITHDRAW,                // ÌáÈ¡°ï×Ê
-    GUILD_PACKET_GW_DEPOSIT,                // ´æÈë°ï×Ê
-    GUILD_PACKET_GW_LEAVE,                    // Àë¿ª°ï»á
-    GUILD_PACKET_GW_DISMISS,                // ½âÉ¢°ï»á
-    GUILD_PACKET_GW_DEMISE,                    // ìøÈÃ
-    GUILD_PACKET_GW_ASKMEMBERLIST,            // °ï»á³ÉÔ±ÐÅÏ¢ÁÐ±í
-    GUILD_PACKET_GW_CHANGEDESC,                // ¸ü¸Ä°ï»á×ÚÖ¼
+    GUILD_PACKET_GW_ASKLIST,                // è¯¢é—®å¸®ä¼šåˆ—è¡¨(GUID_t, UCHAR)
+    GUILD_PACKET_GW_CREATE,                    // åˆ›å»ºå¸®ä¼š
+    GUILD_PACKET_GW_JOIN,                    // åŠ å…¥å¸®ä¼š
+    GUILD_PACKET_GW_ASKINFO,                // è¯¢é—®å¸®ä¼šä¿¡æ¯
+    GUILD_PACKET_GW_APPOINT,                // å¸®ä¼šä»»å…
+    GUILD_PACKET_GW_ADJUSTAUTHORITY,        // è°ƒæ•´å¸®ä¼šæƒé™
+    GUILD_PACKET_GW_RECRUIT,                // å¸®ä¼šæ”¶äºº
+    GUILD_PACKET_GW_EXPEL,                    // å¸®ä¼šè¸¢äºº
+    GUILD_PACKET_GW_WITHDRAW,                // æå–å¸®èµ„
+    GUILD_PACKET_GW_DEPOSIT,                // å­˜å…¥å¸®èµ„
+    GUILD_PACKET_GW_LEAVE,                    // ç¦»å¼€å¸®ä¼š
+    GUILD_PACKET_GW_DISMISS,                // è§£æ•£å¸®ä¼š
+    GUILD_PACKET_GW_DEMISE,                    // ç¦…è®©
+    GUILD_PACKET_GW_ASKMEMBERLIST,            // å¸®ä¼šæˆå‘˜ä¿¡æ¯åˆ—è¡¨
+    GUILD_PACKET_GW_CHANGEDESC,                // æ›´æ”¹å¸®ä¼šå®—æ—¨
     
-    GUILD_PACKET_GW_WG_SEPARATOR,            // ·Ö¸ô·û
+    GUILD_PACKET_GW_WG_SEPARATOR,            // åˆ†éš”ç¬¦
 
-    GUILD_PACKET_WG_LIST,                    // °ï»áÁÐ±í
-    GUILD_PACKET_WG_MEMBER_LIST,            // °ïÖÚÁÐ±í
-    GUILD_PACKET_WG_GUILD_INFO,                // °ï»áÐÅÏ¢
-    GUILD_PACKET_WG_APPOINT_INFO,            // °ï»á¿ÉÈÎÃüÐÅÏ¢
-    GUILD_PACKET_WG_SELF_GUILD_INFO,        // ¸öÈË°ïÅÉÐÅÏ¢
+    GUILD_PACKET_WG_LIST,                    // å¸®ä¼šåˆ—è¡¨
+    GUILD_PACKET_WG_MEMBER_LIST,            // å¸®ä¼—åˆ—è¡¨
+    GUILD_PACKET_WG_GUILD_INFO,                // å¸®ä¼šä¿¡æ¯
+    GUILD_PACKET_WG_APPOINT_INFO,            // å¸®ä¼šå¯ä»»å‘½ä¿¡æ¯
+    GUILD_PACKET_WG_SELF_GUILD_INFO,        // ä¸ªäººå¸®æ´¾ä¿¡æ¯
 
-    GUILD_PACKET_WG_GC_SEPARATOR,            // ·Ö¸ô·û
+    GUILD_PACKET_WG_GC_SEPARATOR,            // åˆ†éš”ç¬¦
 
-    GUILD_PACKET_GC_LIST,                    // °ï»áÁÐ±í
-    GUILD_PACKET_GC_MEMBER_LIST,            // °ïÖÚÁÐ±í
-    GUILD_PACKET_GC_GUILD_INFO,                // °ï»áÐÅÏ¢
-    GUILD_PACKET_GC_APPOINT_INFO,            // °ï»á¿ÉÈÎÃüÐÅÏ¢
-    GUILD_PACKET_GC_SELF_GUILD_INFO,        // ¸öÈË°ïÅÉÐÅÏ¢
+    GUILD_PACKET_GC_LIST,                    // å¸®ä¼šåˆ—è¡¨
+    GUILD_PACKET_GC_MEMBER_LIST,            // å¸®ä¼—åˆ—è¡¨
+    GUILD_PACKET_GC_GUILD_INFO,                // å¸®ä¼šä¿¡æ¯
+    GUILD_PACKET_GC_APPOINT_INFO,            // å¸®ä¼šå¯ä»»å‘½ä¿¡æ¯
+    GUILD_PACKET_GC_SELF_GUILD_INFO,        // ä¸ªäººå¸®æ´¾ä¿¡æ¯
 };
 
 

@@ -14,7 +14,7 @@ from %s where charguid =%d and pos>=%d and pos<%d and isvalid =1";
 
 
 /*
- *    ½ÇÉ«»ù±¾ÐÅÏ¢
+ *    è§’è‰²åŸºæœ¬ä¿¡æ¯
  */
 CHAR*        LoadCharFullData    =
 "select \
@@ -37,7 +37,7 @@ pwdeltime=%d,dietime=%d,bankmoney=%d,bankend=%d,bkscene=%d,bkxpos=%d,bkzpos=%d,r
 where charguid = %d and isvalid = 1";
 
 /*
- *    ½ÇÉ«ÎïÆ·±í¼ÓÔØ
+ *    è§’è‰²ç‰©å“è¡¨åŠ è½½
  */
 
 CHAR*        LoadCharItemList    =
@@ -46,14 +46,14 @@ charguid,world,server,guid,itemtype,pos,fixattr,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p
 from %s where charguid = %d and isvalid = 1";
 
 /*
- *    ½ÇÉ«ÎïÆ·±íÉ¾³ý
+ *    è§’è‰²ç‰©å“è¡¨åˆ é™¤
  */
 CHAR*       DeleteCharItemList  =
 "delete from %s where charguid = %d";
 
 
 /*
- *    ½ÇÉ«¼¼ÄÜÁÐ±í
+ *    è§’è‰²æŠ€èƒ½åˆ—è¡¨
  */
 
 CHAR*       LoadCharSkillList    =    
@@ -62,7 +62,7 @@ skid,sktime \
 from %s where charguid = %d and dbversion=%d and isvalid = 1";
 
 /*
- *     É¾³ý½ÇÉ«¼¼ÄÜ
+ *     åˆ é™¤è§’è‰²æŠ€èƒ½
  */
 CHAR*       DeleteCharSkillList = 
 "delete \
@@ -70,7 +70,7 @@ from %s where charguid = %d and dbversion<=%d";
 
 
 /*
- *    ½ÇÉ«ÐÄ·¨ÁÐ±í
+ *    è§’è‰²å¿ƒæ³•åˆ—è¡¨
  */
 
 CHAR*    LoadCharXinFaList    =
@@ -79,13 +79,13 @@ charguid,xinfaid,xinfalvl \
 from %s where charguid = %d and dbversion=%d";
 
 /*
- *    É¾³ý½ÇÉ«ÐÄ·¨
+ *    åˆ é™¤è§’è‰²å¿ƒæ³•
  */
 CHAR*  DeleteCharXinFaList = 
 "delete from %s where charguid = %d and dbversion<=%d";
 
 /*
- *    Éú»î¼¼ÄÜÁÐ±í
+ *    ç”Ÿæ´»æŠ€èƒ½åˆ—è¡¨
  */
 
 CHAR*    LoadCharAbilityList = 
@@ -100,14 +100,14 @@ charguid,pres from %s where charguid = %d and dbversion=%d";
 
 
 /*
-*    É¾³ýÉú»î¼¼ÄÜÁÐ±í
+*    åˆ é™¤ç”Ÿæ´»æŠ€èƒ½åˆ—è¡¨
 */
 CHAR* DeleteCharAbilityList =
 "delete from %s where charguid = %d and dbversion<=%d";
 
 
 /*
- *    ÈÎÎñÁÐ±í
+ *    ä»»åŠ¡åˆ—è¡¨
  */
 CHAR*    LoadCharTaskList = 
 "select \
@@ -115,7 +115,7 @@ charguid,missionid,scriptid,flag,p1,p2,p3,p4,p5,p6,p7,p8 \
 from %s where charguid = %d and dbversion=%d";
 
 /*
-*    ¼ÓÔØÈÎÎñÊý¾Ý
+*    åŠ è½½ä»»åŠ¡æ•°æ®
 */
 CHAR*    LoadCharTaskDataAndFlag = 
 "select \
@@ -123,14 +123,14 @@ charguid,mdata,mflag \
 from %s where charguid = %d and dbversion=%d";
 
 /*
- *    ¼ÓÔØË½ÈËÐÅÏ¢
+ *    åŠ è½½ç§äººä¿¡æ¯
  */
 CHAR*    LoadCharPrivateInfo =
 "select \
 charguid,pinfo from %s where charguid=%d and dbversion=%d";
 
 /*
-*    ¼ÓÔØ³ÆºÅÐÅÏ¢
+*    åŠ è½½ç§°å·ä¿¡æ¯
 */
 CHAR*    LoadCharTitleInfo =
 "select \
@@ -138,7 +138,7 @@ charguid,titleinfo from %s where charguid=%d and dbversion=%d";
 
 
 /*
-*    ¼ÓÔØÀäÈ´ÐÅÏ¢
+*    åŠ è½½å†·å´ä¿¡æ¯
 */
 CHAR*    LoadCharCoolDownInfo =
 "select \
@@ -146,13 +146,13 @@ charguid,cooldown from %s where charguid=%d and dbversion=%d";
 
 
 /*
- *    É¾³ýÈÎÎñÁÐ±í
+ *    åˆ é™¤ä»»åŠ¡åˆ—è¡¨
  */
 CHAR* DeleteCharTaskList =
 "delete from %s where charguid = %d and dbversion<=%d";
 
 /*
- *    ¹ØÏµÁÐ±í
+ *    å…³ç³»åˆ—è¡¨
  */
 
 CHAR*    LoadCharRelationList    =    
@@ -165,27 +165,27 @@ CHAR*   LoadCharRelationData  =
 charguid,relflag from %s where charguid = %d and isvalid =1 and dbversion=%d";
 
 /*
- *    ¹ØÏµÁÐ±íÉ¾³ý
+ *    å…³ç³»åˆ—è¡¨åˆ é™¤
  */
 
 CHAR* DeleteCharRelationList = 
 "delete from %s where charguid = %d and dbversion<=%d";
 
 /*
- *    ¸üÐÂ½ÇÉ«¹ØÏµ±í
+ *    æ›´æ–°è§’è‰²å…³ç³»è¡¨
  */
 CHAR* UpdateCharRelationData    =
 "update %s set relflag = \'%s\' where charguid = %d and isvalid =1 and dbversion=%d";
 
 
 /*
- *    ¸üÐÂÅä·½±í
+ *    æ›´æ–°é…æ–¹è¡¨
  */
 CHAR* UpdateCharPresList    =
 "update %s set pres = \'%s\' where charguid = %d and  isvalid = 1 and dbversion = %d";
 
 /*
- *    ImpactÁÐ±í
+ *    Impactåˆ—è¡¨
  */
 
 CHAR*  LoadCharImpactList    =
@@ -193,14 +193,14 @@ CHAR*  LoadCharImpactList    =
 charguid,imdata \
 from %s where charguid = %d and dbversion = %d";
 /*
- *    ImpactÁÐ±íÉ¾³ý
+ *    Impactåˆ—è¡¨åˆ é™¤
  */
 CHAR* DeleteCharImpactList =
 "delete from %s where charguid = %d and dbversion<=%d";
 
 
 /*
- *    ³èÎïÁÐ±í
+ *    å® ç‰©åˆ—è¡¨
  */
 
 CHAR*    LoadCharPetList    =
@@ -210,7 +210,7 @@ life,pettype,genera,enjoy,strper,conper,dexper,sprper,iprper,gengu,growrate,\
 repoint,exp,str,con,dex,spr,ipr,skill \
 from %s where charguid =%d and dbversion=%d";
 /*
- *    ³èÎïÁÐ±íÉ¾³ý
+ *    å® ç‰©åˆ—è¡¨åˆ é™¤
  */
 
 CHAR*  DeleteCharPetList =
@@ -219,7 +219,7 @@ from %s where charguid = %d and dbversion<=%d";
 
 
 /*
- *    ´´½¨ÐÂ½ÇÉ«
+ *    åˆ›å»ºæ–°è§’è‰²
  */
 CHAR* CreateNewChar    =
 "insert into %s(accname,charguid,charname,title,pw,sex,level,enegry,outlook,scene,xpos,zpos,menpai,\
@@ -234,7 +234,7 @@ pinfo,bkscene,bkxpos,bkzpos,titleinfo,dietime,bankmoney,bankend,cooldown) \
 \'%s\',%d,%d,%d,\'%s\',%d,%d,%d,\'%s\')";
 
 /*
- *    »ñÈ¡ÐÂguid
+ *    èŽ·å–æ–°guid
  */
 CHAR*    FetchNewGuid = "call fetch_guid()";
 /*
@@ -245,14 +245,14 @@ set nocount off \r\n\
 select @guid B";
 */
 /*
- *    É¾³ý½ÇÉ«
+ *    åˆ é™¤è§’è‰²
  */
 CHAR*    DeleteBaseChar =
 "update %s set isvalid = 0,charname = charname+'@DELETE_'+CAST(%d AS CHAR) \
 where accname= \'%s\' and charguid = %d";
 
  /*
-  *    ´´½¨ÎïÆ·
+  *    åˆ›å»ºç‰©å“
   */
 CHAR* NewCharItem    =
 "save_iteminfo @pcharguid=%d,@pguid=%d,@pworld=%d,@pserver=%d,@pitemtype=%u,@ppos=%d,@pfixattr=\'%s\',\
@@ -265,7 +265,7 @@ CHAR* NewCharItem    =
 // values(%d,%d,%d,%d,%d,%d,\'%s\',%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d)\n";
 
 /*
- *    ´´½¨¼¼ÄÜ
+ *    åˆ›å»ºæŠ€èƒ½
  */
 CHAR*    NewCharSkill =
 "insert into %s(charguid,skid,sktime,dbversion,isvalid) \
@@ -273,7 +273,7 @@ CHAR*    NewCharSkill =
 
 
 /*
-*    ´´½¨ÐÄ·¨
+*    åˆ›å»ºå¿ƒæ³•
 */
 CHAR*    NewCharXinFa =
 "insert into %s(charguid,xinfaid,xinfalvl,dbversion) \
@@ -281,21 +281,21 @@ values(%d,%d,%d,%d)";
 
 
 /*
-*    ´´½¨Éú»î¼¼ÄÜ
+*    åˆ›å»ºç”Ÿæ´»æŠ€èƒ½
 */
 CHAR*    NewCharAbility =
 "insert into %s(charguid,abid,ablvl,abexp,dbversion) \
 values(%d,%d,%d,%d,%d)";
 
 /*
-*    ´´½¨ÈÎÎñ
+*    åˆ›å»ºä»»åŠ¡
 */
 CHAR*    NewCharTask =
 "insert into %s(charguid,missionid,scriptid,flag,p1,p2,p3,p4,p5,p6,p7,p8,dbversion) \
 values(%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d)";
 
 /*
- *    ¸üÐÂÈÎÎñÊý¾Ý
+ *    æ›´æ–°ä»»åŠ¡æ•°æ®
  */
 CHAR*    UpdateCharTaskData =
 "update \
@@ -307,14 +307,14 @@ CHAR*    UpdateCharTaskFlag =
 %s set mflag=\'%s\' \
 where charguid = %d and isvalid = 1 and dbversion=%d";
 /*
- *    ¸üÐÂË½ÈËÐÅÏ¢
+ *    æ›´æ–°ç§äººä¿¡æ¯
  */
 CHAR*    UpdateCharPrivateInfo = 
 "update \
 %s set pinfo=\'%s\' where charguid=%d and isvalid=1 and dbversion=%d";
 
 /*
-*    ¸üÐÂ³ÆºÅÐÅÏ¢
+*    æ›´æ–°ç§°å·ä¿¡æ¯
 */
 CHAR*    UpdateCharTitleInfo = 
 "update \
@@ -323,7 +323,7 @@ where charguid=%d and isvalid=1 and dbversion=%d";
 
 
 /*
-*    ¸üÐÂÀäÈ´ÐÅÏ¢
+*    æ›´æ–°å†·å´ä¿¡æ¯
 */
 CHAR*    UpdateCharCoolDownInfo = 
 "update \
@@ -332,7 +332,7 @@ where charguid=%d and isvalid=1 and dbversion=%d";
 
 
 /*
- *    ´´½¨¹ØÏµÐÅÏ¢
+ *    åˆ›å»ºå…³ç³»ä¿¡æ¯
  */
 
 CHAR*    NewCharRelation     =
@@ -340,14 +340,14 @@ CHAR*    NewCharRelation     =
 values(%d,%d,\'%s\',%d,%d,%d,\'%s\',%d)";
 
 /*
- *    ´´½¨ImpactÐÅÏ¢
+ *    åˆ›å»ºImpactä¿¡æ¯
  */
 CHAR*    NewCharImpact    =
 "insert into %s(charguid,imdata,dbversion) \
 values(%d,\'%s\',%d)";
 
 /*
- *    ´´½¨³èÎïÐÅÏ¢
+ *    åˆ›å»ºå® ç‰©ä¿¡æ¯
  */
 CHAR* NewCharPet        =
 "insert into %s(charguid ,hpetguid,lpetguid,dataid,petname,petnick,level,needlevel,atttype,aitype,camp,hp,mp,\
@@ -358,39 +358,39 @@ values(%d,%d,%d,%d,\'%s\',\'%s\',%d,%d,%d,%d,\'%s\',%d,%d,\
 %d,%d,%d,%d,%d,%d,%d,\'%s\',%d)";
 
 /*
- *    ÔØÈë·þÎñÆ÷ÎïÆ·ÐòÁÐºÅ 
+ *    è½½å…¥æœåŠ¡å™¨ç‰©å“åºåˆ—å· 
  */
 
 CHAR* LoadServerItemSerial =
 "select sid,serial from %s where sid = %u";
 
 /*
- *    ¸üÐÂ·þÎñÆ÷ÎïÆ·ÐòÁÐºÅ
+ *    æ›´æ–°æœåŠ¡å™¨ç‰©å“åºåˆ—å·
  */
 
 CHAR* UpdateServerItemSerial = 
 "update %s set serial = %u where sid = %u";
 
 /*
- *    ÔØÈëÊÀ½çEmailÐÅÏ¢
+ *    è½½å…¥ä¸–ç•ŒEmailä¿¡æ¯
  */
 CHAR* LoadWorldMailInfo    =
 "select pindex, sender,recer,mailinfo,mailcont from %s";
 
 /*
-*    ÐÂ½¨ÊÀ½çEmailÐÅÏ¢
+*    æ–°å»ºä¸–ç•ŒEmailä¿¡æ¯
 */
 CHAR*    SaveWorldMailInfo    =
 "save_mailinfo @p1=\'%s\',@p2=\'%s\',@p3=\'%s\',@p4=\'%s\',@p5=%d,@p6=%d";
 
 /*
-*    É¾³ýÊÀ½çEmailÐÅÏ¢
+*    åˆ é™¤ä¸–ç•ŒEmailä¿¡æ¯
 */
 CHAR*    DeleteWorldMailInfo    =
 "update t_mail set isvalid = 0 where pindex=%d";
 
 /*
-*    ÔØÈëÊÀ½ç¹¤»áÐÅÏ¢
+*    è½½å…¥ä¸–ç•Œå·¥ä¼šä¿¡æ¯
 */
 CHAR*    LoadWorldGuildInfo    =
 "select  guildid,guildname,guildstat,chiefguid,pcount,ucount,mucount,gpoint,guildmoney,cityid,\
@@ -399,7 +399,7 @@ chiefname,cname,glvl,guilduser \
 from %s where isvalid=1";
 
 /*
-*    ÐÂ½¨ÊÀ½ç¹¤»áÐÅÏ¢
+*    æ–°å»ºä¸–ç•Œå·¥ä¼šä¿¡æ¯
 */
 CHAR*    SaveWorldGuildInfo    =
 "save_guildinfo @pguildid=%d,@pguildname=\'%s\',@pguildstat=%d,@pchiefguid=%d,@ppcount=%d,\
@@ -408,13 +408,13 @@ CHAR*    SaveWorldGuildInfo    =
 @padmin=\'%s\',@pguilddesc=\'%s\',@pchiefname=\'%s\',@pcname=\'%s\',@pglvl=%d,@pguilduser=\'%s\',@pisvalid=%d";
 
 /*
-*    É¾³ýÊÀ½ç¹¤»áÐÅÏ¢
+*    åˆ é™¤ä¸–ç•Œå·¥ä¼šä¿¡æ¯
 */
 CHAR*    DeleteWorldGuildInfo    =
 "update t_guild set isvalid = 0 where pindex=%d";
 
 /*
-*    ¼ÓÔØ³åÖµÐÅÏ¢
+*    åŠ è½½å†²å€¼ä¿¡æ¯
 */
 CHAR*    LoadWebShopInfo = 
 "select top 1 \
@@ -422,7 +422,7 @@ Id,Money,Item_1,ItemCount_1,Item_2,ItemCount_2,Item_3,ItemCount_3,Item_4,ItemCou
 Item_5,ItemCount_5 from %s where UserId=%d and IsSucceed=%d order by CreateTime";
 
 /*
-*    ±£´æ³åÖµÐÅÏ¢
+*    ä¿å­˜å†²å€¼ä¿¡æ¯
 */
 CHAR*    SaveWebShopInfo = 
 "update %s set IsSucceed=%d where Id=%d";

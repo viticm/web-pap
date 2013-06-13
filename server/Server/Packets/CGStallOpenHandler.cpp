@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÇëÇó´ò¿ª½çÃæÌ¯Î»
+å®¢æˆ·ç«¯è¯·æ±‚æ‰“å¼€ç•Œé¢æ‘Šä½
 */
 
 #include "CGStallOpen.h"
@@ -31,16 +31,16 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     ObjID_t ObjId = pPacket->GetObjID();
 
-    //ÁÙÊ±Êý×é
+    //ä¸´æ—¶æ•°ç»„
     GCStallOpen::_STALL_ITEM    StallItem[STALL_BOX_SIZE+STALL_PET_BOX_SIZE];
 
     if(ObjId == pHuman->GetID())
-    {//×Ô¼º´ò¿ª×Ô¼º£¬¿Ï¶¨´ò¿ª
-        //Ì¯Ö÷container
+    {//è‡ªå·±æ‰“å¼€è‡ªå·±ï¼Œè‚¯å®šæ‰“å¼€
+        //æ‘Šä¸»container
         if(pHuman->m_StallBox.GetStallStatus() != ServerStallBox::STALL_OPEN)
         {
             GCStallError    Msg;
@@ -54,12 +54,12 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
         ItemContainer*    pStallContainer        = pHuman->m_StallBox.GetContainer(); 
         ItemContainer*    pStallPetContainer    = pHuman->m_StallBox.GetPetContainer(); 
         
-        //Ñ­»·Ð´Èë
+        //å¾ªçŽ¯å†™å…¥
         UINT    k = 0;    
         for(INT i = 0; i<pStallContainer->GetContainerSize(); i++)
         {
             if( pHuman->m_StallBox.GetSerialByIndex(i) != 0 )
-            {//Õâ¸ö¸ñ×ÓÀïµÄ¶«Î÷¸ü¸Ä¹ý£¬ÐèÒªÍ¨Öª¿Í»§¶ËËüµÄÐòÁÐºÅ
+            {//è¿™ä¸ªæ ¼å­é‡Œçš„ä¸œè¥¿æ›´æ”¹è¿‡ï¼Œéœ€è¦é€šçŸ¥å®¢æˆ·ç«¯å®ƒçš„åºåˆ—å·
                 StallItem[k].nIndex        = i;
                 StallItem[k].nPrice        = pHuman->m_StallBox.GetPriceByIndex(i);
                 StallItem[k].nSerial    = pHuman->m_StallBox.GetSerialByIndex(i);
@@ -74,7 +74,7 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
         for(INT i = 0; i<pStallPetContainer->GetContainerSize(); i++)
         {
             if( pHuman->m_StallBox.GetPetSerialByIndex(i) != 0 )
-            {//ÓÐ¶«Î÷
+            {//æœ‰ä¸œè¥¿
                 StallItem[k].bIsPet        =    TRUE;
                 StallItem[k].nIndex        =    i;
                 StallItem[k].nPrice        =    pHuman->m_StallBox.GetPetPriceByIndex(i);
@@ -89,7 +89,7 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
 
         pHuman->StallNameChanged();
 
-        //ÏûÏ¢Ìî³ä
+        //æ¶ˆæ¯å¡«å……
         GCStallOpen Msg;
         Msg.SetFirstPage( pHuman->m_StallBox.GetFirstPage());
         Msg.SetMerchadiseNum(k);
@@ -98,13 +98,13 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
         Msg.SetObjID(ObjId);
         Msg.SetGUID(pHuman->GetGUID());
 
-        //·¢»¹±¾ÈËQ
+        //å‘è¿˜æœ¬äººQ
         pGamePlayer->SendPacket(&Msg);
 
     }
     else
-    {//±ðÈË
-        //ÅÐ¶Ï¾àÀëÊÇ·ñ¿ÉÒÔ´ò¿ª
+    {//åˆ«äºº
+        //åˆ¤æ–­è·ç¦»æ˜¯å¦å¯ä»¥æ‰“å¼€
         Obj_Character *pTarget = (Obj_Character*)(pScene->GetObjManager()->GetObj( ObjId ));
         if(pTarget->GetObjType() != Obj::OBJ_TYPE_HUMAN)
         {
@@ -122,7 +122,7 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
                 ,pHuman->GetName(), ObjId) ;
             return PACKET_EXE_CONTINUE;
         }
-        // ²»Í¬ÕóÓª£¬²»ÈÃ²é¿´
+        // ä¸åŒé˜µè¥ï¼Œä¸è®©æŸ¥çœ‹
         if( pHuman->IsEnemy( pTargetHuman ) )
         {
             g_pLog->FastSaveLog( LOG_FILE_1, "CGStallOpenHandler: %s cann't ask %s's detailattr ", pHuman->GetName(), pTargetHuman->GetName() ) ;
@@ -139,15 +139,15 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //Ì¯Ö÷container
+        //æ‘Šä¸»container
         ItemContainer*    pStallContainer = pTargetHuman->m_StallBox.GetContainer(); 
 
-        //Ñ­»·Ð´Èë
+        //å¾ªçŽ¯å†™å…¥
         UINT    k = 0;    
         for(INT i = 0; i<pStallContainer->GetContainerSize(); i++)
         {
             if( pStallContainer->GetItem(i)->IsEmpty() == FALSE )
-            {//ÓÐ¶«Î÷
+            {//æœ‰ä¸œè¥¿
                 StallItem[k].nIndex        = i;
                 StallItem[k].nPrice        = pTargetHuman->m_StallBox.GetPriceByIndex(i);
                 StallItem[k].nSerial    = pTargetHuman->m_StallBox.GetSerialByIndex(i);
@@ -156,7 +156,7 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
             }
         }
 
-        //ÏûÏ¢Ìî³ä
+        //æ¶ˆæ¯å¡«å……
         GCStallOpen Msg;
         Msg.SetFirstPage( pTargetHuman->m_StallBox.GetFirstPage());
         Msg.SetMerchadiseNum(k);
@@ -165,24 +165,24 @@ UINT CGStallOpenHandler::Execute( CGStallOpen* pPacket, Player* pPlayer )
         Msg.SetObjID(ObjId);
         Msg.SetGUID(pTargetHuman->GetGUID());
 
-        //·¢»¹±¾ÈË
+        //å‘è¿˜æœ¬äºº
         pGamePlayer->SendPacket(&Msg);
 
-        //³èÎïÁÐ±í
+        //å® ç‰©åˆ—è¡¨
         ItemContainer*    pStallPetContainer = pTargetHuman->m_StallBox.GetPetContainer(); 
 
-        //Ñ­»·Ð´Èë
+        //å¾ªçŽ¯å†™å…¥
         for(INT i = 0; i<pStallPetContainer->GetContainerSize(); i++)
         {
             if( pStallPetContainer->GetItem(i)->IsEmpty() == FALSE )
-            {//ÓÐ¶«Î÷
+            {//æœ‰ä¸œè¥¿
                 INT    nPrice    = pTargetHuman->m_StallBox.GetPetPriceByIndex(i);
                 INT    nSerial    = pTargetHuman->m_StallBox.GetPetSerialByIndex(i);
 
                 Item* pIt = pStallPetContainer->GetItem(i);
                 GCDetailAttrib_Pet PetMsgDetail;
 
-                //×é×°GCDetailAttrib_Pet½á¹¹
+                //ç»„è£…GCDetailAttrib_Petç»“æž„
                 Obj_Human::CalculatePetDetailAttrib(PetMsgDetail, pIt);
                 PetMsgDetail.SetTradeIndex( i );
                 

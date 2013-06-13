@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºStdImpact012.h
-// ¹¦ÄÜËµÃ÷£ºĞ§¹û--State: refix all attack, Defence and MaxHP, MaxMP, MaxRage, MaxStrikePoint
+// æ–‡ä»¶åï¼šStdImpact012.h
+// åŠŸèƒ½è¯´æ˜ï¼šæ•ˆæœ--State: refix all attack, Defence and MaxHP, MaxMP, MaxRage, MaxStrikePoint
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //

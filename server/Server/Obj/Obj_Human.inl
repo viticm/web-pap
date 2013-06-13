@@ -58,7 +58,7 @@ VOID                    Obj_Human::SetMenPai( INT Menpai )
     m_DB.SetMenPai( Menpai );
 }
 
-// GM×¨ÓÃ
+// GMä¸“ç”¨
 VOID                    Obj_Human::SetGod( BYTE bGod )
 {
     m_bGod = bGod;
@@ -80,7 +80,7 @@ BOOL                    Obj_Human::IsHaveChangeSceneFlag(VOID) const
     return (BOOL)m_bChangeSceneFlag;
 }
 
-// Éú»î¼¼ÄÜÏà¹ØµÄº¯Êı
+// ç”Ÿæ´»æŠ€èƒ½ç›¸å…³çš„å‡½æ•°
 const _ABILITY_LIST*    Obj_Human::GetAbilityList( ) const
 {
     return m_DB.GetAbilityDB();
@@ -455,7 +455,7 @@ VOID                    Obj_Human::SetTransSceneID( SceneID_t id )
 //    return GetConstMissionList()->m_aMissionHaveDoneFlags;
 //}
 
-// ÉèÖÃÊÇ·ñÒÑ¾­×ö¹ıÁËÄ³¸öÈÎÎñ
+// è®¾ç½®æ˜¯å¦å·²ç»åšè¿‡äº†æŸä¸ªä»»åŠ¡
 VOID Obj_Human::SetMissionHaveDone( MissionID_t idMission, BOOL bHaveDone )
 {
 __ENTER_FUNCTION
@@ -484,12 +484,12 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ÊÇ·ñÒÑ¾­×ö¹ıÁËÄ³¸öÈÎÎñ
+// æ˜¯å¦å·²ç»åšè¿‡äº†æŸä¸ªä»»åŠ¡
 /*
-ÈÎÎñºÅ×ª»»³É¶ş½øÖÆ£¬Èç450->111 00010
-           Ç°ÃæµÄ111´ú±íÈÎÎñÀàĞÍ£¬¾ÍÊÇ7ºÅÀàĞÍ£¬¹²0£­127¸öÀàĞÍ
-           ºóÃæµÄ00010´ú±íÎ»ÒÆ£¬ÊÇ·ñÍê³ÉÕâ¸öÈÎÎñ¾Í¿¿Õâ¸ö±ê¼Ç
-           ËùÒÔËµ£¬Ò»¹²¿ÉÒÔ±ê¼Ç128*32£½4096¸öÈÎÎñ
+ä»»åŠ¡å·è½¬æ¢æˆäºŒè¿›åˆ¶ï¼Œå¦‚450->111 00010
+           å‰é¢çš„111ä»£è¡¨ä»»åŠ¡ç±»å‹ï¼Œå°±æ˜¯7å·ç±»å‹ï¼Œå…±0ï¼127ä¸ªç±»å‹
+           åé¢çš„00010ä»£è¡¨ä½ç§»ï¼Œæ˜¯å¦å®Œæˆè¿™ä¸ªä»»åŠ¡å°±é è¿™ä¸ªæ ‡è®°
+           æ‰€ä»¥è¯´ï¼Œä¸€å…±å¯ä»¥æ ‡è®°128*32ï¼4096ä¸ªä»»åŠ¡
 */
 BOOL Obj_Human::IsMissionHaveDone( MissionID_t idMission )const
 {
@@ -504,13 +504,13 @@ __LEAVE_FUNCTION
     return FALSE ;
 }
 
-// ¼ì²âÊÇ·ñÒÑ¾­ÓĞÁËÕâ¸öÈÎÎñ
+// æ£€æµ‹æ˜¯å¦å·²ç»æœ‰äº†è¿™ä¸ªä»»åŠ¡
 BOOL Obj_Human::IsHaveMission( MissionID_t idMission )const
 {
     return (GetMissionIndexByID( idMission ) != UINT_MAX);
 }
 
-// ÉèÖÃÈÎÎñ²ÎÊı
+// è®¾ç½®ä»»åŠ¡å‚æ•°
 VOID Obj_Human::SetMissionParam( UINT uIndexMission, UINT uIndexParam, INT nValue )
 {
 __ENTER_FUNCTION
@@ -523,7 +523,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// È¡ÈÎÎñ²ÎÊı
+// å–ä»»åŠ¡å‚æ•°
 INT Obj_Human::GetMissionParam( UINT uIndexMission, UINT uIndexParam )const
 {
 __ENTER_FUNCTION
@@ -563,24 +563,24 @@ const _OWN_MISSION *Obj_Human::GetMission( UINT uIndex )const
 //    }
 //}
 
-INT Obj_Human::GetMissionData( INT nIndex )//¶ÁÈ¡¸½¼ÓÈÎÎñÊı¾İ
+INT Obj_Human::GetMissionData( INT nIndex )//è¯»å–é™„åŠ ä»»åŠ¡æ•°æ®
 {
 __ENTER_FUNCTION
     if( nIndex<0 || nIndex>=MAX_CHAR_MISSION_DATA_NUM )
     {
-        AssertEx( FALSE, "ÏÂ±ê³¬³ö·¶Î§" ) ;
+        AssertEx( FALSE, "ä¸‹æ ‡è¶…å‡ºèŒƒå›´" ) ;
         return 0 ;
     }
     return GetMissionList()->m_aMissionData[nIndex] ;
 __LEAVE_FUNCTION
     return 0 ;
 }
-VOID Obj_Human::SetMissionData( INT nIndex, INT nData )//ÉèÖÃµ±Ç°¸½¼ÓÈÎÎñÊı¾İ
+VOID Obj_Human::SetMissionData( INT nIndex, INT nData )//è®¾ç½®å½“å‰é™„åŠ ä»»åŠ¡æ•°æ®
 {
 __ENTER_FUNCTION
     if( nIndex<0 || nIndex>=MAX_CHAR_MISSION_DATA_NUM )
     {
-        AssertEx( FALSE, "ÏÂ±ê³¬³ö·¶Î§" ) ;
+        AssertEx( FALSE, "ä¸‹æ ‡è¶…å‡ºèŒƒå›´" ) ;
     }
     m_DB.SetMissionData(nIndex,nData);
     OnMissionParamChanged(nIndex,nData,1);
@@ -591,7 +591,7 @@ INT Obj_Human::GetMissionTotalTimes( INT nIndex )
 __ENTER_FUNCTION
     if( nIndex<0 || nIndex>=MAX_CHAR_MISSION_DATA_NUM )
     {
-        AssertEx( FALSE, "ÏÂ±ê³¬³ö·¶Î§" ) ;
+        AssertEx( FALSE, "ä¸‹æ ‡è¶…å‡ºèŒƒå›´" ) ;
         return 0 ;
     }
     return GetMissionList()->m_aMissionData[nIndex] / 100000;
@@ -604,7 +604,7 @@ INT Obj_Human::GetMissionTotalDayTimes( INT nIndex )
 __ENTER_FUNCTION
     if( nIndex<0 || (nIndex+1)>=MAX_CHAR_MISSION_DATA_NUM )
     {
-        AssertEx( FALSE, "ÏÂ±ê³¬³ö·¶Î§" ) ;
+        AssertEx( FALSE, "ä¸‹æ ‡è¶…å‡ºèŒƒå›´" ) ;
         return 0 ;
     }
     return GetMissionList()->m_aMissionData[nIndex+1] / 10000000;
@@ -617,7 +617,7 @@ INT Obj_Human::GetMissionLastTime( INT nIndex )
 __ENTER_FUNCTION
     if( nIndex<0 || (nIndex+1)>=MAX_CHAR_MISSION_DATA_NUM )
     {
-        AssertEx( FALSE, "ÏÂ±ê³¬³ö·¶Î§" ) ;
+        AssertEx( FALSE, "ä¸‹æ ‡è¶…å‡ºèŒƒå›´" ) ;
         return 0 ;
     }
     return GetMissionList()->m_aMissionData[nIndex+1] % 10000;
@@ -629,7 +629,7 @@ INT Obj_Human::GetMissionLastDay( INT nIndex )
 __ENTER_FUNCTION
     if( nIndex<0 || (nIndex)>=MAX_CHAR_MISSION_DATA_NUM )
     {
-        AssertEx( FALSE, "ÏÂ±ê³¬³ö·¶Î§" ) ;
+        AssertEx( FALSE, "ä¸‹æ ‡è¶…å‡ºèŒƒå›´" ) ;
         return 0 ;
     }
     return GetMissionList()->m_aMissionData[nIndex] % 100000;
@@ -642,7 +642,7 @@ INT Obj_Human::GetMissionTotalHuan( INT nIndex )
 __ENTER_FUNCTION
     if( nIndex<0 || (nIndex+1)>=MAX_CHAR_MISSION_DATA_NUM )
     {
-        AssertEx( FALSE, "ÏÂ±ê³¬³ö·¶Î§" ) ;
+        AssertEx( FALSE, "ä¸‹æ ‡è¶…å‡ºèŒƒå›´" ) ;
         return 0 ;
     }
     return ( GetMissionList()->m_aMissionData[nIndex+1] / 10000 ) % 1000;

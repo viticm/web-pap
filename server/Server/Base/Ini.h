@@ -1,6 +1,6 @@
 
 //********************************************
-//    Ini Ïà¹Øº¯Êý
+//    Ini ç›¸å…³å‡½æ•°
 //********************************************
 
 #ifndef __INI_H__
@@ -13,84 +13,84 @@
 #define ERROR_DATA -99999999
 #define MAX_INI_VALUE 1024
 
-//ÅäÖÃÎÄ¼þÀà
+//é…ç½®æ–‡ä»¶ç±»
 class Ini
 {
 ////////////////////////////////////////////////
-// ÄÚ²¿Êý¾Ý
+// å†…éƒ¨æ•°æ®
 ////////////////////////////////////////////////
 private:
-    CHAR            m_strFileName[_MAX_PATH];    //ÎÄ¼þÃû
-    long            m_lDataLen;                    //ÎÄ¼þ³¤¶È
-    CHAR*            m_strData;                    //ÎÄ¼þÄÚÈÝ
+    CHAR            m_strFileName[_MAX_PATH];    //æ–‡ä»¶å
+    long            m_lDataLen;                    //æ–‡ä»¶é•¿åº¦
+    CHAR*            m_strData;                    //æ–‡ä»¶å†…å®¹
 
-    INT                IndexNum;                    //Ë÷ÒýÊýÄ¿£¨[]µÄÊýÄ¿£©
-    INT*            IndexList;                    //Ë÷ÒýµãÎ»ÖÃÁÐ±í
-    INT                Point;                        //µ±Ç°Ö¸Õë
-    INT                Line, Word;                    //µ±Ç°ÐÐÁÐ
+    INT                IndexNum;                    //ç´¢å¼•æ•°ç›®ï¼ˆ[]çš„æ•°ç›®ï¼‰
+    INT*            IndexList;                    //ç´¢å¼•ç‚¹ä½ç½®åˆ—è¡¨
+    INT                Point;                        //å½“å‰æŒ‡é’ˆ
+    INT                Line, Word;                    //å½“å‰è¡Œåˆ—
 
     CHAR            m_szValue[MAX_INI_VALUE] ;
     CHAR            m_szRet[MAX_INI_VALUE];
 
 ////////////////////////////////////////////////
-// Í¨ÓÃ½Ó¿Ú
+// é€šç”¨æŽ¥å£
 ////////////////////////////////////////////////
 public:
     Ini();
-    Ini(const CHAR* filename);                                //³õÊ¼»¯´ò¿ªÅäÖÃÎÄ¼þ
-    virtual ~Ini();                                    //ÊÍ·ÅÄÚ´æ
-    CHAR            *GetData();                            //·µ»ØÎÄ¼þÄÚÈÝ
-    INT                GetLines(INT);                        //·µ»ØÎÄ¼þµÄÐÐÊý
-    INT                GetLines();                        //·µ»ØÎÄ¼þµÄÐÐÊý
+    Ini(const CHAR* filename);                                //åˆå§‹åŒ–æ‰“å¼€é…ç½®æ–‡ä»¶
+    virtual ~Ini();                                    //é‡Šæ”¾å†…å­˜
+    CHAR            *GetData();                            //è¿”å›žæ–‡ä»¶å†…å®¹
+    INT                GetLines(INT);                        //è¿”å›žæ–‡ä»¶çš„è¡Œæ•°
+    INT                GetLines();                        //è¿”å›žæ–‡ä»¶çš„è¡Œæ•°
 
-    BOOL            Open(const CHAR* filename);                //´ò¿ªÅäÖÃÎÄ¼þ
-    VOID            Close();                            //¹Ø±ÕÅäÖÃÎÄ¼þ
-    BOOL            Save(CHAR *filename=NULL);            //±£´æÅäÖÃÎÄ¼þ
-    INT                FindIndex(CHAR *);                    //·µ»Ø±êÌâÎ»ÖÃ
+    BOOL            Open(const CHAR* filename);                //æ‰“å¼€é…ç½®æ–‡ä»¶
+    VOID            Close();                            //å…³é—­é…ç½®æ–‡ä»¶
+    BOOL            Save(CHAR *filename=NULL);            //ä¿å­˜é…ç½®æ–‡ä»¶
+    INT                FindIndex(CHAR *);                    //è¿”å›žæ ‡é¢˜ä½ç½®
 
 ////////////////////////////////////////////////
-// ÄÚ²¿º¯Êý
+// å†…éƒ¨å‡½æ•°
 ////////////////////////////////////////////////
 private:
-    VOID        InitIndex();                        //³õÊ¼»¯Ë÷Òý
-    INT            FindData(INT, CHAR *);                //·µ»ØÊý¾ÝÎ»ÖÃ
-    INT            GotoNextLine(INT);                     //ÌáÐÐ
-    CHAR*        ReadDataName(INT &);                //ÔÚÖ¸¶¨Î»ÖÃ¶ÁÒ»Êý¾ÝÃû³Æ
-    CHAR*        ReadText(INT);                        //ÔÚÖ¸¶¨Î»ÖÃ¶Á×Ö·û´®
+    VOID        InitIndex();                        //åˆå§‹åŒ–ç´¢å¼•
+    INT            FindData(INT, CHAR *);                //è¿”å›žæ•°æ®ä½ç½®
+    INT            GotoNextLine(INT);                     //æè¡Œ
+    CHAR*        ReadDataName(INT &);                //åœ¨æŒ‡å®šä½ç½®è¯»ä¸€æ•°æ®åç§°
+    CHAR*        ReadText(INT);                        //åœ¨æŒ‡å®šä½ç½®è¯»å­—ç¬¦ä¸²
 
-    BOOL        AddIndex(CHAR *);                    //¼ÓÈëÒ»¸öË÷Òý
-    BOOL        AddData(INT, CHAR *, CHAR *);        //ÔÚµ±Ç°Î»ÖÃ¼ÓÈëÒ»¸öÊý¾Ý
-    BOOL        ModityData(INT, CHAR *, CHAR *);    //ÔÚµ±Ç°Î»ÖÃÐÞ¸ÄÒ»¸öÊý¾ÝµÄÖµ
-    INT            GotoLastLine(CHAR *section);            //°ÑÖ¸ÕëÒÆ¶¯µ½±¾INDEXµÄ×îºóÒ»ÐÐ
+    BOOL        AddIndex(CHAR *);                    //åŠ å…¥ä¸€ä¸ªç´¢å¼•
+    BOOL        AddData(INT, CHAR *, CHAR *);        //åœ¨å½“å‰ä½ç½®åŠ å…¥ä¸€ä¸ªæ•°æ®
+    BOOL        ModityData(INT, CHAR *, CHAR *);    //åœ¨å½“å‰ä½ç½®ä¿®æ”¹ä¸€ä¸ªæ•°æ®çš„å€¼
+    INT            GotoLastLine(CHAR *section);            //æŠŠæŒ‡é’ˆç§»åŠ¨åˆ°æœ¬INDEXçš„æœ€åŽä¸€è¡Œ
 
 ////////////////////////////////////////////////
-// ¹«ÓÃ½Ó¿Ú
+// å…¬ç”¨æŽ¥å£
 ////////////////////////////////////////////////
 public:
-    //¶ÁÒ»¸öÕûÊý
+    //è¯»ä¸€ä¸ªæ•´æ•°
     INT                ReadInt(CHAR *section, CHAR *key);
-    //Èç¹û´æÔÚ£¬Ôò¶ÁÒ»¸öÕûÊý
+    //å¦‚æžœå­˜åœ¨ï¼Œåˆ™è¯»ä¸€ä¸ªæ•´æ•°
     BOOL            ReadIntIfExist(CHAR *section, CHAR *key, INT& nResult);
-    //ÔÚÖ¸¶¨µÄÐÐ¶ÁÒ»ÕûÊý
+    //åœ¨æŒ‡å®šçš„è¡Œè¯»ä¸€æ•´æ•°
     INT                ReadInt(CHAR *section, INT lines);    
-    //¶ÁÒ»¸ö×Ö·û´®
+    //è¯»ä¸€ä¸ªå­—ç¬¦ä¸²
     CHAR*            ReadText(CHAR *section, CHAR *key, CHAR* str, INT size);
-    //Èç¹û´æÔÚÔò¶ÁÈ¡
+    //å¦‚æžœå­˜åœ¨åˆ™è¯»å–
     BOOL            ReadTextIfExist(CHAR *section, CHAR *key, CHAR* str, INT size);
-    //ÔÚÖ¸¶¨µÄÐÐ¶ÁÒ»×Ö·û´®
+    //åœ¨æŒ‡å®šçš„è¡Œè¯»ä¸€å­—ç¬¦ä¸²
     CHAR*            ReadText(CHAR *section, INT lines, CHAR* str, INT size);    
-    //ÔÚÖ¸¶¨ÐÐ¶ÁÒ»×Ö·ûÃû³Æ
+    //åœ¨æŒ‡å®šè¡Œè¯»ä¸€å­—ç¬¦åç§°
     CHAR*            ReadCaption(CHAR *section, INT lines, CHAR* str, INT size);
-    //Ð´Ò»¸öÕûÊý
+    //å†™ä¸€ä¸ªæ•´æ•°
     BOOL            Write(CHAR *section, CHAR *key, INT num);            
-    //Ð´Ò»¸ö×Ö·û´®
+    //å†™ä¸€ä¸ªå­—ç¬¦ä¸²
     BOOL            Write(CHAR *section, CHAR *key, CHAR *string);        
-    //·µ»ØÁ¬ÐøµÄÐÐÊý£¨´ÓINDEXµ½µÚÒ»¸ö¿ÕÐÐ£©
+    //è¿”å›žè¿žç»­çš„è¡Œæ•°ï¼ˆä»ŽINDEXåˆ°ç¬¬ä¸€ä¸ªç©ºè¡Œï¼‰
     INT                GetContinueDataNum(CHAR *section);    
-    //ÔÚÖ¸¶¨Î»ÖÃ¶Á×Ö·û´®
+    //åœ¨æŒ‡å®šä½ç½®è¯»å­—ç¬¦ä¸²
     CHAR*            ReadOneLine(INT);
     INT                FindOneLine(INT);
-    //·µ»ØÖ¸¶¨×Ö·ûËùÔÚµÄÐÐÊý
+    //è¿”å›žæŒ‡å®šå­—ç¬¦æ‰€åœ¨çš„è¡Œæ•°
     INT                ReturnLineNum(CHAR*);
 };
 

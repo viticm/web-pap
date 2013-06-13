@@ -188,7 +188,7 @@ BOOL DBCharFullData::Save(VOID* pSource)
     
     dbVersion = 0;
 
-    //±£¥Ê◊∞±∏
+    //‰øùÂ≠òË£ÖÂ§á
     DBItemList    ItemListObject(mInterface);
     ItemListObject.SetCharGuid(m_CharGuid);
     ItemListObject.SetDBVersion(dbVersion);
@@ -196,7 +196,7 @@ BOOL DBCharFullData::Save(VOID* pSource)
         return FALSE;
     ItemListObject.ParseResult(pCharFullData);
 
-    //±£¥Êººƒ‹
+    //‰øùÂ≠òÊäÄËÉΩ
     DBSkillList    SkillListObject(mInterface);
     SkillListObject.SetCharGuid(m_CharGuid);
     SkillListObject.SetDBVersion(dbVersion);
@@ -204,7 +204,7 @@ BOOL DBCharFullData::Save(VOID* pSource)
         return FALSE;
     SkillListObject.ParseResult(pCharFullData);
 
-    //±£¥Ê–ƒ∑®
+    //‰øùÂ≠òÂøÉÊ≥ï
     DBXinFaList    XinFaListObject(mInterface);
     XinFaListObject.SetCharGuid(m_CharGuid);
     XinFaListObject.SetDBVersion(dbVersion);
@@ -212,7 +212,7 @@ BOOL DBCharFullData::Save(VOID* pSource)
         return FALSE;
     XinFaListObject.ParseResult(pCharFullData);
 
-    //±£¥Ê…˙ªÓººƒ‹
+    //‰øùÂ≠òÁîüÊ¥ªÊäÄËÉΩ
     DBAbilityList AbilityListObject(mInterface);
     AbilityListObject.SetCharGuid(m_CharGuid);
     AbilityListObject.SetDBVersion(dbVersion);
@@ -220,7 +220,7 @@ BOOL DBCharFullData::Save(VOID* pSource)
         return FALSE;
     AbilityListObject.ParseResult(pCharFullData);
 
-    //±£¥Ê»ŒŒÒ–≈œ¢
+    //‰øùÂ≠ò‰ªªÂä°‰ø°ÊÅØ
     DBTaskList    TaskListObject(mInterface);
     TaskListObject.SetCharGuid(m_CharGuid);
     TaskListObject.SetDBVersion(dbVersion);
@@ -228,7 +228,7 @@ BOOL DBCharFullData::Save(VOID* pSource)
         return FALSE;
     TaskListObject.ParseResult(pCharFullData);
 
-    //±£¥Êπÿœµ¡–±Ì
+    //‰øùÂ≠òÂÖ≥Á≥ªÂàóË°®
     DBRelationList    RelationListObject(mInterface);
     RelationListObject.SetCharGuid(m_CharGuid);
     RelationListObject.SetDBVersion(dbVersion);
@@ -236,28 +236,28 @@ BOOL DBCharFullData::Save(VOID* pSource)
         return FALSE;
     RelationListObject.ParseResult(pCharFullData);
 
-    //±£¥ÊImpact ¡–±Ì
+    //‰øùÂ≠òImpact ÂàóË°®
     DBImpactList    ImpactListObject(mInterface);
     ImpactListObject.SetCharGuid(m_CharGuid);
     ImpactListObject.SetDBVersion(dbVersion);
     if(!ImpactListObject.Save(pCharFullData))
         return FALSE;
     ImpactListObject.ParseResult(pCharFullData);
-    //±£¥Ê≥ËŒÔ    ¡–±Ì
+    //‰øùÂ≠òÂÆ†Áâ©    ÂàóË°®
     DBPetList    PetListObject(mInterface);
     PetListObject.SetCharGuid(m_CharGuid);
     PetListObject.SetDBVersion(dbVersion);
     if(!PetListObject.Save(pCharFullData))
         return FALSE;
     PetListObject.ParseResult(pCharFullData);
-    //ÀΩ»À–≈œ¢
+    //ÁßÅ‰∫∫‰ø°ÊÅØ
     DBPrivateInfo    PrivateInfoObject(mInterface);
     PrivateInfoObject.SetCharGuid(m_CharGuid);
     PrivateInfoObject.SetDBVersion(dbVersion);
     if(!PrivateInfoObject.Save(pCharFullData))
         return FALSE;
     PrivateInfoObject.ParseResult(pCharFullData);
-    //≥∆∫≈–≈œ¢
+    //Áß∞Âè∑‰ø°ÊÅØ
     DBTitleInfo        TitleInfoObject(mInterface);
     TitleInfoObject.SetCharGuid(m_CharGuid);
     TitleInfoObject.SetDBVersion(dbVersion);
@@ -265,7 +265,7 @@ BOOL DBCharFullData::Save(VOID* pSource)
         return FALSE;
     TitleInfoObject.ParseResult(pCharFullData);
 
-    //¿‰»¥–≈œ¢
+    //ÂÜ∑Âç¥‰ø°ÊÅØ
     DBCoolDownInfo        CoolDownInfoObject(mInterface);
     CoolDownInfoObject.SetCharGuid(m_CharGuid);
     CoolDownInfoObject.SetDBVersion(dbVersion);
@@ -273,7 +273,7 @@ BOOL DBCharFullData::Save(VOID* pSource)
         return FALSE;
     CoolDownInfoObject.ParseResult(pCharFullData);
 
-    //…ÃµÍ–≈œ¢
+    //ÂïÜÂ∫ó‰ø°ÊÅØ
     //DBWebShopInfo        WebShopInfo(mInterface);
     //WebShopInfo.SetCharGuid(m_CharGuid);
     //WebShopInfo.SetDBVersion(dbVersion);
@@ -362,13 +362,13 @@ INT        DBCharFullData::ParseResult(VOID* pResult, UINT& result1, UINT& resul
             Assert(mInterface);
             INT       ErrorCode;
 
-            //º”‘ÿª˘±æ Ù–‘
+            //Âä†ËΩΩÂü∫Êú¨Â±ûÊÄß
             for(INT i =0;i<1;i++)
             {
                 if(!mInterface->Fetch())
                     break;
 
-                //º”‘ÿΩ«…´ª˘±æ Ù–‘
+                //Âä†ËΩΩËßíËâ≤Âü∫Êú¨Â±ûÊÄß
                 pCharFullData->m_Human.m_GUID    =    mInterface->GetUInt(DB_CharGuid,ErrorCode);
                 mInterface->GetString(DB_CharName,pCharFullData->m_Human.m_Name,MAX_CHARACTER_NAME,ErrorCode);
                 mInterface->GetString(DB_Title,pCharFullData->m_Human.m_Title,MAX_CHARACTER_TITLE,ErrorCode);
@@ -453,7 +453,7 @@ INT        DBCharFullData::ParseResult(VOID* pResult, UINT& result1, UINT& resul
 
                 dbVersion = 0;
                 
-                //º”‘ÿ◊∞±∏
+                //Âä†ËΩΩË£ÖÂ§á
                 DBItemList    ItemListObject(mInterface);
                 ItemListObject.SetCharGuid(m_CharGuid);
                 ItemListObject.SetDBVersion(dbVersion);
@@ -466,7 +466,7 @@ INT        DBCharFullData::ParseResult(VOID* pResult, UINT& result1, UINT& resul
                     ret = 3;
                 }
 
-                //º”‘ÿººƒ‹
+                //Âä†ËΩΩÊäÄËÉΩ
                 DBSkillList    SkillListObject(mInterface);
                 SkillListObject.SetCharGuid(m_CharGuid);
                 SkillListObject.SetDBVersion(dbVersion);
@@ -474,7 +474,7 @@ INT        DBCharFullData::ParseResult(VOID* pResult, UINT& result1, UINT& resul
                     return FALSE;
                 SkillListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿ–ƒ∑®
+                //Âä†ËΩΩÂøÉÊ≥ï
                 DBXinFaList    XinFaListObject(mInterface);
                 XinFaListObject.SetCharGuid(m_CharGuid);
                 XinFaListObject.SetDBVersion(dbVersion);
@@ -482,7 +482,7 @@ INT        DBCharFullData::ParseResult(VOID* pResult, UINT& result1, UINT& resul
                     return FALSE;
                 XinFaListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿ…˙ªÓººƒ‹
+                //Âä†ËΩΩÁîüÊ¥ªÊäÄËÉΩ
                 DBAbilityList AbilityListObject(mInterface);
                 AbilityListObject.SetCharGuid(m_CharGuid);
                 AbilityListObject.SetDBVersion(dbVersion);
@@ -490,7 +490,7 @@ INT        DBCharFullData::ParseResult(VOID* pResult, UINT& result1, UINT& resul
                     return FALSE;
                 AbilityListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿ»ŒŒÒ–≈œ¢
+                //Âä†ËΩΩ‰ªªÂä°‰ø°ÊÅØ
                 DBTaskList    TaskListObject(mInterface);
                 TaskListObject.SetCharGuid(m_CharGuid);
                 TaskListObject.SetDBVersion(dbVersion);
@@ -499,7 +499,7 @@ INT        DBCharFullData::ParseResult(VOID* pResult, UINT& result1, UINT& resul
 
                 TaskListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿπÿœµ¡–±Ì
+                //Âä†ËΩΩÂÖ≥Á≥ªÂàóË°®
                 DBRelationList    RelationListObject(mInterface);
                 RelationListObject.SetCharGuid(m_CharGuid);
                 RelationListObject.SetDBVersion(dbVersion);
@@ -507,14 +507,14 @@ INT        DBCharFullData::ParseResult(VOID* pResult, UINT& result1, UINT& resul
                     return FALSE;
                 RelationListObject.ParseResult(pCharFullData);
 
-                //Impact ¡–±Ì
+                //Impact ÂàóË°®
                 DBImpactList    ImpactListObject(mInterface);
                 ImpactListObject.SetCharGuid(m_CharGuid);
                 ImpactListObject.SetDBVersion(dbVersion);
                 if(!ImpactListObject.Load())
                     return FALSE;
                 ImpactListObject.ParseResult(pCharFullData);
-                //≥ËŒÔ
+                //ÂÆ†Áâ©
                 DBPetList    PetListObject(mInterface);
                 PetListObject.SetCharGuid(m_CharGuid);
                 PetListObject.SetDBVersion(dbVersion);
@@ -642,13 +642,13 @@ BOOL DBCharFullData::ParseResult(VOID* pResult)
             Assert(mInterface);
             INT       ErrorCode;
 
-            //º”‘ÿª˘±æ Ù–‘
+            //Âä†ËΩΩÂü∫Êú¨Â±ûÊÄß
             for(INT i =0;i<1;i++)
             {
                 if(!mInterface->Fetch())
                     break;
 
-                //º”‘ÿΩ«…´ª˘±æ Ù–‘
+                //Âä†ËΩΩËßíËâ≤Âü∫Êú¨Â±ûÊÄß
                 pCharFullData->m_Human.m_GUID    =    mInterface->GetUInt(DB_CharGuid,ErrorCode);
                 mInterface->GetString(DB_CharName,pCharFullData->m_Human.m_Name,MAX_CHARACTER_NAME,ErrorCode);
                 mInterface->GetString(DB_Title,pCharFullData->m_Human.m_Title,MAX_CHARACTER_TITLE,ErrorCode);
@@ -726,7 +726,7 @@ BOOL DBCharFullData::ParseResult(VOID* pResult)
                 UINT dbVersion = CalcCRC( pCharFullData );
                 dbVersion = 0;
                 
-                //º”‘ÿ◊∞±∏
+                //Âä†ËΩΩË£ÖÂ§á
                 DBItemList    ItemListObject(mInterface);
                 ItemListObject.SetCharGuid(m_CharGuid);
                 ItemListObject.SetDBVersion(dbVersion);
@@ -735,7 +735,7 @@ BOOL DBCharFullData::ParseResult(VOID* pResult)
 
                 ItemListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿººƒ‹
+                //Âä†ËΩΩÊäÄËÉΩ
                 DBSkillList    SkillListObject(mInterface);
                 SkillListObject.SetCharGuid(m_CharGuid);
                 SkillListObject.SetDBVersion(dbVersion);
@@ -743,7 +743,7 @@ BOOL DBCharFullData::ParseResult(VOID* pResult)
                     return FALSE;
                 SkillListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿ–ƒ∑®
+                //Âä†ËΩΩÂøÉÊ≥ï
                 DBXinFaList    XinFaListObject(mInterface);
                 XinFaListObject.SetCharGuid(m_CharGuid);
                 XinFaListObject.SetDBVersion(dbVersion);
@@ -751,7 +751,7 @@ BOOL DBCharFullData::ParseResult(VOID* pResult)
                     return FALSE;
                 XinFaListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿ…˙ªÓººƒ‹
+                //Âä†ËΩΩÁîüÊ¥ªÊäÄËÉΩ
                 DBAbilityList AbilityListObject(mInterface);
                 AbilityListObject.SetCharGuid(m_CharGuid);
                 AbilityListObject.SetDBVersion(dbVersion);
@@ -759,7 +759,7 @@ BOOL DBCharFullData::ParseResult(VOID* pResult)
                     return FALSE;
                 AbilityListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿ»ŒŒÒ–≈œ¢
+                //Âä†ËΩΩ‰ªªÂä°‰ø°ÊÅØ
                 DBTaskList    TaskListObject(mInterface);
                 TaskListObject.SetCharGuid(m_CharGuid);
                 TaskListObject.SetDBVersion(dbVersion);
@@ -768,7 +768,7 @@ BOOL DBCharFullData::ParseResult(VOID* pResult)
 
                 TaskListObject.ParseResult(pCharFullData);
 
-                //º”‘ÿπÿœµ¡–±Ì
+                //Âä†ËΩΩÂÖ≥Á≥ªÂàóË°®
                 DBRelationList    RelationListObject(mInterface);
                 RelationListObject.SetCharGuid(m_CharGuid);
                 RelationListObject.SetDBVersion(dbVersion);
@@ -776,14 +776,14 @@ BOOL DBCharFullData::ParseResult(VOID* pResult)
                     return FALSE;
                 RelationListObject.ParseResult(pCharFullData);
 
-                //Impact ¡–±Ì
+                //Impact ÂàóË°®
                 DBImpactList    ImpactListObject(mInterface);
                 ImpactListObject.SetCharGuid(m_CharGuid);
                 ImpactListObject.SetDBVersion(dbVersion);
                 if(!ImpactListObject.Load())
                     return FALSE;
                 ImpactListObject.ParseResult(pCharFullData);
-                //≥ËŒÔ
+                //ÂÆ†Áâ©
                 DBPetList    PetListObject(mInterface);
                 PetListObject.SetCharGuid(m_CharGuid);
                 PetListObject.SetDBVersion(dbVersion);

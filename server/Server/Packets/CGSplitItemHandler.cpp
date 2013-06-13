@@ -29,7 +29,7 @@ __ENTER_FUNCTION
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
     INT nCon = pPacket->GetContainer();
@@ -48,7 +48,7 @@ __ENTER_FUNCTION
             {
                 g_pLog->FastSaveLog( LOG_FILE_1, "CGSplitItemHandler: ok BagIndex=%d  occur null type ",    pPacket->GetPosition() ) ;
 
-                //·¢ËÍÏûÏ¢¸æËß¿Í»§¶Ë£¬Ã»ÓÐ¿Õ¸ñ×Ó
+                //å‘é€æ¶ˆæ¯å‘Šè¯‰å®¢æˆ·ç«¯ï¼Œæ²¡æœ‰ç©ºæ ¼å­
                 msg.setResult(GCSplitItemResult::RESULT_FALSE_NOGRID);
                 pHuman->GetPlayer()->SendPacket(&msg);
 
@@ -57,7 +57,7 @@ __ENTER_FUNCTION
 
             ItemContainer* pBagContainer = HumanItemLogic::GetContainer(pHuman,pPacket->GetPosition());
 
-            //ÏÈÒªÕÒµ½Ò»¸öÄÜ¹»·ÅÖÃµÄ¿Õ¸ñ
+            //å…ˆè¦æ‰¾åˆ°ä¸€ä¸ªèƒ½å¤Ÿæ”¾ç½®çš„ç©ºæ ¼
             INT nEmptyIndex = pBagContainer->GetEmptyItemIndex();
             if( INVALID_INDEX == nEmptyIndex)
             {
@@ -78,7 +78,7 @@ __ENTER_FUNCTION
                 
 
 
-                //·¢ËÍ³É¹¦ÏûÏ¢
+                //å‘é€æˆåŠŸæ¶ˆæ¯
                 Item* pItem = pBagContainer->GetItem(nEmptyIndex);
                 Assert(pItem);
                 pItem->SaveValueTo(msg.getItem());
@@ -121,7 +121,7 @@ __ENTER_FUNCTION
             }
             else
             {
-                //·¢ËÍÊ§°ÜÏûÏ¢
+                //å‘é€å¤±è´¥æ¶ˆæ¯
                 msg.setResult(GCSplitItemResult::RESULT_FALSE);
                 pHuman->GetPlayer()->SendPacket(&msg);
             }
@@ -134,7 +134,7 @@ __ENTER_FUNCTION
             INT nIndex = pPacket->GetPosition();
 
             INT nEmptyIndex = 0;
-            //×Ô¶¯ËÑË÷¿Õ¸ñ×âÁÞÏä1
+            //è‡ªåŠ¨æœç´¢ç©ºæ ¼ç§Ÿèµç®±1
             if( nIndex >= RENTBOX1_START_INDEX && nIndex < RENTBOX2_START_INDEX )
             {
                 BYTE    indextemp = RENTBOX1_START_INDEX;
@@ -149,7 +149,7 @@ __ENTER_FUNCTION
 
                 if(indextemp == RENTBOX2_START_INDEX)
                 {
-                    //Ê§°Ü
+                    //å¤±è´¥
                     nEmptyIndex = -1;
                 }
                 else
@@ -170,7 +170,7 @@ __ENTER_FUNCTION
 
                 if(indextemp == RENTBOX3_START_INDEX)
                 {
-                    //Ê§°Ü
+                    //å¤±è´¥
                     nEmptyIndex = -1;
                 }
                 else
@@ -191,7 +191,7 @@ __ENTER_FUNCTION
 
                 if(indextemp == RENTBOX4_START_INDEX)
                 {
-                    //Ê§°Ü
+                    //å¤±è´¥
                     nEmptyIndex = -1;
                 }
                 else
@@ -212,7 +212,7 @@ __ENTER_FUNCTION
 
                 if(indextemp == RENTBOX5_START_INDEX)
                 {
-                    //Ê§°Ü
+                    //å¤±è´¥
                     nEmptyIndex = -1;
                 }
                 else
@@ -233,7 +233,7 @@ __ENTER_FUNCTION
 
                 if(indextemp == MAX_BANK_SIZE)
                 {
-                    //Ê§°Ü
+                    //å¤±è´¥
                     nEmptyIndex = -1;
                 }
                 else
@@ -242,13 +242,13 @@ __ENTER_FUNCTION
                 }
             }
 
-            // Ö»ÔÚµ±Ç°µÄÒ³ÃæÄÚ²éÕÒÒ»¸ö¿Õ¸ñ
+            // åªåœ¨å½“å‰çš„é¡µé¢å†…æŸ¥æ‰¾ä¸€ä¸ªç©ºæ ¼
             //INT nEmptyIndex = pBankContainer->GetEmptyItemIndex();
             
 
             if( -1 == nEmptyIndex )
             {
-                // Í¨Öª¿Í»§¶Ë£¬Ã»ÓÐÐèÒªµÄ¿Õ¸ñ
+                // é€šçŸ¥å®¢æˆ·ç«¯ï¼Œæ²¡æœ‰éœ€è¦çš„ç©ºæ ¼
                 msg.setResult(GCSplitItemResult::RESULT_FALSE_NOGRID);
                 pHuman->GetPlayer()->SendPacket(&msg);
 
@@ -261,7 +261,7 @@ __ENTER_FUNCTION
                                       pBankContainer,
                                       nEmptyIndex) )
             {
-                //·¢ËÍ³É¹¦ÏûÏ¢
+                //å‘é€æˆåŠŸæ¶ˆæ¯
                 Item* pItem = pBankContainer->GetItem(nEmptyIndex);
                 Assert(pItem);
                 pItem->SaveValueTo(msg.getItem());
@@ -306,7 +306,7 @@ __ENTER_FUNCTION
             }
             else
             {
-                //·¢ËÍÊ§°ÜÏûÏ¢
+                //å‘é€å¤±è´¥æ¶ˆæ¯
                 msg.setResult(GCSplitItemResult::RESULT_FALSE);
                 pHuman->GetPlayer()->SendPacket(&msg);
             }

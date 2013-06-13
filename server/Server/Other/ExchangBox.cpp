@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-·şÎñÆ÷¶Î½»Ò×ºĞ
+æœåŠ¡å™¨æ®µäº¤æ˜“ç›’
 */
 #include "ExchangBox.h"
 #include "Obj_Human.h"
@@ -12,11 +12,11 @@ VOID ServerExchangeBox::Init(Obj_Human* pHuman)
     __ENTER_FUNCTION
     m_pMySelf = pHuman;
 
-    //Çå¿ÕÎïÆ·Êı¾İ
+    //æ¸…ç©ºç‰©å“æ•°æ®
     memset(m_ItemList, 0, sizeof(_ITEM)*EXCHANGE_BOX_SIZE);
     memset(m_PetItemList, 0, sizeof(_PET_DB_LOAD)*EXCHANGE_PET_BOX_SIZE);
 
-    //³õÊ¼»¯ÎïÆ·container
+    //åˆå§‹åŒ–ç‰©å“container
     _ITEMCONTAINER_INIT    containInit;
     containInit.m_nContainerSize    =    EXCHANGE_BOX_SIZE;
     m_Container.Init(&containInit);
@@ -27,7 +27,7 @@ VOID ServerExchangeBox::Init(Obj_Human* pHuman)
         m_Container.GetItem(i)->Init(&itemInit);
     }
  
-    //³õÊ¼»¯³èÎïcontainer
+    //åˆå§‹åŒ–å® ç‰©container
     _ITEMCONTAINER_INIT    PetContainInit;
     PetContainInit.m_nContainerSize        =    EXCHANGE_PET_BOX_SIZE;
     m_PetContainer.Init(&PetContainInit);
@@ -45,17 +45,17 @@ VOID ServerExchangeBox::Init(Obj_Human* pHuman)
 VOID ServerExchangeBox::CleanUp()
 {
     __ENTER_FUNCTION
-    //½âËùÓĞËø
+    //è§£æ‰€æœ‰é”
     UnLockAllItem();
 
-    //Çå¿ÕËùÓĞ×´Ì¬
+    //æ¸…ç©ºæ‰€æœ‰çŠ¶æ€
     m_Status        = EXCHANGE_NONE;
     m_ObjID            = INVALID_ID;
     m_IsLocked        = FALSE;
     m_CanConform    = FALSE;
     m_Money            = 0;
 
-    //Çå¿ÕÎïÆ·Êı¾İ
+    //æ¸…ç©ºç‰©å“æ•°æ®
     memset(m_ItemList, 0, sizeof(_ITEM)*EXCHANGE_BOX_SIZE);
     memset(m_PetItemList, 0, sizeof(_PET_DB_LOAD)*EXCHANGE_PET_BOX_SIZE);
     __LEAVE_FUNCTION

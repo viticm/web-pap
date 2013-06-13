@@ -16,7 +16,7 @@ namespace Packets
         WLRetCharLogin( ){} ;
         virtual ~WLRetCharLogin( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -30,7 +30,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                    SetResult(ASKCHARLOGIN_RESULT Res)
         {
             Result = Res;
@@ -80,17 +80,17 @@ namespace Packets
             return ServerID;
         }
     private:
-        //Êı¾İ
+        //æ•°æ®
         ASKCHARLOGIN_RESULT        Result;
-        //½ÇÉ«guid
-        CHAR                    szAccount[MAX_ACCOUNT+1];    //ÓÃ»§Ãû³Æ;
-        //Íæ¼Ò³Øid
+        //è§’è‰²guid
+        CHAR                    szAccount[MAX_ACCOUNT+1];    //ç”¨æˆ·åç§°;
+        //ç©å®¶æ± id
         PlayerID_t                PlayerID;
-        //Íæ¼ÒHoldÊı¾İ×´Ì¬
+        //ç©å®¶Holdæ•°æ®çŠ¶æ€
         BOOL                    HoldStatus;
-        //½ÇÉ«GUID
+        //è§’è‰²GUID
         GUID_t                    PlayerGUID;
-        //³¡¾°±àºÅ
+        //åœºæ™¯ç¼–å·
         ID_t                    ServerID;
 
     };

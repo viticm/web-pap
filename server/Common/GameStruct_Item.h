@@ -20,7 +20,7 @@ UINT        GetSerialIndex(UINT Serial);
 
 
 
-//·¶Î§
+//èŒƒå›´
 struct _RANGE_VALUE
 {
     WORD                m_MinValue ;
@@ -54,7 +54,7 @@ struct _ITEM_SKILL
     }
 };
 
-//ÎïÆ·ÊôĞÔÖµ
+//ç‰©å“å±æ€§å€¼
 struct _ITEM_VALUE
 {
     SHORT            m_Value ;
@@ -69,13 +69,13 @@ struct _ITEM_VALUE
     }
 };
 
-//ÎïÆ·ÊôĞÔ
+//ç‰©å“å±æ€§
 struct _ITEM_ATTR
 {
-    BYTE                m_AttrType ;//Èç¹ûÊÇÆÕÍ¨×°±¸£¬Ôòm_AttrTypeÓÃenum ITEM_ATTRIBUTE
-                                    //    À´±íÊ¾ÊôĞÔÀàĞÍ£¬m_Value±íÊ¾¾ßÌåÊôĞÔÖµ
-                                    //Èç¹ûÊÇÂÌÉ«µÄÌ××°£¬Ôòm_AttrType±íÊ¾µ±Ç°Ì××°ÔÚ
-                                    //    Íæ¼ÒÉíÉÏµÄ×°±¸¼şÊı£¬m_Value±íÊ¾Ì××°µÄË÷ÒıºÅ
+    BYTE                m_AttrType ;//å¦‚æœæ˜¯æ™®é€šè£…å¤‡ï¼Œåˆ™m_AttrTypeç”¨enum ITEM_ATTRIBUTE
+                                    //    æ¥è¡¨ç¤ºå±æ€§ç±»å‹ï¼Œm_Valueè¡¨ç¤ºå…·ä½“å±æ€§å€¼
+                                    //å¦‚æœæ˜¯ç»¿è‰²çš„å¥—è£…ï¼Œåˆ™m_AttrTypeè¡¨ç¤ºå½“å‰å¥—è£…åœ¨
+                                    //    ç©å®¶èº«ä¸Šçš„è£…å¤‡ä»¶æ•°ï¼Œm_Valueè¡¨ç¤ºå¥—è£…çš„ç´¢å¼•å·
     _ITEM_VALUE            m_Value ;
 
     VOID    CleanUp( )
@@ -94,12 +94,12 @@ struct _ITEM_ATTR
 
 
 
-//ÎïÆ·Î¨Ò»ID
+//ç‰©å“å”¯ä¸€ID
 struct _ITEM_GUID
 {
-    BYTE    m_World ;        //ÊÀ½çºÅ: (Àı)101
-    BYTE    m_Server ;        //·şÎñ¶Ë³ÌĞòºÅ£º(Àı)5
-    INT        m_Serial ;        //ÎïÆ·ĞòÁĞºÅ£º(Àı)123429
+    BYTE    m_World ;        //ä¸–ç•Œå·: (ä¾‹)101
+    BYTE    m_Server ;        //æœåŠ¡ç«¯ç¨‹åºå·ï¼š(ä¾‹)5
+    INT        m_Serial ;        //ç‰©å“åºåˆ—å·ï¼š(ä¾‹)123429
     
     _ITEM_GUID()
     {
@@ -142,10 +142,10 @@ struct _ITEM_TYPE
     
     struct  
     {
-            UINT    m_Class : 7 ;        //»ù±¾ÀàĞÍ£¬±ÈÈç£º×°±¸Àà¡¢ÏûºÄÆ·¡¢µÈ
-            UINT    m_Quality: 7 ;        //µµ´Î£¬±ÈÈç£ºÀ¶É«×°±¸¡¢ÂÌÉ«×°±¸¡¢µÈ
-            UINT    m_Type: 7 ;        //Àà±ğ£¬±ÈÈç£º´óµ¶¡¢³¤Ç¹¡¢µÈ
-            UINT    m_Index: 11 ;        //ÎïÆ·ºÅ£¬±ÈÈç£ºÁøÒ¶µ¶¡¢Ô§Ñìµ¶¡¢µÈ
+            UINT    m_Class : 7 ;        //åŸºæœ¬ç±»å‹ï¼Œæ¯”å¦‚ï¼šè£…å¤‡ç±»ã€æ¶ˆè€—å“ã€ç­‰
+            UINT    m_Quality: 7 ;        //æ¡£æ¬¡ï¼Œæ¯”å¦‚ï¼šè“è‰²è£…å¤‡ã€ç»¿è‰²è£…å¤‡ã€ç­‰
+            UINT    m_Type: 7 ;        //ç±»åˆ«ï¼Œæ¯”å¦‚ï¼šå¤§åˆ€ã€é•¿æªã€ç­‰
+            UINT    m_Index: 11 ;        //ç‰©å“å·ï¼Œæ¯”å¦‚ï¼šæŸ³å¶åˆ€ã€é¸³é¸¯åˆ€ã€ç­‰
     };
     
     UINT    ToUINT()
@@ -212,45 +212,45 @@ _ITEM_TYPE    ConvertSerial2ItemType(UINT Serial);
 
 struct _ITEM_RULER
 {
-    BOOL    m_Discard;        //¶ªÆú
-    BOOL    m_Tile;            //ÖØµş
-    BOOL    m_ShortCut;        //¿ì½İ
-    BOOL    m_CanSell;        //³öÊÛ
-    BOOL    m_CanExchange;    //½»Ò×
-    BOOL    m_CanUse;        //Ê¹ÓÃ
-    BOOL    m_PickBind;        //Ê°È¡°ó¶¨
-    BOOL    m_EquipBind;    //×°±¸°ó¶¨
-    BOOL    m_Unique;        //ÊÇ·ñÎ¨Ò»
+    BOOL    m_Discard;        //ä¸¢å¼ƒ
+    BOOL    m_Tile;            //é‡å 
+    BOOL    m_ShortCut;        //å¿«æ·
+    BOOL    m_CanSell;        //å‡ºå”®
+    BOOL    m_CanExchange;    //äº¤æ˜“
+    BOOL    m_CanUse;        //ä½¿ç”¨
+    BOOL    m_PickBind;        //æ‹¾å–ç»‘å®š
+    BOOL    m_EquipBind;    //è£…å¤‡ç»‘å®š
+    BOOL    m_Unique;        //æ˜¯å¦å”¯ä¸€
 
 
-    BOOL    CanDiscard()    {return m_Discard;}        //¶ªÆú
-    BOOL    CanTile()        {return m_Tile;}        //ÖØµş
-    BOOL    CanShortCut()    {return m_ShortCut;}    //¿ì½İ
-    BOOL    CanSell()        {return m_CanSell;}        //³öÊÛ
-    BOOL    CanExchange()    {return m_CanExchange;}    //½»Ò×
-    BOOL    CanUse()        {return m_CanUse;}        //Ê¹ÓÃ
-    BOOL    isPickBind()    {return m_PickBind;}    //Ê°È¡°ó¶¨
-    BOOL    isEquipBind()    {return m_EquipBind;}    //×°±¸°ó¶¨
-    BOOL    isUnique()        {return m_Unique;}        //ÊÇ·ñÎ¨Ò»
+    BOOL    CanDiscard()    {return m_Discard;}        //ä¸¢å¼ƒ
+    BOOL    CanTile()        {return m_Tile;}        //é‡å 
+    BOOL    CanShortCut()    {return m_ShortCut;}    //å¿«æ·
+    BOOL    CanSell()        {return m_CanSell;}        //å‡ºå”®
+    BOOL    CanExchange()    {return m_CanExchange;}    //äº¤æ˜“
+    BOOL    CanUse()        {return m_CanUse;}        //ä½¿ç”¨
+    BOOL    isPickBind()    {return m_PickBind;}    //æ‹¾å–ç»‘å®š
+    BOOL    isEquipBind()    {return m_EquipBind;}    //è£…å¤‡ç»‘å®š
+    BOOL    isUnique()        {return m_Unique;}        //æ˜¯å¦å”¯ä¸€
 };
 
 
 enum    ITEM_RULER_LIST
 {
-    IRL_DISCARD,            //¶ªÆú
-    IRL_TILE,                //ÖØµş
-    IRL_SHORTCUT,            //¿ì½İ
-    IRL_CANSELL,            //³öÊÛ
-    IRL_CANEXCHANGE,        //½»Ò×
-    IRL_CANUSE,                //Ê¹ÓÃ
-    IRL_PICKBIND,            //Ê°È¡°ó¶¨
-    IRL_EQUIPBIND,            //×°±¸°ó¶¨
-    IRL_UNIQUE                //ÊÇ·ñÎ¨Ò»
+    IRL_DISCARD,            //ä¸¢å¼ƒ
+    IRL_TILE,                //é‡å 
+    IRL_SHORTCUT,            //å¿«æ·
+    IRL_CANSELL,            //å‡ºå”®
+    IRL_CANEXCHANGE,        //äº¤æ˜“
+    IRL_CANUSE,                //ä½¿ç”¨
+    IRL_PICKBIND,            //æ‹¾å–ç»‘å®š
+    IRL_EQUIPBIND,            //è£…å¤‡ç»‘å®š
+    IRL_UNIQUE                //æ˜¯å¦å”¯ä¸€
 };
 
 
 
-//ÏâÇ¶±¦Ê¯ĞÅÏ¢
+//é•¶åµŒå®çŸ³ä¿¡æ¯
 struct _ITEM_GEMINFO
 {
     UINT    m_GemType;
@@ -288,17 +288,17 @@ struct STORE_MAP_INFO
 struct MEDIC_INFO
 {
     
-    BYTE                    m_nCount;       //µ±Ç°ÊıÁ¿
+    BYTE                    m_nCount;       //å½“å‰æ•°é‡
     BYTE                    m_nLevel;
-    BYTE                    m_nLayedNum;   //µş·ÅÊıÁ¿
+    BYTE                    m_nLayedNum;   //å æ”¾æ•°é‡
     BYTE                    m_nReqSkillLevel;
 
     UINT                    m_nBasePrice;
     INT                        m_nScriptID;
     INT                        m_nSkillID;
-    BOOL                    m_bCosSelf;       //ÊÇ·ñÏûºÄ×Ô¼º
+    BOOL                    m_bCosSelf;       //æ˜¯å¦æ¶ˆè€—è‡ªå·±
     INT                        m_nReqSkill;
-    BYTE                    m_TargetType;  //ÎïÆ·Ñ¡ÔñÀàĞÍ
+    BYTE                    m_TargetType;  //ç‰©å“é€‰æ‹©ç±»å‹
     
     INT GetTileNum()        {return m_nCount;}
 
@@ -322,22 +322,22 @@ struct MEDIC_INFO
 
 struct EQUIP_INFO 
 {
-    SHORT                m_SetNum;                    //Ì××°±àºÅ
-    UINT                m_BasePrice;                //ÊÛ³ö¼Û¸ñ
-    CHAR                m_MaxNum;                    //Ì××°
-    BYTE                m_EquipPoint;                //ÎïÆ·×°Ååµã
-    BYTE                m_MaxDurPoint ;                //×î´óÄÍ¾ÃÖµ
-    BYTE                m_NeedLevel ;                //ĞèÇóµÈ¼¶
-    BYTE                m_GemMax ;                    //×î´ó±¦Ê¯¸öÊı
+    SHORT                m_SetNum;                    //å¥—è£…ç¼–å·
+    UINT                m_BasePrice;                //å”®å‡ºä»·æ ¼
+    CHAR                m_MaxNum;                    //å¥—è£…
+    BYTE                m_EquipPoint;                //ç‰©å“è£…ä½©ç‚¹
+    BYTE                m_MaxDurPoint ;                //æœ€å¤§è€ä¹…å€¼
+    BYTE                m_NeedLevel ;                //éœ€æ±‚ç­‰çº§
+    BYTE                m_GemMax ;                    //æœ€å¤§å®çŸ³ä¸ªæ•°
     //////////////////////////////////////////////////////////////////////////
-    //ÒÔÉÏÎª¹Ì¶¨ÊôĞÔ
-    BYTE                m_FaileTimes ;                //ĞŞÀíÊ§°Ü´ÎÊı
-    BYTE                m_CurDurPoint ;                //µ±Ç°ÄÍ¾ÃÖµ
-    USHORT                m_CurDamagePoint;            //µ±Ç°ËğÉË¶È
-    BYTE                m_AttrCount;                //ÊôĞÔµÄÊıÁ¿
-    BYTE                m_StoneCount;                //ÏâÇ¶±¦Ê¯µÄÊıÁ¿
-    _ITEM_ATTR            m_pAttr[MAX_ITEM_ATTR];        //ÎïÆ·ÊôĞÔ
-    _ITEM_GEMINFO        m_pGemInfo[MAX_ITEM_GEM] ;    //ÎïÆ·ÀïÏâÇ¶µÄ±¦Ê¯
+    //ä»¥ä¸Šä¸ºå›ºå®šå±æ€§
+    BYTE                m_FaileTimes ;                //ä¿®ç†å¤±è´¥æ¬¡æ•°
+    BYTE                m_CurDurPoint ;                //å½“å‰è€ä¹…å€¼
+    USHORT                m_CurDamagePoint;            //å½“å‰æŸä¼¤åº¦
+    BYTE                m_AttrCount;                //å±æ€§çš„æ•°é‡
+    BYTE                m_StoneCount;                //é•¶åµŒå®çŸ³çš„æ•°é‡
+    _ITEM_ATTR            m_pAttr[MAX_ITEM_ATTR];        //ç‰©å“å±æ€§
+    _ITEM_GEMINFO        m_pGemInfo[MAX_ITEM_GEM] ;    //ç‰©å“é‡Œé•¶åµŒçš„å®çŸ³
     
     
 
@@ -400,10 +400,10 @@ struct _ITEM_LIST
 };
 
 
-//ÎïÆ·ĞÅÏ¢, °üº¬¸÷ÖÖÎïÆ·µÄËùÓĞÊı¾İ
-#define    ITEMISVALID(ITEM) (ITEM.m_ItemIndex != 0 )//ÎïÆ·ÊÇ·ñºÏ·¨
-#define    ITEMPTRISVALID(PITEM) ( (PITEM == NULL) ? FALSE:PITEM->m_ItemIndex )//ÎïÆ·Ö¸ÕëÊÇ·ñºÏ·¨
-#define    ITEMREFPTRISVALID(PITEM) ( (PITEM == NULL) ? FALSE:PITEM->GetItemTableIndex() )//ÎïÆ·Ö¸ÕëÊÇ·ñºÏ·¨
+//ç‰©å“ä¿¡æ¯, åŒ…å«å„ç§ç‰©å“çš„æ‰€æœ‰æ•°æ®
+#define    ITEMISVALID(ITEM) (ITEM.m_ItemIndex != 0 )//ç‰©å“æ˜¯å¦åˆæ³•
+#define    ITEMPTRISVALID(PITEM) ( (PITEM == NULL) ? FALSE:PITEM->m_ItemIndex )//ç‰©å“æŒ‡é’ˆæ˜¯å¦åˆæ³•
+#define    ITEMREFPTRISVALID(PITEM) ( (PITEM == NULL) ? FALSE:PITEM->GetItemTableIndex() )//ç‰©å“æŒ‡é’ˆæ˜¯å¦åˆæ³•
 
 #define MAX_FIX_ATTR_LENGTH        100
 #define MAX_PET_SKILL_LENGTH    50
@@ -421,14 +421,14 @@ enum ItemParamValue
 
 struct _ITEM
 {
-    _ITEM_GUID            m_ItemGUID ;                //ÎïÆ·¹Ì¶¨ĞÅÏ¢£¨²»ÄÜ¸Ä±ä£©
-    UINT                m_ItemIndex;                //ÎïÆ·ÀàĞÍ
+    _ITEM_GUID            m_ItemGUID ;                //ç‰©å“å›ºå®šä¿¡æ¯ï¼ˆä¸èƒ½æ”¹å˜ï¼‰
+    UINT                m_ItemIndex;                //ç‰©å“ç±»å‹
                                                     /*
-                                                    |        1 ~ 10000        °×É«×°±¸
-                                                    |    10001 ~ 20000        ÂÌÉ«×°±¸    
-                                                    |    20001 ~ 30000        À¶É«×°±¸
-                                                    |    30001 ~ 35000        Ò©Æ¿
-                                                    |    35001 ~ 40000        ±¦Ê¯
+                                                    |        1 ~ 10000        ç™½è‰²è£…å¤‡
+                                                    |    10001 ~ 20000        ç»¿è‰²è£…å¤‡    
+                                                    |    20001 ~ 30000        è“è‰²è£…å¤‡
+                                                    |    30001 ~ 35000        è¯ç“¶
+                                                    |    35001 ~ 40000        å®çŸ³
                                                     |                        ...
                                                     */
 
@@ -494,9 +494,9 @@ struct _ITEM
         return (STORE_MAP_INFO*)(&m_StoreMap);
     }
     //////////////////////////////////////////////////////////////////////////
-    // ÎïÆ·¸öÊı·½·¨
-    // ÄÜµş·ÅÎïÆ·        ·µ»Ø Êµ¼Ê´óĞ¡
-    // ²»ÄÜµş·ÅÎïÆ·        ·µ»Ø 1
+    // ç‰©å“ä¸ªæ•°æ–¹æ³•
+    // èƒ½å æ”¾ç‰©å“        è¿”å› å®é™…å¤§å°
+    // ä¸èƒ½å æ”¾ç‰©å“        è¿”å› 1
     //
     BYTE    GetItemCount()        const;
 
@@ -507,9 +507,9 @@ struct _ITEM
     BOOL    isFullTile()        const;
 
 
-    //Ôö¼Óµş·ÅÊıÁ¿
+    //å¢åŠ å æ”¾æ•°é‡
     BOOL    IncCount(UINT nCount =1);    
-    //¼õÉÙµş·ÅÊıÁ¿
+    //å‡å°‘å æ”¾æ•°é‡
     BOOL    DecCount(UINT nCount =1);
 
 
@@ -536,12 +536,12 @@ struct _ITEM
     BOOL    GetItemIdent() const;
     VOID    SetItemIdent(BOOL bIdent);
 
-    BOOL    GetItemPLock() const;    //ÃÜÂëËø¶¨
+    BOOL    GetItemPLock() const;    //å¯†ç é”å®š
     VOID    SetItemPLock(BOOL bIdent);
     
     INT        GetItemFailTimes() const;
     VOID    SetItemFailTimes(INT nTimes);
-    //´´½¨Õß
+    //åˆ›å»ºè€…
     BOOL    GetCreatorVar() const;
     VOID    SetCreatorVar(BOOL bCreator);
 
@@ -549,18 +549,18 @@ struct _ITEM
     VOID    SetItemParam(UINT start,ItemParamValue& ipv,INT value);
 };
 
-//pItem            ĞèÒª×ª»»µÄ_ITEM
-//pOut            ×ª»»ºóÊä³öµÄÊı¾İ
-//OutLength        Êä³öÊı¾İµÄ³¤¶È
-//BuffLength    pOut µÄÊµ¼Ê³¤¶È
+//pItem            éœ€è¦è½¬æ¢çš„_ITEM
+//pOut            è½¬æ¢åè¾“å‡ºçš„æ•°æ®
+//OutLength        è¾“å‡ºæ•°æ®çš„é•¿åº¦
+//BuffLength    pOut çš„å®é™…é•¿åº¦
 BOOL        Item2String(_ITEM* pItem,CHAR* pOut,INT& OutLength,INT BuffLength);
 BOOL        String2Item(CHAR* pIn,INT BuffLength,_ITEM* pItem);
 
 
-//A,B ½»»»
+//A,B äº¤æ¢
 VOID    SwapItem(_ITEM* pItemA,_ITEM* pItemB);
-//A ¸²¸ÇB ¿Õ¼ä
-//Í¬Ê±A Çå¿Õ
+//A è¦†ç›–B ç©ºé—´
+//åŒæ—¶A æ¸…ç©º
 VOID    OverWriteItem(_ITEM* pItemA,_ITEM* pItemB);
 
 UINT    GetItemRealSize(const _ITEM& it);

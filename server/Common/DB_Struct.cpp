@@ -5,7 +5,7 @@
 
 VOID _HUMAN_DB_LOAD::CleanUp( )
 {
-//╩Ы╠╬пео╒
+//Е÷╨Ф°╛Д©║Ф│╞
     m_PortraitID        = -1;
     memset( m_Name, 0, MAX_CHARACTER_NAME ) ;
     memset( m_Title, 0, MAX_CHARACTER_TITLE ) ;
@@ -29,7 +29,7 @@ VOID _HUMAN_DB_LOAD::CleanUp( )
     m_HairModel            = -1;
     m_FaceModel            = -1;
 
-//╩Ы╠╬в╢л╛
+//Е÷╨Ф°╛Г┼╤Ф─│
     m_StartScene        = INVALID_ID ;
     m_BakScene            = INVALID_ID ;
     m_GuildID            = INVALID_ID ;
@@ -42,7 +42,7 @@ VOID _HUMAN_DB_LOAD::CleanUp( )
     m_LeftDieTime        = 0;
     m_DBVersion            = 0;
 
-//у╫╤╥пео╒
+//Ф┬≤Ф√≈Д©║Ф│╞
     m_CampData.CleanUp();
     m_MenPai            = 0;
     m_NeiShang            = 0;
@@ -57,7 +57,7 @@ VOID _HUMAN_DB_LOAD::CleanUp( )
 
     m_Level1Points        = 0;
 //
-//мФ╪рил╣Й
+//Г▌╘Е╝╤Е∙├Е╨≈
 //
     for(UINT i =0; i<MAX_SHOP_NUM_PER_PLAYER; i++)
     {
@@ -69,7 +69,7 @@ VOID _HUMAN_DB_LOAD::CleanUp( )
         m_FavoriteList[i].Reset();
     }
 
-    //Ёф╨е
+    //Г╖╟Е▐╥
     m_Titles.CleanUp();
 }
 
@@ -80,7 +80,7 @@ VOID _PET_SKILL::CleanUp( VOID )
 
 VOID _PET_DB_LOAD::CleanUp( )
 {
-//╩Ы╠╬пео╒
+//Е÷╨Ф°╛Д©║Ф│╞
     m_GUID.Reset();
     m_SpouseGUID.Reset();
     m_nDataID            = INVALID_ID;
@@ -128,7 +128,7 @@ VOID _BANK_DB_LOAD::CleanUp( )
 {
     memset( m_pItem, 0, MAX_BANK_SIZE*sizeof(_ITEM) ) ;
     m_Count            =    0;
-    m_CurEndIndex    =    RENTBOX2_START_INDEX;//д╛хож╩╢Р©╙р╩╦ЖвБач╟Э
+    m_CurEndIndex    =    RENTBOX2_START_INDEX;//И╩≤Х╝╓Е▐╙Ф┴⌠Е╪─Д╦─Д╦╙Г╖÷Х╣│Е▄┘
     m_Money            =    0;
 }
 

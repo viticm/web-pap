@@ -1,11 +1,11 @@
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ10ÈÕ
-    ´´½¨Ê±¼ä:    10:58
-    ÎÄ¼şÃû³Æ:    HumanItemLogic.h
-    ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Item\HumanItemLogic.h
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ10æ—¥
+    åˆ›å»ºæ—¶é—´:    10:58
+    æ–‡ä»¶åç§°:    HumanItemLogic.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\HumanItemLogic.h
     
-    ÎÄ¼ş¹¦ÄÜ£º Obj_Human ¶ÔÎïÆ·²Ù×÷µÄ·â×°
-    ĞŞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š Obj_Human å¯¹ç‰©å“æ“ä½œçš„å°è£…
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 
@@ -23,73 +23,73 @@ class HumanItemLogic
 {
 public:
     
-    //Í¨¹ıÎïÆ·ÀàĞÍ±àºÅ,È¡µÃHumanÉÏÎïÆ·µÄÈİÆ÷
+    //é€šè¿‡ç‰©å“ç±»å‹ç¼–å·,å–å¾—Humanä¸Šç‰©å“çš„å®¹å™¨
     static    ItemContainer*    GetItemContain(Obj_Human*    pHuman,UINT uItemIndex);
     
     /*
-     *    ±³°ü²¿·Ö
-     *  ´ÓHumanÉíÉÏÉ¾³ıuCount¸öÀàĞÍÎªuItemIndex µÄÎïÆ·
+     *    èƒŒåŒ…éƒ¨åˆ†
+     *  ä»Humanèº«ä¸Šåˆ é™¤uCountä¸ªç±»å‹ä¸ºuItemIndex çš„ç‰©å“
      */
     static    BOOL            EraseItem(ITEM_LOG_PARAM* pLogParam,Obj_Human*    pHuman,UINT uItemIndex,UINT uCount);
 
-    //´ÓHumanÉíÉÏÉ¾³ıµÚuBagIndex Î»ÖÃÉÏµÄÎïÆ·
+    //ä»Humanèº«ä¸Šåˆ é™¤ç¬¬uBagIndex ä½ç½®ä¸Šçš„ç‰©å“
     static    BOOL            EraseItem(ITEM_LOG_PARAM* pLogParam,Obj_Human*    pHuman,UINT uBagIndex);
 
-    //¼õÉÙHumanÉíÉÏuBagIndex Î»ÖÃÉÏµÄÎïÆ·
+    //å‡å°‘Humanèº«ä¸ŠuBagIndex ä½ç½®ä¸Šçš„ç‰©å“
     static  BOOL            DecItemLayCount(Obj_Human*,UINT uBagIndex,UINT uCount =1);
-    //Ôö¼ÓHumanÉíÉÏuBagIndex Î»ÖÃÉÏµÄÎïÆ·,uBagIndex ÉÏÃæÒ»¶¨ÒªÓĞ¶«Î÷
+    //å¢åŠ Humanèº«ä¸ŠuBagIndex ä½ç½®ä¸Šçš„ç‰©å“,uBagIndex ä¸Šé¢ä¸€å®šè¦æœ‰ä¸œè¥¿
     static  BOOL            IncItemLayCount(Obj_Human*,UINT uBagIndex,UINT uCount =1);
     
-    //uItemIndex ÊÇÖ¸ĞèÒª¼ÆËãÈİÄÉ¿Õ¼äµÄÎïÆ·ÀàĞÍ
-    //Number ÊÇÖ¸ĞèÒªÈİÄÉµÄ uItemIndex ÀàĞÍµÄÎïÆ·¸öÊı
-    //NewSpace ÓÃÓÚ±£´æÈİÄÉ Number ¸ö uItemIndex ÀàĞÍµÄÎïÆ·ĞèÒªµÄĞÂ±³°ü¿Õ¼ä
+    //uItemIndex æ˜¯æŒ‡éœ€è¦è®¡ç®—å®¹çº³ç©ºé—´çš„ç‰©å“ç±»å‹
+    //Number æ˜¯æŒ‡éœ€è¦å®¹çº³çš„ uItemIndex ç±»å‹çš„ç‰©å“ä¸ªæ•°
+    //NewSpace ç”¨äºä¿å­˜å®¹çº³ Number ä¸ª uItemIndex ç±»å‹çš„ç‰©å“éœ€è¦çš„æ–°èƒŒåŒ…ç©ºé—´
     static    BOOL            CalcItemSpace(Obj_Human* pHuman,UINT uItemIndex,INT Number,INT& NewSpace);
     
-    //¼ÆËã±³°ü¿Õ¸ñ×ÜºÍ
+    //è®¡ç®—èƒŒåŒ…ç©ºæ ¼æ€»å’Œ
     static    INT                CalcBagSpace(Obj_Human* pHuman,UINT uItemIndex);
     
-    //¼ÆËãÊÇ·ñ¿ÉÒÔÈİÏÂItemList
+    //è®¡ç®—æ˜¯å¦å¯ä»¥å®¹ä¸‹ItemList
     static    BOOL            CanReceiveItemList(Obj_Human* pHuman,_ITEM_LIST& List);
 
-    //½ÓÊÕItemList
+    //æ¥æ”¶ItemList
     static    BOOL            ReceiveItemList(ITEM_LOG_PARAM* pLogParam,Obj_Human* pHuman,_ITEM_LIST& List, BYTE nCoinType);
 
-    //»ñµÃHuman±³°üÎ»ÖÃÎªuIndexµÄItem
+    //è·å¾—HumanèƒŒåŒ…ä½ç½®ä¸ºuIndexçš„Item
     static    Item*            GetItem(Obj_Human*    pHuman,UINT uBagIndex);
-    //»ñµÃHuman±³°üÖĞ¶ÔÓ¦GUIDµÄÎïÆ·Î»ÖÃ
+    //è·å¾—HumanèƒŒåŒ…ä¸­å¯¹åº”GUIDçš„ç‰©å“ä½ç½®
     static    INT                GetItemPosByGUID(Obj_Human* pHuman,_ITEM_GUID guid);
-    //»ñµÃHuman±³°üÖĞ¶ÔÓ¦ItemIndexµÄÎïÆ·Î»ÖÃ
+    //è·å¾—HumanèƒŒåŒ…ä¸­å¯¹åº”ItemIndexçš„ç‰©å“ä½ç½®
     static    INT                GetItemPosByType(Obj_Human* pHuman,UINT uItemIndex);
 
     
-    //»ñµÃHumanÉíÉÏÎ»ÖÃÎªuIndexµÄËùÊôÈİÆ÷
+    //è·å¾—Humanèº«ä¸Šä½ç½®ä¸ºuIndexçš„æ‰€å±å®¹å™¨
     static ItemContainer*    GetContainer(Obj_Human*    pHuman,UINT uBagIndex);
 
-    //»ñµÃHumanÉíÉÏÎïÆ·±àºÅÎªuItemIndexµÄÍ³¼Æ¸öÊı
+    //è·å¾—Humanèº«ä¸Šç‰©å“ç¼–å·ä¸ºuItemIndexçš„ç»Ÿè®¡ä¸ªæ•°
     static    INT                CalcBagItemCount(Obj_Human* pHuman,UINT uItemIndex);
 
-    //ÉèÖÃhumanÉíÉÏÎïÆ·µÄÄÍ¾Ã¶È
+    //è®¾ç½®humanèº«ä¸Šç‰©å“çš„è€ä¹…åº¦
     static    BOOL            SetBagItemDur(Obj_Human*    pHuman,UINT uBagIndex, INT iDur);
-    //ÉèÖÃHuman±³°üÖĞÎïÆ·µÄ¼ø¶¨ÊôĞÔ
+    //è®¾ç½®HumanèƒŒåŒ…ä¸­ç‰©å“çš„é‰´å®šå±æ€§
     static    BOOL            SetBagItemIdent(Obj_Human*    pHuman,UINT uBagIndex);
-    //ÉèÖÃHuman±³°üÖĞÎïÆ·µÄ²ÎÊı
+    //è®¾ç½®HumanèƒŒåŒ…ä¸­ç‰©å“çš„å‚æ•°
     static    BOOL            SetBagItemParam(Obj_Human* pHuman,UINT uBagIndex,UINT Start,INT Type,INT value);
 
 
-    //ÉèÖÃhumanÉíÉÏÎïÆ·µÄ×î´óÄÍ¾Ã¶È
+    //è®¾ç½®humanèº«ä¸Šç‰©å“çš„æœ€å¤§è€ä¹…åº¦
     static    BOOL            SetBagItemMaxDur(Obj_Human*    pHuman,UINT uBagIndex, INT iDur);
 
     
-    //ÍùÉíÉÏ·ÅÖÃuCount¸öÀàĞÍÎªItemIndex µÄÎïÆ·
+    //å¾€èº«ä¸Šæ”¾ç½®uCountä¸ªç±»å‹ä¸ºItemIndex çš„ç‰©å“
     static    BOOL            CreateMultiItemToBag(ITEM_LOG_PARAM* pLogParam, Obj_Human*    pHuman,UINT uItemIndex,UINT uCount, BYTE nCoinType);
 
-    //ÍùÉíÉÏ·ÅÖÃÒ»¸öÀàĞÍÎªuItemIndex µÄÎïÆ·
+    //å¾€èº«ä¸Šæ”¾ç½®ä¸€ä¸ªç±»å‹ä¸ºuItemIndex çš„ç‰©å“
     static    BOOL            CreateItemToBag(ITEM_LOG_PARAM* pLogParam, Obj_Human*    pHuman,UINT uItemIndex,UINT& uBagIndex,BYTE nCoinType, UINT uQuality = 1);
 
-    //ÔÚÈİÆ÷Ö®¼äÒÆ¶¯ÎïÆ·µÄ²Ù×÷
+    //åœ¨å®¹å™¨ä¹‹é—´ç§»åŠ¨ç‰©å“çš„æ“ä½œ
     static    BOOL            MoveItem(ITEM_LOG_PARAM* pLogParam,Obj_Human*    pHuman,ItemContainer*    pContainer,UINT uIndex,UINT& uBagPos);
     
-    //ÔÚÈİÆ÷Ö®¼äÇĞ·ÖÎïÆ·
+    //åœ¨å®¹å™¨ä¹‹é—´åˆ‡åˆ†ç‰©å“
 
     static BOOL                SplitItem(Obj_Human* pHuman,
                                       ItemContainer* pSourContainer, 
@@ -98,7 +98,7 @@ public:
                                       ItemContainer* pDestContainer,
                                       INT nDestIndex /* =INVALID_INDEX  */);
 
-    //ÔÚÈİÆ÷Ö®¼äºÏ²¢ÎïÆ·
+    //åœ¨å®¹å™¨ä¹‹é—´åˆå¹¶ç‰©å“
     static    BOOL            SpliceItem(Obj_Human* pHuman,
                                        ItemContainer* pSourContainer, 
                                        UCHAR uSourIndex,
@@ -106,56 +106,56 @@ public:
                                        UCHAR uDestIndex);
 
     /*
-     *    ×°±¸²¿·Ö
+     *    è£…å¤‡éƒ¨åˆ†
      */
     
     /*
-     *    ÉèÖÃÒÑ¾­×°±¸ÉÏÎïÆ·µÄÄÍ¾Ã¶È    
+     *    è®¾ç½®å·²ç»è£…å¤‡ä¸Šç‰©å“çš„è€ä¹…åº¦    
      *
-     *    HUMAN_EQUIP EquipPoint    ×°ÅäµãÎ»ÖÃ
+     *    HUMAN_EQUIP EquipPoint    è£…é…ç‚¹ä½ç½®
      *
-     *  INT Dur                    ÄÍ¾Ã¶ÈµãÊı
+     *  INT Dur                    è€ä¹…åº¦ç‚¹æ•°
      */
     static    BOOL            SetEquipDur(Obj_Human*    pHuman,HUMAN_EQUIP EquipPoint,INT iDur);
 
     /*
-    *    ÉèÖÃÒÑ¾­×°±¸ÉÏÎïÆ·µÄ×î´óÄÍ¾Ã¶È    
+    *    è®¾ç½®å·²ç»è£…å¤‡ä¸Šç‰©å“çš„æœ€å¤§è€ä¹…åº¦    
     *
-    *    HUMAN_EQUIP EquipPoint    ×°ÅäµãÎ»ÖÃ
+    *    HUMAN_EQUIP EquipPoint    è£…é…ç‚¹ä½ç½®
     *
-    *  INT Dur                    ÄÍ¾Ã¶ÈµãÊı
+    *  INT Dur                    è€ä¹…åº¦ç‚¹æ•°
     */
     static    BOOL            SetEquipMaxDur(Obj_Human*    pHuman,HUMAN_EQUIP EquipPoint,INT iDur);
 
-    /*    É¾³ı½ÇÉ«ÒÑ¾­×°±¸ÉÏµÄÎïÆ·
+    /*    åˆ é™¤è§’è‰²å·²ç»è£…å¤‡ä¸Šçš„ç‰©å“
      *
-     *    EquipPoint ×°±¸µã±àºÅ
+     *    EquipPoint è£…å¤‡ç‚¹ç¼–å·
      */ 
     static    BOOL            EraseEquip(Obj_Human* pHuman,HUMAN_EQUIP    EquipPoint);
 
     /*
-     *    »ñµÃ×°±¸ÉÏµÄÎïÆ·
-     *    EquipPoint ×°±¸µã±àºÅ
+     *    è·å¾—è£…å¤‡ä¸Šçš„ç‰©å“
+     *    EquipPoint è£…å¤‡ç‚¹ç¼–å·
      */
     static    Item*            GetEquip(Obj_Human* pHuman,HUMAN_EQUIP EquipPoint);
     
     
-    //»ñµÃHumanÉíÉÏEquip±àºÅÎªuItemIndexµÄÍ³¼Æ¸öÊı
+    //è·å¾—Humanèº«ä¸ŠEquipç¼–å·ä¸ºuItemIndexçš„ç»Ÿè®¡ä¸ªæ•°
     static    INT                CalcEquipItemCount(Obj_Human* pHuman,UINT uItemIndex);
 
 
     /*
-     *    ÒøĞĞ²¿·Ö
+     *    é“¶è¡Œéƒ¨åˆ†
      */
     static    Item*            GetBankItem(Obj_Human* pHuman,UINT BankIndex);
     
     /*
-    *    ÊÕÎïÆ·µ½°üÖĞ
+    *    æ”¶ç‰©å“åˆ°åŒ…ä¸­
     */
     static    BOOL            RecieveItemToBag(Obj_Human* pHuman, ItemContainer* pContainer, UINT uIndex );
 
     /*
-    *    ½»Ò×ÖĞ²âÊÔÎïÆ·ÄÜ²»ÄÜ±»ÊÕÏÂ
+    *    äº¤æ˜“ä¸­æµ‹è¯•ç‰©å“èƒ½ä¸èƒ½è¢«æ”¶ä¸‹
     */
     static    BOOL            CanReceiveExchangeItemList(Obj_Human* pHuman,_EXCHANGE_ITEM_LIST& List);    
 

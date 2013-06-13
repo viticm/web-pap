@@ -8,7 +8,7 @@
 #define ABILITY_LOGIC_SCRIPT            701601
 #define GEM_COMPOUND_SCRIPT                701602
 
-#define    DEF_EVENT_ENTRY_FUNC_NAME        ("OnDefaultEvent") //½Å±¾½øÈëº¯Êı
+#define    DEF_EVENT_ENTRY_FUNC_NAME        ("OnDefaultEvent") //è„šæœ¬è¿›å…¥å‡½æ•°
 #define    DEF_ON_KILL_OBJECT_FUNC_NAME    ("OnKillObject")
 #define    DEF_ON_ITEM_CHANGED_FUNC_NAME    ("OnItemChanged")
 #define    DEF_ON_PET_CHANGED_FUNC_NAME    ("OnPetChanged")
@@ -16,30 +16,30 @@
 #define    DEF_ON_LEAVE_AREA_FUNC_NAME        ("OnLeaveArea")
 #define DEF_EVENT_ON_TIMER                ("OnTimer")
 
-#define DEF_MISSION_ACCEPT                ("OnMissionAccept") //½ÓÊÜÈÎÎñ
-#define DEF_MISSION_ABANDON                ("OnAbandon") //·ÅÆúÈÎÎñ
-#define DEF_MISSION_REFUSE                ("OnMissionRefuse") // ¾Ü¾ø½ÓÊÜÈÎÎñ
-#define DEF_MISSION_SUBMIT                ("OnMissionSubmit") //ÈÎÎñÍê³Éºó£¬Ìá½»ÈÎÎñ
-#define DEF_MISSION_CHECK                ("OnMissionCheck") //ÈÎÎñÍê³ÉÌõ¼ş¼ì²é
-#define DEF_MISSION_CONTINUE            ("OnMissionContinue") //ÈÎÎñÃ»Íê³É£¬¼ÌĞø
+#define DEF_MISSION_ACCEPT                ("OnMissionAccept") //æ¥å—ä»»åŠ¡
+#define DEF_MISSION_ABANDON                ("OnAbandon") //æ”¾å¼ƒä»»åŠ¡
+#define DEF_MISSION_REFUSE                ("OnMissionRefuse") // æ‹’ç»æ¥å—ä»»åŠ¡
+#define DEF_MISSION_SUBMIT                ("OnMissionSubmit") //ä»»åŠ¡å®Œæˆåï¼Œæäº¤ä»»åŠ¡
+#define DEF_MISSION_CHECK                ("OnMissionCheck") //ä»»åŠ¡å®Œæˆæ¡ä»¶æ£€æŸ¥
+#define DEF_MISSION_CONTINUE            ("OnMissionContinue") //ä»»åŠ¡æ²¡å®Œæˆï¼Œç»§ç»­
 
-// ÒÔÏÂÈıÏî¹©ÆÕÍ¨ºÏ³ÉÅä·½Ê¹ÓÃ
-// ¼¼ÄÜÊ¹ÓÃ¼ì²éº¯Êı
+// ä»¥ä¸‹ä¸‰é¡¹ä¾›æ™®é€šåˆæˆé…æ–¹ä½¿ç”¨
+// æŠ€èƒ½ä½¿ç”¨æ£€æŸ¥å‡½æ•°
 #define DEF_ABILITY_CHECK                ("AbilityCheck")
-// ºÏ³É½áÊø£¬½øĞĞÏà¹ØÏûºÄ
+// åˆæˆç»“æŸï¼Œè¿›è¡Œç›¸å…³æ¶ˆè€—
 #define DEF_ABILITY_CONSUME                ("AbilityConsume")
-// ºÏ³É³É¹¦£¬²ú³ö²úÆ·
+// åˆæˆæˆåŠŸï¼Œäº§å‡ºäº§å“
 #define DEF_ABILITY_PRODUCE                ("AbilityProduce")
 
-// ºÏ³É½áÊøÊ±µÄ³É¹¦ÂÊ¼ÆËã
+// åˆæˆç»“æŸæ—¶çš„æˆåŠŸç‡è®¡ç®—
 #define DEF_ABILITY_SUCCESSFUL_CHECK    ("CheckForResult")
-// Åä·½ºÏ³É½áÊøÊ±µÄÊìÁ·¶ÈÔö³¤
+// é…æ–¹åˆæˆç»“æŸæ—¶çš„ç†Ÿç»ƒåº¦å¢é•¿
 #define DEF_ABILITY_GAIN_EXPERIENCE        ("GainExperience")
 
-// ºÏ³É³É¹¦Ê±¼ÆËã²úÆ·µÄÆ·ÖÊ£¨Quality£©
+// åˆæˆæˆåŠŸæ—¶è®¡ç®—äº§å“çš„å“è´¨ï¼ˆQualityï¼‰
 #define DEF_ABILITY_CALC_QUALITY        ("CalcQuality")
 
-// ÒÔÏÂÊÇ±¦Ê¯²¿·Ö
+// ä»¥ä¸‹æ˜¯å®çŸ³éƒ¨åˆ†
 #define DEF_GEM_COUNT_CHECK                ("TooManyGems")
 #define DEF_IS_GEM_FIT_EQUIP            ("IsGemFitEquip")
 #define DEF_GEM_CONFLICT_CHECK            ("IsGemConflict")

@@ -1,6 +1,6 @@
 // CGSetMoodToHead.h
 // 
-// ÉèÖÃÍæ¼ÒÍ·¶¥µÄĞÄÇé
+// è®¾ç½®ç©å®¶å¤´é¡¶çš„å¿ƒæƒ…
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         };
         virtual ~CGSetMoodToHead( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

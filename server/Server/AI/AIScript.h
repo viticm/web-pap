@@ -1,8 +1,8 @@
 /*************************************************************************
- ÎÄ¼şÃû    :     AIScript.h
- °æ±¾ºÅ :    0.0.2
- ¹¦  ÄÜ    :    Õë¶ÔÌØÓĞµÄÀ©Õ¹AI½Å±¾±àĞ´µÄ½âÎö¼°Ö´ĞĞÀà
- ĞŞ¸Ä¼ÇÂ¼:    ĞŞ¸ÄÁËÇ°°æ½Ó¿Úº¯ÊıÀ©Õ¹ĞÔ²»Ç¿µÄÈ±µã
+ æ–‡ä»¶å    :     AIScript.h
+ ç‰ˆæœ¬å· :    0.0.2
+ åŠŸ  èƒ½    :    é’ˆå¯¹ç‰¹æœ‰çš„æ‰©å±•AIè„šæœ¬ç¼–å†™çš„è§£æåŠæ‰§è¡Œç±»
+ ä¿®æ”¹è®°å½•:    ä¿®æ”¹äº†å‰ç‰ˆæ¥å£å‡½æ•°æ‰©å±•æ€§ä¸å¼ºçš„ç¼ºç‚¹
  *************************************************************************/
 
 #ifndef __SCRIPT_H__
@@ -24,33 +24,33 @@ public:
     AIScript();
     ~AIScript();
 
-    /** Desc    : ½âÎöPet½Å²½ÎÄ¼ş
-     *  @param    : filename ½Å±¾ÎÄ¼şÃû
-     *  @return    : ½âÎö½á¹û
+    /** Desc    : è§£æPetè„šæ­¥æ–‡ä»¶
+     *  @param    : filename è„šæœ¬æ–‡ä»¶å
+     *  @return    : è§£æç»“æœ
      */
     BOOL            ParseScriptForPet(const CHAR* filename);
-    /** Desc    : ½âÎöÓÉÎÄ¼ş¶ÁÈ¡µÄ½Å±¾ÄÚÈİ
-     *  @param    : filename ½Å±¾ÎÄ¼şÃû
-     *  @return    : ½âÎö½á¹û
+    /** Desc    : è§£æç”±æ–‡ä»¶è¯»å–çš„è„šæœ¬å†…å®¹
+     *  @param    : filename è„šæœ¬æ–‡ä»¶å
+     *  @return    : è§£æç»“æœ
      */
     BOOL            ParseScript(const CHAR* filename);
-    /** Desc    : ´¦Àí½Å±¾£¬¼´Ö´ĞĞ½Å±¾
-     *  @param    : nState Ö´ĞĞÄÄ¸öSectionµÄ½Å±¾,Èç£ºATTACK,APPROACH...
-     *  @return    : ´¦Àí½á¹û
+    /** Desc    : å¤„ç†è„šæœ¬ï¼Œå³æ‰§è¡Œè„šæœ¬
+     *  @param    : nState æ‰§è¡Œå“ªä¸ªSectionçš„è„šæœ¬,å¦‚ï¼šATTACK,APPROACH...
+     *  @return    : å¤„ç†ç»“æœ
      */
     BOOL            ProcessScript(INT nState, AI_Character* pAI);
-    /** Desc    : ÉèÖÃ×ÔÉíµÄAI_CharacterÊı¾İ
-     *  @param    : pAI ½«Òª¹Ò½ÓµÄAI_Character¶ÔÏóÖ¸Õë
-     *  @return    : ¿Õ
+    /** Desc    : è®¾ç½®è‡ªèº«çš„AI_Characteræ•°æ®
+     *  @param    : pAI å°†è¦æŒ‚æ¥çš„AI_Characterå¯¹è±¡æŒ‡é’ˆ
+     *  @return    : ç©º
      */
     //VOID            SetAI(AI_Character* pAI) { /*m_pAI = pAI;*/ }
-    /** Desc    : ÖØÖÃÎ»m_vStateLists,¼´ËùÓĞ½Å±¾Êı¾İ¸´Î»
-     *  @param    : ¿Õ
-     *  @return    : ¿Õ
+    /** Desc    : é‡ç½®ä½m_vStateLists,å³æ‰€æœ‰è„šæœ¬æ•°æ®å¤ä½
+     *  @param    : ç©º
+     *  @return    : ç©º
      */
     VOID            ResetStateList(const AI_Character* pAI);
 
-    /// ¼¼ÄÜ´íÎóÂëÏà¹Ø
+    /// æŠ€èƒ½é”™è¯¯ç ç›¸å…³
     //VOID            SetSkillErrorCode(ORESULT oResult) { m_SkillErrorCode = oResult; }
     //ORESULT            GetSkillErrorCode(VOID) const { return m_SkillErrorCode; }
 
@@ -59,18 +59,18 @@ public:
     //INT                GetSkillID(VOID) const { return m_SkillID; }
 
 protected:
-    /// ½Å±¾Ö´ĞĞº¯Êı
+    /// è„šæœ¬æ‰§è¡Œå‡½æ•°
     BOOL            ExcuteCdtScript(ConditionTree* p, const AI_Character* pAI);
     BOOL            ExcuteToDoScript(TreeNodeList* p, const AI_Character* pAI);
     BOOL            ExcuteExpress(const TreeNode* p, const AI_Character* pAI);
     BOOL            ExcuteToDoExpress(const TreeNode* p, const AI_Character* pAI);
-    /// ½Å±¾½âÎöº¯Êı
+    /// è„šæœ¬è§£æå‡½æ•°
     BOOL            ParseOneScript(const CHAR* szScript);
     INT                ParseCHAR(const CHAR* szch);
     INT                ParseCommand(const CHAR* szch);
     TreeNode        ParseExpress(Atom atom);
     BOOL            VerifyExpress(const CHAR* szch);
-    /// ÓÉ½Å±¾µ½Ô¤´¦ÀíµÄ½Å²½Êı¾İ½á¹¹µÄÖĞ¼äº¯Êı
+    /// ç”±è„šæœ¬åˆ°é¢„å¤„ç†çš„è„šæ­¥æ•°æ®ç»“æ„çš„ä¸­é—´å‡½æ•°
     BOOL            ProcessOptorQ(VOID);
     BOOL            ProcessCdtQ(VOID);
     BOOL            ProcessToDoQ(VOID);
@@ -84,11 +84,11 @@ protected:
     VOID            ClearTree(ConditionTree* p);
     VOID            ClearNode(ConditionNode* p);
     VOID            ClearCdtList(VOID);
-    /// ²Ù×÷Ìõ¼şListµÄÏà¹Øº¯Êı
+    /// æ“ä½œæ¡ä»¶Listçš„ç›¸å…³å‡½æ•°
     ConditionList*    GetCdtList(VOID) const { return m_pcdtList; }
     VOID            InitAllStateList(VOID);
     VOID            InitList(ENUM_AISTATE stateIndex) { m_vStateLists[stateIndex] = m_pcdtList; m_pcdtList = NULL; }
-    /// ÆäËûµÄ¸¨Öú³ÉÔ±º¯Êı
+    /// å…¶ä»–çš„è¾…åŠ©æˆå‘˜å‡½æ•°
     VOID            VerdictState(ConditionTree* t, ConditionNode* p, INT& ret);
     VOID            SetParam(const CHAR* szCmd, Atom& atom);
     BOOL            IsParam(const CHAR* szCmd);
@@ -101,8 +101,8 @@ protected:
 private:
 
     Ini                    m_file;
-    ConditionList*        m_pcdtList;        //ÎªÖĞ¼ä±äÁ¿£¬Îª¸÷ÖÖ²Ù×÷Ìá¹©·½±ã
-    ConditionList*        m_pcdtList2;    //ÕæÕıµÄCommon²¿·ÖListµÄ´æ´¢Ö¸Õë
+    ConditionList*        m_pcdtList;        //ä¸ºä¸­é—´å˜é‡ï¼Œä¸ºå„ç§æ“ä½œæä¾›æ–¹ä¾¿
+    ConditionList*        m_pcdtList2;    //çœŸæ­£çš„Commonéƒ¨åˆ†Listçš„å­˜å‚¨æŒ‡é’ˆ
     ConditionList*        m_vStateLists[ONDEADSECTION+1];
 
     OperatorQueue        m_operatorQ;
@@ -125,7 +125,7 @@ private:
     //INT                    m_nSummonCount;
     //INT                    m_nSpeakID;
     //FLOAT                    m_fNeedGoDist;
-    // ¼¼ÄÜ´íÎóÂë
+    // æŠ€èƒ½é”™è¯¯ç 
     //ORESULT                m_SkillErrorCode;
 
 };

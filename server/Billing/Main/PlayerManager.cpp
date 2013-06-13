@@ -78,7 +78,7 @@ BOOL PlayerManager::AddPlayer( PlayerID_t pid )
 {
 __ENTER_FUNCTION
 
-    //Î´Ìá¹©º¯Êı
+    //æœªæä¾›å‡½æ•°
     Assert( FALSE ) ;
 
 __LEAVE_FUNCTION

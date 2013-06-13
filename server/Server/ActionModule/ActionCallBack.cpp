@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºActionCallBack.cpp
-// ¹¦ÄÜËµÃ÷£º»Øµ÷º¯ÊıÀà
+// æ–‡ä»¶åï¼šActionCallBack.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šå›è°ƒå‡½æ•°ç±»
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -14,7 +14,7 @@
 #include "ActionCallBackForSkill.h"
 namespace Action_Module
 {
-    //È«¾ÖÎ¨Ò»µÄ¶¯×÷»Øµ÷Âß¼­ÊµÌå
+    //å…¨å±€å”¯ä¸€çš„åŠ¨ä½œå›è°ƒé€»è¾‘å®ä½“
     ActionCallBackFunctorForSkill_T const g_ActionCallBackFunctorForSkill;
     ActionCallBackFunctorForScript_T const g_ActionCallBackFunctorForScript;
     

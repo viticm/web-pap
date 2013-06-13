@@ -30,7 +30,7 @@ __ENTER_FUNCTION
     {
         Obj_Human* pHuman = (Obj_Human*)(g_pGUIDManager->Get(m_CopyData.m_TeamLeader)) ;
         if( pHuman )
-        {//¸ù¾İ¸±±¾´´½¨ÕßµÄGUID£¬ÉèÖÃ´Ë¸±±¾µÄ¶ÓÎéºÅĞÅÏ¢
+        {//æ ¹æ®å‰¯æœ¬åˆ›å»ºè€…çš„GUIDï¼Œè®¾ç½®æ­¤å‰¯æœ¬çš„é˜Ÿä¼å·ä¿¡æ¯
             m_CopyData.m_TeamID = pHuman->GetTeamInfo()->GetTeamID() ;
         }
         else
@@ -55,8 +55,8 @@ __ENTER_FUNCTION
     }
 
     if(m_SceneInitData.m_nDataType == SCENE_TYPE_CIT)
-    {//´Ë³¡¾°ÊÇ³ÇÊĞ³¡¾°£¬ÌØÊâ´¦Àí
-        //ÉèÖÃÈë¿Ú³¡¾°µÄÁ¬½Ó
+    {//æ­¤åœºæ™¯æ˜¯åŸå¸‚åœºæ™¯ï¼Œç‰¹æ®Šå¤„ç†
+        //è®¾ç½®å…¥å£åœºæ™¯çš„è¿æ¥
         GCCityNotify MsgNotifySuccess;
         Obj_Human* pHuman = (Obj_Human*)(g_pGUIDManager->Get(m_CityData.m_Creator)) ;
         pHuman->GetPlayer()->SendPacket(&MsgNotifySuccess);
@@ -145,21 +145,21 @@ __ENTER_FUNCTION
 
     Obj_Human* pHuman = pGamePlayer->GetHuman();
 
-    //Çå³ı³¡¾°»º´æÀïÃæµÄ´ËÓÃ»§ÏûÏ¢
+    //æ¸…é™¤åœºæ™¯ç¼“å­˜é‡Œé¢çš„æ­¤ç”¨æˆ·æ¶ˆæ¯
     MovePacket( pGamePlayer->PlayerID() ) ;
 
 
-    //½»Ò×Ò»·½Àë¿ª³¡¾°»òµôÏß
+    //äº¤æ˜“ä¸€æ–¹ç¦»å¼€åœºæ™¯æˆ–æ‰çº¿
     if(pHuman->m_ExchangBox.m_ObjID != INVALID_ID)
-    {//ÕıÔÚ¸ú±ğÈË½»Ò×ÖĞ
+    {//æ­£åœ¨è·Ÿåˆ«äººäº¤æ˜“ä¸­
         ObjID_t    TargetID = pHuman->m_ExchangBox.m_ObjID;
         Obj_Human* pTargetHuman = GetHumanManager()->GetHuman( TargetID );
         if( pTargetHuman != NULL )
-        {//¶Ô·½Ã»µôÏß
+        {//å¯¹æ–¹æ²¡æ‰çº¿
             if( pTargetHuman->m_ExchangBox.m_Status > 0
                 && pTargetHuman->m_ExchangBox.m_ObjID == pHuman->GetID()
                 )
-            {//¶Ô·½Ò²È·ÊµÊÇÔÚ½»Ò××´Ì¬,²¢ÔÚÍ¬×Ô¼º½»Ò×
+            {//å¯¹æ–¹ä¹Ÿç¡®å®æ˜¯åœ¨äº¤æ˜“çŠ¶æ€,å¹¶åœ¨åŒè‡ªå·±äº¤æ˜“
                 GCExchangeError Msg;
                 Msg.SetID(EXCHANGE_MSG::ERR_DROP);
                 pTargetHuman->GetPlayer()->SendPacket(&Msg);
@@ -189,7 +189,7 @@ __LEAVE_FUNCTION
 
     return ;
 
-    ////²âÊÔÊı¾İ
+    ////æµ‹è¯•æ•°æ®
     //Scene* pScene = g_pSceneManager->GetScene( DestSceneID ) ;
     //GUID_t TeamLeader = pScene->m_CopyData.m_TeamLeader ;
     //Obj_Human* pHuman = ((Obj_Human*)(g_pGUIDManager->Get(TeamLeader))) ;
@@ -214,7 +214,7 @@ __LEAVE_FUNCTION
     //Msg.setTargetDir( 9 ) ;
     //                
     //pGamePlayer->SendPacket( &Msg ) ;
-    //²âÊÔÊı¾İ
+    //æµ‹è¯•æ•°æ®
 }
 
 BOOL Scene::OnAcceptMissionCheck(Obj_Human* pHuman,ScriptID_t idMissionScript)

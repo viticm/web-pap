@@ -24,10 +24,10 @@ __ENTER_FUNCTION
     Assert(pHuman);
 
     if( pGamePlayer->GetPlayerStatus()==PS_SERVER_WAITING_FOR_ENTER )
-    {//µ±Ç°Íæ¼ÒÊÇ¸Õ½ÓÈëµÄ
-     //µ±Ç°´úÂëÓÉ IncomingPlayerManagerÀ´Ö´ĞĞ
+    {//å½“å‰ç©å®¶æ˜¯åˆšæ¥å…¥çš„
+     //å½“å‰ä»£ç ç”± IncomingPlayerManageræ¥æ‰§è¡Œ
 
-        //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+        //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()==g_pIncomingPlayerManager->m_ThreadID ) ;
 
         SceneID_t SceneID = pHuman->GetDB()->GetDBStartScene() ;
@@ -36,7 +36,7 @@ __ENTER_FUNCTION
         WORLD_POS enterPos = *(pHuman->GetDB()->GetDBPosition()) ;
         PlayerID_t PlayerID = pGamePlayer->PlayerID() ;
 
-        //·Ç·¨µÄ³¡¾°ID
+        //éæ³•çš„åœºæ™¯ID
         if( SceneID==INVALID_ID || pScene==NULL )
         {
             SceneID = pHuman->GetDB()->GetDBBakScene() ;
@@ -74,7 +74,7 @@ __ENTER_FUNCTION
             }
         }
 
-        //µ±Ç°Íæ¼ÒÃ»ÓĞÈ¨ÏŞ½øÈë´Ë³¡¾°£¨µÈ¼¶²»¹»£¬³¡¾°Ã»¿ª·Å£¬µÈ£©
+        //å½“å‰ç©å®¶æ²¡æœ‰æƒé™è¿›å…¥æ­¤åœºæ™¯ï¼ˆç­‰çº§ä¸å¤Ÿï¼Œåœºæ™¯æ²¡å¼€æ”¾ï¼Œç­‰ï¼‰
         INT nRet = pScene->CheckEnter( PlayerID ) ;
         if( nRet==0 )
         {
@@ -89,7 +89,7 @@ __ENTER_FUNCTION
             return PACKET_EXE_CONTINUE ;
         }
         else if( nRet==-1 )
-        {//Æô¶¯±¸·İ³¡¾°
+        {//å¯åŠ¨å¤‡ä»½åœºæ™¯
             SceneID = pHuman->GetDB()->GetDBBakScene() ;
             enterPos = *(pHuman->GetDB()->GetDBBakPosition()) ;
             pHuman->GetDB()->SetDBStartScene(SceneID);
@@ -102,7 +102,7 @@ __ENTER_FUNCTION
             }
             pScene = g_pSceneManager->GetScene( SceneID ) ;
             if( pScene==NULL )
-            {//±¸·İ³¡¾°²»ÔÚµ±Ç°·şÎñÆ÷ÉÏ£¬Ôò´«ËÍµ½µ¥Ç°·şÎñÆ÷µÄÌØÊâ³¡¾°Àï
+            {//å¤‡ä»½åœºæ™¯ä¸åœ¨å½“å‰æœåŠ¡å™¨ä¸Šï¼Œåˆ™ä¼ é€åˆ°å•å‰æœåŠ¡å™¨çš„ç‰¹æ®Šåœºæ™¯é‡Œ
                 SceneID = g_pSceneManager->GetSpecialSceneIDFromCurServer( ) ;
                 pScene = g_pSceneManager->GetScene( SceneID ) ;
                 if( pScene==NULL )
@@ -126,13 +126,13 @@ __ENTER_FUNCTION
 
         //if(       pScene->GetSceneType()==SCENE_TYPE_GAMELOGIC
         //    && !pScene->GetMap()->IsPosLogicValid( &enterPos ) )
-        //{//Èç¹û½øÈëÁËÓÎÏ·ÆÕÍ¨³¡¾°µÄ·Ç·¨Î»ÖÃ£¬Ôò×Ô¶¯Ìø×ªµ½Ò»¸öºÏÀíÎ»ÖÃÉÏ
+        //{//å¦‚æœè¿›å…¥äº†æ¸¸æˆæ™®é€šåœºæ™¯çš„éæ³•ä½ç½®ï¼Œåˆ™è‡ªåŠ¨è·³è½¬åˆ°ä¸€ä¸ªåˆç†ä½ç½®ä¸Š
         //    enterPos = *pScene->GetCanEnterPos() ;
         //    g_pLog->FastSaveLog( LOG_FILE_1, "CGEnterScene::!IsPosLogicValid GUID=%X SceneID=%d (%.2f,%.2f)",
         //        pGamePlayer->m_HumanGUID, SceneID, enterPos.m_fX, enterPos.m_fZ ) ;
         //}
 
-        //Èç¹ûĞèÒª¼ÓÈëµÄ³¡¾°ÒÑ¾­´¦ÓÚ±¥ºÍ×´Ì¬£¬Ôò·µ»Ø¼ÓÈë³¡¾°Ê§°ÜÏûÏ¢
+        //å¦‚æœéœ€è¦åŠ å…¥çš„åœºæ™¯å·²ç»å¤„äºé¥±å’ŒçŠ¶æ€ï¼Œåˆ™è¿”å›åŠ å…¥åœºæ™¯å¤±è´¥æ¶ˆæ¯
         if( !pScene->IsCanEnter() )
         {
             GCEnterScene Msg ;
@@ -146,7 +146,7 @@ __ENTER_FUNCTION
             return PACKET_EXE_CONTINUE ;
         }
 
-        //É¾³ı½ÓÈëÄ£¿éÖĞÊı¾İ
+        //åˆ é™¤æ¥å…¥æ¨¡å—ä¸­æ•°æ®
         PlayerID_t pid = pGamePlayer->PlayerID() ;
         BOOL ret = g_pIncomingPlayerManager->DelPlayer( pid ) ;
         if( !ret )
@@ -157,14 +157,14 @@ __ENTER_FUNCTION
             return PACKET_EXE_ERROR ;
         }
 
-        //ÏòÄ¿µÄ³¡¾°·¢ËÍ×ªÒÆÏûÏ¢
+        //å‘ç›®çš„åœºæ™¯å‘é€è½¬ç§»æ¶ˆæ¯
         CGEnterScene* pEnter = (CGEnterScene*)(g_pPacketFactoryManager->CreatePacket(PACKET_CG_ENTERSCENE)) ;
         pEnter->setEnterType( pPacket->getEnterType() ) ;
         pEnter->setSceneID( SceneID ) ;
         pEnter->setEnterPos( enterPos ) ;
 
 
-        //½«Íæ¼Ò×´Ì¬ÉèÖÃÎªPS_SERVER_READY_TO_ENTER
+        //å°†ç©å®¶çŠ¶æ€è®¾ç½®ä¸ºPS_SERVER_READY_TO_ENTER
         pGamePlayer->SetPlayerStatus( PS_SERVER_READY_TO_ENTER ) ;
 
 
@@ -172,17 +172,17 @@ __ENTER_FUNCTION
         g_pLog->FastSaveLog( LOG_FILE_1, "CGEnterScene I GUID=%X To:%d Pos=(%.2f,%.2f)...Ready PID:%d ",
             pGamePlayer->m_HumanGUID, SceneID, enterPos.m_fX, enterPos.m_fZ, pGamePlayer->PlayerID() ) ;
 
-        //**×¢Òâ**
-        //±ØĞë·µ»ØPACKET_EXE_BREAK £»
+        //**æ³¨æ„**
+        //å¿…é¡»è¿”å›PACKET_EXE_BREAK ï¼›
         return PACKET_EXE_BREAK ;
     }
     else if( pGamePlayer->GetPlayerStatus()==PS_SERVER_READY_TO_ENTER )
-    {//³¡¾°ÊÕµ½ÏûÏ¢£¬´¦ÀíÌí¼Ó
-     //µ±Ç°´úÂëÓÉ pSceneÏß³ÌÀ´Ö´ĞĞ
-     //ÊÕµ½Ô­³¡¾°·¢ËÍ¹ıÀ´µÄÏûÏ¢£¬ÓÉÄ¿µÄ³¡¾°Ö´ĞĞ
-     //¹¦ÄÜ:
-      //1.Ìí¼Ó´ËÍæ¼Òµ½±¾³¡¾°ÖĞ
-     //2.Íæ¼Ò·¢ËÍÒ»¸öÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°æ¶ˆæ¯ï¼Œå¤„ç†æ·»åŠ 
+     //å½“å‰ä»£ç ç”± pSceneçº¿ç¨‹æ¥æ‰§è¡Œ
+     //æ”¶åˆ°åŸåœºæ™¯å‘é€è¿‡æ¥çš„æ¶ˆæ¯ï¼Œç”±ç›®çš„åœºæ™¯æ‰§è¡Œ
+     //åŠŸèƒ½:
+      //1.æ·»åŠ æ­¤ç©å®¶åˆ°æœ¬åœºæ™¯ä¸­
+     //2.ç©å®¶å‘é€ä¸€ä¸ªæ¶ˆæ¯
 
         Obj_Human *pHuman = pGamePlayer->GetHuman();
         if (!pHuman)
@@ -201,14 +201,14 @@ __ENTER_FUNCTION
 
         PlayerID_t PlayerID = pGamePlayer->PlayerID() ;
 
-        //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+        //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-        //½«¿Í»§¶ËÁ¬½Ó¼ÓÈëÄ¿µÄ³¡¾°Íæ¼Ò¹ÜÀíÆ÷
+        //å°†å®¢æˆ·ç«¯è¿æ¥åŠ å…¥ç›®çš„åœºæ™¯ç©å®¶ç®¡ç†å™¨
         BOOL ret = pScene->GetScenePlayerManager()->AddPlayer( pPlayer ) ;
         if( !ret )
-        {//Èç¹û¼ÓÈë³¡¾°Ê§°Ü£¬ÓÉÓÚµ±Ç°Íæ¼ÒÒÑ¾­´ÓÔ­ÏÈµÄ³¡¾°ÀïÍÑÀë£¬
-            //ËùÒÔÖ»ÄÜ¶Ï¿ª´ËÍæ¼ÒµÄÍøÂçÁ¬½Ó
+        {//å¦‚æœåŠ å…¥åœºæ™¯å¤±è´¥ï¼Œç”±äºå½“å‰ç©å®¶å·²ç»ä»åŸå…ˆçš„åœºæ™¯é‡Œè„±ç¦»ï¼Œ
+            //æ‰€ä»¥åªèƒ½æ–­å¼€æ­¤ç©å®¶çš„ç½‘ç»œè¿æ¥
             SOCKET fd = pGamePlayer->GetSocket()->getSOCKET() ;
             BOOL boo = pScene->GetScenePlayerManager()->DelPlayerSocket( fd ) ;
             boo = pGamePlayer->ChooseFreeOwn(pScene->GetRecyclePlayerManager(), 0) ;
@@ -222,7 +222,7 @@ __ENTER_FUNCTION
         WORLD_POS EnterPos = *pPacket->getEnterPos() ;
         ret = pScene->GetMap()->FindEmptyPos( &EnterPos, pGamePlayer->GetHuman()->GetDriverLevel() ) ;
         if( ret == FALSE )
-        {//²»ÄÜ½øÈëÒ»¸ö²»¿É×ßµÄµØ·½
+        {//ä¸èƒ½è¿›å…¥ä¸€ä¸ªä¸å¯èµ°çš„åœ°æ–¹
             SOCKET fd = pGamePlayer->GetSocket()->getSOCKET() ;
             BOOL boo = pScene->GetScenePlayerManager()->DelPlayerSocket( fd ) ;
             boo = pScene->GetScenePlayerManager()->DelPlayer( pGamePlayer->PlayerID() ) ;
@@ -234,11 +234,11 @@ __ENTER_FUNCTION
             return PACKET_EXE_ERROR ;
         }
 
-        //½«Íæ¼Ò¼ÓÈëµ½³¡¾°
+        //å°†ç©å®¶åŠ å…¥åˆ°åœºæ™¯
         ret = pScene->ObjectEnterScene(    pGamePlayer->GetHuman() ) ;
         if( !ret )
-        {//Èç¹û¼ÓÈë³¡¾°Ê§°Ü£¬ÓÉÓÚµ±Ç°Íæ¼ÒÒÑ¾­´ÓÔ­ÏÈµÄ³¡¾°ÀïÍÑÀë£¬
-         //ËùÒÔ·µ»Ø´íÎóÖµ¶Ï¿ª´ËÍæ¼ÒµÄÍøÂçÁ¬½Ó
+        {//å¦‚æœåŠ å…¥åœºæ™¯å¤±è´¥ï¼Œç”±äºå½“å‰ç©å®¶å·²ç»ä»åŸå…ˆçš„åœºæ™¯é‡Œè„±ç¦»ï¼Œ
+         //æ‰€ä»¥è¿”å›é”™è¯¯å€¼æ–­å¼€æ­¤ç©å®¶çš„ç½‘ç»œè¿æ¥
             SOCKET fd = pGamePlayer->GetSocket()->getSOCKET() ;
             BOOL boo = pScene->GetScenePlayerManager()->DelPlayerSocket( fd ) ;
             boo = pScene->GetScenePlayerManager()->DelPlayer( pGamePlayer->PlayerID() ) ;
@@ -250,18 +250,18 @@ __ENTER_FUNCTION
             return PACKET_EXE_ERROR ;
         }
 
-        //³¡¾°½øÈëÍæ¼ÒÊÂ¼ş
+        //åœºæ™¯è¿›å…¥ç©å®¶äº‹ä»¶
         pScene->OnScenePlayerEnter( pGamePlayer ) ;
 
-        // ÏÂÒ»°æÒª¸Ä
-        //Ïò¿Í»§¶Ë·¢ËÍ½øÈë³¡¾°³É¹¦µÄÏûÏ¢
+        // ä¸‹ä¸€ç‰ˆè¦æ”¹
+        //å‘å®¢æˆ·ç«¯å‘é€è¿›å…¥åœºæ™¯æˆåŠŸçš„æ¶ˆæ¯
         GCEnterScene Msg0 ;
         Msg0.setReturn( 0 ) ;
         Msg0.setSceneID( SceneID ) ;
         Msg0.setEnterPos( EnterPos ) ;
         Msg0.setObjID( pGamePlayer->GetHuman()->GetID() ) ;
 
-        //Èç¹ûÊÇ³ÇÊĞ³¡¾°£¬»¹Òª·¢ËÍ³É³ÇÊĞ¼¶±ğ
+        //å¦‚æœæ˜¯åŸå¸‚åœºæ™¯ï¼Œè¿˜è¦å‘é€æˆåŸå¸‚çº§åˆ«
         if(pScene->m_SceneInitData.m_nDataType == SCENE_TYPE_CIT)
         {
             Msg0.setIsCity(TRUE);
@@ -269,7 +269,7 @@ __ENTER_FUNCTION
         }
 
         pGamePlayer->SendPacket( &Msg0 ) ;
-        //·¢ËÍÊ±¼äÍ¬²½µÄÏûÏ¢
+        //å‘é€æ—¶é—´åŒæ­¥çš„æ¶ˆæ¯
 
         pHuman->setWorldPos( &EnterPos );
         pHuman->UpdateZone( ) ;
@@ -279,9 +279,9 @@ __ENTER_FUNCTION
         pHuman->GetDB()->SetDBStartScene( SceneID );
         pHuman->GetDB()->SetDBPosition(*pHuman->getWorldPos());
 
-        //³É¹¦½øÈë³¡¾°£¬½«Íæ¼Ò×´Ì¬ÉèÖÃÎª£ºPS_SERVER_NORMAL
+        //æˆåŠŸè¿›å…¥åœºæ™¯ï¼Œå°†ç©å®¶çŠ¶æ€è®¾ç½®ä¸ºï¼šPS_SERVER_NORMAL
         pGamePlayer->SetPlayerStatus( PS_SERVER_NORMAL ) ;
-        //ÏÈ·¢ËÍ½ÇÉ«ÕóÓª À´ÅĞ¶ÏNPCÃû×ÖÑÕÉ« fujia 2008.1.4
+        //å…ˆå‘é€è§’è‰²é˜µè¥ æ¥åˆ¤æ–­NPCåå­—é¢œè‰² fujia 2008.1.4
         GCCharBaseAttrib msgAttr;
 
         msgAttr.setObjID( pGamePlayer->GetHuman()->GetID()); 
@@ -295,12 +295,12 @@ __ENTER_FUNCTION
     else if( pGamePlayer->GetPlayerStatus()==PS_SERVER_NORMAL ||
              pGamePlayer->GetPlayerStatus()==PS_SERVER_WAITING_FOR_CHANGESCENE_SCENE    
              )
-    {//ÔÚ³¡¾°ÖĞÊ±ÊÕµ½½øÈë³¡¾°£¬ËµÃ÷ÊÇÒªÔÚÍ¬Ò»¸ö·şÎñÆ÷¶Ë³ÌĞòÄÚ×ªÒÆ³¡¾°
-     //µ±Ç°´úÂëÓÉÔ­³¡¾°Ïß³ÌÀ´Ö´ĞĞ, Ä¿µÄÊÇÒªÇå³ıÔ­³¡¾°ÖĞµÄÍæ¼ÒÊı¾İ
-     //ÓÉÔ­³¡¾°Ö´ĞĞ
-     //¹¦ÄÜ:
-     //1.ÔÚ±¾³¡¾°ÖĞÇå¿Õ´ËÍæ¼Ò
-     //2.ÏòÄ¿µÄ³¡¾°·¢ËÍÒ»¸öÏûÏ¢
+    {//åœ¨åœºæ™¯ä¸­æ—¶æ”¶åˆ°è¿›å…¥åœºæ™¯ï¼Œè¯´æ˜æ˜¯è¦åœ¨åŒä¸€ä¸ªæœåŠ¡å™¨ç«¯ç¨‹åºå†…è½¬ç§»åœºæ™¯
+     //å½“å‰ä»£ç ç”±åŸåœºæ™¯çº¿ç¨‹æ¥æ‰§è¡Œ, ç›®çš„æ˜¯è¦æ¸…é™¤åŸåœºæ™¯ä¸­çš„ç©å®¶æ•°æ®
+     //ç”±åŸåœºæ™¯æ‰§è¡Œ
+     //åŠŸèƒ½:
+     //1.åœ¨æœ¬åœºæ™¯ä¸­æ¸…ç©ºæ­¤ç©å®¶
+     //2.å‘ç›®çš„åœºæ™¯å‘é€ä¸€ä¸ªæ¶ˆæ¯
 
         Obj_Human* pHuman = pGamePlayer->GetHuman() ;
 
@@ -311,12 +311,12 @@ __ENTER_FUNCTION
             return PACKET_EXE_ERROR ;
         }
 
-        //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+        //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
         SceneID_t DestSceneID = pPacket->getSceneID() ;
         if( DestSceneID==pScene->SceneID() )
-        {//Í¬Ò»¸ö³¡¾°
+        {//åŒä¸€ä¸ªåœºæ™¯
             Assert(FALSE) ;
             return PACKET_EXE_CONTINUE ;
         }
@@ -324,7 +324,7 @@ __ENTER_FUNCTION
 
         Scene* pDestScene = g_pSceneManager->GetScene( DestSceneID ) ;
         if( DestSceneID==INVALID_ID || pDestScene==NULL )
-        {//Ã»ÓĞÄ¿µÄ³¡¾°Êı¾İ£¬¿ÉÄÜ³¡¾°ºÅÓĞ´í£¬»òÕß³¡¾°²»ÊÇÔÚ´Ë·şÎñÆ÷¶Ë³ÌĞò
+        {//æ²¡æœ‰ç›®çš„åœºæ™¯æ•°æ®ï¼Œå¯èƒ½åœºæ™¯å·æœ‰é”™ï¼Œæˆ–è€…åœºæ™¯ä¸æ˜¯åœ¨æ­¤æœåŠ¡å™¨ç«¯ç¨‹åº
             GCEnterScene Msg ;
             Msg.setReturn( 2 ) ;
             Msg.setSceneID( DestSceneID ) ;
@@ -338,7 +338,7 @@ __ENTER_FUNCTION
 
         PlayerID_t PlayerID = pGamePlayer->PlayerID() ;
 
-        //µ±Ç°Íæ¼ÒÃ»ÓĞÈ¨ÏŞ½øÈë´Ë³¡¾°£¨µÈ¼¶²»¹»£¬³¡¾°Ã»¿ª·Å£¬µÈ£©
+        //å½“å‰ç©å®¶æ²¡æœ‰æƒé™è¿›å…¥æ­¤åœºæ™¯ï¼ˆç­‰çº§ä¸å¤Ÿï¼Œåœºæ™¯æ²¡å¼€æ”¾ï¼Œç­‰ï¼‰
         INT nRet = pDestScene->CheckEnter( PlayerID ) ;
         if( nRet==0 )
         {
@@ -353,12 +353,12 @@ __ENTER_FUNCTION
             return PACKET_EXE_CONTINUE ;
         }
         else if( nRet==-1 )
-        {//²»ÄÜÖ±½Ó½øÈë£¬ĞèÒª½øÈë±¸·İ³¡¾°
+        {//ä¸èƒ½ç›´æ¥è¿›å…¥ï¼Œéœ€è¦è¿›å…¥å¤‡ä»½åœºæ™¯
             DestSceneID = pHuman->GetDB()->GetDBBakScene() ;
             enterPos = *pHuman->GetDB()->GetDBBakPosition() ;
             pDestScene = g_pSceneManager->GetScene( DestSceneID ) ;
             if( pDestScene==NULL )
-            {//Ã»ÓĞÄ¿µÄ³¡¾°Êı¾İ£¬¿ÉÄÜ³¡¾°ºÅÓĞ´í£¬»òÕß³¡¾°²»ÊÇÔÚ´Ë·şÎñÆ÷¶Ë³ÌĞò
+            {//æ²¡æœ‰ç›®çš„åœºæ™¯æ•°æ®ï¼Œå¯èƒ½åœºæ™¯å·æœ‰é”™ï¼Œæˆ–è€…åœºæ™¯ä¸æ˜¯åœ¨æ­¤æœåŠ¡å™¨ç«¯ç¨‹åº
                 GCEnterScene Msg ;
                 Msg.setReturn( 2 ) ;
                 Msg.setSceneID( DestSceneID ) ;
@@ -371,7 +371,7 @@ __ENTER_FUNCTION
             }
         }
 
-        //Èç¹ûĞèÒª¼ÓÈëµÄ³¡¾°ÒÑ¾­´¦ÓÚ±¥ºÍ×´Ì¬£¬Ôò·µ»Ø¼ÓÈë³¡¾°Ê§°ÜÏûÏ¢
+        //å¦‚æœéœ€è¦åŠ å…¥çš„åœºæ™¯å·²ç»å¤„äºé¥±å’ŒçŠ¶æ€ï¼Œåˆ™è¿”å›åŠ å…¥åœºæ™¯å¤±è´¥æ¶ˆæ¯
         if( !pDestScene->IsCanEnter() )
         {
             GCEnterScene Msg ;
@@ -386,7 +386,7 @@ __ENTER_FUNCTION
         }
 
 
-        //µÚÒ»²½£ºÇå³ısocketÊı¾İ
+        //ç¬¬ä¸€æ­¥ï¼šæ¸…é™¤socketæ•°æ®
         SOCKET fd = pGamePlayer->GetSocket()->getSOCKET() ;
         BOOL ret = pScene->GetScenePlayerManager()->DelPlayerSocket( fd ) ;
         if( !ret )
@@ -397,7 +397,7 @@ __ENTER_FUNCTION
             return PACKET_EXE_ERROR ;
         }
 
-        //µÚ¶ş²½£ºÉ¾³ı³¡¾°½ÓÈëÄ£¿éÖĞÊı¾İ
+        //ç¬¬äºŒæ­¥ï¼šåˆ é™¤åœºæ™¯æ¥å…¥æ¨¡å—ä¸­æ•°æ®
         PlayerID_t pid = pGamePlayer->PlayerID() ;
         ret = pScene->GetScenePlayerManager()->DelPlayer( pid ) ;
         if( !ret )
@@ -408,27 +408,27 @@ __ENTER_FUNCTION
             return PACKET_EXE_ERROR ;
         }
 
-        //µÚÈı²½£ºÉ¾³ı³¡¾°ÖĞµÄÊı¾İ
+        //ç¬¬ä¸‰æ­¥ï¼šåˆ é™¤åœºæ™¯ä¸­çš„æ•°æ®
         pScene->OnScenePlayerLeave( pGamePlayer ) ;
         pScene->ObjectLeaveScene( pHuman ) ;
 
-        //ÏòÄ¿µÄ³¡¾°·¢ËÍ×ªÒÆÏûÏ¢
+        //å‘ç›®çš„åœºæ™¯å‘é€è½¬ç§»æ¶ˆæ¯
         CGEnterScene* pEnter = (CGEnterScene*)(g_pPacketFactoryManager->CreatePacket(PACKET_CG_ENTERSCENE)) ;
         pEnter->setEnterType( pPacket->getEnterType() ) ;
         pEnter->setSceneID( DestSceneID ) ;
         pEnter->setEnterPos( enterPos ) ;
 
-        //½«Íæ¼Ò×´Ì¬ÉèÖÃÎªPS_SERVER_READY_TO_ENTER
+        //å°†ç©å®¶çŠ¶æ€è®¾ç½®ä¸ºPS_SERVER_READY_TO_ENTER
         pGamePlayer->SetPlayerStatus( PS_SERVER_READY_TO_ENTER ) ;
 
-        //ÏòÄ¿±ê³¡¾°·¢ËÍÒì²½µÄ³¡¾°ÏûÏ¢
+        //å‘ç›®æ ‡åœºæ™¯å‘é€å¼‚æ­¥çš„åœºæ™¯æ¶ˆæ¯
         pDestScene->SendPacket( pEnter, PlayerID ) ;
 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGEnterScene S GUID=%X From:%d To:%d Pos=(%.2f,%.2f)...Ready ",
             pGamePlayer->m_HumanGUID, pScene->SceneID(), DestSceneID, enterPos.m_fX, enterPos.m_fZ ) ;
 
-        //**×¢Òâ**
-        //±ØĞë·µ»ØPACKET_EXE_BREAK £»
+        //**æ³¨æ„**
+        //å¿…é¡»è¿”å›PACKET_EXE_BREAK ï¼›
         return PACKET_EXE_BREAK ;
 
     }

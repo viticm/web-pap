@@ -102,7 +102,7 @@ __ENTER_FUNCTION
         }
         if( 1 )
         {
-            //Î»ÖÃÖ®¼äµÄ¾àÀë
+            //ä½ç½®ä¹‹é—´çš„è·ç¦»
             FLOAT fDist = MySqrt(&m_Position, pHuman->getWorldPos() ) ;
             if( fDist<m_fRadius && m_nActiveTeammateCount<MAX_TEAM_MEMBER )
             {    

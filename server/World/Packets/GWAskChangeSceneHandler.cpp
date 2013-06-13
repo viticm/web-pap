@@ -17,7 +17,7 @@ __ENTER_FUNCTION
     USER* pUser = g_pOnlineUser->FindUser( guid ) ;
     if( pUser )
     {
-        //ÉèÖÃ×ªÒÆ³¡¾°ÑéÖ¤Âë
+        //è®¾ç½®è½¬ç§»åœºæ™¯éªŒè¯ç 
         pUser->SetKey( pPacket->GetKey() );
 
         WGRetChangeScene Msg ;
@@ -26,7 +26,7 @@ __ENTER_FUNCTION
         Msg.SetPlayerID( pPacket->GetPlayerID() ) ;
         Msg.SetGUID( guid ) ;
         if( pPacket->GetStatus() == GWAskChangeScene::CSS_SAMESCENE )
-        {//µ±Ç°³¡¾°ºÍÄ¿µÄ³¡¾°´¦ÓÚÏàÍ¬µÄÓÎÏ··þÎñÆ÷ÄÚ
+        {//å½“å‰åœºæ™¯å’Œç›®çš„åœºæ™¯å¤„äºŽç›¸åŒçš„æ¸¸æˆæœåŠ¡å™¨å†…
             SceneID_t OldSceneID = pUser->GetSceneID() ;
             pUser->SetSceneID( pPacket->GetDestSceneID() );
 
@@ -35,7 +35,7 @@ __ENTER_FUNCTION
             Msg.SetReturn( WGRetChangeScene::CSR_SUCCESS ) ;
         }
         else if( pPacket->GetStatus() == GWAskChangeScene::CSS_DIFFSERVER )
-        {//µ±Ç°³¡¾°ºÍÄ¿µÄ³¡¾°´¦ÓÚ²»Í¬µÄÓÎÏ··þÎñÆ÷ÄÚ
+        {//å½“å‰åœºæ™¯å’Œç›®çš„åœºæ™¯å¤„äºŽä¸åŒçš„æ¸¸æˆæœåŠ¡å™¨å†…
             FULLUSERDATA* pFullUserData = g_pOnlineUser->NewData() ;
             if( pFullUserData==NULL )
             {
@@ -52,7 +52,7 @@ __ENTER_FUNCTION
                 pUser->SetUserStatus( US_CHANGESCENE );
                 pUser->ResetKickTime();
 
-                //ÐÞ¸ÄÓÃ»§Êý¾Ý×ÊÁÏ
+                //ä¿®æ”¹ç”¨æˆ·æ•°æ®èµ„æ–™
                 SceneID_t OldSceneID = pUser->GetSceneID() ;
                 pUser->GetFullUserData()->m_Human.m_StartScene = pPacket->GetDestSceneID() ;
                 pUser->SetSceneID( pPacket->GetDestSceneID() );

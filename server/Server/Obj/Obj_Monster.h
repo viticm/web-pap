@@ -8,7 +8,7 @@
 #include "Obj_Character.h"
 
 /////////////////////////////////////////////////////////
-//¹ÖÎï³õÊ¼»¯Êı¾İ
+//æ€ªç‰©åˆå§‹åŒ–æ•°æ®
 /////////////////////////////////////////////////////////
 
 #define MAX_SHOP_INIT 4
@@ -85,7 +85,7 @@ struct _OBJ_MONSTER_INIT :
 };
 
 /////////////////////////////////////////////////////////
-// ÊôĞÔË¢ĞÂµÄÊı¾İ±¸·İ
+// å±æ€§åˆ·æ–°çš„æ•°æ®å¤‡ä»½
 /////////////////////////////////////////////////////////
 struct _MONSTER_ATTR_BACKUP
 {
@@ -101,7 +101,7 @@ struct _MONSTER_ATTR_BACKUP
     INT            m_nAIType;
     ObjID_t        m_OwnerID;
     GUID_t        m_OccupantGUID;
-    INT            m_nStealthLevel;    // ÒşÉí¼¶±ğ
+    INT            m_nStealthLevel;    // éšèº«çº§åˆ«
     INT            m_nMoodState;
     INT            m_nCampType;
 
@@ -150,7 +150,7 @@ class Obj_Monster :
     public Obj_Character
 {
 //===========================================
-// Obj½Ó¿Ú¼Ì³Ğ
+// Objæ¥å£ç»§æ‰¿
 //===========================================
 public:
     Obj_Monster( VOID );
@@ -164,22 +164,22 @@ public:
     virtual BOOL        HeartBeat_OutZone( UINT uTime=0 );
 
 //===========================================
-// Character½Ó¿Ú¼Ì³Ğ
+// Characteræ¥å£ç»§æ‰¿
 //===========================================
 public:
     virtual VOID        InitAIObj( );
-    virtual VOID        OnDie( ObjID_t idKiller );            //ËÀÁË
+    virtual VOID        OnDie( ObjID_t idKiller );            //æ­»äº†
     virtual BOOL        IsEnemy(Obj_Character* pCharacter );
     virtual BOOL        IsFriend(Obj_Character* pCharacter);
     virtual BOOL        IsPartner(Obj_Character* pCharacter);
     virtual VOID        OnExecuteScriptTimer(UINT uTime) ;
 
 public:
-    VOID                OnDie_Before( ObjID_t idKiller ) ;    //ËÀÍöÇ°´¦ÀíµÄÂß¼­
-    VOID                OnDie_After( ObjID_t idKiller );    //ËÀÍöºó´¦ÀíµÄÂß¼­
+    VOID                OnDie_Before( ObjID_t idKiller ) ;    //æ­»äº¡å‰å¤„ç†çš„é€»è¾‘
+    VOID                OnDie_After( ObjID_t idKiller );    //æ­»äº¡åå¤„ç†çš„é€»è¾‘
 
 //===========================================
-// ÏûÏ¢/ÊôĞÔË¢ĞÂ
+// æ¶ˆæ¯/å±æ€§åˆ·æ–°
 //===========================================
 public:
     virtual Packet            *CreateNewObjPacket( VOID );
@@ -193,7 +193,7 @@ protected:
     _MONSTER_ATTR_BACKUP    m_AttrBackUp;
 
 //===========================================
-// ¼¼ÄÜ/ĞÄ·¨
+// æŠ€èƒ½/å¿ƒæ³•
 //===========================================
 public:
     virtual BOOL     Skill_HaveSkill( SkillID_t const nID, BYTE const nLevel ) const{return TRUE;}
@@ -215,13 +215,13 @@ protected:
     INT                    m_nCooldown;
 
 //===========================================
-// HP£¬MP£¬RageµÄ±ä»¯¹æÔò
+// HPï¼ŒMPï¼ŒRageçš„å˜åŒ–è§„åˆ™
 //===========================================
 public:
     virtual BOOL        HeartBeat_Recover(UINT uTime = 0);
 
 //===========================================
-// Ğ§¹û
+// æ•ˆæœ
 //===========================================
 protected:
     virtual _IMPACT_LIST&    Impact_GetImpactList(VOID){return m_ImpactList;}
@@ -233,7 +233,7 @@ private:
     _IMPACT_LIST            m_ImpactList;
 
 //===========================================
-// ÖØÉú
+// é‡ç”Ÿ
 //===========================================
 public:
     VOID                    Enter_Respawn( VOID );
@@ -249,12 +249,12 @@ public:
 
 private:
     INT                        m_RespawnTime;
-    CMyTimer                m_RespawnTimer;        //Ê¬ÌåÏûÊ§ºóµ½ÖØÉúµÄÊ±¼ä¼ä¸ô
+    CMyTimer                m_RespawnTimer;        //å°¸ä½“æ¶ˆå¤±ååˆ°é‡ç”Ÿçš„æ—¶é—´é—´éš”
     FLOAT                    m_RespawnDir;
     WORLD_POS                m_RespawnPos;
 
 //===========================================
-// ÉËº¦ÁĞ±í
+// ä¼¤å®³åˆ—è¡¨
 //===========================================
 public:
     VOID                    SetOccupantTeamID( TeamID_t tid ){ m_Own_TeamID = tid ; }
@@ -275,8 +275,8 @@ public:
     }
 
 protected:
-    TeamID_t                m_Own_TeamID ;//´ËnpcµÄ¹éÊô
-    GUID_t                    m_OccupantGUID ;//´ËnpcµÄ¹éÊô£¨½öÔÚm_Own_TeamIDµÈÓÚINVALID_IDÊ±ÓĞĞ§£©
+    TeamID_t                m_Own_TeamID ;//æ­¤npcçš„å½’å±
+    GUID_t                    m_OccupantGUID ;//æ­¤npcçš„å½’å±ï¼ˆä»…åœ¨m_Own_TeamIDç­‰äºINVALID_IDæ—¶æœ‰æ•ˆï¼‰
     DAMAGE_MEM_LIST            m_DamageMemList;
     MONSTER_OWNER_LIST        m_OwnerList;
 
@@ -303,7 +303,7 @@ private:
     INT                        m_PositionRange;
 
 //===========================================
-// NPCÉÌµê
+// NPCå•†åº—
 //===========================================
 public:
     DynamicShopManager*        GetShopManager(){ return m_pShopManager; }
@@ -311,11 +311,11 @@ public:
     VOID                    InitDynamicShop();
 
 protected:
-    //¶¯Ì¬ÉÌµê¹ÜÀíÆ÷
+    //åŠ¨æ€å•†åº—ç®¡ç†å™¨
     DynamicShopManager*        m_pShopManager;
 
 //===========================================
-// ³èÎï¹«¸æ°å
+// å® ç‰©å…¬å‘Šæ¿
 //===========================================
 public:
     PetPlacardSystem        *GetPetPlacardSystem(VOID){ return m_pPetPlacardSystem; }
@@ -328,7 +328,7 @@ protected:
     PetPlacardSystem        *m_pPetPlacardSystem;
 
 //===========================================
-// ÆäËû
+// å…¶ä»–
 //===========================================
 public:
     BOOL                    isPatrolMonster( VOID ) { return m_nPatrolID != INVALID_ID ? TRUE : FALSE; }
@@ -337,8 +337,8 @@ public:
     //VOID                    StartPatrol( VOID );
     //VOID                    StopPatrol( VOID );
 
-    FLOAT                    GetDropSearchRange() const;        //µôÂäËÑË÷°ë¾¶
-    INT                        GetDropTeamCount() const;        //µôÂäÓĞĞ§×éÊıÁ¿
+    FLOAT                    GetDropSearchRange() const;        //æ‰è½æœç´¢åŠå¾„
+    INT                        GetDropTeamCount() const;        //æ‰è½æœ‰æ•ˆç»„æ•°é‡
 
 private:
     INT                        m_nPatrolID;
@@ -364,7 +364,7 @@ public:
     //OnKillObject_end
 
 //===========================================
-// Ò»¼¶ÊôĞÔ
+// ä¸€çº§å±æ€§
 //===========================================
 public:
     virtual GUID_t            GetGUID( VOID )const{ return m_GUID; }
@@ -392,7 +392,7 @@ public:
     virtual ScriptID_t        GetScriptID( VOID )const{ return m_idScript; }
 
     INT                        GetBaseExp( VOID )const{ return m_BaseExp; }
-    INT                        GetMinDamagePercent() const;     //×îĞ¡ÉËÑª°Ù·Ö±È
+    INT                        GetMinDamagePercent() const;     //æœ€å°ä¼¤è¡€ç™¾åˆ†æ¯”
 
     UINT                    GetGroupID(){ return m_uGroupID ; }
     UINT                    GetTeamID(){ return m_uTeamID ; }
@@ -402,7 +402,7 @@ public:
 
 private:
     GUID_t                    m_GUID;
-    UINT                    m_uDataID;            // ×ÊÔ´ID
+    UINT                    m_uDataID;            // èµ„æºID
     CHAR                    m_szName[NPC_NAME_LEN];
     CHAR                    m_szTitle[NPC_TITLE_LEN];
     INT                        m_HP;
@@ -418,7 +418,7 @@ private:
     BOOL                    m_bNPC;
 
 //===========================================
-// ¶ş¼¶ÊôĞÔ
+// äºŒçº§å±æ€§
 //===========================================
 public:
     //StrikePoint

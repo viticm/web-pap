@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºGuild.h
-//¹¦ÄÜÃèÊö£º°ï»áÊı¾İºÍÂß¼­¹¦ÄÜ
+//æ–‡ä»¶åï¼šGuild.h
+//åŠŸèƒ½æè¿°ï¼šå¸®ä¼šæ•°æ®å’Œé€»è¾‘åŠŸèƒ½
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -14,20 +14,20 @@
 #define MAX_USER_IN_GUILD            160
 #define USER_ARRAY_SIZE                MAX_USER_IN_GUILD + MAX_PROPOSER_IN_GUILD
 
-//°ï»áÖĞ³ÉÔ±µÄĞÅÏ¢
+//å¸®ä¼šä¸­æˆå‘˜çš„ä¿¡æ¯
 struct GUILDUSER
 {
-    GUID_t                m_UserGUID;                            //Íæ¼ÒGUID
-    CHAR                m_szUserName[MAX_CHARACTER_NAME];    //Íæ¼ÒÃû×Ö
-    GUILD_POSITION        m_Position;                            //Ö°Îñ
-    UINT                m_uAccess;                            //È¨ÏŞ
-    BOOL                m_bOnlineFlag;                        //ÊÇ·ñÔÚÏß£¬´ËÌõ²»ĞèÒª´æ´¢
-    UINT                m_uLastLoginTime;                    //×îºóÉÏÏßÊ±¼ä
-    UINT                m_uLevel;                            //ÈËÎï¼¶±ğ
-    CHAR                m_bMenPaiID;                        //ÃÅÅÉ
-    INT                    m_iCurContribute;                    //¹±Ï×
-    INT                    m_iMaxContribute;                    //×î´ó¹±Ï×
-    INT                    m_iJoinTime;                        //¼ÓÈëÊ±¼ä
+    GUID_t                m_UserGUID;                            //ç©å®¶GUID
+    CHAR                m_szUserName[MAX_CHARACTER_NAME];    //ç©å®¶åå­—
+    GUILD_POSITION        m_Position;                            //èŒåŠ¡
+    UINT                m_uAccess;                            //æƒé™
+    BOOL                m_bOnlineFlag;                        //æ˜¯å¦åœ¨çº¿ï¼Œæ­¤æ¡ä¸éœ€è¦å­˜å‚¨
+    UINT                m_uLastLoginTime;                    //æœ€åä¸Šçº¿æ—¶é—´
+    UINT                m_uLevel;                            //äººç‰©çº§åˆ«
+    CHAR                m_bMenPaiID;                        //é—¨æ´¾
+    INT                    m_iCurContribute;                    //è´¡çŒ®
+    INT                    m_iMaxContribute;                    //æœ€å¤§è´¡çŒ®
+    INT                    m_iJoinTime;                        //åŠ å…¥æ—¶é—´
 
     GUILDUSER( )
     {
@@ -51,17 +51,17 @@ struct GUILDUSER
 
 struct _GUILD_INIT
 {
-    GuildID_t            m_GuildID;                            //°ï»áID
-    CHAR                m_GuildName[MAX_GUILD_NAME_SIZE];    //°ï»áÃû³Æ
-    GUILD_STATUS        m_Status;                            //°ï»áµÄ×´Ì¬
-    GUID_t                m_ChieftainGUID;                    //°ïÖ÷ GUID
-    INT                    m_nProposerCount;                    //ÉêÇëÈËÊı
-    INT                    m_UserCount;                        //°ï»áÓÃ»§ÊıÁ¿
-    INT                    m_MaxUserSize;                        //°ï»áÈË¿ÚÉÏÏŞ
-    INT                    m_GuildPoint;                        //°ï»á¹±Ï×µã
-    INT                    m_GuildMoney;                        //°ï»á×Ê½ğ
-    INT                    m_nTime;                            //³ÉÁ¢Ê±¼ä»ò´´½¨Ê£ÓàÊ±¼ä
-    GUILDUSER            m_aGuildUser[USER_ARRAY_SIZE];        //°ï»á³ÉÔ±
+    GuildID_t            m_GuildID;                            //å¸®ä¼šID
+    CHAR                m_GuildName[MAX_GUILD_NAME_SIZE];    //å¸®ä¼šåç§°
+    GUILD_STATUS        m_Status;                            //å¸®ä¼šçš„çŠ¶æ€
+    GUID_t                m_ChieftainGUID;                    //å¸®ä¸» GUID
+    INT                    m_nProposerCount;                    //ç”³è¯·äººæ•°
+    INT                    m_UserCount;                        //å¸®ä¼šç”¨æˆ·æ•°é‡
+    INT                    m_MaxUserSize;                        //å¸®ä¼šäººå£ä¸Šé™
+    INT                    m_GuildPoint;                        //å¸®ä¼šè´¡çŒ®ç‚¹
+    INT                    m_GuildMoney;                        //å¸®ä¼šèµ„é‡‘
+    INT                    m_nTime;                            //æˆç«‹æ—¶é—´æˆ–åˆ›å»ºå‰©ä½™æ—¶é—´
+    GUILDUSER            m_aGuildUser[USER_ARRAY_SIZE];        //å¸®ä¼šæˆå‘˜
 
     _GUILD_INIT( )
     {
@@ -69,7 +69,7 @@ struct _GUILD_INIT
         memset( m_GuildName, 0, sizeof(CHAR)*MAX_GUILD_NAME_SIZE );
         m_Status = GUILD_STATUS_INVALID;
         m_ChieftainGUID = INVALID_ID;
-        m_nProposerCount = 0; // ÉêÇëÈËÊı
+        m_nProposerCount = 0; // ç”³è¯·äººæ•°
         m_UserCount = 0;
         m_MaxUserSize = 0;
         m_GuildPoint = 0;
@@ -99,21 +99,21 @@ public :
     //-------------------------------------------------------------------------------------------------
     enum PacketType
     {
-        PACKET_RETURN    = 1, // ·µ»Ø²Ù×÷
+        PACKET_RETURN    = 1, // è¿”å›æ“ä½œ
     };
 
-    //²Ù×÷ÀàĞÍ
+    //æ“ä½œç±»å‹
     enum OPT_TYPE
     {
-        OPT_NONE    = 0,    // ·µ»Ø²Ù×÷
-        OPT_ASK_MEMBER_LIST,            //ÇëÇóµ±Ç°ËùÓĞ°ïÅÉ³ÉÔ±ÁĞ±í
-        OPT_ASK_DETAIL_INFO,            //ÇëÇó°ïÅÉµÄÏêÏ¸ĞÅÏ¢
-        OPT_ASK_APPOINT_POS_INFO,        //ÇëÇó°ïÅÉµÄ¿ÉÈÎÃüĞÅÏ¢
-        OPT_ASK_SELF_INFO,                //ÇëÇó±¾ÈË°ïÅÉĞÅÏ¢
+        OPT_NONE    = 0,    // è¿”å›æ“ä½œ
+        OPT_ASK_MEMBER_LIST,            //è¯·æ±‚å½“å‰æ‰€æœ‰å¸®æ´¾æˆå‘˜åˆ—è¡¨
+        OPT_ASK_DETAIL_INFO,            //è¯·æ±‚å¸®æ´¾çš„è¯¦ç»†ä¿¡æ¯
+        OPT_ASK_APPOINT_POS_INFO,        //è¯·æ±‚å¸®æ´¾çš„å¯ä»»å‘½ä¿¡æ¯
+        OPT_ASK_SELF_INFO,                //è¯·æ±‚æœ¬äººå¸®æ´¾ä¿¡æ¯
     };
 
     //-------------------------------------------------------------------------------------------------
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     //-------------------------------------------------------------------------------------------------
     BOOL                Init( _GUILD_INIT* pInit );
     BOOL                InitFromShareMem();
@@ -121,74 +121,74 @@ public :
     VOID                CleanUp( );
 
     //-------------------------------------------------------------------------------------------------
-    //»ù±¾¹¦ÄÜ
+    //åŸºæœ¬åŠŸèƒ½
     //-------------------------------------------------------------------------------------------------
-    BOOL                HeartBeat( UINT uTime=0 );        //Âß¼­ĞÄÌø½Ó¿Ú
-    BOOL                IsMemberFull( ) { return (m_UserCount >= m_MaxUserSize); }// ÊÇ·ñ°ï»áÒÑ¾­ÂúÔ±
-    BOOL                IsProposerFull( ) { return (m_nProposerCount >= MAX_PROPOSER_IN_GUILD); }// ÊÇ·ñÒÑ¾­ÓĞÌ«¶àÍæ¼ÒÉêÇë
-    BOOL                IsAuthorized( GUID_t userGUID, GUILD_AUTHORITY authority );    // ÅĞ¶ÏÊÇ·ñÓĞÄ³ÏîÈ¨ÏŞ
-    BOOL                IsSameCamp(CampID_t nCamp) { return GetAmbi() == (INT)nCamp; } //ÊÇ·ñÍ¬ÕóÓª
+    BOOL                HeartBeat( UINT uTime=0 );        //é€»è¾‘å¿ƒè·³æ¥å£
+    BOOL                IsMemberFull( ) { return (m_UserCount >= m_MaxUserSize); }// æ˜¯å¦å¸®ä¼šå·²ç»æ»¡å‘˜
+    BOOL                IsProposerFull( ) { return (m_nProposerCount >= MAX_PROPOSER_IN_GUILD); }// æ˜¯å¦å·²ç»æœ‰å¤ªå¤šç©å®¶ç”³è¯·
+    BOOL                IsAuthorized( GUID_t userGUID, GUILD_AUTHORITY authority );    // åˆ¤æ–­æ˜¯å¦æœ‰æŸé¡¹æƒé™
+    BOOL                IsSameCamp(CampID_t nCamp) { return GetAmbi() == (INT)nCamp; } //æ˜¯å¦åŒé˜µè¥
 
     //-------------------------------------------------------------------------------------------------
-    // °ï»áµÄÊÂ¼ş½Ó¿Ú
+    // å¸®ä¼šçš„äº‹ä»¶æ¥å£
     //-------------------------------------------------------------------------------------------------
 
     //-------------------------------------------------------------------------------------------------
-    // ´´½¨°ï»á£¬»¹²»ËãÕıÊ½°ï»á£¬FALSE ±íÊ¾°ï»áÃû³ÆÓëÏÖÓĞÃû³ÆÖØÃû
+    // åˆ›å»ºå¸®ä¼šï¼Œè¿˜ä¸ç®—æ­£å¼å¸®ä¼šï¼ŒFALSE è¡¨ç¤ºå¸®ä¼šåç§°ä¸ç°æœ‰åç§°é‡å
     BOOL                OnGuildCreate( const USER* pCreater, const CHAR* szName, CampID_t nCamp );
     VOID                OnGuildCreateFailed();
     VOID                OnGuildFound();
     BOOL                OnGuildDestroy( GUID_t createrGUID );
 
     //-------------------------------------------------------------------------------------------------
-    // ÈÎÃâÖ°Îñ£¬È¨ÏŞ±ä¸ü£¬È¨ÏŞÅĞ¶¨
-    GUILD_ADMIN_t::ORESULT    OnUserPositionChange( GUID_t userGUID, GUILD_POSITION position );//ÈÎÃâÖ°ÎñµÄÔ­Ôò,Ò»¶¨ÊÇÏÈÃâÖ°ÎªÆÕÍ¨°ïÖÚ,ÔÙÉıÖ°ÎªÄ³¸ö¹ÙÔ±
+    // ä»»å…èŒåŠ¡ï¼Œæƒé™å˜æ›´ï¼Œæƒé™åˆ¤å®š
+    GUILD_ADMIN_t::ORESULT    OnUserPositionChange( GUID_t userGUID, GUILD_POSITION position );//ä»»å…èŒåŠ¡çš„åŸåˆ™,ä¸€å®šæ˜¯å…ˆå…èŒä¸ºæ™®é€šå¸®ä¼—,å†å‡èŒä¸ºæŸä¸ªå®˜å‘˜
     
     VOID                OnUserAuthorityChange( GUID_t userGUID, GUILD_AUTHORITY authority );
     VOID                OnPositionAuthorityChange( GUILD_POSITION position, GUILD_AUTHORITY authority );
-    VOID                OnUserAccessChange( GUID_t userGUID, INT newAccess ); //Íæ¼ÒÈ¨ÏŞ±ä»¯
-    VOID                OnGuildPointChange( GUID_t userGUID, INT nMoney ); //°ï»á¹±Ï×µã·¢Éú±ä»¯
-    BOOL                CanDoIt(OPT_TYPE Opt, GUILD_POSITION position, GUILD_AUTHORITY authority);//¸ù¾İÖ°Î»£¬È¨ÏŞ²Ù×÷ÅĞ¶¨²Ù×÷
-    BOOL                CanAppointedBy(GUILD_POSITION position, const GUILDUSER* pUser);//ÊÇ·ñÄÜ±»´ËÈËÈÎÃü
-    CHAR*                GetPosName(INT iPosition);//»ñµÃ´Ë°ï»áÖĞµ±Ç°Ö°Î»µÄÃû×Ö
+    VOID                OnUserAccessChange( GUID_t userGUID, INT newAccess ); //ç©å®¶æƒé™å˜åŒ–
+    VOID                OnGuildPointChange( GUID_t userGUID, INT nMoney ); //å¸®ä¼šè´¡çŒ®ç‚¹å‘ç”Ÿå˜åŒ–
+    BOOL                CanDoIt(OPT_TYPE Opt, GUILD_POSITION position, GUILD_AUTHORITY authority);//æ ¹æ®èŒä½ï¼Œæƒé™æ“ä½œåˆ¤å®šæ“ä½œ
+    BOOL                CanAppointedBy(GUILD_POSITION position, const GUILDUSER* pUser);//æ˜¯å¦èƒ½è¢«æ­¤äººä»»å‘½
+    CHAR*                GetPosName(INT iPosition);//è·å¾—æ­¤å¸®ä¼šä¸­å½“å‰èŒä½çš„åå­—
 
     //-------------------------------------------------------------------------------------------------
-    // ÉêÇëÈë°ï£¬»òÕßÏìÓ¦Ò»¸ö°ï»á
+    // ç”³è¯·å…¥å¸®ï¼Œæˆ–è€…å“åº”ä¸€ä¸ªå¸®ä¼š
     GUILD_ERROR_TYPE    OnUserEnter( const USER* pUser, CampID_t nCamp );
-    GUILD_ERROR_TYPE    OnRecruitUser( GUID_t userGUID );// ÕĞÊÕ°ïÖÚ
-    GUILD_ERROR_TYPE    OnUserLeave( GUID_t userGUID );// ¿ª³ı°ïÖÚÀë¿ª°ï»á
-    GUILD_ERROR_TYPE    OnUserLeaveByIndex( INT iIndex );// ¿ª³ı°ïÖÚÀë¿ª°ï»á
-    GUILD_ERROR_TYPE    OnDemise();// ìøÈÃ£¬ºÍÈÎÃâÖ°Îñ²»Í¬µÄÊÇ£¬ìøÈÃĞèÒª½«ÏÖÓĞÖ°ÎñµÄÈË¼·ÏÂÈ¥
-    VOID                OnGuildMoneyChange( GUID_t userGUID, INT nMoney ); //°ï»á×Ê½ğ·¢Éú±ä»¯// Ö§È¡½ğ¶î´æÈë½ğ¶î
+    GUILD_ERROR_TYPE    OnRecruitUser( GUID_t userGUID );// æ‹›æ”¶å¸®ä¼—
+    GUILD_ERROR_TYPE    OnUserLeave( GUID_t userGUID );// å¼€é™¤å¸®ä¼—ç¦»å¼€å¸®ä¼š
+    GUILD_ERROR_TYPE    OnUserLeaveByIndex( INT iIndex );// å¼€é™¤å¸®ä¼—ç¦»å¼€å¸®ä¼š
+    GUILD_ERROR_TYPE    OnDemise();// ç¦…è®©ï¼Œå’Œä»»å…èŒåŠ¡ä¸åŒçš„æ˜¯ï¼Œç¦…è®©éœ€è¦å°†ç°æœ‰èŒåŠ¡çš„äººæŒ¤ä¸‹å»
+    VOID                OnGuildMoneyChange( GUID_t userGUID, INT nMoney ); //å¸®ä¼šèµ„é‡‘å‘ç”Ÿå˜åŒ–// æ”¯å–é‡‘é¢å­˜å…¥é‡‘é¢
 
     //-------------------------------------------------------------------------------------------------
-    // °ï»áÍæ¼ÒÉÏÏÂÏß
+    // å¸®ä¼šç©å®¶ä¸Šä¸‹çº¿
     VOID                OnUserLogin( GUID_t userGUID );
     VOID                OnUserLogoff( GUID_t userGUID );
 
     //-------------------------------------------------------------------------------------------------
-    // ¹ã²¥£¬¶Ô position ÒÔÉÏÖ°ÎñµÄ°ïÖÚ¹ã²¥²Ù×÷·µ»ØÏûÏ¢
+    // å¹¿æ’­ï¼Œå¯¹ position ä»¥ä¸ŠèŒåŠ¡çš„å¸®ä¼—å¹¿æ’­æ“ä½œè¿”å›æ¶ˆæ¯
     VOID                BroadCast_Return( Packet* pPacket, GUILD_POSITION positon = GUILD_POSITION_MEMBER );
 
     //-------------------------------------------------------------------------------------------------
-    //²Ù×÷Ëø
+    //æ“ä½œé”
     BOOL                IsLock(){return m_IsLock;}
     VOID                SetLock(BOOL bIsLock){m_IsLock    =    bIsLock;}
 
     //-------------------------------------------------------------------------------------------------
-    //Êı¾İ½Ó¿Ú
+    //æ•°æ®æ¥å£
     //-------------------------------------------------------------------------------------------------
 
-    //´Ë°ï»áµÄID
+    //æ­¤å¸®ä¼šçš„ID
     GuildID_t            GetGuildID( ){ return m_GuildID; }
 
-    // °ï»áÃû³Æ
+    // å¸®ä¼šåç§°
     const CHAR*            GetGuildName( ) { return m_GuildName; }
 
-    // °ï»á×ÚÖ¼
+    // å¸®ä¼šå®—æ—¨
     const CHAR*            GetGuildDesc( ) { return m_GuildDesc; }
 
-    // °ï»á×ÚÖ¼
+    // å¸®ä¼šå®—æ—¨
     VOID                SetGuildDesc(CHAR*    pszGuildDesc)
     {
         memset(m_GuildDesc, 0, MAX_GUILD_DESC_SIZE);
@@ -198,86 +198,86 @@ public :
     BYTE                GetGuildLevel(){ return m_GuildLevel;}
     VOID                SetGuildLevel(BYTE GuildLevel){m_GuildLevel = GuildLevel;}
 
-    //°ïÖ÷Ãû
+    //å¸®ä¸»å
     CHAR*                GetGuildChiefName(){return m_GuildChiefName;}
 
-    //´´½¨ÕßÃû
+    //åˆ›å»ºè€…å
     CHAR*                GetCreatorName( ) { return m_GuildCreatorName; }
 
-    //°ïÅÉµÄÁìµØ
+    //å¸®æ´¾çš„é¢†åœ°
     City*                GetCity(){ return m_pCity;}
 
-    //³ÉÁ¢Ê±¼ä
+    //æˆç«‹æ—¶é—´
     INT                    GetFoundedTime(){return m_nTime;}
 
-    // È¡µÃ°ïÖÚ
+    // å–å¾—å¸®ä¼—
     const GUILDUSER*    GetGuildUser( GUID_t userGUID );
 
-    // Í¨¹ıË÷Òı»ñµÃ°ïÖÚ
+    // é€šè¿‡ç´¢å¼•è·å¾—å¸®ä¼—
     GUILDUSER*    GetGuildUserByIndex( INT nIndex);
 
-    // È¡µÃ°ïÖÚÊıÁ¿
+    // å–å¾—å¸®ä¼—æ•°é‡
     INT                    GetGuildUserCount( ) { return m_UserCount; }
 
-    // È¡µÃÔ¤±¸°ïÖÚÊıÁ¿
+    // å–å¾—é¢„å¤‡å¸®ä¼—æ•°é‡
     INT                    GetGuildProposerCount( ) { return m_nProposerCount; }
 
-    // È¡µÃ°ïÖÚÊıÁ¿
+    // å–å¾—å¸®ä¼—æ•°é‡
     INT                    GetGuildUserMax( ) { return m_MaxUserSize; }
 
-    // °ï»á×´Ì¬
+    // å¸®ä¼šçŠ¶æ€
     GUILD_STATUS        GetGuildStatus( ) { return m_Status; }
 
-    // °ïÖ÷ GUID
+    // å¸®ä¸» GUID
     GUID_t                GetChieftainGUID( ) { return m_ChieftainGUID; }
 
     //-------------------------------------------------------------------------------------------------
-    //°ïÅÉÊôĞÔ½Ó¿Ú
+    //å¸®æ´¾å±æ€§æ¥å£
     
-    //×ÊÀú
+    //èµ„å†
     INT                    GetLongevity(){ return m_Longevity;}
     VOID                SetLongevity(INT Longevity){ m_Longevity = Longevity;}
 
-    //¹±Ï×¶È
+    //è´¡çŒ®åº¦
     INT                    GetContribute(){ return m_Contribute;}
     VOID                SetContribute(INT Contribute){ m_Contribute = Contribute;}
 
-    //ÈËÆø
+    //äººæ°”
     INT                    GetHonor(){ return m_Honor;}
     VOID                SetHonor(INT Honor){ m_Honor = Honor;}
 
-    //¹¤Òµ¶È
+    //å·¥ä¸šåº¦
     INT                    GetIndustry(){ return m_nIndustryLevel;}
     VOID                SetIndustry(INT nIndustryLevel){ m_nIndustryLevel = nIndustryLevel;}
 
-    //Å©Òµ¶È
+    //å†œä¸šåº¦
     INT                    GetAgr(){ return m_nAgrLevel;}
     VOID                SetAgr(INT nAgrLevel){ m_nAgrLevel = nAgrLevel;}
 
-    //ÉÌÒµ¶È
+    //å•†ä¸šåº¦
     INT                    GetCom(){ return m_nComLevel;}
     VOID                SetCom(INT nComLevel){ m_nComLevel = nComLevel;}
 
-    //·ÀÎÀ¶È
+    //é˜²å«åº¦
     INT                    GetDef(){ return m_nDefLevel;}
     VOID                SetDef(INT nDefLevel){ m_nDefLevel = nDefLevel;}
 
-    //¿Æ¼¼¶È
+    //ç§‘æŠ€åº¦
     INT                    GetTech(){ return m_nTechLevel;}
     VOID                SetTech(INT nTechLevel){ m_nTechLevel = nTechLevel;}
 
-    //À©ÕÅ¶È
+    //æ‰©å¼ åº¦
     INT                    GetAmbi(){ return m_nAmbiLevel;}
     VOID                SetAmbi(INT nAmbiLevel){ m_nAmbiLevel = nAmbiLevel;}
 
-    //°ï»á×Ê½ğ
+    //å¸®ä¼šèµ„é‡‘
     INT                    GetMoney(){ return m_GuildMoney;}
     VOID                SetMoney(INT GuildMoney){ m_GuildMoney = GuildMoney;}
 
 
 protected :
     //-------------------------------------------------------------------------------------------------
-    //°ï»áÄÚ²¿Âß¼­¼°¹¦ÄÜ½Ó¿Ú
+    //å¸®ä¼šå†…éƒ¨é€»è¾‘åŠåŠŸèƒ½æ¥å£
     VOID                AddGuildUser( GUILDUSER& GuildUser );
 
     
@@ -285,52 +285,52 @@ protected :
     inline GUILDUSER*    ILGetGuildUser( GUID_t userGUID );
     inline INT            ILGetGuildUserIndex( GUID_t userGUID );
 
-    GuildID_t            m_GuildID; //°ï»áID
-    CHAR                m_GuildName[MAX_GUILD_NAME_SIZE];        //°ï»áÃû³Æ
-    CHAR                m_GuildDesc[MAX_GUILD_DESC_SIZE];        //°ï»áÃèÊö
-    CHAR                m_GuildChiefName[MAX_CHARACTER_NAME];    //°ïÖ÷Ãû
-    CHAR                m_GuildCreatorName[MAX_CHARACTER_NAME];    //´´½¨ÕßÃû
+    GuildID_t            m_GuildID; //å¸®ä¼šID
+    CHAR                m_GuildName[MAX_GUILD_NAME_SIZE];        //å¸®ä¼šåç§°
+    CHAR                m_GuildDesc[MAX_GUILD_DESC_SIZE];        //å¸®ä¼šæè¿°
+    CHAR                m_GuildChiefName[MAX_CHARACTER_NAME];    //å¸®ä¸»å
+    CHAR                m_GuildCreatorName[MAX_CHARACTER_NAME];    //åˆ›å»ºè€…å
     BYTE                m_GuildLevel;
-    GUILD_STATUS        m_Status;                                //°ï»áµÄ×´Ì¬
-    GUID_t                m_ChieftainGUID;                        //°ïÖ÷µÄ GUID
-    INT                    m_nProposerCount;                        //ÉêÇëÈËÊı
-    INT                    m_UserCount;                            //°ï»áÓÃ»§ÊıÁ¿
-    INT                    m_MaxUserSize;                            //°ï»áÈË¿ÚÉÏÏŞ
-    INT                    m_GuildPoint;                            //°ï»á¹±Ï×µã
-    GUILDUSER            m_aGuildUser[USER_ARRAY_SIZE];            //°ï»á³ÉÔ±
-    BOOL                m_IsLock;                                //µ±Ç°¹¤»áÊÇ·ñ±»Ëø×¡£¬Ä³Ğ©²Ù×÷£¬Ö»ÄÜÍ¬Ê±´æÔÚÒ»¸ö£¬Èç´´½¨³ÇÊĞ
-    CityID_t            m_CityID;                                //°ó¶¨µÄ³ÇÊĞID
-    City*                m_pCity;                                //°ó¶¨µÄ³ÇÊĞÖ¸Õë
+    GUILD_STATUS        m_Status;                                //å¸®ä¼šçš„çŠ¶æ€
+    GUID_t                m_ChieftainGUID;                        //å¸®ä¸»çš„ GUID
+    INT                    m_nProposerCount;                        //ç”³è¯·äººæ•°
+    INT                    m_UserCount;                            //å¸®ä¼šç”¨æˆ·æ•°é‡
+    INT                    m_MaxUserSize;                            //å¸®ä¼šäººå£ä¸Šé™
+    INT                    m_GuildPoint;                            //å¸®ä¼šè´¡çŒ®ç‚¹
+    GUILDUSER            m_aGuildUser[USER_ARRAY_SIZE];            //å¸®ä¼šæˆå‘˜
+    BOOL                m_IsLock;                                //å½“å‰å·¥ä¼šæ˜¯å¦è¢«é”ä½ï¼ŒæŸäº›æ“ä½œï¼Œåªèƒ½åŒæ—¶å­˜åœ¨ä¸€ä¸ªï¼Œå¦‚åˆ›å»ºåŸå¸‚
+    CityID_t            m_CityID;                                //ç»‘å®šçš„åŸå¸‚ID
+    City*                m_pCity;                                //ç»‘å®šçš„åŸå¸‚æŒ‡é’ˆ
 
-    // GUILD_STATUS_UNCOMMITTED Ê±£¬±íÊ¾Ê£ÓàºÁÃëÊı
-    // GUILD_STATUS_NORMAL Ê±£¬±íÊ¾°ï»á³ÉÁ¢Ê±¼ä
+    // GUILD_STATUS_UNCOMMITTED æ—¶ï¼Œè¡¨ç¤ºå‰©ä½™æ¯«ç§’æ•°
+    // GUILD_STATUS_NORMAL æ—¶ï¼Œè¡¨ç¤ºå¸®ä¼šæˆç«‹æ—¶é—´
     INT                    m_nTime;
     GuildSMU*            m_pGuildSmu;
 protected:
     //-------------------------------------------------------------------------------------------------
-    //°ïÅÉÊôĞÔ
-    INT                    m_Longevity;                //×ÊÀú
-    INT                    m_Contribute;                //¹±Ï×¶È
-    INT                    m_Honor;                    //ÈËÆø
-    INT                    m_nIndustryLevel;            //¹¤Òµ¶È
-    INT                    m_nAgrLevel;                //Å©Òµ¶È
-    INT                    m_nComLevel;                //ÉÌÒµ¶È
-    INT                    m_nDefLevel;                //·ÀÎÀ¶È
-    INT                    m_nTechLevel;                //¿Æ¼¼¶È
-    INT                    m_nAmbiLevel;                //À©ÕÅ¶È
-    INT                    m_GuildMoney;                //°ï»á×Ê½ğ
+    //å¸®æ´¾å±æ€§
+    INT                    m_Longevity;                //èµ„å†
+    INT                    m_Contribute;                //è´¡çŒ®åº¦
+    INT                    m_Honor;                    //äººæ°”
+    INT                    m_nIndustryLevel;            //å·¥ä¸šåº¦
+    INT                    m_nAgrLevel;                //å†œä¸šåº¦
+    INT                    m_nComLevel;                //å•†ä¸šåº¦
+    INT                    m_nDefLevel;                //é˜²å«åº¦
+    INT                    m_nTechLevel;                //ç§‘æŠ€åº¦
+    INT                    m_nAmbiLevel;                //æ‰©å¼ åº¦
+    INT                    m_GuildMoney;                //å¸®ä¼šèµ„é‡‘
 
     //-------------------------------------------------------------------------------------------------
-    //¹ÜÀí½á¹¹
+    //ç®¡ç†ç»“æ„
     GUILD_ADMIN_t        m_AdminLayOut;                            
 
 
 private :
 
-    // ÓÃÓÚ´æ´¢ĞÄÌø´«À´µÄÊ±¼ä´Á
+    // ç”¨äºå­˜å‚¨å¿ƒè·³ä¼ æ¥çš„æ—¶é—´æˆ³
     UINT                m_uTimeStamp;
 
-    // ·ÖÅä°ïÖÚ
+    // åˆ†é…å¸®ä¼—
     INT                    m_nUserMallocIndex;
 };
 

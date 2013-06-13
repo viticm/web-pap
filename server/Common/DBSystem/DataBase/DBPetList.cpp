@@ -246,7 +246,7 @@ BOOL DBPetList::ParseResult(VOID* pResult)
                 DB_Skill
             };
 
-            //¼ÓÔØ¼¼ÄÜÊôĞÔ
+            //åŠ è½½æŠ€èƒ½å±æ€§
             
             Assert(mResultCount<HUMAN_PET_MAX_COUNT);
             Assert(mInterface);

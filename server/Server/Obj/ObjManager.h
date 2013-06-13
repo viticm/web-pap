@@ -1,10 +1,10 @@
 // ObjManage.h
 //
-// ���ã�ObjManager��Ϊ����ObjID_t��Objָ��Ķ�Ӧ��ϵģ��
-//        �����Ѿ����ڴ��е�Obj����ʵ����ͨ������ObjManager
-//        ��AddObj�ӿں󣬽��ḳ��Obj����ʵ��һ��ObjID_t��ֵ
-//        �˺�Ϳ��Դ�ObjManager��ͨ��ObjID_t��ѯ��Obj��ʵ��
-//        ��ָ�롣
+// 作用：ObjManager类为处理ObjID_t和Obj指针的对应关系模块
+//        对于已经在内存中的Obj对象实例，通过调用ObjManager
+//        的AddObj接口后，将会赋予Obj对象实例一个ObjID_t数值
+//        此后就可以从ObjManager中通过ObjID_t查询到Obj的实例
+//        的指针。
 //
 //////////////////////////////////////////////////////////
 

@@ -7,8 +7,8 @@
 
 struct _REGION_INFO
 {
-    INT                m_nRegionIndex;            //ÓÎÏ·ÇøË÷ÒıºÅÂë£¬Ö»ÄÜ´Ó001ºÅµ½420ºÅ£¡£¡
-    CHAR            m_RegionName[_MAX_PATH];//ÇøµÄÃû×ÖË÷Òı
+    INT                m_nRegionIndex;            //æ¸¸æˆåŒºç´¢å¼•å·ç ï¼Œåªèƒ½ä»001å·åˆ°420å·ï¼ï¼
+    CHAR            m_RegionName[_MAX_PATH];//åŒºçš„åå­—ç´¢å¼•
 };
 
 //Config
@@ -17,76 +17,76 @@ struct _CONFIG_INFO
     INT                m_SystemModel;
     ID_t            m_ServerID ;
     INT                m_ZoneSize ;
-    FLOAT            m_DropParam;                //È«¾ÖµôÂäĞŞÕı²ÎÊı
-    FLOAT            m_ExpParam;                    //È«¾Ö¾­ÑéĞŞÕı²ÎÊı
-    INT                m_EquipmentDamagePoint;        //ÎïÆ·ÄÍ¾Ã¶ÈµÄÎ¢µ÷Öµ
+    FLOAT            m_DropParam;                //å…¨å±€æ‰è½ä¿®æ­£å‚æ•°
+    FLOAT            m_ExpParam;                    //å…¨å±€ç»éªŒä¿®æ­£å‚æ•°
+    INT                m_EquipmentDamagePoint;        //ç‰©å“è€ä¹…åº¦çš„å¾®è°ƒå€¼
     INT                m_RecoverTime ;
     INT                m_MaxMonster ;
     INT                m_MaxPet ;
     INT                m_PetBodyTime ;
-    INT                m_PetHappinessInterval;        // ³èÎï¿ìÀÖ¶ÈÏÂ½µ1µÄÊ±¼ä¼ä¸ô(ºÁÉÙ)
-    INT                m_PetLifeInterval;            // ³èÎïÊÙÃüÏÂ½µ1µÄÊ±¼ä¼ä¸ô(ºÁÉÙ)
-    INT                m_PetCallUpHappiness;        // ³èÎï¿ìÀÖ¶È´óÓÚ²Å¿ÉÒÔÕÙ³ö
-    UINT            m_PetPlacardTime;            // ·¢²¼Ò»¸ö³èÎï¹«¸æµÄ³ÖĞøÊ±¼ä
-    INT                m_PetPlacardNeedLevel;        // ·¢²¼³èÎï¹«¸æµÄ³èÎïËùĞè¼¶±ğ
-    INT                m_PetPlacardNeedHappiness;    // ·¢²¼³èÎï¹«¸æµÄ³èÎïËùĞè¿ìÀÖ¶È
-    INT                m_PetPlacardNeedLife;        // ·¢²¼³èÎï¹«¸æµÄ³èÎïËùĞèÊÙÃü
+    INT                m_PetHappinessInterval;        // å® ç‰©å¿«ä¹åº¦ä¸‹é™1çš„æ—¶é—´é—´éš”(æ¯«å°‘)
+    INT                m_PetLifeInterval;            // å® ç‰©å¯¿å‘½ä¸‹é™1çš„æ—¶é—´é—´éš”(æ¯«å°‘)
+    INT                m_PetCallUpHappiness;        // å® ç‰©å¿«ä¹åº¦å¤§äºæ‰å¯ä»¥å¬å‡º
+    UINT            m_PetPlacardTime;            // å‘å¸ƒä¸€ä¸ªå® ç‰©å…¬å‘Šçš„æŒç»­æ—¶é—´
+    INT                m_PetPlacardNeedLevel;        // å‘å¸ƒå® ç‰©å…¬å‘Šçš„å® ç‰©æ‰€éœ€çº§åˆ«
+    INT                m_PetPlacardNeedHappiness;    // å‘å¸ƒå® ç‰©å…¬å‘Šçš„å® ç‰©æ‰€éœ€å¿«ä¹åº¦
+    INT                m_PetPlacardNeedLife;        // å‘å¸ƒå® ç‰©å…¬å‘Šçš„å® ç‰©æ‰€éœ€å¯¿å‘½
     INT                m_DefaultRespawnTime ;
     INT                m_DropBoxRecycleTime;
-    INT                m_TimeChangeInterval;        //Ê±³½±ä¸ü¼ä¸ô
+    INT                m_TimeChangeInterval;        //æ—¶è¾°å˜æ›´é—´éš”
     INT                m_PositionRange ;
     INT                m_AIType ;
     INT                m_DisconnectTime ;
     CHAR            m_UserPath[_MAX_PATH] ;
     INT                m_MaxPortal ;
     INT                m_MaxSkillObj ;
-    INT                m_DefaultBodyTime ;            //Ê¬Ìå´æÔÚÊ±¼ä
-    INT                m_OutGhostTime ;            //ÊÍ·ÅÁé»êÊ±¼ä
-    FLOAT            m_CanGetExpRange ;            //É±ËÀ½ÇÉ«ºó¿ÉÒÔµÃµ½EXPµÄ·¶Î§
+    INT                m_DefaultBodyTime ;            //å°¸ä½“å­˜åœ¨æ—¶é—´
+    INT                m_OutGhostTime ;            //é‡Šæ”¾çµé­‚æ—¶é—´
+    FLOAT            m_CanGetExpRange ;            //æ€æ­»è§’è‰²åå¯ä»¥å¾—åˆ°EXPçš„èŒƒå›´
     INT                m_DefaultMoveSpeed ;
     INT                m_DefaultAttackSpeed ;
-    INT                m_HumanVERecoverInterval;    // ¾«Á¦Óë»îÁ¦µÄ»Ö¸´Ê±¼ä¼ä¸ô(ºÁÉÙ)
+    INT                m_HumanVERecoverInterval;    // ç²¾åŠ›ä¸æ´»åŠ›çš„æ¢å¤æ—¶é—´é—´éš”(æ¯«å°‘)
     INT                m_WallowAge;
     INT                m_WallowStartTime;
     INT                m_WallowStartTime2;
     INT                m_WallowAwokeTime;
-    INT                m_DefaultRefreshRate ;        //»îÁ¦µãË¢ĞÂÊ±¼ä
-    INT                m_DefaultCheckZoneRate ;    //Ë¢ĞÂÇøÓòĞÅÏ¢µÄÊ±¼ä¼ä¸ô
-    INT                m_DefaultRefuseScanTime;    //È±Ê¡¹ÖÎïÖØÉúºó²»»áÉ¨ÃèµĞÈËµÄÊ±¼ä
+    INT                m_DefaultRefreshRate ;        //æ´»åŠ›ç‚¹åˆ·æ–°æ—¶é—´
+    INT                m_DefaultCheckZoneRate ;    //åˆ·æ–°åŒºåŸŸä¿¡æ¯çš„æ—¶é—´é—´éš”
+    INT                m_DefaultRefuseScanTime;    //ç¼ºçœæ€ªç‰©é‡ç”Ÿåä¸ä¼šæ‰«ææ•Œäººçš„æ—¶é—´
     INT                m_MaxPlatform;
-    INT                m_MaxSpecial;                // ¼¼ÄÜOBJµÄÊıÁ¿
-    INT                m_MaxPlayerShopNum;            // Íæ¼ÒÉÌµêµÄÊıÁ¿
-    INT             m_MaxTimerCount;            //³¡¾°¼ÆÊ±Æ÷ÊıÄ¿
-    INT                m_nMaxHumanUseTimer;        //Obj_Human¿ÉÊ¹ÓÃ¼ÆÊ±Æ÷ÊıÄ¿
-    INT                m_nAvailableFollowDist;        // ×é¶Ó¸úËæµÄÓĞĞ§¾àÀë
-    INT                m_nTimeForLoseFollow;        // ×é¶Ó¸úËæ³¬³öÓĞĞ§¾àÀë¶à³¤Ê±¼äºóÖ÷¶¯ÍË³ö×é¶Ó¸úËæ(Ãë)
-    INT                m_nFoundDurationHour;        // ´´½¨ÖÜÆÚ
-    INT                m_nDefaultMaxMemberCount;    // Ä¬ÈÏ°ï»áÈİÄÉ°ïÖÚÊı
-    INT                m_nResponseUserCount;        // ½¨Á¢°ï»áĞèÒªµÄÏìÓ¦Íæ¼ÒÊı£¨º¬°ïÖ÷£©
-    INT                m_nPasswdPoint;                // ¶àÉÙµãÓÑºÃ¶ÈĞèÒªÊäÈë¶ş¼¶ÃÜÂë
-    INT                m_nPromptPoint;                // ¶àÉÙµãÓÑºÃ¶ÈĞèÒªÌáÊ¾ÉÏÏÂÏß
-    INT                m_nDeleteDelayTime;            // ¶àÉÙĞ¡Ê±ÒÔºóÔÙ´ÎÇ¿ÖÆ½â³ıÔòÉ¾³ı¶ş¼¶ÃÜÂë
-    INT                m_nExpPoint;                // »ñµÃ¶àÉÙ¾­Ñé¿ÉÒÔÌáÉıÓÑºÃ¶È
-    INT                m_nHashOnlineUserCount ;    //ÔÚÏßÍæ¼ÒµÄhash±í´óĞ¡
-    INT                m_nHashMailUserCount ;        //ÓµÓĞÓÊ¼şµÄÍæ¼Òhash±í´óĞ¡
-    INT                m_nMaxOfflineUserCount ;    //µÇÂ½¹ıÓÎÏ·µÄÍæ¼ÒÊıÁ¿×î´óÖµ
-    FLOAT            m_fRespawnParam ;            //¹ÖÎïË¢ĞÂĞŞÕıÏµÊı
-    INT                m_KickUserTime ;            //²»ÊÇÕı³£ÓÎÏ·Íæ¼ÒµÄÌß³ıµ¹¼ÆÊ±¼ä
-    INT                m_nDefaultDamageFluctuation; // È±Ê¡µÃÉËº¦¸¡¶¯
+    INT                m_MaxSpecial;                // æŠ€èƒ½OBJçš„æ•°é‡
+    INT                m_MaxPlayerShopNum;            // ç©å®¶å•†åº—çš„æ•°é‡
+    INT             m_MaxTimerCount;            //åœºæ™¯è®¡æ—¶å™¨æ•°ç›®
+    INT                m_nMaxHumanUseTimer;        //Obj_Humanå¯ä½¿ç”¨è®¡æ—¶å™¨æ•°ç›®
+    INT                m_nAvailableFollowDist;        // ç»„é˜Ÿè·Ÿéšçš„æœ‰æ•ˆè·ç¦»
+    INT                m_nTimeForLoseFollow;        // ç»„é˜Ÿè·Ÿéšè¶…å‡ºæœ‰æ•ˆè·ç¦»å¤šé•¿æ—¶é—´åä¸»åŠ¨é€€å‡ºç»„é˜Ÿè·Ÿéš(ç§’)
+    INT                m_nFoundDurationHour;        // åˆ›å»ºå‘¨æœŸ
+    INT                m_nDefaultMaxMemberCount;    // é»˜è®¤å¸®ä¼šå®¹çº³å¸®ä¼—æ•°
+    INT                m_nResponseUserCount;        // å»ºç«‹å¸®ä¼šéœ€è¦çš„å“åº”ç©å®¶æ•°ï¼ˆå«å¸®ä¸»ï¼‰
+    INT                m_nPasswdPoint;                // å¤šå°‘ç‚¹å‹å¥½åº¦éœ€è¦è¾“å…¥äºŒçº§å¯†ç 
+    INT                m_nPromptPoint;                // å¤šå°‘ç‚¹å‹å¥½åº¦éœ€è¦æç¤ºä¸Šä¸‹çº¿
+    INT                m_nDeleteDelayTime;            // å¤šå°‘å°æ—¶ä»¥åå†æ¬¡å¼ºåˆ¶è§£é™¤åˆ™åˆ é™¤äºŒçº§å¯†ç 
+    INT                m_nExpPoint;                // è·å¾—å¤šå°‘ç»éªŒå¯ä»¥æå‡å‹å¥½åº¦
+    INT                m_nHashOnlineUserCount ;    //åœ¨çº¿ç©å®¶çš„hashè¡¨å¤§å°
+    INT                m_nHashMailUserCount ;        //æ‹¥æœ‰é‚®ä»¶çš„ç©å®¶hashè¡¨å¤§å°
+    INT                m_nMaxOfflineUserCount ;    //ç™»é™†è¿‡æ¸¸æˆçš„ç©å®¶æ•°é‡æœ€å¤§å€¼
+    FLOAT            m_fRespawnParam ;            //æ€ªç‰©åˆ·æ–°ä¿®æ­£ç³»æ•°
+    INT                m_KickUserTime ;            //ä¸æ˜¯æ­£å¸¸æ¸¸æˆç©å®¶çš„è¸¢é™¤å€’è®¡æ—¶é—´
+    INT                m_nDefaultDamageFluctuation; // ç¼ºçœå¾—ä¼¤å®³æµ®åŠ¨
 
-    INT                m_nMinGoodBadValue;            // ×îĞ¡ÉÆ¶ñÖµ
-    INT                m_nMaxGoodBadValue;            // ×î´óÉÆ¶ñÖµ
-    INT                m_nLevelNeeded;                // »ñµÃÉÆ¶ñÖµµÄ×îµÍµÈ¼¶
-    INT                m_nMemberLevel;                // ÄÜ¸ø¶Ó³¤´øÀ´ÉÆ¶ñÖµµÄ¶ÓÓÑ×î¸ßµÈ¼¶
-    FLOAT            m_fGoodBadRadius;            // »ñµÃÉÆ¶ñÖµµÄ°ë¾¶
-    INT                m_nBonusPerMember;            // Ã¿¸öÓĞĞ§¶ÓÓÑÄÜÔö¼ÓµÄÉÆ¶ñÖµµãÊı
-    INT                m_nMaxBonus;                // É±ËÀÒ»Ö»¹ÖÄÜ¸ø¶Ó³¤´øÀ´µÄ×î´óÉÆ¶ñÖµµãÊı
-    INT                m_nPenaltyWhenMemberDie;    // ÓĞĞ§¶ÓÓÑµÄËÀÍö¼õÉÙ¶Ó³¤µÄÉÆ¶ñÖµµãÊı
+    INT                m_nMinGoodBadValue;            // æœ€å°å–„æ¶å€¼
+    INT                m_nMaxGoodBadValue;            // æœ€å¤§å–„æ¶å€¼
+    INT                m_nLevelNeeded;                // è·å¾—å–„æ¶å€¼çš„æœ€ä½ç­‰çº§
+    INT                m_nMemberLevel;                // èƒ½ç»™é˜Ÿé•¿å¸¦æ¥å–„æ¶å€¼çš„é˜Ÿå‹æœ€é«˜ç­‰çº§
+    FLOAT            m_fGoodBadRadius;            // è·å¾—å–„æ¶å€¼çš„åŠå¾„
+    INT                m_nBonusPerMember;            // æ¯ä¸ªæœ‰æ•ˆé˜Ÿå‹èƒ½å¢åŠ çš„å–„æ¶å€¼ç‚¹æ•°
+    INT                m_nMaxBonus;                // æ€æ­»ä¸€åªæ€ªèƒ½ç»™é˜Ÿé•¿å¸¦æ¥çš„æœ€å¤§å–„æ¶å€¼ç‚¹æ•°
+    INT                m_nPenaltyWhenMemberDie;    // æœ‰æ•ˆé˜Ÿå‹çš„æ­»äº¡å‡å°‘é˜Ÿé•¿çš„å–„æ¶å€¼ç‚¹æ•°
     INT             m_nWorldChatItemIndex;
 
-    _REGION_INFO    m_ThisRegion;                //µ±Ç°ÓÎÏ·Çø
-    _REGION_INFO*    m_OldRegion;                //¾ÉÇø
-    INT                m_nOldRegionCount;            //¾ÉÇøµÄ¸öÊı
+    _REGION_INFO    m_ThisRegion;                //å½“å‰æ¸¸æˆåŒº
+    _REGION_INFO*    m_OldRegion;                //æ—§åŒº
+    INT                m_nOldRegionCount;            //æ—§åŒºçš„ä¸ªæ•°
 
     _CONFIG_INFO( )
     {
@@ -402,14 +402,14 @@ struct _SERVER_INFO
 //Scene
 struct _SCENE_DATA
 {
-    SceneID_t        m_SceneID ;                    //³¡¾°ID
-    INT                m_IsActive ;                //ÊÇ²»ÊÇ¿ÉÒÔÊ¹ÓÃµÄ³¡¾°
-    CHAR            m_szName[_MAX_PATH] ;        //³¡¾°Ãû³Æ
-    CHAR            m_szFileName[_MAX_PATH] ;    //³¡¾°×ÊÔ´ÎÄ¼şµÄÎÄ¼şÃû
-    ID_t            m_ServerID ;                //ÔËĞĞ´Ë³¡¾°µÄServer¶Ë³ÌĞòID
-    ID_t            m_Type ;                    //µ±Ç°³¡¾°ÊôÓÚÄ³¸ö¸±±¾
-                                                //Èç¹ûÖµÎªINVALID_IDÔò²»ÊôÓÚ¸±±¾
-    ID_t            m_ThreadIndex ;                //Çı¶¯Ïß³ÌµÄË÷Òı
+    SceneID_t        m_SceneID ;                    //åœºæ™¯ID
+    INT                m_IsActive ;                //æ˜¯ä¸æ˜¯å¯ä»¥ä½¿ç”¨çš„åœºæ™¯
+    CHAR            m_szName[_MAX_PATH] ;        //åœºæ™¯åç§°
+    CHAR            m_szFileName[_MAX_PATH] ;    //åœºæ™¯èµ„æºæ–‡ä»¶çš„æ–‡ä»¶å
+    ID_t            m_ServerID ;                //è¿è¡Œæ­¤åœºæ™¯çš„Serverç«¯ç¨‹åºID
+    ID_t            m_Type ;                    //å½“å‰åœºæ™¯å±äºæŸä¸ªå‰¯æœ¬
+                                                //å¦‚æœå€¼ä¸ºINVALID_IDåˆ™ä¸å±äºå‰¯æœ¬
+    ID_t            m_ThreadIndex ;                //é©±åŠ¨çº¿ç¨‹çš„ç´¢å¼•
 
     _SCENE_DATA()
     {

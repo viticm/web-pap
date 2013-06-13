@@ -8,56 +8,56 @@
 #include "DB_Struct.h"
 
 ////////////////////////////////////////////////
-// ¸½¼Ó³èÎïÊôÐÔ¶¨Òå
+// é™„åŠ å® ç‰©å±žæ€§å®šä¹‰
 ////////////////////////////////////////////////
 enum ENUM_PET_FOOD_TYPE
 {
     PET_FOOD_TYPE_INVALID = 0,
-    PET_FOOD_TYPE_MEAT,                //ÈâÊ³³èÁ¸
-    PET_FOOD_TYPE_GRASS,            //²ÝÀà³èÁ¸
-    PET_FOOD_TYPE_WORM,                //³æÀà³èÁ¸
-    PET_FOOD_TYPE_PADDY,            //¹ÈÀà³èÁ¸
+    PET_FOOD_TYPE_MEAT,                //è‚‰é£Ÿå® ç²®
+    PET_FOOD_TYPE_GRASS,            //è‰ç±»å® ç²®
+    PET_FOOD_TYPE_WORM,                //è™«ç±»å® ç²®
+    PET_FOOD_TYPE_PADDY,            //è°·ç±»å® ç²®
 
     PET_FOOD_TYPE_NUMBER,
 };
 
 struct PET_ATTR
 {
-    INT        m_Type;                        // ³èÎï±àºÅ
-    CHAR    m_Name[NPC_NAME_LEN];        // Ãû³Æ
-    INT        m_nPetPhyle;                // ÀàÐÍ
-    INT        m_TakeLevel;                // ¿ÉÐ¯´øµÈ¼¶
-    INT        m_bVarPet;                    // ÊÇ·ñÎª±äÒì³èÎï
-    INT        m_bBabyPet;                    // ÊÇ·ñÎª±¦±¦³èÎï
-    INT        m_AI;                        // ³èÎïÐÔ¸ñ
-    INT        m_FoodType;                    // Ê³ÎïÀà
-    INT        m_PassiveSkillCount;        // ×Ô¶¯¼¼ÄÜÊý
-    INT        m_VoluntarySkill;            // ÊÖ¶¯¼¼ÄÜ
-    INT        m_PassiveSkill1;            // ×Ô¶¯¼¼ÄÜ1
-    INT        m_PassiveSkill2;            // ×Ô¶¯¼¼ÄÜ2
-    INT        m_PassiveSkill3;            // ×Ô¶¯¼¼ÄÜ3
-    INT        m_PassiveSkill4;            // ×Ô¶¯¼¼ÄÜ4
-    INT        m_Life;                        // ±ê×¼ÊÙÃü
-    INT        m_StrPerception;            // ±ê×¼Á¦Á¿×ÊÖÊ
-    INT        m_ConPerception;            // ±ê×¼ÌåÖÊ×ÊÖÊ
-    INT        m_DexPerception;            // ±ê×¼ÁéÆø×ÊÖÊ
-    INT        m_SprPerception;            // ±ê×¼Éí·¨×ÊÖÊ
-    INT        m_IntPerception;            // ±ê×¼¶¨Á¦×ÊÖÊ
-    INT        m_GrowRate0;                // ³É³¤ÂÊ1
-    INT        m_GrowRate1;                // ³É³¤ÂÊ2
-    INT        m_GrowRate2;                // ³É³¤ÂÊ3
-    INT        m_GrowRate3;                // ³É³¤ÂÊ4
-    INT        m_GrowRate4;                // ³É³¤ÂÊ5
-    INT        m_CowardiceRate;            // µ¨Ð¡¼¸ÂÊ
-    INT        m_WarinessRate;                // ½÷É÷¼¸ÂÊ    
-    INT        m_LoyalismRate;                // ÖÒ³Ï¼¸ÂÊ
-    INT        m_CanninessRate;            // ¾«Ã÷¼¸ÂÊ
-    INT        m_ValourRate;                // ÓÂÃÍ¼¸ÂÊ
-    INT        m_ProcreateInterval;        // ³èÎï·±Ö³Ê±¼ä
+    INT        m_Type;                        // å® ç‰©ç¼–å·
+    CHAR    m_Name[NPC_NAME_LEN];        // åç§°
+    INT        m_nPetPhyle;                // ç±»åž‹
+    INT        m_TakeLevel;                // å¯æºå¸¦ç­‰çº§
+    INT        m_bVarPet;                    // æ˜¯å¦ä¸ºå˜å¼‚å® ç‰©
+    INT        m_bBabyPet;                    // æ˜¯å¦ä¸ºå®å®å® ç‰©
+    INT        m_AI;                        // å® ç‰©æ€§æ ¼
+    INT        m_FoodType;                    // é£Ÿç‰©ç±»
+    INT        m_PassiveSkillCount;        // è‡ªåŠ¨æŠ€èƒ½æ•°
+    INT        m_VoluntarySkill;            // æ‰‹åŠ¨æŠ€èƒ½
+    INT        m_PassiveSkill1;            // è‡ªåŠ¨æŠ€èƒ½1
+    INT        m_PassiveSkill2;            // è‡ªåŠ¨æŠ€èƒ½2
+    INT        m_PassiveSkill3;            // è‡ªåŠ¨æŠ€èƒ½3
+    INT        m_PassiveSkill4;            // è‡ªåŠ¨æŠ€èƒ½4
+    INT        m_Life;                        // æ ‡å‡†å¯¿å‘½
+    INT        m_StrPerception;            // æ ‡å‡†åŠ›é‡èµ„è´¨
+    INT        m_ConPerception;            // æ ‡å‡†ä½“è´¨èµ„è´¨
+    INT        m_DexPerception;            // æ ‡å‡†çµæ°”èµ„è´¨
+    INT        m_SprPerception;            // æ ‡å‡†èº«æ³•èµ„è´¨
+    INT        m_IntPerception;            // æ ‡å‡†å®šåŠ›èµ„è´¨
+    INT        m_GrowRate0;                // æˆé•¿çŽ‡1
+    INT        m_GrowRate1;                // æˆé•¿çŽ‡2
+    INT        m_GrowRate2;                // æˆé•¿çŽ‡3
+    INT        m_GrowRate3;                // æˆé•¿çŽ‡4
+    INT        m_GrowRate4;                // æˆé•¿çŽ‡5
+    INT        m_CowardiceRate;            // èƒ†å°å‡ çŽ‡
+    INT        m_WarinessRate;                // è°¨æ…Žå‡ çŽ‡    
+    INT        m_LoyalismRate;                // å¿ è¯šå‡ çŽ‡
+    INT        m_CanninessRate;            // ç²¾æ˜Žå‡ çŽ‡
+    INT        m_ValourRate;                // å‹‡çŒ›å‡ çŽ‡
+    INT        m_ProcreateInterval;        // å® ç‰©ç¹æ®–æ—¶é—´
 };
 
 ////////////////////////////////////////////////
-// _PET_DETAIL_ATTRIB ³èÎïÊôÐÔ
+// _PET_DETAIL_ATTRIB å® ç‰©å±žæ€§
 ////////////////////////////////////////////////
 struct _PET_DETAIL_ATTRIB
 {
@@ -81,56 +81,56 @@ public:
 public:
     PET_GUID_t        m_GUID;                            // ID
 
-    ObjID_t            m_ObjID;                        // ËùÓÐObjÀàÐÍµÄObjID
-    INT                m_nDataID;                        // Ä£ÐÍID,³èÎïÀàÐÍ
-    CHAR            m_szName[MAX_CHARACTER_NAME];    // Ãû³Æ
-    INT                m_nAIType;                        // ÐÔ¸ñ
-    PET_GUID_t        m_SpouseGUID;                    // ÅäÅ¼µÄGUID
-    INT                m_nLevel;                        // µÈ¼¶
-    INT                m_nExp;                            // ¾­Ñé
-    INT                m_nHP;                            // Ñªµ±Ç°Öµ
-    INT                m_nHPMax;                        // Ñª×î´óÖµ
+    ObjID_t            m_ObjID;                        // æ‰€æœ‰Objç±»åž‹çš„ObjID
+    INT                m_nDataID;                        // æ¨¡åž‹ID,å® ç‰©ç±»åž‹
+    CHAR            m_szName[MAX_CHARACTER_NAME];    // åç§°
+    INT                m_nAIType;                        // æ€§æ ¼
+    PET_GUID_t        m_SpouseGUID;                    // é…å¶çš„GUID
+    INT                m_nLevel;                        // ç­‰çº§
+    INT                m_nExp;                            // ç»éªŒ
+    INT                m_nHP;                            // è¡€å½“å‰å€¼
+    INT                m_nHPMax;                        // è¡€æœ€å¤§å€¼
 
-    INT                m_nLife;                        // µ±Ç°ÊÙÃü
-    BYTE            m_byGeneration;                    // ¼¸´ú³è
-    BYTE            m_byHappiness;                    // ¿ìÀÖ¶È
+    INT                m_nLife;                        // å½“å‰å¯¿å‘½
+    BYTE            m_byGeneration;                    // å‡ ä»£å® 
+    BYTE            m_byHappiness;                    // å¿«ä¹åº¦
 
-    INT                m_nAtt_Physics;                    // ÎïÀí¹¥»÷Á¦
-    INT                m_nAtt_Magic;                    // Ä§·¨¹¥»÷Á¦
-    INT                m_nDef_Physics;                    // ÎïÀí·ÀÓùÁ¦
-    INT                m_nDef_Magic;                    // Ä§·¨·ÀÓùÁ¦
+    INT                m_nAtt_Physics;                    // ç‰©ç†æ”»å‡»åŠ›
+    INT                m_nAtt_Magic;                    // é­”æ³•æ”»å‡»åŠ›
+    INT                m_nDef_Physics;                    // ç‰©ç†é˜²å¾¡åŠ›
+    INT                m_nDef_Magic;                    // é­”æ³•é˜²å¾¡åŠ›
 
-    INT                m_nHit;                            // ÃüÖÐÂÊ
-    INT                m_nMiss;                        // ÉÁ±ÜÂÊ
-    INT                m_nCritical;                    // »áÐÄÂÊ
+    INT                m_nHit;                            // å‘½ä¸­çŽ‡
+    INT                m_nMiss;                        // é—ªé¿çŽ‡
+    INT                m_nCritical;                    // ä¼šå¿ƒçŽ‡
 
-    INT                m_nModelID;                        // ÍâÐÎ
-    INT                m_nMountID;                        // ×ùÆïID
+    INT                m_nModelID;                        // å¤–å½¢
+    INT                m_nMountID;                        // åº§éª‘ID
 
-    INT                m_StrPerception;                // Á¦Á¿×ÊÖÊ
-    INT                m_ConPerception;                // ÌåÁ¦×ÊÖÊ
-    INT             m_DexPerception;                // Éí·¨×ÊÖÊ
-    INT                m_SprPerception;                // ÁéÆø×ÊÖÊ
-    INT             m_IntPerception;                // ¶¨Á¦×ÊÖÊ
+    INT                m_StrPerception;                // åŠ›é‡èµ„è´¨
+    INT                m_ConPerception;                // ä½“åŠ›èµ„è´¨
+    INT             m_DexPerception;                // èº«æ³•èµ„è´¨
+    INT                m_SprPerception;                // çµæ°”èµ„è´¨
+    INT             m_IntPerception;                // å®šåŠ›èµ„è´¨
 
-    INT                m_Str;                            // Á¦Á¿
-    INT                m_Con;                            // ÌåÁ¦
-    INT             m_Dex;                            // Éí·¨
-    INT                m_Spr;                            // ÁéÆø
-    INT             m_Int;                            // ¶¨Á¦
-    INT             m_GenGu;                        // ¸ù¹Ç
+    INT                m_Str;                            // åŠ›é‡
+    INT                m_Con;                            // ä½“åŠ›
+    INT             m_Dex;                            // èº«æ³•
+    INT                m_Spr;                            // çµæ°”
+    INT             m_Int;                            // å®šåŠ›
+    INT             m_GenGu;                        // æ ¹éª¨
 
-    INT                m_nRemainPoint;                    // Ç±ÄÜµã
+    INT                m_nRemainPoint;                    // æ½œèƒ½ç‚¹
 
-    _OWN_SKILL        m_aSkill[MAX_PET_SKILL_COUNT];    // ¼¼ÄÜÁÐ±í
+    _OWN_SKILL        m_aSkill[MAX_PET_SKILL_COUNT];    // æŠ€èƒ½åˆ—è¡¨
 };
 
 
 ////////////////////////////////////////////////
-// _PET_PLACARD_ITEM ³èÎï¹«¸æ°åµÄÒ»Ïî
+// _PET_PLACARD_ITEM å® ç‰©å…¬å‘Šæ¿çš„ä¸€é¡¹
 ////////////////////////////////////////////////
 
-// ¿Í»§¶Ë³èÎï¹«¸æ°åµÄÏÔÊ¾ÌõÊý
+// å®¢æˆ·ç«¯å® ç‰©å…¬å‘Šæ¿çš„æ˜¾ç¤ºæ¡æ•°
 #define MAX_PETPLACARD_LIST_ITEM_NUM        (2)
 
 #define PET_PLACARD_ITEM_MESSAGE_SIZE        (64)
@@ -199,20 +199,20 @@ public:
     }
 
 protected:
-    // ´´½¨ÐÅÏ¢
+    // åˆ›å»ºä¿¡æ¯
     UINT                m_uCreateTime;
 
-    // ³èÖ÷ÐÅÏ¢
+    // å® ä¸»ä¿¡æ¯
     GUID_t                m_HumanGUID;
     CHAR                m_szHumanName[MAX_CHARACTER_NAME];
     INT                    m_nHumanLevel;
     CHAR                m_szHumanGuildName[MAX_GUILD_NAME_SIZE];
     INT                    m_nHumanMenPai;
 
-    // ³èÎïÐÅÏ¢
+    // å® ç‰©ä¿¡æ¯
     _PET_DETAIL_ATTRIB    m_PetAttr;
 
-    // ÁôÑÔ
+    // ç•™è¨€
     CHAR                m_szMessage[PET_PLACARD_ITEM_MESSAGE_SIZE];
 };
 

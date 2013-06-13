@@ -1,6 +1,6 @@
 // CGAskLockObj.h
 // 
-// ÇëÇóËø¶¨ÎïÆ·
+// è¯·æ±‚é”å®šç‰©å“
 // 
 //////////////////////////////////////////////////////
 
@@ -33,7 +33,7 @@ public:
     }
     virtual ~CGAskLockObj(){}
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -42,7 +42,7 @@ public:
     virtual UINT            GetPacketSize()const { return sizeof(BYTE)*2 + sizeof(_ITEM_GUID) + sizeof(PET_GUID_t) ; }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     _ITEM_GUID                GetItemGUID(VOID) const {return m_ItemGuid;}
     VOID                    SetItemGUID(_ITEM_GUID Guid) {m_ItemGuid = Guid;}
 
@@ -56,9 +56,9 @@ public:
     VOID                    SetLockType(BYTE bLockType) {m_bLockType=bLockType;}
 
 private:
-    //Êı¾İ
-    BYTE                    m_bLockObj;        // ¸øÊ²Ã´ÀàĞÍµÄ¶«Î÷¼ÓËø
-    BYTE                    m_bLockType;    // ÊÇ¼ÓËø»¹ÊÇ½âËø
+    //æ•°æ®
+    BYTE                    m_bLockObj;        // ç»™ä»€ä¹ˆç±»å‹çš„ä¸œè¥¿åŠ é”
+    BYTE                    m_bLockType;    // æ˜¯åŠ é”è¿˜æ˜¯è§£é”
     _ITEM_GUID                m_ItemGuid;
     PET_GUID_t                m_PetGuid;
 

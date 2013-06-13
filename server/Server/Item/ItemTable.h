@@ -1,11 +1,11 @@
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ2ÈÕ
-    ´´½¨Ê±¼ä:    16:54
-    ÎÄ¼þÃû³Æ:    ItemTable.h
-    ÎÄ¼þÂ·¾¶:    d:\Prj\Server\Server\Item\ItemTable.h
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ2æ—¥
+    åˆ›å»ºæ—¶é—´:    16:54
+    æ–‡ä»¶åç§°:    ItemTable.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\ItemTable.h
     
-    ÎÄ¼þ¹¦ÄÜ£º ÎïÆ·»ù´¡Êý¾Ý±í²Ù×÷
-    ÐÞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š ç‰©å“åŸºç¡€æ•°æ®è¡¨æ“ä½œ
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 
@@ -22,42 +22,42 @@
 
 
 
-//×°±¸¶¼ÓÐµÄ»ù´¡ÊôÐÔ
+//è£…å¤‡éƒ½æœ‰çš„åŸºç¡€å±žæ€§
 struct EQUIP_TB 
 {
     SELF_CONS(EQUIP_TB);
     INT                        m_IndexID;
     _ITEM_TYPE                m_ItemType;
-    BYTE                    m_EquipPoint;                    //×°Åäµã
-    CHAR                    m_RulerID;                        //¹æÔò±àºÅ
-    BYTE                    m_ReqLevel;                        //ÐèÒªµÈ¼¶
-    INT                        m_MaxDur;                        //×î´óÄÍ¾Ã
-    UINT                    m_BasePrice;                    //ÊÛ³ö¼Û¸ñ
-    INT                        m_RepaireLevel;                    //ÐÞÀí¼Û¸ñ
-    INT                        m_PhysicAttack;                    //ÎïÀí¹¥»÷
-    INT                        m_MagicAttack;                    //Ä§·¨¹¥»÷
-    INT                        m_PhysicDefense;                //ÎïÀí·ÀÓù
-    INT                        m_MagicDefense;                    //Ä§·¨·ÀÓù
-    INT                        m_AttackSpeed;                    //¹¥»÷ËÙ¶È
-    INT                        m_Miss;                            //ÉÁ±Ü    
-    BYTE                    m_CanRepaireTimes;                //¿ÉÐÞÀí´ÎÊý
-    BYTE                    m_MaxGem;                        //×î´óÏâÇ¶
-    INT                        m_EquipSetNum;                    //Ì××°±àºÅ
-    INT                        m_EquipSetMaxNum;                //×î´óÌ××°ÊýÄ¿
+    BYTE                    m_EquipPoint;                    //è£…é…ç‚¹
+    CHAR                    m_RulerID;                        //è§„åˆ™ç¼–å·
+    BYTE                    m_ReqLevel;                        //éœ€è¦ç­‰çº§
+    INT                        m_MaxDur;                        //æœ€å¤§è€ä¹…
+    UINT                    m_BasePrice;                    //å”®å‡ºä»·æ ¼
+    INT                        m_RepaireLevel;                    //ä¿®ç†ä»·æ ¼
+    INT                        m_PhysicAttack;                    //ç‰©ç†æ”»å‡»
+    INT                        m_MagicAttack;                    //é­”æ³•æ”»å‡»
+    INT                        m_PhysicDefense;                //ç‰©ç†é˜²å¾¡
+    INT                        m_MagicDefense;                    //é­”æ³•é˜²å¾¡
+    INT                        m_AttackSpeed;                    //æ”»å‡»é€Ÿåº¦
+    INT                        m_Miss;                            //é—ªé¿    
+    BYTE                    m_CanRepaireTimes;                //å¯ä¿®ç†æ¬¡æ•°
+    BYTE                    m_MaxGem;                        //æœ€å¤§é•¶åµŒ
+    INT                        m_EquipSetNum;                    //å¥—è£…ç¼–å·
+    INT                        m_EquipSetMaxNum;                //æœ€å¤§å¥—è£…æ•°ç›®
 };
 
 
-//µôÂä°ü½á¹¹
+//æŽ‰è½åŒ…ç»“æž„
 struct DROP_BOX_TB {
 
     SELF_CONS(DROP_BOX_TB);
-    UINT                m_DropBoxId;                        //DropBoxµÄ±àºÅ±í
-    INT                    m_DropValue;                        //DropBox¼ÛÖµ£¬²ÎÓëµôÂä¼ÆËã
-    _ITEM_TYPE            m_DropItem[MAX_DROPBOX_CARRAGE];    //DropBoxÐ¯´øÎïÆ·±í
-    INT                    m_Quality[MAX_DROPBOX_CARRAGE];        //ÎïÆ·Æ·ÖÊ±í    
+    UINT                m_DropBoxId;                        //DropBoxçš„ç¼–å·è¡¨
+    INT                    m_DropValue;                        //DropBoxä»·å€¼ï¼Œå‚ä¸ŽæŽ‰è½è®¡ç®—
+    _ITEM_TYPE            m_DropItem[MAX_DROPBOX_CARRAGE];    //DropBoxæºå¸¦ç‰©å“è¡¨
+    INT                    m_Quality[MAX_DROPBOX_CARRAGE];        //ç‰©å“å“è´¨è¡¨    
 };
 
-//ÎïÆ·ÖÊÁ¿¶Î½á¹¹Ìå
+//ç‰©å“è´¨é‡æ®µç»“æž„ä½“
 struct ITEM_QUALITY_TB {
 
     SELF_CONS(ITEM_QUALITY_TB)
@@ -79,7 +79,7 @@ enum  MINMAX_TYPE
     VT_MIN,
     VT_MAX
 };
-//ÎïÆ·ÊýÖµ¶Î½á¹¹Ìå
+//ç‰©å“æ•°å€¼æ®µç»“æž„ä½“
 struct ITEM_VALUE_TB 
 {
     SELF_CONS(ITEM_VALUE_TB)
@@ -88,34 +88,34 @@ struct ITEM_VALUE_TB
 };
 
 
-//ÆÕÍ¨×°±¸±í
+//æ™®é€šè£…å¤‡è¡¨
 struct COMMON_EQUIP_TB :public    EQUIP_TB
 {
     DEFAULT_CONS(COMMON_EQUIP_TB,EQUIP_TB);
-    INT                        m_Job;                                //Ö°ÒµÊôÐÔ
+    INT                        m_Job;                                //èŒä¸šå±žæ€§
 };
 
-//À¶É«×°±¸±í
+//è“è‰²è£…å¤‡è¡¨
 struct BLUE_EQUIP_TB:public EQUIP_TB 
 {
     DEFAULT_CONS(BLUE_EQUIP_TB,EQUIP_TB);
-    INT                        m_Job;                                //Ö°ÒµÊôÐÔ
-    INT                        m_AttrRate[IATTRIBUTE_NUMBER];        //ÊôÐÔËæ»ú¸ÅÂÊ
+    INT                        m_Job;                                //èŒä¸šå±žæ€§
+    INT                        m_AttrRate[IATTRIBUTE_NUMBER];        //å±žæ€§éšæœºæ¦‚çŽ‡
 };
 
-//ÂÌÉ«×°±¸±í
+//ç»¿è‰²è£…å¤‡è¡¨
 struct GREEN_EQUIP_TB :public    EQUIP_TB
 {
     DEFAULT_CONS(GREEN_EQUIP_TB,EQUIP_TB);
-    INT                        m_Job;                                //Ö°ÒµÊôÐÔ
-    _ITEM_ATTR                m_Attr[MAX_GREEN_ITEM_EXT_ATTR];    //ÂÌÉ«×°±¸¸½¼ÓÊôÐÔ
+    INT                        m_Job;                                //èŒä¸šå±žæ€§
+    _ITEM_ATTR                m_Attr[MAX_GREEN_ITEM_EXT_ATTR];    //ç»¿è‰²è£…å¤‡é™„åŠ å±žæ€§
 };
 
 
 
 
 
-//¹ÖÎïµôÂä°ü½á¹¹Ìå
+//æ€ªç‰©æŽ‰è½åŒ…ç»“æž„ä½“
 struct MONSTER_DROPBOX_TB 
 {
     SELF_CONS(MONSTER_DROPBOX_TB);
@@ -126,7 +126,7 @@ struct MONSTER_DROPBOX_TB
 };
 
 
-//±¦Ê¯±í½á¹¹Ìå
+//å®çŸ³è¡¨ç»“æž„ä½“
 struct GEMINFO_TB 
 {
     GEMINFO_TB()
@@ -148,7 +148,7 @@ struct GEMINFO_TB
 
 
 
-//ÆÕÍ¨ÎïÆ·±í½á¹¹Ìå
+//æ™®é€šç‰©å“è¡¨ç»“æž„ä½“
 struct COMMITEM_INFO_TB 
 {
     COMMITEM_INFO_TB()
@@ -172,8 +172,8 @@ struct COMMITEM_INFO_TB
     _ITEM_TYPE            m_ItemType;
     INT                    m_nLevel;
     UINT                m_nBasePrice;
-    CHAR                m_nRulerID;     //¹æÔòID
-    INT                    m_nLayedNum; //µþ·ÅÊýÁ¿
+    CHAR                m_nRulerID;     //è§„åˆ™ID
+    INT                    m_nLayedNum; //å æ”¾æ•°é‡
     INT                    m_nScriptID;
     INT                    m_nSkillID;
     BOOL                m_bCosSelf;
@@ -183,7 +183,7 @@ struct COMMITEM_INFO_TB
 };
 
 
-//²Ø±¦Í¼½á¹¹Ìå
+//è—å®å›¾ç»“æž„ä½“
 struct STORE_MAP_INFO_TB 
 {
     STORE_MAP_INFO_TB()
@@ -214,7 +214,7 @@ struct STORE_MAP_INFO_TB
     
 };
 
-//µôÂäË¥¼õ±í½á¹¹Ìå
+//æŽ‰è½è¡°å‡è¡¨ç»“æž„ä½“
 struct DROP_ATT_TB 
 {
     SELF_CONS(DROP_ATT_TB);
@@ -223,7 +223,7 @@ struct DROP_ATT_TB
 };
 
 
-//×°±¸¼¯ºÏ½á¹¹Ìå
+//è£…å¤‡é›†åˆç»“æž„ä½“
 struct EQUIP_SET_TB
 {
     SELF_CONS(EQUIP_SET_TB);
@@ -233,7 +233,7 @@ struct EQUIP_SET_TB
 };
 
 
-//ÎïÆ·¹æÔò½á¹¹Ìå
+//ç‰©å“è§„åˆ™ç»“æž„ä½“
 struct ITEM_RULER_TB :public _ITEM_RULER{
     
     SELF_CONS(ITEM_RULER_TB);
@@ -243,7 +243,7 @@ struct ITEM_RULER_TB :public _ITEM_RULER{
 
 
 /*
- *ÎïÆ·Ïà¹Ø±í×ÊÔ´Êý¾ÝÀà    
+ *ç‰©å“ç›¸å…³è¡¨èµ„æºæ•°æ®ç±»    
  */
 class ItemTable
 {

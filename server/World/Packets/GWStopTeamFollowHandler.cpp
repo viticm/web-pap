@@ -32,7 +32,7 @@ __ENTER_FUNCTION
     }
 
     if ( pTeam->GetFollowedMembers()[0] == pUser->GetGUID() )
-    { // 队长或者前队长的话
+    { // 闃熼暱鎴栬�呭墠闃熼暱鐨勮瘽
         pTeam->ClearFollowedMembers();
     }
     else

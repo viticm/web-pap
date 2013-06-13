@@ -17,7 +17,7 @@ namespace Packets
         }
         virtual        ~GWTeamInvite(){};
 
-        //公用接口
+        //鍏敤鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ namespace Packets
                                                             + sizeof(m_GUID); }
 
     public :
-        //数据接口
+        //鏁版嵁鎺ュ彛
         VOID            SetSourGUID( GUID_t guid ){    m_SourGUID = guid ; }
         GUID_t            GetSourGUID( ){ return m_SourGUID ; }
 
@@ -44,10 +44,10 @@ namespace Packets
         GUID_t            GetGUID() { return m_GUID; }
 
     private :
-        //数据
-        GUID_t            m_SourGUID ;        //邀请人
+        //鏁版嵁
+        GUID_t            m_SourGUID ;        //閭�璇蜂汉
         UCHAR            m_DestNameSize;
-        CHAR            m_DestName[MAX_CHARACTER_NAME];            //被邀请人
+        CHAR            m_DestName[MAX_CHARACTER_NAME];            //琚個璇蜂汉
         GUID_t            m_GUID;
 
     };

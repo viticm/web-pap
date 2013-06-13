@@ -1,11 +1,11 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// �ļ�����Obj_Pet_Attributes.cpp
-// ����˵������ɫ������
+// 文件名：Obj_Pet_Attributes.cpp
+// 功能说明：角色层属性
 //
-// �޸ļ�¼��
-//    �����е�m_pdbPetת����Pet������Human->pPetDB��Pet������ӵ������DB����
-//  �޸����й���m_pdbPet������
+// 修改记录：
+//    将所有的m_pdbPet转换成Pet的主人Human->pPetDB，Pet本身不拥有任务DB数据
+//  修改所有关于m_pdbPet的数据
 //
 ///////////////////////////////////////////////////////////////////////////////
 #include "Type.h"
@@ -21,13 +21,13 @@
 VOID Obj_Pet::IncrementExp(INT nExp)
 {
 __ENTER_FUNCTION
-    // ����Ѿ�����ȼ�������ֱ�ӷ���
+    // 如果已经到达等级上限则直接返回
     if (GetLevel() == PET_LEVEL_NUM)
     {
         return ;
     }
 
-    // �ж��Ƿ� >= �ü��������ľ���
+    // 判断是否 >= 该级别升级的经验
     INT nCurExp = GetExp();
     nCurExp += nExp;
     INT nNeedExp = g_PetLevelUpTbl.GetExp(GetLevel());
@@ -47,7 +47,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 ////////////////////////////////////////////////////////////////////////////////
-//��ɫ���Բ���
+//角色属性部分
 //StrikePoint
 INT    Obj_Pet::GetMaxStrikePoint(VOID)
 {
@@ -297,7 +297,7 @@ INT    Obj_Pet::GetMaxHP(VOID)
  
 INT Obj_Pet::GetBaseMaxHP(VOID)
 {
-    //HP    ��ʼHP+����*���ʶ�HPӰ��ϵ��*����+�ȼ�*�ȼ���HPӰ��ϵ��*�ɳ�
+    //HP    初始HP+体质*体质对HP影响系数*体资+等级*等级对HP影响系数*成长
     FLOAT fGrowRate = 0.f;
     INT nAttribParam = 0;
     INT nLevel = GetLevel();
@@ -502,18 +502,18 @@ FLOAT    Obj_Pet::GetMoveSpeed(VOID)
         ClearMoveSpeedDirtyFlag();
     }
 
-    FLOAT fMoveSpeed  = GetIntAttr(CharIntAttrs_T::ATTR_MOVE_SPEED) / 10.f;//LM�޸�
+    FLOAT fMoveSpeed  = GetIntAttr(CharIntAttrs_T::ATTR_MOVE_SPEED) / 10.f;//LM修改
     ENUM_MOVE_MODE eMoveMode = GetMoveMode();
     if(eMoveMode == MOVE_MODE_HOBBLE)
-    {//��ɻ����ٶȵ�50%
+    {//变成基础速度的50%
         fMoveSpeed = fMoveSpeed*0.5f;
     }
     else if(eMoveMode == MOVE_MODE_RUN)
-    {//��ɻ����ٶȵ�150%
+    {//变成基础速度的150%
         fMoveSpeed = fMoveSpeed*1.5f;
     }
     else if (eMoveMode == MOVE_MODE_SPRINT)
-    {//��ɻ����ٶȵ�500%
+    {//变成基础速度的500%
         fMoveSpeed = fMoveSpeed*5.0f;
     }
 
@@ -574,7 +574,7 @@ INT Obj_Pet::GetMiss(VOID)
 
 INT Obj_Pet::GetBaseMiss(VOID)
 {
-    //����    ��ʼ�﹥+����*���ݶ�����Ӱ��ϵ��*����+�ȼ�*�ȼ�������Ӱ��ϵ��*�ɳ�
+    //闪避    初始物攻+敏捷*敏捷对闪避影响系数*敏资+等级*等级对闪避影响系数*成长
     FLOAT fGrowRate = 0.f;
     INT nLevel = GetLevel();
 
@@ -615,7 +615,7 @@ INT Obj_Pet::GetHit(VOID)
 
 INT Obj_Pet::GetBaseHit(VOID)
 {
-    //����    ��ʼ�﹥+����*���ݶ�����Ӱ��ϵ��*����+�ȼ�*�ȼ�������Ӱ��ϵ��*�ɳ�
+    //命中    初始物攻+敏捷*敏捷对命中影响系数*敏资+等级*等级对命中影响系数*成长
     FLOAT fGrowRate = 0.f;
     INT nLevel = GetLevel();
 
@@ -655,7 +655,7 @@ INT Obj_Pet::GetCritical(VOID)
 
 INT Obj_Pet::GetBaseCritical(VOID)
 {
-    //����    ��ʼ�﹥+����*���ݶԻ���Ӱ��ϵ��*����+�ȼ�*�ȼ��Ի���Ӱ��ϵ��*�ɳ�
+    //会心    初始物攻+敏捷*敏捷对会心影响系数*敏资+等级*等级对会心影响系数*成长
     FLOAT fGrowRate = 0.f;
     INT nLevel = GetLevel();
 
@@ -696,7 +696,7 @@ INT Obj_Pet::GetAttackPhysics(VOID)
 
 INT Obj_Pet::GetBaseAttackPhysics(VOID)
 {
-    //�﹥    ��ʼ�﹥+����*�������﹥Ӱ��ϵ��*����+�ȼ�*�ȼ����﹥Ӱ��ϵ��*�ɳ�
+    //物攻    初始物攻+力量*力量对物攻影响系数*力资+等级*等级对物攻影响系数*成长
     FLOAT fGrowRate = 0.f;
     INT nLevel = GetLevel();
     if (!GetConstCreator())    
@@ -735,7 +735,7 @@ INT Obj_Pet::GetDefencePhysics(VOID)
 
 INT Obj_Pet::GetBaseDefencePhysics(VOID)
 {
-    //���    ��ʼ�﹥+����*���ʶ����Ӱ��ϵ��*����+�ȼ�*�ȼ������Ӱ��ϵ��*�ɳ�
+    //物防    初始物攻+体质*体质对物防影响系数*体资+等级*等级对物防影响系数*成长
     FLOAT fGrowRate = 0.f;
     INT nLevel = GetLevel();
     if (!GetConstCreator())    
@@ -777,7 +777,7 @@ INT Obj_Pet::GetAttackMagic(VOID)
 
 INT Obj_Pet::GetBaseAttackMagic(VOID)
 {
-    //ħ��    ��ʼħ��+����*������ħ����Ӱ��ϵ��*����+�ȼ�*�ȼ���ħ��Ӱ��ϵ��*�ɳ�
+    //魔攻    初始魔攻+灵气*灵气对魔攻攻影响系数*灵资+等级*等级对魔攻影响系数*成长
     FLOAT fGrowRate = 0.f;
     INT nLevel = GetLevel();
     if (!GetConstCreator())
@@ -816,7 +816,7 @@ INT Obj_Pet::GetDefenceMagic(VOID)
 
 INT Obj_Pet::GetBaseDefenceMagic(VOID)
 {
-    //ħ��    ��ʼħ��+����*������ħ��Ӱ��ϵ��*����+�ȼ�*�ȼ���ħ��Ӱ��ϵ��*�ɳ�
+    //魔防    初始魔防+定力*定力对魔防影响系数*定资+等级*等级对魔防影响系数*成长
     FLOAT fGrowRate = 0.f;
     INT nLevel = GetLevel();
 

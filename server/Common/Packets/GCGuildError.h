@@ -13,7 +13,7 @@ namespace Packets
         GCGuildError(){}
         virtual                    ~GCGuildError(){}
 
-        //公用接口
+        //鍏敤鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );

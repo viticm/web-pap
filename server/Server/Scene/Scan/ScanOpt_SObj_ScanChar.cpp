@@ -84,7 +84,7 @@ __ENTER_FUNCTION
     FLOAT fDistSq = MyLengthSq(&m_CentrePoint, pObj->getWorldPos());
     if( fDistSq>(m_fRadius*m_fRadius))
     {
-        //不在有效范围
+        //涓嶅湪鏈夋晥鑼冨洿
         return SCANRETURN_CONTINUE;
     }
     if(FALSE == m_pLogic->IsScanedTargetValid(*m_pMe, (Obj_Character&)(*pObj)))

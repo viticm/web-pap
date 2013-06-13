@@ -1,6 +1,6 @@
 // GCStallApply.h
 // 
-// ¸æËß¿Í»§¶Ë°ÚÌ¯Ìõ¼ş
+// å‘Šè¯‰å®¢æˆ·ç«¯æ‘†æ‘Šæ¡ä»¶
 // 
 //////////////////////////////////////////////////////
 
@@ -26,7 +26,7 @@ namespace Packets
         }
         virtual ~GCStallApply( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -45,9 +45,9 @@ namespace Packets
         VOID                    SetIsCanStall(BYTE IsCanStall) {m_IsCanStall = IsCanStall;}
 
     private:
-        BYTE                    m_IsCanStall;//ÊÇ·ñ¿ÉÒÔ°ÚÌ¯
-        UINT                    m_PosTax;//Ì¯Î»·Ñ
-        BYTE                    m_TradeTax;//½»Ò×Ë°
+        BYTE                    m_IsCanStall;//æ˜¯å¦å¯ä»¥æ‘†æ‘Š
+        UINT                    m_PosTax;//æ‘Šä½è´¹
+        BYTE                    m_TradeTax;//äº¤æ˜“ç¨
 
     };
 

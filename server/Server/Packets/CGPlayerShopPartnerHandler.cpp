@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÉêÇëÎïÆ·ÉÏ¼Ü
+å®¢æˆ·ç«¯ç”³è¯·ç‰©å“ä¸Šæž¶
 */
 
 #include "CGPlayerShopPartner.h"
@@ -29,10 +29,10 @@ UINT CGPlayerShopPartnerHandler::Execute( CGPlayerShopPartner* pPacket, Player* 
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    _PLAYERSHOP_GUID nShopID    =    pPacket->GetShopID();            //ÉÌµêID
+    _PLAYERSHOP_GUID nShopID    =    pPacket->GetShopID();            //å•†åº—ID
     BYTE             bOpt        =    pPacket->GetOpt();
     GUID_t             nGuid        =    pPacket->GetGuid();
     GCPlayerShopError                            MsgError;
@@ -43,10 +43,10 @@ UINT CGPlayerShopPartnerHandler::Execute( CGPlayerShopPartner* pPacket, Player* 
     PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
     Assert(pPlayerShop);
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-    //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
     BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
     if(bIsMine == FALSE)
@@ -61,7 +61,7 @@ UINT CGPlayerShopPartnerHandler::Execute( CGPlayerShopPartner* pPacket, Player* 
         {
             RET_TYPE_PARTNER oResult = pPlayerShop->AddPartner(nGuid);
             if(oResult == RET_TYPE_SUCCESS)
-            {//Ë¢ÐÂ´Ë½çÃæºÏ×÷»ï°éÁÐ±í
+            {//åˆ·æ–°æ­¤ç•Œé¢åˆä½œä¼™ä¼´åˆ—è¡¨
                 Partner_t*    pCurParList = pPlayerShop->GetPartnerList();
                 INT k = 0;
                 for(INT i = 0; i<MAX_PARTNER_PER_SHOP; i++)
@@ -110,7 +110,7 @@ UINT CGPlayerShopPartnerHandler::Execute( CGPlayerShopPartner* pPacket, Player* 
         {
             RET_TYPE_PARTNER oResult = pPlayerShop->RemovePartner(nGuid);
             if(oResult == RET_TYPE_SUCCESS)
-            {//Ë¢ÐÂ´Ë½çÃæºÏ×÷»ï°éÁÐ±í
+            {//åˆ·æ–°æ­¤ç•Œé¢åˆä½œä¼™ä¼´åˆ—è¡¨
                 Partner_t*    pCurParList = pPlayerShop->GetPartnerList();
                 INT k = 0;
                 for(INT i = 0; i<MAX_PARTNER_PER_SHOP; i++)

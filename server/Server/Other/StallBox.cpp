@@ -16,11 +16,11 @@ VOID ServerStallBox::Init(Obj_Human* pHuman)
 //    Assert(pHuman->getScene());
 //    m_pStallInfoMgr = pHuman->getScene()->GetStallInfoManager();
 
-    //�����Ʒ����
+    //清空物品数据
     memset(m_ItemList, 0, sizeof(_ITEM)*STALL_BOX_SIZE);
     memset(m_PetItemList, 0, sizeof(_PET_DB_LOAD)*STALL_PET_BOX_SIZE);
 
-    //��ʼ��container
+    //初始化container
     _ITEMCONTAINER_INIT    containInit;
     containInit.m_nContainerSize    =    STALL_BOX_SIZE;
     m_Container.Init(&containInit);
@@ -31,7 +31,7 @@ VOID ServerStallBox::Init(Obj_Human* pHuman)
         m_Container.GetItem(i)->Init(&itemInit);
     }
 
-    //��ʼ������container
+    //初始化宠物container
     _ITEMCONTAINER_INIT    PetContainInit;
     PetContainInit.m_nContainerSize        =    STALL_PET_BOX_SIZE;
     m_PetContainer.Init(&PetContainInit);
@@ -52,13 +52,13 @@ VOID ServerStallBox::Init(Obj_Human* pHuman)
 VOID ServerStallBox::CleanUp()
 {
     __ENTER_FUNCTION
-    //��������
+    //解所有锁
     UnLockAllItem();
 
-    //�ͷŵ�ǰλ��
+    //释放当前位置
     UnLockMapPos();
 
-    //�������״̬
+    //清空所有状态
     m_StallStatus    =    STALL_CLOSE;
     m_IsOpen        =    FALSE;
     m_PosTax        =    0;
@@ -72,20 +72,20 @@ VOID ServerStallBox::CleanUp()
     memset(m_PetSerial, 0, STALL_PET_BOX_SIZE*sizeof(UINT));
     memset(m_PetPrice, 0, STALL_PET_BOX_SIZE*sizeof(UINT));
 
-    //�����Ʒ����
+    //清空物品数据
     memset(m_ItemList, 0, sizeof(_ITEM)*STALL_BOX_SIZE);
     memset(m_PetItemList, 0, sizeof(_PET_DB_LOAD)*STALL_PET_BOX_SIZE);
 
-    //���̯λBBS
+    //清空摊位BBS
     m_StallBBS.CleanUp();
 
-    //��ʼ��̯λ���������
+    //初始化摊位名，广告语
     memset(m_szStallName, 0, MAX_STALL_NAME);
-    sprintf(m_szStallName, "�ӻ�̯λ");
+    sprintf(m_szStallName, "杂货摊位");
     
     CHAR szBBSTitle[MAX_BBS_MESSAGE_LENGTH];
     memset(szBBSTitle, 0, MAX_BBS_MESSAGE_LENGTH);
-    sprintf(szBBSTitle, "��ӭ������%s��̯λ",m_pMySelf->GetName());
+    sprintf(szBBSTitle, "欢迎你来到%s的摊位",m_pMySelf->GetName());
     m_StallBBS.SetBBSTitle(szBBSTitle,(INT)strlen(szBBSTitle));
     __LEAVE_FUNCTION
 }
@@ -138,7 +138,7 @@ VOID    ServerStallBox::UnLockMapPos()
 
     m_pStallInfoMgr = m_pMySelf->getScene()->GetStallInfoManager();
 
-    //�ͷ����λ��
+    //释放这个位置
     m_pStallInfoMgr->SetCanStall(m_PosX, m_PosZ, TRUE);
     m_PosX = 0;
     m_PosZ = 0;
@@ -151,6 +151,6 @@ VOID    ServerStallBox::SetStallName(const CHAR *pszTitle, BYTE nSize )
     __ENTER_FUNCTION
     memset(m_szStallName, 0, MAX_STALL_NAME);
     memcpy(m_szStallName, pszTitle, nSize);
-    m_pMySelf->StallNameChanged();//̯λ���仯ˢ�������ͻ���
+    m_pMySelf->StallNameChanged();//摊位名变化刷到其他客户端
     __LEAVE_FUNCTION
 }

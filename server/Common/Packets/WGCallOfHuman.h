@@ -1,6 +1,6 @@
 // WGCallOfHuman.h
 // 
-// À­ÈËµÄÏûÏ¢
+// æ‹‰äººçš„æ¶ˆæ¯
 // 
 ///////////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         WGCallOfHuman( ){};
         virtual ~WGCallOfHuman( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );

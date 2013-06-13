@@ -35,7 +35,7 @@ BOOL DBCreateCharOp::AddNew()
     do 
     {
         //////////////////////////////////////////////////////////////////////////
-        //处理guid 操作
+        //澶勭悊guid 鎿嶄綔
         //////////////////////////////////////////////////////////////////////////
         enum    
         {
@@ -75,7 +75,7 @@ BOOL DBCreateCharOp::AddNew()
     
 
     //////////////////////////////////////////////////////////////////////////
-    //处理 Camp
+    //澶勭悊 Camp
     CHAR CharCamp[100];
     memset(CharCamp,0,100);
     _CAMP_DATA TempCamp;
@@ -113,18 +113,18 @@ BOOL DBCreateCharOp::AddNew()
                  m_CharName,
                  "",
                  "",
-                 m_Sex,          //性别
-                 1,           //级别
+                 m_Sex,          //鎬у埆
+                 1,           //绾у埆
                  0,              //enegry
-                 0,              //外观
-                 0,              //场景
+                 0,              //澶栬
+                 0,              //鍦烘櫙
                  100,          //xPos
                  100,          //zPos
-                 m_MenPai,      //门派
+                 m_MenPai,      //闂ㄦ淳
                  5000,          //hp
                  5000,          //mp
                  0,              //strikerpoint
-                 CharCamp,      //阵营
+                 CharCamp,      //闃佃惀
                  5,              //str
                  5,              //con
                  5,              //dex
@@ -145,7 +145,7 @@ BOOL DBCreateCharOp::AddNew()
                  0,              //exp
                  "",          //pres
                  "0",            //mdata
-                 "0",            //mflag    //LM修改
+                 "0",            //mflag    //LM淇敼
                  "0",            //relfag
                  "",          //shopinfo
                  "",          //carrypet

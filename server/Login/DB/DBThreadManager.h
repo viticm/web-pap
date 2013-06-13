@@ -19,7 +19,7 @@ public:
 
         BOOL        IsPoolTID(TID tid);
 
-        //发布一个DB操作消息
+        //鍙戝竷涓�涓狣B鎿嶄綔娑堟伅
         BOOL        SendPacket(Packet* pPacket,PlayerID_t pID);
 
         ODBCInterface*    GetInterface(TID    tid);

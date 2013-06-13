@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÉêÇëÁôÑÔ°åÐÅÏ¢
+å®¢æˆ·ç«¯ç”³è¯·ç•™è¨€æ¿ä¿¡æ¯
 */
 
 #include "CGBBSApply.h"
@@ -29,7 +29,7 @@ UINT CGBBSApplyHandler::Execute( CGBBSApply* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     ObjID_t ObjId    = pPacket->GetObjID();
     UINT Serial        = pPacket->GetSerial();
@@ -52,8 +52,8 @@ UINT CGBBSApplyHandler::Execute( CGBBSApply* pPacket, Player* pPlayer )
         return PACKET_EXE_CONTINUE;
     }
 
-    //´ÓÁôÑÔ°åÖÐÈ¡³öÁôÑÔ£¬²¢¸üÐÂµ½¿Í»§¶Ë
-    //Ì¯Ö÷BBS
+    //ä»Žç•™è¨€æ¿ä¸­å–å‡ºç•™è¨€ï¼Œå¹¶æ›´æ–°åˆ°å®¢æˆ·ç«¯
+    //æ‘Šä¸»BBS
     ServerBBS*    pBBS            = pTargetHuman->m_StallBox.GetBBS();
     MessageEntry_t* pEntry        = NULL;
     GCBBSMessages::_MESSAGE_T    MessageList[MAX_BBS_MESSAGE_NUM];
@@ -62,12 +62,12 @@ UINT CGBBSApplyHandler::Execute( CGBBSApply* pPacket, Player* pPlayer )
 
     
     if(Serial == pBBS->GetSerial())
-    {//°æ±¾ºÅÏàÍ¬£¬²»ÓÃ·¢ÐÂµÄÁË
+    {//ç‰ˆæœ¬å·ç›¸åŒï¼Œä¸ç”¨å‘æ–°çš„äº†
         MsgBBS.SetObjID(pTargetHuman->GetID());
         MsgBBS.SetSerial(Serial);
     }
     else
-    {//°æ±¾ºÅ²»Í¬·¢ÐÂµÄ
+    {//ç‰ˆæœ¬å·ä¸åŒå‘æ–°çš„
         UINT    CurIndex = pBBS->GetFinalIndex();
         for(UINT i = 0; i<MAX_BBS_MESSAGE_NUM; i++)
         {

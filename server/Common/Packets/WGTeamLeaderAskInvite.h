@@ -20,7 +20,7 @@ namespace Packets
         }
         virtual        ~WGTeamLeaderAskInvite(){};
 
-        //¹«ÓÃ½Ó¿Ú
+        //å…¬ç”¨æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream )const;
         virtual UINT            Execute( Player* pPlayer );
@@ -60,11 +60,11 @@ namespace Packets
         GUID_t                    GetGUID() { return m_GUID; }
 
     public :
-        PlayerID_t                m_PlayerID;    //Á¬½ÓÕß
-        GUID_t                    m_SourGUID;        //ÑûÇëÈË
-        GUID_t                    m_DestGUID;        //±»ÑûÇëÈË
-        CHAR                    m_SourName[MAX_CHARACTER_NAME];            //ÑûÇëÈËÃû×Ö
-        CHAR                    m_DestName[MAX_CHARACTER_NAME];            //±»ÑûÇëÈËÃû×Ö
+        PlayerID_t                m_PlayerID;    //è¿æ¥è€…
+        GUID_t                    m_SourGUID;        //é‚€è¯·äºº
+        GUID_t                    m_DestGUID;        //è¢«é‚€è¯·äºº
+        CHAR                    m_SourName[MAX_CHARACTER_NAME];            //é‚€è¯·äººåå­—
+        CHAR                    m_DestName[MAX_CHARACTER_NAME];            //è¢«é‚€è¯·äººåå­—
         UCHAR                    m_SourNameSize;
         UCHAR                    m_DestNameSize;
         GUID_t                    m_GUID;

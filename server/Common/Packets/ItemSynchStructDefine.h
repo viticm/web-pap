@@ -6,12 +6,12 @@ namespace ITEM_SYNCH_STRUCT
 {
     //CG
     
-    //�ӱ������ƶ���Ʒ������̵꣬�Զ�Ѱ��λ��
+    //从背包中移动物品到玩家商店，自动寻找位置
     struct CGAutoMoveItemFromBagToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        BYTE                m_nShopSerial;                        //商店序列号
         CGAutoMoveItemFromBagToPlayerShop_t()
         {
             m_nStallIndex = 0;
@@ -23,12 +23,12 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //�ӱ������ƶ���Ʒ������̵꣬�Զ�Ѱ��λ��
+    //从背包中移动物品到玩家商店，自动寻找位置
     struct CGAutoMovePetFromBagToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        BYTE                m_nShopSerial;                        //商店序列号
         CGAutoMovePetFromBagToPlayerShop_t()
         {
             m_nStallIndex = 0;
@@ -40,13 +40,13 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //������̵��ƶ���Ʒ���������Զ�Ѱ��λ��
+    //从玩家商店移动物品到背包，自动寻找位置
     struct CGAutoMoveItemFromPlayerShopToBag_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         CGAutoMoveItemFromPlayerShopToBag_t()
         {
             m_nStallIndex    =    0;
@@ -59,13 +59,13 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //������̵��ƶ���Ʒ���������Զ�Ѱ��λ��
+    //从玩家商店移动物品到背包，自动寻找位置
     struct CGAutoMovePetFromPlayerShopToBag_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         CGAutoMovePetFromPlayerShopToBag_t()
         {
             m_nStallIndex    =    0;
@@ -78,13 +78,13 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //�ӱ����ƶ���Ʒ������̵ָ꣬��λ��
+    //从背包移动物品到玩家商店，指定位置
     struct CGManuMoveItemFromBagToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         CGManuMoveItemFromBagToPlayerShop_t()
         {
             m_nStallIndex    =    0;
@@ -97,13 +97,13 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //������̵��ƶ���Ʒ��������ָ��λ��
+    //从玩家商店移动物品到背包，指定位置
     struct CGManuMoveItemFromPlayerShopToBag_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         CGManuMoveItemFromPlayerShopToBag_t()
         {
             m_nStallIndex    =    0;
@@ -116,14 +116,14 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
     
-    //������̵��ƶ���Ʒ������̵ָ꣬��λ��
+    //从玩家商店移动物品到玩家商店，指定位置
     struct CGManuMoveItemFromPlayerShopToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerialSource;                    //Դλ�����к�
-        UINT                m_uSerialDest;                        //Ŀ��λ�����к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerialSource;                    //源位置序列号
+        UINT                m_uSerialDest;                        //目的位置序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         CGManuMoveItemFromPlayerShopToPlayerShop_t()
         {
             m_nStallIndex        =    0;
@@ -138,13 +138,13 @@ namespace ITEM_SYNCH_STRUCT
     };
 
     //GC
-    //�ӱ����ƶ���Ʒ������̵�
+    //从背包移动物品到玩家商店
     struct GCMoveItemFromBagToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         GCMoveItemFromBagToPlayerShop_t()
         {
             m_nStallIndex        =    0;
@@ -157,13 +157,13 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //�ӱ����ƶ���Ʒ������̵�
+    //从背包移动物品到玩家商店
     struct GCMovePetFromBagToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         GCMovePetFromBagToPlayerShop_t()
         {
             m_nStallIndex        =    0;
@@ -176,14 +176,14 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //������̵��ƶ���Ʒ��������ָ��λ��
+    //从玩家商店移动物品到背包，指定位置
     struct GCMoveItemFromPlayerShopToBag_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        BYTE                m_Flag;                                //��־
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        BYTE                m_Flag;                                //标志
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         GCMoveItemFromPlayerShopToBag_t()
         {
             m_nStallIndex        =    0;
@@ -197,14 +197,14 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //������̵��ƶ���Ʒ��������ָ��λ��
+    //从玩家商店移动物品到背包，指定位置
     struct GCMovePetFromPlayerShopToBag_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        BYTE                m_Flag;                                //��־
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        BYTE                m_Flag;                                //标志
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         GCMovePetFromPlayerShopToBag_t()
         {
             m_nStallIndex        =    0;
@@ -218,14 +218,14 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //������̵��ƶ���Ʒ������̵�
+    //从玩家商店移动物品到玩家商店
     struct GCMoveItemFromPlayerShopToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerialSource;                    //��Ʒ���к�
-        UINT                m_uSerialDest;                        //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerialSource;                    //物品序列号
+        UINT                m_uSerialDest;                        //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
 
         GCMoveItemFromPlayerShopToPlayerShop_t()
         {
@@ -240,13 +240,13 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //�ӱ���������̵꽻����Ʒ
+    //从背包与玩家商店交换物品
     struct GCExchangeItemFromBagToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         GCExchangeItemFromBagToPlayerShop_t()
         {
             m_nStallIndex        =    0;
@@ -259,13 +259,13 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //������̵꽻����Ʒ������
+    //从玩家商店交换物品到背包
     struct GCExchangeItemFromPlayerShopToBag_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerial;                            //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerial;                            //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
         GCExchangeItemFromPlayerShopToBag_t()
         {
             m_nStallIndex        =    0;
@@ -278,14 +278,14 @@ namespace ITEM_SYNCH_STRUCT
         }
     };
 
-    //������̵꽻����Ʒ������̵�
+    //从玩家商店交换物品到玩家商店
     struct GCExchangeItemFromPlayerShopToPlayerShop_t
     {
-        _PLAYERSHOP_GUID    m_ShopGuid;                            //�̵�GUID
-        BYTE                m_nStallIndex;                        //��̨����
-        UINT                m_uSerialSource;                    //��Ʒ���к�
-        UINT                m_uSerialDest;                        //��Ʒ���к�
-        BYTE                m_nShopSerial;                        //�̵����к�
+        _PLAYERSHOP_GUID    m_ShopGuid;                            //商店GUID
+        BYTE                m_nStallIndex;                        //柜台索引
+        UINT                m_uSerialSource;                    //物品序列号
+        UINT                m_uSerialDest;                        //物品序列号
+        BYTE                m_nShopSerial;                        //商店序列号
 
         GCExchangeItemFromPlayerShopToPlayerShop_t()
         {
@@ -308,25 +308,25 @@ namespace ITEM_SYNCH_STRUCT
             FOR_BUYER = 1,
             FOR_MANAGER,
         };
-        BYTE                    m_bFlag;                                //��־
-        _PLAYERSHOP_GUID        m_ShopGuid;                                //�̵�GUID
-        CHAR                    m_ShopName[MAX_SHOP_NAME_SIZE];            //�̵���
-        CHAR                    m_ShopDesc[MAX_SHOP_DESC_SIZE];            //�̵�����
-        GUID_t                    m_OwnerGuid;                            //����GUID
-        CHAR                    m_OwnerName[MAX_CHARACTER_NAME];        //������
-        UINT                    m_uBaseMoney;                            //����
-        UINT                    m_uProfitMoney;                            //Ӯ����
-        BYTE                    m_aStallIsOpen[MAX_STALL_NUM_PER_SHOP];    //�˹�̨�Ƿ���
+        BYTE                    m_bFlag;                                //标志
+        _PLAYERSHOP_GUID        m_ShopGuid;                                //商店GUID
+        CHAR                    m_ShopName[MAX_SHOP_NAME_SIZE];            //商店名
+        CHAR                    m_ShopDesc[MAX_SHOP_DESC_SIZE];            //商店描述
+        GUID_t                    m_OwnerGuid;                            //店主GUID
+        CHAR                    m_OwnerName[MAX_CHARACTER_NAME];        //店主名
+        UINT                    m_uBaseMoney;                            //本金
+        UINT                    m_uProfitMoney;                            //赢利金
+        BYTE                    m_aStallIsOpen[MAX_STALL_NUM_PER_SHOP];    //此柜台是否开张
         BYTE                    m_bIsItemList;
-        BYTE                    m_bUIFlag;                                //UI��Ҫ��һ����־
-        BYTE                    m_bIsSaleOut;                            //�Ƿ����̳�״̬
-        UINT                    m_uSaleOutPrice;                        //�̳���
-        BYTE                    m_Serial;                                //�̵����к�
-        BYTE                    m_ExRecListNum;                            //���׼�¼����
-        BYTE                    m_MaRecListNum;                            //������¼����
-        BYTE                    m_bStallNum;                            //̯λ����
-        BYTE                    m_bType;                                //�̵�����
-        FLOAT                    m_ComFactor;                            //��ҵָ��
+        BYTE                    m_bUIFlag;                                //UI需要的一个标志
+        BYTE                    m_bIsSaleOut;                            //是否是盘出状态
+        UINT                    m_uSaleOutPrice;                        //盘出价
+        BYTE                    m_Serial;                                //商店序列号
+        BYTE                    m_ExRecListNum;                            //交易记录数量
+        BYTE                    m_MaRecListNum;                            //管理记录数量
+        BYTE                    m_bStallNum;                            //摊位数量
+        BYTE                    m_bType;                                //商店类型
+        FLOAT                    m_ComFactor;                            //商业指数
     
         GCPlayerShopItemListForSelf_t()
         {
@@ -397,7 +397,7 @@ namespace ITEM_SYNCH_STRUCT
 
     struct GCPlayerShopPetListForSelf_t
     {
-        BYTE                    m_bUIFlag;                        //UI��Ҫ��һ����־
+        BYTE                    m_bUIFlag;                        //UI需要的一个标志
     
         GCPlayerShopPetListForSelf_t()
         {
@@ -411,21 +411,21 @@ namespace ITEM_SYNCH_STRUCT
 
     struct GCPlayerShopItemListForOther_t
     {
-        BYTE                    m_bFlag;                        //��־1.�Ǳ��˽��� 2.���˽���
-        _PLAYERSHOP_GUID        m_ShopGuid;                        //�̵�GUID
-        CHAR                    m_ShopName[MAX_SHOP_NAME_SIZE];    //�̵���
-        CHAR                    m_ShopDesc[MAX_SHOP_DESC_SIZE];    //����
-        GUID_t                    m_OwnerGuid;                    //����GUID
-        CHAR                    m_OwnerName[MAX_CHARACTER_NAME];//������
-        BYTE                    m_aStallIsOpen[MAX_STALL_NUM_PER_SHOP];    //�˹�̨�Ƿ���
+        BYTE                    m_bFlag;                        //标志1.非本人接收 2.本人接收
+        _PLAYERSHOP_GUID        m_ShopGuid;                        //商店GUID
+        CHAR                    m_ShopName[MAX_SHOP_NAME_SIZE];    //商店名
+        CHAR                    m_ShopDesc[MAX_SHOP_DESC_SIZE];    //描述
+        GUID_t                    m_OwnerGuid;                    //店主GUID
+        CHAR                    m_OwnerName[MAX_CHARACTER_NAME];//店主名
+        BYTE                    m_aStallIsOpen[MAX_STALL_NUM_PER_SHOP];    //此柜台是否开张
         BYTE                    m_bIsItemList;
-        BYTE                    m_bUIFlag;                        //UI��Ҫ��һ����־
-        BYTE                    m_bIsSaleOut;                    //�˵��Ƿ��Ѿ��̳�
-        UINT                    m_uBaseMoney;                    //����
-        UINT                    m_uProfitMoney;                    //Ӯ����
-        UINT                    m_uSaleOutPrice;                //�̳��۸�
-        BYTE                    m_Serial;                        //�̵����к�
-        BYTE                    m_bStallNum;                    //ӵ�еĹ�̨��
+        BYTE                    m_bUIFlag;                        //UI需要的一个标志
+        BYTE                    m_bIsSaleOut;                    //此店是否已经盘出
+        UINT                    m_uBaseMoney;                    //本金
+        UINT                    m_uProfitMoney;                    //赢利金
+        UINT                    m_uSaleOutPrice;                //盘出价格
+        BYTE                    m_Serial;                        //商店序列号
+        BYTE                    m_bStallNum;                    //拥有的柜台数
 
         GCPlayerShopItemListForOther_t()
         {
@@ -452,17 +452,17 @@ namespace ITEM_SYNCH_STRUCT
 
     struct GCPlayerShopItemListEachItemForOther_t
     {
-        BYTE                m_nStallIndex;                //��̨����
-        UINT                m_uPrice;                    //��Ʒ�۸�
-        BYTE                m_uSerial;                    //��Ʒ���к�
-        BYTE                m_bIsMine;                    //�Ƿ����Լ�
+        BYTE                m_nStallIndex;                //柜台索引
+        UINT                m_uPrice;                    //物品价格
+        BYTE                m_uSerial;                    //物品序列号
+        BYTE                m_bIsMine;                    //是否是自己
 
         GCPlayerShopItemListEachItemForOther_t()
         {
-            m_nStallIndex    =    0;                //��̨����
-            m_uPrice        =    0;                //��Ʒ�۸�
-            m_uSerial        =    0;                //��Ʒ���к�
-            m_bIsMine        =    0;                //�Ƿ����Լ�
+            m_nStallIndex    =    0;                //柜台索引
+            m_uPrice        =    0;                //物品价格
+            m_uSerial        =    0;                //物品序列号
+            m_bIsMine        =    0;                //是否是自己
         }
         static UINT GetSize()
         {
@@ -472,7 +472,7 @@ namespace ITEM_SYNCH_STRUCT
 
     struct GCPlayerShopPetListForOther_t
     {
-        BYTE                    m_bUIFlag;                //UI  ��Ҫ��һ����־
+        BYTE                    m_bUIFlag;                //UI  需要的一个标志
     
         GCPlayerShopPetListForOther_t()
         {

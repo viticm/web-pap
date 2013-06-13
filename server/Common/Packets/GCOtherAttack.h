@@ -18,7 +18,7 @@ public:
     GCOtherAttack( ){} ;
     virtual ~GCOtherAttack( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -34,7 +34,7 @@ public:
     
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     ObjID_t                    getAttackID(VOID) { return m_ObjID; }
     VOID                    setAttackID(ObjID_t idAttack) { m_ObjID = idAttack; }
 
@@ -51,10 +51,10 @@ public:
     }
 
 private:
-    //Êı¾İ
-    ObjID_t                    m_ObjID;                        //¹¥»÷·½µÄObjID
-    BYTE                    m_byListNum;                    //ÊÜµ½¹¥»÷µÄ¶ÔÏóµÄ¸öÊı[0, 128]
-    _DAMAGE_INFO                m_listDam[MAX_DAM_LIST_NUM];    //ÊÜµ½¹¥»÷µÄ¶ÔÏóÁĞ±í
+    //æ•°æ®
+    ObjID_t                    m_ObjID;                        //æ”»å‡»æ–¹çš„ObjID
+    BYTE                    m_byListNum;                    //å—åˆ°æ”»å‡»çš„å¯¹è±¡çš„ä¸ªæ•°[0, 128]
+    _DAMAGE_INFO                m_listDam[MAX_DAM_LIST_NUM];    //å—åˆ°æ”»å‡»çš„å¯¹è±¡åˆ—è¡¨
 
 };
 

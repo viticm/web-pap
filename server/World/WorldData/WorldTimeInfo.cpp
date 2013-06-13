@@ -23,7 +23,7 @@ BOOL WorldTimeInfo::Init()
 {
     __ENTER_FUNCTION
 
-        m_WorldTime = WT_IND_1; //子时
+        m_WorldTime = WT_IND_1; //瀛愭椂
         m_LoginTimer.CleanUp( ) ;
 
         return TRUE;
@@ -48,7 +48,7 @@ BOOL WorldTimeInfo::HeartBeat(UINT uTime)
         }
 
         if( !m_LoginTimer.CountingTimer(uTime) )
-        {//时间没到
+        {//鏃堕棿娌″埌
             return TRUE ;
         }
 

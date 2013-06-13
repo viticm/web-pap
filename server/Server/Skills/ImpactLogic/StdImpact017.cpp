@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºStdImpact017.cpp
-// ¹¦ÄÜËµÃ÷£ºĞ§¹û--Ğ§¹û--ÃâÒßÌØ¶¨µÄĞ§¹û
+// æ–‡ä»¶åï¼šStdImpact017.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šæ•ˆæœ--æ•ˆæœ--å…ç–«ç‰¹å®šçš„æ•ˆæœ
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -54,7 +54,7 @@ namespace Combat_Module
                             {
                                 if(TRUE==Impact_IsImpactInCollection(rImpactNeedCheck, nCollectionID))
                                 {
-                                    return MissFlag_T::FLAG_IMMU; //ÃâÒß¸ÃĞ§¹û
+                                    return MissFlag_T::FLAG_IMMU; //å…ç–«è¯¥æ•ˆæœ
                                 }
                             }
                         }

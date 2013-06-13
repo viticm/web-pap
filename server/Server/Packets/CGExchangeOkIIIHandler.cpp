@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÍ¬Òâ½»Ò×£¬¿ÉÒÔ»»ÁË
+å®¢æˆ·ç«¯åŒæ„äº¤æ˜“ï¼Œå¯ä»¥æ¢äº†
 */
 
 #include "CGExchangeOkIII.h"
@@ -31,7 +31,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     EXCHANGE_CERTIFY_EACH_OTHER(pHuman)
@@ -49,7 +49,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
         return PACKET_EXE_CONTINUE;
     }
 
-    // ²»Í¬ÕóÓª£¬²»ÈÃ²é¿´
+    // ä¸åŒé˜µè¥ï¼Œä¸è®©æŸ¥çœ‹
     if( pHuman->IsEnemy( pDestHuman ) )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGExchangeOkIIIHandler: %s cann't ask %s's detailattr ", pHuman->GetName(), pDestHuman->GetName() ) ;
@@ -58,12 +58,12 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
 
     if(pHuman->m_ExchangBox.m_Status == ServerExchangeBox::EXCHANGE_WAIT_FOR_CONFIRM)
     {
-        //ÉèÖÃ¿ÉÒÔ½»»»
+        //è®¾ç½®å¯ä»¥äº¤æ¢
         pHuman->m_ExchangBox.m_Status = ServerExchangeBox::EXCHANGE_CONFIRM_READY;
         if(pDestHuman->m_ExchangBox.m_Status ==  ServerExchangeBox::EXCHANGE_CONFIRM_READY)
-        {//¿ÉÒÔ½»»»ÁË
+        {//å¯ä»¥äº¤æ¢äº†
 
-            //1.±äÁ¿³õÊ¼»¯
+            //1.å˜é‡åˆå§‹åŒ–
             ItemContainer*        pMyExchangeContainer = &(pHuman->m_ExchangBox.m_Container);
             ItemContainer*        pOtExchangeContainer = &(pDestHuman->m_ExchangBox.m_Container);
             ItemContainer*        pMyExchangePetContainer = &(pHuman->m_ExchangBox.m_PetContainer);
@@ -75,8 +75,8 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
             ItemListMeToOt.Init();
             ItemListOtToMe.Init();
 
-            //2.ÑéÖ¤Ñ­»·
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] Óë [%s] ¿ªÊ¼ÑéÖ¤Ñ­»·",    pHuman->GetName(), pDestHuman->GetName()) ;
+            //2.éªŒè¯å¾ªç¯
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] ä¸ [%s] å¼€å§‹éªŒè¯å¾ªç¯",    pHuman->GetName(), pDestHuman->GetName()) ;
             for(INT i = 0; i<EXCHANGE_BOX_SIZE; i++)
             {
                 if(pMyExchangeContainer->GetItem(i)->IsEmpty() == FALSE)
@@ -102,7 +102,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
             }
 
             if( FALSE == HumanItemLogic::CanReceiveExchangeItemList( pHuman, ItemListOtToMe) )
-            {//¿Õ¼ä²»¹»
+            {//ç©ºé—´ä¸å¤Ÿ
                 GCExchangeError MsgSelf;
                 MsgSelf.SetID(EXCHANGE_MSG::ERR_NOT_ENOUGHT_ROOM_SELF);
                 pHuman->GetPlayer()->SendPacket(&MsgSelf);
@@ -113,12 +113,12 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                 
                 pHuman->m_ExchangBox.CleanUp();
                 pDestHuman->m_ExchangBox.CleanUp();
-                g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] ¿Õ¼ä²»¹»", pHuman->GetName()) ;
+                g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] ç©ºé—´ä¸å¤Ÿ", pHuman->GetName()) ;
                 return PACKET_EXE_CONTINUE;
             }
 
             if( FALSE == HumanItemLogic::CanReceiveExchangeItemList( pDestHuman, ItemListMeToOt) )
-            {//¿Õ¼ä²»¹»
+            {//ç©ºé—´ä¸å¤Ÿ
                 GCExchangeError MsgSelf;
                 MsgSelf.SetID(EXCHANGE_MSG::ERR_NOT_ENOUGHT_ROOM_SELF);
                 pDestHuman->GetPlayer()->SendPacket(&MsgSelf);
@@ -129,12 +129,12 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
 
                 pHuman->m_ExchangBox.CleanUp();
                 pDestHuman->m_ExchangBox.CleanUp();
-                g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] ¿Õ¼ä²»¹»", pDestHuman->GetName()) ;
+                g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] ç©ºé—´ä¸å¤Ÿ", pDestHuman->GetName()) ;
                 return PACKET_EXE_CONTINUE;
             }
 
             if( pHuman->m_ExchangBox.m_Money > pHuman->GetMoney() )
-            {//½ğÇ®·Ç·¨
+            {//é‡‘é’±éæ³•
                 GCExchangeError MsgSelf;
                 MsgSelf.SetID(EXCHANGE_MSG::ERR_NOT_ENOUGHT_MONEY_SELF);
                 pHuman->GetPlayer()->SendPacket(&MsgSelf);
@@ -145,12 +145,12 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
 
                 pHuman->m_ExchangBox.CleanUp();
                 pDestHuman->m_ExchangBox.CleanUp();
-                g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] ½ğÇ®²»×ã", pHuman->GetName()) ;
+                g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] é‡‘é’±ä¸è¶³", pHuman->GetName()) ;
                 return PACKET_EXE_CONTINUE;
             }
 
             if( pDestHuman->m_ExchangBox.m_Money > pDestHuman->GetMoney() )
-            {//½ğÇ®·Ç·¨
+            {//é‡‘é’±éæ³•
                 GCExchangeError MsgSelf;
                 MsgSelf.SetID(EXCHANGE_MSG::ERR_NOT_ENOUGHT_MONEY_SELF);
                 pDestHuman->GetPlayer()->SendPacket(&MsgSelf);
@@ -161,11 +161,11 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
 
                 pHuman->m_ExchangBox.CleanUp();
                 pDestHuman->m_ExchangBox.CleanUp();
-                g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] ½ğÇ®²»×ã", pDestHuman->GetName()) ;
+                g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] é‡‘é’±ä¸è¶³", pDestHuman->GetName()) ;
                 return PACKET_EXE_CONTINUE;
             }
 
-            //2.1³èÎïÑéÖ¤
+            //2.1å® ç‰©éªŒè¯
             Obj_Pet* pDestPet    = pDestHuman->GetPet();
             Obj_Pet* pMyPet        = pHuman->GetPet();
 
@@ -181,7 +181,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                 MyPetGuid = pMyPet->GetPetGUID();
             }
 
-            //Èç¹ûÊÇµ±Ç°ÕÙ»½³öÀ´µÄ³èÎï,ÏÈÊÕ»ØÀ´ÔÙ»»
+            //å¦‚æœæ˜¯å½“å‰å¬å”¤å‡ºæ¥çš„å® ç‰©,å…ˆæ”¶å›æ¥å†æ¢
             for(INT i = 0; i<EXCHANGE_PET_BOX_SIZE; i++)
             {
                 if(pMyExchangePetContainer->GetItem(i)->IsEmpty() == FALSE)
@@ -197,7 +197,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         pDestHuman->GetPlayer()->SendPacket(&Msg);
                         pHuman->m_ExchangBox.CleanUp();
                         pDestHuman->m_ExchangBox.CleanUp();
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> ³èÎï¼¶±ğ¹ı¸ß petlevel = %d, humanlevel = %d", nPetLevel, nHumanLevel) ;
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> å® ç‰©çº§åˆ«è¿‡é«˜ petlevel = %d, humanlevel = %d", nPetLevel, nHumanLevel) ;
                         return PACKET_EXE_CONTINUE;
                     }
                     if(ExchPetGuid == MyPetGuid)
@@ -219,7 +219,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         pDestHuman->GetPlayer()->SendPacket(&Msg);
                         pHuman->m_ExchangBox.CleanUp();
                         pDestHuman->m_ExchangBox.CleanUp();
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> ³èÎï¼¶±ğ¹ı¸ß petlevel = %d, humanlevel = %d", nPetLevel, nHumanLevel) ;
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> å® ç‰©çº§åˆ«è¿‡é«˜ petlevel = %d, humanlevel = %d", nPetLevel, nHumanLevel) ;
                         return PACKET_EXE_CONTINUE;
                     }
                     if(ExchPetGuid == DestPetGuid)
@@ -229,8 +229,8 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                 }
             }
 
-            //3.ÒÆ¶¯ÎïÆ·Ñ­»·
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] Óë [%s] ¿ªÊ¼ÒÆ¶¯Ñ­»·",    pHuman->GetName(), pDestHuman->GetName()) ;
+            //3.ç§»åŠ¨ç‰©å“å¾ªç¯
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] ä¸ [%s] å¼€å§‹ç§»åŠ¨å¾ªç¯",    pHuman->GetName(), pDestHuman->GetName()) ;
             GCExchangeSuccessIII MsgSuccessToMe, MsgSuccessToOt;
             GCExchangeSuccessIII::_SUCC_ITEM ItemListToMe[EXCHANGE_BOX_SIZE+EXCHANGE_PET_BOX_SIZE];
             INT    MyItemNum = 0;
@@ -238,7 +238,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
             INT    OtItemNum = 0;
             BOOL    bFlag = FALSE;
 
-            //ÓÃÀ´¼ÇÂ¼¿ÉÒÔ½»»»µÄÎïÆ·
+            //ç”¨æ¥è®°å½•å¯ä»¥äº¤æ¢çš„ç‰©å“
             struct ExItem_t
             {
                 UCHAR    uItemType;
@@ -305,7 +305,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                 }
             }
 
-            //3.1ÏÈ°ÑÄÜ½»»»µÄ½»»»µô£¬Èç¹ûÔÚ¶Ô·½µÄ°üÖĞÕÒµ½ÁËÕıÔÚ¸ú×Ô¼º½»Ò×µÄÎïÆ·£¬Ö±½Ó½»»»ÕâÁ½¸öÎïÆ·µÄÎ»ÖÃ
+            //3.1å…ˆæŠŠèƒ½äº¤æ¢çš„äº¤æ¢æ‰ï¼Œå¦‚æœåœ¨å¯¹æ–¹çš„åŒ…ä¸­æ‰¾åˆ°äº†æ­£åœ¨è·Ÿè‡ªå·±äº¤æ˜“çš„ç‰©å“ï¼Œç›´æ¥äº¤æ¢è¿™ä¸¤ä¸ªç‰©å“çš„ä½ç½®
             for(INT i = 0; i<EXCHANGE_BOX_SIZE; i++)
             {
                 if(pMyExchangeContainer->GetItem(i)->IsEmpty() == FALSE)
@@ -313,38 +313,38 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                     INT result = 0;
                     Item* pItemRef = pMyExchangeContainer->GetItem(i);
 
-                    //×Ô¼ºµÄÈİÆ÷
+                    //è‡ªå·±çš„å®¹å™¨
                     ItemContainer*    pMyBagContainer = HumanItemLogic::GetItemContain(pHuman, pItemRef->GetItemTableIndex());
                     INT    BagIndex = pMyBagContainer->GetIndexByGUID(&pItemRef->GetGUID());
 
-                    //¶Ô·½µÄÈİÆ÷
+                    //å¯¹æ–¹çš„å®¹å™¨
                     ItemContainer*    pOtBagContainer = HumanItemLogic::GetItemContain(pDestHuman, pItemRef->GetItemTableIndex());
 
-                    //È¥»»ÄÜ»»µÃ
+                    //å»æ¢èƒ½æ¢å¾—
                     for(INT j = 0; j<ExItemNumOt; j++)
                     {
 
-                        //´ËÎ»ÖÃÒÑ¾­ÎŞĞ§
+                        //æ­¤ä½ç½®å·²ç»æ— æ•ˆ
                         if(ExItemIndexInOt[j].nIndex == -1)
                             continue;
 
-                        //Ö»ÓĞÍ¬Ò»ÀàĞÍµÄÎïÆ·²ÅÄÜ¹»½»»»
+                        //åªæœ‰åŒä¸€ç±»å‹çš„ç‰©å“æ‰èƒ½å¤Ÿäº¤æ¢
                         if(pItemRef->GetItemClass()!=ExItemIndexInOt[j].uItemType)
                             continue;
 
-                        //½âËø×Ô¼º
+                        //è§£é”è‡ªå·±
                         g_ItemOperator.UnlockItem( pMyBagContainer, BagIndex );
 
-                        //ÏÈ½âËø¶Ô·½
+                        //å…ˆè§£é”å¯¹æ–¹
                         g_ItemOperator.UnlockItem( pOtBagContainer, ExItemIndexInOt[j].nIndex );
 
-                        //ÉèÖÃ×Ô¼ºÎïÆ·ÒÑ¾­²»ÊÇ½»Ò×ÎïÆ·ÁË
+                        //è®¾ç½®è‡ªå·±ç‰©å“å·²ç»ä¸æ˜¯äº¤æ˜“ç‰©å“äº†
                         pMyBagContainer->GetItem(BagIndex)->SetInExchange(FALSE);
 
-                        //ÉèÖÃ¶Ô·½ÎïÆ·ÒÑ¾­²»ÊÇ½»Ò×ÎïÆ·ÁË
+                        //è®¾ç½®å¯¹æ–¹ç‰©å“å·²ç»ä¸æ˜¯äº¤æ˜“ç‰©å“äº†
                         pOtBagContainer->GetItem(ExItemIndexInOt[j].nIndex)->SetInExchange(FALSE);
 
-                        //ÓëÒ»¸ö¶Ô·½Óû½»Ò×µÄÎïÆ·½»»»
+                        //ä¸ä¸€ä¸ªå¯¹æ–¹æ¬²äº¤æ˜“çš„ç‰©å“äº¤æ¢
                         result = 
                             g_ItemOperator.ExchangeItem
                             (
@@ -354,14 +354,14 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                             ExItemIndexInOt[j].nIndex
                             );
                         if(result<0)
-                        {//¿½±´Ê§°Ü
+                        {//æ‹·è´å¤±è´¥
                             GCExchangeError Msg;
                             Msg.SetID(EXCHANGE_MSG::ERR_ILLEGAL);
                             pHuman->GetPlayer()->SendPacket(&Msg);
                             pDestHuman->GetPlayer()->SendPacket(&Msg);
                             pHuman->m_ExchangBox.CleanUp();
                             pDestHuman->m_ExchangBox.CleanUp();
-                            g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] <-> [%s] ÎïÆ· [%d]Ê§°Ü result = %d", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex(), result );
+                            g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] <-> [%s] ç‰©å“ [%d]å¤±è´¥ result = %d", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex(), result );
                             return PACKET_EXE_CONTINUE;
                         }
                         else
@@ -386,12 +386,12 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                             ItemListToMe[MyItemNum].m_ToType    = EXCHANGE_MSG::POS_BAG;
                             ItemListToMe[MyItemNum++].m_ToIndex    = pMyBagContainer->ConIndex2BagIndex(BagIndex);
 
-                            //´Ó½»Ò×ºĞÖĞÉ¾µô´ËÎïÆ·,ÔÚºóÃæµÄÒÆ¶¯ÖĞ¾Í²»ÓÃÔÙÒÆ¶¯ËüÁË
+                            //ä»äº¤æ˜“ç›’ä¸­åˆ æ‰æ­¤ç‰©å“,åœ¨åé¢çš„ç§»åŠ¨ä¸­å°±ä¸ç”¨å†ç§»åŠ¨å®ƒäº†
                             g_ItemOperator.EraseItem(pMyExchangeContainer, i);
                             g_ItemOperator.EraseItem(pOtExchangeContainer, ExItemIndexInOt[j].nIndexInEx);
                             ExItemIndexInOt[j].nIndex = -1;
                         
-                            g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] <-> [%s] ÎïÆ· [%d]³É¹¦", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex() );
+                            g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] <-> [%s] ç‰©å“ [%d]æˆåŠŸ", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex() );
 
                             break;
                         }
@@ -399,7 +399,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                 }
             }
     
-            //3.2²»ÄÜ½»»»µÄÒ»¸öÒ»¸ö·Å½øÈ¥£¬Ê£ÏÂµÄÖ±½ÓÓÉÏµÍ³ÕÒ¸ñ·ÅÈë
+            //3.2ä¸èƒ½äº¤æ¢çš„ä¸€ä¸ªä¸€ä¸ªæ”¾è¿›å»ï¼Œå‰©ä¸‹çš„ç›´æ¥ç”±ç³»ç»Ÿæ‰¾æ ¼æ”¾å…¥
             for(INT i = 0; i<EXCHANGE_BOX_SIZE; i++)
             {
                 if(pMyExchangeContainer->GetItem(i)->IsEmpty() == FALSE)
@@ -407,21 +407,21 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                     INT result = 0;
                     Item* pItemRef = pMyExchangeContainer->GetItem(i);
 
-                    //×Ô¼ºµÄÈİÆ÷
+                    //è‡ªå·±çš„å®¹å™¨
                     ItemContainer*    pMyBagContainer = HumanItemLogic::GetItemContain(pHuman, pItemRef->GetItemTableIndex());
                     INT    BagIndex = pMyBagContainer->GetIndexByGUID(&pItemRef->GetGUID());
 
-                    //¶Ô·½µÄÈİÆ÷
+                    //å¯¹æ–¹çš„å®¹å™¨
                     ItemContainer*    pOtBagContainer = HumanItemLogic::GetItemContain(pDestHuman, pItemRef->GetItemTableIndex());
 
-                    //ÏÈ½âËø
+                    //å…ˆè§£é”
                     g_ItemOperator.UnlockItem( pMyBagContainer, BagIndex );
                     pMyBagContainer->GetItem(BagIndex)->SetInExchange(FALSE);
 
 
-                    //×Ô¶¯ÕÒ¸ñ£¬Ö§³Ö×Ô¶¯µş¼Ó
-                    //ÕâÀïµÄ×Ô¶¯ÕÒ¸ñ¸Ä³É¿ÉÒÔ×Ô¶¯µş¼Ó£¬ÕâÀï»áÓĞÒ»¸öÎÊÌâ£¬ÉÏÃæÊÕÈ¡¼ì²âÊ±ÊÇ²»¿¼ÂÇµş¼Ó×´Ì¬µÄ£¬ËùÒÔ£¬Èç¹û·Çµş¼Ó×´Ì¬ÏÂµÄ
-                    //¿ÉÒÔÊÕÈ¡Ò»ÏµÁĞÎïÆ·£¬¿Éµş¼ÓµÄÒ»¶¨¿ÉÒÔ½ÓÊÜ¡£¼ì²âµÄ·¶Î§»á´óÒ»µã¡£
+                    //è‡ªåŠ¨æ‰¾æ ¼ï¼Œæ”¯æŒè‡ªåŠ¨å åŠ 
+                    //è¿™é‡Œçš„è‡ªåŠ¨æ‰¾æ ¼æ”¹æˆå¯ä»¥è‡ªåŠ¨å åŠ ï¼Œè¿™é‡Œä¼šæœ‰ä¸€ä¸ªé—®é¢˜ï¼Œä¸Šé¢æ”¶å–æ£€æµ‹æ—¶æ˜¯ä¸è€ƒè™‘å åŠ çŠ¶æ€çš„ï¼Œæ‰€ä»¥ï¼Œå¦‚æœéå åŠ çŠ¶æ€ä¸‹çš„
+                    //å¯ä»¥æ”¶å–ä¸€ç³»åˆ—ç‰©å“ï¼Œå¯å åŠ çš„ä¸€å®šå¯ä»¥æ¥å—ã€‚æ£€æµ‹çš„èŒƒå›´ä¼šå¤§ä¸€ç‚¹ã€‚
                     result = 
                         g_ItemOperator.MoveItem
                         (
@@ -431,14 +431,14 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         pOtBagContainer
                         );
                     if(result<0)
-                    {//¿½±´Ê§°Ü
+                    {//æ‹·è´å¤±è´¥
                         GCExchangeError Msg;
                         Msg.SetID(EXCHANGE_MSG::ERR_ILLEGAL);
                         pHuman->GetPlayer()->SendPacket(&Msg);
                         pDestHuman->GetPlayer()->SendPacket(&Msg);
                         pHuman->m_ExchangBox.CleanUp();
                         pDestHuman->m_ExchangBox.CleanUp();
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ÎïÆ· [%d]Ê§°Ü result = %d", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex(), result );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] ç‰©å“ [%d]å¤±è´¥ result = %d", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex(), result );
                         return PACKET_EXE_CONTINUE;
                     }
                     else
@@ -457,7 +457,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         ItemListToOt[OtItemNum].m_FromIndex = i;
                         ItemListToOt[OtItemNum].m_ToType    = EXCHANGE_MSG::POS_BAG;
                         ItemListToOt[OtItemNum++].m_ToIndex    = pOtBagContainer->ConIndex2BagIndex(result);
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ÎïÆ· [%d]³É¹¦", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex() );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] ç‰©å“ [%d]æˆåŠŸ", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex() );
                     }
                 }
                 if(pOtExchangeContainer->GetItem(i)->IsEmpty() == FALSE)
@@ -465,20 +465,20 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                     INT result = 0;
                     Item* pItemRef = pOtExchangeContainer->GetItem(i);
 
-                    //¶Ô·½µÄÈİÆ÷
+                    //å¯¹æ–¹çš„å®¹å™¨
                     ItemContainer*    pOtBagContainer = HumanItemLogic::GetItemContain(pDestHuman, pItemRef->GetItemTableIndex());
                     INT    BagIndex = pOtBagContainer->GetIndexByGUID(&pItemRef->GetGUID());
 
-                    //×Ô¼ºµÄÈİÆ÷
+                    //è‡ªå·±çš„å®¹å™¨
                     ItemContainer*    pMyBagContainer = HumanItemLogic::GetItemContain(pHuman, pItemRef->GetItemTableIndex());
 
-                    //ÏÈ½âËø
+                    //å…ˆè§£é”
                     g_ItemOperator.UnlockItem( pOtBagContainer, BagIndex );
 
                     pOtBagContainer->GetItem(BagIndex)->SetInExchange(FALSE);
 
                     
-                    //×Ô¶¯ÕÒ¸ñ£¬Ö§³Ö×Ô¶¯µş¼Ó
+                    //è‡ªåŠ¨æ‰¾æ ¼ï¼Œæ”¯æŒè‡ªåŠ¨å åŠ 
                     result = 
                         g_ItemOperator.MoveItem
                         (
@@ -488,14 +488,14 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         pMyBagContainer
                         );
                     if(result<0)
-                    {//¿½±´Ê§°Ü
+                    {//æ‹·è´å¤±è´¥
                         GCExchangeError Msg;
                         Msg.SetID(EXCHANGE_MSG::ERR_ILLEGAL);
                         pHuman->GetPlayer()->SendPacket(&Msg);
                         pDestHuman->GetPlayer()->SendPacket(&Msg);
                         pHuman->m_ExchangBox.CleanUp();
                         pDestHuman->m_ExchangBox.CleanUp();
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ÎïÆ· [%d]Ê§°Ü result = %d", pDestHuman->GetName(), pHuman->GetName(), pItemRef->GetItemTableIndex(), result );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] ç‰©å“ [%d]å¤±è´¥ result = %d", pDestHuman->GetName(), pHuman->GetName(), pItemRef->GetItemTableIndex(), result );
                         return PACKET_EXE_CONTINUE;
                     }
                     else
@@ -515,13 +515,13 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         ItemListToMe[MyItemNum].m_FromIndex = i;
                         ItemListToMe[MyItemNum].m_ToType    = EXCHANGE_MSG::POS_BAG;
                         ItemListToMe[MyItemNum++].m_ToIndex    = pMyBagContainer->ConIndex2BagIndex(result);
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ÎïÆ· [%d]³É¹¦", pDestHuman->GetName(), pHuman->GetName(), pItemRef->GetItemTableIndex() );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] ç‰©å“ [%d]æˆåŠŸ", pDestHuman->GetName(), pHuman->GetName(), pItemRef->GetItemTableIndex() );
                     }
                 }
             }
 
-            //3.3»»³èÎï
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] Óë [%s] ¿ªÊ¼½»»»³èÎï",    pHuman->GetName(), pDestHuman->GetName()) ;
+            //3.3æ¢å® ç‰©
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] ä¸ [%s] å¼€å§‹äº¤æ¢å® ç‰©",    pHuman->GetName(), pDestHuman->GetName()) ;
 
             for(INT i = 0; i<EXCHANGE_PET_BOX_SIZE; i++)
             {
@@ -534,33 +534,33 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                 PET_LOG_PARAM    PetLogParam;
                 PetLogParam.PetGUID        =    pItemRef->GetPetGUID();
                 PetLogParam.DataID        =    pItemRef->GetDataID();
-                //×Ô¼ºµÄÈİÆ÷
+                //è‡ªå·±çš„å®¹å™¨
                 ItemContainer*    pMyPetContainer = pHuman->GetPetContain();
                 INT    PetIndexInBag = pMyPetContainer->GetIndexByGUID(&pItemRef->GetPetGUID());
 
-                //¶Ô·½µÄÈİÆ÷
+                //å¯¹æ–¹çš„å®¹å™¨
                 ItemContainer*    pOtPetContainer = pDestHuman->GetPetContain();
 
-                //È¥»»ÄÜ»»µÃ
+                //å»æ¢èƒ½æ¢å¾—
                 for(INT j = 0; j<ExPetItemNumOt; j++)
                 {
-                    //Èç¹ûÎŞĞ§
+                    //å¦‚æœæ— æ•ˆ
                     if(ExPetItemIndexInOt[j].nIndex == -1)
                         continue;
 
-                    //½âËø×Ô¼º
+                    //è§£é”è‡ªå·±
                     g_ItemOperator.UnlockItem( pMyPetContainer, PetIndexInBag );
 
-                    //ÏÈ½âËø¶Ô·½
+                    //å…ˆè§£é”å¯¹æ–¹
                     g_ItemOperator.UnlockItem( pOtPetContainer, ExPetItemIndexInOt[j].nIndex );
 
-                    //ÉèÖÃ×Ô¼ºÎïÆ·ÒÑ¾­²»ÊÇ½»Ò×ÎïÆ·ÁË
+                    //è®¾ç½®è‡ªå·±ç‰©å“å·²ç»ä¸æ˜¯äº¤æ˜“ç‰©å“äº†
                     pMyPetContainer->GetItem(PetIndexInBag)->SetInExchange(FALSE);
 
-                    //ÉèÖÃ¶Ô·½ÎïÆ·ÒÑ¾­²»ÊÇ½»Ò×ÎïÆ·ÁË
+                    //è®¾ç½®å¯¹æ–¹ç‰©å“å·²ç»ä¸æ˜¯äº¤æ˜“ç‰©å“äº†
                     pOtPetContainer->GetItem(ExPetItemIndexInOt[j].nIndex )->SetInExchange(FALSE);
 
-                    //ÓëÒ»¸ö¶Ô·½Óû½»Ò×µÄÎïÆ·½»»»
+                    //ä¸ä¸€ä¸ªå¯¹æ–¹æ¬²äº¤æ˜“çš„ç‰©å“äº¤æ¢
                     result = 
                         g_ItemOperator.ExchangeItem
                         (
@@ -570,14 +570,14 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         ExPetItemIndexInOt[j].nIndex
                         );
                     if(result<0)
-                    {//¿½±´Ê§°Ü
+                    {//æ‹·è´å¤±è´¥
                         GCExchangeError Msg;
                         Msg.SetID(EXCHANGE_MSG::ERR_ILLEGAL);
                         pHuman->GetPlayer()->SendPacket(&Msg);
                         pDestHuman->GetPlayer()->SendPacket(&Msg);
                         pHuman->m_ExchangBox.CleanUp();
                         pDestHuman->m_ExchangBox.CleanUp();
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] <-> [%s] ÎïÆ· [%d]Ê§°Ü result = %d", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex(), result );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] <-> [%s] ç‰©å“ [%d]å¤±è´¥ result = %d", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetItemTableIndex(), result );
                         return PACKET_EXE_CONTINUE;
                     }
                     else
@@ -600,20 +600,20 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         ItemListToOt[OtItemNum].m_ToType    = EXCHANGE_MSG::POS_PET;
                         ItemListToOt[OtItemNum++].m_ToIndex    = ExPetItemIndexInOt[j].nIndex;
                     
-                        //´Ó½»Ò×ºĞÖĞÉ¾µô´ËÎïÆ·,ÔÚºóÃæµÄÒÆ¶¯ÖĞ¾Í²»ÓÃÔÙÒÆ¶¯ËüÁË
+                        //ä»äº¤æ˜“ç›’ä¸­åˆ æ‰æ­¤ç‰©å“,åœ¨åé¢çš„ç§»åŠ¨ä¸­å°±ä¸ç”¨å†ç§»åŠ¨å®ƒäº†
                         g_ItemOperator.EraseItem(pMyExchangePetContainer, i);
                         g_ItemOperator.EraseItem(pOtExchangePetContainer, ExPetItemIndexInOt[j].nIndexInEx);
 
                         ExPetItemIndexInOt[j].nIndex = -1;
 
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] <-> [%s] ÎïÆ· [%s]³É¹¦", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetName() );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] <-> [%s] ç‰©å“ [%s]æˆåŠŸ", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetName() );
 
                         break;
                     }
                 }
             }
 
-            //3.4ÒÆ³èÎï
+            //3.4ç§»å® ç‰©
             for(INT i = 0; i<EXCHANGE_PET_BOX_SIZE; i++)
             {
                 if(pMyExchangePetContainer->GetItem(i)->IsEmpty() == FALSE)
@@ -624,21 +624,21 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                     PET_LOG_PARAM    PetLogParam;
                     PetLogParam.PetGUID        =    pItemRef->GetPetGUID();
                     PetLogParam.DataID        =    pItemRef->GetDataID();
-                    //×Ô¼ºµÄÈİÆ÷
+                    //è‡ªå·±çš„å®¹å™¨
                     ItemContainer*    pMyPetContainer = pHuman->GetPetContain();
                     INT    PetIndexInBag = pMyPetContainer->GetIndexByGUID(&pItemRef->GetPetGUID());
 
-                    //¶Ô·½µÄÈİÆ÷
+                    //å¯¹æ–¹çš„å®¹å™¨
                     ItemContainer*    pOtPetContainer = pDestHuman->GetPetContain();
 
-                    //ÏÈ½âËø
+                    //å…ˆè§£é”
                     g_ItemOperator.UnlockItem( pMyPetContainer, PetIndexInBag );
 
                     pMyPetContainer->GetItem(PetIndexInBag)->SetInExchange(FALSE);
 
-                    //×Ô¶¯ÕÒ¸ñ£¬Ö§³Ö×Ô¶¯µş¼Ó
-                    //ÕâÀïµÄ×Ô¶¯ÕÒ¸ñ¸Ä³É¿ÉÒÔ×Ô¶¯µş¼Ó£¬ÕâÀï»áÓĞÒ»¸öÎÊÌâ£¬ÉÏÃæÊÕÈ¡¼ì²âÊ±ÊÇ²»¿¼ÂÇµş¼Ó×´Ì¬µÄ£¬ËùÒÔ£¬Èç¹û·Çµş¼Ó×´Ì¬ÏÂµÄ
-                    //¿ÉÒÔÊÕÈ¡Ò»ÏµÁĞÎïÆ·£¬¿Éµş¼ÓµÄÒ»¶¨¿ÉÒÔ½ÓÊÜ¡£¼ì²âµÄ·¶Î§»á´óÒ»µã¡£
+                    //è‡ªåŠ¨æ‰¾æ ¼ï¼Œæ”¯æŒè‡ªåŠ¨å åŠ 
+                    //è¿™é‡Œçš„è‡ªåŠ¨æ‰¾æ ¼æ”¹æˆå¯ä»¥è‡ªåŠ¨å åŠ ï¼Œè¿™é‡Œä¼šæœ‰ä¸€ä¸ªé—®é¢˜ï¼Œä¸Šé¢æ”¶å–æ£€æµ‹æ—¶æ˜¯ä¸è€ƒè™‘å åŠ çŠ¶æ€çš„ï¼Œæ‰€ä»¥ï¼Œå¦‚æœéå åŠ çŠ¶æ€ä¸‹çš„
+                    //å¯ä»¥æ”¶å–ä¸€ç³»åˆ—ç‰©å“ï¼Œå¯å åŠ çš„ä¸€å®šå¯ä»¥æ¥å—ã€‚æ£€æµ‹çš„èŒƒå›´ä¼šå¤§ä¸€ç‚¹ã€‚
                     result = 
                         g_ItemOperator.MoveItem
                         (
@@ -647,14 +647,14 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         pOtPetContainer
                         );
                     if(result<0)
-                    {//¿½±´Ê§°Ü
+                    {//æ‹·è´å¤±è´¥
                         GCExchangeError Msg;
                         Msg.SetID(EXCHANGE_MSG::ERR_ILLEGAL);
                         pHuman->GetPlayer()->SendPacket(&Msg);
                         pDestHuman->GetPlayer()->SendPacket(&Msg);
                         pHuman->m_ExchangBox.CleanUp();
                         pDestHuman->m_ExchangBox.CleanUp();
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ³èÎï [%s]Ê§°Ü result = %d", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetName(), result );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] å® ç‰© [%s]å¤±è´¥ result = %d", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetName(), result );
                         return PACKET_EXE_CONTINUE;
                     }
                     else
@@ -671,7 +671,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         ItemListToOt[OtItemNum].m_FromIndex = i;
                         ItemListToOt[OtItemNum].m_ToType    = EXCHANGE_MSG::POS_PET;
                         ItemListToOt[OtItemNum++].m_ToIndex    = result;
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ³èÎï [%s]³É¹¦", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetName() );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] å® ç‰© [%s]æˆåŠŸ", pHuman->GetName(), pDestHuman->GetName(), pItemRef->GetName() );
                     }
                 }
 
@@ -683,18 +683,18 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                     PetLogParam.PetGUID        =    pItemRef->GetPetGUID();
                     PetLogParam.DataID        =    pItemRef->GetDataID();
 
-                    //¶Ô·½µÄÈİÆ÷
+                    //å¯¹æ–¹çš„å®¹å™¨
                     ItemContainer*    pOtPetContainer = pDestHuman->GetPetContain();
                     INT    PetIndexInBag = pOtPetContainer->GetIndexByGUID(&pItemRef->GetPetGUID());
 
-                    //×Ô¼ºµÄÈİÆ÷
+                    //è‡ªå·±çš„å®¹å™¨
                     ItemContainer*    pMyPetContainer = pHuman->GetPetContain();
 
-                    //ÏÈ½âËø
+                    //å…ˆè§£é”
                     g_ItemOperator.UnlockItem( pOtPetContainer, PetIndexInBag );
                     pOtPetContainer->GetItem(PetIndexInBag)->SetInExchange(FALSE);
 
-                    //×Ô¶¯ÕÒ¸ñ£¬Ö§³Ö×Ô¶¯µş¼Ó
+                    //è‡ªåŠ¨æ‰¾æ ¼ï¼Œæ”¯æŒè‡ªåŠ¨å åŠ 
                     result = 
                         g_ItemOperator.MoveItem
                         (
@@ -703,14 +703,14 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         pMyPetContainer
                         );
                     if(result<0)
-                    {//¿½±´Ê§°Ü
+                    {//æ‹·è´å¤±è´¥
                         GCExchangeError Msg;
                         Msg.SetID(EXCHANGE_MSG::ERR_ILLEGAL);
                         pHuman->GetPlayer()->SendPacket(&Msg);
                         pDestHuman->GetPlayer()->SendPacket(&Msg);
                         pHuman->m_ExchangBox.CleanUp();
                         pDestHuman->m_ExchangBox.CleanUp();
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ³èÎï [%s]Ê§°Ü result = %d", pDestHuman->GetName(), pHuman->GetName(), pItemRef->GetName(), result );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] å® ç‰© [%s]å¤±è´¥ result = %d", pDestHuman->GetName(), pHuman->GetName(), pItemRef->GetName(), result );
                         return PACKET_EXE_CONTINUE;
                     }
                     else
@@ -726,14 +726,14 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                         ItemListToMe[MyItemNum].m_FromIndex = i;
                         ItemListToMe[MyItemNum].m_ToType    = EXCHANGE_MSG::POS_PET;
                         ItemListToMe[MyItemNum++].m_ToIndex    = result;
-                        g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ³èÎï [%s]³É¹¦", pDestHuman->GetName(), pHuman->GetName(), pItemRef->GetName() );
+                        g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] å® ç‰© [%s]æˆåŠŸ", pDestHuman->GetName(), pHuman->GetName(), pItemRef->GetName() );
                     }
                 }
             }
             
 
-            //2.»»Ç®
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] Óë [%s] ¿ªÊ¼½»»»½ğÇ®",    pHuman->GetName(), pDestHuman->GetName()) ;
+            //2.æ¢é’±
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] ä¸ [%s] å¼€å§‹äº¤æ¢é‡‘é’±",    pHuman->GetName(), pDestHuman->GetName()) ;
             if( pHuman->m_ExchangBox.m_Money <= pHuman->GetMoney() && pHuman->m_ExchangBox.m_Money>0 )
             {
                 pDestHuman->SetMoney(pDestHuman->GetMoney()+pHuman->m_ExchangBox.m_Money);
@@ -759,7 +759,7 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                 SaveMoneyLog(&MoneyLogParam);
 
 
-                g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ½ğÇ® [%d]", pHuman->GetName(), pDestHuman->GetName(), pHuman->m_ExchangBox.m_Money );
+                g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] é‡‘é’± [%d]", pHuman->GetName(), pDestHuman->GetName(), pHuman->m_ExchangBox.m_Money );
             }
 
             if( pDestHuman->m_ExchangBox.m_Money <= pDestHuman->GetMoney() && pDestHuman->m_ExchangBox.m_Money>0 )
@@ -787,11 +787,11 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
                 SaveMoneyLog(&MoneyLogParam);
 
 
-                g_pLog->FastSaveLog( LOG_FILE_1, "        <½»Ò×> [%s] -> [%s] ½ğÇ® [%d]", pDestHuman->GetName(), pHuman->GetName(), pDestHuman->m_ExchangBox.m_Money );
+                g_pLog->FastSaveLog( LOG_FILE_1, "        <äº¤æ˜“> [%s] -> [%s] é‡‘é’± [%d]", pDestHuman->GetName(), pHuman->GetName(), pDestHuman->m_ExchangBox.m_Money );
             }
 
 
-            //¸øË«·½·¢ËÍ³É¹¦ÏûÏ¢
+            //ç»™åŒæ–¹å‘é€æˆåŠŸæ¶ˆæ¯
             MsgSuccessToMe.SetItemNum(MyItemNum);
             MsgSuccessToMe.SetItemList(ItemListToMe);
             pHuman->GetPlayer()->SendPacket(&MsgSuccessToMe);
@@ -800,20 +800,20 @@ UINT CGExchangeOkIIIHandler::Execute( CGExchangeOkIII* pPacket, Player* pPlayer 
             MsgSuccessToOt.SetItemList(ItemListToOt);
             pDestHuman->GetPlayer()->SendPacket(&MsgSuccessToOt);
 
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] Óë [%s] ½»Ò×³É¹¦",    pHuman->GetName(), pDestHuman->GetName()) ;
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] ä¸ [%s] äº¤æ˜“æˆåŠŸ",    pHuman->GetName(), pDestHuman->GetName()) ;
 
-            //ÄÜ×ßµ½Õâ¶ùÖ¤Ã÷ËùÓĞ²Ù×÷¶¼ÒÑÍê³ÉÇå¿Õ¸÷×ÔµÄ½»Ò×ºĞ
+            //èƒ½èµ°åˆ°è¿™å„¿è¯æ˜æ‰€æœ‰æ“ä½œéƒ½å·²å®Œæˆæ¸…ç©ºå„è‡ªçš„äº¤æ˜“ç›’
             pHuman->m_ExchangBox.CleanUp();
             pDestHuman->m_ExchangBox.CleanUp();
 
         }
         else
-        {//É¶Ò²²»×ö,µÈ´ı¶Ô·½ÏûÏ¢
+        {//å•¥ä¹Ÿä¸åš,ç­‰å¾…å¯¹æ–¹æ¶ˆæ¯
 
         }
     }
     else
-    {//Ò»¶¨³ö´íÁË
+    {//ä¸€å®šå‡ºé”™äº†
         GCExchangeError Msg;
         Msg.SetID(EXCHANGE_MSG::ERR_ILLEGAL);
         pHuman->GetPlayer()->SendPacket(&Msg);

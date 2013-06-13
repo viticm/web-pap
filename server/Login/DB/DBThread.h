@@ -30,11 +30,11 @@ public:
     DBThread();
     virtual ~DBThread();
 
-    //Ö÷Ñ­»·
+    //ä¸»å¾ªç¯
     virtual        VOID        run();
-    //Í£Ö¹Ïß³ÌÖ´ĞĞ
+    //åœæ­¢çº¿ç¨‹æ‰§è¡Œ
     virtual VOID            stop( ) { m_Active = FALSE ; } ;
-    //ÅĞ¶Ïµ±Ç°Ïß³ÌÊÇ·ñ¼¤»î
+    //åˆ¤æ–­å½“å‰çº¿ç¨‹æ˜¯å¦æ¿€æ´»
     BOOL                    IsActive( )
     {
         return m_Active ; 
@@ -42,12 +42,12 @@ public:
 
     BOOL                    IsConnected();
 
-    //·¢²¼Ò»¸öDB²Ù×÷ÏûÏ¢
+    //å‘å¸ƒä¸€ä¸ªDBæ“ä½œæ¶ˆæ¯
     BOOL                    SendPacket(Packet* pPacket,PlayerID_t pID);
-    //¶ÁÈ¡»º´æÏûÏ¢
+    //è¯»å–ç¼“å­˜æ¶ˆæ¯
     BOOL                    RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID) ;
     
-    //³õÊ¼»¯²Ù×÷
+    //åˆå§‹åŒ–æ“ä½œ
     BOOL                    Init();
 
     ODBCInterface*            GetInterface();
@@ -58,7 +58,7 @@ private :
     BOOL                    m_Active ;
     MyLock                    m_Lock ;
     IN_PACKET                m_Input;
-    //Ä¬ÈÏÊı¾İ¿âÁ¬½Ó
+    //é»˜è®¤æ•°æ®åº“è¿æ¥
     ODBCInterface*            mCharDBInterface;
 
 

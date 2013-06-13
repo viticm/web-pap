@@ -7,26 +7,26 @@
 #include "LoginPlayerManager.h"
 
 
-//¸ºÔğ¹ÜÀíÁ¬½Ó½øÈëµÄ¿Í»§¶Ë
+//è´Ÿè´£ç®¡ç†è¿æ¥è¿›å…¥çš„å®¢æˆ·ç«¯
 class ConnectManager : public Thread
 {
 public :
     ConnectManager( ) ;
     ~ConnectManager( ) ;
 
-    //³õÊ¼»¯Ä£¿é
+    //åˆå§‹åŒ–æ¨¡å—
     BOOL            Init( ) ;
-    //Ä£¿é´¦ÀíÑ­»·
+    //æ¨¡å—å¤„ç†å¾ªç¯
     virtual VOID    run () ;
-    //Ä£¿éÍË³ö
+    //æ¨¡å—é€€å‡º
     virtual VOID    stop( ){ m_Active = FALSE ; } ;
-    //Ä£¿éÍË³ö´¦Àí
+    //æ¨¡å—é€€å‡ºå¤„ç†
     VOID            Quit( ) ;
 
-    //ÅĞ¶Ïµ±Ç°Ä£¿éÊÇ·ñ´¦ÓÚ»î¶¯×´Ì¬
+    //åˆ¤æ–­å½“å‰æ¨¡å—æ˜¯å¦å¤„äºæ´»åŠ¨çŠ¶æ€
     BOOL            IsActive( ){ return m_Active ; } ;
 private :
-    BOOL            m_Active ;//ÊÇ·ñ»î¶¯µÄ±êÖ¾
+    BOOL            m_Active ;//æ˜¯å¦æ´»åŠ¨çš„æ ‡å¿—
 
 
 };

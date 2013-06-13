@@ -34,36 +34,36 @@ UINT CGUseItemHandler::Execute(CGUseItem* pPacket,Player* pPlayer)
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
     
-    //¼ì²éÊÇ·ñ¿ÉÒÔÊ¹ÓÃÎïÆ·
+    //æ£€æŸ¥æ˜¯å¦å¯ä»¥ä½¿ç”¨ç‰©å“
     ID_t    BagIndex = pPacket->GetBagIndex();
     Assert(BagIndex<MAX_BAG_SIZE);
 
-    //¼ì²éÎïÆ·ÊÇ·ñºÏ·¨
+    //æ£€æŸ¥ç‰©å“æ˜¯å¦åˆæ³•
     Item*    pBagItem = HumanItemLogic::GetItem(pHuman,BagIndex);
     
     if(pBagItem->IsEmpty())
     {
-        //Assert(FALSE) ; //ÎïÆ·µÃ²»µ½
+        //Assert(FALSE) ; //ç‰©å“å¾—ä¸åˆ°
         g_pLog->FastSaveLog( LOG_FILE_1, "CGUseItemHandler Can't GetItem    BagIndex=%d", BagIndex) ;
         return PACKET_EXE_CONTINUE ;
     }
     ObjID_t    Target = pHuman->GetID();
-    //1.0 µ±Ç°°æ±¾Ê¹ÓÃÎïÆ·Ö»´¦Àí³ÔÒ©  
-    //1.1 °æ±¾Ê¹ÓÃÎïÆ·´¦ÀíÒ©Æ·,²Ø±¦Í¼,Åä·½  
+    //1.0 å½“å‰ç‰ˆæœ¬ä½¿ç”¨ç‰©å“åªå¤„ç†åƒè¯  
+    //1.1 ç‰ˆæœ¬ä½¿ç”¨ç‰©å“å¤„ç†è¯å“,è—å®å›¾,é…æ–¹  
     if(!pBagItem->IsRuler(IRL_CANUSE))
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGUseItemHandler Can't use item BagIndex=%d", BagIndex);
         return PACKET_EXE_CONTINUE ;
     }
-    if(pHuman->GetLevel()>=pBagItem->GetItemLevel()) //¼¶±ð¼ì²é
+    if(pHuman->GetLevel()>=pBagItem->GetItemLevel()) //çº§åˆ«æ£€æŸ¥
     {
         switch(pBagItem->GetItemClass()) 
         {
-            case ICLASS_TASKITEM: //ÈÎÎñÎïÆ·Àà
-            case ICLASS_COMITEM: //Ò©Æ·µÄÊ¹ÓÃ
+            case ICLASS_TASKITEM: //ä»»åŠ¡ç‰©å“ç±»
+            case ICLASS_COMITEM: //è¯å“çš„ä½¿ç”¨
                 {
                     if(CLASS_OF_IDENT(pBagItem))
                     {
@@ -82,7 +82,7 @@ UINT CGUseItemHandler::Execute(CGUseItem* pPacket,Player* pPlayer)
                             }
                             else if(FALSE == g_ScriptLogic.Script_CancelImpacts(*pHuman, nScript))
                             {
-                                //È¡ÏûÐ§¹ûÊ§°Ü
+                                //å–æ¶ˆæ•ˆæžœå¤±è´¥
                                 PET_GUID_t    PetGUID = pPacket->GetTargetPetGUID();
 
                                 Result = (USEITEM_RESULT)pHuman->GetHumanAI()->PushCommand_UseItem(
@@ -101,7 +101,7 @@ UINT CGUseItemHandler::Execute(CGUseItem* pPacket,Player* pPlayer)
                     }
                 }
                 break;
-            case ICLASS_STOREMAP://²Ø±¦Í¼
+            case ICLASS_STOREMAP://è—å®å›¾
                 {
                     Result    =    (USEITEM_RESULT)pHuman->UseStoreMap(BagIndex);
                 }

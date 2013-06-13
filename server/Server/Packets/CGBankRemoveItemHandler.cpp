@@ -27,7 +27,7 @@ UINT CGBankRemoveItemHandler::Execute( CGBankRemoveItem* pPacket, Player* pPlaye
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     UINT indexFrom = pPacket->GetIndexFrom();
@@ -55,10 +55,10 @@ UINT CGBankRemoveItemHandler::Execute( CGBankRemoveItem* pPacket, Player* pPlaye
     case     CGBankRemoveItem::BAG_POS:        //Bank->Bag
         {
 
-            //×Ô¶¯ËÑË÷¿Õ¸ñ
+            //è‡ªåŠ¨æœç´¢ç©ºæ ¼
             if(indexTo == CGBankRemoveItem::AUTO_POS_BAG)
             {
-                //ÑéÖ¤Î»ÖÃÀïÊÇ·ñÓĞ¶«Î÷
+                //éªŒè¯ä½ç½®é‡Œæ˜¯å¦æœ‰ä¸œè¥¿
                 if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, indexFrom)))
                 {
                     ItemContainer*    pBagContainer =
@@ -92,31 +92,31 @@ UINT CGBankRemoveItemHandler::Execute( CGBankRemoveItem* pPacket, Player* pPlaye
                 }
             }
 
-            //ÑéÖ¤Î»ÖÃµÄºÏ·¨ĞÔ
+            //éªŒè¯ä½ç½®çš„åˆæ³•æ€§
             else if( indexTo>=0
                 && indexTo<MAX_BAG_SIZE 
                 && indexFrom>=0 
                 && indexFrom<(UINT)(pHuman->__GetBankEndIndex()) 
                 )
             {
-                //ÑéÖ¤Î»ÖÃÀïÊÇ·ñÓĞ¶«Î÷
+                //éªŒè¯ä½ç½®é‡Œæ˜¯å¦æœ‰ä¸œè¥¿
                 if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, indexFrom)))
                 {
-                    //ÑéÖ¤Õâ¸öÎïÆ·ÊÇ²»ÊÇÄÜ¹»´æÈëÖ¸¶¨µÄÎ»ÖÃ£¬
+                    //éªŒè¯è¿™ä¸ªç‰©å“æ˜¯ä¸æ˜¯èƒ½å¤Ÿå­˜å…¥æŒ‡å®šçš„ä½ç½®ï¼Œ
                     ItemContainer* pBankContainer = pHuman->GetBankContain();
                     Item *pItem = pBankContainer->GetItem(indexFrom); 
 
                     ItemContainer *pHumanCon = HumanItemLogic::GetItemContain(pHuman, pItem->GetItemTableIndex());
                     if( !pHumanCon )
                     {
-                        //·µ»Ø´íÎóĞÅÏ¢
+                        //è¿”å›é”™è¯¯ä¿¡æ¯
                         Msg.SetToType(GCBankRemoveItem::ERROR_POS);
                         break;
                     }
 
                     if( !pHumanCon->IsInContainer(indexTo) )
                     {
-                        //·µ»Ø´íÎóĞÅÏ¢
+                        //è¿”å›é”™è¯¯ä¿¡æ¯
                         Msg.SetToType(GCBankRemoveItem::ERROR_POS);
                         break;
                     }
@@ -134,7 +134,7 @@ UINT CGBankRemoveItemHandler::Execute( CGBankRemoveItem* pPacket, Player* pPlaye
                             pBankContainer,
                             (UINT)indexFrom);
 
-                        Msg.SetOperateType(GCBankRemoveItem::OPERATE_SWAP); // ½»»»ÎïÆ·
+                        Msg.SetOperateType(GCBankRemoveItem::OPERATE_SWAP); // äº¤æ¢ç‰©å“
                     }
                     else
                     {

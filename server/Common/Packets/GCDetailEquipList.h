@@ -74,24 +74,24 @@ namespace Packets
         WORD                    GetPartFlags(VOID) { return m_wPartFlags; }
 
     private:
-        ObjID_t                m_ObjID;    //对方的ObjID
+        ObjID_t                m_ObjID;    //瀵规柟鐨凮bjID
 
         ASK_EQUIP_MODE        m_Mode;
 
         /*
         |  ref [HUMAN_EQUIP]
         |     00000000 xxxxxxxx
-        |             ||||||||__ 武器  WEAPON
-        |             |||||||___ 帽子     DEFENCE
-        |             ||||||____ 衣服  DEFENCE
-        |             |||||_____ 护腕  DEFENCE
-        |             ||||______ 靴子  DEFENCE
-        |             |||_______ 腰带    ADORN
-        |             ||________ 戒子    ADORN
-        |             |_________ 项链    ADORN
+        |             ||||||||__ 姝﹀櫒  WEAPON
+        |             |||||||___ 甯藉瓙     DEFENCE
+        |             ||||||____ 琛ｆ湇  DEFENCE
+        |             |||||_____ 鎶よ厱  DEFENCE
+        |             ||||______ 闈村瓙  DEFENCE
+        |             |||_______ 鑵板甫    ADORN
+        |             ||________ 鎴掑瓙    ADORN
+        |             |_________ 椤归摼    ADORN
         |
         */
-        WORD            m_wPartFlags;        // 每个位表示一个属性是否要刷新 HUMAN_EQUIP
+        WORD            m_wPartFlags;        // 姣忎釜浣嶈〃绀轰竴涓睘鎬ф槸鍚﹁鍒锋柊 HUMAN_EQUIP
         _ITEM            m_ItemList[HEQUIP_NUMBER];
     };
 

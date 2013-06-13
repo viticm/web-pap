@@ -1,6 +1,6 @@
 // CGEventRequest.h
 // 
-// ²éÑ¯Ò»¸ö½Å±¾ÊÂ¼ş
+// æŸ¥è¯¢ä¸€ä¸ªè„šæœ¬äº‹ä»¶
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         CGEventRequest( ){}
         virtual ~CGEventRequest( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

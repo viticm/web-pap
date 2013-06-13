@@ -5,7 +5,7 @@
 
 #include "Obj_Pet.h"
 
-//Ñ±Ñø·ÑÓÃ£½³èÎïµÈ¼¶²ÎÁ¿*£¨£¨³èÎïÉúÃü»Ö¸´Á¿/³èÎïÉúÃü×ÜÁ¿£©£«£¨³èÎï»Ö¸´¿ìÀÖ¶È/100£©£©
+//é©¯å…»è´¹ç”¨ï¼å® ç‰©ç­‰çº§å‚é‡*ï¼ˆï¼ˆå® ç‰©ç”Ÿå‘½æ¢å¤é‡/å® ç‰©ç”Ÿå‘½æ€»é‡ï¼‰ï¼‹ï¼ˆå® ç‰©æ¢å¤å¿«ä¹åº¦/100ï¼‰ï¼‰
 INT CalcPetDomesticationMoney( INT nLevel, INT nHP, INT nHPMax, INT nHappiness )
 {
     FLOAT fParam = g_PetDomesticationMoneyTbl.GetDomesticationMoney( nLevel );

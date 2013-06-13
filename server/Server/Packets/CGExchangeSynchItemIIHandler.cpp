@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-Í¬²½¿Í»§¶Ë½»Ò×ºĞµÄ±ä»¯¸ø¶Ô·½
+åŒæ­¥å®¢æˆ·ç«¯äº¤æ˜“ç›’çš„å˜åŒ–ç»™å¯¹æ–¹
 */
 
 #include "CGExchangeSynchItemII.h"
@@ -34,10 +34,10 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //ÑéÖ¤½»Ò××´Ì¬
+    //éªŒè¯äº¤æ˜“çŠ¶æ€
     EXCHANGE_CERTIFY_EACH_OTHER(pHuman)
     EXCHANGE_CERTIFY_ISLOCK(pHuman)
     ObjID_t    DestID = pHuman->m_ExchangBox.m_ObjID;
@@ -45,7 +45,7 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
     EXCHANGE_CERTIFY_STATUS(pHuman, EXCHANGE_SYNCH_DATA)
     EXCHANGE_CERTIFY_STATUS(pDestHuman, EXCHANGE_SYNCH_DATA)
 
-    //²Ù×÷
+    //æ“ä½œ
     BYTE        Opt = pPacket->GetOpt();
     BYTE        FromType = pPacket->GetFromType();
     BYTE        ToType = pPacket->GetToType();
@@ -71,23 +71,23 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
             {
             case POS_BAG:
                 {
-                    //ÑéÖ¤Î»ÖÃÀïÊÇ·ñÓĞ¶«Î÷
+                    //éªŒè¯ä½ç½®é‡Œæ˜¯å¦æœ‰ä¸œè¥¿
                     if(HumanItemLogic::GetItem(pHuman, FromIndex)->IsEmpty() == FALSE)
                     {
                         ItemContainer*    pBagContainer = HumanItemLogic::GetContainer(pHuman, FromIndex);
 
-                        //ÏÈ²éÒ»±é½»Ò×ºĞÖĞÊÇ²»ÊÇÒÑ¾­ÓĞ¸ÃÎïÆ·ÁË
+                        //å…ˆæŸ¥ä¸€éäº¤æ˜“ç›’ä¸­æ˜¯ä¸æ˜¯å·²ç»æœ‰è¯¥ç‰©å“äº†
                         for(INT i = 0; i<EXCHANGE_BOX_SIZE; i++)
                         {
                             _ITEM_GUID guid = (pBagContainer->GetItem(pBagContainer->BagIndex2ConIndex(FromIndex)))->GetGUID() ;
                             if(pExchangeContainer->GetItem(i)->GetGUID() == guid)
-                            {//ÎïÆ·ÒÑ¾­ÔÚ½»Ò×ºĞÖĞ£¬¶ªÆú¸ÃÏûÏ¢
+                            {//ç‰©å“å·²ç»åœ¨äº¤æ˜“ç›’ä¸­ï¼Œä¸¢å¼ƒè¯¥æ¶ˆæ¯
                                 return PACKET_EXE_CONTINUE ;
                             }
 
                         }
 
-                        //×Ô¶¯ÕÒ¸ñ
+                        //è‡ªåŠ¨æ‰¾æ ¼
                         INT result = 
                             g_ItemOperator.CopyItem
                             (
@@ -97,37 +97,37 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
                             );
 
                         if(result>=0)
-                        {//¿½±´³É¹¦£¬
-                            //·¢ËÍÏûÏ¢¸øË«·½¿Í»§¶Ë
+                        {//æ‹·è´æˆåŠŸï¼Œ
+                            //å‘é€æ¶ˆæ¯ç»™åŒæ–¹å®¢æˆ·ç«¯
                             Item* pIt = pExchangeContainer->GetItem(result);
-                            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ¼ÓÈë½»Ò×ÎïÆ· [%d]",    pHuman->GetName(), pIt->GetItemTableIndex() ) ;
+                            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åŠ å…¥äº¤æ˜“ç‰©å“ [%d]",    pHuman->GetName(), pIt->GetItemTableIndex() ) ;
                             if(pIt->IsEmpty() == FALSE)
                             {
                                 INT iConIndex = pBagContainer->BagIndex2ConIndex(FromIndex);
-                                //ÏÈËø¶¨´ËÎïÆ·
+                                //å…ˆé”å®šæ­¤ç‰©å“
                                 g_ItemOperator.LockItem( pBagContainer, iConIndex );
                                 
-                                //±êÊ¾´ÎÎïÆ·ÒÑ¾­·ÅÔÚ½»Ò×À¸ÖĞ,¼ÆËã¿Õ¼äÓÃ
+                                //æ ‡ç¤ºæ¬¡ç‰©å“å·²ç»æ”¾åœ¨äº¤æ˜“æ ä¸­,è®¡ç®—ç©ºé—´ç”¨
                                 pBagContainer->GetItem(iConIndex)->SetInExchange(TRUE);
 
-                                //ÔÙ·¢
-                                pIt->SaveValueTo(&ItemTemp);//È¡³öÊµÀı
+                                //å†å‘
+                                pIt->SaveValueTo(&ItemTemp);//å–å‡ºå®ä¾‹
                                 
                                 /*
-                                ÏÈ·¢×Ô¼º
+                                å…ˆå‘è‡ªå·±
                                 */
-                                Msg.SetIsMyself(TRUE);//·¢¸ø×Ô¼º
-                                Msg.SetOpt(OPT_ADDITEM);//ÉèÖÃ²Ù×÷ÀàĞÍ
-                                Msg.SetFromType(POS_BAG);//ÉèÖÃÀ´×ÔÀàĞÍ
-                                Msg.SetFromIndex(FromIndex);//ÉèÖÃÀ´×ÔË÷Òı
-                                Msg.SetToIndex(result);//ÉèÖÃÄ¿±êÎ»ÖÃË÷Òı
+                                Msg.SetIsMyself(TRUE);//å‘ç»™è‡ªå·±
+                                Msg.SetOpt(OPT_ADDITEM);//è®¾ç½®æ“ä½œç±»å‹
+                                Msg.SetFromType(POS_BAG);//è®¾ç½®æ¥è‡ªç±»å‹
+                                Msg.SetFromIndex(FromIndex);//è®¾ç½®æ¥è‡ªç´¢å¼•
+                                Msg.SetToIndex(result);//è®¾ç½®ç›®æ ‡ä½ç½®ç´¢å¼•
                                 pGamePlayer->SendPacket(&Msg);
 
                                 /*
-                                ÔÙ·¢¶Ô·½
+                                å†å‘å¯¹æ–¹
                                 */
-                                Msg.SetIsMyself(FALSE);//·¢¸ø¶Ô·½
-                                Msg.SetOpt(OPT_ADDITEM);//ÉèÖÃ²Ù×÷ÀàĞÍ
+                                Msg.SetIsMyself(FALSE);//å‘ç»™å¯¹æ–¹
+                                Msg.SetOpt(OPT_ADDITEM);//è®¾ç½®æ“ä½œç±»å‹
                                 Msg.SetToIndex(result);
                                 _EXCHANGE_ITEM Exitem;
                                 Exitem.byNumber = ItemTemp.GetItemCount();
@@ -148,15 +148,15 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
                             {
                                 MsgError.SetID(ERR_ILLEGAL);
                                 pGamePlayer->SendPacket(&MsgError);
-                                g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ¼ÓÈë·Ç·¨½»Ò×ÎïÆ· [%d]",    pHuman->GetName(), pIt->GetItemTableIndex() ) ;
+                                g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åŠ å…¥éæ³•äº¤æ˜“ç‰©å“ [%d]",    pHuman->GetName(), pIt->GetItemTableIndex() ) ;
                                 return PACKET_EXE_CONTINUE ;
                             }
                         }
                         else
-                        {//¿½±´Ê§°Ü
+                        {//æ‹·è´å¤±è´¥
                             MsgError.SetID(ERR_NOT_ENOUGHT_EXROOM);
                             pGamePlayer->SendPacket(&MsgError);
-                            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ½»Ò×ºĞÃ»ÓĞ×ã¹»¿Õ¼ä",    pHuman->GetName() ) ;
+                            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] äº¤æ˜“ç›’æ²¡æœ‰è¶³å¤Ÿç©ºé—´",    pHuman->GetName() ) ;
                             return PACKET_EXE_CONTINUE ;
                         }
 
@@ -191,35 +191,35 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
                             INT BagIndex = pBagContainer->GetIndexByGUID( &pIt->GetGUID() );
                             UINT    itemindex = pIt->GetItemTableIndex();
                             
-                            //´Ó½»Ò×ºĞÖĞÉ¾µô´ËÎïÆ·
+                            //ä»äº¤æ˜“ç›’ä¸­åˆ æ‰æ­¤ç‰©å“
                             if(g_ItemOperator.EraseItem(pExchangeContainer, FromIndex))
                             {
-                                //½âËø´ËÎïÆ·
+                                //è§£é”æ­¤ç‰©å“
                                 g_ItemOperator.UnlockItem( pBagContainer, BagIndex );
 
-                                //±êÊ¾´ÎÎïÆ·ÒÑ¾­·ÅÔÚ½»Ò×À¸ÖĞ,¼ÆËã¿Õ¼äÓÃ
+                                //æ ‡ç¤ºæ¬¡ç‰©å“å·²ç»æ”¾åœ¨äº¤æ˜“æ ä¸­,è®¡ç®—ç©ºé—´ç”¨
                                 pBagContainer->GetItem(BagIndex)->SetInExchange(FALSE);
 
-                                //·¢ÏûÏ¢
-                                g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] É¾³ı½»Ò×ÎïÆ· [%d]",    pHuman->GetName(), itemindex) ;
+                                //å‘æ¶ˆæ¯
+                                g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åˆ é™¤äº¤æ˜“ç‰©å“ [%d]",    pHuman->GetName(), itemindex) ;
                                 if(BagIndex>=0)
                                 {
                                     /*
-                                    ÏÈ·¢×Ô¼º
+                                    å…ˆå‘è‡ªå·±
                                     */
-                                    Msg.SetIsMyself(TRUE);//·¢¸ø×Ô¼º
-                                    Msg.SetOpt(OPT_REMOVEITEM);//ÉèÖÃ²Ù×÷ÀàĞÍ
-                                    Msg.SetToType(POS_BAG);//ÉèÖÃÄ¿µÄÀàĞÍ
-                                    Msg.SetToIndex(BagIndex);//ÉèÖÃÄ¿µÄË÷Òı
-                                    Msg.SetFromIndex(FromIndex);//ÉèÖÃÀ´Ô´Ë÷Òı
+                                    Msg.SetIsMyself(TRUE);//å‘ç»™è‡ªå·±
+                                    Msg.SetOpt(OPT_REMOVEITEM);//è®¾ç½®æ“ä½œç±»å‹
+                                    Msg.SetToType(POS_BAG);//è®¾ç½®ç›®çš„ç±»å‹
+                                    Msg.SetToIndex(BagIndex);//è®¾ç½®ç›®çš„ç´¢å¼•
+                                    Msg.SetFromIndex(FromIndex);//è®¾ç½®æ¥æºç´¢å¼•
                                     pGamePlayer->SendPacket(&Msg);
 
                                     /*
-                                    ÔÙ·¢¶Ô·½
+                                    å†å‘å¯¹æ–¹
                                     */
-                                    Msg.SetIsMyself(FALSE);//·¢¸ø¶Ô·½
-                                    Msg.SetOpt(OPT_REMOVEITEM);//ÉèÖÃ²Ù×÷ÀàĞÍ
-                                    Msg.SetFromIndex(FromIndex);//ÉèÖÃÀ´Ô´Ë÷Òı
+                                    Msg.SetIsMyself(FALSE);//å‘ç»™å¯¹æ–¹
+                                    Msg.SetOpt(OPT_REMOVEITEM);//è®¾ç½®æ“ä½œç±»å‹
+                                    Msg.SetFromIndex(FromIndex);//è®¾ç½®æ¥æºç´¢å¼•
                                     pDestHuman->GetPlayer()->SendPacket(&Msg);
                                 }
                                 else
@@ -234,7 +234,7 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
                             {
                                 MsgError.SetID(ERR_ILLEGAL);
                                 pGamePlayer->SendPacket(&MsgError);
-                                g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] É¾³ı½»Ò×ºĞÎ»ÖÃ [%d] ´¦µÄÎïÆ·Ê±³ö´í",    pHuman->GetName(), FromIndex ) ;
+                                g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åˆ é™¤äº¤æ˜“ç›’ä½ç½® [%d] å¤„çš„ç‰©å“æ—¶å‡ºé”™",    pHuman->GetName(), FromIndex ) ;
                                 return PACKET_EXE_CONTINUE;
                             }
 
@@ -243,7 +243,7 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
                         {
                             MsgError.SetID(ERR_ILLEGAL);
                             pGamePlayer->SendPacket(&MsgError);
-                            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ½»Ò×ºĞÎ»ÖÃ [%d] ´¦²»´æÔÚÎïÆ·",    pHuman->GetName(), FromIndex ) ;
+                            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] äº¤æ˜“ç›’ä½ç½® [%d] å¤„ä¸å­˜åœ¨ç‰©å“",    pHuman->GetName(), FromIndex ) ;
                             return PACKET_EXE_CONTINUE;
                         }
                     }
@@ -270,16 +270,16 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
             ItemContainer*    pPetContainer = pHuman->GetPetContain();
             FromIndex = pPetContainer->GetIndexByGUID( &PetGuid );
 
-            //ÏÈ²éÒ»±é½»Ò×ºĞÖĞÊÇ²»ÊÇÒÑ¾­ÓĞ¸ÃÎïÆ·ÁË
+            //å…ˆæŸ¥ä¸€éäº¤æ˜“ç›’ä¸­æ˜¯ä¸æ˜¯å·²ç»æœ‰è¯¥ç‰©å“äº†
             for(INT i = 0; i<EXCHANGE_BOX_SIZE; i++)
             {
                 if(pExchangePetContainer->GetItem(i)->GetPetGUID() == pPetContainer->GetItem(FromIndex)->GetPetGUID() )
-                {//ÎïÆ·ÒÑ¾­ÔÚ½»Ò×ºĞÖĞ£¬¶ªÆú¸ÃÏûÏ¢
+                {//ç‰©å“å·²ç»åœ¨äº¤æ˜“ç›’ä¸­ï¼Œä¸¢å¼ƒè¯¥æ¶ˆæ¯
                     return PACKET_EXE_CONTINUE ;
                 }
             }
 
-            //×Ô¶¯ÕÒ¸ñ
+            //è‡ªåŠ¨æ‰¾æ ¼
             INT result = 
                 g_ItemOperator.CopyItem
                 (
@@ -289,30 +289,30 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
                 );
 
             if(result>=0)
-            {//¿½±´³É¹¦
+            {//æ‹·è´æˆåŠŸ
                 Item* pIt = pExchangePetContainer->GetItem(result);
-                g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ¼ÓÈë½»Ò×³èÎï [%s]",    pHuman->GetName(), pIt->GetName() ) ;
+                g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åŠ å…¥äº¤æ˜“å® ç‰© [%s]",    pHuman->GetName(), pIt->GetName() ) ;
                 if(pIt->IsEmpty() == FALSE)
                 {
-                    //ÏÈËø¶¨´ËÎïÆ·
+                    //å…ˆé”å®šæ­¤ç‰©å“
                     g_ItemOperator.LockItem( pPetContainer, FromIndex );
 
-                    //±êÊ¾´ÎÎïÆ·ÒÑ¾­·ÅÔÚ½»Ò×À¸ÖĞ,¼ÆËã¿Õ¼äÓÃ
+                    //æ ‡ç¤ºæ¬¡ç‰©å“å·²ç»æ”¾åœ¨äº¤æ˜“æ ä¸­,è®¡ç®—ç©ºé—´ç”¨
                     pPetContainer->GetItem(FromIndex)->SetInExchange(TRUE);
                     /*
-                    ÏÈ·¢×Ô¼º
+                    å…ˆå‘è‡ªå·±
                     */
-                    Msg.SetIsMyself(TRUE);//·¢¸ø×Ô¼º
-                    Msg.SetOpt(OPT_ADDPET);//ÉèÖÃ²Ù×÷ÀàĞÍ
-                    Msg.SetToIndex(result);//ÉèÖÃÄ¿µÄµØÎ»ÖÃ
-                    Msg.SetPetGuid(PetGuid);//³èÎïGUID
+                    Msg.SetIsMyself(TRUE);//å‘ç»™è‡ªå·±
+                    Msg.SetOpt(OPT_ADDPET);//è®¾ç½®æ“ä½œç±»å‹
+                    Msg.SetToIndex(result);//è®¾ç½®ç›®çš„åœ°ä½ç½®
+                    Msg.SetPetGuid(PetGuid);//å® ç‰©GUID
                     pGamePlayer->SendPacket(&Msg);
 
                     /*
-                    ÔÙ·¢¶Ô·½
+                    å†å‘å¯¹æ–¹
                     */
                     GCDetailAttrib_Pet PetMsgDetail;
-                    //×é×°GCDetailAttrib_Pet½á¹¹
+                    //ç»„è£…GCDetailAttrib_Petç»“æ„
                     Obj_Human::CalculatePetDetailAttrib(PetMsgDetail, pIt);
                     PetMsgDetail.SetTradeIndex( result );
 
@@ -326,7 +326,7 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
                 {
                     MsgError.SetID(ERR_ILLEGAL);
                     pGamePlayer->SendPacket(&MsgError);
-                    g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ¼ÓÈë·Ç·¨½»Ò×³èÎï [%s]",    pHuman->GetName(), pIt->GetName() ) ;
+                    g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åŠ å…¥éæ³•äº¤æ˜“å® ç‰© [%s]",    pHuman->GetName(), pIt->GetName() ) ;
                     return PACKET_EXE_CONTINUE ;
                 }
             }
@@ -340,30 +340,30 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
 
             if(g_ItemOperator.EraseItem(pExchangePetContainer, FromIndex))
             {
-                //½âËø´ËÎïÆ·
+                //è§£é”æ­¤ç‰©å“
                 g_ItemOperator.UnlockItem( pPetContainer, nIndexInPet );
 
-                //±êÊ¾´ÎÎïÆ·ÒÑ¾­·ÅÔÚ½»Ò×À¸ÖĞ,¼ÆËã¿Õ¼äÓÃ
+                //æ ‡ç¤ºæ¬¡ç‰©å“å·²ç»æ”¾åœ¨äº¤æ˜“æ ä¸­,è®¡ç®—ç©ºé—´ç”¨
                 pPetContainer->GetItem(nIndexInPet)->SetInExchange(FALSE);
 
-                //·¢ÏûÏ¢
-                g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] É¾³ı½»Ò×³èÎï [%s]",    pHuman->GetName(), pPetContainer->GetItem(nIndexInPet)->GetName()) ;
+                //å‘æ¶ˆæ¯
+                g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åˆ é™¤äº¤æ˜“å® ç‰© [%s]",    pHuman->GetName(), pPetContainer->GetItem(nIndexInPet)->GetName()) ;
                 if(nIndexInPet>=0)
                 {
                     /*
-                    ÏÈ·¢×Ô¼º
+                    å…ˆå‘è‡ªå·±
                     */
-                    Msg.SetIsMyself(TRUE);//·¢¸ø×Ô¼º
-                    Msg.SetOpt(OPT_REMOVEPET);//ÉèÖÃ²Ù×÷ÀàĞÍ
-                    Msg.SetPetGuid(PetGuid);//³èÎïGUID
+                    Msg.SetIsMyself(TRUE);//å‘ç»™è‡ªå·±
+                    Msg.SetOpt(OPT_REMOVEPET);//è®¾ç½®æ“ä½œç±»å‹
+                    Msg.SetPetGuid(PetGuid);//å® ç‰©GUID
                     pGamePlayer->SendPacket(&Msg);
 
                     /*
-                    ÔÙ·¢¶Ô·½
+                    å†å‘å¯¹æ–¹
                     */
-                    Msg.SetIsMyself(FALSE);//·¢¸ø¶Ô·½
-                    Msg.SetOpt(OPT_REMOVEPET);//ÉèÖÃ²Ù×÷ÀàĞÍ
-                    Msg.SetPetGuid(PetGuid);//³èÎïGUID
+                    Msg.SetIsMyself(FALSE);//å‘ç»™å¯¹æ–¹
+                    Msg.SetOpt(OPT_REMOVEPET);//è®¾ç½®æ“ä½œç±»å‹
+                    Msg.SetPetGuid(PetGuid);//å® ç‰©GUID
                     pDestHuman->GetPlayer()->SendPacket(&Msg);
                 }
                 else
@@ -377,7 +377,7 @@ UINT CGExchangeSynchItemIIHandler::Execute( CGExchangeSynchItemII* pPacket, Play
             {
                 MsgError.SetID(ERR_ILLEGAL);
                 pGamePlayer->SendPacket(&MsgError);
-                g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] É¾³ı½»Ò×ºĞÎ»ÖÃ [%d] ´¦µÄÎïÆ·Ê±³ö´í",    pHuman->GetName(), FromIndex ) ;
+                g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] åˆ é™¤äº¤æ˜“ç›’ä½ç½® [%d] å¤„çš„ç‰©å“æ—¶å‡ºé”™",    pHuman->GetName(), FromIndex ) ;
                 return PACKET_EXE_CONTINUE;
             }
         }

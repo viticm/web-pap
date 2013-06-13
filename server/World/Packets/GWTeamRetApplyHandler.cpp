@@ -16,8 +16,8 @@ UINT GWTeamRetApplyHandler::Execute( GWTeamRetApply* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-    GUID_t sGuid = pPacket->GetSourGUID();//ÉêÇëÈËµÄGUID
-    GUID_t lGuid = pPacket->GetLeaderGUID();//¶Ó³¤µÄGUID
+    GUID_t sGuid = pPacket->GetSourGUID();//ç”³è¯·äººçš„GUID
+    GUID_t lGuid = pPacket->GetLeaderGUID();//é˜Ÿé•¿çš„GUID
 
     USER* pLeaderUser = g_pOnlineUser->FindUser( lGuid );
     if( pLeaderUser==NULL )
@@ -65,7 +65,7 @@ __ENTER_FUNCTION
     }
 
     if( pPacket->GetReturn()==FALSE )
-    {//¶Ó³¤²»Í¬Òâ
+    {//é˜Ÿé•¿ä¸åŒæ„
         WGTeamError sMsg;
         sMsg.SetPlayerID( pSourUser->GetPlayerID() );
         sMsg.SetGUID( pLeaderUser->GetGUID() );
@@ -76,7 +76,7 @@ __ENTER_FUNCTION
             lGuid, sGuid );
     }
     else if( pSourUser->GetTeamID() != INVALID_ID )
-    {//ÉêÇëÈËÒÑ¾­ÊôÓÚÄ³¸ö¶ÓÎé
+    {//ç”³è¯·äººå·²ç»å±äºæŸä¸ªé˜Ÿä¼
         //WGTeamError sMsg;
         //sMsg.SetPlayerID( pSourUser->m_PlayerID );
         //sMsg.SetErrorCode( TEAM_ERROR_APPLYSOURHASTEAM );
@@ -92,13 +92,13 @@ __ENTER_FUNCTION
             lGuid, sGuid );
     }
     else
-    {//¶ÓÎé´æÔÚ
+    {//é˜Ÿä¼å­˜åœ¨
         TeamID_t tid = pLeaderUser->GetTeamID();
         Team* pTeam = g_pTeamList->GetTeam( tid );
         Assert( pTeam );
 
         if( pTeam->IsFull() )
-        {//¶ÓÎéÈËÊıÒÑ¾­ÂúÁË
+        {//é˜Ÿä¼äººæ•°å·²ç»æ»¡äº†
             WGTeamError sMsg;
             sMsg.SetPlayerID( pSourUser->GetPlayerID() );
             sMsg.SetGUID( pLeaderUser->GetGUID() );
@@ -115,7 +115,7 @@ __ENTER_FUNCTION
                 sGuid, lGuid );
         }
         else if( pTeam->Leader()->m_Member != lGuid )
-        {//¶Ó³¤GUIDºÍ¶ÓÎéÖĞ¼ÇÂ¼µÄ¶Ó³¤GUID²»·û
+        {//é˜Ÿé•¿GUIDå’Œé˜Ÿä¼ä¸­è®°å½•çš„é˜Ÿé•¿GUIDä¸ç¬¦
             WGTeamError sMsg;
             sMsg.SetPlayerID( pSourUser->GetPlayerID() );
             sMsg.SetGUID( pLeaderUser->GetGUID() );
@@ -132,28 +132,28 @@ __ENTER_FUNCTION
                 sGuid, lGuid );
         }
         else 
-        {//¼ÓÈë
-            //½«Íæ¼Ò¼ÓÈë¶ÓÎé
+        {//åŠ å…¥
+            //å°†ç©å®¶åŠ å…¥é˜Ÿä¼
             TEAMMEMBER Member;
             Member.m_Member = sGuid;
             pTeam->AddMember( &Member );
 
-            //ÉèÖÃÍæ¼Ò¶ÓÎéĞÅÏ¢
+            //è®¾ç½®ç©å®¶é˜Ÿä¼ä¿¡æ¯
             pSourUser->SetTeamID( pTeam->GetTeamID() );
-            WGTeamResult Msg1; // ·¢¸øĞÂ¶ÓÔ±µÄ
+            WGTeamResult Msg1; // å‘ç»™æ–°é˜Ÿå‘˜çš„
             Msg1.SetPlayerID( pSourUser->GetPlayerID() );
             Msg1.SetTeamID( tid );
-            WGTeamResult Msg2; // ·¢¸øÃ¿¸ö¶ÓÔ±µÄ
+            WGTeamResult Msg2; // å‘ç»™æ¯ä¸ªé˜Ÿå‘˜çš„
             Msg2.SetReturn( TEAM_RESULT_MEMBERENTERTEAM );
             Msg2.SetTeamID( tid );
             Msg2.SetGUID( sGuid );
-            Msg2.SetGUIDEx( pSourUser->GetPlayerID() ); // ½«Íæ¼ÒµÄ PlayerID ´«»Ø
+            Msg2.SetGUIDEx( pSourUser->GetPlayerID() ); // å°†ç©å®¶çš„ PlayerID ä¼ å›
             Msg2.SetSceneID( pSourUser->GetSceneID() );
             Msg2.SetName( pSourUser->GetName() );
             Msg2.SetIcon( pSourUser->GetPortrait() );
             Msg2.SetDataID( pSourUser->GetSex() );
 
-            //Í¨ÖªËùÓĞ×éÄÚµÄÍæ¼Ò
+            //é€šçŸ¥æ‰€æœ‰ç»„å†…çš„ç©å®¶
             for( int i=0; i<pTeam->MemberCount(); i++ )
             {
                 TEAMMEMBER* pMember = pTeam->Member( i );
@@ -182,14 +182,14 @@ __ENTER_FUNCTION
                 pServerPlayer->SendPacket( &Msg2 );
 
                 if( pMember->m_Member != sGuid )
-                { // ½«×Ô¼ºÒÔÍâµÄÍæ¼Ò´«¸øĞÂÍæ¼Ò
+                { // å°†è‡ªå·±ä»¥å¤–çš„ç©å®¶ä¼ ç»™æ–°ç©å®¶
                     Msg1.SetReturn( TEAM_RESULT_TEAMREFRESH );
                     Msg1.SetName( pUser->GetName() );
                     Msg1.SetIcon( pUser->GetPortrait() );
                     Msg1.SetDataID( pUser->GetSex() );
 
                     Msg1.SetGUID( pMember->m_Member );
-                    Msg1.SetGUIDEx( pUser->GetPlayerID() ); // ½«Íæ¼ÒµÄ PlayerID ´«»Ø
+                    Msg1.SetGUIDEx( pUser->GetPlayerID() ); // å°†ç©å®¶çš„ PlayerID ä¼ å›
                     Msg1.SetSceneID( pUser->GetSceneID() );
 
                     pSourServerPlayer->SendPacket( &Msg1 );

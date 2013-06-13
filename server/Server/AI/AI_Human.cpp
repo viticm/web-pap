@@ -94,7 +94,7 @@ __ENTER_FUNCTION
         return ;
     }
     if(BEHAVIOR_TYPE_AMITY == nGoodEffect)
-    {// Èç¹ûÊÇÓÑºÃµÄ¼¼ÄÜÔòÈÏÎªÊÇ¶ÓÓÑ£¬²¢ÇÒÉèÖÃ³É×Ô¼ºµÄ¸¨ÖúÕß
+    {// å¦‚æžœæ˜¯å‹å¥½çš„æŠ€èƒ½åˆ™è®¤ä¸ºæ˜¯é˜Ÿå‹ï¼Œå¹¶ä¸”è®¾ç½®æˆè‡ªå·±çš„è¾…åŠ©è€…
         Obj_Human* pHuman = (Obj_Human*)GetCharacter();
         if(NULL!=pHuman)
         {
@@ -293,7 +293,7 @@ __ENTER_FUNCTION
 
     Jump();
 
-    // Çå³ýskillQueue,autoQueueÖÐµÄÊýÖµ
+    // æ¸…é™¤skillQueue,autoQueueä¸­çš„æ•°å€¼
     m_paramAI_UseSkill.CleanUp();
     //Interrupt current action
     GetGlobalActionDelegator().InterruptCurrentAction(*pCharacter);
@@ -449,7 +449,7 @@ __ENTER_FUNCTION
             pThisHuman->Teleport( &(pReliveInfo->m_Pos) );
         }
     }
-    // ±£Ö¤Ò»¶¨»á¸´»î
+    // ä¿è¯ä¸€å®šä¼šå¤æ´»
     if(pThisHuman->GetHP() <= 0)
     {
         pThisHuman->SetHP(1);
@@ -469,7 +469,7 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Çå³ýskillQueue,autoQueueÖÐµÄÊýÖµ
+    // æ¸…é™¤skillQueue,autoQueueä¸­çš„æ•°å€¼
     m_paramAI_UseSkill.CleanUp();
     //Interrupt current action
     GetGlobalActionDelegator().InterruptCurrentAction(*GetCharacter());
@@ -509,13 +509,13 @@ __ENTER_FUNCTION
     ORESULT oResult = Move( nHandleID, wNumTargetPos, paTargetPos, bLine );
     if(OR_SUCCEEDED(oResult))
     {
-        // Í¨Öª×Ô¼ºµÄ³èÎïÒ²¿ªÊ¼ÒÆ¶¯
+        // é€šçŸ¥è‡ªå·±çš„å® ç‰©ä¹Ÿå¼€å§‹ç§»åŠ¨
         Baby_Go(paTargetPos);
-        // Çå³ýskillQueue,autoQueueÖÐµÄÊýÖµ
+        // æ¸…é™¤skillQueue,autoQueueä¸­çš„æ•°å€¼
         m_paramAI_UseSkill.CleanUp();
-        // AvoidOverLapÖØÖÃÎ»
+        // AvoidOverLapé‡ç½®ä½
         ((Obj_Human*)GetCharacter())->GetAvoidOverLap()->ResetUsedDir();
-        // ´¦Àí×é¶Ó¸úËæÂß¼­
+        // å¤„ç†ç»„é˜Ÿè·Ÿéšé€»è¾‘
         TeamMemeberToMove();
     }
     return oResult;
@@ -554,11 +554,11 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ö»ÓÐÊ¹ÓÃ¼¼ÄÜ³É¹¦µÄÇé¿öÏÂ²ÅÄÜ½øÈëcombat×´Ì¬
+    // åªæœ‰ä½¿ç”¨æŠ€èƒ½æˆåŠŸçš„æƒ…å†µä¸‹æ‰èƒ½è¿›å…¥combatçŠ¶æ€
     ORESULT oResult = UseSkill(idSkill, nLevel, idTarget, fTargetX, fTargetZ, fDir, guidTarget);
     if (OR_OK == oResult) {
         ChangeState(ESTATE_COMBAT);    
-        // Èç¹ûÊ¹ÓÃ×Ô¶¯Á¬ÐøÊÍ·ÅµÄ¼¼ÄÜÔò½øÈëÕ½¶·×´Ì¬£¬ ÕâÑùÖ»ÊÇÎª´ïµ½ËùÓÐAIÕ½¶·×´Ì¬µÄÍ³Ò»´¦Àí
+        // å¦‚æžœä½¿ç”¨è‡ªåŠ¨è¿žç»­é‡Šæ”¾çš„æŠ€èƒ½åˆ™è¿›å…¥æˆ˜æ–—çŠ¶æ€ï¼Œ è¿™æ ·åªæ˜¯ä¸ºè¾¾åˆ°æ‰€æœ‰AIæˆ˜æ–—çŠ¶æ€çš„ç»Ÿä¸€å¤„ç†
         if (FALSE == IsEnterCombatState(idSkill, nLevel, idTarget)) {
             PushSkillToQueue(idSkill, nLevel, idTarget, fTargetX, fTargetZ, fDir, guidTarget);
         }
@@ -576,7 +576,7 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ö»ÓÐÊ¹ÓÃµÀ¾ß³É¹¦µÄÇé¿öÏÂ²ÅÄÜ½øÈëcombat×´Ì¬
+    // åªæœ‰ä½¿ç”¨é“å…·æˆåŠŸçš„æƒ…å†µä¸‹æ‰èƒ½è¿›å…¥combatçŠ¶æ€
     ORESULT oResult = UseItem(nBagIndex, nTargetObj, posTarget, guidTargetPet, nTargetItem);
     if (OR_OK == oResult) {
         ChangeState(ESTATE_COMBAT);
@@ -595,7 +595,7 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ê¹µÃHumanÍ£ÏÂÀ´
+    // ä½¿å¾—Humanåœä¸‹æ¥
     Stop();
 
     ORESULT oResult = UseAbility( );
@@ -620,7 +620,7 @@ __LEAVE_FUNCTION
 //    if ( !(GetCharacter()->IsActiveObj()) )
 //        return OR_ERROR;
 //
-//    // Ê¹µÃHumanÍ£ÏÂÀ´
+//    // ä½¿å¾—Humanåœä¸‹æ¥
 //    Stop();
 //
 //    ChangeState(ESTATE_DEAD);
@@ -656,7 +656,7 @@ __ENTER_FUNCTION
     if( pNPC->GetObjType() == Obj::OBJ_TYPE_HUMAN)
         return OR_OK;        
 
-    // Ê¹µÃHumanÍ£ÏÂÀ´
+    // ä½¿å¾—Humanåœä¸‹æ¥
     if(pCharacter->GetCharacterLogic() == CHARACTER_LOGIC_MOVE)
     {
         Stop();
@@ -670,7 +670,7 @@ __ENTER_FUNCTION
             return OR_ERROR;
         }
         if (TRUE == pAIMonster->IsConvoyNPC())
-        {// Èç¹ûÊÇ»¤ËÍNPCÔòÊ²Ã´¶¼²»´¦Àí
+        {// å¦‚æžœæ˜¯æŠ¤é€NPCåˆ™ä»€ä¹ˆéƒ½ä¸å¤„ç†
             return OR_OK;
         }
         else
@@ -715,7 +715,7 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ê¹µÃHumanÍ£ÏÂÀ´
+    // ä½¿å¾—Humanåœä¸‹æ¥
     Stop();
 
     Obj* pNPC = pCharacter->getScene()->GetObjManager()->GetObj(idNPC);
@@ -756,10 +756,10 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ê¹µÃHumanÍ£ÏÂÀ´
+    // ä½¿å¾—Humanåœä¸‹æ¥
     Stop();
 
-    //Ð£Ñé´ËHumanÉíÉÏÈÎÎñÊý¾Ý
+    //æ ¡éªŒæ­¤Humanèº«ä¸Šä»»åŠ¡æ•°æ®
     Assert(pCharacter->GetObjType()==Obj::OBJ_TYPE_HUMAN) ;
     if( !pCharacter->getScene()->OnAcceptMissionCheck((Obj_Human*)pCharacter,idMissionScript) )
     {
@@ -838,7 +838,7 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ê¹µÃHumanÍ£ÏÂÀ´
+    // ä½¿å¾—Humanåœä¸‹æ¥
     Stop();
 
     Obj_Character *pCharacter = GetCharacter();
@@ -880,7 +880,7 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ê¹µÃHumanÍ£ÏÂÀ´
+    // ä½¿å¾—Humanåœä¸‹æ¥
     Stop();
 
     Obj_Character *pCharacter = GetCharacter();
@@ -923,7 +923,7 @@ ORESULT AI_Human::PushCommand_MissionCheck( ObjID_t idNPC, ScriptID_t idMissionS
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ê¹µÃHumanÍ£ÏÂÀ´
+    // ä½¿å¾—Humanåœä¸‹æ¥
     Stop();
 
     Obj_Character *pCharacter = GetCharacter();
@@ -970,7 +970,7 @@ __ENTER_FUNCTION
     if ( !(GetCharacter()->IsActiveObj()) )
         return OR_ERROR;
 
-    // Ê¹µÃHumanÍ£ÏÂÀ´
+    // ä½¿å¾—Humanåœä¸‹æ¥
     Stop();
 
     Obj_Character *pCharacter = GetCharacter();
@@ -1019,7 +1019,7 @@ __LEAVE_FUNCTION
 }
 
 ORESULT AI_Human::PushCommand_TeamFollow( )
-{ // ÕâÀïÓ¦¸Ã¼ÓÉÏ¶Ô½øÈë¸úËæÌõ¼þµÄÌõ¼þÅÐ¶Ï
+{ // è¿™é‡Œåº”è¯¥åŠ ä¸Šå¯¹è¿›å…¥è·Ÿéšæ¡ä»¶çš„æ¡ä»¶åˆ¤æ–­
 __ENTER_FUNCTION
 
     if ( !(GetCharacter()->IsActiveObj()) )
@@ -1079,13 +1079,13 @@ __LEAVE_FUNCTION
 }
 
 //#endif
-// pHuman ¸ù¾Ý fDist µÄÔ¶½ü ÒÔ×î¼Ñ·½Ê½ ÒÆ¶¯µ½ pPos Î»ÖÃ
+// pHuman æ ¹æ® fDist çš„è¿œè¿‘ ä»¥æœ€ä½³æ–¹å¼ ç§»åŠ¨åˆ° pPos ä½ç½®
 VOID AI_Human::FollowMove( Obj_Human* pHuman, WORLD_POS* pPos, FLOAT fDist )
 {
 __ENTER_FUNCTION
 
     if ( fDist>g_Config.m_ConfigInfo.m_nAvailableFollowDist )
-    { // ½«Íæ¼Ò³¶µ½ pPos Î»ÖÃ£¬²¢ÇÒ·¢ËÍÏûÏ¢Í¨Öª¿Í»§¶Ë
+    { // å°†çŽ©å®¶æ‰¯åˆ° pPos ä½ç½®ï¼Œå¹¶ä¸”å‘é€æ¶ˆæ¯é€šçŸ¥å®¢æˆ·ç«¯
         pHuman->__OutOfTeamFollowRange();
     }
     else
@@ -1100,7 +1100,7 @@ __ENTER_FUNCTION
                 pHuman->__SetTeamFollowSpeedUp( TRUE );
             }
         }
-        else if ( fDist<1.0 )// Õý³£¾àÀë·¶Î§ÄÚ
+        else if ( fDist<1.0 )// æ­£å¸¸è·ç¦»èŒƒå›´å†…
         {
             if ( pHuman->__GetTeamFollowSpeedUp()==TRUE )
             {
@@ -1108,7 +1108,7 @@ __ENTER_FUNCTION
                 pHuman->__SetTeamFollowSpeedUp( FALSE );
             }
         }
-        // else { 1.0 ~ 3.5 Ã×Ö®¼ä²»½øÐÐËÙ¶Èµ÷Õû }
+        // else { 1.0 ~ 3.5 ç±³ä¹‹é—´ä¸è¿›è¡Œé€Ÿåº¦è°ƒæ•´ }
     }
 
     if( Obj_Move(pPos) == OR_OK )
@@ -1120,7 +1120,7 @@ __LEAVE_FUNCTION
 }
 
 ORESULT AI_Human::StartTeamFollow( VOID )
-{ // ÉèÖÃ×Ô¼ºµÄËÙ¶ÈÎª¶Ó³¤µÄËÙ¶È
+{ // è®¾ç½®è‡ªå·±çš„é€Ÿåº¦ä¸ºé˜Ÿé•¿çš„é€Ÿåº¦
 __ENTER_FUNCTION
 
     Obj_Human* pHuman = (Obj_Human*)GetCharacter();
@@ -1207,9 +1207,9 @@ VOID AI_Human::AI_Logic_Combat( UINT uTime )
                     pHuman->SendOperateResultMsg(OR_COOL_DOWNING);
                 }
                 m_paramAI_UseItem.CleanUp();
-                return ; //ÉÐÎ´ÀäÈ´
+                return ; //å°šæœªå†·å´
             }
-            // µ±Ç°×´Ì¬ÊÇ·ñÏÞÖÆÊ¹ÓÃ¼¼ÄÜ
+            // å½“å‰çŠ¶æ€æ˜¯å¦é™åˆ¶ä½¿ç”¨æŠ€èƒ½
             if(FALSE==pCharacter->Skill_CanUseThisSkillInThisStatus(nItemSkill))
             {
                 Obj_Human* pHuman = static_cast<Obj_Human*>(GetCharacter());
@@ -1257,7 +1257,7 @@ VOID AI_Human::AI_Logic_Combat( UINT uTime )
             if(FALSE ==CheckTargetValid(nQueuedSkill, m_paramAI_UseSkill.m_nQueueTargetObjID))
             {
                 m_paramAI_UseSkill.CleanUp();
-                // Ä¿±êÒÑ¾­ÎÞÐ§£¬ÈçËÀÍö
+                // ç›®æ ‡å·²ç»æ— æ•ˆï¼Œå¦‚æ­»äº¡
                 ChangeState(ESTATE_IDLE);
                 rMe.SetLockedTarget(INVALID_ID);
                 return ;
@@ -1270,9 +1270,9 @@ VOID AI_Human::AI_Logic_Combat( UINT uTime )
                     pHuman->SendOperateResultMsg(OR_COOL_DOWNING);
                 }
                 m_paramAI_UseSkill.m_nQueuedSkill = INVALID_ID;
-                return ; //ÉÐÎ´ÀäÈ´
+                return ; //å°šæœªå†·å´
             }
-            // µ±Ç°×´Ì¬ÊÇ·ñÏÞÖÆÊ¹ÓÃ¼¼ÄÜ
+            // å½“å‰çŠ¶æ€æ˜¯å¦é™åˆ¶ä½¿ç”¨æŠ€èƒ½
             if(FALSE==pCharacter->Skill_CanUseThisSkillInThisStatus(nQueuedSkill))
             {
                 Obj_Human* pHuman = static_cast<Obj_Human*>(GetCharacter());
@@ -1300,16 +1300,16 @@ VOID AI_Human::AI_Logic_Combat( UINT uTime )
             if(FALSE ==CheckTargetValid(nAutoActivedSkill, m_paramAI_UseSkill.m_nAutoShotTargetObjID))
             {
                 m_paramAI_UseSkill.CleanUp();
-                // Ä¿±êÒÑ¾­ÎÞÐ§£¬ÈçËÀÍö
+                // ç›®æ ‡å·²ç»æ— æ•ˆï¼Œå¦‚æ­»äº¡
                 ChangeState(ESTATE_IDLE);
                 rMe.SetLockedTarget(INVALID_ID);
                 return ;
             }
             if(FALSE==rMe.Skill_IsSkillCooldowned(nAutoActivedSkill))
             {
-                return ; //ÉÐÎ´ÀäÈ´
+                return ; //å°šæœªå†·å´
             }
-            // µ±Ç°×´Ì¬ÊÇ·ñÏÞÖÆÊ¹ÓÃ¼¼ÄÜ
+            // å½“å‰çŠ¶æ€æ˜¯å¦é™åˆ¶ä½¿ç”¨æŠ€èƒ½
             if(FALSE==pCharacter->Skill_CanUseThisSkillInThisStatus(nAutoActivedSkill))
             {
                 return ;
@@ -1367,8 +1367,8 @@ VOID AI_Human::AI_Logic_Dead( UINT uTime )
 }
 
 /*
-¾àÀë¹ý´ó½øÈë¼ÓËÙ×´Ì¬; ¾àÀëÕý³£½øÈë³£ËÙ×´Ì¬; 
-¾àÀë³¬¹ýÏÞ¶¨À­³¶µ½Ö¸¶¨µã; ¼ÆËãÏÂÒ»¸öÄ¿±êµã
+è·ç¦»è¿‡å¤§è¿›å…¥åŠ é€ŸçŠ¶æ€; è·ç¦»æ­£å¸¸è¿›å…¥å¸¸é€ŸçŠ¶æ€; 
+è·ç¦»è¶…è¿‡é™å®šæ‹‰æ‰¯åˆ°æŒ‡å®šç‚¹; è®¡ç®—ä¸‹ä¸€ä¸ªç›®æ ‡ç‚¹
 */
 VOID AI_Human::AI_Logic_TeamFollow( UINT uTime )
 {
@@ -1392,11 +1392,11 @@ __ENTER_FUNCTION
 
 #ifdef ___TEAMFOLLOW_MEMBERFOLLOW___
 
-    const Obj_Human* pGuide; // Ç°ÃæÄÇ¸öÈË
+    const Obj_Human* pGuide; // å‰é¢é‚£ä¸ªäºº
     pGuide = pHuman->GetTeamInfo()->GetMyGuide();
 
     if ( pGuide==NULL )
-    { // Ã»ÓÐÈËÔÚ×Ô¼ºÇ°Ãæ£¬±ÈÈç¶¼»¹Ã»ÓÐ¹ý³¡¾°£¬ÄÇÃ´¾ÍÊ²Ã´Ò²²»¸É
+    { // æ²¡æœ‰äººåœ¨è‡ªå·±å‰é¢ï¼Œæ¯”å¦‚éƒ½è¿˜æ²¡æœ‰è¿‡åœºæ™¯ï¼Œé‚£ä¹ˆå°±ä»€ä¹ˆä¹Ÿä¸å¹²
         return ;
     }
 
@@ -1419,7 +1419,7 @@ __ENTER_FUNCTION
         }
     }
     else if ( ++m_TeamFollowCheckTick>9 )
-    { // ÔË¶¯¹ý³ÌÖÐÒ²¿ÉÄÜµ÷ÕûÂ·¾¶£¬µ÷ÕûËÙ¶È£¬µÈµÈ
+    { // è¿åŠ¨è¿‡ç¨‹ä¸­ä¹Ÿå¯èƒ½è°ƒæ•´è·¯å¾„ï¼Œè°ƒæ•´é€Ÿåº¦ï¼Œç­‰ç­‰
         m_TeamFollowCheckTick = 0;
 
         const WORLD_POS* pAimPos = pGuide->__GetWorldPos();
@@ -1447,7 +1447,7 @@ __ENTER_FUNCTION
     if (NULL != pSkillTemplate) 
     {
         if (pSkillTemplate->GetSelectType() == SELECT_TYPE_CHARACTER )
-        {// ÐèÒªÑ¡Ôñ½ÇÉ«Ä¿±êµÄ²Å½øÐÐÏÂÁÐµÄÅÐ¶Ï
+        {// éœ€è¦é€‰æ‹©è§’è‰²ç›®æ ‡çš„æ‰è¿›è¡Œä¸‹åˆ—çš„åˆ¤æ–­
             Obj* pObj = GetCharacter()->GetSpecificObjInSameSceneByID(TargetID);
             if(NULL==pObj)
             {
@@ -1465,11 +1465,11 @@ __ENTER_FUNCTION
             {
                 BOOL bAlive = pCharacter->IsAlive();
                 if (bAlive && bMustAlive)
-                {// ¼¼ÄÜÖ»¶Ô»îÄ¿±êÓÐÐ§
+                {// æŠ€èƒ½åªå¯¹æ´»ç›®æ ‡æœ‰æ•ˆ
                     return TRUE;
                 }
                 else if (!bAlive && bMustDead)
-                {// ¼¼ÄÜÖ»¶ÔËÀÄ¿±êÓÐÐ§
+                {// æŠ€èƒ½åªå¯¹æ­»ç›®æ ‡æœ‰æ•ˆ
                     return TRUE;
                 }
                 else
@@ -1507,10 +1507,10 @@ VOID AI_Human::TeamMemeberToMove(VOID)
 __ENTER_FUNCTION
 #ifdef ___TEAMFOLLOW_LEADERDRIVEN___
 
-    // ×é¶Ó¸úËæµÄ¶Ó³¤À­¶ÓÔ±Ä£Ê½
+    // ç»„é˜Ÿè·Ÿéšçš„é˜Ÿé•¿æ‹‰é˜Ÿå‘˜æ¨¡å¼
     INT nFollowedMembersCount = ((Obj_Human*)pCharacter)->__GetFollowedMembersCount();
     if ( nFollowedMembersCount>1 )
-    { // µÚÒ»¸öÊÇ×Ô¼º£¬ËùÒÔ´óÓÚ 1 ²Åµ½ÕâÀï
+    { // ç¬¬ä¸€ä¸ªæ˜¯è‡ªå·±ï¼Œæ‰€ä»¥å¤§äºŽ 1 æ‰åˆ°è¿™é‡Œ
         int nNodeCount = wNumTargetPos;
         WORLD_POS aNodePos[MAX_CHAR_PATH_NODE_NUMBER];
         Obj_Human* pHuman = ((Obj_Human*)pCharacter);
@@ -1540,12 +1540,12 @@ __ENTER_FUNCTION
             pMoveMember->m_pHuman->getScene()->GetMap()->GetPathFinder()->FindPath(
                 &MoveMemberPos,
                 &PrevMemberPos,
-                aAppendNodePos, // Ëã³öºÍÇ°Ò»¸ö¶ÓÓÑÖ®¼äµÄÂ·¾¶
+                aAppendNodePos, // ç®—å‡ºå’Œå‰ä¸€ä¸ªé˜Ÿå‹ä¹‹é—´çš„è·¯å¾„
                 nAppendNodeCount,
                 pCharacter->GetDriverLevel());    
 
             for( INT iAppend=0; iAppend<nNodeCount && nAppendNodeCount<=MAX_CHAR_PATH_NODE_NUMBER; ++iAppend )
-            { // ½«Ç°Ò»¸ö¶ÓÓÑµÄÂ·¾¶¼Ó¸½µ½×Ô¼ºµÄÂ·¾¶Àï
+            { // å°†å‰ä¸€ä¸ªé˜Ÿå‹çš„è·¯å¾„åŠ é™„åˆ°è‡ªå·±çš„è·¯å¾„é‡Œ
                 aAppendNodePos[nAppendNodeCount++] = aNodePos[iAppend];
             }
 
@@ -1558,11 +1558,11 @@ __ENTER_FUNCTION
             FLOAT fDist = MySqrt( PosBeforeLast, LastPos );
 
             if ( fDist<1.0 )
-            { // Èç¹û×îºóÒ»¶ÎÂ·¾¶Ì«¶Ì£¬ÔòÖ±½ÓÈ¥µô
+            { // å¦‚æžœæœ€åŽä¸€æ®µè·¯å¾„å¤ªçŸ­ï¼Œåˆ™ç›´æŽ¥åŽ»æŽ‰
                 --nAppendNodeCount;
             }
             else if ( fDist<1.5 )
-            { // Èç¹û×îºóÒ»¶ÎÂ·¾¶²»ÊÇÌ«³¤£¬Ôò×îºóÒ»¸ö¹ÕÍä¾Í²»×ßÁË
+            { // å¦‚æžœæœ€åŽä¸€æ®µè·¯å¾„ä¸æ˜¯å¤ªé•¿ï¼Œåˆ™æœ€åŽä¸€ä¸ªæ‹å¼¯å°±ä¸èµ°äº†
                 --nAppendNodeCount;
                 GetFollowPos( aAppendNodePos[nAppendNodeCount-1], PosBeforeLast, LastPos, fDist);
             }
@@ -1571,7 +1571,7 @@ __ENTER_FUNCTION
                 GetFollowPos( aAppendNodePos[nAppendNodeCount-1], PosBeforeLast, LastPos, fDist);
             }
 
-            // ÔÝÊ±²»¿¼ÂÇÊ§°ÜÇé¿ö
+            // æš‚æ—¶ä¸è€ƒè™‘å¤±è´¥æƒ…å†µ
             // pMoveMember->m_pHuman->GetHumanAI()->SetHumanAI( HUMAN_AI_MOVE );
             pMoveMember->m_pHuman->Do_Move( nHandleID, nAppendNodeCount, aAppendNodePos, TRUE );
 
@@ -1593,7 +1593,7 @@ __ENTER_FUNCTION
                     msgDiscardEquipResult.SetEquipPoint( (BYTE)(anEquipIndex[nEquipPoint]) );
                     msgDiscardEquipResult.SetItemTableIndex( pEquip->GetItemTableIndex() );
                     ((GamePlayer*)(pHuman->GetPlayer()))->SendPacket(&msgDiscardEquipResult);
-                    //Èç¹û¿É¼û
+                    //å¦‚æžœå¯è§
                     if(pHuman->IsVisualPart(nEquipPoint))
                     {    
                         GCCharEquipment msgCharEquipment;
@@ -1637,7 +1637,7 @@ __ENTER_FUNCTION
         pCharacter->SetLockedTarget(idTarget);
     }
     if(TRUE == pSkill->IsAutoShotSkill()&&Obj::OBJ_TYPE_HUMAN==pCharacter->GetObjType())
-    {// Ö»ÓÐ×Ô¶¯Á¬ÐøÊÍ·ÅµÄ¼¼ÄÜ²ÅÄÜ½øÈë¡®Õ½¶·¡¯×´Ì¬
+    {// åªæœ‰è‡ªåŠ¨è¿žç»­é‡Šæ”¾çš„æŠ€èƒ½æ‰èƒ½è¿›å…¥â€˜æˆ˜æ–—â€™çŠ¶æ€
         m_paramAI_UseSkill.m_nAutoShotSkill = idSkill;
         m_paramAI_UseSkill.m_nSkillLevel = nLevel;
         m_paramAI_UseSkill.m_nAutoShotTargetObjID = idTarget;
@@ -1665,7 +1665,7 @@ __ENTER_FUNCTION
         {
             if(idSkill==rParams.GetActivatedSkill())
             {
-                return; //¹ýÂËµô¶à´ÎÖØ¸´°´¼¼ÄÜ
+                return; //è¿‡æ»¤æŽ‰å¤šæ¬¡é‡å¤æŒ‰æŠ€èƒ½
             }
         }
 
@@ -1697,7 +1697,7 @@ __ENTER_FUNCTION
         {
             if(nBagIndex==rParams.GetBagIndexOfDepletedItem())
             {
-                return;//¹ýÂËµô¶à´ÎÖØ¸´ÓÃÎïÆ·
+                return;//è¿‡æ»¤æŽ‰å¤šæ¬¡é‡å¤ç”¨ç‰©å“
             }
         }
         m_paramAI_UseItem.m_BagIndex        = nBagIndex;
@@ -1726,7 +1726,7 @@ __ENTER_FUNCTION
     if ( pHuman != NULL )
     {
         if ( pHuman->__GetTeamFollowFlag() )
-        { // Èç¹û´¦ÓÚ×é¶Ó¸úËæ×´Ì¬£¬ÔòÍ£Ö¹¸úËæ×´Ì¬
+        { // å¦‚æžœå¤„äºŽç»„é˜Ÿè·ŸéšçŠ¶æ€ï¼Œåˆ™åœæ­¢è·ŸéšçŠ¶æ€
             pHuman->__StopTeamFollow( TRUE );
         }
     }
@@ -1737,7 +1737,7 @@ VOID AI_Human::RleasePet_After_Die()
 {
 __ENTER_FUNCTION
     //////////////////////////////////////////////////////
-    //½«Íæ¼ÒÉíÉÏµÄ³èÎïÈ«²¿ÖÃ³ÉÕ½¶·×´Ì¬
+    //å°†çŽ©å®¶èº«ä¸Šçš„å® ç‰©å…¨éƒ¨ç½®æˆæˆ˜æ–—çŠ¶æ€
     Obj_Human* pHuman = ((Obj_Human*)GetCharacter());
     if ( pHuman != NULL )
     {
@@ -1756,11 +1756,11 @@ __ENTER_FUNCTION
 
     m_paramAI_Dead.m_AutoTimer.BeginTimer( g_Config.m_ConfigInfo.m_OutGhostTime, g_pTimeManager->CurrentTime() );
 
-    // ¼ì²â×ÔÉíÓÐÃ»ÓÐ±»¶¯¸´»îµÄ¼¼ÄÜ
+    // æ£€æµ‹è‡ªèº«æœ‰æ²¡æœ‰è¢«åŠ¨å¤æ´»çš„æŠ€èƒ½
     //
     //inerrupt skill execution
     m_paramAI_UseSkill.CleanUp();
-    // ·¢ËÍÖ÷½ÇËÀÍöµÄÏûÏ¢µ½¿Í»§¶Ë
+    // å‘é€ä¸»è§’æ­»äº¡çš„æ¶ˆæ¯åˆ°å®¢æˆ·ç«¯
     BOOL bCanRelive = ((Obj_Human*)GetCharacter())->IsCanRelive();
 
     GCPlayerDie msgPlayerDie;
@@ -1798,7 +1798,7 @@ __LEAVE_FUNCTION
 VOID AI_Human::PenaltyType_After_Die(INT& nPenaltyID, ObjID_t idKiller)
 {
 __ENTER_FUNCTION
-    // ËÀÍö³Í·£
+    // æ­»äº¡æƒ©ç½š
     Obj_Character* pCharacter = GetCharacter();
     if (!pCharacter) {
         return ;
@@ -1845,7 +1845,7 @@ __ENTER_FUNCTION
     {
     case Obj::OBJ_TYPE_HUMAN:
         {
-            // ÊÇ·ñÎªÇÐ´èµÄÄ¿±êÍæ¼Ò
+            // æ˜¯å¦ä¸ºåˆ‡ç£‹çš„ç›®æ ‡çŽ©å®¶
             if ( FALSE )
             {
                 nDieType = HUMAN_DIE_TYPE_INTERCHANGE;
@@ -1861,7 +1861,7 @@ __ENTER_FUNCTION
             Obj_Character *pReadyKiller = ((Obj_Pet*)pKiller)->GetOwner();
             if ( pReadyKiller->GetObjType() == Obj::OBJ_TYPE_HUMAN )
             {
-                // ÊÇ·ñÎªÇÐ´èµÄÄ¿±êÍæ¼Ò
+                // æ˜¯å¦ä¸ºåˆ‡ç£‹çš„ç›®æ ‡çŽ©å®¶
                 if ( FALSE )
                 {
                     nDieType = HUMAN_DIE_TYPE_INTERCHANGE;
@@ -2048,7 +2048,7 @@ VOID AI_Human::Penalty_EquipDur_After_Die(const _DIE_PENALTY_INFO* pPenaltyInfo,
         return ;
     }
 
-    // ×°±¸ÄÍ¾Ã¶ÈËðÊ§
+    // è£…å¤‡è€ä¹…åº¦æŸå¤±
     if ( pPenaltyInfo->m_bPercent_EquipDurMin && pPenaltyInfo->m_bPercent_EquipDurMax )
     {
         INT nMinEquipDurPercent, nMaxEquipDurPercent;
@@ -2098,7 +2098,7 @@ VOID AI_Human::Penalty_ItemDrop_After_Die(const _DIE_PENALTY_INFO* pPenaltyInfo,
         return ;
     }
 
-    // ÎïÆ·µôÂä
+    // ç‰©å“æŽ‰è½
     if ( pPenaltyInfo->m_bPercent_ItemDropMin && pPenaltyInfo->m_bPercent_ItemDropMax )
     {
         INT nMinItemDropPercent, nMaxItemDropPercent;
@@ -2115,7 +2115,7 @@ VOID AI_Human::Penalty_ItemDrop_After_Die(const _DIE_PENALTY_INFO* pPenaltyInfo,
             nItemDropPercent = nMinItemDropPercent;
         }
 
-        // µô³ö
+        // æŽ‰å‡º
         if ( rand()%100 < nItemDropPercent )
         {
             INT nSize = pHuman->GetBaseContain()->GetContainerSize() - pHuman->GetBaseContain()->CalcItemSpace();
@@ -2227,7 +2227,7 @@ __ENTER_FUNCTION
     if (pPenaltyInfo == NULL || pHuman == NULL)  {
         return ;
     }
-    // ×°±¸µôÂä
+    // è£…å¤‡æŽ‰è½
     if ( pPenaltyInfo->m_bPercent_EquipDropMin && pPenaltyInfo->m_bPercent_EquipDropMax )
     {
         INT nMinEquipDropPercent, nMaxEquipDropPercent;
@@ -2244,7 +2244,7 @@ __ENTER_FUNCTION
             nEquipDropPercent = nMinEquipDropPercent;
         }
 
-        // µô³ö
+        // æŽ‰å‡º
         if ( rand()%100 < nEquipDropPercent )
         {
             Item *pEquipTemp;
@@ -2286,7 +2286,7 @@ __ENTER_FUNCTION
                 msgDiscardEquipResult.SetEquipPoint( (BYTE)(anEquipIndex[nEquipPoint]) );
                 msgDiscardEquipResult.SetItemTableIndex( pEquip->GetItemTableIndex() );
                 ((GamePlayer*)(pHuman->GetPlayer()))->SendPacket(&msgDiscardEquipResult);
-                //Èç¹û¿É¼û
+                //å¦‚æžœå¯è§
                 if(pHuman->IsVisualPart(nEquipPoint))
                 {    
                     GCCharEquipment msgCharEquipment;
@@ -2442,7 +2442,7 @@ __ENTER_FUNCTION
 //    }
 //    if(FALSE==rMe.CanUseSkillNow())
 //    {
-//        return OR_BUSY; //»¹ÔÚÊ¹ÓÃ¼¼ÄÜÄØ
+//        return OR_BUSY; //è¿˜åœ¨ä½¿ç”¨æŠ€èƒ½å‘¢
 //    }
 //
 //    // if( ... )
@@ -2474,12 +2474,12 @@ __ENTER_FUNCTION
 //BOOL AI_Human::CanInterruptCurrentAI( ENUM_HUMAN_AI newAI )
 //{
 //    switch( GetHumanAI() )
-//    { // ¿´¿´µ±Ç° AI
+//    { // çœ‹çœ‹å½“å‰ AI
 //    case HUMAN_AI_TEAMFOLLOW:
 //        {
 //            switch( newAI )
 //            {
-//            case HUMAN_AI_DEAD: // Ö»ÓÐËÀÍö²ÅÔÊÐí
+//            case HUMAN_AI_DEAD: // åªæœ‰æ­»äº¡æ‰å…è®¸
 //            case HUMAN_AI_IDLE:
 //                return TRUE;
 //            case HUMAN_AI_MOVE:
@@ -2514,7 +2514,7 @@ __ENTER_FUNCTION
 //        return OR_LIMIT_MOVE;
 //    }
 //
-//    // ÊÇ·ñÏÞÖÆÒÆ¶¯
+//    // æ˜¯å¦é™åˆ¶ç§»åŠ¨
 //    if ( pCharacter->IsLimitMove() )
 //    {
 //        GCArrive    msgArrive;

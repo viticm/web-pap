@@ -70,7 +70,7 @@ BOOL DBEquipBaseList::ParseResult(VOID* pResult)
     INT       ErrorCode;
 
 
-    //¼ÓÔØ»ù±¾ÊôĞÔ
+    //åŠ è½½åŸºæœ¬å±æ€§
     for(INT i =0;i<HEQUIP_NUMBER;i++)
     {
         if(!mInterface->Fetch())

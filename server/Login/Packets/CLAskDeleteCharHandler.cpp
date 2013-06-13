@@ -36,7 +36,7 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
 
         if(pLoginPlayer->GetPlayerStatus()!=PS_LOGIN_NORMAL)
         {
-            //Ã»ÓĞÈ¨ÏŞ£¬Ê²Ã´Ò²²»×ö
+            //æ²¡æœ‰æƒé™ï¼Œä»€ä¹ˆä¹Ÿä¸åš
             return PACKET_EXE_CONTINUE;
         }
 
@@ -44,7 +44,7 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
 
         if(!pLoginPlayer->IsGUIDOwner(TryLoginGuid))
         {
-            //ÓÃ»§²Ù×÷·Ç·¨,ÓÃ»§²»ÊÇÇëÇó½ÇÉ«µÄËùÓĞÕß
+            //ç”¨æˆ·æ“ä½œéæ³•,ç”¨æˆ·ä¸æ˜¯è¯·æ±‚è§’è‰²çš„æ‰€æœ‰è€…
             LCRetDeleteChar Msg;
             Msg.SetResult(ASKDELETECHAR_NOT_OWNER);
             pLoginPlayer->SendPacket(&Msg);
@@ -57,7 +57,7 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
         {
             LCRetDeleteChar Msg;
             Msg.SetResult(ASKDELETECHAR_OP_TIMES);
-            //·¢ËÍDB²Ù×÷Æµ·±ÏûÏ¢
+            //å‘é€DBæ“ä½œé¢‘ç¹æ¶ˆæ¯
             pLoginPlayer->SendPacket(&Msg);
             Log::SaveLog(LOGIN_LOGFILE, "CLAskDeleteCharHandler::Execute()....database busy,acc=%s,tryguid=%X",
             pLoginPlayer->GetAccount(),TryLoginGuid) ;
@@ -68,15 +68,15 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
         //pPacket->SetPlayerID(pLoginPlayer->PlayerID());
         //pPacket->SetAccount(pLoginPlayer->GetAccount());
 
-        ////½«Íæ¼Ò²Ù×÷¼ÓÈëDB ¶ÓÁĞ
-        ////²¢ÇÒÉèÖÃ×îºó²Ù×÷Ê±¼ä
+        ////å°†ç©å®¶æ“ä½œåŠ å…¥DB é˜Ÿåˆ—
+        ////å¹¶ä¸”è®¾ç½®æœ€åæ“ä½œæ—¶é—´
         //if(g_pDBThreadManager->SendPacket(pPacket,pLoginPlayer->PlayerID()))
-        //{//¼ÓÈë³É¹¦£¬½«ÏûÏ¢·¢ËÍµ½DB´¦Àí
+        //{//åŠ å…¥æˆåŠŸï¼Œå°†æ¶ˆæ¯å‘é€åˆ°DBå¤„ç†
         //    pLoginPlayer->m_LastDBOpTime = uTime;    
         //    return PACKET_EXE_NOTREMOVE;    
         //}
         //else
-        //{//DB Ñ¹Á¦¹ı´ó£¬ÈÃÓÃ»§ÖØĞÂ³¢ÊÔ
+        //{//DB å‹åŠ›è¿‡å¤§ï¼Œè®©ç”¨æˆ·é‡æ–°å°è¯•
         //    LCRetDeleteChar Msg;
         //    Msg.SetResult(ASKDELETECHAR_SERVER_BUSY);
         //    pLoginPlayer->SendPacket(&Msg);
@@ -104,7 +104,7 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
         LCRetDeleteChar* pMsg = (LCRetDeleteChar*)g_pPacketFactoryManager->CreatePacket(PACKET_LC_RETDELETECHAR);
         if(!pMsg)
         {
-            AssertEx(FALSE,"´´½¨ LCRetDeleteChar ÏûÏ¢Ê§°Ü");
+            AssertEx(FALSE,"åˆ›å»º LCRetDeleteChar æ¶ˆæ¯å¤±è´¥");
         }
 
         if(pLoginPlayer->GetDBOperating() == TRUE)
@@ -112,14 +112,14 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
             pMsg->SetAccount(pPacket->GetAccount());
             pMsg->SetResult(ASKDELETECHAR_SERVER_BUSY);
             g_pProcessManager->SendPacket(pMsg,PlayerID);
-            Log::SaveLog( LOGIN_LOGFILE, "CLAskDeleteCharHandler::Execute()....Êı¾İ¿â²Ù×÷³åÍ»!") ;
+            Log::SaveLog( LOGIN_LOGFILE, "CLAskDeleteCharHandler::Execute()....æ•°æ®åº“æ“ä½œå†²çª!") ;
             return PACKET_EXE_NOTREMOVE;
         }
 
-        //¼ì²éGUID ÊÇ·ñÕıÈ·
+        //æ£€æŸ¥GUID æ˜¯å¦æ­£ç¡®
         if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount())!= 0)
         {
-            //Ó¦¸ÃÊÇÒ»´Î´íÎó²Ù×÷
+            //åº”è¯¥æ˜¯ä¸€æ¬¡é”™è¯¯æ“ä½œ
             Log::SaveLog(LOGIN_LOGFILE, "ERROR: CLAskDeleteChar DBOperation Errors,acc = %s,Packet acc = %s",
                 pLoginPlayer->GetAccount(),pPacket->GetAccount()) ;
             return PACKET_EXE_CONTINUE;
@@ -130,14 +130,14 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
         if(!pRetListMsg)
         {
             
-            AssertEx(FALSE,"´´½¨ LCRetCharList ÏûÏ¢Ê§°Ü");
+            AssertEx(FALSE,"åˆ›å»º LCRetCharList æ¶ˆæ¯å¤±è´¥");
         }
         
         INT CharNumber = pLoginPlayer->GetCharNumber();
         if(CharNumber==0)
         {
             pRetListMsg->SetAccount(pPacket->GetAccount());
-            Result = ASKDELETECHARR_EMPTY; //½ÇÉ«¿ÕÁË
+            Result = ASKDELETECHARR_EMPTY; //è§’è‰²ç©ºäº†
         }
         else if(CharNumber ==-1)
         {
@@ -150,7 +150,7 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
             ODBCInterface*    pInterface = g_pDBThreadManager->GetInterface(CurrentThreadID);
             Assert(pInterface);
 
-            //É¾³ı¼ÍÂ¼
+            //åˆ é™¤çºªå½•
             DBDeleteCharOp DeleteCharOp(pInterface);
             DeleteCharOp.SetAccount(pPacket->GetAccount());
             DeleteCharOp.SetCharGuid(pPacket->GetCharGuid());
@@ -170,7 +170,7 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
             }
             DeleteCharOp.ParseResult(&Result);
 
-            //·µ»ØĞÂµÄ½ÇÉ«ÁĞ±í
+            //è¿”å›æ–°çš„è§’è‰²åˆ—è¡¨
             DBCharList    CharListObject(pInterface);
             CharListObject.SetAccount(pPacket->GetAccount());
             BOOL bRetLoad =     CharListObject.Load();
@@ -197,7 +197,7 @@ UINT CLAskDeleteCharHandler::Execute(CLAskDeleteChar* pPacket, Player* pPlayer )
                     pLoginPlayer->SetCharGUID(pRetListMsg->GetCharBaseInfo(i)->m_GUID,i);
                 }
             }
-            else //²Ù×÷Ê§°Ü£¬¿ÉÄÜÊÇ¶Ï¿ªÁ¬½ÓÁË
+            else //æ“ä½œå¤±è´¥ï¼Œå¯èƒ½æ˜¯æ–­å¼€è¿æ¥äº†
             {
                 Log::SaveLog(LOGIN_LOGFILE,"CharListObject.Load()....Get Errors: %s ",
                     CharListObject.GetErrorMessage());

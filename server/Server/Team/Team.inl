@@ -1,10 +1,10 @@
 /********************************************************************************
- *    ÎÄ¼şÃû£º    Team.inl
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Team\Team.inl
- *    ´´½¨Ê±¼ä£º    2005 Äê 11 ÔÂ 4 ÈÕ    10:00
+ *    æ–‡ä»¶åï¼š    Team.inl
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Team\Team.inl
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 11 æœˆ 4 æ—¥    10:00
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ĞŞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜ï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #ifndef __TEAM_INL__
@@ -77,9 +77,9 @@ INT TeamInfo::GetTeamMemberCount( ) const
 VOID TeamInfo::AddSceneMember( ObjID_t oid )
 {
     if( m_SceneMemberCount>=MAX_TEAM_MEMBER )
-    { // Í¬³¡¾°µÄ¶ÓÓÑ²»°üÀ¨×Ô¼º£¬ËùÒÔÕâÀïÓ¦¸Ã×ÜĞ¡ÓÚ MAX_TEAM_MEMBER - 1
-        // µ«ÊÇÒòÎªÕâ¸öº¯ÊıÓĞ²»Ö¹Ò»¸öÈë¿Ú£¬ËùÒÔ¿ÉÄÜ»á³öÏÖÖØ¸´¼ÓÈëµÄÇé¿ö
-        // µ«ÊÇ²»Ó¦¸Ã³öÏÖ >= MAX_TEAM_MEMBER µÄÇé¿ö
+    { // åŒåœºæ™¯çš„é˜Ÿå‹ä¸åŒ…æ‹¬è‡ªå·±ï¼Œæ‰€ä»¥è¿™é‡Œåº”è¯¥æ€»å°äº MAX_TEAM_MEMBER - 1
+        // ä½†æ˜¯å› ä¸ºè¿™ä¸ªå‡½æ•°æœ‰ä¸æ­¢ä¸€ä¸ªå…¥å£ï¼Œæ‰€ä»¥å¯èƒ½ä¼šå‡ºç°é‡å¤åŠ å…¥çš„æƒ…å†µ
+        // ä½†æ˜¯ä¸åº”è¯¥å‡ºç° >= MAX_TEAM_MEMBER çš„æƒ…å†µ
         Assert(FALSE);
         return;
     }
@@ -162,13 +162,13 @@ const TEAMMEMBER* TeamInfo::GetTeamMemberByGUID( const GUID_t guid ) const
     return NULL;
 }
 
-// ÉèÖÃ¶ÓÎé¸úËæ×´Ì¬
+// è®¾ç½®é˜Ÿä¼è·ŸéšçŠ¶æ€
 VOID TeamInfo::SetTeamFollowFlag(BOOL flag)
 {
     m_bTeamFollowFlag = flag;
 }
 
-// »ñµÃ¶ÓÎé¸úËæ×´Ì¬
+// è·å¾—é˜Ÿä¼è·ŸéšçŠ¶æ€
 const BOOL TeamInfo::GetTeamFollowFlag() const
 {
     if ( HasTeam() )
@@ -181,13 +181,13 @@ const BOOL TeamInfo::GetTeamFollowFlag() const
     }
 }
 
-// µÃµ½¸úËæ¶ÓÔ±µÄÊıÁ¿
+// å¾—åˆ°è·Ÿéšé˜Ÿå‘˜çš„æ•°é‡
 const INT TeamInfo::GetFollowedMembersCount() const
 {
     return m_nFollowedMembersCount;
 }
 
-// µÃµ½µÚi¸ö¸úËæµÄ¶ÓÓÑ
+// å¾—åˆ°ç¬¬iä¸ªè·Ÿéšçš„é˜Ÿå‹
 const _FOLLOWEDMEMBER* TeamInfo::GetFollowedMember( INT i ) const
 {
     if ( i<0 || i>=GetFollowedMembersCount() )
@@ -209,7 +209,7 @@ VOID TeamInfo::ClearFollowedMembers()
     }
 }
 
-// Çå³ı¸úËæÕßÖ¸Õë
+// æ¸…é™¤è·Ÿéšè€…æŒ‡é’ˆ
 VOID TeamInfo::EraseFollowedMemberPointer( GUID_t guid )
 {
     if ( m_bTeamFollowFlag )
@@ -217,7 +217,7 @@ VOID TeamInfo::EraseFollowedMemberPointer( GUID_t guid )
         for( INT i=0; i<GetFollowedMembersCount(); ++i )
         {
             if ( guid == m_FollowedMembers[i].m_GUID )
-            { // ¸üĞÂÖ¸Õë
+            { // æ›´æ–°æŒ‡é’ˆ
                 m_FollowedMembers[i].m_pHuman = NULL;
                 return;
             }

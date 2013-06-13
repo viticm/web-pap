@@ -17,16 +17,16 @@
 using namespace ITEM_SYNCH_STRUCT;
 
 /*
-10¼äµêÎª2%¡£
-9¼äµêÎª4%¡£
-8¼äµêÎª4%¡£
-7¼äµêÎª5%¡£
-6¼äµêÎª5%¡£
-5¼äµêÎª6%¡£
-4¼äµêÎª6%¡£
-3¼äµêÎª7%¡£
-2¼äµêÎª7%¡£
-1¼äµêÎª8%¡£
+10é—´åº—ä¸º2%ã€‚
+9é—´åº—ä¸º4%ã€‚
+8é—´åº—ä¸º4%ã€‚
+7é—´åº—ä¸º5%ã€‚
+6é—´åº—ä¸º5%ã€‚
+5é—´åº—ä¸º6%ã€‚
+4é—´åº—ä¸º6%ã€‚
+3é—´åº—ä¸º7%ã€‚
+2é—´åº—ä¸º7%ã€‚
+1é—´åº—ä¸º8%ã€‚
 
 */
 static double    g_ExchageTrade[10] = 
@@ -57,17 +57,17 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    _PLAYERSHOP_GUID        nShopID    =    pPacket->GetShopID();            //ÉÌµêID
-    BYTE        nStallIndex            =    pPacket->GetStallIndex();        //¹ñÌ¨ID
-    _ITEM_GUID    ItemGuid            =    pPacket->GetObjGUID();            //ÎïÆ·GUID
-    PET_GUID_t    PetGuid                =    pPacket->GetPetGuid();            //³èÎïGUID
-    UINT        uSerial                =    pPacket->GetSerial();            //µ±Ç°ĞòÁĞºÅ
+    _PLAYERSHOP_GUID        nShopID    =    pPacket->GetShopID();            //å•†åº—ID
+    BYTE        nStallIndex            =    pPacket->GetStallIndex();        //æŸœå°ID
+    _ITEM_GUID    ItemGuid            =    pPacket->GetObjGUID();            //ç‰©å“GUID
+    PET_GUID_t    PetGuid                =    pPacket->GetPetGuid();            //å® ç‰©GUID
+    UINT        uSerial                =    pPacket->GetSerial();            //å½“å‰åºåˆ—å·
 
     GCPlayerShopError    MsgError;
-    //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+    //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
     GCItemSynch MsgToClient;
     UINT        uFinalIndex        = 0;
     UINT        uFinalSerial    = 0;
@@ -77,7 +77,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
     Assert(pPlayerShop);
 
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE)
-    {//ÉÌµêÎ´¿ªÕÅ
+    {//å•†åº—æœªå¼€å¼ 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopBuyItemHandler::Name=%s shop close"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
@@ -87,11 +87,11 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
     Assert(pStallBox);
 
     if(PetGuid.IsNull())
-    {//ÂòÎïÆ·
+    {//ä¹°ç‰©å“
         ItemContainer*    pStallContainer = pStallBox->GetContainer();
 
         if(pStallBox->GetStallStatus() != PLAYER_SHOP::STALL_OPEN)
-        {//µêÖ÷ÒÑ¾­¹Ø±Õ´Î¹ñÌ¨
+        {//åº—ä¸»å·²ç»å…³é—­æ¬¡æŸœå°
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NEED_NEW_COPY: pStallBox->GetStallStatus() != PLAYER_SHOP::STALL_OPEN"
@@ -101,7 +101,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
 
         INT    IndexInStall = pStallContainer->GetIndexByGUID(&ItemGuid);
         if(IndexInStall<0)
-        {//µêÖ÷ÒÑ¾­¸Ä±ä´ËÎïÆ·
+        {//åº—ä¸»å·²ç»æ”¹å˜æ­¤ç‰©å“
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NEED_NEW_COPY: IndexInStall = %d"
@@ -110,7 +110,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         }
 
         if(!pStallBox->CanSale(IndexInStall))
-        {//´ËÎïÆ·ÒÑ¾­ÏÂ¼Ü
+        {//æ­¤ç‰©å“å·²ç»ä¸‹æ¶
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NEED_NEW_COPY: IndexInStall = %d"
@@ -119,7 +119,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         }
 
         if( pStallBox->GetSerialByIndex(IndexInStall) != uSerial)
-        {//¼Û¸ñÒÑ¾­ĞŞ¸Ä
+        {//ä»·æ ¼å·²ç»ä¿®æ”¹
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NEED_NEW_COPY: Serial = %d, BoxSerial = %d"
@@ -138,12 +138,12 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         ItemLogParam.ItemGuid        =    pItem->GetGUID();
         ItemLogParam.ItemType        =    pItem->GetItemTableIndex();
 
-        //1.¼ÆËã¿Õ¼ä
+        //1.è®¡ç®—ç©ºé—´
         _EXCHANGE_ITEM_LIST            ItemListOtToMe;
         ItemListOtToMe.Init();
         ItemListOtToMe.AddItem(pItem);
         if( FALSE == HumanItemLogic::CanReceiveExchangeItemList( pHuman, ItemListOtToMe) )
-        {//¿Õ¼ä²»¹»
+        {//ç©ºé—´ä¸å¤Ÿ
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_ROOM);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NOT_ENOUGH_ROOM"
@@ -151,10 +151,10 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
             return PACKET_EXE_CONTINUE;
         }
 
-        //2.¼ÆËã½ğÇ®
+        //2.è®¡ç®—é‡‘é’±
         UINT    CurPrice = pStallBox->GetPriceByIndex(IndexInStall);
         if(pHuman->GetMoney()<CurPrice)
-        {//½ğÇ®²»×ã
+        {//é‡‘é’±ä¸è¶³
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_MONEY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NOT_ENOUGH_MONEY"
@@ -162,8 +162,8 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
             return PACKET_EXE_CONTINUE;
         }
 
-        //3.ÒÆ¶¯ÎïÆ·
-        //×Ô¶¯ÕÒ¸ñ,Ö§³Ö×Ô¶¯µş¼Ó
+        //3.ç§»åŠ¨ç‰©å“
+        //è‡ªåŠ¨æ‰¾æ ¼,æ”¯æŒè‡ªåŠ¨å åŠ 
         INT result = 
             g_ItemOperator.MoveItem
             (
@@ -173,7 +173,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
             );
 
         if(result<0)
-        {//¿½±´Ê§°Ü
+        {//æ‹·è´å¤±è´¥
             MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_ILLEGAL: IndexInStall = %d, result = %d "
@@ -193,7 +193,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         SaveItemLog(&ItemLogParam);
 
 
-        //4.¿ÛÇ®
+        //4.æ‰£é’±
         FLOAT CurPriceTemp = (FLOAT)CurPrice;
         pHuman->SetMoney((UINT)(pHuman->GetMoney() - CurPriceTemp));
         Assert(pPlayerShop->GetNumStallOpened()>=1 && pPlayerShop->GetNumStallOpened()<=10);
@@ -214,15 +214,15 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         pPlayerShop->AddMoney((UINT)CurPriceTemp);
 
     
-        //5.¸üĞÂÉÌµê¹ñÌ¨
+        //5.æ›´æ–°å•†åº—æŸœå°
         uFinalSerial    =    pStallBox->IncSerialByIndex(IndexInStall);
         pStallBox->SetCanSale(IndexInStall, FALSE);
         pStallBox->SetPriceByIndex(IndexInStall, 0);
 
-        //ÊÛ³öAA£¬»ñµÃ£¿½ğ£¿Òø£¿Í­¡££¨AAÎªÎïÆ·Ãû£©
+        //å”®å‡ºAAï¼Œè·å¾—ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œã€‚ï¼ˆAAä¸ºç‰©å“åï¼‰
         RecordOpt::Excute(REC_EXCHANGEITEM, pPlayerShop->GetExchangeRecord(), (INT)MessItemTBIndex, (INT)MessItemNum, (INT)CurPriceTemp);
 
-        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
         MsgToClient.SetOpt(GCItemSynch::OPT_MOVE_ITEM);
         MsgToClient.SetFromType(GCItemSynch::POS_PLAYERSHOP);
         MsgToClient.SetToType(GCItemSynch::POS_BAG);
@@ -239,12 +239,12 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         pGamePlayer->SendPacket(&MsgToClient);
     }
     else
-    {//Âò³èÎï
+    {//ä¹°å® ç‰©
 
         ItemContainer*    pStallContainer = pStallBox->GetPetContainer();
 
         if(pStallBox->GetStallStatus() != PLAYER_SHOP::STALL_OPEN)
-        {//µêÖ÷ÒÑ¾­¹Ø±Õ´Î¹ñÌ¨
+        {//åº—ä¸»å·²ç»å…³é—­æ¬¡æŸœå°
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NEED_NEW_COPY: pStallBox->GetStallStatus() != PLAYER_SHOP::STALL_OPEN"
@@ -254,7 +254,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
 
         INT    IndexInStall = pStallContainer->GetIndexByGUID(&PetGuid);
         if(IndexInStall<0)
-        {//µêÖ÷ÒÑ¾­¸Ä±ä´ËÎïÆ·
+        {//åº—ä¸»å·²ç»æ”¹å˜æ­¤ç‰©å“
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NEED_NEW_COPY: IndexInStall = %d"
@@ -263,7 +263,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         }
 
         if(!pStallBox->CanSale(IndexInStall))
-        {//´ËÎïÆ·ÒÑ¾­ÏÂ¼Ü
+        {//æ­¤ç‰©å“å·²ç»ä¸‹æ¶
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NEED_NEW_COPY: IndexInStall = %d"
@@ -272,7 +272,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         }
 
         if( pStallBox->GetSerialByIndex(IndexInStall) != uSerial)
-        {//¼Û¸ñÒÑ¾­ĞŞ¸Ä
+        {//ä»·æ ¼å·²ç»ä¿®æ”¹
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NEED_NEW_COPY: Serial = %d, BoxSerial = %d"
@@ -287,12 +287,12 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         ItemContainer* pBagContainer = pHuman->GetPetContain();
         
         
-        //1.¼ÆËã¿Õ¼ä
+        //1.è®¡ç®—ç©ºé—´
         _EXCHANGE_ITEM_LIST            ItemListOtToMe;
         ItemListOtToMe.Init();
         ItemListOtToMe.AddItem(pItem);
         if( FALSE == HumanItemLogic::CanReceiveExchangeItemList( pHuman, ItemListOtToMe) )
-        {//¿Õ¼ä²»¹»
+        {//ç©ºé—´ä¸å¤Ÿ
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_ROOM);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NOT_ENOUGH_ROOM"
@@ -300,10 +300,10 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
             return PACKET_EXE_CONTINUE;
         }
 
-        //2.¼ÆËã½ğÇ®
+        //2.è®¡ç®—é‡‘é’±
         UINT    CurPrice = pStallBox->GetPriceByIndex(IndexInStall);
         if(pHuman->GetMoney()<CurPrice)
-        {//½ğÇ®²»×ã
+        {//é‡‘é’±ä¸è¶³
             MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_MONEY);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_NOT_ENOUGH_MONEY"
@@ -311,7 +311,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
             return PACKET_EXE_CONTINUE;
         }
 
-        //2.5¼ÆËã³èÎï¼¶±ğ
+        //2.5è®¡ç®—å® ç‰©çº§åˆ«
         INT nPetLevel = pItem->GetLevel();
         INT nHumanLevel = pHuman->GetLevel();
         if(nPetLevel>nHumanLevel)
@@ -323,8 +323,8 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
             return PACKET_EXE_CONTINUE;
         }
 
-        //3.ÒÆ¶¯ÎïÆ·
-        //×Ô¶¯ÕÒ¸ñ,Ö§³Ö×Ô¶¯µş¼Ó
+        //3.ç§»åŠ¨ç‰©å“
+        //è‡ªåŠ¨æ‰¾æ ¼,æ”¯æŒè‡ªåŠ¨å åŠ 
         INT result = 
             g_ItemOperator.MoveItem
             (
@@ -334,7 +334,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
             );
 
         if(result<0)
-        {//¿½±´Ê§°Ü
+        {//æ‹·è´å¤±è´¥
             MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
             pGamePlayer->SendPacket(&MsgError);
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopBuyItemHandler::ObjName=%s, ERR_ILLEGAL: IndexInStall = %d, result = %d "
@@ -351,7 +351,7 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
 
         uFinalIndex    = result;
 
-        //4.¿ÛÇ®
+        //4.æ‰£é’±
         FLOAT CurPriceTemp = (FLOAT)CurPrice;
         pHuman->SetMoney((UINT)(pHuman->GetMoney() - CurPriceTemp));
 
@@ -369,16 +369,16 @@ UINT CGPlayerShopBuyItemHandler::Execute( CGPlayerShopBuyItem* pPacket, Player* 
         pPlayerShop->UpdateMaxBaseMoney(pPlayerShopManager->GetComFactor());
         pPlayerShop->AddMoney((UINT)CurPriceTemp);
 
-        //5.¸üĞÂÉÌµê¹ñÌ¨
+        //5.æ›´æ–°å•†åº—æŸœå°
         uFinalSerial    =    pStallBox->IncSerialByIndex(IndexInStall);
         pStallBox->SetCanSale(IndexInStall, FALSE);
         pStallBox->SetPriceByIndex(IndexInStall, 0);
 
         pItem = pBagContainer->GetItem(uFinalIndex);
-        //ÊÛ³öAA£¬»ñµÃ£¿½ğ£¿Òø£¿Í­¡££¨AAÎª³èÎïÃû£©
+        //å”®å‡ºAAï¼Œè·å¾—ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œã€‚ï¼ˆAAä¸ºå® ç‰©åï¼‰
         RecordOpt::Excute(REC_EXCHANGEPET, pPlayerShop->GetExchangeRecord(), (CHAR*)pItem->GetName(), (INT)1, (INT)CurPriceTemp);
 
-        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
         MsgToClient.SetOpt(GCItemSynch::OPT_MOVE_ITEM);
         MsgToClient.SetFromType(GCItemSynch::POS_PLAYERSHOPPET);
         MsgToClient.SetToType(GCItemSynch::POS_PET);

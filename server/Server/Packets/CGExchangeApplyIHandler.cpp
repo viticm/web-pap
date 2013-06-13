@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-ÑéÖ¤ÉêÇëµÄºÏ·¨ÐÔ£¬²¢×ª·¢
+éªŒè¯ç”³è¯·çš„åˆæ³•æ€§ï¼Œå¹¶è½¬å‘
 */
 
 #include "CGExchangeApplyI.h"
@@ -27,20 +27,20 @@ UINT CGExchangeApplyIHandler::Execute( CGExchangeApplyI* pPacket, Player* pPlaye
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     ObjID_t        TargetID = pPacket->GetObjID();
-    Obj_Human* pSourceHuman = pHuman;//½»Ò×·¢ÆðÕß
-    Obj_Human* pDestHuman = pScene->GetHumanManager()->GetHuman( TargetID );//½»Ò×¶ÔÏó
+    Obj_Human* pSourceHuman = pHuman;//äº¤æ˜“å‘èµ·è€…
+    Obj_Human* pDestHuman = pScene->GetHumanManager()->GetHuman( TargetID );//äº¤æ˜“å¯¹è±¡
 
-    //ÑéÖ¤
+    //éªŒè¯
     if( pDestHuman == NULL )
     {
         Assert(FALSE);
         return PACKET_EXE_CONTINUE;
     }
-    // ²»Í¬ÕóÓª£¬²»ÈÃ²é¿´
+    // ä¸åŒé˜µè¥ï¼Œä¸è®©æŸ¥çœ‹
     if( pSourceHuman->IsEnemy( pDestHuman ) )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGExchangeApplyIHandler: %s cann't ask %s's DetailAttr ", pSourceHuman->GetName(), pDestHuman->GetName() ) ;
@@ -57,7 +57,7 @@ UINT CGExchangeApplyIHandler::Execute( CGExchangeApplyI* pPacket, Player* pPlaye
         return PACKET_EXE_CONTINUE;
     }
     if(pSourceHuman->m_ExchangBox.m_Status >= ServerExchangeBox::EXCHANGE_SYNCH_DATA)
-    {//·¢ÆðÕßÕýÔÚ½»Ò×ÖÐ
+    {//å‘èµ·è€…æ­£åœ¨äº¤æ˜“ä¸­
         GCExchangeError Msg;
         Msg.SetID(EXCHANGE_MSG::ERR_SELF_IN_EXCHANGE);
         pGamePlayer->SendPacket(&Msg);
@@ -65,7 +65,7 @@ UINT CGExchangeApplyIHandler::Execute( CGExchangeApplyI* pPacket, Player* pPlaye
         return PACKET_EXE_CONTINUE;
     }
     if(pDestHuman->m_ExchangBox.m_Status >= ServerExchangeBox::EXCHANGE_SYNCH_DATA)
-    {//Ä¿±êÕýÔÚ½»Ò×ÖÐ
+    {//ç›®æ ‡æ­£åœ¨äº¤æ˜“ä¸­
         GCExchangeError Msg;
         Msg.SetID(EXCHANGE_MSG::ERR_TARGET_IN_EXCHANGE);
         pGamePlayer->SendPacket(&Msg);
@@ -73,8 +73,8 @@ UINT CGExchangeApplyIHandler::Execute( CGExchangeApplyI* pPacket, Player* pPlaye
         return PACKET_EXE_CONTINUE;
     }
 
-    //²Ù×÷
-    //·¢ËÍÏûÏ¢ÏòÄ¿±êÉêÇë
+    //æ“ä½œ
+    //å‘é€æ¶ˆæ¯å‘ç›®æ ‡ç”³è¯·
     GCExchangeApplyI Msg;
     Msg.SetObjID(pSourceHuman->GetID());
     pDestHuman->GetPlayer()->SendPacket(&Msg);

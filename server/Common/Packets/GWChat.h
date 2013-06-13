@@ -17,7 +17,7 @@ namespace Packets
         GWChat( ){} ;
         virtual ~GWChat( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -64,7 +64,7 @@ namespace Packets
     public :
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                    SetSourGUID( GUID_t guid ){ m_SourGUID = guid ; } ;
         GUID_t                    GetSourGUID( ){ return m_SourGUID ; } ;
 
@@ -102,30 +102,30 @@ namespace Packets
         BYTE                    GetMenpaiID(){ return m_MenpaiID ; } ;
 
     private:
-        //Ëµ»°µÄÍæ¼Ò
+        //è¯´è¯çš„ç©å®¶
         GUID_t                    m_SourGUID ;
 
-        //Êı¾İ
-        BYTE                    m_ChatType ;//ÁÄÌìÏûÏ¢ÀàĞÍ enum CHAT_TYPE
+        //æ•°æ®
+        BYTE                    m_ChatType ;//èŠå¤©æ¶ˆæ¯ç±»å‹ enum CHAT_TYPE
         
-        //ÁÄÌìÄÚÈİÊı¾İ
+        //èŠå¤©å†…å®¹æ•°æ®
         BYTE                    m_ContexSize ;
         CHAR                    m_Contex[MAX_CHAT_SIZE] ;
         
-        //Ë½ÁÄ¶ÔÏóµÄ½ÇÉ«Ãû×Ö£¬½öÔÚCHAT_TYPE_TELLÊ±ÓĞĞ§
+        //ç§èŠå¯¹è±¡çš„è§’è‰²åå­—ï¼Œä»…åœ¨CHAT_TYPE_TELLæ—¶æœ‰æ•ˆ
         BYTE                    m_TargetSize ;
         CHAR                    m_TargetName[MAX_CHARACTER_NAME] ;
 
-        //¶ÓÎéºÅ£¬½öÔÚ¶ÓÎéÁÄÌìÊ±ÓĞĞ§
+        //é˜Ÿä¼å·ï¼Œä»…åœ¨é˜Ÿä¼èŠå¤©æ—¶æœ‰æ•ˆ
         TeamID_t                m_TeamID ;
         
-        //ÆµµÀºÅ£¬½öÔÚ×Ô½¨ÁÄÌìÆµµÀÁÄÌìÊ±ÓĞĞ§
+        //é¢‘é“å·ï¼Œä»…åœ¨è‡ªå»ºèŠå¤©é¢‘é“èŠå¤©æ—¶æœ‰æ•ˆ
         ChannelID_t                m_ChannelID ;
 
-        //°ïÅÉºÅ£¬½öÊôÓÚ´Ë°ïÅÉµÄ³ÉÔ±ÓĞĞ§
+        //å¸®æ´¾å·ï¼Œä»…å±äºæ­¤å¸®æ´¾çš„æˆå‘˜æœ‰æ•ˆ
         GuildID_t                m_GuildID ;
 
-        //ÃÅÅÉÖµ£¬½ö´ËÃÅÅÉÄÚµÄ³ÉÔ±ÓĞĞ§
+        //é—¨æ´¾å€¼ï¼Œä»…æ­¤é—¨æ´¾å†…çš„æˆå‘˜æœ‰æ•ˆ
         BYTE                    m_MenpaiID ;
     };
 

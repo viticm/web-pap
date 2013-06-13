@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-Í¬²½¿Í»§¶ËÎïÆ·±ä»¯
+åŒæ­¥å®¢æˆ·ç«¯ç‰©å“å˜åŒ–
 */
 #include "CGItemSynch.h"
 #include "GamePlayer.h"
@@ -37,38 +37,38 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //²Ù×÷
+    //æ“ä½œ
     BYTE        Opt                =    pPacket->GetOpt();
-    //À´×ÔÄÄ¸öÈİÆ÷
+    //æ¥è‡ªå“ªä¸ªå®¹å™¨
     BYTE        FromType        =    pPacket->GetFromType();
-    //·Åµ½ÄÄ¸öÈİÆ÷
+    //æ”¾åˆ°å“ªä¸ªå®¹å™¨
     BYTE        ToType            =    pPacket->GetToType();
-    //·Åµ½Ä¿µÄÈİÆ÷ÄÄ¸öÎ»ÖÃ
+    //æ”¾åˆ°ç›®çš„å®¹å™¨å“ªä¸ªä½ç½®
     BYTE        ToIndex            =    pPacket->GetToIndex();
-    //±»ÒÆ¶¯ÎïÌåµÄguid
+    //è¢«ç§»åŠ¨ç‰©ä½“çš„guid
     _ITEM_GUID    ItemGuid        =    pPacket->GetItemGUID();
-    //±»ÒÆ¶¯³èÎïµÄguid
+    //è¢«ç§»åŠ¨å® ç‰©çš„guid
     PET_GUID_t    PetGuid            =    pPacket->GetPetGUID();
-    //¸½¼ÓĞÅÏ¢³¤¶È
+    //é™„åŠ ä¿¡æ¯é•¿åº¦
     BYTE        ExtraInfoL        =    pPacket->GetExtraInfoLength();
-    //¸½¼ÓĞÅÏ¢ÄÚÈİ
+    //é™„åŠ ä¿¡æ¯å†…å®¹
     BYTE*        pExtraInfo        =    pPacket->GetExtraInfoData();
-    //×îÖÕĞòÁĞºÅ
+    //æœ€ç»ˆåºåˆ—å·
     UINT        uFinalSerial    =    0;
-    //×îºóµÄÄ¿µÄÎ»ÖÃ
+    //æœ€åçš„ç›®çš„ä½ç½®
     UINT        uFinalToIndex    =    0;
-    //Íæ¼ÒÉÌµê´íÎóĞÅÏ¢
+    //ç©å®¶å•†åº—é”™è¯¯ä¿¡æ¯
     GCPlayerShopError    MsgError;
-    //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+    //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
     GCItemSynch            MsgToClient;
 
     switch(Opt)
     {
         case CGItemSynch::OPT_MOVE_ITEM_AUTO:
-            {//×Ô¶¯ÕÒ¸ñ
+            {//è‡ªåŠ¨æ‰¾æ ¼
                 switch(FromType)
                 {
                 case CGItemSynch::POS_BAG:
@@ -76,7 +76,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                         switch(ToType)
                         {
                             case CGItemSynch::POS_PLAYERSHOP:
-                                {//±³°ü->ÉÌµê
+                                {//èƒŒåŒ…->å•†åº—
                                     CGAutoMoveItemFromBagToPlayerShop_t ExtraData;
                                     Assert(ExtraInfoL == ExtraData.GetSize());
                                     memcpy(&ExtraData, pExtraInfo, ExtraInfoL);
@@ -89,7 +89,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
                                     Assert(pPlayerShop);
                                     if(pPlayerShop->GetShopType() == PLAYER_SHOP::TYPE_PLAYER_SHOP_PET)
-                                    {//ÉÌµêÀàĞÍ´íÎó
+                                    {//å•†åº—ç±»å‹é”™è¯¯
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                         pGamePlayer->SendPacket(&MsgError);
                                         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGItemSynchHandler::ObjName=%s, ERR_ILLEGAL:BAG->SHOP"
@@ -106,10 +106,10 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         return PACKET_EXE_CONTINUE ;
                                     }
 
-                                    //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+                                    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
                                     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-                                    //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+                                    //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
                                     BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
                                     if(bIsMine == FALSE && bCanManager == FALSE)
@@ -134,7 +134,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
 //                                        pBagContainer = pBaseContainer;
 //                                    }
 //                                    else
-//                                    {//guid·Ç·¨
+//                                    {//guidéæ³•
 ////                                        Assert(0);
 //                                        MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
 //                                        pGamePlayer->SendPacket(&MsgError);
@@ -145,8 +145,8 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
 
                                     INT    IndexInBag = pBaseContainer->GetIndexByGUID(&ItemGuid);
 
-                                    //¿½±´µ½Ì¯Î»ºĞ
-                                    //×Ô¶¯ÕÒ¸ñ
+                                    //æ‹·è´åˆ°æ‘Šä½ç›’
+                                    //è‡ªåŠ¨æ‰¾æ ¼
                                     INT result = 
                                         g_ItemOperator.MoveItem
                                         (
@@ -156,10 +156,10 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         );
 
                                     if(result>=0)
-                                    {//ÒÆ¶¯³É¹¦
+                                    {//ç§»åŠ¨æˆåŠŸ
                                         
                                         
-                                        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                         Item* pIt = pStallContainer->GetItem(result);
                                         if(pIt->IsEmpty() == FALSE)
                                         {
@@ -177,13 +177,13 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                             SaveItemLog(&ItemLogParam);
                                             
 
-                                            //ĞòÁĞºÅµİÔö
+                                            //åºåˆ—å·é€’å¢
                                             uFinalSerial = pStallBox->IncSerialByIndex(result);
                                             
-                                            //ÉÏ»õ£ºAAAÉÏ»õÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                            //ä¸Šè´§ï¼šAAAä¸Šè´§äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                             RecordOpt::Excute(REC_ADDITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)pIt->GetItemTableIndex(), (INT)pIt->GetLayedNum());
                                             
-                                            //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                            //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                             MsgToClient.SetOpt(GCItemSynch::OPT_MOVE_ITEM);
                                             MsgToClient.SetFromType(GCItemSynch::POS_BAG);
                                             MsgToClient.SetToType(GCItemSynch::POS_PLAYERSHOP);
@@ -201,7 +201,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         }
                                     }
                                     else
-                                    {//Ê§°Ü
+                                    {//å¤±è´¥
                                         if(result == ITEMOE_DESTOPERATOR_FULL)
                                         {
                                             MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_ROOM_IN_STALL);
@@ -232,7 +232,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                         switch(ToType)
                         {
                         case CGItemSynch::POS_PLAYERSHOPPET:
-                            {//³èÎï->ÉÌµê
+                            {//å® ç‰©->å•†åº—
 
                                 CGAutoMovePetFromBagToPlayerShop_t ExtraData;
                                 Assert(ExtraInfoL == ExtraData.GetSize());
@@ -246,7 +246,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
                                 Assert(pPlayerShop);
                                 if(pPlayerShop->GetShopType() != PLAYER_SHOP::TYPE_PLAYER_SHOP_PET)
-                                {//ÉÌµêÀàĞÍ´íÎó
+                                {//å•†åº—ç±»å‹é”™è¯¯
                                     MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                     pGamePlayer->SendPacket(&MsgError);
                                     g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGItemSynchHandler::ObjName=%s, ERR_ILLEGAL:TYPE ERROR PET->SHOP"
@@ -254,10 +254,10 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     return PACKET_EXE_CONTINUE ;
                                 }
 
-                                //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+                                //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
                                 BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-                                //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+                                //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
                                 BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
                                 if(bIsMine == FALSE && bCanManager == FALSE)
@@ -282,7 +282,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 ItemContainer*    pPetContainer = pHuman->GetPetContain();
                                 INT    FromIndex = pPetContainer->GetIndexByGUID( &PetGuid );
 
-                                //ÕÙ»Ø³èÎï
+                                //å¬å›å® ç‰©
                                 Item* pPetItem    = pPetContainer->GetItem(FromIndex);
                                 Obj_Pet* pMyPet    = pHuman->GetPet();
                                 PET_GUID_t    MyPetGuid;
@@ -303,8 +303,8 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     return PACKET_EXE_CONTINUE ;
                                 }
 
-                                //¿½±´µ½Ì¯Î»ºĞ
-                                //×Ô¶¯ÕÒ¸ñ
+                                //æ‹·è´åˆ°æ‘Šä½ç›’
+                                //è‡ªåŠ¨æ‰¾æ ¼
                                 INT result = 
                                     g_ItemOperator.MoveItem
                                     (
@@ -314,8 +314,8 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     );
 
                                 if(result>=0)
-                                {//ÒÆ¶¯³É¹¦
-                                    //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                {//ç§»åŠ¨æˆåŠŸ
+                                    //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                     Item* pIt = pStallContainer->GetItem(result);
                                     if(pIt->IsEmpty() == FALSE)
                                     {
@@ -329,13 +329,13 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         PetLogParam.ZPos        =    pHuman->getWorldPos()->m_fZ;
                                         SavePetLog(&PetLogParam);
 
-                                        //ĞòÁĞºÅµİÔö
+                                        //åºåˆ—å·é€’å¢
                                         uFinalSerial = pStallBox->IncSerialByIndex(result);
 
-                                        //ÉÏ»õ£ºAAAÉÏ»õÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                        //ä¸Šè´§ï¼šAAAä¸Šè´§äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                         RecordOpt::Excute(REC_ADDPET, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (CHAR*)pIt->GetName(), (INT)1);
 
-                                        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                         MsgToClient.SetOpt(GCItemSynch::OPT_MOVE_ITEM);
                                         MsgToClient.SetFromType(GCItemSynch::POS_PET);
                                         MsgToClient.SetToType(GCItemSynch::POS_PLAYERSHOPPET);
@@ -353,7 +353,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     }
                                 }
                                 else
-                                {//Ê§°Ü
+                                {//å¤±è´¥
                                     if(result == ITEMOE_DESTOPERATOR_FULL)
                                     {
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_ROOM_IN_STALL);
@@ -384,7 +384,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                         switch(ToType)
                         {
                         case CGItemSynch::POS_BAG:
-                            {//ÉÌµê->±³°ü
+                            {//å•†åº—->èƒŒåŒ…
 
                                 CGAutoMoveItemFromPlayerShopToBag_t ExtraData;
                                 Assert(ExtraInfoL == ExtraData.GetSize());
@@ -401,10 +401,10 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 Assert(pStallBox);
                                 ItemContainer*    pStallContainer = pStallBox->GetContainer();
 
-                                //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+                                //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
                                 BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-                                //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+                                //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
                                 BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
                                 if(bIsMine == FALSE && bCanManager == FALSE)
@@ -451,12 +451,12 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 ItemLogParam.ItemType        =    pItem->GetItemTableIndex();
                                 
 
-                                //¼ÆËã¿Õ¼ä
+                                //è®¡ç®—ç©ºé—´
                                 _EXCHANGE_ITEM_LIST            ItemListOtToMe;
                                 ItemListOtToMe.Init();
                                 ItemListOtToMe.AddItem(pItem);
                                 if( FALSE == HumanItemLogic::CanReceiveExchangeItemList( pHuman, ItemListOtToMe) )
-                                {//¿Õ¼ä²»¹»
+                                {//ç©ºé—´ä¸å¤Ÿ
                                     MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_ROOM);
                                     pGamePlayer->SendPacket(&MsgError);
                                     g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGItemSynchHandler::ObjName=%s, ERR_NOT_ENOUGH_ROOM"
@@ -464,9 +464,9 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     return PACKET_EXE_CONTINUE;
                                 }
 
-                                //ÒÆ¶¯ÎïÆ·
-                                //ÏÈ½âËø
-                                //×Ô¶¯ÕÒ¸ñ,Ö§³Ö×Ô¶¯µş¼Ó
+                                //ç§»åŠ¨ç‰©å“
+                                //å…ˆè§£é”
+                                //è‡ªåŠ¨æ‰¾æ ¼,æ”¯æŒè‡ªåŠ¨å åŠ 
                                 INT result = 
                                     g_ItemOperator.MoveItem
                                     (
@@ -476,7 +476,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     );
 
                                 if(result<0)
-                                {//Ê§°Ü
+                                {//å¤±è´¥
                                     if(result == ITEMOE_DESTOPERATOR_FULL)
                                     {
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_ROOM);
@@ -505,11 +505,11 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 ItemLogParam.SceneID        =    pHuman->getScene()->SceneID();
                                 SaveItemLog(&ItemLogParam);
                                 
-                                //È¡»Ø£ºAAAÈ¡»ØÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                //å–å›ï¼šAAAå–å›äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                 RecordOpt::Excute(REC_DELITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)pItem->GetItemTableIndex(), (INT)pItem->GetLayedNum());
 
-                                //·¢ÏûÏ¢Í¨Öª¿Í»§¶Ë
-                                //ĞòÁĞºÅµİÔö
+                                //å‘æ¶ˆæ¯é€šçŸ¥å®¢æˆ·ç«¯
+                                //åºåˆ—å·é€’å¢
                                 uFinalSerial = pStallBox->IncSerialByIndex(IndexInStall);
                                 MsgToClient.SetOpt(GCItemSynch::OPT_MOVE_ITEM);
                                 MsgToClient.SetFromType(GCItemSynch::POS_PLAYERSHOP);
@@ -554,10 +554,10 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     Assert(pStallBox);
                                     ItemContainer*    pStallContainer = pStallBox->GetPetContainer();
 
-                                    //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+                                    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
                                     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-                                    //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+                                    //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
                                     BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
                                     if(bIsMine == FALSE && bCanManager == FALSE)
@@ -611,12 +611,12 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     PetLogParam.PetGUID        =    pItem->GetPetGUID();
                                     PetLogParam.DataID        =    pItem->GetDataID();
 
-                                    //¼ÆËã¿Õ¼ä
+                                    //è®¡ç®—ç©ºé—´
                                     _EXCHANGE_ITEM_LIST            ItemListOtToMe;
                                     ItemListOtToMe.Init();
                                     ItemListOtToMe.AddItem(pItem);
                                     if( FALSE == HumanItemLogic::CanReceiveExchangeItemList( pHuman, ItemListOtToMe) )
-                                    {//¿Õ¼ä²»¹»
+                                    {//ç©ºé—´ä¸å¤Ÿ
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_ROOM);
                                         pGamePlayer->SendPacket(&MsgError);
                                         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGItemSynchHandler::ObjName=%s, ERR_NOT_ENOUGH_ROOM"
@@ -624,9 +624,9 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         return PACKET_EXE_CONTINUE;
                                     }
 
-                                    //ÒÆ¶¯ÎïÆ·
-                                    //ÏÈ½âËø
-                                    //×Ô¶¯ÕÒ¸ñ,Ö§³Ö×Ô¶¯µş¼Ó
+                                    //ç§»åŠ¨ç‰©å“
+                                    //å…ˆè§£é”
+                                    //è‡ªåŠ¨æ‰¾æ ¼,æ”¯æŒè‡ªåŠ¨å åŠ 
                                     INT result = 
                                         g_ItemOperator.MoveItem
                                         (
@@ -636,7 +636,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         );
 
                                     if(result<0)
-                                    {//Ê§°Ü
+                                    {//å¤±è´¥
                                         if(result == ITEMOE_DESTOPERATOR_FULL)
                                         {
                                             MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_ROOM);
@@ -664,13 +664,13 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     PetLogParam.ZPos        =    pHuman->getWorldPos()->m_fZ;
                                     SavePetLog(&PetLogParam);
 
-                                    //·¢ÏûÏ¢Í¨Öª¿Í»§¶Ë
-                                    //ĞòÁĞºÅµİÔö
+                                    //å‘æ¶ˆæ¯é€šçŸ¥å®¢æˆ·ç«¯
+                                    //åºåˆ—å·é€’å¢
                                     uFinalSerial = pStallBox->IncSerialByIndex(IndexInStall);
 
                                     Item* pPetItem = pPetContainer->GetItem(result);
 
-                                    //È¡»Ø£ºAAAÈ¡»ØÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                    //å–å›ï¼šAAAå–å›äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                     RecordOpt::Excute(REC_DELPET, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (CHAR*)pPetItem->GetName(), (INT)1);
 
 
@@ -712,7 +712,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                         switch(ToType)
                         {
                         case CGItemSynch::POS_PLAYERSHOP:
-                            {//±³°ü->ÉÌµê,Ö¸¶¨Î»ÖÃ
+                            {//èƒŒåŒ…->å•†åº—,æŒ‡å®šä½ç½®
 
                                 CGManuMoveItemFromBagToPlayerShop_t ExtraData;
                                 Assert(ExtraInfoL == ExtraData.GetSize());
@@ -720,7 +720,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 BYTE                nToIndex    = ToIndex;
                                 _PLAYERSHOP_GUID    nShopID        = ExtraData.m_ShopGuid;
                                 BYTE                nStallIndex    = ExtraData.m_nStallIndex;
-                                UINT                uSerial        = ExtraData.m_uSerial;//ÉÌµêÀï´ËÎ»ÖÃµÄĞòÁĞºÅ(Ä¿µÄÎ»ÖÃĞòÁĞºÅ)
+                                UINT                uSerial        = ExtraData.m_uSerial;//å•†åº—é‡Œæ­¤ä½ç½®çš„åºåˆ—å·(ç›®çš„ä½ç½®åºåˆ—å·)
                                 BYTE                nShopSerial    = ExtraData.m_nShopSerial;
 
                                 PlayerShopManager*    pPlayerShopManager = pScene->GetPlayerShopManager();
@@ -730,10 +730,10 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 Assert(pStallBox);
                                 ItemContainer*    pStallContainer = pStallBox->GetContainer();
 
-                                //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+                                //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
                                 BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-                                //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+                                //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
                                 BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
                                 if(bIsMine == FALSE && bCanManager == FALSE)
@@ -754,7 +754,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 Assert(pStallContainer);
 
                                 if( pStallBox->GetSerialByIndex(nToIndex) != uSerial)
-                                {//Ä¿µÄÎ»ÖÃµÄÎïÆ·ÒÑ¾­¸Ä±ä
+                                {//ç›®çš„ä½ç½®çš„ç‰©å“å·²ç»æ”¹å˜
                                     MsgError.SetID(PLAYERSHOP_MSG::ERR_NEED_NEW_COPY);
                                     pGamePlayer->SendPacket(&MsgError);
                                     g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGItemSynchHandler::ObjName=%s, ERR_NEED_NEW_COPY: Serial = %d, BoxSerial = %d"
@@ -775,7 +775,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 //    pBagContainer = pBaseContainer;
                                 //}
                                 //else
-                                //{//guid·Ç·¨
+                                //{//guidéæ³•
                                 ////    Assert(0);
                                 //    MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                 //    pGamePlayer->SendPacket(&MsgError);
@@ -788,8 +788,8 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
 
                                 Item* pDestItem = pStallContainer->GetItem(nToIndex);
                                 if(!pDestItem->IsEmpty())
-                                {//´ËÎ»ÖÃÒÑ¾­ÓĞ¶«Î÷ÁË£¬Ö»ÄÜÓë±³°üÖĞµÄÎïÆ·½»»»
-                                    //½»»»
+                                {//æ­¤ä½ç½®å·²ç»æœ‰ä¸œè¥¿äº†ï¼Œåªèƒ½ä¸èƒŒåŒ…ä¸­çš„ç‰©å“äº¤æ¢
+                                    //äº¤æ¢
                                     INT result = 
                                         g_ItemOperator.ExchangeItem
                                         (
@@ -800,23 +800,23 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         );
 
                                     if(result>=0)
-                                    {//ÒÆ¶¯³É¹¦
-                                        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                    {//ç§»åŠ¨æˆåŠŸ
+                                        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                         Item* pIt = pStallContainer->GetItem(nToIndex);
                                         if(!pIt->IsEmpty())
                                         {
-                                            //ĞòÁĞºÅµİÔö
+                                            //åºåˆ—å·é€’å¢
                                             uFinalSerial = pStallBox->IncSerialByIndex(nToIndex);
 
                                             Item* pItemInBag = pBaseContainer->GetItem(IndexInBag);
 
-                                            //ÉÏ»õ£ºAAAÈ¡»ØÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                            //ä¸Šè´§ï¼šAAAå–å›äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                             RecordOpt::Excute(REC_DELITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)pItemInBag->GetItemTableIndex(), (INT)pItemInBag->GetLayedNum());
 
-                                            //ÉÏ»õ£ºAAAÉÏ»õÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                            //ä¸Šè´§ï¼šAAAä¸Šè´§äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                             RecordOpt::Excute(REC_ADDITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)pIt->GetItemTableIndex(), (INT)pIt->GetLayedNum());
                                             
-                                            //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                            //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                             MsgToClient.SetOpt(GCItemSynch::OPT_EXCHANGE_ITEM);
                                             MsgToClient.SetFromType(GCItemSynch::POS_BAG);
                                             MsgToClient.SetToType(GCItemSynch::POS_PLAYERSHOP);
@@ -834,7 +834,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         }
                                     }
                                     else
-                                    {//Ê§°Ü
+                                    {//å¤±è´¥
                                         Assert(0);    
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                         pGamePlayer->SendPacket(&MsgError);
@@ -844,7 +844,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     }
                                 }
                                 else
-                                {//´ËÎ»ÖÃÃ»¶«Î÷£¬ÒÆ¶¯¹ıÀ´
+                                {//æ­¤ä½ç½®æ²¡ä¸œè¥¿ï¼Œç§»åŠ¨è¿‡æ¥
                                         INT result = 
                                         g_ItemOperator.MoveItem
                                         (
@@ -855,18 +855,18 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         );
 
                                     if(result>=0)
-                                    {//ÒÆ¶¯³É¹¦
-                                        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                    {//ç§»åŠ¨æˆåŠŸ
+                                        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                         Item* pIt = pStallContainer->GetItem(nToIndex);
                                         if(!pIt->IsEmpty())
                                         {
-                                            //ĞòÁĞºÅµİÔö
+                                            //åºåˆ—å·é€’å¢
                                             uFinalSerial = pStallBox->IncSerialByIndex(nToIndex);
 
-                                            //ÉÏ»õ£ºAAAÉÏ»õÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                            //ä¸Šè´§ï¼šAAAä¸Šè´§äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                             RecordOpt::Excute(REC_ADDITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)pIt->GetItemTableIndex(), (INT)pIt->GetLayedNum());
 
-                                            //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                            //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                             MsgToClient.SetOpt(GCItemSynch::OPT_MOVE_ITEM);
                                             MsgToClient.SetFromType(GCItemSynch::POS_BAG);
                                             MsgToClient.SetToType(GCItemSynch::POS_PLAYERSHOP);
@@ -884,7 +884,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         }
                                     }
                                     else
-                                    {//Ê§°Ü
+                                    {//å¤±è´¥
                                         Assert(0);
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                         pGamePlayer->SendPacket(&MsgError);
@@ -905,7 +905,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                         switch(ToType)
                         {
                         case CGItemSynch::POS_PLAYERSHOP:
-                            {//³èÎï->ÉÌµê
+                            {//å® ç‰©->å•†åº—
 
                             }
                             break;
@@ -919,14 +919,14 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                         switch(ToType)
                         {
                         case CGItemSynch::POS_BAG:
-                            {//ÉÌµê->±³°ü
+                            {//å•†åº—->èƒŒåŒ…
                                 CGManuMoveItemFromPlayerShopToBag_t ExtraData;
                                 Assert(ExtraInfoL == ExtraData.GetSize());
                                 memcpy(&ExtraData, pExtraInfo, ExtraInfoL);
                                 BYTE                nToIndex    = ToIndex;
                                 _PLAYERSHOP_GUID    nShopID        = ExtraData.m_ShopGuid;
                                 BYTE                nStallIndex    = ExtraData.m_nStallIndex;
-                                UINT                uSerial        = ExtraData.m_uSerial;//ÉÌµêÀï´ËÎ»ÖÃµÄĞòÁĞºÅ
+                                UINT                uSerial        = ExtraData.m_uSerial;//å•†åº—é‡Œæ­¤ä½ç½®çš„åºåˆ—å·
                                 BYTE                nShopSerial    = ExtraData.m_nShopSerial;
 
                                 PlayerShopManager*    pPlayerShopManager = pScene->GetPlayerShopManager();
@@ -936,10 +936,10 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 Assert(pStallBox);
                                 ItemContainer*    pStallContainer = pStallBox->GetContainer();
 
-                                //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+                                //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
                                 BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-                                //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+                                //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
                                 BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
                                 if(bIsMine == FALSE && bCanManager == FALSE)
@@ -984,8 +984,8 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 Item* pDestItem = pBagContainer->GetItem(nToIndex);
                                 
                                 if(!pDestItem->IsEmpty())
-                                {//´ËÎ»ÖÃÒÑ¾­ÓĞ¶«Î÷ÁË£¬Ö»ÄÜÓë±³°üÖĞµÄÎïÆ·½»»»
-                                    //½»»»
+                                {//æ­¤ä½ç½®å·²ç»æœ‰ä¸œè¥¿äº†ï¼Œåªèƒ½ä¸èƒŒåŒ…ä¸­çš„ç‰©å“äº¤æ¢
+                                    //äº¤æ¢
                                     INT result = 
                                         g_ItemOperator.ExchangeItem
                                         (
@@ -996,24 +996,24 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         );
 
                                     if(result>=0)
-                                    {//ÒÆ¶¯³É¹¦
-                                        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                    {//ç§»åŠ¨æˆåŠŸ
+                                        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                         Item* pIt = pBagContainer->GetItem(nToIndex);
                                         if(!pIt->IsEmpty())
                                         {
-                                            //ĞòÁĞºÅµİÔö
+                                            //åºåˆ—å·é€’å¢
                                             uFinalSerial = pStallBox->IncSerialByIndex(IndexInStall);
                                             uFinalToIndex    = pBagContainer->ConIndex2BagIndex(nToIndex);
 
                                             Item* pItemInStall = pStallContainer->GetItem(IndexInStall);
 
-                                            //ÉÏ»õ£ºAAAÈ¡»ØÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                            //ä¸Šè´§ï¼šAAAå–å›äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                             RecordOpt::Excute(REC_DELITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)pIt->GetItemTableIndex(), (INT)pIt->GetLayedNum());
 
-                                            //ÉÏ»õ£ºAAAÉÏ»õÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                            //ä¸Šè´§ï¼šAAAä¸Šè´§äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                             RecordOpt::Excute(REC_ADDITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)pItemInStall->GetItemTableIndex(), (INT)pItemInStall->GetLayedNum());
 
-                                            //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                            //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                             MsgToClient.SetOpt(GCItemSynch::OPT_EXCHANGE_ITEM);
                                             MsgToClient.SetFromType(GCItemSynch::POS_PLAYERSHOP);
                                             MsgToClient.SetToType(GCItemSynch::POS_BAG);
@@ -1031,7 +1031,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         }
                                     }
                                     else
-                                    {//Ê§°Ü
+                                    {//å¤±è´¥
                                         Assert(0);
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                         pGamePlayer->SendPacket(&MsgError);
@@ -1041,9 +1041,9 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     }
                                 }
                                 else
-                                {//´ËÎ»ÖÃÃ»¶«Î÷£¬ÒÆ¶¯¹ıÀ´
-                                    //¿½±´µ½Ì¯Î»ºĞ
-                                    //×Ô¶¯ÕÒ¸ñ
+                                {//æ­¤ä½ç½®æ²¡ä¸œè¥¿ï¼Œç§»åŠ¨è¿‡æ¥
+                                    //æ‹·è´åˆ°æ‘Šä½ç›’
+                                    //è‡ªåŠ¨æ‰¾æ ¼
                                     INT result = 
                                         g_ItemOperator.MoveItem
                                         (
@@ -1054,19 +1054,19 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         );
 
                                     if(result>=0)
-                                    {//ÒÆ¶¯³É¹¦
-                                        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                    {//ç§»åŠ¨æˆåŠŸ
+                                        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                         Item* pIt = pBagContainer->GetItem(nToIndex);
                                         if(!pIt->IsEmpty())
                                         {
-                                            //ĞòÁĞºÅµİÔö
+                                            //åºåˆ—å·é€’å¢
                                             uFinalSerial = pStallBox->IncSerialByIndex(IndexInStall);
                                             uFinalToIndex = pBagContainer->ConIndex2BagIndex(nToIndex);
 
-                                            //ÉÏ»õ£ºAAAÈ¡»ØÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+                                            //ä¸Šè´§ï¼šAAAå–å›äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
                                             RecordOpt::Excute(REC_DELITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)pIt->GetItemTableIndex(), (INT)pIt->GetLayedNum());
 
-                                            //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                            //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                             MsgToClient.SetOpt(GCItemSynch::OPT_MOVE_ITEM );
                                             MsgToClient.SetFromType(GCItemSynch::POS_PLAYERSHOP);
                                             MsgToClient.SetToType(GCItemSynch::POS_BAG);
@@ -1085,7 +1085,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         }
                                     }
                                     else
-                                    {//Ê§°Ü
+                                    {//å¤±è´¥
                                         Assert(0);
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                         pGamePlayer->SendPacket(&MsgError);
@@ -1097,7 +1097,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                             }
                             break;
                         case CGItemSynch::POS_PLAYERSHOP:
-                            {//ÉÌµê->ÉÌµê
+                            {//å•†åº—->å•†åº—
 
                                 CGManuMoveItemFromPlayerShopToPlayerShop_t ExtraData;
                                 Assert(ExtraInfoL == ExtraData.GetSize());
@@ -1105,8 +1105,8 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 BYTE nToIndex                = ToIndex;
                                 _PLAYERSHOP_GUID    nShopID = ExtraData.m_ShopGuid;
                                 BYTE nStallIndex            = ExtraData.m_nStallIndex;
-                                UINT uSerialSource            = ExtraData.m_uSerialSource;//ÉÌµêÀïÔ´Î»ÖÃµÄĞòÁĞºÅ
-                                UINT uSerialDest            = ExtraData.m_uSerialDest;//ÉÌµêÀïÄ¿µÄÎ»ÖÃµÄĞòÁĞºÅ
+                                UINT uSerialSource            = ExtraData.m_uSerialSource;//å•†åº—é‡Œæºä½ç½®çš„åºåˆ—å·
+                                UINT uSerialDest            = ExtraData.m_uSerialDest;//å•†åº—é‡Œç›®çš„ä½ç½®çš„åºåˆ—å·
                                 BYTE nShopSerial            = ExtraData.m_nShopSerial;
                             
                                 PlayerShopManager*    pPlayerShopManager = pScene->GetPlayerShopManager();
@@ -1150,8 +1150,8 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                 Item* pItemDest        = pStallContainer->GetItem(IndexInStallDest);
 
                                 if(!pItemDest->IsEmpty())
-                                {//´ËÎ»ÖÃÒÑ¾­ÓĞ¶«Î÷ÁË£¬Ö»ÄÜÓë´ËÎ»ÖÃÖĞµÄÎïÆ·½»»»
-                                    //½»»»
+                                {//æ­¤ä½ç½®å·²ç»æœ‰ä¸œè¥¿äº†ï¼Œåªèƒ½ä¸æ­¤ä½ç½®ä¸­çš„ç‰©å“äº¤æ¢
+                                    //äº¤æ¢
                                     INT result = 
                                         g_ItemOperator.ExchangeItem
                                         (
@@ -1162,16 +1162,16 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         );
 
                                     if(result>=0)
-                                    {//ÒÆ¶¯³É¹¦
-                                        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                    {//ç§»åŠ¨æˆåŠŸ
+                                        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                         Item* pIt = pStallContainer->GetItem(IndexInStallDest);
                                         if(!pIt->IsEmpty())
                                         {
-                                            //ĞòÁĞºÅµİÔö
+                                            //åºåˆ—å·é€’å¢
                                             UINT uFinalSerialSource    = pStallBox->IncSerialByIndex(IndexInStallSource);
                                             UINT uFinalSerialDest    = pStallBox->IncSerialByIndex(IndexInStallDest);
                                             
-                                            //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                            //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                             MsgToClient.SetOpt(GCItemSynch::OPT_EXCHANGE_ITEM);
                                             MsgToClient.SetFromType(GCItemSynch::POS_PLAYERSHOP);
                                             MsgToClient.SetToType(GCItemSynch::POS_PLAYERSHOP);
@@ -1190,7 +1190,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         }
                                     }
                                     else
-                                    {//Ê§°Ü
+                                    {//å¤±è´¥
                                         Assert(0);
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                         pGamePlayer->SendPacket(&MsgError);
@@ -1200,9 +1200,9 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                     }
                                 }
                                 else
-                                {//´ËÎ»ÖÃÃ»¶«Î÷£¬ÒÆ¶¯¹ıÀ´
-                                    //¿½±´µ½Ì¯Î»ºĞ
-                                    //×Ô¶¯ÕÒ¸ñ
+                                {//æ­¤ä½ç½®æ²¡ä¸œè¥¿ï¼Œç§»åŠ¨è¿‡æ¥
+                                    //æ‹·è´åˆ°æ‘Šä½ç›’
+                                    //è‡ªåŠ¨æ‰¾æ ¼
                                     INT result = 
                                         g_ItemOperator.MoveItem
                                         (
@@ -1213,16 +1213,16 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         );
 
                                     if(result>=0)
-                                    {//ÒÆ¶¯³É¹¦
-                                        //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                    {//ç§»åŠ¨æˆåŠŸ
+                                        //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                         Item* pIt = pStallContainer->GetItem(IndexInStallDest);
                                         if(!pIt->IsEmpty())
                                         {
-                                            //ĞòÁĞºÅµİÔö
+                                            //åºåˆ—å·é€’å¢
                                             UINT uFinalSerialSource    = pStallBox->IncSerialByIndex(IndexInStallSource);
                                             UINT uFinalSerialDest    = pStallBox->IncSerialByIndex(IndexInStallDest);
                                             
-                                            //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                                            //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                                             MsgToClient.SetOpt(GCItemSynch::OPT_MOVE_ITEM );
                                             MsgToClient.SetFromType(GCItemSynch::POS_PLAYERSHOP);
                                             MsgToClient.SetToType(GCItemSynch::POS_PLAYERSHOP);
@@ -1241,7 +1241,7 @@ UINT CGItemSynchHandler::Execute( CGItemSynch* pPacket, Player* pPlayer )
                                         }
                                     }
                                     else
-                                    {//Ê§°Ü
+                                    {//å¤±è´¥
                                         Assert(0);
                                         MsgError.SetID(PLAYERSHOP_MSG::ERR_ILLEGAL);
                                         pGamePlayer->SendPacket(&MsgError);

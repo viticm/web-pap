@@ -9,25 +9,25 @@
 #include "IDTable.h"
 
 
-//¹ÜÀíÒ»ÈºÍæ¼Ò¹¦ÄÜµÄ»ù±¾Ä£¿é,Ò»°ãÎªÃ¿¸ö³¡¾°´´½¨Ò»¸öPlayerManager
-//²¢ÇÒÔÚÒ»¸ö¶ÀÁ¢µÄÏß³ÌÄÚÖ´ĞĞ
+//ç®¡ç†ä¸€ç¾¤ç©å®¶åŠŸèƒ½çš„åŸºæœ¬æ¨¡å—,ä¸€èˆ¬ä¸ºæ¯ä¸ªåœºæ™¯åˆ›å»ºä¸€ä¸ªPlayerManager
+//å¹¶ä¸”åœ¨ä¸€ä¸ªç‹¬ç«‹çš„çº¿ç¨‹å†…æ‰§è¡Œ
 class PlayerManager
 {
 public :
     PlayerManager( ) ;
     ~PlayerManager( ) ;
 
-    //Çå³ıµ±Ç°Ä£¿éÄÚµÄÊı¾İĞÅÏ¢
+    //æ¸…é™¤å½“å‰æ¨¡å—å†…çš„æ•°æ®ä¿¡æ¯
     VOID                CleanUp( ) ;
 
-    //Âß¼­½Ó¿Ú
+    //é€»è¾‘æ¥å£
     virtual BOOL        HeartBeat( UINT uTime=0 ) ;
 
-    //Ôö¼ÓÒ»¸öÍæ¼Ò
+    //å¢åŠ ä¸€ä¸ªç©å®¶
     BOOL                AddPlayer( Player* pPlayer ) ;
 
     BOOL                AddPlayer( Player* pPlayer,UINT MaxPlayer);
-    //É¾³ıÒ»¸öÍæ¼Ò
+    //åˆ é™¤ä¸€ä¸ªç©å®¶
 
     VOID                RemovePlayer( PlayerID_t pid ) ;
 
@@ -38,7 +38,7 @@ public :
 
 
 
-    BOOL                AddPlayer( PlayerID_t pid ) ;        //Î´Ìá¹©¹¦ÄÜ½Ó¿Ú
+    BOOL                AddPlayer( PlayerID_t pid ) ;        //æœªæä¾›åŠŸèƒ½æ¥å£
 
 protected :
     //

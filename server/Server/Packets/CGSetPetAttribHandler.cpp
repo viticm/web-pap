@@ -32,7 +32,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     ItemContainer *pPetContainer = pHuman->GetPetContain();
@@ -166,7 +166,7 @@ __ENTER_FUNCTION
             //INT nLevel = pPetItem->GetLevel();
             //FLOAT fGrowRate = pPetItem->GetGrowRate();
 
-            ////Ä§¹¥    ³õÊ¼Ä§¹¥+ÁéÆø*ÁéÆø¶ÔÄ§¹¥¹¥Ó°ÏìÏµÊı*Áé×Ê+µÈ¼¶*µÈ¼¶¶ÔÄ§¹¥Ó°ÏìÏµÊı*³É³¤
+            ////é­”æ”»    åˆå§‹é­”æ”»+çµæ°”*çµæ°”å¯¹é­”æ”»æ”»å½±å“ç³»æ•°*çµèµ„+ç­‰çº§*ç­‰çº§å¯¹é­”æ”»å½±å“ç³»æ•°*æˆé•¿
             //nBaseParam = g_TableInit.m_PetConfig.m_BaseMgcAttack;
             //fAttribRate = g_TableInit.m_PetConfig.m_Spr_MgcAttack_Pram;
             //fLevelRate = g_TableInit.m_PetConfig.m_Level_MgcAttack_Pram;
@@ -174,7 +174,7 @@ __ENTER_FUNCTION
             //nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
             //msgDetail.SetAtt_Magic(nValue);
-            ////Îï¹¥    ³õÊ¼Îï¹¥+Á¦Á¿*Á¦Á¿¶ÔÎï¹¥Ó°ÏìÏµÊı*Á¦×Ê+µÈ¼¶*µÈ¼¶¶ÔÎï¹¥Ó°ÏìÏµÊı*³É³¤
+            ////ç‰©æ”»    åˆå§‹ç‰©æ”»+åŠ›é‡*åŠ›é‡å¯¹ç‰©æ”»å½±å“ç³»æ•°*åŠ›èµ„+ç­‰çº§*ç­‰çº§å¯¹ç‰©æ”»å½±å“ç³»æ•°*æˆé•¿
             //nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
             //fAttribRate = g_TableInit.m_PetConfig.m_Str_PhyAttack_Pram;
             //fLevelRate = g_TableInit.m_PetConfig.m_Level_PhyAttack_Pram;
@@ -182,7 +182,7 @@ __ENTER_FUNCTION
             //nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
             //msgDetail.SetAtt_Physics(nValue);
-            ////Ä§·À    ³õÊ¼Ä§·À+¶¨Á¦*¶¨Á¦¶ÔÄ§·ÀÓ°ÏìÏµÊı*¶¨×Ê+µÈ¼¶*µÈ¼¶¶ÔÄ§·ÀÓ°ÏìÏµÊı*³É³¤
+            ////é­”é˜²    åˆå§‹é­”é˜²+å®šåŠ›*å®šåŠ›å¯¹é­”é˜²å½±å“ç³»æ•°*å®šèµ„+ç­‰çº§*ç­‰çº§å¯¹é­”é˜²å½±å“ç³»æ•°*æˆé•¿
             //nBaseParam = g_TableInit.m_PetConfig.m_BaseMgcDefence;
             //fAttribRate = g_TableInit.m_PetConfig.m_Int_MgcDefence_Pram;
             //fLevelRate = g_TableInit.m_PetConfig.m_Level_MgcDefence_Pram;
@@ -190,7 +190,7 @@ __ENTER_FUNCTION
             //nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
             //msgDetail.SetDef_Magic(nValue);
-            ////Îï·À    ³õÊ¼Îï¹¥+ÌåÖÊ*ÌåÖÊ¶ÔÎï·ÀÓ°ÏìÏµÊı*Ìå×Ê+µÈ¼¶*µÈ¼¶¶ÔÎï·ÀÓ°ÏìÏµÊı*³É³¤
+            ////ç‰©é˜²    åˆå§‹ç‰©æ”»+ä½“è´¨*ä½“è´¨å¯¹ç‰©é˜²å½±å“ç³»æ•°*ä½“èµ„+ç­‰çº§*ç­‰çº§å¯¹ç‰©é˜²å½±å“ç³»æ•°*æˆé•¿
             //nBaseParam = g_TableInit.m_PetConfig.m_BasePhyDefence;
             //fAttribRate = g_TableInit.m_PetConfig.m_Con_PhyDefence_Pram;
             //fLevelRate = g_TableInit.m_PetConfig.m_Level_PhyDefence_Pram;
@@ -198,7 +198,7 @@ __ENTER_FUNCTION
             //nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
             //msgDetail.SetDef_Physics(nValue);
-            ////ÉÁ±Ü    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶ÔÉÁ±ÜÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶ÔÉÁ±ÜÓ°ÏìÏµÊı*³É³¤
+            ////é—ªé¿    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹é—ªé¿å½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹é—ªé¿å½±å“ç³»æ•°*æˆé•¿
             //nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
             //fAttribRate = g_TableInit.m_PetConfig.m_Dex_Miss_Pram;
             //fLevelRate = g_TableInit.m_PetConfig.m_Level_Miss_Pram;
@@ -206,7 +206,7 @@ __ENTER_FUNCTION
             //nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
             //msgDetail.SetMiss(nValue);
-            ////ÃüÖĞ    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶ÔÃüÖĞÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶ÔÃüÖĞÓ°ÏìÏµÊı*³É³¤
+            ////å‘½ä¸­    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹å‘½ä¸­å½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹å‘½ä¸­å½±å“ç³»æ•°*æˆé•¿
             //nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
             //fAttribRate = g_TableInit.m_PetConfig.m_Dex_Hit_Pram;
             //fLevelRate = g_TableInit.m_PetConfig.m_Level_Hit_Pram;
@@ -214,7 +214,7 @@ __ENTER_FUNCTION
             //nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
             //msgDetail.SetHit(nValue);
-            ////»áĞÄ    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶Ô»áĞÄÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶Ô»áĞÄÓ°ÏìÏµÊı*³É³¤
+            ////ä¼šå¿ƒ    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹ä¼šå¿ƒå½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹ä¼šå¿ƒå½±å“ç³»æ•°*æˆé•¿
             //nBaseParam = g_TableInit.m_PetConfig.m_BaseCritical;
             //fAttribRate = g_TableInit.m_PetConfig.m_Dex_Critical_Pram;
             //fLevelRate = g_TableInit.m_PetConfig.m_Level_Critical_Pram;

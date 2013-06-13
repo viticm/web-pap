@@ -1,11 +1,11 @@
 /********************************************************************************
- *    �ļ�����    Ability.h
- *    ȫ·����    d:\Prj\Server\Server\Ability\Ability.h
- *    ����ʱ�䣺    
+ *    文件名：    Ability.h
+ *    全路径：    d:\Prj\Server\Server\Ability\Ability.h
+ *    创建时间：    
  *
- *    ����˵����    ����ܵ�ͨ���࣬�洢����
- *    �޸ļ�¼��    
- *                ��һЩ�������ص����ݽṹŲ���������������Ϊȫ�ֱ������䷽��
+ *    功能说明：    生活技能的通用类，存储技能
+ *    修改记录：    
+ *                将一些生活技能相关的数据结构挪到这里，包括曾经作为全局变量的配方表
 *********************************************************************************/
 
 #ifndef __ABILITY_H__
@@ -56,20 +56,20 @@ public:
     inline    VOID                OperationActionID(INT id);
 
     /*
-     * �ж�����Ƿ����ʹ�ø������
-     * ����ֵ���������
+     * 判断玩家是否可以使用该生活技能
+     * 返回值情况见定义
      */
     virtual
         ORESULT                    CanUseAbility(Obj_Human* pHuman);
 
     /*
-     * ���ʹ������ܹ����б���ϵ��ô˺���
+     * 玩家使用生活技能过程中被打断调用此函数
      */
     virtual
         VOID                    OnProcInterrupt(Obj_Human* pHuman);
 
     /*
-     * ������������꼼�ܺ󣨵��ﴦ������ʱ�䣩���ô˺���
+     * 玩家正常处理完技能后（到达处理结束时间）调用此函数
      */
     virtual
         ORESULT                    OnProcOver(Obj_Human* pHuman){ return OR_OK; }
@@ -82,15 +82,15 @@ protected:
         ORESULT                    OnProcFailure(Obj_Human* pHuman){ return OR_OK; }
 
 protected:
-    AbilityID_t                    m_AbilityID;            // ���� ID
-    const CHAR*                    m_AbilityName;            // ��������
-    INT                            m_LevelDemand;            // ����ѧϰ����Ҫ�������ҵȼ�
-    INT                            m_AbilityLevelLimit;    // ��������ѧ������������߼���С�� 1 ��ʾû������
-    INT                            m_OperationTime;        // ����ʱ�䣨ms��
-    UINT                        m_OperationToolID;        // �������蹤�ߵ� ID���� INVALID_ID ��ʾ����Ҫ����
-    INT                            m_PlatformID;            // ��������ĸ���ƽ̨�����������Ҫ¯����ҩ��Ҫ��¯�ȵȣ�
-    FLOAT                        m_PlatformDistance;        // ��� m_PlatformID ���� INVALID_ID���������ж�ƽ̨���ڵķ�Χ�뾶
-    UINT                        m_OperationActionID;    // �������� ID
+    AbilityID_t                    m_AbilityID;            // 技能 ID
+    const CHAR*                    m_AbilityName;            // 技能名称
+    INT                            m_LevelDemand;            // 技能学习所需要的最低玩家等级
+    INT                            m_AbilityLevelLimit;    // 技能所能学（升）到的最高级别，小于 1 表示没有限制
+    INT                            m_OperationTime;        // 操作时间（ms）
+    UINT                        m_OperationToolID;        // 操作所需工具的 ID，用 INVALID_ID 表示不需要工具
+    INT                            m_PlatformID;            // 操作所需的辅助平台（例如烹饪需要炉火，制药需要丹炉等等）
+    FLOAT                        m_PlatformDistance;        // 如果 m_PlatformID 不是 INVALID_ID，则用于判断平台所在的范围半径
+    UINT                        m_OperationActionID;    // 操作动作 ID
 
     
 };
@@ -121,25 +121,25 @@ struct _DBC_PRESCRIPTION_DATA
 
     enum
     {
-        TB_PrescriptionID        = 0,    // �䷽ ID
-        TB_CompoundID            = 2,    // �ϳ��� ID
-        TB_CompoundNum,                    // �ϳ�������(ͨ��ֻ�пɵ�����������ֵ)
-        TB_AbilityID,                    // ʹ�ø��䷽��Ҫ�ļ��� ID
-        TB_AbilityLevel,                // ʹ�ø��䷽��Ҫ�ļ��ܵȼ�
-        TB_Stuff_BEGIN,                    // ����Ʒ����ԭ�� ID
-        TB_Stuff_END            = TB_Stuff_BEGIN + MAX_PRESCRIPTION_STUFF*2 - 1, // ����Ʒ����ԭ������
-        TB_Attr_VIGOR,                    // ʹ�ø��䷽��Ҫ����Ļ���ֵ
-        TB_Attr_ENERGY,                    // ʹ�ø��䷽��Ҫ����ľ���ֵ
-        TB_Attr_RESERVED,                // ʹ�ø��䷽��Ҫ���������ֵ
-        TB_Attr_RESERVED2,                // ʹ�ø��䷽��Ҫ���������ֵ
-        TB_ColddownTime,                // ʹ�ø��䷽��Ҫ����ȴʱ��
-        TB_ToolID,                        // ʹ�ø��䷽��Ҫ�Ĺ��� ID����һ���䷽��Ҫ���ֹ���ʱ���Ժͼ�����Ҫ�Ĺ��ߵ���ʹ��
-        TB_ColddownID,                    // ��ȴ�� ID
-        TB_ExpRequired,                    // �������䷽������������
-        TB_ExpIncrement,                // �������䷽���ܻ�õ�������
-        TB_OperaTime            = TB_ExpIncrement + 2,                    // �����䷽����ʱ��
-        TB_SCRIPTID,                    // �ű� ID����ͨ��ͨ�ã��䷽��Ҫָ��һ���ű�
-        TB_REPLICAID,                    // �ϳ�ʧ��ʱ��������
+        TB_PrescriptionID        = 0,    // 配方 ID
+        TB_CompoundID            = 2,    // 合成物 ID
+        TB_CompoundNum,                    // 合成物数量(通常只有可叠加物才有这个值)
+        TB_AbilityID,                    // 使用该配方需要的技能 ID
+        TB_AbilityLevel,                // 使用该配方需要的技能等级
+        TB_Stuff_BEGIN,                    // 该物品所需原料 ID
+        TB_Stuff_END            = TB_Stuff_BEGIN + MAX_PRESCRIPTION_STUFF*2 - 1, // 该物品所需原料数量
+        TB_Attr_VIGOR,                    // 使用该配方需要耗损的活力值
+        TB_Attr_ENERGY,                    // 使用该配方需要耗损的精力值
+        TB_Attr_RESERVED,                // 使用该配方需要耗损的属性值
+        TB_Attr_RESERVED2,                // 使用该配方需要耗损的属性值
+        TB_ColddownTime,                // 使用该配方需要的冷却时间
+        TB_ToolID,                        // 使用该配方需要的工具 ID，在一个配方需要两种工具时可以和技能需要的工具叠加使用
+        TB_ColddownID,                    // 冷却组 ID
+        TB_ExpRequired,                    // 制作此配方的熟练度需求
+        TB_ExpIncrement,                // 制作此配方所能获得的熟练度
+        TB_OperaTime            = TB_ExpIncrement + 2,                    // 制作配方操作时间
+        TB_SCRIPTID,                    // 脚本 ID，普通（通用）配方需要指定一个脚本
+        TB_REPLICAID,                    // 合成失败时的生成物
     };
 };
 
@@ -168,12 +168,12 @@ struct _ABILITY_PRESCRIPTION_TBL
 
 struct _AbilityExpTable
 {
-    const CHAR*                    m_AbilityObjectName;    // ���ܶ�������
-    INT                            m_AbilityBaseExp;        // ����������
-    INT                            m_AbilityLevel;            // ���ܵȼ�
-    INT                            m_AbilityCostPercent;    // ��ı���
-    AbilityID_t                    m_AbilityId;            // ���� ID
-    INT                            m_AbilityItemTypeSn;    // ���ܶ����ItemType
+    const CHAR*                    m_AbilityObjectName;    // 技能对象名称
+    INT                            m_AbilityBaseExp;        // 基础熟练度
+    INT                            m_AbilityLevel;            // 技能等级
+    INT                            m_AbilityCostPercent;    // 损耗比例
+    AbilityID_t                    m_AbilityId;            // 技能 ID
+    INT                            m_AbilityItemTypeSn;    // 技能对象的ItemType
 
     enum ETableElement
     {

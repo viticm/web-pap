@@ -15,7 +15,7 @@ namespace Packets
         CGAskTeamMemberInfo( ){}
         virtual ~CGAskTeamMemberInfo( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream )const;
         virtual UINT            Execute( Player* pPlayer );
@@ -24,7 +24,7 @@ namespace Packets
         virtual UINT            GetPacketSize()const { return sizeof(ObjID_t) + sizeof(GUID_t) + sizeof(SceneID_t); }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         ObjID_t                    getObjID(VOID) { return m_ObjID; }
         VOID                    setObjID(ObjID_t idTarget) { m_ObjID = idTarget; }
 
@@ -35,10 +35,10 @@ namespace Packets
         SceneID_t                GetSceneID( ){ return m_SceneID ; }
 
     private:
-        //数据
-        SceneID_t                m_SceneID;    //对方所在的场景ID
-        GUID_t                    m_GUID;        //对方的GUID
-        ObjID_t                    m_ObjID;    //对方的ObjID
+        //鏁版嵁
+        SceneID_t                m_SceneID;    //瀵规柟鎵�鍦ㄧ殑鍦烘櫙ID
+        GUID_t                    m_GUID;        //瀵规柟鐨凣UID
+        ObjID_t                    m_ObjID;    //瀵规柟鐨凮bjID
     };
 
 

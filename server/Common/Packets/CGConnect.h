@@ -19,7 +19,7 @@ public:
     CGConnect( ){SetCheckVer(CURRENT_VERSION);} ;
     virtual ~CGConnect( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -33,7 +33,7 @@ public:
                                                             sizeof(INT); }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     UINT                    GetKey( ){ return m_Key ; } ;
     VOID                    SetKey( UINT key ){ m_Key = key ; } ;
     
@@ -56,14 +56,14 @@ public:
     VOID                    SetCheckVer(INT nCheckVer) { m_nCheckVer = nCheckVer; }
 
 private:
-    //Êı¾İ
+    //æ•°æ®
     UINT                    m_Key ;
     GUID_t                    m_GUID ;
     ID_t                    m_ServerID ;
 
-    //²âÊÔÓÃ
+    //æµ‹è¯•ç”¨
     CHAR                    m_szAccount[MAX_ACCOUNT+1] ;
-    INT                        m_nGender;            //ĞÔ±ğ
+    INT                        m_nGender;            //æ€§åˆ«
     INT                        m_nCheckVer ;
 };
 

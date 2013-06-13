@@ -1,6 +1,6 @@
 // GCCharSkill_Gather.h
 // 
-// ¼¼ÄÜ¾ÛÆø
+// æŠ€èƒ½èšæ°”
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         GCCharSkill_Gather( ){}
         virtual ~GCCharSkill_Gather( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -38,7 +38,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                setObjID(ObjID_t id) { m_ObjID = id; }
         ObjID_t                getObjID(VOID)const { return m_ObjID; }
 
@@ -65,15 +65,15 @@ namespace Packets
 
     private:
         ObjID_t                m_ObjID;            // ObjID
-        INT                    m_nLogicCount;        // Âß¼­¼ÆÊı
-        SkillID_t            m_SkillDataID;        // ¼¼ÄÜµÄ×ÊÔ´ID
-        WORLD_POS            m_posUser;            // Ê¹ÓÃ¶¼×ø±ê
+        INT                    m_nLogicCount;        // é€»è¾‘è®¡æ•°
+        SkillID_t            m_SkillDataID;        // æŠ€èƒ½çš„èµ„æºID
+        WORLD_POS            m_posUser;            // ä½¿ç”¨éƒ½åæ ‡
         //union{
-        ObjID_t                m_TargetID;            // Ä¿±ê½ÇÉ«
-        WORLD_POS            m_posTarget;        // Ä¿±ê×ø±ê
-        FLOAT                m_fDir;                // ¼¼ÄÜµÄ·½Ïò
+        ObjID_t                m_TargetID;            // ç›®æ ‡è§’è‰²
+        WORLD_POS            m_posTarget;        // ç›®æ ‡åæ ‡
+        FLOAT                m_fDir;                // æŠ€èƒ½çš„æ–¹å‘
         //};
-        INT                    m_nTotalTime;        // ×ÜÊ±¼ä
+        INT                    m_nTotalTime;        // æ€»æ—¶é—´
     };
 
 

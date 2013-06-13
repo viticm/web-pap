@@ -21,15 +21,15 @@ private :
     VOID                AddFactory( PacketFactory* pFactory ) ;
     
 public :
-    //�ⲿ����ͨ�ýӿ�
+    //外部调用通用接口
 
-    //��ʼ���ӿ�
+    //初始化接口
     BOOL                Init( ) ;
-    //������Ϣ���ʹ��ڴ��������Ϣʵ�����ݣ��������߳�ͬʱ���ã�
+    //根据消息类型从内存里分配消息实体数据（允许多线程同时调用）
     Packet*                CreatePacket( PacketID_t packetID ) ;
-    //������Ϣ����ȡ�ö�Ӧ��Ϣ�����ߴ磨�������߳�ͬʱ���ã�
+    //根据消息类型取得对应消息的最大尺寸（允许多线程同时调用）
     UINT                GetPacketMaxSize( PacketID_t packetID ) ;
-    //ɾ����Ϣʵ�壨�������߳�ͬʱ���ã�
+    //删除消息实体（允许多线程同时调用）
     VOID                RemovePacket( Packet* pPacket ) ;
     
     VOID                Lock( ){ m_Lock.Lock() ; } ;

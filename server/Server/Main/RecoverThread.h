@@ -5,7 +5,7 @@
 #include "Thread.h"
 
 
-//ÓÃÀ´´¦Àí·şÎñÆ÷Crashºó¾ÉÍæ¼ÒÊı¾İµÄÏß³Ì
+//ç”¨æ¥å¤„ç†æœåŠ¡å™¨Crashåæ—§ç©å®¶æ•°æ®çš„çº¿ç¨‹
 
 
 class RecoverThread : public Thread
@@ -14,16 +14,16 @@ public :
     RecoverThread( ){} ;
     ~RecoverThread( ){} ;
 
-    //Ö÷Ñ­»·
+    //ä¸»å¾ªç¯
     virtual VOID    run( ) ;
 
-    //Í£Ö¹Ïß³ÌÖ´ĞĞ
+    //åœæ­¢çº¿ç¨‹æ‰§è¡Œ
     virtual VOID    stop( ) { m_bActive = FALSE ; } ;
 
-    //ÅĞ¶Ïµ±Ç°Ïß³ÌÊÇ·ñ¼¤»î
+    //åˆ¤æ–­å½“å‰çº¿ç¨‹æ˜¯å¦æ¿€æ´»
     BOOL            IsActive( ){ return m_bActive ; } ;
 private :
-    //ÊÇ·ñ¼¤»î
+    //æ˜¯å¦æ¿€æ´»
     BOOL        m_bActive ;
 
 

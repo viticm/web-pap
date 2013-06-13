@@ -1,6 +1,6 @@
 // CGCharMove.h
 // 
-// 移动
+// 绉诲姩
 // 
 //////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace Packets
         {
         }
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -45,7 +45,7 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         VOID                setObjID(ObjID_t id) { m_ObjID = id; }
         ObjID_t                getObjID(VOID)const { return m_ObjID; }
 
@@ -68,10 +68,10 @@ namespace Packets
 
     private:
         ObjID_t                m_ObjID;            // ObjID
-        INT                    m_nHandleID;        // 操作ID
-        WORLD_POS            m_posWorld;            // 当前位置
+        INT                    m_nHandleID;        // 鎿嶄綔ID
+        WORLD_POS            m_posWorld;            // 褰撳墠浣嶇疆
         BYTE                m_yNumTargetPos;
-        WORLD_POS            m_aTargetPos[MAX_CHAR_PATH_NODE_NUMBER];        // 目标位置
+        WORLD_POS            m_aTargetPos[MAX_CHAR_PATH_NODE_NUMBER];        // 鐩爣浣嶇疆
 
     };
 

@@ -44,7 +44,7 @@ public:
     CGTest( ){} ;
     virtual ~CGTest( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -54,13 +54,13 @@ public:
                                                             sizeof(_PCGTEST); }
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     UINT                    GetType( ){ return m_Type ; } ;
     VOID                    SetType( UINT type ){ m_Type = type ; } ;
     _PCGTEST*                GetTest( ){ return &m_Test ; } ;
     VOID                    SetTest( _PCGTEST* test ){ m_Test = *test ; } ;
 
-    //类型
+    //绫诲瀷
     enum {
         TYPE_CG_ASK_ENTER_SCENE = 0 ,
         TYPE_CG_DO_ENTER_SCENE ,
@@ -72,7 +72,7 @@ public:
         TYPE_CG_MONSTER_DIE,
     };
 private:
-    //数据
+    //鏁版嵁
     UINT        m_Type ;
     _PCGTEST    m_Test ;
 

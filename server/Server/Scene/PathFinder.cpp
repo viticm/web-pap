@@ -8,12 +8,12 @@
 #include "Map.h"
 #endif
 
-//Õâ¸öºê¶ÔĞÔÄÜÓĞÓ°Ïì
+//è¿™ä¸ªå®å¯¹æ€§èƒ½æœ‰å½±å“
 //#ifdef _DEBUG
 #define CAN_GO_EDGE
 //#endif
 
-#define RECURETIMES 16 //Õâ¸öÖµÓëMAX_CHAR_PATH_NODE_NUMBERÒ»ÖÂ
+#define RECURETIMES 16 //è¿™ä¸ªå€¼ä¸MAX_CHAR_PATH_NODE_NUMBERä¸€è‡´
 #define OFFSETZ 128
 
 
@@ -31,7 +31,7 @@ PathFinder::PathFinder(Map* owner,const CHAR* filename,UINT& mx,UINT& mz)
     __LEAVE_FUNCTION
 }
 
-//¶ÁÈ¡µ¼º½ĞÅÏ¢£¬ÎÄ¼şÓÉ±à¼­Æ÷Éú³É
+//è¯»å–å¯¼èˆªä¿¡æ¯ï¼Œæ–‡ä»¶ç”±ç¼–è¾‘å™¨ç”Ÿæˆ
 VOID PathFinder::ReadNavMap(const CHAR* filename,UINT& mx,UINT& mz)
 {
     __ENTER_FUNCTION
@@ -88,7 +88,7 @@ VOID PathFinder::ReadNavMap(const CHAR* filename,UINT& mx,UINT& mz)
 //-----------------------------------------------------------------------------
 /*
  *                  
- ¹æÂÉÈçÏÂ:
+ è§„å¾‹å¦‚ä¸‹:
                     5    2   6
 
                     1    *   3            
@@ -159,7 +159,7 @@ VOID PathFinder::Reset(INT startz,INT endz)
     
     Assert( startz >= 0 && endz < mHeight);
 
-    //256*256µÄmempcy´óÔ¼»¨·Ñ0.040ºÁÃë
+    //256*256çš„mempcyå¤§çº¦èŠ±è´¹0.040æ¯«ç§’
     memcpy((VOID*)(mWorkWorld + (startz * mWidth)),(VOID*)(mWorld + (startz * mWidth)),(endz - startz) * mWidth * sizeof(_WORLD));
     //memcpy((VOID*)mWorkWorld,(VOID*)(mWorld),mMaxNode * sizeof(_WORLD));
 
@@ -180,7 +180,7 @@ VOID PathFinder::Reset(INT startz,INT endz)
 }
 
 //-----------------------------------------------------------------------------
-//¶ş²æ¶ÑA*
+//äºŒå‰å †A*
 //-----------------------------------------------------------------------------
 VOID PathFinder::RemoveRootFromHeap()
 {
@@ -248,7 +248,7 @@ VOID PathFinder::InsertNodeToHeap(WORD node)
 }
 
 //-----------------------------------------------------------------------------
-//¸¨Öúº¯Êı
+//è¾…åŠ©å‡½æ•°
 //-----------------------------------------------------------------------------
 inline INT PathFinder::LEFT(INT k)
 {
@@ -303,8 +303,8 @@ inline VOID PathFinder::SwapHeap(const INT k1, const INT k2)
 }
 
 //-----------------------------------------------------------------------------
-//µ¼º½Í¼¸ñ×ÓµÄ´óĞ¡Ä¿Ç°Ôİ¶¨Îª0.5m
-//Ñ°Â·ºËĞÄº¯Êı
+//å¯¼èˆªå›¾æ ¼å­çš„å¤§å°ç›®å‰æš‚å®šä¸º0.5m
+//å¯»è·¯æ ¸å¿ƒå‡½æ•°
 //-----------------------------------------------------------------------------
 BOOL PathFinder::FindPath(WORLD_POS* startPt,WORLD_POS* endPt,WORLD_POS* posNode,INT& numNode,INT nLevel,BOOL bLine,INT maxRoute)
 {
@@ -328,20 +328,20 @@ __ENTER_FUNCTION
     mfEndX = endPt->m_fX;
     mfEndZ = endPt->m_fZ;
     
-    //ÆğÊ¼µãÔÚÄÄ¸ö¸ñ×ÓÉÏ
+    //èµ·å§‹ç‚¹åœ¨å“ªä¸ªæ ¼å­ä¸Š
     mStartx = (WORD) ( ( mfStartX - mLeftTopx ) * mInvGridSize);
     mStartz = (WORD) ( ( mfStartZ - mLeftTopz ) * mInvGridSize);
-    //½áÊøµãÔÚÄÇ¸ö¸ñ×ÓÉÏ
+    //ç»“æŸç‚¹åœ¨é‚£ä¸ªæ ¼å­ä¸Š
     mEndx = (WORD)( ( mfEndX - mLeftTopx ) * mInvGridSize);
     mEndz = (WORD)( ( mfEndZ - mLeftTopz ) * mInvGridSize);
-    //ÆğÊ¼µãºÍ½áÊøµã
+    //èµ·å§‹ç‚¹å’Œç»“æŸç‚¹
     mStartzx = mStartz * mWidth + mStartx;
     mEndzx = mEndz * mWidth + mEndx;
 
     numNode = 0;
     
     mDistance = 0;
-    //Èç¹ûĞèÒªÖ±ÏßÑ°Â·
+    //å¦‚æœéœ€è¦ç›´çº¿å¯»è·¯
     if( bLine)
     {
         //if( mWorld[mStartzx].state != IMPASSABLE)
@@ -364,8 +364,8 @@ __ENTER_FUNCTION
             return FALSE;
     }
 
-    //×öA*Ñ°Â·
-    //Èç¹ûÆğÊ¼µãºÍÄ¿±êµã½Ô²»¿ÉĞĞ×ß
+    //åšA*å¯»è·¯
+    //å¦‚æœèµ·å§‹ç‚¹å’Œç›®æ ‡ç‚¹çš†ä¸å¯è¡Œèµ°
     //if(mWorld[mStartzx].state == IMPASSABLE || mWorld[mEndzx].state == IMPASSABLE)
     if( !IsCanGo(mWorld[mStartzx].state, nLevel) || !IsCanGo(mWorld[mEndzx].state, nLevel) )
     {
@@ -376,7 +376,7 @@ __ENTER_FUNCTION
         INT deltax = abs(mEndx - mStartx);
         INT deltaz = abs(mEndz - mStartz);
 
-        //Ì«Ô¶
+        //å¤ªè¿œ
         if( (deltax + deltaz) > maxRoute)
         {
             mDistance = RealDistance(mStartzx,(WORD) ( ( mFirstCanGoPos.m_fZ - mLeftTopz ) * mInvGridSize) * mWidth + (WORD) ( ( mFirstCanGoPos.m_fX - mLeftTopx ) * mInvGridSize) );
@@ -402,10 +402,10 @@ __ENTER_FUNCTION
         {
             mBestFNode = mHeap[ROOT_HEAP];
 
-            //¹Ø±Õ½Úµã
+            //å…³é—­èŠ‚ç‚¹
             _NODES *pparent_node = mNodes + mBestFNode;
 
-            //ÏàµÈ,ÔòÍê³ÉÁËÑ°Â·
+            //ç›¸ç­‰,åˆ™å®Œæˆäº†å¯»è·¯
             if(pparent_node->zx == mEndzx) 
             {                
                 PackRoute(posNode,numNode,nLevel);
@@ -416,11 +416,11 @@ __ENTER_FUNCTION
             RemoveRootFromHeap(); 
 
             
-            //´ò¿ª½Úµã
+            //æ‰“å¼€èŠ‚ç‚¹
             for( BYTE d = 0;d < EIGHT_DIRECTIONS ; d++)
             {
-            //±ß½ç¹ıÂË,Ê¾Òâ
-            //ÔËĞĞ°æ±¾,ÒòµØÍ¼µÄËÄÖÜ½Ô²»¿É×ß,¹Ê¶ø¿ÉÒÔ²»ÓÃ
+            //è¾¹ç•Œè¿‡æ»¤,ç¤ºæ„
+            //è¿è¡Œç‰ˆæœ¬,å› åœ°å›¾çš„å››å‘¨çš†ä¸å¯èµ°,æ•…è€Œå¯ä»¥ä¸ç”¨
             /*
              *    
              0     1      2      3                                           127
@@ -430,7 +430,7 @@ __ENTER_FUNCTION
              256   257    258
              */
             
-#ifdef CAN_GO_EDGE //release°æ±¾²»ÓÃ
+#ifdef CAN_GO_EDGE //releaseç‰ˆæœ¬ä¸ç”¨
                 INT zx = (INT)( pparent_node->zx);
                 if( ( zx % mWidth == 0) && ( (d == 3) || (d == 6) || (d == 7) ) )
                     continue;
@@ -485,7 +485,7 @@ __LEAVE_FUNCTION
 inline WORD PathFinder::Distance(const UINT zx)
 {
     __ENTER_FUNCTION
-    //mWidth²»ÄÜ±£Ö¤Îª2^
+    //mWidthä¸èƒ½ä¿è¯ä¸º2^
     return (WORD)( ( abs( (INT) (zx & (mWidth-1)) - (INT) mEndx ) + abs( (INT)(zx / mWidth) - (INT) mEndz ) ) * 10);
 
     __LEAVE_FUNCTION
@@ -494,7 +494,7 @@ inline WORD PathFinder::Distance(const UINT zx)
 inline WORD PathFinder::RealDistance(const UINT zxFirst,const UINT zxSecond)
 {
     __ENTER_FUNCTION
-        //mWidth²»ÄÜ±£Ö¤Îª2^
+        //mWidthä¸èƒ½ä¿è¯ä¸º2^
         return (WORD)( ( abs( (INT) (zxFirst & (mWidth-1)) - (INT) (zxSecond & (mWidth-1)) ) + abs( (INT)(zxFirst / mWidth) - (INT) (zxSecond / mWidth) ) ));
 
     __LEAVE_FUNCTION
@@ -512,13 +512,13 @@ VOID PathFinder::PackRoute(WORLD_POS* posNode,INT& numNode, INT nLevel)
     BYTE route = NO_ROUTE;
 
     mGridNum = 0;
-    //ÓÅ»¯ºó´úÂë    
+    //ä¼˜åŒ–åä»£ç     
     WORLD_POS firstPos;
     mGrids[mGridNum++] = zx;
     mDistance = 0;
     while(zx != mStartzx)
     {
-        //·´½â
+        //åè§£
         route = mWorkWorld[zx].route;
         zx += DZX[DZX[route].route].zx;
 
@@ -556,13 +556,13 @@ VOID PathFinder::PackRoute(WORLD_POS* posNode,INT& numNode, INT nLevel)
     __LEAVE_FUNCTION
 }
 
-//Õâ¸öº¯Êı±ØĞëÔÚFindPathºóµ÷ÓÃ
+//è¿™ä¸ªå‡½æ•°å¿…é¡»åœ¨FindPathåè°ƒç”¨
 INT PathFinder::GetDistance()
 {
     return mDistance;
 }
 
-//ÕâÊÇ3dÒâÒåÉÏµÄÖ±ÏßÅĞ¶Ï
+//è¿™æ˜¯3dæ„ä¹‰ä¸Šçš„ç›´çº¿åˆ¤æ–­
 BOOL PathFinder::IsStraightLine(FLOAT mAStarBeginPtx,FLOAT mAStarBeginPty,FLOAT mAStarEndPtx,FLOAT mAStarEndPty,BOOL edit, INT nLevel)
 {
 __ENTER_FUNCTION
@@ -574,7 +574,7 @@ __ENTER_FUNCTION
     
     INT xinc1,yinc1;
 
-    //ÆğÊ¼µãºÍ½áÊøµã¿Ï¶¨ÔÚÄÚ
+    //èµ·å§‹ç‚¹å’Œç»“æŸç‚¹è‚¯å®šåœ¨å†…
     INT x1,y1,x2,y2;
     x1 = (INT)( ( startPt.m_fX - mLeftTopx ) * mInvGridSize);
     y1 = (INT)( ( startPt.m_fZ - mLeftTopz ) * mInvGridSize);
@@ -586,7 +586,7 @@ __ENTER_FUNCTION
     deltay = (endPt.m_fZ-startPt.m_fZ) * mInvGridSize;
 
     mFirstCanGoPos = startPt;
-    //Ğ±ÂÊĞ¡ÓÚ1
+    //æ–œç‡å°äº1
     if (fabs(deltax) >= fabs(deltay))
     {
         FLOAT slerp = deltay/deltax;
@@ -643,7 +643,7 @@ __ENTER_FUNCTION
             }
         }    
     }
-    else//Ğ±ÂÊ´óÓÚ1                          
+    else//æ–œç‡å¤§äº1                          
     {
         FLOAT slerpInv = deltax/deltay;
 
@@ -755,7 +755,7 @@ VOID PathFinder::EditAStarPathOpt(FLOAT startPtx,FLOAT startPty,WORLD_POS* posNo
     __LEAVE_FUNCTION
 }
 
-//Õâ¸öº¯Êı²¢²»µİ¹é
+//è¿™ä¸ªå‡½æ•°å¹¶ä¸é€’å½’
 //VOID PathFinder::EditAStarPath(FLOAT startPtx,FLOAT startPty,WORLD_POS* posNode,INT& numNode)
 //{    
 //    __ENTER_FUNCTION

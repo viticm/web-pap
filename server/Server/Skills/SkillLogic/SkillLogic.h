@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºSkillLogic.h
-// ¹¦ÄÜËµÃ÷£º¼¼ÄÜµÄ»ù´¡Àà£¬ÉùÃ÷¼¼ÄÜµÄ¹«¹²½Ó¿ÚºÍ³£ÓÃ¹¦ÄÜ
+// æ–‡ä»¶åï¼šSkillLogic.h
+// åŠŸèƒ½è¯´æ˜Žï¼šæŠ€èƒ½çš„åŸºç¡€ç±»ï¼Œå£°æ˜ŽæŠ€èƒ½çš„å…¬å…±æŽ¥å£å’Œå¸¸ç”¨åŠŸèƒ½
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -31,7 +31,7 @@ namespace Combat_Module
         };
         enum
         {
-            MAX_MULTI_STRIKE_NUMBER = 5,//×î´óÁ¬»÷´ÎÊý
+            MAX_MULTI_STRIKE_NUMBER = 5,//æœ€å¤§è¿žå‡»æ¬¡æ•°
         };
         class SkillLogic_T
         {
@@ -116,7 +116,7 @@ namespace Combat_Module
             NUMBER_OF_ITEM_SKILL = 100,
             NUMBER_OF_PET_SKILL = 150,
             NUMBER_OF_MONSTER_SKILL = 100,
-            NUMBER_OF_OTHER_SKILL = 10, //¾¡Á¿²»ÒªÓÃÕâ¸ö·ÖÀà
+            NUMBER_OF_OTHER_SKILL = 10, //å°½é‡ä¸è¦ç”¨è¿™ä¸ªåˆ†ç±»
             NUMBER_OF_ALL_SKILL = NUMBER_OF_COMMON_SKILL
                                 + NUMBER_OF_MENPAI_SKILL * MenPai_T::NUMBER_OF_MENPAI
                                 + NUMBER_OF_PET_SKILL
@@ -399,7 +399,7 @@ namespace Combat_Module
             //...
             // OTHER, start 640
             OTHER_SKILL_001 = MONSTER_SKILL_001 + NUMBER_OF_MONSTER_SKILL,
-            MAX_SKILL_LOGIC_ID = OTHER_SKILL_001 + NUMBER_OF_OTHER_SKILL  //×î´óµÄskill logic id
+            MAX_SKILL_LOGIC_ID = OTHER_SKILL_001 + NUMBER_OF_OTHER_SKILL  //æœ€å¤§çš„skill logic id
             //...
         } SkillLogicID_T;
         enum

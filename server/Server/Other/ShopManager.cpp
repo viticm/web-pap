@@ -28,7 +28,7 @@ StaticShopManager* g_pStaticShopManager =    NULL;
 #define    SHOP_BUY_TYPE                    SHOP_REPAIR_TYPE+1
 #define    SHOP_REPAIR_SPEND                SHOP_BUY_TYPE+1
 #define    SHOP_REPAIR_OKPROB                SHOP_REPAIR_SPEND+1
-#define    SHOP_SCALE                        SHOP_REPAIR_OKPROB+1 +2//LMĞŞ¸Ä
+#define    SHOP_SCALE                        SHOP_REPAIR_OKPROB+1 +2//LMä¿®æ”¹
 #define    SHOP_REFRESH_TIME                SHOP_SCALE+1
 #define    SHOP_ITEM_NUM                    SHOP_REFRESH_TIME+1
 #define    SHOP_ITEM_PROPERTY_BEGIN        SHOP_ITEM_NUM+1
@@ -57,7 +57,7 @@ VOID    ShopMgr::CleanUp( )
     __LEAVE_FUNCTION
 }
 
-//Ö±½Ó´ÓItemBoxManager::ConvertItemType2Index³­¹ıÀ´
+//ç›´æ¥ä»ItemBoxManager::ConvertItemType2IndexæŠ„è¿‡æ¥
 INT        ShopMgr::ConvertItemType2Money(_ITEM_TYPE it)
 {
     __ENTER_FUNCTION
@@ -236,7 +236,7 @@ BOOL    StaticShopManager::LoadShopsFromFile( CHAR* filename )
         m_Shops[i].m_refreshTime    =        ShopFile.Search_Posistion(i,SHOP_REFRESH_TIME)->iValue;
         itemnum                        =        ShopFile.Search_Posistion(i,SHOP_ITEM_NUM)->iValue;
 
-        //·ÖÎöÊµ¼ÊÓĞµÄÊı¾İ
+        //åˆ†æå®é™…æœ‰çš„æ•°æ®
         INT nNum = 0;
         for(k=0; k<itemnum*SHOP_ITEM_PROPERTY_NUM; k++)
         {
@@ -264,7 +264,7 @@ BOOL    StaticShopManager::LoadShopsFromFile( CHAR* filename )
             if(PerItemNum<0) PerItemNum = 1;
             if(PerItemNum>100) PerItemNum = 100;
 
-            //MaxNum -1´ú±íÎŞÏŞ£¬>0´ú±íÓĞÏŞÉÌÆ·ÉÏÏŞ£¬²»¿ÉÒÔÌî0,<100
+            //MaxNum -1ä»£è¡¨æ— é™ï¼Œ>0ä»£è¡¨æœ‰é™å•†å“ä¸Šé™ï¼Œä¸å¯ä»¥å¡«0,<100
             MaxItemNum    = ShopFile.Search_Posistion(i,SHOP_ITEM_PROPERTY_BEGIN+(++j))->iValue;
             if(MaxItemNum == 0)    MaxItemNum = -1;
             if(PerItemNum>100) PerItemNum = 100;
@@ -327,7 +327,7 @@ INT        DynamicShopManager::AddDynamicShop(_SHOP* pSource)
     for(INT i = 0;i<m_nCurrent; i++)
     {
         if(m_Shops[i].m_ShopId == pSource->m_ShopId)
-        {//±íÀïÒÑ¾­ÓĞÁË
+        {//è¡¨é‡Œå·²ç»æœ‰äº†
             return -1;
         }
     }
@@ -358,20 +358,20 @@ INT        DynamicShopManager::AddDynamicShop(_SHOP* pSource)
     ShopRef.m_Rand100                    =        pSource->m_Rand100;
     strncpy( ShopRef.m_szShopName, pSource->m_szShopName, MAX_SHOP_NAME );
     
-    //copycopycopy!!!!!,ÕâĞ©Êı¾İÒª±£´æÔÚ±¾µØ£¬¹©Ã¿¸öÉÌÈË×Ô¼º¸Ä±ä
+    //copycopycopy!!!!!,è¿™äº›æ•°æ®è¦ä¿å­˜åœ¨æœ¬åœ°ï¼Œä¾›æ¯ä¸ªå•†äººè‡ªå·±æ”¹å˜
     NEW_AND_COPY_ARRAY(ShopRef.m_ItemList->m_TypeMaxNum, pSource->m_ItemList->m_TypeMaxNum, itemnum, INT)
     
-    //ÆäËûÊı¾İÈ«²¿¹²Ïí¾²Ì¬±íÖĞµÄÊı¾İ£¬ÕâĞ©Ó¦¸ÃÈ«²¿ÊÇÖ»¶ÁµÄ£¬³ÌĞòÆô¶¯Ê±ÓÉ¾²Ì¬ÉÌµê¹ÜÀíÆ÷³õÊ¼»¯£¬
-    //ÏµÍ³ÔËĞĞÆğÀ´ºóË­¶¼²»×¼¸Ä£¡£¡
+    //å…¶ä»–æ•°æ®å…¨éƒ¨å…±äº«é™æ€è¡¨ä¸­çš„æ•°æ®ï¼Œè¿™äº›åº”è¯¥å…¨éƒ¨æ˜¯åªè¯»çš„ï¼Œç¨‹åºå¯åŠ¨æ—¶ç”±é™æ€å•†åº—ç®¡ç†å™¨åˆå§‹åŒ–ï¼Œ
+    //ç³»ç»Ÿè¿è¡Œèµ·æ¥åè°éƒ½ä¸å‡†æ”¹ï¼ï¼
     ShopRef.m_ItemList->m_ListType        =        pSource->m_ItemList->m_ListType;
     ShopRef.m_ItemList->m_ListTypeIndex    =        pSource->m_ItemList->m_ListTypeIndex;
     ShopRef.m_ItemList->m_TypeCount        =        pSource->m_ItemList->m_TypeCount;
     ShopRef.m_ItemList->m_AppearRate    =        pSource->m_ItemList->m_AppearRate;
 
-    //È«²¿²Ù×÷Íê³É£¬±êÊ¶Õâ¸öÉÌµêÎª¶¯Ì¬±íÖĞµÄÉÌµê£¬¼´£¬¿ÉÒÔ±»ÉÌÈË×Ô¼ºĞŞ¸Ä
+    //å…¨éƒ¨æ“ä½œå®Œæˆï¼Œæ ‡è¯†è¿™ä¸ªå•†åº—ä¸ºåŠ¨æ€è¡¨ä¸­çš„å•†åº—ï¼Œå³ï¼Œå¯ä»¥è¢«å•†äººè‡ªå·±ä¿®æ”¹
     ShopRef.m_IsDyShop                    =        TRUE;
 
-    //Æô¶¯¼ÆÊ±Æ÷
+    //å¯åŠ¨è®¡æ—¶å™¨
     if(ShopRef.m_refreshTime >0)
         m_aRefeshTimer[m_nCurrent].BeginTimer(ShopRef.m_refreshTime, g_pTimeManager->CurrentTime());
     return m_nCurrent++;
@@ -395,11 +395,11 @@ BOOL    DynamicShopManager::Tick(UINT uTime)
             INT k = 0;
             //GCShopUpdateMerchandiseList::_MERCHANDISE_ITEM    MerchandiseList[MAX_BOOTH_NUMBER];
             for (INT j = 0; j<m_Shops[i].m_ItemList->m_ListCount;j++)
-            {//ÓÃ¾²Ì¬±íÖĞµÄÊı¾İË¢ĞÂ¶¯Ì¬±íµÄÊı¾İ
+            {//ç”¨é™æ€è¡¨ä¸­çš„æ•°æ®åˆ·æ–°åŠ¨æ€è¡¨çš„æ•°æ®
                 INT& LocalMaxNum    = m_Shops[i].m_ItemList->m_TypeMaxNum[j] ; 
                 INT& GlobleMaxNum    = g_pStaticShopManager->GetShopByID(m_Shops[i].m_ShopId)->m_ItemList->m_TypeMaxNum[j];
                 if(LocalMaxNum != GlobleMaxNum)
-                {//¸Ä±äÁË£¬Ìî³äÏûÏ¢
+                {//æ”¹å˜äº†ï¼Œå¡«å……æ¶ˆæ¯
                     LocalMaxNum = GlobleMaxNum;
                 }
             }

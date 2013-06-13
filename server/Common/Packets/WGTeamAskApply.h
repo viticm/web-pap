@@ -21,7 +21,7 @@ namespace Packets
 
         virtual        ~WGTeamAskApply(){};
 
-        //π´”√Ω”ø⁄
+        //ÂÖ¨Áî®Êé•Âè£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream )const;
         virtual UINT            Execute( Player* pPlayer );
@@ -81,18 +81,18 @@ namespace Packets
         GUID_t                    GetGUID() { return m_GUID; }
 
     public :
-        PlayerID_t                m_PlayerID;        //¡¨Ω”’ﬂ
-        PlayerID_t                m_SourPlayerID; // …Í«Î»À PlayerID
-        GUID_t                    m_SourGUID;        //…Í«Î»À
-        GUID_t                    m_DestGUID;        //±ª…Í«Î»À
+        PlayerID_t                m_PlayerID;        //ËøûÊé•ËÄÖ
+        PlayerID_t                m_SourPlayerID; // Áî≥ËØ∑‰∫∫ PlayerID
+        GUID_t                    m_SourGUID;        //Áî≥ËØ∑‰∫∫
+        GUID_t                    m_DestGUID;        //Ë¢´Áî≥ËØ∑‰∫∫
         UCHAR                    m_SourNameSize;
         UCHAR                    m_DestNameSize;
-        CHAR                    m_SourName[MAX_CHARACTER_NAME];            // 1.…Í«Î»À√˚◊÷
-        CHAR                    m_DestName[MAX_CHARACTER_NAME];            // ±ª…Í«Î»À√˚◊÷
-        UINT                    m_uFamily;                                // 2.√≈≈…
-        SceneID_t                m_Scene;                                // 3.≥°æ∞
-        INT                        m_Level;                                // 4.µ»º∂
-        USHORT                    m_uDataID;                                // 5.ÕÊº“–‘±
+        CHAR                    m_SourName[MAX_CHARACTER_NAME];            // 1.Áî≥ËØ∑‰∫∫ÂêçÂ≠ó
+        CHAR                    m_DestName[MAX_CHARACTER_NAME];            // Ë¢´Áî≥ËØ∑‰∫∫ÂêçÂ≠ó
+        UINT                    m_uFamily;                                // 2.Èó®Ê¥æ
+        SceneID_t                m_Scene;                                // 3.Âú∫ÊôØ
+        INT                        m_Level;                                // 4.Á≠âÁ∫ß
+        USHORT                    m_uDataID;                                // 5.Áé©ÂÆ∂ÊÄßÂà´
         GUID_t                    m_GUID;
 
     };

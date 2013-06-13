@@ -19,7 +19,7 @@ public:
     GCDie( ){} ;
     virtual ~GCDie( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ public:
     
 
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -38,9 +38,9 @@ public:
 
 
 private:
-    //数据
-    ObjID_t        m_ObjID;        //死亡对象ObjectID
-    ObjID_t        m_CorpseID;        //尸体ObjectID
+    //鏁版嵁
+    ObjID_t        m_ObjID;        //姝讳骸瀵硅薄ObjectID
+    ObjID_t        m_CorpseID;        //灏镐綋ObjectID
 
 };
 

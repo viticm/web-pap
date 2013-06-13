@@ -1,6 +1,6 @@
 // GCPlayerShopUpdateFavorite.h
 // 
-// ¸üĞÂ¿Í»§¶ËÉÌµêÁĞ±íÖĞµÄÊÕ²ØÉÌµê
+// æ›´æ–°å®¢æˆ·ç«¯å•†åº—åˆ—è¡¨ä¸­çš„æ”¶è—å•†åº—
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         };
         virtual ~GCPlayerShopUpdateFavorite( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,8 +39,8 @@ namespace Packets
         VOID                    SetIsInFavorite(BYTE bIsInFavorite) {m_bIsInFavorite = bIsInFavorite;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
-        BYTE                    m_bIsInFavorite;    //¹ñÌ¨ID
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
+        BYTE                    m_bIsInFavorite;    //æŸœå°ID
 
     };
 

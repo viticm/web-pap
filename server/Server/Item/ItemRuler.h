@@ -1,11 +1,11 @@
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ2ÈÕ
-    ´´½¨Ê±¼ä:    16:54
-    ÎÄ¼þÃû³Æ:    ItemRuler.h
-    ÎÄ¼þÂ·¾¶:    d:\Prj\Server\Server\Item\ItemRuler.h
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ2æ—¥
+    åˆ›å»ºæ—¶é—´:    16:54
+    æ–‡ä»¶åç§°:    ItemRuler.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\ItemRuler.h
     
-    ÎÄ¼þ¹¦ÄÜ£º ÎïÆ·ÏµÍ³µÄ¹æÔòÀà,±ÈÈç´´½¨¹æÔò\µôÂä¹æÔò\Ê¹ÓÃ¹æÔòµÈ\Ê°È¡¹æÔò
-    ÐÞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š ç‰©å“ç³»ç»Ÿçš„è§„åˆ™ç±»,æ¯”å¦‚åˆ›å»ºè§„åˆ™\æŽ‰è½è§„åˆ™\ä½¿ç”¨è§„åˆ™ç­‰\æ‹¾å–è§„åˆ™
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 
@@ -22,7 +22,7 @@ class ItemBoxRuler
 {
 public:
 
-    //ItemBox´´½¨¹æÔò
+    //ItemBoxåˆ›å»ºè§„åˆ™
 
     VOID        CreateItemFromMonsterDrop(INT iMonsterValue,
                                          MONSTER_DROPBOXS& mDrop,
@@ -65,7 +65,7 @@ public:
 
 
 
-/*¹ÖÎïExp·ÖÅä¼ÆËãÀà
+/*æ€ªç‰©Expåˆ†é…è®¡ç®—ç±»
  *    
  */
 class MonsterExpCaculateRuler
@@ -77,8 +77,8 @@ public:
 
 
 /*
- *        ¹ÖÎïÎïÆ·µôÂä
- *        ÒÔ¼°¹Ì¶¨·ÖÅä
+ *        æ€ªç‰©ç‰©å“æŽ‰è½
+ *        ä»¥åŠå›ºå®šåˆ†é…
  */
 
 class Obj_Monster;
@@ -100,23 +100,23 @@ public:
 
 };
 
-/* ÎïÆ·¹æÔò¼ì²éÀà
+/* ç‰©å“è§„åˆ™æ£€æŸ¥ç±»
  *    
  */
 
 class ItemRulerCheck
 {
 public:
-    /* ¹æÔò¼ì²é·½·¨
+    /* è§„åˆ™æ£€æŸ¥æ–¹æ³•
      *    
-     *        ²ÎÊýÃèÐð    
-     *            ITEM_RULER_LIST ruler            ¹æÔò±àºÅ
+     *        å‚æ•°æå™    
+     *            ITEM_RULER_LIST ruler            è§„åˆ™ç¼–å·
      *        
-     *            const CHAR& iIndex                ¹æÔòID
+     *            const CHAR& iIndex                è§„åˆ™ID
      *
-     *        ·µ»Ø
+     *        è¿”å›ž
      *
-     *            BOOL                            0 ±íÊ¾Ã»ÓÐÍ¨¹ý  1 ±íÊ¾Í¨¹ý¸Ã¹æÔò
+     *            BOOL                            0 è¡¨ç¤ºæ²¡æœ‰é€šè¿‡  1 è¡¨ç¤ºé€šè¿‡è¯¥è§„åˆ™
      *
      */
     static BOOL    CheckRuler(ITEM_RULER_LIST ruler,const CHAR& iRuler)
@@ -189,16 +189,16 @@ public:
 
 
     /*
-     *        ¼ì²é·½·¨
+     *        æ£€æŸ¥æ–¹æ³•
      *        
-     *        ²ÎÊýÃèÐð    
-     *            ITEM_RULER_LIST ruler            ¹æÔò±àºÅ
+     *        å‚æ•°æå™    
+     *            ITEM_RULER_LIST ruler            è§„åˆ™ç¼–å·
      *        
-     *            const CHAR& iIndex                ¹æÔòID
+     *            const CHAR& iIndex                è§„åˆ™ID
      *        
-     *        ·µ»Ø
+     *        è¿”å›ž
      *        
-     *            BOOL                            0 ±íÊ¾Ã»ÓÐÍ¨¹ý  1 ±íÊ¾Í¨¹ý¸Ã¹æÔò
+     *            BOOL                            0 è¡¨ç¤ºæ²¡æœ‰é€šè¿‡  1 è¡¨ç¤ºé€šè¿‡è¯¥è§„åˆ™
      *    
      *    
      *    

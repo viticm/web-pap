@@ -61,7 +61,7 @@ BOOL DBItemList::Save(VOID* pSource)
         DB_ItemGuid,
         DB_ItemType,
         DB_ItemPos,
-        DB_FixAttr,  //Ò²¿ÉÒÔÈ¥µô,µ«ÊÇLogin ĞèÒª¶Á×°±¸±í
+        DB_FixAttr,  //ä¹Ÿå¯ä»¥å»æ‰,ä½†æ˜¯Login éœ€è¦è¯»è£…å¤‡è¡¨
         DB_P1,
         DB_P2,
         DB_P3,
@@ -86,15 +86,15 @@ BOOL DBItemList::Save(VOID* pSource)
     {
         if( ItemPos >= DB_BAG_POS_START && ItemPos < (DB_BAG_POS_START+MAX_BAG_SIZE) )
         {
-            //±³°ü
+            //èƒŒåŒ…
         }
         else if( ItemPos >= DB_EQUIP_POS_START && ItemPos < (DB_EQUIP_POS_START+HEQUIP_NUMBER) )
         {
-            //×°±¸
+            //è£…å¤‡
         }
         else if( ItemPos >= DB_BANK_POS_START && ItemPos < (DB_BANK_POS_START+MAX_BANK_SIZE) )
         {
-            //ÒøĞĞ
+            //é“¶è¡Œ
         }
         else
         {
@@ -220,7 +220,7 @@ INT DBItemList::ParseResult(VOID* pResult, UINT& OldVersion, UINT& NowVersion)
                 DB_ItemGuid,
                 DB_ItemType,
                 DB_ItemPos,
-                DB_FixAttr,  //Ò²¿ÉÒÔÈ¥µô,µ«ÊÇLogin ĞèÒª¶Á×°±¸±í
+                DB_FixAttr,  //ä¹Ÿå¯ä»¥å»æ‰,ä½†æ˜¯Login éœ€è¦è¯»è£…å¤‡è¡¨
                 DB_P1,
                 DB_P2,
                 DB_P3,
@@ -245,7 +245,7 @@ INT DBItemList::ParseResult(VOID* pResult, UINT& OldVersion, UINT& NowVersion)
             Assert(mInterface);
             INT       ErrorCode;
 
-            //¼ÓÔØÎïÆ·ÊôĞÔ
+            //åŠ è½½ç‰©å“å±æ€§
             for(INT i =0;i<(DB_BANK_POS_END+1);i++)
             {
                 if(!mInterface->Fetch())
@@ -285,7 +285,7 @@ INT DBItemList::ParseResult(VOID* pResult, UINT& OldVersion, UINT& NowVersion)
                 PArray[13]        =    mInterface->GetInt(DB_P14,ErrorCode);
                 OldVersion        =    mInterface->GetInt(DB_VERSION,ErrorCode);
 
-                //ĞòÁĞ»¯p1 ~ p12
+                //åºåˆ—åŒ–p1 ~ p12
                 pItem->WriteVarAttr((CHAR*)PArray,sizeof(INT)*(DB_P14-DB_P1+1));
                 mInterface->GetString(DB_Creator,pItem->m_Creator,MAX_ITEM_CREATOR_NAME,ErrorCode);
                 mInterface->GetField(DB_Var,(CHAR*)pItem->m_Param,sizeof(INT)*MAX_ITEM_PARAM,ErrorCode);
@@ -335,7 +335,7 @@ BOOL DBItemList::ParseResult(VOID* pResult)
                 DB_ItemGuid,
                 DB_ItemType,
                 DB_ItemPos,
-                DB_FixAttr,  //Ò²¿ÉÒÔÈ¥µô,µ«ÊÇLogin ĞèÒª¶Á×°±¸±í
+                DB_FixAttr,  //ä¹Ÿå¯ä»¥å»æ‰,ä½†æ˜¯Login éœ€è¦è¯»è£…å¤‡è¡¨
                 DB_P1,
                 DB_P2,
                 DB_P3,
@@ -358,7 +358,7 @@ BOOL DBItemList::ParseResult(VOID* pResult)
             Assert(mInterface);
             INT       ErrorCode;
 
-            //¼ÓÔØÎïÆ·ÊôĞÔ
+            //åŠ è½½ç‰©å“å±æ€§
             for(INT i =0;i<(DB_BANK_POS_END+1);i++)
             {
                 if(!mInterface->Fetch())
@@ -398,7 +398,7 @@ BOOL DBItemList::ParseResult(VOID* pResult)
                 PArray[13]        =    mInterface->GetInt(DB_P14,ErrorCode);
                 UINT OldVersion        =    mInterface->GetInt(DB_VERSION,ErrorCode);
 
-                //ĞòÁĞ»¯p1 ~ p12
+                //åºåˆ—åŒ–p1 ~ p12
                 pItem->WriteVarAttr((CHAR*)PArray,sizeof(INT)*(DB_P14-DB_P1+1));
                 
             }

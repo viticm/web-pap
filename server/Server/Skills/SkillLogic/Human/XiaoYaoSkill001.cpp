@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºXiaoYaoSkill001.cpp
-// ¹¦ÄÜËµÃ÷£º
+// æ–‡ä»¶åï¼šXiaoYaoSkill001.cpp
+// åŠŸèƒ½è¯´æ˜Žï¼š
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -98,7 +98,7 @@ namespace Combat_Module
                 }
                 if(FALSE==Logic.AddNewTrap(impact, rMe, pTrap->GetID()))
                 {
-                    //Ç°Ãæ¼ì²é¹ýÏÝÚåµÄÊýÁ¿,ÕâÀïÓ¦¸ÃÓÀÔ¶×ß²»µ½
+                    //å‰é¢æ£€æŸ¥è¿‡é™·é˜±çš„æ•°é‡,è¿™é‡Œåº”è¯¥æ°¸è¿œèµ°ä¸åˆ°
                     AssertEx(FALSE, "[XiaoYaoSkill001_T::EffectOnUnitOnce]: Unknown Error, Check it now..");
                     return FALSE;
                 }

@@ -81,13 +81,13 @@ BOOL MONSTER_FILE::DoOneOperate( INT iIndex )
 {
 __ENTER_FUNCTION
 
-//Ò»¸ömonster.iniÎÄ¼şÖĞ¿ÉÒÔÅäÖÃµÄ¹ÖÎïÊıÁ¿ÉÏÏŞ
+//ä¸€ä¸ªmonster.iniæ–‡ä»¶ä¸­å¯ä»¥é…ç½®çš„æ€ªç‰©æ•°é‡ä¸Šé™
 #define MAX_MONSTER_FILE 512
 
     _OBJ_MONSTER_OPT* pOperate = &(m_pOperate[iIndex]) ;
     if( pOperate->m_DataDef>=m_DataCount )
     {
-        AssertEx(FALSE,"Êı¾İ¶¨Òå·¶Î§³¬±ê") ;
+        AssertEx(FALSE,"æ•°æ®å®šä¹‰èŒƒå›´è¶…æ ‡") ;
         return FALSE ;
     }
     _OBJ_MONSTER_DATA* pData = &(m_pData[pOperate->m_DataDef]) ;
@@ -98,11 +98,11 @@ __ENTER_FUNCTION
 
     INT i ;
 
-    //select ·ûºÏÌõ¼şµÄ¹ÖÎïË÷ÒıºÅ
+    //select ç¬¦åˆæ¡ä»¶çš„æ€ªç‰©ç´¢å¼•å·
     for( i=0; i<m_Count; i++ )
     {
         if( m_pAllocFlag[i]==TRUE )
-        {//´Ë¹ÖÎïÒÑ¾­±»·ÖÅä
+        {//æ­¤æ€ªç‰©å·²ç»è¢«åˆ†é…
             continue ;
         }
 
@@ -224,7 +224,7 @@ __ENTER_FUNCTION
             UINT uRandL = rand() ;
             UINT uRand = ( (uRandH&0xFFFF)*0xFFFF + uRandL&0xFFFF )%uTotalRand ;
 
-            //Çå³ıµ±Ç°Ê¹ÓÃ¹ÖÎï³õÊ¼»¯½á¹¹Ìå
+            //æ¸…é™¤å½“å‰ä½¿ç”¨æ€ªç‰©åˆå§‹åŒ–ç»“æ„ä½“
             m_pInitUsing[m_CountUsing].CleanUp() ;
 
             UINT uTotalC = 0 ;
@@ -251,7 +251,7 @@ __ENTER_FUNCTION
     }
     else
     {
-        //Åä¶Ô²Ù×÷
+        //é…å¯¹æ“ä½œ
         INT aDataIndex[MAX_MONSTER_FILE] ;
         for( i=0; i<MAX_MONSTER_FILE; i++ )
         {
@@ -262,10 +262,10 @@ __ENTER_FUNCTION
         m_CountUsing = 0 ;
         for( i=0; i<iMinCount; i++ )
         {
-            //Çå³ıµ±Ç°Ê¹ÓÃ¹ÖÎï³õÊ¼»¯½á¹¹Ìå
+            //æ¸…é™¤å½“å‰ä½¿ç”¨æ€ªç‰©åˆå§‹åŒ–ç»“æ„ä½“
             m_pInitUsing[m_CountUsing].CleanUp() ;
             
-            //Ëæ»úÈ¡Ò»¸öSelect³öÀ´µÄ¹ÖÎï
+            //éšæœºå–ä¸€ä¸ªSelectå‡ºæ¥çš„æ€ªç‰©
             INT iCurSelect = rand()%iSelectCount ;
             INT iSelectRet = INVALID_INDEX ;
             for( INT j=0; j<iSelectCount; j++ )
@@ -280,7 +280,7 @@ __ENTER_FUNCTION
                 if( iCurSelect>=iSelectCount ) iCurSelect = 0 ;
             }
 
-            //Ëæ»úÈ¡Ò»¸öÊı¾İ
+            //éšæœºå–ä¸€ä¸ªæ•°æ®
             INT iCurData = rand()%pData->m_DataCount ;
             INT iDataRet = INVALID_INDEX ;
             for( INT k=0; k<pData->m_DataCount; k++ )
@@ -416,7 +416,7 @@ __LEAVE_FUNCTION
 }
 
 /////////////////////////////////////////////////////////////////////////////////
-//Éú³¤µã
+//ç”Ÿé•¿ç‚¹
 GROWPOINT_FILE::~GROWPOINT_FILE( )
 {
 __ENTER_FUNCTION
@@ -515,8 +515,8 @@ BOOL SceneManager::Init( UINT MaxSceneCount )
 __ENTER_FUNCTION
 
     BOOL ret ;
-    //¸ù¾İÅäÖÃÎÄ¼ş£¬¶ÁÈ¡ËùÓĞµÄ³¡¾°Êı¾İ
-    //¶ÁÈ¡³¡¾°ÊıÁ¿
+    //æ ¹æ®é…ç½®æ–‡ä»¶ï¼Œè¯»å–æ‰€æœ‰çš„åœºæ™¯æ•°æ®
+    //è¯»å–åœºæ™¯æ•°é‡
     UINT count = MaxSceneCount ;
 
     Assert( count<=MAX_SCENE ) ;
@@ -528,11 +528,11 @@ __ENTER_FUNCTION
 
         UINT ServerID = g_Config.m_SceneInfo.m_pScene[i].m_ServerID ;
         if( ServerID != g_Config.m_ConfigInfo.m_ServerID )
-        {//²»ÊÇµ±Ç°·şÎñÆ÷µÄ³ÌĞòÔËĞĞµÄ³¡¾°
+        {//ä¸æ˜¯å½“å‰æœåŠ¡å™¨çš„ç¨‹åºè¿è¡Œçš„åœºæ™¯
             continue ;
         }
         if( g_Config.m_SceneInfo.m_pScene[i].m_IsActive==0 )
-        {//²»ÊÇ¼¤»îµÄ³¡¾°
+        {//ä¸æ˜¯æ¿€æ´»çš„åœºæ™¯
             continue ;
         }
 
@@ -543,26 +543,26 @@ __ENTER_FUNCTION
 
         switch( pScene->GetSceneType() )
         {
-        case SCENE_TYPE_GAMELOGIC://ÓÎÏ·Âß¼­³¡¾°
+        case SCENE_TYPE_GAMELOGIC://æ¸¸æˆé€»è¾‘åœºæ™¯
             {
                 //read scn data
                 SCENE_LOAD load ;
                 pScene->SetLoadData( g_Config.m_SceneInfo.m_pScene[i].m_szFileName, load ) ;
                 ret = pScene->Load( &load ) ;
                 Assert( ret ) ;
-                //Æô¶¯Ê±ºò´´½¨µÄ³¡¾°Ö±½Ó½øÈëÔËĞĞÄ£Ê½
-                //ÆÕÍ¨ÓÎÏ·³¡¾°Ã»ÓĞOnSceneInitÊÂ¼ş
+                //å¯åŠ¨æ—¶å€™åˆ›å»ºçš„åœºæ™¯ç›´æ¥è¿›å…¥è¿è¡Œæ¨¡å¼
+                //æ™®é€šæ¸¸æˆåœºæ™¯æ²¡æœ‰OnSceneInitäº‹ä»¶
                 pScene->SetSceneStatus( SCENE_STATUS_RUNNING ) ;
             }
             break ;
-        case SCENE_TYPE_COPY://¸±±¾³¡¾°
+        case SCENE_TYPE_COPY://å‰¯æœ¬åœºæ™¯
             {
                 pScene->SetLoadData( g_Config.m_SceneInfo.m_pScene[i].m_szFileName, pScene->m_SceneLoad ) ;
                 strncpy( pScene->GetMapName(), pScene->m_SceneLoad.m_szMap, _MAX_PATH-1 ) ;
                 pScene->SetSceneStatus( SCENE_STATUS_SLEEP ) ;
             }
             break ;
-        case SCENE_TYPE_CIT://³ÇÊĞ³¡¾°
+        case SCENE_TYPE_CIT://åŸå¸‚åœºæ™¯
             {
                 //pScene->SetLoadData( g_Config.m_SceneInfo.m_pScene[i].m_szFileName, pScene->m_SceneLoad ) ;
                 //strncpy( pScene->GetMapName(), pScene->m_SceneLoad.m_szMap, _MAX_PATH-1 ) ;
@@ -914,7 +914,7 @@ BOOL SceneManager::BroadCast_Scene(Packet* pMsg)
     return TRUE;
 }
 
-SceneID_t SceneManager::GetSpecialSceneIDFromCurServer( )//È¡µ½Ò»¸öÔÚµ±Ç°ServerÉÏµÄÓÎÏ·Âß¼­³¡¾°
+SceneID_t SceneManager::GetSpecialSceneIDFromCurServer( )//å–åˆ°ä¸€ä¸ªåœ¨å½“å‰Serverä¸Šçš„æ¸¸æˆé€»è¾‘åœºæ™¯
 {
 __ENTER_FUNCTION
 

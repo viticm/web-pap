@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºStdImpact025.cpp
-// ¹¦ÄÜËµÃ÷£ºÐ§¹û--µÖÏûÖÂÃüÒ»»÷
+// æ–‡ä»¶åï¼šStdImpact025.cpp
+// åŠŸèƒ½è¯´æ˜Žï¼šæ•ˆæžœ--æŠµæ¶ˆè‡´å‘½ä¸€å‡»
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -32,13 +32,13 @@ namespace Combat_Module
             {
                 return FALSE;
             }
-            // ÉúÐ§¼¸ÂÊ 
+            // ç”Ÿæ•ˆå‡ çŽ‡ 
             INT nRet = rand() % 100;
             if (nRet > GetActivateOdds(rImp))
-            {// Ã»ÓÐÉúÐ§ÔòÖ±½Ó·µ»Ø
+            {// æ²¡æœ‰ç”Ÿæ•ˆåˆ™ç›´æŽ¥è¿”å›ž
                 return FALSE;
             }
-            // ÔÚÊÜµ½ÖÂÃüÒ»»÷µÄÊ±ºò½«ÆäÖÂÃüÒ»»÷ÃâÒß
+            // åœ¨å—åˆ°è‡´å‘½ä¸€å‡»çš„æ—¶å€™å°†å…¶è‡´å‘½ä¸€å‡»å…ç–«
             if (TRUE == rImpactNeedCheck.IsCriticalHit())
             {
                 return MissFlag_T::FLAG_ABSORB;

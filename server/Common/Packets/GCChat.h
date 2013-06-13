@@ -20,7 +20,7 @@ namespace Packets
         GCChat( ){ Reset() ; } ;
         virtual ~GCChat( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -62,13 +62,13 @@ namespace Packets
         };
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
 
-        //ÉèÖÃ¡¢¶ÁÈ¡ÁÄÌìÀàĞÍ ¼û£ºCGChat::CHAT_TYPE
+        //è®¾ç½®ã€è¯»å–èŠå¤©ç±»å‹ è§ï¼šCGChat::CHAT_TYPE
         VOID                    SetChatType( BYTE bType ){ m_ChatType = bType ; } ;
         BYTE                    GetChatType( ){ return m_ChatType ; } ;
 
-        //ÉèÖÃ¡¢¶ÁÈ¡ÁÄÌìÄÚÈİ
+        //è®¾ç½®ã€è¯»å–èŠå¤©å†…å®¹
         VOID                    SetContexSize( BYTE bSize ){ m_ContexSize = bSize ; } ;
         BYTE                    GetContexSize( ){ return m_ContexSize ; } ;
 
@@ -78,7 +78,7 @@ namespace Packets
         };
         CHAR*                    GetContex(){ return (CHAR*)m_Contex ; } ;
 
-        //ÉèÖÃ¡¢¶ÁÈ¡Ëµ»°ÈËµÄÃû×Ö
+        //è®¾ç½®ã€è¯»å–è¯´è¯äººçš„åå­—
         VOID                    SetSourNameSize( BYTE bSize ){ m_SourNameSize = bSize ; } ;
         BYTE                    GetSourNameSize( ){ return m_SourNameSize ; } ;
 
@@ -98,23 +98,23 @@ namespace Packets
         VOID                    SetSourCamp( CampID_t id ) { m_CampID = id; } 
 
     private:
-        //Êı¾İ
-        BYTE                    m_ChatType ;//ÁÄÌìÏûÏ¢ÀàĞÍ enum CGChat::CHAT_TYPE
+        //æ•°æ®
+        BYTE                    m_ChatType ;//èŠå¤©æ¶ˆæ¯ç±»å‹ enum CGChat::CHAT_TYPE
         
-        //ÁÄÌìÄÚÈİÊı¾İ
+        //èŠå¤©å†…å®¹æ•°æ®
         BYTE                    m_ContexSize ;
         CHAR                    m_Contex[MAX_CHAT_SIZE] ;
 
-        //Ëµ»°ÕßÃû×Ö
+        //è¯´è¯è€…åå­—
         BYTE                    m_SourNameSize ;
         CHAR                    m_SourName[MAX_CHARACTER_NAME] ;
 
-        //Ëµ»°ÕßµÄObjID, ÆÕÍ¨Ëµ»°ÖĞÓĞĞ§
+        //è¯´è¯è€…çš„ObjID, æ™®é€šè¯´è¯ä¸­æœ‰æ•ˆ
         ObjID_t                    m_SourID ;
 
-        CampID_t                m_CampID;    //·¢ËÍÕßÕóÓª
+        CampID_t                m_CampID;    //å‘é€è€…é˜µè¥
 
-        UINT                    m_uWorldChatID ; //ÁÄÌìÏûÏ¢µÄĞòÁĞºÅ£¬ÓÃÓÚ¾ÀÕıÍæ¼Ò×ªÒÆ³¡¾°ÏûÏ¢¶ªÊ§ÎÊÌâ
+        UINT                    m_uWorldChatID ; //èŠå¤©æ¶ˆæ¯çš„åºåˆ—å·ï¼Œç”¨äºçº æ­£ç©å®¶è½¬ç§»åœºæ™¯æ¶ˆæ¯ä¸¢å¤±é—®é¢˜
     };
 
 

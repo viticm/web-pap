@@ -41,7 +41,7 @@ namespace Packets
         {
             strncpy( m_GuildName, pName, MAX_GUILD_NAME_SIZE-1 );
             m_GuildName[MAX_GUILD_NAME_SIZE-1] = 0 ;
-            m_GuildNameSize = (BYTE)strlen(m_GuildName); //矫正长度
+            m_GuildNameSize = (BYTE)strlen(m_GuildName); //鐭闀垮害
         }
         CHAR*                    GetGuildName(){ return (CHAR*)m_GuildName ; }
 
@@ -52,7 +52,7 @@ namespace Packets
         {
             strncpy( m_GuildDesc, pName, MAX_GUILD_DESC_SIZE-1 ) ;
             m_GuildDesc[MAX_GUILD_DESC_SIZE-1] = 0 ;
-            m_GuildDescSize = (BYTE)strlen(m_GuildDesc); //矫正长度
+            m_GuildDescSize = (BYTE)strlen(m_GuildDesc); //鐭闀垮害
         }
         CHAR*                    GetGuildDesc(){ return (CHAR*)m_GuildDesc; }
 

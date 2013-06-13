@@ -103,7 +103,7 @@ create database if not exists tlbbdb;
 use tlbbdb;
 
 /*==============================================================*/
-/* Table: t_ability    Éú»î¼¼ÄÜ                                         */
+/* Table: t_ability    ç”Ÿæ´»æŠ€èƒ½                                         */
 /*==============================================================*/
 create table if not exists t_ability
 (
@@ -126,7 +126,7 @@ create index Index_ab_charguid on t_ability
 );
 
 /*==============================================================*/
-/* Table: t_char   ½ÇÉ«±í  ¡¡                                   */
+/* Table: t_char   è§’è‰²è¡¨  ã€€                                   */
 /*==============================================================*/
 create table if not exists t_char
 (
@@ -763,7 +763,7 @@ create index Index_impact_charguid on t_impact
 );
 
 /*==============================================================*/
-/* Table: t_iteminfo    ×°±¸±í                                  */
+/* Table: t_iteminfo    è£…å¤‡è¡¨                                  */
 /*==============================================================*/
 create table if not exists t_iteminfo
 (
@@ -1024,7 +1024,7 @@ create unique index Index_mail_mail on t_mail
 );
 
 /*==============================================================*/
-/* Table: t_mission             ÈÎÎñ                                */
+/* Table: t_mission             ä»»åŠ¡                                */
 /*==============================================================*/
 create table if not exists t_mission
 (
@@ -1055,7 +1055,7 @@ create index Index_mi_charguid on t_mission
 );
 
 /*==============================================================*/
-/* Table: t_pet  ÕäÊŞÊôĞÔ                                       */
+/* Table: t_pet  çå…½å±æ€§                                       */
 /*==============================================================*/
 create table if not exists t_pet
 (
@@ -1296,7 +1296,7 @@ create index Index_pshop_sidpid on t_pshop
 );
 
 /*==============================================================*/
-/* Table: t_relation             ¹ØÏµĞÅÏ¢                               */
+/* Table: t_relation             å…³ç³»ä¿¡æ¯                               */
 /*==============================================================*/
 create table if not exists t_relation
 (
@@ -1505,7 +1505,7 @@ insert into t_xfallexp values(119,268900236,268900236,553201789,189534383,553201
 insert into t_xfallexp values(120,270825857,270825857,558015841,191460004,558015841,558015841,558015841);
 
 /*==============================================================*/
-/* Table: t_xinfa              ĞÄ·¨                                 */
+/* Table: t_xinfa              å¿ƒæ³•                                 */
 /*==============================================================*/
 create table if not exists t_xinfa
 (

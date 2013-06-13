@@ -1,8 +1,8 @@
 /********************************************************************
     
-    ÎÄ¼şÃû³Æ:    DBLogicManager
-    ÎÄ¼ş¹¦ÄÜ£ºDB ´¦ÀíÒì²½Êı¾İµÄÏûÏ¢¹ÜÀíÏµÍ³
-    ĞŞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åç§°:    DBLogicManager
+    æ–‡ä»¶åŠŸèƒ½ï¼šDB å¤„ç†å¼‚æ­¥æ•°æ®çš„æ¶ˆæ¯ç®¡ç†ç³»ç»Ÿ
+    ä¿®æ”¹çºªå½•ï¼š
 *********************************************************************/
 
 
@@ -14,7 +14,7 @@
 
 #define      DB_QUEUE_SIZE 100
 
-//DB Ïß³ÌÒì²½Êı¾İµÄ¹ÜÀíÆ÷
+//DB çº¿ç¨‹å¼‚æ­¥æ•°æ®çš„ç®¡ç†å™¨
 class DBLogicManager
 {
 public:
@@ -25,20 +25,20 @@ public:
 
     BOOL                    HeartBeat(UINT uTime);
 
-    //´¦Àí»º´æÏûÏ¢
+    //å¤„ç†ç¼“å­˜æ¶ˆæ¯
     BOOL                    ProcessCacheCommands( ) ;
 
-    //¶ÁÈ¡»º´æÏûÏ¢
+    //è¯»å–ç¼“å­˜æ¶ˆæ¯
     BOOL                    RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& Flag ) ;
 
-    //É¾³ıÄ³¸öPlayerµÄÔÚÏûÏ¢»º´æÖĞµÄÏûÏ¢
+    //åˆ é™¤æŸä¸ªPlayerçš„åœ¨æ¶ˆæ¯ç¼“å­˜ä¸­çš„æ¶ˆæ¯
     BOOL                    MovePacket( PlayerID_t PlayerID ) ;
 
     //*********
     //*********
-    //´Ë½Ó¿ÚÖ§³ÖÊı¾İÍ¬²½£¬¼´¿ÉÒÔÔÚ²»Í¬Ïß³ÌÄÚµ÷ÓÃ
-    //´Ë½Ó¿ÚÊÇÒì²½Í¨Ñ¶µÄÎ¨Ò»½Ó¿Ú
-    //×¢Òâ£ºpPacketÏûÏ¢ĞèÒªÓÃg_pPacketFactoryManager´´½¨³öÀ´£¬ÓÃÍêºó²»ÄÜÉ¾³ı
+    //æ­¤æ¥å£æ”¯æŒæ•°æ®åŒæ­¥ï¼Œå³å¯ä»¥åœ¨ä¸åŒçº¿ç¨‹å†…è°ƒç”¨
+    //æ­¤æ¥å£æ˜¯å¼‚æ­¥é€šè®¯çš„å”¯ä¸€æ¥å£
+    //æ³¨æ„ï¼špPacketæ¶ˆæ¯éœ€è¦ç”¨g_pPacketFactoryManageråˆ›å»ºå‡ºæ¥ï¼Œç”¨å®Œåä¸èƒ½åˆ é™¤
     BOOL                    SendPacket( Packet* pPacket, 
                             PlayerID_t PlayerID, 
                             UINT Flag=PF_NONE ) ;
@@ -47,7 +47,7 @@ public:
 private:
     MyLock                    m_Lock ;
 private:
-    //µ±Ç°Ä£¿éµÄÏûÏ¢»º´æ
+    //å½“å‰æ¨¡å—çš„æ¶ˆæ¯ç¼“å­˜
     ASYNC_PACKET*            m_PacketQue ;
     UINT                    m_QueSize ;
     UINT                    m_Head ;

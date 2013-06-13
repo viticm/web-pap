@@ -1,6 +1,6 @@
 #include "stdafx.h"
 //********************************************
-//    Ini Ïà¹Øº¯Êı
+//    Ini ç›¸å…³å‡½æ•°
 //********************************************
 
 
@@ -9,10 +9,10 @@
 #include <stdlib.h>
 #include <malloc.h>
 ////////////////////////////////////////////////
-// Í¨ÓÃ½Ó¿Ú
+// é€šç”¨æ¥å£
 ////////////////////////////////////////////////
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 Ini::Ini()
 {
     __ENTER_FUNCTION
@@ -25,7 +25,7 @@ Ini::Ini()
     __LEAVE_FUNCTION
 }
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 Ini::Ini( const CHAR *filename )
 {
     __ENTER_FUNCTION
@@ -43,7 +43,7 @@ Ini::Ini( const CHAR *filename )
     __LEAVE_FUNCTION
 }
 
-//Îö¹¹ÊÍ·Å
+//ææ„é‡Šæ”¾
 Ini::~Ini()
 {
     __ENTER_FUNCTION
@@ -63,7 +63,7 @@ Ini::~Ini()
     __LEAVE_FUNCTION
 }
 
-//¶ÁÈëÎÄ¼ş
+//è¯»å…¥æ–‡ä»¶
 BOOL Ini::Open( const CHAR *filename )
 {
     __ENTER_FUNCTION
@@ -72,7 +72,7 @@ BOOL Ini::Open( const CHAR *filename )
 
     SAFE_FREE( m_strData );
 
-    //»ñÈ¡ÎÄ¼ş³¤¶È
+    //è·å–æ–‡ä»¶é•¿åº¦
     FILE* fp;
     fp = fopen(filename,"rb");
     if(fp == 0)
@@ -87,7 +87,7 @@ BOOL Ini::Open( const CHAR *filename )
     }
     
     
-    //ÎÄ¼ş´æÔÚ
+    //æ–‡ä»¶å­˜åœ¨
     if( m_lDataLen > 0 )
     {
         m_strData = (CHAR*)malloc( (size_t)m_lDataLen ) ;
@@ -97,16 +97,16 @@ BOOL Ini::Open( const CHAR *filename )
         FILE *fp;
         fp=fopen(filename, "rb");
         AssertEx( fp!=NULL, filename );
-        fread(m_strData, m_lDataLen, 1, fp);        //¶ÁÊı¾İ
+        fread(m_strData, m_lDataLen, 1, fp);        //è¯»æ•°æ®
         fclose(fp);
 
-        //³õÊ¼»¯Ë÷Òı
+        //åˆå§‹åŒ–ç´¢å¼•
         InitIndex();
         return TRUE;
     }
-    else    // ÎÄ¼ş²»´æÔÚ
+    else    // æ–‡ä»¶ä¸å­˜åœ¨
     {
-        // ÕÒ²»µ½ÎÄ¼ş
+        // æ‰¾ä¸åˆ°æ–‡ä»¶
         m_lDataLen=1;
         m_strData = (CHAR*)malloc( (size_t)m_lDataLen ) ;
         //m_strData = new CHAR[m_lDataLen];
@@ -121,7 +121,7 @@ BOOL Ini::Open( const CHAR *filename )
     return 0 ;
 }
 
-//¹Ø±ÕÎÄ¼ş
+//å…³é—­æ–‡ä»¶
 VOID Ini::Close()
 {
     __ENTER_FUNCTION
@@ -141,7 +141,7 @@ VOID Ini::Close()
     __LEAVE_FUNCTION
 }
 
-//Ğ´ÈëÎÄ¼ş
+//å†™å…¥æ–‡ä»¶
 BOOL Ini::Save(CHAR *filename)
 {
     __ENTER_FUNCTION
@@ -165,7 +165,7 @@ BOOL Ini::Save(CHAR *filename)
     return FALSE ;
 }
 
-//·µ»ØÎÄ¼şÄÚÈİ
+//è¿”å›æ–‡ä»¶å†…å®¹
 CHAR *Ini::GetData()
 {
     __ENTER_FUNCTION
@@ -175,7 +175,7 @@ CHAR *Ini::GetData()
     __LEAVE_FUNCTION
 }
 
-//»ñµÃÎÄ¼şµÄĞĞÊı
+//è·å¾—æ–‡ä»¶çš„è¡Œæ•°
 INT Ini::GetLines(INT cur)
 {
     __ENTER_FUNCTION
@@ -191,7 +191,7 @@ INT Ini::GetLines(INT cur)
     __LEAVE_FUNCTION
 }
 
-//»ñµÃÎÄ¼şµÄĞĞÊı
+//è·å¾—æ–‡ä»¶çš„è¡Œæ•°
 INT Ini::GetLines()
 {
     __ENTER_FUNCTION
@@ -211,10 +211,10 @@ INT Ini::GetLines()
 }
 
 ////////////////////////////////////////////////
-// ÄÚ²¿º¯Êı
+// å†…éƒ¨å‡½æ•°
 ////////////////////////////////////////////////
 
-//¼ÆËã³öËùÓĞµÄË÷ÒıÎ»ÖÃ
+//è®¡ç®—å‡ºæ‰€æœ‰çš„ç´¢å¼•ä½ç½®
 VOID Ini::InitIndex()
 {
     __ENTER_FUNCTION
@@ -223,14 +223,14 @@ VOID Ini::InitIndex()
 
     for(INT i=0; i<m_lDataLen; i++)
     {
-        //ÕÒµ½
+        //æ‰¾åˆ°
         if( m_strData[i]=='[' && ( m_strData[i-1]=='\n' || i==0 ) )
         {
             IndexNum++;
         }
     }
 
-    //ÉêÇëÄÚ´æ
+    //ç”³è¯·å†…å­˜
     SAFE_DELETE( IndexList );
     if( IndexNum>0 )
         IndexList=new INT[IndexNum];
@@ -249,7 +249,7 @@ VOID Ini::InitIndex()
     __LEAVE_FUNCTION
 }
 
-//·µ»ØÖ¸¶¨±êÌâÎ»ÖÃ
+//è¿”å›æŒ‡å®šæ ‡é¢˜ä½ç½®
 INT Ini::FindIndex(CHAR *string)
 {
     __ENTER_FUNCTION
@@ -271,12 +271,12 @@ INT Ini::FindIndex(CHAR *string)
     return 0 ;
 }
 
-//·µ»ØÖ¸¶¨Êı¾İµÄÎ»ÖÃ
+//è¿”å›æŒ‡å®šæ•°æ®çš„ä½ç½®
 INT Ini::FindData(INT index, CHAR *string)
 {
     __ENTER_FUNCTION
 
-    INT p=index;    //Ö¸Õë
+    INT p=index;    //æŒ‡é’ˆ
 
     while(1)
     {
@@ -304,7 +304,7 @@ INT Ini::FindData(INT index, CHAR *string)
     return 0 ;
 }
 
-//ÌáĞĞ
+//æè¡Œ
 INT Ini::GotoNextLine(INT p)
 {
     __ENTER_FUNCTION
@@ -320,7 +320,7 @@ INT Ini::GotoNextLine(INT p)
     __LEAVE_FUNCTION
 }
 
-//ÔÚÖ¸¶¨Î»ÖÃ¶ÁÒ»Êı¾İÃû³Æ
+//åœ¨æŒ‡å®šä½ç½®è¯»ä¸€æ•°æ®åç§°
 CHAR *Ini::ReadDataName(INT &p)
 {
     __ENTER_FUNCTION
@@ -336,14 +336,14 @@ CHAR *Ini::ReadDataName(INT &p)
     {
         chr = m_strData[i];
 
-        //½áÊø
+        //ç»“æŸ
         if( chr == '\r' )
         {
             p=i+1;
             return Ret;
         }
         
-        //½áÊø
+        //ç»“æŸ
         if( chr == '=' || chr == ';' )
         {
             p=i+1;
@@ -360,7 +360,7 @@ CHAR *Ini::ReadDataName(INT &p)
     return 0 ;
 }
 
-//ÔÚÖ¸¶¨Î»ÖÃ¶ÁÒ»×Ö·û´®
+//åœ¨æŒ‡å®šä½ç½®è¯»ä¸€å­—ç¬¦ä¸²
 CHAR *Ini::ReadText(INT p)
 {
     __ENTER_FUNCTION
@@ -377,7 +377,7 @@ CHAR *Ini::ReadText(INT p)
     {
         chr = m_strData[n];
 
-        //½áÊø
+        //ç»“æŸ
         if( chr == ';' || chr == '\r' || chr == '\t' || chr == ']' )
         {
             //ShowMessage(Ret);
@@ -396,7 +396,7 @@ CHAR *Ini::ReadText(INT p)
     return 0 ;
 }
 
-//¼ÓÈëÒ»¸öË÷Òı
+//åŠ å…¥ä¸€ä¸ªç´¢å¼•
 BOOL Ini::AddIndex(CHAR *index)
 {
     __ENTER_FUNCTION
@@ -405,10 +405,10 @@ BOOL Ini::AddIndex(CHAR *index)
     memset(str, 0, 256);
     INT n=FindIndex(index);
 
-    if( n == -1 )    //ĞÂ½¨Ë÷Òı
+    if( n == -1 )    //æ–°å»ºç´¢å¼•
     {
         sprintf(str,"\r\n[%s]",index);
-        m_strData = (CHAR *)realloc(m_strData, m_lDataLen+strlen(str));    //ÖØĞÂ·ÖÅäÄÚ´æ
+        m_strData = (CHAR *)realloc(m_strData, m_lDataLen+strlen(str));    //é‡æ–°åˆ†é…å†…å­˜
         sprintf(&m_strData[m_lDataLen], "%s", str);
         m_lDataLen+=(long)(strlen(str));
 
@@ -416,14 +416,14 @@ BOOL Ini::AddIndex(CHAR *index)
         return TRUE;
     }
     
-    return FALSE;    //ÒÑ¾­´æÔÚ
+    return FALSE;    //å·²ç»å­˜åœ¨
 
     __LEAVE_FUNCTION
 
     return 0 ;
 }
 
-//ÔÚµ±Ç°Î»ÖÃ¼ÓÈëÒ»¸öÊı¾İ
+//åœ¨å½“å‰ä½ç½®åŠ å…¥ä¸€ä¸ªæ•°æ®
 BOOL Ini::AddData(INT p, CHAR *name, CHAR *string)
 {
     __ENTER_FUNCTION
@@ -435,12 +435,12 @@ BOOL Ini::AddData(INT p, CHAR *name, CHAR *string)
     sprintf(str,"%s=%s",name,string);
     len=(INT)(strlen(str));
 
-    p=GotoNextLine(p);    //ÌáĞĞ
-    m_strData = (CHAR *)realloc(m_strData, m_lDataLen+len);    //ÖØĞÂ·ÖÅäÄÚ´æ
+    p=GotoNextLine(p);    //æè¡Œ
+    m_strData = (CHAR *)realloc(m_strData, m_lDataLen+len);    //é‡æ–°åˆ†é…å†…å­˜
 
     CHAR *temp=new CHAR[m_lDataLen-p];
     memcpy(temp, &m_strData[p], m_lDataLen-p);
-    memcpy(&m_strData[p+len], temp, m_lDataLen-p);    //°ÑºóÃæµÄ°áµ½Ä©Î²
+    memcpy(&m_strData[p+len], temp, m_lDataLen-p);    //æŠŠåé¢çš„æ¬åˆ°æœ«å°¾
     memcpy(&m_strData[p], str, len);
     m_lDataLen+=len;
 
@@ -453,7 +453,7 @@ BOOL Ini::AddData(INT p, CHAR *name, CHAR *string)
     return 0 ;
 }
 
-//ÔÚµ±Ç°Î»ÖÃĞŞ¸ÄÒ»¸öÊı¾İµÄÖµ
+//åœ¨å½“å‰ä½ç½®ä¿®æ”¹ä¸€ä¸ªæ•°æ®çš„å€¼
 BOOL Ini::ModityData(INT p, CHAR *name, CHAR *string)
 {
     __ENTER_FUNCTION
@@ -467,11 +467,11 @@ BOOL Ini::ModityData(INT p, CHAR *name, CHAR *string)
     INT newlen=(INT)(strlen(string));
     INT oldlen=p-n;
 
-    m_strData = (CHAR *)realloc(m_strData, m_lDataLen+newlen-oldlen);    //ÖØĞÂ·ÖÅäÄÚ´æ
+    m_strData = (CHAR *)realloc(m_strData, m_lDataLen+newlen-oldlen);    //é‡æ–°åˆ†é…å†…å­˜
 
     CHAR *temp=new CHAR[m_lDataLen-p];
     memcpy(temp, &m_strData[p], m_lDataLen-p);
-    memcpy(&m_strData[n+newlen], temp, m_lDataLen-p);            //°ÑºóÃæµÄ°áµ½Ä©Î²
+    memcpy(&m_strData[n+newlen], temp, m_lDataLen-p);            //æŠŠåé¢çš„æ¬åˆ°æœ«å°¾
     memcpy(&m_strData[n], string, newlen);
     m_lDataLen+=newlen-oldlen;
 
@@ -483,7 +483,7 @@ BOOL Ini::ModityData(INT p, CHAR *name, CHAR *string)
     return 0 ;
 }
 
-//°ÑÖ¸ÕëÒÆ¶¯µ½±¾INDEXµÄ×îºóÒ»ĞĞ
+//æŠŠæŒ‡é’ˆç§»åŠ¨åˆ°æœ¬INDEXçš„æœ€åä¸€è¡Œ
 INT Ini::GotoLastLine(CHAR *index)
 {
     __ENTER_FUNCTION
@@ -509,10 +509,10 @@ INT Ini::GotoLastLine(CHAR *index)
 }
 
 /////////////////////////////////////////////////////////////////////
-// ¶ÔÍâ½Ó¿Ú
+// å¯¹å¤–æ¥å£
 /////////////////////////////////////////////////////////////////////
 
-//ÒÔÆÕÍ¨·½Ê½¶ÁÒ»×Ö·û´®Êı¾İ
+//ä»¥æ™®é€šæ–¹å¼è¯»ä¸€å­—ç¬¦ä¸²æ•°æ®
 CHAR *Ini::ReadText(CHAR *index, CHAR *name, CHAR* str, INT size)
 {
     __ENTER_FUNCTION
@@ -541,7 +541,7 @@ CHAR *Ini::ReadText(CHAR *index, CHAR *name, CHAR* str, INT size)
     return 0 ;
 }
 
-//Èç¹û´æÔÚÔò¶ÁÈ¡
+//å¦‚æœå­˜åœ¨åˆ™è¯»å–
 BOOL Ini::ReadTextIfExist(CHAR *index, CHAR *name, CHAR* str, INT size)
 {
 __ENTER_FUNCTION
@@ -565,7 +565,7 @@ __LEAVE_FUNCTION
     return FALSE ;
 }
     
-//ÔÚÖ¸¶¨µÄĞĞ¶ÁÒ»×Ö·û´®
+//åœ¨æŒ‡å®šçš„è¡Œè¯»ä¸€å­—ç¬¦ä¸²
 CHAR *Ini::ReadText(CHAR *index, INT lines, CHAR* str, INT size)
 {
     __ENTER_FUNCTION
@@ -578,7 +578,7 @@ CHAR *Ini::ReadText(CHAR *index, INT lines, CHAR* str, INT size)
     INT n=FindIndex(index);
     AssertEx( n != -1, szTmp );
 
-    //Ìøµ½Ö¸¶¨ĞĞÊı
+    //è·³åˆ°æŒ‡å®šè¡Œæ•°
     n=GotoNextLine(n);
     for(INT i=0; i<lines; i++)
     {
@@ -586,7 +586,7 @@ CHAR *Ini::ReadText(CHAR *index, INT lines, CHAR* str, INT size)
             n=GotoNextLine(n);
     }
 
-    //¶ÁÊı¾İ
+    //è¯»æ•°æ®
     while( n<=m_lDataLen )
     {
         if( m_strData[n] == '=' )
@@ -610,7 +610,7 @@ CHAR *Ini::ReadText(CHAR *index, INT lines, CHAR* str, INT size)
     return 0 ;
 }
 
-//ÒÔÆÕÍ¨·½Ê½¶ÁÒ»ÕûÊı
+//ä»¥æ™®é€šæ–¹å¼è¯»ä¸€æ•´æ•°
 INT Ini::ReadInt(CHAR *index, CHAR *name)
 {
     __ENTER_FUNCTION
@@ -658,7 +658,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-//ÔÚÖ¸¶¨µÄĞĞ¶ÁÒ»ÕûÊı
+//åœ¨æŒ‡å®šçš„è¡Œè¯»ä¸€æ•´æ•°
 INT Ini::ReadInt(CHAR *index, INT lines)
 {
     __ENTER_FUNCTION
@@ -670,7 +670,7 @@ INT Ini::ReadInt(CHAR *index, INT lines)
     INT n=FindIndex(index);
     AssertEx( n != -1, szTmp );
 
-    //Ìøµ½Ö¸¶¨ĞĞÊı
+    //è·³åˆ°æŒ‡å®šè¡Œæ•°
     n=GotoNextLine(n);
     for(INT i=0; i<lines; i++)
     {
@@ -678,7 +678,7 @@ INT Ini::ReadInt(CHAR *index, INT lines)
             n=GotoNextLine(n);
     }
 
-    //¶ÁÊı¾İ
+    //è¯»æ•°æ®
     while( n<m_lDataLen )
     {
         if( m_strData[n] == '=' )
@@ -703,7 +703,7 @@ INT Ini::ReadInt(CHAR *index, INT lines)
     return 0 ;
 }
 
-//ÔÚÖ¸¶¨µÄĞĞ¶ÁÒ»Êı¾İÃû³Æ
+//åœ¨æŒ‡å®šçš„è¡Œè¯»ä¸€æ•°æ®åç§°
 CHAR *Ini::ReadCaption(CHAR *index, INT lines, CHAR* str, INT size)
 {
     __ENTER_FUNCTION
@@ -715,7 +715,7 @@ CHAR *Ini::ReadCaption(CHAR *index, INT lines, CHAR* str, INT size)
     INT n=FindIndex(index);
     AssertEx( n != -1, szTmp );
 
-    //Ìøµ½Ö¸¶¨ĞĞÊı
+    //è·³åˆ°æŒ‡å®šè¡Œæ•°
     n=GotoNextLine(n);
     for(INT i=0; i<lines; i++)
     {
@@ -732,32 +732,32 @@ CHAR *Ini::ReadCaption(CHAR *index, INT lines, CHAR* str, INT size)
     return 0 ;
 }
 
-//ÒÔÆÕÍ¨·½Ê½Ğ´Ò»×Ö·û´®Êı¾İ
+//ä»¥æ™®é€šæ–¹å¼å†™ä¸€å­—ç¬¦ä¸²æ•°æ®
 BOOL Ini::Write(CHAR *index, CHAR *name, CHAR *string)
 {
     __ENTER_FUNCTION
 
     INT n=FindIndex(index);
-    if( n == -1 )    //ĞÂ½¨Ë÷Òı
+    if( n == -1 )    //æ–°å»ºç´¢å¼•
     {
         AddIndex(index);
         n=FindIndex(index);
         n=GotoLastLine(index);
-        AddData(n, name, string);    //ÔÚµ±Ç°Î»ÖÃn¼ÓÒ»¸öÊı¾İ
+        AddData(n, name, string);    //åœ¨å½“å‰ä½ç½®nåŠ ä¸€ä¸ªæ•°æ®
         return TRUE;
     }
 
-    //´æÔÚË÷Òı
+    //å­˜åœ¨ç´¢å¼•
     INT m=FindData(n, name);
-    if( m==-1 )        //ĞÂ½¨Êı¾İ
+    if( m==-1 )        //æ–°å»ºæ•°æ®
     {
         n=GotoLastLine(index);
-        AddData(n, name, string);    //ÔÚµ±Ç°Î»ÖÃn¼ÓÒ»¸öÊı¾İ
+        AddData(n, name, string);    //åœ¨å½“å‰ä½ç½®nåŠ ä¸€ä¸ªæ•°æ®
         return TRUE;
     }
 
-    //´æÔÚÊı¾İ
-    ModityData(n, name, string);    //ĞŞ¸ÄÒ»¸öÊı¾İ
+    //å­˜åœ¨æ•°æ®
+    ModityData(n, name, string);    //ä¿®æ”¹ä¸€ä¸ªæ•°æ®
 
     return TRUE;
 
@@ -766,7 +766,7 @@ BOOL Ini::Write(CHAR *index, CHAR *name, CHAR *string)
     return 0 ;
 }
 
-//ÒÔÆÕÍ¨·½Ê½Ğ´Ò»ÕûÊı
+//ä»¥æ™®é€šæ–¹å¼å†™ä¸€æ•´æ•°
 BOOL Ini::Write(CHAR *index, CHAR *name, INT num)
 {
     __ENTER_FUNCTION
@@ -775,26 +775,26 @@ BOOL Ini::Write(CHAR *index, CHAR *name, INT num)
     sprintf(string, "%d", num);
 
     INT n=FindIndex(index);
-    if( n == -1 )    //ĞÂ½¨Ë÷Òı
+    if( n == -1 )    //æ–°å»ºç´¢å¼•
     {
         AddIndex(index);
         n=FindIndex(index);
         n=GotoLastLine(index);
-        AddData(n, name, string);    //ÔÚµ±Ç°Î»ÖÃn¼ÓÒ»¸öÊı¾İ
+        AddData(n, name, string);    //åœ¨å½“å‰ä½ç½®nåŠ ä¸€ä¸ªæ•°æ®
         return TRUE;
     }
 
-    //´æÔÚË÷Òı
+    //å­˜åœ¨ç´¢å¼•
     INT m=FindData(n, name);
-    if( m==-1 )        //ĞÂ½¨Êı¾İ
+    if( m==-1 )        //æ–°å»ºæ•°æ®
     {
         n=GotoLastLine(index);
-        AddData(n, name, string);    //ÔÚµ±Ç°Î»ÖÃn¼ÓÒ»¸öÊı¾İ
+        AddData(n, name, string);    //åœ¨å½“å‰ä½ç½®nåŠ ä¸€ä¸ªæ•°æ®
         return TRUE;
     }
 
-    //´æÔÚÊı¾İ
-    ModityData(n, name, string);    //ĞŞ¸ÄÒ»¸öÊı¾İ
+    //å­˜åœ¨æ•°æ®
+    ModityData(n, name, string);    //ä¿®æ”¹ä¸€ä¸ªæ•°æ®
 
     return TRUE;
 
@@ -803,7 +803,7 @@ BOOL Ini::Write(CHAR *index, CHAR *name, INT num)
     return 0 ;
 }
 
-//·µ»ØÁ¬ĞøµÄĞĞÊı
+//è¿”å›è¿ç»­çš„è¡Œæ•°
 INT Ini::GetContinueDataNum(CHAR *index)
 {
     __ENTER_FUNCTION
@@ -829,7 +829,7 @@ INT Ini::GetContinueDataNum(CHAR *index)
 
     return 0 ;
 }
-//ÔÚÖ¸¶¨ĞĞ¶ÁÒ»×Ö·û´®
+//åœ¨æŒ‡å®šè¡Œè¯»ä¸€å­—ç¬¦ä¸²
 CHAR* Ini::ReadOneLine(INT p)
 {
 __ENTER_FUNCTION
@@ -865,11 +865,11 @@ INT Ini::FindOneLine(INT p)
     {
         if ( m_strData[i]=='\n' )
             n++;
-        if ( n==p-1 )                //ÕÒµ½ÒªÁËÒªÕÒµÄµÄĞĞ
+        if ( n==p-1 )                //æ‰¾åˆ°è¦äº†è¦æ‰¾çš„çš„è¡Œ
             return i+1;
     }
 
-    return -1; //Ã»ÓĞÕÒµ½
+    return -1; //æ²¡æœ‰æ‰¾åˆ°
 }
 INT Ini::ReturnLineNum(CHAR* string)
 {
@@ -886,6 +886,6 @@ INT Ini::ReturnLineNum(CHAR* string)
     }
     return n;
 
-    return -1; //Ã»ÓĞÕÒµ½
+    return -1; //æ²¡æœ‰æ‰¾åˆ°
 }
 

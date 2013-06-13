@@ -16,7 +16,7 @@ namespace Packets
         CGCharUpdateCurTitle(){} ;
         virtual ~CGCharUpdateCurTitle(){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -25,7 +25,7 @@ namespace Packets
         virtual UINT            GetPacketSize()const { return sizeof(BYTE)+sizeof(SHORT); }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         BYTE                    getTitleType(VOID) { return m_TitleType; }
         VOID                    setTitleType(BYTE titleType) { m_TitleType    = titleType; }
 
@@ -33,7 +33,7 @@ namespace Packets
         VOID                    setTitleData(SHORT titleData) { m_TitleData = titleData; }
 
     private:
-        //数据
+        //鏁版嵁
         BYTE                    m_TitleType;    
         SHORT                    m_TitleData;
     };

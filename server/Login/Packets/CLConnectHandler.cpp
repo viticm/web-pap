@@ -12,7 +12,7 @@ UINT CLConnectHandler::Execute(CLConnect* pPacket, Player* pPlayer )
 {
     __ENTER_FUNCTION
 
-        //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+        //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
         if(MyGetCurrentThreadID()!= g_pLoginPlayerManager->m_ThreadID)
         {
             return PACKET_EXE_CONTINUE;
@@ -22,7 +22,7 @@ UINT CLConnectHandler::Execute(CLConnect* pPacket, Player* pPlayer )
 
         Assert(pLoginPlayer);
         
-        //¼ì²éLogin ·þÎñÆ÷·±Ã¦³Ì¶È£¬·µ»ØÒ»¸öÏà¶Ô¸ºÔØÐ¡µÄIP ºÍPort
+        //æ£€æŸ¥Login æœåŠ¡å™¨ç¹å¿™ç¨‹åº¦ï¼Œè¿”å›žä¸€ä¸ªç›¸å¯¹è´Ÿè½½å°çš„IP å’ŒPort
         
         _SERVER_DATA* pLoginInfo    = g_pServerManager->GetCurrentServerInfo();
         Assert(pLoginInfo);

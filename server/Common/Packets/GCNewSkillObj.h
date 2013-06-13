@@ -14,7 +14,7 @@ public:
     GCNewSkillObj( ){} ;
     virtual ~GCNewSkillObj( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ public:
                                                             sizeof(FLOAT); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -54,14 +54,14 @@ public:
 private:
     ObjID_t            m_ObjID;            // ObjID
 
-    SkillID_t        m_idSkill;            // ²úÉúĞ©SkillObjµÄ¼¼ÄÜID
-    ObjID_t            m_idUser;            // Ê¹ÓÃÕßµÄID
+    SkillID_t        m_idSkill;            // äº§ç”Ÿäº›SkillObjçš„æŠ€èƒ½ID
+    ObjID_t            m_idUser;            // ä½¿ç”¨è€…çš„ID
     WORLD_POS        m_posCreate;
 
-    // Ä¿±ê
+    // ç›®æ ‡
     ObjID_t            m_idTarget;
     WORLD_POS        m_posTarget;
-    FLOAT            m_fInitDir;            // ÎªÉÈĞÎ×Óµ¯×¼±¸
+    FLOAT            m_fInitDir;            // ä¸ºæ‰‡å½¢å­å¼¹å‡†å¤‡
 };
 
 

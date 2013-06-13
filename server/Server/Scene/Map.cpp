@@ -164,7 +164,7 @@ __LEAVE_FUNCTION
 }
 
 BOOL Map::IsPosLogicValid( const WORLD_POS* pos )
-{//�жϴ�λ���Ƿ��ڵ�ͼ������VALID_SIZE��Χ��Ȧ��
+{//判断此位置是否在地图最外面VALID_SIZE范围的圈内
     __ENTER_FUNCTION
 
 #define VALID_SIZE 10

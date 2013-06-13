@@ -1,6 +1,6 @@
 // CGExchangeReplyI.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~CGExchangeReplyI( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

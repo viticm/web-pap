@@ -23,17 +23,17 @@ UINT CGPlayerShopNameHandler::Execute( CGPlayerShopName* pPacket, Player* pPlaye
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-    _PLAYERSHOP_GUID    nShopID                =    pPacket->GetShopID();                //ÉÌµêID
-    BYTE                PlayerShopNameSize    =    pPacket->GetPlayerShopNameSize();    //ÉÌµêÃèÊö
-    CHAR*                PlayerShopName        =    pPacket->GetPlayerShopName();        //»ñµÃÉÌµêÃû
+    _PLAYERSHOP_GUID    nShopID                =    pPacket->GetShopID();                //å•†åº—ID
+    BYTE                PlayerShopNameSize    =    pPacket->GetPlayerShopNameSize();    //å•†åº—æè¿°
+    CHAR*                PlayerShopName        =    pPacket->GetPlayerShopName();        //èŽ·å¾—å•†åº—å
 
     PlayerShopManager*    pPlayerShopManager = pScene->GetPlayerShopManager();
     PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
     Assert(pPlayerShop);
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê.Ö»ÓÐµêÖ÷ÓÐ×Ê¸ñ¸ü¸Ä´ËÊôÐÔ
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—.åªæœ‰åº—ä¸»æœ‰èµ„æ ¼æ›´æ”¹æ­¤å±žæ€§
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
     if(bIsMine == FALSE )
     {
@@ -43,35 +43,35 @@ UINT CGPlayerShopNameHandler::Execute( CGPlayerShopName* pPacket, Player* pPlaye
 
 
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE)
-    {//ÉÌµêÎ´¿ªÕÅ
+    {//å•†åº—æœªå¼€å¼ 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopNameHandler::Name=%s shop close"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
-    //Èç¹ûÍæ¼ÒÉíÉÏµÄ½ðÇ®¡Ý10½ð *ÉÌÒµÖ¸Êý£¬ÐÞ¸Ä³É¹¦¡£
+    //å¦‚æžœçŽ©å®¶èº«ä¸Šçš„é‡‘é’±â‰¥10é‡‘ *å•†ä¸šæŒ‡æ•°ï¼Œä¿®æ”¹æˆåŠŸã€‚
     pPlayerShopManager->ClampComFactor();
     FLOAT fNeedMoney = (FLOAT)100000.0*pPlayerShopManager->GetComFactor();
     if(pHuman->GetMoney()<(UINT)fNeedMoney)
     {
-        //Í¨Öª¿Í»§¶Ë¹ºÂòÉÌµê³É¹¦
+        //é€šçŸ¥å®¢æˆ·ç«¯è´­ä¹°å•†åº—æˆåŠŸ
         GCPlayerShopError Msg;
         Msg.SetID(PLAYERSHOP_MSG::ERR_SHOP_NOT_ENOUTH_MONEY_TO_CHANGE_NAME);
         pHuman->GetPlayer()->SendPacket(&Msg);
     }
 
-    //¿ÛÇ®
+    //æ‰£é’±
     pHuman->SetMoney(pHuman->GetMoney() - (UINT)fNeedMoney);
     
-    //¸ü¸ÄµêÃû
+    //æ›´æ”¹åº—å
     pPlayerShop->SetShopName(PlayerShopName, PlayerShopNameSize);
 
-    //¸ü¸Ä³ÆºÅ
+    //æ›´æ”¹ç§°å·
     CHAR    szMsgTitle[256] = {0};
-    sprintf(szMsgTitle, "%s´óÕÆ¹ñ", PlayerShopName);
+    sprintf(szMsgTitle, "%så¤§æŽŒæŸœ", PlayerShopName);
     pHuman->SetShangDianName(szMsgTitle,(BYTE)strlen(szMsgTitle));
     pHuman->UpdateTitlesToClient();
-    //Í¨Öª¿Í»§¶ËÉÌµêÃûÐÞ¸Ä³É¹¦
+    //é€šçŸ¥å®¢æˆ·ç«¯å•†åº—åä¿®æ”¹æˆåŠŸ
     GCPlayerShopError Msg;
     Msg.SetID(PLAYERSHOP_MSG::ERR_SHOP_SUCCESS_CHANGE_NAME);
     pHuman->GetPlayer()->SendPacket(&Msg);

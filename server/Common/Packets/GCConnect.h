@@ -19,7 +19,7 @@ public:
     GCConnect( ){} ;
     virtual ~GCConnect( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -31,7 +31,7 @@ public:
                                                             sizeof(m_Estate) ; }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
 
     ID_t                    GetServerID( ){ return m_ServerID ; } ;
     VOID                    SetServerID( ID_t id ){ m_ServerID = id ; } ;
@@ -46,14 +46,14 @@ public:
     VOID                    SetEstate( const    BYTE NewEstate ){ m_Estate = NewEstate ; } ;
 
 private:
-    //Êı¾İ
+    //æ•°æ®
     ID_t                    m_ServerID ;
 
-//²âÊÔÖĞÌí¼ÓÊı¾İ
+//æµ‹è¯•ä¸­æ·»åŠ æ•°æ®
     SceneID_t                m_SceneID ;
     WORLD_POS                m_Position ;
-    BYTE                    m_Estate ;//1±íÊ¾·şÎñÆ÷ÕıÔÚ´æÅÌµ±Ç°Íæ¼Ò£¬ÇëÍæ¼ÒµÈ´ı
-//²âÊÔÊı¾İ
+    BYTE                    m_Estate ;//1è¡¨ç¤ºæœåŠ¡å™¨æ­£åœ¨å­˜ç›˜å½“å‰ç©å®¶ï¼Œè¯·ç©å®¶ç­‰å¾…
+//æµ‹è¯•æ•°æ®
 
 };
 

@@ -16,7 +16,7 @@ uint CGMoveHandler::Execute( CGMove* pPacket, Player* pPlayer )
 __ENTER_FUNCTION
 
     //Assert(FALSE) ;
-    //return PACKET_EXE_ERROR ;//·ÏÆúÁËµÄÏûÏ¢ºÅ
+    //return PACKET_EXE_ERROR ;//åºŸå¼ƒäº†çš„æ¶ˆæ¯å·
 
 
 
@@ -34,7 +34,7 @@ __ENTER_FUNCTION
     //Scene* pScene = pHuman->getScene() ;
     //Assert( pScene ) ;
 
-    ////¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    ////æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     //Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     //ObjID_t ObjID = pHuman->GetID() ;
@@ -47,9 +47,9 @@ __ENTER_FUNCTION
     //WORLD_POS OwnFinalPos = *pHuman->GetFinalTarPos() ;
     //BYTE bOwnMoveIndex = pHuman->getMoveIndex() ;
 
-    ////¼ì²éÍæ¼ÒµÄÒÆ¶¯Êý¾ÝÊÇ·ñ·Ç·¨
+    ////æ£€æŸ¥çŽ©å®¶çš„ç§»åŠ¨æ•°æ®æ˜¯å¦éžæ³•
     //if( !pScene->CheckMove( pHuman, &CurPos, &TarPos ) )
-    //{//·Ç·¨
+    //{//éžæ³•
     //}
 
     //pHuman->MoveTo( &CurPos, &TarPos ) ;

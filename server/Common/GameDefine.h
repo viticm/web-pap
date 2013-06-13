@@ -3,92 +3,92 @@
 #define __GAMEDEFINE_H__
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÓÎÏ·»ù±¾ÐÅÏ¢ºê¶¨Òå
+//æ¸¸æˆåŸºæœ¬ä¿¡æ¯å®å®šä¹‰
 /////////////////////////////////////////////////////////////////////////////////
 
-//ÊÀ½çºÅ×î´óÖµ
+//ä¸–ç•Œå·æœ€å¤§å€¼
 #define MAX_WORLD 255
 
 #define MAX_WORLD_USER    3000
 
-//ÓÃ»§½ÇÉ«Ãû×Ö¿ÉÒÔÊäÈëµÄ×î´óÖµ
+//ç”¨æˆ·è§’è‰²åå­—å¯ä»¥è¾“å…¥çš„æœ€å¤§å€¼
 #define MAX_CHARACTER_INPUTNAME 24
 
-//GamePlayer¹ÜÀíÆ÷µÄÉÏÏÞ
+//GamePlayerç®¡ç†å™¨çš„ä¸Šé™
 #define MAX_PLAYER 1024
 
-//Íæ¼Ò³ØÉÏÏÞ
+//çŽ©å®¶æ± ä¸Šé™
 #define MAX_POOL_SIZE 1280
-//¹¤»áÉÏÏÞ
+//å·¥ä¼šä¸Šé™
 #define MAX_GUILD_SIZE 1024
 
-//Ã»½ÚµÄÓÊ¼þÊý
+//æ²¡èŠ‚çš„é‚®ä»¶æ•°
 #define MAX_MAILNODE_SIZE 102400
 
-//ÓÃ»§½ÇÉ«Ãû×Ö½á¹¹ |CharacterName|@|WorldID|00|
-//                    ½ÇÉ«Ãû×Ö      1  3      2¸öÁã
-//×¢Òâ£º½ÇÉ«Ãû×ÖºóÃæµÄºó×º£º¡°@WorldID¡±ÊÇÔÚÓÃ»§´´½¨½ÇÉ«Ê±ºò×Ô¶¯Ìí¼Ó½øµÄ£»
-//        ·þÎñÆ÷¶Ë´¦ÀíÊ±ºò¶¼ÊÇÊ¹ÓÃÍêÕûÃû×Ö£»
-//        ¿Í»§¶ËÏÔÊ¾µÄÊ±ºò£¬Èç¹ûµ±Ç°½ÇÉ«ÊÇ±¾ÊÀ½ç´´½¨£¬ÔòÐèÈ¥µôºóÃæµÄºó×º£»
-//ÓÃ»§½ÇÉ«Ãû³ÆµÄ×î´óÖµ
+//ç”¨æˆ·è§’è‰²åå­—ç»“æž„ |CharacterName|@|WorldID|00|
+//                    è§’è‰²åå­—      1  3      2ä¸ªé›¶
+//æ³¨æ„ï¼šè§’è‰²åå­—åŽé¢çš„åŽç¼€ï¼šâ€œ@WorldIDâ€æ˜¯åœ¨ç”¨æˆ·åˆ›å»ºè§’è‰²æ—¶å€™è‡ªåŠ¨æ·»åŠ è¿›çš„ï¼›
+//        æœåŠ¡å™¨ç«¯å¤„ç†æ—¶å€™éƒ½æ˜¯ä½¿ç”¨å®Œæ•´åå­—ï¼›
+//        å®¢æˆ·ç«¯æ˜¾ç¤ºçš„æ—¶å€™ï¼Œå¦‚æžœå½“å‰è§’è‰²æ˜¯æœ¬ä¸–ç•Œåˆ›å»ºï¼Œåˆ™éœ€åŽ»æŽ‰åŽé¢çš„åŽç¼€ï¼›
+//ç”¨æˆ·è§’è‰²åç§°çš„æœ€å¤§å€¼
 #define MAX_CHARACTER_NAME 30
 
-//Íæ¼Ò³ÆºÅ³¤¶È
+//çŽ©å®¶ç§°å·é•¿åº¦
 #define MAX_CHARACTER_TITLE 34
 
-//NPC£¨»ò¹ÖÎï£©Ãû³Æ³¤¶È
+//NPCï¼ˆæˆ–æ€ªç‰©ï¼‰åç§°é•¿åº¦
 #define NPC_NAME_LEN 32
 
-//NPC£¨»ò¹ÖÎï£©³ÆºÅ³¤¶È
+//NPCï¼ˆæˆ–æ€ªç‰©ï¼‰ç§°å·é•¿åº¦
 #define NPC_TITLE_LEN 32
 
-//½ÇÉ«µÄêÇ³Æ
+//è§’è‰²çš„æ˜µç§°
 #define MAX_NICK_NAME 34
 
-//ÉÌµêµÄÃû×Ö
+//å•†åº—çš„åå­—
 #define MAX_SHOP_NAME 34
 
-//Ì¯Î»µÄÃû×Ö
+//æ‘Šä½çš„åå­—
 #define MAX_STALL_NAME 34
 
-//ÁôÑÔµÄÊýÄ¿
+//ç•™è¨€çš„æ•°ç›®
 #define MAX_BBS_MESSAGE_NUM 20
 
-//ÁôÑÔµÄ³¤¶È
+//ç•™è¨€çš„é•¿åº¦
 #define MAX_BBS_MESSAGE_LENGTH 70
 
-//ÁôÑÔ×÷ÕßÃû³¤¶È
+//ç•™è¨€ä½œè€…åé•¿åº¦
 #define MAX_BBS_MESSAGE_AUTHORLENGTH 40
 
-//¶þ¼¶ÃÜÂë×î¶Ì³¤¶È
+//äºŒçº§å¯†ç æœ€çŸ­é•¿åº¦
 #define MIN_PWD 4
 
-//¶þ¼¶ÃÜÂëµÄ×î´ó³¤¶È + 1
+//äºŒçº§å¯†ç çš„æœ€å¤§é•¿åº¦ + 1
 #define MAX_PWD 17
 
-//ÓÃ»§ÕÊºÅµÄ×î´óÖµ
+//ç”¨æˆ·å¸å·çš„æœ€å¤§å€¼
 #define MAX_ACCOUNT 16
 
-//ÓÃ»§ÃÜÂëµÄ×î´óÖµ
+//ç”¨æˆ·å¯†ç çš„æœ€å¤§å€¼
 #define MAX_PASSWORD 32
 
-//Ö°ÒµÐÅÏ¢×î´óÖµ
+//èŒä¸šä¿¡æ¯æœ€å¤§å€¼
 //#define MAX_JOBINFO_LENGTH    50
-//±ÏÒµÔºÐ£ÐÅÏ¢×î´óÖµ
+//æ¯•ä¸šé™¢æ ¡ä¿¡æ¯æœ€å¤§å€¼
 //#define MAX_SCHOOLINFO_LENGTH    50
-//Ê¡·ÝÐÅÏ¢×î´óÖµ
+//çœä»½ä¿¡æ¯æœ€å¤§å€¼
 //#define MAX_PROVINCE_LENGTH        16
-//CityÐÅÏ¢×î´óÖµ
+//Cityä¿¡æ¯æœ€å¤§å€¼
 //#define MAX_CITY_LENGTH        16
-//EmailÐÅÏ¢×î´óÖµ
+//Emailä¿¡æ¯æœ€å¤§å€¼
 //#define MAX_EMAIL_LENGTH    50
-//ÐÄÇé¼ÄÓï×î´óÖµ
+//å¿ƒæƒ…å¯„è¯­æœ€å¤§å€¼
 //#define MAX_LUCKWORD_LENGTH    255
 
-//×î¶àÄÜ´´½¨½ÇÉ«µÄÊýÁ¿
+//æœ€å¤šèƒ½åˆ›å»ºè§’è‰²çš„æ•°é‡
 #define MAX_CREATE_PLAYER_NUM 3
 
-//CharacterManagerÖÐÈ±Ê¡µÄObjID»º´æ´óÐ¡
+//CharacterManagerä¸­ç¼ºçœçš„ObjIDç¼“å­˜å¤§å°
 #define DEFAULT_OBJ_COUNT 1024
 
 //
@@ -97,37 +97,37 @@
 //
 #define MAX_SEND_TIME 1
 
-//ËÑË÷Zone¸ñ×ÓµÄ·¶Î§,0=1¸ñ(½ö½ö°üº¬×Ô¼ºÔÚµÄÄÇ¸ö¸ñ×Ó)£¬1=9¸ñ;2=25¸ñ;3=49¸ñ;
+//æœç´¢Zoneæ ¼å­çš„èŒƒå›´,0=1æ ¼(ä»…ä»…åŒ…å«è‡ªå·±åœ¨çš„é‚£ä¸ªæ ¼å­)ï¼Œ1=9æ ¼;2=25æ ¼;3=49æ ¼;
 #define MAX_RADIUS 2
 
 #define MAX_REFESH_OBJ_ZONE_RADIUS        2
 
 #define MAX_REFESH_OBJ_ZONE_ARRAY_SIZE    ((MAX_REFESH_OBJ_ZONE_RADIUS - 1) * (MAX_REFESH_OBJ_ZONE_RADIUS - 1) + 1 )
 
-//µôÂä°üÊ°È¡µÄ×î´ó¾àÀë
+//æŽ‰è½åŒ…æ‹¾å–çš„æœ€å¤§è·ç¦»
 #define MAX_BOX_OP_DISTANCE                3.0f
-//±³°üµÄ×î´óÈÝÁ¿
+//èƒŒåŒ…çš„æœ€å¤§å®¹é‡
 #define MAX_BAG_SIZE 60
 
 #define MAX_EXTBAG_SIZE 140
 
 #define MAX_NPC_DISTANCE    5.0
 
-//Container Æ«ÒÆ
+//Container åç§»
 
-//»ù±¾°üÆ«ÒÆ
+//åŸºæœ¬åŒ…åç§»
 #define BASE_CONTAINER_OFFSET    0
 
-//²ÄÁÏ°üÆ«ÒÆ
+//ææ–™åŒ…åç§»
 //#define MAT_CONTAINER_OFFSET    20
 
-//ÈÎÎñ°üÆ«ÒÆ
+//ä»»åŠ¡åŒ…åç§»
 //#define TASK_CONTAINER_OFFSET    40
 
-//×°±¸Æ«ÒÆÁ¿
+//è£…å¤‡åç§»é‡
 #define EQUIP_CONTAINER_OFFSET    200
 
-//ÒøÐÐÆ«ÒÆÁ¿
+//é“¶è¡Œåç§»é‡
 #define BANK_CONTAINER_OFFSET    220
 
 
@@ -143,133 +143,133 @@
 
 #define MAX_BANK_MONEY        10000000
 
-//´íÎó°ü¸ñ±íÊ¾
+//é”™è¯¯åŒ…æ ¼è¡¨ç¤º
 #define    INVALID_BAG_INDEX (-1)
 
-//Ò»¸ö³¡¾°×î¶à¿ÉÒÔÓÐ¶àÉÙ¸öÍæ¼ÒÉÌµê
+//ä¸€ä¸ªåœºæ™¯æœ€å¤šå¯ä»¥æœ‰å¤šå°‘ä¸ªçŽ©å®¶å•†åº—
 #define MAX_SHOP_NUM_PER_SCENE 512
 
-//Ò»¸öÍæ¼Ò×î¶à¿ÉÒÔÓµÓÐµÄÍæ¼ÒÉÌµê¸öÊý
+//ä¸€ä¸ªçŽ©å®¶æœ€å¤šå¯ä»¥æ‹¥æœ‰çš„çŽ©å®¶å•†åº—ä¸ªæ•°
 #define MAX_SHOP_NUM_PER_PLAYER 2
 
-//ÉÌµêÊÕ²Ø¼Ð´óÐ¡
+//å•†åº—æ”¶è—å¤¹å¤§å°
 #define MAX_FAVORITE_SHOPS        10
 
-//Ò»¸öÍæ¼ÒÉÌµêµÄ¹ñÌ¨Êý
+//ä¸€ä¸ªçŽ©å®¶å•†åº—çš„æŸœå°æ•°
 #define MAX_STALL_NUM_PER_SHOP 10
 
-//Ò»¸öÍæ¼ÒÉÌµêµÄºÏ×÷»ï°éÊý
+//ä¸€ä¸ªçŽ©å®¶å•†åº—çš„åˆä½œä¼™ä¼´æ•°
 #define MAX_PARTNER_PER_SHOP 6
 
-//½»Ò×¼ÇÂ¼×î´óÊýÁ¿
+//äº¤æ˜“è®°å½•æœ€å¤§æ•°é‡
 #define MAX_EXCHANGE_RECORD 40
 
-//¹ÜÀí¼ÇÂ¼×î´óÊýÁ¿
+//ç®¡ç†è®°å½•æœ€å¤§æ•°é‡
 #define MAX_MANAGER_RECORD 128
 
-//×î´ó¼ÇÂ¼³¤¶È
+//æœ€å¤§è®°å½•é•¿åº¦
 #define MAX_RECORD_LEN_ENTRY    128        
 
-//×î´ó¼ÇÂ¼Êý
+//æœ€å¤§è®°å½•æ•°
 #define MAX_RECORD_NUM_ENTRY    128        
 
-//Ã¿Ò³¼ÇÂ¼Êý
+//æ¯é¡µè®°å½•æ•°
 #define MAX_RECORD_NUM_PER_PAGE    10    
 
-//Ò»¸öÍæ¼ÒÉÌµêµÄÃû×Ö³¤¶È
+//ä¸€ä¸ªçŽ©å®¶å•†åº—çš„åå­—é•¿åº¦
 #define MAX_SHOP_NAME_SIZE 12
 
-//Ò»¸öÍæ¼ÒÉÌµêµÄÃèÊöÄÚÈÝ³¤¶È
+//ä¸€ä¸ªçŽ©å®¶å•†åº—çš„æè¿°å†…å®¹é•¿åº¦
 #define MAX_SHOP_DESC_SIZE 82
 
-//ÉÌµêµÄË°ÂÊ
+//å•†åº—çš„ç¨ŽçŽ‡
 #define    SHOP_TAX 0.03
 
-//ÒøÐÐµÄ×î´óÈÝÁ¿
+//é“¶è¡Œçš„æœ€å¤§å®¹é‡
 #define MAX_BANK_SIZE 100
 
-//ÒøÐÐ×î¶à¿ÉÒÔ´æµÄÇ®Êý
+//é“¶è¡Œæœ€å¤šå¯ä»¥å­˜çš„é’±æ•°
 #define MAX_BANK_MONEY 10000000
 
-//ÒøÐÐ×î¶à¿ÉÒÔ´æµÄÔª±¦
+//é“¶è¡Œæœ€å¤šå¯ä»¥å­˜çš„å…ƒå®
 #define MAX_BANK_RMB 100000
 
-//µÚÒ»¸ö×âÁÞÏäÆðÊ¼Ë÷Òý
+//ç¬¬ä¸€ä¸ªç§Ÿèµç®±èµ·å§‹ç´¢å¼•
 #define RENTBOX1_START_INDEX 0
 
-//µÚ¶þ¸ö×âÁÞÏäÆðÊ¼Ë÷Òý
+//ç¬¬äºŒä¸ªç§Ÿèµç®±èµ·å§‹ç´¢å¼•
 #define RENTBOX2_START_INDEX 20
 
-//µÚÈý¸ö×âÁÞÏäÆðÊ¼Ë÷Òý
+//ç¬¬ä¸‰ä¸ªç§Ÿèµç®±èµ·å§‹ç´¢å¼•
 #define RENTBOX3_START_INDEX 40
 
-//µÚËÄ¸ö×âÁÞÏäÆðÊ¼Ë÷Òý
+//ç¬¬å››ä¸ªç§Ÿèµç®±èµ·å§‹ç´¢å¼•
 #define RENTBOX4_START_INDEX 60
 
-//µÚÎå¸ö×âÁÞÏäÆðÊ¼Ë÷Òý
+//ç¬¬äº”ä¸ªç§Ÿèµç®±èµ·å§‹ç´¢å¼•
 #define RENTBOX5_START_INDEX 80
 
-//½»Ò×ºÐµÄ×î´óÈÝÁ¿
+//äº¤æ˜“ç›’çš„æœ€å¤§å®¹é‡
 #define    MISSION_BOX_SIZE    4
 
-//ÈÎÎñÁÐ±í½çÃæÎïÆ·µÄ×î´óÊýÁ¿
+//ä»»åŠ¡åˆ—è¡¨ç•Œé¢ç‰©å“çš„æœ€å¤§æ•°é‡
 #define    QUESTLOG_BOX_SIZE    255
 
-//½»Ò×ºÐµÄ×î´óÈÝÁ¿
+//äº¤æ˜“ç›’çš„æœ€å¤§å®¹é‡
 #define    EXCHANGE_BOX_SIZE    5
 
-//½»Ò×ºÐÖÐ³èÎïµÄ×î´óÈÝÁ¿
+//äº¤æ˜“ç›’ä¸­å® ç‰©çš„æœ€å¤§å®¹é‡
 #define    EXCHANGE_PET_BOX_SIZE    5
 
-//½»Ò×Ë«·½ÔÊÐíµÄ×î´óÏà¾à¾àÀë
+//äº¤æ˜“åŒæ–¹å…è®¸çš„æœ€å¤§ç›¸è·è·ç¦»
 #define EXCHANGE_MAX_DISTANCE    3
 
-//Ì¯Î»ºÐµÄ×î´óÈÝÁ¿
+//æ‘Šä½ç›’çš„æœ€å¤§å®¹é‡
 #define    STALL_BOX_SIZE        20
 
-//Ì¯Î»ºÐµÄ×î´óÈÝÁ¿(Ò»¶¨Òª¸úSTALL_BOX_SIZEÒ»Ñù´ó£¡£¡£¡)
+//æ‘Šä½ç›’çš„æœ€å¤§å®¹é‡(ä¸€å®šè¦è·ŸSTALL_BOX_SIZEä¸€æ ·å¤§ï¼ï¼ï¼)
 #define    STALL_PET_BOX_SIZE        20
 
-//»º´æµÄÉêÇëÕß¶ÓÁÐµÄ³¤¶È
+//ç¼“å­˜çš„ç”³è¯·è€…é˜Ÿåˆ—çš„é•¿åº¦
 #define    MAX_EXCHANGE_APPLICANTS_NUM    10
 
-//³ÆºÅµÄ×î´óÈÝÁ¿
+//ç§°å·çš„æœ€å¤§å®¹é‡
 #define MAX_STRING_TITLE_SIZE 4
 
-//¶¯Ì¬³ÆºÅµÄ×î´óÈÝÁ¿
+//åŠ¨æ€ç§°å·çš„æœ€å¤§å®¹é‡
 #define MAX_DYNAMIC_TITLE_SIZE 10
 
-//¾²Ì¬Ì¬³ÆºÅµÄ×î´óÈÝÁ¿
+//é™æ€æ€ç§°å·çš„æœ€å¤§å®¹é‡
 #define MAX_STATIC_TITLE_SIZE 6
 
-//¾²Ì¬Ì¬³ÆºÅµÄ×î´óÈÝÁ¿
+//é™æ€æ€ç§°å·çš„æœ€å¤§å®¹é‡
 #define MAX_TITLE_ID_SIZE 16
 
-//³ÆºÅµÄ×î´óÈÝÁ¿
+//ç§°å·çš„æœ€å¤§å®¹é‡
 #define MAX_TITLE_SIZE 20
 
-//ÎïÆ·¿ÉÏâÇ¶±¦Ê¯µÄ×î´ó¸öÊý
+//ç‰©å“å¯é•¶åµŒå®çŸ³çš„æœ€å¤§ä¸ªæ•°
 #define MAX_ITEM_GEM 3
 
-//×î´óÀ¶É«×°±¸Ëæ»úÊôÐÔ¸öÊý
+//æœ€å¤§è“è‰²è£…å¤‡éšæœºå±žæ€§ä¸ªæ•°
 #define        MAX_BLUE_ITEM_EXT_ATTR                4
 
-//×î´óÎïÆ·ÊôÐÔ
+//æœ€å¤§ç‰©å“å±žæ€§
 #define MAX_ITEM_ATTR (9+MAX_ITEM_GEM)
 
-//¹²ÏíÄÚ´æItemSerial¹Ì¶¨key
+//å…±äº«å†…å­˜ItemSerialå›ºå®škey
 #define ITEM_SERIAL_KEY        536081
 
-//±¦Ê¯µÄ×î¸ß¼¶±ð
+//å®çŸ³çš„æœ€é«˜çº§åˆ«
 #define MAX_GEM_QUALITY 9
 
-//Éú»î¼¼ÄÜ×î´óÊ¹ÓÃ±³°üÎïÆ·Êý
+//ç”Ÿæ´»æŠ€èƒ½æœ€å¤§ä½¿ç”¨èƒŒåŒ…ç‰©å“æ•°
 #define MAX_ABILITY_ITEM 5
 
-//×î´ó×°±¸Ì××°ÊôÐÔ
+//æœ€å¤§è£…å¤‡å¥—è£…å±žæ€§
 #define MAX_ITEM_SET_ATTR 4
 
-//×î´óÒ©Æ·Ð§¹û
+//æœ€å¤§è¯å“æ•ˆæžœ
 #define    MAX_MEDIC_EFFECT_NUM 3
 
 #define MAX_GROW_POINT_RATE_NUM        4
@@ -279,19 +279,19 @@
 
 #define MAX_SCENE_GP_OWNER            255
 
-// ³èÎï×î¶àÓµÓÐµÄ¼¼ÄÜÊýÄ¿
+// å® ç‰©æœ€å¤šæ‹¥æœ‰çš„æŠ€èƒ½æ•°ç›®
 #define MAX_PET_SKILL_COUNT        (6)
 
-//Obj_ItemBox ×î´óµôÂäÎïÆ·¸öÊý
+//Obj_ItemBox æœ€å¤§æŽ‰è½ç‰©å“ä¸ªæ•°
 #define MAX_BOXITEM_NUMBER 10
 
-//Obj_ItemBox ×î´ó²ÎÓëÊ°È¡¾àÀë
+//Obj_ItemBox æœ€å¤§å‚ä¸Žæ‹¾å–è·ç¦»
 #define MAX_ITEMBOX_PICK_DIST        (20.0f)
 
-//ÉÌÈË¿ÉÒÔÂôµÄ×î´ó»õÎï¸öÊý
+//å•†äººå¯ä»¥å–çš„æœ€å¤§è´§ç‰©ä¸ªæ•°
 #define MAX_BOOTH_NUMBER       96
 
-//ÉÌÈË¿ÉÒÔ»Ø¹ºµÄ×î´ó»õÎï¸öÊý
+//å•†äººå¯ä»¥å›žè´­çš„æœ€å¤§è´§ç‰©ä¸ªæ•°
 #define MAX_BOOTH_SOLD_NUMBER   5
 
 //
@@ -303,93 +303,93 @@
 //
 #define DEFAULT_WASHPOINT_LEVEL        60
 
-//×î´ó±í¶¨Òå¼¶±ðÊôÐÔµã·ÖÅä
+//æœ€å¤§è¡¨å®šä¹‰çº§åˆ«å±žæ€§ç‚¹åˆ†é…
 #define MAX_TABLE_DEFINE_LEVEL     150
 
-//¶Ï¿ªÍøÂçºó£¬·þÎñÆ÷¼ÌÐø±£ÁôÊý¾ÝµÄÊ±¼ä£¨ºÁÃë£©
+//æ–­å¼€ç½‘ç»œåŽï¼ŒæœåŠ¡å™¨ç»§ç»­ä¿ç•™æ•°æ®çš„æ—¶é—´ï¼ˆæ¯«ç§’ï¼‰
 #define TIME_TO_TRUE_QUIT 10000
 
-//¹ÖÎïµÄÖÖÀàÊýÁ¿×î´óÖµ
+//æ€ªç‰©çš„ç§ç±»æ•°é‡æœ€å¤§å€¼
 #define    MAXTYPE_NUMBER 1024 * 20
 
-//¹ÖÎïAIÖÖÀàµÄÊýÁ¿×î´óÖµ
+//æ€ªç‰©AIç§ç±»çš„æ•°é‡æœ€å¤§å€¼
 #define MAXAI_NUMBER 256
 
-//NPCÌ¸»°µÄÀàÐÍ×î´óÖµ
+//NPCè°ˆè¯çš„ç±»åž‹æœ€å¤§å€¼
 #define MAXCHATTYPE_NUMBER 64
 
-//NPCÌ¸»°¼ÇÂ¼µÄ×î´óÖµ
+//NPCè°ˆè¯è®°å½•çš„æœ€å¤§å€¼
 #define MAXCHAT_NUMBER 64
 
-//½ÇÉ«ËùÓµÓÐ¼¼ÄÜµÄÊýÁ¿
+//è§’è‰²æ‰€æ‹¥æœ‰æŠ€èƒ½çš„æ•°é‡
 #define MAX_CHAR_SKILL_NUM 256
 
-//¼¼ÄÜ×î´ó¼¶±ð
+//æŠ€èƒ½æœ€å¤§çº§åˆ«
 #define MAX_CHAR_SKILL_LEVEL 12
 
-//½ÇÉ«ÉíÉÏ¿ÉÒÔÓµÓÐµÄ¸½¼ÓÐ§¹û×î´óÊýÁ¿
+//è§’è‰²èº«ä¸Šå¯ä»¥æ‹¥æœ‰çš„é™„åŠ æ•ˆæžœæœ€å¤§æ•°é‡
 #define MAX_IMPACT_NUM 20
 
-//½ÇÉ«ËùÓµÓÐ¼¼ÄÜÐÄ·¨µÄÊýÁ¿£¬ÕâÀï±»ÓÃÀ´ÃèÊö¼¼ÄÜµÈ¼¶ÁË
+//è§’è‰²æ‰€æ‹¥æœ‰æŠ€èƒ½å¿ƒæ³•çš„æ•°é‡ï¼Œè¿™é‡Œè¢«ç”¨æ¥æè¿°æŠ€èƒ½ç­‰çº§äº†
 #define MAX_CHAR_XINFA_NUM 128
 
-//½ÇÉ«ËùÓµÓÐÉú»î¼¼ÄÜµÄÊýÁ¿
+//è§’è‰²æ‰€æ‹¥æœ‰ç”Ÿæ´»æŠ€èƒ½çš„æ•°é‡
 #define MAX_CHAR_ABILITY_NUM 64
 
-//¼¼ÄÜÅä·½±íµÄÌõÄ¿Êý
+//æŠ€èƒ½é…æ–¹è¡¨çš„æ¡ç›®æ•°
 #define MAX_ABILITY_PRESCRIPTION_NUM (4 * 256)
 
-//¼¼ÄÜÅä·½±íµÄ´æµµ×Ö½ÚÕ¼ÓÃÊý
+//æŠ€èƒ½é…æ–¹è¡¨çš„å­˜æ¡£å­—èŠ‚å ç”¨æ•°
 #define MAX_CHAR_PRESCRIPTION_BYTE (MAX_ABILITY_PRESCRIPTION_NUM>>3)
 
 #define ABILITY_GAMBLE_NUM 5
 
 
-//ÃÅÅÉÊýÁ¿
+//é—¨æ´¾æ•°é‡
 #define MAX_MENPAI_NUM 9
 
-//Ã¿¸öÃÅÅÉËùÓµÓÐµÄ¼¼ÄÜÐÄ·¨µÄÊýÁ¿
+//æ¯ä¸ªé—¨æ´¾æ‰€æ‹¥æœ‰çš„æŠ€èƒ½å¿ƒæ³•çš„æ•°é‡
 #define MAX_MENPAI_XINFA_NUM 16
 
-//×ÜÐÄ·¨ÊýÁ¿
+//æ€»å¿ƒæ³•æ•°é‡
 #define MAX_ALL_XINFA_NUM    55
 
-//Ã¿¸öÐÄ·¨ËùÄÜ¹»´ïµ½µÄ×î´óµÄµÈ¼¶
+//æ¯ä¸ªå¿ƒæ³•æ‰€èƒ½å¤Ÿè¾¾åˆ°çš„æœ€å¤§çš„ç­‰çº§
 #define MAX_XINFA_LEVEL_NUM    120
 
-//Ã¿¸öÉú»î¼¼ÄÜÄÜ¹»´ïµ½µÄ×î´óµÈ¼¶
+//æ¯ä¸ªç”Ÿæ´»æŠ€èƒ½èƒ½å¤Ÿè¾¾åˆ°çš„æœ€å¤§ç­‰çº§
 #define MAX_ABILITY_LEVEL_NUM 60
 
-//¼¼ÄÜ×î´óÊýÁ¿
+//æŠ€èƒ½æœ€å¤§æ•°é‡
 #define MAX_SKILL_NUMBER 1024
 
-//¼¼ÄÜ×î´óµÈ¼¶
+//æŠ€èƒ½æœ€å¤§ç­‰çº§
 #define MAX_SKILL_LEVEL 12
 
-// ×ÜÈÎÎñÊýÁ¿
+// æ€»ä»»åŠ¡æ•°é‡
 #define MAX_MISSION_NUM                (4096)
 #define MAX_CHAR_MISSION_FLAG_LEN    ((MAX_MISSION_NUM+31)/32)
 
-//½ÇÉ«ËùÓµÓÐÈÎÎñµÄÊýÁ¿
+//è§’è‰²æ‰€æ‹¥æœ‰ä»»åŠ¡çš„æ•°é‡
 #define MAX_CHAR_MISSION_NUM        (20)
 enum
 {
     QUESTTIME_LIST_SIZE = MAX_CHAR_MISSION_NUM,
 };
 
-//Ã¿¸öÈÎÎñNotifyÊýÁ¿
+//æ¯ä¸ªä»»åŠ¡Notifyæ•°é‡
 #define MAX_MISSION_NOTIFY_NUM      (4)
 
-//½ÇÉ«ËùÓµÓÐÈÎÎñÊý¾Ý
+//è§’è‰²æ‰€æ‹¥æœ‰ä»»åŠ¡æ•°æ®
 #define MAX_CHAR_MISSION_DATA_NUM    (256)
 
-//ÈÎÎñÀàÐÍ
+//ä»»åŠ¡ç±»åž‹
 enum
 {
-    MISSION_TYPE_ZHAOREN = 1,    //ÕÒÈË£¬ÕÒÎï
-    MISSION_TYPE_SONGXIN,        //ËÍÈÎÎñµÀ¾ß
-    MISSION_TYPE_SHAGUAI,        //É±¹Ö
-    MISSION_TYPE_SHOUJI    ,        //É±¹Ö£¬È»ºóµÃµ½ÈÎÎñÎïÆ·
+    MISSION_TYPE_ZHAOREN = 1,    //æ‰¾äººï¼Œæ‰¾ç‰©
+    MISSION_TYPE_SONGXIN,        //é€ä»»åŠ¡é“å…·
+    MISSION_TYPE_SHAGUAI,        //æ€æ€ª
+    MISSION_TYPE_SHOUJI    ,        //æ€æ€ªï¼Œç„¶åŽå¾—åˆ°ä»»åŠ¡ç‰©å“
     //MISSION_TYPE_XILIE        = 0x10,
     //MISSION_TYPE_HUSONG        = 0x20,
     //MISSION_TYPE_CANGBAOTU    = 0x40,
@@ -397,93 +397,93 @@ enum
     //MISSION_TYPE_ANSHA        = 0x100,
 };
 
-// Ã¿¸ö½ÇÉ«×î¶àÄÜ¿´¼û¶àÉÙÖÖÈÎÎñÎïÆ·µÄµôÂä
+// æ¯ä¸ªè§’è‰²æœ€å¤šèƒ½çœ‹è§å¤šå°‘ç§ä»»åŠ¡ç‰©å“çš„æŽ‰è½
 #define MAX_CHAR_CAN_PICK_MISSION_ITEM_NUM    (MAX_CHAR_MISSION_NUM*4)
 
-//¼¼ÄÜOBJ×î´óÊýÁ¿
+//æŠ€èƒ½OBJæœ€å¤§æ•°é‡
 #define MAX_SKILLOBJ_NUMBER            1024
 
 #define MAX_WEBSHOPINFO_NUMBER        3
 
-//×î´ó¿É´ò¿ªITEM BOXµÄ¾àÀë
+//æœ€å¤§å¯æ‰“å¼€ITEM BOXçš„è·ç¦»
 #define MAX_OPEN_ITEMBOX_DIST        (2.f)
 
-//×î´ó¿É´ò¿ªITEM BOXµÄ¾àÀëÆ½·½
+//æœ€å¤§å¯æ‰“å¼€ITEM BOXçš„è·ç¦»å¹³æ–¹
 #define MAX_OPEN_ITEMBOX_DIST_SQ (MAX_OPEN_ITEMBOX_DIST * MAX_OPEN_ITEMBOX_DIST)
 
-//×î´ó¿É´¥·¢½Å±¾ÊÂ¼þµÄ¾àÀë(¿Í»§¶Ë)
+//æœ€å¤§å¯è§¦å‘è„šæœ¬äº‹ä»¶çš„è·ç¦»(å®¢æˆ·ç«¯)
 #define MAX_CLIENT_DEFAULT_EVENT_DIST (3.f)
 
-//×î´ó¿É´¥·¢½Å±¾ÊÂ¼þµÄ¾àÀë(·þÎñÆ÷)
+//æœ€å¤§å¯è§¦å‘è„šæœ¬äº‹ä»¶çš„è·ç¦»(æœåŠ¡å™¨)
 #define MAX_SERVER_DEFAULT_EVENT_DIST    (MAX_CLIENT_DEFAULT_EVENT_DIST * 2.f)
 
-//×î´ó¿É´¥·¢½Å±¾ÊÂ¼þµÄ¾àÀëÆ½·½(¿Í»§¶Ë)
+//æœ€å¤§å¯è§¦å‘è„šæœ¬äº‹ä»¶çš„è·ç¦»å¹³æ–¹(å®¢æˆ·ç«¯)
 #define MAX_CLIENT_DEFAULT_EVENT_DIST_SQ (MAX_CLIENT_DEFAULT_EVENT_DIST * MAX_CLIENT_DEFAULT_EVENT_DIST)
 
-//×î´ó¿É´¥·¢½Å±¾ÊÂ¼þµÄ¾àÀëÆ½·½(·þÎñÆ÷)
+//æœ€å¤§å¯è§¦å‘è„šæœ¬äº‹ä»¶çš„è·ç¦»å¹³æ–¹(æœåŠ¡å™¨)
 #define MAX_SERVER_DEFAULT_EVENT_DIST_SQ (MAX_SERVER_DEFAULT_EVENT_DIST * MAX_SERVER_DEFAULT_EVENT_DIST)
 
 //
 #define MAX_ATOM_OPT_NUM 8
 
-// ½ÇÉ«½ÓÊÜµÄ×î´óÂ·¾¶µãÊýÁ¿
+// è§’è‰²æŽ¥å—çš„æœ€å¤§è·¯å¾„ç‚¹æ•°é‡
 #define MAX_CHAR_PATH_NODE_NUMBER    (16)
 
-//³¡¾°¹ÜÀíÄ£¿é¿ÉÒÔ¹ÜÀíµÄ×î´ó³¡¾°ÊýÁ¿
+//åœºæ™¯ç®¡ç†æ¨¡å—å¯ä»¥ç®¡ç†çš„æœ€å¤§åœºæ™¯æ•°é‡
 #define MAX_SCENE 1024
 
-// Ò»¸ö zone ÀïÃæ¿ÉÒÔ¼ÓÈëµÄ×î´ó Area ÊýÁ¿
+// ä¸€ä¸ª zone é‡Œé¢å¯ä»¥åŠ å…¥çš„æœ€å¤§ Area æ•°é‡
 #define MAX_AREA_IN_ZONE        10
 
-//Ò»¸ö¸±±¾¿ÉÒÔÅäÖÃµÄ³¡¾°×î´óÖµ
+//ä¸€ä¸ªå‰¯æœ¬å¯ä»¥é…ç½®çš„åœºæ™¯æœ€å¤§å€¼
 #define MAX_COPYSCENE 128
 
-//×î´óµÄ¶ÓÎéÈËÊý
+//æœ€å¤§çš„é˜Ÿä¼äººæ•°
 #define MAX_TEAM_MEMBER 6
 
-// ÍÅ¶ÓÖÐ×î´ó¶ÓÎéÊýÁ¿
+// å›¢é˜Ÿä¸­æœ€å¤§é˜Ÿä¼æ•°é‡
 #define MAX_TEAMS_IN_GROUP 8
 
-//¶ÓÎéÊýÁ¿
+//é˜Ÿä¼æ•°é‡
 #define MAX_TEAMS 3000
 
-//×Ô½¨ÁÄÌìÆµµÀÄÚ×î¶àÈËÊý
+//è‡ªå»ºèŠå¤©é¢‘é“å†…æœ€å¤šäººæ•°
 #define MAX_CHATCHANNEL_MEMBER 11
 
-//ÆµµÀÊýÁ¿
+//é¢‘é“æ•°é‡
 #define MAX_CHANNELS 3000
 
-// ×î¶à±£´æ¶àÉÙÌõÀëÏßÓÊ¼þ
+// æœ€å¤šä¿å­˜å¤šå°‘æ¡ç¦»çº¿é‚®ä»¶
 #define MAX_MAIL 20
 
-//ÓÊ¼þÄÚÈÝµÄ×î³¤³ß´ç
+//é‚®ä»¶å†…å®¹çš„æœ€é•¿å°ºå¯¸
 #define MAX_MAIL_CONTEX 256
 
-//¹ÖÎïÅÝÅÝËµ»°µÄ×î´ó³¤¶È
+//æ€ªç‰©æ³¡æ³¡è¯´è¯çš„æœ€å¤§é•¿åº¦
 #define MAX_MONSTERSPEAK_CONTENT 64
 
-//×îÐ¡¿ÉÒÔ·ÖÅäÎïÆ·ÉËÑª±ÈÀý
+//æœ€å°å¯ä»¥åˆ†é…ç‰©å“ä¼¤è¡€æ¯”ä¾‹
 #define MIN_DAMAGE_PERCENT    (0.2f)
 
-//°ï»áÃû×Ö³¤¶È
+//å¸®ä¼šåå­—é•¿åº¦
 #define MAX_GUILD_NAME_SIZE 24
 
-//°ï»áÃû×Ö³¤¶È
+//å¸®ä¼šåå­—é•¿åº¦
 #define MAX_GUILD_NAME_SIZE_DB 32
 
-//°ï»áÖ°Î»Ãû×Ö³¤¶È
+//å¸®ä¼šèŒä½åå­—é•¿åº¦
 #define MAX_GUILD_POS_NAME_SIZE 24
 
-//°ï»áÖ°Î»¸öÊý
+//å¸®ä¼šèŒä½ä¸ªæ•°
 #define MAX_GUILD_POS_NUM 8
 
-//°ï»áÃèÊö³¤¶È
+//å¸®ä¼šæè¿°é•¿åº¦
 #define MAX_GUILD_DESC_SIZE 60
 
-//°ï»áÃèÊö³¤¶È
+//å¸®ä¼šæè¿°é•¿åº¦
 #define MAX_GUILD_DESC_SIZE_DB 62
 
-//°ï»áÁÐ±íÃ¿´ÎµÃµ½µÄ×î´ó¸öÊý
+//å¸®ä¼šåˆ—è¡¨æ¯æ¬¡å¾—åˆ°çš„æœ€å¤§ä¸ªæ•°
 #define MAX_GUILD_LIST_COUNT 50
 
 #define MAX_PROPOSER_IN_GUILD        10
@@ -491,65 +491,65 @@ enum
 #define USER_ARRAY_SIZE                MAX_USER_IN_GUILD + MAX_PROPOSER_IN_GUILD
 
 #define MAX_SYSTEM_MSG_SIZE 256
-// ÓÑºÃ¶ÈÉÏÏÞ
+// å‹å¥½åº¦ä¸Šé™
 #define MAX_FRIEND_POINT 9999
 
-// ÓÑºÃ¶È´ïµ½ÉÏÏÂÏßÌáÊ¾
+// å‹å¥½åº¦è¾¾åˆ°ä¸Šä¸‹çº¿æç¤º
 #define FRIEND_POINT_ENOUGH_NOTIFY 10
 
-// ÓÑºÃ¶È´óµ½ÐèÒªÊäÈë¶þ¼¶ÃÜÂë
+// å‹å¥½åº¦å¤§åˆ°éœ€è¦è¾“å…¥äºŒçº§å¯†ç 
 #define FRIEND_POINT_NEED_REMOVE_VERIFY 500
 
-//ÁªÏµÈËÉÏÏÞ£¨°üÀ¨ºÃÓÑ¡¢ºÚÃûµ¥£©
+//è”ç³»äººä¸Šé™ï¼ˆåŒ…æ‹¬å¥½å‹ã€é»‘åå•ï¼‰
 #define MAX_RELATION_SIZE 100
 
-//ºÚÃûµ¥ÈËÊýÉÏÏÞ
+//é»‘åå•äººæ•°ä¸Šé™
 #define MAX_BLACK_SIZE 64
 
-// Íæ¼ÒÐÄÇéµµ°¸µÄ³¤¶È
+// çŽ©å®¶å¿ƒæƒ…æ¡£æ¡ˆçš„é•¿åº¦
 #define MOOD_DATA_SIZE 32
 
-// Íæ¼ÒÐÄÇéµÄ×î´óÖ§³Ö³¤¶È
+// çŽ©å®¶å¿ƒæƒ…çš„æœ€å¤§æ”¯æŒé•¿åº¦
 #define MAX_MOOD_SIZE 25
 
-// ×î´óÊÕÍ½¸öÊý
+// æœ€å¤§æ”¶å¾’ä¸ªæ•°
 #define MAX_PRENTICE_COUNT 2
 
-// ×î´óÊ¦µÂµãÊý
+// æœ€å¤§å¸ˆå¾·ç‚¹æ•°
 #define MAX_MORAL_POINT 1000000
 
-//Êý¾Ý¿âÃû³Æ³¤¶È
+//æ•°æ®åº“åç§°é•¿åº¦
 #define        DATABASE_STR_LEN            128
-//Êý¾Ý¿âÓÃ»§Ãû³¤¶È
+//æ•°æ®åº“ç”¨æˆ·åé•¿åº¦
 #define        DB_USE_STR_LEN                32
-//Êý¾Ý¿âÃÜÂë³¤¶È
+//æ•°æ®åº“å¯†ç é•¿åº¦
 #define        DB_PASSWORD_STR_LEN            32
-//DB ²Ù×÷Ê±¼ä¼ä¸ô
+//DB æ“ä½œæ—¶é—´é—´éš”
 #define        DB_OPERATION_TIME            500
-//ÕËºÅ±£´æ½ÇÉ«¸öÊý
+//è´¦å·ä¿å­˜è§’è‰²ä¸ªæ•°
 #define        DB_CHAR_NUMBER                5
-//½ÇÉ«ÖÐ·Ç¼´Ê±Ë¢ÐÂÊôÐÔÍ¬²½µ½ShareMemoryµÄÊ±¼ä¼ä¸ô
-#define        DB_2_SM_TIME                60000 //60Ãë
+//è§’è‰²ä¸­éžå³æ—¶åˆ·æ–°å±žæ€§åŒæ­¥åˆ°ShareMemoryçš„æ—¶é—´é—´éš”
+#define        DB_2_SM_TIME                60000 //60ç§’
 
-//Êý¾Ý¿âÁ¬½Ó³ØÄ¬ÈÏÁ¬½Ó¸öÊý
+//æ•°æ®åº“è¿žæŽ¥æ± é»˜è®¤è¿žæŽ¥ä¸ªæ•°
 #define        DB_CONNECTION_COUNT            40
 
-// ·þÎñÆ÷ÄÜ½ÓÊÜµÄ¿ÍÆø¶Ëµ÷ÕûÎ»ÖÃÓë·þÎñÆ÷Î»µÄ²î¾à
+// æœåŠ¡å™¨èƒ½æŽ¥å—çš„å®¢æ°”ç«¯è°ƒæ•´ä½ç½®ä¸ŽæœåŠ¡å™¨ä½çš„å·®è·
 #define        DEF_SERVER_ADJUST_POS_WARP_DIST    (5.f)
 
-// Íæ¼ÒÎªÒ»¸öÎïÆ·£¨³èÎï£©¼ÓËøÐèÒªÏûºÄµÄ¾«Á¦
+// çŽ©å®¶ä¸ºä¸€ä¸ªç‰©å“ï¼ˆå® ç‰©ï¼‰åŠ é”éœ€è¦æ¶ˆè€—çš„ç²¾åŠ›
 //#define        LOCK_A_OBJ_NEED_ENERGY        10
 
 // 
-//Ò»¹²ÓÐ¼¸¸ö·½ÃæµÄÕóÓª
+//ä¸€å…±æœ‰å‡ ä¸ªæ–¹é¢çš„é˜µè¥
 #define MAX_CAMP_NUM        2   
-#define INVALID_CAMP        -1        //ÎÞÐ§ÕóÓª
-//#define CAMP_1                0        //µÚÒ»·½ÃæµÄÕóÓª
-//#define CAMP_2                1        //µÚ¶þ·½ÃæµÄÕóÓª
-//#define CAMP_3                10        //ÖÐÁ¢ÀàÐÍµÄÕóÓª£¬´Ó10ºÅ¿ªÊ¼
-//#define CAMP_4                20        //µÐ¶ÔÀàÐÍµÄÕóÓª£¬´Ó20ºÅ¿ªÊ¼
+#define INVALID_CAMP        -1        //æ— æ•ˆé˜µè¥
+//#define CAMP_1                0        //ç¬¬ä¸€æ–¹é¢çš„é˜µè¥
+//#define CAMP_2                1        //ç¬¬äºŒæ–¹é¢çš„é˜µè¥
+//#define CAMP_3                10        //ä¸­ç«‹ç±»åž‹çš„é˜µè¥ï¼Œä»Ž10å·å¼€å§‹
+//#define CAMP_4                20        //æ•Œå¯¹ç±»åž‹çš„é˜µè¥ï¼Œä»Ž20å·å¼€å§‹
 
-//ÕóÓª--¶ÔÏóÀàÐÍ
+//é˜µè¥--å¯¹è±¡ç±»åž‹
 #define CAMP1_PLAYER        0
 #define CAMP1_PET            1
 #define CAMP1_MONSTER        2
@@ -558,22 +558,22 @@ enum
 #define CAMP2_PET            5
 #define CAMP2_MONSTER        6
 #define CAMP2_NPC            7
-#define CAMP3_MONSTER        8    //ÓÑºÃ
+#define CAMP3_MONSTER        8    //å‹å¥½
 #define CAMP3_NPC            9
-#define CAMP4_MONSTER        10    //µÐ¶Ô
+#define CAMP4_MONSTER        10    //æ•Œå¯¹
 #define CAMP4_NPC            11
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÓÎÏ·»ù±¾Êý¾Ý²Ù×÷ºê
+//æ¸¸æˆåŸºæœ¬æ•°æ®æ“ä½œå®
 /////////////////////////////////////////////////////////////////////////////////
 
-//´ÓGUID_tÖÐÈ¡µÃÊÀ½çºÅ
+//ä»ŽGUID_tä¸­å–å¾—ä¸–ç•Œå·
 #define GETWORLD(u) ((u)/10000000)
-//´ÓGUID_tÖÐÈ¡µÃÓÃ»§²¿·ÖÐòÁÐºÅ
+//ä»ŽGUID_tä¸­å–å¾—ç”¨æˆ·éƒ¨åˆ†åºåˆ—å·
 #define GETUSER(u) ((u)%10000000)
-//ÅÐ¶Ïµ±Ç°ÊÇ·ñÊÇ²âÊÔÊÀ½ç
+//åˆ¤æ–­å½“å‰æ˜¯å¦æ˜¯æµ‹è¯•ä¸–ç•Œ
 #define ISTESTWORLD(w) ((w)>200?1:0)
-//ÅÐ¶ÏÊÀ½çºÅÊÇ·ñºÏ·¨
+//åˆ¤æ–­ä¸–ç•Œå·æ˜¯å¦åˆæ³•
 #define ISVALIDWORLD(w) (((w)>0)?(((w)<MAX_WORLD)?1:0):(0))
 
 

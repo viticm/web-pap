@@ -1,6 +1,6 @@
 // CGAskStudyXinfa.h
 // 
-// 发送NPC的门派ID
+// 鍙戦�丯PC鐨勯棬娲綢D
 // 
 //////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ namespace Packets
         CGAskStudyXinfa( ){};
         virtual ~CGAskStudyXinfa( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

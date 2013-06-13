@@ -1,7 +1,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºMailDefine.h
-//¹¦ÄÜÃèÊö£º¶¨ÒåÓÊ¼ş´¦ÀíÄ£¿éµÄÊı¾İ½á¹¹
+//æ–‡ä»¶åï¼šMailDefine.h
+//åŠŸèƒ½æè¿°ï¼šå®šä¹‰é‚®ä»¶å¤„ç†æ¨¡å—çš„æ•°æ®ç»“æ„
 //
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -14,7 +14,7 @@
 
 struct MailSMU;
 
-//ÓÊ¼ş½Úµã
+//é‚®ä»¶èŠ‚ç‚¹
 class MailNode : public CChainItem
 {
 public :
@@ -31,10 +31,10 @@ public :
     MAIL            m_Mail ;
     MailSMU*        m_pMailSMU;
     INT                m_nPoolIndex ;
-    INT                m_nUserNodePoolIndex ;//¹Ò½ÓÔÚ´ËÓÃ»§½ÚµãÃûÏÂ
+    INT                m_nUserNodePoolIndex ;//æŒ‚æ¥åœ¨æ­¤ç”¨æˆ·èŠ‚ç‚¹åä¸‹
 };
 
-//ÓÃ»§½Úµã
+//ç”¨æˆ·èŠ‚ç‚¹
 class UserNode : public CChainItem
 {
 public :
@@ -43,8 +43,8 @@ public :
 
     VOID            CleanUp( ) ;
 
-    INT                GetMailCount( ) ;//·µ»Ø´ËÓÃ»§µÄÓÊ¼şÊıÁ¿
-    INT                GetScriptMailCount( ) ;//·µ»Ø´ËÓÃ»§µÄÓÊ¼şÊıÁ¿
+    INT                GetMailCount( ) ;//è¿”å›æ­¤ç”¨æˆ·çš„é‚®ä»¶æ•°é‡
+    INT                GetScriptMailCount( ) ;//è¿”å›æ­¤ç”¨æˆ·çš„é‚®ä»¶æ•°é‡
 
 
 public :
@@ -56,7 +56,7 @@ public :
 
 };
 
-//ÓÃ»§Á´±í
+//ç”¨æˆ·é“¾è¡¨
 class UserChain
 {
 public :
@@ -66,7 +66,7 @@ public :
     BOOL            Init( ) ;
     VOID            CleanUp( ) ;
 
-    INT                GetUserCount( ) ;//·µ»Ø´ËÓÃ»§µÄÓÊ¼şÊıÁ¿
+    INT                GetUserCount( ) ;//è¿”å›æ­¤ç”¨æˆ·çš„é‚®ä»¶æ•°é‡
 
     UserNode*        GetHeadNode( ) ;
     UserNode*        GetPrevNode( ) ;
@@ -78,7 +78,7 @@ public :
 
 };
 
-//ÓÃ»§Ãû×Ö(GUID)ºÍÓÃ»§½ÚµãµÄHash±í
+//ç”¨æˆ·åå­—(GUID)å’Œç”¨æˆ·èŠ‚ç‚¹çš„Hashè¡¨
 class UserHashTable
 {
 public :

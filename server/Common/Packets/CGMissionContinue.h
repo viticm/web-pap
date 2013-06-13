@@ -1,6 +1,6 @@
 // CGMissionContinue.h
 // 
-// 继续任务
+// 缁х画浠诲姟
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         CGMissionContinue( ){}
         virtual ~CGMissionContinue( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -36,7 +36,7 @@ namespace Packets
 
     private:
         ObjID_t                    m_idNPC;
-        ScriptID_t                m_idScript;        // 任务的脚本ID
+        ScriptID_t                m_idScript;        // 浠诲姟鐨勮剼鏈琁D
     };
 
 

@@ -1,6 +1,6 @@
 // CGPlayerShopAskForRecord.h
 // 
-// 向服务器申请创建玩家商店
+// 鍚戞湇鍔″櫒鐢宠鍒涘缓鐜╁鍟嗗簵
 // 
 //////////////////////////////////////////////////////
 
@@ -30,7 +30,7 @@ namespace Packets
         }
         virtual ~CGPlayerShopAskForRecord( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -48,7 +48,7 @@ namespace Packets
         VOID                    SetShopID(_PLAYERSHOP_GUID nShopID) {m_ShopID = nShopID;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //商店ID
+        _PLAYERSHOP_GUID        m_ShopID;            //鍟嗗簵ID
         BYTE                    m_bType;
         BYTE                    m_bPage;
     };

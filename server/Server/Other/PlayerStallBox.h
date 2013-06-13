@@ -1,12 +1,12 @@
 /************************************************************************/
 /*
-    ´´½¨ÈÕÆÚ:    2006Äê2ÔÂ13ÈÕ
-    ´´½¨Ê±¼ä:    11:54
-    ÎÄ¼şÃû³Æ:    PlayerStallBox.h
-    ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Other\PlayerStallBox.h
+    åˆ›å»ºæ—¥æœŸ:    2006å¹´2æœˆ13æ—¥
+    åˆ›å»ºæ—¶é—´:    11:54
+    æ–‡ä»¶åç§°:    PlayerStallBox.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Other\PlayerStallBox.h
 
-    ÎÄ¼ş¹¦ÄÜ£º    Íæ¼ÒÉÌµêµÄÒ»¸ö¹ñÌ¨
-    ĞŞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š    ç©å®¶å•†åº—çš„ä¸€ä¸ªæŸœå°
+    ä¿®æ”¹çºªå½•ï¼š
 */
 /************************************************************************/
 
@@ -16,19 +16,19 @@
 #include "PlayerShopDefine.h"
 #include "ItemContainer.h"
 /*
-·şÎñÆ÷¶ËÃ¿¸ö¹ñÌ¨µÄ½á¹¹.
+æœåŠ¡å™¨ç«¯æ¯ä¸ªæŸœå°çš„ç»“æ„.
 */
 class PlayerShop;
 using namespace PLAYER_SHOP;
 class PlayerStallBox
 {
 public:
-    //ÔËĞĞÊ±½á¹¹
+    //è¿è¡Œæ—¶ç»“æ„
     struct StallBoxRT_t
     {
         ItemContainer    m_Container;                            //ITEM_CONTAINER
         ItemContainer    m_PetContainer;                            //PET_CONTAINER
-        BYTE            m_Serial[STALL_BOX_SIZE];                //ĞòÁĞºÅÊı×é
+        BYTE            m_Serial[STALL_BOX_SIZE];                //åºåˆ—å·æ•°ç»„
         PlayerShop*        m_pShop;
     };
 public:
@@ -42,13 +42,13 @@ public:
     };
 public:
     //-------------------------------------------------------------------------------------------------
-    //³õÊ¼»¯,Çå¿ÕÍæ¼ÒÉÌµêµÄ¹ñÌ¨
+    //åˆå§‹åŒ–,æ¸…ç©ºç©å®¶å•†åº—çš„æŸœå°
     VOID Init(StallBoxDB_t* pStallBoxDB, PlayerShop* pShop);
 
     VOID CleanUp();
 public:
     //-------------------------------------------------------------------------------------------------
-    //²Ù×÷
+    //æ“ä½œ
     STATUS_STALL    GetStallStatus(){return (STATUS_STALL)m_pStallBoxDB->m_StallStatus;}
     VOID            SetStallStatus(const STATUS_STALL stallstatus);
 
@@ -77,10 +77,10 @@ public:
 
 private:
     //-------------------------------------------------------------------------------------------------
-    //ĞèÒª´æ´¢Êı¾İ¿âµÄĞÅÏ¢
+    //éœ€è¦å­˜å‚¨æ•°æ®åº“çš„ä¿¡æ¯
     StallBoxDB_t*    m_pStallBoxDB;
     //-------------------------------------------------------------------------------------------------
-    //ÔËĞĞÊ±ĞÅÏ¢
+    //è¿è¡Œæ—¶ä¿¡æ¯
     StallBoxRT_t    m_StallBoxRT;
 };
 #endif

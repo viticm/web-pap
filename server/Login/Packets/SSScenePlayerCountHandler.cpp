@@ -13,15 +13,15 @@ UINT SSScenePlayerCountHandler::Execute(SSScenePlayerCount* pPacket, Player* pPl
 
         if(CurrentThreadID == g_pServerManager->m_ThreadID)
         {
-            //ĞŞ¸Äg_WorldPlayerCounter ÖĞÊı¾İ
+            //ä¿®æ”¹g_WorldPlayerCounter ä¸­æ•°æ®
             Assert(pPacket);
             g_WorldPlayerCounter.m_WorldPlayerCount = pPacket->GetTotalPlayerCount();
-            //ĞŞ¸Ä³¡¾°¸ºÔØÊı¾İ
+            //ä¿®æ”¹åœºæ™¯è´Ÿè½½æ•°æ®
             //todo..
         }
         else
         {
-            AssertEx(FALSE,"SSScenePlayerCountHandler Ïß³Ì×ÊÔ´Ö´ĞĞ´íÎó!");
+            AssertEx(FALSE,"SSScenePlayerCountHandler çº¿ç¨‹èµ„æºæ‰§è¡Œé”™è¯¯!");
         }
         
         Log::SaveLog(LOGIN_LOGFILE,"SSScenePlayerCountHandler::Execute()....OK,WorldPlayerCount = %d",

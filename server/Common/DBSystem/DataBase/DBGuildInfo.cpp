@@ -74,7 +74,7 @@ BOOL DBGuildInfo::Save(VOID* pSource)
     
     SMUPool<GuildSMU>* pPoolPtr = static_cast<SMUPool<GuildSMU>*>(pSource);
     Assert(pPoolPtr);
-    //±£´æ¹¤»áÊý¾Ý
+    //ä¿å­˜å·¥ä¼šæ•°æ®
 
     GUILD_DB    SaveGuild;
     do
@@ -231,7 +231,7 @@ BOOL DBGuildInfo::ParseResult(VOID* pResult)
                 DB_Glvl,
                 DB_GuildUser,
             };
-            //¼ÓÔØEmailÊôÐÔ
+            //åŠ è½½Emailå±žæ€§
             Assert(mInterface);
             INT ErrorCode;
             INT    SmuCount = pPoolPtr->GetPoolMaxSize();

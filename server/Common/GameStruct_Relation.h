@@ -1,4 +1,4 @@
-// ºÃÓÑÏûÏ¢½á¹¹
+// å¥½å‹æ¶ˆæ¯ç»“æ„
 
 #ifndef __GAMESTRUCT_RELATION_H__
 #define __GAMESTRUCT_RELATION_H__
@@ -10,32 +10,32 @@ class SocketOutputStream;
 
 /////////////////////////////////////////////////////////////////////////////////
 
-// ¹ØÏµÈËÊı¾İ
+// å…³ç³»äººæ•°æ®
 struct _RELATION
 {
     GUID_t                                m_GUID;                                // GUID
     UCHAR                                m_uNameSize;
-    CHAR                                m_szName[MAX_CHARACTER_NAME];        // Ãû×Ö
-    INT                                    m_nLevel;                            // ½ÇÉ«µÈ¼¶
-    INT                                    m_nMenPai;                            // ÃÅÅÉ MENPAI_ATTRIBUTE
-    INT                                    m_nPortrait;                        // Í·Ïñ
-    GuildID_t                            m_GuildID;                            // °ï»áID£¨ÓÃÓÚ·¢¸ø·şÎñ¶Ë£©
+    CHAR                                m_szName[MAX_CHARACTER_NAME];        // åå­—
+    INT                                    m_nLevel;                            // è§’è‰²ç­‰çº§
+    INT                                    m_nMenPai;                            // é—¨æ´¾ MENPAI_ATTRIBUTE
+    INT                                    m_nPortrait;                        // å¤´åƒ
+    GuildID_t                            m_GuildID;                            // å¸®ä¼šIDï¼ˆç”¨äºå‘ç»™æœåŠ¡ç«¯ï¼‰
     UCHAR                                m_uGuildNameSize;                    // 
-    CHAR                                m_szGuildName[MAX_GUILD_NAME_SIZE];    // °ï»áÃû³Æ£¨ÓÃÓÚ Server ·¢¸ø¿Í»§¶Ë£©
-    UCHAR                                m_uOnlineFlag;                        // ÊÇ·ñÔÚÏß£¨ÒÔÏÂ²¿·ÖÖ»ÓĞÔÚÏß²Å·¢¸ø¿Í»§¶Ë£©
-    UCHAR                                m_uMoodSize;                        // ĞÄÇé³¤¶È
-    CHAR                                m_szMood[MOOD_DATA_SIZE];            // ĞÄÇé
-    UCHAR                                m_uTitleSize;                        // ³ÆºÅÃû³Æ
-    CHAR                                m_szTitle[MAX_CHARACTER_TITLE];        // ³ÆºÅ
-    SceneID_t                            m_SceneID;                            // ËùÔÚ³¡¾°£¨ÒÔÏÂ²¿·ÖÓÉ Server ÉèÖÃ£©
-    UCHAR                                m_uTeamSize;                        // ¶ÓÎéÈËÊı£¨0 ±íÊ¾Î´×é¶Ó£©
+    CHAR                                m_szGuildName[MAX_GUILD_NAME_SIZE];    // å¸®ä¼šåç§°ï¼ˆç”¨äº Server å‘ç»™å®¢æˆ·ç«¯ï¼‰
+    UCHAR                                m_uOnlineFlag;                        // æ˜¯å¦åœ¨çº¿ï¼ˆä»¥ä¸‹éƒ¨åˆ†åªæœ‰åœ¨çº¿æ‰å‘ç»™å®¢æˆ·ç«¯ï¼‰
+    UCHAR                                m_uMoodSize;                        // å¿ƒæƒ…é•¿åº¦
+    CHAR                                m_szMood[MOOD_DATA_SIZE];            // å¿ƒæƒ…
+    UCHAR                                m_uTitleSize;                        // ç§°å·åç§°
+    CHAR                                m_szTitle[MAX_CHARACTER_TITLE];        // ç§°å·
+    SceneID_t                            m_SceneID;                            // æ‰€åœ¨åœºæ™¯ï¼ˆä»¥ä¸‹éƒ¨åˆ†ç”± Server è®¾ç½®ï¼‰
+    UCHAR                                m_uTeamSize;                        // é˜Ÿä¼äººæ•°ï¼ˆ0 è¡¨ç¤ºæœªç»„é˜Ÿï¼‰
 
     VOID                                CleanUp();
     UINT                                GetSize() const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetGUID( ) { return m_GUID; }
     VOID                                SetGUID( GUID_t guid ) { m_GUID = guid; }
 
@@ -94,7 +94,7 @@ enum RELATION_REQUEST_TYPE
     REQ_NONE                            = 0,
     REQ_RELATIONLIST,
     REQ_RELATIONINFO,
-    REQ_VIEWPLAYER,                                        // ²é¿´Íæ¼Ò
+    REQ_VIEWPLAYER,                                        // æŸ¥çœ‹ç©å®¶
     REQ_ADDFRIEND,
     REQ_ADDTOBLACKLIST,
     REQ_TEMPFRIEND_TO_FRIEND,
@@ -102,11 +102,11 @@ enum RELATION_REQUEST_TYPE
     REQ_TRANSITION,
     REQ_DELFRIEND,
     REQ_DELFROMBLACKLIST,
-    REQ_NEWGOODFRIEND,                                    // Ôö¼ÓÒ»¸öÇ×ÃÜºÃÓÑ
-    REQ_RELATIONONLINE,                                    // ÇëÇóÔÚÏßÍæ¼ÒÁĞ±í
-    REQ_MODIFYMOOD,                                        // ĞŞ¸Ä×Ô¼ºµÄĞÄÇé
-    REQ_MODIFYSETTINGS,                                    // ĞŞ¸ÄÁªÏµÈËÉèÖÃ
-    REQ_NOTIFY_ADDTEMPFRIEND,                            // Í¨Öª¶Ô·½±»¼ÓÎªÁÙÊ±ºÃÓÑ
+    REQ_NEWGOODFRIEND,                                    // å¢åŠ ä¸€ä¸ªäº²å¯†å¥½å‹
+    REQ_RELATIONONLINE,                                    // è¯·æ±‚åœ¨çº¿ç©å®¶åˆ—è¡¨
+    REQ_MODIFYMOOD,                                        // ä¿®æ”¹è‡ªå·±çš„å¿ƒæƒ…
+    REQ_MODIFYSETTINGS,                                    // ä¿®æ”¹è”ç³»äººè®¾ç½®
+    REQ_NOTIFY_ADDTEMPFRIEND,                            // é€šçŸ¥å¯¹æ–¹è¢«åŠ ä¸ºä¸´æ—¶å¥½å‹
 };
 
 enum RELATION_RETURN_TYPE
@@ -114,8 +114,8 @@ enum RELATION_RETURN_TYPE
     RET_NONE                            = 0,
     RET_RELATIONLIST,
     RET_RELATIONINFO,
-    RET_VIEWPLAYER,                                        // ²é¿´Íæ¼Ò
-    RET_TARGETNOTONLINE,                                // Ä¿±ê²»ÔÚÏß£¨ÓÃÓÚÏò World Ñ¯ÎÊÄ³¹ØÏµÈËµÄĞÅÏ¢Ã»ÓĞÕÒµ½Ê±µÄ·´À¡£©
+    RET_VIEWPLAYER,                                        // æŸ¥çœ‹ç©å®¶
+    RET_TARGETNOTONLINE,                                // ç›®æ ‡ä¸åœ¨çº¿ï¼ˆç”¨äºå‘ World è¯¢é—®æŸå…³ç³»äººçš„ä¿¡æ¯æ²¡æœ‰æ‰¾åˆ°æ—¶çš„åé¦ˆï¼‰
     RET_ADDFRIEND,
     RET_ADDTOBLACKLIST,
     RET_TEMPFRIEND_TO_FRIEND,
@@ -123,82 +123,82 @@ enum RELATION_RETURN_TYPE
     RET_TRANSITION,
     RET_DELFRIEND,
     RET_DELFROMBLACKLIST,
-    RET_ADDFRIENDNOTIFY,                                // Í¨ÖªºÃÓÑÒÑ¾­±»¼ÓÁË
-    RET_ONLINELIST,                                        // ÔÚÏßºÃÓÑÁĞ±í
-    RET_RELATIONONLINE,                                    // ºÃÓÑÉÏÏß
-    RET_RELATIONOFFLINE,                                // ºÃÓÑÏÂÏß
-    RET_NEWMOOD,                                        // ĞÂµÄĞÄÇé
-    RET_NOTIFY_ADDTEMPFRIEND,                            // Í¨Öª¶Ô·½±»¼ÓÎªÁÙÊ±ºÃÓÑ
+    RET_ADDFRIENDNOTIFY,                                // é€šçŸ¥å¥½å‹å·²ç»è¢«åŠ äº†
+    RET_ONLINELIST,                                        // åœ¨çº¿å¥½å‹åˆ—è¡¨
+    RET_RELATIONONLINE,                                    // å¥½å‹ä¸Šçº¿
+    RET_RELATIONOFFLINE,                                // å¥½å‹ä¸‹çº¿
+    RET_NEWMOOD,                                        // æ–°çš„å¿ƒæƒ…
+    RET_NOTIFY_ADDTEMPFRIEND,                            // é€šçŸ¥å¯¹æ–¹è¢«åŠ ä¸ºä¸´æ—¶å¥½å‹
 
     RET_ERR_START,
-    RET_ERR_TARGETNOTEXIST,                                // Ä¿±ê²»´æÔÚ»ò²»ÔÚÏß
-    RET_ERR_GROUPISFULL,                                // ºÃÓÑ×éÒÑÂú
-    RET_ERR_ISFRIEND,                                    // ÒÑ¾­ÊÇºÃÓÑ
-    RET_ERR_ISBLACKNAME,                                // ÒÑ¾­±»¼ÓÈëºÚÃûµ¥
-    RET_ERR_CANNOTTRANSITION,                            // ²»ÄÜ×ª»»
-    RET_ERR_ISNOTFRIEND,                                // ²»ÊÇºÃÓÑ
-    RET_ERR_ISNOTINBLACKLIST,                            // ²»ÔÚºÚÃûµ¥
-    RET_ERR_SPOUSETOBLACKLIST,                            // ½«ÅäÅ¼¼ÓÈëºÚÃûµ¥
-    RET_ERR_MASTERTOBLACKLIST,                            // ½«Ê¦¸µ¼ÓÈëºÚÃûµ¥
-    RET_ERR_PRENTICETOBLACKLIST,                        // ½«Í½µÜ¼ÓÈëºÚÃûµ¥
-    RET_ERR_BROTHERTOBLACKLIST,                            // ½«½á°İĞÖµÜ¼ÓÈëºÚÃûµ¥
-    RET_ERR_DELSPOUSE,                                    // É¾³ıÅäÅ¼
-    RET_ERR_DELMASTER,                                    // É¾³ıÊ¦¸µ
-    RET_ERR_DELPRENTICE,                                // É¾³ıÍ½µÜ
-    RET_ERR_DELBROTHER,                                    // É¾³ı½áÒåĞÖµÜ
-    RET_ERR_PASSWDMISMATCH,                                // ÃÜÂë²»Æ¥Åä
-    RET_ERR_CANNOT_ADDFRIEND,                            // ¾Ü¾ø¼ÓÎªºÃÓÑ
-    RET_ERR_CANNOTRECEIVEMAIL,                            // ¾Ü¾ø½ÓÊÕÈÎºÎÓÊ¼ş
-    RET_ERR_NOTRECVSTRANGEMAIL,                            // ¾ÜÊÕÄ°ÉúÈËÓÊ¼ş
-    RET_ERR_ISENEMY,                                    // ·ÇÏàÍ¬ÕóÓª
+    RET_ERR_TARGETNOTEXIST,                                // ç›®æ ‡ä¸å­˜åœ¨æˆ–ä¸åœ¨çº¿
+    RET_ERR_GROUPISFULL,                                // å¥½å‹ç»„å·²æ»¡
+    RET_ERR_ISFRIEND,                                    // å·²ç»æ˜¯å¥½å‹
+    RET_ERR_ISBLACKNAME,                                // å·²ç»è¢«åŠ å…¥é»‘åå•
+    RET_ERR_CANNOTTRANSITION,                            // ä¸èƒ½è½¬æ¢
+    RET_ERR_ISNOTFRIEND,                                // ä¸æ˜¯å¥½å‹
+    RET_ERR_ISNOTINBLACKLIST,                            // ä¸åœ¨é»‘åå•
+    RET_ERR_SPOUSETOBLACKLIST,                            // å°†é…å¶åŠ å…¥é»‘åå•
+    RET_ERR_MASTERTOBLACKLIST,                            // å°†å¸ˆå‚…åŠ å…¥é»‘åå•
+    RET_ERR_PRENTICETOBLACKLIST,                        // å°†å¾’å¼ŸåŠ å…¥é»‘åå•
+    RET_ERR_BROTHERTOBLACKLIST,                            // å°†ç»“æ‹œå…„å¼ŸåŠ å…¥é»‘åå•
+    RET_ERR_DELSPOUSE,                                    // åˆ é™¤é…å¶
+    RET_ERR_DELMASTER,                                    // åˆ é™¤å¸ˆå‚…
+    RET_ERR_DELPRENTICE,                                // åˆ é™¤å¾’å¼Ÿ
+    RET_ERR_DELBROTHER,                                    // åˆ é™¤ç»“ä¹‰å…„å¼Ÿ
+    RET_ERR_PASSWDMISMATCH,                                // å¯†ç ä¸åŒ¹é…
+    RET_ERR_CANNOT_ADDFRIEND,                            // æ‹’ç»åŠ ä¸ºå¥½å‹
+    RET_ERR_CANNOTRECEIVEMAIL,                            // æ‹’ç»æ¥æ”¶ä»»ä½•é‚®ä»¶
+    RET_ERR_NOTRECVSTRANGEMAIL,                            // æ‹’æ”¶é™Œç”Ÿäººé‚®ä»¶
+    RET_ERR_ISENEMY,                                    // éç›¸åŒé˜µè¥
 
-    RET_ERR_RELATIONUNKNOWN,                            // Î´Öª´íÎó
+    RET_ERR_RELATIONUNKNOWN,                            // æœªçŸ¥é”™è¯¯
 };
 
-// ²ÎÊıÎª GUID
+// å‚æ•°ä¸º GUID
 struct RELATION_GUID
 {
-    //Êı¾İ
-    GUID_t                                m_TargetGUID;        // Ä³Íæ¼ÒµÄ GUID
+    //æ•°æ®
+    GUID_t                                m_TargetGUID;        // æŸç©å®¶çš„ GUID
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetTargetGUID( ) { return m_TargetGUID; }
     VOID                                SetTargetGUID( GUID_t guid ) { m_TargetGUID = guid; }
 };
 
-// É¾³ıºÃÓÑ
+// åˆ é™¤å¥½å‹
 struct REQUEST_DEL_FRIEND : public RELATION_GUID
 {
-    //Êı¾İ
+    //æ•°æ®
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
 };
 
-// ĞŞ¸ÄĞÄÇé
+// ä¿®æ”¹å¿ƒæƒ…
 struct REQUEST_MODIFY_MOOD
 {
-    //Êı¾İ
-    UCHAR                                m_uMoodSize;                        // ĞÄÇé³¤¶È
-    CHAR                                m_szMood[MOOD_DATA_SIZE];            // ĞÄÇé
+    //æ•°æ®
+    UCHAR                                m_uMoodSize;                        // å¿ƒæƒ…é•¿åº¦
+    CHAR                                m_szMood[MOOD_DATA_SIZE];            // å¿ƒæƒ…
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     const CHAR*                            GetMood( ) { return m_szMood; }
     VOID                                SetMood( const CHAR* pMood )
     {
@@ -214,21 +214,21 @@ struct REQUEST_MODIFY_MOOD
     }
 };
 
-// ²éÑ¯¹ØÏµÈËÏêÏ¸ĞÅÏ¢
+// æŸ¥è¯¢å…³ç³»äººè¯¦ç»†ä¿¡æ¯
 struct REQUEST_RELATION_INFO
 {
-    //Êı¾İ
-    GUID_t                                m_TargetGUID;        // Ä³Íæ¼ÒµÄ GUID
+    //æ•°æ®
+    GUID_t                                m_TargetGUID;        // æŸç©å®¶çš„ GUID
     UCHAR                                m_uNameSize;
     CHAR                                m_szTargetName[MAX_CHARACTER_NAME];
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetTargetGUID( ) { return m_TargetGUID; }
     VOID                                SetTargetGUID( GUID_t guid ) { m_TargetGUID = guid; }
 
@@ -240,20 +240,20 @@ struct REQUEST_RELATION_INFO
     const CHAR*                            GetTargetName( ) { return m_szTargetName; }
 };
 
-// ÓÒ½¨²é¿´Íæ¼Ò
+// å³å»ºæŸ¥çœ‹ç©å®¶
 struct REQUEST_VIEW_PLAYER
 {
-    //Êı¾İ
+    //æ•°æ®
     UCHAR                                m_uNameSize;
     CHAR                                m_szTargetName[MAX_CHARACTER_NAME];
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     VOID                                SetTargetName( const CHAR* pName )
     {
         strncpy( m_szTargetName, pName, MAX_CHARACTER_NAME-1 );
@@ -262,22 +262,22 @@ struct REQUEST_VIEW_PLAYER
     const CHAR*                            GetTargetName( ) { return m_szTargetName; }
 };
 
-// Ôö¼ÓÒ»¸ö¹ØÏµÈË
+// å¢åŠ ä¸€ä¸ªå…³ç³»äºº
 struct REQUEST_ADD_RELATION
 {
-    //Êı¾İ
-    GUID_t                                m_TargetGUID;        // Ä³Íæ¼ÒµÄ GUID
+    //æ•°æ®
+    GUID_t                                m_TargetGUID;        // æŸç©å®¶çš„ GUID
     UCHAR                                m_uNameSize;
     CHAR                                m_szTargetName[MAX_CHARACTER_NAME];
-    UCHAR                                m_uRelationType;    // ¹ØÏµÀàĞÍ
+    UCHAR                                m_uRelationType;    // å…³ç³»ç±»å‹
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetTargetGUID( ) { return m_TargetGUID; }
     VOID                                SetTargetGUID( GUID_t guid ) { m_TargetGUID = guid; }
 
@@ -292,38 +292,38 @@ struct REQUEST_ADD_RELATION
     VOID                                SetRelationType( UCHAR uRelationType ) { m_uRelationType = uRelationType; }
 };
 
-// Ôö¼ÓÒ»¸ö¹ØÏµÈË£¬²¢ÇÒ´øÉÏ×éºÅ
+// å¢åŠ ä¸€ä¸ªå…³ç³»äººï¼Œå¹¶ä¸”å¸¦ä¸Šç»„å·
 struct REQUEST_ADD_RELATION_WITH_GROUP : public REQUEST_ADD_RELATION
 {
-    //Êı¾İ
-    UCHAR                                m_uGroup;            // ×é
+    //æ•°æ®
+    UCHAR                                m_uGroup;            // ç»„
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     UCHAR                                GetGroup( ) { return m_uGroup; }
     VOID                                SetGroup( UCHAR uGroup ) { m_uGroup = uGroup; }
 };
 
-// ²ÎÊıÎª GUID ºÍ UCHAR¡¢UCHAR
+// å‚æ•°ä¸º GUID å’Œ UCHARã€UCHAR
 struct RELATION_GUID_UCHAR_UCHAR
 {
-    //Êı¾İ
-    GUID_t                                m_TargetGUID;        // Ä³Íæ¼ÒµÄ GUID
-    UCHAR                                m_uRelationType;    // ¹ØÏµÀàĞÍ
-    UCHAR                                m_uGroup;            // ×é
+    //æ•°æ®
+    GUID_t                                m_TargetGUID;        // æŸç©å®¶çš„ GUID
+    UCHAR                                m_uRelationType;    // å…³ç³»ç±»å‹
+    UCHAR                                m_uGroup;            // ç»„
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetTargetGUID( ) { return m_TargetGUID; }
     VOID                                SetTargetGUID( GUID_t guid ) { m_TargetGUID = guid; }
 
@@ -359,20 +359,20 @@ struct CG_RELATION
 
 /////////////////////////////////////////////////////////////////////////////////
 
-// ²ÎÊıÎª GUID ºÍ UCHAR
+// å‚æ•°ä¸º GUID å’Œ UCHAR
 struct RELATION_GUID_UCHAR
 {
-    //Êı¾İ
-    GUID_t                                m_TargetGUID;        // Ä³Íæ¼ÒµÄ GUID
-    UCHAR                                m_uRelationType;    // ¹ØÏµÀàĞÍ
+    //æ•°æ®
+    GUID_t                                m_TargetGUID;        // æŸç©å®¶çš„ GUID
+    UCHAR                                m_uRelationType;    // å…³ç³»ç±»å‹
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetTargetGUID( ) { return m_TargetGUID; }
     VOID                                SetTargetGUID( GUID_t guid ) { m_TargetGUID = guid; }
 
@@ -380,19 +380,19 @@ struct RELATION_GUID_UCHAR
     VOID                                SetRelationType( UCHAR uRelationType ) { m_uRelationType = uRelationType; }
 };
 
-// ĞŞ¸ÄÁªÏµÈËÉèÖÃ
+// ä¿®æ”¹è”ç³»äººè®¾ç½®
 struct REQUEST_MODIFY_SETTINGS
 {
-    //Êı¾İ
-    USHORT                                m_uSettings;    // ¹ØÏµÀàĞÍ
+    //æ•°æ®
+    USHORT                                m_uSettings;    // å…³ç³»ç±»å‹
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     USHORT                                GetSettings( ) { return m_uSettings; }
     VOID                                SetSettings( UCHAR uSettings ) { m_uSettings = uSettings; }
 };
@@ -402,7 +402,7 @@ struct REQUEST_MODIFY_SETTINGS
 struct GW_RELATION
 {
     UCHAR                                m_Type;
-    GUID_t                                m_GUID;        // ×Ô¼ºµÄ GUID
+    GUID_t                                m_GUID;        // è‡ªå·±çš„ GUID
 
     union
     {
@@ -421,7 +421,7 @@ struct GW_RELATION
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetGUID( ) { return m_GUID; }
     VOID                                SetGUID( GUID_t guid ) { m_GUID = guid; }
 };
@@ -430,17 +430,17 @@ struct GW_RELATION
 
 struct RETURN_ADD_RELATION
 {
-    UCHAR                                m_uRelationType;    // ¹ØÏµÀàĞÍ
-    UCHAR                                m_uGroup;            // ×é
+    UCHAR                                m_uRelationType;    // å…³ç³»ç±»å‹
+    UCHAR                                m_uGroup;            // ç»„
 
-    _RELATION                            m_Relation;            // ¹ØÏµÈËÏêÏ¸ĞÅÏ¢£¬Èç¹û¼ÓÈë³É¹¦ÔòĞ¯´ø
+    _RELATION                            m_Relation;            // å…³ç³»äººè¯¦ç»†ä¿¡æ¯ï¼Œå¦‚æœåŠ å…¥æˆåŠŸåˆ™æºå¸¦
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     UCHAR                                GetRelationType( ) { return m_uRelationType; }
     VOID                                SetRelationType( UCHAR uRelationType ) { m_uRelationType = uRelationType; }
 
@@ -457,18 +457,18 @@ struct RETURN_ADD_RELATION
 
 struct RETURN_RELATION_INFO
 {
-    UCHAR                                m_uRelationType;    // ¹ØÏµÀàĞÍ
-    UCHAR                                m_uGroup;            // ×é
-    INT                                    m_nFriendpoint;        // ¹ØÏµÖµ
+    UCHAR                                m_uRelationType;    // å…³ç³»ç±»å‹
+    UCHAR                                m_uGroup;            // ç»„
+    INT                                    m_nFriendpoint;        // å…³ç³»å€¼
 
-    _RELATION                            m_Relation;            // ¹ØÏµÈËÏêÏ¸ĞÅÏ¢
+    _RELATION                            m_Relation;            // å…³ç³»äººè¯¦ç»†ä¿¡æ¯
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     UCHAR                                GetRelationType( ) { return m_uRelationType; }
     VOID                                SetRelationType( UCHAR uRelationType ) { m_uRelationType = uRelationType; }
 
@@ -486,35 +486,35 @@ struct RETURN_RELATION_INFO
     }
 };
 
-// ÓÒ¼ü²é¿´Íæ¼ÒĞÅÏ¢
+// å³é”®æŸ¥çœ‹ç©å®¶ä¿¡æ¯
 struct RETURN_VIEW_PLAYER
 {
     GUID_t                                m_GUID;                                // GUID
     UCHAR                                m_uNameSize;
-    CHAR                                m_szName[MAX_CHARACTER_NAME];        // 1.Ãû×Ö
+    CHAR                                m_szName[MAX_CHARACTER_NAME];        // 1.åå­—
     //UCHAR                                m_uTitleSize;
-    //CHAR                                m_szTitle[MAX_CHARACTER_TITLE];        // 2.³ÆºÅ
-    //INT                                    m_nLevel;                            // 3.½ÇÉ«µÈ¼¶
-    //INT                                    m_nMenPai;                            // 4.ÃÅÅÉ MENPAI_ATTRIBUTE
+    //CHAR                                m_szTitle[MAX_CHARACTER_TITLE];        // 2.ç§°å·
+    //INT                                    m_nLevel;                            // 3.è§’è‰²ç­‰çº§
+    //INT                                    m_nMenPai;                            // 4.é—¨æ´¾ MENPAI_ATTRIBUTE
     //UCHAR                                m_uGuildNameSize;
-    //CHAR                                m_szGuildName[MAX_GUILD_NAME_SIZE];    // 5.°ï»áÃû³Æ£¨ÓÃÓÚ Server ·¢¸ø¿Í»§¶Ë£©
+    //CHAR                                m_szGuildName[MAX_GUILD_NAME_SIZE];    // 5.å¸®ä¼šåç§°ï¼ˆç”¨äº Server å‘ç»™å®¢æˆ·ç«¯ï¼‰
     //UCHAR                                m_uSpouseNameSize;
-    //CHAR                                m_szSpouseName[MAX_CHARACTER_NAME];    // 6.ÅäÅ¼Ãû×Ö
-    //INT                                    m_nModelID;                            // 7.Ä£ĞÍ
-    //UINT                                m_uHairColor;                        // 8.Í··¢ÑÕÉ«
+    //CHAR                                m_szSpouseName[MAX_CHARACTER_NAME];    // 6.é…å¶åå­—
+    //INT                                    m_nModelID;                            // 7.æ¨¡å‹
+    //UINT                                m_uHairColor;                        // 8.å¤´å‘é¢œè‰²
 
-    //UINT                                m_WeaponID;                            // 9.ÎäÆ÷
-    //UINT                                m_CapID;                            // 10.Ã±×Ó
-    //UINT                                m_ArmourID;                            // 11.ÒÂ·ş
-    //UINT                                m_CuffID;                            // 12.»¤Íó
-    //UINT                                m_FootID;                            // 13.Ñ¥×Ó
+    //UINT                                m_WeaponID;                            // 9.æ­¦å™¨
+    //UINT                                m_CapID;                            // 10.å¸½å­
+    //UINT                                m_ArmourID;                            // 11.è¡£æœ
+    //UINT                                m_CuffID;                            // 12.æŠ¤è…•
+    //UINT                                m_FootID;                            // 13.é´å­
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     VOID                                FillData( const RETURN_VIEW_PLAYER* pViewPlayer )
     {
         Assert( pViewPlayer );
@@ -536,14 +536,14 @@ struct RETURN_NOTIFY_FRIEND
 {
     GUID_t                                m_GUID;                                // GUID
     UCHAR                                m_uNameSize;
-    CHAR                                m_szName[MAX_CHARACTER_NAME];        // Ãû×Ö
+    CHAR                                m_szName[MAX_CHARACTER_NAME];        // åå­—
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetGUID( ) { return m_GUID; }
     VOID                                SetGUID( GUID_t guid ) { m_GUID = guid; }
 
@@ -557,16 +557,16 @@ struct RETURN_NOTIFY_FRIEND
 
 struct _RELATION_ONLINE
 {
-    GUID_t                                m_GUID;                                // ÔÚÏßµÄÇ×ÃÜºÃÓÑ
-    UCHAR                                m_uMoodSize;                        // ĞÄÇé³¤¶È
-    CHAR                                m_szMood[MOOD_DATA_SIZE];            // ĞÄÇé
+    GUID_t                                m_GUID;                                // åœ¨çº¿çš„äº²å¯†å¥½å‹
+    UCHAR                                m_uMoodSize;                        // å¿ƒæƒ…é•¿åº¦
+    CHAR                                m_szMood[MOOD_DATA_SIZE];            // å¿ƒæƒ…
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetGUID( ) const { return m_GUID; }
     VOID                                SetGUID( GUID_t guid ) { m_GUID = guid; }
 
@@ -578,10 +578,10 @@ struct _RELATION_ONLINE
     }
 };
 
-// ÓÃÓÚ¸øÍæ¼ÒÔÚÏßÃÜÓÑÁĞ±í
+// ç”¨äºç»™ç©å®¶åœ¨çº¿å¯†å‹åˆ—è¡¨
 struct RETURN_ONLINE_LIST
 {
-    UCHAR                                m_uOnlineCount;                        // ÔÚÏßÈËÊı
+    UCHAR                                m_uOnlineCount;                        // åœ¨çº¿äººæ•°
     _RELATION_ONLINE                    m_OnlineInfo[RELATION_BLACKNAME_OFFSET-RELATION_FRIEND_OFFSET];
 
     VOID                                CleanUp( );
@@ -589,7 +589,7 @@ struct RETURN_ONLINE_LIST
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     UCHAR                                GetOnlineCount() { return m_uOnlineCount; }
 
     const _RELATION_ONLINE*                GetOnlineRelation( UCHAR uIndex )
@@ -614,20 +614,20 @@ struct RETURN_ONLINE_LIST
     }
 };
 
-// ÓÃÓÚÍ¨ÖªÓĞÃÜÓÑÉÏÏß
+// ç”¨äºé€šçŸ¥æœ‰å¯†å‹ä¸Šçº¿
 struct RETURN_NOTIFY_ONLINE
 {
     UCHAR                                m_uNameSize;
     CHAR                                m_szTargetName[MAX_CHARACTER_NAME];
-    UCHAR                                m_uMoodSize;                        // ĞÄÇé³¤¶È
-    CHAR                                m_szMood[MOOD_DATA_SIZE];            // ĞÄÇé
+    UCHAR                                m_uMoodSize;                        // å¿ƒæƒ…é•¿åº¦
+    CHAR                                m_szMood[MOOD_DATA_SIZE];            // å¿ƒæƒ…
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     const CHAR*                            GetTargetName( ) { return m_szTargetName; }
     VOID                                SetTargetName( const CHAR* pName )
     {
@@ -646,7 +646,7 @@ struct RETURN_NOTIFY_ONLINE
 struct WG_RELATION
 {
     UCHAR                                m_Type;
-    PlayerID_t                            m_PlayerID;            // ±¾ÈËµÄ PlayerID
+    PlayerID_t                            m_PlayerID;            // æœ¬äººçš„ PlayerID
 
     union
     {
@@ -665,7 +665,7 @@ struct WG_RELATION
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     PlayerID_t                            GetPlayerID( ) { return m_PlayerID; }
     VOID                                SetPlayerID( PlayerID_t pid ) { m_PlayerID = pid; }
 };
@@ -677,9 +677,9 @@ struct _FRIEND_INFO
     GUID_t                                m_GUID;                // GUID
     UCHAR                                m_uNameSize;
     CHAR                                m_szTargetName[MAX_CHARACTER_NAME];
-    UCHAR                                m_uRelationType;    // ¹ØÏµÀàĞÍ
-    UCHAR                                m_uGroup;            // ×é
-    INT                                    m_nFriendpoint;        // ¹ØÏµÖµ
+    UCHAR                                m_uRelationType;    // å…³ç³»ç±»å‹
+    UCHAR                                m_uGroup;            // ç»„
+    INT                                    m_nFriendpoint;        // å…³ç³»å€¼
     VOID                                CleanUp()
     {
         m_GUID                            = INVALID_ID;
@@ -722,24 +722,24 @@ struct _BLACKNAME_INFO
 
 struct _OWN_RELATION;
 
-// ºÃÓÑÁĞ±íÒÔ¼°ºÚÃûµ¥
+// å¥½å‹åˆ—è¡¨ä»¥åŠé»‘åå•
 struct GC_RELATIONLIST
 {
-    //Êı¾İ
-    UCHAR                                m_uFriendCount;                // ºÃÓÑÊı
-    UCHAR                                m_uBlackCount;                // ºÚÃûµ¥Êı
+    //æ•°æ®
+    UCHAR                                m_uFriendCount;                // å¥½å‹æ•°
+    UCHAR                                m_uBlackCount;                // é»‘åå•æ•°
     UCHAR                                m_uMoodSize;
-    CHAR                                m_szMood[MOOD_DATA_SIZE];    // ×Ô¼ºµÄĞÄÇé
+    CHAR                                m_szMood[MOOD_DATA_SIZE];    // è‡ªå·±çš„å¿ƒæƒ…
     _FRIEND_INFO                        m_FriendInfo[RELATION_BLACKNAME_OFFSET - RELATION_FRIEND_OFFSET];
     _BLACKNAME_INFO                        m_BlackNameInfo[MAX_RELATION_SIZE - RELATION_BLACKNAME_OFFSET];
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     UCHAR                                GetFriendCount( ) { return m_uFriendCount; }
 
     UCHAR                                GetBlackCount( ) { return m_uBlackCount; }

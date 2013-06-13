@@ -32,16 +32,16 @@ public :
     StrTable( ) ;
     ~StrTable( ) ;
 
-    //³õÊ¼»¯±í
+    //åˆå§‹åŒ–è¡¨
     VOID        InitTable( UINT uMaxItem, UINT uSize ) ;
-    //Ôö¼ÓÒ»¸ö±íÏî
+    //å¢åŠ ä¸€ä¸ªè¡¨é¡¹
     BOOL        Add( const CHAR* szString, VOID* pPtr ) ;
-    //¶ÁÈ¡ĞÅÏ¢
+    //è¯»å–ä¿¡æ¯
     VOID*        Get( const CHAR* szString ) ;
-    //É¾³ı±íÏî
+    //åˆ é™¤è¡¨é¡¹
     VOID        Remove( const CHAR* szString ) ;
     VOID        RemoveWithData( const CHAR* szString, VOID* pPrt ) ;
-    //Çå³ıËùÓĞÊı¾İ
+    //æ¸…é™¤æ‰€æœ‰æ•°æ®
     VOID        CleanUp( ) ;
 
 public :

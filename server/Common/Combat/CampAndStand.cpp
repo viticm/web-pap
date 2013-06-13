@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºCampAndStand.cpp
-// ¹¦ÄÜËµÃ÷£ºÕóÓªÊý¾Ý±í½á¹¹ºÍ¹¦ÄÜÊµÏÖ
+// æ–‡ä»¶åï¼šCampAndStand.cpp
+// åŠŸèƒ½è¯´æ˜Žï¼šé˜µè¥æ•°æ®è¡¨ç»“æž„å’ŒåŠŸèƒ½å®žçŽ°
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -57,11 +57,11 @@ namespace Combat_Module
     }
 }
 
-//Ð´ËÀÁËµÄÒ»Ð©ÕóÓªÂß¼­£¬ÆäÊµ¿ÉÒÔÅä±í
-//¿´¿´Á½¸öÕóÓª£¬ÊÇ·ñÊÇµÐ¶Ô¹ØÏµ
+//å†™æ­»äº†çš„ä¸€äº›é˜µè¥é€»è¾‘ï¼Œå…¶å®žå¯ä»¥é…è¡¨
+//çœ‹çœ‹ä¸¤ä¸ªé˜µè¥ï¼Œæ˜¯å¦æ˜¯æ•Œå¯¹å…³ç³»
 //BOOL    CalcCamp_IfIsEnemy(CampID_t a, CampID_t b)
 //{
-//    if( a == -1 || b == -1 ) //ÕóÓªIDÎÞÐ§
+//    if( a == -1 || b == -1 ) //é˜µè¥IDæ— æ•ˆ
 //        return TRUE;
 //
 //    if( a == CAMP_1 )
@@ -87,7 +87,7 @@ namespace Combat_Module
 //        return TRUE;
 //    }
 //    else
-//        Assert( FALSE && "ÔõÃ´Ã»ÓÐÕâ¸öÕóÓªÀàÐÍÄØ£¿" ) ;
+//        Assert( FALSE && "æ€Žä¹ˆæ²¡æœ‰è¿™ä¸ªé˜µè¥ç±»åž‹å‘¢ï¼Ÿ" ) ;
 //
 //    return FALSE;
 //}
@@ -123,7 +123,7 @@ ENUM_RELATION CalcRelationType( INT nObj1Type, INT nObj2Type, CampAndStandDataMg
 
 
 
-    //// ¶ÔAÀ´Ëµ
+    //// å¯¹Aæ¥è¯´
     //if ( pCamp_A->IsActiveFlag_Dirty( pCamp_B->m_nCampID ) )
     //{
     //    if ( pCamp_A->IsRelationFlag_Dirty( pCamp_B->m_nCampID ) )
@@ -156,7 +156,7 @@ ENUM_RELATION CalcRelationType( INT nObj1Type, INT nObj2Type, CampAndStandDataMg
     //    }
     //}
 
-    //// ¶ÔBÀ´Ëµ
+    //// å¯¹Bæ¥è¯´
     //if ( pCamp_B->IsActiveFlag_Dirty( pCamp_A->m_nCampID ) )
     //{
     //    if ( pCamp_B->IsRelationFlag_Dirty( pCamp_A->m_nCampID ) )

@@ -16,31 +16,31 @@ public :
     GamePlayer( ) ;
     ~GamePlayer( ) ;
 
-    //ÏûÏ¢Ö´ĞĞ½Ó¿Ú
+    //æ¶ˆæ¯æ‰§è¡Œæ¥å£
     virtual BOOL        ProcessCommand( BOOL Option = TRUE ) ;
-    //Êı¾İ½ÓÊÕ½Ó¿Ú
+    //æ•°æ®æ¥æ”¶æ¥å£
     virtual BOOL        ProcessInput( ) ;
-    //Êı¾İ·¢ËÍ½Ó¿Ú
+    //æ•°æ®å‘é€æ¥å£
     virtual BOOL        ProcessOutput( ) ;
 
-//ĞÄÌø½Ó¿Ú£¬´¦ÀíËùÓĞÂß¼­
+//å¿ƒè·³æ¥å£ï¼Œå¤„ç†æ‰€æœ‰é€»è¾‘
     virtual BOOL        HeartBeat( UINT uTime=0, INT nFlag=0 ) ;
 
-    //Çå³ıÊı¾İ
+    //æ¸…é™¤æ•°æ®
     virtual VOID        CleanUp( ) ;
 
 
 public :
-    //Ó¦ÓÃ½Ó¿Ú
+    //åº”ç”¨æ¥å£
 
     virtual BOOL        IsGamePlayer( ){ return TRUE ; } ;
     virtual BOOL        IsServerPlayer( ){ return FALSE ; } ;
 
-    //Á¬½Ó³É¹¦ºó³õÊ¼»¯»ù±¾Êı¾İ
+    //è¿æ¥æˆåŠŸååˆå§‹åŒ–åŸºæœ¬æ•°æ®
     VOID                Init( ) ;
 
-    //Ïò´ËPlayer·¢ËÍÒ»¸öÏûÏ¢°ü
-    //´Ë½Ó¿ÚÖ»ÄÜÔÚ±¾Ö´ĞĞÏß³ÌÄÚ´¦Àí£¨ÎŞÊı¾İÍ¬²½ÄÜÁ¦£©
+    //å‘æ­¤Playerå‘é€ä¸€ä¸ªæ¶ˆæ¯åŒ…
+    //æ­¤æ¥å£åªèƒ½åœ¨æœ¬æ‰§è¡Œçº¿ç¨‹å†…å¤„ç†ï¼ˆæ— æ•°æ®åŒæ­¥èƒ½åŠ›ï¼‰
     virtual BOOL        SendPacket( Packet* pPacket ) ;
 
     virtual VOID        Encrypt_SC(CHAR* header, UINT uLen, UINT uBeginPlace){ENCRYPT(header, uLen, GAMESERVER_TO_CLIENT_KEY, uBeginPlace)}
@@ -48,12 +48,12 @@ public :
     virtual VOID        DecryptHead_CS(CHAR* header){ENCRYPT_HEAD(header, CLIENT_TO_GAMESERVER_KEY)}
 
     virtual VOID        Decrypt_CS(CHAR* header, UINT uLen, UINT uBeginPlace){ENCRYPT(header, uLen, CLIENT_TO_GAMESERVER_KEY, uBeginPlace)}
-    //Íæ¼Ò×´Ì¬ÉèÖÃ¡¢¶ÁÈ¡½Ó¿Ú
+    //ç©å®¶çŠ¶æ€è®¾ç½®ã€è¯»å–æ¥å£
     VOID                SetPlayerStatus( UINT status ){ m_Status = status ; } ;
     UINT                GetPlayerStatus( ) { return m_Status ; } ;
     
-    //¶Ï¿ªÍøÂçÁ¬½Ó£¬²¢ÇÒ»ØÊÕPlayerÊı¾İ
-    //µ±Êı¾İ±»»ØÊÕºó¿ÉÄÜÂíÉÏ»á±»PlayerPool·ÖÅä³öÈ¥Ê¹ÓÃ
+    //æ–­å¼€ç½‘ç»œè¿æ¥ï¼Œå¹¶ä¸”å›æ”¶Playeræ•°æ®
+    //å½“æ•°æ®è¢«å›æ”¶åå¯èƒ½é©¬ä¸Šä¼šè¢«PlayerPoolåˆ†é…å‡ºå»ä½¿ç”¨
     BOOL                FreeOwn( ) ;
     BOOL                ChooseFreeOwn(RecyclePlayerManager* pRecycler, INT nReason);
     BOOL                ReadyFreeOwn();
@@ -69,15 +69,15 @@ public :
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 public :
-    //Í¨ÓÃÓÎÏ·½Ó¿Ú
+    //é€šç”¨æ¸¸æˆæ¥å£
 
-    //ÑéÖ¤ÓÃ»§½ÓÈëµÄºÏ·¨ĞÔ
+    //éªŒè¯ç”¨æˆ·æ¥å…¥çš„åˆæ³•æ€§
     BOOL        CheckKey( UINT key ) ;
 
-    //È¡µÃÓÃ»§Êı¾İ
+    //å–å¾—ç”¨æˆ·æ•°æ®
     BOOL        InitHuman( FULLUSERDATA* pData,INT    Type, BYTE age ) ;
 
-    //Àë¿ª·şÎñÆ÷Ê±Çå³ıÓÃ»§Êı¾İ
+    //ç¦»å¼€æœåŠ¡å™¨æ—¶æ¸…é™¤ç”¨æˆ·æ•°æ®
     BOOL        ExitHuman( ) ;
 
 
@@ -93,19 +93,19 @@ private :
     UINT                    m_Status ;
 
 public :
-    //ÓÎÏ·Êı¾İ
+    //æ¸¸æˆæ•°æ®
     Obj_Human*                m_pHuman ;
 
     GUID_t                    m_HumanGUID ;
 
 
-    UINT                    m_KickTime ;        //ÅĞ¶ÏÊÇ·ñĞèÒªÌßµôÍæ¼ÒµÄ¼ÆÊ±Æ÷
-    UINT                    m_LastSendTime ;    //ÉÏ´Î·¢ËÍÊı¾İµÄÊ±¼ä
-    UINT                    m_CurrentTime ;        //µ±Ç°Âß¼­Ê±¼ä
-    INT                        m_LeftTimeToQuit ;    //Ê£Óà±»Çå³ıÍË³öµÄÊ±¼ä
+    UINT                    m_KickTime ;        //åˆ¤æ–­æ˜¯å¦éœ€è¦è¸¢æ‰ç©å®¶çš„è®¡æ—¶å™¨
+    UINT                    m_LastSendTime ;    //ä¸Šæ¬¡å‘é€æ•°æ®çš„æ—¶é—´
+    UINT                    m_CurrentTime ;        //å½“å‰é€»è¾‘æ—¶é—´
+    INT                        m_LeftTimeToQuit ;    //å‰©ä½™è¢«æ¸…é™¤é€€å‡ºçš„æ—¶é—´
 
-    BOOL                    m_Dirty ;            //´Ë±êÖ¾±íÊ¾µ±Ç°Á¬½ÓÒÑ¾­ÎŞĞ§£¬
-                                                //²»ĞèÒª·¢ËÍÈÎºÎ×´Ì¬ÏûÏ¢¸øÊÀ½çÊı¾İ·şÎñÆ÷
+    BOOL                    m_Dirty ;            //æ­¤æ ‡å¿—è¡¨ç¤ºå½“å‰è¿æ¥å·²ç»æ— æ•ˆï¼Œ
+                                                //ä¸éœ€è¦å‘é€ä»»ä½•çŠ¶æ€æ¶ˆæ¯ç»™ä¸–ç•Œæ•°æ®æœåŠ¡å™¨
 
     INT                        m_SaveTime ;
 };

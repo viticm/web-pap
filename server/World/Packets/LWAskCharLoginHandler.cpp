@@ -25,14 +25,14 @@ UINT LWAskCharLoginHandler::Execute(LWAskCharLogin* pPacket, Player* pPlayer )
         
         WLRetCharLogin Msg;
         pUser = g_pOnlineUser->FindUser( CharGuid ) ;
-        if(pUser) //ÓÃ»§´æÔÚ£¬Ö±½Ó·µ»Ø³É¹¦ÏûÏ¢
+        if(pUser) //ç”¨æˆ·å­˜åœ¨ï¼Œç›´æŽ¥è¿”å›žæˆåŠŸæ¶ˆæ¯
         {
             UINT uUserStatus = pUser->UserStatus();
 
             switch (uUserStatus)
             {
             case US_CRASH_DOWN:
-            case US_WAIT_SHUTDOWN://·þÎñÆ÷Crash
+            case US_WAIT_SHUTDOWN://æœåŠ¡å™¨Crash
                 {
                     Msg.SetResult(ASKCHARLOGIN_SERVER_STOP);
                     Msg.SetAccount(pPacket->GetAccount());
@@ -72,7 +72,7 @@ UINT LWAskCharLoginHandler::Execute(LWAskCharLogin* pPacket, Player* pPlayer )
                 break;
             }
         }
-        else //ÓÃ»§²»´æÔÚ
+        else //ç”¨æˆ·ä¸å­˜åœ¨
         {
             Msg.SetResult(ASKCHARLOGIN_LOADDB_ERROR);
             Msg.SetAccount(pPacket->GetAccount());
@@ -90,7 +90,7 @@ UINT LWAskCharLoginHandler::Execute(LWAskCharLogin* pPacket, Player* pPlayer )
     {
         pUser = g_pOnlineUser->FindUser( CharGuid ) ;
         if( pUser )
-        {//Èç¹û´ËÓÃ»§´æÔÚ
+        {//å¦‚æžœæ­¤ç”¨æˆ·å­˜åœ¨
             Log::SaveLog( WORLD_LOGFILE, "LWAskCharLoginHandler...Char Exist! CharGUID = %X",CharGuid) ;
             return PACKET_EXE_CONTINUE;
         }
@@ -98,7 +98,7 @@ UINT LWAskCharLoginHandler::Execute(LWAskCharLogin* pPacket, Player* pPlayer )
         ID_t    ServerID = g_Config.SceneID2ServerID(pPacket->GetUserData()->m_Human.m_StartScene);
 
         ServerPlayer* pFindPlayer = g_pServerManager->GetServerPlayer( ServerID ) ;
-        if( pFindPlayer==NULL ) //·þÎñÆ÷Î¬»¤
+        if( pFindPlayer==NULL ) //æœåŠ¡å™¨ç»´æŠ¤
         {
             WLRetCharLogin Msg;
             Msg.SetResult(ASKCHARLOGIN_SERVER_STOP);
@@ -114,7 +114,7 @@ UINT LWAskCharLoginHandler::Execute(LWAskCharLogin* pPacket, Player* pPlayer )
 
         pUser     = g_pOnlineUser->NewUser();
 
-        if(!pUser) //ÂúÁË
+        if(!pUser) //æ»¡äº†
         {
             WLRetCharLogin Msg;
             Msg.SetResult(ASKCHARLIST_WORLD_FULL);

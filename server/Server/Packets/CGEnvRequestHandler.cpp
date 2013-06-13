@@ -24,12 +24,12 @@ __ENTER_FUNCTION
     Scene* pScene = pHuman->getScene() ;
     if( pScene==NULL ) return PACKET_EXE_CONTINUE ;
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
 
-    ////½«ÔÚ¼ÓÈëÍæ¼ÒÎ»ÖÃÖÜÎ§µÄÍæ¼ÒÐÅÏ¢¡¢¹ÖÎïÐÅÏ¢¡¢ÎïÆ·ÐÅÏ¢µÈÈ¡³öÀ´
-    ////È»ºó·¢ËÍ¸øÍæ¼Ò
+    ////å°†åœ¨åŠ å…¥çŽ©å®¶ä½ç½®å‘¨å›´çš„çŽ©å®¶ä¿¡æ¯ã€æ€ªç‰©ä¿¡æ¯ã€ç‰©å“ä¿¡æ¯ç­‰å–å‡ºæ¥
+    ////ç„¶åŽå‘é€ç»™çŽ©å®¶
 
     //BOOL ret = pScene->ScanEnv( pHuman ) ;
     //Assert( ret ) ;

@@ -24,27 +24,27 @@ UINT CGPackUpPacketHandler::Execute(CGPackUpPacket* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
-    // ÈİÆ÷±àºÅ
+    // å®¹å™¨ç¼–å·
     INT nConIndex = pPacket->GetConIndex();
 
     ItemContainer* pContainer;
 
     switch(nConIndex)
     {
-    case 0://µÀ¾ß
+    case 0://é“å…·
         {
             pContainer = HumanItemLogic::GetContainer(pHuman,1);
         }
         break;
-    case 1://²ÄÁÏ
+    case 1://ææ–™
         {
             pContainer = HumanItemLogic::GetContainer(pHuman,21);
         }
         break;
-    case 2://ÈÎÎñ
+    case 2://ä»»åŠ¡
         {
             pContainer = HumanItemLogic::GetContainer(pHuman,41);
         }
@@ -61,12 +61,12 @@ UINT CGPackUpPacketHandler::Execute(CGPackUpPacket* pPacket, Player* pPlayer )
         Assert(FALSE);
     }
 
-    // ÊÇ·ñĞèÒª·¢ËÍ¸üĞÂÊı¾İµÄ±êÖ¾
+    // æ˜¯å¦éœ€è¦å‘é€æ›´æ–°æ•°æ®çš„æ ‡å¿—
     BOOL  bHasChange = FALSE;
 
-    // ¿ªÊ¼ÕûÀí----------------------------------------------------------------------
-    // 1¡¢ºÏ²¢ËùÓĞÄÜ¹»ºÏ²¢µÄÎïÆ·£¬ÕâÒ»²½ÖèÖĞÓĞ¿ÉÄÜ»á·¢ÉúÎïÆ·ÄÚÈİµÄ¸Ä±ä£¬
-    //    µ«ÊÇ²»»á²úÉúĞÂµÄÎïÆ·£¬²»»áÉú³ÉĞÂµÄGUID
+    // å¼€å§‹æ•´ç†----------------------------------------------------------------------
+    // 1ã€åˆå¹¶æ‰€æœ‰èƒ½å¤Ÿåˆå¹¶çš„ç‰©å“ï¼Œè¿™ä¸€æ­¥éª¤ä¸­æœ‰å¯èƒ½ä¼šå‘ç”Ÿç‰©å“å†…å®¹çš„æ”¹å˜ï¼Œ
+    //    ä½†æ˜¯ä¸ä¼šäº§ç”Ÿæ–°çš„ç‰©å“ï¼Œä¸ä¼šç”Ÿæˆæ–°çš„GUID
     for(INT i=0; i<20; i++)
     {
         Item *pItem1 = pContainer->GetItem(i);
@@ -86,7 +86,7 @@ UINT CGPackUpPacketHandler::Execute(CGPackUpPacket* pPacket, Player* pPlayer )
                             if(!pItem2->IsEmpty())
                             if( pItem1->GetItemTableIndex() == pItem2->GetItemTableIndex() )
                             {
-                                //Á½¸öÎïÆ·ÏàÍ¬£¬²¢ÇÒÊÇ¿ÉÒÔµş·ÅµÄÎïÆ·
+                                //ä¸¤ä¸ªç‰©å“ç›¸åŒï¼Œå¹¶ä¸”æ˜¯å¯ä»¥å æ”¾çš„ç‰©å“
                                 if(pItem1->GetLayedNum() < pItem1->GetMaxLayedNum())
                                 {
                                     if(pItem2->GetLayedNum() < pItem2->GetMaxLayedNum())
@@ -102,13 +102,13 @@ UINT CGPackUpPacketHandler::Execute(CGPackUpPacket* pPacket, Player* pPlayer )
             }
         }
     }
-    // ºÏ²¢Íê³É£»
+    // åˆå¹¶å®Œæˆï¼›
 
-    // 2¡¢°´ÕÕÒ»¶¨¹æÔòµ÷ÕûÎ»ÖÃ£¬ÔÚÕâÀï²»»áÔÙ³öÏÖÎïÆ·ÄÚ²¿Êı¾İ¸Ä±äµÄ²Ù×÷
-    // ¡­¡­¡­¡­µÈ´ı²ß»®Ìá¹©ÏêÏ¸¹æÔò¡­¡­¡­¡­
+    // 2ã€æŒ‰ç…§ä¸€å®šè§„åˆ™è°ƒæ•´ä½ç½®ï¼Œåœ¨è¿™é‡Œä¸ä¼šå†å‡ºç°ç‰©å“å†…éƒ¨æ•°æ®æ”¹å˜çš„æ“ä½œ
+    // â€¦â€¦â€¦â€¦ç­‰å¾…ç­–åˆ’æä¾›è¯¦ç»†è§„åˆ™â€¦â€¦â€¦â€¦
 
 
-    //Í¨Öª¿Í»§¶Ë¸üĞÂ
+    //é€šçŸ¥å®¢æˆ·ç«¯æ›´æ–°
     if(bHasChange)
     {
         for(INT i=0;i<20;i++)

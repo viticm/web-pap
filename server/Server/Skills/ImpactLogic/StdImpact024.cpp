@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºStdImpact024.cpp
-// ¹¦ÄÜËµÃ÷£ºÐ§¹û--¹ýÂË²»Á¼Ð§¹û
+// æ–‡ä»¶åï¼šStdImpact024.cpp
+// åŠŸèƒ½è¯´æ˜Žï¼šæ•ˆæžœ--è¿‡æ»¤ä¸è‰¯æ•ˆæžœ
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -32,10 +32,10 @@ namespace Combat_Module
             {
                 return FALSE;
             }
-            // ÉúÐ§¼¸ÂÊ 
+            // ç”Ÿæ•ˆå‡ çŽ‡ 
             INT nRet = rand() % 100;
             if (nRet > GetActivateOdds(rImp))
-            {// Ã»ÓÐÉúÐ§ÔòÖ±½Ó·µ»Ø
+            {// æ²¡æœ‰ç”Ÿæ•ˆåˆ™ç›´æŽ¥è¿”å›ž
                 return FALSE;
             }
             for(INT nIndex=0; COLLECTION_NUMBERS>nIndex; ++nIndex)

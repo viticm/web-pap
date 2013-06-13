@@ -1,6 +1,6 @@
 // CGCharUseSkill.h
 // 
-// Ê¹ÓÃ¼¼ÄÜ
+// ä½¿ç”¨æŠ€èƒ½
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
     CGCharUseSkill( ){}
     virtual ~CGCharUseSkill( ){}
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -33,7 +33,7 @@ public:
                                                             sizeof(FLOAT); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -54,12 +54,12 @@ public:
 
 private:
     ObjID_t            m_ObjID;            // ObjID
-    UINT            m_SkillDataID;        // ¼¼ÄÜµÄ×ÊÔ´ID
+    UINT            m_SkillDataID;        // æŠ€èƒ½çš„èµ„æºID
     //union{
-    GUID_t            m_guidTarget;        // Ä¿±ê½ÇÉ«µÄGUID
-    ObjID_t            m_TargetID;            // Ä¿±ê½ÇÉ«
-    WORLD_POS        m_posTarget;        // Ä¿±ê×ø±ê
-    FLOAT            m_fDir;                // ¼¼ÄÜµÄ·½Ïò
+    GUID_t            m_guidTarget;        // ç›®æ ‡è§’è‰²çš„GUID
+    ObjID_t            m_TargetID;            // ç›®æ ‡è§’è‰²
+    WORLD_POS        m_posTarget;        // ç›®æ ‡åæ ‡
+    FLOAT            m_fDir;                // æŠ€èƒ½çš„æ–¹å‘
     //};
 };
 

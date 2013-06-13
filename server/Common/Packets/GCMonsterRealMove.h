@@ -14,7 +14,7 @@ public:
     GCMonsterRealMove( ){} ;
     virtual ~GCMonsterRealMove( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -25,7 +25,7 @@ public:
                                                             sizeof(WORD); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     GUID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -40,12 +40,12 @@ public:
 
 
 private:
-    //Êı¾İ
+    //æ•°æ®
 
-    ObjID_t        m_ObjID;            //¹ÖÎïµÄID
-    WORLD_POS    m_posCur;        //¹ÖÎïµ±Ç°µÄÎ»ÖÃ
-    WORLD_POS    m_posTar;        //¹ÖÎïÕıÔÚÇ°ÍùµÄÎ»ÖÃ
-    WORD        m_wRace;        //¹ÖÎïµÄÖÖ×å
+    ObjID_t        m_ObjID;            //æ€ªç‰©çš„ID
+    WORLD_POS    m_posCur;        //æ€ªç‰©å½“å‰çš„ä½ç½®
+    WORLD_POS    m_posTar;        //æ€ªç‰©æ­£åœ¨å‰å¾€çš„ä½ç½®
+    WORD        m_wRace;        //æ€ªç‰©çš„ç§æ—
 };
 
 

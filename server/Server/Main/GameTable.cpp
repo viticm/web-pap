@@ -54,14 +54,14 @@ CFileDataMgr                g_AIFileDataMgr;
 AIScript*                    g_pAIScriptList[AISCRIPT_NUM];
 _IPRANGE                    g_IPRange ;
 
-//¼¶±ğÓë½ğÇ®ÉÏÏŞÏà¶ÔÓ¦
+//çº§åˆ«ä¸é‡‘é’±ä¸Šé™ç›¸å¯¹åº”
 _LEVEL_MAX_MONEY            g_LevelMoneyTbl;
 _CITY_SCENE                    g_CitySceneTbl;
 _CHAT_CONSUME                g_ChatConsumeTbl ;
 _HAIR_STYLE                    g_HairStyleTbl;
 _GM_TABLE                    g_GMTbl ;
 
-//ÆÕÍ¨ÈÎÎñ±í
+//æ™®é€šä»»åŠ¡è¡¨
 _MISSION_DATA                g_MissionDataTable;
 _MISSION_REWARD                g_MissionRewardTable;
 _MISSION_PUNISH                g_MissionPunishTable;
@@ -154,7 +154,7 @@ BOOL TableInit::ReloadCombatTables(VOID)
 }
 
 VOID TableInit::InitBaseValueTable( )
-{//¶ÁÈ¡»ù±¾ÏµÊı±íµÄÊı¾İ
+{//è¯»å–åŸºæœ¬ç³»æ•°è¡¨çš„æ•°æ®
 
     __ENTER_FUNCTION
 
@@ -208,7 +208,7 @@ VOID    TableInit::InitLevelExpTable()
 //    BOOL ret = ThirdFile.OpenFromTXT( FILE_XINFA_STUDY_SPEND );
 //
 //
-//    //ĞĞÊı
+//    //è¡Œæ•°
 //    INT iTableCount = ThirdFile.GetRecordsNum();
 //    
 //    for(INT iXinfa=0; iXinfa<MAX_ALL_XINFA_NUM; iXinfa++)
@@ -243,16 +243,16 @@ __ENTER_FUNCTION
         nNewID = ThirdFile.Search_Posistion(i,0)->iValue ;
         const CHAR* pString = ThirdFile.Search_Posistion(i,1)->pString ;
         if( !nLastID ) 
-        {//ÊÇµÚÒ»ÏîÌ¸»°
+        {//æ˜¯ç¬¬ä¸€é¡¹è°ˆè¯
             g_MonsterSpeakTbl.m_TypeCount++ ;
             g_MonsterSpeakTbl.m_NumberOfType[nIndex]++ ;
         }
         else if ( nLastID && nLastID/BASENUM==nNewID/BASENUM )
-        {//Í¬Ò»ÀàĞÍµÄÌ¸»°Ïî
+        {//åŒä¸€ç±»å‹çš„è°ˆè¯é¡¹
             g_MonsterSpeakTbl.m_NumberOfType[nIndex]++ ;
         }
         else
-        {//ÏÂÒ»ÀàĞÍµÄÌ¸»°Ïî
+        {//ä¸‹ä¸€ç±»å‹çš„è°ˆè¯é¡¹
             nIndex++ ;
             g_MonsterSpeakTbl.m_TypeCount++ ;
             g_MonsterSpeakTbl.m_NumberOfType[nIndex]++ ;
@@ -285,7 +285,7 @@ UINT    TableInit::GetLevelExp(UINT iLevel)
 }
 
 VOID TableInit::InitMonsterAttrExTable( )
-{//¶ÁÈ¡»ù±¾ÏµÊı±íµÄÊı¾İ
+{//è¯»å–åŸºæœ¬ç³»æ•°è¡¨çš„æ•°æ®
     __ENTER_FUNCTION
     enum MonsterAttrData
     {
@@ -354,7 +354,7 @@ VOID TableInit::InitMonsterAttrExTable( )
         iType        =    iValue;
         if( iType>=MAXTYPE_NUMBER )
         {
-            AssertEx(FALSE,"¹ÖÎï±íÖĞÌîĞ´µÄ¹ÖÎïºÅ³¬³ö·¶Î§") ;
+            AssertEx(FALSE,"æ€ªç‰©è¡¨ä¸­å¡«å†™çš„æ€ªç‰©å·è¶…å‡ºèŒƒå›´") ;
             continue ;
         }
 
@@ -454,7 +454,7 @@ VOID TableInit::InitMonsterAttrExTable( )
 }
 
 VOID TableInit::InitPetAttrTable( )
-{//¶ÁÈ¡»ù±¾ÏµÊı±íµÄÊı¾İ
+{//è¯»å–åŸºæœ¬ç³»æ•°è¡¨çš„æ•°æ®
 
     __ENTER_FUNCTION
 
@@ -464,8 +464,8 @@ VOID TableInit::InitPetAttrTable( )
         PetName,
         PetTakeLevel,
         PetCamp,
-        IsVarPet,        // ÊÇ·ñÎª±äÒì³èÎï
-        IsBabyPet,        // ÊÇ·ñÎª±¦±¦³èÎï
+        IsVarPet,        // æ˜¯å¦ä¸ºå˜å¼‚å® ç‰©
+        IsBabyPet,        // æ˜¯å¦ä¸ºå®å®å® ç‰©
         PetFoodType    ,
         PetSkillCount,
         VoluntarySkill,
@@ -513,93 +513,93 @@ VOID TableInit::InitPetAttrTable( )
 
         if( iType>=MAXTYPE_NUMBER )
         {
-            AssertEx(FALSE,"³èÎï±íID³¬³ö·¶Î§Öµ") ;
+            AssertEx(FALSE,"å® ç‰©è¡¨IDè¶…å‡ºèŒƒå›´å€¼") ;
             continue ;
         }
 
         if(g_PetAttrTbl.m_MaxType < (UINT)iType)
             g_PetAttrTbl.m_MaxType = iType;
 
-        // ³èÎï±àºÅ
+        // å® ç‰©ç¼–å·
         g_PetAttrTbl.m_TableExt[iType].m_Type    =    iType;
-        // ³èÎïÃû³Æ
+        // å® ç‰©åç§°
         strncpy( g_PetAttrTbl.m_TableExt[iType].m_Name, ThirdFile.Search_Posistion(i, PetName)->pString, sizeof( g_PetAttrTbl.m_TableExt[i].m_Name ) - 1 );
-        // ³èÎï¿ÉĞ¯´øµÈ¼¶
+        // å® ç‰©å¯æºå¸¦ç­‰çº§
         iValue        =    ThirdFile.Search_Posistion(i, PetTakeLevel)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_TakeLevel    =    iValue;
-        // ÊÇ·ñÎª±äÒì³èÎï
+        // æ˜¯å¦ä¸ºå˜å¼‚å® ç‰©
         iValue        =    ThirdFile.Search_Posistion(i, IsVarPet)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_bVarPet  =    iValue;
-        // ÊÇ·ñÎª±¦±¦³èÎï
+        // æ˜¯å¦ä¸ºå®å®å® ç‰©
         iValue        =    ThirdFile.Search_Posistion(i, IsBabyPet)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_bBabyPet    =    iValue;
-        // ³èÎïÊ³ÎïÀàĞÍ
+        // å® ç‰©é£Ÿç‰©ç±»å‹
         iValue        =    ThirdFile.Search_Posistion(i, PetFoodType)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_FoodType    =    iValue;
-        // ±ê×¼ÊÙÃü
+        // æ ‡å‡†å¯¿å‘½
         iValue        =    ThirdFile.Search_Posistion(i, PetLife)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_Life    =    iValue;
-        // ±»¶¯¼¼ÄÜ×î´óÊıÁ¿
+        // è¢«åŠ¨æŠ€èƒ½æœ€å¤§æ•°é‡
         iValue        =   ThirdFile.Search_Posistion(i, PetSkillCount)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_PassiveSkillCount =    iValue;
-        // Ö÷¶¯¼¼ÄÜ
+        // ä¸»åŠ¨æŠ€èƒ½
         iValue        =   ThirdFile.Search_Posistion(i, VoluntarySkill)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_VoluntarySkill =    iValue;
-        // ±»¶¯¼¼ÄÜ1
+        // è¢«åŠ¨æŠ€èƒ½1
         iValue        =   ThirdFile.Search_Posistion(i, PassiveSkill1)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_PassiveSkill1 =    iValue;
-        // ±»¶¯¼¼ÄÜ2
+        // è¢«åŠ¨æŠ€èƒ½2
         iValue        =   ThirdFile.Search_Posistion(i, PassiveSkill2)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_PassiveSkill2 =    iValue;
-        // ±»¶¯¼¼ÄÜ3
+        // è¢«åŠ¨æŠ€èƒ½3
         iValue        =   ThirdFile.Search_Posistion(i, PassiveSkill3)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_PassiveSkill3 =    iValue;
-        // ±»¶¯¼¼ÄÜ4
+        // è¢«åŠ¨æŠ€èƒ½4
         iValue        =   ThirdFile.Search_Posistion(i, PassiveSkill4)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_PassiveSkill4 =    iValue;
-        // ±ê×¼Á¦Á¿×ÊÖÊ
+        // æ ‡å‡†åŠ›é‡èµ„è´¨
         iValue        =    ThirdFile.Search_Posistion(i, PetStrPerception)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_StrPerception    =    iValue;
-        // ±ê×¼ÌåÖÊ×ÊÖÊ
+        // æ ‡å‡†ä½“è´¨èµ„è´¨
         iValue        =    ThirdFile.Search_Posistion(i, PetConPerception)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_ConPerception    =    iValue;
-        // ±ê×¼ÁéÆø×ÊÖÊ
+        // æ ‡å‡†çµæ°”èµ„è´¨
         iValue        =    ThirdFile.Search_Posistion(i, PetDexPerception)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_DexPerception    =    iValue;
-        // ±ê×¼Éí·¨×ÊÖÊ
+        // æ ‡å‡†èº«æ³•èµ„è´¨
         iValue        =    ThirdFile.Search_Posistion(i, PetSprPerception)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_SprPerception    =    iValue;
-        // ±ê×¼¶¨Á¦×ÊÖÊ
+        // æ ‡å‡†å®šåŠ›èµ„è´¨
         iValue        =    ThirdFile.Search_Posistion(i, PetIntPerception)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_IntPerception    =    iValue;
-        // ³É³¤ÂÊ0
+        // æˆé•¿ç‡0
         iValue        =    ThirdFile.Search_Posistion(i, PetGrowRate0)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_GrowRate0    =    iValue;
-        // ³É³¤ÂÊ1
+        // æˆé•¿ç‡1
         iValue        =    ThirdFile.Search_Posistion(i, PetGrowRate1)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_GrowRate1    =    iValue;
-        // ³É³¤ÂÊ2
+        // æˆé•¿ç‡2
         iValue        =    ThirdFile.Search_Posistion(i, PetGrowRate2)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_GrowRate2    =    iValue;
-        // ³É³¤ÂÊ3
+        // æˆé•¿ç‡3
         iValue        =    ThirdFile.Search_Posistion(i, PetGrowRate3)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_GrowRate3    =    iValue;
-        // ³É³¤ÂÊ4
+        // æˆé•¿ç‡4
         iValue        =    ThirdFile.Search_Posistion(i, PetGrowRate4)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_GrowRate4    =    iValue;
-        // µ¨Ğ¡
+        // èƒ†å°
         iValue        =    ThirdFile.Search_Posistion(i, CowardiceRate)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_CowardiceRate    =    iValue;
-        // ½÷É÷
+        // è°¨æ…
         iValue        =    ThirdFile.Search_Posistion(i, WarinessRate)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_WarinessRate    =    iValue;
-        // ÖÒ³Ï
+        // å¿ è¯š
         iValue        =    ThirdFile.Search_Posistion(i, LoyalismRate)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_LoyalismRate    =    iValue;
-        // ¾«Ã÷
+        // ç²¾æ˜
         iValue        =    ThirdFile.Search_Posistion(i, CanninessRate)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_CanninessRate    =    iValue;
-        // ÓÂÃÍ
+        // å‹‡çŒ›
         iValue        =    ThirdFile.Search_Posistion(i, ValourRate)->iValue;
         g_PetAttrTbl.m_TableExt[iType].m_ValourRate    =    iValue;
     
@@ -687,7 +687,7 @@ VOID TableInit::InitPetConfigTable( )
     m_PetConfig.m_MoveSpeed = ini.ReadInt("System", "MoveSpeed");
     m_PetConfig.m_AttackSpeed = ini.ReadInt("System", "AttackSpeed");
 
-    // ³õÊ¼HP¡¢Îï¹¥¡¢Ä§¹¥¡¢Îï·À¡¢Ä§·À¡¢ÃüÖĞ¡¢ÉÁ±Ü¡¢»áĞÄ£¨°Ë¸ö£©
+    // åˆå§‹HPã€ç‰©æ”»ã€é­”æ”»ã€ç‰©é˜²ã€é­”é˜²ã€å‘½ä¸­ã€é—ªé¿ã€ä¼šå¿ƒï¼ˆå…«ä¸ªï¼‰
     m_PetConfig.m_BaseHP = ini.ReadInt("System", "BaseHP");
     m_PetConfig.m_BasePhyAttack = ini.ReadInt("System", "BasePhyAttack");
     m_PetConfig.m_BaseMgcAttack = ini.ReadInt("System", "BaseMgcAttack");
@@ -697,8 +697,8 @@ VOID TableInit::InitPetConfigTable( )
     m_PetConfig.m_BaseMiss = ini.ReadInt("System", "BaseMiss");
     m_PetConfig.m_BaseCritical = ini.ReadInt("System", "BaseCritical");
 
-    // ÌåÖÊ¶ÔHP£¬Á¦Á¿¶ÔÎï¹¥£¬ÁéÆø¶ÔÄ§¹¥£¬ÌåÖÊ¶ÔÎï·À£¬¶¨Á¦¶ÔÄ§·À
-    // Ãô½İ¶ÔÉÁ±Ü£¬Ãô½İ¶Ô»áĞÄ,Ãô½İ¶ÔÃüÖĞµÄÓ°ÏìÏµÊı
+    // ä½“è´¨å¯¹HPï¼ŒåŠ›é‡å¯¹ç‰©æ”»ï¼Œçµæ°”å¯¹é­”æ”»ï¼Œä½“è´¨å¯¹ç‰©é˜²ï¼Œå®šåŠ›å¯¹é­”é˜²
+    // æ•æ·å¯¹é—ªé¿ï¼Œæ•æ·å¯¹ä¼šå¿ƒ,æ•æ·å¯¹å‘½ä¸­çš„å½±å“ç³»æ•°
     m_PetConfig.m_Con_HP_Pram = ini.ReadInt("System", "Con_HP_Pram") / 1000.f;
     m_PetConfig.m_Str_PhyAttack_Pram = ini.ReadInt("System", "Str_PhyAttack_Pram") / 1000.f;
     m_PetConfig.m_Spr_MgcAttack_Pram = ini.ReadInt("System", "Spr_MgcAttack_Pram") / 1000.f;
@@ -708,7 +708,7 @@ VOID TableInit::InitPetConfigTable( )
     m_PetConfig.m_Dex_Critical_Pram = ini.ReadInt("System", "Dex_Critical_Pram") / 1000.f;
     m_PetConfig.m_Dex_Hit_Pram = ini.ReadInt("System", "Dex_Hit_Pram") / 1000.f;
 
-    // µÈ¼¶¶ÔHP¡¢Îï¹¥¡¢Ä§¹¥¡¢Îï·À¡¢Ä§·À¡¢ÉÁ±Ü¡¢»áĞÄ¡¢ÃüÖĞµÄÓ°ÏìÏµÊı
+    // ç­‰çº§å¯¹HPã€ç‰©æ”»ã€é­”æ”»ã€ç‰©é˜²ã€é­”é˜²ã€é—ªé¿ã€ä¼šå¿ƒã€å‘½ä¸­çš„å½±å“ç³»æ•°
     m_PetConfig.m_Level_HP_Pram = ini.ReadInt("System", "Level_HP_Pram") / 1000.f;
     m_PetConfig.m_Level_PhyAttack_Pram = ini.ReadInt("System", "Level_PhyAttack_Pram") / 1000.f;
     m_PetConfig.m_Level_MgcAttack_Pram = ini.ReadInt("System", "Level_MgcAttack_Pram") / 1000.f;
@@ -736,7 +736,7 @@ VOID TableInit::InitPetAttrPointDistribute( )
     INT iValue;
     for(INT i =0; i < iTableCount; i++)
     {
-        // ÊôĞÔµã·ÖÅä·½°¸ºÅ
+        // å±æ€§ç‚¹åˆ†é…æ–¹æ¡ˆå·
         iValue        =    ThirdFile.Search_Posistion(i, 0)->iValue;
         g_PetAttrPointDisTbl.m_Table[i].m_ID = iValue;
         iValue        =    ThirdFile.Search_Posistion(i, 1)->iValue;
@@ -770,9 +770,9 @@ VOID TableInit::InitPetLevelUpTable( )
     INT iExp = 0;
     for(INT i =0; i < iTableCount; i++)
     {
-        // ¼¶±ğ
+        // çº§åˆ«
         iLevel    =    ThirdFile.Search_Posistion(i, 0)->iValue;
-        // ¸Ã¼¶±ğÉı¼¶ËùĞè¾­Ñé
+        // è¯¥çº§åˆ«å‡çº§æ‰€éœ€ç»éªŒ
         iExp    =    ThirdFile.Search_Posistion(i, 1)->iValue;
         g_PetLevelUpTbl.m_Table[iLevel] = iExp;
     }
@@ -797,9 +797,9 @@ VOID TableInit::InitPetDomesticationMoney( )
     FLOAT fDomesticationMoney = 0;
     for(INT i =0; i < iTableCount; i++)
     {
-        // ¼¶±ğ
+        // çº§åˆ«
         iLevel            =    ThirdFile.Search_Posistion(i, 0)->iValue;
-        // ¸Ã¼¶±ğÉı¼¶ËùĞè¾­Ñé
+        // è¯¥çº§åˆ«å‡çº§æ‰€éœ€ç»éªŒ
         fDomesticationMoney    =    ThirdFile.Search_Posistion(i, 1)->fValue;
         g_PetDomesticationMoneyTbl.m_Table[iLevel++] = fDomesticationMoney;
     }
@@ -809,7 +809,7 @@ VOID TableInit::InitPetDomesticationMoney( )
 }
 
 VOID TableInit::InitPetSkillDistributeTable( )
-{// ³õÊ¼»¯¼¼ÄÜ·ÖÅä±í
+{// åˆå§‹åŒ–æŠ€èƒ½åˆ†é…è¡¨
 
     __ENTER_FUNCTION
 
@@ -850,7 +850,7 @@ VOID TableInit::InitPetSkillDistributeTable( )
 }
 
 VOID TableInit::InitPetSkillIndexTable( )
-{// ³õÊ¼»¯¼¼ÄÜË÷Òı±í£¬´Ë±íÖ÷ÒªÊÇÎªÁËÒÔºóÎ¬»¤·½±ã£¡
+{// åˆå§‹åŒ–æŠ€èƒ½ç´¢å¼•è¡¨ï¼Œæ­¤è¡¨ä¸»è¦æ˜¯ä¸ºäº†ä»¥åç»´æŠ¤æ–¹ä¾¿ï¼
     __ENTER_FUNCTION
 
     DBCFile ThirdFile(0);
@@ -889,8 +889,8 @@ VOID TableInit::InitPetStudySkillTable( )
     if( iTableCount > PET_STUDYSKILLRATE_NUM){ Assert(iTableCount <= PET_STUDYSKILLRATE_NUM);iTableCount = PET_STUDYSKILLRATE_NUM; }
 
     INT nID;
-    INT        nMaxSpaceCount;    // ×Ü¿Õ¸ñÊıÁ¿
-    INT        nSpaceCount;        // µ±Ç°¿Õ¸ñÊıÁ¿
+    INT        nMaxSpaceCount;    // æ€»ç©ºæ ¼æ•°é‡
+    INT        nSpaceCount;        // å½“å‰ç©ºæ ¼æ•°é‡
     for (INT i = 0; i < iTableCount; ++i)
     {
 
@@ -1265,7 +1265,7 @@ VOID    TableInit::InitAIScriptFile()
     {
         SFileData * pSFileData = g_AIFileDataMgr.GetFileData(i);
         if (!pSFileData)
-        {// ÒÑ¾­¶ÁÍê£¨Õı³£Çé¿öÏÂÒÑ¾­¶ÁÍê£©
+        {// å·²ç»è¯»å®Œï¼ˆæ­£å¸¸æƒ…å†µä¸‹å·²ç»è¯»å®Œï¼‰
             continue ;
         }
 
@@ -1286,7 +1286,7 @@ VOID    TableInit::InitAIScriptFile()
             pAIScript->ParseScript(szName);
         }
 
-        // Ñ¹Èëg_pAIScriptListÊı×éÖĞ
+        // å‹å…¥g_pAIScriptListæ•°ç»„ä¸­
         g_pAIScriptList[i] = pAIScript;
     }
 
@@ -1483,7 +1483,7 @@ VOID    TableInit::InitCitySceneTable()
     for(INT i = 0,k =0; i<iTableCount; i++)
     {
         g_CitySceneTbl.m_Table[i].m_PortID    =    ThirdFile.Search_Posistion(i, 2)->iValue;
-        strncpy( g_CitySceneTbl.m_Table[i].m_szSceneFile, ThirdFile.Search_Posistion(i,9)->pString, sizeof( g_CitySceneTbl.m_Table[i].m_szSceneFile ) - 1 ); //LMĞŞ¸Ä
+        strncpy( g_CitySceneTbl.m_Table[i].m_szSceneFile, ThirdFile.Search_Posistion(i,9)->pString, sizeof( g_CitySceneTbl.m_Table[i].m_szSceneFile ) - 1 ); //LMä¿®æ”¹
     }
 
     Log::SaveLog( SERVER_LOGFILE, "Load CityInfo.txt ... OK! " ) ;
@@ -1673,7 +1673,7 @@ __ENTER_FUNCTION
     DBCFile ThirdFile(0);
     BOOL ret = ThirdFile.OpenFromTXT( FILE_MISSION_DATA );
 
-    INT iTableCount = 1;//ThirdFile.GetRecordsNum();//LMĞŞ¸Ä
+    INT iTableCount = 1;//ThirdFile.GetRecordsNum();//LMä¿®æ”¹
     INT iTableColumn = 43;//ThirdFile.GetFieldsNum();
 
     Assert(iTableColumn==43);
@@ -1813,7 +1813,7 @@ __ENTER_FUNCTION
     BOOL ret = ThirdFile.OpenFromTXT( FILE_MISSION_REWARD );
 
     INT iTableCount = 1;//ThirdFile.GetRecordsNum();
-    INT iTableColumn = 22;////ThirdFile.GetFieldsNum();//LMĞŞ¸Ä
+    INT iTableColumn = 22;////ThirdFile.GetFieldsNum();//LMä¿®æ”¹
 
     Assert(iTableColumn==22);
     Assert(iTableCount>0);
@@ -1920,7 +1920,7 @@ __ENTER_FUNCTION
     BOOL ret = ThirdFile.OpenFromTXT( FILE_MISSION_PUNISH );
 
     INT iTableCount = 1;//ThirdFile.GetRecordsNum();
-    INT iTableColumn = 11;//ThirdFile.GetFieldsNum();//LMĞŞ¸Ä
+    INT iTableColumn = 11;//ThirdFile.GetFieldsNum();//LMä¿®æ”¹
 
     Assert(iTableColumn==11);
     Assert(iTableCount>0);
@@ -2132,9 +2132,9 @@ __ENTER_FUNCTION
         MissionList.nDestZ                = ThirdFile.Search_Posistion(i, ListIdx_DestZ)->iValue;
 
         nPromulgator = nSubmitor = 0;
-        //if( MissionList.nPromulgatorID != INVALID_ID )--ĞèÇó±ä¸ü¡¢ÔİÊ±²»ĞèÒª
+        //if( MissionList.nPromulgatorID != INVALID_ID )--éœ€æ±‚å˜æ›´ã€æš‚æ—¶ä¸éœ€è¦
             nPromulgator = MissionList.nPromulgatorScene * 10000 + MissionList.nPromulgatorID;
-        //if( MissionList.nSubmitorID != INVALID_ID )--ĞèÇó±ä¸ü¡¢ÔİÊ±²»ĞèÒª
+        //if( MissionList.nSubmitorID != INVALID_ID )--éœ€æ±‚å˜æ›´ã€æš‚æ—¶ä¸éœ€è¦
             nSubmitor = MissionList.nSubmitorScene * 10000 + MissionList.nSubmitorID;
 
         if( nPromulgator == nSubmitor )

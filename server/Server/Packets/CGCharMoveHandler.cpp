@@ -39,7 +39,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     if ( MyGetCurrentThreadID() != pScene->m_ThreadID )
     {
@@ -52,13 +52,13 @@ __ENTER_FUNCTION
     pScene->GetMap()->VerifyPos( &posCur ) ;
 
     if(pHuman->m_StallBox.GetStallStatus() == ServerStallBox::STALL_OPEN)
-    {//°ÚÌ¯ÖÐ
+    {//æ‘†æ‘Šä¸­
         GCCharMoveResult msgResult;
         msgResult.setResult(OR_CAN_NOT_MOVE_STALL_OPEN);
         msgResult.setHandleID(pPacket->getHandleID());
         pGamePlayer->SendPacket( &msgResult ) ;
 
-        g_pLog->FastSaveLog( LOG_FILE_1, "CGCharMoveHandler::°ÚÌ¯ÖÐ") ;
+        g_pLog->FastSaveLog( LOG_FILE_1, "CGCharMoveHandler::æ‘†æ‘Šä¸­") ;
         return PACKET_EXE_CONTINUE ;
     }
 

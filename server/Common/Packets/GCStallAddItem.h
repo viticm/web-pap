@@ -1,7 +1,7 @@
 // GCStallAddItem.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
-// ²ÎÊı ÎïÆ·GUID, ÎïÆ·ÔÚÌ¯Î»ÖĞµÄÎ»ÖÃ£¬ÉÌÆ·¼Û¸ñ
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
+// å‚æ•° ç‰©å“GUID, ç‰©å“åœ¨æ‘Šä½ä¸­çš„ä½ç½®ï¼Œå•†å“ä»·æ ¼
 //////////////////////////////////////////////////////
 
 #ifndef __GCSTALLADDITEM_H__
@@ -27,7 +27,7 @@ namespace Packets
         };
         virtual ~GCStallAddItem( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

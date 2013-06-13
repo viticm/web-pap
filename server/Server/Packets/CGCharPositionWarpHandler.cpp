@@ -35,7 +35,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     if ( MyGetCurrentThreadID() != pScene->m_ThreadID )
     {
@@ -43,7 +43,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    // ÊÇ·ñÊÇµ±Ç°·þÎñÆ÷µÄÎ»ÖÃ
+    // æ˜¯å¦æ˜¯å½“å‰æœåŠ¡å™¨çš„ä½ç½®
     FLOAT fServerLen = fabsf(pPacket->getServerPos().m_fX - pHuman->getWorldPos()->m_fX) + fabsf(pPacket->getServerPos().m_fZ - pHuman->getWorldPos()->m_fZ);
     if(fServerLen > 0.1f)
     {

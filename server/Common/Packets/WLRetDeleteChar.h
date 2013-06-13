@@ -14,7 +14,7 @@ namespace Packets
         WLRetDeleteChar( ){} ;
         virtual ~WLRetDeleteChar( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -26,7 +26,7 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         VOID                    SetResult(ASKDELETECHAR_RESULT Res)
         {
             Result = Res;
@@ -59,13 +59,13 @@ namespace Packets
             return PlayerGUID;
         }
     private:
-        //数据
+        //鏁版嵁
         ASKDELETECHAR_RESULT    Result;
-        //角色guid
-        CHAR                    szAccount[MAX_ACCOUNT+1];    //用户名称;
-        //玩家池id
+        //瑙掕壊guid
+        CHAR                    szAccount[MAX_ACCOUNT+1];    //鐢ㄦ埛鍚嶇О;
+        //鐜╁姹爄d
         PlayerID_t                PlayerID;
-        //角色GUID
+        //瑙掕壊GUID
         GUID_t                    PlayerGUID;
 
     };

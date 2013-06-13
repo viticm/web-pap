@@ -7,7 +7,7 @@
 
 #include "Type.h"
 
-//AI¿ÉÒÔĞĞ×ß¸ñ×ÓÊıÄ¿
+//AIå¯ä»¥è¡Œèµ°æ ¼å­æ•°ç›®
 #define MAX_ROUTES 1024 * 2
 #define EIGHT_DIRECTIONS 8
 
@@ -25,9 +25,9 @@ private:
 
     struct AIROUTE
     {
-        WORD count;//²»µÈÓÚ0Ê±,ÆäËüÊı¾İ²ÅÓĞÒâÒå
+        WORD count;//ä¸ç­‰äº0æ—¶,å…¶å®ƒæ•°æ®æ‰æœ‰æ„ä¹‰
 
-        //ĞĞ×ßÆğÊ¼µã
+        //è¡Œèµ°èµ·å§‹ç‚¹
         WORD walkpoint;
         UINT startzx;
         UINT endzx;
@@ -88,13 +88,13 @@ private:
     CHAR mFileName[MAX_FILE_PATH];
     Map* mOwner;
 #endif
-    //µ¼º½Í¼µÄºáÏòºÍ×İÏòµÄ³ß´ç
+    //å¯¼èˆªå›¾çš„æ¨ªå‘å’Œçºµå‘çš„å°ºå¯¸
     INT mWidth;
     INT mHeight;
-    //Ò»¸ö¸ñ×ÓµÄ³ß´ç
+    //ä¸€ä¸ªæ ¼å­çš„å°ºå¯¸
     FLOAT mGridSize;
     FLOAT mInvGridSize;
-    //»ù×¼µãÎ»ÖÃ
+    //åŸºå‡†ç‚¹ä½ç½®
     FLOAT mLeftTopx;
     FLOAT mLeftTopz;
 
@@ -113,7 +113,7 @@ private:
     WORD mStartx,mStartz,mEndx,mEndz;
     FLOAT mfStartX,mfStartZ,mfEndX,mfEndZ;
 
-    //Ö±ÏßĞ£Õı
+    //ç›´çº¿æ ¡æ­£
     INT mCallTimes;
     INT    mGridNum;
     INT mGrids[MAX_ROUTES];
@@ -127,7 +127,7 @@ public:
     virtual ~PathFinder();
 
     VOID Reset(INT startz,INT endz);
-    //Ç°Á½¸ö²ÎÊıÎªÊäÈë,3/4²ÎÊıÎªÊä³ö,
+    //å‰ä¸¤ä¸ªå‚æ•°ä¸ºè¾“å…¥,3/4å‚æ•°ä¸ºè¾“å‡º,
     BOOL FindPath(WORLD_POS* startPt,WORLD_POS* endPos,WORLD_POS* posNode,INT& numNode, INT nLevel, BOOL bLine = FALSE,INT maxRoute = MAX_ROUTES);
     BOOL IsCanGo(const WORLD_POS& pos, const INT nLevel);
 

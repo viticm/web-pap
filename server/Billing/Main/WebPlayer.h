@@ -14,7 +14,7 @@
 #define WORLD_PLAYER_ID            0
 #define BILLING_PLAYER_ID        1
 
-//ÏµÍ³ÄÚ¿ÉÒÔÓµÓÐµÄ×î¶àµÄ·þÎñÆ÷¶Ë³ÌÐòÊýÁ¿
+//ç³»ç»Ÿå†…å¯ä»¥æ‹¥æœ‰çš„æœ€å¤šçš„æœåŠ¡å™¨ç«¯ç¨‹åºæ•°é‡
 #define MAX_SERVER 24
 
 class WebPlayer
@@ -25,58 +25,58 @@ public :
 
     VOID                CleanUp( ) ;
 
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     BOOL                Init( ) ;
 
-    //×ÜÂß¼­½Ó¿Ú
+    //æ€»é€»è¾‘æŽ¥å£
     BOOL                Tick( ) ;
 
-    //ÍøÂçÊý¾ÝÕì²â
+    //ç½‘ç»œæ•°æ®ä¾¦æµ‹
     BOOL                Select( ) ;
-    //Êý¾Ý½ÓÊÕ»òÕßÐÂÁ¬½Ó½ÓÊÕ
+    //æ•°æ®æŽ¥æ”¶æˆ–è€…æ–°è¿žæŽ¥æŽ¥æ”¶
     BOOL                ProcessInputs( ) ;
-    //Êý¾Ý·¢ËÍ
+    //æ•°æ®å‘é€
     BOOL                ProcessOutputs( ) ;
-    //Á¬½ÓÒì³£¶Ï¿ª´¦Àí
+    //è¿žæŽ¥å¼‚å¸¸æ–­å¼€å¤„ç†
     BOOL                ProcessExceptions( ) ;
-    //ÏûÏ¢´¦Àí
+    //æ¶ˆæ¯å¤„ç†
     BOOL                ProcessCommands( ) ;
 
-    //Âß¼­´¦Àí
+    //é€»è¾‘å¤„ç†
     virtual BOOL        HeartBeat( ) ;
 
 public :
-    //ÐÂÁ¬½Ó×¢²á£¨Ö»ÓÐ×¢²áºóµÄÍøÂç¾ä±ú²ÅÄÜ½ÓÊÕÊý¾Ý£©
+    //æ–°è¿žæŽ¥æ³¨å†Œï¼ˆåªæœ‰æ³¨å†ŒåŽçš„ç½‘ç»œå¥æŸ„æ‰èƒ½æŽ¥æ”¶æ•°æ®ï¼‰
     BOOL                AddServer( SOCKET fd ) ;
-    //Á¬½Ó³·Ïú
+    //è¿žæŽ¥æ’¤é”€
     BOOL                DelServer( SOCKET fd ) ;
-    //¶Ï¿ªÁ¬½ÓºóµÄÇå³ý»ØÊÕ´¦Àí
+    //æ–­å¼€è¿žæŽ¥åŽçš„æ¸…é™¤å›žæ”¶å¤„ç†
     BOOL                RemoveServer( ) ;
 
-    //Á¬½Óµ½Web·þÎñÆ÷³ÌÐò
+    //è¿žæŽ¥åˆ°WebæœåŠ¡å™¨ç¨‹åº
     BOOL                ConnectWebServer( );
 public :
     //******************************************************************************
-    //Í¨ÓÃ½Ó¿Ú
+    //é€šç”¨æŽ¥å£
     //******************************************************************************
 
-    //È¡µÃµ±Ç°µÄ·þÎñÆ÷¶Ë³ÌÐòID
+    //å–å¾—å½“å‰çš„æœåŠ¡å™¨ç«¯ç¨‹åºID
     ID_t                GetWebID( ) ;
-    //È¡µÃµ±Ç°µÄ·þÎñÆ÷¶Ë³ÌÐòÐÅÏ¢
+    //å–å¾—å½“å‰çš„æœåŠ¡å™¨ç«¯ç¨‹åºä¿¡æ¯
     _SERVER_DATA*        GetCurrentServerInfo( ) ;
 
-    //ÅÐ¶Ï·þÎñÆ÷¶ËÁ¬½ÓÊÇ·ñ´¦ÓÚ»î¶¯×´Ì¬
+    //åˆ¤æ–­æœåŠ¡å™¨ç«¯è¿žæŽ¥æ˜¯å¦å¤„äºŽæ´»åŠ¨çŠ¶æ€
     BOOL                IsWebServerActive( );
 
     BOOL                SendPacket( Packet* pPacket ) ;
 
 private :
     //
-    //ÍøÂçÊý¾Ý
+    //ç½‘ç»œæ•°æ®
     enum{
-        SELECT_BAK = 0,    //µ±Ç°ÏµÍ³ÖÐÓµÓÐµÄÍêÕû¾ä±úÊý¾Ý
-        SELECT_USE = 1,    //ÓÃÓÚselectµ÷ÓÃµÄ¾ä±úÊý¾Ý
-        SELECT_MAX = 2, //½á¹¹Ê¹ÓÃÊýÁ¿
+        SELECT_BAK = 0,    //å½“å‰ç³»ç»Ÿä¸­æ‹¥æœ‰çš„å®Œæ•´å¥æŸ„æ•°æ®
+        SELECT_USE = 1,    //ç”¨äºŽselectè°ƒç”¨çš„å¥æŸ„æ•°æ®
+        SELECT_MAX = 2, //ç»“æž„ä½¿ç”¨æ•°é‡
     };
     fd_set            m_ReadFDs[SELECT_MAX];
     fd_set            m_WriteFDs[SELECT_MAX];
@@ -88,16 +88,16 @@ private :
     SOCKET            m_MaxFD;
 
     INT                m_nFDSize ;
-    //ÍøÂçÊý¾Ý
+    //ç½‘ç»œæ•°æ®
     //
 
     MyLock            m_Lock ;
 
-    //µ±Ç°ÓÃÓÚÕìÌýÍøÂçÁ¬½ÓµÄSocket
+    //å½“å‰ç”¨äºŽä¾¦å¬ç½‘ç»œè¿žæŽ¥çš„Socket
     ServerSocket*    m_pServerSocket ;
     SOCKET            m_SocketID ;
 
-    //µ±Ç°·þÎñÆ÷¶Ë³ÌÐòµÄÐÅÏ¢
+    //å½“å‰æœåŠ¡å™¨ç«¯ç¨‹åºçš„ä¿¡æ¯
     _SERVER_DATA*    m_pCurServerInfo ;
 
     ServerPlayer    m_WebPlayer;

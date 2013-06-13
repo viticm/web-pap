@@ -18,7 +18,7 @@ public:
     
     enum    ODBC_ERROR
     {
-        DB_SAME_PRI_KEY = 2601, //ÖØ¸´¹Ø¼ü×Ö¶Î
+        DB_SAME_PRI_KEY = 2601, //é‡å¤å…³é”®å­—æ®µ
     };
 protected:
     INT                mResultCount;

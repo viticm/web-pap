@@ -10,7 +10,7 @@ UINT LCRetCharLoginHandler::Execute(LCRetCharLogin* pPacket, Player* pPlayer )
     __ENTER_FUNCTION
     
     if(MyGetCurrentThreadID() == g_pProcessPlayerManager->m_ThreadID)
-    {    //´ÓDB->ProcessPlayerManager ´«µİÊı¾İ²Ù×÷½á¹û
+    {    //ä»DB->ProcessPlayerManager ä¼ é€’æ•°æ®æ“ä½œç»“æœ
         LoginPlayer*    pLoginPlayer = (LoginPlayer*)pPlayer ;
         if( pLoginPlayer==NULL )
         {
@@ -22,7 +22,7 @@ UINT LCRetCharLoginHandler::Execute(LCRetCharLogin* pPacket, Player* pPlayer )
     }
     else
     {
-        AssertEx(FALSE,"LCRetCharLoginHandler Ïß³Ì×ÊÔ´Ö´ĞĞ´íÎó!");
+        AssertEx(FALSE,"LCRetCharLoginHandler çº¿ç¨‹èµ„æºæ‰§è¡Œé”™è¯¯!");
     }
     
     return PACKET_EXE_CONTINUE;

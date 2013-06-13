@@ -14,7 +14,7 @@ public:
     GCNewMonster_Move( ){} ;
     virtual ~GCNewMonster_Move( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -25,7 +25,7 @@ public:
                             }
 
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     VOID                setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t                getObjID(VOID)const { return m_ObjID; }
 
@@ -47,10 +47,10 @@ public:
 private:
     ObjID_t            m_ObjID;        // ObjID
     INT                m_nHandleID;
-    WORLD_POS        m_posWorld;        // 位置
+    WORLD_POS        m_posWorld;        // 浣嶇疆
 
-    FLOAT            m_fMoveSpeed;    // 移动速度
-    WORLD_POS        m_posTarget;    // 移动的目标点
+    FLOAT            m_fMoveSpeed;    // 绉诲姩閫熷害
+    WORLD_POS        m_posTarget;    // 绉诲姩鐨勭洰鏍囩偣
     BYTE            m_IsNPC;
 };
 

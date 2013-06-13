@@ -60,7 +60,7 @@ VOID    ProcessManager::run()
         while( IsActive() )
         {
             BOOL ret = FALSE ;
-            //µ±Ç°Ê±¼ä
+            //å½“å‰æ—¶é—´
             MySleep(100);
             UINT uTime = g_pTimeManager->CurrentTime() ;
             ret =    DoTick(uTime);        
@@ -86,7 +86,7 @@ VOID    ProcessManager::run()
     
     Quit( ) ;    
     
-    return ;    //Õý³£ÍË³ö
+    return ;    //æ­£å¸¸é€€å‡º
     
 }
 
@@ -96,7 +96,7 @@ BOOL    ProcessManager::DoTick(UINT uTime)
 
     BOOL ret = FALSE ;
 
-    //ÍøÂç´¦Àí
+    //ç½‘ç»œå¤„ç†
     _MY_TRY
     {
         ret = g_pProcessPlayerManager->Select( ) ;
@@ -116,7 +116,7 @@ BOOL    ProcessManager::DoTick(UINT uTime)
 
     }
 
-    //ÏûÏ¢´¦Àí
+    //æ¶ˆæ¯å¤„ç†
     _MY_TRY
     {
         ret = g_pProcessPlayerManager->ProcessCommands( ) ;
@@ -126,7 +126,7 @@ BOOL    ProcessManager::DoTick(UINT uTime)
     {
     }
 
-    //»º´æÏûÏ¢´¦Àí
+    //ç¼“å­˜æ¶ˆæ¯å¤„ç†
     _MY_TRY
     {
         ProcessCacheCommands( ) ;
@@ -138,7 +138,7 @@ BOOL    ProcessManager::DoTick(UINT uTime)
 
     _MY_TRY
     {
-        //Âß¼­´¦Àí
+        //é€»è¾‘å¤„ç†
         ret = g_pProcessPlayerManager->HeartBeat(uTime);
         AssertEx( ret,"g_pProcessPlayerManager->HeartBeat(uTime) get errors") ;
     }
@@ -148,7 +148,7 @@ BOOL    ProcessManager::DoTick(UINT uTime)
     }
     
     
-    //´¦Àí¶ÓÁÐÍæ¼Ò¼ÓÈëÂß¼­¹ÜÀí
+    //å¤„ç†é˜Ÿåˆ—çŽ©å®¶åŠ å…¥é€»è¾‘ç®¡ç†
     _MY_TRY
     {
         ret = MoveQueuePlayer();
@@ -258,7 +258,7 @@ BOOL    ProcessManager::ProcessCacheCommands()
             }
         }
 
-        //»ØÊÕÏûÏ¢
+        //å›žæ”¶æ¶ˆæ¯
         if( bNeedRemove )
             g_pPacketFactoryManager->RemovePacket( pPacket ) ;
     }
@@ -278,7 +278,7 @@ BOOL ProcessManager::RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& F
     AutoLock_T autolock(m_Lock);
 
     if( m_PacketQue[m_Head].m_pPacket==NULL )
-    {//»º³åÇøÖÐÃ»ÓÐÏûÏ¢
+    {//ç¼“å†²åŒºä¸­æ²¡æœ‰æ¶ˆæ¯
         return FALSE ;
     }
 
@@ -367,7 +367,7 @@ BOOL    ProcessManager::SendPacket(Packet* pPacket,
     AutoLock_T autolock(m_Lock);
 
     if( m_PacketQue[m_Tail].m_pPacket )
-    {//»º³åÇøÂú
+    {//ç¼“å†²åŒºæ»¡
         BOOL ret = ResizeCache( ) ;
         Assert( ret ) ;
     }
@@ -398,7 +398,7 @@ BOOL    ProcessManager::MoveQueuePlayer()
         CHAR        PlayerName[MAX_ACCOUNT+1];
 
         /*
-         *    ÅÅ¶ÓºÍÇ¨ÒÆ
+         *    æŽ’é˜Ÿå’Œè¿ç§»
          */
         while((g_pProcessPlayerManager->GetNormalPlayerCount()<MAX_NORMAL_PLAYER) 
             && g_pProcessPlayerQueue->GetOutPlayer(PlayerID,PlayerName))

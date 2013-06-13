@@ -28,10 +28,10 @@ __ENTER_FUNCTION
     //    return PACKET_EXE_ERROR ;
     //}
 
-    ////¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    ////æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     //Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    ////¹¥»÷ÕßÊÇ¸öËÀÈË
+    ////æ”»å‡»è€…æ˜¯ä¸ªæ­»äºº
     //if( !pHuman->IsLiving() )
     //{
     //    GCErrorAttack Msg ;
@@ -43,7 +43,7 @@ __ENTER_FUNCTION
     //    return PACKET_EXE_CONTINUE ;
     //}
 
-    ////È¡µÃ¹¥»÷Ä¿±êµÄOBJ
+    ////å–å¾—æ”»å‡»ç›®æ ‡çš„OBJ
     //Obj* pDestObj = pScene->GetObjManager()->GetObj( pPacket->getTargetID() ) ;
     //if( pDestObj==NULL )
     //{
@@ -56,7 +56,7 @@ __ENTER_FUNCTION
     //    return PACKET_EXE_CONTINUE ;
     //}
 
-    ////¹¥»÷Ä¿±êÊÇ¸öËÀµÄ£¬²»ÄÜ±ÞÊ¬
+    ////æ”»å‡»ç›®æ ‡æ˜¯ä¸ªæ­»çš„ï¼Œä¸èƒ½éž­å°¸
     //if( !pDestObj->IsLiving() )
     //{
     //    GCErrorAttack Msg ;
@@ -68,7 +68,7 @@ __ENTER_FUNCTION
     //    return PACKET_EXE_CONTINUE ;
     //}
 
-    ////¹¥»÷Ä¿±ê±ØÐëÊÇObj_Character
+    ////æ”»å‡»ç›®æ ‡å¿…é¡»æ˜¯Obj_Character
     //if( pDestObj->GetObjType() != Obj::OBJ_TYPE_CHARACTER )
     //{
     //    Assert( FALSE ) ;
@@ -77,10 +77,10 @@ __ENTER_FUNCTION
 
     //Obj_Character* pDestCharacter = (Obj_Character*)pDestObj ;
 
-    ////Èç¹ûÒª¹¥»÷£¬×Ô¼º±ØÐëÍ£ÏÂÀ´
+    ////å¦‚æžœè¦æ”»å‡»ï¼Œè‡ªå·±å¿…é¡»åœä¸‹æ¥
     //pHuman->Stop() ;
 
-    ////¹¥»÷Ä¿±ê
+    ////æ”»å‡»ç›®æ ‡
     ////INT iRet = pHuman->AttackCharacter( pDestCharacter ) ;
 
 

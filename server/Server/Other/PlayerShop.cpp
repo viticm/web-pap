@@ -1,13 +1,13 @@
 #include "stdafx.h"
 /************************************************************************/
 /*
-´´½¨ÈÕÆÚ:    2006Äê2ÔÂ13ÈÕ
-´´½¨Ê±¼ä:    11:54
-ÎÄ¼şÃû³Æ:    PlayerShop.h
-ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Other\PlayerShop.cpp
+åˆ›å»ºæ—¥æœŸ:    2006å¹´2æœˆ13æ—¥
+åˆ›å»ºæ—¶é—´:    11:54
+æ–‡ä»¶åç§°:    PlayerShop.h
+æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Other\PlayerShop.cpp
 
-ÎÄ¼ş¹¦ÄÜ£º    Íæ¼ÒÉÌµê
-ĞŞ¸Ä¼ÍÂ¼£º
+æ–‡ä»¶åŠŸèƒ½ï¼š    ç©å®¶å•†åº—
+ä¿®æ”¹çºªå½•ï¼š
 */
 /************************************************************************/
 
@@ -73,10 +73,10 @@ VOID PlayerShop::Init()
         *m_pPlayerShopDB = m_pPlayerShopSM->m_PlayerShop;
     }
 
-    //Á¬½Óµ½ÔËĞĞÊ±Êı¾İ
+    //è¿æ¥åˆ°è¿è¡Œæ—¶æ•°æ®
     for(UINT i = 0; i<MAX_STALL_NUM_PER_SHOP; i++)
     {
-        m_PlayerShopRT.m_StallList[i].Init(&m_pPlayerShopDB->m_StallListData[i], this);        //¹ñÌ¨ÁĞ±í
+        m_PlayerShopRT.m_StallList[i].Init(&m_pPlayerShopDB->m_StallListData[i], this);        //æŸœå°åˆ—è¡¨
     }
     
     __LEAVE_FUNCTION
@@ -88,8 +88,8 @@ VOID PlayerShop::CleanUp()
 
     m_pPlayerShopDB->CleanUp();
 
-    //³õÊ¼»¯Ì¯Î»Ãû£¬¹ã¸æÓï
-    sprintf(m_pPlayerShopDB->m_szShopName, "ÔÓ»õÌ¯Î»");
+    //åˆå§‹åŒ–æ‘Šä½åï¼Œå¹¿å‘Šè¯­
+    sprintf(m_pPlayerShopDB->m_szShopName, "æ‚è´§æ‘Šä½");
 
     m_PlayerShopRT.m_bSerial = 0;
     DataChanged();
@@ -119,44 +119,44 @@ BOOL PlayerShop::HeartBeat(UINT uTime, FLOAT fComFactor)
     static BYTE    CurrentHour    = 0;
 
     if(CurrentDay == 0 && CurrentHour == 0)
-    {//µÚÒ»´Î³õÊ¼»¯Îªµ±Ç°Ê±¼ä
+    {//ç¬¬ä¸€æ¬¡åˆå§‹åŒ–ä¸ºå½“å‰æ—¶é—´
         CurrentDay    = nDay;
         CurrentHour = nHour;
         return TRUE;
     }
 
     if(CurrentDay != nDay)
-    {//ÎçÒ¹0Ê±
+    {//åˆå¤œ0æ—¶
         CurrentDay = nDay;
         fPayMent = 50000*fComFactor*m_pPlayerShopDB->m_NumStallOpened;
         if(MinusMoney((UINT)fPayMent))
-        {//³É¹¦
+        {//æˆåŠŸ
 
         }
         else
-        {//µ¹±Õ
-            //ÏÂÒ»¸öÂß¼­èåÇå¿ÕËùÓĞ±»¹Ø±ÕµÄÉÌµê
+        {//å€’é—­
+            //ä¸‹ä¸€ä¸ªé€»è¾‘æ¡¢æ¸…ç©ºæ‰€æœ‰è¢«å…³é—­çš„å•†åº—
             SetShopStatus(PLAYER_SHOP::STATUS_PLAYER_SHOP_SHUT_DOWN);
         }
     }
 
     if(CurrentHour != nHour)
-    {//Ã¿Ğ¡Ê±
+    {//æ¯å°æ—¶
         CurrentHour = nHour;
         fPayMent = 2000*fComFactor*m_pPlayerShopDB->m_NumStallOnSale;
         if(MinusMoney((UINT)fPayMent))
-        {//³É¹¦
+        {//æˆåŠŸ
 
         }
         else
-        {//µ¹±Õ
-            //ÏÂÒ»¸öÂß¼­èåÇå¿ÕËùÓĞ±»¹Ø±ÕµÄÉÌµê
+        {//å€’é—­
+            //ä¸‹ä¸€ä¸ªé€»è¾‘æ¡¢æ¸…ç©ºæ‰€æœ‰è¢«å…³é—­çš„å•†åº—
             SetShopStatus(PLAYER_SHOP::STATUS_PLAYER_SHOP_SHUT_DOWN);
         }
     }
 
     if(m_PlayerShopRT.m_PlayerShopChanged)
-    {//Ğ´Èësharememory
+    {//å†™å…¥sharememory
         if(m_pPlayerShopSM)
         {
             m_pPlayerShopSM->Lock(SM_S_WRITE);
@@ -187,7 +187,7 @@ BOOL PlayerShop::MinusMoney(UINT uMoney)
         DataChanged();
         return TRUE;
     }
-    else//µ¹±ÕÁË
+    else//å€’é—­äº†
     {
         UpdateMoneyEvent();
         DataChanged();
@@ -201,9 +201,9 @@ VOID PlayerShop::AddMoney(UINT uMoney)
     UINT fMaxBaseMoney    = GetMaxBaseMoney();
 
     if( fBaseMoney < fMaxBaseMoney )
-    {//³åÈë±¾½ğ
+    {//å†²å…¥æœ¬é‡‘
         if((fMaxBaseMoney-fBaseMoney)<uMoney)
-        {//·ÖÁ½²¿·Ö
+        {//åˆ†ä¸¤éƒ¨åˆ†
             SetBaseMoney((UINT)fMaxBaseMoney);
             SetProfitMoney((UINT)(GetProfitMoney() + (uMoney - (fMaxBaseMoney-fBaseMoney))));
         }
@@ -213,7 +213,7 @@ VOID PlayerShop::AddMoney(UINT uMoney)
         }
     }
     else
-    {//Ö±½Ó³åÈëÓ¯Àû½ğ
+    {//ç›´æ¥å†²å…¥ç›ˆåˆ©é‡‘
         SetProfitMoney((UINT)(GetProfitMoney() + uMoney) );
     }
 }
@@ -221,7 +221,7 @@ VOID PlayerShop::AddMoney(UINT uMoney)
 VOID PlayerShop::UpdateMoneyEvent()
 {
     if((FLOAT)GetBaseMoney()<((FLOAT)GetMaxBaseMoney())/2)
-    {//Í¨Öª¿Í»§¶Ë±¾½ğ²»¹»ÁË
+    {//é€šçŸ¥å®¢æˆ·ç«¯æœ¬é‡‘ä¸å¤Ÿäº†
 
     }
 }
@@ -234,7 +234,7 @@ UINT PlayerShop::UpdateMaxBaseMoney(FLOAT fComFactor)
 }
 
 //-------------------------------------------------------------------------------------------------
-//Ìí¼ÓºÏ×÷»ï°é
+//æ·»åŠ åˆä½œä¼™ä¼´
 RET_TYPE_PARTNER PlayerShop::AddPartner(GUID_t Guid)
 {
     __ENTER_FUNCTION
@@ -277,7 +277,7 @@ RET_TYPE_PARTNER PlayerShop::AddPartner(GUID_t Guid)
 }
 
 //-------------------------------------------------------------------------------------------------
-//É¾³ıºÏ×÷»ï°é
+//åˆ é™¤åˆä½œä¼™ä¼´
 RET_TYPE_PARTNER PlayerShop::RemovePartner(GUID_t Guid)
 {
     __ENTER_FUNCTION
@@ -313,7 +313,7 @@ RET_TYPE_PARTNER PlayerShop::RemovePartner(GUID_t Guid)
 }
 
 //-------------------------------------------------------------------------------------------------
-//ÊÇ·ñÊÇºÏ×÷»ï°é
+//æ˜¯å¦æ˜¯åˆä½œä¼™ä¼´
 BOOL PlayerShop::IsPartner(GUID_t Guid)
 {
     Partner_t* PartnerList = m_pPlayerShopDB->m_PartnerList;

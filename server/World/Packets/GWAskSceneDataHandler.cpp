@@ -11,8 +11,8 @@ UINT GWAskSceneDataHandler::Execute( GWAskSceneData* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-    //worldÊÕµ½·şÎñÆ÷¶Ô³¡¾°ĞÅÏ¢µÄÇëÇó
-    //¸ù¾İ²»Í¬ÀàĞÍ£¬»ØÓ¦²»Í¬Êı¾İ
+    //worldæ”¶åˆ°æœåŠ¡å™¨å¯¹åœºæ™¯ä¿¡æ¯çš„è¯·æ±‚
+    //æ ¹æ®ä¸åŒç±»å‹ï¼Œå›åº”ä¸åŒæ•°æ®
     ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer ;
 
     SceneID_t    SceneID        =    pPacket->GetSceneID();
@@ -33,8 +33,8 @@ __ENTER_FUNCTION
 
         case GWAskSceneData::TYPE_CITY:
             {
-                //ÊÕµ½·şÎñÆ÷¶Ë³ÇÊĞ³¡¾°load³É¹¦µÄÏûÏ¢
-                //world¿ÉÒÔ·ÖÅä×Ô¼ºÕæÊµµÄ³ÇÊĞ½á¹¹ÁË
+                //æ”¶åˆ°æœåŠ¡å™¨ç«¯åŸå¸‚åœºæ™¯loadæˆåŠŸçš„æ¶ˆæ¯
+                //worldå¯ä»¥åˆ†é…è‡ªå·±çœŸå®çš„åŸå¸‚ç»“æ„äº†
                 GWAskSceneData::CITY_DATA CityData;
                 memcpy(&CityData, ExtraData, ExtraDataL);
                 SceneID_t    PortSceneID = CityData.m_PortSceneID;
@@ -42,11 +42,11 @@ __ENTER_FUNCTION
 
                 _SERVER_DATA* pServerData = pServerPlayer->GetServerData();
                 City* pCity = g_pCityManager->NewCity();
-                pCity->SetSceneID(SceneID);                        //³ÇÊĞ×Ô¼ºµÄID
-                pCity->SetPortSceneID(PortSceneID);                //³ÇÊĞµÄÈë¿Ú³¡¾°ID
-                pCity->SetGuildID(nGuildID);                    //³ÇÊĞµÄ°ï»áID
-                pCity->SetServerID(pServerData->m_ServerID);    //³ÇÊĞËùÔÚ·şÎñÆ÷
-                pCity->LoadBuildingInfo(SceneID);                //¶ÁÈë³¡¾°½¨ÖşĞÅÏ¢
+                pCity->SetSceneID(SceneID);                        //åŸå¸‚è‡ªå·±çš„ID
+                pCity->SetPortSceneID(PortSceneID);                //åŸå¸‚çš„å…¥å£åœºæ™¯ID
+                pCity->SetGuildID(nGuildID);                    //åŸå¸‚çš„å¸®ä¼šID
+                pCity->SetServerID(pServerData->m_ServerID);    //åŸå¸‚æ‰€åœ¨æœåŠ¡å™¨
+                pCity->LoadBuildingInfo(SceneID);                //è¯»å…¥åœºæ™¯å»ºç­‘ä¿¡æ¯
 
                 SCENE_INIT_DATA CityInitData;
                 

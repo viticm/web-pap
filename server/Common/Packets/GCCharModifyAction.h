@@ -1,6 +1,6 @@
 // GCCharModifyAction.h
 // 
-// ¸ü¸Ä¶¯×÷
+// æ›´æ”¹åŠ¨ä½œ
 // 
 //////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ namespace Packets
         {
         }
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -41,7 +41,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                setObjID(ObjID_t id) { m_ObjID = id; }
         ObjID_t                getObjID(VOID)const { return m_ObjID; }
 
@@ -53,8 +53,8 @@ namespace Packets
 
     private:
         ObjID_t                m_ObjID;            // ObjID
-        INT                    m_nLogicCount;        // Âß¼­¼ÆÊı
-        INT                    m_nModifyTime;        // ¸Ä¶¯µÄÊ±¼äÖµ
+        INT                    m_nLogicCount;        // é€»è¾‘è®¡æ•°
+        INT                    m_nModifyTime;        // æ”¹åŠ¨çš„æ—¶é—´å€¼
     };
 
     class GCCharModifyActionFactory : public PacketFactory 

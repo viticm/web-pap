@@ -1,6 +1,6 @@
 // CGIssuePetPlacard.h
 // 
-// 发布宠物征友信息
+// 鍙戝竷瀹犵墿寰佸弸淇℃伅
 // 
 //////////////////////////////////////////////////////
 
@@ -26,7 +26,7 @@ namespace Packets
 
         virtual ~CGIssuePetPlacard( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream )const;
         virtual UINT            Execute( Player* pPlayer );
@@ -56,10 +56,10 @@ namespace Packets
     private:
         PET_GUID_t        m_GUID;                                        // ID
 
-        ObjID_t            m_idNpc;                                    // 目标NPC ID
+        ObjID_t            m_idNpc;                                    // 鐩爣NPC ID
 
-        BYTE            m_byMessageSize;                            // 宠主留言长度
-        CHAR            m_szMessage[PET_PLACARD_ITEM_MESSAGE_SIZE];    // 宠主留言
+        BYTE            m_byMessageSize;                            // 瀹犱富鐣欒█闀垮害
+        CHAR            m_szMessage[PET_PLACARD_ITEM_MESSAGE_SIZE];    // 瀹犱富鐣欒█
     };
 
     class CGIssuePetPlacardFactory : public PacketFactory 

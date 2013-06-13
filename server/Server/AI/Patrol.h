@@ -1,7 +1,7 @@
 /*************************************************************************
-ÎÄ¼şÃû    :     AIScript.h
-°æ±¾ºÅ :    0.0.1
-¹¦  ÄÜ    :    ¹ÖÎïÑ²ÂßµÄÏà¹Ø´¦Àí
+æ–‡ä»¶å    :     AIScript.h
+ç‰ˆæœ¬å· :    0.0.1
+åŠŸ  èƒ½    :    æ€ªç‰©å·¡é€»çš„ç›¸å…³å¤„ç†
 *************************************************************************/
 
 #ifndef _PATROL_H_
@@ -14,9 +14,9 @@ struct PatrolPath
 {
     struct PatrolUnit
     {
-        INT m_nSettleTime;                // ¸ÃµãµÄÍ£ÁôÊ±¼ä
-        ScriptID_t m_ScriptID;            // ¸ÃµãµÄÊÂ¼ş½Å±¾
-        WORLD_POS m_PatrolPoint;        // ¸ÃµãµÄÊµ¼Ê×ø±ê
+        INT m_nSettleTime;                // è¯¥ç‚¹çš„åœç•™æ—¶é—´
+        ScriptID_t m_ScriptID;            // è¯¥ç‚¹çš„äº‹ä»¶è„šæœ¬
+        WORLD_POS m_PatrolPoint;        // è¯¥ç‚¹çš„å®é™…åæ ‡
         PatrolUnit()
         {
             m_nSettleTime = 0;
@@ -67,7 +67,7 @@ public:
     VOID        Init( Scene* pScene );
     VOID        CleanUp( VOID );
     VOID        LoadPatrolPoint(const CHAR* filename);
-    // ¸ù¾İ´«ÈëµÄpatrolPointIndexÖµµÃµ½ÏÂÒ»¸öÒªµ½´ïµÄpatrolPointIndex
+    // æ ¹æ®ä¼ å…¥çš„patrolPointIndexå€¼å¾—åˆ°ä¸‹ä¸€ä¸ªè¦åˆ°è¾¾çš„patrolPointIndex
     INT            GetPatrolPoint(INT patrolPathIndex, INT patrolPointIndex, 
         BOOL& baHead, WORLD_POS& rTar, INT& rSettleTime, ScriptID_t& rScriptID);
     BOOL        FindPatrolID(INT PatrolID) const;

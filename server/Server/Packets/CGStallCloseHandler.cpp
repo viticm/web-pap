@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¸Ã¿Í»§¶ËÊÕÌ¯
+è¯¥å®¢æˆ·ç«¯æ”¶æ‘Š
 */
 
 #include "CGStallClose.h"
@@ -31,12 +31,12 @@ UINT CGStallCloseHandler::Execute( CGStallClose* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //ÑéÖ¤ÊÇ·ñÓÐ×Ê¸ñ°ÚÌ¯
+    //éªŒè¯æ˜¯å¦æœ‰èµ„æ ¼æ‘†æ‘Š
     if(pHuman->m_StallBox.GetStallStatus() != ServerStallBox::STALL_OPEN)
-    {//¶ªÆú
+    {//ä¸¢å¼ƒ
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallCloseHandler::ObjID=%d, != ServerStallBox::STALL_OPEN"
             ,pHuman->GetID()) ;
         return PACKET_EXE_CONTINUE ;
@@ -45,7 +45,7 @@ UINT CGStallCloseHandler::Execute( CGStallClose* pPacket, Player* pPlayer )
 
     pHuman->m_StallBox.GetBBS()->SaveTitle();
 
-    //ÑéÖ¤Íê±Ï,ÉèÖÃÌ¯Î»ºÐ
+    //éªŒè¯å®Œæ¯•,è®¾ç½®æ‘Šä½ç›’
     pHuman->m_StallBox.CleanUp();
 
     ORESULT oResult = pHuman->GetHumanAI()->PushCommand_Idle( );

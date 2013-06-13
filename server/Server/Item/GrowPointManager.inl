@@ -1,11 +1,11 @@
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ1ÈÕ
-    ´´½¨Ê±¼ä:    10:37
-    ÎÄ¼şÃû³Æ:    GrowPointManager.inl
-    ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Item\GrowPointManager.inl
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ1æ—¥
+    åˆ›å»ºæ—¶é—´:    10:37
+    æ–‡ä»¶åç§°:    GrowPointManager.inl
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\GrowPointManager.inl
     
-    ÎÄ¼ş¹¦ÄÜ£º GrowPointManager ÄÚÁªÊµÏÖ
-    ĞŞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š GrowPointManager å†…è”å®ç°
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 
@@ -18,7 +18,7 @@ inline    VOID    TypeGrowPointManager::AddData(GROW_POINT_GROUP_SCENE_DATA& Ref
 {
     if(!m_pData)
         m_pData = new GROW_POINT_GROUP_SCENE_DATA[m_TypeCount];
-    //×î´óÊıÁ¿Ğ¡ÓÚ    m_TypeCount
+    //æœ€å¤§æ•°é‡å°äº    m_TypeCount
 
     Assert(m_AddOffSet<m_TypeCount);
 

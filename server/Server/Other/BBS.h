@@ -1,5 +1,5 @@
 /*
-ÁôÑÔ°å·şÎñÆ÷¶Ë½á¹¹
+ç•™è¨€æ¿æœåŠ¡å™¨ç«¯ç»“æ„
 */
 
 #ifndef _BBS_H_
@@ -9,21 +9,21 @@
 class Obj_Human;
 
 /*
-µ¥ÌõÁôÑÔ½á¹¹
+å•æ¡ç•™è¨€ç»“æ„
 */
 struct MessageEntry_t
 {
-    CHAR    szAuthorName[MAX_BBS_MESSAGE_AUTHORLENGTH];                //·¢ÌûÈËÃû×Ö
-    UINT    nID;                                            //Ìû×ÓID
-    BYTE    nHour;                                            //·¢±íÊ±¼ä£¨Ğ¡Ê±£©
-    BYTE    nMin;                                            //·¢±íÊ±¼ä£¨·ÖÖÓ£©
-    BYTE    bHasReply;                                        //ÊÇ·ñÓĞ»Ø¸´
-    UINT    nMsgLength;                                        //Ìû×Ó³¤¶È
-    CHAR    szMessage[MAX_BBS_MESSAGE_LENGTH];                //Ìû×ÓÄÚÈİ
-    BYTE    nReHour;                                        //»Ø¸´Ê±¼ä£¨Ğ¡Ê±£©
-    BYTE    nReMin;                                            //»Ø¸´Ê±¼ä£¨·ÖÖÓ£©
-    UINT    nReplyMsgLength;                                //»Ø¸´³¤¶È
-    CHAR    szReplyMessage[MAX_BBS_MESSAGE_LENGTH];            //»Ø¸´ÄÚÈİ
+    CHAR    szAuthorName[MAX_BBS_MESSAGE_AUTHORLENGTH];                //å‘å¸–äººåå­—
+    UINT    nID;                                            //å¸–å­ID
+    BYTE    nHour;                                            //å‘è¡¨æ—¶é—´ï¼ˆå°æ—¶ï¼‰
+    BYTE    nMin;                                            //å‘è¡¨æ—¶é—´ï¼ˆåˆ†é’Ÿï¼‰
+    BYTE    bHasReply;                                        //æ˜¯å¦æœ‰å›å¤
+    UINT    nMsgLength;                                        //å¸–å­é•¿åº¦
+    CHAR    szMessage[MAX_BBS_MESSAGE_LENGTH];                //å¸–å­å†…å®¹
+    BYTE    nReHour;                                        //å›å¤æ—¶é—´ï¼ˆå°æ—¶ï¼‰
+    BYTE    nReMin;                                            //å›å¤æ—¶é—´ï¼ˆåˆ†é’Ÿï¼‰
+    UINT    nReplyMsgLength;                                //å›å¤é•¿åº¦
+    CHAR    szReplyMessage[MAX_BBS_MESSAGE_LENGTH];            //å›å¤å†…å®¹
 
 
     MessageEntry_t()
@@ -43,7 +43,7 @@ struct MessageEntry_t
 };
 
 /*
-ÁôÑÔ°å½á¹¹
+ç•™è¨€æ¿ç»“æ„
 */
 class ServerBBS
 {
@@ -152,7 +152,7 @@ private:
     CHAR            m_szTitle[MAX_BBS_MESSAGE_LENGTH];
     BYTE            m_IsValid[MAX_BBS_MESSAGE_NUM];
     MessageEntry_t    m_MessageData[MAX_BBS_MESSAGE_NUM];            
-    CHAR            m_szTempBuffer[MAX_BBS_MESSAGE_LENGTH];//´æ´¢ÁÙÊ±»º´æµÄÌ¯Î»¹ã¸æÓï
+    CHAR            m_szTempBuffer[MAX_BBS_MESSAGE_LENGTH];//å­˜å‚¨ä¸´æ—¶ç¼“å­˜çš„æ‘Šä½å¹¿å‘Šè¯­
 };
 
 #endif

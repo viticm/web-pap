@@ -50,7 +50,7 @@ BOOL GCDetailEquipList::Write( SocketOutputStream& oStream )const
             }
             else
             {
-                Assert(FALSE); //大概是往包里放数据写错了
+                Assert(FALSE); //澶ф鏄線鍖呴噷鏀炬暟鎹啓閿欎簡
             }
         }
     }

@@ -9,7 +9,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////
 
-// ÊäÈëÒ»¸öÃÜÂë
+// è¾“å…¥ä¸€ä¸ªå¯†ç 
 VOID MINORPASSWD_PWD::CleanUp( )
 {
     m_uPasswdSize = 0;
@@ -90,7 +90,7 @@ VOID REQUEST_MINORPASSWD_MODIFY::Write( SocketOutputStream& oStream ) const
     }
 }
 
-//¿Í»§¶ËÏò·þÎñÆ÷·¢ËÍµÄÁªÏµÈËÏà¹Ø½á¹¹Êý¾Ý
+//å®¢æˆ·ç«¯å‘æœåŠ¡å™¨å‘é€çš„è”ç³»äººç›¸å…³ç»“æž„æ•°æ®
 VOID CG_MINORPASSWD::CleanUp( )
 {
     m_Type = MREQT_NONE;
@@ -102,7 +102,7 @@ UINT CG_MINORPASSWD::GetSize( ) const
 
     switch( m_Type )
     {
-    // ÎÞ²ÎÊý²¿·Ö
+    // æ— å‚æ•°éƒ¨åˆ†
     case MREQT_PASSWDSETUP:
     case MREQT_DELETEPASSWDTIME:
     case MREQT_DELETEPASSWD:
@@ -128,7 +128,7 @@ VOID CG_MINORPASSWD::Read( SocketInputStream &iStream )
 
     switch( m_Type )
     {
-    // ÎÞ²ÎÊý²¿·Ö
+    // æ— å‚æ•°éƒ¨åˆ†
     case MREQT_PASSWDSETUP:
     case MREQT_DELETEPASSWDTIME:
     case MREQT_DELETEPASSWD:
@@ -154,7 +154,7 @@ VOID CG_MINORPASSWD::Write( SocketOutputStream &oStream ) const
 
     switch( m_Type )
     {
-        // ÎÞ²ÎÊý²¿·Ö
+        // æ— å‚æ•°éƒ¨åˆ†
     case MREQT_PASSWDSETUP:
     case MREQT_DELETEPASSWDTIME:
     case MREQT_DELETEPASSWD:

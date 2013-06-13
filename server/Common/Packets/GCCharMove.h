@@ -17,7 +17,7 @@ namespace Packets
         }
         virtual ~GCCharMove( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -35,7 +35,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                setObjID(ObjID_t id) { m_ObjID = id; }
         ObjID_t                getObjID(VOID)const { return m_ObjID; }
 
@@ -61,13 +61,13 @@ namespace Packets
 
     private:
         ObjID_t                m_ObjID;        // ObjID
-        UINT                m_uStartTime;    // ÆğÊ¼Ê±¼ä
-        INT                    m_nHandleID;    // ²Ù×÷ID
-        WORLD_POS            m_posTarget;    // Ä¿±êµã
+        UINT                m_uStartTime;    // èµ·å§‹æ—¶é—´
+        INT                    m_nHandleID;    // æ“ä½œID
+        WORLD_POS            m_posTarget;    // ç›®æ ‡ç‚¹
 
-        BYTE                m_byStopMove;        // ÊÇ·ñÒªÍ£Ö¹ÉÏ´ÎÒÆ¶¯
-        INT                    m_nStopLogicCount;    // Í£Ö¹µÄÂß¼­¼ÆÊı
-        WORLD_POS            m_posStop;            // Í£Ö¹µÄ×ø±ê
+        BYTE                m_byStopMove;        // æ˜¯å¦è¦åœæ­¢ä¸Šæ¬¡ç§»åŠ¨
+        INT                    m_nStopLogicCount;    // åœæ­¢çš„é€»è¾‘è®¡æ•°
+        WORLD_POS            m_posStop;            // åœæ­¢çš„åæ ‡
     };
 
     class GCCharMoveFactory : public PacketFactory 

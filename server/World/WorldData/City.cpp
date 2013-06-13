@@ -37,14 +37,14 @@ VOID City::CleanUp( )
 }
 
 //-------------------------------------------------------------------------------------------------
-//µº»ÎΩ®÷˛–≈œ¢
+//ÂØºÂÖ•Âª∫Á≠ë‰ø°ÊÅØ
 VOID City::LoadBuildingInfo(SceneID_t nSceneID)
 {
     INT BuildIndex = 0;
     for(INT i = 0; i<g_CityBuildingTbl.m_Num+1; i++)
     {
         if(g_CityBuildingTbl.m_Table[i].nCityID == nSceneID)
-        {//∑≈»Î¥À≥« –µƒΩ®÷˛ŒÔ¡–±Ì
+        {//ÊîæÂÖ•Ê≠§ÂüéÂ∏ÇÁöÑÂª∫Á≠ëÁâ©ÂàóË°®
             m_pCityDB->m_Builds[BuildIndex].m_BuildingID        = g_CityBuildingTbl.m_Table[i].nID;
             m_pCityDB->m_Builds[BuildIndex++].m_BuildingLevel    = 0;
 //            m_pCityDB->m_Builds[BuildIndex].m_BuildingLevel = g_CityBuildingTbl.m_Table[i].nBuildingLevel;

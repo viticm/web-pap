@@ -28,7 +28,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
     CG_MINORPASSWD* pPasswdPacket;
@@ -40,7 +40,7 @@ __ENTER_FUNCTION
 
     switch( pPasswdPacket->m_Type )
     {
-    case MREQT_PASSWDSETUP:                    // Ñ¯ÎÊ¶þ¼¶ÃÜÂëÊÇ·ñÒÑ¾­ÉèÖÃ
+    case MREQT_PASSWDSETUP:                    // è¯¢é—®äºŒçº§å¯†ç æ˜¯å¦å·²ç»è®¾ç½®
         {
             Msg.GetMinorPassword()->m_Type = MRETT_PASSWDSETUP;
             RETURN_MINORPASSWD_SETUP* pSend = &(Msg.GetMinorPassword()->m_ReturnSetup);
@@ -51,7 +51,7 @@ __ENTER_FUNCTION
                 pHuman->GetGUID() );
         }
         break;
-    case MREQT_DELETEPASSWDTIME:            // Ñ¯ÎÊÊÇ·ñ´¦ÓÚÇ¿ÖÆ½â³ý½×¶Î
+    case MREQT_DELETEPASSWDTIME:            // è¯¢é—®æ˜¯å¦å¤„äºŽå¼ºåˆ¶è§£é™¤é˜¶æ®µ
         {
             UINT uRemainTime;
 
@@ -70,7 +70,7 @@ __ENTER_FUNCTION
                 pHuman->GetGUID() );
         }
         break;
-    case MREQT_SETPASSWD:                    // ÉèÖÃ¶þ¼¶ÃÜÂë
+    case MREQT_SETPASSWD:                    // è®¾ç½®äºŒçº§å¯†ç 
         {
             if( pHuman->__IsPasswordSetup() )
             {
@@ -92,7 +92,7 @@ __ENTER_FUNCTION
             }
         }
         break;
-    case MREQT_MODIFYPASSWD:                // ÐÞ¸Ä¶þ¼¶ÃÜÂë
+    case MREQT_MODIFYPASSWD:                // ä¿®æ”¹äºŒçº§å¯†ç 
         {
             REQUEST_MINORPASSWD_MODIFY* pRecv = &(pPasswdPacket->m_ModifyPasswd);
 
@@ -114,7 +114,7 @@ __ENTER_FUNCTION
             }
         }
         break;
-    case MREQT_UNLOCKPASSWD:                // ¶þ¼¶ÃÜÂë½âËø
+    case MREQT_UNLOCKPASSWD:                // äºŒçº§å¯†ç è§£é”
         {
             if( pHuman->ComparePasswd( pPasswdPacket->m_OnePasswd.GetPasswd() ) )
             {
@@ -125,7 +125,7 @@ __ENTER_FUNCTION
                     pHuman->GetGUID() );
 
                 if( pHuman->__GetPasswordDeleteTime() > 0 )
-                {                            // ½âËø³É¹¦µÄ»°£¬Ç¿ÖÆÃÜÂë½â³ýÊ§Ð§
+                {                            // è§£é”æˆåŠŸçš„è¯ï¼Œå¼ºåˆ¶å¯†ç è§£é™¤å¤±æ•ˆ
                     pHuman->__SetPasswordDeleteTime( 0 );
                     GCMinorPasswd Msg2;
                     Msg2.GetMinorPassword()->m_Type = MRETT_DELETEPASSWDCANCEL;
@@ -137,7 +137,7 @@ __ENTER_FUNCTION
             }
             else
             {
-                pHuman->__LockPassword();    // Ö»Òª½âËøÊ§°Ü£¬ÖØÐÂÉÏËø£¬²»¹ÜÒÔÇ°ÊÇ·ñÒÑ¾­½âËø
+                pHuman->__LockPassword();    // åªè¦è§£é”å¤±è´¥ï¼Œé‡æ–°ä¸Šé”ï¼Œä¸ç®¡ä»¥å‰æ˜¯å¦å·²ç»è§£é”
                 Msg.GetMinorPassword()->m_Type = MRETT_ERR_UNLOCKPASSWDFAIL;
 
                 g_pLog->FastSaveLog( LOG_FILE_1, "CGMinorPasswdHandler: GUID=%X unlock the minor password failed.",
@@ -145,12 +145,12 @@ __ENTER_FUNCTION
             }
         }
         break;
-    case MREQT_DELETEPASSWD:                // Ç¿ÖÆ½â³ý¶þ¼¶ÃÜÂë
+    case MREQT_DELETEPASSWD:                // å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç 
         {
             if( pHuman->__GetPasswordDeleteTime() > 0
              && pHuman->__IsValidToDeletePassword()
             )
-            {                                // Èç¹ûÊÇ 15 Ììºóµã»÷Ç¿ÖÆ½â³ý£¬Ôò½â³ý³É¹¦
+            {                                // å¦‚æžœæ˜¯ 15 å¤©åŽç‚¹å‡»å¼ºåˆ¶è§£é™¤ï¼Œåˆ™è§£é™¤æˆåŠŸ
                 pHuman->__DelPassword();
                 Msg.GetMinorPassword()->m_Type = MRETT_DELETEPASSWDSUCC;
 
@@ -161,11 +161,11 @@ __ENTER_FUNCTION
                 return PACKET_EXE_CONTINUE;
             }
             else if( pHuman->__GetPasswordDeleteTime() == 0 )
-            {                                // ÉèÖÃÇ¿ÖÆ½â³ýÊ±¼ä
+            {                                // è®¾ç½®å¼ºåˆ¶è§£é™¤æ—¶é—´
                 pHuman->__SetPasswordDeleteTime( (UINT)g_pTimeManager->GetANSITime() );
             }
 
-            // ÌáÊ¾Ê£ÓàÊ±¼ä
+            // æç¤ºå‰©ä½™æ—¶é—´
             Msg.GetMinorPassword()->m_Type = MRETT_DELETEPASSWDTIME;
             RETURN_DELETE_MINORPASSWD_TIME* pSend = &(Msg.GetMinorPassword()->m_ReturnDeleteTime);
             pSend->CleanUp();

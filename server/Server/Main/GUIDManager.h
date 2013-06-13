@@ -31,7 +31,7 @@ public :
 
     VOID                    CleanUp( ) ;
 
-    //临时使用
+    //涓存椂浣跨敤
     GUID_t                    CreateGUID( ){ return m_TempGUID++ ; } ;
 
 
@@ -50,7 +50,7 @@ private :
 
     MyLock                    m_Lock ;
 
-    //临时使用
+    //涓存椂浣跨敤
     GUID_t                    m_TempGUID ;
 
 };

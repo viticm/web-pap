@@ -1,6 +1,6 @@
 // CGShopBuy.h
 // 
-// ¿Í»§¶ËÍ¨Öª·şÎñÆ÷ÂòÊ²Ã´¶«Î÷
+// å®¢æˆ·ç«¯é€šçŸ¥æœåŠ¡å™¨ä¹°ä»€ä¹ˆä¸œè¥¿
 // 
 //////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace Packets
         };
         virtual ~CGShopBuy( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -54,11 +54,11 @@ namespace Packets
         VOID                    SetBuyNum(UINT uBuyNum) {m_BuyNum = uBuyNum;}
 
     private:
-        BYTE                    m_nndex;        //Î»ÖÃ
-        UCHAR                    m_uSerialNum;    //ÉÌµêÁ÷Ë®ºÅ
+        BYTE                    m_nndex;        //ä½ç½®
+        UCHAR                    m_uSerialNum;    //å•†åº—æµæ°´å·
         UINT                    m_UniqueID;
         _ITEM_GUID                m_ItemGuid;
-        UINT                    m_BuyNum;        //¹ºÂòµÄÊıÁ¿
+        UINT                    m_BuyNum;        //è´­ä¹°çš„æ•°é‡
     };
 
     class CGShopBuyFactory : public PacketFactory 

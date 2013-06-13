@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºStdImpact052.cpp
-// ¹¦ÄÜËµÃ÷£ºĞ§¹û--åĞÒ£¼¼ÄÜ¼ÍÂ¼ÏİÚåÓÃ
+// æ–‡ä»¶åï¼šStdImpact052.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šæ•ˆæœ--é€é¥æŠ€èƒ½çºªå½•é™·é˜±ç”¨
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -156,7 +156,7 @@ namespace Combat_Module
             {
                 if(-1 == rImp.GetContinuance())
                 {
-                    rImp.SetContinuance(10000); //Èç¹ûÃ»ÓĞÏİÚå£¬10ÃëºóÏûÊ§
+                    rImp.SetContinuance(10000); //å¦‚æœæ²¡æœ‰é™·é˜±ï¼Œ10ç§’åæ¶ˆå¤±
                     rImp.SetContinuanceElapsed(0);
                 }
             }
@@ -164,7 +164,7 @@ namespace Combat_Module
             {
                 if(0 <= rImp.GetContinuance())
                 {
-                    rImp.SetContinuance(-1); //Èç¹ûÓĞÏİÚå£¬ÓÀ¾Ã²»ÏûÊ§
+                    rImp.SetContinuance(-1); //å¦‚æœæœ‰é™·é˜±ï¼Œæ°¸ä¹…ä¸æ¶ˆå¤±
                     rImp.SetContinuanceElapsed(0);
                 }
             }

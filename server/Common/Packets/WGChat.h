@@ -17,7 +17,7 @@ namespace Packets
         WGChat( ){ Reset() ; } ;
         virtual ~WGChat( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -100,12 +100,12 @@ namespace Packets
         };
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
-        //ÉèÖÃ¡¢¶ÁÈ¡ÁÄÌìÀàĞÍ ¼û£ºCHAT_TYPE
+        //ä½¿ç”¨æ•°æ®æ¥å£
+        //è®¾ç½®ã€è¯»å–èŠå¤©ç±»å‹ è§ï¼šCHAT_TYPE
         VOID                    SetChatType( BYTE bType ){ m_ChatType = bType ; } ;
         BYTE                    GetChatType( ){ return m_ChatType ; } ;
 
-        //ÉèÖÃ¡¢¶ÁÈ¡ÁÄÌìÄÚÈİ
+        //è®¾ç½®ã€è¯»å–èŠå¤©å†…å®¹
         VOID                    SetContexSize( BYTE bSize ){ m_ContexSize = bSize ; } ;
         BYTE                    GetContexSize( ){ return m_ContexSize ; } ;
 
@@ -115,7 +115,7 @@ namespace Packets
         };
         CHAR*                    GetContex(){ return (CHAR*)m_Contex ; } ;
 
-        //ÉèÖÃ¡¢¶ÁÈ¡Ëµ»°ÈËµÄÃû×Ö
+        //è®¾ç½®ã€è¯»å–è¯´è¯äººçš„åå­—
         VOID                    SetSourNameSize( BYTE bSize ){ m_SourNameSize = bSize ; } ;
         BYTE                    GetSourNameSize( ){ return m_SourNameSize ; } ;
 
@@ -141,22 +141,22 @@ namespace Packets
         CampID_t                GetCampID() { return m_Camp; }
 
     private:
-        //Êı¾İ
-        BYTE                    m_ChatType ;//ÁÄÌìÏûÏ¢ÀàĞÍ enum CHAT_TYPE
+        //æ•°æ®
+        BYTE                    m_ChatType ;//èŠå¤©æ¶ˆæ¯ç±»å‹ enum CHAT_TYPE
         
-        //ÁÄÌìÄÚÈİÊı¾İ
+        //èŠå¤©å†…å®¹æ•°æ®
         BYTE                    m_ContexSize ;
         CHAR                    m_Contex[MAX_CHAT_SIZE] ;
 
-        //Ëµ»°ÕßÃû×Ö
+        //è¯´è¯è€…åå­—
         BYTE                    m_SourNameSize ;
         CHAR                    m_SourName[MAX_CHARACTER_NAME] ;
 
-        PlayerID_t                m_PlayerID ;    //Á¬½ÓÕß: Ë½ÁÄ¡¢¶ÓÁÄ¡¢×Ô½¨ÆµµÀÁÄ
-        GuildID_t                m_GuildID ;        //¹¤»áÁÄÓĞĞ§
-        BYTE                    m_MenpaiID ;    //ÃÅÅÉÖµ£¬½ö´ËÃÅÅÉÄÚµÄ³ÉÔ±ÓĞĞ§
-        CampID_t                m_Camp;            //·¢ËÍÕßµÄÕóÓª
-        UINT                    m_uWorldChatID ; //ÁÄÌìÏûÏ¢µÄĞòÁĞºÅ£¬ÓÃÓÚ¾ÀÕıÍæ¼Ò×ªÒÆ³¡¾°ÏûÏ¢¶ªÊ§ÎÊÌâ
+        PlayerID_t                m_PlayerID ;    //è¿æ¥è€…: ç§èŠã€é˜ŸèŠã€è‡ªå»ºé¢‘é“èŠ
+        GuildID_t                m_GuildID ;        //å·¥ä¼šèŠæœ‰æ•ˆ
+        BYTE                    m_MenpaiID ;    //é—¨æ´¾å€¼ï¼Œä»…æ­¤é—¨æ´¾å†…çš„æˆå‘˜æœ‰æ•ˆ
+        CampID_t                m_Camp;            //å‘é€è€…çš„é˜µè¥
+        UINT                    m_uWorldChatID ; //èŠå¤©æ¶ˆæ¯çš„åºåˆ—å·ï¼Œç”¨äºçº æ­£ç©å®¶è½¬ç§»åœºæ™¯æ¶ˆæ¯ä¸¢å¤±é—®é¢˜
     };
 
 

@@ -1,8 +1,8 @@
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼þÃû£ºScanOperator.h
-//¹¦ÄÜÃèÊö£ºÌá¹©³¡¾°ÄÚobj»òÕßhumanËÑË÷µÄ¶¨ÖÆ¹¦ÄÜ
-//ÐÞ¸Ä¼ÇÂ¼£º2005-11-8 ´´½¨
+//æ–‡ä»¶åï¼šScanOperator.h
+//åŠŸèƒ½æè¿°ï¼šæä¾›åœºæ™¯å†…objæˆ–è€…humanæœç´¢çš„å®šåˆ¶åŠŸèƒ½
+//ä¿®æ”¹è®°å½•ï¼š2005-11-8 åˆ›å»º
 /////////////////////////////////////////////////////////////////////////////////
 
 #ifndef __SCANOPERATOR_H__
@@ -14,9 +14,9 @@
 
 enum SCANRETURN
 {
-    SCANRETURN_CONTINUE = 0 ,//¼ÌÐøÉ¨ÃèÏÂÒ»¸öobj
-    SCANRETURN_BREAK ,//Í£Ö¹ÔÚµ±Ç°ZoneÀïµÄÉ¨Ãè£¬×ªµ½ÏÂÒ»¸öZoneÉÏÈ¥
-    SCANRETURN_RETURN ,//ÖÐ¶ÏÉ¨Ãè²Ù×÷
+    SCANRETURN_CONTINUE = 0 ,//ç»§ç»­æ‰«æä¸‹ä¸€ä¸ªobj
+    SCANRETURN_BREAK ,//åœæ­¢åœ¨å½“å‰Zoneé‡Œçš„æ‰«æï¼Œè½¬åˆ°ä¸‹ä¸€ä¸ªZoneä¸ŠåŽ»
+    SCANRETURN_RETURN ,//ä¸­æ–­æ‰«ææ“ä½œ
 
     SCANRETURN_NUMBER ,
 };
@@ -27,14 +27,14 @@ class Obj ;
 
 struct SCANOPERATOR_INIT
 {
-    //³¡¾°Ö¸Õë
+    //åœºæ™¯æŒ‡é’ˆ
     Scene*                        m_pScene ;
-    //ËÑË÷µÄÖÐÐÄZoneID
+    //æœç´¢çš„ä¸­å¿ƒZoneID
     ZoneID_t                    m_ZoneID ;
-    //ËÑË÷µÄ°ë¾¶£¨ÒÔZoneÊýÁ¿Îªµ¥Î»£©
+    //æœç´¢çš„åŠå¾„ï¼ˆä»¥Zoneæ•°é‡ä¸ºå•ä½ï¼‰
     INT                            m_nZoneRadius ;
-    //ÊÇ·ñËÑË÷HumanList
-    //TRUEËÑË÷HumanList,FALSEËÑË÷ObjList
+    //æ˜¯å¦æœç´¢HumanList
+    //TRUEæœç´¢HumanList,FALSEæœç´¢ObjList
     BOOL                        m_bScanHuman ;
 
     SCANOPERATOR_INIT( )
@@ -54,29 +54,29 @@ public :
     ScanOperator( ) ;
     virtual ~ScanOperator( ) ;
 
-    //³õÊ¼»¯É¨Ãè¿ØÖÆÆ÷
+    //åˆå§‹åŒ–æ‰«ææŽ§åˆ¶å™¨
     virtual BOOL                Init( SCANOPERATOR_INIT* pInit ) ;
-    //É¨Ãè²Ù×÷¿ªÊ¼Ç°»Øµ÷
+    //æ‰«ææ“ä½œå¼€å§‹å‰å›žè°ƒ
     virtual BOOL                On_BeforeScan( ){ return TRUE ; }
-    //ÅÐ¶Ï²ÎÊýÖÐµÄZoneÊÇ·ñÐèÒªÉ¨Ãè
+    //åˆ¤æ–­å‚æ•°ä¸­çš„Zoneæ˜¯å¦éœ€è¦æ‰«æ
     virtual BOOL                On_IsNeedScan( ZoneID_t ZoneID ){ return TRUE ; }
-    //ËÑË÷µ½Ò»¸öObj, ·µ»ØÖµ¼û SCANRETURN
+    //æœç´¢åˆ°ä¸€ä¸ªObj, è¿”å›žå€¼è§ SCANRETURN
     virtual UINT                On_FindObj( Obj* pObj ){ return SCANRETURN_CONTINUE ; }
-    //É¨Ãè²Ù×÷Íê³Éºó»Øµ÷
+    //æ‰«ææ“ä½œå®ŒæˆåŽå›žè°ƒ
     virtual VOID                On_AfterScan( ){ ; } ;
 
-    //¶ÁÈ¡³¡¾°Ö¸Õë
+    //è¯»å–åœºæ™¯æŒ‡é’ˆ
     Scene*                        GetScene( ){ return m_pScene ; }
 
 protected :
-    //³¡¾°Ö¸Õë
+    //åœºæ™¯æŒ‡é’ˆ
     Scene*                        m_pScene ;
-    //ËÑË÷µÄÖÐÐÄZoneID
+    //æœç´¢çš„ä¸­å¿ƒZoneID
     ZoneID_t                    m_ZoneID ;
-    //ËÑË÷µÄ°ë¾¶£¨ÒÔZoneÊýÁ¿Îªµ¥Î»£©
+    //æœç´¢çš„åŠå¾„ï¼ˆä»¥Zoneæ•°é‡ä¸ºå•ä½ï¼‰
     INT                            m_nZoneRadius ;
-    //ÊÇ·ñËÑË÷HumanList
-    //TRUEËÑË÷HumanList,FALSEËÑË÷ObjList
+    //æ˜¯å¦æœç´¢HumanList
+    //TRUEæœç´¢HumanList,FALSEæœç´¢ObjList
     BOOL                        m_bScanHuman ;
 };
 

@@ -67,7 +67,7 @@
 using namespace Combat_Module::Impact_Module;
 
 
-int g_Command_CommandDeny=FALSE ;//¿ØÖÆ²ÎÊı£¬½ûÖ¹Ê¹ÓÃGMÖ¸Áî
+int g_Command_CommandDeny=FALSE ;//æ§åˆ¶å‚æ•°ï¼Œç¦æ­¢ä½¿ç”¨GMæŒ‡ä»¤
 
 
 #define COMMAND_BUFFER_SIZE 256
@@ -1079,7 +1079,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
 
         pName++;
         strncpy(pOutParam->m_aBuffer, pName, sizeof(pOutParam->m_aBuffer) - 1);
-        return COMMAND_TYPE_CREATEGUILD;    // ´´½¨°ï»á
+        return COMMAND_TYPE_CREATEGUILD;    // åˆ›å»ºå¸®ä¼š
     }
     else if( tstricmp(pCom, "joinguild") == 0 )
     { // joinguild =guildid
@@ -1089,7 +1089,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
 
         pGuildID++;
         pOutParam->Param0 = (INT)(atoi(pGuildID));
-        return COMMAND_TYPE_JOINGUILD;    // ¼ÓÈë°ï»á
+        return COMMAND_TYPE_JOINGUILD;    // åŠ å…¥å¸®ä¼š
     }
     else if( tstricmp(pCom, "guildrecruit") == 0 )
     { // guildrecruit =guid
@@ -1099,7 +1099,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
 
         pGUID++;
         pOutParam->Param0 = (INT)(atoi(pGUID));
-        return COMMAND_TYPE_GUILDRECRUIT;    // °ï»áÊÕÈË
+        return COMMAND_TYPE_GUILDRECRUIT;    // å¸®ä¼šæ”¶äºº
     }
     else if( tstricmp(pCom, "guildexpel") == 0 )
     { // guildexpel =guild
@@ -1109,15 +1109,15 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
 
         pGUID++;
         pOutParam->Param0 = (INT)(atoi(pGUID));
-        return COMMAND_TYPE_GUILDEXPEL;    // °ï»áÌßÈË
+        return COMMAND_TYPE_GUILDEXPEL;    // å¸®ä¼šè¸¢äºº
     }
     else if( tstricmp(pCom, "leaveguild") == 0 )
     {
-        return COMMAND_TYPE_LEAVEGUILD;    // Àë¿ª°ï»á
+        return COMMAND_TYPE_LEAVEGUILD;    // ç¦»å¼€å¸®ä¼š
     }
     else if( tstricmp(pCom, "dismissguild") == 0 )
     {
-        return COMMAND_TYPE_GUILDDISMISS;    // ½âÉ¢°ï»á
+        return COMMAND_TYPE_GUILDDISMISS;    // è§£æ•£å¸®ä¼š
     }
     else if( tstricmp(pCom, "guildlist") == 0 )
     { // guildlist =startindex
@@ -1133,11 +1133,11 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
             pOutParam->Param0 = (INT)(atoi(pIndex));
         }
 
-        return COMMAND_TYPE_ASKGUILDLIST;    // °ï»áÁĞ±í
+        return COMMAND_TYPE_ASKGUILDLIST;    // å¸®ä¼šåˆ—è¡¨
     }
     else if( tstricmp(pCom, "relation") == 0 )
     { // relation
-        return COMMAND_TYPE_ASKRELATIONLIST;    // ¹ØÏµÁĞ±í
+        return COMMAND_TYPE_ASKRELATIONLIST;    // å…³ç³»åˆ—è¡¨
     }
     else if( tstricmp(pCom, "addfriend") == 0 )
     { // addfriend =friendguid =friendgroup =friendname
@@ -1161,7 +1161,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         pName++;
         strncpy(pOutParam->m_aBuffer, pName, sizeof(pOutParam->m_aBuffer) - 1);
 
-        return COMMAND_TYPE_ADDFRIEND;        // ¼ÓÈëÒ»¸öºÃÓÑ
+        return COMMAND_TYPE_ADDFRIEND;        // åŠ å…¥ä¸€ä¸ªå¥½å‹
     }
     else if( tstricmp(pCom, "setfriendpoint") == 0 || tstricmp(pCom, "setfp") == 0 )
     { // setfp =friendguid =friendpoint
@@ -1196,7 +1196,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
 
         pName++;
         strncpy(pOutParam->m_aBuffer, pName, sizeof(pOutParam->m_aBuffer) - 1);
-        return COMMAND_TYPE_ADDBLACKNAME;    // ¼ÓÈëºÚÃûµ¥
+        return COMMAND_TYPE_ADDBLACKNAME;    // åŠ å…¥é»‘åå•
     }
     else if( tstricmp(pCom, "delfriend") == 0 )
     { // delfriend =friendguid =passwd
@@ -1218,7 +1218,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
             memset((void*)pOutParam->m_aBuffer, 0, sizeof(pOutParam->m_aBuffer));
         }
 
-        return COMMAND_TYPE_DELFRIEND;        // É¾³ıÒ»¸öºÃÓÑ
+        return COMMAND_TYPE_DELFRIEND;        // åˆ é™¤ä¸€ä¸ªå¥½å‹
     }
     else if( tstricmp(pCom, "delblack") == 0 )
     { // delblack =blackguid
@@ -1229,7 +1229,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         pGUID++;
         pOutParam->Param0 = (INT)(atoi(pGUID));
 
-        return COMMAND_TYPE_DELBLACK;    // ´ÓºÚÃûµ¥ÀïÉ¾³ıÒ»¸öÍæ¼Ò
+        return COMMAND_TYPE_DELBLACK;    // ä»é»‘åå•é‡Œåˆ é™¤ä¸€ä¸ªç©å®¶
     }
     else if( tstricmp(pCom, "transition") == 0 )
     { // transition =guid =type =group
@@ -1252,7 +1252,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         pGroup++;
         pOutParam->Param2 = (INT)(atoi(pGroup));
 
-        return COMMAND_TYPE_TRANSITION;    // ×é¼ä×ªÒÆ
+        return COMMAND_TYPE_TRANSITION;    // ç»„é—´è½¬ç§»
     }
     else if( tstricmp(pCom, "setcamp") == 0 )
     { // setcamp =objid =campid
@@ -1270,7 +1270,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         pOutParam->Param1 = (INT)(atoi(pCampID));
         return COMMAND_TYPE_SETCAMPID;
     }
-    else if( tstricmp(pCom, "save") == 0 )//±£´æÓÃ»§µµ°¸
+    else if( tstricmp(pCom, "save") == 0 )//ä¿å­˜ç”¨æˆ·æ¡£æ¡ˆ
     {// save
         return COMMAND_TYPE_SAVE ;
     }
@@ -1299,7 +1299,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
             pOutParam->Param0 = (INT)(atoi(pLevel));
         }
 
-        return COMMAND_TYPE_LEVELUP;                // Éı¼¶
+        return COMMAND_TYPE_LEVELUP;                // å‡çº§
     }
     else if( tstricmp(pCom, "abilityup") == 0 )
     { // abilityup =abilityid =level
@@ -1321,7 +1321,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
             pOutParam->Param1 = (INT)(atoi(pLevel));
         }
 
-        return COMMAND_TYPE_ABILITYUP;                // Éú»î¼¼ÄÜÉı¼¶
+        return COMMAND_TYPE_ABILITYUP;                // ç”Ÿæ´»æŠ€èƒ½å‡çº§
     }
     else if( tstricmp(pCom, "who") == 0 )
     {// who
@@ -1332,7 +1332,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         return COMMAND_TYPE_ALLWHO ;
     }
     else if( tstricmp(pCom, "catchplayer") == 0 )
-    {// catchplayer name=???? »òÕß
+    {// catchplayer name=???? æˆ–è€…
      // catchplayer guid:????
         CHAR* pParam = pCommand+iPos;
 
@@ -1340,7 +1340,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         CHAR* pName = strchr( pParam, '=' );
         if( pName )
         {
-            pOutParam->Param0 = 0 ;//Ãû×Ö²éÑ¯
+            pOutParam->Param0 = 0 ;//åå­—æŸ¥è¯¢
             pName++;
 
             strncpy( pOutParam->m_aBuffer, pName, MAX_CHARACTER_NAME-1 ) ;
@@ -1354,14 +1354,14 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
 
         CHAR* pStop ;
         pGUID ++ ;
-        pOutParam->Param0 = 1 ;//GUID²éÑ¯
+        pOutParam->Param0 = 1 ;//GUIDæŸ¥è¯¢
         pOutParam->Param1 = (INT)strtoul(pGUID,&pStop,16) ;
 
 
         return     COMMAND_TYPE_CATCHPLAYER ;
     }
     else if( tstricmp(pCom, "playerinfo") == 0 )
-    {// playerinfo name=???? »òÕß
+    {// playerinfo name=???? æˆ–è€…
      //    playerinfo guid:????
         CHAR* pParam = pCommand+iPos;
 
@@ -1369,7 +1369,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         CHAR* pName = strchr( pParam, '=' );
         if( pName )
         {
-            pOutParam->Param0 = 0 ;//Ãû×Ö²éÑ¯
+            pOutParam->Param0 = 0 ;//åå­—æŸ¥è¯¢
             pName++;
 
             strncpy( pOutParam->m_aBuffer, pName, MAX_CHARACTER_NAME-1 ) ;
@@ -1383,7 +1383,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
 
         CHAR* pStop ;
         pGUID ++ ;
-        pOutParam->Param0 = 1 ;//GUID²éÑ¯
+        pOutParam->Param0 = 1 ;//GUIDæŸ¥è¯¢
         pOutParam->Param1 = (INT)strtoul(pGUID,&pStop,16) ;
 
         return COMMAND_TYPE_PLAYERINFO ;
@@ -1538,7 +1538,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         return COMMAND_TYPE_DOUBLEEXP;
     }
     else if ( tstricmp( pCom, "CityCreate" ) == 0 )
-    {// ½¨Á¢³ÇÊĞ =Èë¿Ú³¡¾°ºÅ
+    {// å»ºç«‹åŸå¸‚ =å…¥å£åœºæ™¯å·
         CHAR* pParam = pCommand+iPos;
 
         CHAR* pSceneID = strchr( pParam, '=' );
@@ -1550,7 +1550,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
         return COMMAND_TYPE_CREATECITY;
     }
     else if ( tstricmp( pCom, "CityDelete" ) == 0 )
-    {// ½¨Á¢³ÇÊĞ =Èë¿Ú³¡¾°ºÅ
+    {// å»ºç«‹åŸå¸‚ =å…¥å£åœºæ™¯å·
         CHAR* pParam = pCommand+iPos;
 
         CHAR* pPortSceneID = strchr( pParam, '=' );
@@ -1927,7 +1927,7 @@ COMMAND_TYPE Calc_Command( CHAR* pCommand, INT iSize, COMMAND_PARAM* pOutParam )
             pOutParam->Param1 = (INT)(atoi(pValue));
         }
 
-        return COMMAND_TYPE_SETABILITYEXP;                // Éú»î¼¼ÄÜÉı¼¶
+        return COMMAND_TYPE_SETABILITYEXP;                // ç”Ÿæ´»æŠ€èƒ½å‡çº§
     }
     else if( tstricmp(pCom, "setrmb") == 0 )
     {    // setgoodbad =value
@@ -1965,7 +1965,7 @@ __ENTER_FUNCTION
     Scene* pScene = pHuman->getScene() ;
     if( pScene==NULL ) return PACKET_EXE_CONTINUE ;
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     if( !CommandSafeCheck( pPacket->GetCommand(), pPacket->GetCommandSize() ) ) return PACKET_EXE_CONTINUE ;
@@ -1994,12 +1994,12 @@ __ENTER_FUNCTION
             GMCommand = TRUE; //__??
         }
     }
-    if(    g_Command_CommandDeny || GMCommand==FALSE )//½ûÖ¹Ê¹ÓÃGMÖ¸Áî
+    if(    g_Command_CommandDeny || GMCommand==FALSE )//ç¦æ­¢ä½¿ç”¨GMæŒ‡ä»¤
     {
         if( Command!=COMMAND_TYPE_NONE )
         {
             CHAR szContex[256] ;
-            sprintf( szContex, "ÎŞ·¨Ê¹ÓÃGMÖ¸Áî£¡µ±Ç°Ä£Ê½²»Ö§³Ö£¡" ) ;
+            sprintf( szContex, "æ— æ³•ä½¿ç”¨GMæŒ‡ä»¤ï¼å½“å‰æ¨¡å¼ä¸æ”¯æŒï¼" ) ;
             GCChat Msg ;
             Msg.SetChatType( CHAT_TYPE_SYSTEM ) ;
             Msg.SetContex( szContex ) ;
@@ -2042,8 +2042,8 @@ __ENTER_FUNCTION
             New.m_fZ = Out.fParam1 ;
 
             if( Out.Param1!=INVALID_ID )
-            {//ÇĞ»»³¡¾°
-             //Ïò´ËÍæ¼Ò·¢ËÍ¿ÉÒÔ×ªÒÆ³¡¾°ÏûÏ¢
+            {//åˆ‡æ¢åœºæ™¯
+             //å‘æ­¤ç©å®¶å‘é€å¯ä»¥è½¬ç§»åœºæ™¯æ¶ˆæ¯
                 if( pCharacter->GetObjType() != Obj::OBJ_TYPE_HUMAN )
                     break ;
 
@@ -2064,7 +2064,7 @@ __ENTER_FUNCTION
 
             }
             else
-            {//Í¬³¡¾°ÄÚ×ªÒÆ
+            {//åŒåœºæ™¯å†…è½¬ç§»
 
                 WORLD_POS Old = *pObj->getWorldPos() ;
 
@@ -2098,7 +2098,7 @@ __ENTER_FUNCTION
         {
             //BOOL bModify = FALSE ;
             //pHuman->Skill_SetXinFaLevel(Out.Param0, Out.Param1);
-            ////Í¨Öª
+            ////é€šçŸ¥
             //GCSkillClass    Msg;
             //Msg.setObjID( pHuman->GetID() );
             //Msg.setXinFaList(pHuman->Skill_GetXinFaList().m_Count, pHuman->Skill_GetXinFaList().m_aXinFa);
@@ -2122,7 +2122,7 @@ __ENTER_FUNCTION
         {
             //BOOL bModify = FALSE ;
             //pHuman->Skill_AllXinFaLevel(Out.Param0);
-            ////Í¨Öª¿Í»§¶Ë
+            ////é€šçŸ¥å®¢æˆ·ç«¯
             //GCSkillClass    Msg;
             //Msg.setObjID( pHuman->GetID() );
             ////Msg.setXinFa( (WORD)(pHuman->GetDB()->m_dbXinFa->m_Count), pHuman->GetDB()->m_dbXinFa->m_aXinFa );
@@ -2157,7 +2157,7 @@ __ENTER_FUNCTION
 
 
             HumanItemLogic::CreateItemToBag(&ItemLogParam,pHuman,Out.Param0,BagIndex,Out.Param1);
-            if(BagIndex==INVALID_INDEX) //´´½¨Ê§°Ü
+            if(BagIndex==INVALID_INDEX) //åˆ›å»ºå¤±è´¥
             {
                 return PACKET_EXE_CONTINUE;
             }
@@ -2165,7 +2165,7 @@ __ENTER_FUNCTION
             Item*    pDestItem = HumanItemLogic::GetItem(pHuman,BagIndex);
             Assert(pDestItem);
 
-            //Í¨Öª
+            //é€šçŸ¥
             GCNotifyEquip Msg ;
             Msg.SetBagIndex( BagIndex ) ;
 
@@ -2373,7 +2373,7 @@ __ENTER_FUNCTION
             g_pPacketFactoryManager->RemovePacket( pMsg ) ;
         }
         break;
-    case COMMAND_TYPE_CHANNEL_CREATE://×Ô½¨ÁÄÌìÆµµÀ-´´½¨
+    case COMMAND_TYPE_CHANNEL_CREATE://è‡ªå»ºèŠå¤©é¢‘é“-åˆ›å»º
         {
             GWChannelCreate* pMsg = (GWChannelCreate*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_CHANNELCREATE)) ;
             pMsg->SetGUID( (GUID_t)(Out.Param0) ) ;
@@ -2381,16 +2381,16 @@ __ENTER_FUNCTION
             g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
         }
         break ;
-    case COMMAND_TYPE_CHANNEL_INVITE://×Ô½¨ÁÄÌìÆµµÀ-ÑûÇë
+    case COMMAND_TYPE_CHANNEL_INVITE://è‡ªå»ºèŠå¤©é¢‘é“-é‚€è¯·
         {
             GWChannelInvite* pMsg = (GWChannelInvite*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_CHANNELINVITE)) ;
-            pMsg->SetSourGUID( (GUID_t)(Out.Param0) ) ;//ÑûÇëÈË
-            pMsg->SetDestGUID( (GUID_t)(Out.Param1) ) ;//±»ÑûÇëÈË
+            pMsg->SetSourGUID( (GUID_t)(Out.Param0) ) ;//é‚€è¯·äºº
+            pMsg->SetDestGUID( (GUID_t)(Out.Param1) ) ;//è¢«é‚€è¯·äºº
 
             g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
         }
         break ;
-    case COMMAND_TYPE_CHANNEL_DISMISS://×Ô½¨ÁÄÌìÆµµÀ-½âÉ¢
+    case COMMAND_TYPE_CHANNEL_DISMISS://è‡ªå»ºèŠå¤©é¢‘é“-è§£æ•£
         {
             GWChannelDismiss* pMsg = (GWChannelDismiss*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_CHANNELDISMISS)) ;
             pMsg->SetGUID( (GUID_t)(Out.Param0) ) ;
@@ -2398,11 +2398,11 @@ __ENTER_FUNCTION
             g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
         }
         break ;
-    case COMMAND_TYPE_CHANNEL_KICK://×Ô½¨ÁÄÌìÆµµÀ-Ìß³ı³ÉÔ±
+    case COMMAND_TYPE_CHANNEL_KICK://è‡ªå»ºèŠå¤©é¢‘é“-è¸¢é™¤æˆå‘˜
         {
             GWChannelKick* pMsg = (GWChannelKick*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_CHANNELKICK)) ;
-            pMsg->SetSourGUID( (GUID_t)(Out.Param0) ) ;//ÌßÈËÕß
-            pMsg->SetDestGUID( (GUID_t)(Out.Param1) ) ;//±»ÌßÕß
+            pMsg->SetSourGUID( (GUID_t)(Out.Param0) ) ;//è¸¢äººè€…
+            pMsg->SetDestGUID( (GUID_t)(Out.Param1) ) ;//è¢«è¸¢è€…
 
             g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
         }
@@ -2421,8 +2421,8 @@ __ENTER_FUNCTION
             New.m_fZ = Out.fParam1 ;
 
             if( Out.Param0!=INVALID_ID )
-            {//ÇĞ»»³¡¾°
-             //Ïò´ËÍæ¼Ò·¢ËÍ¿ÉÒÔ×ªÒÆ³¡¾°ÏûÏ¢
+            {//åˆ‡æ¢åœºæ™¯
+             //å‘æ­¤ç©å®¶å‘é€å¯ä»¥è½¬ç§»åœºæ™¯æ¶ˆæ¯
                 if( pCharacter->GetObjType() != Obj::OBJ_TYPE_HUMAN )
                     break ;
 
@@ -2443,7 +2443,7 @@ __ENTER_FUNCTION
 
             }
             else
-            {//Í¬³¡¾°ÄÚ×ªÒÆ
+            {//åŒåœºæ™¯å†…è½¬ç§»
 
                 WORLD_POS Old = *pObj->getWorldPos() ;
 
@@ -2453,14 +2453,14 @@ __ENTER_FUNCTION
 
                 ((Obj_Human*)(pCharacter))->GetHumanAI()->PushCommand_Idle( ) ;
 
-                ////Í¨ÖªÖÜÎ§Íæ¼Ò£¬´ËObjÒª±»ÒÆ×ßÁË
+                ////é€šçŸ¥å‘¨å›´ç©å®¶ï¼Œæ­¤Objè¦è¢«ç§»èµ°äº†
                 //GCDelObject MsgLeave ;
                 //MsgLeave.setObjID( pCharacter->GetID() ) ;
                 //pScene->BroadCast( &MsgLeave, pCharacter ) ;
 
                 pCharacter->Teleport( &New ) ;
 
-                ////Í¨ÖªĞÂÎ»ÖÃµÄÖÜÎ§Íæ¼Ò£¬´ËObj½øÀ´ÁË
+                ////é€šçŸ¥æ–°ä½ç½®çš„å‘¨å›´ç©å®¶ï¼Œæ­¤Objè¿›æ¥äº†
                 //if( pCharacter->GetObjType()==Obj::OBJ_TYPE_HUMAN )
                 //{
                 //    Obj_Human* pDestHuman = (Obj_Human*)pCharacter ;
@@ -2918,7 +2918,7 @@ __ENTER_FUNCTION
             g_pServerManager->SendPacket( pMsg, INVALID_ID );
         }
         break;
-    case COMMAND_TYPE_ASKRELATIONLIST:        // ¹ØÏµÁĞ±í
+    case COMMAND_TYPE_ASKRELATIONLIST:        // å…³ç³»åˆ—è¡¨
         {
             CGRelation* pMsg = (CGRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_CG_RELATION);
 
@@ -2926,7 +2926,7 @@ __ENTER_FUNCTION
             pScene->SendPacket( pMsg, pGamePlayer->PlayerID() );
         }
         break;
-    case COMMAND_TYPE_ADDFRIEND:            // ¼ÓÈëÒ»¸öºÃÓÑ
+    case COMMAND_TYPE_ADDFRIEND:            // åŠ å…¥ä¸€ä¸ªå¥½å‹
         {
             CGRelation* pMsg = (CGRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_CG_RELATION);
 
@@ -2949,17 +2949,17 @@ __ENTER_FUNCTION
             nPoint -= pMyRelation->GetFriendPoint( guid );
             if( nPoint > 0 )
             {
-                // Ôö¼ÓÓÑºÃ¶È
+                // å¢åŠ å‹å¥½åº¦
                 pMyRelation->IncFriendPoint( guid, nPoint );
             }
             else if( nPoint < 0 )
             {
-                // ¼õÉÙÓÑºÃ¶È
+                // å‡å°‘å‹å¥½åº¦
                 pMyRelation->DecFriendPoint( guid, -nPoint );
             }
         }
         break;
-    case COMMAND_TYPE_ADDBLACKNAME:            // ¼ÓÈëºÚÃûµ¥
+    case COMMAND_TYPE_ADDBLACKNAME:            // åŠ å…¥é»‘åå•
         {
             CGRelation* pMsg = (CGRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_CG_RELATION);
 
@@ -2972,7 +2972,7 @@ __ENTER_FUNCTION
             pScene->SendPacket( pMsg, pGamePlayer->PlayerID() );
         }
         break;
-    case COMMAND_TYPE_DELFRIEND:            // É¾³ıÒ»¸öºÃÓÑ
+    case COMMAND_TYPE_DELFRIEND:            // åˆ é™¤ä¸€ä¸ªå¥½å‹
         {
             CGRelation* pMsg = (CGRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_CG_RELATION);
 
@@ -2983,7 +2983,7 @@ __ENTER_FUNCTION
             pScene->SendPacket( pMsg, pGamePlayer->PlayerID() );
         }
         break;
-    case COMMAND_TYPE_DELBLACK:                // ´ÓºÚÃûµ¥ÀïÉ¾³ıÒ»¸öÍæ¼Ò
+    case COMMAND_TYPE_DELBLACK:                // ä»é»‘åå•é‡Œåˆ é™¤ä¸€ä¸ªç©å®¶
         {
             CGRelation* pMsg = (CGRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_CG_RELATION);
 
@@ -2994,7 +2994,7 @@ __ENTER_FUNCTION
             pScene->SendPacket( pMsg, pGamePlayer->PlayerID() );
         }
         break;
-    case COMMAND_TYPE_TRANSITION:            // ×é¼ä×ªÒÆ
+    case COMMAND_TYPE_TRANSITION:            // ç»„é—´è½¬ç§»
         {
             CGRelation* pMsg = (CGRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_CG_RELATION);
 
@@ -3074,7 +3074,7 @@ __ENTER_FUNCTION
             pGamePlayer->SendPacket( &Msg ) ;
         }
         break ;
-    case COMMAND_TYPE_LEVELUP:                // Éı¼¶
+    case COMMAND_TYPE_LEVELUP:                // å‡çº§
         {
             INT nMyLevel, nLevel;
 
@@ -3113,7 +3113,7 @@ __ENTER_FUNCTION
             g_pServerManager->SendPacket( pWorldMsg, INVALID_ID );
         }
         break;
-    case COMMAND_TYPE_ABILITYUP:                // Éú»î¼¼ÄÜÉı¼¶
+    case COMMAND_TYPE_ABILITYUP:                // ç”Ÿæ´»æŠ€èƒ½å‡çº§
         {
             INT nMyLevel, nLevel;
             AbilityID_t aid;
@@ -3152,7 +3152,7 @@ __ENTER_FUNCTION
         break;
     case COMMAND_TYPE_WHO:
         {
-            CHAR szSourName[] = "ĞÅÏ¢»ñÈ¡" ;
+            CHAR szSourName[] = "ä¿¡æ¯è·å–" ;
             CHAR szContex[256] ;
             
             sprintf( szContex, "PlayerCount: %d/%d", 
@@ -3209,7 +3209,7 @@ __ENTER_FUNCTION
         break ;
     case COMMAND_TYPE_PLAYERINFO:
         {
-            CHAR szSourName[] = "ĞÅÏ¢»ñÈ¡" ;
+            CHAR szSourName[] = "ä¿¡æ¯è·å–" ;
             CHAR szContex[256] ;
 
             if( Out.Param0 == 0 )
@@ -3267,7 +3267,7 @@ __ENTER_FUNCTION
                 }
             }
             else if( Out.Param0 == 1 )
-            {//¸ù¾İGUID²éÑ¯
+            {//æ ¹æ®GUIDæŸ¥è¯¢
                 Obj_Human* pSearchHuman = (Obj_Human*)g_pGUIDManager->Get((GUID_t)Out.Param1) ;
                 if( pSearchHuman==NULL )
                 {
@@ -3450,7 +3450,7 @@ __ENTER_FUNCTION
             if(pHuman->m_ExpTimer.IsSetTimer())
             {
 
-                //Èç¹û¾­Ñé±¶ÊıĞ¡ÓÚÒÑ¾­ÉèÖÃ¹ıµÄ¾Í²»»áÖØĞÂÉèÖÃ
+                //å¦‚æœç»éªŒå€æ•°å°äºå·²ç»è®¾ç½®è¿‡çš„å°±ä¸ä¼šé‡æ–°è®¾ç½®
                 if(nExpDoubleNum < GETLOW(pHuman->GetDoubleExpTime_Num()))
                 {
             //        Lua_PushNumber( L, 0 );
@@ -3458,13 +3458,13 @@ __ENTER_FUNCTION
                     break;
 
                 }
-                //Èç¹û¾­Ñé±¶ÊıÏàµÈ¾ÍÔö¼ÓÊ±¼ä
+                //å¦‚æœç»éªŒå€æ•°ç›¸ç­‰å°±å¢åŠ æ—¶é—´
                 if(nExpDoubleNum == GETLOW(pHuman->GetDoubleExpTime_Num()))
                 {
                     //pHuman->SetEnergy((nExpTime+GETHIGH(pHuman->GetEnergy()))<<16+nExpDoubleNum);
                     pHuman->m_ExpTimer.SetTermTime(pHuman->m_ExpTimer.GetTermTime()+nExpTime);
                 }
-                //Èç¹û¾­Ñé±¶Êı´óÓÚÒÑ¾­ÉèÖÃ¹ıµÄ¾Í¸üĞÂË«±¶¾­Ñé
+                //å¦‚æœç»éªŒå€æ•°å¤§äºå·²ç»è®¾ç½®è¿‡çš„å°±æ›´æ–°åŒå€ç»éªŒ
                 if(nExpDoubleNum > GETLOW(pHuman->GetDoubleExpTime_Num()))
                 {
                     pHuman->m_ExpTimer.CleanUp();
@@ -3475,12 +3475,12 @@ __ENTER_FUNCTION
             }
             else
             {
-                //ÉèÖÃË«±¶¾­Ñé;
+                //è®¾ç½®åŒå€ç»éªŒ;
                 pHuman->m_ExpTimer.BeginTimer(nExpTime,g_pTimeManager->CurrentTime());
                 pHuman->SetDoubleExpTime_Num(((nExpTime/1000)<<16)+nExpDoubleNum);
                 GCChat msgChat;
                 CHAR szChat[128]={0};
-                sprintf(szChat,"ÄãÒÑ¾­ÉèÖÃÁË´ò¹Ö»ñÈ¡%d±¶¾­Ñé×´Ì¬",nExpDoubleNum);
+                sprintf(szChat,"ä½ å·²ç»è®¾ç½®äº†æ‰“æ€ªè·å–%då€ç»éªŒçŠ¶æ€",nExpDoubleNum);
                 INT Size = (INT)strlen(szChat) ;
                 msgChat.SetChatType( CHAT_TYPE_SELF) ;
                 msgChat.SetContexSize( Size ) ;
@@ -3651,11 +3651,11 @@ __ENTER_FUNCTION
             {
                 FLOAT fGrowRate = pPetItem->GetGrowRate();
 
-                sprintf(szChat, "#R³É³¤ÂÊ£º%f", fGrowRate);
+                sprintf(szChat, "#Ræˆé•¿ç‡ï¼š%f", fGrowRate);
             }
             else
             {
-                sprintf(szChat, "#RÎ´ÕÒµ½Ö¸¶¨³èÎï");
+                sprintf(szChat, "#Ræœªæ‰¾åˆ°æŒ‡å®šå® ç‰©");
             }
 
             GCChat msgChat;
@@ -3758,7 +3758,7 @@ __ENTER_FUNCTION
 
         }
         break;
-    case COMMAND_TYPE_FINGERGUID:            // ÓÃ GUID ÕÒÍæ¼ÒĞÅÏ¢
+    case COMMAND_TYPE_FINGERGUID:            // ç”¨ GUID æ‰¾ç©å®¶ä¿¡æ¯
         {
             GUID_t guid = Out.Param0;
             INT nOnlineFlag = Out.Param1;
@@ -3776,7 +3776,7 @@ __ENTER_FUNCTION
             g_pLog->FastSaveLog( LOG_FILE_1, "COMMAND_TYPE_FINGERGUID: GUID:%u, OnlineFlag=%d", guid, nOnlineFlag );
         }
         break;
-    case COMMAND_TYPE_FINGERNAME:            // ÓÃÃû×ÖÕÒÍæ¼ÒĞÅÏ¢
+    case COMMAND_TYPE_FINGERNAME:            // ç”¨åå­—æ‰¾ç©å®¶ä¿¡æ¯
         {
             INT nOnlineFlag = Out.Param0;
             INT nPreciseFlag = Out.Param1;
@@ -3801,7 +3801,7 @@ __ENTER_FUNCTION
                 szName, nOnlineFlag, nPreciseFlag, nPosition );
         }
         break;
-    case COMMAND_TYPE_ADVANCEDFINGER:        // ¸ß¼¶²éÕÒ
+    case COMMAND_TYPE_ADVANCEDFINGER:        // é«˜çº§æŸ¥æ‰¾
         {
             INT nPosition = Out.Param0;
             INT nMenpai = Out.Param1;
@@ -3849,7 +3849,7 @@ __ENTER_FUNCTION
                 nPosition, nMenpai, nGuildID, nSex, nLevelFrom, nLevelTo );
         }
         break;
-    case COMMAND_TYPE_SETABILITYEXP:                // Éú»î¼¼ÄÜÉı¼¶
+    case COMMAND_TYPE_SETABILITYEXP:                // ç”Ÿæ´»æŠ€èƒ½å‡çº§
         {
             AbilityID_t aid;
 

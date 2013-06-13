@@ -14,7 +14,7 @@ public:
     GCNotifyChangeScene( ){} ;
     virtual ~GCNotifyChangeScene( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -26,7 +26,7 @@ public:
                                                             sizeof(BYTE)*2 ; }
 
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     ObjID_t            getCurrentSceneID( ){ return m_CurrentSceneID ; }
     VOID            setCurrentSceneID( SceneID_t id ){ m_CurrentSceneID = id ; }
 
@@ -45,8 +45,8 @@ public:
 private:
     SceneID_t        m_CurrentSceneID;        // ObjID
     SceneID_t        m_TargetSceneID;        // ObjID
-    WORLD_POS        m_TargetPos ;            //目标场景位置
-    BYTE            m_TargetDir ;            //目标场景方向
+    WORLD_POS        m_TargetPos ;            //鐩爣鍦烘櫙浣嶇疆
+    BYTE            m_TargetDir ;            //鐩爣鍦烘櫙鏂瑰悜
     BYTE            m_Flag;
 
 };

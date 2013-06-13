@@ -1,6 +1,6 @@
 // CGPlayerCallOfResult.h
 // 
-// ÑûÇëÈ¥Ä³µØµÄ²Ù×÷½á¹û
+// é‚€è¯·å»æŸåœ°çš„æ“ä½œç»“æœ
 //
 //////////////////////////////////////////////////////
 
@@ -14,8 +14,8 @@
 enum ENUM_CALLOF_RESULT_CODE
 {
     CALLOF_RESULT_CODE_INVALID    = -1,
-    CALLOF_RESULT_CODE_ACCEPT,        // ½ÓÊÜ
-    CALLOF_RESULT_CODE_REFUSE,        // ¾Ü¾ø
+    CALLOF_RESULT_CODE_ACCEPT,        // æ¥å—
+    CALLOF_RESULT_CODE_REFUSE,        // æ‹’ç»
     CALLOF_RESULT_CODE_NUMBERS
 };
 
@@ -30,7 +30,7 @@ namespace Packets
         }
         virtual ~CGPlayerCallOfResult( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,7 +39,7 @@ namespace Packets
         virtual UINT            GetPacketSize()const { return    sizeof(INT); }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                SetResultCode(INT nResult) { m_nResultCode = nResult; }
         INT                    GetResultCode(VOID)const { return m_nResultCode; }
 

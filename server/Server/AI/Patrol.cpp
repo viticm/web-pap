@@ -19,10 +19,10 @@ VOID PatrolPathMgr::CleanUp( VOID )
 VOID PatrolPathMgr::LoadPatrolPoint( const CHAR* filename )
 {
 __ENTER_FUNCTION
-    // ´ÓÖ¸¶¨ÎÄ¼ş¶ÁÈ¡ÏàÓ¦µÄÑ²ÂßÂ·µãĞÅÏ¢
+    // ä»æŒ‡å®šæ–‡ä»¶è¯»å–ç›¸åº”çš„å·¡é€»è·¯ç‚¹ä¿¡æ¯
     PATROL_FILE* pPatrolFile = g_pSceneManager->FindPatrolFile( filename ) ;
     if( pPatrolFile==NULL )
-    {//Ã»ÓĞ¶ÁÈ¡¹ı£¬´ÓÅäÖÃÎÄ¼şÀï¶ÁÈ¡
+    {//æ²¡æœ‰è¯»å–è¿‡ï¼Œä»é…ç½®æ–‡ä»¶é‡Œè¯»å–
         pPatrolFile = g_pSceneManager->FindEmptyPatrolFile() ;
 
         CHAR szSection[_MAX_PATH],
@@ -31,7 +31,7 @@ __ENTER_FUNCTION
         Ini ini( filename ) ;
 
         INT nPatrolNum = ini.ReadInt( "INFO", "PATROLNUMBER" ) ;
-        // ³õÊ¼»¯¸Ã³¡¾°ÄÚËùÓĞµÄÑ²ÂßÂ·Ïß¸öÊı
+        // åˆå§‹åŒ–è¯¥åœºæ™¯å†…æ‰€æœ‰çš„å·¡é€»è·¯çº¿ä¸ªæ•°
         if (nPatrolNum <= 0)
         {
             return;
@@ -58,7 +58,7 @@ __ENTER_FUNCTION
             {
                 continue;
             }
-            // ³õÊ¼»¯¸ÃÑ²ÂßÂ·ÏßµÄÑ²Âßµã¸öÊı
+            // åˆå§‹åŒ–è¯¥å·¡é€»è·¯çº¿çš„å·¡é€»ç‚¹ä¸ªæ•°
             pPatrolFile->m_PatrolPathList[i].m_nPatrolPointCount = nPatrolPointNum;
             pPatrolFile->m_PatrolPathList[i].m_PatrolUnitList = new PatrolPath::PatrolUnit[nPatrolPointNum];
             if ( !pPatrolFile->m_PatrolPathList[i].m_PatrolUnitList)
@@ -106,7 +106,7 @@ __ENTER_FUNCTION
                 ini.ReadText( szSection, szName, szRet, _MAX_PATH ) ;
 
                 FLOAT fZ = (FLOAT)atof(szRet);
-                // ³õÊ¼»¯¸ÃÑ²ÂßÂ·ÏßµÄÌØ¶¨µã
+                // åˆå§‹åŒ–è¯¥å·¡é€»è·¯çº¿çš„ç‰¹å®šç‚¹
                 pPatrolFile->m_PatrolPathList[i].m_PatrolUnitList[j].m_PatrolPoint.m_fX = fX;
                 pPatrolFile->m_PatrolPathList[i].m_PatrolUnitList[j].m_PatrolPoint.m_fZ = fZ;
             }
@@ -152,13 +152,13 @@ __ENTER_FUNCTION
 
     INT nCount = m_PatrolPathList[patrolPathIndex].m_nPatrolPointCount;
     if ( baHead )
-    {// Èç¹ûÊÇÕı·½Ïò×ß...
+    {// å¦‚æœæ˜¯æ­£æ–¹å‘èµ°...
         if ( patrolPointIndex+1 >= nCount )
-        {// ÒÑ¾­µ½´ïÕı·½ÏòµÄÍ·ÁË,Èç¹ûÍ·½Úµã==Ä©½Úµã£¬ÔòÒ»Ö±Õı·½Ïò×ß
+        {// å·²ç»åˆ°è¾¾æ­£æ–¹å‘çš„å¤´äº†,å¦‚æœå¤´èŠ‚ç‚¹==æœ«èŠ‚ç‚¹ï¼Œåˆ™ä¸€ç›´æ­£æ–¹å‘èµ°
             WORLD_POS* pCurPos = &(m_PatrolPathList[patrolPathIndex].m_PatrolUnitList[patrolPointIndex].m_PatrolPoint);
             WORLD_POS* pStartPos = &(m_PatrolPathList[patrolPathIndex].m_PatrolUnitList[0].m_PatrolPoint);
             if ((*pCurPos) == (*pStartPos))
-            {// Ö±½Óµ½Í·½ÚµãµÄÏÂÒ»¸öÎ»ÖÃ
+            {// ç›´æ¥åˆ°å¤´èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªä½ç½®
                 patrolPointIndex = 1;
             }
             else 
@@ -175,7 +175,7 @@ __ENTER_FUNCTION
     else
     {
         if ( patrolPointIndex-1 < 0 )
-        {// ÒÑ¾­µ½´ï·´·½ÏòµÄÍ·ÁË
+        {// å·²ç»åˆ°è¾¾åæ–¹å‘çš„å¤´äº†
             patrolPointIndex = 1;
             baHead = TRUE;
         }
@@ -184,7 +184,7 @@ __ENTER_FUNCTION
             --patrolPointIndex;
         }
     }
-    // ¶ÔpatrolPointIndexµÄ±ß½ç½øĞĞÇ¿ĞĞĞŞÕı
+    // å¯¹patrolPointIndexçš„è¾¹ç•Œè¿›è¡Œå¼ºè¡Œä¿®æ­£
     {
         patrolPointIndex < 0 ? patrolPointIndex = 0 : NULL;
         patrolPointIndex+1 > nCount ? patrolPointIndex = nCount-1 : NULL;

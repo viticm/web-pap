@@ -12,7 +12,7 @@ __ENTER_FUNCTION
 
     USER* pUser = g_pOnlineUser->FindUser( pPacket->GetMail()->m_szDestName );
     if( pUser )
-    {//当前用户在线
+    {//褰撳墠鐢ㄦ埛鍦ㄧ嚎
         if( pUser->RecvMail( pPacket->GetMail() ) == FALSE )
         {
             Log::SaveLog( WORLD_LOGFILE, "GWMailHandler...dName=%s refuse sName=%s's mail.",

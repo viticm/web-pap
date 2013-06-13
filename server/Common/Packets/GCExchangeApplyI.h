@@ -1,6 +1,6 @@
 // GCExchangeApplyI.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~GCExchangeApplyI( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -36,7 +36,7 @@ namespace Packets
         VOID                    SetObjID(ObjID_t ObjID) {m_objID = ObjID;};
 
     private:
-        ObjID_t                    m_objID;        //³É¹¦Óë·ñ
+        ObjID_t                    m_objID;        //æˆåŠŸä¸å¦
     };
 
     class GCExchangeApplyIFactory : public PacketFactory 

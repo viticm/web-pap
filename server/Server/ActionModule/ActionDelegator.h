@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// �ļ�����ActionDelegator.h
-// ����˵���������Ĵ����� , ��ɫ�����Ĺ����ӿںͳ��ù���
+// 文件名：ActionDelegator.h
+// 功能说明：动作的代理类 , 角色动作的公共接口和常用功能
 //
-// �޸ļ�¼��
+// 修改记录：
 //
 //
 //
@@ -28,10 +28,10 @@ namespace Action_Module
         public:
             ActionDelegator_T(VOID) {};
             ~ActionDelegator_T(VOID) {};
-        // ���������͹���������ʵ��
+        // 动作管理和规则在这里实现
         public:
-            //ע:����������action�����Ľӿڣ��������ý�ɫ�߼�״̬״̬�Ľӿ�
-            //������治�������÷�������ɫ���߼�״̬
+            //注:这里是设置action参数的接口，不是设置角色逻辑状态状态的接口
+            //因此里面不负责设置服务器角色的逻辑状态
             BOOL IsPerformingTheSpecificSkill(Obj_Character& rActor, SkillID_t nSkillID) const;
             BOOL IsPerformingTheSpecificScript(Obj_Character& rActor, ScriptID_t nScriptID) const;
             BOOL IsChanneling(Obj_Character& rActor) const;

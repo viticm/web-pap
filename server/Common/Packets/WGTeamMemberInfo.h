@@ -15,7 +15,7 @@ namespace Packets
         WGTeamMemberInfo() {}
         virtual    ~WGTeamMemberInfo(){};
 
-        //π´”√Ω”ø⁄
+        //ÂÖ¨Áî®Êé•Âè£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream )const;
         virtual UINT            Execute( Player* pPlayer );
@@ -45,9 +45,9 @@ namespace Packets
     public :
         PlayerID_t                m_PlayerID;
         GUID_t                    m_GUID;
-        UINT                    m_uFamily;                        // 1.√≈≈…
-        INT                        m_Level;                        // 2.µ»º∂
-        BOOL                    m_bDeadLinkFlag;                // 3.∂œœﬂ◊¥Ã¨
+        UINT                    m_uFamily;                        // 1.Èó®Ê¥æ
+        INT                        m_Level;                        // 2.Á≠âÁ∫ß
+        BOOL                    m_bDeadLinkFlag;                // 3.Êñ≠Á∫øÁä∂ÊÄÅ
 
     };
 

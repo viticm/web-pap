@@ -69,7 +69,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-//ÏòÊı¾İ¿âÀïÔö¼ÓÒ»¸öÉÏÏßÍæ¼Ò¼ÇÂ¼
+//å‘æ•°æ®åº“é‡Œå¢åŠ ä¸€ä¸ªä¸Šçº¿ç©å®¶è®°å½•
 BOOL AllUser::AddUser( const USER_SIMPLE_DATA* pSimpleUser )
 {
 __ENTER_FUNCTION
@@ -79,8 +79,8 @@ __ENTER_FUNCTION
 
     USER_SIMPLE_DATA* pUser = (USER_SIMPLE_DATA*)(m_IDTable.Get( pSimpleUser->m_GUID )) ;
     if( pUser )
-    {//´ËÓÃ»§ÒÑ¾­´æÔÚÊı¾İ¿âÀïÁË
-        *pUser = *pSimpleUser; // Í¬²½Ò»ÏÂÊı¾İ
+    {//æ­¤ç”¨æˆ·å·²ç»å­˜åœ¨æ•°æ®åº“é‡Œäº†
+        *pUser = *pSimpleUser; // åŒæ­¥ä¸€ä¸‹æ•°æ®
         return TRUE ;
     }
 
@@ -108,7 +108,7 @@ __LEAVE_FUNCTION
     return TRUE ;
 }
 
-//¸ù¾İguidËÑË÷Íæ¼Ò
+//æ ¹æ®guidæœç´¢ç©å®¶
 UINT AllUser::Select( GUID_t guid, RETURN_FINGER_PLAYERLIST* pPlayerList )
 {
 __ENTER_FUNCTION
@@ -135,7 +135,7 @@ __LEAVE_FUNCTION
     return 0;
 }
 
-//¸ù¾İÃû×ÖËÑË÷Íæ¼Ò
+//æ ¹æ®åå­—æœç´¢ç©å®¶
 UINT AllUser::Select( const CHAR* szName, RETURN_FINGER_PLAYERLIST* pPlayerList, BOOL bPreciseFlag, INT nPosition )
 {
 __ENTER_FUNCTION
@@ -148,7 +148,7 @@ __ENTER_FUNCTION
     UINT i;
 
     if ( bPreciseFlag )
-    { // ¾«È·²éÕÒÖ»ÓĞÒ»¸ö
+    { // ç²¾ç¡®æŸ¥æ‰¾åªæœ‰ä¸€ä¸ª
         for( i=0; i<m_uCurUserCount; ++i )
         {
             if ( strcmp( m_pUsers[i].m_Name, szName ) == 0 )
@@ -203,7 +203,7 @@ __ENTER_FUNCTION
         }
 
         if ( i >= m_uCurUserCount )
-        { // ±¬ÁË
+        { // çˆ†äº†
             pPlayerList->SetFingerFlag( FALSE );
         }
         else

@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºTrapLogic.h
-// ¹¦ÄÜËµÃ÷£ºÏİÚåÀàËÆ¶ÔÏóµÄ»ù´¡Àà£¬ÓÃÓÚÉùÃ÷½Ó¿ÚºÍÊµÏÖÄ¬ÈÏ²Ù×÷
+// æ–‡ä»¶åï¼šTrapLogic.h
+// åŠŸèƒ½è¯´æ˜ï¼šé™·é˜±ç±»ä¼¼å¯¹è±¡çš„åŸºç¡€ç±»ï¼Œç”¨äºå£°æ˜æ¥å£å’Œå®ç°é»˜è®¤æ“ä½œ
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -53,7 +53,7 @@ namespace Combat_Module
                 VOID OnTick(Obj_Special& rThis) const;
                 VOID OnTimeOver(Obj_Special& rThis) const;
                 BOOL TriggerCheck(Obj_Special& rMe) const;
-                //ĞèÒª×ÓÀàÊµÏÖ
+                //éœ€è¦å­ç±»å®ç°
                 virtual BOOL CanTriggerBySpecificObj(Obj_Special& rMe, Obj_Character& rTar) const;
                 virtual BOOL CanTriggerBySpecificObj(Obj_Special& rMe, Obj_Special& rOther) const;
                 virtual BOOL IsScanedTargetValid(Obj_Special& rThis, Obj_Character& rScaned) const;
@@ -67,7 +67,7 @@ namespace Combat_Module
                 BOOL ActivateWhenFadeOut(Obj_Special& rThis) const;
                 BOOL CanTriggerByCharacter(Obj_Special& rThis) const;
                 BOOL EffectOnTrap(Obj_Special& rThis, Obj_Special& rTar) const;
-                //ĞèÒª×ÓÀàÊµÏÖ
+                //éœ€è¦å­ç±»å®ç°
                 virtual BOOL EffectOnChar(Obj_Special& rThis, Obj_Character& rTar) const;
             private:
                 VOID Activate(Obj_Special& rMe) const;

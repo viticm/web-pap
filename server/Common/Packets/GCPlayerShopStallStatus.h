@@ -1,6 +1,6 @@
 // GCPlayerShopStallStatus.h
 // 
-// ¸ü¸ÄÉÌµê´óĞ¡
+// æ›´æ”¹å•†åº—å¤§å°
 // 
 //////////////////////////////////////////////////////
 
@@ -26,7 +26,7 @@ namespace Packets
         }
         virtual ~GCPlayerShopStallStatus( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -50,10 +50,10 @@ namespace Packets
         VOID                    SetFinalStallNum(BYTE FinalStallNum) {m_FinalStallNum = FinalStallNum;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
-        BYTE                    m_nStallIndex;        //¹ñÌ¨ºÅ
-        BYTE                    m_bStatus;            //ĞÂ¹ñÌ¨×´Ì¬
-        BYTE                    m_FinalStallNum;    //×îÖÕ¹ñÌ¨Êı
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
+        BYTE                    m_nStallIndex;        //æŸœå°å·
+        BYTE                    m_bStatus;            //æ–°æŸœå°çŠ¶æ€
+        BYTE                    m_FinalStallNum;    //æœ€ç»ˆæŸœå°æ•°
     };
 
     class GCPlayerShopStallStatusFactory : public PacketFactory 

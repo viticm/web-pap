@@ -94,7 +94,7 @@ BOOL ProcessPlayerManager::ProcessInputs( )
         return TRUE ;
     }
 
-    //Êı¾İ¶ÁÈ¡
+    //æ•°æ®è¯»å–
     UINT nPlayerCount = GetPlayerNumber() ;
     for( UINT i=0; i<nPlayerCount; i++ )
     {
@@ -104,7 +104,7 @@ BOOL ProcessPlayerManager::ProcessInputs( )
         LoginPlayer* pPlayer = g_pPlayerPool->GetPlayer(m_pPlayers[i]) ;
         Assert( pPlayer ) ;
 
-        //Á¬½ÓÒÑ¶Ï¿ª
+        //è¿æ¥å·²æ–­å¼€
         if( pPlayer->IsDisconnect() )
             continue;
 
@@ -115,7 +115,7 @@ BOOL ProcessPlayerManager::ProcessInputs( )
                 RemovePlayer( pPlayer);
         }
 
-        //·ÇNormal ×´Ì¬Íæ¼ÒÆÁ±ÎµôInput
+        //éNormal çŠ¶æ€ç©å®¶å±è”½æ‰Input
         if( pPlayer->GetPlayerStatus() != PS_LOGIN_NORMAL
             && pPlayer->GetPlayerStatus()!=PS_LOGIN_SERVER_READY)
             continue;
@@ -126,11 +126,11 @@ BOOL ProcessPlayerManager::ProcessInputs( )
         if( FD_ISSET( s, &m_ReadFDs[SELECT_USE] ) )
         {
             if( pPlayer->GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
+            {//è¿æ¥å‡ºç°é”™è¯¯
                 RemovePlayer( pPlayer ) ;
             }
             else
-            {//Á¬½ÓÕı³£
+            {//è¿æ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = pPlayer->ProcessInput( ) ;
@@ -166,7 +166,7 @@ BOOL ProcessPlayerManager::ProcessOutputs( )
         return TRUE ;
     }
 
-    //Êı¾İ·¢ËÍ
+    //æ•°æ®å‘é€
     UINT nPlayerCount = GetPlayerNumber() ;
     for( UINT i=0; i<nPlayerCount; i++ )
     {
@@ -185,11 +185,11 @@ BOOL ProcessPlayerManager::ProcessOutputs( )
         if( FD_ISSET( s, &m_WriteFDs[SELECT_USE] ) )
         {
             if( pPlayer->GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
+            {//è¿æ¥å‡ºç°é”™è¯¯
                 RemovePlayer( pPlayer ) ;
             }
             else
-            {//Á¬½ÓÕı³£
+            {//è¿æ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = pPlayer->ProcessOutput( ) ;
@@ -228,7 +228,7 @@ BOOL ProcessPlayerManager::ProcessExceptions( )
             if( m_pPlayers[i]==INVALID_ID )
                 continue ;
 
-            //Ä³¸öÍæ¼Ò¶Ï¿ªÍøÂçÁ¬½Ó
+            //æŸä¸ªç©å®¶æ–­å¼€ç½‘ç»œè¿æ¥
 
             LoginPlayer* pPlayer = g_pPlayerPool->GetPlayer(m_pPlayers[i]) ;
             Assert( pPlayer ) ;
@@ -282,11 +282,11 @@ BOOL ProcessPlayerManager::ProcessCommands( )
         Assert( s!=INVALID_SOCKET ) ;
 
         if( pPlayer->GetSocket()->isSockError() )
-        {//Á¬½Ó³öÏÖ´íÎó
+        {//è¿æ¥å‡ºç°é”™è¯¯
             RemovePlayer( pPlayer ) ;
         }
         else
-        {//Á¬½ÓÕı³£
+        {//è¿æ¥æ­£å¸¸
             _MY_TRY
             {
                 ret = pPlayer->ProcessCommand( FALSE ) ;
@@ -323,7 +323,7 @@ BOOL ProcessPlayerManager::RemovePlayer( Player* pPlayer)
 
     const CHAR* pAccountName = ((LoginPlayer*)pPlayer)->GetAccount();
 
-    //µÚÒ»²½£ºÇå³ıSocketĞÅÏ¢
+    //ç¬¬ä¸€æ­¥ï¼šæ¸…é™¤Socketä¿¡æ¯
     SOCKET fd = pPlayer->GetSocket()->getSOCKET() ;
     if( fd != INVALID_SOCKET )
     {
@@ -334,7 +334,7 @@ BOOL ProcessPlayerManager::RemovePlayer( Player* pPlayer)
             fd ) ;
     }
 
-    //µÚ¶ş²½£ºÇå³ıProcessManagerÖĞµÄÏà¹ØÊı¾İ
+    //ç¬¬äºŒæ­¥ï¼šæ¸…é™¤ProcessManagerä¸­çš„ç›¸å…³æ•°æ®
     _MY_TRY
     {
         if(((LoginPlayer*)pPlayer)->GetPlayerStatus() == PS_LOGIN_NORMAL
@@ -348,12 +348,12 @@ BOOL ProcessPlayerManager::RemovePlayer( Player* pPlayer)
     {
     }
 
-    //µÚÈı²½£ºÇå³ıProcessPlayerManagerÖĞµÄĞÅÏ¢
+    //ç¬¬ä¸‰æ­¥ï¼šæ¸…é™¤ProcessPlayerManagerä¸­çš„ä¿¡æ¯
     ret = DelPlayer( pPlayer->PlayerID() ) ;
     Assert( ret ) ;
 
-    //µÚËÄ²½£ºÇå³ıPlayerPoolÖĞµÄĞÅÏ¢£¬×¢Òâ´Ë²½Öè±ØĞë·ÅÔÚ×îºó£¬
-    //µ±µ÷ÓÃ´Ë²Ù×÷ºó£¬µ±Ç°Player¾ÍÓĞ¿ÉÄÜ»á±»ÂíÉÏ·ÖÅä¸øĞÂ½ÓÈë¿Í»§¶Ë
+    //ç¬¬å››æ­¥ï¼šæ¸…é™¤PlayerPoolä¸­çš„ä¿¡æ¯ï¼Œæ³¨æ„æ­¤æ­¥éª¤å¿…é¡»æ”¾åœ¨æœ€åï¼Œ
+    //å½“è°ƒç”¨æ­¤æ“ä½œåï¼Œå½“å‰Playerå°±æœ‰å¯èƒ½ä¼šè¢«é©¬ä¸Šåˆ†é…ç»™æ–°æ¥å…¥å®¢æˆ·ç«¯
     ((LoginPlayer*)pPlayer)->FreeOwn( ) ;
     
     
@@ -374,7 +374,7 @@ BOOL ProcessPlayerManager::AddPlayer(Player* pPlayer )
     __ENTER_FUNCTION
 
     if( m_nFDSize>=FD_SETSIZE )
-    {//ÒÑ¾­³¬³öÄÜ¹»¼ì²âµÄÍøÂç¾ä±ú×î´óÊı£»
+    {//å·²ç»è¶…å‡ºèƒ½å¤Ÿæ£€æµ‹çš„ç½‘ç»œå¥æŸ„æœ€å¤§æ•°ï¼›
         return FALSE ;
     }
     BOOL ret = PlayerManager::AddPlayer( pPlayer,MAX_PROCESS_PLAYER) ;
@@ -422,7 +422,7 @@ BOOL ProcessPlayerManager::DelPlayer( PlayerID_t pid )
 
     Assert( pid!=INVALID_ID) ;
 
-    //Çå³ıProcessPlayerManagerÖĞµÄĞÅÏ¢
+    //æ¸…é™¤ProcessPlayerManagerä¸­çš„ä¿¡æ¯
     PlayerManager::RemovePlayer( pid ) ;
     
     
@@ -557,7 +557,7 @@ BOOL ProcessPlayerManager::HeartBeat( UINT uTime )
         }
         ret = pPlayer->HeartBeat(uTime ) ;
         if( !ret )
-        {//Èç¹ûÂß¼­²Ù×÷·µ»ØÊ§°Ü£¬ÔòĞèÒª¶Ï¿ªµ±Ç°Á¬½Ó
+        {//å¦‚æœé€»è¾‘æ“ä½œè¿”å›å¤±è´¥ï¼Œåˆ™éœ€è¦æ–­å¼€å½“å‰è¿æ¥
             ret = RemovePlayer( pPlayer) ;
             Assert( ret ) ;
         }

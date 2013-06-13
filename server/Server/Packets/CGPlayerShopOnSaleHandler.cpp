@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÉêÇëÎïÆ·ÉÏ¼Ü
+å®¢æˆ·ç«¯ç”³è¯·ç‰©å“ä¸Šæž¶
 */
 
 #include "CGPlayerShopOnSale.h"
@@ -31,17 +31,17 @@ UINT CGPlayerShopOnSaleHandler::Execute( CGPlayerShopOnSale* pPacket, Player* pP
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    _PLAYERSHOP_GUID nShopID    =    pPacket->GetShopID();            //ÉÌµêID
-    BYTE        nStallIndex        =    pPacket->GetStallIndex();        //¹ñÌ¨ID
-    _ITEM_GUID    ItemGuid        =    pPacket->GetObjGUID();            //ÎïÆ·GUID
-    UINT        uSerial            =    pPacket->GetSerial();            //µ±Ç°ÐòÁÐºÅ
-    UINT        uPrice            =    pPacket->GetPrice();            //¼Û¸ñ
-    BYTE        bIsOnSale        =    pPacket->GetIsOnSale();            //ÊÇ·ñÉÏ¼Ü
-    PET_GUID_t    PetGuid            =    pPacket->GetPetGuid();            //³èÎïGuid
-    BYTE        nShopSerial        =    pPacket->GetShopSerial();        //ÉÌµêÐòÁÐºÅ
+    _PLAYERSHOP_GUID nShopID    =    pPacket->GetShopID();            //å•†åº—ID
+    BYTE        nStallIndex        =    pPacket->GetStallIndex();        //æŸœå°ID
+    _ITEM_GUID    ItemGuid        =    pPacket->GetObjGUID();            //ç‰©å“GUID
+    UINT        uSerial            =    pPacket->GetSerial();            //å½“å‰åºåˆ—å·
+    UINT        uPrice            =    pPacket->GetPrice();            //ä»·æ ¼
+    BYTE        bIsOnSale        =    pPacket->GetIsOnSale();            //æ˜¯å¦ä¸Šæž¶
+    PET_GUID_t    PetGuid            =    pPacket->GetPetGuid();            //å® ç‰©Guid
+    BYTE        nShopSerial        =    pPacket->GetShopSerial();        //å•†åº—åºåˆ—å·
 
     UINT        uFinalSerial    =    0;
 
@@ -53,16 +53,16 @@ UINT CGPlayerShopOnSaleHandler::Execute( CGPlayerShopOnSale* pPacket, Player* pP
     Assert(pPlayerShop);
 
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE)
-    {//ÉÌµêÎ´¿ªÕÅ
+    {//å•†åº—æœªå¼€å¼ 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopOnSaleHandler::Name=%s shop close"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-    //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
     BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
     if(bIsMine == FALSE && bCanManager == FALSE)
@@ -115,7 +115,7 @@ UINT CGPlayerShopOnSaleHandler::Execute( CGPlayerShopOnSale* pPacket, Player* pP
     }
 
     if(bIsOnSale)
-    {//ÎïÆ·ÉÏ¼Ü
+    {//ç‰©å“ä¸Šæž¶
         pStallBox->SetCanSale(IndexInStall, TRUE);
         pStallBox->SetPriceByIndex(IndexInStall, uPrice);
         uFinalSerial    =    pStallBox->IncSerialByIndex(IndexInStall);
@@ -123,12 +123,12 @@ UINT CGPlayerShopOnSaleHandler::Execute( CGPlayerShopOnSale* pPacket, Player* pP
         Item* pItem = pStallContainer->GetItem(IndexInStall);
         if(PetGuid.IsNull())
         {
-            //ÉÏ¼Ü£ºAAAÉÏ¼ÜÁËBBBC¼þ£¬±ê¼ÛÎª£¨»»ÐÐ£©£¿½ð£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼þÊý£©
+            //ä¸Šæž¶ï¼šAAAä¸Šæž¶äº†BBBCä»¶ï¼Œæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             RecordOpt::Excute(REC_ONSALEITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)(pItem->GetItemIndex()), (INT)(pItem->GetLayedNum()), (INT)uPrice);
         }
         else
         {
-            //ÉÏ¼Ü£ºAAAÉÏ¼ÜÁËBBBC¼þ£¬±ê¼ÛÎª£¨»»ÐÐ£©£¿½ð£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼þÊý£©
+            //ä¸Šæž¶ï¼šAAAä¸Šæž¶äº†BBBCä»¶ï¼Œæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             RecordOpt::Excute(REC_ONSALEPET, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (CHAR*)(pItem->GetName()), (INT)(1), (INT)uPrice);
         }
 
@@ -142,7 +142,7 @@ UINT CGPlayerShopOnSaleHandler::Execute( CGPlayerShopOnSale* pPacket, Player* pP
         MsgToClient.SetShopSerial(pPlayerShop->IncSerial());
     }
     else
-    {//ÎïÆ·ÏÂ¼Ü
+    {//ç‰©å“ä¸‹æž¶
         pStallBox->SetCanSale(IndexInStall, FALSE);
         UINT uOldPrice = pStallBox->GetPriceByIndex(IndexInStall);
         pStallBox->SetPriceByIndex(IndexInStall, 0);
@@ -151,12 +151,12 @@ UINT CGPlayerShopOnSaleHandler::Execute( CGPlayerShopOnSale* pPacket, Player* pP
         Item* pItem = pStallContainer->GetItem(IndexInStall);
         if(PetGuid.IsNull())
         {
-            //ÉÏ¼Ü£ºAAAÉÏ¼ÜÁËBBBC¼þ£¬±ê¼ÛÎª£¨»»ÐÐ£©£¿½ð£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼þÊý£©
+            //ä¸Šæž¶ï¼šAAAä¸Šæž¶äº†BBBCä»¶ï¼Œæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             RecordOpt::Excute(REC_OFFSALEITEM, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)(pItem->GetItemIndex()), (INT)(pItem->GetLayedNum()), (INT)uOldPrice);
         }
         else
         {
-            //ÉÏ¼Ü£ºAAAÉÏ¼ÜÁËBBBC¼þ£¬±ê¼ÛÎª£¨»»ÐÐ£©£¿½ð£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼þÊý£©
+            //ä¸Šæž¶ï¼šAAAä¸Šæž¶äº†BBBCä»¶ï¼Œæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             RecordOpt::Excute(REC_OFFSALEPET, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (CHAR*)(pItem->GetName()), (INT)(1), (INT)uOldPrice);
         }
         

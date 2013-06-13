@@ -1,6 +1,6 @@
 // GCPlayerCallOf.h
 // 
-// 邀请去某地
+// 閭�璇峰幓鏌愬湴
 //
 //////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace Packets
         {
         }
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -41,8 +41,8 @@ namespace Packets
         GUID_t                    GetCallerGUID(VOID)const { return m_guidCaller; }
 
     private:
-        UINT                    m_uTime;            // 时间
-        GUID_t                    m_guidCaller;        // 传呼者的GUID
+        UINT                    m_uTime;            // 鏃堕棿
+        GUID_t                    m_guidCaller;        // 浼犲懠鑰呯殑GUID
     };
 
     class GCPlayerCallOfFactory : public PacketFactory 

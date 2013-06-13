@@ -24,7 +24,7 @@ public:
 
     virtual VOID Relive( BOOL bSkillRelive );
 //=======================================================================================
-// Âß¼­×´Ì¬¡¢ÊÂ¼şÏà¹Ø
+// é€»è¾‘çŠ¶æ€ã€äº‹ä»¶ç›¸å…³
 //=======================================================================================
 protected:    
     virtual VOID AI_Logic_Dead( UINT uTime );
@@ -37,7 +37,7 @@ protected:
 
 
 //=======================================================================================
-// ´¦ÀíÏûÏ¢ÃüÁîÏà¹Ø
+// å¤„ç†æ¶ˆæ¯å‘½ä»¤ç›¸å…³
 //=======================================================================================
 public:
     // nResultCode    :    ENUM_DIE_RESULT_CODE
@@ -47,7 +47,7 @@ public:
     ORESULT PushCommand_Jump( VOID );
     ORESULT PushCommand_MoodState(INT nMoodState);
     ORESULT PushCommand_Idle( VOID );
-    ORESULT PushCommand_Stall( VOID ); // ¿ªÊ¼°ÚÌ¯½øÈë°ÚÌ¯×´Ì¬
+    ORESULT PushCommand_Stall( VOID ); // å¼€å§‹æ‘†æ‘Šè¿›å…¥æ‘†æ‘ŠçŠ¶æ€
     ORESULT PushCommand_UseAbility( VOID );
     //ORESULT PushCommand_Dead( ObjID_t idKiller );
     ORESULT PushCommand_DefaultEvent( ObjID_t idNPC );
@@ -67,7 +67,7 @@ public:
 
 
 //=======================================================================================
-// ĞĞÎªÏà¹Ø
+// è¡Œä¸ºç›¸å…³
 //=======================================================================================
 public:
     ORESULT        StartTeamFollow(VOID);
@@ -83,7 +83,7 @@ protected:
     inline    VOID FollowMove( Obj_Human* pHuman, WORLD_POS* pPos, FLOAT fDist );
 
 //=======================================================================================
-// ËÀÍöÏà¹Ø
+// æ­»äº¡ç›¸å…³
 //=======================================================================================
 private:
     VOID    After_Die(ObjID_t idKiller);
@@ -102,7 +102,7 @@ private:
     VOID     Penalty_EquipDrop_After_Die(const _DIE_PENALTY_INFO* pPenaltyInfo, Obj_Human* pHuman);
 
 //=======================================================================================
-// ÆäËû¹¦ÄÜÏà¹Ø
+// å…¶ä»–åŠŸèƒ½ç›¸å…³
 //=======================================================================================
 public:
     VOID        OnReliveInfoChanged( VOID );
@@ -118,10 +118,10 @@ protected:
     ORESULT        Validate_Event( Obj* pTarget );
     BOOL        CheckTargetValid(SkillID_t nSkillID, ObjID_t TargetID);
     VOID        Baby_Go(const WORLD_POS *paTargetPos);
-    //BOOL        CanInterruptCurrentAI( ENUM_HUMAN_AI newAI ); // Èç¹û²»ÄÜÖĞ¶Ïµ±Ç° AI£¬ÔòĞÂ AI ²»ÄÜÖ´ĞĞ
+    //BOOL        CanInterruptCurrentAI( ENUM_HUMAN_AI newAI ); // å¦‚æœä¸èƒ½ä¸­æ–­å½“å‰ AIï¼Œåˆ™æ–° AI ä¸èƒ½æ‰§è¡Œ
 
 //=======================================================================================
-// ÄÚ²¿Êı¾İÏà¹Ø
+// å†…éƒ¨æ•°æ®ç›¸å…³
 //=======================================================================================
 protected:
     struct SLogicParam_UseSkill
@@ -169,7 +169,7 @@ protected:
 
     struct SLogicParam_Dead
     {
-        CMyTimer    m_AutoTimer;        // ×Ô¶¯ÊÍ·ÅµÄÊ±¼ä
+        CMyTimer    m_AutoTimer;        // è‡ªåŠ¨é‡Šæ”¾çš„æ—¶é—´
     };
 
     SLogicParam_UseSkill        m_paramAI_UseSkill;

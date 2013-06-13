@@ -1,11 +1,11 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºStdImpact028.cpp
-// ¹¦ÄÜËµÃ÷£º
+// æ–‡ä»¶åï¼šStdImpact028.cpp
+// åŠŸèƒ½è¯´æ˜Žï¼š
 //
-// Ð§¹ûÃèÊö²¿·ÖµÄ¸ñÊ½£º|Ð§¹ûID|³ÖÐøÊ±¼ä|±ùÊôÐÔÐÞÕý|»ðÊôÐÔÐÞÕý|µçÊôÐÔÐÞÕý|¶¾ÊôÐÔÐÞÕý
+// æ•ˆæžœæè¿°éƒ¨åˆ†çš„æ ¼å¼ï¼š|æ•ˆæžœID|æŒç»­æ—¶é—´|å†°å±žæ€§ä¿®æ­£|ç«å±žæ€§ä¿®æ­£|ç”µå±žæ€§ä¿®æ­£|æ¯’å±žæ€§ä¿®æ­£
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -29,8 +29,8 @@ namespace Combat_Module
             INT nIncreaceHP = 0;
             INT nDamage = 0;
             INT nValue = 0;
-            // ¶Á³öµÄ±ÈÂÊ<0Ôò±íÊ¾½«¸ÃÀàÐÍ¶ÔÓ¦ÉËº¦µÄÒ»¶¨±ÈÂÊµÄÊýÖµ×ª»»³É±»»÷ÕßµÄHP
-            // ¶Á³öµÄ±ÈÂÊ>0Ôò±íÊ¾½«¸ÃÀàÐÍ¶ÔÓ¦ÉËº¦µÄÒ»¶¨±ÈÂÊµÄÊýÖµµþ¼Óµ½Ê©·¨ÕßÉÏ
+            // è¯»å‡ºçš„æ¯”çŽ‡<0åˆ™è¡¨ç¤ºå°†è¯¥ç±»åž‹å¯¹åº”ä¼¤å®³çš„ä¸€å®šæ¯”çŽ‡çš„æ•°å€¼è½¬æ¢æˆè¢«å‡»è€…çš„HP
+            // è¯»å‡ºçš„æ¯”çŽ‡>0åˆ™è¡¨ç¤ºå°†è¯¥ç±»åž‹å¯¹åº”ä¼¤å®³çš„ä¸€å®šæ¯”çŽ‡çš„æ•°å€¼å åŠ åˆ°æ–½æ³•è€…ä¸Š
             
             if(0!=GetColdRefix(rImp))
             {
@@ -84,7 +84,7 @@ namespace Combat_Module
                     nIncreaceHP += -nValue;
                 }
             }
-            // ½«×ª»»À´µÄHP¼Óµ½×Ô¼ºÉíÉÏ
+            // å°†è½¬æ¢æ¥çš„HPåŠ åˆ°è‡ªå·±èº«ä¸Š
             if(0<nIncreaceHP)
             {
                 rMe.HealthIncrement(nIncreaceHP, &rMe);

@@ -13,7 +13,7 @@ namespace Packets
         WGGuildError(){}
         virtual                    ~WGGuildError(){}
 
-        //¹«ÓÃ½Ó¿Ú
+        //å…¬ç”¨æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -32,7 +32,7 @@ namespace Packets
         GUID_t                    GetGUID() { return m_GUID; }
 
     private :
-        PlayerID_t                m_PlayerID;    //Á¬½ÓÕß
+        PlayerID_t                m_PlayerID;    //è¿æ¥è€…
         CHAR                    m_Error;
         GUID_t                    m_GUID;
 

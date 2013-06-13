@@ -1,6 +1,6 @@
 // CGPlayerShopEstablish.h
 // 
-// ¿Í»§È·¶¨ÅĞ¶¨ĞÅÏ¢£¬µİ½»×îºóÉêÇë
+// å®¢æˆ·ç¡®å®šåˆ¤å®šä¿¡æ¯ï¼Œé€’äº¤æœ€åç”³è¯·
 // 
 //////////////////////////////////////////////////////
 
@@ -24,7 +24,7 @@ namespace Packets
         };
         virtual ~CGPlayerShopEstablish( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -42,14 +42,14 @@ namespace Packets
         VOID                    SetShopName( CHAR* pShopName ){
             strncpy( m_ShopName, pShopName, MAX_SHOP_NAME-1 ) ;
             m_ShopName[MAX_SHOP_NAME-1] = 0 ;
-            m_ShopNameSize = (BYTE)strlen(m_ShopName); //½ÃÕı³¤¶È
+            m_ShopNameSize = (BYTE)strlen(m_ShopName); //çŸ«æ­£é•¿åº¦
         };
         CHAR*                    GetShopName(){ return (CHAR*)m_ShopName ; } ;
 
     private:
-        BYTE                    m_Type;                        //¿É¿ªµÄÀàĞÍ
-        BYTE                    m_ShopNameSize;                //Ãû×Ö³¤¶È
-        CHAR                    m_ShopName[MAX_SHOP_NAME];    //Ãû×ÖÄÚÈİ
+        BYTE                    m_Type;                        //å¯å¼€çš„ç±»å‹
+        BYTE                    m_ShopNameSize;                //åå­—é•¿åº¦
+        CHAR                    m_ShopName[MAX_SHOP_NAME];    //åå­—å†…å®¹
     };
 
     class CGPlayerShopEstablishFactory : public PacketFactory 

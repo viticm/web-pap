@@ -1,5 +1,5 @@
 //
-// Player ÊÇÖ¸ÒÑ¾­Í¨¹ıÍøÂçÁ¬½Ó½øÈë·şÎñÆ÷¶Ë³ÌĞòµÄ¿Í»§
+// Player æ˜¯æŒ‡å·²ç»é€šè¿‡ç½‘ç»œè¿æ¥è¿›å…¥æœåŠ¡å™¨ç«¯ç¨‹åºçš„å®¢æˆ·
 //
 //
 //
@@ -17,7 +17,7 @@
 
 #define MAX_CACHE_SIZE 1024
 
-//Èç¹ûÔÚÒ»¶¨Ê±¼äÄÚÃ»ÓĞÊÕµ½ÈÎºÎÏûÏ¢£¬Ôò¶Ï¿ª´Ë¿Í»§¶ËµÄÍøÂçÁ¬½Ó
+//å¦‚æœåœ¨ä¸€å®šæ—¶é—´å†…æ²¡æœ‰æ”¶åˆ°ä»»ä½•æ¶ˆæ¯ï¼Œåˆ™æ–­å¼€æ­¤å®¢æˆ·ç«¯çš„ç½‘ç»œè¿æ¥
 #define MAX_KICK_TIME 6000000
 #define MAX_INCOM_KICK_TIME 60000
 
@@ -70,42 +70,42 @@ public :
 
     virtual VOID    Decrypt_CS(CHAR* header, UINT uLen, UINT uBeginPlace)=0;
 public :
-    //Í¨ÓÃ½Ó¿Ú
+    //é€šç”¨æ¥å£
 
     virtual BOOL    IsGamePlayer( )=0 ;
     virtual BOOL    IsServerPlayer( )=0 ;
 
-    //¶ÁÈ¡ÉèÖÃÍæ¼ÒPIDµÄ½Ó¿Ú£¬PlayerID ÊÇÓÉPlayerPoolÀà·ÖÅä³öÀ´µÄË÷ÒıÖµ
-    //PlayerIDÓÃÓÚ±êÊ¶Ò»¸ö¿Í»§¶ËÁ¬½ÓÔÚÕû¸öÏµÍ³ÖĞµÄÊı¾İÎ»ÖÃĞÅÏ¢
+    //è¯»å–è®¾ç½®ç©å®¶PIDçš„æ¥å£ï¼ŒPlayerID æ˜¯ç”±PlayerPoolç±»åˆ†é…å‡ºæ¥çš„ç´¢å¼•å€¼
+    //PlayerIDç”¨äºæ ‡è¯†ä¸€ä¸ªå®¢æˆ·ç«¯è¿æ¥åœ¨æ•´ä¸ªç³»ç»Ÿä¸­çš„æ•°æ®ä½ç½®ä¿¡æ¯
     PlayerID_t    PlayerID(){ return m_PID ; } ;
     VOID        SetPlayerID( PlayerID_t id ){ m_PID = id ; } ;
 
-    //¶ÁÈ¡ÉèÖÃÍæ¼ÒUIDµÄ½Ó¿Ú£¬UserID ÊÇÓÉUserPoolÀà·ÖÅä³öÀ´µÄË÷ÒıÖµ
-    //UserIDÓÃÓÚ±êÊ¶Íæ¼ÒµÄÓÎÏ·´æ´¢Î»ÖÃĞÅÏ¢
+    //è¯»å–è®¾ç½®ç©å®¶UIDçš„æ¥å£ï¼ŒUserID æ˜¯ç”±UserPoolç±»åˆ†é…å‡ºæ¥çš„ç´¢å¼•å€¼
+    //UserIDç”¨äºæ ‡è¯†ç©å®¶çš„æ¸¸æˆå­˜å‚¨ä½ç½®ä¿¡æ¯
     ID_t        UserID(){ return m_UID ; } ;
     VOID        SetUserID( ID_t id ){ m_UID = id ; } ;
 
-    //¶ÁÈ¡ÉèÖÃÍæ¼ÒPMIDµÄ½Ó¿Ú£¬PlayerManagerID ÊÇÓÉPlayerManagerÀà·ÖÅä³öÀ´µÄË÷ÒıÖµ
-    //PlayerManagerIDÓÃÓÚ±êÊ¶µ±Ç°Íæ¼ÒËùÔÚµÄÄ³¸öPlayerManagerÖĞµÄÎ»ÖÃĞÅÏ¢£¬Ã¿¸ö
-    //PlayerManagerÎ»ÓÚÒ»¸ö¶ÀÁ¢µÄÏß³ÌÀï¡£
+    //è¯»å–è®¾ç½®ç©å®¶PMIDçš„æ¥å£ï¼ŒPlayerManagerID æ˜¯ç”±PlayerManagerç±»åˆ†é…å‡ºæ¥çš„ç´¢å¼•å€¼
+    //PlayerManagerIDç”¨äºæ ‡è¯†å½“å‰ç©å®¶æ‰€åœ¨çš„æŸä¸ªPlayerManagerä¸­çš„ä½ç½®ä¿¡æ¯ï¼Œæ¯ä¸ª
+    //PlayerManagerä½äºä¸€ä¸ªç‹¬ç«‹çš„çº¿ç¨‹é‡Œã€‚
     ID_t        PlayerManagerID(){ return m_PlayerManagerID ; } ;
     VOID        SetPlayerManagerID( ID_t id ){ m_PlayerManagerID = id ; } ;
 
-    //¶ÁÈ¡µ±Ç°Íæ¼ÒµÄSocketÀà
-    //ÍøÂçÁ¬½Ó½Ó¿Ú
+    //è¯»å–å½“å‰ç©å®¶çš„Socketç±»
+    //ç½‘ç»œè¿æ¥æ¥å£
     Socket*        GetSocket(){ return m_pSocket ; } ;
 
-    //¶Ï¿ªÓëµ±Ç°Íæ¼ÒµÄÍøÂçÁ¬½Ó
+    //æ–­å¼€ä¸å½“å‰ç©å®¶çš„ç½‘ç»œè¿æ¥
     virtual VOID            Disconnect( ) ;
 
-    //ÅĞ¶Ïµ±Ç°Íæ¼ÒµÄÍøÂçÁ¬½ÓÊÇ·ñÓĞĞ§
+    //åˆ¤æ–­å½“å‰ç©å®¶çš„ç½‘ç»œè¿æ¥æ˜¯å¦æœ‰æ•ˆ
     virtual    BOOL            IsValid( ) ; 
 
-    //Çå³ıµ±Ç°Íæ¼ÒÍøÂçÁ¬½ÓÊı¾İºÍ»º´æÊı¾İ
+    //æ¸…é™¤å½“å‰ç©å®¶ç½‘ç»œè¿æ¥æ•°æ®å’Œç¼“å­˜æ•°æ®
     virtual    VOID            CleanUp( ) ;
 
-    //ÅĞ¶Ïµ±Ç°Íæ¼ÒÊı¾İ¿éÊÇ·ñÊÇ¿Õ¿é£»
-    //Èç¹ûÊÇ¿Õ¿é£¬Ôò¿ÉÒÔ±»PlayerPool·ÖÅä³öÈ¥ÓÃÓÚ½ÓÊÕĞÂÁ¬½Ó
+    //åˆ¤æ–­å½“å‰ç©å®¶æ•°æ®å—æ˜¯å¦æ˜¯ç©ºå—ï¼›
+    //å¦‚æœæ˜¯ç©ºå—ï¼Œåˆ™å¯ä»¥è¢«PlayerPoolåˆ†é…å‡ºå»ç”¨äºæ¥æ”¶æ–°è¿æ¥
     BOOL                    IsEmpty( ) { return m_IsEmpty ; }
     VOID                    SetEmpty( BOOL opt = TRUE ) { m_IsEmpty = opt ; }
 
@@ -121,18 +121,18 @@ private :
 
 protected :
     //Player ID
-    //Í³Ò»ÓÉPlayerPool¹ÜÀí
+    //ç»Ÿä¸€ç”±PlayerPoolç®¡ç†
     PlayerID_t                m_PID ;    
     //User ID
-    //Í³Ò»ÓÉUserPool¹ÜÀí
+    //ç»Ÿä¸€ç”±UserPoolç®¡ç†
     ID_t                    m_UID ;    
-    //ÔÚPlayerManagerÀàÖĞplayer idÊı×éµÄÏÂ±ê
+    //åœ¨PlayerManagerç±»ä¸­player idæ•°ç»„çš„ä¸‹æ ‡
     ID_t                    m_PlayerManagerID ;
 
-    //ÍøÂçÁ¬½Ó¾ä±ú
+    //ç½‘ç»œè¿æ¥å¥æŸ„
     Socket*                    m_pSocket ;
 
-    //ÊäÈëÊä³öÊı¾İ»º´æ
+    //è¾“å…¥è¾“å‡ºæ•°æ®ç¼“å­˜
     SocketInputStream*        m_pSocketInputStream ;
     SocketOutputStream*        m_pSocketOutputStream ;
 

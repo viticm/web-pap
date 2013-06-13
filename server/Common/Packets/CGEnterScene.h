@@ -8,8 +8,8 @@
 namespace Packets
 {
 
-#define ENTER_TYPE_FIRST        (0)    //0 µÇÂ¼ºóµÚÒ»´Î½øÈë³¡¾°
-#define ENTER_TYPE_FROM_OTHER    (1)    //1 ´ÓÆäËû³¡¾°×ªÈë
+#define ENTER_TYPE_FIRST        (0)    //0 ç™»å½•åç¬¬ä¸€æ¬¡è¿›å…¥åœºæ™¯
+#define ENTER_TYPE_FROM_OTHER    (1)    //1 ä»å…¶ä»–åœºæ™¯è½¬å…¥
 
 class CGEnterScene : public Packet
 {
@@ -17,7 +17,7 @@ public:
     CGEnterScene( ){} ;
     virtual ~CGEnterScene( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,7 +28,7 @@ public:
                                                             sizeof(WORLD_POS); }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setEnterType(BYTE byEnterType) { m_byEnterType = byEnterType; }
     BYTE            getEnterType(VOID)const { return m_byEnterType; }
     
@@ -39,13 +39,13 @@ public:
     WORLD_POS*        getEnterPos(VOID) { return &m_posWorld; }
 
 private:
-    //Êı¾İ
-    BYTE            m_byEnterType;    //½øÈëÀàĞÍ
-                                    //#define ENTER_TYPE_FIRST        (0)     µÇÂ¼ºóµÚÒ»´Î½øÈë³¡¾°
-                                    //#define ENTER_TYPE_FROM_OTHER    (1)     ´ÓÆäËû³¡¾°×ªÈë
+    //æ•°æ®
+    BYTE            m_byEnterType;    //è¿›å…¥ç±»å‹
+                                    //#define ENTER_TYPE_FIRST        (0)     ç™»å½•åç¬¬ä¸€æ¬¡è¿›å…¥åœºæ™¯
+                                    //#define ENTER_TYPE_FROM_OTHER    (1)     ä»å…¶ä»–åœºæ™¯è½¬å…¥
                                     //...
-    SceneID_t        m_nSceneID;        //³¡¾°ID
-    WORLD_POS        m_posWorld;        //½øÈëµãµÄX,Z×ø±êµã
+    SceneID_t        m_nSceneID;        //åœºæ™¯ID
+    WORLD_POS        m_posWorld;        //è¿›å…¥ç‚¹çš„X,Zåæ ‡ç‚¹
 };
 
 class CGEnterSceneFactory : public PacketFactory 

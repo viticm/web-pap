@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼þÃû£º    CGReturnTeamFollowHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\CGReturnTeamFollowHandler.cpp
- *    ´´½¨Ê±¼ä£º    2005 Äê 11 ÔÂ 23 ÈÕ    18:00
+ *    æ–‡ä»¶åï¼š    CGReturnTeamFollowHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\CGReturnTeamFollowHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 11 æœˆ 23 æ—¥    18:00
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ÐÞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "CGReturnTeamFollow.h"
@@ -40,7 +40,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
     TeamInfo* pTeamInfo = pHuman->GetTeamInfo();
@@ -51,10 +51,10 @@ __ENTER_FUNCTION
     }
 
     const TEAMMEMBER* pLeaderInfo = pTeamInfo->Leader();
-    // ÕâÀï²»¶Ô×Ô¼ºÊÇ·ñ¶Ó³¤½øÐÐ¼ì²é
+    // è¿™é‡Œä¸å¯¹è‡ªå·±æ˜¯å¦é˜Ÿé•¿è¿›è¡Œæ£€æŸ¥
 
     if( pLeaderInfo->m_SceneID != pScene->SceneID() )
-    { // ²»ÔÚÍ¬Ò»¸ö³¡¾°
+    { // ä¸åœ¨åŒä¸€ä¸ªåœºæ™¯
         g_pLog->FastSaveLog( LOG_FILE_1, "CGReturnTeamFollow: GUID=%X is not in the same scene with team leader.", 
             pHuman->GetGUID() );
         return PACKET_EXE_CONTINUE;
@@ -62,13 +62,13 @@ __ENTER_FUNCTION
 
     Obj_Human* pLeader = pScene->GetHumanManager()->GetHuman( pLeaderInfo->m_ObjID );
     if( pLeader==NULL )
-    { // Ã»ÓÐÕÒµ½¶Ó³¤
+    { // æ²¡æœ‰æ‰¾åˆ°é˜Ÿé•¿
         g_pLog->FastSaveLog( LOG_FILE_1, "CGReturnTeamFollow: GUID=%X can't find team leader.", 
             pHuman->GetGUID() );
         return PACKET_EXE_CONTINUE;
     }
 
-    // Èç¹û×Ô¼ºÕýÔÚ°ÚÌ¯£¬Ôò²»ÔÊÐí¸úËæ
+    // å¦‚æžœè‡ªå·±æ­£åœ¨æ‘†æ‘Šï¼Œåˆ™ä¸å…è®¸è·Ÿéš
     if(pHuman->m_StallBox.GetStallStatus() == ServerStallBox::STALL_OPEN)
     {
         GCTeamFollowErr Msg;
@@ -82,10 +82,10 @@ __ENTER_FUNCTION
     }
 
     if( pPacket->GetReturn() )
-    { // Í¬Òâ¸úËæ
-        // ¼ì²é¸ú¶Ó³¤Ö®¼äµÄ¾àÀëÊÇ·ñ³¬¹ý 10 Ã×
+    { // åŒæ„è·Ÿéš
+        // æ£€æŸ¥è·Ÿé˜Ÿé•¿ä¹‹é—´çš„è·ç¦»æ˜¯å¦è¶…è¿‡ 10 ç±³
         if( pHuman->IsInValidRadius(pLeader, (FLOAT)g_Config.m_ConfigInfo.m_nAvailableFollowDist) == FALSE )
-        { // ³¬¹ýÔò·µ»Ø´íÎóÐÅÏ¢
+        { // è¶…è¿‡åˆ™è¿”å›žé”™è¯¯ä¿¡æ¯
             GCTeamFollowErr Msg;
             Msg.SetError( TF_ERROR_TOO_FAR );
 
@@ -96,9 +96,9 @@ __ENTER_FUNCTION
             return PACKET_EXE_CONTINUE;
         }
 
-        // ¼ì²é¶Ó³¤ÊÇ·ñ³öÓÚ×é¶Ó¸úËæ×´Ì¬
+        // æ£€æŸ¥é˜Ÿé•¿æ˜¯å¦å‡ºäºŽç»„é˜Ÿè·ŸéšçŠ¶æ€
         if( pLeader->__GetTeamFollowFlag() == FALSE )
-        { // ¶Ó³¤²»´¦ÓÚ×é¶Ó¸úËæ×´Ì¬£¬¿ÉÄÜ¶Ó³¤ÒÑ¾­Ö÷¶¯È¡Ïû¸úËæÁË
+        { // é˜Ÿé•¿ä¸å¤„äºŽç»„é˜Ÿè·ŸéšçŠ¶æ€ï¼Œå¯èƒ½é˜Ÿé•¿å·²ç»ä¸»åŠ¨å–æ¶ˆè·Ÿéšäº†
             GCTeamFollowErr Msg;
             Msg.SetError( TF_ERROR_NOT_IN_FOLLOW_MODE );
 
@@ -110,7 +110,7 @@ __ENTER_FUNCTION
         }
 
         if ( pHuman->__GetTeamFollowFlag() )
-        { // Èç¹ûÒÑ¾­´¦ÓÚ´Ë×´Ì¬£¬Ôò·µ»Ø
+        { // å¦‚æžœå·²ç»å¤„äºŽæ­¤çŠ¶æ€ï¼Œåˆ™è¿”å›ž
             return PACKET_EXE_CONTINUE;
         }
 
@@ -120,15 +120,15 @@ __ENTER_FUNCTION
         MyInfo.m_GUID = pHuman->GetGUID();
         MyInfo.m_pHuman = pHuman;
 
-        // ½«ÐÂµÄ¸úËæÁÐ±í·¢¸ø¿É¼û·¶Î§ÄÚËùÓÐ¿Í»§¶Ë
-        // Ö»ÓÐ¶Ó³¤ÓÐÕâ¸öÁÐ±í£¬ÕâÑù¿ÉÒÔ½øÐÐÓÅ»¯
+        // å°†æ–°çš„è·Ÿéšåˆ—è¡¨å‘ç»™å¯è§èŒƒå›´å†…æ‰€æœ‰å®¢æˆ·ç«¯
+        // åªæœ‰é˜Ÿé•¿æœ‰è¿™ä¸ªåˆ—è¡¨ï¼Œè¿™æ ·å¯ä»¥è¿›è¡Œä¼˜åŒ–
         GCTeamFollowList Msg;
         Msg.SetObjID( pLeader->GetID() );
 
         INT nMaxFollowedCount = pLeader->__GetFollowedMembersCount();
 
         for( INT i=0; i<nMaxFollowedCount; ++i )
-        { // ËùÓÐ¸úËæÕß¼ÓÉÏ×Ô¼º£¬×Ô¼º¼ÓÉÏÃ¿¸ö¸úËæÕß
+        { // æ‰€æœ‰è·Ÿéšè€…åŠ ä¸Šè‡ªå·±ï¼Œè‡ªå·±åŠ ä¸Šæ¯ä¸ªè·Ÿéšè€…
             Obj_Human* pMember;
             const _FOLLOWEDMEMBER* pFollowedMember;
 
@@ -136,7 +136,7 @@ __ENTER_FUNCTION
 
             pMember = pFollowedMember->m_pHuman;
             if( pMember!=NULL )
-            { // Ã»ÓÐ¶ÏÏß²¢ÇÒÔÚÍ¬Ò»³¡¾°
+            { // æ²¡æœ‰æ–­çº¿å¹¶ä¸”åœ¨åŒä¸€åœºæ™¯
                 pMember->__AddFollowedMember( MyInfo );
             }
 
@@ -144,7 +144,7 @@ __ENTER_FUNCTION
             Msg.AddFollowMember( pFollowedMember->m_GUID );
         }
 
-        pHuman->__AddFollowedMember( MyInfo ); // ×Ô¼º¼ÓÉÏ×Ô¼º
+        pHuman->__AddFollowedMember( MyInfo ); // è‡ªå·±åŠ ä¸Šè‡ªå·±
         pHuman->GetHumanAI()->PushCommand_TeamFollow();
 
         Msg.AddFollowMember( MyInfo.m_GUID );
@@ -157,16 +157,16 @@ __ENTER_FUNCTION
         //notifyMsg.SetTeamFollowFlag( pHuman->__GetTeamFollowFlag() );
         //pScene->BroadCast( &notifyMsg, pHuman );
 
-        pScene->BroadCast( &Msg, pLeader, TRUE ); // ·¢ËÍ¸úËæÁÐ±í¸øËùÓÐ¿Í»§¶Ë£¬ÒÔ¹©Â·ÏßÄ£Äâ
+        pScene->BroadCast( &Msg, pLeader, TRUE ); // å‘é€è·Ÿéšåˆ—è¡¨ç»™æ‰€æœ‰å®¢æˆ·ç«¯ï¼Œä»¥ä¾›è·¯çº¿æ¨¡æ‹Ÿ
 
         GCReturnTeamFollow RetMsg;
         RetMsg.SetReturn( TF_RESULT_ENTER_FOLLOW );
         RetMsg.SetGUID( pHuman->GetGUID() );
 
-        pGamePlayer->SendPacket( &RetMsg ); // ·¢¸ø×Ô¼º
-        pLeader->GetPlayer()->SendPacket( &RetMsg ); // ·¢¸ø¶Ó³¤
+        pGamePlayer->SendPacket( &RetMsg ); // å‘ç»™è‡ªå·±
+        pLeader->GetPlayer()->SendPacket( &RetMsg ); // å‘ç»™é˜Ÿé•¿
 
-        // ÕâÀïÐèÒªÍ¨Öª world GWEnterTeamFollow
+        // è¿™é‡Œéœ€è¦é€šçŸ¥ world GWEnterTeamFollow
         GWEnterTeamFollow* pMsg = (GWEnterTeamFollow*)g_pPacketFactoryManager->CreatePacket(PACKET_GW_ENTER_TEAMFOLLOW);
 
         pMsg->SetGUID( pHuman->GetGUID() );
@@ -178,7 +178,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE;
     }
     else
-    { // ²»Í¬Òâ¸úËæ
+    { // ä¸åŒæ„è·Ÿéš
         GCReturnTeamFollow Msg;
         Msg.SetReturn( TF_RESULT_REFUSE_FOLLOW );
         Msg.SetGUID( pHuman->GetGUID() );

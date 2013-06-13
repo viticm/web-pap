@@ -1,11 +1,11 @@
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ2ÈÕ
-    ´´½¨Ê±¼ä:    16:55
-    ÎÄ¼þÃû³Æ:    ItemTypes.h
-    ÎÄ¼þÂ·¾¶:    d:\Prj\Server\Server\Item\ItemTypes.h
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ2æ—¥
+    åˆ›å»ºæ—¶é—´:    16:55
+    æ–‡ä»¶åç§°:    ItemTypes.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\ItemTypes.h
     
-    ÎÄ¼þ¹¦ÄÜ£º ÎïÆ·³£Á¿\ºê¶¨ÒåµÈ    ÀàÐÍÊý¾Ý
-    ÐÞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š ç‰©å“å¸¸é‡\å®å®šä¹‰ç­‰    ç±»åž‹æ•°æ®
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 
@@ -13,35 +13,35 @@
 #define _ITEM_TYPES_H_
 
 #include "Type.h"
-//ÎïÆ·ÏµÍ³³£Á¿¶¨Òå
+//ç‰©å“ç³»ç»Ÿå¸¸é‡å®šä¹‰
 
 
-//ItemBox ³Ø×î´óÖµ
+//ItemBox æ± æœ€å¤§å€¼
 #define        MAX_ITEM_BOX_POOL                    5000
 
-//×î´óÂÌÉ«×°±¸¸½¼ÓÊôÐÔ¸öÊý
+//æœ€å¤§ç»¿è‰²è£…å¤‡é™„åŠ å±žæ€§ä¸ªæ•°
 #define        MAX_GREEN_ITEM_EXT_ATTR                4
 
 
 
-//×î´óµôÂä°üÈÝÁ¿
+//æœ€å¤§æŽ‰è½åŒ…å®¹é‡
 #define        MAX_DROPBOX_CARRAGE                    100
 
-//×î´ó¹ÖÎïµôÂä
+//æœ€å¤§æ€ªç‰©æŽ‰è½
 #define        MAX_MONSTER_DROPBOX                    20
 
-//ItemBox µôÂäÎ»ÖÃËæ»ú·¶Î§
+//ItemBox æŽ‰è½ä½ç½®éšæœºèŒƒå›´
 #define        ITEMBOX_DROP_RANGE                    10
 
-//×î´óItemQuality ±í ÏîÄ¿¸öÊý(ÄÚ²¿Ê¹ÓÃ)
+//æœ€å¤§ItemQuality è¡¨ é¡¹ç›®ä¸ªæ•°(å†…éƒ¨ä½¿ç”¨)
 #define        MAX_ITEM_TABLE_QUALITYS                10
 
-//×î´óItemValue ±í ÏîÄ¿¸öÊý
+//æœ€å¤§ItemValue è¡¨ é¡¹ç›®ä¸ªæ•°
 #define        MAX_ITEM_TABLE_VALUES                10
 
 
 
-//¹ÖÎïµôÂä½á¹¹
+//æ€ªç‰©æŽ‰è½ç»“æž„
 struct MONSTER_DROPBOXS 
 {
     MONSTER_DROPBOXS()

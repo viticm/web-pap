@@ -26,8 +26,8 @@ _SKILL_LIST& Obj_Human::Skill_GetSkillList(VOID)
     _SKILL_LIST* pSkillList = (_SKILL_LIST*)(((HumanDB&)m_DB).GetSkillDB());
     if(NULL==pSkillList)
     {
-        //Ó¦¸ÃÓÀÔ¶²»»áµ½ÕâÀï£¬ÄÚ´æÉêÇëÔÚÏµÍ³³õÊ¼»¯ÊÇÒÑ¾­Ğ£ÑéÍê³É¡£ÕâÀï²»»á³öÏÖ¿ÕÖ¸Õë
-        //ÕâÀï±ØĞëÖÕÖ¹·şÎñÆ÷µÄÔËĞĞ£¬Á¢¼´¼ì²éÈËÎïµÄ³õÊ¼»¯Á÷³Ì,¿ÉÄÜÊÇÄÚ´æ·ÖÅäÊ§°Ü
+        //åº”è¯¥æ°¸è¿œä¸ä¼šåˆ°è¿™é‡Œï¼Œå†…å­˜ç”³è¯·åœ¨ç³»ç»Ÿåˆå§‹åŒ–æ˜¯å·²ç»æ ¡éªŒå®Œæˆã€‚è¿™é‡Œä¸ä¼šå‡ºç°ç©ºæŒ‡é’ˆ
+        //è¿™é‡Œå¿…é¡»ç»ˆæ­¢æœåŠ¡å™¨çš„è¿è¡Œï¼Œç«‹å³æ£€æŸ¥äººç‰©çš„åˆå§‹åŒ–æµç¨‹,å¯èƒ½æ˜¯å†…å­˜åˆ†é…å¤±è´¥
         AssertEx(FALSE,"[Obj_Human::Skill_GetSkillList]:have not Skill list!!!");
     }
     return *pSkillList;
@@ -38,8 +38,8 @@ _XINFA_LIST& Obj_Human::Skill_GetXinFaList(VOID)
     _XINFA_LIST* pXinFaList = (_XINFA_LIST*)(((HumanDB&)m_DB).GetXinFaDB());
     if(NULL==pXinFaList)
     {
-        //Ó¦¸ÃÓÀÔ¶²»»áµ½ÕâÀï£¬ÄÚ´æÉêÇëÔÚÏµÍ³³õÊ¼»¯ÊÇÒÑ¾­Ğ£ÑéÍê³É¡£ÕâÀï²»»á³öÏÖ¿ÕÖ¸Õë
-        //ÕâÀï±ØĞëÖÕÖ¹·şÎñÆ÷µÄÔËĞĞ£¬Á¢¼´¼ì²éÈËÎïµÄ³õÊ¼»¯Á÷³Ì,¿ÉÄÜÊÇÄÚ´æ·ÖÅäÊ§°Ü
+        //åº”è¯¥æ°¸è¿œä¸ä¼šåˆ°è¿™é‡Œï¼Œå†…å­˜ç”³è¯·åœ¨ç³»ç»Ÿåˆå§‹åŒ–æ˜¯å·²ç»æ ¡éªŒå®Œæˆã€‚è¿™é‡Œä¸ä¼šå‡ºç°ç©ºæŒ‡é’ˆ
+        //è¿™é‡Œå¿…é¡»ç»ˆæ­¢æœåŠ¡å™¨çš„è¿è¡Œï¼Œç«‹å³æ£€æŸ¥äººç‰©çš„åˆå§‹åŒ–æµç¨‹,å¯èƒ½æ˜¯å†…å­˜åˆ†é…å¤±è´¥
         AssertEx(FALSE,"[Obj_Human::Skill_GetXinFaList]:have not Xinfa list!!!");
     }
     return *pXinFaList;
@@ -49,8 +49,8 @@ _IMPACT_LIST& Obj_Human::Impact_GetImpactList(VOID)
     _IMPACT_LIST* pImpactList = (_IMPACT_LIST*)(((HumanDB&)m_DB).GetImpactDB());
     if(NULL==pImpactList)
     {
-        //Ó¦¸ÃÓÀÔ¶²»»áµ½ÕâÀï£¬ÄÚ´æÉêÇëÔÚÏµÍ³³õÊ¼»¯ÊÇÒÑ¾­Ğ£ÑéÍê³É¡£ÕâÀï²»»á³öÏÖ¿ÕÖ¸Õë
-        //ÕâÀï±ØĞëÖÕÖ¹·şÎñÆ÷µÄÔËĞĞ£¬Á¢¼´¼ì²éÈËÎïµÄ³õÊ¼»¯Á÷³Ì,¿ÉÄÜÊÇÄÚ´æ·ÖÅäÊ§°Ü
+        //åº”è¯¥æ°¸è¿œä¸ä¼šåˆ°è¿™é‡Œï¼Œå†…å­˜ç”³è¯·åœ¨ç³»ç»Ÿåˆå§‹åŒ–æ˜¯å·²ç»æ ¡éªŒå®Œæˆã€‚è¿™é‡Œä¸ä¼šå‡ºç°ç©ºæŒ‡é’ˆ
+        //è¿™é‡Œå¿…é¡»ç»ˆæ­¢æœåŠ¡å™¨çš„è¿è¡Œï¼Œç«‹å³æ£€æŸ¥äººç‰©çš„åˆå§‹åŒ–æµç¨‹,å¯èƒ½æ˜¯å†…å­˜åˆ†é…å¤±è´¥
         AssertEx(FALSE,"[Obj_Human::Impact_GetImpactList]: Have not Impact List!!!");
     }
     return *pImpactList;
@@ -273,7 +273,7 @@ BOOL Obj_Human::Skill_HaveSkill( SkillID_t const nID, BYTE const nLevel ) const
     _SKILL_LIST& rList = ((Obj_Human*)this)->Skill_GetSkillList();
 
     BYTE rCount=rList.m_Count;
-    //ÑéÖ¤ÊÇ·ñÊÇºÏ·¨µÄĞÄ·¨ID
+    //éªŒè¯æ˜¯å¦æ˜¯åˆæ³•çš„å¿ƒæ³•ID
     for(INT i=0; rCount>i; ++i)
     {
         _OWN_SKILL& rSkill = rList.m_aSkill[i];
@@ -309,7 +309,7 @@ INT Obj_Human::Skill_GetSkillLevel(SkillID_t const nID)const
     __ENTER_FUNCTION
     const _SKILL_LIST& rList = ((Obj_Human*)this)->Skill_GetSkillList();
     BYTE const& rCount=rList.m_Count;
-    //ÑéÖ¤ÊÇ·ñÊÇºÏ·¨µÄĞÄ·¨ID
+    //éªŒè¯æ˜¯å¦æ˜¯åˆæ³•çš„å¿ƒæ³•ID
     for(INT i=0; rCount>i; ++i)
     {
         const _OWN_SKILL& rSkill = rList.m_aSkill[i];
@@ -433,13 +433,13 @@ BOOL     Obj_Human::Skill_RegisterSkill(SkillID_t const nID, BYTE const nLevel)
     BYTE rCount = rList.m_Count;
 
     SkillTemplateData_T const* pSkillTemplate = g_SkillTemplateDataMgr.GetInstanceByID(nID);
-    if( pSkillTemplate == NULL ) return FALSE; //Ã»Õâ¸ö¼¼ÄÜÏµ
-    if( pSkillTemplate->GetClassByUser() != 0 ) return FALSE; //²»ÊÇÈËÓÃµÄ¼¼ÄÜ
+    if( pSkillTemplate == NULL ) return FALSE; //æ²¡è¿™ä¸ªæŠ€èƒ½ç³»
+    if( pSkillTemplate->GetClassByUser() != 0 ) return FALSE; //ä¸æ˜¯äººç”¨çš„æŠ€èƒ½
     if( pSkillTemplate->GetSkillClass() != INVALID_ID )
     {
         if( pSkillTemplate->GetSkillMaxLevel() != -1 && 
             nLevel > pSkillTemplate->GetSkillMaxLevel() ) 
-            return FALSE; //ÒÑ¾­Ñ§µ½×î´óµÈ¼¶ÁË£¬²»ÄÜÔÙ´óÁË
+            return FALSE; //å·²ç»å­¦åˆ°æœ€å¤§ç­‰çº§äº†ï¼Œä¸èƒ½å†å¤§äº†
     }
 
     for( INT i = 0; i < rCount; i++ )
@@ -448,15 +448,15 @@ BOOL     Obj_Human::Skill_RegisterSkill(SkillID_t const nID, BYTE const nLevel)
         BYTE level = rSkill.GetSkillLevel();
         if(nID == rSkill.m_nSkillID)
         {
-            //ÒÑ¾­ÓĞ¸Ã¼¼ÄÜ
+            //å·²ç»æœ‰è¯¥æŠ€èƒ½
             if( pSkillTemplate->GetSkillClass() != INVALID_ID )
             {
-                if( nLevel != level+1 ) return FALSE; //²»ÄÜ¿ç¼¶±ğÑ§Ï°
+                if( nLevel != level+1 ) return FALSE; //ä¸èƒ½è·¨çº§åˆ«å­¦ä¹ 
             }
             ID_t nInstance = pSkillTemplate->GetSkillInstance( nLevel - 1 );
             const SkillInstanceData_T* pSkillInstanceData = g_SkillDataMgr.GetInstanceByID(nInstance);
-            if( pSkillInstanceData == NULL ) return FALSE; //±í´íÎó
-            if( GetLevel() < pSkillInstanceData->GetStudyLevel() ) return FALSE; //Íæ¼ÒµÈ¼¶²»¹»
+            if( pSkillInstanceData == NULL ) return FALSE; //è¡¨é”™è¯¯
+            if( GetLevel() < pSkillInstanceData->GetStudyLevel() ) return FALSE; //ç©å®¶ç­‰çº§ä¸å¤Ÿ
             rSkill.SetSkillLevel(nLevel);
 
             GCDetailSkillList    Msg;
@@ -469,7 +469,7 @@ BOOL     Obj_Human::Skill_RegisterSkill(SkillID_t const nID, BYTE const nLevel)
         }
     }
 
-    //Ñ§Ï°ĞÂµÄ¼¼ÄÜ
+    //å­¦ä¹ æ–°çš„æŠ€èƒ½
     //if( nLevel != 1 ) return FALSE;
     if( rCount < MAX_CHAR_SKILL_NUM )
     {
@@ -563,7 +563,7 @@ BOOL     Obj_Human::Skill_UnregisterSkill(SkillID_t const nID, BYTE const nLevel
 //    __ENTER_FUNCTION
 //    const _XINFA_LIST&    rList    =    Skill_GetXinFaList();
 //    BYTE                rCount    =    rList.m_Count;
-//    //ÑéÖ¤ÊÇ·ñÊÇºÏ·¨µÄĞÄ·¨ID
+//    //éªŒè¯æ˜¯å¦æ˜¯åˆæ³•çš„å¿ƒæ³•ID
 //    //...
 //    for(INT i=0; rCount>i; ++i)
 //    {
@@ -676,7 +676,7 @@ BOOL Obj_Human::Skill_DepleteItem(VOID)
     return FALSE;
 }
 
-// µÃµ½¿ÉÒÔÓÉÍæ¼Ò¿ØÖÆµÄ·¨ÊõµÄÊıÁ¿
+// å¾—åˆ°å¯ä»¥ç”±ç©å®¶æ§åˆ¶çš„æ³•æœ¯çš„æ•°é‡
 INT Obj_Human::Pet_Skill_GetCount_CortrolByPlayer(PET_GUID_t guidPet)
 {
     __ENTER_FUNCTION
@@ -698,13 +698,13 @@ INT Obj_Human::Pet_Skill_GetCount_CortrolByPlayer(PET_GUID_t guidPet)
     return 0;
 }
 
-// µÃµ½¿ÉÒÔÓÉÍæ¼Ò¿ØÖÆµÄ·¨ÊõµÄ×î´óÊıÁ¿
+// å¾—åˆ°å¯ä»¥ç”±ç©å®¶æ§åˆ¶çš„æ³•æœ¯çš„æœ€å¤§æ•°é‡
 INT Obj_Human::Pet_Skill_GetMaxCount_CortrolByPlayer(PET_GUID_t guidPet)
 {
     return 1;
 }
 
-// µÃµ½ÓÉAI¿ØÖÆµÄ·¨ÊõµÄÊıÁ¿
+// å¾—åˆ°ç”±AIæ§åˆ¶çš„æ³•æœ¯çš„æ•°é‡
 INT Obj_Human::Pet_Skill_GetCount_CortrolByAI(PET_GUID_t guidPet)
 {
     __ENTER_FUNCTION
@@ -716,7 +716,7 @@ INT Obj_Human::Pet_Skill_GetCount_CortrolByAI(PET_GUID_t guidPet)
         INT nMaxAISkillCount = Pet_Skill_GetMaxCount_CortrolByAI(guidPet);
         INT nCount = 0;
         for (INT i = PET_SKILL_INDEX_CONTROL_BY_AI0; i < PET_SKILL_INDEX_CONTROL_BY_AI0 + nMaxAISkillCount; ++i)
-        {// ±»¶¯·¨¹¥£¬±»¶¯ÔÌº¬¶¼ÊôÓÚ±»¶¯¼¼ÄÜ
+        {// è¢«åŠ¨æ³•æ”»ï¼Œè¢«åŠ¨è•´å«éƒ½å±äºè¢«åŠ¨æŠ€èƒ½
             const _PET_SKILL *pPetSkill = Pet_Skill_Get( guidPet, i );
             if ( pPetSkill->m_nSkillID != INVALID_ID )
             {
@@ -732,7 +732,7 @@ INT Obj_Human::Pet_Skill_GetCount_CortrolByAI(PET_GUID_t guidPet)
     return 0;
 }
 
-// µÃµ½ÓÉAI¿ØÖÆµÄ·¨ÊõµÄ×î´óÊıÁ¿
+// å¾—åˆ°ç”±AIæ§åˆ¶çš„æ³•æœ¯çš„æœ€å¤§æ•°é‡
 INT Obj_Human::Pet_Skill_GetMaxCount_CortrolByAI(PET_GUID_t guidPet)
 {
     __ENTER_FUNCTION
@@ -819,7 +819,7 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    //ÑéÖ¤ÊÇ·ñÊÇºÏ·¨µÄ¼¼ÄÜID
+    //éªŒè¯æ˜¯å¦æ˜¯åˆæ³•çš„æŠ€èƒ½ID
     for(INT i=0; PET_MAX_SKILL_COUNT>i; ++i)
     {
         const _PET_SKILL *pPetSkill = Pet_Skill_Get( guidPet, i );
@@ -829,7 +829,7 @@ __ENTER_FUNCTION
         }
     }
 
-    // Íæ¼Ò²Ù×÷»¹ÊÇAI²Ù×÷
+    // ç©å®¶æ“ä½œè¿˜æ˜¯AIæ“ä½œ
     BOOL bContrlByPlayer = FALSE;
     switch(pSkillTemplateData->GetOperateModeForPetSkill())
     {
@@ -852,9 +852,9 @@ __ENTER_FUNCTION
     }
     else
     {
-        // ×î´óµÄAI¿ØÖÆµÄ¼¼ÄÜ¸öÊı
+        // æœ€å¤§çš„AIæ§åˆ¶çš„æŠ€èƒ½ä¸ªæ•°
         INT nMaxAISkillNum = Pet_Skill_GetMaxCount_CortrolByAI(guidPet);
-        // AI¿ØÖÆµÄ¼¼ÄÜ¿ÕÎ»
+        // AIæ§åˆ¶çš„æŠ€èƒ½ç©ºä½
         INT nNonAISkillNum = 0;
         INT nSkillIndex;
         for ( nSkillIndex = PET_SKILL_INDEX_CONTROL_BY_AI0; nSkillIndex < PET_SKILL_INDEX_CONTROL_BY_AI0 + nMaxAISkillNum; nSkillIndex++ )
@@ -870,7 +870,7 @@ __ENTER_FUNCTION
         if ( pStudySkill != NULL )
         {
             INT nPercent = rand() % 100;
-            // ´òÔÚĞÂ¸ñÉÏ
+            // æ‰“åœ¨æ–°æ ¼ä¸Š
             if ( nPercent < pStudySkill->m_nNewPercent )
             {
                 Assert(nNonAISkillNum > 0 && "Obj_Human::Pet_Skill_Modify_Study");
@@ -887,7 +887,7 @@ __ENTER_FUNCTION
                     }
                 }
             }
-            // Ìæ»»¾ÉµÄ
+            // æ›¿æ¢æ—§çš„
             else
             {
                 INT nAISkillNum = nMaxAISkillNum - nNonAISkillNum;
@@ -933,7 +933,7 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    //ÑéÖ¤ÊÇ·ñÊÇºÏ·¨µÄ¼¼ÄÜID
+    //éªŒè¯æ˜¯å¦æ˜¯åˆæ³•çš„æŠ€èƒ½ID
     for(INT i=0; PET_MAX_SKILL_COUNT>i; ++i)
     {
         const _PET_SKILL *pPetSkill = Pet_Skill_Get( guidPet, i );
@@ -943,7 +943,7 @@ __ENTER_FUNCTION
         }
     }
 
-    // Íæ¼Ò²Ù×÷»¹ÊÇAI²Ù×÷
+    // ç©å®¶æ“ä½œè¿˜æ˜¯AIæ“ä½œ
     BOOL bContrlByPlayer = pSkillTemplateData->GetOperateModeForPetSkill();
     if ( bContrlByPlayer )
     {
@@ -1089,7 +1089,7 @@ BOOL    Obj_Human::Skill_RefixItemAttr(INT nSlotID, INT nItemType, INT nATTRID, 
 //    __ENTER_FUNCTION
 //    if( Menpai<0 || Menpai>=MATTRIBUTE_NUMBER )
 //    {
-//        AssertEx( FALSE, "ÃÅÅÉÈ¡Öµ·¶Î§´íÎó£¡" ) ;
+//        AssertEx( FALSE, "é—¨æ´¾å–å€¼èŒƒå›´é”™è¯¯ï¼" ) ;
 //        return ;
 //    }
 //    const _XINFA_LIST& rXinFaList = Skill_GetXinFaList();
@@ -1183,7 +1183,7 @@ BOOL    Obj_Human::Skill_RefixItemAttr(INT nSlotID, INT nItemType, INT nATTRID, 
 //    __ENTER_FUNCTION
 //    if( Menpai<0 || Menpai>=MATTRIBUTE_NUMBER )
 //    {
-//        AssertEx( FALSE, "ÃÅÅÉÈ¡Öµ·¶Î§´íÎó£¡" ) ;
+//        AssertEx( FALSE, "é—¨æ´¾å–å€¼èŒƒå›´é”™è¯¯ï¼" ) ;
 //        return ;
 //    }
 //    const _XINFA_LIST& rXinFaList = Skill_GetXinFaList();

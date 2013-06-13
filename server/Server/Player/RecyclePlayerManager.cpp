@@ -20,7 +20,7 @@ RecyclePlayerManager::~RecyclePlayerManager()
 {
     __ENTER_FUNCTION
         
-        AssertEx(GetPlayerNumber() == 0,"³¡¾°ÖĞ»¹ÓĞÍæ¼Ò´æÔÚ,Ç¿ÖÆ»ØÊÕÍæ¼Ò¹ÜÀíÆ÷!");
+        AssertEx(GetPlayerNumber() == 0,"åœºæ™¯ä¸­è¿˜æœ‰ç©å®¶å­˜åœ¨,å¼ºåˆ¶å›æ”¶ç©å®¶ç®¡ç†å™¨!");
 
     __LEAVE_FUNCTION
 }

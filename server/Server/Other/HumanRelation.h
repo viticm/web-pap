@@ -1,9 +1,9 @@
 
 /////////////////////////////////////////////////////////////////////////////////
-//�ļ�����HumanRelation.h
-//����������ʵ����Һ����Լ���������ع���
-//�޸ļ�¼��2005-11-30 ����
-//            2005-12-16 �������ݽṹ�Լ�����ģ��
+//文件名：HumanRelation.h
+//功能描述：实现玩家好友以及黑名单相关功能
+//修改记录：2005-11-30 创建
+//            2005-12-16 增改数据结构以及功能模块
 /////////////////////////////////////////////////////////////////////////////////
 
 #ifndef __HUMANRELATION_H__
@@ -23,127 +23,127 @@ public :
     BOOL                            Init( Obj_Human* pHuman );
     VOID                            CleanUp( );
 
-    // �ж��Ƿ��Լ��ĺ���
+    // 判断是否自己的好友
     BOOL                            IsFriend( GUID_t guid );
 
-    // �ж��Ƿ��ں�����
+    // 判断是否在黑名单
     BOOL                            IsBlackName( GUID_t guid );
 
-    // �õ��������֮��Ĺ�ϵ����
+    // 得到两个玩家之间的关系类型
     RELATION_TYPE                    GetRelationType( GUID_t guid );
 
-    // �ж��������֮���Ƿ����ĳ�ֹ�ϵ
+    // 判断两个玩家之间是否存在某种关系
     BOOL                            HaveRelation( RELATION_TYPE RelationType, GUID_t guid );
 
-    // ����һ����ϵ��
+    // 添加一个关系户
     BOOL                            AddRelation( RELATION_TYPE RelationType, _RELATION* pRelationData );
 
-    // ����һ����ϵ��
+    // 添加一个关系户
     BOOL                            AddRelation( RELATION_TYPE RelationType, const RELATION_MEMBER* pMember );
 
-    // ɾ��һ����ϵ��
+    // 删除一个关系户
     BOOL                            DelRelation( RELATION_TYPE RelationType, GUID_t guid );
 
-    // �����ϵ
+    // 变更关系
     BOOL                            RelationTransition( RELATION_TYPE newRelationType, GUID_t guid );
 
-    // �Ƿ�ĳ���Ѿ���Ա
+    // 是否某组已经满员
     BOOL                            IsGroupFull( RELATION_GROUP RelationGroup );
 
-    // �ж�һ�ֹ�ϵ�Ƿ��ܹ�ֱ��ת������һ�ֹ�ϵ
+    // 判断一种关系是否能够直接转换成另一种关系
     BOOL                            CanTransition( RELATION_TYPE oldRelationType, RELATION_TYPE newRelationType );
 
-    // �õ�����
+    // 得到心情
     const CHAR*                        GetMood( );
 
-    // ��������
+    // 设置心情
     VOID                            SetMood( const CHAR* szMood );
 
-    // ��ѯ��ϵֵ
+    // 查询关系值
     INT                                GetFriendPoint( GUID_t guid );
 
-    // ���ӹ�ϵֵ
+    // 增加关系值
     VOID                            IncFriendPoint( GUID_t guid, INT nPoint = 1 );
 
-    // ���ٹ�ϵֵ
+    // 减少关系值
     VOID                            DecFriendPoint( GUID_t guid, INT nPoint = 1 );
 
-    // ���÷��飨�ýӿڴ�����Ϊ�˿ͻ�����ʾ�����ã�
+    // 设置分组（该接口纯粹是为了客户端显示而设置）
     BOOL                            SetFriendGroup( GUID_t guid, RELATION_GROUP RelationGroup );
 
-    // ����ϵ�б���Ϣ�ṹ
+    // 填充关系列表消息结构
     VOID                            FillRelationList( GC_RELATIONLIST& RelationList );
 
-    // ���¹�ϵ�����ݣ������ظ��º�Ĺ�ϵ������
+    // 更新关系人数据，并返回更新后的关系人数据
     const _OWN_RELATION*            UpdateRelationInfo( _RELATION* pRelationData );
 
-    // ��ù�ϵ������
+    // 获得关系人数据
     const _OWN_RELATION*            GetRelationInfo( GUID_t guid );
 
-    // ����ϵ�������е�ȱ�������
+    // 将关系人数据中的缺少项填充
     //BOOL                            CompleteRelationInfo( _RELATION& RelationData );
 
-    // �����ǽ����ص�һЩ����
+    // 以下是结婚相关的一些操作
 
-    // �Ƿ��ѻ�
+    // 是否已婚
     BOOL                            IsMarried();
 
-    // �õ���ż�� GUID
+    // 得到配偶的 GUID
     GUID_t                            GetSpouseGUID();
 
-    // ��ĳ�� GUID ��Ӧ����ҽ�飨�����ﲻ���Ա�
+    // 和某个 GUID 对应的玩家结婚（在这里不管性别）
     BOOL                            Marry( GUID_t guid );
 
-    // ���
+    // 离婚
     BOOL                            Divorce( );
 
-    // ������ʦͽ��һЩ��ز���
+    // 以下是师徒的一些相关操作
 
-    // �ж� guid ��Ӧ������Ƿ����Լ���ʦ��
+    // 判断 guid 对应的玩家是否是自己的师傅
     BOOL                            IsMaster( GUID_t guid );
 
-    // �õ�ʦ���� GUID
+    // 得到师傅的 GUID
     GUID_t                            GetMasterGUID();
 
-    // �ж� guid ��Ӧ������Ƿ����Լ���ͽ��
+    // 判断 guid 对应的玩家是否是自己的徒弟
     BOOL                            IsPrentice( GUID_t guid );
 
-    // �ж��Ƿ���ʦ��
+    // 判断是否有师傅
     BOOL                            HaveMaster( );
 
-    // ȡ���м���ͽ��
+    // 取得有几个徒弟
     INT                                GetPrenticeCount();
 
-    // ȡ�õ� nIndex ��ͽ�ܵ� GUID
+    // 取得第 nIndex 个徒弟的 GUID
     GUID_t                            GetNthPrentice( INT nIndex );
 
-    // ȡ��ʦ�µ�
+    // 取得师德点
     UINT                            GetMoralPoint( );
 
-    // ����ʦ�µ�
+    // 设置师德点
     BOOL                            SetMoralPoint( UINT uPoint );
 
-    // ȡ�����һ��ͽ����ʦʱ��ݵ�ǰʱ��ĳ��ȣ�����������
+    // 取得最后一次徒弟叛师时间据当前时间的长度（返回秒数）
     UINT                            GetPrenticeBetrayTime();
 
-    // �� guid ��Ӧ�����Ϊʦ
+    // 拜 guid 对应的玩家为师
     BOOL                            Aprentice( GUID_t guid );
 
-    // �� guid ��Ӧ�����Ϊͽ
+    // 收 guid 对应的玩家为徒
     BOOL                            Recruit( GUID_t guid );
 
-    // ����ʦ��
+    // 脱离师门
     BOOL                            LeaveMaster( );
 
-    // ���� GUID Ϊ guid ��ͽ��
+    // 驱逐 GUID 为 guid 的徒弟
     BOOL                            ExpelPrentice( GUID_t guid );
 
-    // �����ǽ�ݵ�һЩ����
+    // 以下是结拜的一些操作
 
-    // �ж��Ƿ��ǽ���ֵ�
+    // 判断是否是结拜兄弟
     BOOL                            IsBrother( GUID_t guid );
 
-    // �����к��ѷ����ʼ�
+    // 给所有好友发送邮件
     VOID                            SendMailToAllFriend( const CHAR* szMail );
 
 protected :
@@ -151,7 +151,7 @@ protected :
 
     inline const _OWN_RELATION*        GetRelationList( );
 
-    // ȡ����ϵ�˵����ݣ�����ָ���Լ� Index ֵ
+    // 取得联系人的数据，返回指针以及 Index 值
     const _OWN_RELATION*            GetRelation( RELATION_TYPE RelationType, GUID_t guid, INT& index );
 
 protected :

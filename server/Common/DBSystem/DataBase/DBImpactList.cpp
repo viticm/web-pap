@@ -154,7 +154,7 @@ BOOL DBImpactList::ParseResult(VOID* pResult)
                 DB_IMData, 
             };
 
-            //¼ÓÔØ¼¼ÄÜÊôĞÔ
+            //åŠ è½½æŠ€èƒ½å±æ€§
             
             Assert(mResultCount<MAX_IMPACT_NUM);
             Assert(mInterface);

@@ -1,6 +1,6 @@
 // Obj_Pet.h
 //
-// ¹¦ÄÜ£º³èÎïÔÚSERVERµÄÊµÏÖ
+// åŠŸèƒ½ï¼šå® ç‰©åœ¨SERVERçš„å®ç°
 // 
 ///////////////////////////////////////////////////////
 
@@ -10,17 +10,17 @@
 #include "Obj_Character.h"
 
 //////////////////////////////////////////////////////
-// ³õÊ¼»¯Obj_PetµÄ½á¹¹
+// åˆå§‹åŒ–Obj_Petçš„ç»“æ„
 //////////////////////////////////////////////////////
 struct _OBJ_PET_INIT :
     public _OBJ_CHARACTER_INIT
 {
-    GUID_t            m_GUID;            // ½ÇÉ«ÔÚ³¡¾°ÖĞµÄGUID£¬ÓëPetGUIDÊÇÁ½»ØÊÂ
+    GUID_t            m_GUID;            // è§’è‰²åœ¨åœºæ™¯ä¸­çš„GUIDï¼Œä¸PetGUIDæ˜¯ä¸¤å›äº‹
     _PET_DB            m_PetDB;
-    ObjID_t            m_CreatorID;    // ËùÓĞÕßµÄID£¬¼´³èÎïµÄÖ÷ÈË
-    INT                m_nIndex;        // ÔÚÖ÷ÈË³èÎï²ÛÖĞµÄË÷Òı
+    ObjID_t            m_CreatorID;    // æ‰€æœ‰è€…çš„IDï¼Œå³å® ç‰©çš„ä¸»äºº
+    INT                m_nIndex;        // åœ¨ä¸»äººå® ç‰©æ§½ä¸­çš„ç´¢å¼•
     INT                m_RespawnTime;
-    ScriptID_t        m_ScriptID ;    // °ó¶¨µÄ½Å±¾
+    ScriptID_t        m_ScriptID ;    // ç»‘å®šçš„è„šæœ¬
 
     _OBJ_PET_INIT( VOID )
     {
@@ -46,7 +46,7 @@ struct _OBJ_PET_INIT :
 };
 
 //////////////////////////////////////////////////////
-// ÊôĞÔË¢ĞÂµÄÉÏÒ»´ÎÊôĞÔµÄ±£´æ½á¹¹
+// å±æ€§åˆ·æ–°çš„ä¸Šä¸€æ¬¡å±æ€§çš„ä¿å­˜ç»“æ„
 //////////////////////////////////////////////////////
 struct _PET_ATTR_BACKUP
 {
@@ -60,44 +60,44 @@ public:
     FLOAT       m_MoveSpeed;
     _CAMP_DATA    m_CampData;
     ObjID_t        m_nOwnerID;
-    PET_GUID_t    m_SpouseGUID;                    // ÅäÅ¼GUID
-    INT            m_nAIType;                        // ĞÔ¸ñ
+    PET_GUID_t    m_SpouseGUID;                    // é…å¶GUID
+    INT            m_nAIType;                        // æ€§æ ¼
     INT            m_Level;
-    INT            m_nStealthLevel;                // ÒşÉí¼¶±ğ
+    INT            m_nStealthLevel;                // éšèº«çº§åˆ«
 
-    INT            m_nDataID;                        // Êı¾İID
-    INT            m_nModelID;                        // ÍâĞÎ
-    INT            m_nMountID;                        // ×ùÆïID
+    INT            m_nDataID;                        // æ•°æ®ID
+    INT            m_nModelID;                        // å¤–å½¢
+    INT            m_nMountID;                        // åº§éª‘ID
 
     PET_GUID_t    m_GUID;                            // ID
-    INT            m_nLife;                        // µ±Ç°ÊÙÃü
-    BYTE        m_byGeneration;                    // ¼¸´ú³è
-    BYTE        m_byHappiness;                    // ¿ìÀÖ¶È
+    INT            m_nLife;                        // å½“å‰å¯¿å‘½
+    BYTE        m_byGeneration;                    // å‡ ä»£å® 
+    BYTE        m_byHappiness;                    // å¿«ä¹åº¦
 
-    INT            m_nAtt_Physics;                    // ÎïÀí¹¥»÷Á¦
-    INT            m_nAtt_Magic;                    // Ä§·¨¹¥»÷Á¦
-    INT            m_nDef_Physics;                    // ÎïÀí·ÀÓùÁ¦
-    INT            m_nDef_Magic;                    // Ä§·¨·ÀÓùÁ¦
-    INT            m_nHit;                            // ÃüÖĞÂÊ
-    INT            m_nMiss;                        // ÉÁ±ÜÂÊ
-    INT            m_nCritical;                    // »áĞÄÂÊ
+    INT            m_nAtt_Physics;                    // ç‰©ç†æ”»å‡»åŠ›
+    INT            m_nAtt_Magic;                    // é­”æ³•æ”»å‡»åŠ›
+    INT            m_nDef_Physics;                    // ç‰©ç†é˜²å¾¡åŠ›
+    INT            m_nDef_Magic;                    // é­”æ³•é˜²å¾¡åŠ›
+    INT            m_nHit;                            // å‘½ä¸­ç‡
+    INT            m_nMiss;                        // é—ªé¿ç‡
+    INT            m_nCritical;                    // ä¼šå¿ƒç‡
 
-    INT            m_nExp;                            // ¾­Ñé
+    INT            m_nExp;                            // ç»éªŒ
 
-    INT            m_StrPerception;                // Á¦Á¿×ÊÖÊ
-    INT            m_ConPerception;                // ÌåÁ¦×ÊÖÊ
-    INT         m_DexPerception;                // Éí·¨×ÊÖÊ
-    INT            m_SprPerception;                // ÁéÆø×ÊÖÊ
-    INT         m_IntPerception;                // ¶¨Á¦×ÊÖÊ
-    INT            m_GenGu;                        // ¸ù¹Ç9
+    INT            m_StrPerception;                // åŠ›é‡èµ„è´¨
+    INT            m_ConPerception;                // ä½“åŠ›èµ„è´¨
+    INT         m_DexPerception;                // èº«æ³•èµ„è´¨
+    INT            m_SprPerception;                // çµæ°”èµ„è´¨
+    INT         m_IntPerception;                // å®šåŠ›èµ„è´¨
+    INT            m_GenGu;                        // æ ¹éª¨9
 
-    INT            m_Str;                            // Á¦Á¿
-    INT            m_Con;                            // ÌåÁ¦
-    INT         m_Dex;                            // Éí·¨
-    INT            m_Spr;                            // ÁéÆø
-    INT         m_Int;                            // ¶¨Á¦
+    INT            m_Str;                            // åŠ›é‡
+    INT            m_Con;                            // ä½“åŠ›
+    INT         m_Dex;                            // èº«æ³•
+    INT            m_Spr;                            // çµæ°”
+    INT         m_Int;                            // å®šåŠ›
 
-    INT            m_nRemainPoint;                    // Ç±ÄÜµã
+    INT            m_nRemainPoint;                    // æ½œèƒ½ç‚¹
     INT            m_nCampType;
 
 public:
@@ -109,7 +109,7 @@ public:
 
 
 //////////////////////////////////////////////////////
-// ³èÎï
+// å® ç‰©
 //////////////////////////////////////////////////////
 
 #define MAX_CAPTURER_NUM (6)
@@ -124,7 +124,7 @@ public:
     friend class AI_Pet;
 
 //===========================================
-// Obj¹«ÓĞ½Ó¿Ú¼Ì³Ğ
+// Objå…¬æœ‰æ¥å£ç»§æ‰¿
 //===========================================
 public:
     Obj_Pet( VOID );
@@ -141,13 +141,13 @@ public:
     const _PET_DB*        GetPetDB(VOID) const { return &m_PetDB; }
 
 //===========================================
-// ³èÎï»ù±¾Êı¾İ
+// å® ç‰©åŸºæœ¬æ•°æ®
 //===========================================
 public:
-    ScriptID_t            m_ScriptID ;//³èÎï°ó¶¨µÄ½Å±¾
+    ScriptID_t            m_ScriptID ;//å® ç‰©ç»‘å®šçš„è„šæœ¬
 
 //===========================================
-// ÕóÓªÏà¹Ø
+// é˜µè¥ç›¸å…³
 //===========================================
 public:
     virtual BOOL    IsEnemy(Obj_Character* pCharacter);
@@ -155,7 +155,7 @@ public:
     virtual BOOL    IsPartner(Obj_Character* pCharacter);
 
 //===========================================
-// ÏûÏ¢/ÊôĞÔË¢ĞÂ
+// æ¶ˆæ¯/å±æ€§åˆ·æ–°
 //===========================================
 public:
     virtual Packet        *CreateNewObjPacket( VOID );
@@ -170,32 +170,32 @@ protected:
     _PET_ATTR_BACKUP    m_AttrBackUp;
 
 //===========================================
-// ¿ìÀÖ¶È±ä»¯¹æÔò
+// å¿«ä¹åº¦å˜åŒ–è§„åˆ™
 //===========================================
 public:
     virtual BOOL        HeartBeat_Happiness( UINT uTime = 0 );
 
 protected:
-    CMyTimer            m_HappinessTimer;        // ¿ìÀÖ¶ÈÃ¿¸ô¶àÉÙÊ±¼ä¼õ1
+    CMyTimer            m_HappinessTimer;        // å¿«ä¹åº¦æ¯éš”å¤šå°‘æ—¶é—´å‡1
 
 //===========================================
-// ÊÙÃü±ä»¯¹æÔò
+// å¯¿å‘½å˜åŒ–è§„åˆ™
 //===========================================
 public:
     virtual BOOL        HeartBeat_Life( UINT uTime = 0 );
 
 protected:
-    CMyTimer            m_LifeTimer;        // ¿ìÀÖ¶ÈÃ¿¸ô¶àÉÙÊ±¼ä¼õ1
+    CMyTimer            m_LifeTimer;        // å¿«ä¹åº¦æ¯éš”å¤šå°‘æ—¶é—´å‡1
 
 //===========================================
-// ÆäËû¹æÔò
+// å…¶ä»–è§„åˆ™
 //===========================================
 public:
     VOID                LevelUp(VOID);
     virtual VOID        SetReliveInfo( BOOL bSkillRelive, const _RELIVE_INFO *pReliveInfo );
 
 //===========================================
-// ¼¼ÄÜ/ĞÄ·¨
+// æŠ€èƒ½/å¿ƒæ³•
 //===========================================
 public:
     virtual BOOL        Skill_HaveSkill( SkillID_t const nID, BYTE const nLevel ) const;
@@ -220,7 +220,7 @@ public:
     virtual BOOL         Skill_SetXinFaLevel(SkillID_t const nID, INT const nLevel);
     virtual VOID         Skill_OnEquipItem(VOID);
 //===========================================
-// Ğ§¹û
+// æ•ˆæœ
 //===========================================
 protected:
     virtual _IMPACT_LIST&    Impact_GetImpactList(VOID);
@@ -255,7 +255,7 @@ public:
     VOID                 SendCaptureFailedToOthers(ObjID_t idObj);
 
 protected:
-    INT                    m_nCapturerCount;    // µ±Ç°ÕıÔÚ²¶»ñ×Ô¼ºµÄÍæ¼ÒÊı
+    INT                    m_nCapturerCount;    // å½“å‰æ­£åœ¨æ•è·è‡ªå·±çš„ç©å®¶æ•°
     ObjID_t                m_aCapturer[MAX_CAPTURER_NUM];
 
 //===========================================
@@ -275,17 +275,17 @@ public:
     VOID                    GetRateOfBuffTakeEffect(INT idSkill, INT& rateOfBuffTakeEffect);
 
 protected:
-    ObjID_t                    m_OwnerID;            // µ±Ç°ËùÓĞÕßµÄObjID
-    ObjID_t                    m_TargetID;            // Ä¿±êID
+    ObjID_t                    m_OwnerID;            // å½“å‰æ‰€æœ‰è€…çš„ObjID
+    ObjID_t                    m_TargetID;            // ç›®æ ‡ID
     WORLD_POS                m_RespawnPos;
     INT                        m_RespawnTime;
-    // Ö»ÓÃÀ´»º´æ±»¶¯¼¼ÄÜºÍ»¤Ö÷ĞÍ¼¼ÄÜ(¼´Æğ³ÖĞøĞÔĞ§¹ûµÄ¼¼ÄÜ)
+    // åªç”¨æ¥ç¼“å­˜è¢«åŠ¨æŠ€èƒ½å’ŒæŠ¤ä¸»å‹æŠ€èƒ½(å³èµ·æŒç»­æ€§æ•ˆæœçš„æŠ€èƒ½)
     INT                        m_aCacheOfSkill[HUMAN_PET_MAX_COUNT]; 
     INT                        m_AIType;
 
 
 //===========================================
-// Ò»¼¶ÊôĞÔ
+// ä¸€çº§å±æ€§
 //===========================================
 public:
     virtual GUID_t            GetGUID( VOID )const;
@@ -347,15 +347,15 @@ public:
     virtual VOID            SetRemainPoint( INT nRemainPoint );
 
 protected:
-    GUID_t                    m_GUID;                // ½ÇÉ«ÔÚ³¡¾°ÖĞµÄGUID£¬ÓëPetGUIDÊÇÁ½»ØÊÂ
-    ObjID_t                    m_CreatorID;        // ´´½¨ÕßµÄObjID
-    Obj_Human*                m_pCreator;            // ³èÎïµÄ´´½¨Õß
-    INT                        m_nIndex;            // ±êÊ¶¸Ã³èÎïÊÇÍæ¼Ò³èÎï²ÛÖĞµÄµÚ¼¸¸ö
+    GUID_t                    m_GUID;                // è§’è‰²åœ¨åœºæ™¯ä¸­çš„GUIDï¼Œä¸PetGUIDæ˜¯ä¸¤å›äº‹
+    ObjID_t                    m_CreatorID;        // åˆ›å»ºè€…çš„ObjID
+    Obj_Human*                m_pCreator;            // å® ç‰©çš„åˆ›å»ºè€…
+    INT                        m_nIndex;            // æ ‡è¯†è¯¥å® ç‰©æ˜¯ç©å®¶å® ç‰©æ§½ä¸­çš„ç¬¬å‡ ä¸ª
     _PET_DB                    m_PetDB;
 
 
 //===========================================
-// ¶ş¼¶ÊôĞÔ
+// äºŒçº§å±æ€§
 //===========================================
 public:
     //StrikePoint

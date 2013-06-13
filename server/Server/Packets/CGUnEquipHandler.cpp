@@ -31,7 +31,7 @@ UINT CGUnEquipHandler::Execute( CGUnEquip* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     HUMAN_EQUIP    EquipPoint = (HUMAN_EQUIP)pPacket->getEquipPoint();
@@ -96,7 +96,7 @@ UINT CGUnEquipHandler::Execute( CGUnEquip* pPacket, Player* pPlayer )
 
             pGamePlayer->SendPacket( &Msg ) ;
 
-            //Èç¹û¿É¼û
+            //å¦‚æžœå¯è§
             if(pHuman->IsVisualPart(EquipPoint))
             {    
                 GCCharEquipment OtherMsg;
@@ -131,7 +131,7 @@ UINT CGUnEquipHandler::Execute( CGUnEquip* pPacket, Player* pPlayer )
     else
     {
         Assert(FALSE);
-        //×°±¸ÎªÊ²Ã´²»ÊÇ ICLASS_EQUIP
+        //è£…å¤‡ä¸ºä»€ä¹ˆä¸æ˜¯ ICLASS_EQUIP
     }
     
     g_pLog->FastSaveLog( LOG_FILE_1, "CGUnEquipHandler EquipPoint=%d itemClass=%d",

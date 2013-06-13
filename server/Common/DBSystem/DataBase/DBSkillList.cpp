@@ -144,7 +144,7 @@ BOOL DBSkillList::ParseResult(VOID* pResult)
                 DB_SkillTime,
             };
 
-            //¼ÓÔØ¼¼ÄÜÊôĞÔ
+            //åŠ è½½æŠ€èƒ½å±æ€§
             Assert(mResultCount<MAX_CHAR_SKILL_NUM);
             Assert(mInterface);
             INT ErrorCode;

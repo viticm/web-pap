@@ -137,7 +137,7 @@ BOOL ODBCInterface::Close()
         SQLFreeHandle(SQL_HANDLE_ENV,hEnv);
         hEnv = NULL;
     }
-    mConnected = FALSE;                        //ÉèÖÃÁ¬½Ó×´Ì¬
+    mConnected = FALSE;                        //è®¾ç½®è¿æ¥çŠ¶æ€
 
     return TRUE;
 
@@ -158,7 +158,7 @@ BOOL ODBCInterface::Execute()
         
             return FALSE;
         }
-            // Update, Delete, Insert Ó°ÏìµÄ½á¹û
+            // Update, Delete, Insert å½±å“çš„ç»“æœ
         SQLRowCount(hStmt,&mAffectCount);
         SQLNumResultCols(hStmt,&mColCount);
         if (mColCount > MAXCOL) 
@@ -182,7 +182,7 @@ BOOL ODBCInterface::Execute()
     }
     _MY_CATCH
     {
-            SaveLog((const CHAR*)m_Query.m_SqlStr);//±£´æ´íÎóµÄSqlÓï¾ä
+            SaveLog((const CHAR*)m_Query.m_SqlStr);//ä¿å­˜é”™è¯¯çš„Sqlè¯­å¥
     }
     return FALSE;
 }
@@ -198,7 +198,7 @@ BOOL ODBCInterface::LongExecute()
             DiagStateEx();
             return FALSE;
         }
-        // Update, Delete, Insert Ó°ÏìµÄ½á¹û
+        // Update, Delete, Insert å½±å“çš„ç»“æœ
         SQLRowCount(hStmt,&mAffectCount);
         SQLNumResultCols(hStmt,&mColCount);
         if (mColCount > MAXCOL) 
@@ -223,7 +223,7 @@ BOOL ODBCInterface::LongExecute()
     _MY_CATCH
     {
         SaveErrorLog("Huge Error occur:");
-        SaveErrorLog((const CHAR*)m_LongQuery.m_SqlStr);//±£´æ´íÎóµÄSqlÓï¾ä
+        SaveErrorLog((const CHAR*)m_LongQuery.m_SqlStr);//ä¿å­˜é”™è¯¯çš„Sqlè¯­å¥
     }
     return FALSE;
 }
@@ -529,10 +529,10 @@ VOID    ODBCInterface::DiagState()
         
     }
     
-    mErrorMsg[MAX_ERROR_MSG_LENGHT-1] = '\0'; //·ÀÖ¹´íÎóÏûÏ¢Òç³ö
+    mErrorMsg[MAX_ERROR_MSG_LENGHT-1] = '\0'; //é˜²æ­¢é”™è¯¯æ¶ˆæ¯æº¢å‡º
     
     if(strlen((const char*)mErrorMsg) == 0)
-    {//×Ô¶¨ÒåÊı¾İ¿â´íÎó
+    {//è‡ªå®šä¹‰æ•°æ®åº“é”™è¯¯
             
                     mResult    =    SQLError(hEnv,hDbc,hStmt,SqlState,
                         &NativeError,mErrorMsg,sizeof(mErrorMsg),&MsgLen);
@@ -541,14 +541,14 @@ VOID    ODBCInterface::DiagState()
 
     switch(mErrorCode) 
     {
-    case 2601: //½ÇÉ«ÖØÃû²»ĞèÒª¹Ø±ÕÁ¬½Ó
+    case 2601: //è§’è‰²é‡åä¸éœ€è¦å…³é—­è¿æ¥
         break;
     default:
         {
             Close();
         }
     }
-    SaveLog((const CHAR*)m_Query.m_SqlStr);//±£´æ´íÎóµÄSqlÓï¾ä
+    SaveLog((const CHAR*)m_Query.m_SqlStr);//ä¿å­˜é”™è¯¯çš„Sqlè¯­å¥
     CHAR ErrorBuffer[512] = {0};
     sprintf(ErrorBuffer,"ErrorCode = %d,ErrorMessage = %s",mErrorCode,mErrorMsg);
     SaveLog(ErrorBuffer);
@@ -571,10 +571,10 @@ VOID    ODBCInterface::DiagStateEx()
 
     }
 
-    mErrorMsg[MAX_ERROR_MSG_LENGHT-1] = '\0'; //·ÀÖ¹´íÎóÏûÏ¢Òç³ö
+    mErrorMsg[MAX_ERROR_MSG_LENGHT-1] = '\0'; //é˜²æ­¢é”™è¯¯æ¶ˆæ¯æº¢å‡º
 
     if(strlen((const char*)mErrorMsg) == 0)
-    {//×Ô¶¨ÒåÊı¾İ¿â´íÎó
+    {//è‡ªå®šä¹‰æ•°æ®åº“é”™è¯¯
 
         mResult    =    SQLError(hEnv,hDbc,hStmt,SqlState,
             &NativeError,mErrorMsg,sizeof(mErrorMsg),&MsgLen);
@@ -583,9 +583,9 @@ VOID    ODBCInterface::DiagStateEx()
 
     switch(mErrorCode) 
     {
-    case 2601: //½ÇÉ«ÖØÃû
+    case 2601: //è§’è‰²é‡å
         break;
-    case 3621: //½ÇÉ«ÖØÃû
+    case 3621: //è§’è‰²é‡å
         break;
     default:
         {
@@ -596,7 +596,7 @@ VOID    ODBCInterface::DiagStateEx()
     CHAR ErrorBuffer[512] = {0};
     sprintf(ErrorBuffer,"ErrorCode = %d,ErrorMessage = %s,ErrorSql",mErrorCode,mErrorMsg);
     SaveErrorLog(ErrorBuffer);
-    SaveErrorLog((const CHAR*)m_LongQuery.m_SqlStr);//±£´æ´íÎóµÄSqlÓï¾ä
+    SaveErrorLog((const CHAR*)m_LongQuery.m_SqlStr);//ä¿å­˜é”™è¯¯çš„Sqlè¯­å¥
     __LEAVE_FUNCTION
 }
 

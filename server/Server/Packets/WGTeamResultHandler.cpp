@@ -37,7 +37,7 @@ __ENTER_FUNCTION
     }
 
     if( pPlayer->IsServerPlayer() )
-    {//·şÎñÆ÷ÊÕµ½ÊÀ½ç·şÎñÆ÷·¢À´µÄÊı¾İ
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pScene->SendPacket( pPacket, PlayerID );
@@ -48,7 +48,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         TeamInfo* pTeamInfo = pHuman->GetTeamInfo();
@@ -91,11 +91,11 @@ __ENTER_FUNCTION
 
                     if ( ptempGamePlayer == NULL )
                     {
-                        Assert(FALSE && "¶ÓÓÑÊ§È¥ÁËÁ¬½Ó¡£");
+                        Assert(FALSE && "é˜Ÿå‹å¤±å»äº†è¿æ¥ã€‚");
                     }
                     else if ( (ptempHuman = ptempGamePlayer->GetHuman()) == NULL )
                     {
-                        Assert(FALSE && "¶ÓÓÑÕÒ²»µ½ÁË¡­¡­");
+                        Assert(FALSE && "é˜Ÿå‹æ‰¾ä¸åˆ°äº†â€¦â€¦");
                     }
                     else
                     {
@@ -107,7 +107,7 @@ __ENTER_FUNCTION
                     Member.m_ObjID = INVALID_ID;
                 }
 
-                tMsg.SetGUIDEx( Member.m_ObjID ); // ½«¶ÓÓÑµÄ ObjID ·¢³öÈ¥
+                tMsg.SetGUIDEx( Member.m_ObjID ); // å°†é˜Ÿå‹çš„ ObjID å‘å‡ºå»
                 pTeamInfo->AddMember( &Member );
 
                 if ( pTeamInfo->IsFull() )
@@ -121,12 +121,12 @@ __ENTER_FUNCTION
         case TEAM_RESULT_LEADERLEAVETEAM:
             {
                 if ( pTeamInfo->IsFull() )
-                { // ¶ÓÎé²»ÔÙÂú
+                { // é˜Ÿä¼ä¸å†æ»¡
                     bNotifyTeamInfoFlag = TRUE;
                 }
 
                 if ( pGamePlayer->m_HumanGUID == pPacket->GetGUID() )
-                { // ×Ô¼ºÖ÷¶¯Àë¶Ó
+                { // è‡ªå·±ä¸»åŠ¨ç¦»é˜Ÿ
                     if ( pHuman->__GetTeamFollowFlag() )
                     {
                         pHuman->__StopTeamFollow(FALSE);
@@ -142,7 +142,7 @@ __ENTER_FUNCTION
                     pTeamInfo->DelMember( pPacket->GetGUID() );
 
                     if ( pPacket->GetReturn() == TEAM_RESULT_LEADERLEAVETEAM
-                      && pTeamInfo->IsLeader() // ¶Ó³¤ÍË¶Óºó£¬×Ô¼º±ä³ÉĞÂ¶Ó³¤
+                      && pTeamInfo->IsLeader() // é˜Ÿé•¿é€€é˜Ÿåï¼Œè‡ªå·±å˜æˆæ–°é˜Ÿé•¿
                       )
                     {
                         GCReturnTeamFollow Msg;
@@ -158,7 +158,7 @@ __ENTER_FUNCTION
         case TEAM_RESULT_TEAMDISMISS:
             {
                 if ( pTeamInfo->IsLeader() )
-                { // ×Ô¼ºÊÇ¶Ó³¤
+                { // è‡ªå·±æ˜¯é˜Ÿé•¿
                     if ( pHuman->__GetTeamFollowFlag() )
                     {
                         pHuman->__StopTeamFollow(FALSE);
@@ -173,7 +173,7 @@ __ENTER_FUNCTION
         case TEAM_RESULT_TEAMAPPOINT:
             {
                 if ( pTeamInfo->IsLeader() )
-                { // ×Ô¼ºÊÇ¶Ó³¤
+                { // è‡ªå·±æ˜¯é˜Ÿé•¿
                     if ( pHuman->__GetTeamFollowFlag() )
                     {
                         pHuman->__StopTeamFollow();
@@ -185,7 +185,7 @@ __ENTER_FUNCTION
                 pTeamInfo->Appoint( pPacket->GetGUIDEx() );
 
                 if ( pTeamInfo->IsLeader() )
-                { // ×Ô¼ºÊÇ¶Ó³¤ÁË
+                { // è‡ªå·±æ˜¯é˜Ÿé•¿äº†
                     bNotifyTeamInfoFlag = TRUE;
                 }
             }
@@ -198,7 +198,7 @@ __ENTER_FUNCTION
         case TEAM_RESULT_ENTERSCENE:
             {
                 if ( pPacket->GetGUID() == pGamePlayer->m_HumanGUID )
-                { // ×Ô¼º½øÈë
+                { // è‡ªå·±è¿›å…¥
                     pTeamInfo->EnterScene( pGamePlayer->m_HumanGUID, pScene->SceneID(),
                                             pHuman->GetID() );
 
@@ -222,11 +222,11 @@ __ENTER_FUNCTION
 
                         if ( ptempGamePlayer == NULL )
                         {
-                            Assert(FALSE && "¶ÓÓÑÊ§È¥ÁËÁ¬½Ó¡£");
+                            Assert(FALSE && "é˜Ÿå‹å¤±å»äº†è¿æ¥ã€‚");
                         }
                         else if ( (ptempHuman = ptempGamePlayer->GetHuman()) == NULL )
                         {
-                            Assert(FALSE && "¶ÓÓÑÕÒ²»µ½ÁË¡­¡­");
+                            Assert(FALSE && "é˜Ÿå‹æ‰¾ä¸åˆ°äº†â€¦â€¦");
                         }
                         else
                         {

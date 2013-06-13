@@ -25,7 +25,7 @@ UINT LWAskDeleteCharHandler::Execute(LWAskDeleteChar* pPacket, Player* pPlayer )
         }
         else
         {
-            AssertEx(FALSE,"LWAskDeleteCharHandler 线程资源执行错误!");
+            AssertEx(FALSE,"LWAskDeleteCharHandler 绾跨▼璧勬簮鎵ц閿欒!");
         }
         Log::SaveLog(LOGIN_LOGFILE,"LWAskDeleteCharHandler::Execute() ....OK");
 

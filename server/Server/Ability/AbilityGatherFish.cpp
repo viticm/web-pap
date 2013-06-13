@@ -86,14 +86,14 @@ __ENTER_FUNCTION
         else
         {
         
-            //×Ô¶¯¿ªÊ¼
-            //ÅÐ¶ÏÊÇ·ñÄÜ´ò¿ª
+            //è‡ªåŠ¨å¼€å§‹
+            //åˆ¤æ–­æ˜¯å¦èƒ½æ‰“å¼€
             if(pScene->GetGrowPointManager()->CallScriptOpenBoxFunc(pGET->m_ScriptID,pHuman->GetID(),ItemBoxObjID,pScene->SceneID()))
             {
                 return OnProcFailure(pHuman);
             }
 
-            //½øÈë´ò¿ª¹ý³Ì
+            //è¿›å…¥æ‰“å¼€è¿‡ç¨‹
         
             ORESULT res = pHuman->GetHumanAI()->PushCommand_UseAbility();
             if( res == OR_OK )

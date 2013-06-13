@@ -17,7 +17,7 @@ namespace Packets
             }
             virtual        ~WGTeamResult(){};
 
-            //¹«ÓÃ½Ó¿Ú
+            //å…¬ç”¨æ¥å£
             virtual BOOL            Read( SocketInputStream& iStream ) ;
             virtual BOOL            Write( SocketOutputStream& oStream )const ;
             virtual UINT            Execute( Player* pPlayer ) ;
@@ -67,16 +67,16 @@ namespace Packets
         USHORT                GetDataID() { return m_uDataID; }
 
     public :
-        PlayerID_t            m_PlayerID ;    //Á¬½ÓÕß
+        PlayerID_t            m_PlayerID ;    //è¿æ¥è€…
         BYTE                m_Return ;
         GUID_t                m_GUID ;
         TeamID_t            m_TeamID ;
         GUID_t                m_GUIDEx ;
         SceneID_t            m_SceneID ;
         UCHAR                m_NameSize;
-        CHAR                m_Name[MAX_CHARACTER_NAME];            // ¶ÓÔ±µÄÃû×Ö£¬ÔÚ¶ÓÔ±Èë¶ÓµÄÊ±ºòÓÃ
-        INT                    m_nPortrait;                        // Í·Ïñ
-        USHORT                m_uDataID;                            // ¶ÓÔ±µÄĞÔ±ğ
+        CHAR                m_Name[MAX_CHARACTER_NAME];            // é˜Ÿå‘˜çš„åå­—ï¼Œåœ¨é˜Ÿå‘˜å…¥é˜Ÿçš„æ—¶å€™ç”¨
+        INT                    m_nPortrait;                        // å¤´åƒ
+        USHORT                m_uDataID;                            // é˜Ÿå‘˜çš„æ€§åˆ«
 
     };
 

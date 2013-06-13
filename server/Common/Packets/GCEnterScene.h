@@ -20,7 +20,7 @@ public:
     }
     virtual ~GCEnterScene( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -33,7 +33,7 @@ public:
                                                             sizeof(BYTE)*2; }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     
     inline VOID            setReturn(BYTE byReturn)        { m_byRet = byReturn; }
     inline BYTE            getReturn(VOID)const            { return m_byRet; }
@@ -54,18 +54,18 @@ public:
     BYTE                getCityLevel( ){ return m_nCityLevel; }
 
 private:
-    //Êı¾İ
-    BYTE                m_byRet;        //·şÎñÆ÷·µ»Ø½á¹û
-                                        //    0 - È·ÈÏ¿ÉÒÔ½øÈë¸Ã³¡¾°
-                                        //  1 - Íæ¼ÒÃ»ÓĞ½øÈë¸Ã³¡¾°µÄĞí¿É
-                                        //  2 - ·Ç·¨µÄ³¡¾°ID
-                                        //  3 - ³¡¾°ÈËÊıÒÑ¾­ÂúÁË
+    //æ•°æ®
+    BYTE                m_byRet;        //æœåŠ¡å™¨è¿”å›ç»“æœ
+                                        //    0 - ç¡®è®¤å¯ä»¥è¿›å…¥è¯¥åœºæ™¯
+                                        //  1 - ç©å®¶æ²¡æœ‰è¿›å…¥è¯¥åœºæ™¯çš„è®¸å¯
+                                        //  2 - éæ³•çš„åœºæ™¯ID
+                                        //  3 - åœºæ™¯äººæ•°å·²ç»æ»¡äº†
                                         //  ....
-    SceneID_t            m_nSceneID;        //³¡¾°ID
-    WORLD_POS            m_posWorld;        //½øÈëµãµÄX,Z×ø±êµã
+    SceneID_t            m_nSceneID;        //åœºæ™¯ID
+    WORLD_POS            m_posWorld;        //è¿›å…¥ç‚¹çš„X,Zåæ ‡ç‚¹
     ObjID_t                m_ObjID ;
-    BYTE                m_bIsCity;        //ÊÇ·ñÊÇ³ÇÊĞ
-    BYTE                m_nCityLevel;    //³ÇÊĞ¼¶±ğ
+    BYTE                m_bIsCity;        //æ˜¯å¦æ˜¯åŸå¸‚
+    BYTE                m_nCityLevel;    //åŸå¸‚çº§åˆ«
 
 };
 

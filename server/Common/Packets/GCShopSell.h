@@ -1,6 +1,6 @@
 // GCShopSell.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -19,8 +19,8 @@ namespace Packets
     public:
         enum
         {
-            SELL_OK = 0,        // Âô³ö³É¹¦
-            SELL_FAIL,        // Âô³öÊ§°Ü
+            SELL_OK = 0,        // å–å‡ºæˆåŠŸ
+            SELL_FAIL,        // å–å‡ºå¤±è´¥
         };
     public:
         GCShopSell( )
@@ -29,7 +29,7 @@ namespace Packets
         };
         virtual ~GCShopSell( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -42,7 +42,7 @@ namespace Packets
         VOID                    SetSellOk(BYTE SellOk) {m_IsSellOk = SellOk;};
 
     private:
-        BYTE                    m_IsSellOk;        //³É¹¦Óë·ñ
+        BYTE                    m_IsSellOk;        //æˆåŠŸä¸å¦
     };
 
     class GCShopSellFactory : public PacketFactory 

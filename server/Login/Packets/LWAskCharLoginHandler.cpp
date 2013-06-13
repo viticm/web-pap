@@ -25,7 +25,7 @@ UINT LWAskCharLoginHandler::Execute(LWAskCharLogin* pPacket, Player* pPlayer )
         }
         else
         {
-            AssertEx(FALSE,"LWAskCharLoginHandler 线程资源执行错误!");
+            AssertEx(FALSE,"LWAskCharLoginHandler 绾跨▼璧勬簮鎵ц閿欒!");
         }
         Log::SaveLog(LOGIN_LOGFILE,"LWAskCharLoginHandler::Execute() ....OK");
 

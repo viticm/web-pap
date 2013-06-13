@@ -76,17 +76,17 @@ __ENTER_FUNCTION
 
     INT nFinalDestIndex = nDestIndex ;
     if( nFinalDestIndex == INVALID_INDEX )
-    {//Ëæ»úÕÒ¸öµØ·½Éú³ÉÎïÆ·
+    {//éšæœºæ‰¾ä¸ªåœ°æ–¹ç”Ÿæˆç‰©å“
         
         if(pSourItem->m_Type != IDT_PET)
         {
             INT nSourLayCount = pSourItem->GetLayedNum();
             INT nRepIndex = pDestContainer->GetIndexByType( pSourItem->GetItemTableIndex(),pSourItem->GetLayedNum() ) ;
             if( nRepIndex!=INVALID_INDEX )
-            {//ÒÑ¾­ÓĞÍ¬ÀàÎïÆ·ÁË
+            {//å·²ç»æœ‰åŒç±»ç‰©å“äº†
                 pDestItem = pDestContainer->GetItem( nRepIndex ) ;
                 if( !pDestItem->IsLock() && pDestItem->IsCanLay() )
-                {//ÎïÆ·ÄÜ¹»ÖØµş·ÅÖÃ
+                {//ç‰©å“èƒ½å¤Ÿé‡å æ”¾ç½®
                     INT nDestLayCount = pDestItem->GetLayedNum() ;
                     INT nDestMaxLayCount = pDestItem->GetMaxLayedNum() ;
 
@@ -117,7 +117,7 @@ __ENTER_FUNCTION
         Assert( pDestItem ) ;
 
         if( !pDestItem->IsEmpty() )
-        {//Ä¿±êÎ»ÖÃÓĞÎïÆ·
+        {//ç›®æ ‡ä½ç½®æœ‰ç‰©å“
             return ITEMOE_DESTOPERATOR_HASITEM ;
         }
     }
@@ -126,7 +126,7 @@ __ENTER_FUNCTION
     {
     case IDT_ITEM:
         {
-            //ĞÂcreate³öÀ´µÄitemĞèÒªĞÂµÄguid
+            //æ–°createå‡ºæ¥çš„iteméœ€è¦æ–°çš„guid
             _ITEM_GUID NewGUID;
             if(!GenItemGUID(NewGUID))
             {
@@ -196,10 +196,10 @@ BOOL    ItemOperator::CreateItem(ITEM_LOG_PARAM* pLogParam,
     bNewEmptyPos    =    FALSE;
     
 
-    //Èç¹û¿Éµş¼ÓÎïÆ·
+    //å¦‚æœå¯å åŠ ç‰©å“
     if(ItemRulerCheck::CheckTypeRuler(IRL_TILE,uItemIndex))
     {
-        //Ö»¼ÓÒ»¸ö¿ÉÒÔÓÃÕâ¸öº¯Êı
+        //åªåŠ ä¸€ä¸ªå¯ä»¥ç”¨è¿™ä¸ªå‡½æ•°
         INT iNoFullBagIndex =    pDestContainer->GetNoFullItemIndex(uItemIndex);
 
         if(iNoFullBagIndex != INVALID_INDEX)
@@ -215,7 +215,7 @@ BOOL    ItemOperator::CreateItem(ITEM_LOG_PARAM* pLogParam,
         }
     }
 
-    //·ñÔòÒ»¶¨ÒªnewÎïÆ·
+    //å¦åˆ™ä¸€å®šè¦newç‰©å“
     INT iEmptyBagIndex    = pDestContainer->GetEmptyItemIndex();
 
     if(iEmptyBagIndex != INVALID_INDEX)
@@ -245,7 +245,7 @@ BOOL    ItemOperator::CreateItem(ITEM_LOG_PARAM* pLogParam,
         }
         else
         {
-            Assert(FALSE);//²»ÄÜ³öÏÖµÄÇé¿ö
+            Assert(FALSE);//ä¸èƒ½å‡ºç°çš„æƒ…å†µ
         }
     }
     return FALSE;
@@ -278,7 +278,7 @@ __ENTER_FUNCTION
     Item* pSourItem = NULL ;
     Item* pDestItem = NULL ;
 
-    //ÑéÖ¤
+    //éªŒè¯
     pSourItem = pSourContainer->GetItem( nSourIndex ) ;
     if( pSourItem==NULL )
     {
@@ -297,7 +297,7 @@ __ENTER_FUNCTION
     INT nFinalDestIndex = nDestIndex ;
     
     if( nFinalDestIndex == INVALID_INDEX )
-    {//×Ô¶¯Ñ°ÕÒ¿Õ¸ñ£¬²»×Ô¶¯Ìî³äµ½¿Éµş¼ÓµÄ¸ñ×ÓÀïÁË£¿
+    {//è‡ªåŠ¨å¯»æ‰¾ç©ºæ ¼ï¼Œä¸è‡ªåŠ¨å¡«å……åˆ°å¯å åŠ çš„æ ¼å­é‡Œäº†ï¼Ÿ
         nFinalDestIndex = pDestContainer->GetEmptyItemIndex() ;
         if( nFinalDestIndex == INVALID_INDEX )
         {
@@ -305,7 +305,7 @@ __ENTER_FUNCTION
         }
     }
     else
-    {//Ö¸¶¨¸ñ×Ó
+    {//æŒ‡å®šæ ¼å­
         pDestItem = pDestContainer->GetItem( nDestIndex ) ;
         if( pDestItem==NULL )
         {
@@ -313,16 +313,16 @@ __ENTER_FUNCTION
             return ITEMOE_UNKNOW ;
         }
         if( !pDestItem->IsEmpty() )
-        {//Ä¿±êÎ»ÖÃÓĞÎïÆ·
+        {//ç›®æ ‡ä½ç½®æœ‰ç‰©å“
             return ITEMOE_DESTOPERATOR_HASITEM ;
         }
         if( pDestItem->IsLock() )
-        {//Ä¿±êÎ»ÖÃÒÑ±»Ëø
+        {//ç›®æ ‡ä½ç½®å·²è¢«é”
             return ITEMOE_DESTOPERATOR_LOCK;
         }
     }
 
-    //¿½±´¹ıÈ¥£¬×Ô¶¯½âËø
+    //æ‹·è´è¿‡å»ï¼Œè‡ªåŠ¨è§£é”
     pDestContainer->SetItem( nFinalDestIndex, pSourItem ) ;
 
     return nFinalDestIndex ;
@@ -367,7 +367,7 @@ INT    ItemOperator::CopyItem(ItemBoxContaner* pSourceContainer,
             INT nRepIndex = pDestContainer->GetIndexByType( pSourItem->m_ItemIndex, pSourItem->GetItemCount() ) ;
             
             if( nRepIndex!=INVALID_INDEX ) 
-            {//Í¬ÀàÎïÆ·´¦Àí
+            {//åŒç±»ç‰©å“å¤„ç†
                 
                 pDestItem = pDestContainer->GetItem( nRepIndex ) ;
                 Assert(pDestItem);
@@ -377,7 +377,7 @@ INT    ItemOperator::CopyItem(ItemBoxContaner* pSourceContainer,
                     return ITEMOE_UNKNOW;
                 }
                 if( !pDestItem->IsEmpty() && !pDestItem->IsLock() && pDestItem->IsCanLay() )
-                {//ÎïÆ·ÄÜ¹»ÖØµş·ÅÖÃ
+                {//ç‰©å“èƒ½å¤Ÿé‡å æ”¾ç½®
                     INT nDestLayCount = pDestItem->GetLayedNum() ;
                     INT nDestMaxLayCount = pDestItem->GetMaxLayedNum() ;
                     INT nSourLayCount = pSourItem->GetItemCount();
@@ -407,7 +407,7 @@ INT    ItemOperator::CopyItem(ItemBoxContaner* pSourceContainer,
             }
 
             if( !pDestItem->IsEmpty() )
-            {//Ä¿±êÎ»ÖÃÓĞÎïÆ·
+            {//ç›®æ ‡ä½ç½®æœ‰ç‰©å“
                 return ITEMOE_DESTOPERATOR_HASITEM ;
             }
             
@@ -459,23 +459,23 @@ __ENTER_FUNCTION
 
     INT nFinalDestIndex = nDestIndex ;
     if( nFinalDestIndex == INVALID_INDEX )
-    {//Ëæ»úÕÒ¸öµØ·½Éú³ÉÎïÆ·
+    {//éšæœºæ‰¾ä¸ªåœ°æ–¹ç”Ÿæˆç‰©å“
         if(pSourItem->m_Type != IDT_PET)
         {
             INT nSourLayCount = pSourItem->GetLayedNum();
             INT nRepIndex = pDestContainer->GetIndexByType( pSourItem->GetItemTableIndex(),pSourItem->GetLayedNum() ) ;
             if( nRepIndex!=INVALID_INDEX )
-            {//ÒÑ¾­ÓĞÍ¬ÀàÎïÆ·ÁË
+            {//å·²ç»æœ‰åŒç±»ç‰©å“äº†
                 pDestItem = pDestContainer->GetItem( nRepIndex );
                 if( !pDestItem->IsLock() && pDestItem->IsCanLay() )
-                {//ÎïÆ·ÄÜ¹»ÖØµş·ÅÖÃ
+                {//ç‰©å“èƒ½å¤Ÿé‡å æ”¾ç½®
                     INT nDestLayCount = pDestItem->GetLayedNum() ;
                     INT nDestMaxLayCount = pDestItem->GetMaxLayedNum() ;
                     INT nSourLayCount = pSourItem->GetLayedNum() ;
                     if( nSourLayCount+nDestLayCount<=nDestMaxLayCount )
                     {
                         SetItemLayCount( pDestContainer, nRepIndex, nSourLayCount+nDestLayCount ) ;
-                        pSourContainer->EraseItem(nSourIndex);//¸´ÖÆ£¡£¡£¡
+                        pSourContainer->EraseItem(nSourIndex);//å¤åˆ¶ï¼ï¼ï¼
                         return nRepIndex ;
                     }
                 }
@@ -498,7 +498,7 @@ __ENTER_FUNCTION
         }
 
         if( !pDestItem->IsEmpty() )
-        {//Ä¿±êÎ»ÖÃÓĞÎïÆ·
+        {//ç›®æ ‡ä½ç½®æœ‰ç‰©å“
             return ITEMOE_DESTOPERATOR_HASITEM ;
         }
         Assert( !pDestItem->IsLock() ) ;
@@ -557,20 +557,20 @@ INT    ItemOperator::MoveItem( ItemContainer* pSourContainer,
 
         INT nFinalDestIndex = nDestIndex ;
         if( nFinalDestIndex == INVALID_INDEX )
-        {//Ëæ»úÕÒ¸öµØ·½Éú³ÉÎïÆ·
+        {//éšæœºæ‰¾ä¸ªåœ°æ–¹ç”Ÿæˆç‰©å“
             INT nRepIndex = pDestContainer->GetIndexByType( pSourItem->GetItemTableIndex(),pSourItem->GetLayedNum() ) ;
             if( nRepIndex!=INVALID_INDEX )
-            {//ÒÑ¾­ÓĞÍ¬ÀàÎïÆ·ÁË
+            {//å·²ç»æœ‰åŒç±»ç‰©å“äº†
                 pDestItem = pDestContainer->GetItem( nRepIndex );
                 if( !pDestItem->IsLock() && pDestItem->IsCanLay() )
-                {//ÎïÆ·ÄÜ¹»ÖØµş·ÅÖÃ
+                {//ç‰©å“èƒ½å¤Ÿé‡å æ”¾ç½®
                     INT nDestLayCount = pDestItem->GetLayedNum() ;
                     INT nDestMaxLayCount = pDestItem->GetMaxLayedNum() ;
                     INT nSourLayCount = pSourItem->GetLayedNum() ;
                     if( nSourLayCount+nDestLayCount<=nDestMaxLayCount )
                     {
                         SetItemLayCount( pDestContainer, nRepIndex, nSourLayCount+nDestLayCount ) ;
-                        pSourContainer->EraseItem(nSourIndex);//¸´ÖÆ£¡£¡£¡
+                        pSourContainer->EraseItem(nSourIndex);//å¤åˆ¶ï¼ï¼ï¼
                         return nRepIndex ;
                     }
                 }
@@ -591,7 +591,7 @@ INT    ItemOperator::MoveItem( ItemContainer* pSourContainer,
                 return ITEMOE_UNKNOW ;
             }
             else if( !pDestItem->IsEmpty() )
-            {//Ä¿±êÎ»ÖÃÓĞÎïÆ·
+            {//ç›®æ ‡ä½ç½®æœ‰ç‰©å“
                 return ITEMOE_DESTOPERATOR_HASITEM ;
             }
             Assert( !pDestItem->IsLock() ) ;
@@ -653,7 +653,7 @@ INT ItemOperator::MoveItem( ItemContainer* pSourContainer,
 
 
         if( !pDestItem->IsEmpty() )
-        {//Ä¿±êÎ»ÖÃÓĞÎïÆ·
+        {//ç›®æ ‡ä½ç½®æœ‰ç‰©å“
             
             Assert( pSourItem->GetItemTableIndex() == pDestItem->GetItemTableIndex() );
             INT nDestLayCount = pDestItem->GetLayedNum() ;
@@ -858,7 +858,7 @@ BOOL    ItemOperator::SplitItem(ITEM_LOG_PARAM* pLogParam,
         
         INT nFinalDestIndex = nDestIndex ;
         if( nFinalDestIndex == INVALID_INDEX )
-        {  //Ëæ»úÕÒ¸öµØ·½Éú³ÉÎïÆ·
+        {  //éšæœºæ‰¾ä¸ªåœ°æ–¹ç”Ÿæˆç‰©å“
             nFinalDestIndex = pDestContainer->GetEmptyItemIndex() ;
             if( nFinalDestIndex == INVALID_INDEX )
             {
@@ -882,10 +882,10 @@ BOOL    ItemOperator::SplitItem(ITEM_LOG_PARAM* pLogParam,
         return ITEMOE_UNKNOW;
 }
 
-INT    ItemOperator::SpliceItem(ItemContainer* pSourContainer,            //Ô­ÈİÆ÷
-                                    UCHAR uSourIndex,                //Ô­ÈİÆ÷ÖĞÎ»ÖÃ
-                                    ItemContainer* pDestContainer,    //Ä¿±êÈİÆ÷
-                                    INT nDestIndex)                    //Ä¿±êÎ»ÖÃ
+INT    ItemOperator::SpliceItem(ItemContainer* pSourContainer,            //åŸå®¹å™¨
+                                    UCHAR uSourIndex,                //åŸå®¹å™¨ä¸­ä½ç½®
+                                    ItemContainer* pDestContainer,    //ç›®æ ‡å®¹å™¨
+                                    INT nDestIndex)                    //ç›®æ ‡ä½ç½®
 {
     __ENTER_FUNCTION
 
@@ -931,14 +931,14 @@ INT    ItemOperator::SpliceItem(ItemContainer* pSourContainer,            //Ô­Èİ
             return ITEMOE_UNKNOW ;
         }
 
-        //µ½ÕâÀï£¬ÒÑ¾­ÍêÈ«ÑéÖ¤ÁËÎïÆ·ÄÜ¹»µş¼Ó
+        //åˆ°è¿™é‡Œï¼Œå·²ç»å®Œå…¨éªŒè¯äº†ç‰©å“èƒ½å¤Ÿå åŠ 
         
-        //ĞŞ¸ÄÄ¿±êÎïÆ·µÄÄÚÈİ
+        //ä¿®æ”¹ç›®æ ‡ç‰©å“çš„å†…å®¹
         INT nSourLayCount = pSourItem->GetLayedNum();
         INT nDestLayCount = pDestItem->GetLayedNum();
         SetItemLayCount( pDestContainer, nDestIndex, nSourLayCount+nDestLayCount );
 
-        //É¾³ıÔ­À´µÄÎïÆ·
+        //åˆ é™¤åŸæ¥çš„ç‰©å“
         BOOL bRet    = pSourContainer->EraseItem(uSourIndex);
         Assert(bRet);
 
@@ -949,10 +949,10 @@ INT    ItemOperator::SpliceItem(ItemContainer* pSourContainer,            //Ô­Èİ
 
 }
 
-INT ItemOperator::MoveSpliceItem(ItemContainer* pSourContainer,        //Ô­ÈİÆ÷
-                                    UCHAR uSourIndex,                //Ô­ÈİÆ÷ÖĞÎ»ÖÃ
-                                    ItemContainer* pDestContainer,    //Ä¿±êÈİÆ÷
-                                    INT nDestIndex)                    //Ä¿±êÎ»ÖÃ
+INT ItemOperator::MoveSpliceItem(ItemContainer* pSourContainer,        //åŸå®¹å™¨
+                                    UCHAR uSourIndex,                //åŸå®¹å™¨ä¸­ä½ç½®
+                                    ItemContainer* pDestContainer,    //ç›®æ ‡å®¹å™¨
+                                    INT nDestIndex)                    //ç›®æ ‡ä½ç½®
 {
     __ENTER_FUNCTION
 
@@ -996,9 +996,9 @@ INT ItemOperator::MoveSpliceItem(ItemContainer* pSourContainer,        //Ô­ÈİÆ÷
             return ITEMOE_SOUROPERATOR_LOCK ;
         }
 
-        //µ½ÕâÀï£¬ÒÑ¾­ÍêÈ«ÑéÖ¤ÁËÎïÆ·ÄÜ¹»µş¼Ó
+        //åˆ°è¿™é‡Œï¼Œå·²ç»å®Œå…¨éªŒè¯äº†ç‰©å“èƒ½å¤Ÿå åŠ 
 
-        //ĞŞ¸ÄÄ¿±êÎïÆ·µÄÄÚÈİ
+        //ä¿®æ”¹ç›®æ ‡ç‰©å“çš„å†…å®¹
         INT nSourLayCount = pSourItem->GetLayedNum();
         INT nDestLayCount = pDestItem->GetLayedNum();
         INT nMaxLayCount  = pDestItem->GetMaxLayedNum();
@@ -1007,7 +1007,7 @@ INT ItemOperator::MoveSpliceItem(ItemContainer* pSourContainer,        //Ô­ÈİÆ÷
         {
             SetItemLayCount( pDestContainer, nDestIndex, nSourLayCount+nDestLayCount );
 
-            //É¾³ıÔ­À´µÄÎïÆ·
+            //åˆ é™¤åŸæ¥çš„ç‰©å“
             BOOL bRet = pSourContainer->EraseItem(uSourIndex);
             Assert(bRet);
         }
@@ -1300,7 +1300,7 @@ BOOL    ItemOperator::SetItemBind(ItemContainer* pContainer,INT nIndex)
         return FALSE;
 }
 
-//ÉèÖÃÎïÆ·ĞŞÀí´ÎÊı
+//è®¾ç½®ç‰©å“ä¿®ç†æ¬¡æ•°
 BOOL ItemOperator::SetItemFailTimes(ItemContainer*    pContainer,INT nIndex, INT nTimes)
 {
     __ENTER_FUNCTION
@@ -1646,7 +1646,7 @@ BOOL      ItemOperator::SetItemValue(ItemContainer*    pContainer,INT nIndex,con
     return FALSE;
 }
 
-BOOL      ItemOperator::SetPetGUID(ItemContainer*    pContainer,INT nIndex,PET_GUID_t GUID)                //ÉèÖÃ³èÎïGUID
+BOOL      ItemOperator::SetPetGUID(ItemContainer*    pContainer,INT nIndex,PET_GUID_t GUID)                //è®¾ç½®å® ç‰©GUID
 {
     __ENTER_FUNCTION
 
@@ -1699,7 +1699,7 @@ BOOL      ItemOperator::SetSpouseGUID(ItemContainer*    pContainer,INT nIndex,PE
 
     return FALSE;
 }
-BOOL    ItemOperator::SetDataID(ItemContainer*    pContainer,INT nIndex,INT ID)                            //ÉèÖÃ³èÎïÄ£ĞÍ        
+BOOL    ItemOperator::SetDataID(ItemContainer*    pContainer,INT nIndex,INT ID)                            //è®¾ç½®å® ç‰©æ¨¡å‹        
 {
     __ENTER_FUNCTION
 
@@ -1725,7 +1725,7 @@ BOOL    ItemOperator::SetDataID(ItemContainer*    pContainer,INT nIndex,INT ID) 
 
         return FALSE;
 }
-BOOL     ItemOperator::SetName(ItemContainer*    pContainer,INT nIndex,const CHAR* pName)                        //ÉèÖÃÃû×Ö
+BOOL     ItemOperator::SetName(ItemContainer*    pContainer,INT nIndex,const CHAR* pName)                        //è®¾ç½®åå­—
 {
     __ENTER_FUNCTION
 
@@ -1754,7 +1754,7 @@ BOOL     ItemOperator::SetName(ItemContainer*    pContainer,INT nIndex,const CHA
 
     return FALSE;
 }
-BOOL       ItemOperator::SetNick(ItemContainer*    pContainer,INT nIndex,const CHAR* pNick)                        //ÉèÖÃêÇ³Æ
+BOOL       ItemOperator::SetNick(ItemContainer*    pContainer,INT nIndex,const CHAR* pNick)                        //è®¾ç½®æ˜µç§°
 {
     __ENTER_FUNCTION
 
@@ -1783,7 +1783,7 @@ BOOL       ItemOperator::SetNick(ItemContainer*    pContainer,INT nIndex,const C
 
     return FALSE;
 }
-BOOL      ItemOperator::SetLevel(ItemContainer*    pContainer,INT nIndex,INT level)                        //ÉèÖÃµÈ¼¶
+BOOL      ItemOperator::SetLevel(ItemContainer*    pContainer,INT nIndex,INT level)                        //è®¾ç½®ç­‰çº§
 {
     __ENTER_FUNCTION
 
@@ -1810,7 +1810,7 @@ BOOL      ItemOperator::SetLevel(ItemContainer*    pContainer,INT nIndex,INT lev
 
     return FALSE;
 }
-BOOL      ItemOperator::SetTakeLevel(ItemContainer*    pContainer,INT nIndex,INT takeLevel)                //ÉèÖÃĞ¯´øµÈ¼¶
+BOOL      ItemOperator::SetTakeLevel(ItemContainer*    pContainer,INT nIndex,INT takeLevel)                //è®¾ç½®æºå¸¦ç­‰çº§
 {
     __ENTER_FUNCTION
 
@@ -1839,7 +1839,7 @@ BOOL      ItemOperator::SetTakeLevel(ItemContainer*    pContainer,INT nIndex,INT
 }
 
 
-BOOL      ItemOperator::SetAttackType(ItemContainer*    pContainer,INT nIndex,INT attackType)                //ÉèÖÃ½ø¹¥ÀàĞÍ£¨Îï/·¨£©
+BOOL      ItemOperator::SetAttackType(ItemContainer*    pContainer,INT nIndex,INT attackType)                //è®¾ç½®è¿›æ”»ç±»å‹ï¼ˆç‰©/æ³•ï¼‰
 {
     __ENTER_FUNCTION
 
@@ -1866,7 +1866,7 @@ BOOL      ItemOperator::SetAttackType(ItemContainer*    pContainer,INT nIndex,IN
 
     return FALSE;
 }
-BOOL      ItemOperator::SetAIType(ItemContainer*    pContainer,INT nIndex,INT AIType)                        //ÉèÖÃAIÀàĞÍ
+BOOL      ItemOperator::SetAIType(ItemContainer*    pContainer,INT nIndex,INT AIType)                        //è®¾ç½®AIç±»å‹
 {
     __ENTER_FUNCTION
 
@@ -1893,7 +1893,7 @@ BOOL      ItemOperator::SetAIType(ItemContainer*    pContainer,INT nIndex,INT AI
 
     return FALSE;
 }
-BOOL      ItemOperator::SetCampData(ItemContainer*    pContainer,INT nIndex,const _CAMP_DATA* pCamp)        //ÉèÖÃÕóÓª
+BOOL      ItemOperator::SetCampData(ItemContainer*    pContainer,INT nIndex,const _CAMP_DATA* pCamp)        //è®¾ç½®é˜µè¥
 {
     __ENTER_FUNCTION
 
@@ -1920,7 +1920,7 @@ BOOL      ItemOperator::SetCampData(ItemContainer*    pContainer,INT nIndex,cons
 
     return FALSE;
 }
-BOOL      ItemOperator::SetHP(ItemContainer*    pContainer,INT nIndex,INT hp)                                //ÉèÖÃÉúÃüÖµ
+BOOL      ItemOperator::SetHP(ItemContainer*    pContainer,INT nIndex,INT hp)                                //è®¾ç½®ç”Ÿå‘½å€¼
 {
     __ENTER_FUNCTION
 
@@ -1948,7 +1948,7 @@ BOOL      ItemOperator::SetHP(ItemContainer*    pContainer,INT nIndex,INT hp)   
     return FALSE;
 }
 
-BOOL      ItemOperator::SetLife(ItemContainer*    pContainer,INT nIndex,INT Life)                        //ÉèÖÃµ±Ç°ÊÙÃü
+BOOL      ItemOperator::SetLife(ItemContainer*    pContainer,INT nIndex,INT Life)                        //è®¾ç½®å½“å‰å¯¿å‘½
 {
     __ENTER_FUNCTION
 
@@ -1976,7 +1976,7 @@ BOOL      ItemOperator::SetLife(ItemContainer*    pContainer,INT nIndex,INT Life
     return FALSE;
 
 }
-BOOL      ItemOperator::SetPetType(ItemContainer*    pContainer,INT nIndex,BYTE PetType)                    //±¦±¦£¬±äÒì£¬Ò°Éú
+BOOL      ItemOperator::SetPetType(ItemContainer*    pContainer,INT nIndex,BYTE PetType)                    //å®å®ï¼Œå˜å¼‚ï¼Œé‡ç”Ÿ
 {
     __ENTER_FUNCTION
 
@@ -2003,7 +2003,7 @@ BOOL      ItemOperator::SetPetType(ItemContainer*    pContainer,INT nIndex,BYTE 
 
     return FALSE;
 }
-BOOL      ItemOperator::SetGeneration(ItemContainer*    pContainer,INT nIndex,BYTE Gen)                    //¼¸´ú³è
+BOOL      ItemOperator::SetGeneration(ItemContainer*    pContainer,INT nIndex,BYTE Gen)                    //å‡ ä»£å® 
 {
     __ENTER_FUNCTION
 
@@ -2030,7 +2030,7 @@ BOOL      ItemOperator::SetGeneration(ItemContainer*    pContainer,INT nIndex,BY
 
     return FALSE;
 }
-BOOL      ItemOperator::SetHappiness(ItemContainer*    pContainer,INT nIndex,BYTE byHappiness)                        //¿ìÀÖ¶È        
+BOOL      ItemOperator::SetHappiness(ItemContainer*    pContainer,INT nIndex,BYTE byHappiness)                        //å¿«ä¹åº¦        
 {
     __ENTER_FUNCTION
 
@@ -2057,7 +2057,7 @@ BOOL      ItemOperator::SetHappiness(ItemContainer*    pContainer,INT nIndex,BYT
 
     return FALSE;
 }
-BOOL      ItemOperator::SetStrPer(ItemContainer*    pContainer,INT nIndex,INT strper)                        //Á¦Á¿×ÊÖÊ    
+BOOL      ItemOperator::SetStrPer(ItemContainer*    pContainer,INT nIndex,INT strper)                        //åŠ›é‡èµ„è´¨    
 {
     __ENTER_FUNCTION
 
@@ -2084,7 +2084,7 @@ BOOL      ItemOperator::SetStrPer(ItemContainer*    pContainer,INT nIndex,INT st
 
     return FALSE;
 }
-BOOL      ItemOperator::SetConPer(ItemContainer*    pContainer,INT nIndex,INT conper)                        //ÌåÁ¦×ÊÖÊ    
+BOOL      ItemOperator::SetConPer(ItemContainer*    pContainer,INT nIndex,INT conper)                        //ä½“åŠ›èµ„è´¨    
 {
     __ENTER_FUNCTION
 
@@ -2111,7 +2111,7 @@ BOOL      ItemOperator::SetConPer(ItemContainer*    pContainer,INT nIndex,INT co
 
     return FALSE;
 }
-BOOL       ItemOperator::SetDexPer(ItemContainer*    pContainer,INT nIndex,INT dexper)                        //Éí·¨×ÊÖÊ
+BOOL       ItemOperator::SetDexPer(ItemContainer*    pContainer,INT nIndex,INT dexper)                        //èº«æ³•èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -2138,7 +2138,7 @@ BOOL       ItemOperator::SetDexPer(ItemContainer*    pContainer,INT nIndex,INT d
 
     return FALSE;
 }
-BOOL      ItemOperator::SetSprPer(ItemContainer*    pContainer,INT nIndex,INT sprper)                        //ÁéÆø×ÊÖÊ
+BOOL      ItemOperator::SetSprPer(ItemContainer*    pContainer,INT nIndex,INT sprper)                        //çµæ°”èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -2165,7 +2165,7 @@ BOOL      ItemOperator::SetSprPer(ItemContainer*    pContainer,INT nIndex,INT sp
 
     return FALSE;
 }
-BOOL       ItemOperator::SetIntPer(ItemContainer*    pContainer,INT nIndex,INT intper)                        //¶¨Á¦×ÊÖÊ
+BOOL       ItemOperator::SetIntPer(ItemContainer*    pContainer,INT nIndex,INT intper)                        //å®šåŠ›èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -2192,7 +2192,7 @@ BOOL       ItemOperator::SetIntPer(ItemContainer*    pContainer,INT nIndex,INT i
 
     return FALSE;
 }
-BOOL    ItemOperator::SetGenGu(ItemContainer*    pContainer,INT nIndex,INT gengu)                        //¸ù¹Ç
+BOOL    ItemOperator::SetGenGu(ItemContainer*    pContainer,INT nIndex,INT gengu)                        //æ ¹éª¨
 {
     __ENTER_FUNCTION
 
@@ -2219,7 +2219,7 @@ BOOL    ItemOperator::SetGenGu(ItemContainer*    pContainer,INT nIndex,INT gengu
 
     return FALSE;
 }
-BOOL      ItemOperator::SetGrowRate(ItemContainer*    pContainer,INT nIndex,FLOAT rate)                    //³É³¤ÂÊ
+BOOL      ItemOperator::SetGrowRate(ItemContainer*    pContainer,INT nIndex,FLOAT rate)                    //æˆé•¿ç‡
 {
     __ENTER_FUNCTION
 
@@ -2246,7 +2246,7 @@ BOOL      ItemOperator::SetGrowRate(ItemContainer*    pContainer,INT nIndex,FLOA
 
     return FALSE;
 }
-BOOL      ItemOperator::SetRemainPoint(ItemContainer*    pContainer,INT nIndex,INT rPoint)                    //Ò»¼¶ÊôĞÔÊ£ÓàµãÊı
+BOOL      ItemOperator::SetRemainPoint(ItemContainer*    pContainer,INT nIndex,INT rPoint)                    //ä¸€çº§å±æ€§å‰©ä½™ç‚¹æ•°
 {
     __ENTER_FUNCTION
 
@@ -2273,7 +2273,7 @@ BOOL      ItemOperator::SetRemainPoint(ItemContainer*    pContainer,INT nIndex,I
 
     return FALSE;
 }
-BOOL      ItemOperator::SetExp(ItemContainer*    pContainer,INT nIndex,INT exp)                        //¾­ÑéÖµ
+BOOL      ItemOperator::SetExp(ItemContainer*    pContainer,INT nIndex,INT exp)                        //ç»éªŒå€¼
 {
     __ENTER_FUNCTION
 
@@ -2300,7 +2300,7 @@ BOOL      ItemOperator::SetExp(ItemContainer*    pContainer,INT nIndex,INT exp) 
 
     return FALSE;
 }
-BOOL      ItemOperator::SetLvl1Attr(ItemContainer*    pContainer,INT nIndex,CHAR_ATTR_LEVEL1 type,INT value)//»ù´¡Ò»¼¶Õ½¶·ÊôĞÔ£¨²»°üÀ¨¼¼ÄÜºÍ×°±¸Ôö¼ÓµÄ²¿·Ö£©
+BOOL      ItemOperator::SetLvl1Attr(ItemContainer*    pContainer,INT nIndex,CHAR_ATTR_LEVEL1 type,INT value)//åŸºç¡€ä¸€çº§æˆ˜æ–—å±æ€§ï¼ˆä¸åŒ…æ‹¬æŠ€èƒ½å’Œè£…å¤‡å¢åŠ çš„éƒ¨åˆ†ï¼‰
 {
     __ENTER_FUNCTION
 
@@ -2327,7 +2327,7 @@ BOOL      ItemOperator::SetLvl1Attr(ItemContainer*    pContainer,INT nIndex,CHAR
 
     return FALSE;
 }
-BOOL      ItemOperator::SetSkill(ItemContainer*    pContainer,INT nIndex,UINT SkillIndex,_PET_SKILL skill)     //³èÎï¼¼ÄÜ
+BOOL      ItemOperator::SetSkill(ItemContainer*    pContainer,INT nIndex,UINT SkillIndex,_PET_SKILL skill)     //å® ç‰©æŠ€èƒ½
 {    
     __ENTER_FUNCTION
 

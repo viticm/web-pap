@@ -16,7 +16,7 @@ public:
     GCAbilityResult( ){} ;
     virtual ~GCAbilityResult( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream );
     virtual BOOL            Write( SocketOutputStream& oStream ) const;
     virtual UINT            Execute( Player* pPlayer );
@@ -25,7 +25,7 @@ public:
     virtual UINT            GetPacketSize() const { return sizeof(AbilityID_t)+sizeof(INT)+sizeof(PrescriptionID_t); }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID                    SetAbilityID(AbilityID_t aid) { m_Ability = aid; }
     AbilityID_t                GetAbilityID() { return m_Ability; }
 
@@ -36,10 +36,10 @@ public:
     VOID                    setResult(INT nResult) { m_nResult = nResult; }
 
 private:
-    //Êı¾İ
+    //æ•°æ®
     AbilityID_t                m_Ability;
     PrescriptionID_t        m_Prescription;
-    INT                        m_nResult;        // ·µ»ØÖµ OPERATE_RESULT
+    INT                        m_nResult;        // è¿”å›å€¼ OPERATE_RESULT
 };
 
 

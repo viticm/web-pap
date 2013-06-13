@@ -19,7 +19,7 @@ public:
     GCSkill( ){} ;
     virtual ~GCSkill( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -35,7 +35,7 @@ public:
     typedef GCAttack::_DAMAGE_INFO _DAMAGE_INFO;
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     UINT                    getExp(VOID) { return m_uExp; }
     VOID                    setExp(UINT uExp) { m_uExp =uExp; }
 
@@ -55,11 +55,11 @@ public:
     VOID                    setSkillID(SkillID_t skillid) { m_SkillID = skillid; }
 
 private:
-    //Êı¾İ
-    UINT                    m_uExp;                        //×Ô¼ºÄ¿Ç°µÄ¾­ÑéÖµ
-    BYTE                    m_byListNum;                    //ÊÜµ½¹¥»÷µÄ¶ÔÏóµÄ¸öÊı[0, 128]
-    _DAMAGE_INFO                m_listDam[MAX_DAM_LIST_NUM];    //ÊÜµ½¹¥»÷µÄ¶ÔÏóÁĞ±í
-    SkillID_t                m_SkillID ;                        //Ê¹ÓÃµÄ¼¼ÄÜID
+    //æ•°æ®
+    UINT                    m_uExp;                        //è‡ªå·±ç›®å‰çš„ç»éªŒå€¼
+    BYTE                    m_byListNum;                    //å—åˆ°æ”»å‡»çš„å¯¹è±¡çš„ä¸ªæ•°[0, 128]
+    _DAMAGE_INFO                m_listDam[MAX_DAM_LIST_NUM];    //å—åˆ°æ”»å‡»çš„å¯¹è±¡åˆ—è¡¨
+    SkillID_t                m_SkillID ;                        //ä½¿ç”¨çš„æŠ€èƒ½ID
 
 };
 

@@ -51,13 +51,13 @@ __ENTER_FUNCTION
     
     Assert( pPlayer ) ;
     if( m_nPlayers>=MAX_PLAYER )
-    {//¹ÜÀíÆ÷ÊıÁ¿µ½´ïÉÏÏŞ
+    {//ç®¡ç†å™¨æ•°é‡åˆ°è¾¾ä¸Šé™
         g_pLog->FastSaveLog( LOG_FILE_2, "ERROR: AddPlayer m_nPlayers>=MAX_PLAYER PID=%d",
             pPlayer->PlayerID() ) ;
         return FALSE ;
     }
     if( pPlayer->PlayerManagerID()!=INVALID_ID )
-    {//ÒÑ¾­´¦ÓÚÄ³¸ö¹ÜÀíÆ÷ÖĞ
+    {//å·²ç»å¤„äºæŸä¸ªç®¡ç†å™¨ä¸­
         g_pLog->FastSaveLog( LOG_FILE_2, "ERROR: AddPlayer pPlayer->PlayerManagerID()!=INVALID_ID PID=%d",
             pPlayer->PlayerID() ) ;
         return FALSE ;
@@ -94,7 +94,7 @@ BOOL PlayerManager::AddPlayer( PlayerID_t pid )
 {
 __ENTER_FUNCTION
 
-    //Î´Ìá¹©º¯Êı
+    //æœªæä¾›å‡½æ•°
     Assert( FALSE ) ;
 
 __LEAVE_FUNCTION
@@ -126,7 +126,7 @@ __ENTER_FUNCTION
 
     pRemovePlayer->SetPlayerManagerID(INVALID_ID) ;
     if( pid == m_pPlayers[m_nPlayers-1] )
-    {//É¾³ı×îºóÒ»¸öplayer
+    {//åˆ é™¤æœ€åä¸€ä¸ªplayer
         m_pPlayers[m_nPlayers-1] = INVALID_ID ;
     }
     else

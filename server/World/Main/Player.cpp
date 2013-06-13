@@ -140,15 +140,15 @@ __ENTER_FUNCTION
     _MY_TRY
     {
         if( Option ) 
-        {//ִ�в���ѡ�����
+        {//执行部分选项操作
         }
 
-//ÿ֡����ִ�е���Ϣ��������
+//每帧可以执行的消息数量上限
 #define EXE_COUNT_PER_TICK 120
         for( INT i=0;i<EXE_COUNT_PER_TICK; i++ )
         {
             if( !m_pSocketInputStream->Peek(&header[0], PACKET_HEADER_SIZE) )
-            {//���ݲ��������Ϣͷ
+            {//数据不能填充消息头
                 break ;
             }
 
@@ -159,7 +159,7 @@ __ENTER_FUNCTION
             packetIndex = GET_PACKET_INDEX(packetuint) ;
 
             if( packetID >= (PacketID_t)PACKET_MAX )
-            {//��Ч����Ϣ����
+            {//无效的消息类型
                 Assert( FALSE ) ;
                 return FALSE ;
             }
@@ -168,42 +168,42 @@ __ENTER_FUNCTION
             {
 
                 if( m_pSocketInputStream->Length()<PACKET_HEADER_SIZE+packetSize )
-                {//��Ϣû�н���ȫ
+                {//消息没有接收全
                     break;
                 }
 
                 if( packetSize>g_pPacketFactoryManager->GetPacketMaxSize(packetID) )
-                {//��Ϣ�Ĵ�С�����쳣���յ�����Ϣ��Ԥ������Ϣ�����ֵ��Ҫ��
+                {//消息的大小出现异常，收到的消息比预定义消息的最大值还要大
                     Assert( FALSE ) ;
                     return FALSE ;
                 }
 
                 Packet* pPacket = g_pPacketFactoryManager->CreatePacket( packetID ) ;
                 if( pPacket==NULL )
-                {//���ܷ��䵽�㹻���ڴ�
+                {//不能分配到足够的内存
                     Assert( FALSE ) ;
                     return FALSE ;
                 }
 
-                //������Ϣ���к�
+                //设置消息序列号
                 pPacket->SetPacketIndex( packetIndex ) ;
 
                 ret = m_pSocketInputStream->ReadPacket( pPacket ) ;
                 if( ret==FALSE )
-                {//��ȡ��Ϣ���ݴ���
+                {//读取消息内容错误
                     Assert( FALSE ) ;
                     g_pPacketFactoryManager->RemovePacket( pPacket ) ;
                     return FALSE ;
                 }
-        Log::SaveLog( "./Log/World��.txt", "���հ� [��Դ�˿ڣ�%d, ID=%d��size=%d]", 
+        Log::SaveLog( "./Log/World包.txt", "接收包 [来源端口：%d, ID=%d，size=%d]", 
             m_pSocketInputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
 
                 BOOL bNeedRemove = TRUE ;
 
                 _MY_TRY
                 {
-                    //����m_KickTime��Ϣ��m_KickTime��Ϣ�е�ֵΪ�ж��Ƿ���Ҫ�ߵ�
-                    //�ͻ��˵�����
+                    //修正m_KickTime信息，m_KickTime信息中的值为判断是否需要踢掉
+                    //客户端的依据
                     ResetKick( ) ;
 
                     UINT uret ;
@@ -216,26 +216,26 @@ __ENTER_FUNCTION
                         uret=PACKET_EXE_ERROR ;
                     }
                     if( uret==PACKET_EXE_ERROR )
-                    {//�����쳣���󣬶Ͽ����������
+                    {//出现异常错误，断开此玩家连接
                         if( pPacket ) 
                             g_pPacketFactoryManager->RemovePacket( pPacket ) ;
                         return FALSE ;
                     }
                     else if( uret==PACKET_EXE_BREAK )
-                    {//��ǰ��Ϣ�Ľ���ִ�н�ֹͣ
-                     //ֱ���¸�ѭ��ʱ�ż����Ի����е����ݽ�����Ϣ��ʽ
-                     //����ִ�С�
-                     //����Ҫ���ͻ��˵�ִ�д�һ������ת�Ƶ�����һ������ʱ��
-                     //��Ҫ�ڷ���ת����Ϣ��ִ���ڱ��߳���ֹͣ��
+                    {//当前消息的解析执行将停止
+                     //直到下个循环时才继续对缓存中的数据进行消息格式
+                     //化和执行。
+                     //当需要将客户端的执行从一个场景转移到另外一个场景时：
+                     //需要在发送转移消息后将执行在本线程中停止。
                         if( pPacket ) 
                             g_pPacketFactoryManager->RemovePacket( pPacket ) ;
                         break ;
                     }
                     else if( uret==PACKET_EXE_CONTINUE )
-                    {//��������ʣ�µ���Ϣ
+                    {//继续解析剩下的消息
                     }
                     else if( uret==PACKET_EXE_NOTREMOVE )
-                    {//��������ʣ�µ���Ϣ�����Ҳ����յ�ǰ��Ϣ
+                    {//继续解析剩下的消息，并且不回收当前消息
                         bNeedRemove = FALSE ;
                     }
                     else if( uret==PACKET_EXE_NOTREMOVE_ERROR )
@@ -243,7 +243,7 @@ __ENTER_FUNCTION
                         return FALSE ;
                     }
                     else
-                    {//δ֪�ķ���ֵ
+                    {//未知的返回值
                         Assert(FALSE) ;
                     }
                 }
@@ -287,9 +287,9 @@ __ENTER_FUNCTION
             return TRUE ;
         }
 //        else if( size < MAX_SEND_SIZE )
-//        {//�����е�����С��һ������ʱ������ÿ�ζ���������
+//        {//缓存中的数据小于一定长度时，不是每次都发送数据
 //            if( m_CurrentTime < m_LastSendTime+MAX_SEND_TIME )
-//            {//�ж���һ�η�������������ʱ���Ƿ񳬹�һ��ʱ�䣬����������򲻷�������
+//            {//判断上一次发送数据离现在时间是否超过一定时间，如果不超过则不发送数据
 //                return TRUE ;
 //            }
 //        }
@@ -348,7 +348,7 @@ __ENTER_FUNCTION
         BOOL ret = pPacket->Write( *m_pSocketOutputStream ) ;
         Assert( ret ) ;
 
-        Log::SaveLog( "./Log/World��.txt", "���Ͱ� [Ŀ��˿ڣ�%d, ID=%d��size=%d]", 
+        Log::SaveLog( "./Log/World包.txt", "发送包 [目标端口：%d, ID=%d，size=%d]", 
             m_pSocketOutputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
 
         UINT nSizeAfter = m_pSocketOutputStream->Length();

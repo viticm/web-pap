@@ -1,6 +1,6 @@
 // GCShopMerchandiseList.h
 // 
-// ÉÌÈË·¢¸ø¿Í»§¶ËµÄÉÌÆ·ÁĞ±í
+// å•†äººå‘ç»™å®¢æˆ·ç«¯çš„å•†å“åˆ—è¡¨
 // 
 //////////////////////////////////////////////////////
 
@@ -17,19 +17,19 @@ namespace Packets
     class GCShopMerchandiseList : public Packet
     {
     public:
-        //ÉÌÈËËùÂôÉÌÆ·½á¹¹
+        //å•†äººæ‰€å–å•†å“ç»“æ„
         struct _MERCHANDISE_ITEM
         {
-            UINT        idTable;        //×ÊÔ´id
-            BYTE        byNumber;        //ÊıÁ¿
-            UINT        nPrice;            //¼Û¸ñ
-            INT            MaxNumber;        //ÓĞÏŞÉÌÆ·µÄÊıÁ¿
+            UINT        idTable;        //èµ„æºid
+            BYTE        byNumber;        //æ•°é‡
+            UINT        nPrice;            //ä»·æ ¼
+            INT            MaxNumber;        //æœ‰é™å•†å“çš„æ•°é‡
             _MERCHANDISE_ITEM()
             {
-                idTable        =    0;        //×ÊÔ´id
-                byNumber    =    0;        //ÊıÁ¿
-                nPrice        =    0;            //¼Û¸ñ
-                MaxNumber    =    0;        //ÓĞÏŞÉÌÆ·µÄÊıÁ¿
+                idTable        =    0;        //èµ„æºid
+                byNumber    =    0;        //æ•°é‡
+                nPrice        =    0;            //ä»·æ ¼
+                MaxNumber    =    0;        //æœ‰é™å•†å“çš„æ•°é‡
             }
             static UINT GetSize()
             {
@@ -77,7 +77,7 @@ namespace Packets
         }
         virtual ~GCShopMerchandiseList( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -140,27 +140,27 @@ namespace Packets
         VOID            SetShopType( UCHAR nType ) { m_nShopType = nType; }
 
     private:
-        //ÉÌÈËµÄid
+        //å•†äººçš„id
         ObjID_t                        m_nObjID;
-        BYTE                        m_nShopType;        // ÉÌµêÀàĞÍ
-        //ÉÌÆ·¸öÊı
+        BYTE                        m_nShopType;        // å•†åº—ç±»å‹
+        //å•†å“ä¸ªæ•°
         BYTE                        m_nMerchadiseNum;
-        INT                            m_nRepairLevel;        // ĞŞÀíµÈ¼¶
-        INT                            m_nBuyLevel;        // ÊÕ¹ºµÈ¼¶
-        INT                            m_nRepairType;        // ĞŞÀíÀàĞÍ
-        INT                            m_nBuyType;            // ÉÌµêµÄÊÕ¹ºÀàĞÍ
-        FLOAT                        m_nRepairSpend;        // ĞŞÀí»¨·Ñ
-        FLOAT                        m_nRepairOkProb;    // ĞŞÀí³É¹¦¼¸ÂÊ
+        INT                            m_nRepairLevel;        // ä¿®ç†ç­‰çº§
+        INT                            m_nBuyLevel;        // æ”¶è´­ç­‰çº§
+        INT                            m_nRepairType;        // ä¿®ç†ç±»å‹
+        INT                            m_nBuyType;            // å•†åº—çš„æ”¶è´­ç±»å‹
+        FLOAT                        m_nRepairSpend;        // ä¿®ç†èŠ±è´¹
+        FLOAT                        m_nRepairOkProb;    // ä¿®ç†æˆåŠŸå‡ ç‡
         UINT                        m_UniqueID;
-        BYTE                        m_bBuyBack;            //    ÊÇ·ñÖ§³Ö»Ø¹º
+        BYTE                        m_bBuyBack;            //    æ˜¯å¦æ”¯æŒå›è´­
 
-        FLOAT                        m_fScale;            // ÉÌµêÏµÊı
+        FLOAT                        m_fScale;            // å•†åº—ç³»æ•°
 
         UCHAR                        m_uCurrencyUnit;
         UCHAR                        m_uSerialNum;
-        UCHAR                        m_bCanBuyMulti;        //ÊÇ·ñÄÜ¹»Ö¸¶¨¹ºÂòÊıÁ¿
+        UCHAR                        m_bCanBuyMulti;        //æ˜¯å¦èƒ½å¤ŸæŒ‡å®šè´­ä¹°æ•°é‡
 
-        //ËùÓĞÉÌÆ·ÁĞ±í
+        //æ‰€æœ‰å•†å“åˆ—è¡¨
         _MERCHANDISE_ITEM            m_MerchadiseList[MAX_BOOTH_NUMBER];
     };
 

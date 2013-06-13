@@ -18,7 +18,7 @@ public:
     GWHeartBeat( ){} ;
     virtual ~GWHeartBeat( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -27,13 +27,13 @@ public:
     virtual UINT            GetPacketSize()const { return    sizeof(GUID_t) ; }
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     GUID_t                    GetGUID( ){ return m_GUID ; } ;
     VOID                    SetGUID( GUID_t guid ){ m_GUID = guid ; } ;
 
 
 private:
-    GUID_t                    m_GUID ;//玩家的GUID
+    GUID_t                    m_GUID ;//鐜╁鐨凣UID
 
 };
 

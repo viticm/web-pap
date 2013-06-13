@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºObj_Character_Attributes.cpp
-// ¹¦ÄÜËµÃ÷£º½ÇÉ«²ãÊôĞÔ
+// æ–‡ä»¶åï¼šObj_Character_Attributes.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šè§’è‰²å±‚å±æ€§
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -971,7 +971,7 @@ VOID Obj_Character::SetVisionRangeRefix(INT const nValue)
 }
 
 //reset data
-//ÕûÊıÊôĞÔ
+//æ•´æ•°å±æ€§
 VOID Obj_Character::ResetIntAttrs(VOID)
 {
     m_IntAttrs.ResetAttrs();
@@ -980,7 +980,7 @@ VOID Obj_Character::ResetIntAttrs(VOID)
     MarkAllIntAttrDirtyFlags();
 }
 
-//ÕûÊıÊôĞÔĞŞÕı
+//æ•´æ•°å±æ€§ä¿®æ­£
 VOID Obj_Character::ResetIntAttrRefixs(VOID)
 {
     m_IntAttrRefixs.ResetAttrs();
@@ -989,7 +989,7 @@ VOID Obj_Character::ResetIntAttrRefixs(VOID)
     MarkAllIntAttrRefixDirtyFlags();
 }
 
-//BOOLÊôĞÔ
+//BOOLå±æ€§
 VOID Obj_Character::ResetBoolAttr(VOID)
 {
     m_BoolAttrs.ResetAttrs();

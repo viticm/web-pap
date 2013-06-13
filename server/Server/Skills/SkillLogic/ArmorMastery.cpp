@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// Œƒº˛√˚£∫ArmorMastery.cpp
-// π¶ƒ‹Àµ√˜£∫
+// Êñá‰ª∂ÂêçÔºöArmorMastery.cpp
+// ÂäüËÉΩËØ¥ÊòéÔºö
 //
-// –ﬁ∏ƒº«¬º£∫
+// ‰øÆÊîπËÆ∞ÂΩïÔºö
 //
 //
 //
@@ -32,22 +32,22 @@ namespace Combat_Module
             INT nRefixDefenceMagic = rThisPassiveSkill.GetDescriptorByIndex(BASE_DEFENCE_MAGIC)->GetValue();
             switch (nSlotID)
             {
-                case    HEQUIP_WEAPON:     //Œ‰∆˜    WEAPON
+                case    HEQUIP_WEAPON:     //Ê≠¶Âô®    WEAPON
                     break;
-                case    HEQUIP_CAP:        //√±◊”    DEFENCE
-                case    HEQUIP_ARMOR:    //ø¯º◊    DEFENCE
-                case    HEQUIP_CUFF:    //ª§ÕÛ    DEFENCE
-                case    HEQUIP_BOOT:    //–¨    DEFENCE
-                case    HEQUIP_SASH:    //—¸¥¯    ADORN
+                case    HEQUIP_CAP:        //Â∏ΩÂ≠ê    DEFENCE
+                case    HEQUIP_ARMOR:    //ÁõîÁî≤    DEFENCE
+                case    HEQUIP_CUFF:    //Êä§ËÖï    DEFENCE
+                case    HEQUIP_BOOT:    //Èûã    DEFENCE
+                case    HEQUIP_SASH:    //ËÖ∞Â∏¶    ADORN
                     {
                         switch (nAttrID)
                         {
-                            case IATTRIBUTE_BASE_DEFENCE_P:            //ª˘¥°ŒÔ¿Ì∑¿”˘
+                            case IATTRIBUTE_BASE_DEFENCE_P:            //Âü∫Á°ÄÁâ©ÁêÜÈò≤Âæ°
                                 {
                                     nAttrValue = Float2Int((nAttrValue * nRefixDefencePhysics)/100.0f);
                                 }
                                 break;
-                            case IATTRIBUTE_BASE_DEFENCE_M:            //ª˘¥°ƒß∑®∑¿”˘
+                            case IATTRIBUTE_BASE_DEFENCE_M:            //Âü∫Á°ÄÈ≠îÊ≥ïÈò≤Âæ°
                                 {
                                     nAttrValue = Float2Int((nAttrValue * nRefixDefenceMagic)/100.0f);
                                 }
@@ -57,9 +57,9 @@ namespace Combat_Module
                         }
                     }
                     break;
-                case    HEQUIP_RING:    //Ω‰◊”    ADORN
-                case    HEQUIP_NECKLACE://œÓ¡¥    ADORN
-                case    HEQUIP_RIDER:   //∆Ô≥À  ADORN
+                case    HEQUIP_RING:    //ÊàíÂ≠ê    ADORN
+                case    HEQUIP_NECKLACE://È°πÈìæ    ADORN
+                case    HEQUIP_RIDER:   //È™ë‰πò  ADORN
                     break;
                 default:
                     break;

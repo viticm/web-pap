@@ -41,8 +41,8 @@ __ENTER_FUNCTION
     }
 
     if( pGamePlayer->GetPlayerStatus()==PS_SERVER_WAITING_FOR_CHANGESCENE )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
-        //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
+        //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pGamePlayer->SetPlayerStatus( PS_SERVER_WAITING_FOR_CHANGESCENE_SCENE );
@@ -55,8 +55,8 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pGamePlayer->GetPlayerStatus()==PS_SERVER_WAITING_FOR_CHANGESCENE_SCENE )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
-        //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
+        //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         GCRetChangeScene Msg;
@@ -86,7 +86,7 @@ __ENTER_FUNCTION
                     Msg.SetIP( pData->m_IP0 );
                     Msg.SetPort( pData->m_Port0 );
 
-                    //µÈ´ý¿Í»§¶Ë¶Ï¿ªÁ¬½Ó
+                    //ç­‰å¾…å®¢æˆ·ç«¯æ–­å¼€è¿žæŽ¥
                     pGamePlayer->SetDirty( TRUE );
 
                     g_pLog->FastSaveLog( LOG_FILE_1, "WGRetChangeSceneHandler::Diff Server(GUID=%X SceneID=%d IP=%s Port=%d)",
@@ -94,7 +94,7 @@ __ENTER_FUNCTION
                 }
                 else
                 {
-                    //Ã»ÕÒµ½ÏëÈ¥µÄÄÇ¸ö·þÎñÆ÷
+                    //æ²¡æ‰¾åˆ°æƒ³åŽ»çš„é‚£ä¸ªæœåŠ¡å™¨
                     Msg.SetReturn( GCRetChangeScene::CSR_ERROR );
                     pHuman->SetActiveFlag( TRUE );
                     pHuman->SetChangeSceneFlag( FALSE );

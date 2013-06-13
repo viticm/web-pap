@@ -174,7 +174,7 @@ BOOL Obj_Special::HeartBeat( UINT uTime )
     return FALSE ;
 }
 
-// 未被击活的Obj所执行的逻辑
+// 鏈鍑绘椿鐨凮bj鎵�鎵ц鐨勯�昏緫
 BOOL Obj_Special::HeartBeat_OutZone( UINT uTime )
 {
     BOOL bResult = Obj_Dynamic::HeartBeat_OutZone(uTime);
@@ -184,7 +184,7 @@ BOOL Obj_Special::HeartBeat_OutZone( UINT uTime )
     }
     if(TRUE==IsFadeOut())
     {
-        // 直接返回删除
+        // 鐩存帴杩斿洖鍒犻櫎
         return FALSE;
     }
     return TRUE;

@@ -10,7 +10,7 @@ using namespace DBC;
 _GUILD_MEMBER_ACCESS    g_GuildMemberAccessTbl ;
 _DBC_CITY_DEFINE        g_CityBuildingTbl;
 TableInit                g_TableInit ;
-SKILL_DATA*                g_SkillData; //¼¼ÄÜÊı¾İ
+SKILL_DATA*                g_SkillData; //æŠ€èƒ½æ•°æ®
 INT                        g_SkillData_Count=0;
 CampAndStandDataMgr_T    g_CampAndStandDataMgr;
 

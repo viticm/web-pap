@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-ÊÕµ½´ËÏûÏ¢Ö¤Ã÷±»ÉêÇë·½ÒÑ¾­½ÓÊÜÁË½»Ò×ÉêÇë£¬¿ÉÒÔÏòË«·½¿Í»§¶Ë·¢ËÍ½¨Á¢½»Ò×Á¬½ÓµÄÏûÏ¢
+æ”¶åˆ°æ­¤æ¶ˆæ¯è¯æ˜Žè¢«ç”³è¯·æ–¹å·²ç»æŽ¥å—äº†äº¤æ˜“ç”³è¯·ï¼Œå¯ä»¥å‘åŒæ–¹å®¢æˆ·ç«¯å‘é€å»ºç«‹äº¤æ˜“è¿žæŽ¥çš„æ¶ˆæ¯
 */
 
 #include "CGExchangeReplyI.h"
@@ -27,16 +27,16 @@ UINT CGExchangeReplyIHandler::Execute( CGExchangeReplyI* pPacket, Player* pPlaye
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     ObjID_t    SourceID = pPacket->GetObjID();
-    Obj_Human* pDestHuman= pHuman;//×Ô¼º±»ÉêÇë·½
-    Obj_Human* pSourceHuman = pScene->GetHumanManager()->GetHuman( SourceID );//½»Ò×·¢ÆðÕß
+    Obj_Human* pDestHuman= pHuman;//è‡ªå·±è¢«ç”³è¯·æ–¹
+    Obj_Human* pSourceHuman = pScene->GetHumanManager()->GetHuman( SourceID );//äº¤æ˜“å‘èµ·è€…
 
-    //ÑéÖ¤
+    //éªŒè¯
     if( pSourceHuman == NULL )
-    {//·¢ÆðÕßµôÏß
+    {//å‘èµ·è€…æŽ‰çº¿
         Assert(FALSE);
         return PACKET_EXE_CONTINUE;
     }
@@ -44,15 +44,15 @@ UINT CGExchangeReplyIHandler::Execute( CGExchangeReplyI* pPacket, Player* pPlaye
     if(    pSourceHuman->m_ExchangBox.m_Status >= ServerExchangeBox::EXCHANGE_SYNCH_DATA )
     {
         if( pSourceHuman->m_ExchangBox.m_ObjID == pDestHuman->GetID() )
-        {//ÕýÔÚºÍÄã½»Ò×±ðµ·ÂÒÁË
+        {//æ­£åœ¨å’Œä½ äº¤æ˜“åˆ«æ£ä¹±äº†
             return PACKET_EXE_CONTINUE;
         }
         else
-        {//¸æËß×Ô¼º¶Ô·½ÒÑ¾­ÔÚ¸ú±ðÈË½»Ò×ÁË,ËùÓÐ×´Ì¬Çå¿Õ
+        {//å‘Šè¯‰è‡ªå·±å¯¹æ–¹å·²ç»åœ¨è·Ÿåˆ«äººäº¤æ˜“äº†,æ‰€æœ‰çŠ¶æ€æ¸…ç©º
             GCExchangeError Msg;
             Msg.SetID(EXCHANGE_MSG::ERR_TARGET_IN_EXCHANGE);
             pHuman->GetPlayer()->SendPacket(&Msg);
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ÒÑ¾­ÔÚ½»Ò×ÖÐ£¬ ²»ÄÜ½ÓÊÜ[%s]µÄÉêÇë",    pSourceHuman->GetName(), pDestHuman->GetName() ) ;
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] å·²ç»åœ¨äº¤æ˜“ä¸­ï¼Œ ä¸èƒ½æŽ¥å—[%s]çš„ç”³è¯·",    pSourceHuman->GetName(), pDestHuman->GetName() ) ;
             return PACKET_EXE_CONTINUE;
         }
     }
@@ -60,30 +60,30 @@ UINT CGExchangeReplyIHandler::Execute( CGExchangeReplyI* pPacket, Player* pPlaye
     if(pDestHuman->m_ExchangBox.m_Status >= ServerExchangeBox::EXCHANGE_SYNCH_DATA)
     {
         if(    pDestHuman->m_ExchangBox.m_ObjID == pSourceHuman->GetID())
-        {//ÕýÊÇµ±Ç°½»Ò×
+        {//æ­£æ˜¯å½“å‰äº¤æ˜“
             return PACKET_EXE_CONTINUE;
         }
         else
-        {//¸æËß×Ô¼º×Ô¼ºÒÑ¾­ÔÚ¸ú±ðÈË½»Ò×ÁË,ËùÓÐ×´Ì¬Çå¿Õ
+        {//å‘Šè¯‰è‡ªå·±è‡ªå·±å·²ç»åœ¨è·Ÿåˆ«äººäº¤æ˜“äº†,æ‰€æœ‰çŠ¶æ€æ¸…ç©º
             GCExchangeError Msg;
             Msg.SetID(EXCHANGE_MSG::ERR_SELF_IN_EXCHANGE);
             pHuman->GetPlayer()->SendPacket(&Msg);
-            g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ÒÑ¾­ÔÚ½»Ò×ÖÐ£¬ ²»ÄÜ½ÓÊÜ[%s]µÄÉêÇë",    pDestHuman->GetName(), pSourceHuman->GetName() ) ;
+            g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] å·²ç»åœ¨äº¤æ˜“ä¸­ï¼Œ ä¸èƒ½æŽ¥å—[%s]çš„ç”³è¯·",    pDestHuman->GetName(), pSourceHuman->GetName() ) ;
             return PACKET_EXE_CONTINUE;
         }
     }
 
-    //¾àÀëÅÐ¶¨
+    //è·ç¦»åˆ¤å®š
     if(MySqrt( pSourceHuman->getWorldPos(), pDestHuman->getWorldPos() ) > 20 )
     {
         GCExchangeError Msg;
         Msg.SetID(EXCHANGE_MSG::ERR_TOO_FAR);
         pHuman->GetPlayer()->SendPacket(&Msg);
-        g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ³¬¹ý½»Ò×·¶Î§[%s]]",    pDestHuman->GetName(), pSourceHuman->GetName() ) ;
+        g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] è¶…è¿‡äº¤æ˜“èŒƒå›´[%s]]",    pDestHuman->GetName(), pSourceHuman->GetName() ) ;
         return PACKET_EXE_CONTINUE;
     }
 
-    //ÑéÖ¤Í¨¹ý£¬¿ªÊ¼³õÊ¼»¯Ë«·½½»Ò×ºÐ,½øÈë²½Öè2
+    //éªŒè¯é€šè¿‡ï¼Œå¼€å§‹åˆå§‹åŒ–åŒæ–¹äº¤æ˜“ç›’,è¿›å…¥æ­¥éª¤2
     pSourceHuman->m_ExchangBox.CleanUp();
     pSourceHuman->m_ExchangBox.m_Status = ServerExchangeBox::EXCHANGE_SYNCH_DATA;
     pSourceHuman->m_ExchangBox.m_Money = 0;
@@ -99,7 +99,7 @@ UINT CGExchangeReplyIHandler::Execute( CGExchangeReplyI* pPacket, Player* pPlaye
     pDestHuman->m_ExchangBox.m_CanConform = FALSE;
     pDestHuman->m_ExchangBox.m_ObjID = pSourceHuman->GetID();
     //pDestHuman->m_ExchangBox.
-    g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] Óë [%s] ½¨Á¢½»Ò×Á¬½Ó",    pSourceHuman->GetName(), pDestHuman->GetName() ) ;
+    g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] ä¸Ž [%s] å»ºç«‹äº¤æ˜“è¿žæŽ¥",    pSourceHuman->GetName(), pDestHuman->GetName() ) ;
 
     GCExchangeEstablishI MsgToSource;
     MsgToSource.SetObjID(pDestHuman->GetID());

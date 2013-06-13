@@ -1,17 +1,17 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼şÃû£º    Team.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Team\Team.cpp
- *    ´´½¨Ê±¼ä£º    2005 Äê 11 ÔÂ 4 ÈÕ    9:25
+ *    æ–‡ä»¶åï¼š    Team.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Team\Team.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 11 æœˆ 4 æ—¥    9:25
  *
- *    ¹¦ÄÜËµÃ÷£º    ¶ÓÎé
- *    ĞŞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜ï¼š    é˜Ÿä¼
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "Team.h"
 #include "Obj_Human.h"
 
-// Èë¶Ó
+// å…¥é˜Ÿ
 VOID TeamInfo::AddMember( const TEAMMEMBER* pMember )
 {
 __ENTER_FUNCTION
@@ -25,7 +25,7 @@ __ENTER_FUNCTION
     m_aMember[m_MemberCount++] = *pMember;
 
     if( pMember->m_SceneID == m_MySceneID
-        && pMember->m_GUID != m_MyGUID // ×Ô¼º²»ĞèÒª¼ÓÈëÍ¬³¡¾°¶ÓÓÑ
+        && pMember->m_GUID != m_MyGUID // è‡ªå·±ä¸éœ€è¦åŠ å…¥åŒåœºæ™¯é˜Ÿå‹
         )
     {
         AddSceneMember(pMember->m_ObjID);
@@ -34,7 +34,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ³ö¶Ó
+// å‡ºé˜Ÿ
 VOID TeamInfo::DelMember( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -73,7 +73,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ÈÎÃü¶Ó³¤
+// ä»»å‘½é˜Ÿé•¿
 VOID TeamInfo::Appoint( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -104,7 +104,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ¶ÓÔ±¿ªÊ¼ÇĞ»»³¡¾°
+// é˜Ÿå‘˜å¼€å§‹åˆ‡æ¢åœºæ™¯
 VOID TeamInfo::StartChangeScene( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -114,12 +114,12 @@ __ENTER_FUNCTION
         if( m_aMember[i].m_GUID == guid )
         {
             if( guid == m_MyGUID )
-            { // ×Ô¼º»»³¡¾°µÄÇé¿ö
+            { // è‡ªå·±æ¢åœºæ™¯çš„æƒ…å†µ
                 m_SceneMemberCount = 0;
                 m_MySceneID = INVALID_ID;
             }
             else if( m_aMember[i].m_SceneID == m_MySceneID )
-            { // ±ğÈËÀë¿ª³¡¾°µÄÇé¿ö
+            { // åˆ«äººç¦»å¼€åœºæ™¯çš„æƒ…å†µ
                 DelSceneMember( m_aMember[i].m_ObjID );
             }
 
@@ -133,7 +133,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ¶ÓÔ±½øÈëĞÂ³¡¾°
+// é˜Ÿå‘˜è¿›å…¥æ–°åœºæ™¯
 VOID TeamInfo::EnterScene( GUID_t guid, SceneID_t SceneID, ObjID_t oid )
 {
 __ENTER_FUNCTION
@@ -145,23 +145,23 @@ __ENTER_FUNCTION
     }
 
     if( guid == m_MyGUID )
-    { // ×Ô¼º½øÈë
+    { // è‡ªå·±è¿›å…¥
         for( INT i=0; i<m_MemberCount; i++ )
         {
             if ( m_aMember[i].m_GUID == guid )
-            { // ²»ÄÜ break£¬ÒòÎª»¹Òª¹ıÂËËùÓĞÍ¬³¡¾°Íæ¼Ò
+            { // ä¸èƒ½ breakï¼Œå› ä¸ºè¿˜è¦è¿‡æ»¤æ‰€æœ‰åŒåœºæ™¯ç©å®¶
                 m_aMember[i].m_SceneID = SceneID;
                 m_aMember[i].m_ObjID = oid;
                 break;
             }
             //else if ( m_aMember[i].m_SceneID == SceneID )
-            //{ // Èç¹ûÍ¬³¡¾°£¬¼ÓÈëÍ¬³¡¾°Íæ¼Ò
+            //{ // å¦‚æœåŒåœºæ™¯ï¼ŒåŠ å…¥åŒåœºæ™¯ç©å®¶
             //    AddSceneMember( m_aMember[i].m_ObjID );
             //}
         }
     }
     else
-    { // ±ğÈË½øÈë
+    { // åˆ«äººè¿›å…¥
         for( INT i=0; i<m_MemberCount; i++ )
         {
             if( m_aMember[i].m_GUID == guid )
@@ -182,7 +182,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ¶ÓÓÑ¶ÏÏß
+// é˜Ÿå‹æ–­çº¿
 VOID TeamInfo::MemberOffLine( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -206,7 +206,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// Ôö¼ÓÒ»¸ö¸úËæ¶ÓÔ±
+// å¢åŠ ä¸€ä¸ªè·Ÿéšé˜Ÿå‘˜
 VOID TeamInfo::AddFollowedMember( const _FOLLOWEDMEMBER& FollowedMember )
 {
 __ENTER_FUNCTION
@@ -216,7 +216,7 @@ __ENTER_FUNCTION
     for( INT i=0; i<GetFollowedMembersCount(); ++i )
     {
         if ( guid == m_FollowedMembers[i].m_GUID )
-        { // ¸üĞÂÖ¸Õë
+        { // æ›´æ–°æŒ‡é’ˆ
             m_FollowedMembers[i].m_pHuman = FollowedMember.m_pHuman;
             return;
         }
@@ -230,7 +230,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ÒÆ³öÄ³¸ö¸úËæ¶ÓÔ±
+// ç§»å‡ºæŸä¸ªè·Ÿéšé˜Ÿå‘˜
 VOID TeamInfo::DelFollowedMember( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -253,8 +253,8 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// µÃµ½×Ô¼º¸úËæµÄ¶ÓÓÑ
-// ·µ»Ø¶ÓÁĞÀï×Ô¼ºÇ°Ãæ×îºóÒ»¸ö²»Îª¿ÕµÄ¶ÓÓÑ
+// å¾—åˆ°è‡ªå·±è·Ÿéšçš„é˜Ÿå‹
+// è¿”å›é˜Ÿåˆ—é‡Œè‡ªå·±å‰é¢æœ€åä¸€ä¸ªä¸ä¸ºç©ºçš„é˜Ÿå‹
 const Obj_Human* TeamInfo::GetMyGuide() const
 {
     Obj_Human* pGuide = NULL;
@@ -262,7 +262,7 @@ const Obj_Human* TeamInfo::GetMyGuide() const
     for( INT i=0; i<m_nFollowedMembersCount; ++i )
     {
         if ( m_FollowedMembers[i].m_pHuman == NULL )
-        { // ÇĞ»»³¡¾°
+        { // åˆ‡æ¢åœºæ™¯
             continue;
         }
 
@@ -272,11 +272,11 @@ const Obj_Human* TeamInfo::GetMyGuide() const
         }
 
         if( m_FollowedMembers[i].m_pHuman->__IsTeamLeader() )
-        {// ¸úËæ¶Ó³¤
+        {// è·Ÿéšé˜Ÿé•¿
             pGuide = m_FollowedMembers[i].m_pHuman;
         }
         else
-        {//¸úËæ´¦ÓÚĞĞ×ß×´Ì¬µÄ¶ÓÔ±
+        {//è·Ÿéšå¤„äºè¡Œèµ°çŠ¶æ€çš„é˜Ÿå‘˜
             if( m_FollowedMembers[i].m_pHuman->GetCharacterLogic() == CHARACTER_LOGIC_MOVE )
             {
                 pGuide = m_FollowedMembers[i].m_pHuman;
@@ -287,8 +287,8 @@ const Obj_Human* TeamInfo::GetMyGuide() const
     return pGuide;
 }
 
-// µÃµ½¸úËæ×Ô¼ºµÄ¶ÓÓÑ
-// ·µ»Ø¶ÓÁĞÀï×Ô¼ººóÃæµÚÒ»¸ö²»Îª¿ÕµÄ¶ÓÓÑ
+// å¾—åˆ°è·Ÿéšè‡ªå·±çš„é˜Ÿå‹
+// è¿”å›é˜Ÿåˆ—é‡Œè‡ªå·±åé¢ç¬¬ä¸€ä¸ªä¸ä¸ºç©ºçš„é˜Ÿå‹
 const Obj_Human* TeamInfo::GetGuideMe() const
 {
     Obj_Human* pGuide = NULL;
@@ -297,7 +297,7 @@ const Obj_Human* TeamInfo::GetGuideMe() const
     for( INT i=0; i<m_nFollowedMembersCount; ++i )
     {
         if ( m_FollowedMembers[i].m_pHuman == NULL )
-        { // ÇĞ»»³¡¾°
+        { // åˆ‡æ¢åœºæ™¯
             continue;
         }
 

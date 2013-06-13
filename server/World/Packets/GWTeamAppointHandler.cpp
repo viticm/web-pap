@@ -38,7 +38,7 @@ __ENTER_FUNCTION
     }
 
     if( pSourUser->GetTeamID()==INVALID_ID )
-    {//¾É¶Ó³¤²»ÔÚ¶ÓÎéÖÐ
+    {//æ—§é˜Ÿé•¿ä¸åœ¨é˜Ÿä¼ä¸­
         WGTeamError Msg;
         Msg.SetPlayerID( pSourUser->GetPlayerID() );
         Msg.SetGUID( pSourUser->GetGUID() );
@@ -49,7 +49,7 @@ __ENTER_FUNCTION
             sGuid, dGuid );
     }
     else if( pDestUser->GetTeamID()==INVALID_ID )
-    {//ÐÂ¶Ó³¤²»ÔÚ¶ÓÎéÖÐ
+    {//æ–°é˜Ÿé•¿ä¸åœ¨é˜Ÿä¼ä¸­
         WGTeamError Msg;
         Msg.SetPlayerID( pSourUser->GetPlayerID() );
         Msg.SetGUID( pSourUser->GetGUID() );
@@ -60,7 +60,7 @@ __ENTER_FUNCTION
             sGuid, dGuid );
     }
     else if( pDestUser->GetTeamID()!=pSourUser->GetTeamID() )
-    {//Á½¸öÈË²»ÊôÓÚÍ¬Ò»¸ö¶ÓÎé
+    {//ä¸¤ä¸ªäººä¸å±žäºŽåŒä¸€ä¸ªé˜Ÿä¼
         WGTeamError Msg;
         Msg.SetPlayerID( pSourUser->GetPlayerID() );
         Msg.SetGUID( pSourUser->GetGUID() );
@@ -71,7 +71,7 @@ __ENTER_FUNCTION
             sGuid, dGuid );
     }
     else
-    {//¶ÓÎé´æÔÚ
+    {//é˜Ÿä¼å­˜åœ¨
         if( g_pOnlineUser->AppointTeamLeader(pSourUser, pDestUser) )
         {
             Log::SaveLog( WORLD_LOGFILE, "GWTeamAppointHandler...Success!  sGUID=%X dGUID=%X", 

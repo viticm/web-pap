@@ -71,13 +71,13 @@ class Obj
 public:
     enum ObjType
     {
-        OBJ_TYPE_INVALID,            // ÎŞĞ§
-        OBJ_TYPE_HUMAN,                // Íæ¼Ò
-        OBJ_TYPE_MONSTER,            // Õ½¶·µÄNPCÓë¹ÖÎï
-        OBJ_TYPE_PET,                // ³èÎï
-        OBJ_TYPE_ITEM_BOX,            // µôÂä°ü
-        OBJ_TYPE_PLATFORM,            // ¹¤×÷Ì¨
-        OBJ_TYPE_SPECIAL,            // ÌØÊâ£¨Èç£¬ÏİÚå£©
+        OBJ_TYPE_INVALID,            // æ— æ•ˆ
+        OBJ_TYPE_HUMAN,                // ç©å®¶
+        OBJ_TYPE_MONSTER,            // æˆ˜æ–—çš„NPCä¸æ€ªç‰©
+        OBJ_TYPE_PET,                // å® ç‰©
+        OBJ_TYPE_ITEM_BOX,            // æ‰è½åŒ…
+        OBJ_TYPE_PLATFORM,            // å·¥ä½œå°
+        OBJ_TYPE_SPECIAL,            // ç‰¹æ®Šï¼ˆå¦‚ï¼Œé™·é˜±ï¼‰
         OBJ_TYPE_NUMBERS
     };
 
@@ -96,10 +96,10 @@ public:
     virtual VOID        CleanUp( );
     virtual BOOL        Init( const _OBJ_INIT *pInit );
 
-    // »÷»îÁËµÄObjËùÖ´ĞĞµÄÂß¼­
+    // å‡»æ´»äº†çš„Objæ‰€æ‰§è¡Œçš„é€»è¾‘
     virtual BOOL        HeartBeat( UINT uTime=0 );
 
-    // Î´±»»÷»îµÄObjËùÖ´ĞĞµÄÂß¼­
+    // æœªè¢«å‡»æ´»çš„Objæ‰€æ‰§è¡Œçš„é€»è¾‘
     virtual BOOL        HeartBeat_OutZone( UINT uTime=0 );
 
 public:
@@ -107,15 +107,15 @@ public:
     VOID                SetID( ObjID_t id ){ m_ObjID = id; }
     virtual UINT        GetUniqueID(VOID) const;
     
-    // ÔÚObjPoolÖĞµÄÎ»ÖÃ£¬ÓÃÒÔObjPoolµÄÓÅ»¯
+    // åœ¨ObjPoolä¸­çš„ä½ç½®ï¼Œç”¨ä»¥ObjPoolçš„ä¼˜åŒ–
     VOID                SetPoolID( UINT uID ){ m_uPoolID =uID; }
     UINT                GetPoolID( VOID )const{ return m_uPoolID; }
 
-    // ÔÚObjSingleManagerÖĞµÄÎ»ÖÃ£¬ÓÃÒÔObjSingleManagerµÄÓÅ»¯
+    // åœ¨ObjSingleManagerä¸­çš„ä½ç½®ï¼Œç”¨ä»¥ObjSingleManagerçš„ä¼˜åŒ–
     VOID                SetSingleMgrIndex( UINT uIndex ){ m_uSingleMgrIndex =uIndex; }
     UINT                GetSingleMgrIndex( VOID )const{ return m_uSingleMgrIndex; }
 
-    //Á½´Îµ÷ÓÃHeartBeat¼äµÄÊ±¼ä²î(µ¥Î»£ººÁÃë£¬ÕûÊı)
+    //ä¸¤æ¬¡è°ƒç”¨HeartBeaté—´çš„æ—¶é—´å·®(å•ä½ï¼šæ¯«ç§’ï¼Œæ•´æ•°)
     UINT                GetLogicTime( )const{ return (m_uNowTime-m_uLastTime); }
     UINT                LastTime( )const{ return m_uLastTime; }
     UINT                NowTime( )const{ return m_uNowTime; }
@@ -126,13 +126,13 @@ private:
 
 public:
     virtual VOID        OnKillObject( ObjID_t idObj ){}
-    // ¹¤¾ßº¯Êı
+    // å·¥å…·å‡½æ•°
     Obj*                 GetSpecificObjInSameSceneByID(ObjID_t nID);
     Obj*                 GetSpecificHumanInSameSceneByGUID(GUID_t nID);
 public:
     _OBJ_LIST_NODE*        ObjNode(){ return m_pObjNode; }
 
-    // pObjÊÇ·ñ¿ÉÒÔ¿´µÃ¼ûÎÒ
+    // pObjæ˜¯å¦å¯ä»¥çœ‹å¾—è§æˆ‘
     virtual BOOL        IsCanViewMe( const Obj *pObj ){ return TRUE; }
     virtual BOOL        IsPrevCanViewMe( const Obj *pObj ){ return IsCanViewMe(pObj); }
 
@@ -184,35 +184,35 @@ private:
     _OBJ_LIST_NODE*            m_pObjNode;
     BYTE                    m_bActive;
 
-    WORLD_POS                m_Pos;                // ÔÚ³¡¾°ÖĞµÄ¾«È·Î»ÖÃ
-    FLOAT                    m_Dir;                // ³¡¾°ÖĞµÄ·½Ïò
-    Scene*                    m_pScene;            // ËùÔÚ³¡¾°µÄÖ¸Õë
-    ZoneID_t                m_ZoneID;            // µ±Ç°ËùÔÚ³¡¾°µÄZoneÎ»ÖÃ
-    UINT                    m_uLastTime;        // ÉÏ´ÎÂß¼­ÔËĞĞÍê³ÉºóµÄÊ±¼ä
-    UINT                    m_uNowTime;            // µ±Ç°Ê±¼ä
-    UINT                    m_uCreateTime;        // objµÄ´´½¨Ê±¼ä
+    WORLD_POS                m_Pos;                // åœ¨åœºæ™¯ä¸­çš„ç²¾ç¡®ä½ç½®
+    FLOAT                    m_Dir;                // åœºæ™¯ä¸­çš„æ–¹å‘
+    Scene*                    m_pScene;            // æ‰€åœ¨åœºæ™¯çš„æŒ‡é’ˆ
+    ZoneID_t                m_ZoneID;            // å½“å‰æ‰€åœ¨åœºæ™¯çš„Zoneä½ç½®
+    UINT                    m_uLastTime;        // ä¸Šæ¬¡é€»è¾‘è¿è¡Œå®Œæˆåçš„æ—¶é—´
+    UINT                    m_uNowTime;            // å½“å‰æ—¶é—´
+    UINT                    m_uCreateTime;        // objçš„åˆ›å»ºæ—¶é—´
 
-    INT                        m_nLogicCount;        // Âß¼­µÄ¼ÆÊı
+    INT                        m_nLogicCount;        // é€»è¾‘çš„è®¡æ•°
 
 /////////////////////////////////////////////////////////////////////////////////
-//obj ¹«¹²ÊôĞÔ½Ó¿Ú
+//obj å…¬å…±å±æ€§æ¥å£
 public :
-    virtual const SceneID_t        __GetSceneID( ) const;//³¡¾°ºÅ obj
-    virtual Scene*                __GetScene( );//³¡¾°Ö¸Õë
+    virtual const SceneID_t        __GetSceneID( ) const;//åœºæ™¯å· obj
+    virtual Scene*                __GetScene( );//åœºæ™¯æŒ‡é’ˆ
     virtual VOID                __SetScene( Scene* scene );
-    virtual const ZoneID_t        __GetZoneID( ) const;//ÇøÓòºÅ obj
+    virtual const ZoneID_t        __GetZoneID( ) const;//åŒºåŸŸå· obj
     virtual VOID                __SetZoneID( const ZoneID_t zoneid );
-    virtual const ScriptID_t    __GetScriptID( ) const;//½Å±¾ºÅ obj
+    virtual const ScriptID_t    __GetScriptID( ) const;//è„šæœ¬å· obj
     virtual VOID                __SetScriptID( const ScriptID_t scriptid );
-    virtual const WORLD_POS*    __GetWorldPos( ) const;//Î»ÖÃ obj
+    virtual const WORLD_POS*    __GetWorldPos( ) const;//ä½ç½® obj
     virtual VOID                __SetWorldPos( const WORLD_POS* worldpos );
-    virtual const FLOAT            __GetDir( ) const;//·½Ïò obj
+    virtual const FLOAT            __GetDir( ) const;//æ–¹å‘ obj
     virtual VOID                __SetDir( const FLOAT dir );
-    virtual const ObjID_t        __GetID( ) const;//objºÅ obj
+    virtual const ObjID_t        __GetID( ) const;//objå· obj
     virtual VOID                __SetID( const ObjID_t id );
 };
 
-// ÊÇ·ñÎªÓĞÔË¶¯µÄOBJ
+// æ˜¯å¦ä¸ºæœ‰è¿åŠ¨çš„OBJ
 inline BOOL IsDynamicObj( Obj::ObjType eType )
 {
     switch ( eType )
@@ -229,7 +229,7 @@ inline BOOL IsDynamicObj( Obj::ObjType eType )
     }
 }
 
-// ÊÇ·ñ¾²Ö¹µÄOBJ
+// æ˜¯å¦é™æ­¢çš„OBJ
 inline BOOL IsStaticObj( Obj::ObjType eType )
 {
     switch ( eType )
@@ -246,7 +246,7 @@ inline BOOL IsStaticObj( Obj::ObjType eType )
     }
 }
 
-// ÊÇ·ñÎª½ÇÉ«
+// æ˜¯å¦ä¸ºè§’è‰²
 inline BOOL IsCharacterObj( Obj::ObjType eType )
 {
     switch ( eType )
@@ -263,7 +263,7 @@ inline BOOL IsCharacterObj( Obj::ObjType eType )
     }
 }
 
-// ÊÇ·ñÎªÌØÊâ¶ÔÏó
+// æ˜¯å¦ä¸ºç‰¹æ®Šå¯¹è±¡
 inline BOOL IsSpecialObj( Obj::ObjType eType )
 {
     switch ( eType )
@@ -280,7 +280,7 @@ inline BOOL IsSpecialObj( Obj::ObjType eType )
     }
 }
 
-// ÊÇ·ñÎªÍæ¼Ò
+// æ˜¯å¦ä¸ºç©å®¶
 inline BOOL IsHumanObj( Obj::ObjType eType )
 {
     switch ( eType )
@@ -297,7 +297,7 @@ inline BOOL IsHumanObj( Obj::ObjType eType )
     }
 }
 
-// ÊÇ·ñÎª¹ÖÎï
+// æ˜¯å¦ä¸ºæ€ªç‰©
 inline BOOL IsMonsterObj( Obj::ObjType eType )
 {
     switch ( eType )

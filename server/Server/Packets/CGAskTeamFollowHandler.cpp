@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼þÃû£º    CGAskTeamFollowHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\CGAskTeamFollowHandler.cpp
- *    ´´½¨Ê±¼ä£º    2005 Äê 11 ÔÂ 15 ÈÕ    18:07
+ *    æ–‡ä»¶åï¼š    CGAskTeamFollowHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\CGAskTeamFollowHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 11 æœˆ 15 æ—¥    18:07
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ÐÞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "CGAskTeamFollow.h"
@@ -38,11 +38,11 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
     if ( pHuman->__GetTeamMemberCount() < 2 )
-    { // ÈËÊýÌ«ÉÙ
+    { // äººæ•°å¤ªå°‘
         return PACKET_EXE_CONTINUE;
     }
 
@@ -60,16 +60,16 @@ __ENTER_FUNCTION
         FollowedMember.m_GUID = pHuman->GetGUID();
         FollowedMember.m_pHuman = pHuman;
 
-        pHuman->GetHumanAI()->PushCommand_Idle(); // ÖÐÖ¹µ±Ç°Âß¼­
+        pHuman->GetHumanAI()->PushCommand_Idle(); // ä¸­æ­¢å½“å‰é€»è¾‘
         pHuman->__SetTeamFollowFlag( TRUE );
         pHuman->__AddFollowedMember( FollowedMember );
 
-        GCReturnTeamFollow Msg; // Í¨Öª¿Í»§¶Ë½øÈë¸úËæ×´Ì¬
+        GCReturnTeamFollow Msg; // é€šçŸ¥å®¢æˆ·ç«¯è¿›å…¥è·ŸéšçŠ¶æ€
         Msg.SetGUID( pHuman->GetGUID() );
         Msg.SetReturn( TF_RESULT_FOLLOW_FLAG );
         pGamePlayer->SendPacket( &Msg );
 
-        // ÕâÀïÐèÒªÍ¨Öª world GWEnterTeamFollow
+        // è¿™é‡Œéœ€è¦é€šçŸ¥ world GWEnterTeamFollow
         GWEnterTeamFollow* pMsg = (GWEnterTeamFollow*)g_pPacketFactoryManager->CreatePacket(PACKET_GW_ENTER_TEAMFOLLOW);
 
         pMsg->SetGUID( pHuman->GetGUID() );
@@ -94,7 +94,7 @@ __ENTER_FUNCTION
     if ( pScene->Scan( &ScanOp ) )
     {
         if ( ScanOp.m_nActiveTeammateCount>1 )
-        { // µÈÓÚ 1 µÄÊ±ºòÊÇ¶Ó³¤×Ô¼º
+        { // ç­‰äºŽ 1 çš„æ—¶å€™æ˜¯é˜Ÿé•¿è‡ªå·±
             for( INT i=0; i<ScanOp.m_nActiveTeammateCount; ++i )
             {
                 if ( ScanOp.m_aActiveTeammate[i]==NULL )
@@ -104,22 +104,22 @@ __ENTER_FUNCTION
                 }
 
                 if ( !ScanOp.m_aActiveTeammate[i]->IsAlive() )
-                { // ¹ÒÁË
+                { // æŒ‚äº†
                     continue;
                 }
 
                 if ( ScanOp.m_aActiveTeammate[i]->__GetTeamFollowFlag() )
-                { // ÒÑ¾­½øÈë¸úËæÄ£Ê½
+                { // å·²ç»è¿›å…¥è·Ÿéšæ¨¡å¼
                     continue;
                 }
 
-                // Èç¹û¶ÓÔ±´¦ÓÚ°ÚÌ¯×´Ì¬£¬²»·¢ËÍ
+                // å¦‚æžœé˜Ÿå‘˜å¤„äºŽæ‘†æ‘ŠçŠ¶æ€ï¼Œä¸å‘é€
                 if( ScanOp.m_aActiveTeammate[i]->m_StallBox.GetStallStatus() == ServerStallBox::STALL_OPEN)
                 {
                     continue;
                 }
 
-                // ¸ø¿Í»§¶Ë·¢ËÍÑûÇë GCAskTeamFollow
+                // ç»™å®¢æˆ·ç«¯å‘é€é‚€è¯· GCAskTeamFollow
                 GCAskTeamFollow Msg;
                 ScanOp.m_aActiveTeammate[i]->GetPlayer()->SendPacket( &Msg );
             }

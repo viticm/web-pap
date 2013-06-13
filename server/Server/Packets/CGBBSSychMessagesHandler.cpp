@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÍ¨Öª·şÎñÆ÷ÁôÑÔ°å±»ĞŞ¸Ä
+å®¢æˆ·ç«¯é€šçŸ¥æœåŠ¡å™¨ç•™è¨€æ¿è¢«ä¿®æ”¹
 */
 
 #include "CGBBSSychMessages.h"
@@ -31,7 +31,7 @@ UINT CGBBSSychMessagesHandler::Execute( CGBBSSychMessages* pPacket, Player* pPla
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     ObjID_t    ObjID            =    pPacket->GetObjID();
@@ -108,7 +108,7 @@ UINT CGBBSSychMessagesHandler::Execute( CGBBSSychMessages* pPacket, Player* pPla
             break;
     }
 
-    //·¢ËÍĞÂµÄÁôÑÔ°å¸ø¿Í»§¶Ë
+    //å‘é€æ–°çš„ç•™è¨€æ¿ç»™å®¢æˆ·ç«¯
     MessageEntry_t* pEntry        = NULL;
     GCBBSMessages::_MESSAGE_T    MessageList[MAX_BBS_MESSAGE_NUM];
     UINT k                        = 0;

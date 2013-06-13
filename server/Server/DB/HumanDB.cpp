@@ -22,7 +22,7 @@ __ENTER_FUNCTION
 
         INT Stat  =     m_HumanSMU->GetUseStatus(SM_S_WRITE);
         if(Stat!=SM_USE_FREE)
-            AssertEx(FALSE,"ShareMemory Ã»ÓÐ´æÅÌÍê±Ï!");
+            AssertEx(FALSE,"ShareMemory æ²¡æœ‰å­˜ç›˜å®Œæ¯•!");
     }
     else
     {
@@ -189,7 +189,7 @@ __ENTER_FUNCTION
 
     INT iRand = 10000+rand() ;
     m_dbHuman->m_HP = iRand ;
-    sprintf( m_dbHuman->m_Name, "²âÊÔ%d", iRand ) ;
+    sprintf( m_dbHuman->m_Name, "æµ‹è¯•%d", iRand ) ;
     m_dbHuman->m_Name[sizeof(m_dbHuman->m_Name)-1]='\0';
 
 

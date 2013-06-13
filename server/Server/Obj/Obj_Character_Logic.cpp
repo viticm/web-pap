@@ -456,7 +456,7 @@ BOOL Obj_Character::Obj_Logic_Move( UINT uTime )
     }
 
     if (TRUE == IsLimitMove())
-    {// ´¦ÓÚÎŞ·¨ÒÆ¶¯µÄ×´Ì¬£¬Á¢¿ÌÖĞÖ¹µ±Ç°ÒÆ¶¯Âß¼­×´Ì¬
+    {// å¤„äºæ— æ³•ç§»åŠ¨çš„çŠ¶æ€ï¼Œç«‹åˆ»ä¸­æ­¢å½“å‰ç§»åŠ¨é€»è¾‘çŠ¶æ€
         return FALSE;
     }
     if ( m_paramLogic_Move.IsEmpty() )
@@ -467,9 +467,9 @@ BOOL Obj_Character::Obj_Logic_Move( UINT uTime )
     pCurPos                    = getWorldPos();
     pTargetPos                = m_paramLogic_Move.GetCurTargetPos();
 
-    // ÕâÒ»Ö¡¿ÉÒÆ¶¯µÄÂ·¾¶³¤¶È
+    // è¿™ä¸€å¸§å¯ç§»åŠ¨çš„è·¯å¾„é•¿åº¦
     FLOAT fSpeed = GetMoveSpeed() ;
-    Assert( fSpeed > 0.1 && fSpeed < 20.0 ); // ×ö¸öÑéÖ¤ºÜÖØÒª
+    Assert( fSpeed > 0.1 && fSpeed < 20.0 ); // åšä¸ªéªŒè¯å¾ˆé‡è¦
     UINT uLogicTime = GetLogicTime() ;
     FLOAT fMoveDist = (fSpeed*uLogicTime)/1000.0f ;
     if(fMoveDist <= 0.01f)
@@ -477,17 +477,17 @@ BOOL Obj_Character::Obj_Logic_Move( UINT uTime )
         return TRUE;
     }
 
-    // µ±Ç°Î»ÖÃÓëµ±Ç°µÄÄ¿±êÂ·¾¶µãÂ·¾¶µÄ³¤¶È
+    // å½“å‰ä½ç½®ä¸å½“å‰çš„ç›®æ ‡è·¯å¾„ç‚¹è·¯å¾„çš„é•¿åº¦
     FLOAT fDistToTarget = MySqrt( pCurPos, pTargetPos ) ;
 
-    // Èç¹ûÕâÒ»Ö¡¿ÉÒÆ¶¯µÄÂ·¾¶³¤¶ÈĞ¡ÓÚµ±Ç°Î»ÖÃµ½µ±Ç°µÄÄ¿±êÂ·¾¶µãÂ·¾¶³¤¶È
+    // å¦‚æœè¿™ä¸€å¸§å¯ç§»åŠ¨çš„è·¯å¾„é•¿åº¦å°äºå½“å‰ä½ç½®åˆ°å½“å‰çš„ç›®æ ‡è·¯å¾„ç‚¹è·¯å¾„é•¿åº¦
     while(TRUE)
     {
         if(fMoveDist > fDistToTarget)
         {
             if ( !m_paramLogic_Move.NextTargetPos() )
-            {//Ã»ÓĞÏÂÒ»¸öÂ·¾¶µã
-                // Ä¿±êÂ·¾¶ÊÇ×îºóÒ»µã
+            {//æ²¡æœ‰ä¸‹ä¸€ä¸ªè·¯å¾„ç‚¹
+                // ç›®æ ‡è·¯å¾„æ˜¯æœ€åä¸€ç‚¹
                 WORLD_POS posMustTo;
                 posMustTo.m_fX = pTargetPos->m_fX;
                 posMustTo.m_fZ = pTargetPos->m_fZ;
@@ -555,8 +555,8 @@ BOOL Obj_Character::Obj_Logic_Move( UINT uTime )
     //else
     //{
     //    if ( !m_paramLogic_Move.NextTargetPos() )
-    //    {//Ã»ÓĞÏÂÒ»¸öÂ·¾¶µã
-    //        // Ä¿±êÂ·¾¶ÊÇ×îºóÒ»µã
+    //    {//æ²¡æœ‰ä¸‹ä¸€ä¸ªè·¯å¾„ç‚¹
+    //        // ç›®æ ‡è·¯å¾„æ˜¯æœ€åä¸€ç‚¹
     //        WORLD_POS posMustTo;
     //        posMustTo.m_fX = pTargetPos->m_fX;
     //        posMustTo.m_fZ = pTargetPos->m_fZ;
@@ -566,8 +566,8 @@ BOOL Obj_Character::Obj_Logic_Move( UINT uTime )
     //        StopCharacterLogic( FALSE );
     //    }
     //    else
-    //    {//»¹ÓĞÂ·¾¶µã£¬¼ÌĞø×ß
-    //        // Ä¿±êÂ·¾¶ÊÇ×îºóÒ»µã
+    //    {//è¿˜æœ‰è·¯å¾„ç‚¹ï¼Œç»§ç»­èµ°
+    //        // ç›®æ ‡è·¯å¾„æ˜¯æœ€åä¸€ç‚¹
     //        fMoveDist -= fDistToTarget;
     //        pCurPos        = pTargetPos;
     //        pTargetPos    = m_paramLogic_Move.GetCurTargetPos();

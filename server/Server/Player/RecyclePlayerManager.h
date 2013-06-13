@@ -13,7 +13,7 @@ public:
     virtual    BOOL     HeartBeat(UINT uTime=0 );
 
     VOID             SetSceneID(SceneID_t SceneID);
-    //³¡¾°ÖµÒ²¿ÉÄÜÎªinvalid_id,Õâ¸öÊ±ºòRecyclePlayerManagerÊÇÔÚ IncommingPlayerManager ÖĞ
+    //åœºæ™¯å€¼ä¹Ÿå¯èƒ½ä¸ºinvalid_id,è¿™ä¸ªæ—¶å€™RecyclePlayerManageræ˜¯åœ¨ IncommingPlayerManager ä¸­
     SceneID_t         GetSceneID();
 
 private:

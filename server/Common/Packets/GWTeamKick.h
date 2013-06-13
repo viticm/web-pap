@@ -13,7 +13,7 @@ namespace Packets
             GWTeamKick(){};
             virtual        ~GWTeamKick(){};
 
-            //¹«ÓÃ½Ó¿Ú
+            //å…¬ç”¨æ¥å£
             virtual BOOL            Read( SocketInputStream& iStream ) ;
             virtual BOOL            Write( SocketOutputStream& oStream )const ;
             virtual UINT            Execute( Player* pPlayer ) ;
@@ -23,7 +23,7 @@ namespace Packets
 
 
     public :
-        //Êı¾İ½Ó¿Ú
+        //æ•°æ®æ¥å£
         VOID            SetSourGUID( GUID_t guid ){    m_SourGUID = guid ; }
         GUID_t            GetSourGUID( ){ return m_SourGUID ; }
 
@@ -32,9 +32,9 @@ namespace Packets
 
 
     private :
-        //Êı¾İ
-        GUID_t            m_SourGUID ;        //ÌßÈËÕß
-        GUID_t            m_DestGUID ;        //±»ÌßÕß
+        //æ•°æ®
+        GUID_t            m_SourGUID ;        //è¸¢äººè€…
+        GUID_t            m_DestGUID ;        //è¢«è¸¢è€…
 
 
     };

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-//ÇëÇóÉý¼¶¼¼ÄÜ
+//è¯·æ±‚å‡çº§æŠ€èƒ½
 #include "DataRecords.h"
 #include "GameTable.h"
 #include "GamePlayer.h"
@@ -34,7 +34,7 @@ __ENTER_FUNCTION
     INT skillidandlevel = skillid*100+skilllevel;
     g_ScriptLogic.Item_CallSkillStudyEvent(* pHuman,nScript,NPCId,skillidandlevel);
 //#if 0
-//    // ¸Ä±ä·þÎñÆ÷Êý¾Ý
+//    // æ”¹å˜æœåŠ¡å™¨æ•°æ®
 //    BYTE XinfaLevel = pHuman->GetDB()->GetXinfaLevel(pPacket->GetUplevelInfoInfo().m_idXinfa) + 1;
 //    if( XinfaLevel >= MAX_PLAYER_EXP_LEVEL )
 //    {

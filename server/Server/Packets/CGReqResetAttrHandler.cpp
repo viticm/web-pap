@@ -27,16 +27,16 @@ UINT    CGReqResetAttrHandler::Execute(CGReqResetAttr* pPacket,Player* pPlayer)
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;    
         
-    //È¨ÏÞÅÐ¶Ï
+    //æƒé™åˆ¤æ–­
     
     GCReqResetAttrResult    Msg;
 
     if(pHuman->GetLevel()>=DEFAULT_WASHPOINT_LEVEL)
     {
-        //Ö´ÐÐ
+        //æ‰§è¡Œ
         pHuman->WashPoints();
         Msg.SetAttrPoint(pHuman->Get_RemainPoints());
         Msg.SetResult(RATTR_SUCCESS);
@@ -48,7 +48,7 @@ UINT    CGReqResetAttrHandler::Execute(CGReqResetAttr* pPacket,Player* pPlayer)
     
 
 
-    //ÏûÏ¢
+    //æ¶ˆæ¯
 
     pGamePlayer->SendPacket(&Msg);
 

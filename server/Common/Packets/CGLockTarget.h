@@ -1,6 +1,6 @@
 // CGLockTarget.h
 // 
-// 玩家锁定目标
+// 鐜╁閿佸畾鐩爣
 // 
 //////////////////////////////////////////////////////
 
@@ -20,7 +20,7 @@ public:
     CGLockTarget( ):m_nTargetID(INVALID_ID)    {};
     virtual ~CGLockTarget( ){};
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;

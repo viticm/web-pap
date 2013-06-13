@@ -1,6 +1,6 @@
 // CGStallOpen.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -24,7 +24,7 @@ namespace Packets
         };        
         virtual ~CGStallOpen( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -37,7 +37,7 @@ namespace Packets
         VOID                    SetObjID(ObjID_t ObjID) {m_objID = ObjID;};
 
     private:
-        ObjID_t                    m_objID;        //ÉêÇëÕßid
+        ObjID_t                    m_objID;        //ç”³è¯·è€…id
     };
 
     class CGStallOpenFactory : public PacketFactory 

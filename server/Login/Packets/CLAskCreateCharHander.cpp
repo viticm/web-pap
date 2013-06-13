@@ -43,7 +43,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
             Msg.SetAccount(pPacket->GetAccount());
             Msg.SetResult(ASKCREATECHAR_INVALID_NAME);
 
-            //·¢ËÍDB²Ù×÷Æµ·±ÏûÏ¢
+            //å‘é€DBæ“ä½œé¢‘ç¹æ¶ˆæ¯
             pLoginPlayer->SendPacket(&Msg);
 
             Log::SaveLog( LOGIN_LOGFILE, "CLAskCreateCharHandler....Fails!, code = ASKCREATECHAR_INVALID_NAME") ;
@@ -53,7 +53,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
 
         if(pLoginPlayer->GetPlayerStatus()!=PS_LOGIN_NORMAL)
         {
-            //Ã»ÓÐÈ¨ÏÞ£¬Ê²Ã´Ò²²»×ö
+            //æ²¡æœ‰æƒé™ï¼Œä»€ä¹ˆä¹Ÿä¸åš
             return PACKET_EXE_CONTINUE;
         }
 
@@ -65,7 +65,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
             Msg.SetAccount(pPacket->GetAccount());
             Msg.SetResult(ASKCREATECHAR_OP_TIMES);
 
-            //·¢ËÍDB²Ù×÷Æµ·±ÏûÏ¢
+            //å‘é€DBæ“ä½œé¢‘ç¹æ¶ˆæ¯
             pLoginPlayer->SendPacket(&Msg);
 
             Log::SaveLog( LOGIN_LOGFILE, "CLAskCreateCharHandler....Fails!, code = ASKCREATECHAR_OP_TIMES") ;
@@ -75,16 +75,16 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
 
         pPacket->SetPlayerID(pLoginPlayer->PlayerID());
         pPacket->SetAccount(pLoginPlayer->GetAccount());
-        //½«Íæ¼Ò²Ù×÷¼ÓÈëDB ¶ÓÁÐ
-        //²¢ÇÒÉèÖÃ×îºó²Ù×÷Ê±¼ä
+        //å°†çŽ©å®¶æ“ä½œåŠ å…¥DB é˜Ÿåˆ—
+        //å¹¶ä¸”è®¾ç½®æœ€åŽæ“ä½œæ—¶é—´
 
         if(g_pDBThreadManager->SendPacket(pPacket,pLoginPlayer->PlayerID()))
-        {//¼ÓÈë³É¹¦£¬½«ÏûÏ¢·¢ËÍµ½DB´¦Àí
+        {//åŠ å…¥æˆåŠŸï¼Œå°†æ¶ˆæ¯å‘é€åˆ°DBå¤„ç†
             pLoginPlayer->m_LastDBOpTime = uTime;    
             return PACKET_EXE_NOTREMOVE;    
         }
         else
-        {//DB Ñ¹Á¦¹ý´ó£¬ÈÃÓÃ»§ÖØÐÂ³¢ÊÔ
+        {//DB åŽ‹åŠ›è¿‡å¤§ï¼Œè®©ç”¨æˆ·é‡æ–°å°è¯•
             LCRetCreateChar Msg;
             Msg.SetAccount(pPacket->GetAccount());
             Msg.SetResult(ASKCREATECHAR_SERVER_BUSY);
@@ -109,7 +109,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
         LCRetCreateChar* pMsg = (LCRetCreateChar*)g_pPacketFactoryManager->CreatePacket(PACKET_LC_RETCREATECHAR);
         if(!pMsg)
         {
-            AssertEx(FALSE,"´´½¨ LCRetCreateChar ÏûÏ¢Ê§°Ü");
+            AssertEx(FALSE,"åˆ›å»º LCRetCreateChar æ¶ˆæ¯å¤±è´¥");
         }
 
         if(pLoginPlayer->GetDBOperating() == TRUE)
@@ -118,15 +118,15 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
             pMsg->SetResult(ASKCREATECHAR_SERVER_BUSY);
             g_pProcessManager->SendPacket(pMsg,PlayerID);
 
-            Log::SaveLog(LOGIN_LOGFILE, "CLAskCreateCharHandler::Execute()....Êý¾Ý¿â²Ù×÷³åÍ»!,acc = %s",
+            Log::SaveLog(LOGIN_LOGFILE, "CLAskCreateCharHandler::Execute()....æ•°æ®åº“æ“ä½œå†²çª!,acc = %s",
                 pPacket->GetAccount()) ;
             return PACKET_EXE_CONTINUE;
         }
 
-        //¼ì²éGUID ÊÇ·ñÕýÈ·
+        //æ£€æŸ¥GUID æ˜¯å¦æ­£ç¡®
         if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount())!= 0)
         {
-            //Ó¦¸ÃÊÇÒ»´Î´íÎó²Ù×÷
+            //åº”è¯¥æ˜¯ä¸€æ¬¡é”™è¯¯æ“ä½œ
             Log::SaveLog(LOGIN_LOGFILE, "ERROR: CLAskCreateChar DBOperation Errors,acc = %s,Packet acc = %s",
                 pLoginPlayer->GetAccount(),pPacket->GetAccount()) ;
             return PACKET_EXE_CONTINUE;
@@ -137,7 +137,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
         LCRetCharList* pRetListMsg = (LCRetCharList*)g_pPacketFactoryManager->CreatePacket(PACKET_LC_RETCHARLIST)    ;
         if(!pRetListMsg)
         {
-            AssertEx(FALSE,"´´½¨ LCRetCharList ÏûÏ¢Ê§°Ü");
+            AssertEx(FALSE,"åˆ›å»º LCRetCharList æ¶ˆæ¯å¤±è´¥");
         }
 
 
@@ -146,7 +146,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
         if(CharNumber>=MAX_CREATE_PLAYER_NUM )
         {
             pRetListMsg->SetAccount(pPacket->GetAccount());
-            Result = ASKCREATECHAR_FULL; //½ÇÉ«ÂúÁË
+            Result = ASKCREATECHAR_FULL; //è§’è‰²æ»¡äº†
         }
         else if(CharNumber ==-1)
         {
@@ -157,10 +157,10 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
         {
             CampID_t PlayerCampType ;
             if( CharNumber > 0 )
-                PlayerCampType = CAMP1_PLAYER;//pLoginPlayer->GetPlayerCamp(); //Èç¹û½¨Á¢¹ý½ÇÉ«£¬Ç¿ÖÆÓÃÉÏÒ»¸ö½ÇÉ«µÄÕóÓªID//LMÐÞ¸Ä
+                PlayerCampType = CAMP1_PLAYER;//pLoginPlayer->GetPlayerCamp(); //å¦‚æžœå»ºç«‹è¿‡è§’è‰²ï¼Œå¼ºåˆ¶ç”¨ä¸Šä¸€ä¸ªè§’è‰²çš„é˜µè¥ID//LMä¿®æ”¹
             else
             {
-                PlayerCampType = CAMP1_PLAYER;//pPacket->GetCharCamp();//LMÐÞ¸Ä
+                PlayerCampType = CAMP1_PLAYER;//pPacket->GetCharCamp();//LMä¿®æ”¹
                 pLoginPlayer->SetPlayerCamp( PlayerCampType );
             }
 
@@ -170,27 +170,27 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
                 pMsg->SetResult(ASKCREATECHAR_OP_ERROR);
                 g_pProcessManager->SendPacket(pMsg,PlayerID);
 
-                Log::SaveLog( LOGIN_LOGFILE, "CLAskCreateCharHandler::Execute()....Íæ¼ÒÕóÓªÊý¾Ý´íÎó!") ;
+                Log::SaveLog( LOGIN_LOGFILE, "CLAskCreateCharHandler::Execute()....çŽ©å®¶é˜µè¥æ•°æ®é”™è¯¯!") ;
                 return PACKET_EXE_CONTINUE;
             }
-            pPacket->SetMenPai(MATTRIBUTE_WUDANG);//LMÐÞ¸Ä
+            pPacket->SetMenPai(MATTRIBUTE_WUDANG);//LMä¿®æ”¹
             if( pPacket->GetMenPai() != MATTRIBUTE_SHAOLIN &&
                 pPacket->GetMenPai() != MATTRIBUTE_WUDANG &&
                 pPacket->GetMenPai() != MATTRIBUTE_EMEI )
             {
-                //Ä¿Ç°¾ÍÖ»ÓÐ3¸öÖ°Òµ
+                //ç›®å‰å°±åªæœ‰3ä¸ªèŒä¸š
                 pMsg->SetAccount(pPacket->GetAccount());
                 pMsg->SetResult(ASKCREATECHAR_OP_ERROR);
                 g_pProcessManager->SendPacket(pMsg,PlayerID);
 
-                Log::SaveLog( LOGIN_LOGFILE, "CLAskCreateCharHandler::Execute()....Íæ¼ÒÑ¡ÔñÃÅÅÉÊý¾Ý´íÎó!") ;
+                Log::SaveLog( LOGIN_LOGFILE, "CLAskCreateCharHandler::Execute()....çŽ©å®¶é€‰æ‹©é—¨æ´¾æ•°æ®é”™è¯¯!") ;
                 return PACKET_EXE_CONTINUE;
             }
 
             ODBCInterface*    pInterface = g_pDBThreadManager->GetInterface(CurrentThreadID);
             Assert(pInterface);
 
-            //²åÈë¼ÍÂ¼
+            //æ’å…¥çºªå½•
             DBCreateCharOp CreateCharOp(pInterface);
             CreateCharOp.SetAccount(pPacket->GetAccount());
             CreateCharOp.SetCharName(pPacket->GetName());
@@ -201,7 +201,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
             CreateCharOp.SetFaceColor(pPacket->GetFaceColor());
             CreateCharOp.SetFaceModel(pPacket->GetFaceModel());
             CreateCharOp.SetHeadID(pPacket->GetHeadID());
-            //CreateCharOp.SetCampID(PlayerCampType);//LMÐÞ¸Ä
+            //CreateCharOp.SetCampID(PlayerCampType);//LMä¿®æ”¹
             CreateCharOp.SetMenPaiID(pPacket->GetMenPai());
             BOOL bRetAddNew     = CreateCharOp.AddNew();
             if(!bRetAddNew)
@@ -209,14 +209,14 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
 
                 Log::SaveLog(LOGIN_LOGFILE,"CreateCharOp.AddNew()...Get Errors: %s",CreateCharOp.GetErrorMessage());
 
-                //Ìí¼ÓÐÂ½ÇÉ«Ê§°Ü
+                //æ·»åŠ æ–°è§’è‰²å¤±è´¥
                 pMsg->SetAccount(pPacket->GetAccount());
 
                 INT  ErrorCode = CreateCharOp.GetErrorCode();
 
                 switch(ErrorCode) 
                 {
-                case ODBCBase::DB_SAME_PRI_KEY: //ÓÃ»§ÐèÒªÖªµÀµÄ´íÎó
+                case ODBCBase::DB_SAME_PRI_KEY: //ç”¨æˆ·éœ€è¦çŸ¥é“çš„é”™è¯¯
                     {
                         pMsg->SetResult(ASKCREATECHAR_SAME_NAME);
                         Log::SaveLog( LOGIN_LOGFILE, "CLAskCreateCharHandler::Execute()....Fails! DBCreateCharOP ErrorCode = ASKCREATECHAR_SAME_NAME") ;
@@ -239,7 +239,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
             PlayerCharGUID = CreateCharOp.GetCharGuid();
 
             Assert(PlayerCharGUID!=INVALID_ID);
-            //ÉèÖÃ»ù±¾ÊôÐÔ
+            //è®¾ç½®åŸºæœ¬å±žæ€§
 
             FULLUSERDATA        UserData;
             DBCharFullData        CharFullDataObject(pInterface);
@@ -248,7 +248,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
             BOOL bRetLoad =    CharFullDataObject.Load();
             if(!bRetLoad)
             {    
-                //ÑéÖ¤Êý¾ÝÊ§°Ü
+                //éªŒè¯æ•°æ®å¤±è´¥
                 pMsg->SetAccount(pPacket->GetAccount());
                 pMsg->SetResult(ASKCREATECHAR_INTERNAL_ERROR);
                 g_pProcessManager->SendPacket(pMsg,PlayerID);
@@ -263,10 +263,10 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
 
             g_CharConfig.InitCharAttr(&UserData);
 
-            BOOL bRetSave = CharFullDataObject.Save(&UserData); //±£´æ³öÊ¼»¯ÐÅÏ¢
+            BOOL bRetSave = CharFullDataObject.Save(&UserData); //ä¿å­˜å‡ºå§‹åŒ–ä¿¡æ¯
             if(!bRetSave)
             {
-                //³õÊ¼»¯Êý¾ÝÉèÖÃÊ§°Ü
+                //åˆå§‹åŒ–æ•°æ®è®¾ç½®å¤±è´¥
                 pMsg->SetAccount(pPacket->GetAccount());
                 pMsg->SetResult(ASKCREATECHAR_INTERNAL_ERROR);
                 g_pProcessManager->SendPacket(pMsg,PlayerID);
@@ -274,10 +274,10 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
                 pLoginPlayer->SetDBOperating(FALSE);
                 return PACKET_EXE_NOTREMOVE;
             }
-            bRetSave    =    CharFullDataObject.ParseResult(&UserData);//±£´æÈ«²¿µµ°¸
+            bRetSave    =    CharFullDataObject.ParseResult(&UserData);//ä¿å­˜å…¨éƒ¨æ¡£æ¡ˆ
             if(!bRetSave)
             {
-                //³õÊ¼»¯Êý¾ÝÉèÖÃÊ§°Ü
+                //åˆå§‹åŒ–æ•°æ®è®¾ç½®å¤±è´¥
                 pMsg->SetAccount(pPacket->GetAccount());
                 pMsg->SetResult(ASKCREATECHAR_INTERNAL_ERROR);
                 g_pProcessManager->SendPacket(pMsg,PlayerID);
@@ -286,7 +286,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
                 return PACKET_EXE_NOTREMOVE;
             }
 
-            //·µ»ØÐÂµÄ½ÇÉ«ÁÐ±í
+            //è¿”å›žæ–°çš„è§’è‰²åˆ—è¡¨
             DBCharList    CharListObject(pInterface);
             CharListObject.SetAccount(pPacket->GetAccount());
             bRetLoad =     CharListObject.Load();
@@ -313,7 +313,7 @@ UINT    CLAskCreateCharHandler::Execute(CLAskCreateChar* pPacket, Player* pPlaye
                     pLoginPlayer->SetCharGUID(pRetListMsg->GetCharBaseInfo(i)->m_GUID,i);
                 }
             }
-            else //²Ù×÷Ê§°Ü£¬¿ÉÄÜÊÇ¶Ï¿ªÁ¬½ÓÁË
+            else //æ“ä½œå¤±è´¥ï¼Œå¯èƒ½æ˜¯æ–­å¼€è¿žæŽ¥äº†
             {
                 pRetListMsg->SetAccount(pPacket->GetAccount());
                 pRetListMsg->SetResult(ASKCHARLIST_OP_FAILS);

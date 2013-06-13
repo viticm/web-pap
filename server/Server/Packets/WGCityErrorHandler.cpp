@@ -13,7 +13,7 @@ UINT WGCityErrorHandler::Execute( WGCityError* pPacket, Player* pPlayer )
 __ENTER_FUNCTION
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
 
     }
 

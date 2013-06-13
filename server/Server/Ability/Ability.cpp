@@ -40,13 +40,13 @@ __ENTER_FUNCTION
     pAbilityOpera = pHuman->GetAbilityOpera();
     Assert( pAbilityOpera );
 
-    // ÅĞ¶ÏÍæ¼ÒÊÇ·ñÒÑ¾­Ñ§»áÕâÏî¼¼ÄÜ
+    // åˆ¤æ–­ç©å®¶æ˜¯å¦å·²ç»å­¦ä¼šè¿™é¡¹æŠ€èƒ½
     if( pHuman->__IsAbilityHaveLearned(m_AbilityID) == FALSE )
     {
         return OR_WARNING;
     }
 
-    // ÅĞ¶ÏÍæ¼ÒÊÇ·ñÓĞ¼¼ÄÜËùĞèÒªµÄ¹¤¾ß
+    // åˆ¤æ–­ç©å®¶æ˜¯å¦æœ‰æŠ€èƒ½æ‰€éœ€è¦çš„å·¥å…·
     if( m_OperationToolID!=INVALID_ID && HumanItemLogic::CalcEquipItemCount(pHuman,m_OperationToolID)<1 )
     {
         return OR_NO_TOOL;
@@ -58,15 +58,15 @@ __ENTER_FUNCTION
     if( pObj != NULL )
     {
         if( pHuman->IsInValidRadius( pObj, m_PlatformDistance ) == FALSE )
-        { // ÅĞ¶Ï pObj ÊÇ·ñÔÚÓĞĞ§¾àÀëÄÚ
+        { // åˆ¤æ–­ pObj æ˜¯å¦åœ¨æœ‰æ•ˆè·ç¦»å†…
             return OR_OUT_PLATFORM;
         }
 
-        // ÈÃÍæ¼ÒÃæ¶Ô²Ù×÷Ì¨(¶ÔÏó)
+        // è®©ç©å®¶é¢å¯¹æ“ä½œå°(å¯¹è±¡)
         pHuman->FaceTo( pObj );
     }
 
-    // ÅĞ¶ÏÍæ¼ÒÊÇ·ñ·ûºÏ¼¼ÄÜµÄÒªÇó£¨ÔÚ²Ù×÷Ì¨ÅÔ±ß£©
+    // åˆ¤æ–­ç©å®¶æ˜¯å¦ç¬¦åˆæŠ€èƒ½çš„è¦æ±‚ï¼ˆåœ¨æ“ä½œå°æ—è¾¹ï¼‰
     if( (m_PlatformID >= 0) )
     {
         if( pObj == NULL )
@@ -74,7 +74,7 @@ __ENTER_FUNCTION
             return OR_NO_PLATFORM;
         }
 
-        // ÕâÀïĞèÒªÅĞ¶Ï pPlatformObj ÊÇ·ñ¾ÍÊÇ m_PlatformID Ö¸¶¨µÄ¶«Î÷
+        // è¿™é‡Œéœ€è¦åˆ¤æ–­ pPlatformObj æ˜¯å¦å°±æ˜¯ m_PlatformID æŒ‡å®šçš„ä¸œè¥¿
         if( pObj->GetObjType() != Obj::OBJ_TYPE_PLATFORM
          || ((Obj_Platform*)pObj)->GetPlatformClass() != PlatformID()
          )

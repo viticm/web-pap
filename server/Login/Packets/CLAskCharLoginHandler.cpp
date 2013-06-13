@@ -34,7 +34,7 @@ UINT CLAskCharLoginHandler::Execute(CLAskCharLogin* pPacket, Player* pPlayer )
         UINT uTime = g_pTimeManager->CurrentTime();
         if(uTime<pLoginPlayer->m_LastDBOpTime+DB_OPERATION_TIME)
         {
-            //ÓÃ»§²Ù×÷¹ıÓÚÆµ·±
+            //ç”¨æˆ·æ“ä½œè¿‡äºé¢‘ç¹
             LCRetCharLogin Msg;
             Msg.SetResult(ASKCHARLOGIN_OP_TIMES);
             pLoginPlayer->SendPacket(&Msg);
@@ -45,7 +45,7 @@ UINT CLAskCharLoginHandler::Execute(CLAskCharLogin* pPacket, Player* pPlayer )
         GUID_t    TryLoginGuid = pPacket->GetCharGuid();
         if(!pLoginPlayer->IsGUIDOwner(TryLoginGuid))
         {
-            //ÓÃ»§²Ù×÷·Ç·¨,ÓÃ»§²»ÊÇÇëÇó½ÇÉ«µÄËùÓĞÕß
+            //ç”¨æˆ·æ“ä½œéæ³•,ç”¨æˆ·ä¸æ˜¯è¯·æ±‚è§’è‰²çš„æ‰€æœ‰è€…
             LCRetCharLogin Msg;
             Msg.SetResult(ASKCHARLOGIN_NOT_OWNER);
             pLoginPlayer->SendPacket(&Msg);
@@ -53,7 +53,7 @@ UINT CLAskCharLoginHandler::Execute(CLAskCharLogin* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE;
         }
 
-        //¼ì²éÊÇ·ñÊÇºÏ·¨SID
+        //æ£€æŸ¥æ˜¯å¦æ˜¯åˆæ³•SID
         
         //if(g_DBSceneTable.isValidSceneID(pPacket->GetSceneID(),CT_NORMAL))
         //{
@@ -72,12 +72,12 @@ UINT CLAskCharLoginHandler::Execute(CLAskCharLogin* pPacket, Player* pPlayer )
         pLoginPlayer->SetUserKey(rand());
         pPacket->SetPlayerID(pLoginPlayer->PlayerID());
         if(g_pDBThreadManager->SendPacket(pPacket,pLoginPlayer->PlayerID()))
-        {   //¼ÓÈë³É¹¦£¬½«ÏûÏ¢·¢ËÍµ½DB´¦Àí
-            //½«ĞŞ¸ÄÊı¾İ¿â²Ù×÷Ê±¼äµÄ²½ÖèÒÆ¶¯µ½Êµ¼ÊÊı¾İ¿â²Ù×÷½øĞĞµÄ²¿·Ö
+        {   //åŠ å…¥æˆåŠŸï¼Œå°†æ¶ˆæ¯å‘é€åˆ°DBå¤„ç†
+            //å°†ä¿®æ”¹æ•°æ®åº“æ“ä½œæ—¶é—´çš„æ­¥éª¤ç§»åŠ¨åˆ°å®é™…æ•°æ®åº“æ“ä½œè¿›è¡Œçš„éƒ¨åˆ†
             return PACKET_EXE_NOTREMOVE;    
         }
         else
-        {//DB Ñ¹Á¦¹ı´ó£¬ÈÃÓÃ»§ÖØĞÂ³¢ÊÔ
+        {//DB å‹åŠ›è¿‡å¤§ï¼Œè®©ç”¨æˆ·é‡æ–°å°è¯•
             LCRetCharLogin Msg;
             Msg.SetResult(ASKCHARLOGIN_SERVER_BUSY);
             pLoginPlayer->SendPacket(&Msg);
@@ -88,7 +88,7 @@ UINT CLAskCharLoginHandler::Execute(CLAskCharLogin* pPacket, Player* pPlayer )
         }
     }
     else if(g_pDBThreadManager->IsPoolTID(CurrentThreadID))
-    {//½«Íæ¼Ò¼ÓÈëµ½World ¶ÓÁĞÖĞ
+    {//å°†ç©å®¶åŠ å…¥åˆ°World é˜Ÿåˆ—ä¸­
         
         PlayerID_t    PlayerID            = pPacket->GetPlayerID();
         GUID_t        PlayerCharGUID        = pPacket->GetCharGuid();
@@ -102,7 +102,7 @@ UINT CLAskCharLoginHandler::Execute(CLAskCharLogin* pPacket, Player* pPlayer )
         GUID_t    TryLoginGuid = pPacket->GetCharGuid();
         if(!pLoginPlayer->IsGUIDOwner(TryLoginGuid))
         {
-            //Ò»´Î´íÎóµÄÊı¾İ²Ù×÷
+            //ä¸€æ¬¡é”™è¯¯çš„æ•°æ®æ“ä½œ
             Log::SaveLog(LOGIN_LOGFILE, "CLAskCharLoginHandler Wrong operation,acc=%s,guid=%X",
                 pLoginPlayer->GetAccount(),pPacket->GetCharGuid()) ;
             return PACKET_EXE_CONTINUE;
@@ -114,17 +114,17 @@ UINT CLAskCharLoginHandler::Execute(CLAskCharLogin* pPacket, Player* pPlayer )
             pPacket->GetCharGuid(),
             pLoginPlayer->GetPlayerAge(),
             QueuePos))
-        { //¼ÓÈë³É¹¦
+        { //åŠ å…¥æˆåŠŸ
             
             Log::SaveLog( LOGIN_LOGFILE, "CLAskCharLoginHandler::Execute()....OK!, PlayerCharGUID = %X ",PlayerCharGUID ) ;
 
             return PACKET_EXE_CONTINUE;
             
         }
-        else //¼ÓÈëÊ§°Ü
+        else //åŠ å…¥å¤±è´¥
         {
-            //queue ¶¼ÂúÁË,World±¬Âú ,µ«ÊÇ²»Ó¦¸Ã³öÏÖ£¬ÒòÎªWorld×´Ì¬ÒÑ¾­Í¨Öª¹ıLogin
-            //²¢ÇÒ²»ÊÇËùÓĞÍæ¼Ò¶¼ÔÚÅÅ¶Ó
+            //queue éƒ½æ»¡äº†,Worldçˆ†æ»¡ ,ä½†æ˜¯ä¸åº”è¯¥å‡ºç°ï¼Œå› ä¸ºWorldçŠ¶æ€å·²ç»é€šçŸ¥è¿‡Login
+            //å¹¶ä¸”ä¸æ˜¯æ‰€æœ‰ç©å®¶éƒ½åœ¨æ’é˜Ÿ
             Log::SaveLog( LOGIN_LOGFILE, "CLAskCharLoginHandler::Execute()....Fail,World is Full,PlayerCharGUID = %X ",PlayerCharGUID ) ;
         }
         

@@ -69,7 +69,7 @@ __ENTER_FUNCTION
                 return OR_STUFF_LACK;
             }
 
-            if( pGem1Item->GetItemQual() >= MAX_GEM_QUALITY ) // Ã»·¨ÔÙÉýÁË
+            if( pGem1Item->GetItemQual() >= MAX_GEM_QUALITY ) // æ²¡æ³•å†å‡äº†
             {
                 return OR_CANNOT_UPGRADE;
             }
@@ -205,7 +205,7 @@ __ENTER_FUNCTION
             LuaInterface* pLuaInterface;
             UINT itemIndex;
 
-            res = CanUseAbility(pHuman); // ÒÔÃâ¹ý³ÌÖÐÄ³Ð©×´Ì¬·¢Éú±ä»¯
+            res = CanUseAbility(pHuman); // ä»¥å…è¿‡ç¨‹ä¸­æŸäº›çŠ¶æ€å‘ç”Ÿå˜åŒ–
             if( res != OR_OK )
             {
                 return res;
@@ -218,7 +218,7 @@ __ENTER_FUNCTION
             itemIndex = HumanItemLogic::GetItem(pHuman,
                                                 pAbilityOpera->m_BagPos[0])->GetItemTableIndex();
 
-            // ²»¹Ü³É¹¦Ê§°Ü£¬±¦Ê¯ÊÇÃ»ÓÐÁË
+            // ä¸ç®¡æˆåŠŸå¤±è´¥ï¼Œå®çŸ³æ˜¯æ²¡æœ‰äº†
             GCDiscardItemResult Msg;
             GamePlayer* pGamePlayer;
             pGamePlayer = (GamePlayer*)pHuman->GetPlayer();
@@ -248,8 +248,8 @@ __ENTER_FUNCTION
                                                 "CompoundProc", 
                                                 (INT)pHuman->getScene()->SceneID(),
                                                 (INT)pHuman->GetID(), 
-                                                (INT)itemIndex ) != FALSE ) // ÕâÀïÏÔÈ»ÐèÒªµ÷ÓÃ lua script
-            { // ½Å±¾ÅÐ¶ÏÊÇ·ñºÏ³É³É¹¦£¬³É¹¦ÁË×Ô¶¯Ôö¼ÓÊìÁ·¶È
+                                                (INT)itemIndex ) != FALSE ) // è¿™é‡Œæ˜¾ç„¶éœ€è¦è°ƒç”¨ lua script
+            { // è„šæœ¬åˆ¤æ–­æ˜¯å¦åˆæˆæˆåŠŸï¼ŒæˆåŠŸäº†è‡ªåŠ¨å¢žåŠ ç†Ÿç»ƒåº¦
                 flag = TRUE;
                 pAbilityOpera->m_uItemIndex = itemIndex;
                 res = OnProcSuccess( pHuman );
@@ -288,15 +288,15 @@ __ENTER_FUNCTION
 
             UINT EquipIndex = 
             HumanItemLogic::GetItem(pHuman,EquipBagIndex)->GetItemTableIndex();
-            res = CanUseAbility(pHuman); // ÒÔÃâ¹ý³ÌÖÐÄ³Ð©×´Ì¬·¢Éú±ä»¯
+            res = CanUseAbility(pHuman); // ä»¥å…è¿‡ç¨‹ä¸­æŸäº›çŠ¶æ€å‘ç”Ÿå˜åŒ–
             if( res != OR_OK )
             {
                 return res;
             }
 
             pLuaInterface = pHuman->getScene()->GetLuaInterface();
-            // ½Å±¾ÅÐ¶ÏÊÇ·ñÏâÇ¶³É¹¦£¬Èç¹û³É¹¦ÔòÖ÷¶¯¼ÓÉÏÊìÁ·¶È
-            // ·ñÔò·µ»ØÊ§°ÜÇé¿ö
+            // è„šæœ¬åˆ¤æ–­æ˜¯å¦é•¶åµŒæˆåŠŸï¼Œå¦‚æžœæˆåŠŸåˆ™ä¸»åŠ¨åŠ ä¸Šç†Ÿç»ƒåº¦
+            // å¦åˆ™è¿”å›žå¤±è´¥æƒ…å†µ
             flag = (EmbedResult)pLuaInterface->ExeScript_DDD(    ABILITY_LOGIC_SCRIPT, 
                                                                 "EmbedProc", 
                                                                 (INT)pHuman->getScene()->SceneID(),
@@ -423,7 +423,7 @@ __ENTER_FUNCTION
 
             GemType.m_Quality++;
             HumanItemLogic::CreateItemToBag(&ItemLogParam,pHuman,GemType.ToSerial(),bi,0);
-            if(bi==INVALID_INDEX) //´´½¨Ê§°Ü
+            if(bi==INVALID_INDEX) //åˆ›å»ºå¤±è´¥
             {
                 return OR_ERROR;
             }
@@ -437,7 +437,7 @@ __ENTER_FUNCTION
             pItem->SaveValueTo(Msg.GetItem());
             pGamePlayer->SendPacket(&Msg);
 
-            // ·¢ËÍ³É¹¦ÏûÏ¢ÒÔ¼°ÎïÆ·ºÍ×´Ì¬±ä»¯
+            // å‘é€æˆåŠŸæ¶ˆæ¯ä»¥åŠç‰©å“å’ŒçŠ¶æ€å˜åŒ–
             GCAbilitySucc SuccMsg;
             SuccMsg.SetAbilityID( EAN_GEM_COMPOUNDED );
             SuccMsg.SetPrescriptionID( INVALID_ID );
@@ -445,9 +445,9 @@ __ENTER_FUNCTION
             pGamePlayer->SendPacket( &SuccMsg );
         }
         break;
-    case GEM_EMBED: // ²»ÐèÒª¶îÍâµÄ´¦ÀíÁË
+    case GEM_EMBED: // ä¸éœ€è¦é¢å¤–çš„å¤„ç†äº†
         {
-            // ·¢ËÍ³É¹¦ÏûÏ¢ÒÔ¼°ÎïÆ·ºÍ×´Ì¬±ä»¯
+            // å‘é€æˆåŠŸæ¶ˆæ¯ä»¥åŠç‰©å“å’ŒçŠ¶æ€å˜åŒ–
             Item* pItem = HumanItemLogic::GetItem(pHuman, pAbilityOpera->m_BagPos[1]);
             Assert( pItem );
             GCAbilitySucc SuccMsg;
@@ -462,7 +462,7 @@ __ENTER_FUNCTION
         return OR_ERROR;
     }
 
-    // ÅÐ¶ÏÒ»ÏÂÊìÁ·¶ÈÊÇ·ñ×ã¹»Éý¼¶ÁË
+    // åˆ¤æ–­ä¸€ä¸‹ç†Ÿç»ƒåº¦æ˜¯å¦è¶³å¤Ÿå‡çº§äº†
     pLuaInterface->ExeScript_DDD(    ABILITY_LOGIC_SCRIPT, 
                                     "CheckAbilityLevel", 
                                     (INT)pHuman->getScene()->SceneID(),

@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºImpactLogic.cpp
-// ¹¦ÄÜËµÃ÷£ºĞ§¹ûµÄ»ù´¡Àà£¬ÊµÏÖÁËËùÓĞµÄ¹«¹²½Ó¿ÚºÍ¹«¹²µÄ¹Ì¶¨Âß¼­½Ó¿Ú
+// æ–‡ä»¶åï¼šImpactLogic.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šæ•ˆæœçš„åŸºç¡€ç±»ï¼Œå®ç°äº†æ‰€æœ‰çš„å…¬å…±æ¥å£å’Œå…¬å…±çš„å›ºå®šé€»è¾‘æ¥å£
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -74,7 +74,7 @@ namespace Combat_Module
             ScanOperatorIniter.m_pTargets = &rTargets;
             ScanOperatorIniter.m_fRadius = fRadius;
 
-            if(-1==nListSize) //-1Îª²»ÏŞÊıÁ¿
+            if(-1==nListSize) //-1ä¸ºä¸é™æ•°é‡
             {
                 ScanOperatorIniter.m_nCount = rTargets.MAX_OBJ_LIST_SIZE-1;
             }
@@ -132,7 +132,7 @@ namespace Combat_Module
                 {
                     if(-1==nContinuance)
                     {
-                        return; //-1Îª³ÖĞøÊ±¼äÎŞÏŞ³¤
+                        return; //-1ä¸ºæŒç»­æ—¶é—´æ— é™é•¿
                     }
                     if(nContinuanceElapsed<=nContinuance)
                     {

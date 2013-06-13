@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºScene.inl
-//¿ª·¢Õß£ºJack
-//ËµÃ÷£º³¡¾°ÄÚÁªº¯Êı
-//ĞŞ¸Ä¼ÇÂ¼£º2005-11-8´´½¨
+//æ–‡ä»¶åï¼šScene.inl
+//å¼€å‘è€…ï¼šJack
+//è¯´æ˜ï¼šåœºæ™¯å†…è”å‡½æ•°
+//ä¿®æ”¹è®°å½•ï¼š2005-11-8åˆ›å»º
 /////////////////////////////////////////////////////////////////////////////////
 
 #ifndef __SCENE_INL__
@@ -115,7 +115,7 @@ inline VOID Scene::SetCopySceneData_Param( const UINT Index, const INT value )
 {
     if( Index>=MAX_COPYSCENE_DATA_PARAM )
     {
-        Assert(FALSE && "²ÎÊıÊı×éÏÂ±êÔ½½ç" ) ;
+        Assert(FALSE && "å‚æ•°æ•°ç»„ä¸‹æ ‡è¶Šç•Œ" ) ;
         return ;
     }
     m_CopyData.m_Param[Index] = value ;
@@ -145,7 +145,7 @@ inline INT Scene::GetCopySceneData_Param( const UINT Index )
 {
     if( Index>=MAX_COPYSCENE_DATA_PARAM )
     {
-        Assert(FALSE && "²ÎÊıÊı×éÏÂ±êÔ½½ç" ) ;
+        Assert(FALSE && "å‚æ•°æ•°ç»„ä¸‹æ ‡è¶Šç•Œ" ) ;
         return 0;
     }
     return m_CopyData.m_Param[Index] ;

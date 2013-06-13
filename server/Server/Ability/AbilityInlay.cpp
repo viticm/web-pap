@@ -78,7 +78,7 @@ __ENTER_FUNCTION
                                         pGemItem->GetItemTableIndex(),
                                         pAbilityOpera->m_BagPos[1] ) == 0
      )
-    { // ÅÐ¶Ï±¦Ê¯ºÍ×°±¸ÊÇ·ñÆ¥Åä
+    { // åˆ¤æ–­å®çŸ³å’Œè£…å¤‡æ˜¯å¦åŒ¹é…
         return OR_GEM_NOT_FIT_EQUIP;
     }
 
@@ -150,15 +150,15 @@ __ENTER_FUNCTION
     UINT GemIndex = HumanItemLogic::GetItem(pHuman,GemBagIndex)->GetItemTableIndex();
     UINT EquipIndex = HumanItemLogic::GetItem(pHuman,EquipBagIndex)->GetItemTableIndex();
 
-    res = CanUseAbility(pHuman); // ÒÔÃâ¹ý³ÌÖÐÄ³Ð©×´Ì¬·¢Éú±ä»¯
+    res = CanUseAbility(pHuman); // ä»¥å…è¿‡ç¨‹ä¸­æŸäº›çŠ¶æ€å‘ç”Ÿå˜åŒ–
     if( res != OR_OK )
     {
         return res;
     }
 
     pLuaInterface = pHuman->getScene()->GetLuaInterface();
-    // ½Å±¾ÅÐ¶ÏÊÇ·ñÏâÇ¶³É¹¦£¬Èç¹û³É¹¦ÔòÖ÷¶¯¼ÓÉÏÊìÁ·¶È
-    // ·ñÔò·µ»ØÊ§°ÜÇé¿ö
+    // è„šæœ¬åˆ¤æ–­æ˜¯å¦é•¶åµŒæˆåŠŸï¼Œå¦‚æžœæˆåŠŸåˆ™ä¸»åŠ¨åŠ ä¸Šç†Ÿç»ƒåº¦
+    // å¦åˆ™è¿”å›žå¤±è´¥æƒ…å†µ
     flag = (EmbedResult)pLuaInterface->ExeScript_DDD(    ABILITY_LOGIC_SCRIPT, DEF_GEM_EMBED_PROCESS, 
                                                         (INT)pHuman->getScene()->SceneID(),
                                                         (INT)pHuman->GetID(), 
@@ -246,7 +246,7 @@ __ENTER_FUNCTION
     pGamePlayer = (GamePlayer*)pHuman->GetPlayer();
     Assert( pGamePlayer != NULL );
 
-    // ·¢ËÍ³É¹¦ÏûÏ¢ÒÔ¼°ÎïÆ·ºÍ×´Ì¬±ä»¯
+    // å‘é€æˆåŠŸæ¶ˆæ¯ä»¥åŠç‰©å“å’ŒçŠ¶æ€å˜åŒ–
     Item* pItem = HumanItemLogic::GetItem(pHuman, pAbilityOpera->m_BagPos[1]);
     Assert( pItem );
     GCAbilitySucc SuccMsg;

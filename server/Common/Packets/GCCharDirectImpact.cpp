@@ -12,11 +12,11 @@ namespace Packets
     BOOL GCCharDirectImpact::Read( SocketInputStream& iStream ) 
     {
     __ENTER_FUNCTION
-        iStream.Read((CHAR *)&m_nReceiverID, sizeof(m_nReceiverID));// Ä¿±ê¶ÔÏóµÄID
-        iStream.Read((CHAR *)&m_nSenderID, sizeof(m_nSenderID));// ¼¼ÄÜ·¢ÆðÕßµÄID
-        iStream.Read((CHAR *)&m_nSenderLogicCount, sizeof(m_nSenderLogicCount));// ¹¥»÷ÕßµÄÂß¼­¼ÆÊý
-        iStream.Read((CHAR *)&m_nImpactID, sizeof(m_nImpactID));// Ð§¹ûID //²Î¿¼GameStruct_Impact.hµÄDIRECT_IMPACT_SEID
-        iStream.Read((CHAR *)&m_nSkillID, sizeof(m_nSkillID));// ¼¼ÄÜID
+        iStream.Read((CHAR *)&m_nReceiverID, sizeof(m_nReceiverID));// ç›®æ ‡å¯¹è±¡çš„ID
+        iStream.Read((CHAR *)&m_nSenderID, sizeof(m_nSenderID));// æŠ€èƒ½å‘èµ·è€…çš„ID
+        iStream.Read((CHAR *)&m_nSenderLogicCount, sizeof(m_nSenderLogicCount));// æ”»å‡»è€…çš„é€»è¾‘è®¡æ•°
+        iStream.Read((CHAR *)&m_nImpactID, sizeof(m_nImpactID));// æ•ˆæžœID //å‚è€ƒGameStruct_Impact.hçš„DIRECT_IMPACT_SEID
+        iStream.Read((CHAR *)&m_nSkillID, sizeof(m_nSkillID));// æŠ€èƒ½ID
         return TRUE ;
 
     __LEAVE_FUNCTION
@@ -28,11 +28,11 @@ namespace Packets
     {
     __ENTER_FUNCTION
 
-        oStream.Write((CHAR const*)&m_nReceiverID, sizeof(m_nReceiverID));// Ä¿±ê¶ÔÏóµÄID
-        oStream.Write((CHAR const*)&m_nSenderID, sizeof(m_nSenderID));// ¼¼ÄÜ·¢ÆðÕßµÄID
-        oStream.Write((CHAR const*)&m_nSenderLogicCount, sizeof(m_nSenderLogicCount));// ¹¥»÷ÕßµÄÂß¼­¼ÆÊý
-        oStream.Write((CHAR const*)&m_nImpactID, sizeof(m_nImpactID));// Ð§¹ûID //²Î¿¼GameStruct_Impact.hµÄDIRECT_IMPACT_SEID
-        oStream.Write((CHAR const*)&m_nSkillID, sizeof(m_nSkillID));// ¼¼ÄÜID
+        oStream.Write((CHAR const*)&m_nReceiverID, sizeof(m_nReceiverID));// ç›®æ ‡å¯¹è±¡çš„ID
+        oStream.Write((CHAR const*)&m_nSenderID, sizeof(m_nSenderID));// æŠ€èƒ½å‘èµ·è€…çš„ID
+        oStream.Write((CHAR const*)&m_nSenderLogicCount, sizeof(m_nSenderLogicCount));// æ”»å‡»è€…çš„é€»è¾‘è®¡æ•°
+        oStream.Write((CHAR const*)&m_nImpactID, sizeof(m_nImpactID));// æ•ˆæžœID //å‚è€ƒGameStruct_Impact.hçš„DIRECT_IMPACT_SEID
+        oStream.Write((CHAR const*)&m_nSkillID, sizeof(m_nSkillID));// æŠ€èƒ½ID
         return TRUE ;
 
     __LEAVE_FUNCTION

@@ -8,7 +8,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////
 
-// ¹ØÏµÈËÊı¾İ
+// å…³ç³»äººæ•°æ®
 VOID _RELATION::CleanUp()
 {
     m_GUID = INVALID_ID;
@@ -134,7 +134,7 @@ VOID _RELATION::Write( SocketOutputStream &oStream ) const
     }
 }
 
-// Ò»²ÎÊı
+// ä¸€å‚æ•°
 VOID RELATION_GUID::CleanUp( )
 {
     m_TargetGUID = INVALID_ID;
@@ -155,7 +155,7 @@ VOID RELATION_GUID::Write( SocketOutputStream &oStream ) const
     oStream.Write( (CHAR*)&m_TargetGUID, sizeof(m_TargetGUID) );
 }
 
-// É¾³ıºÃÓÑ
+// åˆ é™¤å¥½å‹
 VOID REQUEST_DEL_FRIEND::CleanUp( )
 {
     RELATION_GUID::CleanUp();
@@ -176,7 +176,7 @@ VOID REQUEST_DEL_FRIEND::Write( SocketOutputStream& oStream ) const
     RELATION_GUID::Write( oStream );
 }
 
-// ĞŞ¸ÄĞÄÇé
+// ä¿®æ”¹å¿ƒæƒ…
 VOID REQUEST_MODIFY_MOOD::CleanUp( )
 {
     m_uMoodSize = 0;
@@ -208,7 +208,7 @@ VOID REQUEST_MODIFY_MOOD::Write( SocketOutputStream& oStream ) const
     }
 }
 
-// ²éÑ¯¹ØÏµÈËÏêÏ¸ĞÅÏ¢
+// æŸ¥è¯¢å…³ç³»äººè¯¦ç»†ä¿¡æ¯
 VOID REQUEST_RELATION_INFO::CleanUp( )
 {
     m_TargetGUID = INVALID_ID;
@@ -243,7 +243,7 @@ VOID REQUEST_RELATION_INFO::Write( SocketOutputStream &oStream ) const
     }
 }
 
-// ÓÒ½¨²é¿´Íæ¼Ò
+// å³å»ºæŸ¥çœ‹ç©å®¶
 VOID REQUEST_VIEW_PLAYER::CleanUp( )
 {
     m_uNameSize = 0;
@@ -275,7 +275,7 @@ VOID REQUEST_VIEW_PLAYER::Write( SocketOutputStream &oStream ) const
     }
 }
 
-// Ôö¼ÓÒ»¸ö¹ØÏµÈË
+// å¢åŠ ä¸€ä¸ªå…³ç³»äºº
 VOID REQUEST_ADD_RELATION::CleanUp( )
 {
     m_TargetGUID = INVALID_ID;
@@ -315,7 +315,7 @@ VOID REQUEST_ADD_RELATION::Write( SocketOutputStream &oStream ) const
     oStream.Write( (CHAR*)&m_uRelationType, sizeof(m_uRelationType) );
 }
 
-// Ôö¼ÓÒ»¸ö¹ØÏµÈË£¬²¢ÇÒ´øÉÏ×éºÅ
+// å¢åŠ ä¸€ä¸ªå…³ç³»äººï¼Œå¹¶ä¸”å¸¦ä¸Šç»„å·
 VOID REQUEST_ADD_RELATION_WITH_GROUP::CleanUp( )
 {
     REQUEST_ADD_RELATION::CleanUp();
@@ -342,7 +342,7 @@ VOID REQUEST_ADD_RELATION_WITH_GROUP::Write( SocketOutputStream &oStream ) const
     oStream.Write( (CHAR*)&m_uGroup, sizeof(m_uGroup) );
 }
 
-// Èı²ÎÊı
+// ä¸‰å‚æ•°
 VOID RELATION_GUID_UCHAR_UCHAR::CleanUp( )
 {
     m_TargetGUID = INVALID_ID;
@@ -369,7 +369,7 @@ VOID RELATION_GUID_UCHAR_UCHAR::Write( SocketOutputStream &oStream ) const
     oStream.Write( (CHAR*)&m_uGroup, sizeof(m_uGroup) );
 }
 
-//¿Í»§¶ËÏò·şÎñÆ÷·¢ËÍµÄÁªÏµÈËÏà¹Ø½á¹¹Êı¾İ
+//å®¢æˆ·ç«¯å‘æœåŠ¡å™¨å‘é€çš„è”ç³»äººç›¸å…³ç»“æ„æ•°æ®
 VOID CG_RELATION::CleanUp( )
 {
     m_Type = REQ_NONE;
@@ -510,7 +510,7 @@ VOID CG_RELATION::Write( SocketOutputStream &oStream ) const
 
 //////////////////////////////////////////////////////////////////////////
 
-// ²ÎÊıÎª GUID ºÍ UCHAR
+// å‚æ•°ä¸º GUID å’Œ UCHAR
 VOID RELATION_GUID_UCHAR::CleanUp( )
 {
     m_TargetGUID = INVALID_ID;
@@ -534,7 +534,7 @@ VOID RELATION_GUID_UCHAR::Write( SocketOutputStream &oStream ) const
     oStream.Write( (CHAR*)&m_uRelationType, sizeof(m_uRelationType) );
 }
 
-// ĞŞ¸ÄÁªÏµÈËÉèÖÃ
+// ä¿®æ”¹è”ç³»äººè®¾ç½®
 VOID REQUEST_MODIFY_SETTINGS::CleanUp( )
 {
     m_uSettings = 0;
@@ -555,7 +555,7 @@ VOID REQUEST_MODIFY_SETTINGS::Write( SocketOutputStream &oStream ) const
     oStream.Write( (CHAR*)&m_uSettings, sizeof(m_uSettings) );
 }
 
-//·şÎñÆ÷Ïò World ·¢ËÍµÄÁªÏµÈËÏà¹Ø½á¹¹Êı¾İ
+//æœåŠ¡å™¨å‘ World å‘é€çš„è”ç³»äººç›¸å…³ç»“æ„æ•°æ®
 VOID GW_RELATION::CleanUp( )
 {
     m_Type = REQ_NONE;
@@ -798,7 +798,7 @@ VOID RETURN_RELATION_INFO::Write( SocketOutputStream& oStream ) const
     m_Relation.Write( oStream );
 }
 
-// ÓÒ¼ü²é¿´Íæ¼ÒĞÅÏ¢
+// å³é”®æŸ¥çœ‹ç©å®¶ä¿¡æ¯
 VOID RETURN_VIEW_PLAYER::CleanUp( )
 {
     m_GUID = INVALID_ID;
@@ -901,7 +901,7 @@ VOID _RELATION_ONLINE::Write( SocketOutputStream& oStream ) const
     }
 }
 
-// ÓÃÓÚ¸øÍæ¼ÒÔÚÏßÃÜÓÑÁĞ±í
+// ç”¨äºç»™ç©å®¶åœ¨çº¿å¯†å‹åˆ—è¡¨
 VOID RETURN_ONLINE_LIST::CleanUp( )
 {
     m_uOnlineCount = 0;
@@ -953,7 +953,7 @@ VOID RETURN_ONLINE_LIST::Write( SocketOutputStream& oStream ) const
     }
 }
 
-// ÓÃÓÚÍ¨ÖªÓĞÃÜÓÑÉÏÏß
+// ç”¨äºé€šçŸ¥æœ‰å¯†å‹ä¸Šçº¿
 VOID RETURN_NOTIFY_ONLINE::CleanUp( )
 {
     m_uNameSize = 0;
@@ -1001,7 +1001,7 @@ VOID RETURN_NOTIFY_ONLINE::Write( SocketOutputStream& oStream ) const
     }
 }
 
-// World Ïò·şÎñÆ÷·¢ËÍµÄÁªÏµÈËÏà¹Ø½á¹¹Êı¾İ
+// World å‘æœåŠ¡å™¨å‘é€çš„è”ç³»äººç›¸å…³ç»“æ„æ•°æ®
 VOID WG_RELATION::CleanUp( )
 {
     m_PlayerID = INVALID_ID;
@@ -1176,7 +1176,7 @@ VOID WG_RELATION::Write( SocketOutputStream& oStream ) const
 
 /////////////////////////////////////////////////////////////////////////////////
 
-// ºÃÓÑÁĞ±í
+// å¥½å‹åˆ—è¡¨
 
 VOID _FRIEND_INFO::Read( SocketInputStream &iStream )
 {

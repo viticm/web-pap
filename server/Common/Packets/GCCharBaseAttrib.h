@@ -18,9 +18,9 @@ namespace Packets
         enum ECHAR_AI_TYPE
         {
             CHAR_AI_TYPE_INVALID        = -1,    // INVALID
-            CHAR_AI_TYPE_SCANNPC        = 0,    // ����NPC
-            CHAR_AI_TYPE_NOTSCANNPC        = 1,    // ������NPC
-            CHAR_AI_TYPE_CANNOTATTACK    = 2,    // ���ɹ���NPC
+            CHAR_AI_TYPE_SCANNPC        = 0,    // 主动NPC
+            CHAR_AI_TYPE_NOTSCANNPC        = 1,    // 非主动NPC
+            CHAR_AI_TYPE_CANNOTATTACK    = 2,    // 不可攻击NPC
         };
 
         GCCharBaseAttrib( )
@@ -65,7 +65,7 @@ namespace Packets
             //m_nObjectCampType = INVALID_CAMP;
         }
 
-        //���ü̳нӿ�
+        //公用继承接口
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -163,7 +163,7 @@ namespace Packets
         }
 
     public:
-        //ʹ�����ݽӿ�
+        //使用数据接口
         VOID            setObjID(ObjID_t id) { m_ObjID = id; }
         ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -304,43 +304,43 @@ namespace Packets
     private:
         ObjID_t            m_ObjID;        // ObjID
 
-        // ÿ��λ��ʾһ�������Ƿ�Ҫˢ�� ENUM_UPDATE_CHAR_ATT
+        // 每个位表示一个属性是否要刷新 ENUM_UPDATE_CHAR_ATT
         UINT            m_uFlags;        
 
-        //���ݲ���    
-        WORD            m_wDataID;            // �����������ԴID, �������ң������Ա�
-        BYTE            m_Level;            // �ȼ�
-        BYTE            m_HPPercent;        // ����ֵ�ٷֱ�
-        BYTE            m_MPPercent;        // ħ��ֵ�ٷֱ�
-        INT                m_nRage;            // ŭ��
-        INT                m_nStealthLevel;    // ��������
-        CHAR            m_cMoodState;        // ����״̬
-        FLOAT            m_fMoveSpeed;        // �ƶ����ٶ�
-        FLOAT            m_fAttackSpeed;        // �����ٶ�
-        _CAMP_DATA        m_CampData;            // ��Ӫ
-        //INT                m_nObjectCampType;    // ��Ӫ����
-        INT                m_nPortraitID;        // ͷ��ID
-        INT                m_nModelID;            // ����
-        INT                m_nMountID;            // ����
-        INT                m_nAIType;            // AI����
-        // Playerר��
-        BYTE            m_byNameSize;                    // �����������,����������'\0'
-        CHAR            m_szName[MAX_CHARACTER_NAME];    // �������
-        BYTE            m_byTitleSize;                    // ���ͷ�γ���,����������'\0'
-        CHAR            m_szTitle[MAX_CHARACTER_TITLE];    // ���ͷ��
-        BYTE            m_TitleType;                    // �ƺ�����
+        //数据部分    
+        WORD            m_wDataID;            // 怪物的数据资源ID, 如果是玩家，则是性别
+        BYTE            m_Level;            // 等级
+        BYTE            m_HPPercent;        // 生命值百分比
+        BYTE            m_MPPercent;        // 魔法值百分比
+        INT                m_nRage;            // 怒气
+        INT                m_nStealthLevel;    // 隐身级别
+        CHAR            m_cMoodState;        // 表情状态
+        FLOAT            m_fMoveSpeed;        // 移动的速度
+        FLOAT            m_fAttackSpeed;        // 攻击速度
+        _CAMP_DATA        m_CampData;            // 阵营
+        //INT                m_nObjectCampType;    // 阵营类型
+        INT                m_nPortraitID;        // 头像ID
+        INT                m_nModelID;            // 变形
+        INT                m_nMountID;            // 座骑
+        INT                m_nAIType;            // AI类型
+        // Player专有
+        BYTE            m_byNameSize;                    // 玩家姓名长度,不包括最后的'\0'
+        CHAR            m_szName[MAX_CHARACTER_NAME];    // 玩家姓名
+        BYTE            m_byTitleSize;                    // 玩家头衔长度,不包括最后的'\0'
+        CHAR            m_szTitle[MAX_CHARACTER_TITLE];    // 玩家头衔
+        BYTE            m_TitleType;                    // 称号类型
 
         UINT            m_uPlayerData;                    //   FFFF|FF|FF
                                                         //        |   |   
-                                                        //      ͷ�� ����
-                                                        //      ģ�� ģ��
+                                                        //      头发 脸型
+                                                        //      模型 模型
 
-        UINT            m_HairColor;                    // ͷ����ɫ
+        UINT            m_HairColor;                    // 头发颜色
 
-        //̯λ״̬
-        BYTE            m_bStallIsOpen;                    // ̯λ�Ƿ��Ѿ���
-        BYTE            m_nStallNameSize;                // ̯λ������
-        CHAR            m_szStallName[MAX_STALL_NAME];    // ̯λ��
+        //摊位状态
+        BYTE            m_bStallIsOpen;                    // 摊位是否已经打开
+        BYTE            m_nStallNameSize;                // 摊位名长度
+        CHAR            m_szStallName[MAX_STALL_NAME];    // 摊位名
 
         GUID_t            m_OccupantGUID ;
         ObjID_t            m_OwnerID ;

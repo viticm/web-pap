@@ -1,6 +1,6 @@
 // CGCharIdle.h
 // 
-// ½øÈëĞİÏ¢×´Ì¬
+// è¿›å…¥ä¼‘æ¯çŠ¶æ€
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
     CGCharIdle( ){}
     virtual ~CGCharIdle( ){}
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ public:
                                                             sizeof(WORLD_POS); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -38,7 +38,7 @@ public:
 
 private:
     ObjID_t            m_ObjID;            // ObjID
-    WORLD_POS        m_posCurrent;        // µ±Ç°×ø±ê
+    WORLD_POS        m_posCurrent;        // å½“å‰åæ ‡
 };
 
 

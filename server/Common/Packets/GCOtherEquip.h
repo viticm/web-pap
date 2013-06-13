@@ -14,7 +14,7 @@ public:
     GCOtherEquip( ){} ;
     virtual ~GCOtherEquip( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ public:
                                                             sizeof(EQUIP_LIST)*EQUIP_PLAYER_FIXNUM; }
     
 public:
-//Ê¹ÓÃÊı¾İ½Ó¿Ú
+//ä½¿ç”¨æ•°æ®æ¥å£
 //    VOID            setReturn(BYTE ret) { m_byRet = ret; }
 //    BYTE            getReturn(VOID)const { return m_byRet; }
 
@@ -55,14 +55,14 @@ public:
     }
 
 private:
-    //Êı¾İ
-//    BYTE            m_byRet;                            //·şÎñÆ÷È·ÈÏ½á¹û
-    ObjID_t            m_ObjID;                            //¶Ô·½Íæ¼ÒµÄObjID
-    BYTE            m_byNameSize;                        //Íæ¼ÒĞÕÃû³¤¶È,²»°üÀ¨×îºóµÄ'\0'
-    CHAR            m_szName[MAX_CHARACTER_NAME];        //Íæ¼ÒĞÕÃû
-    MODEL_PART        m_ModelPart;                        //Íæ¼ÒÄ£ĞÍÖĞ¸÷¸ö×ÓÄ£ĞÍÊÇ·ñ¿É¼û
-    FLOAT            m_fDir;                                //Íæ¼ÒÃæ³¯µÄ·½Ïò
-    EQUIP_LIST        m_EquipList[EQUIP_PLAYER_FIXNUM];    //Ëù×°±¸µÄÎäÆ÷Êı×é
+    //æ•°æ®
+//    BYTE            m_byRet;                            //æœåŠ¡å™¨ç¡®è®¤ç»“æœ
+    ObjID_t            m_ObjID;                            //å¯¹æ–¹ç©å®¶çš„ObjID
+    BYTE            m_byNameSize;                        //ç©å®¶å§“åé•¿åº¦,ä¸åŒ…æ‹¬æœ€åçš„'\0'
+    CHAR            m_szName[MAX_CHARACTER_NAME];        //ç©å®¶å§“å
+    MODEL_PART        m_ModelPart;                        //ç©å®¶æ¨¡å‹ä¸­å„ä¸ªå­æ¨¡å‹æ˜¯å¦å¯è§
+    FLOAT            m_fDir;                                //ç©å®¶é¢æœçš„æ–¹å‘
+    EQUIP_LIST        m_EquipList[EQUIP_PLAYER_FIXNUM];    //æ‰€è£…å¤‡çš„æ­¦å™¨æ•°ç»„
 };
 
 class GCOtherEquipFactory : public PacketFactory 

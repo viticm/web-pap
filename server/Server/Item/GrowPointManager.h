@@ -1,13 +1,13 @@
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ1ÈÕ
-    ´´½¨Ê±¼ä:    9:35
-    ÎÄ¼þÃû³Æ:    GrowPointManager.h
-    ÎÄ¼þÂ·¾¶:    d:\Prj\Server\Server\Item\GrowPointManager.h
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ1æ—¥
+    åˆ›å»ºæ—¶é—´:    9:35
+    æ–‡ä»¶åç§°:    GrowPointManager.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\GrowPointManager.h
     
-    ÎÄ¼þ¹¦ÄÜ£º ¶ÔÉú³¤µãµÄ¹ÜÀí
-               Ã¿¸ö³¡¾°Ò»·Ý
+    æ–‡ä»¶åŠŸèƒ½ï¼š å¯¹ç”Ÿé•¿ç‚¹çš„ç®¡ç†
+               æ¯ä¸ªåœºæ™¯ä¸€ä»½
 
-    ÐÞ¸Ä¼ÍÂ¼£º
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 
@@ -20,13 +20,13 @@
 class Scene;
 
 
-//³¡¾°Éú³¤µãÊý¾Ý
+//åœºæ™¯ç”Ÿé•¿ç‚¹æ•°æ®
 struct  GROW_POINT_GROUP_SCENE_DATA 
 {
-    WORD        GrowPointType;                                //Éú³¤µãÀàÐÍ
-    FLOAT        GrowPointX;                                    //Éú³¤µãx×ø±ê
-    FLOAT        GrowPointY;                                    //Éú³¤µãY×ø±ê
-    INT            GrowPointRandValue;                            //Éú³¤µãÅÅÐòËæ»úÖµ
+    WORD        GrowPointType;                                //ç”Ÿé•¿ç‚¹ç±»åž‹
+    FLOAT        GrowPointX;                                    //ç”Ÿé•¿ç‚¹xåæ ‡
+    FLOAT        GrowPointY;                                    //ç”Ÿé•¿ç‚¹Yåæ ‡
+    INT            GrowPointRandValue;                            //ç”Ÿé•¿ç‚¹æŽ’åºéšæœºå€¼
     BOOL        Used;
     GROW_POINT_GROUP_SCENE_DATA()
     {
@@ -34,12 +34,12 @@ struct  GROW_POINT_GROUP_SCENE_DATA
     }
 };
 
-//Éú³¤µãÉèÖÃÊý¾Ý
+//ç”Ÿé•¿ç‚¹è®¾ç½®æ•°æ®
 struct GROW_POINT_GROUP_SCENE_SETUP 
 {
-    WORD        GrowPointType;                        //Éú³¤µãÀàÐÍ
-    WORD        GrowPointMaxCount;                    //Éú³¤µãÍ¬Ê±³öÏÖ¸öÊý
-    INT            GrowPointInterval;                    //Éú³¤Ê±¼ä¼ä¸ô
+    WORD        GrowPointType;                        //ç”Ÿé•¿ç‚¹ç±»åž‹
+    WORD        GrowPointMaxCount;                    //ç”Ÿé•¿ç‚¹åŒæ—¶å‡ºçŽ°ä¸ªæ•°
+    INT            GrowPointInterval;                    //ç”Ÿé•¿æ—¶é—´é—´éš”
 
     GROW_POINT_GROUP_SCENE_SETUP()
     {
@@ -50,7 +50,7 @@ struct GROW_POINT_GROUP_SCENE_SETUP
 
 };
 
-//µ¥Ò»ÀàÐÍÉú³¤µã¹ÜÀíÆ÷
+//å•ä¸€ç±»åž‹ç”Ÿé•¿ç‚¹ç®¡ç†å™¨
 class TypeGrowPointManager
 {
 public:
@@ -79,75 +79,75 @@ public:
 
 
 
-    //Éú³¤µãÊý¾Ý
+    //ç”Ÿé•¿ç‚¹æ•°æ®
     GROW_POINT_GROUP_SCENE_DATA*    m_pData;
-    //µ±Ç°ÊýÁ¿
+    //å½“å‰æ•°é‡
     INT                                m_CurrentCount;
-    //×î´ó¹²ÉúÊýÁ¿
+    //æœ€å¤§å…±ç”Ÿæ•°é‡
     INT                                m_MaxApperaCount;
-    //³¡¾°±à¼­Æ÷ÖÐ×î´óÊýÁ¿
+    //åœºæ™¯ç¼–è¾‘å™¨ä¸­æœ€å¤§æ•°é‡
     INT                                m_TypeCount;
-    //Ìí¼ÓÆ«ÒÆ¼ÆÊý
+    //æ·»åŠ åç§»è®¡æ•°
     INT                                m_AddOffSet;
-    //Éú³ÉÆ«ÒÆ¼ÆÊý
+    //ç”Ÿæˆåç§»è®¡æ•°
     INT                                m_TypeOffSet;
-    //Éú³¤µãÀàÐÍ
+    //ç”Ÿé•¿ç‚¹ç±»åž‹
     WORD                            m_GrowPointType;
-    //Éú³¤¿ØÖÆ½Å±¾±àºÅ
+    //ç”Ÿé•¿æŽ§åˆ¶è„šæœ¬ç¼–å·
     ScriptID_t                        m_ScriptID;
-    //²¹³äÖÖ×ÓµÄ¼ä¸ôÊ±¼ä
+    //è¡¥å……ç§å­çš„é—´éš”æ—¶é—´
     UINT                            m_IntervalPerSeed;
-    //µ±Ç°µÄÊ±¼ä
+    //å½“å‰çš„æ—¶é—´
     UINT                            m_CurrentElapse;
-    //×îºó¸üÐÂÊ±¼ä
+    //æœ€åŽæ›´æ–°æ—¶é—´
     UINT                            m_LastUpdateTime;
-    //¿ªÊ¼¼ÆÊý
+    //å¼€å§‹è®¡æ•°
     BOOL                            m_bStartCount;
-    //µ±Ç°ÀàÐÍ¹ÜÀíÆ÷ÊÇ·ñ¼¤»î
+    //å½“å‰ç±»åž‹ç®¡ç†å™¨æ˜¯å¦æ¿€æ´»
     BOOL                            m_bEnable;
-    //Ìí¼ÓÉú³¤µãÎ»ÖÃÊý¾Ý
+    //æ·»åŠ ç”Ÿé•¿ç‚¹ä½ç½®æ•°æ®
     inline    VOID                    AddData(GROW_POINT_GROUP_SCENE_DATA& RefData);
 
-    //»ñµÃÒ»¸öÉú³¤µãÎ»ÖÃ
+    //èŽ·å¾—ä¸€ä¸ªç”Ÿé•¿ç‚¹ä½ç½®
     inline    BOOL                    CreateGrowPointPos(FLOAT& x,FLOAT& y);
-    //ÊÍ·ÅÒ»¸öÉú³¤µãÎ»ÖÃ            
+    //é‡Šæ”¾ä¸€ä¸ªç”Ÿé•¿ç‚¹ä½ç½®            
     inline  BOOL                    ReleaseGrowPointPos(FLOAT x,FLOAT y);
 
-    /*-----------¶ÔÉú³¤µã¼ÆÊý¹ÜÀí---------------*/
+    /*-----------å¯¹ç”Ÿé•¿ç‚¹è®¡æ•°ç®¡ç†---------------*/
 
-    //ÉèÖÃ×î´óÊýÁ¿
+    //è®¾ç½®æœ€å¤§æ•°é‡
     inline    VOID                    SetCount(INT count); 
-    //»ñÈ¡×î´óÊýÁ¿
+    //èŽ·å–æœ€å¤§æ•°é‡
     inline    INT                        GetCount();
     
-    //Ôö¼ÓÉú³¤µã³¡¾°Êý¾Ý¸öÊý
+    //å¢žåŠ ç”Ÿé•¿ç‚¹åœºæ™¯æ•°æ®ä¸ªæ•°
     inline    VOID                    IncCount();
-    //Ôö¼Óµ±Ç°ÒÑ¾­³öÏÖµÄ¸öÊý
+    //å¢žåŠ å½“å‰å·²ç»å‡ºçŽ°çš„ä¸ªæ•°
     inline    VOID                    IncCurrentCount();
-    //¼õÉÙµ±Ç°³öÏÖµÄ¸öÊý
+    //å‡å°‘å½“å‰å‡ºçŽ°çš„ä¸ªæ•°
     inline    VOID                    DecCurrentCount();
     
     
 
-    //»ñµÃ¹ÜÀíÆ÷¹ÜÀíÀàÐÍ
+    //èŽ·å¾—ç®¡ç†å™¨ç®¡ç†ç±»åž‹
     inline    WORD                    GetGrowPointType();
     
-    //ÉèÖÃ¹ÜÀíÆ÷¹ÜÀíÀàÐÍ
+    //è®¾ç½®ç®¡ç†å™¨ç®¡ç†ç±»åž‹
     inline    VOID                    SetGrowPointType(WORD gpType);
     
-    //ÉèÖÃ¹ÜÀíÆ÷²¥ÖÖ¼ä¸ô
+    //è®¾ç½®ç®¡ç†å™¨æ’­ç§é—´éš”
     inline    VOID                    SetIntervalTime(INT iInterval);
     
 
 public:
     /* 
-    *    ÌØ¶¨ÀàÐÍÉú³¤µã¹ÜÀíÆ÷ÐÄÌø
-    *    Ö÷ÒªÍê³É¶ÔÉú³¤µãµÄ¸öÊý²¹³ä
+    *    ç‰¹å®šç±»åž‹ç”Ÿé•¿ç‚¹ç®¡ç†å™¨å¿ƒè·³
+    *    ä¸»è¦å®Œæˆå¯¹ç”Ÿé•¿ç‚¹çš„ä¸ªæ•°è¡¥å……
     */
     inline    BOOL                    DoTicks(UINT uTime);
 
     /*
-     * * ¶ÔÉú³¤µã½øÐÐÅÅÐò//
+     * * å¯¹ç”Ÿé•¿ç‚¹è¿›è¡ŒæŽ’åº//
      */
     VOID                            RandSort();
 };
@@ -168,25 +168,25 @@ struct GP_OWNER
 
 struct GROWPOINT_LOAD
 {
-    INT                                    m_DataCount;        //Ô­Ê¼Êý¾Ý¸öÊý
-    GROW_POINT_GROUP_SCENE_DATA*        m_pData;            //Ô­Ê¼Êý¾Ý
-    INT                                    m_SetupCount;        //ÅäÖÃÊý¾Ý¸öÊý
-    GROW_POINT_GROUP_SCENE_SETUP*        m_pSetup;            //ÅäÖÃÊý¾Ý
+    INT                                    m_DataCount;        //åŽŸå§‹æ•°æ®ä¸ªæ•°
+    GROW_POINT_GROUP_SCENE_DATA*        m_pData;            //åŽŸå§‹æ•°æ®
+    INT                                    m_SetupCount;        //é…ç½®æ•°æ®ä¸ªæ•°
+    GROW_POINT_GROUP_SCENE_SETUP*        m_pSetup;            //é…ç½®æ•°æ®
 
 };
 
 class GrowPointManager
 {
 
-    //Éú³¤µã¹ÜÀíÆ÷ÊýÁ¿
+    //ç”Ÿé•¿ç‚¹ç®¡ç†å™¨æ•°é‡
     TypeGrowPointManager*                m_GrowPointMgr[MAX_SCENE_GROW_POINT_NUM];
-    //Éú³¤µãÊýÁ¿×ÜºÍ
+    //ç”Ÿé•¿ç‚¹æ•°é‡æ€»å’Œ
     INT                                    m_GrowPointCount;
-    //Éú³¤µãÀàÐÍÊýÁ¿
+    //ç”Ÿé•¿ç‚¹ç±»åž‹æ•°é‡
     INT                                    m_GrowPointTypeCount;
-    //³¡¾°Ö¸Õë
+    //åœºæ™¯æŒ‡é’ˆ
     Scene*                                m_pScene;
-    //½Å±¾½Ó¿Ú
+    //è„šæœ¬æŽ¥å£
     LuaInterface*                        m_pLuaInterface;
 
     GP_OWNER                            m_GPOwner[MAX_SCENE_GP_OWNER];
@@ -213,10 +213,10 @@ public:
     };
 
     /*
-     *     »ñµÃÄ³ÖÖÀàÐÍÉú³¤µã¹ÜÀíÆ÷
+     *     èŽ·å¾—æŸç§ç±»åž‹ç”Ÿé•¿ç‚¹ç®¡ç†å™¨
      *
-     *     ²ÎÊýËµÃ÷
-     *     GrowPointType    Éú³¤µãÀàÐÍ
+     *     å‚æ•°è¯´æ˜Ž
+     *     GrowPointType    ç”Ÿé•¿ç‚¹ç±»åž‹
      *
      */
 
@@ -225,12 +225,12 @@ public:
 
 public:
     /*
-     *    ¼ÓÔØ²Ù×÷
-     *    ²ÎÊýËµÃ÷
+     *    åŠ è½½æ“ä½œ
+     *    å‚æ•°è¯´æ˜Ž
      *
-     *    CHAR*    strGrowPointDataFile            Ã¿¸ö³¡¾°Ò»¸öµÄGrowPointÊý¾ÝÎÄ¼þ
+     *    CHAR*    strGrowPointDataFile            æ¯ä¸ªåœºæ™¯ä¸€ä¸ªçš„GrowPointæ•°æ®æ–‡ä»¶
      *                                                
-     *    CHAR*   strGrowPointSetupFile            Ã¿¸ö³¡¾°Ò»¸öµÄGrowPointÅäÖÃÎÄ¼þ            
+     *    CHAR*   strGrowPointSetupFile            æ¯ä¸ªåœºæ™¯ä¸€ä¸ªçš„GrowPointé…ç½®æ–‡ä»¶            
      *    
      */
     BOOL        Load(CHAR*    strGrowPointDataFile,CHAR* strGrowPointSetupFile);
@@ -239,13 +239,13 @@ public:
 
     BOOL        Load(GROWPOINT_LOAD* pGPLoad);
     /*
-     *    Çå³ý²Ù×÷
+     *    æ¸…é™¤æ“ä½œ
      */
     VOID        CleanUp();
     
     
     /*
-     *    ÉèÖÃ³¡¾°Ö¸Õë
+     *    è®¾ç½®åœºæ™¯æŒ‡é’ˆ
      */
     VOID        SetScene(Scene* pScene)
     {
@@ -253,95 +253,95 @@ public:
     }
 
     /*
-     *    »ñµÃ³¡¾°Ö¸Õë
+     *    èŽ·å¾—åœºæ™¯æŒ‡é’ˆ
      */
     Scene*        GetScene(){return m_pScene;}
 
-    /* ÐÄÌøÈë¿Ú
+    /* å¿ƒè·³å…¥å£
      *    
      */
     BOOL        HeartBeat(UINT    uTime);
-    /*         ¼õÉÙÉú³¤µãÀàÐÍÊýÁ¿
+    /*         å‡å°‘ç”Ÿé•¿ç‚¹ç±»åž‹æ•°é‡
      *
-     *         ²ÎÊýËµÃ÷
-     *                GrowPointType    Éú³¤µãÀàÐÍ
+     *         å‚æ•°è¯´æ˜Ž
+     *                GrowPointType    ç”Ÿé•¿ç‚¹ç±»åž‹
      *            
      *        
      */
     BOOL        DecGrowPointTypeCount(INT GrowPointType,FLOAT x,FLOAT y);
 
-    /*---------            ½Å±¾½Ó¿Ú´¦Àí        -----------------*/
+    /*---------            è„šæœ¬æŽ¥å£å¤„ç†        -----------------*/
     
-    /*¾²Ì¬º¯Êý½Ó¿Ú
+    /*é™æ€å‡½æ•°æŽ¥å£
      *    
      */
     LuaInterface*    GetLuaInterface(){return m_pLuaInterface;}
     
-    /*µ÷ÓÃ½Å±¾´ò¿ªº¯Êý,OnOpen
+    /*è°ƒç”¨è„šæœ¬æ‰“å¼€å‡½æ•°,OnOpen
      *
-     *    ²ÎÊýËµÃ÷:
-     *            FileID        ½Å±¾ÎÄ¼þ±àºÅ
-     *            SelfID        ²ÎÓëÕßid,Ò»°ãÌîHumanID ,Ã»ÓÐÔòÌí-1
-     *            TargetID    ¶ÔÏóID,Ò»°ãÌîItemBoxID
-     *            SceneID        ³¡¾°±àºÅ
+     *    å‚æ•°è¯´æ˜Ž:
+     *            FileID        è„šæœ¬æ–‡ä»¶ç¼–å·
+     *            SelfID        å‚ä¸Žè€…id,ä¸€èˆ¬å¡«HumanID ,æ²¡æœ‰åˆ™æ·»-1
+     *            TargetID    å¯¹è±¡ID,ä¸€èˆ¬å¡«ItemBoxID
+     *            SceneID        åœºæ™¯ç¼–å·
      */
     INT            CallScriptOpenBoxFunc(ScriptID_t    FileID,ObjID_t SelfId,ObjID_t TargetId,SceneID_t    SceneID);
     
     /*
-     *    µ÷ÓÃ½Å±¾»ØÊÕº¯Êý,OnRecycle
+     *    è°ƒç”¨è„šæœ¬å›žæ”¶å‡½æ•°,OnRecycle
      *
-     *    ²ÎÊýËµÃ÷:
-     *            FileID        ½Å±¾ÎÄ¼þ±àºÅ
-     *            SelfID        ²ÎÓëÕßid,Ò»°ãÌîHumanID ,Ã»ÓÐÔòÌí-1
-     *            TargetID    ¶ÔÏóID,Ò»°ãÌîItemBoxID
-     *            SceneID        ³¡¾°±àºÅ
+     *    å‚æ•°è¯´æ˜Ž:
+     *            FileID        è„šæœ¬æ–‡ä»¶ç¼–å·
+     *            SelfID        å‚ä¸Žè€…id,ä¸€èˆ¬å¡«HumanID ,æ²¡æœ‰åˆ™æ·»-1
+     *            TargetID    å¯¹è±¡ID,ä¸€èˆ¬å¡«ItemBoxID
+     *            SceneID        åœºæ™¯ç¼–å·
      */
     INT            CallScriptRecycleFunc(ScriptID_t    FileID,ObjID_t SelfId,ObjID_t TargetId,SceneID_t    SceneID);
-    /*    µ÷ÓÃ½Å±¾¹ý³Ì½áÊøº¯Êý,OnProcOver
+    /*    è°ƒç”¨è„šæœ¬è¿‡ç¨‹ç»“æŸå‡½æ•°,OnProcOver
      *
-     *    ²ÎÊýËµÃ÷:
-     *            FileID        ½Å±¾ÎÄ¼þ±àºÅ
-     *            SelfID        ²ÎÓëÕßid,Ò»°ãÌîHumanID ,Ã»ÓÐÔòÌí-1
-     *            TargetID    ¶ÔÏóID,Ò»°ãÌîItemBoxID
-     *            SceneID        ³¡¾°±àºÅ
+     *    å‚æ•°è¯´æ˜Ž:
+     *            FileID        è„šæœ¬æ–‡ä»¶ç¼–å·
+     *            SelfID        å‚ä¸Žè€…id,ä¸€èˆ¬å¡«HumanID ,æ²¡æœ‰åˆ™æ·»-1
+     *            TargetID    å¯¹è±¡ID,ä¸€èˆ¬å¡«ItemBoxID
+     *            SceneID        åœºæ™¯ç¼–å·
      *    
      */
 
     INT            CallScriptProcOverFunc(ScriptID_t    FileID,ObjID_t SelfId,ObjID_t TargetId,SceneID_t    SceneID);
     /*
-     *    µ÷ÓÃ½Å±¾´´½¨º¯Êý,OnCreate
-     *    ²ÎÊýËµÃ÷:
-     *            FileID        ½Å±¾ÎÄ¼þ±àºÅ
-     *            SelfID        ²ÎÓëÕßid,Ò»°ãÌîHumanID ,Ã»ÓÐÔòÌí-1
-     *            TargetID    ¶ÔÏóID,Ò»°ãÌîItemBoxID
-     *            SceneID        ³¡¾°±àºÅ
+     *    è°ƒç”¨è„šæœ¬åˆ›å»ºå‡½æ•°,OnCreate
+     *    å‚æ•°è¯´æ˜Ž:
+     *            FileID        è„šæœ¬æ–‡ä»¶ç¼–å·
+     *            SelfID        å‚ä¸Žè€…id,ä¸€èˆ¬å¡«HumanID ,æ²¡æœ‰åˆ™æ·»-1
+     *            TargetID    å¯¹è±¡ID,ä¸€èˆ¬å¡«ItemBoxID
+     *            SceneID        åœºæ™¯ç¼–å·
      *    
      */
     BOOL        CallScriptCreateFunc(ScriptID_t        FileID,FLOAT x,FLOAT y,INT iItemBoxType,SceneID_t SceneId);
 private:
-    /*            Éú³¤µãÊý¾Ý³õÊ¼»¯
+    /*            ç”Ÿé•¿ç‚¹æ•°æ®åˆå§‹åŒ–
      *    
-     *            ²ÎÊý1:
+     *            å‚æ•°1:
      *            szGrowPointDataFile
      *    
-     *            ²ÎÊý1ÃèÐð
-     *            Éú³¤µãÊý¾ÝÎÄ¼þ
+     *            å‚æ•°1æå™
+     *            ç”Ÿé•¿ç‚¹æ•°æ®æ–‡ä»¶
      *
      */
     BOOL        GrowPointDataInit(CHAR*    szGrowPointDataFile);
-    /*            Éú³¤µãÅäÖÃ³õÊ¼»¯
+    /*            ç”Ÿé•¿ç‚¹é…ç½®åˆå§‹åŒ–
      *
-     *            ²ÎÊý1:
+     *            å‚æ•°1:
      *                szGrowPointSetupFile
      *
-     *          ²ÎÊý1ÃèÐð
-     *                Éú³¤µãÅäÖÃÎÄ¼þ
+     *          å‚æ•°1æå™
+     *                ç”Ÿé•¿ç‚¹é…ç½®æ–‡ä»¶
      */
     BOOL        GrowPointSetupInit(CHAR* szGrowPointSetupFile);
 public:
     
     /*
-     *           Ìí¼ÓÉú³¤µãËùÓÐÕßÐÅÏ¢·ÃÎÊ·½·¨
+     *           æ·»åŠ ç”Ÿé•¿ç‚¹æ‰€æœ‰è€…ä¿¡æ¯è®¿é—®æ–¹æ³•
      */
 
     BOOL        AddGrowPointOwner(ObjID_t OwnerID)

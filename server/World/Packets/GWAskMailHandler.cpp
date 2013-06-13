@@ -35,10 +35,10 @@ __ENTER_FUNCTION
 
     if( pPacket->GetAskType()==ASK_TYPE_LOGIN )
     {
-        //´¦Àí½Å²½ÓÊ¼ş
+        //å¤„ç†è„šæ­¥é‚®ä»¶
         g_pMailCenter->AskScriptMail( pUser->GetName(), Msg.GetMailList() ) ;
 
-        //´¦ÀíÆÕÍ¨ÓÊ¼ş
+        //å¤„ç†æ™®é€šé‚®ä»¶
         UINT uMailCount = g_pMailCenter->CheckMail(pUser->GetName());
         if (uMailCount > 0)
         {
@@ -50,7 +50,7 @@ __ENTER_FUNCTION
         }
 
         if( Msg.GetMailList()->m_Count < 1 )
-        { // Èç¹ûÃ»ÓĞ¿ÉÖ´ĞĞµÄ½Å±¾ÓÊ¼ş,Ôò´ËÏûÏ¢²»Íù»Ø·¢.·ñÔò»á×ª¸ø¿Í»§¶Ë,°ÑÆÕÍ¨ÓÊ¼şµÄÊ£ÓàÊıÁ¿´íÎóÉèÖÃÎª0
+        { // å¦‚æœæ²¡æœ‰å¯æ‰§è¡Œçš„è„šæœ¬é‚®ä»¶,åˆ™æ­¤æ¶ˆæ¯ä¸å¾€å›å‘.å¦åˆ™ä¼šè½¬ç»™å®¢æˆ·ç«¯,æŠŠæ™®é€šé‚®ä»¶çš„å‰©ä½™æ•°é‡é”™è¯¯è®¾ç½®ä¸º0
             return PACKET_EXE_CONTINUE;
         }
     }
@@ -61,23 +61,23 @@ __ENTER_FUNCTION
             INT nCount;
             nCount = Msg.GetMailList()->m_Count;
             if( nCount != 1 )
-            { // ÕâÀïÈç¹û²»ÊÇ 1 ·âµÄ»°´¦Àí·½Ê½Ó¦¸ÃÓĞËù²»Í¬
+            { // è¿™é‡Œå¦‚æœä¸æ˜¯ 1 å°çš„è¯å¤„ç†æ–¹å¼åº”è¯¥æœ‰æ‰€ä¸åŒ
                 Assert( nCount == 1 );
                 return PACKET_EXE_CONTINUE;
             }
 
             if( pUser->ValidateMail( &(Msg.GetMailList()->m_aMail[0]) ) == 0 )
-            { // ÓÊ¼şÓĞĞ§
+            { // é‚®ä»¶æœ‰æ•ˆ
                 break;
             }
             else
-            { // ÎŞĞ§¼ÌĞøÊÕ
+            { // æ— æ•ˆç»§ç»­æ”¶
                 Msg.GetMailList()->CleanUp();
             }
         }
 
         if( Msg.GetMailList()->m_Count < 1 )
-        { // Ò»·âÓĞĞ§ÓÊ¼ş¶¼Ã»ÓĞ
+        { // ä¸€å°æœ‰æ•ˆé‚®ä»¶éƒ½æ²¡æœ‰
             return PACKET_EXE_CONTINUE;
         }
     }

@@ -1,6 +1,6 @@
 // GCPlayerShopBuyShop.h
 // 
-// Í¨Öª·şÎñÆ÷´ËÉÌµêÒÑ¾­±»ÅÌ³ö
+// é€šçŸ¥æœåŠ¡å™¨æ­¤å•†åº—å·²ç»è¢«ç›˜å‡º
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         GCPlayerShopBuyShop( ){};
         virtual ~GCPlayerShopBuyShop( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -30,7 +30,7 @@ namespace Packets
         _PLAYERSHOP_GUID        GetShopID(VOID) const {return m_ShopID;}
         VOID                    SetShopID(_PLAYERSHOP_GUID nShopID) {m_ShopID = nShopID;}
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
     };
 
     class GCPlayerShopBuyShopFactory : public PacketFactory 

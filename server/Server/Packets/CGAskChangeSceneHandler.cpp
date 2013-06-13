@@ -33,7 +33,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
  
@@ -51,11 +51,11 @@ __ENTER_FUNCTION
     pMsg->SetDestSceneID( DestSceneID ) ;
     pMsg->SetKey((UINT)rand()) ;
     if( SourServerID == DestServerID )
-    {//µ±Ç°³¡¾°ºÍÄ¿µÄ³¡¾°ÔÚÍ¬Ò»¸öÓÎÏ··þÎñÆ÷³ÌÐòÄÚ
+    {//å½“å‰åœºæ™¯å’Œç›®çš„åœºæ™¯åœ¨åŒä¸€ä¸ªæ¸¸æˆæœåŠ¡å™¨ç¨‹åºå†…
         pMsg->SetStatus( GWAskChangeScene::CSS_SAMESCENE ) ;
     }
     else
-    {//µ±Ç°³¡¾°ºÍÄ¿µÄ³¡¾°Î»ÓÚ²»Í¬µØÓÎÏ··þÎñÆ÷³ÌÐòÄÚ
+    {//å½“å‰åœºæ™¯å’Œç›®çš„åœºæ™¯ä½äºŽä¸åŒåœ°æ¸¸æˆæœåŠ¡å™¨ç¨‹åºå†…
         pMsg->SetStatus( GWAskChangeScene::CSS_DIFFSERVER ) ;
         
         FULLUSERDATA* pData = pMsg->GetUserData() ;
@@ -76,15 +76,15 @@ __ENTER_FUNCTION
         memcpy( &(pData->m_Relation), pHuman->GetDB()->GetRelationDB(), sizeof(_RELATION_DB_LOAD) ) ;
         memcpy( &(pData->m_PrivateInfo), pHuman->GetDB()->GetPrivateInfoDB(), sizeof(_PRIVATE_INFO_DB_LOAD) ) ;
 
-        //ÇÐ»»³¡¾°humanDB°æ±¾ºÅ+1
+        //åˆ‡æ¢åœºæ™¯humanDBç‰ˆæœ¬å·+1
         pData->m_Human.m_DBVersion++;
         pData->m_bIsPasswdUnlock = pHuman->__IsPasswordUnlock();
     }
 
     g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
 
-    //½«Íæ¼Ò´ÓµØÍ¼ÖÐÉ¾³ý£¬·ÀÖ¹±ðµÄÍæ¼ÒÏòÆä·¢ÆðÄ³Ð©¶¯×÷»ò·¢ËÍÏûÏ¢
-    //ÔÚ´Ë²Ù×÷ºó£¬Íæ¼ÒµÄ½ÇÉ«²»»á¼ÌÐø½ÓÊÕµ½¹ã²¥ÏûÏ¢ºÍ×öÂß¼­²Ù×÷
+    //å°†çŽ©å®¶ä»Žåœ°å›¾ä¸­åˆ é™¤ï¼Œé˜²æ­¢åˆ«çš„çŽ©å®¶å‘å…¶å‘èµ·æŸäº›åŠ¨ä½œæˆ–å‘é€æ¶ˆæ¯
+    //åœ¨æ­¤æ“ä½œåŽï¼ŒçŽ©å®¶çš„è§’è‰²ä¸ä¼šç»§ç»­æŽ¥æ”¶åˆ°å¹¿æ’­æ¶ˆæ¯å’Œåšé€»è¾‘æ“ä½œ
     //ZoneID_t zid = pHuman->getZoneID() ;
     //pScene->Unregister( pHuman, zid ) ;
     //pHuman->setZoneID( INVALID_ID ) ;

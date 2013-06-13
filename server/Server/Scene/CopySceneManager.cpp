@@ -69,10 +69,10 @@ __ENTER_FUNCTION
         if( pScene==NULL )
             continue ;
         
-        if( !g_pSceneManager->IsInCurServer((SceneID_t)i) )//²»ÔÚÏàÍ¬·þÎñÆ÷ÄÚ
+        if( !g_pSceneManager->IsInCurServer((SceneID_t)i) )//ä¸åœ¨ç›¸åŒæœåŠ¡å™¨å†…
             continue ;
         
-        if( pScene->GetSceneType() != SCENE_TYPE_COPY )//²»ÊÇ¸±±¾³¡¾°
+        if( pScene->GetSceneType() != SCENE_TYPE_COPY )//ä¸æ˜¯å‰¯æœ¬åœºæ™¯
             continue ;
 
         if( strcmp(pSelect->m_Load.m_szMap,pScene->GetMapName())==0 )
@@ -90,7 +90,7 @@ __ENTER_FUNCTION
     {
         pScene = aTemp[i] ;
 
-        //×´Ì¬´¦Àí
+        //çŠ¶æ€å¤„ç†
         if( pScene->GetSceneStatus() == SCENE_STATUS_SLEEP )
         {
             pScene->SetSceneStatus( SCENE_STATUS_SELECT ) ;
@@ -101,7 +101,7 @@ __ENTER_FUNCTION
             continue ;
         }
 
-        //ÉèÖÃ×°ÔØ²ÎÊý
+        //è®¾ç½®è£…è½½å‚æ•°
         pScene->m_SceneLoad = pSelect->m_Load ;
         pScene->m_SceneInitData.m_nDataType = pSelect->m_SceneDataType ;
         pScene->m_CopyData = pSelect->m_CopyData ;
@@ -111,27 +111,27 @@ __ENTER_FUNCTION
 
     if( pScene==NULL )
     {
-        m_Lock.Unlock() ;//½âËø
+        m_Lock.Unlock() ;//è§£é”
         return INVALID_ID ;
     }
 
     retSceneID = pScene->SceneID() ;
 
-    //½«³¡¾°·ÅÈë×°ÔØ¶ÓÁÐ
+    //å°†åœºæ™¯æ”¾å…¥è£…è½½é˜Ÿåˆ—
     BOOL ret = PushScene( pScene ) ;
     if( ret==FALSE )
     {
         Assert( FALSE ) ;
-        m_Lock.Unlock() ;//½âËø
+        m_Lock.Unlock() ;//è§£é”
         return INVALID_ID ;
     }
 
-    m_Lock.Unlock() ;//½âËø
+    m_Lock.Unlock() ;//è§£é”
     return retSceneID ;
 
 __LEAVE_FUNCTION
 
-    m_Lock.Unlock() ;//½âËø
+    m_Lock.Unlock() ;//è§£é”
     return INVALID_ID ;
 }
 
@@ -194,7 +194,7 @@ __ENTER_FUNCTION
     if( pScene == NULL )
         return FALSE ;
 
-    //¶ÁÈ¡³¡¾°µÄÅäÖÃÐÅÏ¢²¢×°ÔØ
+    //è¯»å–åœºæ™¯çš„é…ç½®ä¿¡æ¯å¹¶è£…è½½
     SCENE_LOAD load ;
     pScene->SetLoadData(    g_Config.m_SceneInfo.m_pScene[pScene->SceneID()].m_szFileName,
                             load ) ;
@@ -225,7 +225,7 @@ __ENTER_FUNCTION
         strncpy( load.m_szGrowPointData, pScene->m_SceneLoad.m_szGrowPointData, _MAX_PATH-1 ) ;
         if( strlen(pScene->m_SceneLoad.m_szGrowPointSetup)<=4 )
         {
-            AssertEx(FALSE,"GrowPointSetupÊý¾ÝÉèÖÃ´íÎó") ;
+            AssertEx(FALSE,"GrowPointSetupæ•°æ®è®¾ç½®é”™è¯¯") ;
         }
         strncpy( load.m_szGrowPointSetup, pScene->m_SceneLoad.m_szGrowPointSetup, _MAX_PATH-1 ) ;
         load.m_IsGrowPointExist = TRUE ;
@@ -234,7 +234,7 @@ __ENTER_FUNCTION
     pScene->Load( &load ) ;
     pScene->SetSceneStatus( SCENE_STATUS_LOAD ) ;
     
-    //ÏòÊÀ½çÊý¾Ý·þÎñÆ÷·¢ËÍ³¡¾°Êý¾ÝÇëÇóÏûÏ¢
+    //å‘ä¸–ç•Œæ•°æ®æœåŠ¡å™¨å‘é€åœºæ™¯æ•°æ®è¯·æ±‚æ¶ˆæ¯
     GWAskSceneData* pMsg = (GWAskSceneData*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_ASKSCENEDATA));
     pMsg->SetSceneID( pScene->SceneID() ) ;
     g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;

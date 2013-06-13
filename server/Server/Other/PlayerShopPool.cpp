@@ -1,13 +1,13 @@
 #include "stdafx.h"
 /************************************************************************/
 /*
-´´½¨ÈÕÆÚ:    2006Äê2ÔÂ13ÈÕ
-´´½¨Ê±¼ä:    11:54
-ÎÄ¼şÃû³Æ:    PlayerShopPool.h
-ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Other\PlayerShopPool.cpp
+åˆ›å»ºæ—¥æœŸ:    2006å¹´2æœˆ13æ—¥
+åˆ›å»ºæ—¶é—´:    11:54
+æ–‡ä»¶åç§°:    PlayerShopPool.h
+æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Other\PlayerShopPool.cpp
 
-ÎÄ¼ş¹¦ÄÜ£º    Íæ¼ÒÉÌµê³Ø
-ĞŞ¸Ä¼ÍÂ¼£º
+æ–‡ä»¶åŠŸèƒ½ï¼š    ç©å®¶å•†åº—æ± 
+ä¿®æ”¹çºªå½•ï¼š
 */
 /************************************************************************/
 
@@ -50,7 +50,7 @@ BOOL PlayerShopPool::Init(UINT nPoolSize)
     Assert(m_pPlayerShop);
     for(INT i = 0;i<(INT)m_PoolSize;i++)
     {
-        //³õÊ¼»¯³ØÖĞÃ¿¸öÉÌµê
+        //åˆå§‹åŒ–æ± ä¸­æ¯ä¸ªå•†åº—
         m_pPlayerShop[i].Init();
     }
 
@@ -60,7 +60,7 @@ BOOL PlayerShopPool::Init(UINT nPoolSize)
     for(UINT i = 0;i<(INT)m_PoolSize;i++)
         m_pFreeItemID[i]    =    i;
     
-    //³õÊ¼»¯·ÖÅäÊı×é
+    //åˆå§‹åŒ–åˆ†é…æ•°ç»„
     INT iMaxIndex = 0;
     INT    iTempIndex = 0;
     INT    TempShopIndex[MAX_PLAYER_SHOP_POOL_PER_SERVER] = {0};
@@ -85,7 +85,7 @@ BOOL PlayerShopPool::Init(UINT nPoolSize)
     }
 
     //
-    //sharememµ¼Èëm_pPlayerShop[]£¬m_pFreeItemID[]£¬m_nFreePosition
+    //sharememå¯¼å…¥m_pPlayerShop[]ï¼Œm_pFreeItemID[]ï¼Œm_nFreePosition
     //
 
     return TRUE;
@@ -110,7 +110,7 @@ PlayerShop*    PlayerShopPool::NewPlayerShop(ID_t idScene)
 
     PS.CleanUp();
 
-    //Î¨Ò»ÄÜÉú³ÉÉÌµêGUIDµÄµØ·½
+    //å”¯ä¸€èƒ½ç”Ÿæˆå•†åº—GUIDçš„åœ°æ–¹
     _PLAYERSHOP_GUID    NewGUID;
     NewGUID.m_World        = m_WorldId;
     NewGUID.m_Server    = m_ServerId;
@@ -174,7 +174,7 @@ BOOL PlayerShopPool::ConnectTo(SceneManager*    pSceneManager)
 {
     __ENTER_FUNCTION
 
-    //µ¥Ïß³Æµ÷ÓÃ£¬²»ÓÃËø
+    //å•çº¿ç§°è°ƒç”¨ï¼Œä¸ç”¨é”
     PlayerShop* pShop = NULL;
     Scene* pScene = NULL;
     SceneID_t sceneid;
@@ -185,7 +185,7 @@ BOOL PlayerShopPool::ConnectTo(SceneManager*    pSceneManager)
         sceneid     = pShop->GetSceneID();
 
         if( sceneid != INVALID_ID)
-        {//ÓĞÖ÷ÁË
+        {//æœ‰ä¸»äº†
             pScene = pSceneManager->GetScene(sceneid);
             if (!pScene)
             {

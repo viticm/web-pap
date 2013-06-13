@@ -21,42 +21,42 @@ class HumanPetContainer:public ItemContainer
     HumanDB*                m_pHumanDB;
     ITEM_CONTAINER_TYPE        m_ICTType;
 public:
-    virtual        BOOL        Init( const _ITEMCONTAINER_INIT* pInit ) ;//³õÊ¼»¯ÈİÆ÷
+    virtual        BOOL        Init( const _ITEMCONTAINER_INIT* pInit ) ;//åˆå§‹åŒ–å®¹å™¨
 protected :
-    //ÉèÖÃÎïÆ·µÄÊôĞÔ
+    //è®¾ç½®ç‰©å“çš„å±æ€§
     virtual        BOOL        SetItem( const INT nIndex, const Item* pItem );
-    //É¾³ıÎïÆ·
+    //åˆ é™¤ç‰©å“
     virtual        BOOL        EraseItem(UINT uIndex);
-    //ÉèÖÃÎïÆ·ÊôĞÔ
+    //è®¾ç½®ç‰©å“å±æ€§
     virtual    BOOL            SetItemValue(INT nIndex,const _PET_DB_LOAD* pPet);
 
 
-    virtual BOOL              SetPetGUID(INT nIndex,PET_GUID_t GUID) ;                //ÉèÖÃ³èÎïGUID
-    virtual BOOL              SetSpouseGUID(INT nIndex,PET_GUID_t GUID) ;            //ÉèÖÃ³èÎïÅäÅ¼GUID
-    virtual BOOL            SetDataID(INT nIndex,INT ID);                            //ÉèÖÃ³èÎïÄ£ĞÍ        
-    virtual BOOL             SetName(INT nIndex, const CHAR* pName);                        //ÉèÖÃÃû×Ö
-    virtual BOOL               SetNick(INT nIndex, const CHAR* pNick);                        //ÉèÖÃêÇ³Æ
-    virtual BOOL              SetLevel(INT nIndex,INT level);                            //ÉèÖÃµÈ¼¶
-    virtual BOOL              SetTakeLevel(INT nIndex,INT takeLevel);                    //ÉèÖÃĞ¯´øµÈ¼¶
-    virtual BOOL              SetAttackType(INT nIndex,INT attackType);                //ÉèÖÃ½ø¹¥ÀàĞÍ£¨Îï/·¨£©
-    virtual BOOL              SetAIType(INT nIndex,INT AIType);                        //ÉèÖÃAIÀàĞÍ
-    virtual BOOL              SetCampData(INT nIndex,const _CAMP_DATA* pCamp);        //ÉèÖÃÕóÓª
-    virtual BOOL              SetHP(INT nIndex,INT hp);                                //ÉèÖÃÉúÃüÖµ
-    virtual BOOL              SetLife(INT nIndex,INT Life);                            //ÉèÖÃµ±Ç°ÊÙÃü
-    virtual BOOL              SetPetType(INT nIndex,BYTE PetType);                    //±¦±¦£¬±äÒì£¬Ò°Éú
-    virtual BOOL              SetGeneration(INT nIndex,BYTE Gen);                        //¼¸´ú³è
-    virtual BOOL              SetHappiness(INT nIndex,BYTE byHappiness);                        //¿ìÀÖ¶È        
-    virtual BOOL              SetStrPer(INT nIndex,INT strper);                        //Á¦Á¿×ÊÖÊ    
-    virtual BOOL              SetConPer(INT nIndex,INT conper);                        //ÌåÁ¦×ÊÖÊ    
-    virtual BOOL               SetDexPer(INT nIndex,INT dexper);                        //Éí·¨×ÊÖÊ
-    virtual BOOL              SetSprPer(INT nIndex,INT sprper);                        //ÁéÆø×ÊÖÊ
-    virtual BOOL               SetIntPer(INT nIndex,INT intper);                        //¶¨Á¦×ÊÖÊ
-    virtual BOOL            SetGenGu(INT nIndex,INT gengu);                            //¸ù¹Ç
-    virtual BOOL              SetGrowRate(INT nIndex,FLOAT rate);                        //³É³¤ÂÊ
-    virtual BOOL              SetRemainPoint(INT nIndex,INT rPoint);                    //Ò»¼¶ÊôĞÔÊ£ÓàµãÊı
-    virtual BOOL              SetExp(INT nIndex,INT exp) ;                            //¾­ÑéÖµ
-    virtual BOOL              SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value);//»ù´¡Ò»¼¶Õ½¶·ÊôĞÔ£¨²»°üÀ¨¼¼ÄÜºÍ×°±¸Ôö¼ÓµÄ²¿·Ö£©
-    virtual BOOL              SetSkill(INT nIndex,UINT SkillIndex,_PET_SKILL skill);    //³èÎï¼¼ÄÜ
+    virtual BOOL              SetPetGUID(INT nIndex,PET_GUID_t GUID) ;                //è®¾ç½®å® ç‰©GUID
+    virtual BOOL              SetSpouseGUID(INT nIndex,PET_GUID_t GUID) ;            //è®¾ç½®å® ç‰©é…å¶GUID
+    virtual BOOL            SetDataID(INT nIndex,INT ID);                            //è®¾ç½®å® ç‰©æ¨¡å‹        
+    virtual BOOL             SetName(INT nIndex, const CHAR* pName);                        //è®¾ç½®åå­—
+    virtual BOOL               SetNick(INT nIndex, const CHAR* pNick);                        //è®¾ç½®æ˜µç§°
+    virtual BOOL              SetLevel(INT nIndex,INT level);                            //è®¾ç½®ç­‰çº§
+    virtual BOOL              SetTakeLevel(INT nIndex,INT takeLevel);                    //è®¾ç½®æºå¸¦ç­‰çº§
+    virtual BOOL              SetAttackType(INT nIndex,INT attackType);                //è®¾ç½®è¿›æ”»ç±»å‹ï¼ˆç‰©/æ³•ï¼‰
+    virtual BOOL              SetAIType(INT nIndex,INT AIType);                        //è®¾ç½®AIç±»å‹
+    virtual BOOL              SetCampData(INT nIndex,const _CAMP_DATA* pCamp);        //è®¾ç½®é˜µè¥
+    virtual BOOL              SetHP(INT nIndex,INT hp);                                //è®¾ç½®ç”Ÿå‘½å€¼
+    virtual BOOL              SetLife(INT nIndex,INT Life);                            //è®¾ç½®å½“å‰å¯¿å‘½
+    virtual BOOL              SetPetType(INT nIndex,BYTE PetType);                    //å®å®ï¼Œå˜å¼‚ï¼Œé‡ç”Ÿ
+    virtual BOOL              SetGeneration(INT nIndex,BYTE Gen);                        //å‡ ä»£å® 
+    virtual BOOL              SetHappiness(INT nIndex,BYTE byHappiness);                        //å¿«ä¹åº¦        
+    virtual BOOL              SetStrPer(INT nIndex,INT strper);                        //åŠ›é‡èµ„è´¨    
+    virtual BOOL              SetConPer(INT nIndex,INT conper);                        //ä½“åŠ›èµ„è´¨    
+    virtual BOOL               SetDexPer(INT nIndex,INT dexper);                        //èº«æ³•èµ„è´¨
+    virtual BOOL              SetSprPer(INT nIndex,INT sprper);                        //çµæ°”èµ„è´¨
+    virtual BOOL               SetIntPer(INT nIndex,INT intper);                        //å®šåŠ›èµ„è´¨
+    virtual BOOL            SetGenGu(INT nIndex,INT gengu);                            //æ ¹éª¨
+    virtual BOOL              SetGrowRate(INT nIndex,FLOAT rate);                        //æˆé•¿ç‡
+    virtual BOOL              SetRemainPoint(INT nIndex,INT rPoint);                    //ä¸€çº§å±æ€§å‰©ä½™ç‚¹æ•°
+    virtual BOOL              SetExp(INT nIndex,INT exp) ;                            //ç»éªŒå€¼
+    virtual BOOL              SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value);//åŸºç¡€ä¸€çº§æˆ˜æ–—å±æ€§ï¼ˆä¸åŒ…æ‹¬æŠ€èƒ½å’Œè£…å¤‡å¢åŠ çš„éƒ¨åˆ†ï¼‰
+    virtual BOOL              SetSkill(INT nIndex,UINT SkillIndex,_PET_SKILL skill);    //å® ç‰©æŠ€èƒ½
  
 private:
     BOOL                    SetDBDirty();

@@ -12,7 +12,7 @@ UINT GWTeamMemberEnterSceneHandler::Execute( GWTeamMemberEnterScene* pPacket, Pl
 __ENTER_FUNCTION
 
     ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
-    GUID_t guid = pPacket->GetGUID(); // ��������Ϣ����ҵ� GUID
+    GUID_t guid = pPacket->GetGUID(); // 被请求信息的玩家的 GUID
 
     USER* pUser = g_pOnlineUser->FindUser( guid );
     if( pUser == NULL )
@@ -23,8 +23,8 @@ __ENTER_FUNCTION
     }
 
     if( pUser->GetTeamID() == INVALID_ID )
-    { // �����Ժ�Ҫ���ϻ�����Ϣ��ɾ���������˴���Ķ�����Ϣ
-        Assert( FALSE && "�����û�ж��飡" );
+    { // 这里以后要加上回馈信息，删除服务器端错误的队伍信息
+        Assert( FALSE && "该玩家没有队伍！" );
         return PACKET_EXE_CONTINUE;
     }
 

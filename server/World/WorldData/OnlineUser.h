@@ -24,10 +24,10 @@ public :
     USER*            FindUser( const CHAR* szName ) ;
     USER*            FindUserByAccountName( const CHAR* szAccountName ) ;
 
-    //²âÊÔ
+    //æµ‹è¯•
     USER*            LoadUser( GUID_t guid ) ;
     void            InitUserData( FULLUSERDATA* pData, GUID_t guid ) ;
-    //²âÊÔ
+    //æµ‹è¯•
 
     void            RemoveUser( ID_t ServerID );
     void            RemoveUser(ID_t ServerID,USER_STATUS UserUS );
@@ -50,22 +50,22 @@ public :
     UINT            Select( INT nMenPai, GuildID_t GuildID, CHAR Sex, INT m_nBottomLevel, INT m_nTopLevel,
                             RETURN_FINGER_PLAYERLIST* pPlayerList, INT nPosition = 0 );
 public :
-    //Íæ¼ÒµÇÂ½ÓÎÏ·
+    //ç©å®¶ç™»é™†æ¸¸æˆ
     BOOL            OnUserLogin( USER* pUser ) ;
 
-    //Íæ¼ÒÇĞ»»³¡¾°
+    //ç©å®¶åˆ‡æ¢åœºæ™¯
     BOOL            OnUserChangeScene( USER* pUser, SceneID_t OldSceneID, SceneID_t NewSceneID ) ;
 
-    //Íæ¼Ò¶ÏÏß´¦Àí½Ó¿Ú£¬
+    //ç©å®¶æ–­çº¿å¤„ç†æ¥å£ï¼Œ
     VOID            OnUserOffLine( USER* pUser );
 
-    //Íæ¼ÒÍË³ö´¦Àí½Ó¿Ú£¬
+    //ç©å®¶é€€å‡ºå¤„ç†æ¥å£ï¼Œ
     VOID            OnUserRemove( USER* pUser );
 
-    // Íæ¼ÒÀë¿ª¶ÓÎé½Ó¿Ú£¬
+    // ç©å®¶ç¦»å¼€é˜Ÿä¼æ¥å£ï¼Œ
     BOOL            UserLeaveTeam( USER* pUser );
 
-    // ÌáÉıĞÂ¶Ó³¤£¬
+    // æå‡æ–°é˜Ÿé•¿ï¼Œ
     BOOL            AppointTeamLeader( USER* pOldLeader, USER* pNewLeader );
 
     INT                GetTotalCount(){ return m_UserCount ; } ;
@@ -92,10 +92,10 @@ protected :
     //____________________________________________
     INT                m_MaxWorldUsers;
 
-    struct START_SCENE //³öÉúµØµã
+    struct START_SCENE //å‡ºç”Ÿåœ°ç‚¹
     {
-        INT        nSceneNum ; //³¡¾°ºÅÂë
-        FLOAT    fStartX ; //³öÉúµØµã
+        INT        nSceneNum ; //åœºæ™¯å·ç 
+        FLOAT    fStartX ; //å‡ºç”Ÿåœ°ç‚¹
         FLOAT    fStartZ ;
     };
     START_SCENE        m_StartScene[MAX_CAMP_NUM];

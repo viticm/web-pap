@@ -13,7 +13,7 @@ namespace Packets
         GWTeamApply(){}
         virtual        ~GWTeamApply(){};
 
-        //π´”√Ω”ø⁄
+        //ÂÖ¨Áî®Êé•Âè£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream )const;
         virtual UINT            Execute( Player* pPlayer );
@@ -25,7 +25,7 @@ namespace Packets
                                                             + sizeof(m_GUID); }
 
     public :
-        // ˝æ›Ω”ø⁄
+        //Êï∞ÊçÆÊé•Âè£
         VOID                    SetSourGUID( GUID_t guid ){    m_SourGUID = guid; }
         GUID_t                    GetSourGUID( ){ return m_SourGUID; }
 
@@ -40,10 +40,10 @@ namespace Packets
         GUID_t                    GetGUID() { return m_GUID; }
 
     public :
-        // ˝æ›
-        GUID_t                    m_SourGUID;        //…Í«Î»À
+        //Êï∞ÊçÆ
+        GUID_t                    m_SourGUID;        //Áî≥ËØ∑‰∫∫
         UCHAR                    m_DestNameSize;
-        CHAR                    m_DestName[MAX_CHARACTER_NAME];            //±ª—˚«Î»À
+        CHAR                    m_DestName[MAX_CHARACTER_NAME];            //Ë¢´ÈÇÄËØ∑‰∫∫
         GUID_t                    m_GUID;
 
     };

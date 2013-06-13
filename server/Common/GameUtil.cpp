@@ -199,7 +199,7 @@ BOOL MyPosEqual( const WORLD_POS* pA, const WORLD_POS* pB )
 
 VOID MyRandPos( WORLD_POS* pPos, const WORLD_POS* pDir, FLOAT fRadioMax, FLOAT fRadioMin )
 {
-// �����С�Ƕ�ֵȡ���� COSֵ
+// 最大，最小角度值取的是 COS值
 #define COS_ANGLE_MIN    0.7071f
 #define COS_ANGLE_MAX   1.0f    
 
@@ -216,17 +216,17 @@ VOID MyRandPos( WORLD_POS* pPos, const WORLD_POS* pDir, FLOAT fRadioMax, FLOAT f
         
     if((fR1 < 0)||(fR2 < 0))
     {
-        // �뾶�Ǹ�����  
+        // 半径是负数。  
         return ;
     }
 
-    FLOAT fVec1X = 0;        // ����AB
+    FLOAT fVec1X = 0;        // 向量AB
     FLOAT fVec1Y = 0;        // 
     
-    FLOAT fRandThi    = 0; // ����Ƕ�
-    FLOAT fRandLength = 0; // �������
+    FLOAT fRandThi    = 0; // 随机角度
+    FLOAT fRandLength = 0; // 随机长度
 
-    // �������뾶
+    // 求整数半径
     INT   iR1 = 0;
     INT   iR2 = 0;
     iR1 = (INT)(fR1 * 100);
@@ -238,7 +238,7 @@ VOID MyRandPos( WORLD_POS* pPos, const WORLD_POS* pDir, FLOAT fRadioMax, FLOAT f
         iR2 = iTmep;
     }
 
-    // ������뾶���ȡ�
+    // 求随机半径长度。
     INT iLenDeta    = iR2 - iR1;
     INT iRandLength = 0;
     if(0 == iR1)
@@ -253,7 +253,7 @@ VOID MyRandPos( WORLD_POS* pPos, const WORLD_POS* pDir, FLOAT fRadioMax, FLOAT f
 
     fRandLength = (FLOAT)(iRandLength * 1.0) / 100;
 
-    // ������Ƕ�ֵ��
+    // 求随机角度值。
     INT iThiMin  = (INT)(ANGLE_MIN * 100);
     INT iThiMax  = (INT)(ANGLE_MAX * 100);
     INT iThiDeta = iThiMax - iThiMin;
@@ -268,7 +268,7 @@ VOID MyRandPos( WORLD_POS* pPos, const WORLD_POS* pDir, FLOAT fRadioMax, FLOAT f
     }
     fRandThi     = (FLOAT)(iRandThi * 1.0) / 100;
 
-    // ������Ƕȷ���
+    // 求随机角度方向
        INT iDir = rand() % 2;
     if(0 == iDir)
     {
@@ -281,7 +281,7 @@ VOID MyRandPos( WORLD_POS* pPos, const WORLD_POS* pDir, FLOAT fRadioMax, FLOAT f
 
     if(fabs(FLOAT(fVec1Len)) < 0.00001f)
     {
-        // A�㣬 B���غ�.
+        // A点， B点重合.
         fPx = fAx;
         fPz = fAz;
         return ;

@@ -20,7 +20,7 @@ namespace Packets
         }
         virtual ~CGApplyPrivateInfo( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -33,7 +33,7 @@ namespace Packets
         UINT        GetCharGUID()  {return m_CharGUID;}
         VOID        SetCharGUID(UINT CharGUID)  {m_CharGUID = CharGUID;}
     private:
-        UINT        m_CharGUID;                            //角色编号
+        UINT        m_CharGUID;                            //瑙掕壊缂栧彿
     };
 
     class CGApplyPrivateInfoFactory : public PacketFactory 

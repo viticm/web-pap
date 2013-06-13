@@ -51,7 +51,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE;
     }
 
-    // ÉèÖÃÁË¾Ü¾ø±»ÑûÇë
+    // è®¾ç½®äº†æ‹’ç»è¢«é‚€è¯·
     if( pDestUser->IsRefuseTeamInvite() )
     {
         WGTeamError Msg;
@@ -66,7 +66,7 @@ __ENTER_FUNCTION
     }
 
     if( pDestUser->GetTeamID() != INVALID_ID )
-    {//±»ÑûÇëÈËÒÑ¾­ÊôÓÚÄ³¸ö¶ÓÎéÁË
+    {//è¢«é‚€è¯·äººå·²ç»å±äºæŸä¸ªé˜Ÿä¼äº†
         WGTeamError Msg;
         Msg.SetPlayerID( pSourUser->GetPlayerID() );
         Msg.SetGUID(sGuid);
@@ -77,28 +77,28 @@ __ENTER_FUNCTION
             sGuid, dGuid );
     }
     else if( sGuid==dGuid && pSourUser->GetTeamID()==INVALID_ID )
-    {//ÑûÇëÈËºÍ±»ÑûÇëÈËÊôÓÚÍ¬Ò»¸öÈË, ÇÒ²»ÊôÓÚÄ³¸ö¶ÓÎé
-        //×Ô½¨¶ÓÎé
+    {//é‚€è¯·äººå’Œè¢«é‚€è¯·äººå±äºåŒä¸€ä¸ªäºº, ä¸”ä¸å±äºæŸä¸ªé˜Ÿä¼
+        //è‡ªå»ºé˜Ÿä¼
         TeamID_t tid = g_pTeamList->CreateTeam( );
         Assert( tid!=INVALID_ID );
         Team* pTeam = g_pTeamList->GetTeam( tid );
         Assert( pTeam );
 
-        //½«Íæ¼Ò¼ÓÈë¶ÓÎéÖĞ
+        //å°†ç©å®¶åŠ å…¥é˜Ÿä¼ä¸­
         TEAMMEMBER Member;
         Member.m_Member = sGuid;
         pTeam->AddMember( &Member );
 
-        //ÉèÖÃÍæ¼Ò¶ÓÎéÊı¾İ
+        //è®¾ç½®ç©å®¶é˜Ÿä¼æ•°æ®
         pSourUser->SetTeamID( tid );
 
-        //·µ»Ø½á¹û
+        //è¿”å›ç»“æœ
         WGTeamResult Msg;
         Msg.SetPlayerID( pSourUser->GetPlayerID() );
         Msg.SetReturn( TEAM_RESULT_MEMBERENTERTEAM );
         Msg.SetGUID( sGuid );
         Msg.SetTeamID( tid );
-        Msg.SetGUIDEx( pSourUser->GetPlayerID() ); // ½«Íæ¼ÒµÄ PlayerID ´«»Ø
+        Msg.SetGUIDEx( pSourUser->GetPlayerID() ); // å°†ç©å®¶çš„ PlayerID ä¼ å›
         Msg.SetSceneID( pSourUser->GetSceneID() );
         Msg.SetDataID( pSourUser->GetSex() );
         Msg.SetIcon( pSourUser->GetPortrait() );
@@ -112,15 +112,15 @@ __ENTER_FUNCTION
     {
         if ( pSourUser->GetTeamID() != INVALID_ID )
         {
-            //ÑûÇëÈËÒÑ¾­ÓĞÒ»¸ö¶ÓÎé
+            //é‚€è¯·äººå·²ç»æœ‰ä¸€ä¸ªé˜Ÿä¼
             Team* pTeam = g_pTeamList->GetTeam( pSourUser->GetTeamID() );
             Assert( pTeam );
 
-            GUID_t tlGUID = pTeam->Leader()->m_Member; // ¶Ó³¤GUID
+            GUID_t tlGUID = pTeam->Leader()->m_Member; // é˜Ÿé•¿GUID
 
-            //ÑûÇëÈË²»ÊÇ¶Ó³¤£¬Òª¸ø¶Ó³¤·¢ËÍÇëÇó
+            //é‚€è¯·äººä¸æ˜¯é˜Ÿé•¿ï¼Œè¦ç»™é˜Ÿé•¿å‘é€è¯·æ±‚
             if ( tlGUID != sGuid )
-            { // ²»ÊÇ¶Ó³¤µÄÇé¿ö
+            { // ä¸æ˜¯é˜Ÿé•¿çš„æƒ…å†µ
                 USER* pLeaderUser = g_pOnlineUser->FindUser( tlGUID );
                 if( pLeaderUser == NULL )
                 {
@@ -135,9 +135,9 @@ __ENTER_FUNCTION
                 }
 
                 WGTeamLeaderAskInvite Msg;
-                Msg.SetPlayerID( pLeaderUser->GetPlayerID() );//¶Ó³¤µÄPlayer_t
-                Msg.SetSourGUID( sGuid );        //ÑûÇëÈË
-                Msg.SetDestGUID( dGuid );        //±»ÒªÇëÈË
+                Msg.SetPlayerID( pLeaderUser->GetPlayerID() );//é˜Ÿé•¿çš„Player_t
+                Msg.SetSourGUID( sGuid );        //é‚€è¯·äºº
+                Msg.SetDestGUID( dGuid );        //è¢«è¦è¯·äºº
                 Msg.SetSourName( pSourUser->GetName() );
                 Msg.SetDestName( pDestUser->GetName() );
                 Msg.SetGUID(tlGUID);
@@ -153,7 +153,7 @@ __ENTER_FUNCTION
         ID_t DestServerID = pDestUser->GetServerID();
         ServerPlayer* pDestServerPlayer = g_pServerManager->GetServerPlayer( DestServerID );
         if( pDestServerPlayer )
-        {//Ïò±»ÑûÇëÈË·¢ËÍÑûÇëÏûÏ¢
+        {//å‘è¢«é‚€è¯·äººå‘é€é‚€è¯·æ¶ˆæ¯
             WGTeamAskInvite Msg;
             Msg.SetPlayerID( pDestUser->GetPlayerID() );
             Msg.SetdGUID( dGuid );
@@ -178,7 +178,7 @@ __ENTER_FUNCTION
 
                     USER* pUser = g_pOnlineUser->FindUser( pMember->m_Member );
                     if( pUser == NULL )
-                    {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êı¾İÊÇ¿Õ
+                    {//å¦‚æœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
                         continue ;
                     }
 

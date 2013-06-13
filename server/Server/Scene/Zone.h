@@ -54,7 +54,7 @@ public:
     {
         if( m_AreaCount >= MAX_AREA_IN_ZONE )
         {
-            Assert(FALSE && "Õâ¸ö zone µÄ area Ò²Ì«¶àÁË°É£¡");
+            Assert(FALSE && "è¿™ä¸ª zone çš„ area ä¹Ÿå¤ªå¤šäº†å§ï¼");
             return;
         }
 
@@ -67,7 +67,7 @@ public:
 
 protected:
     ObjList                m_HumanList;
-    ObjList                m_ObjList;        // °üº¬m_HumanListÖĞµÄËùÓĞÄÚÈİ
+    ObjList                m_ObjList;        // åŒ…å«m_HumanListä¸­çš„æ‰€æœ‰å†…å®¹
 
     ZoneID_t            m_ZoneID;
     BYTE                m_AreaCount;

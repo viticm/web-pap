@@ -1,10 +1,10 @@
 /************************************************************************/
 /*
-´´½¨ÈÕÆÚ:    2006Äê3ÔÂ2ÈÕ
-´´½¨Ê±¼ä:    11:54
-ÎÄ¼þÃû³Æ:    PetDetailExtraStructDefine.h
+åˆ›å»ºæ—¥æœŸ:    2006å¹´3æœˆ2æ—¥
+åˆ›å»ºæ—¶é—´:    11:54
+æ–‡ä»¶åç§°:    PetDetailExtraStructDefine.h
 
-ÎÄ¼þ¹¦ÄÜ£º    ³èÎïÏûÏ¢µÄ¸½¼ÓÐÅÏ¢¶¼¶¨ÒåÔÚÕâÀï
+æ–‡ä»¶åŠŸèƒ½ï¼š    å® ç‰©æ¶ˆæ¯çš„é™„åŠ ä¿¡æ¯éƒ½å®šä¹‰åœ¨è¿™é‡Œ
 */
 /************************************************************************/
 
@@ -16,11 +16,11 @@ namespace PET_EXTRA_STRUCT
 {
     struct GCExchangePetView_t
     {
-        BYTE                m_bFlag;                            //±êÖ¾´ËÏûÏ¢µÄÓÃÍ¾
+        BYTE                m_bFlag;                            //æ ‡å¿—æ­¤æ¶ˆæ¯çš„ç”¨é€”
 
         GCExchangePetView_t()
         {
-            m_bFlag            =    0;                            //±êÖ¾´ËÏûÏ¢µÄÓÃÍ¾
+            m_bFlag            =    0;                            //æ ‡å¿—æ­¤æ¶ˆæ¯çš„ç”¨é€”
         }
         static UINT GetSize()
         {
@@ -31,21 +31,21 @@ namespace PET_EXTRA_STRUCT
 
     struct GCPlayerShopPetView_t
     {
-        BYTE                m_bFlag;                            //±êÖ¾´ËÏûÏ¢µÄÓÃÍ¾
-        INT                    m_nPrice;                            //³èÎï¼Û¸ñ
-        INT                    m_nSerial;                            //³èÎïÐòÁÐºÅ
-        BYTE                m_bIsMine;                            //ÊÇ·ñÊÇ×Ô¼º²ì¿´
-        BYTE                m_nStallIndex;                        //ËùÔÚ¹ñÌ¨ºÅ
-        BYTE                m_bIsOnSale;                        //ÊÇ·ñÔÚ¼ÜÉÏ
+        BYTE                m_bFlag;                            //æ ‡å¿—æ­¤æ¶ˆæ¯çš„ç”¨é€”
+        INT                    m_nPrice;                            //å® ç‰©ä»·æ ¼
+        INT                    m_nSerial;                            //å® ç‰©åºåˆ—å·
+        BYTE                m_bIsMine;                            //æ˜¯å¦æ˜¯è‡ªå·±å¯Ÿçœ‹
+        BYTE                m_nStallIndex;                        //æ‰€åœ¨æŸœå°å·
+        BYTE                m_bIsOnSale;                        //æ˜¯å¦åœ¨æž¶ä¸Š
 
         GCPlayerShopPetView_t()
         {
-            m_bFlag            =    0;                            //±êÖ¾´ËÏûÏ¢µÄÓÃÍ¾
-            m_nPrice        =    0;                            //³èÎï¼Û¸ñ
-            m_nSerial        =    0;                            //³èÎïÐòÁÐºÅ
-            m_bIsMine        =    0;                            //ÊÇ·ñÊÇ×Ô¼º²ì¿´
-            m_nStallIndex    =    0;                            //ËùÔÚ¹ñÌ¨ºÅ
-            m_bIsOnSale        =    0;                            //ÊÇ·ñÔÚ¼ÜÉÏ
+            m_bFlag            =    0;                            //æ ‡å¿—æ­¤æ¶ˆæ¯çš„ç”¨é€”
+            m_nPrice        =    0;                            //å® ç‰©ä»·æ ¼
+            m_nSerial        =    0;                            //å® ç‰©åºåˆ—å·
+            m_bIsMine        =    0;                            //æ˜¯å¦æ˜¯è‡ªå·±å¯Ÿçœ‹
+            m_nStallIndex    =    0;                            //æ‰€åœ¨æŸœå°å·
+            m_bIsOnSale        =    0;                            //æ˜¯å¦åœ¨æž¶ä¸Š
 
         }
         static UINT GetSize()
@@ -56,15 +56,15 @@ namespace PET_EXTRA_STRUCT
 
     struct GCStallPetView_t
     {
-        BYTE                m_bFlag;                            //±êÖ¾´ËÏûÏ¢µÄÓÃÍ¾
-        INT                    m_nPrice;                            //³èÎï¼Û¸ñ
-        INT                    m_nSerial;                            //³èÎïÐòÁÐºÅ
+        BYTE                m_bFlag;                            //æ ‡å¿—æ­¤æ¶ˆæ¯çš„ç”¨é€”
+        INT                    m_nPrice;                            //å® ç‰©ä»·æ ¼
+        INT                    m_nSerial;                            //å® ç‰©åºåˆ—å·
 
         GCStallPetView_t()
         {
-            m_bFlag            =    0;                            //±êÖ¾´ËÏûÏ¢µÄÓÃÍ¾
-            m_nPrice        =    0;                            //³èÎï¼Û¸ñ
-            m_nSerial        =    0;                            //³èÎïÐòÁÐºÅ
+            m_bFlag            =    0;                            //æ ‡å¿—æ­¤æ¶ˆæ¯çš„ç”¨é€”
+            m_nPrice        =    0;                            //å® ç‰©ä»·æ ¼
+            m_nSerial        =    0;                            //å® ç‰©åºåˆ—å·
         }
         static UINT GetSize()
         {

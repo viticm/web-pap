@@ -56,7 +56,7 @@ UINT BLRetAuthHandler::Execute(BLRetAuth* pPacket, Player* pPlayer )
     if(CurrentThreadID == g_pServerManager->m_ThreadID)
     {
         if(pLoginPlayer->GetPlayerStatus() == PS_LOGIN_WAIT_AUTH)
-        {   //ServerManager ÖÐÖ´ÐÐ
+        {   //ServerManager ä¸­æ‰§è¡Œ
             g_pLoginPlayerManager->SendPacket(pPacket,PlayerID);
             return PACKET_EXE_NOTREMOVE; 
         }
@@ -65,10 +65,10 @@ UINT BLRetAuthHandler::Execute(BLRetAuth* pPacket, Player* pPlayer )
     else if ( CurrentThreadID == g_pLoginPlayerManager->m_ThreadID)
     {
 
-        //¼ì²éGUID ÊÇ·ñÕýÈ·
+        //æ£€æŸ¥GUID æ˜¯å¦æ­£ç¡®
         if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount())!= 0)
         {
-            //Ó¦¸ÃÊÇÒ»´Î´íÎó²Ù×÷
+            //åº”è¯¥æ˜¯ä¸€æ¬¡é”™è¯¯æ“ä½œ
             Log::SaveLog(LOGIN_LOGFILE, "ERROR: BLRetAuthHandler::Execute Errors,acc = %s,Packet acc = %s",
                 pLoginPlayer->GetAccount(),pPacket->GetAccount()) ;
             return PACKET_EXE_CONTINUE;
@@ -81,11 +81,11 @@ UINT BLRetAuthHandler::Execute(BLRetAuth* pPacket, Player* pPlayer )
                 pLoginPlayer->SetAccount(pPacket->GetAccount());
                 pLoginPlayer->SetPlayerStatus(PS_LOGIN_AUTHED);
                 pLoginPlayer->SetPlayerAge( (BYTE)pPacket->GetAge() );
-                //°Ñ¿Í»§¶Ë´Óµ±Ç°LoginPlayerManager ÖÐÊÍ·Å
+                //æŠŠå®¢æˆ·ç«¯ä»Žå½“å‰LoginPlayerManager ä¸­é‡Šæ”¾
                 g_pLoginPlayerManager->DelPlayer(pLoginPlayer->PlayerID());
-                //²¢ÇÒÏòProcessManager ·¢ËÍÏûÏ¢
+                //å¹¶ä¸”å‘ProcessManager å‘é€æ¶ˆæ¯
                 g_pProcessManager->SendPacket(pPacket,pLoginPlayer->PlayerID());
-                //ÐÞ¸Ä¿Í»§¶Ë×´Ì¬Îª PS_LOGIN_WAIT_PROCESS_TURN
+                //ä¿®æ”¹å®¢æˆ·ç«¯çŠ¶æ€ä¸º PS_LOGIN_WAIT_PROCESS_TURN
                 pLoginPlayer->SetPlayerStatus(PS_LOGIN_WAIT_PROCESS_TURN);
                 return PACKET_EXE_NOTREMOVE ;
             }
@@ -112,36 +112,36 @@ UINT BLRetAuthHandler::Execute(BLRetAuth* pPacket, Player* pPlayer )
     }
     else if (CurrentThreadID == g_pProcessPlayerManager->m_ThreadID )
     {
-        //¼ì²éGUID ÊÇ·ñÕýÈ·
+        //æ£€æŸ¥GUID æ˜¯å¦æ­£ç¡®
         if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount())!= 0)
         {
-            //Ó¦¸ÃÊÇÒ»´Î´íÎó²Ù×÷
+            //åº”è¯¥æ˜¯ä¸€æ¬¡é”™è¯¯æ“ä½œ
             Log::SaveLog(LOGIN_LOGFILE, "ERROR: BLRetAuthHandler::Execute Process Errors,acc = %s,Packet acc = %s",
                 pLoginPlayer->GetAccount(),pPacket->GetAccount()) ;
             return PACKET_EXE_CONTINUE;
         }
 
-        //¼ÓÈëµ½g_pProcessPlayerManager ÖÐ£¬ÄÜ¹»´¦Àí¶ÔÓ¦µÄHeartBeat
+        //åŠ å…¥åˆ°g_pProcessPlayerManager ä¸­ï¼Œèƒ½å¤Ÿå¤„ç†å¯¹åº”çš„HeartBeat
         g_pProcessPlayerManager->AddPlayer(pLoginPlayer);
-        //ÏÈ´¦Àílogin ½á¹û
+        //å…ˆå¤„ç†login ç»“æžœ
         LCRetLogin Msg;
         Msg.SetAccount(pLoginPlayer->GetAccount());
         Msg.SetResult(LOGINR_SUCCESS);
         pLoginPlayer->SendPacket(&Msg);
         UINT QueuePos;
-        //¼ÓÈëµ½g_pProcessPlayerQueue ÖÐ£¬ÄÜ¹»¶Ô¿Í»§¶ËÅÅ¶Ó
+        //åŠ å…¥åˆ°g_pProcessPlayerQueue ä¸­ï¼Œèƒ½å¤Ÿå¯¹å®¢æˆ·ç«¯æŽ’é˜Ÿ
         if(g_pProcessPlayerQueue->AddInPlayer(pLoginPlayer->PlayerID(),
             pLoginPlayer->GetAccount(),QueuePos))
         {
             pLoginPlayer->SetQueuePos(QueuePos);
-            //ÉèÖÃµ±Ç°Íæ¼Ò×´Ì¬
+            //è®¾ç½®å½“å‰çŽ©å®¶çŠ¶æ€
             pLoginPlayer->SetPlayerStatus(PS_LOGIN_PROCESS_TURN);
             pLoginPlayer->SetLastSendTurnTime(g_pTimeManager->CurrentTime());    
-            //·¢ËÍ¿ªÊ¼ÅÅ¶ÓÏûÏ¢(HeartBeat ÖÐÖ´ÐÐ£©
+            //å‘é€å¼€å§‹æŽ’é˜Ÿæ¶ˆæ¯(HeartBeat ä¸­æ‰§è¡Œï¼‰
         }
         else
-        {    //ÅÅ¶ÓÍæ¼Ò¶¼³¬¹ýMAX_TURN_PLAYER¸ö
-            //ËùÒÔÖ»ÄÜ¶Ï¿ª´ËÍæ¼ÒµÄÍøÂçÁ¬½Ó
+        {    //æŽ’é˜ŸçŽ©å®¶éƒ½è¶…è¿‡MAX_TURN_PLAYERä¸ª
+            //æ‰€ä»¥åªèƒ½æ–­å¼€æ­¤çŽ©å®¶çš„ç½‘ç»œè¿žæŽ¥
             BOOL boo = pLoginPlayer->FreeOwn() ;
             Log::SaveLog( LOGIN_LOGFILE, "ERROR: BLRetAuthHandler::FreeOwn " ) ;
             Assert( boo ) ;

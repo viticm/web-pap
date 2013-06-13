@@ -15,7 +15,7 @@ namespace Packets
         WGMail( ){} ;
         virtual ~WGMail( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -27,7 +27,7 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         VOID        SetPlayerID( PlayerID_t pid ){ m_PlayerID = pid ; } ;
         PlayerID_t    GetPlayerID( ){ return m_PlayerID ; } ;
 
@@ -37,8 +37,8 @@ namespace Packets
         VOID        SetGUID( GUID_t guid ){    m_GUID = guid ; }
         GUID_t        GetGUID( ){ return m_GUID ; }
     private:
-        //数据
-        PlayerID_t    m_PlayerID ;//收信人的PlayerID
+        //鏁版嵁
+        PlayerID_t    m_PlayerID ;//鏀朵俊浜虹殑PlayerID
         MAIL_LIST    m_MailList ;
         GUID_t        m_GUID ;
 

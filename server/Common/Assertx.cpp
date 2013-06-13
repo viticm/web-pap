@@ -15,10 +15,10 @@
 #include <execinfo.h>
 #endif
 
-int    g_Command_Assert=0 ;//¿ØÖÆ²ÎÊı£¬0:»áÍ¨¹ıµ¯³ö¶Ô»°¿òÈÃÓÃ»§Ñ¡Ôñ(È±Ê¡Öµ)
-                        //            1:ºöÂÔ
-                        //            2:¼ÌĞøÅ×³öÒì³£ÓÃÓÚ»ñÈ¡ÔËĞĞ¶ÑÕ»
-int g_Command_IgnoreMessageBox=FALSE ;//¿ØÖÆ²ÎÊı£¬Ìø¹ıMyMessageBoxµÄÖĞ¶Ï
+int    g_Command_Assert=0 ;//æ§åˆ¶å‚æ•°ï¼Œ0:ä¼šé€šè¿‡å¼¹å‡ºå¯¹è¯æ¡†è®©ç”¨æˆ·é€‰æ‹©(ç¼ºçœå€¼)
+                        //            1:å¿½ç•¥
+                        //            2:ç»§ç»­æŠ›å‡ºå¼‚å¸¸ç”¨äºè·å–è¿è¡Œå †æ ˆ
+int g_Command_IgnoreMessageBox=FALSE ;//æ§åˆ¶å‚æ•°ï¼Œè·³è¿‡MyMessageBoxçš„ä¸­æ–­
 
 
 
@@ -31,7 +31,7 @@ VOID __show__( const CHAR* szTemp )
     printf("Assert:%s",szTemp);
 #endif
 
-    //±£´æÈÕÖ¾
+    //ä¿å­˜æ—¥å¿—
 #ifndef GAME_CLIENT
     FILE* f = fopen( "./Log/assert.log", "a" ) ;
     fwrite( szTemp, 1, strlen(szTemp), f ) ;
@@ -44,7 +44,7 @@ VOID __show__( const CHAR* szTemp )
     if( g_Command_Assert!=1 )
     {
         lock.Lock() ;
-        INT iRet = ::MessageBoxA( NULL, szTemp, "Òì³£", MB_OK ) ;
+        INT iRet = ::MessageBoxA( NULL, szTemp, "å¼‚å¸¸", MB_OK ) ;
         lock.Unlock() ;
     }
 #elif defined(__LINUX__)
@@ -63,7 +63,7 @@ VOID __messagebox__(const CHAR*msg )
     if( g_Command_IgnoreMessageBox )
         return ;
 #if defined(__WINDOWS__)
-    ::MessageBoxA( NULL, msg, "ĞÅÏ¢", MB_OK ) ;
+    ::MessageBoxA( NULL, msg, "ä¿¡æ¯", MB_OK ) ;
 #elif defined(__LINUX__)
 #endif
 }
@@ -77,7 +77,7 @@ VOID __assert__ ( const CHAR * file , UINT line , const CHAR * func , const CHAR
 {
     CHAR szTemp[1024] = {0};
     
-#ifdef __LINUX__ //»»¸ö¸ñÊ½
+#ifdef __LINUX__ //æ¢ä¸ªæ ¼å¼
     sprintf( szTemp, "[%s][%d][%s][%s]\n", file, line, func, expr ) ;
 #else
     sprintf( szTemp, "[%s][%d][%s][%s]", file, line, func, expr ) ;

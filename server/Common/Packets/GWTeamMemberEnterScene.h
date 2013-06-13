@@ -13,7 +13,7 @@ namespace Packets
         GWTeamMemberEnterScene(){};
         virtual        ~GWTeamMemberEnterScene(){};
 
-        //¹«ÓÃ½Ó¿Ú
+        //å…¬ç”¨æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -34,7 +34,7 @@ namespace Packets
         SceneID_t            GetSceneID( ){ return m_SceneID; }
 
     public :
-        PlayerID_t            m_PlayerID;    //Á¬½ÓÕß
+        PlayerID_t            m_PlayerID;    //è¿æ¥è€…
         GUID_t                m_GUID;
         SceneID_t            m_SceneID;
     };

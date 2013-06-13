@@ -1,6 +1,6 @@
 // CGPlayerShopFavorite.h
 // 
-// ÊÕ²Ø¼Ğ²Ù×÷
+// æ”¶è—å¤¹æ“ä½œ
 // 
 //////////////////////////////////////////////////////
 
@@ -26,11 +26,11 @@ namespace Packets
     public:
         CGPlayerShopFavorite( )
         {
-            m_Opt         = OPT_NONE;            //²Ù×÷ÀàĞÍ
+            m_Opt         = OPT_NONE;            //æ“ä½œç±»å‹
         };
         virtual ~CGPlayerShopFavorite( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -46,8 +46,8 @@ namespace Packets
         VOID                    SetFavoriteID(_PLAYERSHOP_GUID nShopID) {m_FavoriteID = nShopID;}
 
     private:
-        BYTE                    m_Opt;                //²Ù×÷ÀàĞÍ
-        _PLAYERSHOP_GUID        m_FavoriteID;        //ÊÕ²ØÄ¿±ê
+        BYTE                    m_Opt;                //æ“ä½œç±»å‹
+        _PLAYERSHOP_GUID        m_FavoriteID;        //æ”¶è—ç›®æ ‡
 
     };
 

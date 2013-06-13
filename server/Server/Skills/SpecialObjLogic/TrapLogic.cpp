@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºTrapLogic.cpp
-// ¹¦ÄÜËµÃ÷£º
+// æ–‡ä»¶åï¼šTrapLogic.cpp
+// åŠŸèƒ½è¯´æ˜ï¼š
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -127,7 +127,7 @@ namespace Combat_Module
                 ScanOperatorIniter.m_pScene = pScene;
                 ScanOperatorIniter.m_pTargets = &Targets;
                 ScanOperatorIniter.m_fRadius = pData->GetEffectRadius();
-                if(-1==pData->GetEffectedObjNumber()) //-1Îª²»ÏŞÊıÁ¿
+                if(-1==pData->GetEffectedObjNumber()) //-1ä¸ºä¸é™æ•°é‡
                 {
                     ScanOperatorIniter.m_nCount = Targets.MAX_OBJ_LIST_SIZE-1;
                 }

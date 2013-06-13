@@ -18,7 +18,7 @@ public:
     GWNotifyUser( ){} ;
     virtual ~GWNotifyUser( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,7 +39,7 @@ public :
     };
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     GUID_t                    GetGUID( ){ return m_GUID ; } ;
     VOID                    SetGUID( GUID_t guid ){ m_GUID = guid ; } ;
 
@@ -50,10 +50,10 @@ public:
     INT                        GetStatus( ){ return m_Status ; } ;
 
 private:
-    //Êı¾İ
-    GUID_t                    m_GUID ;        //Íæ¼ÒµÄGUID
-    PlayerID_t                m_PlayerID ;    //Íæ¼ÒµÄPlayerID
-    INT                        m_Status ;        //µ±Ç°Á¬½ÓµÄ×´Ì¬
+    //æ•°æ®
+    GUID_t                    m_GUID ;        //ç©å®¶çš„GUID
+    PlayerID_t                m_PlayerID ;    //ç©å®¶çš„PlayerID
+    INT                        m_Status ;        //å½“å‰è¿æ¥çš„çŠ¶æ€
 
 };
 

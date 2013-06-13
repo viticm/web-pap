@@ -18,7 +18,7 @@ UINT LCRetCharListHandler::Execute(LCRetCharList* pPacket, Player* pPlayer )
             return PACKET_EXE_CONTINUE ;
         }
 
-        //检查GUID 是否正确
+        //妫�鏌UID 鏄惁姝ｇ‘
         if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount())!= 0)
         {
             Log::SaveLog(LOGIN_LOGFILE,"LCRetCharListHandler::Execute() ....Fails,packacc=%s,acc=%s",
@@ -30,7 +30,7 @@ UINT LCRetCharListHandler::Execute(LCRetCharList* pPacket, Player* pPlayer )
     }
     else
     {
-        AssertEx(FALSE,"LCRetCharListHandler 线程资源执行错误!");
+        AssertEx(FALSE,"LCRetCharListHandler 绾跨▼璧勬簮鎵ц閿欒!");
     }
         
     Log::SaveLog(LOGIN_LOGFILE,"LCRetCharListHandler::Execute() ....OK");

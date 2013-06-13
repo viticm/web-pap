@@ -26,14 +26,14 @@ public :
     virtual VOID    Term(VOID);
     VOID            CleanUp(VOID);
 
-    /// µÃµ½¸ÃAI¶ÔÓ¦µÄObj 
+    /// å¾—åˆ°è¯¥AIå¯¹åº”çš„Obj 
     Obj_Monster*    GetCharacter(VOID)const{ return ((Obj_Monster*)AI_Character::GetCharacter()); }
 
 protected:
     VOID            Init(VOID) ;
 
 //=======================================================================================
-// Âß¼­×´Ì¬¡¢ÊÂ¼şÏà¹Ø
+// é€»è¾‘çŠ¶æ€ã€äº‹ä»¶ç›¸å…³
 //=======================================================================================
 protected:
     virtual VOID     AI_Logic_Idle(UINT uTime);
@@ -53,7 +53,7 @@ protected:
     virtual VOID    Event_OnBeSkill(Obj_Character* pCharacter, INT nGoodEffect);
 
 //=======================================================================================
-//  µĞÈËÏà¹Ø
+//  æ•Œäººç›¸å…³
 //=======================================================================================
 public:
     BOOL            AddEnemy(ObjID_t EnemyID);
@@ -80,7 +80,7 @@ private:
 
 
 //=======================================================================================
-// ¶ÓÓÑÏà¹Ø
+// é˜Ÿå‹ç›¸å…³
 //=======================================================================================
 public:
     VOID            AddTeammate(ObjID_t TeammateID);
@@ -99,7 +99,7 @@ private:
     ObjID_t            m_TeammateID[MAX_TEAMMATE_COUNT];
     
 //=======================================================================================
-// ÎïÆ·Ïà¹Ø
+// ç‰©å“ç›¸å…³
 //=======================================================================================
 public:
     VOID            AddItem(ObjID_t ItemID) { m_ItemID = ItemID; }
@@ -110,26 +110,26 @@ private:
     ObjID_t            m_ItemID;
 
 //=======================================================================================
-// Ñ²Âß²¿·Ö
+// å·¡é€»éƒ¨åˆ†
 //=======================================================================================
 public:
-    VOID            StartPatrol(BOOL bConvoyNPC = FALSE);    // ¿ªÊ¼Ñ²Âß£¬´ÓÑ²ÂßµÄÉÏÒ»¸öÎ»ÖÃ¼ÌĞø×ß
-    VOID            PausePatrol(VOID);                        // ÔİÍ££¬Òª¼ÌĞøÑ²ÂßÇëµ÷ÓÃStartPatrol();    
-    VOID            StopPatrol(VOID);                        // Í£Ö¹Ñ²Âß£¬¸Ã²Ù×÷»á½«µ±Ç°Ñ²ÂßÎ»ÖÃÇå¿ÕÎª³öÉúÎ»ÖÃ
+    VOID            StartPatrol(BOOL bConvoyNPC = FALSE);    // å¼€å§‹å·¡é€»ï¼Œä»å·¡é€»çš„ä¸Šä¸€ä¸ªä½ç½®ç»§ç»­èµ°
+    VOID            PausePatrol(VOID);                        // æš‚åœï¼Œè¦ç»§ç»­å·¡é€»è¯·è°ƒç”¨StartPatrol();    
+    VOID            StopPatrol(VOID);                        // åœæ­¢å·¡é€»ï¼Œè¯¥æ“ä½œä¼šå°†å½“å‰å·¡é€»ä½ç½®æ¸…ç©ºä¸ºå‡ºç”Ÿä½ç½®
     BOOL            IsConvoyNPC(VOID) const { return m_bConvoyNPC; }
 
 protected:
 private:
-    BOOL            m_bContinuePatrol;    /// ±êÊ¶ÊÇ·ñ¼ÌĞøÑ²Âß 
-    BOOL            m_baHead;            /// ÊÇ·ñÏòÕı·½ÏòÑ²Âß
-    BOOL            m_bConvoyNPC;        /// »¤ËÍNPC±êÊ¾
-    INT                m_nIndexOfPassed;    /// ÉÏÒ»¸öÂ·¹ıµÄÑ²Âßµã
-    INT                m_nIndexOfMoveTo;    /// ½«ÒªÒÆ¶¯µ½µÄÑ²Âßµã
+    BOOL            m_bContinuePatrol;    /// æ ‡è¯†æ˜¯å¦ç»§ç»­å·¡é€» 
+    BOOL            m_baHead;            /// æ˜¯å¦å‘æ­£æ–¹å‘å·¡é€»
+    BOOL            m_bConvoyNPC;        /// æŠ¤é€NPCæ ‡ç¤º
+    INT                m_nIndexOfPassed;    /// ä¸Šä¸€ä¸ªè·¯è¿‡çš„å·¡é€»ç‚¹
+    INT                m_nIndexOfMoveTo;    /// å°†è¦ç§»åŠ¨åˆ°çš„å·¡é€»ç‚¹
     INT                m_nSettleTime;
     ScriptID_t        m_PatrolScriptID;
 
 //=======================================================================================
-//  ½»Ì¸(Service)²¿·Ö 
+//  äº¤è°ˆ(Service)éƒ¨åˆ† 
 //=======================================================================================
 public:
     VOID            StartService(VOID) { 
@@ -144,7 +144,7 @@ private:
 
 
 //=======================================================================================
-//  ĞĞÎª²¿·Ö 
+//  è¡Œä¸ºéƒ¨åˆ† 
 //===============================================================================u========
 public:
     BOOL            ToIdle(VOID);
@@ -170,7 +170,7 @@ private:
     INT                m_nMoveSpeed;
 
 //=======================================================================================
-//  ¼¼ÄÜÏà¹Ø 
+//  æŠ€èƒ½ç›¸å…³ 
 //=======================================================================================
 public:
     VOID            SetSkillErrorCode(ORESULT oResult) { m_SkillErrorCode = oResult; }
@@ -187,7 +187,7 @@ private:
     ObjID_t            m_SkillSenderID;
     ORESULT            m_SkillErrorCode;
 //=======================================================================================
-// AIScriptÏà¹Ø 
+// AIScriptç›¸å…³ 
 //=======================================================================================
 public:
     VOID            GetScriptFile(INT ScriptID);
@@ -209,7 +209,7 @@ private:
     FLOAT            m_fNeedGoDist;
 
 //=======================================================================================
-// ¸¨Öú·½·¨ 
+// è¾…åŠ©æ–¹æ³• 
 //=======================================================================================
 public:
     enum E_COMMAND_TYPE
@@ -243,7 +243,7 @@ public:
     VOID            SetLogicStop(BOOL bStop) { m_bLogicStop = bStop; }
     VOID            ProcessPaoPao(VOID);
     VOID            PushCommand(const SAICommand& command) { m_SAICommand = command; }
-    /// ²ÎÊıÖ»ÄÜÊÇ0~1Ö®¼äµÄÊı
+    /// å‚æ•°åªèƒ½æ˜¯0~1ä¹‹é—´çš„æ•°
     VOID            SetSpeedyOfRecover(FLOAT fSpeedyOfRecover = 1.0f);
     FLOAT            GetSpeedyOfRecover(void) const { return m_fSpeedyOfRecover; }
 
@@ -258,8 +258,8 @@ private :
     CMyTimer        m_BodyTimer;
 
     INT                m_nDamage;
-    INT                m_nRefusePaoPaoTime;/// ¾Ü¾øÅİÅİËµ»°µÄÊ±¼ä
-    BOOL            m_bLogicStop;        /// ´ËÂß¼­±êÊ¾ÎªÕæÊ±²»×öÈÎºÎÊÂÇé
+    INT                m_nRefusePaoPaoTime;/// æ‹’ç»æ³¡æ³¡è¯´è¯çš„æ—¶é—´
+    BOOL            m_bLogicStop;        /// æ­¤é€»è¾‘æ ‡ç¤ºä¸ºçœŸæ—¶ä¸åšä»»ä½•äº‹æƒ…
     WORLD_POS        m_ToAttackPos;
     FLOAT            m_fSpeedyOfRecover;
 

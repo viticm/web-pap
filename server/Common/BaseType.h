@@ -1,9 +1,9 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼þÃû³Æ£ºBaseType.h
-//¹¦ÄÜÃèÊö£ºÏµÍ³µ×²ãÀàÐÍ»ù´¡ÎÄ¼þ£¬ÎÞÊÚÈ¨ÈËÔ±²»µÃÐÞ¸Ä´ËÎÄ¼þÄÚÈÝ
-//°æ±¾ËµÃ÷£ºWindows²Ù×÷ÏµÍ³ÐèÒª¶¨Òåºê£º__WINDOWS__
-//            Linux²Ù×÷ÏµÍ³ÐèÒª¶¨Òåºê£º__LINUX__
-//ÐÞ¸ÄÇé¿ö£º
+//æ–‡ä»¶åç§°ï¼šBaseType.h
+//åŠŸèƒ½æè¿°ï¼šç³»ç»Ÿåº•å±‚ç±»åž‹åŸºç¡€æ–‡ä»¶ï¼Œæ— æŽˆæƒäººå‘˜ä¸å¾—ä¿®æ”¹æ­¤æ–‡ä»¶å†…å®¹
+//ç‰ˆæœ¬è¯´æ˜Žï¼šWindowsæ“ä½œç³»ç»Ÿéœ€è¦å®šä¹‰å®ï¼š__WINDOWS__
+//            Linuxæ“ä½œç³»ç»Ÿéœ€è¦å®šä¹‰å®ï¼š__LINUX__
+//ä¿®æ”¹æƒ…å†µï¼š
 //
 /////////////////////////////////////////////////////////////////////////////////
 #ifndef __BASETYPE_H__
@@ -12,7 +12,7 @@
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÍøÂçÐÅÏ¢Ô¤¶¨Òåºê
+//ç½‘ç»œä¿¡æ¯é¢„å®šä¹‰å®
 /////////////////////////////////////////////////////////////////////////////////
 #ifndef FD_SETSIZE
 #define FD_SETSIZE      1024
@@ -20,7 +20,7 @@
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//µ±Ç°°üº¬µÄÏµÍ³Í·ÎÄ¼þÒýÓÃ
+//å½“å‰åŒ…å«çš„ç³»ç»Ÿå¤´æ–‡ä»¶å¼•ç”¨
 /////////////////////////////////////////////////////////////////////////////////
 #if defined(__WINDOWS__)
 #pragma warning ( disable : 4786 )
@@ -48,18 +48,18 @@
 using namespace std;
 
 ///////////////////////////////////////////////////////////////////////
-//±ê×¼Êý¾ÝÀàÐÍ¶¨Òå
+//æ ‡å‡†æ•°æ®ç±»åž‹å®šä¹‰
 ///////////////////////////////////////////////////////////////////////
-#define VOID            void            //±ê×¼¿Õ
-typedef unsigned char    UCHAR;            //±ê×¼ÎÞ·ûºÅCHAR
-typedef char            CHAR;            //±ê×¼CHAR
-typedef unsigned int    uint;            //±ê×¼ÎÞ·ûºÅINT
-typedef int                INT;            //±ê×¼INT
-typedef unsigned short    USHORT;            //±ê×¼ÎÞ·ûºÅshort
-typedef short            SHORT;            //±ê×¼short
-typedef unsigned long    ULONG;            //±ê×¼ÎÞ·ûºÅLONG(²»ÍÆ¼öÊ¹ÓÃ)
-typedef long            LONG;            //±ê×¼LONG(²»ÍÆ¼öÊ¹ÓÃ)
-typedef float            FLOAT;            //±ê×¼float
+#define VOID            void            //æ ‡å‡†ç©º
+typedef unsigned char    UCHAR;            //æ ‡å‡†æ— ç¬¦å·CHAR
+typedef char            CHAR;            //æ ‡å‡†CHAR
+typedef unsigned int    uint;            //æ ‡å‡†æ— ç¬¦å·INT
+typedef int                INT;            //æ ‡å‡†INT
+typedef unsigned short    USHORT;            //æ ‡å‡†æ— ç¬¦å·short
+typedef short            SHORT;            //æ ‡å‡†short
+typedef unsigned long    ULONG;            //æ ‡å‡†æ— ç¬¦å·LONG(ä¸æŽ¨èä½¿ç”¨)
+typedef long            LONG;            //æ ‡å‡†LONG(ä¸æŽ¨èä½¿ç”¨)
+typedef float            FLOAT;            //æ ‡å‡†float
 
 typedef uint            UINT;
 typedef UCHAR            uchar;
@@ -75,24 +75,24 @@ typedef UCHAR            BYTE;
 
 
 ///////////////////////////////////////////////////////////////////////
-//»ù±¾Êý¾Ýºê¶¨Òå
+//åŸºæœ¬æ•°æ®å®å®šä¹‰
 ///////////////////////////////////////////////////////////////////////
 
-//IPµØÖ·µÄ×Ö·û×î´ó³¤¶È
+//IPåœ°å€çš„å­—ç¬¦æœ€å¤§é•¿åº¦
 #define IP_SIZE            24
 #define KEY_SIZE            64
 #define MAX_WORLDCOUNT            256
 #define TIMELENTH            23
 
-//¡ýÕâÑùÔÚ¿ÉÖ´ÐÐÎÄ¼þÖÐ½«ÊÇºº×ÖÏÔÊ¾£¬ÉÏÏßÇ°Òª¸Ä³ÉËæ»úKEY¡ýKEY²»µÃÐ¡ÓÚ10¸ö×Ö½Ú
-#define GAMESERVER_TO_CLIENT_KEY "·þÎñÆ÷¶Ë¶Ô¿Í»§¶ËµÄ·â°üÃÜÔ¿"
-#define CLIENT_TO_GAMESERVER_KEY "·þÎñÆ÷¶Ë¶Ô¿Í»§¶ËµÄ·â°üÃÜÔ¿"
-#define LOGIN_TO_CLIENT_KEY      "·þÎñÆ÷¶Ë¶Ô¿Í»§¶ËµÄ·â°üÃÜÔ¿"
-#define CLIENT_TO_LOGIN_KEY      "·þÎñÆ÷¶Ë¶Ô¿Í»§¶ËµÄ·â°üÃÜÔ¿"
-#define OSTREAM_KEY              "µ×²ãÈ«¾Ö·â°üÁ÷Í¨ÓÃÃÜÔ¿"        
-//¡üÕâÑùÔÚ¿ÉÖ´ÐÐÎÄ¼þÖÐ½«ÊÇºº×ÖÏÔÊ¾£¬ÉÏÏßÇ°Òª¸Ä³ÉËæ»úKEY¡üKEY²»µÃÐ¡ÓÚ10¸ö×Ö½Ú
+//â†“è¿™æ ·åœ¨å¯æ‰§è¡Œæ–‡ä»¶ä¸­å°†æ˜¯æ±‰å­—æ˜¾ç¤ºï¼Œä¸Šçº¿å‰è¦æ”¹æˆéšæœºKEYâ†“KEYä¸å¾—å°äºŽ10ä¸ªå­—èŠ‚
+#define GAMESERVER_TO_CLIENT_KEY "æœåŠ¡å™¨ç«¯å¯¹å®¢æˆ·ç«¯çš„å°åŒ…å¯†é’¥"
+#define CLIENT_TO_GAMESERVER_KEY "æœåŠ¡å™¨ç«¯å¯¹å®¢æˆ·ç«¯çš„å°åŒ…å¯†é’¥"
+#define LOGIN_TO_CLIENT_KEY      "æœåŠ¡å™¨ç«¯å¯¹å®¢æˆ·ç«¯çš„å°åŒ…å¯†é’¥"
+#define CLIENT_TO_LOGIN_KEY      "æœåŠ¡å™¨ç«¯å¯¹å®¢æˆ·ç«¯çš„å°åŒ…å¯†é’¥"
+#define OSTREAM_KEY              "åº•å±‚å…¨å±€å°åŒ…æµé€šç”¨å¯†é’¥"        
+//â†‘è¿™æ ·åœ¨å¯æ‰§è¡Œæ–‡ä»¶ä¸­å°†æ˜¯æ±‰å­—æ˜¾ç¤ºï¼Œä¸Šçº¿å‰è¦æ”¹æˆéšæœºKEYâ†‘KEYä¸å¾—å°äºŽ10ä¸ªå­—èŠ‚
 
-#define PACK_COMPART "$-$"//·â°ü·Ö¸ô·û
+#define PACK_COMPART "$-$"//å°åŒ…åˆ†éš”ç¬¦
 #define PACK_COMPART_SIZE strlen(PACK_COMPART)
 
 #ifndef ENCRYPT
@@ -126,25 +126,25 @@ typedef UCHAR            BYTE;
 
 #define OVER_MAX_SERVER 256
 
-//ÎÞÐ§µÄ¾ä±ú
+//æ— æ•ˆçš„å¥æŸ„
 #define INVALID_HANDLE    -1
-//ÎÞÐ§µÄIDÖµ
+//æ— æ•ˆçš„IDå€¼
 #define INVALID_ID        -1
-//Õæ
+//çœŸ
 #ifndef TRUE
     #define TRUE 1
 #endif
-//¼Ù
+//å‡
 #ifndef FALSE
     #define FALSE 0
 #endif
-//ÎÄ¼þÂ·¾¶µÄ×Ö·û×î´ó³¤¶È
+//æ–‡ä»¶è·¯å¾„çš„å­—ç¬¦æœ€å¤§é•¿åº¦
 #ifndef _MAX_PATH
     #define _MAX_PATH 260
 #endif
 
 ///////////////////////////////////////////////////////////////////////
-//µ÷ÊÔÔ¤¶¨Òåºê¶¨Òå
+//è°ƒè¯•é¢„å®šä¹‰å®å®šä¹‰
 ///////////////////////////////////////////////////////////////////////
 #if defined(NDEBUG)
     #define __ENTER_FUNCTION_FOXNET if(1){
@@ -165,19 +165,19 @@ typedef UCHAR            BYTE;
 
 
 
-//¸ù¾ÝÖ¸ÕëÖµÉ¾³ýÄÚ´æ
+//æ ¹æ®æŒ‡é’ˆå€¼åˆ é™¤å†…å­˜
 #ifndef SAFE_DELETE
 #define SAFE_DELETE(x)    if( (x)!=NULL ) { delete (x); (x)=NULL; }
 #endif
-//¸ù¾ÝÖ¸ÕëÖµÉ¾³ýÊý×éÀàÐÍÄÚ´æ
+//æ ¹æ®æŒ‡é’ˆå€¼åˆ é™¤æ•°ç»„ç±»åž‹å†…å­˜
 #ifndef SAFE_DELETE_ARRAY
 #define SAFE_DELETE_ARRAY(x)    if( (x)!=NULL ) { delete[] (x); (x)=NULL; }
 #endif
-//¸ù¾ÝÖ¸Õëµ÷ÓÃfree½Ó¿Ú
+//æ ¹æ®æŒ‡é’ˆè°ƒç”¨freeæŽ¥å£
 #ifndef SAFE_FREE
 #define SAFE_FREE(x)    if( (x)!=NULL ) { free(x); (x)=NULL; }
 #endif
-//¸ù¾ÝÖ¸Õëµ÷ÓÃRelease½Ó¿Ú
+//æ ¹æ®æŒ‡é’ˆè°ƒç”¨ReleaseæŽ¥å£
 #ifndef SAFE_RELEASE
 #define SAFE_RELEASE(x)    if( (x)!=NULL ) { (x)->Release(); (x)=NULL; }
 #endif

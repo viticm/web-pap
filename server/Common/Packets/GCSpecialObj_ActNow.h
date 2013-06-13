@@ -1,6 +1,6 @@
 // GCSpecialObj_ActNow.h
 // 
-// 技能没击中
+// 鎶�鑳芥病鍑讳腑
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~GCSpecialObj_ActNow( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,7 +39,7 @@ namespace Packets
     public:
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         ObjID_t                GetObjID(VOID) const {return m_nObjID;}
         VOID                SetObjID(ObjID_t nObjID) {m_nObjID=nObjID;}
         
@@ -56,9 +56,9 @@ namespace Packets
         INT                    GetLogicCount(VOID) const {return m_nLogicCount;}
         VOID                SetLogicCount(INT nID) {m_nLogicCount=nID;}
     private:
-        ObjID_t                m_nObjID;    // 特殊对象的ID
-        INT                    m_nLogicCount; //逻辑计数 
-        ObjID_List            m_TargetList; // 目标列表.
+        ObjID_t                m_nObjID;    // 鐗规畩瀵硅薄鐨処D
+        INT                    m_nLogicCount; //閫昏緫璁℃暟 
+        ObjID_List            m_TargetList; // 鐩爣鍒楄〃.
     };
 
     class GCSpecialObj_ActNowFactory : public PacketFactory 

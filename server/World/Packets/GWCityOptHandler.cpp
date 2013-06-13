@@ -23,7 +23,7 @@ UINT GWCityOptHandler::Execute( GWCityOpt* pPacket, Player* pPlayer )
         City* pCity = g_pCityManager->GetCityByGuid(CityGuid);
         if(!pCity)
         {
-            //³ÇÊĞÒÑ¾­²»´æÔÚ
+            //åŸå¸‚å·²ç»ä¸å­˜åœ¨
             Log::SaveLog( WORLD_LOGFILE, "GWCityOptHandler...ERROR: illegal city guid");
             Assert(FALSE);
             return PACKET_EXE_CONTINUE ;
@@ -53,7 +53,7 @@ UINT GWCityOptHandler::Execute( GWCityOpt* pPacket, Player* pPlayer )
 
                 if(i == MAX_CITY_BUILDING_NUM)
                 {
-                    //´Ë³ÇÊĞ,²»´æÔÚÕâ¸ö½¨ÖşÎï.
+                    //æ­¤åŸå¸‚,ä¸å­˜åœ¨è¿™ä¸ªå»ºç­‘ç‰©.
                     Assert(0);
                     return PACKET_EXE_CONTINUE;
                 }

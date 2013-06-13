@@ -1,11 +1,11 @@
 /********************************************************************
-´´½¨ÈÕÆÚ:    2005Äê11ÔÂ1ÈÕ
-´´½¨Ê±¼ä:    10:28
-ÎÄ¼şÃû³Æ:    ItemManager.h
-ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Item\ItemManager.h
+åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ1æ—¥
+åˆ›å»ºæ—¶é—´:    10:28
+æ–‡ä»¶åç§°:    ItemManager.h
+æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\ItemManager.h
 
-ÎÄ¼ş¹¦ÄÜ£º    ¶ÔÎïÆ·µÄÉú³ÉÏú»Ù,´«µİ½øĞĞ¹ÜÀíÀà
-ĞŞ¸Ä¼ÍÂ¼£º
+æ–‡ä»¶åŠŸèƒ½ï¼š    å¯¹ç‰©å“çš„ç”Ÿæˆé”€æ¯,ä¼ é€’è¿›è¡Œç®¡ç†ç±»
+ä¿®æ”¹çºªå½•ï¼š
 
 *********************************************************************/
 
@@ -28,24 +28,24 @@ class ItemManager
 
 public:
 
-    //ÎïÆ·¹ÜÀíÆ÷³õÊ¼»¯
+    //ç‰©å“ç®¡ç†å™¨åˆå§‹åŒ–
     BOOL            Init();
 
-    //²úÉúÒ»¸öÎ¨Ò»µÄÎïÆ·Serial
+    //äº§ç”Ÿä¸€ä¸ªå”¯ä¸€çš„ç‰©å“Serial
     INT                GenItemSerial();
 
-    //²úÉúÒ»¸öÎ¨Ò»ÎïÆ·GUID
+    //äº§ç”Ÿä¸€ä¸ªå”¯ä¸€ç‰©å“GUID
     BOOL            GenItemGuid(_ITEM_GUID& ig);
 
     /*    
-     *    ¸ù¾İ_ITEM_TYPE Éú³É _ITEM
-     *    iQuality ÊÇÀ¶É«×°±¸µÄÆ·ÖÊ¶Î 
+     *    æ ¹æ®_ITEM_TYPE ç”Ÿæˆ _ITEM
+     *    iQuality æ˜¯è“è‰²è£…å¤‡çš„å“è´¨æ®µ 
      */
     BOOL            CreateItem(ITEM_LOG_PARAM* pLogParam,_ITEM_TYPE it,_ITEM& item,INT iQuality=1);
 
     /*    
-     *    ¸ù¾İ ItemSerial Éú³É _ITEM
-     *  iQuality ÊÇÀ¶É«×°±¸µÄÆ·ÖÊ¶Î 
+     *    æ ¹æ® ItemSerial ç”Ÿæˆ _ITEM
+     *  iQuality æ˜¯è“è‰²è£…å¤‡çš„å“è´¨æ®µ 
      */
     BOOL            CreateItem(ITEM_LOG_PARAM* pLogParam,UINT ItemSerial,_ITEM& item,INT iQuality=1);
 
@@ -54,33 +54,33 @@ public:
 protected:
 private:
     /*
-     *    ÄÚ²¿Ê¹ÓÃ·ÖÀàÎïÆ·Éú³É·½·¨
+     *    å†…éƒ¨ä½¿ç”¨åˆ†ç±»ç‰©å“ç”Ÿæˆæ–¹æ³•
      */
-    //´´½¨×°±¸
+    //åˆ›å»ºè£…å¤‡
     BOOL            _CreateEquipFromTable(ITEM_LOG_PARAM* pLogParam,_ITEM_TYPE  it,INT iQuality,_ITEM& item);
-    //´´½¨±¦Ê¯
+    //åˆ›å»ºå®çŸ³
     BOOL            _CreateGemFromTable(_ITEM_TYPE it,_ITEM& item);
-    //´´½¨±¦Ê¯
+    //åˆ›å»ºå®çŸ³
     BOOL            _CreateGemFromTable(UINT    TableIndex,_ITEM& item);
-    //´´½¨ÆÕÍ¨µÀ¾ß
+    //åˆ›å»ºæ™®é€šé“å…·
     BOOL            _CreateMedicFromTable(_ITEM_TYPE it,_ITEM& item);
 
-    //´´½¨²Ø±¦Í¼
+    //åˆ›å»ºè—å®å›¾
     BOOL            _CreateStoreMapFromTable(_ITEM_TYPE    it,_ITEM& item);
     
-    //ÎïÆ·Éú³ÉĞòÁĞºÅ
+    //ç‰©å“ç”Ÿæˆåºåˆ—å·
     INT                m_nLastGenItemSerial;
     
-    //ÊÀ½ç±àºÅ
+    //ä¸–ç•Œç¼–å·
     ID_t            m_WorldId;
-    //·şÎñÆ÷±àºÅ
+    //æœåŠ¡å™¨ç¼–å·
     ID_t            m_ServerId;
-    //¹²ÏíÄÚ´æ·ÃÎÊµ¥Ôª
+    //å…±äº«å†…å­˜è®¿é—®å•å…ƒ
     ItemSerialKeySMU*    m_pSerialSMU;
 };
 
 
-//È«¾ÖÎ¨Ò»ÎïÆ·¹ÜÀíÆ÷
+//å…¨å±€å”¯ä¸€ç‰©å“ç®¡ç†å™¨
 extern    ItemManager*        g_pItemManager;
 
 

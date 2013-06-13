@@ -14,14 +14,14 @@ class Player;
 #define SET_PACKET_INDEX(a,index) ((a)=(((a)&0xffffff)+((index)<<24)))
 #define GET_PACKET_LEN(a) ((a)&0xffffff)
 #define SET_PACKET_LEN(a,len) ((a)=((a)&0xff000000)+(len))
-//ÏûÏ¢Í·ÖÐ°üÀ¨£ºPacketID_t-2×Ö½Ú£»UINT-4×Ö½ÚÖÐ¸ßÎ»Ò»¸ö×Ö½ÚÎªÏûÏ¢ÐòÁÐºÅ£¬ÆäÓà
-//Èý¸ö×Ö½ÚÎªÏûÏ¢³¤¶È
-//Í¨¹ýGET_PACKET_INDEXºÍGET_PACKET_LENºê£¬¿ÉÒÔÈ¡µÃUINTÊý¾ÝÀïÃæµÄÏûÏ¢ÐòÁÐºÅºÍ³¤¶È
-//Í¨¹ýSET_PACKET_INDEXºÍSET_PACKET_LENºê£¬¿ÉÒÔÉèÖÃUINTÊý¾ÝÀïÃæµÄÏûÏ¢ÐòÁÐºÅºÍ³¤¶È
+//æ¶ˆæ¯å¤´ä¸­åŒ…æ‹¬ï¼šPacketID_t-2å­—èŠ‚ï¼›UINT-4å­—èŠ‚ä¸­é«˜ä½ä¸€ä¸ªå­—èŠ‚ä¸ºæ¶ˆæ¯åºåˆ—å·ï¼Œå…¶ä½™
+//ä¸‰ä¸ªå­—èŠ‚ä¸ºæ¶ˆæ¯é•¿åº¦
+//é€šè¿‡GET_PACKET_INDEXå’ŒGET_PACKET_LENå®ï¼Œå¯ä»¥å–å¾—UINTæ•°æ®é‡Œé¢çš„æ¶ˆæ¯åºåˆ—å·å’Œé•¿åº¦
+//é€šè¿‡SET_PACKET_INDEXå’ŒSET_PACKET_LENå®ï¼Œå¯ä»¥è®¾ç½®UINTæ•°æ®é‡Œé¢çš„æ¶ˆæ¯åºåˆ—å·å’Œé•¿åº¦
 #define PACKET_HEADER_SIZE (sizeof(PacketID_t)+sizeof(UINT)+sizeof(UINT))
 
 
-//Packet::Execute(...) µÄ·µ»ØÖµ
+//Packet::Execute(...) çš„è¿”å›žå€¼
 enum PACKET_EXE
 {
     PACKET_EXE_ERROR = 0 ,
@@ -47,11 +47,11 @@ public :
     
     virtual BOOL    Write( SocketOutputStream& oStream ) const = 0;
     
-    //·µ»ØÖµÎª£ºPACKET_EXE ÖÐµÄÄÚÈÝ£»
-    //PACKET_EXE_ERROR ±íÊ¾³öÏÖÑÏÖØ´íÎó£¬µ±Ç°Á¬½ÓÐèÒª±»Ç¿ÖÆ¶Ï¿ª
-    //PACKET_EXE_BREAK ±íÊ¾·µ»ØºóÊ£ÏÂµÄÏûÏ¢½«²»ÔÚµ±Ç°´¦ÀíÑ­»·Àï´¦Àí
-    //PACKET_EXE_CONTINUE ±íÊ¾¼ÌÐøÔÚµ±Ç°Ñ­»·ÀïÖ´ÐÐÊ£ÏÂµÄÏûÏ¢
-    //PACKET_EXE_NOTREMOVE ±íÊ¾¼ÌÐøÔÚµ±Ç°Ñ­»·ÀïÖ´ÐÐÊ£ÏÂµÄÏûÏ¢,µ«ÊÇ²»»ØÊÕµ±Ç°ÏûÏ¢
+    //è¿”å›žå€¼ä¸ºï¼šPACKET_EXE ä¸­çš„å†…å®¹ï¼›
+    //PACKET_EXE_ERROR è¡¨ç¤ºå‡ºçŽ°ä¸¥é‡é”™è¯¯ï¼Œå½“å‰è¿žæŽ¥éœ€è¦è¢«å¼ºåˆ¶æ–­å¼€
+    //PACKET_EXE_BREAK è¡¨ç¤ºè¿”å›žåŽå‰©ä¸‹çš„æ¶ˆæ¯å°†ä¸åœ¨å½“å‰å¤„ç†å¾ªçŽ¯é‡Œå¤„ç†
+    //PACKET_EXE_CONTINUE è¡¨ç¤ºç»§ç»­åœ¨å½“å‰å¾ªçŽ¯é‡Œæ‰§è¡Œå‰©ä¸‹çš„æ¶ˆæ¯
+    //PACKET_EXE_NOTREMOVE è¡¨ç¤ºç»§ç»­åœ¨å½“å‰å¾ªçŽ¯é‡Œæ‰§è¡Œå‰©ä¸‹çš„æ¶ˆæ¯,ä½†æ˜¯ä¸å›žæ”¶å½“å‰æ¶ˆæ¯
     virtual UINT        Execute( Player* pPlayer ) = 0 ;
     
     virtual    PacketID_t    GetPacketID( ) const = 0 ;

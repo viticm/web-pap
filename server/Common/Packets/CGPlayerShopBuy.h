@@ -1,6 +1,6 @@
 // CGStallBuy.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace Packets
         };
         virtual ~CGStallBuy( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -43,7 +43,7 @@ namespace Packets
         VOID                    SetSerial(UINT nSerial) {m_nSerial = nSerial;}
 
     private:
-        ObjID_t                    m_objID;        //Ì¯Ö÷id
+        ObjID_t                    m_objID;        //æ‘Šä¸»id
         _ITEM_GUID                m_ItemGuid;
         UINT                    m_nSerial;
 

@@ -1,6 +1,6 @@
 // CGPlayerShopBuyItem.h
 // 
-// Í¨Öª·şÎñÆ÷¹ºÂòÉÌÆ·
+// é€šçŸ¥æœåŠ¡å™¨è´­ä¹°å•†å“
 // 
 //////////////////////////////////////////////////////
 
@@ -18,12 +18,12 @@ namespace Packets
     public:
         CGPlayerShopBuyItem( )
         {
-            m_StallIndex    =    0;    //¹ñÌ¨ID
-            m_nSerial        =    0;    //µ±Ç°ĞòÁĞºÅ
+            m_StallIndex    =    0;    //æŸœå°ID
+            m_nSerial        =    0;    //å½“å‰åºåˆ—å·
         };
         virtual ~CGPlayerShopBuyItem( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -51,11 +51,11 @@ namespace Packets
         VOID                    SetPetGuid(PET_GUID_t nPetGuid) {m_PetGuid = nPetGuid;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
-        BYTE                    m_StallIndex;        //¹ñÌ¨ID
-        _ITEM_GUID                m_ItemGuid;            //ÎïÆ·GUID
-        PET_GUID_t                m_PetGuid;            //³èÎïGUID
-        UINT                    m_nSerial;            //µ±Ç°ĞòÁĞºÅ
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
+        BYTE                    m_StallIndex;        //æŸœå°ID
+        _ITEM_GUID                m_ItemGuid;            //ç‰©å“GUID
+        PET_GUID_t                m_PetGuid;            //å® ç‰©GUID
+        UINT                    m_nSerial;            //å½“å‰åºåˆ—å·
 
     };
 

@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºDataRecords.h
-// ¹¦ÄÜËµÃ÷£º¼¼ÄÜºÍĞ§¹ûµÄ±í¼ÇÂ¼½á¹¹
+// æ–‡ä»¶åï¼šDataRecords.h
+// åŠŸèƒ½è¯´æ˜ï¼šæŠ€èƒ½å’Œæ•ˆæœçš„è¡¨è®°å½•ç»“æ„
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -219,51 +219,51 @@ namespace Combat_Module
                 CHAR const* Description(VOID) const {return m_szDescription;};
             protected:
             private:
-                BOOL m_bInited; //¸Ã¼ÇÂ¼ÊÇ·ñÒÑ¾­³õÊ¼»¯
-                SkillID_t m_nSkillID; //¼¼ÄÜ±àºÅ
-                MenPaiID_t m_nMenPai;//ÃÅÅÉ±àºÅ
-                CHAR const* m_szName;//¼¼ÄÜµÄÃû³Æ
-                INT m_nSkillMaxLevel;//¼¼ÄÜµÄ×î´óµÈ¼¶
-                INT m_nClientOnly1; //¿Í»§¶Ë×¨ÓÃÊı¾İ
-                BOOL m_bMustUseWeapon; //´Ë¼¼ÄÜ±ØĞëÊ¹ÓÃÎäÆ÷
-                INT m_nDisableByFlag1; //ÊÜÏŞÓÚ±ê¼Ç1
-                INT m_nDisableByFlag2; //ÊÜÏŞÓÚ±ê¼Ç1
-                INT m_nDisableByFlag3; //ÊÜÏŞÓÚ±ê¼Ç1
-                ID_t m_nSkillClass;//¼¼ÄÜÏµ
-                INT m_nXinFaParam_Nouse;//ĞÄ·¨ĞŞÕı²ÎÊı
-                INT m_nRangedSkillFlag;//ÊÇ·ñÊÇÔ¶³Ì¼¼ÄÜ
-                BOOL m_bForceBreakPreSkill;//ÊÇ·ñÇ¿ÖÆÖĞ¶ÏÉÏÒ»¸öÕıÔÚÖ´ĞĞµÄ¼¼ÄÜ
+                BOOL m_bInited; //è¯¥è®°å½•æ˜¯å¦å·²ç»åˆå§‹åŒ–
+                SkillID_t m_nSkillID; //æŠ€èƒ½ç¼–å·
+                MenPaiID_t m_nMenPai;//é—¨æ´¾ç¼–å·
+                CHAR const* m_szName;//æŠ€èƒ½çš„åç§°
+                INT m_nSkillMaxLevel;//æŠ€èƒ½çš„æœ€å¤§ç­‰çº§
+                INT m_nClientOnly1; //å®¢æˆ·ç«¯ä¸“ç”¨æ•°æ®
+                BOOL m_bMustUseWeapon; //æ­¤æŠ€èƒ½å¿…é¡»ä½¿ç”¨æ­¦å™¨
+                INT m_nDisableByFlag1; //å—é™äºæ ‡è®°1
+                INT m_nDisableByFlag2; //å—é™äºæ ‡è®°1
+                INT m_nDisableByFlag3; //å—é™äºæ ‡è®°1
+                ID_t m_nSkillClass;//æŠ€èƒ½ç³»
+                INT m_nXinFaParam_Nouse;//å¿ƒæ³•ä¿®æ­£å‚æ•°
+                INT m_nRangedSkillFlag;//æ˜¯å¦æ˜¯è¿œç¨‹æŠ€èƒ½
+                BOOL m_bForceBreakPreSkill;//æ˜¯å¦å¼ºåˆ¶ä¸­æ–­ä¸Šä¸€ä¸ªæ­£åœ¨æ‰§è¡Œçš„æŠ€èƒ½
                 ID_t m_nSkillType; // Charge, channel or instant shot skill
-                CooldownID_t m_nCooldownID; //ÀäÈ´Ê±¼äµÄID
-                BOOL m_nTargetMustInSpecialState;// Ä¿±ê±ØĞëÊÇ: 0:»îµÄ£»1:ËÀµÄ; -1: ÎŞĞ§
-                ID_t m_nClassByUser;// °´Ê¹ÓÃÕßÀàĞÍ·ÖÀà£¬0:Íæ¼Ò, 1:¹ÖÎï, 2:³èÎï, 3:ÎïÆ·,
-                ID_t m_nPassiveFlag;// Ö÷¶¯»¹ÊÇ±»¶¯¼¼ÄÜ£¬0:Ö÷¶¯¼¼ÄÜ,1:±»¶¯¼¼ÄÜ;
-                ID_t m_nSelectType;//Êó±êµãÑ¡ÀàĞÍ
-                ID_t m_nOperateModeForPetSkill;//³èÎï¼¼ÄÜ·¢¶¯ÀàĞÍ 0:Ö÷ÈËÊÖ¶¯µãÑ¡,1:AI×Ô¶¯Ö´ĞĞ,2:ÔöÇ¿×ÔÉíÊôĞÔµÄ±»¶¯¼¼ÄÜ
-                ID_t m_nPetRateOfSkill; //¼¼ÄÜ·¢¶¯¼¸ÂÊ,Ö»¶Ô³èÎï¼¼ÄÜÓĞĞ§
-                ID_t m_nTypeOfPetSkill; //³èÎï¼¼ÄÜÀàĞÍ,0:Îï¹¦,1:·¨¹¦,2:»¤Ö÷,3:·ÀÓù,4:¸´³ğ;
-                ID_t m_nImpactIDOfSkill; //³èÎï¼¼ÄÜ²úÉúµÄĞ§¹ûID
-                ID_t m_nTargetingLogic; //Ä¿±êÑ¡È¡Âß¼­
-                Time_t m_nPlayActionTime;//¼¼ÄÜ¶¯×÷²¥·ÅµÄÊ±¼ä
-                FLOAT m_fOptimalRangeMin;//¼¼ÄÜÊ¹ÓÃ·¶Î§ÏÂ½ç
-                FLOAT m_fOptimalRangeMax;//¼¼ÄÜÊ¹ÓÃ·¶Î§ÉÏ½ç
-                INT m_nStandFlag; //Õâ¸öÊÇ¼¼ÄÜµÄÁ¢³¡±ê¼Ç£¬-1´ú±í¼¼ÄÜÏûÈõÄ¿±ê£¬0ÊÇÖĞĞÔ£¬1ÊÇ¼¼ÄÜÔöÇ¿Ä¿±ê
-                ID_t m_nTargetLogicByStand; //¼¼ÄÜ×÷ÓÃÓÚÊ²Ã´ÕóÓªµÄÄ¿±ê£¬µĞ¶Ô£¬ÓÑºÃ£¬ÖĞÁ¢£¬È«²¿¡£¡£¡£
-                ID_t m_nTargetCheckByObjType; //¼¼ÄÜµÄÏûºÄ¼°Ïà¹Ø¼ì²é
-                BOOL m_bPartyOnly;//¼¼ÄÜÖ»ÄÜ×÷ÓÃÓÚ¶ÓÓÑ
-                INT m_nChargesOrInterval;//Á¬ĞøÉúĞ§´ÎÊıºÍÒıµ¼ÖĞµÄÉúĞ§´ÎÊı
-                BOOL m_bAutoShot;//×Ô¶¯Á¬ĞøÊÍ·Å¼¼ÄÜ
-                INT m_nAccuracy;//ÃüÖĞÂÊ
-                INT m_nCriticalRate;//»áĞÄÂÊ,»òÕß½Ğ±©»÷ÂÊ
-                BOOL m_bUseNormalAttackRate;//¼¼ÄÜµÄÀäÈ´ÊÇ·ñÊÜÈËÎï¹¥»÷ËÙ¶ÈÓ°Ïì
-                Time_t m_nActiveTime;//¼¤»îÊ±¼ä
-                FLOAT m_fRadius;//×÷ÓÃ°ë¾¶
-                FLOAT m_fAngle;//×÷ÓÃ½Ç¶È
-                INT m_nMaxTargetNumber;//×î´ó×÷ÓÃÄ¿±êÊı
-                BOOL m_bCanInterruptAutoShot; //±¾¼¼ÄÜ»áÖĞ¶Ï×Ô¶¯Éä»÷¼¼ÄÜµÃÁ¬ĞøÊÍ·Å
-                Time_t m_nDelayTime; //ÑÓ³ÙÊ±¼ä
-                ID_t m_aSkillInstance[MAX_CHAR_SKILL_LEVEL];//¼¼ÄÜÊÜĞÄ·¨Ó°ÏìµÄÊı¾İË÷Òı
-                CHAR const* m_szDescription;//¼¼ÄÜµÄÃèÊö
+                CooldownID_t m_nCooldownID; //å†·å´æ—¶é—´çš„ID
+                BOOL m_nTargetMustInSpecialState;// ç›®æ ‡å¿…é¡»æ˜¯: 0:æ´»çš„ï¼›1:æ­»çš„; -1: æ— æ•ˆ
+                ID_t m_nClassByUser;// æŒ‰ä½¿ç”¨è€…ç±»å‹åˆ†ç±»ï¼Œ0:ç©å®¶, 1:æ€ªç‰©, 2:å® ç‰©, 3:ç‰©å“,
+                ID_t m_nPassiveFlag;// ä¸»åŠ¨è¿˜æ˜¯è¢«åŠ¨æŠ€èƒ½ï¼Œ0:ä¸»åŠ¨æŠ€èƒ½,1:è¢«åŠ¨æŠ€èƒ½;
+                ID_t m_nSelectType;//é¼ æ ‡ç‚¹é€‰ç±»å‹
+                ID_t m_nOperateModeForPetSkill;//å® ç‰©æŠ€èƒ½å‘åŠ¨ç±»å‹ 0:ä¸»äººæ‰‹åŠ¨ç‚¹é€‰,1:AIè‡ªåŠ¨æ‰§è¡Œ,2:å¢å¼ºè‡ªèº«å±æ€§çš„è¢«åŠ¨æŠ€èƒ½
+                ID_t m_nPetRateOfSkill; //æŠ€èƒ½å‘åŠ¨å‡ ç‡,åªå¯¹å® ç‰©æŠ€èƒ½æœ‰æ•ˆ
+                ID_t m_nTypeOfPetSkill; //å® ç‰©æŠ€èƒ½ç±»å‹,0:ç‰©åŠŸ,1:æ³•åŠŸ,2:æŠ¤ä¸»,3:é˜²å¾¡,4:å¤ä»‡;
+                ID_t m_nImpactIDOfSkill; //å® ç‰©æŠ€èƒ½äº§ç”Ÿçš„æ•ˆæœID
+                ID_t m_nTargetingLogic; //ç›®æ ‡é€‰å–é€»è¾‘
+                Time_t m_nPlayActionTime;//æŠ€èƒ½åŠ¨ä½œæ’­æ”¾çš„æ—¶é—´
+                FLOAT m_fOptimalRangeMin;//æŠ€èƒ½ä½¿ç”¨èŒƒå›´ä¸‹ç•Œ
+                FLOAT m_fOptimalRangeMax;//æŠ€èƒ½ä½¿ç”¨èŒƒå›´ä¸Šç•Œ
+                INT m_nStandFlag; //è¿™ä¸ªæ˜¯æŠ€èƒ½çš„ç«‹åœºæ ‡è®°ï¼Œ-1ä»£è¡¨æŠ€èƒ½æ¶ˆå¼±ç›®æ ‡ï¼Œ0æ˜¯ä¸­æ€§ï¼Œ1æ˜¯æŠ€èƒ½å¢å¼ºç›®æ ‡
+                ID_t m_nTargetLogicByStand; //æŠ€èƒ½ä½œç”¨äºä»€ä¹ˆé˜µè¥çš„ç›®æ ‡ï¼Œæ•Œå¯¹ï¼Œå‹å¥½ï¼Œä¸­ç«‹ï¼Œå…¨éƒ¨ã€‚ã€‚ã€‚
+                ID_t m_nTargetCheckByObjType; //æŠ€èƒ½çš„æ¶ˆè€—åŠç›¸å…³æ£€æŸ¥
+                BOOL m_bPartyOnly;//æŠ€èƒ½åªèƒ½ä½œç”¨äºé˜Ÿå‹
+                INT m_nChargesOrInterval;//è¿ç»­ç”Ÿæ•ˆæ¬¡æ•°å’Œå¼•å¯¼ä¸­çš„ç”Ÿæ•ˆæ¬¡æ•°
+                BOOL m_bAutoShot;//è‡ªåŠ¨è¿ç»­é‡Šæ”¾æŠ€èƒ½
+                INT m_nAccuracy;//å‘½ä¸­ç‡
+                INT m_nCriticalRate;//ä¼šå¿ƒç‡,æˆ–è€…å«æš´å‡»ç‡
+                BOOL m_bUseNormalAttackRate;//æŠ€èƒ½çš„å†·å´æ˜¯å¦å—äººç‰©æ”»å‡»é€Ÿåº¦å½±å“
+                Time_t m_nActiveTime;//æ¿€æ´»æ—¶é—´
+                FLOAT m_fRadius;//ä½œç”¨åŠå¾„
+                FLOAT m_fAngle;//ä½œç”¨è§’åº¦
+                INT m_nMaxTargetNumber;//æœ€å¤§ä½œç”¨ç›®æ ‡æ•°
+                BOOL m_bCanInterruptAutoShot; //æœ¬æŠ€èƒ½ä¼šä¸­æ–­è‡ªåŠ¨å°„å‡»æŠ€èƒ½å¾—è¿ç»­é‡Šæ”¾
+                Time_t m_nDelayTime; //å»¶è¿Ÿæ—¶é—´
+                ID_t m_aSkillInstance[MAX_CHAR_SKILL_LEVEL];//æŠ€èƒ½å—å¿ƒæ³•å½±å“çš„æ•°æ®ç´¢å¼•
+                CHAR const* m_szDescription;//æŠ€èƒ½çš„æè¿°
         };
         //SkillInstance
         class SkillInstanceData_T
@@ -358,7 +358,7 @@ namespace Combat_Module
                 BOOL m_bCanBeManualCancel;
                 CHAR const* m_szDescription;
         };        
-        //SkillObjData //ÔİÊ±²»ÓÃ
+        //SkillObjData //æš‚æ—¶ä¸ç”¨
         class SkillObjData_T
         {
             public:
@@ -397,7 +397,7 @@ namespace Combat_Module
     namespace Impact_Module
     {
         //ImpactData_T
-        class ImpactData_T  //±ê×¼»¯µÄĞ§¹ûÊı¾İ
+        class ImpactData_T  //æ ‡å‡†åŒ–çš„æ•ˆæœæ•°æ®
         {
             public:
                 enum
@@ -527,23 +527,23 @@ namespace Combat_Module
                 CHAR const* Description(VOID) const {return m_szDescription;};
             protected:
             private:
-                BOOL     m_bInited; //¸Ã¼ÇÂ¼ÊÇ·ñÒÑ¾­³õÊ¼»¯
-                INT     m_nDataID; //Êı¾İID
-                CHAR const* m_szName; //Ãû³Æ
-                //¡£¡£Skip Tooltips(¿Í»§¶ËÏÔÊ¾ÓÃµÄËµÃ÷ĞÔÎÄ×Ö)
-                ID_t     m_nClass; //Àà±ğ
-                ID_t     m_nLogicID; //Âß¼­ID
-                INT        m_nStealthLevel; //ÒşÉí¼¶±ğ
-                INT        m_nTrapUsedFlags; //ÏİÚå×¨ÓÃµÄÒ»Ğ©±ê¼ÇµÄ¼¯³É
-                INT        m_nActiveTimes; //¿ÉÒÔ¼¤·¢µÄ´ÎÊı
-                //¡£¡£Skip ¿Í»§¶ËÏÔÊ¾ÓÃµÄÏà¹ØÊı¾İ
-                Time_t     m_nContinuance; //³ÖĞøÊ±¼ä
-                Time_t     m_nInterval; //¼¤»îÊ±¼ä¼ä¸ô
-                FLOAT    m_fTriggerRadius;//´¥·¢°ë¾¶
-                FLOAT     m_fEffectRadius; //Ó°Ïì°ë¾¶
-                INT          m_nEffectedObjNumber; //Ó°Ïì¶ÔÏóµÄÊıÄ¿
-                Descriptor_T m_aDescriptors[DESCRIPTOR_NUMBER];//²ÎÊıÊı×é
-                CHAR const* m_szDescription;//ÄÚ²¿Ê¹ÓÃµÄÃèÊö
+                BOOL     m_bInited; //è¯¥è®°å½•æ˜¯å¦å·²ç»åˆå§‹åŒ–
+                INT     m_nDataID; //æ•°æ®ID
+                CHAR const* m_szName; //åç§°
+                //ã€‚ã€‚Skip Tooltips(å®¢æˆ·ç«¯æ˜¾ç¤ºç”¨çš„è¯´æ˜æ€§æ–‡å­—)
+                ID_t     m_nClass; //ç±»åˆ«
+                ID_t     m_nLogicID; //é€»è¾‘ID
+                INT        m_nStealthLevel; //éšèº«çº§åˆ«
+                INT        m_nTrapUsedFlags; //é™·é˜±ä¸“ç”¨çš„ä¸€äº›æ ‡è®°çš„é›†æˆ
+                INT        m_nActiveTimes; //å¯ä»¥æ¿€å‘çš„æ¬¡æ•°
+                //ã€‚ã€‚Skip å®¢æˆ·ç«¯æ˜¾ç¤ºç”¨çš„ç›¸å…³æ•°æ®
+                Time_t     m_nContinuance; //æŒç»­æ—¶é—´
+                Time_t     m_nInterval; //æ¿€æ´»æ—¶é—´é—´éš”
+                FLOAT    m_fTriggerRadius;//è§¦å‘åŠå¾„
+                FLOAT     m_fEffectRadius; //å½±å“åŠå¾„
+                INT          m_nEffectedObjNumber; //å½±å“å¯¹è±¡çš„æ•°ç›®
+                Descriptor_T m_aDescriptors[DESCRIPTOR_NUMBER];//å‚æ•°æ•°ç»„
+                CHAR const* m_szDescription;//å†…éƒ¨ä½¿ç”¨çš„æè¿°
         };
     }
 };

@@ -1,6 +1,6 @@
 // GCDetailImpactListUpdate.h
 // 
-// Ğ§¹û±í¸üĞÂ
+// æ•ˆæœè¡¨æ›´æ–°
 // 
 //////////////////////////////////////////////////////
 
@@ -31,11 +31,11 @@ namespace Packets
                 m_nSN                = 0;
                 m_nContinuance        = -1;
             };
-            ObjID_t            m_nSenderID;    // Ğ§¹ûÊÍ·ÅÕßµÄID
-            ImpactID_t        m_nBuffID;        // ÌØĞ§Êı¾İµÄID(Ë÷Òı)
+            ObjID_t            m_nSenderID;    // æ•ˆæœé‡Šæ”¾è€…çš„ID
+            ImpactID_t        m_nBuffID;        // ç‰¹æ•ˆæ•°æ®çš„ID(ç´¢å¼•)
             SkillID_t        m_nSkillID;      // Skill ID
-            UINT            m_nSN;            // Ğ§¹ûĞòÁĞºÅ
-            Time_t            m_nContinuance; // Ğ§¹ûµÄ³ÖĞøÊ±¼ä
+            UINT            m_nSN;            // æ•ˆæœåºåˆ—å·
+            Time_t            m_nContinuance; // æ•ˆæœçš„æŒç»­æ—¶é—´
             
         } ImpactStruct_T;
         GCDetailImpactListUpdate(VOID)
@@ -53,7 +53,7 @@ namespace Packets
         };
         virtual ~GCDetailImpactListUpdate(VOID){};
     
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read(SocketInputStream& iStream);
         virtual BOOL            Write(SocketOutputStream& oStream)const;
         virtual UINT            Execute(Player* pPlayer);

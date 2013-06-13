@@ -1,5 +1,5 @@
 #include "stdafx.h"
-//¿Í»§¶ËÏò·þÎñÆ÷ÉêÇë½¨Á¢¹¤»á
+//å®¢æˆ·ç«¯å‘æœåŠ¡å™¨ç”³è¯·å»ºç«‹å·¥ä¼š
 #include "CGGuildApply.h"
 #include "Log.h"
 #include "GamePlayer.h"
@@ -23,7 +23,7 @@ UINT CGGuildApplyHandler::Execute( CGGuildApply* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     BYTE    GuildNameSize        =    pPacket->GetGuildNameSize();    
     CHAR*    pszGuildName        =    pPacket->GetGuildName();    

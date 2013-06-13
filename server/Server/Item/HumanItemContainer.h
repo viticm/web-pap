@@ -1,4 +1,4 @@
-// Ôö¼ÓÁË´¦Àí±¦Ê¯ÏâÇ¶ÒÔ¼°ÎïÆ·ÊôĞÔ¼Ó¼õµÄº¯Êı
+// å¢åŠ äº†å¤„ç†å®çŸ³é•¶åµŒä»¥åŠç‰©å“å±æ€§åŠ å‡çš„å‡½æ•°
 #ifndef _HUMAN_ITEM_CONTAINER_H_
 #define _HUMAN_ITEM_CONTAINER_H_
 #include "ItemContainer.h"
@@ -24,48 +24,48 @@ class HumanItemContainer:public ItemContainer
     UINT                    m_DBOffSet;
 
 public:
-    virtual        BOOL        Init( const _ITEMCONTAINER_INIT* pInit ) ;//³õÊ¼»¯ÈİÆ÷
-    //ÈİÆ÷±àºÅµ½Bag±àºÅ
+    virtual        BOOL        Init( const _ITEMCONTAINER_INIT* pInit ) ;//åˆå§‹åŒ–å®¹å™¨
+    //å®¹å™¨ç¼–å·åˆ°Bagç¼–å·
     virtual        UINT        ConIndex2BagIndex(UINT uConIndex);
-    //±³°ü±àºÅµ½ÈİÆ÷±àºÅ
+    //èƒŒåŒ…ç¼–å·åˆ°å®¹å™¨ç¼–å·
     virtual        UINT        BagIndex2ConIndex(UINT uBagIndex);
-    //²âÊÔ´«ÈëµÄÒ»¸öÖµÊÇ²»ÊÇÄÜ¹»ÔÚÕâ¸öConµÄ·¶Î§Ö®ÖĞ
+    //æµ‹è¯•ä¼ å…¥çš„ä¸€ä¸ªå€¼æ˜¯ä¸æ˜¯èƒ½å¤Ÿåœ¨è¿™ä¸ªConçš„èŒƒå›´ä¹‹ä¸­
     virtual        BOOL        IsInContainer(UINT uBagIndex);
 
 protected :
-    //ÉèÖÃÎïÆ·µÄÊôĞÔ
+    //è®¾ç½®ç‰©å“çš„å±æ€§
     virtual        BOOL        SetItem( const INT nIndex, const Item* pItem );
-    //ÉèÖÃÎïÆ·ÖØµşÊıÁ¿
+    //è®¾ç½®ç‰©å“é‡å æ•°é‡
     virtual        VOID        SetItemLayCount(INT nIndex, INT nCount) ;
-    //¼õÉÙÎïÆ·ÖØµşÊıÁ¿
+    //å‡å°‘ç‰©å“é‡å æ•°é‡
     virtual        BOOL        DecItemLayCount(INT nIndex, INT nCount=1) ;
-    //Ôö¼ÓÎïÆ·ÖØµşÊıÁ¿
+    //å¢åŠ ç‰©å“é‡å æ•°é‡
     virtual        BOOL        IncItemLayCount(INT nIndex, INT nCount=1);
-    //É¾³ıÎïÆ·
+    //åˆ é™¤ç‰©å“
     virtual        BOOL        EraseItem(UINT uIndex);
-    //ÉèÖÃÎïÆ·ÄÍ¾Ã¶È
+    //è®¾ç½®ç‰©å“è€ä¹…åº¦
     virtual    BOOL            SetItemDur(INT nIndex, INT nDur);
-    //ÉèÖÃÎïÆ·ËğÉËµã
+    //è®¾ç½®ç‰©å“æŸä¼¤ç‚¹
     virtual    BOOL            SetItemDamagePoint(INT nIndex, INT nPoint);
-    //ÉèÖÃÎïÆ·×î´óÄÍ¾Ã¶È
+    //è®¾ç½®ç‰©å“æœ€å¤§è€ä¹…åº¦
     virtual    BOOL            SetItemMaxDur(INT nIndex, INT nDur);
 
-    //ÉèÖÃÎïÆ·ÊôĞÔ
+    //è®¾ç½®ç‰©å“å±æ€§
     virtual    BOOL            SetItemValue(INT nIndex,_ITEM*    pItem);
-    //ÉèÖÃÎïÆ·°ï¶¨
+    //è®¾ç½®ç‰©å“å¸®å®š
     virtual    BOOL            SetItemBind(INT nIndex);
-    //ÉèÖÃÎïÆ·¼ø¶¨ĞÅÏ¢
+    //è®¾ç½®ç‰©å“é‰´å®šä¿¡æ¯
     virtual BOOL            SetItemIdent(INT nIndex);
-    //ÉèÖÃÖÆÔìÕßĞÅÏ¢
+    //è®¾ç½®åˆ¶é€ è€…ä¿¡æ¯
     virtual    BOOL            SetItemCreator(INT nIndex,const CHAR* CreatorName);
 
-    //Ôö¼ÓÎïÆ·ÊôĞÔ
+    //å¢åŠ ç‰©å“å±æ€§
     virtual BOOL            AddItemAttr(INT nIndex,_ITEM_ATTR iA);
-    //É¾³ıÎïÆ·ÊôĞÔ
+    //åˆ é™¤ç‰©å“å±æ€§
     virtual    BOOL            DelItemAttr(INT nIndex,_ITEM_ATTR iA);
-    //É¾³ı±¦Ê¯ĞÅÏ¢
+    //åˆ é™¤å®çŸ³ä¿¡æ¯
     virtual BOOL            DelGemInfo(INT nIndex,INT GemIndex);
-    //Ìí¼Ó±¦Ê¯ĞÅÏ¢
+    //æ·»åŠ å®çŸ³ä¿¡æ¯
     virtual    BOOL            AddGemInfo(INT nIndex,INT& GemIndex,UINT GemType);
 private:
     BOOL                    SetDBDirty(INT OffSet);

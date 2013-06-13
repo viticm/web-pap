@@ -105,10 +105,10 @@ DBCFile::~DBCFile()
     m_pStringBuf = NULL;
 }
 
-//´ÓÄÚ´æÖĞ×Ö·û´®¶ÁÈ¡Ò»ĞĞÎÄ±¾(°´ÕÕ»»ĞĞ·û)
+//ä»å†…å­˜ä¸­å­—ç¬¦ä¸²è¯»å–ä¸€è¡Œæ–‡æœ¬(æŒ‰ç…§æ¢è¡Œç¬¦)
 const CHAR* DBCFile::_GetLineFromMemory(CHAR* pStringBuf, INT nBufSize, const CHAR* pMemory, const CHAR* pDeadEnd)
 {
-    //Ñ°ÕÒÏÂÒ»¸ö»»ĞĞ·û
+    //å¯»æ‰¾ä¸‹ä¸€ä¸ªæ¢è¡Œç¬¦
     register const char* pMem = pMemory;
     if(pMem >= pDeadEnd || *pMem==0) return 0;
 
@@ -127,7 +127,7 @@ BOOL DBCFile::OpenFromMemory(const CHAR* pMemory, const CHAR* pDeadEnd, const CH
 {
     assert(pMemory && pDeadEnd);
     //----------------------------------------------------
-    //ÅĞ¶ÏÊÇ·ñÊÇ¶ş½øÖÆ¸ñÊ½
+    //åˆ¤æ–­æ˜¯å¦æ˜¯äºŒè¿›åˆ¶æ ¼å¼
     if(pDeadEnd - pMemory >=sizeof(FILE_HEAD) && *((UINT*)pMemory)==0XDDBBCC00)
     {
         return OpenFromMemoryImpl_Binary(pMemory, pDeadEnd, szFileName);
@@ -222,7 +222,7 @@ BOOL DBCFile::OpenFromMemoryImpl_Binary(const CHAR* pMemory, const CHAR* pDeadEn
     }
 
     //------------------------------------------------------
-    //Éú³ÉË÷ÒıÁĞ
+    //ç”Ÿæˆç´¢å¼•åˆ—
     CreateIndex(0, szFileName);
 
     return TRUE;
@@ -231,18 +231,18 @@ BOOL DBCFile::OpenFromMemoryImpl_Binary(const CHAR* pMemory, const CHAR* pDeadEn
 BOOL DBCFile::OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName)
 {
     //----------------------------------------------------
-    //·ÖÎöÁĞÊıºÍÀàĞÍ
+    //åˆ†æåˆ—æ•°å’Œç±»å‹
     CHAR szLine[1024*10] = {0};
-    //¶ÁµÚÒ»ĞĞ
+    //è¯»ç¬¬ä¸€è¡Œ
     register const char* pMem = pMemory;
     pMem = _GetLineFromMemory(szLine, 1024*10, pMem, pDeadEnd);
     if(!pMem) return FALSE;
 
-    //·Ö½â
+    //åˆ†è§£
     vector< std::string > vRet;
     _ConvertStringToVector(szLine, vRet, "\t", TRUE, TRUE);
     if(vRet.empty()) return FALSE;
-    //Éú³ÉField Types
+    //ç”ŸæˆField Types
     FILEDS_TYPE vFieldsType;
     vFieldsType.resize(vRet.size());
 
@@ -258,40 +258,40 @@ BOOL DBCFile::OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd,
     }
 
     //--------------------------------------------------------------
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     INT nRecordsNum    = 0;
     INT nFieldsNum    = (INT)vFieldsType.size();
 
-    //ÁÙÊ±×Ö·û´®Çø
+    //ä¸´æ—¶å­—ç¬¦ä¸²åŒº
     vector< std::pair< std::string, INT > >    vStringBuf;
-    //¼ìË÷±í
+    //æ£€ç´¢è¡¨
     std::map< std::string, INT >                    mapStringBuf;
 
     //--------------------------------------------------------------
-    //¿ªÊ¼¶ÁÈ¡
+    //å¼€å§‹è¯»å–
 
-    //¿Õ¶ÁÒ»ĞĞ
+    //ç©ºè¯»ä¸€è¡Œ
     pMem = _GetLineFromMemory(szLine, 1024*10, pMem, pDeadEnd);
     if(!pMem) return FALSE;
 
     INT nStringBufSize = 0;
     do
     {
-        //¶ÁÈ¡Ò»ĞĞ
+        //è¯»å–ä¸€è¡Œ
         pMem = _GetLineFromMemory(szLine, 1024*10, pMem, pDeadEnd);
         if(!pMem) break;;
 
-        //ÊÇ·ñÊÇ×¢ÊÍĞĞ
+        //æ˜¯å¦æ˜¯æ³¨é‡Šè¡Œ
         if(szLine[0] == '#') continue;
 
-        //·Ö½â
+        //åˆ†è§£
         _ConvertStringToVector(szLine, vRet, "\t", TRUE, FALSE);
 
-        //ÁĞÊı²»¶Ô
+        //åˆ—æ•°ä¸å¯¹
         if(vRet.empty()) continue;
         if(vRet.size() != nFieldsNum) 
         {
-            //²¹ÉÏ¿Õ¸ñ
+            //è¡¥ä¸Šç©ºæ ¼
             if((INT)vRet.size() < nFieldsNum)
             {
                 INT nSubNum = nFieldsNum-(INT)vRet.size();
@@ -302,7 +302,7 @@ BOOL DBCFile::OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd,
             }
         }
 
-        //µÚÒ»ÁĞ²»ÄÜÎª¿Õ
+        //ç¬¬ä¸€åˆ—ä¸èƒ½ä¸ºç©º
         if(vRet[0].empty()) continue;
 
         for(register INT i=0; i<nFieldsNum; i++)
@@ -352,7 +352,7 @@ BOOL DBCFile::OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd,
     }while(TRUE);
 
     //--------------------------------------------------------
-    //Éú³ÉÕıÊ½Êı¾İ¿â
+    //ç”Ÿæˆæ­£å¼æ•°æ®åº“
     m_nRecordsNum = nRecordsNum;
     m_nFieldsNum  = nFieldsNum;
     m_nStringBufSize = nStringBufSize+1;
@@ -393,7 +393,7 @@ BOOL DBCFile::OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd,
     }
 
     //------------------------------------------------------
-    //Éú³ÉË÷ÒıÁĞ
+    //ç”Ÿæˆç´¢å¼•åˆ—
     CreateIndex(0, szFileName);
 
     return TRUE;
@@ -404,7 +404,7 @@ BOOL DBCFile::OpenFromTXT(const CHAR* szFileName)
     assert(szFileName);
 
     //----------------------------------------------------
-    //´ò¿ªÎÄ¼ş
+    //æ‰“å¼€æ–‡ä»¶
     FILE* fp = fopen(szFileName, "rb");
     if(NULL == fp) return FALSE;
 
@@ -412,7 +412,7 @@ BOOL DBCFile::OpenFromTXT(const CHAR* szFileName)
     int nFileSize = ftell(fp);
     fseek(fp, 0, SEEK_SET);
 
-    //¶ÁÈëÄÚ´æ
+    //è¯»å…¥å†…å­˜
     char* pMemory = new char[nFileSize+1];
     fread(pMemory, 1, nFileSize, fp);
     pMemory[nFileSize] = 0;
@@ -476,7 +476,7 @@ const DBCFile::FIELD* DBCFile::Search_Posistion(INT nRecordLine, INT nColumNum) 
     return &(m_vDataBuf[nPosition]);
 }
 
-//²éÕÒÄ³ÁĞµÈÓÚÖ¸¶¨ÖµµÄµÚÒ»ĞĞ
+//æŸ¥æ‰¾æŸåˆ—ç­‰äºæŒ‡å®šå€¼çš„ç¬¬ä¸€è¡Œ
 const DBCFile::FIELD* DBCFile::Search_First_Column_Equ(INT nColumnNum, const FIELD& value) const
 {
     if(nColumnNum < 0 || nColumnNum >= m_nFieldsNum) return 0;

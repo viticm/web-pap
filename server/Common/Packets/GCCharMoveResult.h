@@ -17,7 +17,7 @@ namespace Packets
         GCCharMoveResult( ){ m_yNumTargetPos=0; } ;
         virtual ~GCCharMoveResult( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -46,10 +46,10 @@ namespace Packets
         }
         const WORLD_POS        *getTargetPos(VOID)const { return m_aTargetPos; }
     private:
-        INT                    m_nHandleID;    // 操作ID
+        INT                    m_nHandleID;    // 鎿嶄綔ID
         INT                    m_nResult;        // ORESULT
         BYTE                m_yNumTargetPos;
-        WORLD_POS            m_aTargetPos[MAX_CHAR_PATH_NODE_NUMBER];        // 目标位置
+        WORLD_POS            m_aTargetPos[MAX_CHAR_PATH_NODE_NUMBER];        // 鐩爣浣嶇疆
     };
 
 

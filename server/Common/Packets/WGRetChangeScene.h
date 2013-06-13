@@ -18,7 +18,7 @@ public:
     WGRetChangeScene( ){} ;
     virtual ~WGRetChangeScene( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -33,13 +33,13 @@ public:
 public :
     enum CHANGESCENERETURN
     {
-        CSR_SUCCESS = 0 ,        //³É¹¦£¬Í¬Ò»·şÎñÆ÷
-        CSR_SUCCESS_DIFFSERVER ,//³É¹¦£¬²»Í¬·şÎñÆ÷
-        CSR_ERROR ,                //Ê§°Ü
+        CSR_SUCCESS = 0 ,        //æˆåŠŸï¼ŒåŒä¸€æœåŠ¡å™¨
+        CSR_SUCCESS_DIFFSERVER ,//æˆåŠŸï¼Œä¸åŒæœåŠ¡å™¨
+        CSR_ERROR ,                //å¤±è´¥
     };
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID                    SetPlayerID( PlayerID_t pid ){ m_PlayerID = pid ; } ;
     PlayerID_t                GetPlayerID( ){ return m_PlayerID ; } ;
 
@@ -56,9 +56,9 @@ public:
     GUID_t                    GetGUID( ){ return m_GUID ; } ;
 
 private:
-    //Êı¾İ
-    PlayerID_t                m_PlayerID ;    //Á¬½ÓÕß
-    GUID_t                    m_GUID ;    //Á¬½ÓÕß
+    //æ•°æ®
+    PlayerID_t                m_PlayerID ;    //è¿æ¥è€…
+    GUID_t                    m_GUID ;    //è¿æ¥è€…
     BYTE                    m_Return ;    //enum CHANGESCENERETURN
     SceneID_t                m_SceneID ;
     UINT                    m_uKey ;

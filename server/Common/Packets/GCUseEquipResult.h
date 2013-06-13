@@ -55,17 +55,17 @@ namespace Packets
 
 
     private:
-        BYTE            m_Result;        //½á¹ûĞÅÏ¢
-        BYTE            m_EquipPoint;    //×°Åäµã
-        BYTE            m_BagIndex;        //´æ·ÅµÄÎ»ÖÃ
+        BYTE            m_Result;        //ç»“æœä¿¡æ¯
+        BYTE            m_EquipPoint;    //è£…é…ç‚¹
+        BYTE            m_BagIndex;        //å­˜æ”¾çš„ä½ç½®
 
         _ITEM_GUID        m_ItemID;        //
         
-        UINT            m_ItemResId;    //BagIndex ¶ÔÓ¦µÄ×ÊÔ´
+        UINT            m_ItemResId;    //BagIndex å¯¹åº”çš„èµ„æº
 
         _ITEM_GUID        m_EquipID;
 
-        UINT            m_EquipResId;  //EquipPoint¶ÔÓ¦µÄ×ÊÔ´
+        UINT            m_EquipResId;  //EquipPointå¯¹åº”çš„èµ„æº
 
     };
 

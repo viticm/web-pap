@@ -50,8 +50,8 @@ namespace Packets
 
     private:
             
-        BYTE            m_Result;                //是否成功，不成功包含错误信息
-        BYTE            m_EquipPoint;            //成功后，丢弃物品的EquipPoint
+        BYTE            m_Result;                //鏄惁鎴愬姛锛屼笉鎴愬姛鍖呭惈閿欒淇℃伅
+        BYTE            m_EquipPoint;            //鎴愬姛鍚庯紝涓㈠純鐗╁搧鐨凟quipPoint
         UINT            m_ItemTableIndex;
     };
 

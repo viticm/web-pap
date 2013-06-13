@@ -42,7 +42,7 @@ BOOL TurnPlayerQueue::AddInPlayer(PlayerID_t pID,const CHAR* Name,UINT& QueuePos
     AutoLock_T autolock(m_Lock);
 
     if( m_pTurnPlayerQueue[m_Tail].Used)
-    {//¶ÓÁÐÂú
+    {//é˜Ÿåˆ—æ»¡
         return FALSE;
     }
 
@@ -72,7 +72,7 @@ BOOL    TurnPlayerQueue::GetOutPlayer(PlayerID_t& pID,CHAR* NameBuff)
     AutoLock_T autolock(m_Lock);
 
     if( m_pTurnPlayerQueue[m_Head].Used== FALSE )
-    {//Ã»ÓÐ¶ÓÁÐÍæ¼Ò
+    {//æ²¡æœ‰é˜Ÿåˆ—çŽ©å®¶
         return FALSE ;
     }
     
@@ -133,7 +133,7 @@ BOOL WorldPlayerQueue::AddInPlayer(PlayerID_t pID,const CHAR* Name,GUID_t    gui
     AutoLock_T autolock(m_Lock);
 
     if( m_pWorldPlayerQueue[m_Tail].Used)
-    {//¶ÓÁÐÂú
+    {//é˜Ÿåˆ—æ»¡
         return FALSE;
     }
 
@@ -166,7 +166,7 @@ BOOL    WorldPlayerQueue::GetOutPlayer(UINT QueuePos)
     AutoLock_T autolock(m_Lock);
 
     if( m_pWorldPlayerQueue[m_Head].Used== FALSE )
-    {//Ã»ÓÐ¶ÓÁÐÍæ¼Ò
+    {//æ²¡æœ‰é˜Ÿåˆ—çŽ©å®¶
         return FALSE ;
     }
     Assert(QueuePos == m_Head);
@@ -189,7 +189,7 @@ BOOL    WorldPlayerQueue::FindHeadPlayer(UINT& QueuePos)
     AutoLock_T autolock(m_Lock);
 
     if( m_pWorldPlayerQueue[m_Head].Used== FALSE )
-    {//Ã»ÓÐ¶ÓÁÐÍæ¼Ò
+    {//æ²¡æœ‰é˜Ÿåˆ—çŽ©å®¶
         return FALSE ;
     }
     QueuePos = m_Head;

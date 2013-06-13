@@ -13,7 +13,7 @@ namespace Packets
             CGTeamRetInvite(){};
             virtual        ~CGTeamRetInvite(){};
 
-            //¹«ÓÃ½Ó¿Ú
+            //å…¬ç”¨æ¥å£
             virtual BOOL            Read( SocketInputStream& iStream ) ;
             virtual BOOL            Write( SocketOutputStream& oStream )const ;
             virtual UINT            Execute( Player* pPlayer ) ;
@@ -31,7 +31,7 @@ namespace Packets
 
     public :
         BYTE                m_Return ;
-        GUID_t                m_GUID ;    //ÑûÇëÕß
+        GUID_t                m_GUID ;    //é‚€è¯·è€…
 
     };
 

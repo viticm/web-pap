@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼þÃû£º    CGStopTeamFollowHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\CGStopTeamFollowHandler.cpp
- *    ´´½¨Ê±¼ä£º    2005 Äê 11 ÔÂ 23 ÈÕ    22:55
+ *    æ–‡ä»¶åï¼š    CGStopTeamFollowHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\CGStopTeamFollowHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 11 æœˆ 23 æ—¥    22:55
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ÐÞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "CGStopTeamFollow.h"
@@ -40,7 +40,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
     if ( pHuman->__GetTeamFollowFlag() )

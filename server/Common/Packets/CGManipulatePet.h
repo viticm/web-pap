@@ -1,6 +1,6 @@
 // CGManipulatePet.h
 // 
-// ÇëÇó²Ù×÷³èÎï·µ»Ø½á¹û
+// è¯·æ±‚æ“ä½œå® ç‰©è¿”å›ç»“æœ
 //
 //////////////////////////////////////////////////////
 
@@ -16,11 +16,11 @@ namespace Packets
 {
     enum ENUM_MANIPULATE_TYPE
     {
-        MANIPULATE_INVALID = -1,    // ÎŞĞ§
-        MANIPULATE_CREATEPET,        // ÕÙ»½³èÎï
-        MANIPULATE_DELETEPET,        // ÊÕ»Ø³èÎï
-        MANIPULATE_FREEPET,            // ·ÅÉú³èÎï
-        MANIPULATE_ASKOTHERPETINFO, // ²ì¿´ÆäËûÍæ¼ÒµÄ³èÎïĞÅÏ¢(³èÎïÕ÷ÓÑµÈÓÃ...)
+        MANIPULATE_INVALID = -1,    // æ— æ•ˆ
+        MANIPULATE_CREATEPET,        // å¬å”¤å® ç‰©
+        MANIPULATE_DELETEPET,        // æ”¶å›å® ç‰©
+        MANIPULATE_FREEPET,            // æ”¾ç”Ÿå® ç‰©
+        MANIPULATE_ASKOTHERPETINFO, // å¯Ÿçœ‹å…¶ä»–ç©å®¶çš„å® ç‰©ä¿¡æ¯(å® ç‰©å¾å‹ç­‰ç”¨...)
 
 
         MANIPULATE_NUMBERS,
@@ -36,7 +36,7 @@ namespace Packets
 
         ~CGManipulatePet( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -61,7 +61,7 @@ namespace Packets
         INT                GetManipulateType(VOID)const{ return m_nType; }
 
     private:
-        ObjID_t            m_ObjID;    // ³èÎïµÄObjID;
+        ObjID_t            m_ObjID;    // å® ç‰©çš„ObjID;
         PET_GUID_t        m_PetGUID;
         INT                m_nType;
     };

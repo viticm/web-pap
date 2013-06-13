@@ -1,6 +1,6 @@
 // GCMissionResult.h
 // 
-// 任务结果
+// 浠诲姟缁撴灉
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         GCMissionResult( ){}
         virtual ~GCMissionResult( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -32,7 +32,7 @@ namespace Packets
         VOID                    setIsFinished( BYTE isFinished ) { m_IsFinished = isFinished; }
 
     private:
-        BYTE                    m_IsFinished;//是否已经完成
+        BYTE                    m_IsFinished;//鏄惁宸茬粡瀹屾垚
     };
 
 

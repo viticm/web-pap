@@ -1,6 +1,6 @@
 // CGSetPetAttrib.h
 // 
-// 设置宠物属性点
+// 璁剧疆瀹犵墿灞炴�х偣
 // 
 //////////////////////////////////////////////////////
 
@@ -37,7 +37,7 @@ namespace Packets
 
         virtual ~CGSetPetAttrib( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -109,16 +109,16 @@ namespace Packets
     private:
         PET_GUID_t        m_GUID;                            // ID
 
-        Flag16            m_Flags;                        // 每个位表示一个属性是否要刷新 ENUM_DETAIL_ATTRIB
+        Flag16            m_Flags;                        // 姣忎釜浣嶈〃绀轰竴涓睘鎬ф槸鍚﹁鍒锋柊 ENUM_DETAIL_ATTRIB
 
-        BYTE            m_byNameSize;                    // 名称长度,不包括最后的'\0'
-        CHAR            m_szName[MAX_CHARACTER_NAME];    // 名称
+        BYTE            m_byNameSize;                    // 鍚嶇О闀垮害,涓嶅寘鎷渶鍚庣殑'\0'
+        CHAR            m_szName[MAX_CHARACTER_NAME];    // 鍚嶇О
 
-        INT                m_StrIncrement;                    // 力量增量
-        INT                m_ConIncrement;                    // 体力增量
-        INT             m_DexIncrement;                    // 身法增量
-        INT                m_SprIncrement;                    // 灵气增量
-        INT             m_IntIncrement;                    // 定力增量
+        INT                m_StrIncrement;                    // 鍔涢噺澧為噺
+        INT                m_ConIncrement;                    // 浣撳姏澧為噺
+        INT             m_DexIncrement;                    // 韬硶澧為噺
+        INT                m_SprIncrement;                    // 鐏垫皵澧為噺
+        INT             m_IntIncrement;                    // 瀹氬姏澧為噺
     };
 
     class CGSetPetAttribFactory : public PacketFactory 

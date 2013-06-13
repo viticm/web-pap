@@ -15,7 +15,7 @@ HWND    g_hWatcherWnd = NULL;
 #ifdef _AXTRACE_DISABLE_
 
     //...
-    //½ûÖ¹ºó¿Õ´úÂë
+    //ç¦æ­¢åç©ºä»£ç 
     //...
 
 #else
@@ -30,14 +30,14 @@ HWND    g_hWatcherWnd = NULL;
         char            pContents[CONTENTS_LENGTH];
     } AXIATRACEDATA, FAR *LPAXIATRACEDATA;
 
-    //ĞÅÏ¢·¢ËÍº¯Êı
+    //ä¿¡æ¯å‘é€å‡½æ•°
     VOID AxTrace(unsigned char nWnd, unsigned char nType, const char *pszFmt, ...) { try
     {
         if(!g_hWatcherWnd)
         {
-            //Ñ°ÕÒ¼à¿Ø´°¿Ú
+            //å¯»æ‰¾ç›‘æ§çª—å£
             g_hWatcherWnd = ::FindWindowA(NULL, WATCHER_WINDOW_TITLE);
-            //Ã»ÓĞÕÒµ½£¬·µ»Ø
+            //æ²¡æœ‰æ‰¾åˆ°ï¼Œè¿”å›
             if(!g_hWatcherWnd) return;
         }
 
@@ -45,7 +45,7 @@ HWND    g_hWatcherWnd = NULL;
         static COPYDATASTRUCT   cCopyData;
         ZeroMemory(&cCopyData, sizeof(COPYDATASTRUCT));
         
-        //ÏûÏ¢ÀàĞÍ
+        //æ¶ˆæ¯ç±»å‹
         cTraceData.cTraceType = 1;
         cTraceData.cWinNum = (nWnd == INVALID_TRACE_WND) ? 
             (unsigned char)(:: GetCurrentProcessId()%256) : (unsigned char)nWnd;
@@ -55,12 +55,12 @@ HWND    g_hWatcherWnd = NULL;
         _vsnprintf((char *)cTraceData.pContents, CONTENTS_LENGTH, pszFmt, ptr);
         va_end(ptr);
 
-        //ÉèÖÃCOPYDATA½á¹¹
+        //è®¾ç½®COPYDATAç»“æ„
         cCopyData.dwData = 0;
         cCopyData.cbData = sizeof(unsigned char)*4 + sizeof(INT) + strlen(cTraceData.pContents) + 1;
         cCopyData.lpData = &cTraceData;
 
-        //Í¨¹ıCOPYDATA·¢ËÍµ½½ÓÊÜ´°¿Ú
+        //é€šè¿‡COPYDATAå‘é€åˆ°æ¥å—çª—å£
         SendMessage(g_hWatcherWnd, WM_COPYDATA, NULL, (LPARAM)&cCopyData);
     }catch(...) {} }
 
@@ -73,9 +73,9 @@ HWND    g_hWatcherWnd = NULL;
     {
         if(!g_hWatcherWnd)
         {
-            //Ñ°ÕÒ¼à¿Ø´°¿Ú
+            //å¯»æ‰¾ç›‘æ§çª—å£
             g_hWatcherWnd = ::FindWindowA(NULL, WATCHER_WINDOW_TITLE);
-            //Ã»ÓĞÕÒµ½£¬·µ»Ø
+            //æ²¡æœ‰æ‰¾åˆ°ï¼Œè¿”å›
             if(!g_hWatcherWnd) return;
         }
 
@@ -83,7 +83,7 @@ HWND    g_hWatcherWnd = NULL;
         static COPYDATASTRUCT   cCopyData;
         ZeroMemory(&cCopyData, sizeof(COPYDATASTRUCT));
         
-        //±äÁ¿¼à¿ØÀàĞÍ
+        //å˜é‡ç›‘æ§ç±»å‹
         cTraceData.cTraceType = 2;
         cTraceData.cWinNum = (unsigned char)nWnd;
         cTraceData.cTypeNum = (unsigned char)nType;
@@ -135,12 +135,12 @@ HWND    g_hWatcherWnd = NULL;
             return;
         }
 
-        //ÉèÖÃCOPYDATA½á¹¹
+        //è®¾ç½®COPYDATAç»“æ„
         cCopyData.dwData = 0;
         cCopyData.cbData = sizeof(unsigned char)*4 + sizeof(INT) + strlen(cTraceData.pContents) + 1;
         cCopyData.lpData = &cTraceData;
 
-        //Í¨¹ıCOPYDATA·¢ËÍµ½½ÓÊÜ´°¿Ú
+        //é€šè¿‡COPYDATAå‘é€åˆ°æ¥å—çª—å£
         SendMessage(g_hWatcherWnd, WM_COPYDATA, NULL, (LPARAM)&cCopyData);
     }catch(...) {} }
 

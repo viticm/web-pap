@@ -6,7 +6,7 @@
 #include "TimeManager.h"
 #include "CommandThread.h"
 
-#define MAX_SERVER_IDLE_TIME    30*1000  //·şÎñÆ÷Í£Ö¹ÏìÓ¦Ê±¼ä(ºÁÃë)
+#define MAX_SERVER_IDLE_TIME    30*1000  //æœåŠ¡å™¨åœæ­¢å“åº”æ—¶é—´(æ¯«ç§’)
 
 extern GLOBAL_CONFIG    g_SMConfig;
 
@@ -55,7 +55,7 @@ public:
                 Log::SaveLog("./Log/ShareMemory.log","Receive Server Crash command..");
                 BOOL bRet =  DoSaveAll();
                 
-                //ÇåÀí¶ÔÓ¦µÄÊı¾İ±êÖ¾
+                //æ¸…ç†å¯¹åº”çš„æ•°æ®æ ‡å¿—
             
                  DoClear();        
 

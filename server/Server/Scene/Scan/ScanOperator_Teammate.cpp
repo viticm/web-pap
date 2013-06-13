@@ -51,13 +51,13 @@ __ENTER_FUNCTION
         return SCANRETURN_CONTINUE;
     }
     Obj_Character* pCharacter = (Obj_Character*)pObj ;
-    // »î×ÅµÄ£»²»ÊÇµÐ¶ÔµÄ
+    // æ´»ç€çš„ï¼›ä¸æ˜¯æ•Œå¯¹çš„
     if ( pCharacter->IsAlive()                        
         && !m_pMonster->IsEnemy( pCharacter ) 
         && ((Obj_Monster*)pCharacter)->GetMonsterAI()->HasEnemy() != m_bOnlyNoEnemy )
     {
         if (!m_bScanAllMonster)
-        {// Èç¹û²»ÊÇÉ¨ÃèËùÒÔÀàÐÍµÄ¹ÖÎïÔòÖ»É¨ÃèÖ÷¶¯¹¥»÷µÄ¹Ö£¡
+        {// å¦‚æžœä¸æ˜¯æ‰«ææ‰€ä»¥ç±»åž‹çš„æ€ªç‰©åˆ™åªæ‰«æä¸»åŠ¨æ”»å‡»çš„æ€ªï¼
             if (((Obj_Monster*)pCharacter)->GetMonsterAI()->AIParam(AIPARAM_SCANTIME) < 0)
             {
                 return SCANRETURN_CONTINUE;
@@ -69,14 +69,14 @@ __ENTER_FUNCTION
         if ( m_pMonster->GetID() == ((Obj_Monster*)pCharacter)->GetID() )
             return SCANRETURN_CONTINUE;
 
-        //Óë¶ÓÓÑÎ»ÖÃÖ®¼äµÄ¾àÀë
+        //ä¸Žé˜Ÿå‹ä½ç½®ä¹‹é—´çš„è·ç¦»
         FLOAT fDist = MySqrt(m_pMonster->getWorldPos(), pCharacter->getWorldPos() ) ;
         if( fDist<m_fRadius )
         {    
             INT nCount = m_pMonster->GetMonsterAI()->GetTeammateCount();
             if ( nCount >= m_nCount )
                 return SCANRETURN_RETURN ;
-            //Óë¶ÓÓÑÎ»ÖÃÖ®¼äµÄ¾àÀëÐ¡ÓÚÌØ¶¨ÖµÊ±²Å¼ÓÈë¶ÓÓÑ¶ÓÁÐ
+            //ä¸Žé˜Ÿå‹ä½ç½®ä¹‹é—´çš„è·ç¦»å°äºŽç‰¹å®šå€¼æ—¶æ‰åŠ å…¥é˜Ÿå‹é˜Ÿåˆ—
             m_pMonster->GetMonsterAI()->AddTeammate( pCharacter->GetID() ) ;
         }
     }

@@ -17,7 +17,7 @@ using namespace PLAYER_SHOP;
 GLOBAL_CONFIG    g_SMConfig;
 extern BOOL g_LockTimeOutEnable;
 
-//HumanSMU µÄĞÄÌø
+//HumanSMU çš„å¿ƒè·³
 
 template<>
 BOOL    SMULogicManager<HumanSMU>::DoSaveAll()
@@ -30,10 +30,10 @@ BOOL    SMULogicManager<HumanSMU>::DoSaveAll()
         }
 
         INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize();
-        //×öÔ¤ÏÈÍ³¼Æ
-        INT        iHoldDataCount    =    0;        //ÒÑ¾­Õ¼¾İÎ»ÖÃµÄSMU¸öÊı
-        INT        iCanSaveCount    =    0;        //·şÎñÆ÷Í¨ÖªÏÂÏßµÈ´ı´æÅÌµµ°¸ÊıÁ¿
-        INT        iHaveSaveCount    =    0;        //ÒÑ¾­´æÅÌµÈ´ı·şÎñÆ÷»ØÊÕ¸öÊı
+        //åšé¢„å…ˆç»Ÿè®¡
+        INT        iHoldDataCount    =    0;        //å·²ç»å æ®ä½ç½®çš„SMUä¸ªæ•°
+        INT        iCanSaveCount    =    0;        //æœåŠ¡å™¨é€šçŸ¥ä¸‹çº¿ç­‰å¾…å­˜ç›˜æ¡£æ¡ˆæ•°é‡
+        INT        iHaveSaveCount    =    0;        //å·²ç»å­˜ç›˜ç­‰å¾…æœåŠ¡å™¨å›æ”¶ä¸ªæ•°
 
         for(INT iIndex = 0;iIndex<MaxPoolSize;iIndex++)
         {
@@ -45,7 +45,7 @@ BOOL    SMULogicManager<HumanSMU>::DoSaveAll()
             }
             INT        UseStatus    =    pSMU->GetUseStatus(SM_C_WRITE);
 
-            if(UseStatus == SM_USE_HOLDDATA||UseStatus ==SM_USE_READYFREE) //±¾SMU ±»ºÏ·¨Õ¼¾İ
+            if(UseStatus == SM_USE_HOLDDATA||UseStatus ==SM_USE_READYFREE) //æœ¬SMU è¢«åˆæ³•å æ®
             {
                 iHoldDataCount++;
             }
@@ -70,7 +70,7 @@ BOOL    SMULogicManager<HumanSMU>::DoSaveAll()
             INT        UseStatus    =    pSMU->GetUseStatusFast();
 
 
-            if(UseStatus == SM_USE_HOLDDATA||UseStatus ==SM_USE_READYFREE) //±¾SMU ±»ºÏ·¨Õ¼¾İ
+            if(UseStatus == SM_USE_HOLDDATA||UseStatus ==SM_USE_READYFREE) //æœ¬SMU è¢«åˆæ³•å æ®
             {
                 FULLUSERDATA    FullData;
                 GUID_t    guid = INVALID_ID;
@@ -86,9 +86,9 @@ BOOL    SMULogicManager<HumanSMU>::DoSaveAll()
                         continue;
                     }
 
-                    pSMU->Copy2FullData(SM_C_WRITE,&FullData);        //½«ShareMemory ÖĞ¶ÔÓ¦µÄ½ÇÉ«Êı¾İcopy³öÀ´
+                    pSMU->Copy2FullData(SM_C_WRITE,&FullData);        //å°†ShareMemory ä¸­å¯¹åº”çš„è§’è‰²æ•°æ®copyå‡ºæ¥
 
-                    FullData.m_Human.m_LastLogoutTime = g_pTimeManager->CurrentDate();        //ÏÂÏßÊ±¼ä
+                    FullData.m_Human.m_LastLogoutTime = g_pTimeManager->CurrentDate();        //ä¸‹çº¿æ—¶é—´
 
                     guid = FullData.m_Human.m_GUID;
 
@@ -97,12 +97,12 @@ BOOL    SMULogicManager<HumanSMU>::DoSaveAll()
                     DBCharFullData    CharFullDataObject(pInterface);
                     CharFullDataObject.SetCharGuid(FullData.m_Human.m_GUID);
 
-                    BOOL bRet = CharFullDataObject.Save(&FullData); //±£´æ»ù±¾µµ°¸
+                    BOOL bRet = CharFullDataObject.Save(&FullData); //ä¿å­˜åŸºæœ¬æ¡£æ¡ˆ
                     if(bRet)
                     {
-                        bRet  =    CharFullDataObject.ParseResult(&FullData);//Parse µµ°¸ÄÚÈİ
+                        bRet  =    CharFullDataObject.ParseResult(&FullData);//Parse æ¡£æ¡ˆå†…å®¹
                     }
-                    //ĞŞ¸ÄÏÂ´Î±£´æÊ±¼ä
+                    //ä¿®æ”¹ä¸‹æ¬¡ä¿å­˜æ—¶é—´
                     pSMU->SetTime2Save(uTime+g_Config.m_ShareMemInfo.DATAInterval,SM_C_WRITE);
                     if(!bRet)
                     {
@@ -114,13 +114,13 @@ BOOL    SMULogicManager<HumanSMU>::DoSaveAll()
                         {
                             pSMU->SetUseStatus(SM_C_WRITE,SM_USE_FREEED);
                             iHaveSaveCount++;
-                            Log::SaveLog("./Log/ShareMemory.log","ÀëÏß´æÅÌ³É¹¦    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
+                            Log::SaveLog("./Log/ShareMemory.log","ç¦»çº¿å­˜ç›˜æˆåŠŸ    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
                         }
                         else
                         {
-                            Log::SaveLog("./Log/ShareMemory.log","ÆÕÍ¨´æÅÌ³É¹¦    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
+                            Log::SaveLog("./Log/ShareMemory.log","æ™®é€šå­˜ç›˜æˆåŠŸ    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
                         }
-                        Log::SaveLog("./Log/ShareMemory.log","ÏµÍ³ĞÅÏ¢: µµ°¸×ÜÊı = %d,×ÜµÈ´ı´æÅÌÊıÁ¿ =%d,ÒÑ¾­´æ´¢ÊıÁ¿ = %d",iHoldDataCount,iCanSaveCount,iHaveSaveCount);
+                        Log::SaveLog("./Log/ShareMemory.log","ç³»ç»Ÿä¿¡æ¯: æ¡£æ¡ˆæ€»æ•° = %d,æ€»ç­‰å¾…å­˜ç›˜æ•°é‡ =%d,å·²ç»å­˜å‚¨æ•°é‡ = %d",iHoldDataCount,iCanSaveCount,iHaveSaveCount);
                     }
                 }
                 _MY_CATCH
@@ -131,7 +131,7 @@ BOOL    SMULogicManager<HumanSMU>::DoSaveAll()
                         g_pTimeManager->GetYear(), g_pTimeManager->GetMonth()+1, g_pTimeManager->GetDay(),
                         g_pTimeManager->GetHour(), g_pTimeManager->GetMinute(), g_pTimeManager->GetSecond() ) ;
                     FullData.OutputToDisk( filename ) ;
-                    Log::SaveLog("./Log/ShareMemory.log","ÏµÍ³ĞÅÏ¢: ´æÅÌÊ§°Ü    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
+                    Log::SaveLog("./Log/ShareMemory.log","ç³»ç»Ÿä¿¡æ¯: å­˜ç›˜å¤±è´¥    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
                 }
             }
         }
@@ -154,10 +154,10 @@ BOOL SMULogicManager<HumanSMU>::DoNormalSave()
         }
 
         INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize();
-        //×öÔ¤ÏÈÍ³¼Æ
-        INT        iHoldDataCount    =    0;        //ÒÑ¾­Õ¼¾İÎ»ÖÃµÄSMU¸öÊı
-        INT        iCanSaveCount    =    0;        //·şÎñÆ÷Í¨ÖªÏÂÏßµÈ´ı´æÅÌµµ°¸ÊıÁ¿
-        INT        iHaveSaveCount    =    0;        //ÒÑ¾­´æÅÌµÈ´ı·şÎñÆ÷»ØÊÕ¸öÊı
+        //åšé¢„å…ˆç»Ÿè®¡
+        INT        iHoldDataCount    =    0;        //å·²ç»å æ®ä½ç½®çš„SMUä¸ªæ•°
+        INT        iCanSaveCount    =    0;        //æœåŠ¡å™¨é€šçŸ¥ä¸‹çº¿ç­‰å¾…å­˜ç›˜æ¡£æ¡ˆæ•°é‡
+        INT        iHaveSaveCount    =    0;        //å·²ç»å­˜ç›˜ç­‰å¾…æœåŠ¡å™¨å›æ”¶ä¸ªæ•°
 
         for(INT iIndex = 0;iIndex<MaxPoolSize;iIndex++)
         {
@@ -168,10 +168,10 @@ BOOL SMULogicManager<HumanSMU>::DoNormalSave()
                 return FALSE;
             }
             
-            UINT    uTime        =    g_pTimeManager->RunTime();                //È¡µ±Ç°Ê±¼ä
-            INT        UseStatus    =    pSMU->GetUseStatusFast();            //È¡µ±Ç°ÄÚ´æ¿é×´Ì¬
+            UINT    uTime        =    g_pTimeManager->RunTime();                //å–å½“å‰æ—¶é—´
+            INT        UseStatus    =    pSMU->GetUseStatusFast();            //å–å½“å‰å†…å­˜å—çŠ¶æ€
 
-            if(UseStatus == SM_USE_HOLDDATA||UseStatus ==SM_USE_READYFREE) //±¾SMU ±»ºÏ·¨Õ¼¾İ
+            if(UseStatus == SM_USE_HOLDDATA||UseStatus ==SM_USE_READYFREE) //æœ¬SMU è¢«åˆæ³•å æ®
             {
                 iHoldDataCount++;
             }
@@ -181,9 +181,9 @@ BOOL SMULogicManager<HumanSMU>::DoNormalSave()
                 iCanSaveCount ++;
             }
 
-            if(UseStatus == SM_USE_HOLDDATA||UseStatus ==SM_USE_READYFREE) //±¾SMU ±»ºÏ·¨Õ¼¾İ holddata »òÕß×¼±¸»ØÊÕ
+            if(UseStatus == SM_USE_HOLDDATA||UseStatus ==SM_USE_READYFREE) //æœ¬SMU è¢«åˆæ³•å æ® holddata æˆ–è€…å‡†å¤‡å›æ”¶
             {
-                //¼ì²éÊÇ·ñµ½´ï´æÅÌÊ±¼ä
+                //æ£€æŸ¥æ˜¯å¦åˆ°è¾¾å­˜ç›˜æ—¶é—´
                 UINT Time2Save    = pSMU->GetTime2SaveFast();
                 if((uTime>Time2Save)||UseStatus ==SM_USE_READYFREE)
                 {
@@ -191,22 +191,22 @@ BOOL SMULogicManager<HumanSMU>::DoNormalSave()
                     FULLUSERDATA    FullData;
                     _MY_TRY
                     {
-                        if(!pSMU->TryCopy2FullData(SM_C_WRITE,&FullData))        //½«ShareMemory ÖĞ¶ÔÓ¦µÄ½ÇÉ«Êı¾İcopy³öÀ´
+                        if(!pSMU->TryCopy2FullData(SM_C_WRITE,&FullData))        //å°†ShareMemory ä¸­å¯¹åº”çš„è§’è‰²æ•°æ®copyå‡ºæ¥
                         {
                             continue;
                         }
-                        FullData.m_Human.m_LastLogoutTime = uTime;        //ÏÂÏßÊ±¼ä
+                        FullData.m_Human.m_LastLogoutTime = uTime;        //ä¸‹çº¿æ—¶é—´
                         guid = FullData.m_Human.m_GUID;
                         ODBCInterface* pInterface=     g_pDBManager->GetInterface(CHARACTER_DATABASE);
                         Assert(pInterface);
                         DBCharFullData    CharFullDataObject(pInterface);
                         CharFullDataObject.SetCharGuid(FullData.m_Human.m_GUID);
-                        BOOL bRet = CharFullDataObject.Save(&FullData); //±£´æ»ù±¾µµ°¸
+                        BOOL bRet = CharFullDataObject.Save(&FullData); //ä¿å­˜åŸºæœ¬æ¡£æ¡ˆ
                         if(bRet)
                         {
-                            bRet  =    CharFullDataObject.ParseResult(&FullData);//Parse µµ°¸ÄÚÈİ
+                            bRet  =    CharFullDataObject.ParseResult(&FullData);//Parse æ¡£æ¡ˆå†…å®¹
                         }
-                        //ĞŞ¸ÄÏÂ´Î±£´æÊ±¼ä
+                        //ä¿®æ”¹ä¸‹æ¬¡ä¿å­˜æ—¶é—´
                         pSMU->SetTime2Save(uTime+g_Config.m_ShareMemInfo.DATAInterval,SM_C_WRITE);
                         if(!bRet)
                         {
@@ -225,13 +225,13 @@ BOOL SMULogicManager<HumanSMU>::DoNormalSave()
                             {
                                 pSMU->SetUseStatus(SM_C_WRITE,SM_USE_FREEED);
                                 iHaveSaveCount++;
-                                Log::SaveLog("./Log/ShareMemory.log","ÀëÏß´æÅÌ³É¹¦    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
+                                Log::SaveLog("./Log/ShareMemory.log","ç¦»çº¿å­˜ç›˜æˆåŠŸ    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
                             }
                             else
                             {
-                                Log::SaveLog("./Log/ShareMemory.log","ÆÕÍ¨´æÅÌ³É¹¦    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
+                                Log::SaveLog("./Log/ShareMemory.log","æ™®é€šå­˜ç›˜æˆåŠŸ    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
                             }
-                            Log::SaveLog("./Log/ShareMemory.log","ÏµÍ³ĞÅÏ¢: µµ°¸×ÜÊı = %d,×ÜµÈ´ı´æÅÌÊıÁ¿ =%d,ÒÑ¾­´æ´¢ÊıÁ¿ = %d",iHoldDataCount,iCanSaveCount,iHaveSaveCount);
+                            Log::SaveLog("./Log/ShareMemory.log","ç³»ç»Ÿä¿¡æ¯: æ¡£æ¡ˆæ€»æ•° = %d,æ€»ç­‰å¾…å­˜ç›˜æ•°é‡ =%d,å·²ç»å­˜å‚¨æ•°é‡ = %d",iHoldDataCount,iCanSaveCount,iHaveSaveCount);
                         }
                     }
                     _MY_CATCH
@@ -242,7 +242,7 @@ BOOL SMULogicManager<HumanSMU>::DoNormalSave()
                             g_pTimeManager->GetYear(), g_pTimeManager->GetMonth()+1, g_pTimeManager->GetDay(),
                             g_pTimeManager->GetHour(), g_pTimeManager->GetMinute(), g_pTimeManager->GetSecond() ) ;
                         FullData.OutputToDisk( filename ) ;
-                        Log::SaveLog("./Log/ShareMemory.log","ÏµÍ³ĞÅÏ¢: ´æÅÌÊ§°Ü    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
+                        Log::SaveLog("./Log/ShareMemory.log","ç³»ç»Ÿä¿¡æ¯: å­˜ç›˜å¤±è´¥    PlayerPool Index=%d,Player Guid=%X",iIndex,guid);
                     }
                 }
             }
@@ -322,7 +322,7 @@ BOOL    SMULogicManager<GuildSMU>::DoSaveAll()
 {
     __ENTER_FUNCTION
 
-    ///´æÅÌÍ³¼ÆÊı¾İ 
+    ///å­˜ç›˜ç»Ÿè®¡æ•°æ® 
     INT        SMUCount            =        0;
     INT        TotalSMUSize        =        0;
     UINT    uTime        =    g_pTimeManager->RunTime();
@@ -342,7 +342,7 @@ BOOL    SMULogicManager<GuildSMU>::DoSaveAll()
     BOOL bRet    = GuildInfoObject.Save(m_PoolSharePtr);
     if(bRet)
     {
-        bRet  =    GuildInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+        bRet  =    GuildInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
     }
     Log::SaveLog("./Log/ShareMemory.log","End GuildSMU_%d SaveAll...OK!",key);
     Log::SaveLog("./Log/ShareMemory.log","SMUCount = %d",SMUCount);
@@ -361,7 +361,7 @@ BOOL SMULogicManager<GuildSMU>::DoNormalSave()
     __ENTER_FUNCTION
         
     /*
-    *    ÁÙÊ±´æÎÄ¼ş·½·¨
+    *    ä¸´æ—¶å­˜æ–‡ä»¶æ–¹æ³•
     */
     UINT    uTime        =    g_pTimeManager->RunTime();
     if(uTime>m_FinalSaveTime+g_Config.m_ShareMemInfo.SMUInterval)
@@ -437,7 +437,7 @@ BOOL SMULogicManager<GuildSMU>::DoPostInit()
 
         if(bRet)
         {
-            bRet  =    GuildInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+            bRet  =    GuildInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
         }
         if(!bRet)
         {
@@ -464,7 +464,7 @@ BOOL    SMULogicManager<MailSMU>::DoSaveAll()
 {
     __ENTER_FUNCTION
         
-    ///´æÅÌÍ³¼ÆÊı¾İ 
+    ///å­˜ç›˜ç»Ÿè®¡æ•°æ® 
     INT        SMUCount            =        0;
     INT        TotalSMUSize        =        0;
     UINT    uTime        =    g_pTimeManager->RunTime();
@@ -484,7 +484,7 @@ BOOL    SMULogicManager<MailSMU>::DoSaveAll()
     BOOL bRet    = MailInfoObject.Save(m_PoolSharePtr);
     if(bRet)
     {
-        bRet  =    MailInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+        bRet  =    MailInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
     }
 
     Log::SaveLog("./Log/ShareMemory.log","End MailSMU_%d SaveAll...OK!",key);
@@ -505,7 +505,7 @@ BOOL SMULogicManager<MailSMU>::DoNormalSave()
     __ENTER_FUNCTION
 
         /*
-         *    ÁÙÊ±´æÎÄ¼ş·½·¨
+         *    ä¸´æ—¶å­˜æ–‡ä»¶æ–¹æ³•
          */
         UINT    uTime    =    g_pTimeManager->RunTime();
         if(uTime>m_FinalSaveTime+g_Config.m_ShareMemInfo.SMUInterval)
@@ -580,7 +580,7 @@ BOOL SMULogicManager<MailSMU>::DoPostInit()
 
         if(bRet)
         {
-            bRet  =    MailInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+            bRet  =    MailInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
         }
         if(!bRet)
         {
@@ -604,7 +604,7 @@ BOOL    SMULogicManager<PlayerShopSM>::DoSaveAll()
 {
     __ENTER_FUNCTION
 
-    ///´æÅÌÍ³¼ÆÊı¾İ 
+    ///å­˜ç›˜ç»Ÿè®¡æ•°æ® 
     //INT        SMUCount            =        0;
     //INT        TotalSMUSize        =        0;
     //UINT    uTime        =    g_pTimeManager->RunTime();
@@ -619,7 +619,7 @@ BOOL    SMULogicManager<PlayerShopSM>::DoSaveAll()
     //ID_t    ServerID            = g_Config.Key2ServerID(key);
     //if(ServerID == INVALID_ID)
     //{
-    //    AssertEx(FALSE,"¶ÔÓ¦KeyµÄ·şÎñÆ÷Ã»ÓĞEnableShareMemory");
+    //    AssertEx(FALSE,"å¯¹åº”Keyçš„æœåŠ¡å™¨æ²¡æœ‰EnableShareMemory");
     //}
 
     //ODBCInterface* pInterface=     g_pDBManager->GetInterface(CHARACTER_DATABASE);
@@ -631,7 +631,7 @@ BOOL    SMULogicManager<PlayerShopSM>::DoSaveAll()
     //BOOL bRet = ShopInfoObject.Save(m_PoolSharePtr);
     //if(bRet)
     //{
-    //    bRet  =    ShopInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+    //    bRet  =    ShopInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
     //}
 
     //if(bRet)
@@ -660,7 +660,7 @@ BOOL SMULogicManager<PlayerShopSM>::DoNormalSave()
     __ENTER_FUNCTION
         
     /*
-    *    ÁÙÊ±´æÎÄ¼ş·½·¨
+    *    ä¸´æ—¶å­˜æ–‡ä»¶æ–¹æ³•
     */
     UINT    uTime        =    g_pTimeManager->RunTime();
     if(uTime>m_FinalSaveTime+g_Config.m_ShareMemInfo.SMUInterval)
@@ -729,7 +729,7 @@ BOOL SMULogicManager<PlayerShopSM>::DoPostInit()
     //
     //if(ServerID == INVALID_ID)
     //{
-    //    AssertEx(FALSE,"¶ÔÓ¦KeyµÄ·şÎñÆ÷Ã»ÓĞEnableShareMemory");
+    //    AssertEx(FALSE,"å¯¹åº”Keyçš„æœåŠ¡å™¨æ²¡æœ‰EnableShareMemory");
     //}
 
     //BOOL bRet = FALSE;
@@ -743,7 +743,7 @@ BOOL SMULogicManager<PlayerShopSM>::DoPostInit()
     //bRet = ShopInfoObject.Load();
     //if(bRet)
     //{
-    //    bRet  =    ShopInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+    //    bRet  =    ShopInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
     //}
     //if(!bRet)
     //{
@@ -772,7 +772,7 @@ BOOL    SMULogicManager<ItemSerialKeySMU>::DoSaveAll()
 {
     __ENTER_FUNCTION
 
-    ///´æÅÌÍ³¼ÆÊı¾İ 
+    ///å­˜ç›˜ç»Ÿè®¡æ•°æ® 
     
     UINT    Serial = 0;
     UINT    uTime        =    g_pTimeManager->RunTime();
@@ -796,7 +796,7 @@ BOOL    SMULogicManager<ItemSerialKeySMU>::DoSaveAll()
 
     if(ServerID == INVALID_ID)
     {
-        AssertEx(FALSE,"¶ÔÓ¦KeyµÄ·şÎñÆ÷Ã»ÓĞEnableShareMemory");
+        AssertEx(FALSE,"å¯¹åº”Keyçš„æœåŠ¡å™¨æ²¡æœ‰EnableShareMemory");
     }
     ODBCInterface* pInterface=     g_pDBManager->GetInterface(CHARACTER_DATABASE);
     Assert(pInterface);
@@ -833,7 +833,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoNormalSave()
     __ENTER_FUNCTION
 
     /*
-    *    ÁÙÊ±´æÎÄ¼ş·½·¨
+    *    ä¸´æ—¶å­˜æ–‡ä»¶æ–¹æ³•
     */
     UINT    uTime        =    g_pTimeManager->RunTime();
     if(uTime>m_FinalSaveTime+SERIALKEYTIME)
@@ -896,7 +896,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 
         if(ServerID == INVALID_ID)
         {
-            AssertEx(FALSE,"¶ÔÓ¦KeyµÄ·şÎñÆ÷Ã»ÓĞEnableShareMemory");
+            AssertEx(FALSE,"å¯¹åº”Keyçš„æœåŠ¡å™¨æ²¡æœ‰EnableShareMemory");
         }
         ODBCInterface* pInterface=     g_pDBManager->GetInterface(CHARACTER_DATABASE);
         Assert(pInterface);
@@ -937,7 +937,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 //{
 //    __ENTER_FUNCTION
 //
-//    ///´æÅÌÍ³¼ÆÊı¾İ 
+//    ///å­˜ç›˜ç»Ÿè®¡æ•°æ® 
 //    INT        SMUCount            =        0;
 //    INT        TotalSMUSize        =        0;
 //    UINT    uTime        =    g_pTimeManager->RunTime();
@@ -956,7 +956,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 //    BOOL bRet    = PetItemInfoObject.Save(m_PoolSharePtr);
 //    if(bRet)
 //    {
-//        bRet  =    PetItemInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+//        bRet  =    PetItemInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
 //    }
 //    
 //    if(bRet)
@@ -985,7 +985,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 //    __ENTER_FUNCTION
 //
 //    /*
-//    *    ÁÙÊ±´æÎÄ¼ş·½·¨
+//    *    ä¸´æ—¶å­˜æ–‡ä»¶æ–¹æ³•
 //    */
 //    UINT    uTime        =    g_pTimeManager->RunTime();
 //    if(uTime>m_FinalSaveTime+g_Config.m_ShareMemInfo.SMUInterval)
@@ -1058,7 +1058,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 //        bRet = PetItemObject.Load();
 //        if(bRet)
 //        {
-//            bRet  =    PetItemObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+//            bRet  =    PetItemObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
 //        }
 //        if(!bRet)
 //        {
@@ -1082,7 +1082,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 //{
 //    __ENTER_FUNCTION
 //
-//        ///´æÅÌÍ³¼ÆÊı¾İ 
+//        ///å­˜ç›˜ç»Ÿè®¡æ•°æ® 
 //    INT        SMUCount            =        0;
 //    INT        TotalSMUSize        =        0;
 //    UINT    uTime        =    g_pTimeManager->RunTime();
@@ -1101,7 +1101,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 //    BOOL bRet    = CityInfoObject.Save(m_PoolSharePtr);
 //    if(bRet)
 //    {
-//        bRet  =    CityInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+//        bRet  =    CityInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
 //    }
 //
 //    if(bRet)
@@ -1130,7 +1130,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 //    __ENTER_FUNCTION
 //
 //    /*
-//    *    ÁÙÊ±´æÎÄ¼ş·½·¨
+//    *    ä¸´æ—¶å­˜æ–‡ä»¶æ–¹æ³•
 //    */
 //    UINT    uTime        =    g_pTimeManager->RunTime();
 //    if(uTime>m_FinalSaveTime+g_Config.m_ShareMemInfo.SMUInterval)
@@ -1205,7 +1205,7 @@ BOOL SMULogicManager<ItemSerialKeySMU>::DoPostInit()
 //    bRet = CityInfoObject.Load();
 //    if(bRet)
 //    {
-//            bRet  =    CityInfoObject.ParseResult(m_PoolSharePtr);//Parse µµ°¸ÄÚÈİ
+//            bRet  =    CityInfoObject.ParseResult(m_PoolSharePtr);//Parse æ¡£æ¡ˆå†…å®¹
 //    }
 //    if(!bRet)
 //    {

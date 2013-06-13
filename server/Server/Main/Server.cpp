@@ -39,9 +39,9 @@
 #include "PlayerShopPool.h"
 
 
-extern INT                    g_Command_CommandDeny ;//¿ØÖÆ²ÎÊı£¬½ûÖ¹Ê¹ÓÃGMÖ¸Áî
-extern INT                    g_Command_AlwaysLoadScript ;//Ã¿´ÎÖ´ĞĞ½Å±¾¶¼ÖØĞÂLoad
-extern INT                    g_Command_AlwaysLoadMonsterIni ;//Ã¿´Î¶¼¶ÁÈ¡monster.iniÎÄ¼ş
+extern INT                    g_Command_CommandDeny ;//æ§åˆ¶å‚æ•°ï¼Œç¦æ­¢ä½¿ç”¨GMæŒ‡ä»¤
+extern INT                    g_Command_AlwaysLoadScript ;//æ¯æ¬¡æ‰§è¡Œè„šæœ¬éƒ½é‡æ–°Load
+extern INT                    g_Command_AlwaysLoadMonsterIni ;//æ¯æ¬¡éƒ½è¯»å–monster.iniæ–‡ä»¶
 extern SMUPool<HumanSMU>    g_HumanSMUPool;
 
 Server                        g_Server;
@@ -88,17 +88,17 @@ __ENTER_FUNCTION
 
     BOOL ret ;
 
-    //³õÊ¼»¯ÅäÖÃÎÄ¼şÄ£¿é
+    //åˆå§‹åŒ–é…ç½®æ–‡ä»¶æ¨¡å—
     ret = g_Server.InitConfig();
     Assert(ret) ;
 
-//Ê±¼äÄ£¿éĞèÒª×î¿ªÊ¼µÄÊ±ºòÉèÖÃ
+//æ—¶é—´æ¨¡å—éœ€è¦æœ€å¼€å§‹çš„æ—¶å€™è®¾ç½®
     g_pTimeManager = new TimeManager ;
     Assert( g_pTimeManager ) ;
     ret = g_pTimeManager->Init( ) ;
     Assert(ret) ;
 
-//ÈÕÖ¾Ä£¿é³õÊ¼»¯ĞèÒª×î¿ªÊ¼ÉèÖÃ
+//æ—¥å¿—æ¨¡å—åˆå§‹åŒ–éœ€è¦æœ€å¼€å§‹è®¾ç½®
     g_pLog = new Log ;
     Assert( g_pLog ) ;
     ret = g_pLog->Init( ) ;
@@ -147,9 +147,9 @@ FULLUSERDATA=%d",
         sizeof(FULLUSERDATA)
         ) ;
     if( sizeof(FULLUSERDATA)!=36513)//34977)//34081)//35325)//34013)
-//                                   ^¼¼ÄÜ½á¹¹ ^¼¼ÄÜÊı
+//                                   ^æŠ€èƒ½ç»“æ„ ^æŠ€èƒ½æ•°
     {
-        AssertEx(FALSE,"ÓÃ»§µµ°¸Êı¾İ³ß´ç·¢Éú±ä»¯£¬ÇëÁªÏµÏà¹ØÈËÔ±ËµÃ÷Ïà¹ØÇé¿ö£¡") ;
+        AssertEx(FALSE,"ç”¨æˆ·æ¡£æ¡ˆæ•°æ®å°ºå¯¸å‘ç”Ÿå˜åŒ–ï¼Œè¯·è”ç³»ç›¸å…³äººå‘˜è¯´æ˜ç›¸å…³æƒ…å†µï¼") ;
     }
     
 
@@ -225,13 +225,13 @@ __ENTER_FUNCTION
     //Assert( ret ) ;
 
 
-//·ÖÅäÄÚ´æ
+//åˆ†é…å†…å­˜
     ret = NewStaticServer( ) ;
     Assert( ret ) ;
 
 
 
-//³õÊ¼»¯¸÷¸öÄ£¿é
+//åˆå§‹åŒ–å„ä¸ªæ¨¡å—
     ret = InitStaticServer( ) ;
     Assert( ret ) ;
 
@@ -257,7 +257,7 @@ __ENTER_FUNCTION
 
     MySleep( 1500 ) ;
 
-    //Ö÷Ïß³Ìµ÷¶È×ÊÔ´·Ö¸øClientManagerÀ´Ö´ĞĞ£»
+    //ä¸»çº¿ç¨‹è°ƒåº¦èµ„æºåˆ†ç»™ClientManageræ¥æ‰§è¡Œï¼›
     Log::SaveLog( SERVER_LOGFILE, "g_pClientManager->Loop( )..." ) ;
     g_pClientManager->start( ) ;
 
@@ -279,20 +279,20 @@ __ENTER_FUNCTION
 
 
     //////////////////
-    //µÈ´ıËùÓĞÏß³ÌÍêÈ«ÍÆ³öºóÖ´ĞĞÇå³ı²Ù×÷
+    //ç­‰å¾…æ‰€æœ‰çº¿ç¨‹å®Œå…¨æ¨å‡ºåæ‰§è¡Œæ¸…é™¤æ“ä½œ
     WaitForAllThreadQuit( ) ;
 
 
 
     Log::SaveLog( SERVER_LOGFILE, "Begin delete..." ) ;
-    //¶¯Ì¬Êı¾İ
+    //åŠ¨æ€æ•°æ®
     SAFE_DELETE( g_pClientManager ) ;
     Log::SaveLog( SERVER_LOGFILE, "g_pClientManager delete...OK" ) ;
     SAFE_DELETE( g_pThreadManager ) ;
     Log::SaveLog( SERVER_LOGFILE, "g_pThreadManager delete...OK" ) ;
 
 
-    //¾²Ì¬Êı¾İ
+    //é™æ€æ•°æ®
     SAFE_DELETE( g_pSceneManager ) ;
     Log::SaveLog( SERVER_LOGFILE, "g_pSceneManager delete...OK" ) ;
     SAFE_DELETE( g_pPlayerPool ) ;
@@ -385,7 +385,7 @@ __ENTER_FUNCTION
 #define MAX_WAIT_QUIT 300
 
     INT iQuit ;
-    //×î³¤Ê±¼ä¿ÉÒÔµÈ´ıMAX_WAIT_QUITÃë
+    //æœ€é•¿æ—¶é—´å¯ä»¥ç­‰å¾…MAX_WAIT_QUITç§’
     for( INT i=0;i<MAX_WAIT_QUIT;i++ )
     {
         iQuit = g_QuitThreadCount ;
@@ -452,7 +452,7 @@ __ENTER_FUNCTION
     Assert( g_pGUIDManager ) ;
     Log::SaveLog( SERVER_LOGFILE, "new GUIDManager...OK" ) ;
 
-    //new Íæ¼ÒÉÌµê³Ø
+    //new ç©å®¶å•†åº—æ± 
     g_pPlayerShopPool    =    new PlayerShopPool;
     Assert(g_pPlayerShopPool);
     Log::SaveLog( SERVER_LOGFILE, "new g_pPlayerShopPool...OK" ) ;
@@ -500,7 +500,7 @@ __ENTER_FUNCTION
     //Assert(g_pDynamicSceneManager);
     //Log::SaveLog( SERVER_LOGFILE, "new DynamicSceneManager...OK" ) ;
 
-    //ÎïÆ·¹ÜÀíÆ÷
+    //ç‰©å“ç®¡ç†å™¨
     g_pItemManager = new ItemManager;
     Assert(g_pItemManager);
     Log::SaveLog( SERVER_LOGFILE, "new ItemManager...OK" ) ;
@@ -509,20 +509,20 @@ __ENTER_FUNCTION
     Assert(g_pDaemonThread);
     Log::SaveLog( SERVER_LOGFILE, "new DaemonThread...OK" ) ;
 
-    // ËÀÍö³Í·£Êı¾İ
+    // æ­»äº¡æƒ©ç½šæ•°æ®
     g_pDiePenaltyManager = new DiePenaltyManager;
     Assert(g_pDiePenaltyManager);
     Log::SaveLog( SERVER_LOGFILE, "new DiePenaltyManager...OK" ) ;
 
-    // Êı¾İ¼à¿Ø¹ÜÀíÆ÷
+    // æ•°æ®ç›‘æ§ç®¡ç†å™¨
     g_pPerformanceManager = new PerformanceManager;
     Assert(g_pPerformanceManager);
     Log::SaveLog( SERVER_LOGFILE, "new PerformanceManager...OK" ) ;
 
 
-    //***×¢Òâ***
+    //***æ³¨æ„***
     //
-    //  ÒÔÏÂÁ½¸öÄ£¿é·ÅÔÚ×îºóÉú³É
+    //  ä»¥ä¸‹ä¸¤ä¸ªæ¨¡å—æ”¾åœ¨æœ€åç”Ÿæˆ
     //
     g_pThreadManager = new ThreadManager ;
     Assert( g_pThreadManager ) ;
@@ -580,40 +580,40 @@ __ENTER_FUNCTION
     {
         nTemp = MAX_POOL_SIZE;
     }
-//ShareMemory ×îÏÈ
+//ShareMemory æœ€å…ˆ
     
     const _SERVER_DATA*    pCurrentSData =    g_pServerManager->GetCurrentServerInfo();
     
     if(pCurrentSData->m_EnableShareMem)
     {
         ret = g_HumanSMUPool.Init(/*g_pPlayerPool->GetPlayerPoolMaxCount()*//*________________*/nTemp,pCurrentSData->m_HumanSMKey,SMPT_SERVER);
-        AssertEx(ret,"¹²ÏíÄÚ´æ³õÊ¼»¯´íÎó,ÇëÏÈÆô¶¯ShareMemory");
+        AssertEx(ret,"å…±äº«å†…å­˜åˆå§‹åŒ–é”™è¯¯,è¯·å…ˆå¯åŠ¨ShareMemory");
 
         if(g_HumanSMUPool.GetHeadVer()!=0)
         {
-            AssertEx(ret,"ShareMemory ´æÅÌÉĞÎ´Íê³É£¬ÇëÉÔºóÆô¶¯Server");
+            AssertEx(ret,"ShareMemory å­˜ç›˜å°šæœªå®Œæˆï¼Œè¯·ç¨åå¯åŠ¨Server");
         }
 
         ret = g_PlayerShopSMUPool.Init(MAX_PLAYER_SHOP_POOL_PER_SERVER,pCurrentSData->m_PlayShopSMKey,SMPT_SERVER);
-        AssertEx(ret,"¹²ÏíÄÚ´æ³õÊ¼»¯´íÎó,ÇëÏÈÆô¶¯ShareMemory");
+        AssertEx(ret,"å…±äº«å†…å­˜åˆå§‹åŒ–é”™è¯¯,è¯·å…ˆå¯åŠ¨ShareMemory");
 
         if(g_PlayerShopSMUPool.GetHeadVer()!=0)
         {
-            AssertEx(ret,"ShareMemory ´æÅÌÉĞÎ´Íê³É£¬ÇëÉÔºóÆô¶¯Server");
+            AssertEx(ret,"ShareMemory å­˜ç›˜å°šæœªå®Œæˆï¼Œè¯·ç¨åå¯åŠ¨Server");
         }
 
         ret = g_ItemSerialSMUPool.Init(1,pCurrentSData->m_ItemSerialKey,SMPT_SERVER);
-        AssertEx(ret,"¹²ÏíÄÚ´æ³õÊ¼»¯´íÎó,ÇëÏÈÆô¶¯ShareMemory");
+        AssertEx(ret,"å…±äº«å†…å­˜åˆå§‹åŒ–é”™è¯¯,è¯·å…ˆå¯åŠ¨ShareMemory");
 
         if(g_ItemSerialSMUPool.GetHeadVer()!=0)
         {
-            AssertEx(ret,"ShareMemory ´æÅÌÉĞÎ´Íê³É£¬ÇëÉÔºóÆô¶¯Server");
+            AssertEx(ret,"ShareMemory å­˜ç›˜å°šæœªå®Œæˆï¼Œè¯·ç¨åå¯åŠ¨Server");
         }
 
 
     }
 
-//ÏÈ±í¸ñÊı¾İ
+//å…ˆè¡¨æ ¼æ•°æ®
     //
     ret = g_ItemTable.Init();
     Assert(ret);
@@ -626,7 +626,7 @@ __ENTER_FUNCTION
 
 
 
-//ºóÂß¼­Ä£¿éÊı¾İ
+//åé€»è¾‘æ¨¡å—æ•°æ®
     //________________________________________________________
     if( g_Config.m_ConfigInfo.m_SystemModel == 0 )
     {
@@ -686,7 +686,7 @@ __ENTER_FUNCTION
     Assert( ret );
     Log::SaveLog( SERVER_LOGFILE, "g_pGUIDManager->Init()...OK" ) ;
     
-    //ÎïÆ·ºĞ³õÊ¼»¯
+    //ç‰©å“ç›’åˆå§‹åŒ–
     //________________________________________________________
     if( g_Config.m_ConfigInfo.m_SystemModel == 0 )
     {
@@ -700,7 +700,7 @@ __ENTER_FUNCTION
     Assert(ret);
     Log::SaveLog( SERVER_LOGFILE, "g_pItemBoxPool->Init()...OK" ) ;
 
-    //Íæ¼ÒÉÌµê³Ø³õÊ¼»¯
+    //ç©å®¶å•†åº—æ± åˆå§‹åŒ–
     //________________________________________________________
     if( g_Config.m_ConfigInfo.m_SystemModel == 0 )
     {
@@ -744,7 +744,7 @@ __ENTER_FUNCTION
     Assert( ret ) ;
     Log::SaveLog( SERVER_LOGFILE, "g_pCopySceneManager->Init()...OK" ) ;
 
-    //Íæ¼Ò×Ô½¨³ÇÊĞµÈ___________________________
+    //ç©å®¶è‡ªå»ºåŸå¸‚ç­‰___________________________
     //ret = g_pDynamicSceneManager->Init();
     //Assert( ret ) ;
     //Log::SaveLog( SERVER_LOGFILE, "g_pDynamicSceneManager->Init()...OK" ) ;
@@ -774,35 +774,35 @@ __ENTER_FUNCTION
     Assert(ret);
     Log::SaveLog( SERVER_LOGFILE, "g_pItemManager->Init()...OK" ) ;
 
-    //ËÀÍö³Í·£
+    //æ­»äº¡æƒ©ç½š
     ret = g_pDiePenaltyManager->Init( 1024 );
     Assert( ret ) ;
     Log::SaveLog( SERVER_LOGFILE, "g_pDiePenaltyManager->Init()...OK" ) ;
 
-    //Æ½Ì¨¹ÜÀí¹¤¾ß£¬±£´æºÍÍ³¼ÆÏµÍ³ÖĞ¸÷¸öÄ£¿éÖ´ĞĞĞ§ÂÊ¼°ÔËĞĞÇé¿ö
+    //å¹³å°ç®¡ç†å·¥å…·ï¼Œä¿å­˜å’Œç»Ÿè®¡ç³»ç»Ÿä¸­å„ä¸ªæ¨¡å—æ‰§è¡Œæ•ˆç‡åŠè¿è¡Œæƒ…å†µ
     ret = g_pPerformanceManager->Init( );
     Assert( ret ) ;
     Log::SaveLog( SERVER_LOGFILE, "g_pPerformanceManager->Init()...OK" ) ;
 
     /************************************************************************/
     /*
-    ¸÷¸ö¹ÜÀíÆ÷,³ØÖ®¼äÏà¹ØÊı¾İµÄÁ¬½Ó,ÓĞĞ©Êı¾İÊÇ´ÓsharememÖĞµ¹Èëµ½³ØÖĞµÄ£¬
-    ĞèÒª¸ù¾İÕâĞ©Êı¾İµÄÊôĞÔÁ¬½Óµ½Ö¸¶¨µÄ¹ÜÀíÆ÷
+    å„ä¸ªç®¡ç†å™¨,æ± ä¹‹é—´ç›¸å…³æ•°æ®çš„è¿æ¥,æœ‰äº›æ•°æ®æ˜¯ä»sharememä¸­å€’å…¥åˆ°æ± ä¸­çš„ï¼Œ
+    éœ€è¦æ ¹æ®è¿™äº›æ•°æ®çš„å±æ€§è¿æ¥åˆ°æŒ‡å®šçš„ç®¡ç†å™¨
     */
     /************************************************************************/
     ret = g_pPlayerShopPool->ConnectTo(g_pSceneManager);
     Assert( ret );
     Log::SaveLog( SERVER_LOGFILE, "g_pPlayerShopPool->ConnectTo(g_pSceneManager)...OK" ) ;
 
-    //***×¢Òâ***
+    //***æ³¨æ„***
     //
-    //·ÅÔÚ×îºó³õÊ¼»¯µÄÊÇÏß³ÌÊı¾İ
+    //æ”¾åœ¨æœ€ååˆå§‹åŒ–çš„æ˜¯çº¿ç¨‹æ•°æ®
     //
     ret = g_pServerManager->Init( ) ;
     Assert( ret ) ;
     Log::SaveLog( SERVER_LOGFILE, "g_pServerManager->Init()...OK" ) ;
 
-    //¸ù¾İÅäÖÃÎÄ¼ş¶ÁÈ¡ĞèÒªÊ¹ÓÃµÄ³¡¾°£¬ÎªÃ¿¸ö³¡¾°·ÖÅäÒ»¸öÏß³Ì£»
+    //æ ¹æ®é…ç½®æ–‡ä»¶è¯»å–éœ€è¦ä½¿ç”¨çš„åœºæ™¯ï¼Œä¸ºæ¯ä¸ªåœºæ™¯åˆ†é…ä¸€ä¸ªçº¿ç¨‹ï¼›
     if( g_Config.m_ConfigInfo.m_SystemModel == 0 )
     {
         nTemp = (g_Config.m_SceneInfo.m_SceneCount<10) ? g_Config.m_SceneInfo.m_SceneCount : 10;

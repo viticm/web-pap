@@ -1,8 +1,8 @@
 /*************************************************************************
- ÎÄ¼þÃû    :     AIScriptDef.h
- °æ±¾ºÅ :    0.0.1
- ¹¦  ÄÜ    :    AIScriptÓÃµ½µÄÊý¾Ý½á¹¹¶¨Òå
- ÐÞ¸Ä¼ÇÂ¼:    
+ æ–‡ä»¶å    :     AIScriptDef.h
+ ç‰ˆæœ¬å· :    0.0.1
+ åŠŸ  èƒ½    :    AIScriptç”¨åˆ°çš„æ•°æ®ç»“æž„å®šä¹‰
+ ä¿®æ”¹è®°å½•:    
  *************************************************************************/
 
 
@@ -30,7 +30,7 @@ enum
     RELATIONOP,     //=,>,<,>=,<=    
     TODOOP,         //{,},;,','
     PARAMOP,     //[,]
-    OTHEROP,     //ÆäËû×Ö·û
+    OTHEROP,     //å…¶ä»–å­—ç¬¦
 };
 
 enum 
@@ -41,7 +41,7 @@ enum
 
 };
 
-// ¹ØÏµÔËËã·û¶¨Òå
+// å…³ç³»è¿ç®—ç¬¦å®šä¹‰
 enum REL_OPERATOR
 {
     OPTEQUAL = 0 ,
@@ -58,44 +58,44 @@ enum REL_OPERATOR
 
 enum ENUM_AISTATE
 {
-    // { ÎªÁË¼æÈÝÔ­À´µÄºê¶¨Òå--ÓëÒÑ¾­ÅäÖÃºÃµÄscriptxxx.aiÎÄ¼þÏà¹Ø
-    SIDLE            = ESTATE_IDLE,            //¿ÕÏÐ×´Ì¬
-    SAPPROACH        = ESTATE_APPROACH,        //¿¿½ü×´Ì¬
-    SATTACK            = ESTATE_COMBAT,        //¹¥»÷×´Ì¬
-    SFOLLOW            = ESTATE_TEAMFOLLOW,    //¸úËæ×´Ì¬
-    SRETURN            = ESTATE_GOHOME,        //·ÅÆú×·¸Ï
-    SPATROL            = ESTATE_PATROL,        //Ñ²Âß    
-    SFLEE            = ESTATE_FLEE,            //ÌÓÅÜ×´Ì¬
+    // { ä¸ºäº†å…¼å®¹åŽŸæ¥çš„å®å®šä¹‰--ä¸Žå·²ç»é…ç½®å¥½çš„scriptxxx.aiæ–‡ä»¶ç›¸å…³
+    SIDLE            = ESTATE_IDLE,            //ç©ºé—²çŠ¶æ€
+    SAPPROACH        = ESTATE_APPROACH,        //é è¿‘çŠ¶æ€
+    SATTACK            = ESTATE_COMBAT,        //æ”»å‡»çŠ¶æ€
+    SFOLLOW            = ESTATE_TEAMFOLLOW,    //è·ŸéšçŠ¶æ€
+    SRETURN            = ESTATE_GOHOME,        //æ”¾å¼ƒè¿½èµ¶
+    SPATROL            = ESTATE_PATROL,        //å·¡é€»    
+    SFLEE            = ESTATE_FLEE,            //é€ƒè·‘çŠ¶æ€
     // }
 
-    SKILLSECTION    = ESTATE_NUMBER+1,        //¼¼ÄÜ¶Î
-    ONBESKILLSECTION,    //±»¹¥»÷¶Î
-    ONDAMAGESECTION,    //ÊÜµ½ÉËº¦¶Î
-    ONDEADSECTION,        //ËÀÍö¶Î
+    SKILLSECTION    = ESTATE_NUMBER+1,        //æŠ€èƒ½æ®µ
+    ONBESKILLSECTION,    //è¢«æ”»å‡»æ®µ
+    ONDAMAGESECTION,    //å—åˆ°ä¼¤å®³æ®µ
+    ONDEADSECTION,        //æ­»äº¡æ®µ
 
     // { section of disuse...
-    //SCHANGEENEMY,        //¸Ä±äµÐÈË×´Ì¬
-    //SWAIT,            //µÈ´ý×´Ì¬
-    //SFASTFLEE,        //¿ìËÙÌÓÅÜ×´Ì¬
-    //SARRIVE,            //ÒÑµ½´ïÄ¿µÄµØ×´Ì¬
-    //SUSESKILL,        //Ê¹ÓÃ¼¼ÄÜ×´Ì¬
-    //¹ÖÎï×´Ì¬
-    //YUN,                //¹ÖÎïÔÎ
-    //ZHONGDU,            //¹ÖÎïÖÐ¶¾
-    //DEAD,                //¹ÖÎïËÀÍö
-    //SLEEP,            //¹ÖÎïË¯Ãß
-    //¹ÖÎïËµ»°ÀàÐÍ
-    //HAPPY,            //Ëµ»°ÀàÐÍ--Ï²
-    //ANGRY,            //Ëµ»°ÀàÐÍ--Å­
-    //SORROW,            //Ëµ»°ÀàÐÍ--°§
-    //ENJOY,            //Ëµ»°ÀàÐÍ--ÀÖ
-    //³èÎï¹¥»÷µÄÀàÐÍ
-    //PHYSICSKILL,        //ÎïÀí¼¼ÄÜ
-    //MAGICSKILL,        //Ä§·¨¼¼ÄÜ
-    //ASSISTSKILL,        //¸¨Öú¼¼ÄÜ
+    //SCHANGEENEMY,        //æ”¹å˜æ•ŒäººçŠ¶æ€
+    //SWAIT,            //ç­‰å¾…çŠ¶æ€
+    //SFASTFLEE,        //å¿«é€Ÿé€ƒè·‘çŠ¶æ€
+    //SARRIVE,            //å·²åˆ°è¾¾ç›®çš„åœ°çŠ¶æ€
+    //SUSESKILL,        //ä½¿ç”¨æŠ€èƒ½çŠ¶æ€
+    //æ€ªç‰©çŠ¶æ€
+    //YUN,                //æ€ªç‰©æ™•
+    //ZHONGDU,            //æ€ªç‰©ä¸­æ¯’
+    //DEAD,                //æ€ªç‰©æ­»äº¡
+    //SLEEP,            //æ€ªç‰©ç¡çœ 
+    //æ€ªç‰©è¯´è¯ç±»åž‹
+    //HAPPY,            //è¯´è¯ç±»åž‹--å–œ
+    //ANGRY,            //è¯´è¯ç±»åž‹--æ€’
+    //SORROW,            //è¯´è¯ç±»åž‹--å“€
+    //ENJOY,            //è¯´è¯ç±»åž‹--ä¹
+    //å® ç‰©æ”»å‡»çš„ç±»åž‹
+    //PHYSICSKILL,        //ç‰©ç†æŠ€èƒ½
+    //MAGICSKILL,        //é­”æ³•æŠ€èƒ½
+    //ASSISTSKILL,        //è¾…åŠ©æŠ€èƒ½
     // }
 
-    ERRORCMD,            //´íÎóÃüÁî
+    ERRORCMD,            //é”™è¯¯å‘½ä»¤
 };
 
 struct BracketArray
@@ -167,11 +167,11 @@ struct ConditionTree
 struct ConditionNode
 {
     DWORD                flag;
-    //flagµÄÃ¿Î»µÄº¬ÒåÈçÏÂ£º
+    //flagçš„æ¯ä½çš„å«ä¹‰å¦‚ä¸‹ï¼š
     //    00000000,00000000,00000000,00000000
     //    ||
-    //    ||_¸ÃÌõ¼þ½ÚµãÖ´ÐÐ¹ýÁË 
-    //    |__ ¸ÃÌõ¼þ½ÚµãÖ´ÐÐÍêÁË
+    //    ||_è¯¥æ¡ä»¶èŠ‚ç‚¹æ‰§è¡Œè¿‡äº† 
+    //    |__ è¯¥æ¡ä»¶èŠ‚ç‚¹æ‰§è¡Œå®Œäº†
     //   
 
     INT                 id;

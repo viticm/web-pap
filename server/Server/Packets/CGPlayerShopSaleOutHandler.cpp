@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-Í¨Öª·şÎñÆ÷´ËÉÌµêÒÑ¾­±»ÅÌ³ö
+é€šçŸ¥æœåŠ¡å™¨æ­¤å•†åº—å·²ç»è¢«ç›˜å‡º
 */
 
 #include "CGPlayerShopSaleOut.h"
@@ -29,10 +29,10 @@ UINT CGPlayerShopSaleOutHandler::Execute( CGPlayerShopSaleOut* pPacket, Player* 
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    _PLAYERSHOP_GUID        nShopID        = pPacket->GetShopID();            //ÉÌµêID
+    _PLAYERSHOP_GUID        nShopID        = pPacket->GetShopID();            //å•†åº—ID
     BYTE                    bSaleOut    =    pPacket->GetSaleOut();
     UINT                    uPrice        =    pPacket->GetPrice();
     BYTE                    nSerial        =    pPacket->GetSerial();
@@ -43,27 +43,27 @@ UINT CGPlayerShopSaleOutHandler::Execute( CGPlayerShopSaleOut* pPacket, Player* 
     Assert(pPlayerShop);
 
     if(pPlayerShop->GetOwnerGuid() != pHuman->GetGUID())
-    {//Ö»ÓĞµêÖ÷ÓĞÈ¨ÏŞ¹Ø±Õ´ËÉÌµê
+    {//åªæœ‰åº—ä¸»æœ‰æƒé™å…³é—­æ­¤å•†åº—
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopSaleOutHandler::Name=%s Not Owner"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE && bSaleOut)
-    {//ÒÑ¾­ÊÛ³öÁË£¬²»ÄÜÔÙÂôÁË
+    {//å·²ç»å”®å‡ºäº†ï¼Œä¸èƒ½å†å–äº†
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopSaleOutHandler::Name=%s Already Sale Out"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
     if(pPlayerShop->GetShopStatus() != STATUS_PLAYER_SHOP_ON_SALE && !bSaleOut)
-    {//»¹Ã»ÅÌ³ö£¬²»ÄÜÔÙÅÌÈëÁË
+    {//è¿˜æ²¡ç›˜å‡ºï¼Œä¸èƒ½å†ç›˜å…¥äº†
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopSaleOutHandler::Name=%s Already Sale Out"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
-    //»¹ÓĞµê¿ª×ÅÄØ
+    //è¿˜æœ‰åº—å¼€ç€å‘¢
     for(INT i = 0; i<MAX_STALL_NUM_PER_SHOP;i++ )
     {
         PlayerStallBox* pPlayerStallBox = pPlayerShop->GetPlayerStallBoxByIndex(i);
@@ -78,7 +78,7 @@ UINT CGPlayerShopSaleOutHandler::Execute( CGPlayerShopSaleOut* pPacket, Player* 
     }
 
     if(nSerial != pPlayerShop->GetSerial())
-    {//ĞòÁĞºÅ¸ü¸Ä
+    {//åºåˆ—å·æ›´æ”¹
         MsgError.SetID(PLAYERSHOP_MSG::ERR_SHOP_SALE_OUT_SERIAL_IS_CHANGED);
         pGamePlayer->SendPacket(&MsgError);
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopSaleOutHandler::Name=%s Serials had changed"
@@ -86,8 +86,8 @@ UINT CGPlayerShopSaleOutHandler::Execute( CGPlayerShopSaleOut* pPacket, Player* 
         return PACKET_EXE_CONTINUE ;
     }
 
-    //±¾½ğ²»×ã
-    //ÅĞ¶Ïµ±Ç°±¾½ğÊÇ·ñ¡İ30½ğ *ÉÌÒµÖ¸Êı*ÒÑ¿ª¹ñÌ¨Êı
+    //æœ¬é‡‘ä¸è¶³
+    //åˆ¤æ–­å½“å‰æœ¬é‡‘æ˜¯å¦â‰¥30é‡‘ *å•†ä¸šæŒ‡æ•°*å·²å¼€æŸœå°æ•°
     pPlayerShopManager->ClampComFactor();
     UINT uMoneyLevel =  static_cast<UINT>((FLOAT)pPlayerShop->GetNumStallOpened()*(FLOAT)pPlayerShopManager->GetComFactor()*300000.0);
     if(pPlayerShop->GetBaseMoney() < uMoneyLevel)
@@ -100,10 +100,10 @@ UINT CGPlayerShopSaleOutHandler::Execute( CGPlayerShopSaleOut* pPacket, Player* 
         return PACKET_EXE_CONTINUE ;
     }
 
-    //±êÖ¾´ËµêÒÑ¾­ÊÛ³ö
+    //æ ‡å¿—æ­¤åº—å·²ç»å”®å‡º
     if(bSaleOut)
     {
-        //½ğÇ®²»¹»ÅÌ³ö
+        //é‡‘é’±ä¸å¤Ÿç›˜å‡º
         if(pHuman->GetMoney()<150000*pPlayerShopManager->GetComFactor())
         {
             MsgError.SetID(PLAYERSHOP_MSG::ERR_SHOP_NOT_ENOUTH_MONEY_TO_SALE_OUT);
@@ -118,7 +118,7 @@ UINT CGPlayerShopSaleOutHandler::Execute( CGPlayerShopSaleOut* pPacket, Player* 
     }
     else
     {
-        //½ğÇ®²»¹»ÅÌ»Ø
+        //é‡‘é’±ä¸å¤Ÿç›˜å›
         if(pHuman->GetMoney()<50000*pPlayerShopManager->GetComFactor())
         {
             MsgError.SetID(PLAYERSHOP_MSG::ERR_SHOP_NOT_ENOUTH_MONEY_TO_BUY_BACK);
@@ -135,7 +135,7 @@ UINT CGPlayerShopSaleOutHandler::Execute( CGPlayerShopSaleOut* pPacket, Player* 
     BYTE uSerial = pPlayerShop->IncSerial();
 
 
-    //Í¨Öª¿Í»§¶Ë
+    //é€šçŸ¥å®¢æˆ·ç«¯
     GCPlayerShopSaleOut MsgToClient;
     MsgToClient.SetSaleOut(bSaleOut);
     MsgToClient.SetSerial(uSerial);

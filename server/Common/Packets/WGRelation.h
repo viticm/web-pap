@@ -17,7 +17,7 @@ public:
     WGRelation( ){};
     virtual ~WGRelation( ){};
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream );
     virtual BOOL            Write( SocketOutputStream& oStream ) const;
     virtual UINT            Execute( Player* pPlayer );
@@ -26,7 +26,7 @@ public:
     virtual UINT            GetPacketSize() const { return m_Relation.GetSize() + sizeof(m_GUID); }
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     WG_RELATION*            GetRelation( ) { return &m_Relation; }
     VOID                    SetRelation( WG_RELATION* pRelation ) { m_Relation = *pRelation; }
 
@@ -34,7 +34,7 @@ public:
     GUID_t                    GetGUID() { return m_GUID; }
 
 private:
-    //数据
+    //鏁版嵁
     WG_RELATION                m_Relation;
     GUID_t                    m_GUID;
 };

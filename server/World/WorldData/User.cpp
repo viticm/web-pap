@@ -18,7 +18,7 @@
 #include "Combat/CampAndStand.h"
 #include "WorldTable.h"
 
-// Ôö¼ÓÒ»¸ö¹ØÏµÈË
+// å¢åŠ ä¸€ä¸ªå…³ç³»äºº
 VOID USER::AddRelation( GUID_t guid, const _RELATION_USER* pRUser )
 {
 __ENTER_FUNCTION
@@ -53,7 +53,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ÒÆ³ıÒ»¸ö¹ØÏµÈË
+// ç§»é™¤ä¸€ä¸ªå…³ç³»äºº
 VOID USER::DelRelation( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -74,7 +74,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// µÃµ½ºÍÄ³Íæ¼ÒµÄ¹ØÏµ×´Ì¬
+// å¾—åˆ°å’ŒæŸç©å®¶çš„å…³ç³»çŠ¶æ€
 enum RELATION_TYPE USER::GetRelationType( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -91,7 +91,7 @@ __LEAVE_FUNCTION
     return RELATION_TYPE_NONE;
 }
 
-// ÅĞ¶Ï guid ÊÇ·ñÔÚÇ×ÃÜºÃÓÑÁĞ±íÖĞ
+// åˆ¤æ–­ guid æ˜¯å¦åœ¨äº²å¯†å¥½å‹åˆ—è¡¨ä¸­
 BOOL USER::IsGoodFriend(GUID_t guid)
 {
 __ENTER_FUNCTION
@@ -108,7 +108,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// Ôö¼ÓÒ»¸öÇ×ÃÜºÃÓÑ
+// å¢åŠ ä¸€ä¸ªäº²å¯†å¥½å‹
 VOID USER::AddGoodFriend(GUID_t guid)
 {
 __ENTER_FUNCTION
@@ -123,7 +123,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// Ìî³äÃÜÓÑÔÚÏßÁĞ±í
+// å¡«å……å¯†å‹åœ¨çº¿åˆ—è¡¨
 VOID USER::FillOnlineList( RETURN_ONLINE_LIST* pSend )
 {
 __ENTER_FUNCTION
@@ -139,7 +139,7 @@ __ENTER_FUNCTION
             USER* pFriend;
 
             pFriend = g_pOnlineUser->FindUser( pRUser->m_UserGUID );
-            if( pFriend != NULL && pFriend->IsGoodFriend( GetGUID() ) ) // ÔÚÏßÍæ¼Ò
+            if( pFriend != NULL && pFriend->IsGoodFriend( GetGUID() ) ) // åœ¨çº¿ç©å®¶
             {
                 _RELATION_ONLINE OnlineRelation;
                 OnlineRelation.SetGUID( pFriend->GetGUID() );
@@ -152,7 +152,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// Í¨ÖªÔÚÏßÃÜÓÑÉÏÏßĞÅÏ¢
+// é€šçŸ¥åœ¨çº¿å¯†å‹ä¸Šçº¿ä¿¡æ¯
 VOID USER::InformOnlineMsg()
 {
 __ENTER_FUNCTION
@@ -167,7 +167,7 @@ __ENTER_FUNCTION
             USER* pFriend;
 
             pFriend = g_pOnlineUser->FindUser( pRUser->m_UserGUID );
-            if( pFriend != NULL && pFriend->IsGoodFriend( GetGUID() ) ) // ÔÚÏßÍæ¼Ò
+            if( pFriend != NULL && pFriend->IsGoodFriend( GetGUID() ) ) // åœ¨çº¿ç©å®¶
             {
                 pFriend->SendRelationOnlineMsg( this );
             }
@@ -177,7 +177,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// Í¨ÖªÔÚÏßÃÜÓÑÏÂÏßĞÅÏ¢
+// é€šçŸ¥åœ¨çº¿å¯†å‹ä¸‹çº¿ä¿¡æ¯
 VOID USER::InformOfflineMsg()
 {
 __ENTER_FUNCTION
@@ -192,7 +192,7 @@ __ENTER_FUNCTION
             USER* pFriend;
 
             pFriend = g_pOnlineUser->FindUser( pRUser->m_UserGUID );
-            if( pFriend != NULL && pFriend->IsGoodFriend( GetGUID() ) ) // ÔÚÏßÍæ¼Ò
+            if( pFriend != NULL && pFriend->IsGoodFriend( GetGUID() ) ) // åœ¨çº¿ç©å®¶
             {
                 pFriend->SendRelationOfflineMsg( this );
             }
@@ -202,7 +202,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ¸ø¸ÃÍæ¼Ò·¢ËÍÄ³ºÃÓÑÉÏÏßµÄĞÅÏ¢
+// ç»™è¯¥ç©å®¶å‘é€æŸå¥½å‹ä¸Šçº¿çš„ä¿¡æ¯
 VOID USER::SendRelationOnlineMsg(USER* pUser)
 {
 __ENTER_FUNCTION
@@ -235,7 +235,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ¸ø¸ÃÍæ¼Ò·¢ËÍÄ³ºÃÓÑÏÂÏßµÄĞÅÏ¢
+// ç»™è¯¥ç©å®¶å‘é€æŸå¥½å‹ä¸‹çº¿çš„ä¿¡æ¯
 VOID USER::SendRelationOfflineMsg(USER* pUser)
 {
 __ENTER_FUNCTION
@@ -267,7 +267,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ·µ»ØÊÇ·ñ¿ÉÒÔ·¢ËÍÓÊ¼ş£¬Èç¹û¿ÉÒÔµÄ»°£¬Ôò·µ»Ø 0£¬·ñÔò·µ»Ø´íÎóºÅ£¬´íÎóºÅ²Î¼û enum RELATION_RETURN_TYPE
+// è¿”å›æ˜¯å¦å¯ä»¥å‘é€é‚®ä»¶ï¼Œå¦‚æœå¯ä»¥çš„è¯ï¼Œåˆ™è¿”å› 0ï¼Œå¦åˆ™è¿”å›é”™è¯¯å·ï¼Œé”™è¯¯å·å‚è§ enum RELATION_RETURN_TYPE
 UCHAR USER::ValidateMail(const MAIL* pMail)
 {
 __ENTER_FUNCTION
@@ -281,12 +281,12 @@ __ENTER_FUNCTION
     UCHAR uFlag = 0;
 
     //
-    //MAIL_TYPE_SYSTEM£¬MAIL_TYPE_SCRIPTÀàĞÍµÄÓÊ¼ş²»×ö¼ì²é
+    //MAIL_TYPE_SYSTEMï¼ŒMAIL_TYPE_SCRIPTç±»å‹çš„é‚®ä»¶ä¸åšæ£€æŸ¥
     //
     if( pMail->m_uFlag == MAIL_TYPE_NORMAL || pMail->m_uFlag == MAIL_TYPE_NORMAL2 )
     {
         if( IsCannotRecvMail() )
-        { // ¾ÜÊÕËùÓĞÓÊ¼ş
+        { // æ‹’æ”¶æ‰€æœ‰é‚®ä»¶
             uFlag = RET_ERR_CANNOTRECEIVEMAIL;
         }
         else
@@ -302,11 +302,11 @@ __ENTER_FUNCTION
                 RELATION_TYPE RelationType = GetRelationType(pMail->m_GUID);
 
                 if( RelationType == RELATION_TYPE_BLACKNAME )
-                { // ºÚÃûµ¥Ò²µ±×÷ÍêÈ«¾ÜÊÕ´¦Àí£¬ÒÔ±£ÁôÑÕÃæ¡­¡­
+                { // é»‘åå•ä¹Ÿå½“ä½œå®Œå…¨æ‹’æ”¶å¤„ç†ï¼Œä»¥ä¿ç•™é¢œé¢â€¦â€¦
                     uFlag = RET_ERR_CANNOTRECEIVEMAIL;
                 }
                 else if( (RelationType == RELATION_TYPE_NONE) && IsCannotRecvStrangerMail() )
-                { // ¾ÜÊÕÄ°ÉúÈËÓÊ¼ş
+                { // æ‹’æ”¶é™Œç”Ÿäººé‚®ä»¶
                     uFlag = RET_ERR_NOTRECVSTRANGEMAIL;
                 }
             }
@@ -320,7 +320,7 @@ __LEAVE_FUNCTION
     return RET_ERR_RELATIONUNKNOWN;
 }
 
-// ÊÕµ½Ò»·âÓÊ¼ş
+// æ”¶åˆ°ä¸€å°é‚®ä»¶
 BOOL USER::RecvMail(const MAIL* pMail)
 {
 __ENTER_FUNCTION
@@ -335,7 +335,7 @@ __ENTER_FUNCTION
     }
 
     if( pMail->m_uFlag == MAIL_TYPE_SCRIPT )
-    { //Èç¹û·¢ËÍµÄÊÇ½Å±¾ÓÊ¼ş£¬ÔòÖ±½Ó·¢ËÍÔÚÄ¿µÄÓÃ»§ËùÔÚ·şÎñÆ÷Ö´ĞĞ
+    { //å¦‚æœå‘é€çš„æ˜¯è„šæœ¬é‚®ä»¶ï¼Œåˆ™ç›´æ¥å‘é€åœ¨ç›®çš„ç”¨æˆ·æ‰€åœ¨æœåŠ¡å™¨æ‰§è¡Œ
         WGMail Msg;
         Msg.SetPlayerID( m_PlayerID );
         Msg.GetMailList()->m_Count = 1;
@@ -345,11 +345,11 @@ __ENTER_FUNCTION
         pServerPlayer->SendPacket( &Msg );
     }
     else
-    { //Í¨Öª´ËÓÃ»§ÓĞĞÂÓÊ¼şÁË
+    { //é€šçŸ¥æ­¤ç”¨æˆ·æœ‰æ–°é‚®ä»¶äº†
         UCHAR uFlag = ValidateMail(pMail);
 
         if( uFlag )
-        { // ÓÊ¼şÊôÓÚ¾ÜÊÕÓÊ¼ş
+        { // é‚®ä»¶å±äºæ‹’æ”¶é‚®ä»¶
             USER* pSUser = g_pOnlineUser->FindUser( pMail->m_szSourName );
             if ( pSUser != NULL )
             {
@@ -406,7 +406,7 @@ __ENTER_FUNCTION
             if( m_KickTime>0 )
             {
                 if( (UINT)m_KickTime<=uDeltaTime )
-                {//Ìß³ı
+                {//è¸¢é™¤
                     GUID_t guiduser = GetGUID();
                     UINT uStatus = m_UserStatus ;
                     g_pOnlineUser->OnUserRemove( this );
@@ -447,7 +447,7 @@ BOOL USER::IsEnemy( const _CAMP_DATA* pData )
 {
     if( pData == NULL )
     {
-        Assert(FALSE && "²»ÄÜÄÃ¿ÕµÄÕóÓªÊı¾İÀ´ÅĞ¶Ï");
+        Assert(FALSE && "ä¸èƒ½æ‹¿ç©ºçš„é˜µè¥æ•°æ®æ¥åˆ¤æ–­");
         return TRUE;
     }
 

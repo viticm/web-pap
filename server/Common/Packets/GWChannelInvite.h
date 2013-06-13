@@ -15,7 +15,7 @@ namespace Packets
         GWChannelInvite( ){} ;
         virtual ~GWChannelInvite( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -24,7 +24,7 @@ namespace Packets
             virtual UINT            GetPacketSize()const { return sizeof(GUID_t)*2 ; }
 
     public :
-        //数据接口
+        //鏁版嵁鎺ュ彛
         VOID            SetSourGUID( GUID_t guid ){    m_SourGUID = guid ; }
         GUID_t            GetSourGUID( ){ return m_SourGUID ; }
 
@@ -33,9 +33,9 @@ namespace Packets
 
 
     private :
-        //数据
-        GUID_t            m_SourGUID ;        //邀请人
-        GUID_t            m_DestGUID ;        //被邀请人
+        //鏁版嵁
+        GUID_t            m_SourGUID ;        //閭�璇蜂汉
+        GUID_t            m_DestGUID ;        //琚個璇蜂汉
 
     };
 

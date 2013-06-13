@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 
         BOOL bRet ;
 
-        //Ê±¼äÄ£¿éĞèÒª×î¿ªÊ¼µÄÊ±ºòÉèÖÃ
+        //æ—¶é—´æ¨¡å—éœ€è¦æœ€å¼€å§‹çš„æ—¶å€™è®¾ç½®
         g_pTimeManager = new TimeManager ;
         Assert( g_pTimeManager ) ;
         g_pTimeManager->Init( ) ;
@@ -246,7 +246,7 @@ BOOL Billing::DelStaticManager( )
     SAFE_DELETE( g_pTimeManager ) ;
     Log::SaveLog( "./Log/Billing.log", "g_pTimeManager delete...OK" ) ;
     //
-    //ÒÔÏÂÄ£¿é·ÅºóÃæÉ¾³ı
+    //ä»¥ä¸‹æ¨¡å—æ”¾åé¢åˆ é™¤
     //
     SAFE_DELETE( g_pPacketFactoryManager ) ;
     Log::SaveLog( "./Log/Billing.log", "g_pPacketFactoryManager delete...OK" ) ;

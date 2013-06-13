@@ -35,7 +35,7 @@ namespace Packets
 
     private:
         
-        BYTE            m_BagIndex;        //Ê¹ÓÃBagÖĞµÄÎ»ÖÃ´æ·ÅµÄÎ»ÖÃ
+        BYTE            m_BagIndex;        //ä½¿ç”¨Bagä¸­çš„ä½ç½®å­˜æ”¾çš„ä½ç½®
 
     };
 

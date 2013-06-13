@@ -17,7 +17,7 @@ namespace Packets
         GCMonsterSpeak( ){} ;
         virtual ~GCMonsterSpeak( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,8 +39,8 @@ namespace Packets
         
     private:
         ObjID_t            m_ObjID;
-        BYTE            m_bySpeakContentSize;                            //ÅİÅİËµ»°µÄÄÚÈİ³¤¶È,²»°üÀ¨×îºóµÄ'\0'
-        CHAR            m_szSpeakContent[MAX_MONSTERSPEAK_CONTENT];        //ÅİÅİËµ»°µÄÄÚÈİ
+        BYTE            m_bySpeakContentSize;                            //æ³¡æ³¡è¯´è¯çš„å†…å®¹é•¿åº¦,ä¸åŒ…æ‹¬æœ€åçš„'\0'
+        CHAR            m_szSpeakContent[MAX_MONSTERSPEAK_CONTENT];        //æ³¡æ³¡è¯´è¯çš„å†…å®¹
     
     };
 

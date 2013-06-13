@@ -1,6 +1,6 @@
 // CGPlayerShopSaleOut.h
 // 
-// Í¨Öª·şÎñÆ÷´ËÉÌµêÒÑ¾­±»ÅÌ³ö
+// é€šçŸ¥æœåŠ¡å™¨æ­¤å•†åº—å·²ç»è¢«ç›˜å‡º
 // 
 //////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace Packets
         }
         virtual ~CGPlayerShopSaleOut( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -49,9 +49,9 @@ namespace Packets
         BYTE                    GetSerial( ){ return m_Serial; } ;
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
         BYTE                    m_bSaleOut;
-        UINT                    m_Price;            //ÅÌ³ö¼Û¸ñ
+        UINT                    m_Price;            //ç›˜å‡ºä»·æ ¼
         BYTE                    m_Serial;
     };
 

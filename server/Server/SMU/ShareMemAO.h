@@ -7,7 +7,7 @@
 
 #define        SHMEM_LOG_PATH    "./Log/ShareMemory.log"
 /*
- *        ¹²ÏíÄÚ´æ·ÃÎÊ¶ÔÏó
+ *        å…±äº«å†…å­˜è®¿é—®å¯¹è±¡
  *        ShareMemory    Access    Object
  */
 class ShareMemAO
@@ -24,34 +24,34 @@ public:
     }
     ~ShareMemAO(){};
     /*
-     *    ´´½¨ShareMem ·ÃÎÊ¶ÔÏó(ĞÂ´´½¨)
+     *    åˆ›å»ºShareMem è®¿é—®å¯¹è±¡(æ–°åˆ›å»º)
      *
-     *  SM_KEY    key        ·ÃÎÊ¼üÖµ
+     *  SM_KEY    key        è®¿é—®é”®å€¼
      *
-     *    UINT        Size    ·ÃÎÊÊı¾İÇø×Ö½Ú¸öÊı
+     *    UINT        Size    è®¿é—®æ•°æ®åŒºå­—èŠ‚ä¸ªæ•°
      *
      */
     BOOL    Create(SM_KEY key,UINT    Size);
     /*
-     *    Ïú»Ù¶ÔÏó
+     *    é”€æ¯å¯¹è±¡
      */
     VOID    Destory();
 
     /*
-     *        ¸½×ÅShareMem ·ÃÎÊ¶ÔÏó(²»ÊÇĞÂ´´½¨)
-     *        SM_KEY    key        ·ÃÎÊ¼üÖµ
+     *        é™„ç€ShareMem è®¿é—®å¯¹è±¡(ä¸æ˜¯æ–°åˆ›å»º)
+     *        SM_KEY    key        è®¿é—®é”®å€¼
      *
-     *        UINT        Size    ·ÃÎÊÊı¾İÇø×Ö½Ú¸öÊı
+     *        UINT        Size    è®¿é—®æ•°æ®åŒºå­—èŠ‚ä¸ªæ•°
      *        
      */
     BOOL    Attach(SM_KEY,UINT Size);
     /*
-     *        È¡Ïû¸½×Å(²»Ïú»Ù)
+     *        å–æ¶ˆé™„ç€(ä¸é”€æ¯)
      */
     BOOL    Detach();
 
     /*
-     *     »ñµÃÊı¾İÇøÖ¸Õë
+     *     è·å¾—æ•°æ®åŒºæŒ‡é’ˆ
      */
     CHAR*    GetDataPtr()
     {
@@ -59,7 +59,7 @@ public:
     }
 
     /*
-     *    »ñµÃ ´óĞ¡ÎªtSize µÄµÚtIndex ¸ösmuµÄÊı¾İ
+     *    è·å¾— å¤§å°ä¸ºtSize çš„ç¬¬tIndex ä¸ªsmuçš„æ•°æ®
      */
     CHAR*    GetTypePtr(UINT tSize,UINT tIndex)
     {
@@ -70,7 +70,7 @@ public:
         return m_pDataPtr+tSize*tIndex;
     }
     /*
-     *    »ñµÃÊı¾İÇø×Ü´óĞ¡
+     *    è·å¾—æ•°æ®åŒºæ€»å¤§å°
      */
     UINT    GetSize()
     {
@@ -83,17 +83,17 @@ public:
     UINT    GetHeadVer();
     VOID    SetHeadVer(UINT ver);
     
-    //ÃüÁî
+    //å‘½ä»¤
     INT                    m_CmdArg;
 private:
     
-    //ShareMemory    ÄÚ´æ´óĞ¡
+    //ShareMemory    å†…å­˜å¤§å°
     UINT                m_Size;
-    // ShareMemory  Êı¾İÖ¸Õë
+    // ShareMemory  æ•°æ®æŒ‡é’ˆ
     CHAR*                m_pDataPtr;
-    // ShareMemory    ÄÚ´æÍ·Ö¸Õë
+    // ShareMemory    å†…å­˜å¤´æŒ‡é’ˆ
     CHAR*                m_pHeader;
-    // ShareMemory    ¾ä±ú    
+    // ShareMemory    å¥æŸ„    
     SMHandle            m_hold;
     
 };    

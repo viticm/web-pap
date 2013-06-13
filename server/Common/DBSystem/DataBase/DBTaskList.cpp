@@ -72,7 +72,7 @@ BOOL DBTaskList::Save(VOID* pSource)
     FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
     Assert(pCharFullData);
     
-    //±£´æÈÎÎñÁÐ±í
+    //ä¿å­˜ä»»åŠ¡åˆ—è¡¨
     INT MissionCount =    pCharFullData->m_Mission.m_Count;
 
     for(INT i = 0;i    <    MissionCount;i++)
@@ -114,7 +114,7 @@ BOOL DBTaskList::Save(VOID* pSource)
         if(!ODBCBase::Save(pCharFullData))
             return FALSE;
     }
-    //±£´æÈÎÎñÊý¾Ý
+    //ä¿å­˜ä»»åŠ¡æ•°æ®
     do
     {
         CHAR    CharMissionData[4096];
@@ -147,7 +147,7 @@ BOOL DBTaskList::Save(VOID* pSource)
 
     }while(0);
 
-    //±£´æÈÎÎñ±ê¼Ç
+    //ä¿å­˜ä»»åŠ¡æ ‡è®°
     do
     {
         
@@ -238,7 +238,7 @@ BOOL DBTaskList::ParseResult(VOID* pResult)
                 DB_TP8,
             };
 
-            //¼ÓÔØ¼¼ÄÜÊôÐÔ
+            //åŠ è½½æŠ€èƒ½å±žæ€§
             Assert(mResultCount<MAX_CHAR_MISSION_NUM);
             Assert(mInterface);
             INT ErrorCode;
@@ -306,7 +306,7 @@ BOOL DBTaskList::ParseResult(VOID* pResult)
                 };
 
                 Assert(mInterface);
-                Assert(mResultCount <= 1); //Ó¦¸ÃÖ»ÓÐÒ»¸ö½á¹û
+                Assert(mResultCount <= 1); //åº”è¯¥åªæœ‰ä¸€ä¸ªç»“æžœ
                 INT ErrorCode;
                 for(INT i =0;i<1;i++)
                 {

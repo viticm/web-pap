@@ -10,24 +10,24 @@ public:
     ~Login();
 
 public:
-    //Login ��������ʼ��
+    //Login 服务器初始化
     BOOL        Init();
 
-    //Login ��������ѭ��
+    //Login 服务器主循环
     BOOL        Loop();
 
-    //Login �������˳�
+    //Login 服务器退出
     BOOL        Exit();
 
 
-    //ֹͣģ��ִ�У������ô˽ӿں󣬻Ὣ����ӵ���̵߳�ģ������Ϊ���״̬
-    //�������̵߳�ѭ��������һ��ѭ��������ͻ��˳�
+    //停止模块执行，当调用此接口后，会将所有拥有线程的模块设置为不活动状态
+    //当各个线程的循环调用下一此循环操作后就会退出
     VOID        Stop( ) ;
 
 protected:
-    //����������ݿռ�
+    //分配相关数据空间
     BOOL        NewLogin();
-    //��ʼ��������ݿռ�
+    //初始化相关数据空间
     BOOL        InitLogin();
     BOOL        m_bExited;
 };

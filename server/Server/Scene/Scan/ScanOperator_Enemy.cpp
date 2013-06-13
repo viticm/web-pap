@@ -60,11 +60,11 @@ __ENTER_FUNCTION
     BOOL bCanViewMe = pCharacter->IsCanViewMe(m_pMonster);
     if(bAlive && bEnemy && bCanViewMe)
     {
-        //ÓëµÐÈËÎ»ÖÃÖ®¼äµÄ¾àÀë
+        //ä¸Žæ•Œäººä½ç½®ä¹‹é—´çš„è·ç¦»
         FLOAT fDist = MySqrt(m_pMonster->getWorldPos(), pCharacter->getWorldPos() ) ;
         if( fDist<m_fRadius )
         {    
-            //ÓëµÐÈËÎ»ÖÃÖ®¼äµÄ¾àÀëÐ¡ÓÚÌØ¶¨ÖµÊ±²Å¼ÓÈëµÐÈË¶ÓÁÐ
+            //ä¸Žæ•Œäººä½ç½®ä¹‹é—´çš„è·ç¦»å°äºŽç‰¹å®šå€¼æ—¶æ‰åŠ å…¥æ•Œäººé˜Ÿåˆ—
             m_pMonster->GetMonsterAI()->AddPrimaryEnemy( pCharacter->GetID() ) ;
             return SCANRETURN_RETURN;
         }

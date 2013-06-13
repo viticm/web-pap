@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼þÃû£ºScanOpt_SObj_ScanTrap.h
-//¿ª·¢Õß£º
-//¹¦ÄÜÃèÊö£ºÌØÊâ¶ÔÏóËÑË÷ÏÝÚåµÄ²Ù×÷
-//ÐÞ¸Ä¼ÇÂ¼£º2005-2-10´´½¨
+//æ–‡ä»¶åï¼šScanOpt_SObj_ScanTrap.h
+//å¼€å‘è€…ï¼š
+//åŠŸèƒ½æè¿°ï¼šç‰¹æ®Šå¯¹è±¡æœç´¢é™·é˜±çš„æ“ä½œ
+//ä¿®æ”¹è®°å½•ï¼š2005-2-10åˆ›å»º
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -62,15 +62,15 @@ public :
     ScanOpt_SObj_ScanTrap();
     virtual ~ScanOpt_SObj_ScanTrap();
 
-    //³õÊ¼»¯É¨Ãè¿ØÖÆÆ÷
+    //åˆå§‹åŒ–æ‰«ææŽ§åˆ¶å™¨
     virtual BOOL                Init(SCANOPT_SOBJ_SCANTRAP_INIT* pInit) ;
-    //É¨Ãè²Ù×÷¿ªÊ¼Ç°»Øµ÷
+    //æ‰«ææ“ä½œå¼€å§‹å‰å›žè°ƒ
     //    virtual BOOL            On_BeforeScan();
-    //ÅÐ¶Ï²ÎÊýÖÐµÄZoneÊÇ·ñÐèÒªÉ¨Ãè
+    //åˆ¤æ–­å‚æ•°ä¸­çš„Zoneæ˜¯å¦éœ€è¦æ‰«æ
     //    virtual BOOL            On_IsNeedScan(ZoneID_t ZoneID) ;
-    //ËÑË÷µ½Ò»¸öObj, ·µ»ØÖµ¼û SCANRETURN
+    //æœç´¢åˆ°ä¸€ä¸ªObj, è¿”å›žå€¼è§ SCANRETURN
     virtual UINT                On_FindObj(Obj* pObj) ;
-    //É¨Ãè²Ù×÷Íê³Éºó»Øµ÷
+    //æ‰«ææ“ä½œå®ŒæˆåŽå›žè°ƒ
     //    virtual VOID            On_AfterScan() ;
 
 

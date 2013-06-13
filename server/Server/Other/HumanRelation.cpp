@@ -48,7 +48,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// �ж��Ƿ��Լ��ĺ���
+// 判断是否自己的好友
 BOOL HumanRelation::IsFriend( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -71,7 +71,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �ж��Ƿ��ں�����
+// 判断是否在黑名单
 BOOL HumanRelation::IsBlackName( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -94,7 +94,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �õ��������֮��Ĺ�ϵ����
+// 得到两个玩家之间的关系类型
 RELATION_TYPE HumanRelation::GetRelationType( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -117,7 +117,7 @@ __LEAVE_FUNCTION
     return RELATION_TYPE_STRANGER;
 }
 
-// �ж��������֮���Ƿ����ĳ�ֹ�ϵ
+// 判断两个玩家之间是否存在某种关系
 BOOL HumanRelation::HaveRelation( RELATION_TYPE RelationType, GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -181,7 +181,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ����һ����ϵ��
+// 添加一个关系户
 BOOL HumanRelation::AddRelation( RELATION_TYPE RelationType, _RELATION* pRelationData )
 {
 __ENTER_FUNCTION
@@ -203,7 +203,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ����һ����ϵ��
+// 添加一个关系户
 BOOL HumanRelation::AddRelation( RELATION_TYPE RelationType, const RELATION_MEMBER* pMember )
 {
 __ENTER_FUNCTION
@@ -211,7 +211,7 @@ __ENTER_FUNCTION
     Assert( pMember );
 
     if( HaveRelation( RelationType, pMember->m_MemberGUID ) )
-    { // ��ͬ����Ա����
+    { // 有同组人员在了
         return FALSE;
     }
 
@@ -244,14 +244,14 @@ __ENTER_FUNCTION
     }
 
     if( IsGroupFull((RELATION_GROUP)uGroup) )
-    { // ������
+    { // 人满了
         return FALSE;
     }
 
     INT index;
 
     if( GetRelation(RelationType, INVALID_ID, index) != NULL )
-    { // �ҳ�һ����λ��
+    { // 找出一个空位置
         _OWN_RELATION Relation;
         Relation.m_Type = RelationType;
         Relation.m_Group = uGroup;
@@ -269,7 +269,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ɾ��һ����ϵ��
+// 删除一个关系户
 BOOL HumanRelation::DelRelation( RELATION_TYPE RelationType, GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -308,7 +308,7 @@ __ENTER_FUNCTION
     if( pRelation != NULL )
     {
         if( bFriendFlag )
-        { // ���ٺ��ѵ�����
+        { // 减少好友的数量
             m_pHuman->GetDB()->DecRelationCount(RELATION_GROUP_FRIEND_ALL);
         }
 
@@ -324,21 +324,21 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �����ϵ
+// 变更关系
 BOOL HumanRelation::RelationTransition( RELATION_TYPE newRelationType, GUID_t guid )
 {
 __ENTER_FUNCTION
 
-    // 1���õ�ת��ǰ��ϵ
+    // 1、得到转换前关系
     RELATION_TYPE oldRelationType = GetRelationType(guid);
 
-    // 2����֤���ֹ�ϵ��ת���Ϸ���
+    // 2、验证两种关系的转换合法性
     if( CanTransition(oldRelationType, newRelationType) != TRUE )
     {
         return FALSE;
     }
 
-    // 3����֤ת����Ĺ�ϵ��ռ�ݵĴ洢�ռ��㹻
+    // 3、验证转换后的关系所占据的存储空间足够
     if( newRelationType == RELATION_TYPE_FRIEND )
     {
         if( IsGroupFull(RELATION_GROUP_FRIEND_ALL) )
@@ -358,7 +358,7 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    // 4��ʵ��ת��������������
+    // 4、实行转换，并更正计数
     INT index;
     const _OWN_RELATION* pRelation;
     pRelation = GetRelation( oldRelationType, guid, index );
@@ -378,7 +378,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �Ƿ�ĳ���Ѿ���Ա
+// 是否某组已经满员
 BOOL HumanRelation::IsGroupFull( RELATION_GROUP RelationGroup )
 {
 __ENTER_FUNCTION
@@ -443,7 +443,7 @@ __LEAVE_FUNCTION
     return TRUE;
 }
 
-// �ж�һ�ֹ�ϵ�Ƿ��ܹ�ֱ��ת������һ�ֹ�ϵ
+// 判断一种关系是否能够直接转换成另一种关系
 BOOL HumanRelation::CanTransition( RELATION_TYPE oldRelationType, RELATION_TYPE newRelationType )
 {
 __ENTER_FUNCTION
@@ -489,7 +489,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �õ�����
+// 得到心情
 const CHAR* HumanRelation::GetMood( )
 {
 __ENTER_FUNCTION
@@ -509,7 +509,7 @@ __LEAVE_FUNCTION
     return NULL;
 }
 
-// ��������
+// 设置心情
 VOID HumanRelation::SetMood( const CHAR* szMood )
 {
 __ENTER_FUNCTION
@@ -525,7 +525,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ��ѯ��ϵֵ
+// 查询关系值
 INT HumanRelation::GetFriendPoint( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -546,7 +546,7 @@ __LEAVE_FUNCTION
     return 0;
 }
 
-// ���ӹ�ϵֵ
+// 增加关系值
 VOID HumanRelation::IncFriendPoint( GUID_t guid, INT nPoint )
 {
 __ENTER_FUNCTION
@@ -568,7 +568,7 @@ __ENTER_FUNCTION
     }
 
     if( nPoint <= 0 )
-    { // �Ѿ���������
+    { // 已经到了上限
         return;
     }
 
@@ -590,7 +590,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ���ٹ�ϵֵ
+// 减少关系值
 VOID HumanRelation::DecFriendPoint( GUID_t guid, INT nPoint )
 {
 __ENTER_FUNCTION
@@ -609,7 +609,7 @@ __ENTER_FUNCTION
     __LEAVE_FUNCTION
 }
 
-// ���÷��飨�ýӿڴ�����Ϊ�˿ͻ�����ʾ�����ã�
+// 设置分组（该接口纯粹是为了客户端显示而设置）
 BOOL HumanRelation::SetFriendGroup( GUID_t guid, RELATION_GROUP RelationGroup )
 {
 __ENTER_FUNCTION
@@ -655,7 +655,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ����ϵ�б���Ϣ�ṹ
+// 填充关系列表消息结构
 VOID HumanRelation::FillRelationList( GC_RELATIONLIST& RelationList )
 {
 __ENTER_FUNCTION
@@ -695,11 +695,11 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ���¹�ϵ������
+// 更新关系人数据
 const _OWN_RELATION* HumanRelation::UpdateRelationInfo( _RELATION* pRelationData )
 {
 __ENTER_FUNCTION
-    // ���ҵ�����ˣ�����Ҳ����Ͳ�������
+    // 先找到这个人，如果找不到就不更新了
     Assert( pRelationData );
 
     GUID_t guid = pRelationData->GetGUID();
@@ -724,13 +724,13 @@ __ENTER_FUNCTION
         }
     }
 
-    // ���½�ȥ
+    // 更新进去
 __LEAVE_FUNCTION
 
     return NULL;
 }
 
-// ��ù�ϵ������
+// 获得关系人数据
 const _OWN_RELATION* HumanRelation::GetRelationInfo( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -751,7 +751,7 @@ __LEAVE_FUNCTION
     return NULL;
 }
 
-// ����ϵ�������е�ȱ�������
+// 将关系人数据中的缺少项填充
 //BOOL HumanRelation::CompleteRelationInfo( _RELATION& RelationData )
 //{
 //__ENTER_FUNCTION
@@ -767,7 +767,7 @@ __LEAVE_FUNCTION
 //    return FALSE;
 //}
 
-// �����ǽ����ص�һЩ����
+// 以下是结婚相关的一些操作
 BOOL HumanRelation::IsMarried()
 {
 __ENTER_FUNCTION
@@ -787,7 +787,7 @@ __LEAVE_FUNCTION
     return NULL;
 }
 
-// �õ���ż�� GUID
+// 得到配偶的 GUID
 GUID_t HumanRelation::GetSpouseGUID()
 {
 __ENTER_FUNCTION
@@ -807,7 +807,7 @@ __LEAVE_FUNCTION
     return INVALID_ID;
 }
 
-// ��ĳ�� GUID ��Ӧ����ҽ�飨�����ﲻ���Ա�
+// 和某个 GUID 对应的玩家结婚（在这里不管性别）
 BOOL HumanRelation::Marry( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -818,20 +818,20 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    // �ҵ��� GUID �ĺ���
+    // 找到该 GUID 的好友
     const _OWN_RELATION* pRelation;
     INT nIndex;
     pRelation = GetRelation( RELATION_TYPE_FRIEND, guid, nIndex );
     if ( (pRelation == NULL) || (pRelation->m_Type != RELATION_TYPE_FRIEND) )
-    { // û��������ѻ��ϵ������ͨ���ѹ�ϵ
-        AssertEx(FALSE, "�Բ���Ŀǰ����ֻ����ͨ���ѹ�ϵ���Խ�顣");
+    { // 没有这个朋友或关系不是普通好友关系
+        AssertEx(FALSE, "对不起，目前有且只有普通好友关系可以结婚。");
         return FALSE;
     }
 
-    // �����ѵ�������Ϊ����
+    // 将好友的类型设为夫妻
     m_pHuman->GetDB()->ModifyFriendType( nIndex, RELATION_TYPE_MARRY );
 
-    // ����ż�� GUID ��Ϊ guid
+    // 将配偶的 GUID 设为 guid
     MarriageInfo info;
     info.m_SpouseGUID = guid;
 
@@ -844,7 +844,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ���
+// 离婚
 BOOL HumanRelation::Divorce( )
 {
 __ENTER_FUNCTION
@@ -862,15 +862,15 @@ __ENTER_FUNCTION
     INT nIndex;
     pRelation = GetRelation( RELATION_TYPE_MARRY, guid, nIndex );
     if ( (pRelation == NULL) || (pRelation->m_Type != RELATION_TYPE_MARRY) )
-    { // û��������ѻ��ϵ���Ƿ��޹�ϵ
-        AssertEx(FALSE, "�Բ���ֻ�з��޹�ϵ������顣");
+    { // 没有这个朋友或关系不是夫妻关系
+        AssertEx(FALSE, "对不起，只有夫妻关系可以离婚。");
         return FALSE;
     }
 
-    // �����ѵ�������Ϊ��ͨ����
+    // 将好友的类型设为普通好友
     m_pHuman->GetDB()->ModifyFriendType( nIndex, RELATION_TYPE_FRIEND );
 
-    // ����ż�� GUID �ÿ�
+    // 将配偶的 GUID 置空
     MarriageInfo info;
     info.m_SpouseGUID = INVALID_ID;
 
@@ -881,7 +881,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �ж� guid ��Ӧ������Ƿ����Լ���ʦ��
+// 判断 guid 对应的玩家是否是自己的师傅
 BOOL HumanRelation::IsMaster( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -907,7 +907,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �õ�ʦ���� GUID
+// 得到师傅的 GUID
 GUID_t HumanRelation::GetMasterGUID()
 {
 __ENTER_FUNCTION
@@ -927,7 +927,7 @@ __LEAVE_FUNCTION
     return INVALID_ID;
 }
 
-// �ж� guid ��Ӧ������Ƿ����Լ���ͽ��
+// 判断 guid 对应的玩家是否是自己的徒弟
 BOOL HumanRelation::IsPrentice( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -959,7 +959,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �ж��Ƿ���ʦ��
+// 判断是否有师傅
 BOOL HumanRelation::HaveMaster( )
 {
 __ENTER_FUNCTION
@@ -979,7 +979,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ȡ���м���ͽ��
+// 取得有几个徒弟
 INT HumanRelation::GetPrenticeCount()
 {
 __ENTER_FUNCTION
@@ -999,7 +999,7 @@ __LEAVE_FUNCTION
     return 0;
 }
 
-// ȡ�õ� nIndex ��ͽ�ܵ� GUID
+// 取得第 nIndex 个徒弟的 GUID
 GUID_t HumanRelation::GetNthPrentice( INT nIndex )
 {
 __ENTER_FUNCTION
@@ -1026,7 +1026,7 @@ __LEAVE_FUNCTION
 
 }
 
-// ȡ��ʦ�µ�
+// 取得师德点
 UINT HumanRelation::GetMoralPoint( )
 {
 __ENTER_FUNCTION
@@ -1047,7 +1047,7 @@ __LEAVE_FUNCTION
 
 }
 
-// ����ʦ�µ�
+// 设置师德点
 BOOL HumanRelation::SetMoralPoint( UINT uPoint )
 {
 __ENTER_FUNCTION
@@ -1066,7 +1066,7 @@ __LEAVE_FUNCTION
 
 }
 
-// ȡ�����һ��ͽ����ʦʱ��ݵ�ǰʱ��ĳ��ȣ�����������
+// 取得最后一次徒弟叛师时间据当前时间的长度（返回秒数）
 UINT HumanRelation::GetPrenticeBetrayTime()
 {
 __ENTER_FUNCTION
@@ -1079,7 +1079,7 @@ __ENTER_FUNCTION
         return 0;
     }
 
-    UINT sec; // ���һ����ʦ������
+    UINT sec; // 最后一次叛师的秒数
     sec = (UINT)(g_pTimeManager->GetANSITime() - pRelationDB->m_PrenticeInfo.m_BetrayingTime);
 
     return sec;
@@ -1089,7 +1089,7 @@ __LEAVE_FUNCTION
     return 0;
 }
 
-// �� guid ��Ӧ�����Ϊʦ
+// 拜 guid 对应的玩家为师
 BOOL HumanRelation::Aprentice( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -1106,20 +1106,20 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    // �ҵ��� GUID �ĺ���
+    // 找到该 GUID 的好友
     const _OWN_RELATION* pRelation;
     INT nIndex;
     pRelation = GetRelation( RELATION_TYPE_FRIEND, guid, nIndex );
     if ( (pRelation == NULL) || (pRelation->m_Type != RELATION_TYPE_FRIEND) )
-    { // û��������ѻ��ϵ������ͨ���ѹ�ϵ
-        AssertEx(FALSE, "�Բ���Ŀǰ����ֻ����ͨ���ѹ�ϵ���԰�ʦ��");
+    { // 没有这个朋友或关系不是普通好友关系
+        AssertEx(FALSE, "对不起，目前有且只有普通好友关系可以拜师。");
         return FALSE;
     }
 
-    // �����ѵ�������Ϊʦ��
+    // 将好友的类型设为师傅
     m_pHuman->GetDB()->ModifyFriendType( nIndex, RELATION_TYPE_MASTER );
 
-    // ��ʦ���� GUID ��Ϊ guid
+    // 将师傅的 GUID 设为 guid
     MasterInfo info;
     info.m_MasterGUID = guid;
 
@@ -1132,7 +1132,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �� guid ��Ӧ�����Ϊͽ
+// 收 guid 对应的玩家为徒
 BOOL HumanRelation::Recruit( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -1155,17 +1155,17 @@ __ENTER_FUNCTION
         return FALSE;
     }
 
-    // �ҵ��� GUID �ĺ���
+    // 找到该 GUID 的好友
     const _OWN_RELATION* pRelation;
     INT nIndex;
     pRelation = GetRelation( RELATION_TYPE_FRIEND, guid, nIndex );
     if ( (pRelation == NULL) || (pRelation->m_Type != RELATION_TYPE_FRIEND) )
-    { // û��������ѻ��ϵ������ͨ���ѹ�ϵ
-        AssertEx(FALSE, "�Բ���Ŀǰֻ�ܽ���ͨ������Ϊͽ�ܡ�");
+    { // 没有这个朋友或关系不是普通好友关系
+        AssertEx(FALSE, "对不起，目前只能将普通好友收为徒弟。");
         return FALSE;
     }
 
-    // �����ѵ�������Ϊʦ��
+    // 将好友的类型设为师傅
     m_pHuman->GetDB()->ModifyFriendType( nIndex, RELATION_TYPE_PRENTICE );
 
     m_pHuman->GetDB()->AddPrentice( guid );
@@ -1177,7 +1177,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ����ʦ��
+// 脱离师门
 BOOL HumanRelation::LeaveMaster( )
 {
 __ENTER_FUNCTION
@@ -1195,15 +1195,15 @@ __ENTER_FUNCTION
     INT nIndex;
     pRelation = GetRelation( RELATION_TYPE_MASTER, guid, nIndex );
     if ( (pRelation == NULL) || (pRelation->m_Type != RELATION_TYPE_MASTER) )
-    { // û��������ѻ�������ʦ��
-        AssertEx(FALSE, "�Բ���ֻ�ж�ʦ������ִ�д˲�����");
+    { // 没有这个朋友或他不是师傅
+        AssertEx(FALSE, "对不起，只有对师傅可以执行此操作。");
         return FALSE;
     }
 
-    // �����ѵ�������Ϊ��ͨ����
+    // 将好友的类型设为普通朋友
     m_pHuman->GetDB()->ModifyFriendType( nIndex, RELATION_TYPE_FRIEND );
 
-    // ��ʦ���� GUID �ÿ�
+    // 将师傅的 GUID 置空
     MasterInfo info;
     info.m_MasterGUID = INVALID_ID;
 
@@ -1214,7 +1214,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ���� GUID Ϊ guid ��ͽ��
+// 驱逐 GUID 为 guid 的徒弟
 BOOL HumanRelation::ExpelPrentice( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -1235,12 +1235,12 @@ __ENTER_FUNCTION
     INT nIndex;
     pRelation = GetRelation( RELATION_TYPE_PRENTICE, guid, nIndex );
     if ( (pRelation == NULL) || (pRelation->m_Type != RELATION_TYPE_PRENTICE) )
-    { // û��������ѻ�������ͽ��
-        AssertEx(FALSE, "�Բ���ֻ�ж�ͽ�ܿ���ִ�д˲�����");
+    { // 没有这个朋友或他不是徒弟
+        AssertEx(FALSE, "对不起，只有对徒弟可以执行此操作。");
         return FALSE;
     }
 
-    // �����ѵ�������Ϊ��ͨ����
+    // 将好友的类型设为普通朋友
     m_pHuman->GetDB()->ModifyFriendType( nIndex, RELATION_TYPE_FRIEND );
     m_pHuman->GetDB()->DelPrentice( guid );
     return TRUE;
@@ -1250,7 +1250,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �ж��Ƿ��ǽ���ֵ�
+// 判断是否是结拜兄弟
 BOOL HumanRelation::IsBrother( GUID_t guid )
 {
 __ENTER_FUNCTION
@@ -1277,7 +1277,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// �����к��ѷ����ʼ�
+// 给所有好友发送邮件
 VOID HumanRelation::SendMailToAllFriend( const CHAR* szMail )
 {
 __ENTER_FUNCTION
@@ -1345,7 +1345,7 @@ __LEAVE_FUNCTION
     return NULL;
 }
 
-// ȡ����ϵ�˵����ݣ�����ָ���Լ� Index ֵ
+// 取得联系人的数据，返回指针以及 Index 值
 const _OWN_RELATION* HumanRelation::GetRelation( RELATION_TYPE RelationType, GUID_t guid, INT& index )
 {
 __ENTER_FUNCTION

@@ -16,10 +16,10 @@ using namespace std;
 
 class AIScript;
 
-//»ù±¾ÏµÊı±í
+//åŸºæœ¬ç³»æ•°è¡¨
 struct _BASE_VALUE_TBL
 {
-    //ÊôĞÔÓ°ÏìÒòËØÊıÁ¿*ÃÅÅÉÊıÁ¿
+    //å±æ€§å½±å“å› ç´ æ•°é‡*é—¨æ´¾æ•°é‡
     INT        m_Table[AINFOTYPE_NUMBER][MATTRIBUTE_NUMBER] ;
 
     _BASE_VALUE_TBL( )
@@ -53,13 +53,13 @@ struct MONSTER_EXT_ATTR
     INT        m_FriendValue;
     INT        m_WalkSpeed;
     INT        m_BossFlag;
-    INT        m_SnapSkillImmID;        //Ë²·¢¼¼ÄÜÃâÒßID
-    INT        m_DurationSkillImmID;    //³ÖĞø¼¼ÄÜÃâÒßID
-    INT        m_AttackAnimTime;        //¹¥»÷¶¯×÷Ê±¼ä
-    INT        m_AttackCooldownTime;    //¹¥»÷ÀäÈ´Ê±¼ä
+    INT        m_SnapSkillImmID;        //ç¬å‘æŠ€èƒ½å…ç–«ID
+    INT        m_DurationSkillImmID;    //æŒç»­æŠ€èƒ½å…ç–«ID
+    INT        m_AttackAnimTime;        //æ”»å‡»åŠ¨ä½œæ—¶é—´
+    INT        m_AttackCooldownTime;    //æ”»å‡»å†·å´æ—¶é—´
 };
 
-//¹ÖÎï¶ş¼¶ÊôĞÔ±í
+//æ€ªç‰©äºŒçº§å±æ€§è¡¨
 struct _MONSTER_ATTREX_TBL
 {
     INT                        m_Table[MAXTYPE_NUMBER][CATTR_LEVEL2_NUMBER] ;
@@ -91,15 +91,15 @@ struct _MONSTER_ATTREX_TBL
 };
 extern _MONSTER_ATTREX_TBL g_MonsterAttrExTbl ;
 
-// NPCÅİÅİËµ»°Ë÷Òı±í
+// NPCæ³¡æ³¡è¯´è¯ç´¢å¼•è¡¨
 struct _NPC_PAOPAO_INDEX_TBL
 {
-    INT m_nBaseIndex; // NPCPaoPaoÆğÊ¼Ë÷ÒıID
-    INT m_nIndexStep; // NPCPaoPaoË÷ÒıID¶ÔÓ¦µÄÓĞĞ§·¶Î§
+    INT m_nBaseIndex; // NPCPaoPaoèµ·å§‹ç´¢å¼•ID
+    INT m_nIndexStep; // NPCPaoPaoç´¢å¼•IDå¯¹åº”çš„æœ‰æ•ˆèŒƒå›´
 };
 extern _NPC_PAOPAO_INDEX_TBL g_NPCPaoPaoIndexTbl[MAXTYPE_NUMBER];
 
-//³èÎïÊôĞÔ±í
+//å® ç‰©å±æ€§è¡¨
 struct _PET_ATTR_TBL
 {
     PET_ATTR                    m_TableExt[MAXTYPE_NUMBER];
@@ -122,7 +122,7 @@ struct _PET_ATTR_TBL
 };
 extern _PET_ATTR_TBL g_PetAttrTbl ;
 
-//³èÎïÊôĞÔµã·ÖÅä·½°¸±í
+//å® ç‰©å±æ€§ç‚¹åˆ†é…æ–¹æ¡ˆè¡¨
 #define PET_ATTRPOINT_DIS_NUM (1024)
 struct _PET_ATTRPOINT_DIS_TBL
 {
@@ -137,14 +137,14 @@ struct _PET_ATTRPOINT_DIS_TBL
     };
 
     _PET_ATTRPOINT_DIS    m_Table[PET_ATTRPOINT_DIS_NUM];
-    INT                    m_Count;                //·½°¸¸öÊı
+    INT                    m_Count;                //æ–¹æ¡ˆä¸ªæ•°
 
     _PET_ATTRPOINT_DIS_TBL()
     {
         m_Count = 0;
     }
 
-    // nType£ºÁ¦Á¿£¬×ÊÖÊÊôĞÔµÈ¡£¡£¡£ nID£º·½°¸ºÅ
+    // nTypeï¼šåŠ›é‡ï¼Œèµ„è´¨å±æ€§ç­‰ã€‚ã€‚ã€‚ nIDï¼šæ–¹æ¡ˆå·
     INT GetAttrDisRate(INT nType, INT nID)
     {
         Assert(nID < m_Count);
@@ -176,7 +176,7 @@ struct _PET_ATTRPOINT_DIS_TBL
 };
 extern _PET_ATTRPOINT_DIS_TBL g_PetAttrPointDisTbl;
 
-// ³èÎïÉı¼¶±í
+// å® ç‰©å‡çº§è¡¨
 #define PET_LEVEL_NUM (105)
 struct _PET_LEVELUP_TBL
 {
@@ -195,7 +195,7 @@ struct _PET_LEVELUP_TBL
 };
 extern _PET_LEVELUP_TBL g_PetLevelUpTbl;
 
-// ³èÎïÉı¼¶±í
+// å® ç‰©å‡çº§è¡¨
 struct _PET_DOMESTICATION_MONEY_TBL
 {
     FLOAT m_Table[PET_LEVEL_NUM];
@@ -213,7 +213,7 @@ struct _PET_DOMESTICATION_MONEY_TBL
 };
 extern _PET_DOMESTICATION_MONEY_TBL g_PetDomesticationMoneyTbl;
 
-// ³èÎï¼¼ÄÜÉú³É±í
+// å® ç‰©æŠ€èƒ½ç”Ÿæˆè¡¨
 #define PET_MAX_NUM    (2048)
 struct _PET_SKILLDISTR_TBL
 {
@@ -235,7 +235,7 @@ struct _PET_SKILLDISTR_TBL
 };
 extern _PET_SKILLDISTR_TBL g_PetSkillDistrTbl[PET_MAX_NUM];
 
-// ³èÎï¼¼ÄÜË÷Òı±í
+// å® ç‰©æŠ€èƒ½ç´¢å¼•è¡¨
 #define PET_SKILL_NUM (512)
 struct _PET_SKILLINDEX_TBL
 {
@@ -244,13 +244,13 @@ struct _PET_SKILLINDEX_TBL
 };
 extern _PET_SKILLINDEX_TBL g_PetSkillIndexTbl[PET_SKILL_NUM];
 
-// ³èÎïÑ§Ï°¼¼ÄÜ¼¸ÂÊ±í
+// å® ç‰©å­¦ä¹ æŠ€èƒ½å‡ ç‡è¡¨
 struct _PET_STUDYSKILL
 {
     INT        m_nID;                // ID
-    INT        m_nMaxSpaceCount;    // ×Ü¿Õ¸ñÊıÁ¿
-    INT        m_nSpaceCount;        // µ±Ç°¿Õ¸ñÊıÁ¿
-    INT        m_nNewPercent;        // ´òÔÚĞÂ¸ñÉÏµÄ°Ù·Ö±È
+    INT        m_nMaxSpaceCount;    // æ€»ç©ºæ ¼æ•°é‡
+    INT        m_nSpaceCount;        // å½“å‰ç©ºæ ¼æ•°é‡
+    INT        m_nNewPercent;        // æ‰“åœ¨æ–°æ ¼ä¸Šçš„ç™¾åˆ†æ¯”
 };
 
 #define MAKE_PET_STUDYSKILL_ID( x, y )    (x * 10 + y)
@@ -279,15 +279,15 @@ struct _PET_STUDYSKILL_TBL
 };
 extern _PET_STUDYSKILL_TBL g_PetStudySkillTbl;
 
-// ³èÎïÁìÎò¼¼ÄÜ¼¸ÂÊ±í
+// å® ç‰©é¢†æ‚ŸæŠ€èƒ½å‡ ç‡è¡¨
 #define PET_APPERCEIVESKILLRATE_NUM (24)
 struct _PET_APPERCEIVESKILL_TBL
 {
-    INT        m_nSkillCount;                    //³èÎï¼¼ÄÜ×ÜÊı
-    INT        m_nLearnedVoluntarySkillCount;    //ÒÑÓĞÖ÷¶¯¼¼ÄÜÊı
-    INT        m_nLearnedPassiveSkillCount;    //ÒÑÓĞ±»¶¯¼¼ÄÜÊı
-    INT        m_nApperceiveVoluntarySkillRate;//ÁìÎòÖ÷¶¯¼¼ÄÜ¸ÅÂÊ£¨µ¥Î»1/10w£©
-    INT        m_nApperceivePassiveSkillRate;    //ÁìÎò±»¶¯¼¼ÄÜ¸ÅÂÊ£¨µ¥Î»1/10w£©
+    INT        m_nSkillCount;                    //å® ç‰©æŠ€èƒ½æ€»æ•°
+    INT        m_nLearnedVoluntarySkillCount;    //å·²æœ‰ä¸»åŠ¨æŠ€èƒ½æ•°
+    INT        m_nLearnedPassiveSkillCount;    //å·²æœ‰è¢«åŠ¨æŠ€èƒ½æ•°
+    INT        m_nApperceiveVoluntarySkillRate;//é¢†æ‚Ÿä¸»åŠ¨æŠ€èƒ½æ¦‚ç‡ï¼ˆå•ä½1/10wï¼‰
+    INT        m_nApperceivePassiveSkillRate;    //é¢†æ‚Ÿè¢«åŠ¨æŠ€èƒ½æ¦‚ç‡ï¼ˆå•ä½1/10wï¼‰
 
 };
 extern _PET_APPERCEIVESKILL_TBL g_PetApperceiveSkillTbl[PET_APPERCEIVESKILLRATE_NUM];
@@ -297,7 +297,7 @@ extern _PET_APPERCEIVESKILL_TBL g_PetApperceiveSkillTbl[PET_APPERCEIVESKILLRATE_
 extern FLOAT g_PetAIStrategyTble[PET_SKILL_TYPE][PET_AITYPE];
 
 ///////////////////////////////////////////////////////////////////////////////////
-//¹ÖÎïAI²ÎÊı
+//æ€ªç‰©AIå‚æ•°
 struct _MONSTER_AI_TBL
 {
     INT        m_Table[MAXAI_NUMBER][AIPARAM_NUMBER] ;
@@ -317,7 +317,7 @@ struct _MONSTER_AI_TBL
 };
 extern _MONSTER_AI_TBL g_MonsterAITbl ;
 
-//¹ÖÎïÅİÅİËµ»°½á¹¹ --ÒÑ¾­·ÏÆú
+//æ€ªç‰©æ³¡æ³¡è¯´è¯ç»“æ„ --å·²ç»åºŸå¼ƒ
 struct _MONSTER_SPEAK_TBL
 {
     struct MonsterSpeakItem
@@ -325,10 +325,10 @@ struct _MONSTER_SPEAK_TBL
         INT nSpeakID;
         CHAR szSpeakContent[MAX_MONSTERSPEAK_CONTENT];
     };
-    MonsterSpeakItem    m_Table[MAXCHAT_NUMBER] ;    //¼ÇÂ¼ËùÓĞµÄÌ¸»°±ê¼Ç£¬Èç1001£¬2050¡£¡£¡£
-    INT        m_NumberOfType[MAXCHATTYPE_NUMBER] ;    //Ã¿Ò»ÏîÖ»ÊÇ¼ÇÂ¼Ã¿ÖÖÌ¸»°ÀàĞÍµÄ¸öÊı
-    INT     m_TypeCount ;                            //¼ÇÂ¼Êµ¼ÊµÄÌ¸»°ÀàĞÍÊı
-    INT     m_Count ;                                //¼ÇÂ¼Êµ¼ÊµÄÌ¸»°Êı
+    MonsterSpeakItem    m_Table[MAXCHAT_NUMBER] ;    //è®°å½•æ‰€æœ‰çš„è°ˆè¯æ ‡è®°ï¼Œå¦‚1001ï¼Œ2050ã€‚ã€‚ã€‚
+    INT        m_NumberOfType[MAXCHATTYPE_NUMBER] ;    //æ¯ä¸€é¡¹åªæ˜¯è®°å½•æ¯ç§è°ˆè¯ç±»å‹çš„ä¸ªæ•°
+    INT     m_TypeCount ;                            //è®°å½•å®é™…çš„è°ˆè¯ç±»å‹æ•°
+    INT     m_Count ;                                //è®°å½•å®é™…çš„è°ˆè¯æ•°
 
     _MONSTER_SPEAK_TBL( )
     {
@@ -339,7 +339,7 @@ struct _MONSTER_SPEAK_TBL
 
     };
     CHAR*    Get( UINT ChatType ,INT Index = -1 )
-    {//¼´¿ÉÒÔÒÔÀàĞÍÑ¡È¡¼ÇÂ¼£¬Ò²¿ÉÒÔÑ¡È¡Ö¸¶¨µÄ¼ÇÂ¼
+    {//å³å¯ä»¥ä»¥ç±»å‹é€‰å–è®°å½•ï¼Œä¹Ÿå¯ä»¥é€‰å–æŒ‡å®šçš„è®°å½•
         if( -1 != Index && 0 < Index && m_Count > Index )
             return m_Table[Index].szSpeakContent;
 
@@ -362,7 +362,7 @@ struct _MONSTER_SPEAK_TBL
 };
 extern _MONSTER_SPEAK_TBL g_MonsterSpeakTbl ;
 
-//Ò»¼¶ÊôĞÔÖµÉı¼¶±í
+//ä¸€çº§å±æ€§å€¼å‡çº§è¡¨
 struct _ATTR_LEVELUP_TBL
 {
     INT        m_Table[CATTR_LEVEL1_NUMBER][MATTRIBUTE_NUMBER][MAX_TABLE_DEFINE_LEVEL+1] ;
@@ -382,7 +382,7 @@ struct _ATTR_LEVELUP_TBL
 };
 extern _ATTR_LEVELUP_TBL g_AttrLevelupTbl ;
 
-//¾­ÑéÖµ±í
+//ç»éªŒå€¼è¡¨
 struct _LEVEL_EXP_TBL {
 
     UINT        m_Table[MAX_PLAYER_EXP_LEVEL][2];
@@ -401,7 +401,7 @@ struct _LEVEL_EXP_TBL {
 };
 extern    _LEVEL_EXP_TBL    g_LevelExpTbl;
 
-//ĞÄ·¨Ñ§Ï°ÏûºÄ±í
+//å¿ƒæ³•å­¦ä¹ æ¶ˆè€—è¡¨
 //struct _XINFA_UPLEVEL_SPEND_TBL {
 //    INT        m_Table[MAX_ALL_XINFA_NUM][MAX_XINFA_LEVEL_NUM][3];
 //
@@ -507,7 +507,7 @@ struct _PLANTS_INFO_TBL
 
 extern    _PLANTS_INFO_TBL g_PlantInfoTbl;
 
-//Ìâ¿â
+//é¢˜åº“
 #define QUES_CON_SIZE 256
 #define OPT_CON_SIZE 64
 struct _QUESTION_DATA
@@ -597,8 +597,8 @@ extern _LEVEL_MAX_MONEY g_LevelMoneyTbl;
 
 struct     CITY_SCENE_ENTRY
 {
-    INT            m_PortID;                    //Èë¿Ú³¡¾°ID
-    CHAR        m_szSceneFile[MAX_FILE_PATH];    //sceneÎÄ¼şÃû
+    INT            m_PortID;                    //å…¥å£åœºæ™¯ID
+    CHAR        m_szSceneFile[MAX_FILE_PATH];    //sceneæ–‡ä»¶å
 };
 
 struct _CITY_SCENE
@@ -630,10 +630,10 @@ extern _CITY_SCENE g_CitySceneTbl;
 struct _CHAT_CONSUME_TYPE
 {
     UINT            m_DelayTime ;
-    INT                m_ConsumeCount ;    //ÏûºÄÀàĞÍÊıÁ¿
-    INT                m_ConsumeType[MAX_CHAT_CONSUME_TYPE] ;//ÏûºÄÖÖÀà
-    INT                m_ConsumeValue[MAX_CHAT_CONSUME_TYPE] ;//ÏûºÄÊıÁ¿
-    INT                m_NeedLevel ; //ĞèÒªµÈ¼¶
+    INT                m_ConsumeCount ;    //æ¶ˆè€—ç±»å‹æ•°é‡
+    INT                m_ConsumeType[MAX_CHAT_CONSUME_TYPE] ;//æ¶ˆè€—ç§ç±»
+    INT                m_ConsumeValue[MAX_CHAT_CONSUME_TYPE] ;//æ¶ˆè€—æ•°é‡
+    INT                m_NeedLevel ; //éœ€è¦ç­‰çº§
 
     _CHAT_CONSUME_TYPE( )
     {
@@ -699,7 +699,7 @@ struct _HAIR_STYLE_TYPE_
         m_nRaceID        = 0;
         m_uItemSerial    = 0;
         m_nItemCostCount= 0;
-        m_nUseScope        = 0;    // 0 Îª²»¿ÉÓÃ£¬ 1 Ö»ÓĞ´´½¨ÈËÎïÊ±¿ÉÑ¡ÓÃ£¬ 2 Ö»ÓĞÓÎÏ·ÖĞ¿ÉÒÔÑ¡ÓÃ£¬ 3 ´´½¨ÈËÎïÊ±ÒÔ¼°ÓÎÏ·ÖĞ¶¼¿ÉÒÔÑ¡ÓÃ
+        m_nUseScope        = 0;    // 0 ä¸ºä¸å¯ç”¨ï¼Œ 1 åªæœ‰åˆ›å»ºäººç‰©æ—¶å¯é€‰ç”¨ï¼Œ 2 åªæœ‰æ¸¸æˆä¸­å¯ä»¥é€‰ç”¨ï¼Œ 3 åˆ›å»ºäººç‰©æ—¶ä»¥åŠæ¸¸æˆä¸­éƒ½å¯ä»¥é€‰ç”¨
     }
 };
 
@@ -739,7 +739,7 @@ struct _GM_TABLE
 
 extern _GM_TABLE g_GMTbl;
 
-//ÈÎÎñÊı¾İ±í
+//ä»»åŠ¡æ•°æ®è¡¨
 struct _MISSION_DATA_t
 {
     MissionID_t nMissionID;
@@ -852,12 +852,12 @@ extern _MISSION_PUNISH    g_MissionPunishTable;
 struct _MISSION_DIALOG_t
 {
     SHORT        nDialogID;
-    CHAR        szMissionName[256];        //ÈÎÎñÃû³Æ
-    CHAR        szMissionDesc[1024];    //ÈÎÎñÃèÊö
-    CHAR        szMissionTarget[1024];    //ÈÎÎñÄ¿±ê
-    CHAR        szMissionContinue[512];    //¼ÌĞøÈÎÎñ
-    CHAR        szMissionAbandon[512];    //·ÅÆúÈÎÎñ
-    CHAR        szMissionSuccess[512];    //Íê³ÉÈÎÎñ
+    CHAR        szMissionName[256];        //ä»»åŠ¡åç§°
+    CHAR        szMissionDesc[1024];    //ä»»åŠ¡æè¿°
+    CHAR        szMissionTarget[1024];    //ä»»åŠ¡ç›®æ ‡
+    CHAR        szMissionContinue[512];    //ç»§ç»­ä»»åŠ¡
+    CHAR        szMissionAbandon[512];    //æ”¾å¼ƒä»»åŠ¡
+    CHAR        szMissionSuccess[512];    //å®Œæˆä»»åŠ¡
 };
 struct _MISSION_DIALOG
 {

@@ -41,8 +41,8 @@ namespace Packets
 
     private:
         GUID_t            m_GUID;
-        UCHAR            m_uTitleSize;                        // ≥∆∫≈√˚≥∆
-        CHAR            m_szTitle[MAX_CHARACTER_TITLE];        // ≥∆∫≈
+        UCHAR            m_uTitleSize;                        // Áß∞Âè∑ÂêçÁß∞
+        CHAR            m_szTitle[MAX_CHARACTER_TITLE];        // Áß∞Âè∑
 
     };
 

@@ -24,16 +24,16 @@ UINT CGPlayerShopSizeHandler::Execute( CGPlayerShopSize* pPacket, Player* pPlaye
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-    _PLAYERSHOP_GUID    nShopID        =    pPacket->GetShopID();        //ÉÌµêID
-    BYTE                nOpt        =    pPacket->GetOpt();            //²Ù×÷
+    _PLAYERSHOP_GUID    nShopID        =    pPacket->GetShopID();        //å•†åº—ID
+    BYTE                nOpt        =    pPacket->GetOpt();            //æ“ä½œ
 
     PlayerShopManager*    pPlayerShopManager = pScene->GetPlayerShopManager();
     PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
     Assert(pPlayerShop);
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê.Ö»ÓĞµêÖ÷ÓĞ×Ê¸ñ¸ü¸Ä´ËÊôĞÔ
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—.åªæœ‰åº—ä¸»æœ‰èµ„æ ¼æ›´æ”¹æ­¤å±æ€§
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
     if(bIsMine == FALSE )
     {
@@ -42,14 +42,14 @@ UINT CGPlayerShopSizeHandler::Execute( CGPlayerShopSize* pPacket, Player* pPlaye
     }
 
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE)
-    {//ÉÌµêÎ´¿ªÕÅ
+    {//å•†åº—æœªå¼€å¼ 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopNameHandler::Name=%s shop close"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
-    //    Èç¹ûÍæ¼ÒÉíÉÏµÄ½ğÇ®<30½ğ*ÉÌÒµÖ¸Êı*2*103%£¬·µ»ØĞÑÄ¿Ê§°ÜÏûÏ¢¡°ÄãÉíÉÏµÄ×Ê½ğ²»×ãÒÔÖ§¸¶À©ÕÅ¹ñÌ¨µÄ·ÑÓÃ¡£¡±Í¬Ê±¹Ø±Õ¡°À©ÕÅµêÆÌÈ·ÈÏ¡±
-    //    Èç¹ûÍæ¼ÒÉíÉÏµÄ½ğÇ®¡İ30½ğ*ÉÌÒµÖ¸Êı*2*103%£¬À©ÕÅ³É¹¦¡£
+    //    å¦‚æœç©å®¶èº«ä¸Šçš„é‡‘é’±<30é‡‘*å•†ä¸šæŒ‡æ•°*2*103%ï¼Œè¿”å›é†’ç›®å¤±è´¥æ¶ˆæ¯â€œä½ èº«ä¸Šçš„èµ„é‡‘ä¸è¶³ä»¥æ”¯ä»˜æ‰©å¼ æŸœå°çš„è´¹ç”¨ã€‚â€åŒæ—¶å…³é—­â€œæ‰©å¼ åº—é“ºç¡®è®¤â€
+    //    å¦‚æœç©å®¶èº«ä¸Šçš„é‡‘é’±â‰¥30é‡‘*å•†ä¸šæŒ‡æ•°*2*103%ï¼Œæ‰©å¼ æˆåŠŸã€‚
     FLOAT fNeedMoney = 0.0;
     if(nOpt == CGPlayerShopSize::TYPE_EXPAND)
     {
@@ -57,7 +57,7 @@ UINT CGPlayerShopSizeHandler::Execute( CGPlayerShopSize* pPacket, Player* pPlaye
         FLOAT fNeedMoney = (FLOAT)(300000.0*pPlayerShopManager->GetComFactor()*2.00*1.03);
         if(pHuman->GetMoney()<(UINT)fNeedMoney)
         {
-            //Í¨Öª¿Í»§¶Ë¹ºÂòÉÌµê³É¹¦
+            //é€šçŸ¥å®¢æˆ·ç«¯è´­ä¹°å•†åº—æˆåŠŸ
             GCPlayerShopError Msg;
             Msg.SetID(PLAYERSHOP_MSG::ERR_SHOP_NOT_ENOUTH_MONEY_TO_EXPAND);
             pHuman->GetPlayer()->SendPacket(&Msg);
@@ -77,7 +77,7 @@ UINT CGPlayerShopSizeHandler::Execute( CGPlayerShopSize* pPacket, Player* pPlaye
                 ,pHuman->GetName()) ;
             return PACKET_EXE_CONTINUE ;
         }
-        //ÉèÖÃ¿ª·ÅµÄ¹ñÌ¨Êı
+        //è®¾ç½®å¼€æ”¾çš„æŸœå°æ•°
         pPlayerShop->SetNumStallOpened(iCurStallNum+1);
         PlayerStallBox*        pNewPlayerStallBox    = pPlayerShop->GetPlayerStallBoxByIndex(iCurStallNum);
         pNewPlayerStallBox->CleanUp();
@@ -99,7 +99,7 @@ UINT CGPlayerShopSizeHandler::Execute( CGPlayerShopSize* pPacket, Player* pPlaye
             return PACKET_EXE_CONTINUE ;
         }
 
-        //ÉèÖÃ¿ª·ÅµÄ¹ñÌ¨Êı
+        //è®¾ç½®å¼€æ”¾çš„æŸœå°æ•°
         pPlayerShop->SetNumStallOpened(iCurStallNum-1);
         PlayerStallBox*        pNewPlayerStallBox    = pPlayerShop->GetPlayerStallBoxByIndex(iCurStallNum-1);
         pNewPlayerStallBox->SetStallStatus(PLAYER_SHOP::STALL_INVALID);
@@ -111,9 +111,9 @@ UINT CGPlayerShopSizeHandler::Execute( CGPlayerShopSize* pPacket, Player* pPlaye
         Msg.SetFinalStallNum(iCurStallNum-1);
     }
 
-    //    ¿Û³ö½ğÇ®¡£
-    //    30½ğ*ÉÌÒµÖ¸Êı*2*103%/2ÄÉÈë±¾½ğ
-    //    ÆäÓàµÄÎªÏµÍ³ÊÕÈ¡
+    //    æ‰£å‡ºé‡‘é’±ã€‚
+    //    30é‡‘*å•†ä¸šæŒ‡æ•°*2*103%/2çº³å…¥æœ¬é‡‘
+    //    å…¶ä½™çš„ä¸ºç³»ç»Ÿæ”¶å–
     pHuman->SetMoney(pHuman->GetMoney() - (UINT)fNeedMoney);
     pPlayerShop->SetBaseMoney((UINT)(pPlayerShop->GetBaseMoney() + fNeedMoney/2));
     

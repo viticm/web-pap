@@ -1,6 +1,6 @@
 // GCCharImpactListUpdate.h
 // 
-// Ğ§¹û±í¸üĞÂ
+// æ•ˆæœè¡¨æ›´æ–°
 // 
 //////////////////////////////////////////////////////
 
@@ -25,9 +25,9 @@ namespace Packets
                 //m_nSN = INVALID_ID;
                 //m_nContinuance = 0;
             };
-            ImpactID_t        m_nBuffID;        // ÌØĞ§Êı¾İµÄID(Ë÷Òı)
-            //UINT            m_nSN;            // Ğ§¹ûĞòÁĞºÅ
-            //Time_t            m_nContinuance; // Ğ§¹ûµÄ³ÖĞøÊ±¼ä            
+            ImpactID_t        m_nBuffID;        // ç‰¹æ•ˆæ•°æ®çš„ID(ç´¢å¼•)
+            //UINT            m_nSN;            // æ•ˆæœåºåˆ—å·
+            //Time_t            m_nContinuance; // æ•ˆæœçš„æŒç»­æ—¶é—´            
         } ImpactStruct_T;
         GCCharImpactListUpdate(VOID)
         {
@@ -43,7 +43,7 @@ namespace Packets
         };
         virtual ~GCCharImpactListUpdate(VOID){};
     
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read(SocketInputStream& iStream);
         virtual BOOL            Write(SocketOutputStream& oStream)const;
         virtual UINT            Execute(Player* pPlayer);

@@ -7,7 +7,7 @@
 class SocketInputStream;
 class SocketOutputStream;
 
-// °ï»áÏûÏ¢°üµÄ½Ó¿Ú
+// å¸®ä¼šæ¶ˆæ¯åŒ…çš„æ¥å£
 struct GUILD_PACKET
 {
     virtual UINT            GetPacketSize() const = 0;
@@ -15,13 +15,13 @@ struct GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const = 0;
 };
 
-// Ñ¯ÎÊ°ï»áÁĞ±í
+// è¯¢é—®å¸®ä¼šåˆ—è¡¨
 struct GUILD_CGW_ASKLIST : public GUILD_PACKET
 {
     UCHAR                    m_SortType;
     USHORT                    m_uStart;
 
-    CampID_t                m_Camp; //²éÑ¯ÕßµÄÕóÓª
+    CampID_t                m_Camp; //æŸ¥è¯¢è€…çš„é˜µè¥
 
     GUILD_CGW_ASKLIST()
     {
@@ -35,7 +35,7 @@ struct GUILD_CGW_ASKLIST : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// ´´½¨°ï»á
+// åˆ›å»ºå¸®ä¼š
 struct GUILD_CGW_CREATE : public GUILD_PACKET
 {
     UCHAR                    m_NameSize;
@@ -44,7 +44,7 @@ struct GUILD_CGW_CREATE : public GUILD_PACKET
     UCHAR                    m_DescSize;
     CHAR                    m_szGuildDesc[MAX_GUILD_DESC_SIZE];
 
-    CampID_t                m_Camp; //°ïÖ÷µÄÕóÓª
+    CampID_t                m_Camp; //å¸®ä¸»çš„é˜µè¥
 
     GUILD_CGW_CREATE()
     {
@@ -62,12 +62,12 @@ struct GUILD_CGW_CREATE : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// ¼ÓÈë°ï»á
+// åŠ å…¥å¸®ä¼š
 struct GUILD_CGW_JOIN : public GUILD_PACKET
 {
     GuildID_t                m_GuildGUID;
 
-    CampID_t                m_Camp; //¼ÓÈëÕßµÄÕóÓª
+    CampID_t                m_Camp; //åŠ å…¥è€…çš„é˜µè¥
 
     GUILD_CGW_JOIN()
     {
@@ -80,26 +80,26 @@ struct GUILD_CGW_JOIN : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// Ñ¯ÎÊ°ï»áĞÅÏ¢
+// è¯¢é—®å¸®ä¼šä¿¡æ¯
 struct GUILD_CGW_ASKINFO : public GUILD_PACKET
 {
     enum
     {
-        GUILD_MEMBER_INFO = 0,    //°ïÖÚĞÅÏ¢
-        GUILD_INFO,            //°ï»áĞÅÏ¢
-        GUILD_APPOINT_POS,    //°ï»áÖĞ¿ÉÈÎÃüµÄÖ°Î»
-        GUILD_SELF_INFO,    //±¾ÈË°ïÅÉĞÅÏ¢
+        GUILD_MEMBER_INFO = 0,    //å¸®ä¼—ä¿¡æ¯
+        GUILD_INFO,            //å¸®ä¼šä¿¡æ¯
+        GUILD_APPOINT_POS,    //å¸®ä¼šä¸­å¯ä»»å‘½çš„èŒä½
+        GUILD_SELF_INFO,    //æœ¬äººå¸®æ´¾ä¿¡æ¯
 
     };
     GuildID_t                m_GuildGUID;
-    BYTE                    m_Type;                //°ïÖÚĞÅÏ¢£¬»¹ÊÇ°ï»áĞÅÏ¢
+    BYTE                    m_Type;                //å¸®ä¼—ä¿¡æ¯ï¼Œè¿˜æ˜¯å¸®ä¼šä¿¡æ¯
 
     virtual UINT            GetPacketSize() const { return sizeof(m_GuildGUID)+sizeof(BYTE); }
     virtual VOID            Read(SocketInputStream& iStream);
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// °ï»áÈÎÃâÖ°Îñ
+// å¸®ä¼šä»»å…èŒåŠ¡
 struct GUILD_CGW_APPOINT : public GUILD_PACKET
 {
     GuildID_t                m_GuildGUID;
@@ -114,7 +114,7 @@ struct GUILD_CGW_APPOINT : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// °ï»áµ÷ÕûÈ¨ÏŞ
+// å¸®ä¼šè°ƒæ•´æƒé™
 struct GUILD_CGW_ADJUSTAUTH : public GUILD_PACKET
 {
     GuildID_t                m_GuildGUID;
@@ -129,7 +129,7 @@ struct GUILD_CGW_ADJUSTAUTH : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// ÕĞÊÕĞÂ°ïÖÚ
+// æ‹›æ”¶æ–°å¸®ä¼—
 struct GUILD_CGW_RECRUIT : public GUILD_PACKET
 {
     GUID_t                    m_ProposerGUID;
@@ -139,7 +139,7 @@ struct GUILD_CGW_RECRUIT : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// ¿ª³ı°ïÖÚ
+// å¼€é™¤å¸®ä¼—
 struct GUILD_CGW_EXPEL : public GUILD_PACKET
 {
     GUID_t                    m_GuildUserGUID;
@@ -149,7 +149,7 @@ struct GUILD_CGW_EXPEL : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// ÌáÈ¡°ï×Ê
+// æå–å¸®èµ„
 struct GUILD_CGW_WITHDRAW : public GUILD_PACKET
 {
     UINT                    m_MoneyAmount;
@@ -159,7 +159,7 @@ struct GUILD_CGW_WITHDRAW : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// ´æÈë°ï×Ê
+// å­˜å…¥å¸®èµ„
 struct GUILD_CGW_DEPOSIT : public GUILD_PACKET
 {
     UINT                    m_MoneyAmount;
@@ -169,7 +169,7 @@ struct GUILD_CGW_DEPOSIT : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-// Àë¿ª°ï»á
+// ç¦»å¼€å¸®ä¼š
 struct GUILD_CGW_DEMISE : public GUILD_PACKET
 {
     virtual UINT            GetPacketSize() const { return 0; }
@@ -177,7 +177,7 @@ struct GUILD_CGW_DEMISE : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const {}
 };
 
-// Àë¿ª°ï»á
+// ç¦»å¼€å¸®ä¼š
 struct GUILD_CGW_LEAVE : public GUILD_PACKET
 {
     virtual UINT            GetPacketSize() const { return 0; }
@@ -185,7 +185,7 @@ struct GUILD_CGW_LEAVE : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const {}
 };
 
-// ¸ü¸Ä°ï»á×ÚÖ¼
+// æ›´æ”¹å¸®ä¼šå®—æ—¨
 struct GUILD_CGW_CHANG_DESC : public GUILD_PACKET
 {
     CHAR                    m_GuildDesc[MAX_GUILD_DESC_SIZE];
@@ -202,7 +202,7 @@ struct GUILD_CGW_CHANG_DESC : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-//°ï»áµÄ¿ÉÈÎÃüĞÅÏ¢
+//å¸®ä¼šçš„å¯ä»»å‘½ä¿¡æ¯
 struct GUILD_WGC_APPOINT_INFO : public GUILD_PACKET
 {
     struct s
@@ -233,7 +233,7 @@ struct GUILD_WGC_APPOINT_INFO : public GUILD_PACKET
 
 };
 
-//°ï»áĞÅÏ¢
+//å¸®ä¼šä¿¡æ¯
 struct GUILD_WGC_GUILD_INFO : public GUILD_PACKET
 {
     CHAR            m_GuildName[MAX_GUILD_NAME_SIZE];
@@ -241,18 +241,18 @@ struct GUILD_WGC_GUILD_INFO : public GUILD_PACKET
     CHAR            m_GuildChairMan[MAX_CHARACTER_NAME];
     CHAR            m_CityName[MAX_CITY_NAME_SIZE];
     BYTE            m_nLevel;
-    INT                m_nPortSceneID;                //Èë¿Ú³¡¾°
-    INT                m_MemNum;                    //ÈËÊı
-    INT                m_Longevity;                //×ÊÀú 
-    INT                m_Contribute;                //¹±Ï×¶È
-    INT                m_Honor;                    //ÈËÆø
-    INT                m_FoundedMoney;                //°ïÅÉ×Ê½ğ
-    INT                m_nIndustryLevel;            //¹¤Òµ¶È
-    INT                m_nAgrLevel;                //Å©Òµ¶È
-    INT                m_nComLevel;                //ÉÌÒµ¶È
-    INT                m_nDefLevel;                //·ÀÎÀ¶È
-    INT                m_nTechLevel;                //¿Æ¼¼¶È
-    INT                m_nAmbiLevel;                //À©ÕÅ¶È
+    INT                m_nPortSceneID;                //å…¥å£åœºæ™¯
+    INT                m_MemNum;                    //äººæ•°
+    INT                m_Longevity;                //èµ„å† 
+    INT                m_Contribute;                //è´¡çŒ®åº¦
+    INT                m_Honor;                    //äººæ°”
+    INT                m_FoundedMoney;                //å¸®æ´¾èµ„é‡‘
+    INT                m_nIndustryLevel;            //å·¥ä¸šåº¦
+    INT                m_nAgrLevel;                //å†œä¸šåº¦
+    INT                m_nComLevel;                //å•†ä¸šåº¦
+    INT                m_nDefLevel;                //é˜²å«åº¦
+    INT                m_nTechLevel;                //ç§‘æŠ€åº¦
+    INT                m_nAmbiLevel;                //æ‰©å¼ åº¦
     BYTE            m_bAccess;
 
     GUILD_WGC_GUILD_INFO()
@@ -266,18 +266,18 @@ struct GUILD_WGC_GUILD_INFO : public GUILD_PACKET
         memset(m_GuildChairMan, 0, MAX_CHARACTER_NAME);
         memset(m_CityName, 0, MAX_CITY_NAME_SIZE);
         m_nLevel            =    0;
-        m_nPortSceneID        =    0;            //Èë¿Ú³¡¾°
-        m_MemNum            =    0;            //ÈËÊı
-        m_Longevity            =    0;            //×ÊÀú 
-        m_Contribute        =    0;            //¹±Ï×¶È
-        m_Honor                =    0;            //ÈËÆø
-        m_FoundedMoney        =    0;            //°ïÅÉ×Ê½ğ
-        m_nIndustryLevel    =    0;            //¹¤Òµ¶È
-        m_nAgrLevel            =    0;            //Å©Òµ¶È
-        m_nComLevel            =    0;            //ÉÌÒµ¶È
-        m_nDefLevel            =    0;            //·ÀÎÀ¶È
-        m_nTechLevel        =    0;            //¿Æ¼¼¶È
-        m_nAmbiLevel        =    0;            //À©ÕÅ¶È
+        m_nPortSceneID        =    0;            //å…¥å£åœºæ™¯
+        m_MemNum            =    0;            //äººæ•°
+        m_Longevity            =    0;            //èµ„å† 
+        m_Contribute        =    0;            //è´¡çŒ®åº¦
+        m_Honor                =    0;            //äººæ°”
+        m_FoundedMoney        =    0;            //å¸®æ´¾èµ„é‡‘
+        m_nIndustryLevel    =    0;            //å·¥ä¸šåº¦
+        m_nAgrLevel            =    0;            //å†œä¸šåº¦
+        m_nComLevel            =    0;            //å•†ä¸šåº¦
+        m_nDefLevel            =    0;            //é˜²å«åº¦
+        m_nTechLevel        =    0;            //ç§‘æŠ€åº¦
+        m_nAmbiLevel        =    0;            //æ‰©å¼ åº¦
         m_bAccess            =    0;
     }
 
@@ -308,7 +308,7 @@ struct GUILD_WGC_GUILD_INFO : public GUILD_PACKET
 
 };
 
-// °ïÖÚÁĞ±í
+// å¸®ä¼—åˆ—è¡¨
 struct GUILD_WGC_MEMBER_LIST : public GUILD_PACKET
 {
     struct s
@@ -374,7 +374,7 @@ struct GUILD_WGC_MEMBER_LIST : public GUILD_PACKET
 
 };
 
-// °ï»áÁĞ±í
+// å¸®ä¼šåˆ—è¡¨
 struct GUILD_WGC_LIST : public GUILD_PACKET
 {
     USHORT                    m_uStartIndex;
@@ -428,7 +428,7 @@ struct GUILD_WGC_LIST : public GUILD_PACKET
     virtual VOID            Write(SocketOutputStream& oStream) const;
 };
 
-//¸öÈË°ïÅÉÊı¾İ
+//ä¸ªäººå¸®æ´¾æ•°æ®
 struct GUILD_WGC_SELF_GUILD_INFO : public GUILD_PACKET
 {
     CHAR            m_GuildName[MAX_GUILD_NAME_SIZE];
@@ -457,7 +457,7 @@ struct GUILD_WGC_SELF_GUILD_INFO : public GUILD_PACKET
 
 struct _GUILD_PACKET
 {
-    UCHAR                    m_uPacketType;            // ÏûÏ¢°üÀàĞÍ
+    UCHAR                    m_uPacketType;            // æ¶ˆæ¯åŒ…ç±»å‹
     virtual GUILD_PACKET*    GetPacket(INT nPacketType) const = 0;
 
     UINT                    GetPacketSize() const
@@ -495,7 +495,7 @@ struct _GUILD_CGW_PACKET : public _GUILD_PACKET
     GUILD_CGW_CHANG_DESC            m_PacketChangeDesc;
 
     union u
-    { // ±È×î´óµÄÏûÏ¢°ü³¤ÁËÒ»¸öĞé±í³¤¶È
+    { // æ¯”æœ€å¤§çš„æ¶ˆæ¯åŒ…é•¿äº†ä¸€ä¸ªè™šè¡¨é•¿åº¦
         CHAR                u_AskListSize[sizeof(GUILD_CGW_ASKLIST)];
         CHAR                u_CreateSize[sizeof(GUILD_CGW_CREATE)];
         CHAR                u_JoinSize[sizeof(GUILD_CGW_JOIN)];
@@ -585,7 +585,7 @@ struct _GUILD_WGC_PACKET : public _GUILD_PACKET
     GUILD_WGC_SELF_GUILD_INFO    m_PacketSelfGuildInfo;
 
     union u
-    { // ±È×î´óµÄÏûÏ¢°ü³¤ÁËÒ»¸öĞé±í³¤¶È
+    { // æ¯”æœ€å¤§çš„æ¶ˆæ¯åŒ…é•¿äº†ä¸€ä¸ªè™šè¡¨é•¿åº¦
         CHAR                u_ListSize[sizeof(GUILD_WGC_LIST)];
         CHAR                u_MemberListSize[sizeof(GUILD_WGC_MEMBER_LIST)];
         CHAR                u_GuildInfoSize[sizeof(GUILD_WGC_GUILD_INFO)];
@@ -635,8 +635,8 @@ struct _GUILD_RETURN
 {
     CHAR                    m_ReturnType;
     GuildID_t                m_GuildID;
-    GUID_t                    m_GUID; // ĞèÒªÖØÉè GuildID µÄÍæ¼ÒµÄ GUID
-    GUID_t                    m_GUIDChanged; // ĞèÒªÖØÉè GuildID µÄÍæ¼ÒµÄ GUID
+    GUID_t                    m_GUID; // éœ€è¦é‡è®¾ GuildID çš„ç©å®¶çš„ GUID
+    GUID_t                    m_GUIDChanged; // éœ€è¦é‡è®¾ GuildID çš„ç©å®¶çš„ GUID
     BYTE                    m_PosID;
     UCHAR                    m_SourNameSize;
     CHAR                    m_SourName[MAX_CHARACTER_NAME];
@@ -806,15 +806,15 @@ struct GUILD_POS_t
     }
 };
 
-//²»Í¬¼¶±ğ°ï»á¶ÔÓ¦µÄ²»Í¬µÄĞĞÕş½á¹¹
+//ä¸åŒçº§åˆ«å¸®ä¼šå¯¹åº”çš„ä¸åŒçš„è¡Œæ”¿ç»“æ„
 struct GUILD_ADMIN_t
 {
     enum ORESULT
     {
         RET_SUCCESS = 0,
-        RET_NOT_EXIST,    //´ËÈËÔÚ±¾Ö°Î»²»´æÔÚ
-        RET_POS_FULL,    //Ö°Î»ÈË¶¼ÂúÁË
-        RET_NO_USER,    //Íæ¼Ò²»´æÔÚ
+        RET_NOT_EXIST,    //æ­¤äººåœ¨æœ¬èŒä½ä¸å­˜åœ¨
+        RET_POS_FULL,    //èŒä½äººéƒ½æ»¡äº†
+        RET_NO_USER,    //ç©å®¶ä¸å­˜åœ¨
 
         RET_UNKOWN,
     };
@@ -822,17 +822,17 @@ struct GUILD_ADMIN_t
     {
         POS_LEVEL0_BEGIN = 0,
 
-        POS_CHAIR_MAN,                //°ïÖ÷
-        POS_ASS_CHAIR_MAN ,            //¸±°ïÖ÷
-        POS_MEMBER,                    //°ïÖÚ
+        POS_CHAIR_MAN,                //å¸®ä¸»
+        POS_ASS_CHAIR_MAN ,            //å‰¯å¸®ä¸»
+        POS_MEMBER,                    //å¸®ä¼—
 
         POS_LEVEL1_BEGIN,
 
-        POS_ELITE_MEMBER,            //¾«Ó¢°ïÖÚ
-        POS_COM,                    //ÉÌÒµ¹ÙÔ±
-        POS_AGRI,                    //Å©Òµ¹ÙÔ±
-        POS_INDUSTRY,                //¹¤Òµ¹ÙÔ±
-        POS_HR,                        //ÈËÊÂ¹ÙÔ±
+        POS_ELITE_MEMBER,            //ç²¾è‹±å¸®ä¼—
+        POS_COM,                    //å•†ä¸šå®˜å‘˜
+        POS_AGRI,                    //å†œä¸šå®˜å‘˜
+        POS_INDUSTRY,                //å·¥ä¸šå®˜å‘˜
+        POS_HR,                        //äººäº‹å®˜å‘˜
 
         POS_LEVEL2_BEGIN,
 

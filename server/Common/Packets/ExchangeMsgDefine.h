@@ -7,9 +7,9 @@ namespace EXCHANGE_MSG
     enum
     {
         POS_ERR    = 0,
-        POS_BAG,                //背包
-        POS_EQUIP,                //装备
-        POS_PET,                //宠物
+        POS_BAG,                //鑳屽寘
+        POS_EQUIP,                //瑁呭
+        POS_PET,                //瀹犵墿
     };
     enum
     {

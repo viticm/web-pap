@@ -39,7 +39,7 @@ __ENTER_FUNCTION
     }
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pScene->SendPacket( pPacket, PlayerID );
@@ -50,7 +50,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         GCTeamMemberInfo Msg;
@@ -58,7 +58,7 @@ __ENTER_FUNCTION
         Msg.setGUID( pPacket->GetGUID() );
         Msg.SetFamily( pPacket->GetFamily() );
         Msg.SetLevel( pPacket->GetLevel() );
-        Msg.SetDead( FALSE ); // ²»ÔÚÍ¬Ò»¸ö³¡¾°ÔòÄ¬ÈÏÊÇ»îµÄ
+        Msg.SetDead( FALSE ); // ä¸åœ¨åŒä¸€ä¸ªåœºæ™¯åˆ™é»˜è®¤æ˜¯æ´»çš„
         Msg.SetDeadLink( pPacket->GetDeadLinkFlag() );
 
         pGamePlayer->SendPacket( &Msg );

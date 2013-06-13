@@ -17,7 +17,7 @@ namespace Packets
         }
         virtual        ~GCTeamAskInvite(){}
 
-        //π´”√Ω”ø⁄
+        //ÂÖ¨Áî®Êé•Âè£
         virtual BOOL                Read( SocketInputStream& iStream );
         virtual BOOL                Write( SocketOutputStream& oStream ) const;
         virtual UINT                Execute( Player* pPlayer );
@@ -45,23 +45,23 @@ namespace Packets
 
         struct InviterInfo
         {
-            UCHAR                    m_DetailFlag;                    //  «∑Ò∑¢ÀÕœÍœ∏–≈œ¢
+            UCHAR                    m_DetailFlag;                    // ÊòØÂê¶ÂèëÈÄÅËØ¶ÁªÜ‰ø°ÊÅØ
             UCHAR                    m_NickSize;
-            CHAR                    m_szNick[MAX_CHARACTER_NAME];    // 1.Í«≥∆
-            UINT                    m_uFamily;                        // 2.√≈≈…
-            SceneID_t                m_Scene;                        // 3.≥°æ∞
-            INT                        m_Level;                        // 4.µ»º∂
-            USHORT                    m_uDataID;                        // 5.ÕÊº“–‘±
+            CHAR                    m_szNick[MAX_CHARACTER_NAME];    // 1.ÊòµÁß∞
+            UINT                    m_uFamily;                        // 2.Èó®Ê¥æ
+            SceneID_t                m_Scene;                        // 3.Âú∫ÊôØ
+            INT                        m_Level;                        // 4.Á≠âÁ∫ß
+            USHORT                    m_uDataID;                        // 5.Áé©ÂÆ∂ÊÄßÂà´
 
-            // “‘œ¬ «œÍœ∏–≈œ¢
-            UINT                    m_WeaponID;                        // 7.Œ‰∆˜
-            UINT                    m_CapID;                        // 8.√±◊”
-            UINT                    m_ArmourID;                        // 9.“¬∑˛
-            UINT                    m_CuffID;                        // 10.ª§ÕÛ
-            UINT                    m_FootID;                        // 11.—•◊”
-            UINT                    m_uFaceMeshID;                    // 12.√Ê≤øƒ£–Õ
-            UINT                    m_uHairMeshID;                    // 13.Õ∑∑¢ƒ£–Õ
-            UINT                    m_uHairColor;                    // 14.Õ∑∑¢—’…´
+            // ‰ª•‰∏ãÊòØËØ¶ÁªÜ‰ø°ÊÅØ
+            UINT                    m_WeaponID;                        // 7.Ê≠¶Âô®
+            UINT                    m_CapID;                        // 8.Â∏ΩÂ≠ê
+            UINT                    m_ArmourID;                        // 9.Ë°£Êúç
+            UINT                    m_CuffID;                        // 10.Êä§ËÖï
+            UINT                    m_FootID;                        // 11.Èù¥Â≠ê
+            UINT                    m_uFaceMeshID;                    // 12.Èù¢ÈÉ®Ê®°Âûã
+            UINT                    m_uHairMeshID;                    // 13.Â§¥ÂèëÊ®°Âûã
+            UINT                    m_uHairColor;                    // 14.Â§¥ÂèëÈ¢úËâ≤
         };
     public :
         VOID                        SetGUID( GUID_t guid ){    m_GUID = guid; }
@@ -102,9 +102,9 @@ namespace Packets
         }
 
     public :
-        GUID_t                        m_GUID;    //—˚«Î’ﬂ
+        GUID_t                        m_GUID;    //ÈÇÄËØ∑ËÄÖ
         UCHAR                        m_uMemberSize;
-        InviterInfo                    m_InviterInfo[MAX_TEAM_MEMBER];    //—˚«Î’ﬂ–≈œ¢
+        InviterInfo                    m_InviterInfo[MAX_TEAM_MEMBER];    //ÈÇÄËØ∑ËÄÖ‰ø°ÊÅØ
     };
 
     class GCTeamAskInviteFactory: public    PacketFactory

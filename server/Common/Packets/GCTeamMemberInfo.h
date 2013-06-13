@@ -15,7 +15,7 @@ namespace Packets
         GCTeamMemberInfo( )        { m_Flags = 0;}
         virtual ~GCTeamMemberInfo( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream )const;
         virtual UINT            Execute( Player* pPlayer );
@@ -41,9 +41,9 @@ namespace Packets
                     case TEAM_MEMBER_ATT_ARMOR:
                     case TEAM_MEMBER_ATT_CUFF:
                     case TEAM_MEMBER_ATT_BOOT:
-                    case TEAM_MEMBER_ATT_FACEMESH:        // 面部模型
-                    case TEAM_MEMBER_ATT_HAIRMESH:        // 头发模型
-                    case TEAM_MEMBER_ATT_HAIRCOLOR:        // 头发颜色
+                    case TEAM_MEMBER_ATT_FACEMESH:        // 闈㈤儴妯″瀷
+                    case TEAM_MEMBER_ATT_HAIRMESH:        // 澶村彂妯″瀷
+                    case TEAM_MEMBER_ATT_HAIRCOLOR:        // 澶村彂棰滆壊
                         uSize += sizeof(UINT);
                         break;
                     case TEAM_MEMBER_ATT_POSITION:
@@ -59,7 +59,7 @@ namespace Packets
                         uSize += sizeof(UCHAR);
                         break;
                     default:
-                        // size 不变，例如两个标记量
+                        // size 涓嶅彉锛屼緥濡備袱涓爣璁伴噺
                         break;
                     }
                 }
@@ -69,7 +69,7 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
 
         VOID                    setGUID( GUID_t guid ) { m_GUID = guid; }
         GUID_t                    getGUID( ) { return m_GUID; }
@@ -231,29 +231,29 @@ namespace Packets
         }
 
     private:
-        //数据
+        //鏁版嵁
         GUID_t                    m_GUID;
 
-        INT                        m_Flags;    // 每个位表示以下值是否要刷新 ENUM_DETAIL_ATTRIB
-        UINT                    m_uFamily;                        // 1.门派
-        UINT                    m_uLevel;                        // 2.等级
-        WORLD_POS                m_WorldPos;                        // 3.位置（坐标）
+        INT                        m_Flags;    // 姣忎釜浣嶈〃绀轰互涓嬪�兼槸鍚﹁鍒锋柊 ENUM_DETAIL_ATTRIB
+        UINT                    m_uFamily;                        // 1.闂ㄦ淳
+        UINT                    m_uLevel;                        // 2.绛夌骇
+        WORLD_POS                m_WorldPos;                        // 3.浣嶇疆锛堝潗鏍囷級
         INT                        m_nHP;                            // 4.HP
-        UINT                    m_uMaxHP;                        // 5.HP上限
+        UINT                    m_uMaxHP;                        // 5.HP涓婇檺
         INT                        m_nMP;                            // 6.MP
-        UINT                    m_uMaxMP;                        // 7.MP上限
-        INT                        m_nAnger;                        // 8.怒气
-        UINT                    m_WeaponID;                        // 9.武器
-        UINT                    m_CapID;                        // 10.帽子
-        UINT                    m_ArmourID;                        // 11.衣服
-        UINT                    m_CuffID;                        // 12.护腕
-        UINT                    m_FootID;                        // 13.靴子
-        // 14.buff，暂时不考虑
-        UCHAR                    m_DeadLinkFlag;                    // 15.断线
-        UCHAR                    m_DeadFlag;                        // 16.死亡
-        UINT                    m_uFaceMeshID;                    // 17.面部模型
-        UINT                    m_uHairMeshID;                    // 18.头发模型
-        UINT                    m_uHairColor;                    // 19.头发颜色
+        UINT                    m_uMaxMP;                        // 7.MP涓婇檺
+        INT                        m_nAnger;                        // 8.鎬掓皵
+        UINT                    m_WeaponID;                        // 9.姝﹀櫒
+        UINT                    m_CapID;                        // 10.甯藉瓙
+        UINT                    m_ArmourID;                        // 11.琛ｆ湇
+        UINT                    m_CuffID;                        // 12.鎶よ厱
+        UINT                    m_FootID;                        // 13.闈村瓙
+        // 14.buff锛屾殏鏃朵笉鑰冭檻
+        UCHAR                    m_DeadLinkFlag;                    // 15.鏂嚎
+        UCHAR                    m_DeadFlag;                        // 16.姝讳骸
+        UINT                    m_uFaceMeshID;                    // 17.闈㈤儴妯″瀷
+        UINT                    m_uHairMeshID;                    // 18.澶村彂妯″瀷
+        UINT                    m_uHairColor;                    // 19.澶村彂棰滆壊
     };
 
 

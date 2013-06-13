@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÉêÇëÉÌµêÁÐ±í
+å®¢æˆ·ç«¯ç”³è¯·å•†åº—åˆ—è¡¨
 */
 
 #include "CGPlayerShopAcquireShopList.h"
@@ -29,7 +29,7 @@ UINT CGPlayerShopAcquireShopListHandler::Execute( CGPlayerShopAcquireShopList* p
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     SHOP_INFO_t aShopList[MAX_SHOP_NUM_PER_SCENE];
     UINT ListIndex = 0;

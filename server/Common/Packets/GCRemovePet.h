@@ -1,6 +1,6 @@
 // GCRemovePet.h
 // 
-// É¾³ıÒ»¸ö³èÎï
+// åˆ é™¤ä¸€ä¸ªå® ç‰©
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~GCRemovePet( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

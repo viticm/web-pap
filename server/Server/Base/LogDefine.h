@@ -3,178 +3,178 @@
 #include "Type.h"
 #include "DB_Struct.h"
 
-//ÎïÆ·²Ù×÷ÀàÐÍ
+//ç‰©å“æ“ä½œç±»åž‹
 enum    ITEM_OP_TYPE
 {
-    ITEM_OP_UNKNOW                    =    0,        //Î´ÖªÎïÆ·Ê°È¡
-    ITEM_CREATE_FROM_MONSTER        =    10,        //¹ÖÎïµôÂä£¬Éú³Éµ½µôÂä°ü
-    ITEM_CREATE_SCRIPT_TO_BOX        =    20,        //ÓÉ½Å±¾´´½¨µ½µôÂä°ü£¬Ò»°ãÊÇÉú³¤µãÀàÐÍ
-    ITEM_PICK_FROM_MONSTER            =    30,        //µôÂäÎïÆ·Ê°È¡,Ö¸µ½½ÇÉ«ÉíÉÏµÄ´´½¨
-    ITEM_PICK_FROM_GROWPOINT        =    31,        //²É¼¯Ê°È¡,Ö¸µ½½ÇÉ«ÉíÉÏµÄ´´½¨
-    ITEM_CREATE_FROM_SCRIPT            =    40,        //½Å±¾¸øÓëÎïÆ·
-    ITEM_CREATE_FROM_ABILITY_SCRIPT    =    50,        //Éú»î¼¼ÄÜÏà¹Ø½Å±¾¸øÓë
-    ITEM_CREATE_GM                    =    60,        //GMÃüÁî
-    ITEM_CREATE_ABILITY_COMPOUD        =    70,        //±¦Ê¯ºÏ³É
-    ITEM_CREATE_REMOVE_GEM            =    80,        //±¦Ê¯Ð¶ÔØµÄÖØÐÂÉú³É
-    ITEM_CREATE_FROM_SHOP            =   90,        //ÉÌµêµÄ´´½¨
-    ITEM_CREATE_TILED                =    100,    //´´½¨ºóÓëÔ­±³°üÎïÆ·ºÏ²¢
-    ITEM_CREATE_SPLIT                =   110,    //ÇÐ·ÖÎïÆ·Ê±ÎïÆ·µÄ´´½¨
-    ITEM_EXCHANGE_TOOTHER            =   210,    //ÎïÆ·½»Ò×,
-    ITEM_STALL_BOX_EXCHANGE            =    211,    //Ì¯Î»½»Ò×
-    ITEM_PLAYERSHOP_EXCHANGE        =    212,    //Íæ¼ÒÉÌµê
-    ITEM_PLAYERSHOP_UP                =    213,    //Íæ¼ÒÉÌµêÉÏ¼Ü
-    ITEM_PLAYERSHOP_DOWN            =    214,    //Íæ¼ÒÉÌµêÏÂ¼Ü
-    ITEM_SPLIT_BAG_DEST                =    220,    //ÎïÆ·±³°ü²ð·ÖÄ¿µÄ
-    ITEM_SPLIT_BAG_SRC                =    221,    //ÎïÆ·±³°ü²ð·ÖÔ´Í·
-    ITEM_SPLIT_BANK_DEST            =    222,    //ÒøÐÐ²ð·Ö
-    ITEM_SPLIT_BANK_SRC                =    223,    //ÒøÐÐ²ð·Ö
-    ITEM_TILED_BAG_DEST                =    224,    //±³°üÎïÆ·ºÏ²¢Ä¿µÄ
-    ITEM_TILED_BAG_SRC                =    225,    //±³°üÎïÆ·ºÏ²¢Ô´Í·
-    ITEM_TILED_BANK                    =    226,    //ÒøÐÐÎïÆ·ºÏ²¢
+    ITEM_OP_UNKNOW                    =    0,        //æœªçŸ¥ç‰©å“æ‹¾å–
+    ITEM_CREATE_FROM_MONSTER        =    10,        //æ€ªç‰©æŽ‰è½ï¼Œç”Ÿæˆåˆ°æŽ‰è½åŒ…
+    ITEM_CREATE_SCRIPT_TO_BOX        =    20,        //ç”±è„šæœ¬åˆ›å»ºåˆ°æŽ‰è½åŒ…ï¼Œä¸€èˆ¬æ˜¯ç”Ÿé•¿ç‚¹ç±»åž‹
+    ITEM_PICK_FROM_MONSTER            =    30,        //æŽ‰è½ç‰©å“æ‹¾å–,æŒ‡åˆ°è§’è‰²èº«ä¸Šçš„åˆ›å»º
+    ITEM_PICK_FROM_GROWPOINT        =    31,        //é‡‡é›†æ‹¾å–,æŒ‡åˆ°è§’è‰²èº«ä¸Šçš„åˆ›å»º
+    ITEM_CREATE_FROM_SCRIPT            =    40,        //è„šæœ¬ç»™ä¸Žç‰©å“
+    ITEM_CREATE_FROM_ABILITY_SCRIPT    =    50,        //ç”Ÿæ´»æŠ€èƒ½ç›¸å…³è„šæœ¬ç»™ä¸Ž
+    ITEM_CREATE_GM                    =    60,        //GMå‘½ä»¤
+    ITEM_CREATE_ABILITY_COMPOUD        =    70,        //å®çŸ³åˆæˆ
+    ITEM_CREATE_REMOVE_GEM            =    80,        //å®çŸ³å¸è½½çš„é‡æ–°ç”Ÿæˆ
+    ITEM_CREATE_FROM_SHOP            =   90,        //å•†åº—çš„åˆ›å»º
+    ITEM_CREATE_TILED                =    100,    //åˆ›å»ºåŽä¸ŽåŽŸèƒŒåŒ…ç‰©å“åˆå¹¶
+    ITEM_CREATE_SPLIT                =   110,    //åˆ‡åˆ†ç‰©å“æ—¶ç‰©å“çš„åˆ›å»º
+    ITEM_EXCHANGE_TOOTHER            =   210,    //ç‰©å“äº¤æ˜“,
+    ITEM_STALL_BOX_EXCHANGE            =    211,    //æ‘Šä½äº¤æ˜“
+    ITEM_PLAYERSHOP_EXCHANGE        =    212,    //çŽ©å®¶å•†åº—
+    ITEM_PLAYERSHOP_UP                =    213,    //çŽ©å®¶å•†åº—ä¸Šæž¶
+    ITEM_PLAYERSHOP_DOWN            =    214,    //çŽ©å®¶å•†åº—ä¸‹æž¶
+    ITEM_SPLIT_BAG_DEST                =    220,    //ç‰©å“èƒŒåŒ…æ‹†åˆ†ç›®çš„
+    ITEM_SPLIT_BAG_SRC                =    221,    //ç‰©å“èƒŒåŒ…æ‹†åˆ†æºå¤´
+    ITEM_SPLIT_BANK_DEST            =    222,    //é“¶è¡Œæ‹†åˆ†
+    ITEM_SPLIT_BANK_SRC                =    223,    //é“¶è¡Œæ‹†åˆ†
+    ITEM_TILED_BAG_DEST                =    224,    //èƒŒåŒ…ç‰©å“åˆå¹¶ç›®çš„
+    ITEM_TILED_BAG_SRC                =    225,    //èƒŒåŒ…ç‰©å“åˆå¹¶æºå¤´
+    ITEM_TILED_BANK                    =    226,    //é“¶è¡Œç‰©å“åˆå¹¶
 
 
-    ITEM_REPAIR                        =    310,    //ÎïÆ·ÐÞÀí,
-    ITEM_USEGEM_LOST                =    410,    //±¦Ê¯ºÏ³É¶ªÊ§
-    ITEM_DISCARD                    =    411,    //Íæ¼ÒÖ÷¶¯¶ªÆú
-    ITEM_GEM_COMPOUND_LOST            =    412,    //±¦Ê¯ºÏ³ÉµÄÎïÆ·ÏûºÄ
-    ITEM_ABILITY_COMPOUND_LOST        =    413,    //Éú»î¼¼ÄÜÎïÆ·ÏûºÄ
-    ITEM_SCRIPT_DELETE                =    414,    //´Ó½Å±¾É¾³ýÎïÆ·
-    ITEM_CHANGE_HAIRMODEL_LOST        =    415,    //¸Ä±ä·¢ÐÍÏûºÄ
-    ITEM_DIE_LOST                    =    416,    //ËÀÍö³Í·£
-    ITEM_INLAY_LOST                    =    417,    //ÎïÆ·ÏâÇ¶ËðÊ§
-    ITEM_MACHINE_LOST                =    418,    //»úÐµÖÆÔìËðÊ§
-    ITEM_DISCARD_EQUIP                =    419,    //Íæ¼ÒÖ÷¶¯¶ªÆúÒÑ×°±¸ÉÏµÄÎïÆ·
-    ITEM_DISCARD_BANK                =    420,    //Íæ¼ÒÖ÷¶¯¶ªÆúÒøÐÐ×°±¸
-    ITEM_USE                        =    421,    //Íæ¼ÒÖ÷¶¯Ê¹ÓÃ
-    ITEM_USE_IDENT_LOST                =    425,    //¾íÖáÊ¹ÓÃÏûºÄ
-    ITEM_BOX_RECYCLE                =    500,    //ItemBox»ØÊÕ
+    ITEM_REPAIR                        =    310,    //ç‰©å“ä¿®ç†,
+    ITEM_USEGEM_LOST                =    410,    //å®çŸ³åˆæˆä¸¢å¤±
+    ITEM_DISCARD                    =    411,    //çŽ©å®¶ä¸»åŠ¨ä¸¢å¼ƒ
+    ITEM_GEM_COMPOUND_LOST            =    412,    //å®çŸ³åˆæˆçš„ç‰©å“æ¶ˆè€—
+    ITEM_ABILITY_COMPOUND_LOST        =    413,    //ç”Ÿæ´»æŠ€èƒ½ç‰©å“æ¶ˆè€—
+    ITEM_SCRIPT_DELETE                =    414,    //ä»Žè„šæœ¬åˆ é™¤ç‰©å“
+    ITEM_CHANGE_HAIRMODEL_LOST        =    415,    //æ”¹å˜å‘åž‹æ¶ˆè€—
+    ITEM_DIE_LOST                    =    416,    //æ­»äº¡æƒ©ç½š
+    ITEM_INLAY_LOST                    =    417,    //ç‰©å“é•¶åµŒæŸå¤±
+    ITEM_MACHINE_LOST                =    418,    //æœºæ¢°åˆ¶é€ æŸå¤±
+    ITEM_DISCARD_EQUIP                =    419,    //çŽ©å®¶ä¸»åŠ¨ä¸¢å¼ƒå·²è£…å¤‡ä¸Šçš„ç‰©å“
+    ITEM_DISCARD_BANK                =    420,    //çŽ©å®¶ä¸»åŠ¨ä¸¢å¼ƒé“¶è¡Œè£…å¤‡
+    ITEM_USE                        =    421,    //çŽ©å®¶ä¸»åŠ¨ä½¿ç”¨
+    ITEM_USE_IDENT_LOST                =    425,    //å·è½´ä½¿ç”¨æ¶ˆè€—
+    ITEM_BOX_RECYCLE                =    500,    //ItemBoxå›žæ”¶
     
 };
 
-//Ç®±Ò²Ù×÷ÀàÐÍ
+//é’±å¸æ“ä½œç±»åž‹
 enum    MONEY_OP_TYPE
 {
-    MONEY_OP_UNKNOW                        =    0,        //Î´Öª
-    MONEY_BANK_SAVE                        =    10,        //ÒøÐÐ´æ
-    MONEY_BANK_WITHDRAW                    =    20,        //ÒøÐÐÈ¡
+    MONEY_OP_UNKNOW                        =    0,        //æœªçŸ¥
+    MONEY_BANK_SAVE                        =    10,        //é“¶è¡Œå­˜
+    MONEY_BANK_WITHDRAW                    =    20,        //é“¶è¡Œå–
     MONEY_BANK_SAVERMB                    =    21,        //
     MONEY_BANK_WITHDRAWRMB                =    22,        //
-    MONEY_EXCHANGE_INCOME                =    30,        //»õ±Ò½»Ò×ÊÕÈë
-    MONEY_EXCHANGE_OUTCOME                =    40,        //»õ±Ò½»Ò×Ö§³ö
-    MONEY_EXCHANGE_STALL_INCOME            =    50,        //»õ±ÒÍ¨¹ýÌ¯Î»½»Ò×ÊÕÈë
-    MONEY_EXCHANGE_STALL_OUTCOME        =    60,        //»õ±ÒÍ¨¹ýÌ¯Î»½»Ò×Ö§³ö
-    MONEY_EXCHANGE_STALL_TAX            =    61,        //»õ±ÒÍ¨¹ýÌ¯Î»Ë°ÊÕÖ§³ö
-    MONEY_EXCHANGE_PLAYERSHOP_OUTCOME    =    80,        //»õ±ÒÍ¨¹ýÍæ¼ÒÉÌµê½»Ò×»õÎïÖ§³ö,Ç®ÈëÍæ¼ÒÉÌµê
-    MONEY_BUY_PLAYERSHOP_OUTCOME        =    81,        //»õ±ÒÍ¨¹ý½»Ò×Íæ¼ÒÉÌµêÖ§³ö
-    MONEY_CREATE_PLAYERSHOP_OUTCOME        =    82,        //»õ±ÒÍ¨¹ý´´½¨Íæ¼ÒÉÌµêÖ§³ö
-    MONEY_PLAYERSHOP_SAVE                =    90,        //Íæ¼ÒÉÌµê´æ
-    MONEY_PLAYERSHOP_WITHDRAW            =    100,    //Íæ¼ÒÉÌµêÈ¡
-    MONEY_SHOP_COST                        =    110,    //ÉÌµê¹ºÂòÖ§³ö
-    MONEY_SHOP_SELL                        =    111,    //ÉÌµê³öÊÛÊÕÈë
-    MONEY_SHOP_REPAIR                    =    120,    //ÉÌµêÐÞÀíÖ§³ö
-    MONEY_LEARN_ABILITY_COST            =    121,    //Ñ§Ï°Éú»î¼¼ÄÜÖ§³ö    
-    MONEY_LEARN_XINFA_COST                =    122,    //Ñ§Ï°Éú»îÐÄ·¨Ö§³ö    
-    MONEY_SCRIPT_COST                    =    130,    //½Å±¾µ÷ÓÃ½ðÇ®ÏûºÄ
-    MONEY_SCRIPT_INCOME                    =    131,    //½Å±¾µ÷ÓÃ½ðÇ®ÊÕÈë
-    MONEY_DIE_COST                        =    132,    //ËÀÍö½ðÇ®³Í·£
-    MONEY_PET_COST                        =    133,    //³èÎï½ðÇ®ÏûºÄ
-    MONEY_GM_MODIFY                        =    200,    //GM ÐÞ¸Ä
-    MONEY_SHOP_RMB_COST                    =    300,    //Ôª±¦Ïû·Ñ
+    MONEY_EXCHANGE_INCOME                =    30,        //è´§å¸äº¤æ˜“æ”¶å…¥
+    MONEY_EXCHANGE_OUTCOME                =    40,        //è´§å¸äº¤æ˜“æ”¯å‡º
+    MONEY_EXCHANGE_STALL_INCOME            =    50,        //è´§å¸é€šè¿‡æ‘Šä½äº¤æ˜“æ”¶å…¥
+    MONEY_EXCHANGE_STALL_OUTCOME        =    60,        //è´§å¸é€šè¿‡æ‘Šä½äº¤æ˜“æ”¯å‡º
+    MONEY_EXCHANGE_STALL_TAX            =    61,        //è´§å¸é€šè¿‡æ‘Šä½ç¨Žæ”¶æ”¯å‡º
+    MONEY_EXCHANGE_PLAYERSHOP_OUTCOME    =    80,        //è´§å¸é€šè¿‡çŽ©å®¶å•†åº—äº¤æ˜“è´§ç‰©æ”¯å‡º,é’±å…¥çŽ©å®¶å•†åº—
+    MONEY_BUY_PLAYERSHOP_OUTCOME        =    81,        //è´§å¸é€šè¿‡äº¤æ˜“çŽ©å®¶å•†åº—æ”¯å‡º
+    MONEY_CREATE_PLAYERSHOP_OUTCOME        =    82,        //è´§å¸é€šè¿‡åˆ›å»ºçŽ©å®¶å•†åº—æ”¯å‡º
+    MONEY_PLAYERSHOP_SAVE                =    90,        //çŽ©å®¶å•†åº—å­˜
+    MONEY_PLAYERSHOP_WITHDRAW            =    100,    //çŽ©å®¶å•†åº—å–
+    MONEY_SHOP_COST                        =    110,    //å•†åº—è´­ä¹°æ”¯å‡º
+    MONEY_SHOP_SELL                        =    111,    //å•†åº—å‡ºå”®æ”¶å…¥
+    MONEY_SHOP_REPAIR                    =    120,    //å•†åº—ä¿®ç†æ”¯å‡º
+    MONEY_LEARN_ABILITY_COST            =    121,    //å­¦ä¹ ç”Ÿæ´»æŠ€èƒ½æ”¯å‡º    
+    MONEY_LEARN_XINFA_COST                =    122,    //å­¦ä¹ ç”Ÿæ´»å¿ƒæ³•æ”¯å‡º    
+    MONEY_SCRIPT_COST                    =    130,    //è„šæœ¬è°ƒç”¨é‡‘é’±æ¶ˆè€—
+    MONEY_SCRIPT_INCOME                    =    131,    //è„šæœ¬è°ƒç”¨é‡‘é’±æ”¶å…¥
+    MONEY_DIE_COST                        =    132,    //æ­»äº¡é‡‘é’±æƒ©ç½š
+    MONEY_PET_COST                        =    133,    //å® ç‰©é‡‘é’±æ¶ˆè€—
+    MONEY_GM_MODIFY                        =    200,    //GM ä¿®æ”¹
+    MONEY_SHOP_RMB_COST                    =    300,    //å…ƒå®æ¶ˆè´¹
 
 
 };
-//³èÎï²Ù×÷ÀàÐÍ
+//å® ç‰©æ“ä½œç±»åž‹
 enum    PET_OP_TYPE
 {
-    PET_OP_UNKNOW                =    0,        //³èÎïÎ´Öª²Ù×÷
-    PET_OP_CATCH                =    10,        //³èÎï²¶×½
-    PET_OP_SCRIPT_CREATE        =    11,        //½Å±¾´´½¨³èÎï
-    PET_OP_SCRIPT_DELETE        =    12,        //½Å±¾É¾³ý³èÎï
-    PET_OP_GENERA                =    20,        //³èÎï·±Ö³
-    PET_OP_EXCHANGE_OTHER        =    30,        //³èÎï½»Ò×»ñµÃ
-    PET_OP_STALL_EXCHANGE_GET    =    40,//°ÚÌ¯½»Ò×»ñµÃ
-    PET_OP_PLAYERSHOP_EXCHANGE_GET    =    50,        //Íæ¼ÒÉÌµê½»Ò×»ñµÃ
-    PET_OP_PLAYERSHOP_UP        =    51,        //Íæ¼ÒÉÌµêÉÏ¼Ü
-    PET_OP_PLAYERSHOP_DOWN        =    52,        //Íæ¼ÒÉÌµêÏÂ¼Ü
-    PET_OP_GM_CREATE            =    60,        //GM ÐÞ¸ÄÌí¼Ó
-    PET_OP_GM_LOST                =    61,        //GM ÐÞ¸ÄÏú»Ù
+    PET_OP_UNKNOW                =    0,        //å® ç‰©æœªçŸ¥æ“ä½œ
+    PET_OP_CATCH                =    10,        //å® ç‰©æ•æ‰
+    PET_OP_SCRIPT_CREATE        =    11,        //è„šæœ¬åˆ›å»ºå® ç‰©
+    PET_OP_SCRIPT_DELETE        =    12,        //è„šæœ¬åˆ é™¤å® ç‰©
+    PET_OP_GENERA                =    20,        //å® ç‰©ç¹æ®–
+    PET_OP_EXCHANGE_OTHER        =    30,        //å® ç‰©äº¤æ˜“èŽ·å¾—
+    PET_OP_STALL_EXCHANGE_GET    =    40,//æ‘†æ‘Šäº¤æ˜“èŽ·å¾—
+    PET_OP_PLAYERSHOP_EXCHANGE_GET    =    50,        //çŽ©å®¶å•†åº—äº¤æ˜“èŽ·å¾—
+    PET_OP_PLAYERSHOP_UP        =    51,        //çŽ©å®¶å•†åº—ä¸Šæž¶
+    PET_OP_PLAYERSHOP_DOWN        =    52,        //çŽ©å®¶å•†åº—ä¸‹æž¶
+    PET_OP_GM_CREATE            =    60,        //GM ä¿®æ”¹æ·»åŠ 
+    PET_OP_GM_LOST                =    61,        //GM ä¿®æ”¹é”€æ¯
 };
 
-//¼¼ÄÜ²Ù×÷ÀàÐÍ
+//æŠ€èƒ½æ“ä½œç±»åž‹
 enum    SKILL_OP_TYPE
 {
-    SKILL_OP_UNKNOW                        =    0,        //Î´Öª¼¼ÄÜ²Ù×÷
-    SKILL_OP_SCRIPT_STUDY                =    10,        //¼¼ÄÜÑ§Ï°
-    SKILL_OP_LEVELUP                    =    20,        //¼¼ÄÜÉý¼¶
-    SKILL_OP_SCRIPT_ABANDON                =    30,        //¼¼ÄÜ·ÅÆú
-    SKILL_OP_SCRIPT_CHANGEMENPAI        =    31,        //½Å±¾µ÷ÓÃChangeMenpai
-    SKILL_OP_GM_MODIFY                    =    40,        //Í¨¹ýGMÃüÁî Ñ§Ï°
+    SKILL_OP_UNKNOW                        =    0,        //æœªçŸ¥æŠ€èƒ½æ“ä½œ
+    SKILL_OP_SCRIPT_STUDY                =    10,        //æŠ€èƒ½å­¦ä¹ 
+    SKILL_OP_LEVELUP                    =    20,        //æŠ€èƒ½å‡çº§
+    SKILL_OP_SCRIPT_ABANDON                =    30,        //æŠ€èƒ½æ”¾å¼ƒ
+    SKILL_OP_SCRIPT_CHANGEMENPAI        =    31,        //è„šæœ¬è°ƒç”¨ChangeMenpai
+    SKILL_OP_GM_MODIFY                    =    40,        //é€šè¿‡GMå‘½ä»¤ å­¦ä¹ 
     
 };
 
-//ÐÄ·¨²Ù×÷ÀàÐÍ
+//å¿ƒæ³•æ“ä½œç±»åž‹
 //enum    XINFA_OP_TYPE
 //{
-//    XINFA_OP_UNKNOW                        =    0,        //Î´Öª¼¼ÄÜ²Ù×÷
-//    XINFA_OP_SCRIPT_STUDY                =    10,        //ÐÄ·¨Ñ§Ï°
-//    XINFA_OP_LEVELUP                    =    20,        //ÐÄ·¨Éý¼¶
-//    XINFA_OP_SCRIPT_ABANDON                =    30,        //ÐÄ·¨·ÅÆú
-//    XINFA_OP_SCRIPT_CHANGEMENPAI        =    31,        //½Å±¾µ÷ÓÃChangeMenpai
-//    XINFA_OP_GM_MODIFY                    =    40,        //Í¨¹ýGMÃüÁî Ñ§Ï°
-//    XINFA_OP_GM_MODIFY_ALL                =    41,        //Í¨¹ýGMÃüÁîÑ§Ï°ËùÓÐ
+//    XINFA_OP_UNKNOW                        =    0,        //æœªçŸ¥æŠ€èƒ½æ“ä½œ
+//    XINFA_OP_SCRIPT_STUDY                =    10,        //å¿ƒæ³•å­¦ä¹ 
+//    XINFA_OP_LEVELUP                    =    20,        //å¿ƒæ³•å‡çº§
+//    XINFA_OP_SCRIPT_ABANDON                =    30,        //å¿ƒæ³•æ”¾å¼ƒ
+//    XINFA_OP_SCRIPT_CHANGEMENPAI        =    31,        //è„šæœ¬è°ƒç”¨ChangeMenpai
+//    XINFA_OP_GM_MODIFY                    =    40,        //é€šè¿‡GMå‘½ä»¤ å­¦ä¹ 
+//    XINFA_OP_GM_MODIFY_ALL                =    41,        //é€šè¿‡GMå‘½ä»¤å­¦ä¹ æ‰€æœ‰
 //    
 //};
 
-//ÐÄ·¨²Ù×÷ÀàÐÍ
+//å¿ƒæ³•æ“ä½œç±»åž‹
 enum    ABILITY_OP_TYPE
 {
-    ABILITY_OP_UNKNOW                        =    0,        //Î´Öª¼¼ÄÜ²Ù×÷
-    ABILITY_OP_SCRIPT_STUDY                    =    10,        //Éú»î¼¼ÄÜÑ§Ï°
-    ABILITY_OP_LEVELUP                        =    20,        //Éú»î¼¼ÄÜÉý¼¶
-    ABILITY_OP_SCRIPT_ABANDON                =    30,        //Éú»î¼¼ÄÜ·ÅÆú
-    ABILITY_OP_GM_MODIFY                    =    40,        //Í¨¹ýGMÃüÁî Ñ§Ï°
-    ABILITY_OP_GM_MODIFY_ALL                =    41,        //Í¨¹ýGMÃüÁîÑ§Ï°ËùÓÐ
+    ABILITY_OP_UNKNOW                        =    0,        //æœªçŸ¥æŠ€èƒ½æ“ä½œ
+    ABILITY_OP_SCRIPT_STUDY                    =    10,        //ç”Ÿæ´»æŠ€èƒ½å­¦ä¹ 
+    ABILITY_OP_LEVELUP                        =    20,        //ç”Ÿæ´»æŠ€èƒ½å‡çº§
+    ABILITY_OP_SCRIPT_ABANDON                =    30,        //ç”Ÿæ´»æŠ€èƒ½æ”¾å¼ƒ
+    ABILITY_OP_GM_MODIFY                    =    40,        //é€šè¿‡GMå‘½ä»¤ å­¦ä¹ 
+    ABILITY_OP_GM_MODIFY_ALL                =    41,        //é€šè¿‡GMå‘½ä»¤å­¦ä¹ æ‰€æœ‰
 
 };
 
-//ÈÎÎñ²Ù×÷ÀàÐÍ
+//ä»»åŠ¡æ“ä½œç±»åž‹
 enum    MISSION_OP_TYPE
 {
-    MISSION_OP_UNKNOW                        =    0,    //Î´ÖªÈÎÎñ²Ù×÷
-    MISSION_OP_ADDMISSION                    =    10,    //Ôö¼ÓÈÎÎñ
-    MISSION_OP_DELMISSION                    =    20,    //É¾³ýÈÎÎñ£¨ÓÐ¿ÉÄÜÊÇÍê³ÉºóÉ¾³ý£©
-    MISSION_OP_PARAM                        =    30,    //ÈÎÎñ²ÎÊý±ä»¯
-    MISSION_OP_DONEFLAG                        =    40,    //ÈÎÎñÍê³É±êÖ¾±ä»¯
-    MISSION_OP_DATA                            =    50, //ÈÎÎñÈ«¾ÖÊý¾Ý±ä»¯
+    MISSION_OP_UNKNOW                        =    0,    //æœªçŸ¥ä»»åŠ¡æ“ä½œ
+    MISSION_OP_ADDMISSION                    =    10,    //å¢žåŠ ä»»åŠ¡
+    MISSION_OP_DELMISSION                    =    20,    //åˆ é™¤ä»»åŠ¡ï¼ˆæœ‰å¯èƒ½æ˜¯å®ŒæˆåŽåˆ é™¤ï¼‰
+    MISSION_OP_PARAM                        =    30,    //ä»»åŠ¡å‚æ•°å˜åŒ–
+    MISSION_OP_DONEFLAG                        =    40,    //ä»»åŠ¡å®Œæˆæ ‡å¿—å˜åŒ–
+    MISSION_OP_DATA                            =    50, //ä»»åŠ¡å…¨å±€æ•°æ®å˜åŒ–
 };
 
 
-//Log¸ñÊ½
+//Logæ ¼å¼
 /*
- *        IOL:WorldºÅ,ServerºÅ,ÎïÆ·ÐòºÅ,½ÇÉ«GUID,¶Ô·½GUID,²Ù×÷ÀàÐÍ,×îºó±³°üÎ»ÖÃ,³¡¾°ºÅ,
-        Ïà¹ØNPC,XPOS,ZPOS,Ïà¹ØÉÌµêºÅ(Èç¹ûÊÇÍæ¼ÒÖ®¼äÌî-1),ÄÍ¾Ã¶È£¬ÏâÇ¶¿×¸öÊý
-        ÊôÐÔÀàÐÍ1£¬ÊôÐÔ1¡£¡£¡£ÊôÐÔÀàÐÍ4£¬ÊôÐÔ4
+ *        IOL:Worldå·,Serverå·,ç‰©å“åºå·,è§’è‰²GUID,å¯¹æ–¹GUID,æ“ä½œç±»åž‹,æœ€åŽèƒŒåŒ…ä½ç½®,åœºæ™¯å·,
+        ç›¸å…³NPC,XPOS,ZPOS,ç›¸å…³å•†åº—å·(å¦‚æžœæ˜¯çŽ©å®¶ä¹‹é—´å¡«-1),è€ä¹…åº¦ï¼Œé•¶åµŒå­”ä¸ªæ•°
+        å±žæ€§ç±»åž‹1ï¼Œå±žæ€§1ã€‚ã€‚ã€‚å±žæ€§ç±»åž‹4ï¼Œå±žæ€§4
  */
 static CHAR*    g_ItemLogFormat =
                 "IOL:%d,%d,%d,%d,%d,%X,%X,%d,%d,%d,%d,%d,%.2f,%.2f,%d,%u,%u,%u,%u,%u,%u,%u,%u,%u";
 
 struct ITEM_LOG_PARAM
 {
-    _ITEM_GUID        ItemGuid;                                    //ÎïÆ·±àºÅ
-    UINT            ItemType;                                    //ÎïÆ·È«¾Ö±àºÅ
-    GUID_t            CharGUID;                                    //×ÔÉí½ÇÉ«,ÎïÆ·ËùÓÐÕß
-    GUID_t            TargetGUID;                                    //Ä¿±ê½ÇÉ«
-    ITEM_OP_TYPE    OpType;                                        //²Ù×÷ÀàÐÍ
-    ITEM_OP_TYPE    SecOpType;                                    //×ªÏò²Ù×÷
-    BYTE            BagPos;                                        //±³°üÎ»ÖÃ
-    BYTE            Count;                                        //±ä»¯¸öÊý
-    SceneID_t        SceneID;                                    //³¡¾°±àºÅ
-    INT                NpcType;                                    //npc ÀàÐÍ,µôÂäÊ±Ìî¹ÖÎïÀàÐÍ
-    FLOAT            XPos;                                        //ÊÂ¼þ·¢ÉúÎ»ÖÃ
+    _ITEM_GUID        ItemGuid;                                    //ç‰©å“ç¼–å·
+    UINT            ItemType;                                    //ç‰©å“å…¨å±€ç¼–å·
+    GUID_t            CharGUID;                                    //è‡ªèº«è§’è‰²,ç‰©å“æ‰€æœ‰è€…
+    GUID_t            TargetGUID;                                    //ç›®æ ‡è§’è‰²
+    ITEM_OP_TYPE    OpType;                                        //æ“ä½œç±»åž‹
+    ITEM_OP_TYPE    SecOpType;                                    //è½¬å‘æ“ä½œ
+    BYTE            BagPos;                                        //èƒŒåŒ…ä½ç½®
+    BYTE            Count;                                        //å˜åŒ–ä¸ªæ•°
+    SceneID_t        SceneID;                                    //åœºæ™¯ç¼–å·
+    INT                NpcType;                                    //npc ç±»åž‹,æŽ‰è½æ—¶å¡«æ€ªç‰©ç±»åž‹
+    FLOAT            XPos;                                        //äº‹ä»¶å‘ç”Ÿä½ç½®
     FLOAT            ZPos;                                        
-    INT                ShopGUID;                                    //Ïà¹ØÉÌµêºÅ
-    BYTE            GemMax;                                        //×î´ó±¦Ê¯¸öÊý(À¶×°±ØÐëÒª)
-    _ITEM_ATTR        ItemAttr[MAX_BLUE_ITEM_EXT_ATTR];            //À¶É«×°±¸ÊôÐÔ
+    INT                ShopGUID;                                    //ç›¸å…³å•†åº—å·
+    BYTE            GemMax;                                        //æœ€å¤§å®çŸ³ä¸ªæ•°(è“è£…å¿…é¡»è¦)
+    _ITEM_ATTR        ItemAttr[MAX_BLUE_ITEM_EXT_ATTR];            //è“è‰²è£…å¤‡å±žæ€§
 
     ITEM_LOG_PARAM()
     {
@@ -204,22 +204,22 @@ struct ITEM_LOG_PARAM
 
 VOID        SaveItemLog(ITEM_LOG_PARAM* pLogParam);
 
-//Log ¸ñÊ½
+//Log æ ¼å¼
 /*
 *
-MOL:²ÎÓë½ÇÉ«£¬¶ÔÏó½ÇÉ«£¬²Ù×÷ÀàÐÍ£¬»õ±ÒÊýÁ¿£¬³¡¾°£¬xÎ»ÖÃ,zÎ»ÖÃ
+MOL:å‚ä¸Žè§’è‰²ï¼Œå¯¹è±¡è§’è‰²ï¼Œæ“ä½œç±»åž‹ï¼Œè´§å¸æ•°é‡ï¼Œåœºæ™¯ï¼Œxä½ç½®,zä½ç½®
 */
 
 static CHAR*    g_MoneyLogFormat = "MOL:%X,%X,%d,%d,%d,%.2f,%.2f";
 
 struct  MONEY_LOG_PARAM
 {
-    GUID_t            CharGUID;                                    //×ÔÉí½ÇÉ«,moneyËùÓÐÕß
-    GUID_t            TargetGUID;                                    //Ä¿±ê½ÇÉ«
-    MONEY_OP_TYPE    OPType;                                        //²Ù×÷ÀàÐÍ
-    INT                Count;                                        //ÊýÁ¿
-    SceneID_t        SceneID;                                    //³¡¾°±àºÅ
-    FLOAT            XPos;                                        //ÊÂ¼þ·¢ÉúÎ»ÖÃ
+    GUID_t            CharGUID;                                    //è‡ªèº«è§’è‰²,moneyæ‰€æœ‰è€…
+    GUID_t            TargetGUID;                                    //ç›®æ ‡è§’è‰²
+    MONEY_OP_TYPE    OPType;                                        //æ“ä½œç±»åž‹
+    INT                Count;                                        //æ•°é‡
+    SceneID_t        SceneID;                                    //åœºæ™¯ç¼–å·
+    FLOAT            XPos;                                        //äº‹ä»¶å‘ç”Ÿä½ç½®
     FLOAT            ZPos;
 
     MONEY_LOG_PARAM()
@@ -242,19 +242,19 @@ struct  MONEY_LOG_PARAM
 VOID        SaveMoneyLog(MONEY_LOG_PARAM* pLogParam);
 
 /*
-*    POL:²ÎÓë½ÇÉ«£¬¶ÔÏó½ÇÉ«£¬²Ù×÷ÀàÐÍ£¬³¡¾°£¬xÎ»ÖÃ,zÎ»ÖÃ    ,³èÎï±àºÅ
+*    POL:å‚ä¸Žè§’è‰²ï¼Œå¯¹è±¡è§’è‰²ï¼Œæ“ä½œç±»åž‹ï¼Œåœºæ™¯ï¼Œxä½ç½®,zä½ç½®    ,å® ç‰©ç¼–å·
 */
 static CHAR*    g_PetLogFormat = "POL:%X,%X,%d,%d,%.2f,%.2f,%u,%u,%d";
 struct  PET_LOG_PARAM
 {
-    GUID_t            CharGUID;                                    //×ÔÉí½ÇÉ«,PetËùÓÐÕß
-    GUID_t            TargetGUID;                                    //Ä¿±ê½ÇÉ«
-    PET_OP_TYPE        OPType;                                        //²Ù×÷ÀàÐÍ
-    SceneID_t        SceneID;                                    //³¡¾°±àºÅ
-    FLOAT            XPos;                                        //ÊÂ¼þ·¢ÉúÎ»ÖÃ
+    GUID_t            CharGUID;                                    //è‡ªèº«è§’è‰²,Petæ‰€æœ‰è€…
+    GUID_t            TargetGUID;                                    //ç›®æ ‡è§’è‰²
+    PET_OP_TYPE        OPType;                                        //æ“ä½œç±»åž‹
+    SceneID_t        SceneID;                                    //åœºæ™¯ç¼–å·
+    FLOAT            XPos;                                        //äº‹ä»¶å‘ç”Ÿä½ç½®
     FLOAT            ZPos;
-    PET_GUID_t        PetGUID;                                    //³èÎïGUID
-    INT                DataID;                                        //³èÎïÀàÐÍ
+    PET_GUID_t        PetGUID;                                    //å® ç‰©GUID
+    INT                DataID;                                        //å® ç‰©ç±»åž‹
     
     PET_LOG_PARAM()
     {
@@ -280,21 +280,21 @@ VOID        SavePetLog(PET_LOG_PARAM* pLogParam);
 
 
 /*
-*    SOL:²ÎÓë½ÇÉ«£¬²Ù×÷ÀàÐÍ£¬³¡¾°£¬xÎ»ÖÃ,zÎ»ÖÃ,¼¼ÄÜ±àºÅ
+*    SOL:å‚ä¸Žè§’è‰²ï¼Œæ“ä½œç±»åž‹ï¼Œåœºæ™¯ï¼Œxä½ç½®,zä½ç½®,æŠ€èƒ½ç¼–å·
 */
 static CHAR*    g_SkillLogFormat = 
 "SOL:%X,%d,%d,%.2f,%.2f,%u,%d,%d";
 
 struct SKILL_LOG_PARAM
 {
-    GUID_t            CharGUID;                                    //×ÔÉí½ÇÉ«,SkillËùÓÐÕß
-    SKILL_OP_TYPE    OPType;                                        //²Ù×÷ÀàÐÍ
-    SceneID_t        SceneID;                                    //³¡¾°±àºÅ
-    FLOAT            XPos;                                        //ÊÂ¼þ·¢ÉúÎ»ÖÃ
+    GUID_t            CharGUID;                                    //è‡ªèº«è§’è‰²,Skillæ‰€æœ‰è€…
+    SKILL_OP_TYPE    OPType;                                        //æ“ä½œç±»åž‹
+    SceneID_t        SceneID;                                    //åœºæ™¯ç¼–å·
+    FLOAT            XPos;                                        //äº‹ä»¶å‘ç”Ÿä½ç½®
     FLOAT            ZPos;
-    SkillID_t        SkillID;                                    //¼¼ÄÜºÅ
-    INT                Level;                                        //¼¶±ð
-    INT                Count;                                        //¼¼ÄÜ
+    SkillID_t        SkillID;                                    //æŠ€èƒ½å·
+    INT                Level;                                        //çº§åˆ«
+    INT                Count;                                        //æŠ€èƒ½
     SKILL_LOG_PARAM()
     {
         CleanUp();
@@ -317,20 +317,20 @@ VOID    SaveSkillLog(SKILL_LOG_PARAM* pLogParam);
 
 
 /*
-*    XOL:²ÎÓë½ÇÉ«£¬²Ù×÷ÀàÐÍ£¬³¡¾°£¬xÎ»ÖÃ,zÎ»ÖÃ,¼¼ÄÜ±àºÅ
+*    XOL:å‚ä¸Žè§’è‰²ï¼Œæ“ä½œç±»åž‹ï¼Œåœºæ™¯ï¼Œxä½ç½®,zä½ç½®,æŠ€èƒ½ç¼–å·
 */
 //static CHAR*    g_XinFaLogFormat = 
 //"XOL:%X,%d,%d,%.2f,%.2f,%u,%d,%d";
 //
 //struct XINFA_LOG_PARAM
 //{
-//    GUID_t            CharGUID;                                    //×ÔÉí½ÇÉ«,SkillËùÓÐÕß
-//    XINFA_OP_TYPE    OPType;                                        //²Ù×÷ÀàÐÍ
-//    SceneID_t        SceneID;                                    //³¡¾°±àºÅ
-//    FLOAT            XPos;                                        //ÊÂ¼þ·¢ÉúÎ»ÖÃ
+//    GUID_t            CharGUID;                                    //è‡ªèº«è§’è‰²,Skillæ‰€æœ‰è€…
+//    XINFA_OP_TYPE    OPType;                                        //æ“ä½œç±»åž‹
+//    SceneID_t        SceneID;                                    //åœºæ™¯ç¼–å·
+//    FLOAT            XPos;                                        //äº‹ä»¶å‘ç”Ÿä½ç½®
 //    FLOAT            ZPos;
-//    ID_t            XinFaID_Nouse;                                    //¼¼ÄÜºÅ
-//    INT                Level;                                        //¼¶±ð
+//    ID_t            XinFaID_Nouse;                                    //æŠ€èƒ½å·
+//    INT                Level;                                        //çº§åˆ«
 //    INT                Count;
 //    XINFA_LOG_PARAM()
 //    {
@@ -354,20 +354,20 @@ VOID    SaveSkillLog(SKILL_LOG_PARAM* pLogParam);
 
 
 /*
-*    XOL:²ÎÓë½ÇÉ«£¬²Ù×÷ÀàÐÍ£¬³¡¾°£¬xÎ»ÖÃ,zÎ»ÖÃ,¼¼ÄÜ±àºÅ
+*    XOL:å‚ä¸Žè§’è‰²ï¼Œæ“ä½œç±»åž‹ï¼Œåœºæ™¯ï¼Œxä½ç½®,zä½ç½®,æŠ€èƒ½ç¼–å·
 */
 static CHAR*    g_AbilityLogFormat = 
 "AOL:%X,%d,%d,%.2f,%.2f,%u,%d,%d";
 
 struct ABILITY_LOG_PARAM
 {
-    GUID_t            CharGUID;                                    //×ÔÉí½ÇÉ«,SkillËùÓÐÕß
-    ABILITY_OP_TYPE    OPType;                                        //²Ù×÷ÀàÐÍ
-    SceneID_t        SceneID;                                    //³¡¾°±àºÅ
-    FLOAT            XPos;                                        //ÊÂ¼þ·¢ÉúÎ»ÖÃ
+    GUID_t            CharGUID;                                    //è‡ªèº«è§’è‰²,Skillæ‰€æœ‰è€…
+    ABILITY_OP_TYPE    OPType;                                        //æ“ä½œç±»åž‹
+    SceneID_t        SceneID;                                    //åœºæ™¯ç¼–å·
+    FLOAT            XPos;                                        //äº‹ä»¶å‘ç”Ÿä½ç½®
     FLOAT            ZPos;
-    AbilityID_t        AbilityID;                                    //¼¼ÄÜºÅ
-    INT                Level;                                        //¼¶±ð
+    AbilityID_t        AbilityID;                                    //æŠ€èƒ½å·
+    INT                Level;                                        //çº§åˆ«
     INT                Count;
     ABILITY_LOG_PARAM()
     {
@@ -390,19 +390,19 @@ struct ABILITY_LOG_PARAM
 VOID    SaveAbilityLog(ABILITY_LOG_PARAM* pLogParam);
 
 /*
-*    MIL:½ÇÉ«GUID£¬²Ù×÷ÀàÐÍ£¬³¡¾°£¬xÎ»ÖÃ,zÎ»ÖÃ£¬ÈÎÎñ±àºÅ£¬ÈÎÎñ½Å±¾£¬ÈÎÎñ±êÖ¾
-*        ²ÎÊý0£¬²ÎÊý1£¬²ÎÊý2£¬²ÎÊý3£¬²ÎÊý4£¬²ÎÊý5£¬²ÎÊý6£¬²ÎÊý7£¬
-*        Íê³É±êÖ¾Ë÷Òý£¬Íê³É±êÖ¾Öµ£¬È«¾ÖÈÎÎñÊý¾ÝË÷Òý£¬È«¾ÖÈÎÎñÊý¾ÝÖµ
+*    MIL:è§’è‰²GUIDï¼Œæ“ä½œç±»åž‹ï¼Œåœºæ™¯ï¼Œxä½ç½®,zä½ç½®ï¼Œä»»åŠ¡ç¼–å·ï¼Œä»»åŠ¡è„šæœ¬ï¼Œä»»åŠ¡æ ‡å¿—
+*        å‚æ•°0ï¼Œå‚æ•°1ï¼Œå‚æ•°2ï¼Œå‚æ•°3ï¼Œå‚æ•°4ï¼Œå‚æ•°5ï¼Œå‚æ•°6ï¼Œå‚æ•°7ï¼Œ
+*        å®Œæˆæ ‡å¿—ç´¢å¼•ï¼Œå®Œæˆæ ‡å¿—å€¼ï¼Œå…¨å±€ä»»åŠ¡æ•°æ®ç´¢å¼•ï¼Œå…¨å±€ä»»åŠ¡æ•°æ®å€¼
 */
 static CHAR*    g_MissionLogFormat = 
 "MIL:%X,%d,%d,%.2f,%.2f,%d,%d,%d,%u,%u,%u,%u,%u,%u,%u,%u,%d,%d,%d,%d";
 
 struct MISSION_LOG_PARAM
 {
-    GUID_t            CharGUID;                                    //×ÔÉí½ÇÉ«,SkillËùÓÐÕß
-    MISSION_OP_TYPE    OPType;                                        //²Ù×÷ÀàÐÍ
-    SceneID_t        SceneID;                                    //³¡¾°±àºÅ
-    FLOAT            XPos;                                        //ÊÂ¼þ·¢ÉúÎ»ÖÃ
+    GUID_t            CharGUID;                                    //è‡ªèº«è§’è‰²,Skillæ‰€æœ‰è€…
+    MISSION_OP_TYPE    OPType;                                        //æ“ä½œç±»åž‹
+    SceneID_t        SceneID;                                    //åœºæ™¯ç¼–å·
+    FLOAT            XPos;                                        //äº‹ä»¶å‘ç”Ÿä½ç½®
     FLOAT            ZPos;
     MissionID_t        idMission;
     ScriptID_t        idScript;
@@ -419,10 +419,10 @@ struct MISSION_LOG_PARAM
     };
     VOID CleanUp( )
     {
-        CharGUID        =INVALID_ID;                //×ÔÉí½ÇÉ«,SkillËùÓÐÕß
-        OPType            =MISSION_OP_UNKNOW;            //²Ù×÷ÀàÐÍ
-        SceneID            =INVALID_ID;                //³¡¾°±àºÅ
-        XPos            =0.0f;                        //ÊÂ¼þ·¢ÉúÎ»ÖÃ
+        CharGUID        =INVALID_ID;                //è‡ªèº«è§’è‰²,Skillæ‰€æœ‰è€…
+        OPType            =MISSION_OP_UNKNOW;            //æ“ä½œç±»åž‹
+        SceneID            =INVALID_ID;                //åœºæ™¯ç¼–å·
+        XPos            =0.0f;                        //äº‹ä»¶å‘ç”Ÿä½ç½®
         ZPos            =0.0f;
         idMission        =INVALID_ID;
         idScript        =INVALID_ID;

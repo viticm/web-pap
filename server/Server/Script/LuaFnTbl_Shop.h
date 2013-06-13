@@ -26,19 +26,19 @@ using namespace ITEM_SYNCH_STRUCT;
 namespace LuaFnTbl
 {
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± :
-    *     ±àĞ´Ê±¼ä : 2005-10-12
-    *     º¯ÊıÃû³Æ : LuaFnDispatchShopItem
-    *     ²ÎÊıËµÃ÷ : 
-    *     ¹¦ÄÜËµÃ÷ :
+    *     å¼€å‘äººå‘˜ :
+    *     ç¼–å†™æ—¶é—´ : 2005-10-12
+    *     å‡½æ•°åç§° : LuaFnDispatchShopItem
+    *     å‚æ•°è¯´æ˜ : 
+    *     åŠŸèƒ½è¯´æ˜ :
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                ShopId
-    *                    ÉÌµê±àºÅ
+    *                    å•†åº—ç¼–å·
     *                
     */
     INT    LuaFnDispatchShopItem(Lua_State* L) 
@@ -62,31 +62,31 @@ namespace LuaFnTbl
 
                     _SHOP* pShop =    NULL;
 
-                    //ÏÈ²é×Ô¼ºÉíÉÏ¹ÒÃ»¹ÒÉÌµê
+                    //å…ˆæŸ¥è‡ªå·±èº«ä¸ŠæŒ‚æ²¡æŒ‚å•†åº—
                     if(pNpc->GetShopManager() == NULL)
-                    {//Ã»ÓĞ£¬Ö±½ÓÔÚ¾²Ì¬±íÖĞ²éÕÒÕâ¸öÉÌµê
+                    {//æ²¡æœ‰ï¼Œç›´æ¥åœ¨é™æ€è¡¨ä¸­æŸ¥æ‰¾è¿™ä¸ªå•†åº—
                         pShop    =    g_pStaticShopManager->GetShopByID(ShopId);
                     }
                     else
-                    {//×Ô¼ºÉíÉÏÓĞ¶¯Ì¬±í
-                        //ÏÈÔÚ×Ô¼ºÉíÉÏÕÒ
+                    {//è‡ªå·±èº«ä¸Šæœ‰åŠ¨æ€è¡¨
+                        //å…ˆåœ¨è‡ªå·±èº«ä¸Šæ‰¾
                         pShop    =    pNpc->GetShopManager()->GetShopByID(ShopId);
                         if(!pShop)
-                        {//Ã»ÓĞ£¬»Øµ½¾²Ì¬±íÖĞÕÒ
+                        {//æ²¡æœ‰ï¼Œå›åˆ°é™æ€è¡¨ä¸­æ‰¾
                              pShop    =    g_pStaticShopManager->GetShopByID(ShopId);
                         }
                     }
 
-                    //»¹Ã»ÓĞ£¬Ò»¶¨ÊÇshopid³ö´íÁË
+                    //è¿˜æ²¡æœ‰ï¼Œä¸€å®šæ˜¯shopidå‡ºé”™äº†
                     if(!pShop)
                         Assert(0);
 
-                    //Ìî³äÏûÏ¢
+                    //å¡«å……æ¶ˆæ¯
                     GCShopMerchandiseList::_MERCHANDISE_ITEM    MerchandiseList[MAX_BOOTH_NUMBER];
 
                     INT k = 0;
 
-                    if( pCharacter->IsEnemy( pNpc ) == FALSE )//²»ÊÇµĞ¶ÔÕóÓªµÄNPC£¬²ÅÂô¸øÄã¶«Î÷
+                    if( pCharacter->IsEnemy( pNpc ) == FALSE )//ä¸æ˜¯æ•Œå¯¹é˜µè¥çš„NPCï¼Œæ‰å–ç»™ä½ ä¸œè¥¿
                     {
                         for(INT i = 0;i<pShop->m_ItemList->m_ListCount;i++)
                         {
@@ -96,7 +96,7 @@ namespace LuaFnTbl
                             else
                                 MerchandiseList[k].MaxNumber    =    -1;
 
-                            //¼Û¸ñµÄ¼ÆËã£¬
+                            //ä»·æ ¼çš„è®¡ç®—ï¼Œ
                             UINT BaseMoney = ShopMgr::ConvertItemType2Money(pShop->m_ItemList->m_ListType[i]);
                             BaseMoney *= static_cast<INT>(pShop->m_scale);
                             MerchandiseList[k].nPrice        =    BaseMoney;
@@ -107,7 +107,7 @@ namespace LuaFnTbl
                     }
 
                     GCShopMerchandiseList    Msg;
-                    Msg.SetMerchadiseNum(k);//Ò»¶¨ÒªÏÈÉèÖÃÊıÁ¿ÔÙÉèÖÃList
+                    Msg.SetMerchadiseNum(k);//ä¸€å®šè¦å…ˆè®¾ç½®æ•°é‡å†è®¾ç½®List
                     Msg.SetMerchadiseList(MerchandiseList);
 
                     Msg.SetBuyType(pShop->m_nBuyType);
@@ -124,12 +124,12 @@ namespace LuaFnTbl
                     Msg.SetBuyMulti(pShop->m_bCanMultiBuy);
                     Msg.SetShopType(pShop->m_ShopType);
 
-                    //ÉèÖÃÉÌÈËID
+                    //è®¾ç½®å•†äººID
                     Msg.SetObjID(pNpc->GetID());
 
-                    //´ËÈË¿ªÊ¼ÓëÉÌÈË½»Ò×
-                    pHuman->Shop(pShop);//ÇĞ¼Ç!!!½»Ò×Íê³ÉºóÒ»¶¨Òª°ÑÕâ¸öÇå³ÉNULL!!!
-                    //pShop->Custom(pHuman);//ÇĞ¼Ç!!!½»Ò×Íê³ÉºóÒ»¶¨Òª°ÑÕâ¸öÇå³ÉNULL!!!
+                    //æ­¤äººå¼€å§‹ä¸å•†äººäº¤æ˜“
+                    pHuman->Shop(pShop);//åˆ‡è®°!!!äº¤æ˜“å®Œæˆåä¸€å®šè¦æŠŠè¿™ä¸ªæ¸…æˆNULL!!!
+                    //pShop->Custom(pHuman);//åˆ‡è®°!!!äº¤æ˜“å®Œæˆåä¸€å®šè¦æŠŠè¿™ä¸ªæ¸…æˆNULL!!!
                     Player* pPlayer = pHuman->GetPlayer();
                     pPlayer->SendPacket( &Msg ) ;
 
@@ -138,7 +138,7 @@ namespace LuaFnTbl
                     UINT    uPrice = 0;
                     BYTE    nCoinType = 0;
                     if(pHuman->GetCurFromSoldList(tempit, uPrice, nCoinType))
-                    {//ÓĞÂô³öÎï
+                    {//æœ‰å–å‡ºç‰©
                         SoldItem.item_data    = tempit;
                         SoldItem.iPrice        = uPrice;
                         GCShopSoldList    MsgSold;
@@ -163,15 +163,15 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2005-2-23
-    *     º¯ÊıÃû³Æ : LuaFnApplyPlayerShop
-    *     ¹¦ÄÜËµÃ÷ : Í¨Öª¿Í»§¶Ëµ¯¿ªÉêÇë¿ªµê
-    *     ²ÎÊıËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-2-23
+    *     å‡½æ•°åç§° : LuaFnApplyPlayerShop
+    *     åŠŸèƒ½è¯´æ˜ : é€šçŸ¥å®¢æˆ·ç«¯å¼¹å¼€ç”³è¯·å¼€åº—
+    *     å‚æ•°è¯´æ˜ : 
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                
     */
     INT    LuaFnApplyPlayerShop(Lua_State* L) 
@@ -191,7 +191,7 @@ namespace LuaFnTbl
             
             GCPlayerShopError MsgError;
 
-            //ÑéÖ¤ÊÇ·ñÓĞ×Ê¸ñ°ÚÌ¯
+            //éªŒè¯æ˜¯å¦æœ‰èµ„æ ¼æ‘†æ‘Š
             if(pHuman->GetLevel()<30)
             {
                 MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_LEVEL);
@@ -202,7 +202,7 @@ namespace LuaFnTbl
             BOOL bItem  =TRUE;
             BOOL bPet  =TRUE;
             
-            //ĞèÒªÔÙÑéÖ¤ÊÇ²»ÊÇÒÑ¾­½¨Á¢ÂúÁËÉÌµêÁË
+            //éœ€è¦å†éªŒè¯æ˜¯ä¸æ˜¯å·²ç»å»ºç«‹æ»¡äº†å•†åº—äº†
             if( !pHuman->GetShopGuid(0).isNull() )
             {
                 PlayerShop* pCurShop = pPlayerShopManager->GetPlayerShopByGUID(pHuman->GetShopGuid(0));
@@ -265,7 +265,7 @@ namespace LuaFnTbl
                     Msg.SetType(PLAYERSHOP_MSG::TYPE_PET);
                 }
 
-                //ÑéÖ¤Íê±Ï,Í¨Öª¿Í»§¶ËÈ·¶¨
+                //éªŒè¯å®Œæ¯•,é€šçŸ¥å®¢æˆ·ç«¯ç¡®å®š
                 pHuman->GetPlayer()->SendPacket(&Msg);
             }
         ENDHUMANDEFINE
@@ -276,15 +276,15 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2005-2-23
-    *     º¯ÊıÃû³Æ : LuaFnDispatchPlayerShopList
-    *     ¹¦ÄÜËµÃ÷ : ·¢ËÍ´Ë³¡¾°ÖĞµÄÉÌµêÁĞ±í
-    *     ²ÎÊıËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-2-23
+    *     å‡½æ•°åç§° : LuaFnDispatchPlayerShopList
+    *     åŠŸèƒ½è¯´æ˜ : å‘é€æ­¤åœºæ™¯ä¸­çš„å•†åº—åˆ—è¡¨
+    *     å‚æ•°è¯´æ˜ : 
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                
     */
     INT    LuaFnDispatchPlayerShopList(Lua_State* L) 
@@ -307,7 +307,7 @@ namespace LuaFnTbl
             for(UINT i = 0; i<MAX_SHOP_NUM_PER_SCENE; i++)
             {
                 PlayerShop*    pPlayerShop    = pPlayerShopManager->GetPlayerShopByIndex(i);
-                //Ö»ÏÔÊ¾¿ªÕÅµÄÉÌµê
+                //åªæ˜¾ç¤ºå¼€å¼ çš„å•†åº—
                 if(!pPlayerShop)
                     continue;
                 if(pPlayerShop->GetShopStatus() != PLAYER_SHOP::STATUS_PLAYER_SHOP_OPEN)
@@ -334,7 +334,7 @@ namespace LuaFnTbl
                 ListIndex++;
             }
 
-            //¸üĞÂ×Ô¼ºµÄÊÕ²Ø¼Ò,Èç¹û´ËÉÌµêÒÑ¾­²»´æÔÚ,»òÕß±»ÅÌ³öÁË,É¾µôÔ­À´µÄ.
+            //æ›´æ–°è‡ªå·±çš„æ”¶è—å®¶,å¦‚æœæ­¤å•†åº—å·²ç»ä¸å­˜åœ¨,æˆ–è€…è¢«ç›˜å‡ºäº†,åˆ æ‰åŸæ¥çš„.
             pHuman->UpdateFavorite(bValid);
 
             GCPlayerShopAcquireShopList Msg;
@@ -353,15 +353,15 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2005-3-18
-    *     º¯ÊıÃû³Æ : LuaFnDispatchPlayerShopSaleOutList
-    *     ¹¦ÄÜËµÃ÷ : ·¢ËÍ´Ë³¡¾°ÖĞµÄÅÌ³öµÄÉÌµêÁĞ±í
-    *     ²ÎÊıËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-3-18
+    *     å‡½æ•°åç§° : LuaFnDispatchPlayerShopSaleOutList
+    *     åŠŸèƒ½è¯´æ˜ : å‘é€æ­¤åœºæ™¯ä¸­çš„ç›˜å‡ºçš„å•†åº—åˆ—è¡¨
+    *     å‚æ•°è¯´æ˜ : 
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                
     */
     INT    LuaFnDispatchPlayerShopSaleOutList(Lua_State* L) 
@@ -383,7 +383,7 @@ namespace LuaFnTbl
             for(UINT i = 0; i<MAX_SHOP_NUM_PER_SCENE; i++)
             {
                 PlayerShop*    pPlayerShop    = pPlayerShopManager->GetPlayerShopByIndex(i);
-                //Ö»ÏÔÊ¾¿ªÕÅµÄÉÌµê
+                //åªæ˜¾ç¤ºå¼€å¼ çš„å•†åº—
                 if(!pPlayerShop)
                     continue;
                 if(pPlayerShop->GetShopStatus() != PLAYER_SHOP::STATUS_PLAYER_SHOP_ON_SALE)
@@ -419,19 +419,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2005-10-20
-    *     º¯ÊıÃû³Æ : LuaFnDispatchXinfaInfo
-    *     ²ÎÊıËµÃ÷ : 
-    *     ¹¦ÄÜËµÃ÷ : ÃÅÅÉĞÄ·¨µ¼Ê¦Ê¹ÓÃ
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-10-20
+    *     å‡½æ•°åç§° : LuaFnDispatchXinfaInfo
+    *     å‚æ•°è¯´æ˜ : 
+    *     åŠŸèƒ½è¯´æ˜ : é—¨æ´¾å¿ƒæ³•å¯¼å¸ˆä½¿ç”¨
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                MenpaiId
-    *                    Õâ¸öÀÏÊ¦µÄID£¨ÃÅÅÉID£©
+    *                    è¿™ä¸ªè€å¸ˆçš„IDï¼ˆé—¨æ´¾IDï¼‰
     */
     INT LuaFnDispatchXinfaLevelInfo(Lua_State* L) 
     {
@@ -446,7 +446,7 @@ namespace LuaFnTbl
         {
             Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(targetId));
             Assert(pObj);
-            //Ïò¿Í»§¶Ë·¢ËÍÃÅÅÉĞÄ·¨½ÌÊ¦µÄÃÅÅÉÏûÏ¢
+            //å‘å®¢æˆ·ç«¯å‘é€é—¨æ´¾å¿ƒæ³•æ•™å¸ˆçš„é—¨æ´¾æ¶ˆæ¯
             GCXinfaStudyInfo msg;
             msg.SetMenpaiInfo_ID(MenpaiId);
             msg.SetTeacherId(targetId);
@@ -464,19 +464,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2005-10-20
-    *     º¯ÊıÃû³Æ : LuaFnDispatchMenpaiInfo
-    *     ²ÎÊıËµÃ÷ : 
-    *     ¹¦ÄÜËµÃ÷ : ÃÅÅÉµ¼Ê¦Ê¹ÓÃ
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-10-20
+    *     å‡½æ•°åç§° : LuaFnDispatchMenpaiInfo
+    *     å‚æ•°è¯´æ˜ : 
+    *     åŠŸèƒ½è¯´æ˜ : é—¨æ´¾å¯¼å¸ˆä½¿ç”¨
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                MenpaiId
-    *                    Õâ¸öÀÏÊ¦µÄID£¨ÃÅÅÉID£©
+    *                    è¿™ä¸ªè€å¸ˆçš„IDï¼ˆé—¨æ´¾IDï¼‰
     */                
     INT LuaFnDispatchMenpaiInfo(Lua_State* L) 
     {
@@ -492,7 +492,7 @@ namespace LuaFnTbl
             Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(targetId));
             Assert(pObj);
 
-            //Ïò¿Í»§¶Ë·¢ËÍÃÅÅÉ½ÌÊ¦µÄÃÅÅÉÏûÏ¢
+            //å‘å®¢æˆ·ç«¯å‘é€é—¨æ´¾æ•™å¸ˆçš„é—¨æ´¾æ¶ˆæ¯
             GCMenpaiInfo Msg;
             Msg.SetMenpaiInfo_ID((short)MenpaiId);
 
@@ -509,19 +509,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2005-10-20
-    *     º¯ÊıÃû³Æ : LuaFnDispatchAbilityInfo
-    *     ²ÎÊıËµÃ÷ : 
-    *     ¹¦ÄÜËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-10-20
+    *     å‡½æ•°åç§° : LuaFnDispatchAbilityInfo
+    *     å‚æ•°è¯´æ˜ : 
+    *     åŠŸèƒ½è¯´æ˜ :
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                AbilityId
-    *                    Õâ¸öÀÏÊ¦Ëù½ÌµÄÉú»î¼¼ÄÜµÄID
+    *                    è¿™ä¸ªè€å¸ˆæ‰€æ•™çš„ç”Ÿæ´»æŠ€èƒ½çš„ID
     */
     INT LuaFnDispatchAbilityInfo(Lua_State* L) 
     {
@@ -543,7 +543,7 @@ namespace LuaFnTbl
             Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(targetId));
             Assert(pObj);
 
-            //Ïò¿Í»§¶Ë·¢ËÍ½ÌÊ¦µÄÉú»î¼¼ÄÜÏûÏ¢
+            //å‘å®¢æˆ·ç«¯å‘é€æ•™å¸ˆçš„ç”Ÿæ´»æŠ€èƒ½æ¶ˆæ¯
             GCAbilityTeacherInfo Msg;
             GCAbilityTeacherInfo::_AbilityTeacherInfo StudyInfo;
             StudyInfo.m_nAbilityID    = AbilityId;
@@ -569,19 +569,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2006-01-09
-    *     º¯ÊıÃû³Æ : LuaFnJoinMenpai
-    *     ²ÎÊıËµÃ÷ : 
-    *     ¹¦ÄÜËµÃ÷ :
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-01-09
+    *     å‡½æ•°åç§° : LuaFnJoinMenpai
+    *     å‚æ•°è¯´æ˜ : 
+    *     åŠŸèƒ½è¯´æ˜ :
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                AbilityId
-    *                    Õâ¸öÀÏÊ¦Ëù½ÌµÄÉú»î¼¼ÄÜµÄID
+    *                    è¿™ä¸ªè€å¸ˆæ‰€æ•™çš„ç”Ÿæ´»æŠ€èƒ½çš„ID
     */
     INT LuaFnJoinMenpai(Lua_State* L)
     {
@@ -597,10 +597,10 @@ namespace LuaFnTbl
             Obj* pObj = (Obj*) (pScene->GetObjManager()->GetObj(targetId));
             Assert(pObj);
 
-            //1¡¢¸ü¸ÄÃÅÅÉĞÄ·¨¼¼ÄÜ
+            //1ã€æ›´æ”¹é—¨æ´¾å¿ƒæ³•æŠ€èƒ½
             if(pObj && IsCharacterObj( pObj->GetObjType() ))
             {
-                //Ë¢ĞÂÃÅÅÉĞÄ·¨ºÍ¼¼ÄÜµ½¿Í»§¶Ë
+                //åˆ·æ–°é—¨æ´¾å¿ƒæ³•å’ŒæŠ€èƒ½åˆ°å®¢æˆ·ç«¯
                 SKILL_LOG_PARAM SkillLogParam;
                 SkillLogParam.CharGUID    =    pHuman->GetGUID();
                 SkillLogParam.SceneID    =    pHuman->getScene()->SceneID();
@@ -616,10 +616,10 @@ namespace LuaFnTbl
                 //XinFaLogParam.ZPos        =    pHuman->getWorldPos()->m_fZ;
                 //XinFaLogParam.OPType    =    XINFA_OP_SCRIPT_CHANGEMENPAI;    
 
-                //Ë¢ĞÂĞÄ·¨ºÍ¼¼ÄÜ
+                //åˆ·æ–°å¿ƒæ³•å’ŒæŠ€èƒ½
                 pHuman->ChangeMenpai(&SkillLogParam,MenpaiId);
 
-                //Ë¢ĞÂÈËÎïÊôĞÔµãÊıµ½¿Í»§¶Ë
+                //åˆ·æ–°äººç‰©å±æ€§ç‚¹æ•°åˆ°å®¢æˆ·ç«¯
                 pHuman->ChangeMenpaiPoints();
             }
         }
@@ -630,20 +630,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2005-4-26
-    *     º¯ÊıÃû³Æ : LuaFnGetShopName
-    *     ²ÎÊıËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-4-26
+    *     å‡½æ•°åç§° : LuaFnGetShopName
+    *     å‚æ•°è¯´æ˜ : 
     *                L
-    *                    LuaStateÖ´ĞĞ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡Œç¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êı³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                iShopType
-    *                    ÉÌµêÀàĞÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃÖ¸¶¨ÈËÉíÉÏµÄÍæ¼ÒÉÌµêÃû
+    *                    å•†åº—ç±»å‹
+    *     åŠŸèƒ½è¯´æ˜ :
+    *                è·å¾—æŒ‡å®šäººèº«ä¸Šçš„ç©å®¶å•†åº—å
     */
     INT LuaFnGetShopName(Lua_State* L)    
     {
@@ -697,20 +697,20 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àĞ´Ê±¼ä : 2005-4-26
-    *     º¯ÊıÃû³Æ : LuaFnOpenPlayerShop
-    *     ²ÎÊıËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2005-4-26
+    *     å‡½æ•°åç§° : LuaFnOpenPlayerShop
+    *     å‚æ•°è¯´æ˜ : 
     *                L
-    *                    LuaStateÖ´ĞĞ»·¾³Ö¸Õë
+    *                    LuaStateæ‰§è¡Œç¯å¢ƒæŒ‡é’ˆ
     *                sceneId
-    *                    µ÷ÓÃ¸Ãº¯Êı³¡¾°ID,short
+    *                    è°ƒç”¨è¯¥å‡½æ•°åœºæ™¯ID,short
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎŞ·ûºÅÕûĞÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´å‹
     *                iShopType
-    *                    ÉÌµêÀàĞÍ
-    *     ¹¦ÄÜËµÃ÷ :
-    *                »ñµÃÖ¸¶¨ÈËÉíÉÏµÄÍæ¼ÒÉÌµêÃû
+    *                    å•†åº—ç±»å‹
+    *     åŠŸèƒ½è¯´æ˜ :
+    *                è·å¾—æŒ‡å®šäººèº«ä¸Šçš„ç©å®¶å•†åº—å
     */
     INT LuaFnOpenPlayerShop(Lua_State* L)    
     {
@@ -745,16 +745,16 @@ namespace LuaFnTbl
             return 0;
         }
 
-        //·¢ËÍÉÌÆ·ÁĞ±í
+        //å‘é€å•†å“åˆ—è¡¨
         GCItemList    MsgItemList;
         
-        //Õâ¸öÉÌµêÊÇ·ñÒÑ¾­ÅÌ³ö
+        //è¿™ä¸ªå•†åº—æ˜¯å¦å·²ç»ç›˜å‡º
         BOOL bIsSaleOut = (pPlayerShop->GetShopStatus() == PLAYER_SHOP::STATUS_PLAYER_SHOP_ON_SALE)? TRUE:FALSE;
 
-        //Õâ¸öÉÌµêÊÇ·ñÊÇ³èÎïµê
+        //è¿™ä¸ªå•†åº—æ˜¯å¦æ˜¯å® ç‰©åº—
         BOOL bIsPetShop = (pPlayerShop->GetShopType() == PLAYER_SHOP::TYPE_PLAYER_SHOP_PET)? TRUE:FALSE;
 
-        //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+        //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
         BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
         PlayerStallBox*        pCurStallBox    = NULL;
@@ -769,7 +769,7 @@ namespace LuaFnTbl
         BYTE    aStallIsOpen[MAX_STALL_NUM_PER_SHOP];
         memset(aStallIsOpen, 0, MAX_STALL_NUM_PER_SHOP);
 
-        //´ò¿ªÒ³Ãæ
+        //æ‰“å¼€é¡µé¢
         INT        nStallIndex = 0;
         UINT    uBaseMoney     = 0;
         UINT    uProfitMoney = 0;
@@ -780,7 +780,7 @@ namespace LuaFnTbl
         GCPlayerShopItemListForSelf_t ExtraInfoData;
         pCurStallBox = pPlayerShop->GetPlayerStallBoxByIndex(nStallIndex);
         if(TRUE)
-        {//ËùÓĞÎïÆ·¶¼·¢ËÍ
+        {//æ‰€æœ‰ç‰©å“éƒ½å‘é€
             for(UINT i = 0; i<MAX_STALL_NUM_PER_SHOP; i++)
             {
                 PlayerStallBox* pTmpStallBox = pPlayerShop->GetPlayerStallBoxByIndex(i);
@@ -794,17 +794,17 @@ namespace LuaFnTbl
 
                 pCurPetContainer = pCurStallBox->GetPetContainer();
 
-                //Ñ­»·Ğ´Èë
+                //å¾ªç¯å†™å…¥
                 for(INT i = 0; i<pCurPetContainer->GetContainerSize(); i++)
                 {
                     if( pCurPetContainer->GetItem(i)->IsEmpty() == FALSE )
-                    {//ÓĞ¶«Î÷
+                    {//æœ‰ä¸œè¥¿
                         INT    nPrice    = pCurStallBox->GetPriceByIndex(i);
                         INT    nSerial    = pCurStallBox->GetSerialByIndex(i);
 
                         Item* pIt = pCurPetContainer->GetItem(i);
                         GCDetailAttrib_Pet PetMsgDetail;
-                        //×é×°GCDetailAttrib_Pet½á¹¹
+                        //ç»„è£…GCDetailAttrib_Petç»“æ„
                         Obj_Human::CalculatePetDetailAttrib(PetMsgDetail, pIt);
                         PetMsgDetail.SetTradeIndex( i );
                         BYTE nOnSale = pCurStallBox->CanSale(i);
@@ -821,9 +821,9 @@ namespace LuaFnTbl
                         pHuman->GetPlayer()->SendPacket( &PetMsgDetail );        
                     }
                     else
-                    {//Ã»ÓĞ³èÎï·¢ĞòÁĞºÅ
+                    {//æ²¡æœ‰å® ç‰©å‘åºåˆ—å·
                         uCurItemSerial    =    pCurStallBox->GetSerialByIndex(i);
-                        ItemInMsg[ItemNumInMsg].nType        = GCItemList::TYPE_SERIALS;//ĞòÁĞºÅ
+                        ItemInMsg[ItemNumInMsg].nType        = GCItemList::TYPE_SERIALS;//åºåˆ—å·
                         ItemInMsg[ItemNumInMsg].nIndex        = i;
                         GCPlayerShopItemListEachSerialForSelf_t ExtraInfoData;
                         ExtraInfoData.m_nStallIndex            = nStallIndex;
@@ -845,11 +845,11 @@ namespace LuaFnTbl
                     pCurContainer = pCurStallBox->GetContainer();
                     pCurItem = pCurContainer->GetItem(j);
                     if( !pCurItem->IsEmpty() )
-                    {//´ËÎïÆ·´æÔÚ
+                    {//æ­¤ç‰©å“å­˜åœ¨
                         uCurItemPrice    =    pCurStallBox->GetPriceByIndex(j);
                         uCurItemSerial    =    pCurStallBox->GetSerialByIndex(j);
                         pCurItem->SaveValueTo(&ItemInMsg[ItemNumInMsg].item_data);
-                        ItemInMsg[ItemNumInMsg].nType            = GCItemList::TYPE_ITEM;//ÎïÆ·
+                        ItemInMsg[ItemNumInMsg].nType            = GCItemList::TYPE_ITEM;//ç‰©å“
                         ItemInMsg[ItemNumInMsg].nIndex            = j;
 
                         GCPlayerShopItemListEachItemForSelf_t ExtraInfoData;
@@ -863,9 +863,9 @@ namespace LuaFnTbl
                         ItemNumInMsg++;
                     }
                     else
-                    {//Ã»ÓĞÎïÆ··¢ĞòÁĞºÅ
+                    {//æ²¡æœ‰ç‰©å“å‘åºåˆ—å·
                         uCurItemSerial    =    pCurStallBox->GetSerialByIndex(j);
-                        ItemInMsg[ItemNumInMsg].nType        = GCItemList::TYPE_SERIALS;//ĞòÁĞºÅ
+                        ItemInMsg[ItemNumInMsg].nType        = GCItemList::TYPE_SERIALS;//åºåˆ—å·
                         ItemInMsg[ItemNumInMsg].nIndex        = j;
                         GCPlayerShopItemListEachSerialForSelf_t ExtraInfoData;
                         ExtraInfoData.m_nStallIndex            = nStallIndex;
@@ -905,7 +905,7 @@ namespace LuaFnTbl
     
         pHuman->GetPlayer()->SendPacket(&MsgItemList);
 
-        //·¢ËÍºÏ»ïÈËĞÅÏ¢
+        //å‘é€åˆä¼™äººä¿¡æ¯
         GCPlayerShopUpdatePartners                    MsgPartnerToClient;
         GCPlayerShopUpdatePartners::MsgPartner_t    SendingArray[MAX_PARTNER_PER_SHOP];
 

@@ -23,17 +23,17 @@ UINT CGPlayerShopDescHandler::Execute( CGPlayerShopDesc* pPacket, Player* pPlaye
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-    _PLAYERSHOP_GUID    nShopID        =    pPacket->GetShopID();                //ÉÌµêID
-    BYTE    PlayerShopDescSize        =    pPacket->GetPlayerShopDescSize();    //ÉÌµêÃèÊöµÄ³¤¶È
-    CHAR*    PlayerShopDesc            =    pPacket->GetPlayerShopDesc();        //ÉÌµêÃèÊöµÄÄÚÈÝ
+    _PLAYERSHOP_GUID    nShopID        =    pPacket->GetShopID();                //å•†åº—ID
+    BYTE    PlayerShopDescSize        =    pPacket->GetPlayerShopDescSize();    //å•†åº—æè¿°çš„é•¿åº¦
+    CHAR*    PlayerShopDesc            =    pPacket->GetPlayerShopDesc();        //å•†åº—æè¿°çš„å†…å®¹
 
     PlayerShopManager*    pPlayerShopManager = pScene->GetPlayerShopManager();
     PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
     Assert(pPlayerShop);
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê.Ö»ÓÐµêÖ÷ÓÐ×Ê¸ñ¸ü¸Ä´ËÊôÐÔ
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—.åªæœ‰åº—ä¸»æœ‰èµ„æ ¼æ›´æ”¹æ­¤å±žæ€§
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
     if(bIsMine == FALSE )
     {
@@ -42,7 +42,7 @@ UINT CGPlayerShopDescHandler::Execute( CGPlayerShopDesc* pPacket, Player* pPlaye
     }
 
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE)
-    {//ÉÌµêÎ´¿ªÕÅ
+    {//å•†åº—æœªå¼€å¼ 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopDescHandler::Name=%s shop close"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
@@ -50,7 +50,7 @@ UINT CGPlayerShopDescHandler::Execute( CGPlayerShopDesc* pPacket, Player* pPlaye
 
     pPlayerShop->SetShopDesc(PlayerShopDesc, PlayerShopDescSize);
 
-    //Í¨Öª¿Í»§¶ËÉÌµêÃèÊö³É¹¦
+    //é€šçŸ¥å®¢æˆ·ç«¯å•†åº—æè¿°æˆåŠŸ
     GCPlayerShopError Msg;
     Msg.SetID(PLAYERSHOP_MSG::ERR_SHOP_SUCCESS_CHANGE_DESC);
     pHuman->GetPlayer()->SendPacket(&Msg);

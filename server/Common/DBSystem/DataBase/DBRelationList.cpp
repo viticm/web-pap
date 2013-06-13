@@ -109,7 +109,7 @@ BOOL DBRelationList::Save(VOID* pSource)
     }
 
 
-    //±£´æ¹ØÏµÊı¾İ
+    //ä¿å­˜å…³ç³»æ•°æ®
     do
     {
 
@@ -198,7 +198,7 @@ BOOL DBRelationList::ParseResult(VOID* pResult)
                 DB_ExtData,
             };
 
-            //¼ÓÔØºÃÓÑÊôĞÔ
+            //åŠ è½½å¥½å‹å±æ€§
 
             Assert(mResultCount<MAX_RELATION_SIZE);
 
@@ -306,7 +306,7 @@ BOOL DBRelationList::ParseResult(VOID* pResult)
                 };
 
                 Assert(mInterface);
-                Assert(mResultCount <= 1); //Ó¦¸ÃÖ»ÓĞÒ»¸ö½á¹û
+                Assert(mResultCount <= 1); //åº”è¯¥åªæœ‰ä¸€ä¸ªç»“æœ
                 INT ErrorCode;
                 for(INT i =0;i<1;i++)
                 {

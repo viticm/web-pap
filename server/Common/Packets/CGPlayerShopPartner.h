@@ -1,6 +1,6 @@
 // CGPlayerShopPartner.h
 // 
-// 对合作伙伴的操作都放在这个消息中处理
+// 瀵瑰悎浣滀紮浼寸殑鎿嶄綔閮芥斁鍦ㄨ繖涓秷鎭腑澶勭悊
 // 
 //////////////////////////////////////////////////////
 
@@ -26,12 +26,12 @@ namespace Packets
     public:
         CGPlayerShopPartner( )
         {
-            m_Opt         = OPT_NONE;            //操作类型
-            m_PartnerID     = INVALID_GUID;        //目标ID
+            m_Opt         = OPT_NONE;            //鎿嶄綔绫诲瀷
+            m_PartnerID     = INVALID_GUID;        //鐩爣ID
         };
         virtual ~CGPlayerShopPartner( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -51,9 +51,9 @@ namespace Packets
         VOID                    SetGuid(GUID_t Guid){ m_PartnerID = Guid;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //商店ID
-        BYTE                    m_Opt;                //操作类型
-        GUID_t                    m_PartnerID;        //目标ID
+        _PLAYERSHOP_GUID        m_ShopID;            //鍟嗗簵ID
+        BYTE                    m_Opt;                //鎿嶄綔绫诲瀷
+        GUID_t                    m_PartnerID;        //鐩爣ID
 
     };
 

@@ -21,7 +21,7 @@ namespace Packets
         LWAskCharLogin( ){} ;
         virtual ~LWAskCharLogin( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -53,7 +53,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         const    CHAR*            GetAccount()    const;
         VOID                    SetAccount(const CHAR*    pAccount);
 
@@ -115,17 +115,17 @@ namespace Packets
             Age = a;
         }
     private:
-        //Êı¾İ
-        CHAR                    szAccount[MAX_ACCOUNT+1];    //ÓÃ»§Ãû³Æ
-        //Íæ¼Ò³Øid
+        //æ•°æ®
+        CHAR                    szAccount[MAX_ACCOUNT+1];    //ç”¨æˆ·åç§°
+        //ç©å®¶æ± id
         PlayerID_t                PlayerID;
-        //Íæ¼ÒGUID_t
+        //ç©å®¶GUID_t
         GUID_t                    PlayerGUID;
-        //²éÑ¯×´Ì¬
+        //æŸ¥è¯¢çŠ¶æ€
         ASK_LOGINSTATUS            AskStatus;
-        //½ÇÉ«Êı¾İ
+        //è§’è‰²æ•°æ®
         FULLUSERDATA            UserData;
-        //ÑéÖ¤Âë
+        //éªŒè¯ç 
         UINT                    uKey;
         BYTE                    Age;
     };

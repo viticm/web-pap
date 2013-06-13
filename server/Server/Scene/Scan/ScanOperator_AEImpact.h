@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼þÃû£ºScanOperator_AEImpact.h
-//¿ª·¢Õß£º
-//¹¦ÄÜÃèÊö£ºÃæ»ýÓÐÐ§¼¼ÄÜµÄËÑË÷²Ù×÷
-//ÐÞ¸Ä¼ÇÂ¼£º2005-2-15´´½¨
+//æ–‡ä»¶åï¼šScanOperator_AEImpact.h
+//å¼€å‘è€…ï¼š
+//åŠŸèƒ½æè¿°ï¼šé¢ç§¯æœ‰æ•ˆæŠ€èƒ½çš„æœç´¢æ“ä½œ
+//ä¿®æ”¹è®°å½•ï¼š2005-2-15åˆ›å»º
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -64,15 +64,15 @@ public :
     ScanOperator_AEImpact();
     virtual ~ScanOperator_AEImpact();
 
-    //³õÊ¼»¯É¨Ãè¿ØÖÆÆ÷
+    //åˆå§‹åŒ–æ‰«ææŽ§åˆ¶å™¨
     virtual BOOL                Init(SCANOPERATOR_AEIMPACT_INIT* pInit) ;
-    //É¨Ãè²Ù×÷¿ªÊ¼Ç°»Øµ÷
+    //æ‰«ææ“ä½œå¼€å§‹å‰å›žè°ƒ
     //    virtual BOOL            On_BeforeScan();
-    //ÅÐ¶Ï²ÎÊýÖÐµÄZoneÊÇ·ñÐèÒªÉ¨Ãè
+    //åˆ¤æ–­å‚æ•°ä¸­çš„Zoneæ˜¯å¦éœ€è¦æ‰«æ
     //    virtual BOOL            On_IsNeedScan(ZoneID_t ZoneID) ;
-    //ËÑË÷µ½Ò»¸öObj, ·µ»ØÖµ¼û SCANRETURN
+    //æœç´¢åˆ°ä¸€ä¸ªObj, è¿”å›žå€¼è§ SCANRETURN
     virtual UINT                On_FindObj(Obj* pObj) ;
-    //É¨Ãè²Ù×÷Íê³Éºó»Øµ÷
+    //æ‰«ææ“ä½œå®ŒæˆåŽå›žè°ƒ
     //    virtual VOID            On_AfterScan() ;
 
 

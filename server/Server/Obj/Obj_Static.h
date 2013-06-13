@@ -26,8 +26,8 @@ public :
     enum StaticClass
     {
         ITEM_OBJ_STATIC_1 = 0 ,
-        ITEM_OBJ_STATIC_PLATFORM,        // Éú»î¼¼ÄÜËùÐèµÄ¸¨ÖúÆ½Ì¨£¨ÀýÈçÖÆÒ©ËùÓÃµÄÁ¶µ¤Â¯£©
-        ITEM_OBJ_STATIC_PLANTFIELD ,    // ÖÖÖ²Éú»î¼¼ÄÜËùÐèÒªµÄÌïµØ
+        ITEM_OBJ_STATIC_PLATFORM,        // ç”Ÿæ´»æŠ€èƒ½æ‰€éœ€çš„è¾…åŠ©å¹³å°ï¼ˆä¾‹å¦‚åˆ¶è¯æ‰€ç”¨çš„ç‚¼ä¸¹ç‚‰ï¼‰
+        ITEM_OBJ_STATIC_PLANTFIELD ,    // ç§æ¤ç”Ÿæ´»æŠ€èƒ½æ‰€éœ€è¦çš„ç”°åœ°
         ITEM_OBJ_STATIC_4 ,
     };
 

@@ -320,7 +320,7 @@ BOOL    ItemTable::Init()
     return    TRUE;
 }
 
-//¼ÓÔØÆÕÍ¨×°±¸±í
+//åŠ è½½æ™®é€šè£…å¤‡è¡¨
 VOID    ItemTable::InitWhiteItemTable()
 {
     __ENTER_FUNCTION
@@ -385,7 +385,7 @@ VOID    ItemTable::InitWhiteItemTable()
 
 
 
-        //ÊôĞÔ³öÏÖÂÊµÄ´¦Àí
+        //å±æ€§å‡ºç°ç‡çš„å¤„ç†
         INT iAttrCount = 0;
         for(INT rate = 0; rate<IATTRIBUTE_NUMBER;rate++)
         {
@@ -454,7 +454,7 @@ VOID    ItemTable::InitWhiteItemTable()
 }
 
 
-//¼ÓÔØÂÌÉ«×°±¸±í
+//åŠ è½½ç»¿è‰²è£…å¤‡è¡¨
 VOID    ItemTable::InitGreenItemTable()
 {
     __ENTER_FUNCTION
@@ -508,7 +508,7 @@ VOID    ItemTable::InitGreenItemTable()
         m_pGreenEquipTableData[i].m_EquipSetNum            =         ThirdFile.Search_Posistion(i,TBEQuipSetNum)->iValue;
         m_pGreenEquipTableData[i].m_EquipSetMaxNum        =         ThirdFile.Search_Posistion(i,TBEquipSetMaxNum)->iValue;
         m_pGreenEquipTableData[i].m_Job                    =         ThirdFile.Search_Posistion(i,TBJob)->iValue;
-        m_pGreenEquipTableData[i].m_ReqLevel            =         (BYTE)(ThirdFile.Search_Posistion(i,TBReqLevel)->iValue & 0xFF);    //LMĞŞ¸Ä
+        m_pGreenEquipTableData[i].m_ReqLevel            =         (BYTE)(ThirdFile.Search_Posistion(i,TBReqLevel)->iValue & 0xFF);    //LMä¿®æ”¹
         m_pGreenEquipTableData[i].m_BasePrice            =         ThirdFile.Search_Posistion(i,TBBasePrice)->iValue;
         m_pGreenEquipTableData[i].m_MaxDur                =         ThirdFile.Search_Posistion(i,TBMaxDur)->iValue;
         m_pGreenEquipTableData[i].m_CanRepaireTimes        =         ThirdFile.Search_Posistion(i,TBMaxRepair)->iValue;
@@ -516,14 +516,14 @@ VOID    ItemTable::InitGreenItemTable()
         INT iMaxGem = ThirdFile.Search_Posistion(i,TBMaxGem)->iValue;
         m_pGreenEquipTableData[i].m_MaxGem                =         SAFE_VALUE(iMaxGem);
 
-        //ÊôĞÔ³öÏÖÂÊµÄ´¦Àí
+        //å±æ€§å‡ºç°ç‡çš„å¤„ç†
         INT iAttrCount = 0;
         for(INT rate = 0; rate<IATTRIBUTE_NUMBER;rate++)
         {
             INT iValue    =    0;
             INT iColumn    =    0;
             
-            if(rate>= IATTRIBUTE_BASE_ATTACK_P) //»ù´¡ÊôĞÔ,×î´ó×îĞ¡Öµ
+            if(rate>= IATTRIBUTE_BASE_ATTACK_P) //åŸºç¡€å±æ€§,æœ€å¤§æœ€å°å€¼
             {
                 iColumn    =    TBAttrBegin+rate+(rate-IATTRIBUTE_BASE_ATTACK_P);
                 Assert(iColumn<iTableColumn);
@@ -584,7 +584,7 @@ VOID    ItemTable::InitGreenItemTable()
                 {
                     
                     m_pGreenEquipTableData[i].m_Attr[iAttrCount].m_AttrType                =    (ITEM_ATTRIBUTE)rate;
-                    m_pGreenEquipTableData[i].m_Attr[iAttrCount].m_Value.m_Value        =    (BYTE)(iValue & 0xFF);    //LMĞŞ¸Ä
+                    m_pGreenEquipTableData[i].m_Attr[iAttrCount].m_Value.m_Value        =    (BYTE)(iValue & 0xFF);    //LMä¿®æ”¹
                     iAttrCount++;
                 }
             }
@@ -598,7 +598,7 @@ VOID    ItemTable::InitGreenItemTable()
     __LEAVE_FUNCTION
 }
 
-//¼ÓÔØ»Æ½ğ×°±¸±í
+//åŠ è½½é»„é‡‘è£…å¤‡è¡¨
 VOID ItemTable::InitGoldenItemTable()
 {
     __ENTER_FUNCTION
@@ -670,12 +670,12 @@ VOID    ItemTable::InitBlueItemTable()
         m_pBlueEquipTableData[i].m_MaxGem                =         SAFE_VALUE(iMaxGem);
 
         
-        //ÊôĞÔ³öÏÖÂÊµÄ´¦Àí
+        //å±æ€§å‡ºç°ç‡çš„å¤„ç†
         for(INT rate = 0; rate<IATTRIBUTE_NUMBER;rate++)
         {
                 INT iColumn = 0;
 
-                if(rate>=IATTRIBUTE_BASE_ATTACK_P) //»ù´¡ÊôĞÔĞ´ËÀ
+                if(rate>=IATTRIBUTE_BASE_ATTACK_P) //åŸºç¡€å±æ€§å†™æ­»
                 {
 
                     m_pBlueEquipTableData[i].m_AttrRate[rate] = -1;
@@ -947,7 +947,7 @@ VOID    ItemTable::InitCommItemInfoTable()
 
         m_pCommItemInfoData[i].m_nLevel                            = ThirdFile.Search_Posistion(i,TBLevel)->iValue;
         m_pCommItemInfoData[i].m_nBasePrice                        = ThirdFile.Search_Posistion(i,TBBasePrice)->iValue;
-        m_pCommItemInfoData[i].m_nRulerID                        = (CHAR)(ThirdFile.Search_Posistion(i,TBRulerID)->iValue & 0xFF);        //LMĞŞ¸Ä
+        m_pCommItemInfoData[i].m_nRulerID                        = (CHAR)(ThirdFile.Search_Posistion(i,TBRulerID)->iValue & 0xFF);        //LMä¿®æ”¹
         m_pCommItemInfoData[i].m_nLayedNum                        = ThirdFile.Search_Posistion(i,TBTileNumber)->iValue;
         m_pCommItemInfoData[i].m_nScriptID                        = ThirdFile.Search_Posistion(i,TBScriptID)->iValue;             
         m_pCommItemInfoData[i].m_nSkillID                        = ThirdFile.Search_Posistion(i,TBSkillID)->iValue;             
@@ -1008,7 +1008,7 @@ VOID    ItemTable::InitItemRulerTable()
         {
             m_nHashOffSet    =    m_pItemRulerData[i].m_RulerIndex - i;
         }
-        Assert(m_pItemRulerData[i].m_RulerIndex == i+m_nHashOffSet);//Á¬ĞøĞÔ¼ì²é
+        Assert(m_pItemRulerData[i].m_RulerIndex == i+m_nHashOffSet);//è¿ç»­æ€§æ£€æŸ¥
 
         m_pItemRulerData[i].m_Discard        =    ThirdFile.Search_Posistion(i,TBDiscard)->iValue    == 1 ;
         m_pItemRulerData[i].m_Tile            =    ThirdFile.Search_Posistion(i,TBTile)->iValue    == 1;
@@ -1291,7 +1291,7 @@ VOID    ItemTable::InitEquipSetAttrTable()
         
         INT iAttrCount =    0;
         
-        INT k= (iTableColumn >IATTRIBUTE_NUMBER ) ? IATTRIBUTE_NUMBER : iTableColumn-1;    //LMĞŞ¸Ä
+        INT k= (iTableColumn >IATTRIBUTE_NUMBER ) ? IATTRIBUTE_NUMBER : iTableColumn-1;    //LMä¿®æ”¹
         for(INT j = 0;j<k;j++)
         {
             iColumn        =    TBEquipSetAttrBegin+j;
@@ -1303,7 +1303,7 @@ VOID    ItemTable::InitEquipSetAttrTable()
             if((iValue>0)&&(iAttrCount<MAX_ITEM_SET_ATTR))
             {
                 m_pEquipSetData[i].m_ItemAttr[iAttrCount].m_AttrType            =    (ITEM_ATTRIBUTE)j;
-                m_pEquipSetData[i].m_ItemAttr[iAttrCount].m_Value.m_Value        =    (SHORT)(iValue & 0xFFFF);     //LMĞŞ¸Ä
+                m_pEquipSetData[i].m_ItemAttr[iAttrCount].m_Value.m_Value        =    (SHORT)(iValue & 0xFFFF);     //LMä¿®æ”¹
                 iAttrCount++;
             }
             

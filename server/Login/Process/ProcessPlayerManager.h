@@ -7,7 +7,7 @@
 #define MAX_PROCESS_PLAYER 1024
 #define MAX_NORMAL_PLAYER  1024
 
-//µÇÂ½Á÷³ÌµÄ¿Í»§¶Ë¹ÜÀíÆ÷
+//ç™»é™†æµç¨‹çš„å®¢æˆ·ç«¯ç®¡ç†å™¨
 class ProcessPlayerManager:public PlayerManager
 {
 public:
@@ -15,28 +15,28 @@ public:
     ProcessPlayerManager( ) ;
     ~ProcessPlayerManager( ) ;
 
-    //ÍøÂçÕì²â½Ó¿Ú
+    //ç½‘ç»œä¾¦æµ‹æ¥å£
     BOOL                Select( ) ;
-    //Êı¾İ½ÓÊÕ´¦Àí
+    //æ•°æ®æ¥æ”¶å¤„ç†
     BOOL                ProcessInputs( ) ;
-    //Êı¾İ·¢ËÍ´¦Àí
+    //æ•°æ®å‘é€å¤„ç†
     BOOL                ProcessOutputs( ) ;
-    //Òì³£Á¬½Ó´¦Àí
+    //å¼‚å¸¸è¿æ¥å¤„ç†
     BOOL                ProcessExceptions( ) ;
-    //ÏûÏ¢´¦Àí
+    //æ¶ˆæ¯å¤„ç†
     BOOL                ProcessCommands( ) ;
-    //Âß¼­´¦Àí
+    //é€»è¾‘å¤„ç†
     virtual BOOL        HeartBeat( UINT uTime=0 ) ;
 public:
 
     BOOL                AddPlayer( Player* pPlayer ) ;
-    //É¾³ıÒ»¸öÍæ¼Ò£¨²»¶ÏÍø£©
+    //åˆ é™¤ä¸€ä¸ªç©å®¶ï¼ˆä¸æ–­ç½‘ï¼‰
     BOOL                DelPlayer( PlayerID_t pid ) ;
 
     BOOL                AddPlayerSocket( SOCKET fd ) ;
     BOOL                DelPlayerSocket( SOCKET fd ) ;
 
-    //¶Ï¿ªÒ»¸öÍæ¼Ò¡¢²¢ÇåÀíÊı¾İ
+    //æ–­å¼€ä¸€ä¸ªç©å®¶ã€å¹¶æ¸…ç†æ•°æ®
     BOOL                RemovePlayer( Player* pPlayer) ;
     VOID                RemoveAllPlayer( );
 
@@ -63,11 +63,11 @@ public:
 
     TID                    m_ThreadID ;
 private:
-    //ÍøÂçÊı¾İ
+    //ç½‘ç»œæ•°æ®
     enum{
-        SELECT_BAK = 0,    //µ±Ç°ÏµÍ³ÖĞÓµÓĞµÄÍêÕû¾ä±úÊı¾İ
-        SELECT_USE = 1,    //ÓÃÓÚselectµ÷ÓÃµÄ¾ä±úÊı¾İ
-        SELECT_MAX = 2, //½á¹¹Ê¹ÓÃÊıÁ¿
+        SELECT_BAK = 0,    //å½“å‰ç³»ç»Ÿä¸­æ‹¥æœ‰çš„å®Œæ•´å¥æŸ„æ•°æ®
+        SELECT_USE = 1,    //ç”¨äºselectè°ƒç”¨çš„å¥æŸ„æ•°æ®
+        SELECT_MAX = 2, //ç»“æ„ä½¿ç”¨æ•°é‡
     };
     fd_set                m_ReadFDs[SELECT_MAX];
     fd_set                m_WriteFDs[SELECT_MAX];

@@ -88,7 +88,7 @@ BOOL DBCharList::ParseResult(VOID* pResult)
     Assert(mInterface);
     INT       ErrorCode;
 
-    //╪сть╩Ы╠╬йТпт
+    //Е┼═Х╫╫Е÷╨Ф°╛Е╠·Ф─╖
     for(INT i =0;i<DB_CHAR_NUMBER;i++)
     {
         if(!mInterface->Fetch())
@@ -118,7 +118,7 @@ BOOL DBCharList::ParseResult(VOID* pResult)
     }
     mInterface->Clear();
 
-    //╪стьв╟╠╦╩Ы╠╬пео╒
+    //Е┼═Х╫╫Хё┘Е╓┤Е÷╨Ф°╛Д©║Ф│╞
     
     for(UINT i = 0;i<m_CharNumber;i++)
     {

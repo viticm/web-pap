@@ -1,8 +1,8 @@
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºMailCenter.h
-//¹¦ÄÜÃèÊö£º´¦ÀíÊÀ½çÀïÓÊ¼ş¹¦ÄÜ
-//Êı¾İ½á¹¹ËµÃ÷£º
+//æ–‡ä»¶åï¼šMailCenter.h
+//åŠŸèƒ½æè¿°ï¼šå¤„ç†ä¸–ç•Œé‡Œé‚®ä»¶åŠŸèƒ½
+//æ•°æ®ç»“æ„è¯´æ˜ï¼š
 //
 // UserNode->MailNode->MailNode->MailNode......            MAIL_Pool ->MailNode[0]
 // |         |_MAIL       |_MAIL    |_MAIL                                MailNode[1]
@@ -39,41 +39,41 @@ public :
 
 
 public :
-//ÓÊ¼ş´¦Àí½Ó¿Ú
+//é‚®ä»¶å¤„ç†æ¥å£
     
-    //ÏµÍ³´´½¨Ê±×¢²áÓÊ¼ş½Úµã
+    //ç³»ç»Ÿåˆ›å»ºæ—¶æ³¨å†Œé‚®ä»¶èŠ‚ç‚¹
     UINT                RegisterMailNode(MailNode* pMailNode);
 
-    //Ïò·¢ËÍmail¸øÄ¿±ê£¨Ä¿±êĞÅÏ¢ÔÚmailÊı¾İÀï£©£¬·µ»ØÖµÎªÓÃ»§µ±Ç°ÓÃºóµÄÓÊ¼şÊıÁ¿
+    //å‘å‘é€mailç»™ç›®æ ‡ï¼ˆç›®æ ‡ä¿¡æ¯åœ¨mailæ•°æ®é‡Œï¼‰ï¼Œè¿”å›å€¼ä¸ºç”¨æˆ·å½“å‰ç”¨åçš„é‚®ä»¶æ•°é‡
     UINT                MailTo( const MAIL* pMail ) ;
-    //ÇëÇóÃû×Ö½ĞszNameÍæ¼ÒµÄÓÊ¼şĞÅÏ¢£¬pList·µ»ØÓÊ¼şÁĞ±í, ·µ»ØÖµÎªÓÊ¼şÊıÁ¿
+    //è¯·æ±‚åå­—å«szNameç©å®¶çš„é‚®ä»¶ä¿¡æ¯ï¼ŒpListè¿”å›é‚®ä»¶åˆ—è¡¨, è¿”å›å€¼ä¸ºé‚®ä»¶æ•°é‡
     UINT                AskMail( const CHAR* szName, MAIL_LIST* pListOut ) ;
-    //¼ì²éÃû×Ö½ĞszNameÍæ¼ÒÊÇ·ñÓĞÓÊ¼ş
+    //æ£€æŸ¥åå­—å«szNameç©å®¶æ˜¯å¦æœ‰é‚®ä»¶
     UINT                CheckMail( const CHAR* szName ) ;
-    //¼ì²éÍæ¼ÒÊÇ·ñÓĞÓÊ¼ş
+    //æ£€æŸ¥ç©å®¶æ˜¯å¦æœ‰é‚®ä»¶
     UINT                CheckMail( USER* pUser ) ;
-    //ÇëÇóÃû×Ö½ĞszNameÍæ¼ÒµÄÓÊ¼şĞÅÏ¢£¬pList·µ»ØÓÊ¼şÁĞ±í, ·µ»ØÖµÎªÓÊ¼şÊıÁ¿
+    //è¯·æ±‚åå­—å«szNameç©å®¶çš„é‚®ä»¶ä¿¡æ¯ï¼ŒpListè¿”å›é‚®ä»¶åˆ—è¡¨, è¿”å›å€¼ä¸ºé‚®ä»¶æ•°é‡
     UINT                AskScriptMail( const CHAR* szName, MAIL_LIST* pListOut ) ;
 
 public :
-//ÓÊ¼şÊÂ¼şÏàÓ¦½Ó¿Ú
-    //Íæ¼Ò½ÓÊÕµ½ĞÂÓÊ¼ş
+//é‚®ä»¶äº‹ä»¶ç›¸åº”æ¥å£
+    //ç©å®¶æ¥æ”¶åˆ°æ–°é‚®ä»¶
     VOID                OnUserRecvMail( const MAIL_LIST* pList ) ;
-    //Íæ¼Ò·¢ËÍÁËÓÊ¼ş
+    //ç©å®¶å‘é€äº†é‚®ä»¶
     VOID                OnUserSendMail( const MAIL* pMail ) ;
 
-    // ·¢ËÍÆÕÍ¨ÓÊ¼ş
+    // å‘é€æ™®é€šé‚®ä»¶
     VOID                SendNormalMail(const CHAR* szReceiverName, const CHAR* szContent);
 
-    // ·¢ËÍ¿ÉÖ´ĞĞÓÊ¼ş
+    // å‘é€å¯æ‰§è¡Œé‚®ä»¶
     VOID                SendScriptMail(const CHAR* szReceiverName, UINT uParam0 = 0, UINT uParam1 = 0, UINT uParam2 = 0, UINT uParam3 = 0 );
 
 protected :
-//ÄÚ²¿¹¦ÄÜ½Ó¿Ú
+//å†…éƒ¨åŠŸèƒ½æ¥å£
     //UINT                MailToOnlineUser( MAIL* pMail, USER* pSender, USER* pRecver ) ;
     //UINT                MailToOfflineUser( MAIL* pMail, USER* pSender, USER* pRecver ) ;
 
-    // ¹© SendNormalMail¡¢SendScriptMail µ÷ÓÃ
+    // ä¾› SendNormalMailã€SendScriptMail è°ƒç”¨
     VOID                SendMail(const MAIL* pMail);
 
 protected :

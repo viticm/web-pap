@@ -16,7 +16,7 @@ namespace Packets
         CLAskCharLogin( ){} ;
         virtual ~CLAskCharLogin( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         GUID_t                    GetCharGuid()    const;
         VOID                    SetCharGuid(GUID_t    guid);
 
@@ -43,9 +43,9 @@ namespace Packets
             PlayerID = pID;
         }    
     private:
-        //数据
+        //鏁版嵁
         GUID_t                    CharGuid;
-        //玩家池id，客户端不用填写
+        //鐜╁姹爄d锛屽鎴风涓嶇敤濉啓
         PlayerID_t                PlayerID;
     };
 

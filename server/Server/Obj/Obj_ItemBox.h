@@ -49,7 +49,7 @@ public:
     virtual ObjType        GetObjType( VOID )const{ return OBJ_TYPE_ITEM_BOX; }
 
     virtual VOID        CleanUp( ) ;
-    virtual BOOL        Init( const _OBJ_INIT *pInit );        //³õÊ¼»¯Obj_ItemBoxµÄÉú´æÖÜÆÚ
+    virtual BOOL        Init( const _OBJ_INIT *pInit );        //åˆå§‹åŒ–Obj_ItemBoxçš„ç”Ÿå­˜å‘¨æœŸ
 
     virtual BOOL        HeartBeat( UINT uTime=0 ) ;
 
@@ -59,15 +59,15 @@ public:
 
 public:
     VOID                Recycle();
-    UINT                GetPoolPos(){return m_nPoolPos;};    //ÔÚItemBoxPool ÖĞµÄÎ»ÖÃ
+    UINT                GetPoolPos(){return m_nPoolPos;};    //åœ¨ItemBoxPool ä¸­çš„ä½ç½®
 
 
-    _ITEM*                GetItem(BYTE    itemIndex);            //»ñµÃitemIndex Î»ÖÃÎïÆ·Êı¾İ£¬¿ÉÄÜÎª·Ç·¨
-    VOID                EraseItem(BYTE itemIndex);            //É¾³ıitemIndex Î»ÖÃÊı¾İ
-    VOID                SetItemCount(BYTE    itemCount);        //Obj_ItemBoxµÄÊµ¼ÊÎïÆ·¸öÊı
-    BYTE                GetItemCount();                        //»ñÈ¡Êµ¼ÊÎïÆ·¸öÊı    
-    VOID                SetItemData(_ITEM*    pData);            //ÉèÖÃÎïÆ·Êı¾İ
-    const    _ITEM*        GetItemData();                        //»ñÈ¡ÎïÆ·Êı¾İ
+    _ITEM*                GetItem(BYTE    itemIndex);            //è·å¾—itemIndex ä½ç½®ç‰©å“æ•°æ®ï¼Œå¯èƒ½ä¸ºéæ³•
+    VOID                EraseItem(BYTE itemIndex);            //åˆ é™¤itemIndex ä½ç½®æ•°æ®
+    VOID                SetItemCount(BYTE    itemCount);        //Obj_ItemBoxçš„å®é™…ç‰©å“ä¸ªæ•°
+    BYTE                GetItemCount();                        //è·å–å®é™…ç‰©å“ä¸ªæ•°    
+    VOID                SetItemData(_ITEM*    pData);            //è®¾ç½®ç‰©å“æ•°æ®
+    const    _ITEM*        GetItemData();                        //è·å–ç‰©å“æ•°æ®
 
     INT                    AddItem(ItemBoxContaner* pContain,INT nDestIndex);
     BOOL                CreateItem(ITEM_LOG_PARAM* pLogParam,UINT uItemType,UINT uQuality);
@@ -75,8 +75,8 @@ public:
     inline    VOID        SetItemBoxID( ObjID_t id );
     inline ObjID_t        GetItemBoxID( );
     
-    inline GUID_t        GetOwner();                                        //»ñµÃËùÓĞÕß
-    inline VOID            SetOwner(GUID_t id);                            //ÉèÖÃËùÓĞÕß
+    inline GUID_t        GetOwner();                                        //è·å¾—æ‰€æœ‰è€…
+    inline VOID            SetOwner(GUID_t id);                            //è®¾ç½®æ‰€æœ‰è€…
     inline VOID            SetDropMonsterID(ObjID_t nID)
     {
         m_MonsterID = nID;
@@ -111,27 +111,27 @@ private:
     inline VOID            SetPoolPos(UINT    iPos);
 private:
 
-    UINT                m_nPoolPos;                            //ÔÚPool ÖĞÎ»ÖÃ
-    GUID_t                m_OwnerId;                            //ËùÓĞÕßId
-    ObjID_t                m_MonsterID;                        //´ÓµôÂä¹ÖÎïµÄID
-    TeamID_t            m_OwnerTeam;                        //ËùÓĞTeam
-    ObjID_t                m_ItemBoxId;                        //Obj_ItemBox µÄID ÓÉItemBoxManager Í³Ò»¹ÜÀí
-    BYTE                m_ItemCount;                        //Obj_ItemBox °üº¬µÄÎïÆ·¸öÊı
-    _ITEM                m_ItemList[MAX_BOXITEM_NUMBER];        //Obj_ItemBox ÖĞÎïÆ·Êı¾İ
-    IPC                    m_IPCList[MAX_BOXITEM_NUMBER];        //Obj_ItemBox ÖĞÎïÆ·Ê°È¡¹æÔòÊı¾İ
-    INT                    m_ItemBoxType;                        //Obj_ItemBox ÀàĞÍ
-    INT                    m_RecycleTimes;                        //»ØÊÕ´ÎÊı
+    UINT                m_nPoolPos;                            //åœ¨Pool ä¸­ä½ç½®
+    GUID_t                m_OwnerId;                            //æ‰€æœ‰è€…Id
+    ObjID_t                m_MonsterID;                        //ä»æ‰è½æ€ªç‰©çš„ID
+    TeamID_t            m_OwnerTeam;                        //æ‰€æœ‰Team
+    ObjID_t                m_ItemBoxId;                        //Obj_ItemBox çš„ID ç”±ItemBoxManager ç»Ÿä¸€ç®¡ç†
+    BYTE                m_ItemCount;                        //Obj_ItemBox åŒ…å«çš„ç‰©å“ä¸ªæ•°
+    _ITEM                m_ItemList[MAX_BOXITEM_NUMBER];        //Obj_ItemBox ä¸­ç‰©å“æ•°æ®
+    IPC                    m_IPCList[MAX_BOXITEM_NUMBER];        //Obj_ItemBox ä¸­ç‰©å“æ‹¾å–è§„åˆ™æ•°æ®
+    INT                    m_ItemBoxType;                        //Obj_ItemBox ç±»å‹
+    INT                    m_RecycleTimes;                        //å›æ”¶æ¬¡æ•°
 private:
-    BOOL                m_OpenFlag;                            //Obj_ItemBoxÊÇ·ñÒÑ¾­´ò¿ª
-    INT                    m_MaxGrowTime;                        //×î´óÔÚ³¡¾°ÖĞÍ£ÁôÊ±¼ä                                                        
-    CMyTimer            m_LifeTimer;                        //×´Ì¬¼ÆÊıÆ÷
-    INT                    m_PickOwnerTime;                    //Ö÷ÈËÊ°È¡±£»¤Ê±¼ä³¤¶È
-    INT                    m_FinalPickTime;                    //Ö÷ÈËÊ°È¡×îºóÊ±¼ä
+    BOOL                m_OpenFlag;                            //Obj_ItemBoxæ˜¯å¦å·²ç»æ‰“å¼€
+    INT                    m_MaxGrowTime;                        //æœ€å¤§åœ¨åœºæ™¯ä¸­åœç•™æ—¶é—´                                                        
+    CMyTimer            m_LifeTimer;                        //çŠ¶æ€è®¡æ•°å™¨
+    INT                    m_PickOwnerTime;                    //ä¸»äººæ‹¾å–ä¿æŠ¤æ—¶é—´é•¿åº¦
+    INT                    m_FinalPickTime;                    //ä¸»äººæ‹¾å–æœ€åæ—¶é—´
 private:
 
-    CMyTimer            m_RecycleTimer ;                    //»ØÊÕ¼ÆÊ±Æ÷
-    UINT                m_CreateTime;                        //´´½¨Ê±¼ä
-    UINT                m_RecycleTime;                        //»ØÊÕÊ±¼ä
+    CMyTimer            m_RecycleTimer ;                    //å›æ”¶è®¡æ—¶å™¨
+    UINT                m_CreateTime;                        //åˆ›å»ºæ—¶é—´
+    UINT                m_RecycleTime;                        //å›æ”¶æ—¶é—´
 
 private:
     ItemContainer        m_Container;

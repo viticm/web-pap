@@ -1,16 +1,16 @@
 //
-//ÎÄ¼şÃû³Æ£º    Type.h
-//¹¦ÄÜÃèÊö£º    ÀàĞÍ¶¨Òå£¬Çø·Ö²»Í¬²Ù×÷ÏµÍ³¼äÏµÍ³µ÷ÓÃµÄÉèÖÃ£¬ËùÓĞµ±Ç°¹¤³Ì
-//                ÄÚµÄ´úÂë¶¼±ØĞëµÚÒ»¸öÒıÓÃ´ËÎÄ¼ş
-//°æ±¾ËµÃ÷£º    Windows²Ù×÷ÏµÍ³ĞèÒª¶¨Òåºê£º__WINDOWS__
-//                Linux²Ù×÷ÏµÍ³ĞèÒª¶¨Òåºê£º__LINUX__
+//æ–‡ä»¶åç§°ï¼š    Type.h
+//åŠŸèƒ½æè¿°ï¼š    ç±»å‹å®šä¹‰ï¼ŒåŒºåˆ†ä¸åŒæ“ä½œç³»ç»Ÿé—´ç³»ç»Ÿè°ƒç”¨çš„è®¾ç½®ï¼Œæ‰€æœ‰å½“å‰å·¥ç¨‹
+//                å†…çš„ä»£ç éƒ½å¿…é¡»ç¬¬ä¸€ä¸ªå¼•ç”¨æ­¤æ–‡ä»¶
+//ç‰ˆæœ¬è¯´æ˜ï¼š    Windowsæ“ä½œç³»ç»Ÿéœ€è¦å®šä¹‰å®ï¼š__WINDOWS__
+//                Linuxæ“ä½œç³»ç»Ÿéœ€è¦å®šä¹‰å®ï¼š__LINUX__
 //
 //
 
 #ifndef __TYPE_H__
 #define __TYPE_H__
 #define __LINUX__ 1
-//µ±Ç°Î»ÖÃ¿ÉÒÔ¶¨Òå²Ù×÷ÏµÍ³Ê¹ÓÃÇé¿ö£¬»òÕßÒ²¿ÉÒÔÔÚ¹¤³ÌÎÄ¼şÄÚÔ¤¶¨Òå
+//å½“å‰ä½ç½®å¯ä»¥å®šä¹‰æ“ä½œç³»ç»Ÿä½¿ç”¨æƒ…å†µï¼Œæˆ–è€…ä¹Ÿå¯ä»¥åœ¨å·¥ç¨‹æ–‡ä»¶å†…é¢„å®šä¹‰
 //#ifndef __WINDOWS__
 //    #define __WINDOWS__
 //#endif
@@ -27,40 +27,40 @@
 
 
 ///////////////////////////////////////////////////////////////////////
-//»ù±¾Êı¾İÀàĞÍ¶¨Òå
+//åŸºæœ¬æ•°æ®ç±»å‹å®šä¹‰
 ///////////////////////////////////////////////////////////////////////
 
 
 typedef SHORT    ID_t;
 typedef USHORT    SMUID_t;
 typedef    ULONG    SM_KEY;
-typedef UINT    ObjID_t;            //³¡¾°ÖĞ¹Ì¶¨µÄËùÓĞOBJÓµÓĞ²»Í¬µÄObjID_t
+typedef UINT    ObjID_t;            //åœºæ™¯ä¸­å›ºå®šçš„æ‰€æœ‰OBJæ‹¥æœ‰ä¸åŒçš„ObjID_t
                                     //
 
-typedef INT                PrescriptionID_t;    //ºÏ³ÉÅä·½µÄÃ¿Ò»ÌõÓĞÒ»¸ö ID
-typedef ID_t            AbilityID_t;        //Éú»î¼¼ÄÜ ID ºÅ
-typedef ID_t            TeamID_t;            //¶ÓÎéID
-typedef ID_t            SceneID_t;            //³¡¾°ID
-typedef ID_t            PlayerID_t;            //Á¬½ÓÍæ¼Ò
-typedef ID_t            ZoneID_t;            //ÇøÓò
-typedef ID_t            SkillID_t;            //¼¼ÄÜ
-typedef ID_t            ActionID_t;            //¶¯×÷µÄID
-typedef ID_t            ImpactID_t;            //Ğ§¹ûID
-typedef ID_t            ImpactClassID_t;    //Ğ§¹û·Ö×éID
-typedef ID_t            Coord_t;            //Íø¸ñ×ø±êµã
-typedef INT                ScriptID_t;            //½Å±¾
-typedef INT                MissionID_t;        //ÈÎÎñ
-typedef ID_t            GroupID_t;            //ÍÅID
-typedef ID_t            ChannelID_t;        //ÆµµÀID
-typedef ID_t            CooldownID_t;   //ÀäÈ´Ê±¼äID
-//typedef ID_t            XinFaID_t;            //ĞÄ·¨ID
-typedef ID_t            CampID_t;                //ÕóÓªID
-typedef ID_t            MenPaiID_t;            //ÃÅÅÉID
-typedef ID_t            GuildID_t;            //°ïÅÉID
-typedef ID_t            CityID_t;            //³ÇÊĞID
+typedef INT                PrescriptionID_t;    //åˆæˆé…æ–¹çš„æ¯ä¸€æ¡æœ‰ä¸€ä¸ª ID
+typedef ID_t            AbilityID_t;        //ç”Ÿæ´»æŠ€èƒ½ ID å·
+typedef ID_t            TeamID_t;            //é˜Ÿä¼ID
+typedef ID_t            SceneID_t;            //åœºæ™¯ID
+typedef ID_t            PlayerID_t;            //è¿æ¥ç©å®¶
+typedef ID_t            ZoneID_t;            //åŒºåŸŸ
+typedef ID_t            SkillID_t;            //æŠ€èƒ½
+typedef ID_t            ActionID_t;            //åŠ¨ä½œçš„ID
+typedef ID_t            ImpactID_t;            //æ•ˆæœID
+typedef ID_t            ImpactClassID_t;    //æ•ˆæœåˆ†ç»„ID
+typedef ID_t            Coord_t;            //ç½‘æ ¼åæ ‡ç‚¹
+typedef INT                ScriptID_t;            //è„šæœ¬
+typedef INT                MissionID_t;        //ä»»åŠ¡
+typedef ID_t            GroupID_t;            //å›¢ID
+typedef ID_t            ChannelID_t;        //é¢‘é“ID
+typedef ID_t            CooldownID_t;   //å†·å´æ—¶é—´ID
+//typedef ID_t            XinFaID_t;            //å¿ƒæ³•ID
+typedef ID_t            CampID_t;                //é˜µè¥ID
+typedef ID_t            MenPaiID_t;            //é—¨æ´¾ID
+typedef ID_t            GuildID_t;            //å¸®æ´¾ID
+typedef ID_t            CityID_t;            //åŸå¸‚ID
 
 
-typedef INT                Time_t; //Ê±¼äÀàĞÍ
+typedef INT                Time_t; //æ—¶é—´ç±»å‹
 
 typedef struct _Int64
 {
@@ -72,12 +72,12 @@ typedef struct _Int64
 
 
 
-typedef UINT            GUID_t;    //32Î»Î¨Ò»±àºÅ¡£
-                                //Èç¹ûÓÃÓÚ±íÊ¾ÓÃ»§Î¨Ò»IDºÅ£¬ÓÃ»§²¿·ÖÎª9Î»
-                                //Ç°ÈıÎ»ÎªÊÀ½çºÅ,ÊÀ½çºÅ0¡«200ÎªÕıÊ½Êı¾İ£¬
-                                //                       201¡«MAX_WORLD-1Îª²âÊÔÊı¾İ
-                                //ÊÀ½çºÅ²»ÄÜ³¬¹ı»òµÈÓÚ MAX_WORLD
-                                //Í¨¹ı GETWORLD ºê¿ÉÒÔ´ÓGUID_tÖĞÈ¡µÃÊÀ½çºÅ
+typedef UINT            GUID_t;    //32ä½å”¯ä¸€ç¼–å·ã€‚
+                                //å¦‚æœç”¨äºè¡¨ç¤ºç”¨æˆ·å”¯ä¸€IDå·ï¼Œç”¨æˆ·éƒ¨åˆ†ä¸º9ä½
+                                //å‰ä¸‰ä½ä¸ºä¸–ç•Œå·,ä¸–ç•Œå·0ï½200ä¸ºæ­£å¼æ•°æ®ï¼Œ
+                                //                       201ï½MAX_WORLD-1ä¸ºæµ‹è¯•æ•°æ®
+                                //ä¸–ç•Œå·ä¸èƒ½è¶…è¿‡æˆ–ç­‰äº MAX_WORLD
+                                //é€šè¿‡ GETWORLD å®å¯ä»¥ä»GUID_tä¸­å–å¾—ä¸–ç•Œå·
 
 #define INVALID_GUID            ((GUID_t)(-1))
 #define INVALID_INDEX            (-1)
@@ -92,7 +92,7 @@ typedef UINT            GUID_t;    //32Î»Î¨Ò»±àºÅ¡£
 
 #if defined(__WINDOWS__)
     typedef DWORD        TID ;
-    //ÓÃÀ´¶¨ÒåÍæ¼Ò¸÷¸ö×ÓÄ£ĞÍÊÇ·ñ¿É¼û ###
+    //ç”¨æ¥å®šä¹‰ç©å®¶å„ä¸ªå­æ¨¡å‹æ˜¯å¦å¯è§ ###
     typedef unsigned __int64 MODEL_PART;
 #elif defined(__LINUX__)
     typedef pthread_t    TID ;
@@ -111,7 +111,7 @@ typedef        VOID*    DBHandle;
 
 
 
-//ÅĞ¶ÏÄ³Î»ÊÇ·ñ±»ÖÃ
+//åˆ¤æ–­æŸä½æ˜¯å¦è¢«ç½®
 //15.14....3.2.1.0 
 #define ISSET0(x) ((x)&0x1)
 #define ISSET1(x) ((x)&0x2)
@@ -132,7 +132,7 @@ typedef        VOID*    DBHandle;
 
 
 ///////////////////////////////////////////////////////////////////////
-//»ù±¾Í·ÎÄ¼şÒıÓÃ
+//åŸºæœ¬å¤´æ–‡ä»¶å¼•ç”¨
 ///////////////////////////////////////////////////////////////////////
 
 #include "Assertx.h"

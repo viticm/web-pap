@@ -7,9 +7,9 @@ class Connection;
 class Statement;
 
 
-//Êı¾İ²éÑ¯½á¹û
+//æ•°æ®æŸ¥è¯¢ç»“æœ
 /*
- *    Êı¾İ²éÑ¯½á¹û¼¯
+ *    æ•°æ®æŸ¥è¯¢ç»“æœé›†
  *  
  *         field 0 field 1 .....    field n
  *
@@ -34,45 +34,45 @@ public:
     ~SqlResult();
     
 
-    BOOL            Next();        //È¡ÏÂÒ»¸öÊı¾İ
+    BOOL            Next();        //å–ä¸‹ä¸€ä¸ªæ•°æ®
 
-    CHAR*            GetField(UINT    fieldIndex); //È¡Field n µÄBuffer
+    CHAR*            GetField(UINT    fieldIndex); //å–Field n çš„Buffer
 
-    CHAR            GetChar(UINT    fieldIndex)  //È¡CHAR Field 
+    CHAR            GetChar(UINT    fieldIndex)  //å–CHAR Field 
     {
         return(GetField(fieldIndex))[0];
     }
-    INT                GetInt(UINT fieldIndex)      //È¡INT Field
+    INT                GetInt(UINT fieldIndex)      //å–INT Field
     {
         return    atoi(GetField(fieldIndex));
     }
-    UINT            GetUInt(UINT fieldIndex)    //È¡ UINT Field 
+    UINT            GetUInt(UINT fieldIndex)    //å– UINT Field 
     {
         return(UINT)atoi(GetField(fieldIndex));
     }
-    UCHAR            GetBYTE(UINT fieldIndex)    //È¡BYTE Field
+    UCHAR            GetBYTE(UINT fieldIndex)    //å–BYTE Field
     {
         return(UCHAR)atoi(GetField(fieldIndex));
     }
-    WORD            GetWORD(UINT fieldIndex)    //È¡WORD Field
+    WORD            GetWORD(UINT fieldIndex)    //å–WORD Field
     {
         return(WORD)atoi(GetField(fieldIndex));
     }
-    SHORT            GetShort(UINT fieldIndex)    //È¡Short Field
+    SHORT            GetShort(UINT fieldIndex)    //å–Short Field
     {
         return (SHORT)atoi(GetField(fieldIndex));
     }
-    const CHAR*        GetString(UINT fieldIndex); //È¡CHAR* Field
+    const CHAR*        GetString(UINT fieldIndex); //å–CHAR* Field
 
-    UINT            GetRowCount() const            //È¡Row ÊıÁ¿
+    UINT            GetRowCount() const            //å–Row æ•°é‡
     {
         return m_RowCount;
     }
-    UINT            GetFieldCount() const        //È¡Field ÊıÁ¿
+    UINT            GetFieldCount() const        //å–Field æ•°é‡
     {
         return m_FieldCount;
     }
-    VOID            FreeResult();                //ÊÍ·Åµ±Ç°Result µÄ»º´æÇø
+    VOID            FreeResult();                //é‡Šæ”¾å½“å‰Result çš„ç¼“å­˜åŒº
     
 private:
     VOID*            m_pVarData;
@@ -81,7 +81,7 @@ private:
 };
 
 
-//Sql ×´Ì¬,¶ÔÓÚÒ»¸öÌØ¶¨µÄSQL
+//Sql çŠ¶æ€,å¯¹äºä¸€ä¸ªç‰¹å®šçš„SQL
 class Statement
 {
 
@@ -92,17 +92,17 @@ public:
     ~Statement();
     
 
-    //±ä²Î½á¹û¼¯²éÑ¯
+    //å˜å‚ç»“æœé›†æŸ¥è¯¢
     SqlResult *                ExecuteQuery(CHAR *fmt,...);
 
 
-     //Ö¸¶¨SQL ´®µÄ½á¹û²éÑ¯
+     //æŒ‡å®šSQL ä¸²çš„ç»“æœæŸ¥è¯¢
     SqlResult *                ExecuteQuery(const CHAR* sqlStatement);
 
 
-    SqlResult*                ExecuteQuery();                    //Ö´ĞĞÄ¬ÈÏ²éÑ¯
+    SqlResult*                ExecuteQuery();                    //æ‰§è¡Œé»˜è®¤æŸ¥è¯¢
 
-     //È¡µ±Ç°Statement µÄ°ó¶¨Á¬½Ó
+     //å–å½“å‰Statement çš„ç»‘å®šè¿æ¥
     Connection *            GetConnection() const;
 
     VOID                    SetConnection(Connection * pConnection)
@@ -110,33 +110,33 @@ public:
         m_pConnection = pConnection;
     }
     
-    //·µ»Ø´íÎó´®
+    //è¿”å›é”™è¯¯ä¸²
     const    CHAR*            GetError() const;
     
-    //È¡µÃ²éÑ¯Ö´ĞĞºóÓ°ÏìµÄĞĞÊı
+    //å–å¾—æŸ¥è¯¢æ‰§è¡Œåå½±å“çš„è¡Œæ•°
     UINT                    GetAffectedRowCount() const;
 
     DB_QUERY&                GetDBQuery();
 
 private:
 
-    Connection*                m_pConnection;                    //Êı¾İ¿âÁ¬½Ó
-    SqlResult                m_Result;                        //²éÑ¯½á¹û
-    UINT                    m_nAffectedRows;                //Ó°ÏìĞĞÊı
-    DB_QUERY                m_Query;                        //²éÑ¯½á¹¹Ìå
+    Connection*                m_pConnection;                    //æ•°æ®åº“è¿æ¥
+    SqlResult                m_Result;                        //æŸ¥è¯¢ç»“æœ
+    UINT                    m_nAffectedRows;                //å½±å“è¡Œæ•°
+    DB_QUERY                m_Query;                        //æŸ¥è¯¢ç»“æ„ä½“
     
 };
 
 
 //
-// Êı¾İ¿âÁ¬½ÓÀà
+// æ•°æ®åº“è¿æ¥ç±»
 //
 class Connection
 {
 public:
     
     Connection();
-    //´øÁ¬½Ó²Ù×÷µÄ¹¹Ôì
+    //å¸¦è¿æ¥æ“ä½œçš„æ„é€ 
     Connection( const CHAR* host,
                 const CHAR* db,
                 const CHAR* user,
@@ -145,7 +145,7 @@ public:
 
     ~Connection();
     
-    //¹Ø±Õµ±Ç°Á¬½Ó
+    //å…³é—­å½“å‰è¿æ¥
     VOID                    Close();
 
     
@@ -198,16 +198,16 @@ public:
     const CHAR*                GetError();
     DBHandle                GetHandle();
 private:
-    BOOL                    m_bConnected;                    //ÒÑ¾­Á¬½ÓÉÏµÄ×´Ì¬±ê¼Ç
-    CHAR                    m_Host[HOST_STR_LEN];            //Á¬½Ó¶Ô¶ËIP
-    UINT                    m_Port;                            //Á¬½Ó¶Ô¶Ë¶Ë¿Ú
-    CHAR                    m_Database[DATABASE_STR_LEN];    //Êı¾İ¿âÃû³Æ
-    CHAR                    m_User[DB_USE_STR_LEN];            //ÓÃ»§Ãû³Æ
-    CHAR                    m_Password[DB_PASSWORD_STR_LEN];//ÃÜÂë
-    CHAR                    m_Name[CONNECTION_NAME_LEN];    //Á¬½ÓÃüÃû
-    BOOL                    m_bBusy;                        //ÊÇ·ñ·±Ã¦
-    Statement                m_Statement;                    //Ä¬ÈÏSql×´Ì¬
-    DBHandle                m_Handle;                        //Êı¾İ¿â¾ä±ú
+    BOOL                    m_bConnected;                    //å·²ç»è¿æ¥ä¸Šçš„çŠ¶æ€æ ‡è®°
+    CHAR                    m_Host[HOST_STR_LEN];            //è¿æ¥å¯¹ç«¯IP
+    UINT                    m_Port;                            //è¿æ¥å¯¹ç«¯ç«¯å£
+    CHAR                    m_Database[DATABASE_STR_LEN];    //æ•°æ®åº“åç§°
+    CHAR                    m_User[DB_USE_STR_LEN];            //ç”¨æˆ·åç§°
+    CHAR                    m_Password[DB_PASSWORD_STR_LEN];//å¯†ç 
+    CHAR                    m_Name[CONNECTION_NAME_LEN];    //è¿æ¥å‘½å
+    BOOL                    m_bBusy;                        //æ˜¯å¦ç¹å¿™
+    Statement                m_Statement;                    //é»˜è®¤SqlçŠ¶æ€
+    DBHandle                m_Handle;                        //æ•°æ®åº“å¥æŸ„
 
 
 };

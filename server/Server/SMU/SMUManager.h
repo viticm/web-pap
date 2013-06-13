@@ -17,7 +17,7 @@ enum SMPOOL_TYPE
 
 
 
-//ShareMemory µ¥Ôª³Ø
+//ShareMemory å•å…ƒæ± 
 template<typename T>
 
 class SMUPool
@@ -230,11 +230,11 @@ public:
     
 
 private:
-    T                **m_hObj;            //¹ÜÀí¶ÔÏóSMUÊı×é
-    INT                m_nMaxSize;            //×î´óÈİÁ¿
-    INT                m_nPosition;        //µ±Ç°Ê¹ÓÃÆ«ÒÆ
-    ShareMemAO*        m_pRefObjPtr;        //ÒıÓÃSMObject
-    SM_KEY            m_key;                //¶ÔÓ¦µÄShareMemory Key
+    T                **m_hObj;            //ç®¡ç†å¯¹è±¡SMUæ•°ç»„
+    INT                m_nMaxSize;            //æœ€å¤§å®¹é‡
+    INT                m_nPosition;        //å½“å‰ä½¿ç”¨åç§»
+    ShareMemAO*        m_pRefObjPtr;        //å¼•ç”¨SMObject
+    SM_KEY            m_key;                //å¯¹åº”çš„ShareMemory Key
     
 };
 
@@ -246,9 +246,9 @@ template<typename T>
 class SMUManager
 {
     
-    // smu Êı¾İ
+    // smu æ•°æ®
     T                *m_pSMU[MAX_MANAGER_SMU];
-    // smu ¸öÊı
+    // smu ä¸ªæ•°
     INT                m_nCount;
 
 public:
@@ -262,7 +262,7 @@ public:
     ~SMUManager()
     {}
     
-    //³õÊ¼»¯²Ù×÷
+    //åˆå§‹åŒ–æ“ä½œ
     VOID        Init()
     {
 
@@ -277,7 +277,7 @@ public:
     BOOL        HeartBeat(UINT uTime=0);
 
     /*
-     *    Ìí¼ÓÒ»¸öSMUPool ´´½¨µÄÊı¾İµ½¹ÜÀíÆ÷
+     *    æ·»åŠ ä¸€ä¸ªSMUPool åˆ›å»ºçš„æ•°æ®åˆ°ç®¡ç†å™¨
      */
 
     BOOL        AddSMU(T*        pSMU)
@@ -296,7 +296,7 @@ public:
         return FALSE;
     }
     /*
-     *    É¾³ıÒ»¸öSMUPool ´´½¨µÄÊı¾İµ½¹ÜÀíÆ÷
+     *    åˆ é™¤ä¸€ä¸ªSMUPool åˆ›å»ºçš„æ•°æ®åˆ°ç®¡ç†å™¨
      */
     BOOL        DelSMU(T* pSMU)
     {
@@ -313,7 +313,7 @@ public:
             return FALSE;
 
         m_pSMU[uID] = m_pSMU[m_nCount-1];
-        m_pSMU[uID]->SetSMUID(uID); //ÖØĞÂ¸Ä±äË÷Òı
+        m_pSMU[uID]->SetSMUID(uID); //é‡æ–°æ”¹å˜ç´¢å¼•
         pSMU->SetSMUID( INVALID_ID );
         m_nCount--;
         
@@ -322,7 +322,7 @@ public:
         return FALSE;
     }
     /*
-     *    ¸ù¾İSMUId ¼ìË÷SMU
+     *    æ ¹æ®SMUId æ£€ç´¢SMU
      */
     T*            GetSMU(SMUID_t    SMUId)
     {

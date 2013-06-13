@@ -15,8 +15,8 @@ class Obj ;
 struct CHAT_ITEM
 {
     Packet*                m_pPacket ;
-    ObjID_t                m_SourObjID ;//фум╗адлЛй╠к╣╩╟уъ
-    ObjID_t                m_DestObjID ;//╤сад║╒Ё║╬╟ад║╒к╫ад║╒о╣мЁ║╒вт╫╗адлЛф╣╣юй╠д©╣дOBJ
+    ObjID_t                m_SourObjID ;//Ф≥╝И─ Х│┼Е╓╘Ф≈╤Х╞╢Х╞²Х─┘
+    ObjID_t                m_DestObjID ;//И≤÷Х│┼Ц─│Е°╨Ф≥╞Х│┼Ц─│Г╖│Х│┼Ц─│ГЁ╩Г╩÷Ц─│Х┤╙Е╩╨Х│┼Е╓╘И╒▒И│⌠Ф≈╤Г⌡╝Г └OBJ
 
     CHAT_ITEM( )
     { 
@@ -48,14 +48,14 @@ public :
 
     Scene*                GetScene( ){ return m_pScene ; } ;
 
-    //оРадлЛ╧э╣юдз╥╒кмоШо╒,ж╖ЁжрЛ╡╫╣Всц
+    //Е░▒Х│┼Е╓╘Г╝║И│⌠Е├┘Е▐▒И─│Ф╤┬Ф│╞,Ф■╞Ф▄│Е╪┌Ф╜╔Х╟┐Г■╗
     BOOL                SendPacket( Packet* pPacket, ObjID_t SourID, ObjID_t DestID ) ;
-    //╢садлЛ╧э╣юдзх║ЁЖоШо╒,ж╖ЁжрЛ╡╫╣Всц
+    //Д╩▌Х│┼Е╓╘Г╝║И│⌠Е├┘Е▐√Е┤╨Ф╤┬Ф│╞,Ф■╞Ф▄│Е╪┌Ф╜╔Х╟┐Г■╗
     BOOL                RecvPacket( Packet*& pPacket, ObjID_t* pSourID, ObjID_t* pDestID ) ;
 
 
 public :
-    INT                    m_nValidCount ;//©и╥╒км╣доШо╒йЩа©
+    INT                    m_nValidCount ;//Е▐╞Е▐▒И─│Г └Ф╤┬Ф│╞Ф∙╟И┤▐
     Scene*                m_pScene ;
     CHAT_ITEM*            m_pChatItems ;
     INT                    m_nHead ;

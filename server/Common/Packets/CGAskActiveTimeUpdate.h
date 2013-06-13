@@ -1,6 +1,6 @@
 // GCAskActiveTimeUpdate.h
 // 
-// 当前主角的技能有效时间表更新
+// 褰撳墠涓昏鐨勬妧鑳芥湁鏁堟椂闂磋〃鏇存柊
 // 
 //////////////////////////////////////////////////////
 
@@ -20,7 +20,7 @@ public:
     CGAskActiveTimeUpdate( ):m_nActiveTime(INVALID_ID)    {};
     virtual ~CGAskActiveTimeUpdate( ){};
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;

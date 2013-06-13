@@ -1,6 +1,6 @@
 // GCCharSkill_Missed.h
 // 
-// ¼¼ÄÜÃ»»÷ÖĞ
+// æŠ€èƒ½æ²¡å‡»ä¸­
 // 
 //////////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ namespace Packets
         GCCharSkill_Missed() : m_nReceiverID(INVALID_ID), m_nSenderID(INVALID_ID), m_nSkillID(INVALID_ID), m_nSenderLogicCount(0){}
         virtual ~GCCharSkill_Missed( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,7 +39,7 @@ namespace Packets
     public:
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         SkillID_t    GetSkillID(VOID) const {return m_nSkillID;}
         VOID        SetSkillID(SkillID_t nSkillID) {m_nSkillID=nSkillID;}
 
@@ -55,10 +55,10 @@ namespace Packets
         INT            GetSenderLogicCount(VOID) const {return m_nSenderLogicCount;}
         VOID        SetSenderLogicCount(INT nID) {m_nSenderLogicCount=nID;}
     private:
-        ObjID_t        m_nReceiverID;    // Ğ§¹û½ÓÊÜÕßµÄID
-        ObjID_t        m_nSenderID;    // Ğ§¹ûÊÍ·ÅÕßµÄID
-        SkillID_t     m_nSkillID;        // ¼¼ÄÜµÄID
-        ID_t        m_nFlag;        // Î´»÷ÖĞ£¬ÃâÒß£¬ÎüÊÕ£¬×ªÒÆµÄ±ê¼Ç
+        ObjID_t        m_nReceiverID;    // æ•ˆæœæ¥å—è€…çš„ID
+        ObjID_t        m_nSenderID;    // æ•ˆæœé‡Šæ”¾è€…çš„ID
+        SkillID_t     m_nSkillID;        // æŠ€èƒ½çš„ID
+        ID_t        m_nFlag;        // æœªå‡»ä¸­ï¼Œå…ç–«ï¼Œå¸æ”¶ï¼Œè½¬ç§»çš„æ ‡è®°
         INT            m_nSenderLogicCount;
     };
 

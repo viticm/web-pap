@@ -19,15 +19,15 @@ public :
     IDTable( ) ;
     ~IDTable( ) ;
 
-    //³õÊ¼»¯±í
+    //åˆå§‹åŒ–è¡¨
     VOID        InitTable( UINT MaxItem ) ;
-    //Ôö¼ÓÒ»¸ö±íÏî
+    //å¢žåŠ ä¸€ä¸ªè¡¨é¡¹
     BOOL        Add( UINT id, VOID* pPtr ) ;
-    //¶ÁÈ¡ÐÅÏ¢
+    //è¯»å–ä¿¡æ¯
     VOID*        Get( UINT id ) ;
-    //É¾³ý±íÏî
+    //åˆ é™¤è¡¨é¡¹
     VOID        Remove( UINT id ) ;
-    //Çå³ýËùÓÐÊý¾Ý
+    //æ¸…é™¤æ‰€æœ‰æ•°æ®
     VOID        CleanUp( ) ;
 
 protected :

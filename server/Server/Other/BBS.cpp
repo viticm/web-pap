@@ -42,7 +42,7 @@ BOOL ServerBBS::AddNewMessageByID(UINT nID, CHAR*    szMessage, INT nLength, con
     __ENTER_FUNCTION
     INT    nIndex;
     if( nIndex = GetMessageIndexByID(nID) >= 0 )
-    {//��ID�Ѿ�����
+    {//此ID已经存在
         return    FALSE;
     }
 
@@ -72,7 +72,7 @@ __ENTER_FUNCTION
         pCur->nReMin            =    (BYTE)g_pTimeManager->GetMinute();
         pCur->nReplyMsgLength    =    nReplyLength;
         memcpy(pCur->szReplyMessage, szReplyMessage, nReplyLength);
-        IncSerial();//���кŵ���
+        IncSerial();//序列号递增
         return    TRUE;
     }
     else
@@ -122,7 +122,7 @@ __ENTER_FUNCTION
         return    FALSE;
     }
     m_IsValid[nIndex] = 0;
-    IncSerial();//���кŵ���
+    IncSerial();//序列号递增
     return TRUE;
 __LEAVE_FUNCTION
     return FALSE;
@@ -159,9 +159,9 @@ BOOL ServerBBS::AddNewMessage(MessageEntry_t* pMessage)
         memcpy(m_MessageData[m_FinalIndex].szReplyMessage, pMessage->szReplyMessage, pMessage->nReplyMsgLength);
         
         m_IsValid[m_FinalIndex] = 1;
-        IncSerial();//���кŵ���
+        IncSerial();//序列号递增
 
-        // ���ǵ����ϵ�
+        // 覆盖掉最老的
         if(m_FinalIndex==MAX_BBS_MESSAGE_NUM - 1)
         {
             m_FinalIndex =0;

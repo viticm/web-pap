@@ -87,7 +87,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// ¶ÁÈëÉú»î¼¼ÄÜÅäÖÃÎÄ¼ş
+// è¯»å…¥ç”Ÿæ´»æŠ€èƒ½é…ç½®æ–‡ä»¶
 BOOL AbilityManager::InitAbility( const CHAR* filename )
 {
 __ENTER_FUNCTION
@@ -108,9 +108,9 @@ __ENTER_FUNCTION
     Ability TempAbility;
     Ability &rTempAbility = TempAbility;
 
-    // Í¨¹ıÅäÖÃÎÄ¼şÀ´ÅäÖÃÉú³ÉÉú»î¼¼ÄÜ
+    // é€šè¿‡é…ç½®æ–‡ä»¶æ¥é…ç½®ç”Ÿæˆç”Ÿæ´»æŠ€èƒ½
     for( INT i=0; i<iTableCount; i++ )
-    { // ¼¼ÄÜ±íµÄÌõÄ¿Êı±ØĞëµÈÓÚ ABILITY_CLASS_SIZE ±êÃ÷µÄÊıÄ¿
+    { // æŠ€èƒ½è¡¨çš„æ¡ç›®æ•°å¿…é¡»ç­‰äº ABILITY_CLASS_SIZE æ ‡æ˜çš„æ•°ç›®
         rTempAbility.AbilityID(ThirdFile.Search_Posistion(i, Ability::TB_ABILITY_ID)->iValue);
         rTempAbility.AbilityName(ThirdFile.Search_Posistion(i, Ability::TB_ABILITY_NAME)->pString);
         rTempAbility.LevelDemand(ThirdFile.Search_Posistion(i, Ability::TB_ABILITY_LEVEL_DEMAND)->iValue);
@@ -316,7 +316,7 @@ __ENTER_FUNCTION
     if(iTableCount <= 0 )
         return FALSE;
 
-    AssertEx( iTableColumn == _AbilityExpTable::ETE_ElementNum , "ÎÄ¼şÁĞÊı²»Æ¥Åä");
+    AssertEx( iTableColumn == _AbilityExpTable::ETE_ElementNum , "æ–‡ä»¶åˆ—æ•°ä¸åŒ¹é…");
     if( iTableColumn != _AbilityExpTable::ETE_ElementNum)
         return FALSE;
 

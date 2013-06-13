@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºTianShanSkill001.cpp
-// ¹¦ÄÜËµÃ÷£º
+// æ–‡ä»¶åï¼šTianShanSkill001.cpp
+// åŠŸèƒ½è¯´æ˜ï¼š
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -33,7 +33,7 @@ namespace Combat_Module
 
             g_ImpactCore.InitImpactFromData(nDataIndex, impact);
             INT nGuardDataID = Skill_GetSkillInfoDescriptorValueByIndex(rSkillInfo, 1);
-            //Call ·ÖÉí½Ó¿Ú,Ä¿Ç°Ğ´¸öÒâÏò
+            //Call åˆ†èº«æ¥å£,ç›®å‰å†™ä¸ªæ„å‘
             Obj_Character* pGuard = rMe.CreateGuard(nGuardDataID);
             if(NULL==pGuard)
             {

@@ -37,7 +37,7 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         VOID            setItemNum(BYTE num) { m_ItemNumber = num; }
         BYTE            getItemNum(VOID) const { return m_ItemNumber; }
 

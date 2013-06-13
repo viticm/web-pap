@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºChannelAction.cpp
-// ¹¦ÄÜËµÃ÷£ºÒıµ¼¶¯×÷Àà
+// æ–‡ä»¶åï¼šChannelAction.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šå¼•å¯¼åŠ¨ä½œç±»
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -152,7 +152,7 @@ namespace Action_Module
             {
                 nDeltaTime = 500;
             }
-            nContinuance += nDeltaTime; // ¸ÉÈÅ¾ÛÆøÊ±¼ä
+            nContinuance += nDeltaTime; // å¹²æ‰°èšæ°”æ—¶é—´
             rParams.SetContinuance(nContinuance);
             Action_Module::ActionDelegator_T ActionOptor;
             ActionOptor.BroadcastUnitChargeTimeChanged(rActor, nDeltaTime);
@@ -180,7 +180,7 @@ namespace Action_Module
             {
                 nDeltaTime = nContinuance;
             }
-            nContinuance -= nDeltaTime; // ¸ÉÈÅÒıµ¼Ê±¼ä
+            nContinuance -= nDeltaTime; // å¹²æ‰°å¼•å¯¼æ—¶é—´
             rParams.SetContinuance(nContinuance);
             Action_Module::ActionDelegator_T ActionOptor;
             ActionOptor.BroadcastUnitChannelTimeChanged(rActor, nDeltaTime);

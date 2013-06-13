@@ -30,12 +30,12 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     GWTeamInvite* pMsg = (GWTeamInvite*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_TEAMINVITE)) ;
-    pMsg->SetSourGUID( pHuman->GetGUID() ) ;//ÑûÇëÈË
-    pMsg->SetDestName( pPacket->GetDestName() ) ;//±»ÑûÇëÈË
+    pMsg->SetSourGUID( pHuman->GetGUID() ) ;//é‚€è¯·äºº
+    pMsg->SetDestName( pPacket->GetDestName() ) ;//è¢«é‚€è¯·äºº
     pMsg->SetGUID( pGamePlayer->m_HumanGUID ) ;
 
     g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;

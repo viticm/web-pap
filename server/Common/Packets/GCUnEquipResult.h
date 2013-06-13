@@ -46,12 +46,12 @@ namespace Packets
         BYTE            getResult(){return m_Result;}
 
     private:
-        BYTE                m_EquipPoint;            //×°±¸µã
+        BYTE                m_EquipPoint;            //è£…å¤‡ç‚¹
 
-        BYTE                m_BagIndex;                //Ğ¶ÏÂÀ´µÃ×°±¸ÔÚBagÖĞ´æ·ÅµÄÎ»ÖÃ
-        UINT                m_ItemTableIndex;        //BagIndexÉÏ×°±¸µÄ×ÊÔ´ºÅ
-        _ITEM_GUID            m_ItemId;                //BagIndexÉÏ×°±¸µÄGUID
-        BYTE                m_Result;                //ÊÇ·ñ³É¹¦£¬²»³É¹¦ÔòÊÇ´íÎóºÅ        
+        BYTE                m_BagIndex;                //å¸ä¸‹æ¥å¾—è£…å¤‡åœ¨Bagä¸­å­˜æ”¾çš„ä½ç½®
+        UINT                m_ItemTableIndex;        //BagIndexä¸Šè£…å¤‡çš„èµ„æºå·
+        _ITEM_GUID            m_ItemId;                //BagIndexä¸Šè£…å¤‡çš„GUID
+        BYTE                m_Result;                //æ˜¯å¦æˆåŠŸï¼Œä¸æˆåŠŸåˆ™æ˜¯é”™è¯¯å·        
 
     };
 

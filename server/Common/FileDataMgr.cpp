@@ -126,7 +126,7 @@ BOOL CFileDataMgr::Init( const CHAR *pszMgrPathFileName, BOOL bForceArrayMode )
             }
         }
 
-        // 分析文件
+        // 鍒嗘瀽鏂囦欢
         SFileDataLink *pHead;
         pHead = NULL;
 
@@ -323,7 +323,7 @@ BOOL CFileDataMgr::Init( const CHAR *pszMgrPathFileName, BOOL bForceArrayMode )
                 m_apFileData = new SFileData* [m_uLength];
                 memset( m_apFileData, 0, sizeof ( SFileData* ) * m_uLength );
 
-                // 排序
+                // 鎺掑簭
                 SFileDataLink *pCurLink = pHead;
                 SFileDataLink *pNextLink;
                 while( pCurLink != NULL )
@@ -498,7 +498,7 @@ SFileData *CFileDataMgr::GetFileData( UINT uID )
         if ( uID < m_uMinID || uID > m_uMaxID )
             return NULL;
 
-        // 二分查找
+        // 浜屽垎鏌ユ壘
         UINT uMinID, uMaxID;
         uMinID = m_uMinID;
         uMaxID = m_uMaxID;

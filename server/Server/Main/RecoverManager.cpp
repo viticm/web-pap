@@ -58,7 +58,7 @@ BOOL RecoverManager::Tick()
         GamePlayer* pPlayer = m_PlayerPtr[i];
         Assert(pPlayer);
 
-        if(pPlayer->ShareMemSafe()) //Êı¾İ¿â±£´æÍê±Ï
+        if(pPlayer->ShareMemSafe()) //æ•°æ®åº“ä¿å­˜å®Œæ¯•
         {
             
 

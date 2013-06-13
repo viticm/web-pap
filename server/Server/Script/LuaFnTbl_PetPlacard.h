@@ -1,6 +1,6 @@
 // LuaFnTbl_PetPlacard.h
 // 
-// ³èÎï¹«¸æ°åÏà¹ØLUAº¯Êý½Ó¿Ú
+// å® ç‰©å…¬å‘Šæ¿ç›¸å…³LUAå‡½æ•°æŽ¥å£
 // 
 //////////////////////////////////////////////////////////
 
@@ -17,25 +17,25 @@
 namespace LuaFnTbl
 {
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-03-07
-    *     º¯ÊýÃû³Æ : LuaFnIssuePetPlacardByIndex
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-03-07
+    *     å‡½æ•°åç§° : LuaFnIssuePetPlacardByIndex
+    *     å‚æ•°è¯´æ˜Ž : 
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                petGUID_H
-    *                    ³èÎïGUID¸ßÎ»
+    *                    å® ç‰©GUIDé«˜ä½
     *                petGUID_L
-    *                    ³èÎïGUIDµÍÎ»
+    *                    å® ç‰©GUIDä½Žä½
     *                pszMessage
-    *                    ³èÖ÷µÄÁôÑÔ
+    *                    å® ä¸»çš„ç•™è¨€
     *                
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ·¢²¼³èÎï¹«¸æ
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å‘å¸ƒå® ç‰©å…¬å‘Š
     *                
     */
     INT    LuaFnIssuePetPlacardByIndex(Lua_State* L) 
@@ -98,25 +98,25 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-03-07
-    *     º¯ÊýÃû³Æ : LuaFnIssuePetPlacard
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-03-07
+    *     å‡½æ•°åç§° : LuaFnIssuePetPlacard
+    *     å‚æ•°è¯´æ˜Ž : 
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                petGUID_H
-    *                    ³èÎïGUID¸ßÎ»
+    *                    å® ç‰©GUIDé«˜ä½
     *                petGUID_L
-    *                    ³èÎïGUIDµÍÎ»
+    *                    å® ç‰©GUIDä½Žä½
     *                pszMessage
-    *                    ³èÖ÷µÄÁôÑÔ
+    *                    å® ä¸»çš„ç•™è¨€
     *                
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ·¢²¼³èÎï¹«¸æ
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å‘å¸ƒå® ç‰©å…¬å‘Š
     *                
     */
     INT    LuaFnIssuePetPlacard(Lua_State* L) 
@@ -182,19 +182,19 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-03-07
-    *     º¯ÊýÃû³Æ : LuaFnIssuePetPlacard
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-03-07
+    *     å‡½æ•°åç§° : LuaFnIssuePetPlacard
+    *     å‚æ•°è¯´æ˜Ž : 
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                
-    *     ¹¦ÄÜËµÃ÷ :
-    *                È¡Ïû³èÎï¹«¸æ
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                å–æ¶ˆå® ç‰©å…¬å‘Š
     *                
     */
     INT    LuaFnCancelPetPlacard(Lua_State* L) 
@@ -241,28 +241,28 @@ namespace LuaFnTbl
     }
 
     /** -----------------------------------------------------------------------
-    *     ¿ª·¢ÈËÔ± : 
-    *     ±àÐ´Ê±¼ä : 2006-03-07
-    *     º¯ÊýÃû³Æ : LuaFnDispatchPetPlacardList
-    *     ²ÎÊýËµÃ÷ : 
+    *     å¼€å‘äººå‘˜ : 
+    *     ç¼–å†™æ—¶é—´ : 2006-03-07
+    *     å‡½æ•°åç§° : LuaFnDispatchPetPlacardList
+    *     å‚æ•°è¯´æ˜Ž : 
     *                SceneID
-    *                    ³¡¾°±àºÅ
+    *                    åœºæ™¯ç¼–å·
     *                selfId
-    *                    µ÷ÓÃÕßID,ÎÞ·ûºÅÕûÐÍ
+    *                    è°ƒç”¨è€…ID,æ— ç¬¦å·æ•´åž‹
     *                targetId
-    *                    Npc±àºÅ
+    *                    Npcç¼–å·
     *                firstCheckId
-    *                    ÓÃÓÚÕÒµ½Õâ´ÎÓ¦¸Ã´ÓÄÄÒ»ÌõÐÅÏ¢¿ªÊ¼Íù¿ÍÆø¶ËË¢ÐÂ
-    *                    Ë³Ðò=£¨ÉÏ´ÎË¢ÐÂµÄµ¹ÊýµÚÒ»ÌõID£©
-    *                    ·´Ðò=£¨ÉÏ´ÎË¢ÐÂµÄµÚÒ»ÌõID£©
+    *                    ç”¨äºŽæ‰¾åˆ°è¿™æ¬¡åº”è¯¥ä»Žå“ªä¸€æ¡ä¿¡æ¯å¼€å§‹å¾€å®¢æ°”ç«¯åˆ·æ–°
+    *                    é¡ºåº=ï¼ˆä¸Šæ¬¡åˆ·æ–°çš„å€’æ•°ç¬¬ä¸€æ¡IDï¼‰
+    *                    ååº=ï¼ˆä¸Šæ¬¡åˆ·æ–°çš„ç¬¬ä¸€æ¡IDï¼‰
     *                secondCheckId
-    *                    Ë³Ðò=£¨ÉÏ´ÎË¢ÐÂµÄµ¹ÊýµÚ¶þ¸öID)
-    *                    ·´Ðò=£¨ÉÏ´ÎË¢ÐÂµÄµÚ¶þÌõID£©
+    *                    é¡ºåº=ï¼ˆä¸Šæ¬¡åˆ·æ–°çš„å€’æ•°ç¬¬äºŒä¸ªID)
+    *                    ååº=ï¼ˆä¸Šæ¬¡åˆ·æ–°çš„ç¬¬äºŒæ¡IDï¼‰
     *                nextPageOrPrevPage
-    *                    !=0ÎªË³Ðò
+    *                    !=0ä¸ºé¡ºåº
     *                
-    *     ¹¦ÄÜËµÃ÷ :
-    *                ÇëÇó³èÎïµÄ¹«¸æÁÐ±í
+    *     åŠŸèƒ½è¯´æ˜Ž :
+    *                è¯·æ±‚å® ç‰©çš„å…¬å‘Šåˆ—è¡¨
     *                
     */
     INT    LuaFnDispatchPetPlacardList(Lua_State* L) 

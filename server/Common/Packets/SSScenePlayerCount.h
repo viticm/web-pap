@@ -18,7 +18,7 @@ public:
     SSScenePlayerCount( ){m_nChangeCount=0;} ;
     virtual ~SSScenePlayerCount( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -32,7 +32,7 @@ public:
     }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     SHORT                    GetChangeCount( ){ return m_nChangeCount ; }
     
     SceneID_t                GetChangeSceneID( INT nIndex ){
@@ -68,10 +68,10 @@ public:
     SHORT                    GetTotalPlayerCount(){ return m_nTotalPlayerCount ; }
 
 private:
-    //Êı¾İ
-    SHORT                    m_nChangeCount ;//±ä»¯ÈËÊıµÄ³¡¾°ÊıÁ¿
-    SceneID_t                m_aChangeSceneID[MAX_SCENE] ;//ÓĞÈËÊı±ä»¯µÄ³¡¾°ºÅ
-    SHORT                    m_aChangeScenePlayerCount[MAX_SCENE] ;//ÓĞÈËÊı±ä»¯µÄ³¡¾°µ±Ç°ÈËÊı
+    //æ•°æ®
+    SHORT                    m_nChangeCount ;//å˜åŒ–äººæ•°çš„åœºæ™¯æ•°é‡
+    SceneID_t                m_aChangeSceneID[MAX_SCENE] ;//æœ‰äººæ•°å˜åŒ–çš„åœºæ™¯å·
+    SHORT                    m_aChangeScenePlayerCount[MAX_SCENE] ;//æœ‰äººæ•°å˜åŒ–çš„åœºæ™¯å½“å‰äººæ•°
     SHORT                    m_nTotalPlayerCount ;
 };
 

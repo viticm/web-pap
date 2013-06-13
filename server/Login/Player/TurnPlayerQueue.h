@@ -1,8 +1,8 @@
 /********************************************************************
     
-    ÎÄ¼şÃû³Æ:    TurnPlayerQueue
-    ÎÄ¼ş¹¦ÄÜ£ºÍæ¼ÒÅÅ¶Ó¶ÓÁĞ
-    ĞŞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åç§°:    TurnPlayerQueue
+    æ–‡ä»¶åŠŸèƒ½ï¼šç©å®¶æ’é˜Ÿé˜Ÿåˆ—
+    ä¿®æ”¹çºªå½•ï¼š
 *********************************************************************/
 
 
@@ -64,7 +64,7 @@ struct WORLD_PLAYER_INFO
 };
 
 /*
- *    Íæ¼ÒÅÅ¶ÓµÄÏÈ½øÏÈ³ö
+ *    ç©å®¶æ’é˜Ÿçš„å…ˆè¿›å…ˆå‡º
  */
 class TurnPlayerQueue
 {
@@ -74,9 +74,9 @@ public:
 
     
     BOOL                    Init();
-    //Ìí¼ÓÒ»¸öÍæ¼Òµ½¶ÓÁĞÄ©Î²
+    //æ·»åŠ ä¸€ä¸ªç©å®¶åˆ°é˜Ÿåˆ—æœ«å°¾
     BOOL                    AddInPlayer(PlayerID_t pID,const CHAR* Name,UINT& QueuePos);
-    //È¡³ö¶ÓÁĞÍ·µÄÍæ¼Ò,²¢ÇÒ½«Ëü´Ó¶ÓÁĞÖĞÉ¾³ı
+    //å–å‡ºé˜Ÿåˆ—å¤´çš„ç©å®¶,å¹¶ä¸”å°†å®ƒä»é˜Ÿåˆ—ä¸­åˆ é™¤
     BOOL                    GetOutPlayer(PlayerID_t& pID,CHAR* NameBuff);                    
     
     BOOL                    IsEmpty() {return m_Head == m_Tail;}
@@ -112,15 +112,15 @@ public:
 
     BOOL                    Init();
 
-    //Ìí¼ÓÒ»¸öÍæ¼Òµ½¶ÓÁĞÄ©Î²
+    //æ·»åŠ ä¸€ä¸ªç©å®¶åˆ°é˜Ÿåˆ—æœ«å°¾
     BOOL                    AddInPlayer(PlayerID_t pID,const CHAR* Name,GUID_t guid,BYTE age,UINT& QueuePos);
 
-    //È¡³ö¶ÓÁĞÍ·µÄÍæ¼Ò,²¢ÇÒ½«Ëü´Ó¶ÓÁĞÖĞÉ¾³ı
+    //å–å‡ºé˜Ÿåˆ—å¤´çš„ç©å®¶,å¹¶ä¸”å°†å®ƒä»é˜Ÿåˆ—ä¸­åˆ é™¤
     BOOL                    GetOutPlayer(UINT QueuePos);
-    //È¡³ö¶ÓÁĞÍ·Íæ¼ÒµÄ±àºÅ
+    //å–å‡ºé˜Ÿåˆ—å¤´ç©å®¶çš„ç¼–å·
     BOOL                    FindHeadPlayer(UINT& QueuePos);
     
-    //È¡³öÒ»¸öÍæ¼ÒµÄÊı¾İ
+    //å–å‡ºä¸€ä¸ªç©å®¶çš„æ•°æ®
     WORLD_PLAYER_INFO&        GetPlayer(UINT QueuePos);
     
 
@@ -175,9 +175,9 @@ public:
 };
 
 extern WorldPlayerCounter    g_WorldPlayerCounter;
-//ProcessManager ÖĞÊôÓÚÅÅ¶Ó×´Ì¬µÄÍæ¼Ò¶ÓÁĞ
+//ProcessManager ä¸­å±äºæ’é˜ŸçŠ¶æ€çš„ç©å®¶é˜Ÿåˆ—
 extern TurnPlayerQueue*    g_pProcessPlayerQueue;
-//ÓÉProcessManager µ½World Ö®¼äÅÅ¶ÓµÄ¶ÓÁĞ
+//ç”±ProcessManager åˆ°World ä¹‹é—´æ’é˜Ÿçš„é˜Ÿåˆ—
 extern WorldPlayerQueue*    g_pWorldPlayerQueue;
 
 #endif

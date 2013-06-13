@@ -1,6 +1,6 @@
 // GWCityOpt.h
 // 
-// 请求申请建立新的城市
+// 璇锋眰鐢宠寤虹珛鏂扮殑鍩庡競
 // 
 //////////////////////////////////////////////////////
 
@@ -34,7 +34,7 @@ namespace Packets
         }
         virtual ~GWCityOpt( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;

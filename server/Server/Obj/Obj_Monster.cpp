@@ -14,7 +14,7 @@
 #include "Scene.h"
 #include "TimeManager.h"
 #include "GameTable.h"
-//ÎïÆ·Ïà¹Ø
+//ç‰©å“ç›¸å…³
 #include "Obj_ItemBox.h"
 #include "ItemTypes.h"
 #include "ItemRuler.h"
@@ -39,22 +39,22 @@ Obj_Monster::Obj_Monster( VOID )
 {
 __ENTER_FUNCTION
 
-    // ÏûÏ¢/ÊôĞÔË¢ĞÂ
+    // æ¶ˆæ¯/å±æ€§åˆ·æ–°
     //m_AttrBackUp;
 
     // CoolDown
     m_nCooldown                = 0;
 
-    // Ğ§¹û
+    // æ•ˆæœ
     //m_ImpactList;
 
-    // ÖØÉú
+    // é‡ç”Ÿ
     m_RespawnTime            = -1;
     //m_RespawnTimer;
     m_RespawnDir            = -1.f;
     m_RespawnPos            = WORLD_POS(-1.f, -1.f);
 
-    // ÉËº¦ÁĞ±í
+    // ä¼¤å®³åˆ—è¡¨
     m_Own_TeamID            = INVALID_ID;
     m_OccupantGUID            = INVALID_GUID;
     //m_DamageMemList;
@@ -65,13 +65,13 @@ __ENTER_FUNCTION
     m_AIScript                = -1;
     m_PositionRange            = 0;
 
-    // NPCÉÌµê
+    // NPCå•†åº—
     m_pShopManager            = NULL;
 
-    // ³èÎï¹«¸æ°å
+    // å® ç‰©å…¬å‘Šæ¿
     m_pPetPlacardSystem        = NULL;
 
-    // ÆäËû
+    // å…¶ä»–
     m_nPatrolID                = INVALID_ID;
     m_DropSearchRange        = 0.f;
     m_DropTeamCount            = 0;
@@ -82,7 +82,7 @@ __ENTER_FUNCTION
     //m_sKillObj;
     m_nKillCount            = 0;
 
-    // Ò»¼¶ÊôĞÔ
+    // ä¸€çº§å±æ€§
     m_GUID                    = INVALID_GUID;
     m_uDataID                = INVALID_ID;
     memset(m_szName, 0, sizeof(m_szName));
@@ -122,22 +122,22 @@ VOID Obj_Monster::CleanUp( VOID )
 {
 __ENTER_FUNCTION
 
-    // ÏûÏ¢/ÊôĞÔË¢ĞÂ
+    // æ¶ˆæ¯/å±æ€§åˆ·æ–°
     m_AttrBackUp.CleanUp();
 
     // CoolDown
     m_nCooldown                = 0;
 
-    // Ğ§¹û
+    // æ•ˆæœ
     m_ImpactList.CleanUp();
 
-    // ÖØÉú
+    // é‡ç”Ÿ
     m_RespawnTime            = -1;
     m_RespawnTimer.CleanUp();
     m_RespawnDir            = -1.f;
     m_RespawnPos            = WORLD_POS(-1.f, -1.f);
 
-    // ÉËº¦ÁĞ±í
+    // ä¼¤å®³åˆ—è¡¨
     m_Own_TeamID            = INVALID_ID;
     m_OccupantGUID            = INVALID_GUID;
     m_DamageMemList.CleanUp();
@@ -149,13 +149,13 @@ __ENTER_FUNCTION
     m_LeaderID                = -1;
     m_PositionRange            = 0;
 
-    // NPCÉÌµê
+    // NPCå•†åº—
     SAFE_DELETE( m_pShopManager );
 
-    // ³èÎï¹«¸æ°å
+    // å® ç‰©å…¬å‘Šæ¿
     ReleasePetPlacardSystem();
 
-    // ÆäËû
+    // å…¶ä»–
     m_nPatrolID                = INVALID_ID;
     m_DropSearchRange        = 0.f;
     m_DropTeamCount            = 0;
@@ -166,7 +166,7 @@ __ENTER_FUNCTION
     //m_sKillObj;
     m_nKillCount            = 0;
 
-    // Ò»¼¶ÊôĞÔ
+    // ä¸€çº§å±æ€§
     m_GUID                    = INVALID_GUID;
     m_uDataID                = INVALID_ID;
     memset(m_szName, 0, sizeof(m_szName));
@@ -199,17 +199,17 @@ __ENTER_FUNCTION
         return FALSE;
 
     m_GUID                = pMonsterInit->m_GUID;
-    m_uDataID            = pMonsterInit->m_uDataID;        //¹ÖÎïÀàĞÍ
+    m_uDataID            = pMonsterInit->m_uDataID;        //æ€ªç‰©ç±»å‹
     if ( pMonsterInit->m_szName[0] == '\0' )
         strncpy( m_szName, pAttr->m_Name, sizeof( m_szName ) - 1 );
     else
         strncpy( m_szName, pMonsterInit->m_szName, sizeof( m_szName ) - 1 );
 
     strncpy( m_szTitle, pMonsterInit->m_szTitle, sizeof( m_szTitle ) - 1 );
-    m_RespawnTime        = pMonsterInit->m_RespawnTime;    //¹ÖÎïÉú³É¼ä¸ôÊ±¼ä
-    SetRespawnDir( pMonsterInit->m_Dir );            //¹ÖÎï·½Ïò
-    SetRespawnPos( &pMonsterInit->m_Pos );            //¹ÖÎïÎ»ÖÃ
-    m_RespawnTimer.BeginTimer( m_RespawnTime, 0 );        //³õÊ¼»¯ÖØÉú¼ÆÊ±Æ÷
+    m_RespawnTime        = pMonsterInit->m_RespawnTime;    //æ€ªç‰©ç”Ÿæˆé—´éš”æ—¶é—´
+    SetRespawnDir( pMonsterInit->m_Dir );            //æ€ªç‰©æ–¹å‘
+    SetRespawnPos( &pMonsterInit->m_Pos );            //æ€ªç‰©ä½ç½®
+    m_RespawnTimer.BeginTimer( m_RespawnTime, 0 );        //åˆå§‹åŒ–é‡ç”Ÿè®¡æ—¶å™¨
     m_nPatrolID            = pMonsterInit->m_nPatrolID;
     m_uGroupID            = pMonsterInit->m_uGroupID;
     m_uTeamID            = pMonsterInit->m_uTeamID;
@@ -239,14 +239,14 @@ __ENTER_FUNCTION
 
     GetMonsterAI()->GetScriptFile(m_AIScript);
 
-    //¸½¼ÓĞ§¹ûÊı¾İ
+    //é™„åŠ æ•ˆæœæ•°æ®
     Impact_InitList();
 
     Respawn( );
 
     InitBackupAttr();
 
-    //³õÊ¼»¯ÉÌµê
+    //åˆå§‹åŒ–å•†åº—
     BOOL hasShop = FALSE ;
     INT i ;
     for( i=0; i<MAX_SHOP_INIT; i++)
@@ -305,7 +305,7 @@ __ENTER_FUNCTION
     if ( !bResult )
         return bResult;
 
-    //ÓĞÉÌµê¾ÍÅÜÉÌµêÂß¼­
+    //æœ‰å•†åº—å°±è·‘å•†åº—é€»è¾‘
     if(m_pShopManager)    m_pShopManager->Tick(uTime );
 
     if(m_pPetPlacardSystem != NULL)
@@ -332,7 +332,7 @@ __ENTER_FUNCTION
         return FALSE ;
 
     if( m_RespawnTimer.CountingTimer(uTime) )
-    {//Ê¬ÌåÒÑ¾­ÏûÊ§£¬ÖØÉúÊ±¼äµ½
+    {//å°¸ä½“å·²ç»æ¶ˆå¤±ï¼Œé‡ç”Ÿæ—¶é—´åˆ°
         m_RespawnTimer.CleanUp();
         Respawn( );
     }
@@ -351,7 +351,7 @@ __ENTER_FUNCTION
     if ( getScene() != NULL )
     {
         if( !IsAlive() )
-        {//Ê¬Ìå
+        {//å°¸ä½“
             GCNewMonster_Death *pPacket = (GCNewMonster_Death*)(getScene()->m_pPacket_NewMonster_Death);
             pPacket->setObjID( GetID() );
             pPacket->setWorldPos( *(getWorldPos()) );
@@ -399,7 +399,7 @@ VOID Obj_Monster::DestroyNewObjPacket( Packet *pPacket )
 
 VOID Obj_Monster::OnDie_Before( ObjID_t idKiller )
 {
-    //¼ÆËã¹ÖÎïµôÂäÇé¿ö£¨¼´£ºË­ÓµÓĞµôÂäÎïÆ·£©
+    //è®¡ç®—æ€ªç‰©æ‰è½æƒ…å†µï¼ˆå³ï¼šè°æ‹¥æœ‰æ‰è½ç‰©å“ï¼‰
     m_DropRuler = MonsterDropRuler::GetMonsterDropRuler(this);
     switch(m_DropRuler) 
     {
@@ -441,14 +441,14 @@ VOID Obj_Monster::OnDie_After( ObjID_t idKiller )
 {
 __ENTER_FUNCTION
 
-    // È·¶¨ÓĞ¶àÉÙ¸ö¶ÓÓÑ¿ÉÒÔ·ÖÅäµ½¾­Ñé
+    // ç¡®å®šæœ‰å¤šå°‘ä¸ªé˜Ÿå‹å¯ä»¥åˆ†é…åˆ°ç»éªŒ
     INT nOwnerCount = GetOwnerList().OwnerCount;
     INT nValidMemberCount = 0;
     Obj_Human *apValidMember[MAX_TEAM_MEMBER];
 
-    // ÊÇ·ñĞèÒª½øĞĞÉÆ¶ñÖµ·ÖÅä
+    // æ˜¯å¦éœ€è¦è¿›è¡Œå–„æ¶å€¼åˆ†é…
     Obj_Human* pTeamLeader = NULL;
-    INT nValidNewbieMemberCount = 0;                        // ÓĞĞ§·¶Î§ÄÚ·ûºÏ¼¶±ğÌõ¼şµÄÍæ¼ÒÊıÁ¿
+    INT nValidNewbieMemberCount = 0;                        // æœ‰æ•ˆèŒƒå›´å†…ç¬¦åˆçº§åˆ«æ¡ä»¶çš„ç©å®¶æ•°é‡
 
     for( INT i=0; i<nOwnerCount; i++ )
     {
@@ -458,12 +458,12 @@ __ENTER_FUNCTION
             Assert(FALSE);
             break;
         }
-        if( !pMember->IsAlive() )//»îµÄÈË²ÅÄÜµÃµ½¾­Ñé
+        if( !pMember->IsAlive() )//æ´»çš„äººæ‰èƒ½å¾—åˆ°ç»éªŒ
             continue ;
 
         apValidMember[nValidMemberCount++] = pMember;
 
-        // ÅĞ¶ÏÊÇ·ñ¶Ó³¤£¬For ÉÆ¶ñÖµ
+        // åˆ¤æ–­æ˜¯å¦é˜Ÿé•¿ï¼ŒFor å–„æ¶å€¼
         if( pMember->GetTeamInfo()->IsLeader()
          && pMember->GetLevel() >= g_Config.m_ConfigInfo.m_nLevelNeeded
          )
@@ -479,7 +479,7 @@ __ENTER_FUNCTION
     
     MonsterExpCaculateRuler CaculateExp;
 
-    // ¶à¸öÍæ¼Ò¶¼¿ÉÒÔµÃµ½¾­Ñé
+    // å¤šä¸ªç©å®¶éƒ½å¯ä»¥å¾—åˆ°ç»éªŒ
     if ( nValidMemberCount > 1 )
     {
         INT nExp = (m_BaseExp + (m_BaseExp*(nValidMemberCount-1))/10) / nValidMemberCount;
@@ -487,10 +487,10 @@ __ENTER_FUNCTION
         INT i;
 
         for ( i = 0; i < nValidMemberCount; i++ )
-        { // ¼ÆËãÃ¿¸öÈËÓ¦µÃµÄ¾­ÑéÖµ
+        { // è®¡ç®—æ¯ä¸ªäººåº”å¾—çš„ç»éªŒå€¼
             auExp[i] = CaculateExp.CaculateBaseExp(GetLevel(),apValidMember[i]->GetLevel(),nExp);
 
-            // ÅĞ¶ÏÊÇ·ñ·ûºÏÌõ¼şµÄ¶ÓÔ±£¬For ÉÆ¶ñÖµ
+            // åˆ¤æ–­æ˜¯å¦ç¬¦åˆæ¡ä»¶çš„é˜Ÿå‘˜ï¼ŒFor å–„æ¶å€¼
             if( pTeamLeader != NULL
              && nExp == auExp[i]
              && apValidMember[i]->GetLevel() <= g_Config.m_ConfigInfo.m_nMemberLevel
@@ -501,7 +501,7 @@ __ENTER_FUNCTION
             }
         }
 
-        // Ôö¼ÓÉÆ¶ñÖµ
+        // å¢åŠ å–„æ¶å€¼
         //if( pTeamLeader != NULL )
         //{
         //    INT nBonus;
@@ -515,8 +515,8 @@ __ENTER_FUNCTION
         //    if( nBonus > 0 )
         //    {
         //        nBonus = pTeamLeader->IncGoodBadValue( nBonus );
-        //        // nBonus ÊÇÊµ¼ÊÔö¼ÓÖµ
-        //        // ·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë£¬ÒÔÏÔÊ¾ĞÅÏ¢ÌáÊ¾
+        //        // nBonus æ˜¯å®é™…å¢åŠ å€¼
+        //        // å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯ï¼Œä»¥æ˜¾ç¤ºä¿¡æ¯æç¤º
         //        GCNotifyGoodBad Msg;
         //        Msg.SetNotifyMode( NOTIFY_GOODBAD_HELPNEWBIE );
         //        Msg.SetValue( nBonus );
@@ -526,14 +526,14 @@ __ENTER_FUNCTION
         //}
 
         for ( i = 0; i < nValidMemberCount; i++ )
-        { // Ôö¼Ó¾­ÑéÖµ
+        { // å¢åŠ ç»éªŒå€¼
             if(auExp[i]>0)
             {
                 apValidMember[i]->SetMonsterAlterExp(auExp[i]);
             }
             apValidMember[i]->OnKillObject( GetID() );
 
-            // ÔÚ´Ë¼ÓÈëÍæ¼ÒµÄ³èÎïÔö¼Ó¾­ÑéµÄSection
+            // åœ¨æ­¤åŠ å…¥ç©å®¶çš„å® ç‰©å¢åŠ ç»éªŒçš„Section
             Obj_Pet* pPet = apValidMember[i]->GetPet();
             if (pPet)
             {
@@ -548,7 +548,7 @@ __ENTER_FUNCTION
             if( pRelation == NULL ) continue;
             //Assert( pRelation );
 
-            // Ôö¼ÓÓÑºÃ¶È
+            // å¢åŠ å‹å¥½åº¦
             for ( INT j = i+1; j < nValidMemberCount; ++j )
             {
                 GUID_t FriendGUID;
@@ -559,9 +559,9 @@ __ENTER_FUNCTION
                 //Assert(pFriendRelation);
 
                 if ( pFriendRelation && pRelation->IsFriend( FriendGUID ) && pFriendRelation->IsFriend( MyGUID ) )
-                { // Èç¹ûÊÇºÃÓÑ
+                { // å¦‚æœæ˜¯å¥½å‹
                     if ( auExp[i] >= uExpPoint || auExp[j] >= uExpPoint )
-                    { // ·ûºÏÌõ¼ş
+                    { // ç¬¦åˆæ¡ä»¶
                         pRelation->IncFriendPoint( FriendGUID );
                         pFriendRelation->IncFriendPoint( MyGUID );
                     }
@@ -569,7 +569,7 @@ __ENTER_FUNCTION
             }
         }
     }
-    // µ¥¸öÍæ¼ÒµÃµ½¾­Ñé
+    // å•ä¸ªç©å®¶å¾—åˆ°ç»éªŒ
     else if( nValidMemberCount==1 )
     {
         UINT iAddExp = CaculateExp.CaculateBaseExp(GetLevel(),apValidMember[0]->GetLevel(),m_BaseExp);
@@ -579,7 +579,7 @@ __ENTER_FUNCTION
         }
         apValidMember[0]->OnKillObject( GetID() ) ;
 
-        // ÔÚ´Ë¼ÓÈëÍæ¼ÒµÄ³èÎïÔö¼Ó¾­ÑéµÄSection
+        // åœ¨æ­¤åŠ å…¥ç©å®¶çš„å® ç‰©å¢åŠ ç»éªŒçš„Section
         Obj_Pet* pPet = apValidMember[0]->GetPet();
         if (pPet)
         {
@@ -590,7 +590,7 @@ __ENTER_FUNCTION
 
     }    
 
-    //¸ù¾İµôÂä¹æÔò£¬¼ÆËãµôÂä°üµôÂä´¦Àí
+    //æ ¹æ®æ‰è½è§„åˆ™ï¼Œè®¡ç®—æ‰è½åŒ…æ‰è½å¤„ç†
     switch(m_DropRuler) 
     {
     case BDR_COMMON:
@@ -642,7 +642,7 @@ BOOL Obj_Monster::Respawn( VOID )
 __ENTER_FUNCTION
 
     
-    Assert( !IsActiveObj() );//ËÀÍöµÄ¹ÖÎï²ÅĞèÒª¸´»î
+    Assert( !IsActiveObj() );//æ­»äº¡çš„æ€ªç‰©æ‰éœ€è¦å¤æ´»
 
     FLOAT fDir;
     WORLD_POS Pos;
@@ -653,7 +653,7 @@ __ENTER_FUNCTION
     setWorldPos( &Pos );
     UpdateZone();
 
-    //ÉèÖÃÊı¾İ
+    //è®¾ç½®æ•°æ®
     SetHP( GetMaxHP() );
     m_nKillCount = 0;
     memset(m_sKillObj,-1,sizeof(m_sKillObj));
@@ -707,7 +707,7 @@ __ENTER_FUNCTION
     //    oId = 0;
     //}
 
-    { //·ÖÉí×¨ÓÃ
+    { //åˆ†èº«ä¸“ç”¨
         SOT_ShadowGuard_T logic;
         pImp = Impact_GetFirstImpactOfSpecificLogicID(logic.ID);
         if(NULL!=pImp)
@@ -723,7 +723,7 @@ __ENTER_FUNCTION
             }
         }
     } while(0);
-    { //²ß»®×¨ÓÃ
+    { //ç­–åˆ’ä¸“ç”¨
         SOT_XingXiu011_T logic;
         pImp = Impact_GetFirstImpactOfSpecificLogicID(logic.ID);
         if(NULL!=pImp)
@@ -936,7 +936,7 @@ VOID Obj_Monster::UpdateDamageList(INT nDamage, Obj_Character* pAttacker)
             if( GetOccupantTeamID()==INVALID_ID && GetOccupantGUID()==INVALID_ID )
             {
                 if( (TotalDamage*100/(GetMaxHP()+1))>10 )
-                {//µÚÒ»¸ö½«¹ÖÎïÑª´òµô10£¥µÄÈË
+                {//ç¬¬ä¸€ä¸ªå°†æ€ªç‰©è¡€æ‰“æ‰10ï¼…çš„äºº
                     if( pHuman->__GetTeamID()!=INVALID_ID )
                     {
                         SetOccupantTeamID( pHuman->__GetTeamID() ) ;
@@ -999,15 +999,15 @@ INT     Obj_Monster::GetMonsterAIType(VOID)
     //INT nAIType = GetAIType();
     //INT nRet = GCCharBaseAttrib::CHAR_AI_TYPE_INVALID;
     //if (g_MonsterAITbl.Get(nAIType, AIPARAM_SCANTIME) > 0)
-    //{// Ö÷¶¯½ø¹¥NPC
+    //{// ä¸»åŠ¨è¿›æ”»NPC
     //    nRet = GCCharBaseAttrib::CHAR_AI_TYPE_SCANNPC;
     //}
     //else if (TRUE == IsUnbreakable())
-    //{// ²»¿ÉÒÔ¹¥»÷NPC
+    //{// ä¸å¯ä»¥æ”»å‡»NPC
     //    nRet = GCCharBaseAttrib::CHAR_AI_TYPE_CANNOTATTACK;
     //}
     //else if (g_MonsterAITbl.Get(nAIType, AIPARAM_SCANTIME) <= 0)
-    //{// ·ÇÖ÷¶¯½ø¹¥NPC
+    //{// éä¸»åŠ¨è¿›æ”»NPC
     //    nRet = GCCharBaseAttrib::CHAR_AI_TYPE_NOTSCANNPC;
     //}
     //else
@@ -1026,9 +1026,9 @@ INT     Obj_Monster::GetMonsterAIType(VOID)
 //        return ;
 //    }
 //
-//    // ÉèÖÃ³ÉÖ÷¶¯É¨Ãè¹Ö
+//    // è®¾ç½®æˆä¸»åŠ¨æ‰«ææ€ª
 //    SetAIType(SCANMONSTER);
-//    // ½«¹ÖÎïµÄÕóÓªÉèÖÃ³ÉpCharacterµÄÕóÓª
+//    // å°†æ€ªç‰©çš„é˜µè¥è®¾ç½®æˆpCharacterçš„é˜µè¥
 //    SetBaseCampID(pCharacter->GetBaseCampID() );
 //
 //    __LEAVE_FUNCTION
@@ -1062,8 +1062,8 @@ VOID    Obj_Monster::PaoPao(INT idPaoPaoBase, INT idPaoPaoStep)
         return ;
     }
     INT idPaoPao = rand() % idPaoPaoStep + idPaoPaoBase;
-    // Í¨¹ıÁÄÌìÍ¨µÀÏòÖÜÎ§µÄhuman¹ã²¥
-    // ·¢ËÍµÄ¸ñÊ½ÈçÏÂ
+    // é€šè¿‡èŠå¤©é€šé“å‘å‘¨å›´çš„humanå¹¿æ’­
+    // å‘é€çš„æ ¼å¼å¦‚ä¸‹
     /* @*;npcpaopao;idObj;idPaoPao */
     CHAR szContex[64];
     memset(szContex, 0, 64);

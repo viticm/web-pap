@@ -26,21 +26,21 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //����߳�ִ����Դ�Ƿ���ȷ
+    //检查线程执行资源是否正确
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     
     
-    //��������
+    //设置门派
     //pHuman->GetDB()->SetMenPai(pPacket->GetMenpaiID());
 
-    //�����ķ�
+    //设置心法
     
 
-    //���ü���
+    //设置技能
     
 
-    //֪ͨ�ͻ��˼���Ľ��,�ɿͻ����Լ�ȥ��ģ���ڵ����ݸı��Լ���ֵ
+    //通知客户端加入的结果,由客户端自己去用模板内的数据改变自己的值
     //GCJoinMenpai Msg;
     //Msg.SetIsSucceedJoin(JOINMENPAI_SUCCEED);
 

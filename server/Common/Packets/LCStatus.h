@@ -16,7 +16,7 @@ namespace Packets
         LCStatus( ){} ;
         virtual ~LCStatus( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,7 +28,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
 
         USHORT                    GetTurnNumber()
         {
@@ -51,9 +51,9 @@ namespace Packets
         }
 
     private:
-        //Êı¾İ
-        USHORT                    TurnNumber;        //ÅÅ¶ÓÃû´Î
-        CLIENT_TURN_STATUS        ClientStatus;    //µ±Ç°×´Ì¬
+        //æ•°æ®
+        USHORT                    TurnNumber;        //æ’é˜Ÿåæ¬¡
+        CLIENT_TURN_STATUS        ClientStatus;    //å½“å‰çŠ¶æ€
     };
 
     class LCStatusFactory : public PacketFactory 

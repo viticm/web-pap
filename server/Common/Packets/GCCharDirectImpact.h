@@ -1,7 +1,7 @@
 
 // GCCharDirectImpact.h
 // 
-// ¼¼ÄÜ×÷ÓÃ:Ò»´ÎĞÔĞ§¹û(ÉËº¦»òÆäËûµÄ)
+// æŠ€èƒ½ä½œç”¨:ä¸€æ¬¡æ€§æ•ˆæœ(ä¼¤å®³æˆ–å…¶ä»–çš„)
 // 
 //////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ namespace Packets
         }
         virtual ~GCCharDirectImpact(){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL        Read( SocketInputStream& iStream ) ;
         virtual BOOL        Write( SocketOutputStream& oStream )const ;
         virtual UINT        Execute( Player* pPlayer ) ;
@@ -43,7 +43,7 @@ namespace Packets
                                     +    sizeof(m_nSkillID);
                             }
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         ObjID_t            GetReceiverID(VOID) const {return m_nReceiverID;}
         VOID            SetReceiverID(ObjID_t nID) {m_nReceiverID=nID;}
 
@@ -60,11 +60,11 @@ namespace Packets
         VOID            SetSkillID(SkillID_t nID) {m_nSkillID=nID;}
 
     private:
-        ObjID_t            m_nReceiverID;        // Ğ§¹û½ÓÊÜÕßµÄID
-        ObjID_t            m_nSenderID;        // Ğ§¹ûÊ©·ÅÕßµÄID
-        INT                m_nSenderLogicCount;// ¹¥»÷ÕßµÄÂß¼­¼ÆÊı
-        ImpactID_t        m_nImpactID;        // Ğ§¹ûID //²Î¿¼GameStruct_Impact.hµÄDIRECT_IMPACT_SEID
-        SkillID_t        m_nSkillID;            // ¼¼ÄÜµÄID
+        ObjID_t            m_nReceiverID;        // æ•ˆæœæ¥å—è€…çš„ID
+        ObjID_t            m_nSenderID;        // æ•ˆæœæ–½æ”¾è€…çš„ID
+        INT                m_nSenderLogicCount;// æ”»å‡»è€…çš„é€»è¾‘è®¡æ•°
+        ImpactID_t        m_nImpactID;        // æ•ˆæœID //å‚è€ƒGameStruct_Impact.hçš„DIRECT_IMPACT_SEID
+        SkillID_t        m_nSkillID;            // æŠ€èƒ½çš„ID
     };
 
 

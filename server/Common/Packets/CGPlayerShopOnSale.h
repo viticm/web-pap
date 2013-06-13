@@ -1,6 +1,6 @@
 // CGPlayerShopOnSale.h
 // 
-// Í¨Öª·şÎñÆ÷ÉÌÆ·ÉÏ¼Ü
+// é€šçŸ¥æœåŠ¡å™¨å•†å“ä¸Šæ¶
 // 
 //////////////////////////////////////////////////////
 
@@ -19,14 +19,14 @@ namespace Packets
     public:
         CGPlayerShopOnSale( )
         {
-            m_StallIndex    =    0;    //¹ñÌ¨ID
-            m_nSerial        =    0;    //µ±Ç°ĞòÁĞºÅ
-            m_nPrice        =    0;    //¼Û¸ñ
-            m_bIsOnSale        =    0;    //ÊÇ·ñÉÏ¼Ü
+            m_StallIndex    =    0;    //æŸœå°ID
+            m_nSerial        =    0;    //å½“å‰åºåˆ—å·
+            m_nPrice        =    0;    //ä»·æ ¼
+            m_bIsOnSale        =    0;    //æ˜¯å¦ä¸Šæ¶
         };
         virtual ~CGPlayerShopOnSale( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -66,14 +66,14 @@ namespace Packets
         VOID                    SetShopSerial(BYTE nSerial) {m_nShopSerial = nSerial;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
-        BYTE                    m_StallIndex;        //¹ñÌ¨ID
-        _ITEM_GUID                m_ItemGuid;            //ÎïÆ·GUID
-        PET_GUID_t                m_PetGuid;            //³èÎïGUID
-        UINT                    m_nSerial;            //µ±Ç°ĞòÁĞºÅ
-        UINT                    m_nPrice;            //¼Û¸ñ
-        BYTE                    m_bIsOnSale;        //ÊÇ·ñÉÏ¼Ü
-        BYTE                    m_nShopSerial;            //ÉÌµêĞòÁĞºÅ
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
+        BYTE                    m_StallIndex;        //æŸœå°ID
+        _ITEM_GUID                m_ItemGuid;            //ç‰©å“GUID
+        PET_GUID_t                m_PetGuid;            //å® ç‰©GUID
+        UINT                    m_nSerial;            //å½“å‰åºåˆ—å·
+        UINT                    m_nPrice;            //ä»·æ ¼
+        BYTE                    m_bIsOnSale;        //æ˜¯å¦ä¸Šæ¶
+        BYTE                    m_nShopSerial;            //å•†åº—åºåˆ—å·
     };
 
     class CGPlayerShopOnSaleFactory : public PacketFactory 

@@ -66,7 +66,7 @@ BOOL    Obj_Monster::HeartBeat_Recover(UINT uTime)
     }
     if(0<nCount)
     {
-        /** 进行回红操作 */
+        /** 杩涜鍥炵孩鎿嶄綔 */
         INT nCur = GetHP( ); 
         INT nMax = GetMaxHP();
         INT nHPRegenerate = GetHPRegenerate();

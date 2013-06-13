@@ -1,6 +1,6 @@
 // CGAskDetailAttrib.h
 // 
-// È¡½ÇÉ«µÄÏêÏ¸ÊôĞÔ
+// å–è§’è‰²çš„è¯¦ç»†å±æ€§
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
     CGAskDetailAttrib( ){}
     virtual ~CGAskDetailAttrib( ){}
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,13 +28,13 @@ public:
     virtual UINT            GetPacketSize()const { return sizeof(ObjID_t) ; }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     ObjID_t                    getTargetID(VOID) { return m_ObjID; }
     VOID                    setTargetID(ObjID_t idTarget) { m_ObjID = idTarget; }
 
 private:
-    //Êı¾İ
-    ObjID_t                    m_ObjID;    //¶Ô·½µÄObjID
+    //æ•°æ®
+    ObjID_t                    m_ObjID;    //å¯¹æ–¹çš„ObjID
 };
 
 

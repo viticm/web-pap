@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÉêÇë°ÚÌ¯
+å®¢æˆ·ç«¯ç”³è¯·æ‘†æ‘Š
 */
 
 #include "CGPlayerShopApply.h"
@@ -29,7 +29,7 @@ UINT CGPlayerShopApplyHandler::Execute( CGPlayerShopApply* pPacket, Player* pPla
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     pScene->GetPlayerShopManager()->ClampComFactor();
@@ -39,7 +39,7 @@ UINT CGPlayerShopApplyHandler::Execute( CGPlayerShopApply* pPacket, Player* pPla
 
     GCPlayerShopError MsgError;
 
-    //ÑéÖ¤ÊÇ·ñÓÐ×Ê¸ñ°ÚÌ¯
+    //éªŒè¯æ˜¯å¦æœ‰èµ„æ ¼æ‘†æ‘Š
     //if(pHuman->GetLevel()<30)
     //{
     //    MsgError.SetID(PLAYERSHOP_MSG::ERR_NOT_ENOUGH_LEVEL);
@@ -53,7 +53,7 @@ UINT CGPlayerShopApplyHandler::Execute( CGPlayerShopApply* pPacket, Player* pPla
     Msg.SetCost(Cost);
     Msg.SetType(PLAYERSHOP_MSG::TYPE_ITEM);
 
-    //ÑéÖ¤Íê±Ï,Í¨Öª¿Í»§¶ËÈ·¶¨
+    //éªŒè¯å®Œæ¯•,é€šçŸ¥å®¢æˆ·ç«¯ç¡®å®š
     pGamePlayer->SendPacket(&Msg);
 
 

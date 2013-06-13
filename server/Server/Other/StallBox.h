@@ -8,7 +8,7 @@ class Obj_Human;
 class StallInfoManager;
 struct _ITEM;
 /*
-·şÎñÆ÷¶ËÌ¯Î»ºĞ½á¹¹.
+æœåŠ¡å™¨ç«¯æ‘Šä½ç›’ç»“æ„.
 */
 class ServerStallBox
 {
@@ -30,27 +30,27 @@ public:
 
 public:
     /*
-    ³õÊ¼»¯×Ô¼ºÌ¯Î»ºĞ
+    åˆå§‹åŒ–è‡ªå·±æ‘Šä½ç›’
     */
     VOID Init(Obj_Human* pHuman);
 
     /*
-    Çå¿Õ
+    æ¸…ç©º
     */
     VOID CleanUp();
 
     /*
-    Ì¯Ö÷×Ô¼º,Ò»µ©³õÊ¼»¯Íê²»»áÔÙ¸Ä
+    æ‘Šä¸»è‡ªå·±,ä¸€æ—¦åˆå§‹åŒ–å®Œä¸ä¼šå†æ”¹
     */
     Obj_Human*    GetMySelf(){return m_pMySelf;}
 
     /*
-    ½áËùÓĞËø
+    ç»“æ‰€æœ‰é”
     */
     VOID    UnLockAllItem();
 
     /*
-    Î»ÖÃÊÍ·Å
+    ä½ç½®é‡Šæ”¾
     */
     VOID    UnLockMapPos();
 public:
@@ -73,7 +73,7 @@ public:
     UINT    GetFirstPage(){return m_nFirstPage;}
     VOID    SetFirstPage(UINT nFirstPage){m_nFirstPage = nFirstPage;}
 
-    //ÎïÆ·ĞÅÏ¢´¦Àí
+    //ç‰©å“ä¿¡æ¯å¤„ç†
     UINT    GetSerialByIndex(UINT index)
     {
         if(index>=0 && index<STALL_BOX_SIZE)
@@ -108,7 +108,7 @@ public:
             m_ItemPrice[index] = nPrice;
     }
 
-    //³èÎïĞÅÏ¢´¦Àí
+    //å® ç‰©ä¿¡æ¯å¤„ç†
     UINT    GetPetSerialByIndex(UINT index)
     {
         if(index>=0 && index<STALL_PET_BOX_SIZE)
@@ -155,31 +155,31 @@ public:
 
     ServerBBS*        GetBBS()    {return &m_StallBBS;}
 private:
-    Obj_Human*        m_pMySelf;                //Ö¸Ïò×Ô¼ºµÄÖ¸Õë£¬ÓÃÕâ¸ö¿ÉÒÔÕÒµ½×Ô¼ºÉíÉÏµÄ¶«Î÷
-    BOOL            m_IsOpen;                //Ì¯Î»ÊÇ·ñÒÑ¾­´ò¿ª
-    BYTE            m_StallStatus;            //µ±Ç°Ì¯Î»ÊÇ·ñÔÚ±»´ò¿ª
-    UINT            m_PosTax;                //Ì¯Î»·Ñ
-    UINT            m_TradeTax;                //Ã¿´Î½»Ò×Ë°ÊÕ
-    CHAR            m_szStallName[MAX_STALL_NAME];            //±êÊ¾Ì¯Î»Ãû
-    UINT            m_nFirstPage;                //ÆğÊ¼Ò³
-    UINT            m_ItemSerial[STALL_BOX_SIZE];//Ã¿¸öÉÌÆ·µÄĞòÁĞºÅ
-    UINT            m_ItemPrice[STALL_BOX_SIZE];//Ã¿¸öÉÌÆ·µÄ¼Û¸ñ
+    Obj_Human*        m_pMySelf;                //æŒ‡å‘è‡ªå·±çš„æŒ‡é’ˆï¼Œç”¨è¿™ä¸ªå¯ä»¥æ‰¾åˆ°è‡ªå·±èº«ä¸Šçš„ä¸œè¥¿
+    BOOL            m_IsOpen;                //æ‘Šä½æ˜¯å¦å·²ç»æ‰“å¼€
+    BYTE            m_StallStatus;            //å½“å‰æ‘Šä½æ˜¯å¦åœ¨è¢«æ‰“å¼€
+    UINT            m_PosTax;                //æ‘Šä½è´¹
+    UINT            m_TradeTax;                //æ¯æ¬¡äº¤æ˜“ç¨æ”¶
+    CHAR            m_szStallName[MAX_STALL_NAME];            //æ ‡ç¤ºæ‘Šä½å
+    UINT            m_nFirstPage;                //èµ·å§‹é¡µ
+    UINT            m_ItemSerial[STALL_BOX_SIZE];//æ¯ä¸ªå•†å“çš„åºåˆ—å·
+    UINT            m_ItemPrice[STALL_BOX_SIZE];//æ¯ä¸ªå•†å“çš„ä»·æ ¼
 
     ItemContainer    m_Container;                    //CONTAINER
-    _ITEM            m_ItemList[STALL_BOX_SIZE];        //ÎïÆ·µÄÕæÊµÊı¾İ
+    _ITEM            m_ItemList[STALL_BOX_SIZE];        //ç‰©å“çš„çœŸå®æ•°æ®
 
-    UINT            m_PetSerial[STALL_PET_BOX_SIZE];//Ã¿¸ö³èÎïµÄĞòÁĞºÅ
-    UINT            m_PetPrice[STALL_PET_BOX_SIZE];    //Ã¿¸ö³èÎïµÄ¼Û¸ñ
+    UINT            m_PetSerial[STALL_PET_BOX_SIZE];//æ¯ä¸ªå® ç‰©çš„åºåˆ—å·
+    UINT            m_PetPrice[STALL_PET_BOX_SIZE];    //æ¯ä¸ªå® ç‰©çš„ä»·æ ¼
 
-    ItemContainer    m_PetContainer;                        //Ì¯Î»ºĞÖĞµÄ³èÎïÈİÆ÷
-    _PET_DB_LOAD    m_PetItemList[STALL_PET_BOX_SIZE];    //³èÎïµÄÕæÊµÊı¾İ
+    ItemContainer    m_PetContainer;                        //æ‘Šä½ç›’ä¸­çš„å® ç‰©å®¹å™¨
+    _PET_DB_LOAD    m_PetItemList[STALL_PET_BOX_SIZE];    //å® ç‰©çš„çœŸå®æ•°æ®
 
-    UINT            m_SerialIncStep;        //ĞòÁĞºÅµİÔö²½³¤        
-    ServerBBS        m_StallBBS;                //Ì¯Î»ÁôÑÔ°å
+    UINT            m_SerialIncStep;        //åºåˆ—å·é€’å¢æ­¥é•¿        
+    ServerBBS        m_StallBBS;                //æ‘Šä½ç•™è¨€æ¿
 
-    StallInfoManager* m_pStallInfoMgr;            //Ì¯Î»ĞÅÏ¢¹ÜÀíÆ÷
-    UINT            m_PosX;                    //Ì¯Î»µÄÎ»ÖÃ¼ÇÂ¼ÏÂÀ´,¹©CleanUpÊ¹ÓÃ
-    UINT            m_PosZ;                    //Ì¯Î»µÄÎ»ÖÃ¼ÇÂ¼ÏÂÀ´,¹©CleanUpÊ¹ÓÃ
+    StallInfoManager* m_pStallInfoMgr;            //æ‘Šä½ä¿¡æ¯ç®¡ç†å™¨
+    UINT            m_PosX;                    //æ‘Šä½çš„ä½ç½®è®°å½•ä¸‹æ¥,ä¾›CleanUpä½¿ç”¨
+    UINT            m_PosZ;                    //æ‘Šä½çš„ä½ç½®è®°å½•ä¸‹æ¥,ä¾›CleanUpä½¿ç”¨
 
 };
 

@@ -327,11 +327,11 @@ UINT                HumanDB::GetEquipID(HUMAN_EQUIP    equipPoint)
 }
 
 
-INT                    HumanDB::GetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType)              //Ò»¼¶ÊôÐÔGET
+INT                    HumanDB::GetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType)              //ä¸€çº§å±žæ€§GET
 {
     return     m_dbHuman->m_BaseAttrLevel1.Get(enAttrType) ;
 }
-VOID                HumanDB::SetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType,INT iValue)    //Ò»¼¶ÊôÐÔSET
+VOID                HumanDB::SetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType,INT iValue)    //ä¸€çº§å±žæ€§SET
 {
         m_dbHuman->m_BaseAttrLevel1.Set(enAttrType,iValue) ;
         SetDBEnumAttrDirty((CHAR_ATTR_DB)(CATTR_DB_STR+enAttrType));
@@ -339,7 +339,7 @@ VOID                HumanDB::SetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType,INT iValu
 INT                    HumanDB::GetRemainPoints()
 {
     return m_dbHuman->m_Level1Points;
-}    //Ê£ÓàÒ»¼¶ÊôÐÔ
+}    //å‰©ä½™ä¸€çº§å±žæ€§
 VOID                HumanDB::SetDBRemainPoints(INT Point)
 { 
     m_dbHuman->m_Level1Points=Point;
@@ -638,7 +638,7 @@ VOID                HumanDB::OverWriteBank2Equip(HUMAN_EQUIP    equipPoint, UINT
 
 
 
-//position ²»ÊµÊ±Ð´Êý¾Ý¿â
+//position ä¸å®žæ—¶å†™æ•°æ®åº“
 VOID                HumanDB::SetDBPosition(const WORLD_POS& pos)
 {
     m_dbHuman->m_Position    =    pos;
@@ -659,47 +659,47 @@ inline  const WORLD_POS*    HumanDB::GetDBBakPosition()
 {
     return &m_dbHuman->m_BakPosition;
 }
-//Íæ¼Òlogout Ê±µ÷ÓÃµÄº¯Êý
+//çŽ©å®¶logout æ—¶è°ƒç”¨çš„å‡½æ•°
 VOID                HumanDB::WriteDBPosition(WORLD_POS& pos)
 {
     m_dbHuman->m_Position    =    pos;
     SetDBEnumAttrDirty(CATTR_DB_AT_POSITION);
 }
 
-VOID                HumanDB::SetOnlineTime(UINT uTime)    //ÉèÖÃ×ÜÔÚÏßÊ±¼ä
+VOID                HumanDB::SetOnlineTime(UINT uTime)    //è®¾ç½®æ€»åœ¨çº¿æ—¶é—´
 {
     m_dbHuman->m_OnlineTime = uTime;
     SetDBEnumAttrDirty(CATTR_DB_ONLINETIME);
 }
-UINT                HumanDB::GetOnlineTime()            //È¡µÃ×ÜÔÚÏßÊ±¼ä    
+UINT                HumanDB::GetOnlineTime()            //å–å¾—æ€»åœ¨çº¿æ—¶é—´    
 {
     return m_dbHuman->m_OnlineTime;
 }
-VOID                HumanDB::SetLoginTime(UINT uTime)    //ÉèÖÃ×îºóµÇÂ¼Ê±¼ä
+VOID                HumanDB::SetLoginTime(UINT uTime)    //è®¾ç½®æœ€åŽç™»å½•æ—¶é—´
 {
     m_dbHuman->m_LastLoginTime = uTime;
     SetDBEnumAttrDirty(CATTR_DB_LASTLOGINTIME);
 }
-UINT                HumanDB::GetLoginTime()                //È¡µÃ×îºóµÇÂ¼Ê±¼ä
+UINT                HumanDB::GetLoginTime()                //å–å¾—æœ€åŽç™»å½•æ—¶é—´
 {
     return m_dbHuman->m_LastLoginTime;
 }
-VOID                HumanDB::SetLogoutTime(UINT uTime)    //ÉèÖÃ×îºóÏÂÏßÊ±¼ä
+VOID                HumanDB::SetLogoutTime(UINT uTime)    //è®¾ç½®æœ€åŽä¸‹çº¿æ—¶é—´
 {
     m_dbHuman->m_LastLogoutTime = uTime;
     SetDBEnumAttrDirty(CATTR_DB_LASTLOGOUTTIME);
 }
-UINT                HumanDB::GetLogoutTime()            //È¡µÃ×îºóÏÂÏßÊ±¼ä
+UINT                HumanDB::GetLogoutTime()            //å–å¾—æœ€åŽä¸‹çº¿æ—¶é—´
 {
     return m_dbHuman->m_LastLogoutTime;
 }
 
-inline  VOID        HumanDB::SetDBVersion(UINT Ver)        //ÉèÖÃÊý¾Ý¿â°æ±¾
+inline  VOID        HumanDB::SetDBVersion(UINT Ver)        //è®¾ç½®æ•°æ®åº“ç‰ˆæœ¬
 {
     m_dbHuman->m_DBVersion = Ver;
     SetDBEnumAttrDirty(CATTR_DB_DBVERSION);
 }
-inline  UINT        HumanDB::GetDBVersion()                //È¡µÃÊý¾Ý¿â°æ±¾
+inline  UINT        HumanDB::GetDBVersion()                //å–å¾—æ•°æ®åº“ç‰ˆæœ¬
 {
     return m_dbHuman->m_DBVersion;
 }
@@ -734,7 +734,7 @@ VOID                HumanDB::SetDBTeamID( TeamID_t teamID )
 
 
 //////////////////////////////////////////////////////////////////////////
-//±³°üÊý¾Ý·ÃÎÊ·½·¨        
+//èƒŒåŒ…æ•°æ®è®¿é—®æ–¹æ³•        
 //////////////////////////////////////////////////////////////////////////
 VOID                HumanDB::EraseBagItem(UINT BagIndex)
 {
@@ -859,7 +859,7 @@ inline BOOL            HumanDB::IsCooldowned(CooldownID_t nID) const
 }
 inline VOID            HumanDB::HeartBeat_Cooldown(Time_t nDeltaTime)
 {
-    //ÕâÀï²»¼ÓÔà±ê¼Ç
+    //è¿™é‡Œä¸åŠ è„æ ‡è®°
     m_dbCooldown->HeartBeat(nDeltaTime);
 }
 inline Time_t        HumanDB::GetCooldownRemain(CooldownID_t nID) const
@@ -999,7 +999,7 @@ inline VOID HumanDB::ClearMission(UINT uIndex)
 }
 
 //////////////////////////////////////////////////////////////////////////
-//¹ØÏµÊý¾Ý·ÃÎÊ·½·¨
+//å…³ç³»æ•°æ®è®¿é—®æ–¹æ³•
 //////////////////////////////////////////////////////////////////////////
 
 VOID                HumanDB::SetRelation(INT Index, const _OWN_RELATION* pRelation)
@@ -1170,11 +1170,11 @@ VOID                HumanDB::SetPrescrLearnedFlag(const PrescriptionID_t prescri
     }
 
     if ( flag != FALSE )
-    { // Ñ§»á
+    { // å­¦ä¼š
         m_dbAbility->m_aPrescr[idx>>3] |= (0x01<<idx%8);
     }
     else
-    { // ·ÅÆú
+    { // æ”¾å¼ƒ
         m_dbAbility->m_aPrescr[idx>>3] &= ~(0x01<<idx%8);
     }
 

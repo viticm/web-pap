@@ -132,16 +132,16 @@ __ENTER_FUNCTION
 
     INT i;
 
-    // ÏûÏ¢/ÊôĞÔË¢ĞÂ
+    // æ¶ˆæ¯/å±æ€§åˆ·æ–°
     //m_AttrBackUp.CleanUp();
 
-    // ¿ìÀÖ¶È±ä»¯¹æÔò
+    // å¿«ä¹åº¦å˜åŒ–è§„åˆ™
     //m_HappinessTimer.CleanUp();
 
-    // ÊÙÃü±ä»¯¹æÔò
+    // å¯¿å‘½å˜åŒ–è§„åˆ™
     //m_LifeTimer.CleanUp();
 
-    // Ğ§¹û
+    // æ•ˆæœ
     //m_ImpactList.CleanUp();
 
     // Capturer
@@ -162,7 +162,7 @@ __ENTER_FUNCTION
     m_RespawnPos        = WORLD_POS( -1.f, -1.f );
     m_RespawnTime        = 0;
 
-    // Ò»¼¶ÊôĞÔ
+    // ä¸€çº§å±æ€§
     m_GUID                = INVALID_GUID;
     m_PetDB.CleanUp();
     m_CreatorID            = INVALID_ID;
@@ -190,16 +190,16 @@ __ENTER_FUNCTION
 
     INT i;
 
-    // ÏûÏ¢/ÊôĞÔË¢ĞÂ
+    // æ¶ˆæ¯/å±æ€§åˆ·æ–°
     m_AttrBackUp.CleanUp();
 
-    // ¿ìÀÖ¶È±ä»¯¹æÔò
+    // å¿«ä¹åº¦å˜åŒ–è§„åˆ™
     m_HappinessTimer.CleanUp();
 
-    // ÊÙÃü±ä»¯¹æÔò
+    // å¯¿å‘½å˜åŒ–è§„åˆ™
     m_LifeTimer.CleanUp();
 
-    // Ğ§¹û
+    // æ•ˆæœ
     m_ImpactList.CleanUp();
 
     // Capturer
@@ -220,7 +220,7 @@ __ENTER_FUNCTION
     m_RespawnPos        = WORLD_POS( -1.f, -1.f );
     m_RespawnTime        = 0;
 
-    // Ò»¼¶ÊôĞÔ
+    // ä¸€çº§å±æ€§
     m_GUID                = INVALID_GUID;
     m_CreatorID            = INVALID_ID;
     m_pCreator            = NULL;
@@ -274,12 +274,12 @@ __ENTER_FUNCTION
     m_HappinessTimer.BeginTimer( g_Config.m_ConfigInfo.m_PetHappinessInterval, g_pTimeManager->CurrentTime() );
     m_LifeTimer.BeginTimer( g_Config.m_ConfigInfo.m_PetLifeInterval, g_pTimeManager->CurrentTime() );
 
-    // Èç¹ûÕĞºôÕßÓĞĞ§Ôò½«¸Ã³èÎïËùÓĞµÄ¼¼ÄÜ»º´æÆğÀ´
+    // å¦‚æœæ‹›å‘¼è€…æœ‰æ•ˆåˆ™å°†è¯¥å® ç‰©æ‰€æœ‰çš„æŠ€èƒ½ç¼“å­˜èµ·æ¥
     if (m_pCreator)
     {
         Item* pPetItem = m_pCreator->GetPetItem(GetPetGUID());
         Assert(pPetItem);
-        // ÉèÖÃAIÀàĞÍ
+        // è®¾ç½®AIç±»å‹
         SetAIType(pPetItem->GetAIType() );
         for (INT i = 0; i < PET_MAX_SKILL_COUNT; ++i)
         {
@@ -295,16 +295,16 @@ __ENTER_FUNCTION
         //}
     }
     else
-    {// ÔÚpet³õÊ¼»¯µÄÊ±ºò¾ÍÉú³É³èÎïµÄËùÓĞÊôĞÔ(Ö»ÓĞÃ»ÓĞÖ÷ÈËµÄ³èÎïµÚÒ»´ÎÉú³ÉÊ±²Å¹¹ÔìËùÓĞÊôĞÔ)
+    {// åœ¨petåˆå§‹åŒ–çš„æ—¶å€™å°±ç”Ÿæˆå® ç‰©çš„æ‰€æœ‰å±æ€§(åªæœ‰æ²¡æœ‰ä¸»äººçš„å® ç‰©ç¬¬ä¸€æ¬¡ç”Ÿæˆæ—¶æ‰æ„é€ æ‰€æœ‰å±æ€§)
         getScene()->GetPetManager()->MakeCapturePetAttrib(&m_PetDB);
-        SetDataID(m_PetDB.m_nDataID); // ¿ÉÄÜ²úÉúÁË±äÒì,Ä£ĞÍ¿ÉÄÜ»á¸Ä±ä
+        SetDataID(m_PetDB.m_nDataID); // å¯èƒ½äº§ç”Ÿäº†å˜å¼‚,æ¨¡å‹å¯èƒ½ä¼šæ”¹å˜
     }
 
-    // Ê¹AI½øÈëIDLE×´Ì¬
+    // ä½¿AIè¿›å…¥IDLEçŠ¶æ€
     GetAIObj()->ChangeState(ESTATE_IDLE);
 
     InitBackupAttr();
-    //¸½¼ÓĞ§¹ûÊı¾İ
+    //é™„åŠ æ•ˆæœæ•°æ®
     Impact_InitList();
 
     return TRUE;
@@ -573,9 +573,9 @@ VOID Obj_Pet::LevelUp(VOID)
     }
     SetLevel(nLevel);
 
-    // ÉèÖÃ³èÎïÏà¹ØÊôĞÔ
+    // è®¾ç½®å® ç‰©ç›¸å…³å±æ€§
 
-    // ËùÓĞÒ»¼¶ÊôĞÔ¼Ó1
+    // æ‰€æœ‰ä¸€çº§å±æ€§åŠ 1
     SetBaseStr(GetBaseStr() + 1);
     SetBaseSpr(GetBaseSpr() + 1);
     SetBaseCon(GetBaseCon() + 1);
@@ -583,11 +583,11 @@ VOID Obj_Pet::LevelUp(VOID)
     SetBaseDex(GetBaseDex() + 1);
     SetRemainPoint(pPetItem->GetRemainPoint()+5);
 
-    // Ò»¶¨ÒªÏÈÉèÖÃMaxHP:)
+    // ä¸€å®šè¦å…ˆè®¾ç½®MaxHP:)
     SetHP(GetMaxHP());
     SetHappiness( 100 );
 
-    // µ÷ÓÃ³èÎïµÄÁìÎò¼¼ÄÜº¯Êı
+    // è°ƒç”¨å® ç‰©çš„é¢†æ‚ŸæŠ€èƒ½å‡½æ•°
     Skill_Apperceive();
 
     GCLevelUp    msgLevelUp;

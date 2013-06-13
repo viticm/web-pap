@@ -1,6 +1,6 @@
 // GCObjTeleport.h
 //
-// ×÷ÓÃ£ºOBJÎ»ÖÃµÄË²ÒÆ
+// ä½œç”¨ï¼šOBJä½ç½®çš„ç¬ç§»
 //
 ////////////////////////////////////////////////////////
 
@@ -20,7 +20,7 @@ namespace Packets
         GCObjTeleport( ){}
         virtual ~GCObjTeleport( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream )const;
         virtual UINT            Execute( Player* pPlayer );
@@ -29,7 +29,7 @@ namespace Packets
         virtual UINT            GetPacketSize()const { return    sizeof(ObjID_t) + sizeof(WORLD_POS); }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID                setObjID(ObjID_t id) { m_ObjID = id; }
         ObjID_t                getObjID(VOID)const { return m_ObjID; }
 
@@ -37,9 +37,9 @@ namespace Packets
         const WORLD_POS&    getWorldPos(VOID)const { return m_posWorld; }
 
     private:
-        //Êı¾İ
+        //æ•°æ®
         ObjID_t            m_ObjID;    //ID
-        WORLD_POS        m_posWorld;    //×ø±ê
+        WORLD_POS        m_posWorld;    //åæ ‡
 
     };
 

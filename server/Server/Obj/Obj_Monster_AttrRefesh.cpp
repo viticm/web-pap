@@ -285,7 +285,7 @@ __ENTER_FUNCTION
         }
 #endif
         pTargetHuman->GetPlayer()->SendPacket( &msgAttr );
-        //在发送属性数据的同时发送角色的效果列表数据
+        //鍦ㄥ彂閫佸睘鎬ф暟鎹殑鍚屾椂鍙戦�佽鑹茬殑鏁堟灉鍒楄〃鏁版嵁
         GCCharImpactListUpdate ImpactListUpdate;
         ImpactListUpdate.SetOwnerID(GetID());
         ImpactListUpdate.SetImpactList(Impact_GetImpactList());

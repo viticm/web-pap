@@ -23,7 +23,7 @@ __ENTER_FUNCTION
     Scene* pScene = pHuman->getScene() ;
     if( pScene==NULL ) return PACKET_EXE_CONTINUE ;
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     ObjID_t ObjID = pPacket->getObjID() ;
@@ -33,10 +33,10 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¿ªÊ¼¼ì²âÒªÇó×°±¸ÐÅÏ¢µÄObjÊÇ²»ÊÇÒ»¸öÍæ¼ÒµÄObj_HumanÊý¾ÝÀà
+    //å¼€å§‹æ£€æµ‹è¦æ±‚è£…å¤‡ä¿¡æ¯çš„Objæ˜¯ä¸æ˜¯ä¸€ä¸ªçŽ©å®¶çš„Obj_Humanæ•°æ®ç±»
     Obj* pDestObj = pScene->GetObjManager()->GetObj( ObjID ) ;
     if( pDestObj==NULL )
-    {//Íæ¼ÒObjIDÒÑ¾­Àë¿ª³¡¾°ÁË
+    {//çŽ©å®¶ObjIDå·²ç»ç¦»å¼€åœºæ™¯äº†
 //        Assert( FALSE ) ;
         return PACKET_EXE_CONTINUE ;
     }
@@ -53,7 +53,7 @@ __ENTER_FUNCTION
         Assert( FALSE ) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²âÍê³É
+    //æ£€æµ‹å®Œæˆ
 
     Obj_Human* pDestHuman = (Obj_Human*)pDestCharacter ;
 
@@ -61,7 +61,7 @@ __ENTER_FUNCTION
     Msg.setObjID( ObjID ) ;
     Msg.setName( pDestHuman->GetName() ) ;
     Msg.setDirectory( pDestHuman->getDir() ) ;
-//ÆäËûÊý¾Ý
+//å…¶ä»–æ•°æ®
 
     pGamePlayer->SendPacket( &Msg ) ;
 

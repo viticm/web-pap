@@ -132,23 +132,23 @@ __ENTER_FUNCTION
     {
         m_LeftTimeToQuit -= (uTime-m_CurrentTime) ;
         if( m_LeftTimeToQuit<0 )
-        {//ÕæÕýÖ´ÐÐÍË³ö´¦Àí
+        {//çœŸæ­£æ‰§è¡Œé€€å‡ºå¤„ç†
             return FALSE ;
         }
     }
 
     m_CurrentTime =uTime ;
 
-    //Èç¹ûPlayerÔÚÒ»¶¨Ê±¼äÄÚÃ»ÓÐÊÕµ½ÈÎºÎÏûÏ¢£¬Ôò¶Ï¿ª¿Í»§¶ËÁ¬½Ó
-    //ÔÚPlayer´¦ÀíÏûÏ¢Ç°»áÖ´ÐÐResetKickº¯ÊýÐÞÕým_KickTimeÐÅÏ¢
+    //å¦‚æžœPlayeråœ¨ä¸€å®šæ—¶é—´å†…æ²¡æœ‰æ”¶åˆ°ä»»ä½•æ¶ˆæ¯ï¼Œåˆ™æ–­å¼€å®¢æˆ·ç«¯è¿žæŽ¥
+    //åœ¨Playerå¤„ç†æ¶ˆæ¯å‰ä¼šæ‰§è¡ŒResetKickå‡½æ•°ä¿®æ­£m_KickTimeä¿¡æ¯
     if(uTime>m_KickTime+MAX_KICK_TIME && GetPlayerStatus() != PS_LOGIN_PROCESS_TURN)
     {
         Log::SaveLog( LOGIN_LOGFILE, "ERROR: Player::HeartBeat Didn't recv message for too long time. Kicked!" ) ;
         return FALSE ;
     }
     
-    if(GetPlayerStatus() == PS_LOGIN_PROCESS_TURN)  //ÅÅ¶Ó×´Ì¬µÄÍæ¼Ò£¬Ã¿¸ñMAX_TRUN_MESSAGE_TIME
-                                                    //Ê±¼äÏò¿Í»§¶Ë·¢ËÍÅÅ¶ÓÏûÏ¢
+    if(GetPlayerStatus() == PS_LOGIN_PROCESS_TURN)  //æŽ’é˜ŸçŠ¶æ€çš„çŽ©å®¶ï¼Œæ¯æ ¼MAX_TRUN_MESSAGE_TIME
+                                                    //æ—¶é—´å‘å®¢æˆ·ç«¯å‘é€æŽ’é˜Ÿæ¶ˆæ¯
     {
         if(uTime>m_LastSendProcessTurn+MAX_TRUN_MESSAGE_TIME)
         {
@@ -203,7 +203,7 @@ VOID LoginPlayer::Init( )
 __ENTER_FUNCTION
 
     SetDisconnect( FALSE ) ;
-    ResetKick() ;//¿ªÊ¼Ìß³ö¼ÆÊ±
+    ResetKick() ;//å¼€å§‹è¸¢å‡ºè®¡æ—¶
     
 
 __LEAVE_FUNCTION

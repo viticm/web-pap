@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶Ë¸Ä±äÎïÆ·¼Û¸ñ
+å®¢æˆ·ç«¯æ”¹å˜ç‰©å“ä»·æ ¼
 */
 
 #include "CGStallItemPrice.h"
@@ -28,10 +28,10 @@ UINT CGStallItemPriceHandler::Execute( CGStallItemPrice* pPacket, Player* pPlaye
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //²Ù×÷
+    //æ“ä½œ
     _ITEM_GUID    ItemGuid    =    pPacket->GetObjGUID();
     PET_GUID_t    PetGuid        =    pPacket->GetPetGUID();
     UINT        ItemPrice    =    pPacket->GetPrice();
@@ -52,7 +52,7 @@ UINT CGStallItemPriceHandler::Execute( CGStallItemPrice* pPacket, Player* pPlaye
     GCStallError        MsgError;
 
     if(PetGuid.IsNull())
-    {//¶ÔÎïÆ·µÄ¼Û¸ñ²Ù×÷
+    {//å¯¹ç‰©å“çš„ä»·æ ¼æ“ä½œ
         INT    IndexInStall    =    pStallContainer->GetIndexByGUID(&ItemGuid);
         if(IndexInStall<0)
         {
@@ -75,7 +75,7 @@ UINT CGStallItemPriceHandler::Execute( CGStallItemPrice* pPacket, Player* pPlaye
         pHuman->m_StallBox.SetPriceByIndex(IndexInStall, ItemPrice);
         pHuman->m_StallBox.IncSerialByIndex(IndexInStall);
 
-        //¸øClient·µ»ØÒ»ÌõÏûÏ¢£¬¸æËßClient°æ±¾ºÅ
+        //ç»™Clientè¿”å›ä¸€æ¡æ¶ˆæ¯ï¼Œå‘Šè¯‰Clientç‰ˆæœ¬å·
         GCStallItemPrice msg;
         msg.SetObjGUID(pPacket->GetObjGUID());
         msg.SetPrice(pPacket->GetPrice());
@@ -87,7 +87,7 @@ UINT CGStallItemPriceHandler::Execute( CGStallItemPrice* pPacket, Player* pPlaye
             ,pHuman->GetName(), IndexInStall, ItemPrice) ;
     }
     else
-    {//¸Ä±ä³èÎï¼Û¸ñ
+    {//æ”¹å˜å® ç‰©ä»·æ ¼
         INT    PetIndexInStall    = pStallPetContainer->GetIndexByGUID(&PetGuid);
 
         if(PetIndexInStall<0)
@@ -111,7 +111,7 @@ UINT CGStallItemPriceHandler::Execute( CGStallItemPrice* pPacket, Player* pPlaye
         pHuman->m_StallBox.SetPetPriceByIndex(PetIndexInStall, ItemPrice);
         pHuman->m_StallBox.IncPetSerialByIndex(PetIndexInStall);
 
-        //¸øClient·µ»ØÒ»ÌõÏûÏ¢£¬¸æËßClient°æ±¾ºÅ
+        //ç»™Clientè¿”å›ä¸€æ¡æ¶ˆæ¯ï¼Œå‘Šè¯‰Clientç‰ˆæœ¬å·
         GCStallItemPrice msg;
         msg.SetPetGUID(PetGuid);
         msg.SetPrice(ItemPrice);

@@ -16,7 +16,7 @@ public:
     GCNewSpecial( ){} ;
     virtual ~GCNewSpecial( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -28,7 +28,7 @@ public:
                                                             sizeof(INT); }
 
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     VOID                    setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t                    getObjID(VOID)const { return m_ObjID; }
 
@@ -43,8 +43,8 @@ public:
 
 private:
     ObjID_t                    m_ObjID;        // ObjID
-    WORLD_POS                m_posWorld;        // 位置
-    FLOAT                    m_Dir;            // 方向
+    WORLD_POS                m_posWorld;        // 浣嶇疆
+    FLOAT                    m_Dir;            // 鏂瑰悜
     INT                        m_nDataID;
 };
 

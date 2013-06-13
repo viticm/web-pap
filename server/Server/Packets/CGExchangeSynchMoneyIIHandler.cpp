@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËµÄ½ğÇ®±ä»¯Í¨Öª·şÎñÆ÷
+å®¢æˆ·ç«¯çš„é‡‘é’±å˜åŒ–é€šçŸ¥æœåŠ¡å™¨
 */
 
 #include "CGExchangeSynchMoneyII.h"
@@ -28,10 +28,10 @@ UINT CGExchangeSynchMoneyIIHandler::Execute( CGExchangeSynchMoneyII* pPacket, Pl
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //ÑéÖ¤
+    //éªŒè¯
     EXCHANGE_CERTIFY_EACH_OTHER(pHuman)
     EXCHANGE_CERTIFY_ISLOCK(pHuman)
 
@@ -42,15 +42,15 @@ UINT CGExchangeSynchMoneyIIHandler::Execute( CGExchangeSynchMoneyII* pPacket, Pl
     EXCHANGE_CERTIFY_STATUS(pDestHuman, EXCHANGE_SYNCH_DATA)
     
 
-    //²Ù×÷
+    //æ“ä½œ
     UINT    Money     = pPacket->GetMoney();        
 
     if( Money<= pHuman->GetMoney() )
     {
         pHuman->m_ExchangBox.m_Money = Money;
-        g_pLog->FastSaveLog( LOG_FILE_1, "<½»Ò×> [%s] ÉèÖÃ½»Ò×½ğÇ® [%d]",    pHuman->GetName(), Money ) ;
+        g_pLog->FastSaveLog( LOG_FILE_1, "<äº¤æ˜“> [%s] è®¾ç½®äº¤æ˜“é‡‘é’± [%d]",    pHuman->GetName(), Money ) ;
 
-        //½ğÇ®¸Ä±ä²»·¢¸ø×Ô¼ºÁË£¬Ê¡ÌõÏûÏ¢
+        //é‡‘é’±æ”¹å˜ä¸å‘ç»™è‡ªå·±äº†ï¼Œçœæ¡æ¶ˆæ¯
         GCExchangeSynchII MsgToTarget;
         MsgToTarget.SetIsMyself(FALSE);
         MsgToTarget.SetOpt(EXCHANGE_MSG::OPT_MONEY);

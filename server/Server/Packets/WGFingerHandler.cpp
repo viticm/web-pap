@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼þÃû£º    WGFingerHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\WGFingerHandler.cpp
- *    ´´½¨Ê±¼ä£º    2006 Äê 4 ÔÂ 27 ÈÕ    16:22
+ *    æ–‡ä»¶åï¼š    WGFingerHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\WGFingerHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2006 å¹´ 4 æœˆ 27 æ—¥    16:22
  *
- *    ¹¦ÄÜËµÃ÷£º    Íæ¼Ò²éÕÒµÄ·µ»ØÐÅÏ¢
- *    ÐÞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    çŽ©å®¶æŸ¥æ‰¾çš„è¿”å›žä¿¡æ¯
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "GamePlayer.h"
@@ -48,7 +48,7 @@ __ENTER_FUNCTION
     WG_FINGER* pRecv = pPacket->GetFinger();
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pScene->SendPacket( pPacket, PlayerID );
@@ -59,7 +59,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         GCFinger Msg;

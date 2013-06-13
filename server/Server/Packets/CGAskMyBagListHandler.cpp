@@ -27,7 +27,7 @@ UINT CGAskMyBagListHandler::Execute(CGAskMyBagList* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     
@@ -47,10 +47,10 @@ UINT CGAskMyBagListHandler::Execute(CGAskMyBagList* pPacket, Player* pPlayer )
             
 
             Msg.SetAskMode(ASK_ALL);
-            //ÉèÖÃµ±Ç°Íæ¼Ò×î´ó°ü¹ü´óĞ¡
+            //è®¾ç½®å½“å‰ç©å®¶æœ€å¤§åŒ…è£¹å¤§å°
             for( INT i=0; i<MAX_BAG_SIZE; i++ )
             {
-                //ÁÙÊ±´úÂë
+                //ä¸´æ—¶ä»£ç 
                 Item*    pItem =    HumanItemLogic::GetItem(pHuman,i);
                 Assert(pItem);
 
@@ -77,7 +77,7 @@ UINT CGAskMyBagListHandler::Execute(CGAskMyBagList* pPacket, Player* pPlayer )
             _BAG_ITEM    ItemIterator;
             BYTE        askIndex ;
             Msg.SetAskMode(ASK_SET);
-            //ÉèÖÃµ±Ç°Íæ¼Ò×î´ó°ü¹ü´óĞ¡
+            //è®¾ç½®å½“å‰ç©å®¶æœ€å¤§åŒ…è£¹å¤§å°
             if(askCount>MAX_BAG_SIZE)    askCount= MAX_BAG_SIZE;
 
             Msg.SetAskCount(askCount);

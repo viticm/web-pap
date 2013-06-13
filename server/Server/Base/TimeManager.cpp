@@ -91,7 +91,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// 得到标准时间
+// 寰楀埌鏍囧噯鏃堕棿
 time_t TimeManager::GetANSITime( )
 {
 __ENTER_FUNCTION

@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºObj_Human_Attributes.cpp
-// ¹¦ÄÜËµÃ÷£º½ÇÉ«²ãÊôĞÔ
+// æ–‡ä»¶åï¼šObj_Human_Attributes.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šè§’è‰²å±‚å±æ€§
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -19,7 +19,7 @@
 using namespace Combat_Module::Skill_Module;
 using namespace MenPai_Module;
 ////////////////////////////////////////////////////////////////////////////////
-//½ÇÉ«ÊôĞÔ²¿·Ö
+//è§’è‰²å±æ€§éƒ¨åˆ†
 //Strike point
 INT    Obj_Human::GetMaxStrikePoint(VOID)
 {
@@ -223,7 +223,7 @@ INT    Obj_Human::GetMaxHP(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_POINT_MAXHP);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -231,7 +231,7 @@ INT    Obj_Human::GetMaxHP(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄ°Ù·Ö±ÈÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç™¾åˆ†æ¯”å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_MAXHP);
         Assert( pIE ) ;
         if( pIE->IsActive() )
@@ -239,7 +239,7 @@ INT    Obj_Human::GetMaxHP(VOID)
             nItemRateRefix = Float2Int((nBaseAttr*(pIE->m_Attr.m_Value))/100.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetMaxHPRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_MAX_HP, nValue);
@@ -253,7 +253,7 @@ INT    Obj_Human::GetMaxHP(VOID)
  
 INT Obj_Human::GetBaseMaxHP(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -261,16 +261,16 @@ INT Obj_Human::GetBaseMaxHP(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseMaxHP]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitMaxHP();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetMaxHPConRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetMaxHPLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetCon()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -291,7 +291,7 @@ INT    Obj_Human::GetHPRegenerate(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_RESTORE_HP);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -299,7 +299,7 @@ INT    Obj_Human::GetHPRegenerate(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetHPRegenerateRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_HP_REGENERATE, nValue);
@@ -312,7 +312,7 @@ INT    Obj_Human::GetHPRegenerate(VOID)
  
 INT Obj_Human::GetBaseHPRegenerate(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -320,16 +320,16 @@ INT Obj_Human::GetBaseHPRegenerate(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseHPRegenerate]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitHPRegenerate();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetHPRegenerateConRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetHPRegenerateLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetCon()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -350,7 +350,7 @@ INT Obj_Human::GetMaxMP(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_POINT_MAXMP);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -358,7 +358,7 @@ INT Obj_Human::GetMaxMP(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄ°Ù·Ö±ÈÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç™¾åˆ†æ¯”å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_MAXMP);
         Assert( pIE ) ;
         if( pIE->IsActive() )
@@ -366,7 +366,7 @@ INT Obj_Human::GetMaxMP(VOID)
             nItemRateRefix = Float2Int((nBaseAttr*(pIE->m_Attr.m_Value))/100.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetMaxMPRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_MAX_MP, nValue);
@@ -380,7 +380,7 @@ INT Obj_Human::GetMaxMP(VOID)
 
 INT Obj_Human::GetBaseMaxMP(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -388,16 +388,16 @@ INT Obj_Human::GetBaseMaxMP(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseMaxMP]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitMaxMP();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetMaxMPIntRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetMaxMPLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetInt()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -418,7 +418,7 @@ INT    Obj_Human::GetMPRegenerate(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_RESTORE_MP);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -426,7 +426,7 @@ INT    Obj_Human::GetMPRegenerate(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetMPRegenerateRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_MP_REGENERATE, nValue);
@@ -439,7 +439,7 @@ INT    Obj_Human::GetMPRegenerate(VOID)
  
 INT Obj_Human::GetBaseMPRegenerate(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -447,16 +447,16 @@ INT Obj_Human::GetBaseMPRegenerate(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseMPRegenerate]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitMPRegenerate();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetMPRegenerateIntRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetMPRegenerateLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetInt()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -547,7 +547,7 @@ FLOAT    Obj_Human::GetMoveSpeed(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_SPEED_RATE);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -555,25 +555,25 @@ FLOAT    Obj_Human::GetMoveSpeed(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetMoveSpeedRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_MOVE_SPEED, nValue);
         ClearMoveSpeedDirtyFlag();
     }
 
-    FLOAT fMoveSpeed = GetIntAttr(CharIntAttrs_T::ATTR_MOVE_SPEED) / 10.f;        //LMĞŞ¸Ä
+    FLOAT fMoveSpeed = GetIntAttr(CharIntAttrs_T::ATTR_MOVE_SPEED) / 10.f;        //LMä¿®æ”¹
     ENUM_MOVE_MODE eMoveMode = GetMoveMode();
     if(eMoveMode == MOVE_MODE_HOBBLE)
-    {//±ä³É»ù´¡ËÙ¶ÈµÄ50%
+    {//å˜æˆåŸºç¡€é€Ÿåº¦çš„50%
         fMoveSpeed = fMoveSpeed*0.5f;
     }
     else if(eMoveMode == MOVE_MODE_RUN)
-    {//±ä³É»ù´¡ËÙ¶ÈµÄ150%
+    {//å˜æˆåŸºç¡€é€Ÿåº¦çš„150%
         fMoveSpeed = fMoveSpeed*1.5f;
     }
     else if (eMoveMode == MOVE_MODE_SPRINT)
-    {//±ä³É»ù´¡ËÙ¶ÈµÄ500%
+    {//å˜æˆåŸºç¡€é€Ÿåº¦çš„500%
         fMoveSpeed = fMoveSpeed*5.0f;
     }
     
@@ -604,7 +604,7 @@ INT Obj_Human::GetAttackSpeed(VOID)
         INT nItemPointRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_ATTACK_SPEED);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -612,7 +612,7 @@ INT Obj_Human::GetAttackSpeed(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetAttackSpeedRefix();
         nValue = nBaseAttr-nImpactAndSkillRefix-nItemPointRefix;
         nValue<0?nValue=0:NULL;
@@ -656,7 +656,7 @@ INT Obj_Human::GetMiss(VOID)
         INT nItemBasePointRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡µãÊıÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_BASE_MISS);
         Assert(pIE);
         if(pIE->IsActive())
@@ -667,7 +667,7 @@ INT Obj_Human::GetMiss(VOID)
         //    ...
         // passive skill refix end
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_MISS);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -675,7 +675,7 @@ INT Obj_Human::GetMiss(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetMissRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix+nItemBasePointRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_MISS, nValue);
@@ -688,7 +688,7 @@ INT Obj_Human::GetMiss(VOID)
 
 INT Obj_Human::GetBaseMiss(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -696,16 +696,16 @@ INT Obj_Human::GetBaseMiss(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseMiss]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitMiss();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetMissDexRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetMissLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetDex()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -727,7 +727,7 @@ INT Obj_Human::GetHit(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_HIT);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -735,7 +735,7 @@ INT Obj_Human::GetHit(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetHitRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_HIT, nValue);
@@ -748,7 +748,7 @@ INT Obj_Human::GetHit(VOID)
 
 INT Obj_Human::GetBaseHit(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai();
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -756,16 +756,16 @@ INT Obj_Human::GetBaseHit(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseHit]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitHit();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetHitDexRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetHitLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetDex()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -787,7 +787,7 @@ INT Obj_Human::GetCritical(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_2ATTACK_RATE);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -795,7 +795,7 @@ INT Obj_Human::GetCritical(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetCriticalRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_CRITICAL, nValue);
@@ -808,7 +808,7 @@ INT Obj_Human::GetCritical(VOID)
 
 INT Obj_Human::GetBaseCritical(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -816,16 +816,16 @@ INT Obj_Human::GetBaseCritical(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseCritical]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitCritical();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetCriticalDexRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetCriticalLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetDex()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -849,7 +849,7 @@ INT Obj_Human::GetAttackPhysics(VOID)
         INT nItemBaseRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡µãÊıÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_BASE_ATTACK_P);
         Assert(pIE);
         if(pIE->IsActive())
@@ -860,7 +860,7 @@ INT Obj_Human::GetAttackPhysics(VOID)
         //    ...
         // passive skill refix end
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡°Ù·ÖÂÊÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç™¾åˆ†ç‡å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_ATTACK_EP);
         Assert(pIE);
         if(pIE->IsActive())
@@ -868,7 +868,7 @@ INT Obj_Human::GetAttackPhysics(VOID)
             nItemBaseRateRefix= Float2Int((nItemBasePointRefix*(pIE->m_Attr.m_Value))/100.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_ATTACK_P);
         Assert(pIE);
         if(pIE->IsActive())
@@ -876,7 +876,7 @@ INT Obj_Human::GetAttackPhysics(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄ°Ù·Ö±ÈÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç™¾åˆ†æ¯”å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_ATTACK_P);
         Assert(pIE) ;
         if(pIE->IsActive())
@@ -884,7 +884,7 @@ INT Obj_Human::GetAttackPhysics(VOID)
             nItemRateRefix = Float2Int((nBaseAttr*(pIE->m_Attr.m_Value))/100.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetAttackPhysicsRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix+nItemBasePointRefix+nItemBaseRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_ATTACK_PHY, nValue);
@@ -897,7 +897,7 @@ INT Obj_Human::GetAttackPhysics(VOID)
 
 INT Obj_Human::GetBaseAttackPhysics(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -905,16 +905,16 @@ INT Obj_Human::GetBaseAttackPhysics(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseAttackPhysics]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitAttackPhysics();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetAttackPhysicsStrRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetAttackPhysicsLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetStr()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -937,7 +937,7 @@ INT Obj_Human::GetDefencePhysics(VOID)
         INT nItemBaseRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡µãÊıÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_BASE_DEFENCE_P);
         Assert(pIE);
         if(pIE->IsActive())
@@ -948,7 +948,7 @@ INT Obj_Human::GetDefencePhysics(VOID)
         //    ...
         // passive skill refix end
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡°Ù·ÖÂÊÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç™¾åˆ†ç‡å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_DEFENCE_EP);
         Assert(pIE);
         if(pIE->IsActive())
@@ -956,7 +956,7 @@ INT Obj_Human::GetDefencePhysics(VOID)
             nItemBaseRateRefix= Float2Int((nItemBasePointRefix*(pIE->m_Attr.m_Value))/100.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_DEFENCE_P);
         Assert(pIE);
         if(pIE->IsActive())
@@ -964,7 +964,7 @@ INT Obj_Human::GetDefencePhysics(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄ°Ù·Ö±ÈÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç™¾åˆ†æ¯”å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_DEFENCE_P);
         Assert(pIE);
         if(pIE->IsActive())
@@ -972,7 +972,7 @@ INT Obj_Human::GetDefencePhysics(VOID)
             nItemRateRefix = Float2Int((nBaseAttr*(pIE->m_Attr.m_Value))/100.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetDefencePhysicsRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix+nItemBasePointRefix+nItemBaseRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_DEFENCE_PHY, nValue);
@@ -985,7 +985,7 @@ INT Obj_Human::GetDefencePhysics(VOID)
 
 INT Obj_Human::GetBaseDefencePhysics(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -993,16 +993,16 @@ INT Obj_Human::GetBaseDefencePhysics(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseDefencePhysics]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitDefencePhysics();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetDefencePhysicsConRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetDefencePhysicsLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetCon()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;
     return nBase;
 }
@@ -1026,7 +1026,7 @@ INT Obj_Human::GetAttackMagic(VOID)
         INT nItemBaseRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡µãÊıÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_BASE_ATTACK_M);
         Assert(pIE);
         if(pIE->IsActive())
@@ -1037,7 +1037,7 @@ INT Obj_Human::GetAttackMagic(VOID)
         //    ...
         // passive skill refix end
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡°Ù·ÖÂÊÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç™¾åˆ†ç‡å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_ATTACK_EM);
         Assert(pIE);
         if(pIE->IsActive())
@@ -1045,7 +1045,7 @@ INT Obj_Human::GetAttackMagic(VOID)
             nItemBaseRateRefix= Float2Int((nItemBasePointRefix*(pIE->m_Attr.m_Value))/1000.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_ATTACK_M);
         Assert(pIE);
         if(pIE->IsActive())
@@ -1053,7 +1053,7 @@ INT Obj_Human::GetAttackMagic(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄ°Ù·Ö±ÈÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç™¾åˆ†æ¯”å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_ATTACK_M);
         Assert(pIE) ;
         if(pIE->IsActive())
@@ -1061,7 +1061,7 @@ INT Obj_Human::GetAttackMagic(VOID)
             nItemRateRefix = Float2Int((nBaseAttr*(pIE->m_Attr.m_Value))/1000.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetAttackMagicRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix+nItemBasePointRefix+nItemBaseRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_ATTACK_MAGIC, nValue);
@@ -1074,7 +1074,7 @@ INT Obj_Human::GetAttackMagic(VOID)
 
 INT Obj_Human::GetBaseAttackMagic(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -1082,16 +1082,16 @@ INT Obj_Human::GetBaseAttackMagic(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseAttackMagic]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitAttackMagic();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetAttackMagicSprRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetAttackMagicLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetSpr()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥    
+    nBase=Float2Int((nBase)/100); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»    
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -1114,7 +1114,7 @@ INT Obj_Human::GetDefenceMagic(VOID)
         INT nItemBaseRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡µãÊıÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_BASE_DEFENCE_M);
         Assert(pIE);
         if(pIE->IsActive())
@@ -1125,7 +1125,7 @@ INT Obj_Human::GetDefenceMagic(VOID)
         //    ...
         // passive skill refix end
         //////////////////////////////////////////////////////////////////////
-        //×°±¸µÄ»ù´¡°Ù·ÖÂÊÓ°Ïì
+        //è£…å¤‡çš„åŸºç¡€ç™¾åˆ†ç‡å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_DEFENCE_EM);
         Assert(pIE);
         if(pIE->IsActive())
@@ -1133,7 +1133,7 @@ INT Obj_Human::GetDefenceMagic(VOID)
             nItemBaseRateRefix= Float2Int((nItemBasePointRefix*(pIE->m_Attr.m_Value))/1000.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_DEFENCE_M);
         Assert(pIE);
         if(pIE->IsActive())
@@ -1141,7 +1141,7 @@ INT Obj_Human::GetDefenceMagic(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄ°Ù·Ö±ÈÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç™¾åˆ†æ¯”å½±å“
         pIE = ItemEffect(IATTRIBUTE_RATE_DEFENCE_M);
         Assert(pIE);
         if(pIE->IsActive())
@@ -1149,7 +1149,7 @@ INT Obj_Human::GetDefenceMagic(VOID)
             nItemRateRefix = Float2Int((nBaseAttr*(pIE->m_Attr.m_Value))/100.0f);
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetDefenceMagicRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix+nItemBasePointRefix+nItemBaseRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_DEFENCE_MAGIC, nValue);
@@ -1162,7 +1162,7 @@ INT Obj_Human::GetDefenceMagic(VOID)
 
 INT Obj_Human::GetBaseDefenceMagic(VOID)
 {
-    //ÃÅÅÉ
+    //é—¨æ´¾
     INT nMenPaiID = GetMenPai() ;
     MenPai_T const* pMenPaiLogic = g_MenPaiLogicList.GetLogicById(nMenPaiID);
     if(NULL == pMenPaiLogic)
@@ -1170,16 +1170,16 @@ INT Obj_Human::GetBaseDefenceMagic(VOID)
         AssertEx(FALSE,"[Obj_Human::GetBaseDefenceMagic]: Can't not find MenPai Logic!");
         return 0;
     }
-    //³õÊ¼ÊôĞÔÖµ
+    //åˆå§‹å±æ€§å€¼
     INT nInitAttr = pMenPaiLogic->GetInitDefenceMagic();
-    //Ò»¼¶ÊôĞÔ¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ä¸€çº§å±æ€§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nAttrLevel1Refix = pMenPaiLogic->GetDefenceMagicIntRefix();
-    //µÈ¼¶¶Ô¸ÃÊôĞÔµÄÓ°ÏìÏµÊı
+    //ç­‰çº§å¯¹è¯¥å±æ€§çš„å½±å“ç³»æ•°
     INT nLevelRefix = pMenPaiLogic->GetDefenceMagicLevelRefix();
 
-    //¼ÆËã»ù´¡»ù´¡ÊôĞÔ
+    //è®¡ç®—åŸºç¡€åŸºç¡€å±æ€§
     INT nBase = nInitAttr+GetInt()*nAttrLevel1Refix+GetLevel()*nLevelRefix;
-    nBase=Float2Int((nBase)/100.0f); //±íÀïÃæµÄÊıÖµ¶¼ÊÇ³ËÁË100µÄ£¬¼ÆËãºóÓ¦¸ÃĞŞÕı»ØÈ¥
+    nBase=Float2Int((nBase)/100.0f); //è¡¨é‡Œé¢çš„æ•°å€¼éƒ½æ˜¯ä¹˜äº†100çš„ï¼Œè®¡ç®—ååº”è¯¥ä¿®æ­£å›å»
     0<=nBase?NULL:nBase=0;    
     return nBase;
 }
@@ -1201,7 +1201,7 @@ INT Obj_Human::GetAttackCold(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_COLD_ATTACK);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1209,7 +1209,7 @@ INT Obj_Human::GetAttackCold(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetAttackColdRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_ATTACK_COLD, nValue);
@@ -1241,7 +1241,7 @@ INT Obj_Human::GetDefenceCold(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_COLD_RESIST);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1249,7 +1249,7 @@ INT Obj_Human::GetDefenceCold(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetDefenceColdRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_RESIST_COLD, nValue);
@@ -1282,7 +1282,7 @@ INT Obj_Human::GetAttackFire(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_FIRE_ATTACK);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1290,7 +1290,7 @@ INT Obj_Human::GetAttackFire(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetAttackFireRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_ATTACK_FIRE, nValue);
@@ -1322,7 +1322,7 @@ INT Obj_Human::GetDefenceFire(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_FIRE_RESIST);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1330,7 +1330,7 @@ INT Obj_Human::GetDefenceFire(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetDefenceFireRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_RESIST_FIRE, nValue);
@@ -1363,7 +1363,7 @@ INT Obj_Human::GetAttackLight(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_LIGHT_ATTACK);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1371,7 +1371,7 @@ INT Obj_Human::GetAttackLight(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetAttackLightRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_ATTACK_LIGHT, nValue);
@@ -1403,7 +1403,7 @@ INT Obj_Human::GetDefenceLight(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_LIGHT_RESIST);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1411,7 +1411,7 @@ INT Obj_Human::GetDefenceLight(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetDefenceLightRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_RESIST_LIGHT, nValue);
@@ -1444,7 +1444,7 @@ INT Obj_Human::GetAttackPoison(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_POISON_ATTACK);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1452,7 +1452,7 @@ INT Obj_Human::GetAttackPoison(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetAttackPoisonRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_ATTACK_POISON, nValue);
@@ -1484,7 +1484,7 @@ INT Obj_Human::GetDefencePoison(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_POISON_RESIST);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1492,7 +1492,7 @@ INT Obj_Human::GetDefencePoison(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetDefencePoisonRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_RESIST_POISON, nValue);
@@ -1524,7 +1524,7 @@ INT Obj_Human::GetReduceSlowerDuration(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_COLD_TIME);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1532,7 +1532,7 @@ INT Obj_Human::GetReduceSlowerDuration(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetReduceSlowerDurationRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_REDUCE_SLOWER_DURATION, nValue);
@@ -1556,7 +1556,7 @@ INT Obj_Human::GetReduceWeakenDuration(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_FIRE_TIME);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1564,7 +1564,7 @@ INT Obj_Human::GetReduceWeakenDuration(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetReduceWeakenDurationRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_REDUCE_WEAKEN_DURATION, nValue);
@@ -1588,7 +1588,7 @@ INT Obj_Human::GetReduceFaintDuration(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_LIGHT_TIME);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1596,7 +1596,7 @@ INT Obj_Human::GetReduceFaintDuration(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetReduceFaintDurationRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_REDUCE_FAINT_DURATION, nValue);
@@ -1620,7 +1620,7 @@ INT Obj_Human::GetReducePoisonedDuration(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //×°±¸¶ÔÊôĞÔµÄµãÊıÓ°Ïì
+        //è£…å¤‡å¯¹å±æ€§çš„ç‚¹æ•°å½±å“
         pIE = ItemEffect(IATTRIBUTE_POISON_TIME);
         Assert( pIE );
         if( pIE->IsActive() )
@@ -1628,7 +1628,7 @@ INT Obj_Human::GetReducePoisonedDuration(VOID)
             nItemPointRefix= pIE->m_Attr.m_Value;
         }
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetReducePoisonedDurationRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_REDUCE_POISONED_DURATION, nValue);
@@ -1652,7 +1652,7 @@ INT Obj_Human::GetVisionRange(VOID)
         INT nItemRateRefix=0;
         INT nValue=0;
         //////////////////////////////////////////////////////////////////////
-        //¼¼ÄÜºÍĞ§¹û¶ÔÊôĞÔµÄÓ°Ïì
+        //æŠ€èƒ½å’Œæ•ˆæœå¯¹å±æ€§çš„å½±å“
         nImpactAndSkillRefix=GetVisionRangeRefix();
         nValue = nBaseAttr+nImpactAndSkillRefix+nItemPointRefix+nItemRateRefix;
         SetIntAttr(CharIntAttrs_T::ATTR_VISION_RANGE, nValue);

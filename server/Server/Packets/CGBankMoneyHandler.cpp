@@ -27,7 +27,7 @@ UINT CGBankMoneyHandler::Execute( CGBankMoney* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     BYTE    IsSave = pPacket->GetSaveType();
@@ -44,7 +44,7 @@ UINT CGBankMoneyHandler::Execute( CGBankMoney* pPacket, Player* pPlayer )
             Amount = pHuman->GetMoney();
         }
         CurMoney += Amount;
-        //½«À´ÒªÅÐÒ»ÏÂÊÇ·ñ´óÓÚÒøÐÐÄÜ´æµÄ×î´óÉÏÏÞ
+        //å°†æ¥è¦åˆ¤ä¸€ä¸‹æ˜¯å¦å¤§äºŽé“¶è¡Œèƒ½å­˜çš„æœ€å¤§ä¸Šé™
         if(CurMoney>MAX_BANK_MONEY)
             CurMoney = MAX_BANK_MONEY;
 

@@ -1,5 +1,5 @@
 //
-// UserÊÇÓÃÀ´±£´æÍæ¼ÒÊý¾ÝµÄ¼¯ºÏ£¬´ËÍæ¼ÒÓÐ¿ÉÄÜµ±Ç°²¢²»ÔÚÏß
+// Useræ˜¯ç”¨æ¥ä¿å­˜çŽ©å®¶æ•°æ®çš„é›†åˆï¼Œæ­¤çŽ©å®¶æœ‰å¯èƒ½å½“å‰å¹¶ä¸åœ¨çº¿
 //
 //
 #ifndef __USER_H__
@@ -10,9 +10,9 @@
 
 
 
-//ÎÞÐ§µÄÓÃ»§ID¾ä±ú
+//æ— æ•ˆçš„ç”¨æˆ·IDå¥æŸ„
 #define INVALID_UID -1
-//Ò»¸ö·þÎñÆ÷Server³ÌÐòÄÚ×î¶à¿ÉÒÔÓµÓÐµÄÍæ¼ÒÊý¾Ý¸öÊý
+//ä¸€ä¸ªæœåŠ¡å™¨Serverç¨‹åºå†…æœ€å¤šå¯ä»¥æ‹¥æœ‰çš„çŽ©å®¶æ•°æ®ä¸ªæ•°
 #define MAX_USER 2048
 
 

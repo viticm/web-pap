@@ -18,7 +18,7 @@ public:
     SSConnect( ){} ;
     virtual ~SSConnect( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -27,13 +27,13 @@ public:
     virtual UINT            GetPacketSize() const { return sizeof(ID_t) ; }
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     ID_t            GetServerID( ){ return m_ServerID ; } ;
     VOID            SetServerID( ID_t id ){ m_ServerID = id ; } ;
 
 private:
-    //数据
-    ID_t            m_ServerID ;    //发送消息的服务器端程序的ServerID
+    //鏁版嵁
+    ID_t            m_ServerID ;    //鍙戦�佹秷鎭殑鏈嶅姟鍣ㄧ绋嬪簭鐨凷erverID
 
 };
 

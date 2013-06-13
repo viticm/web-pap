@@ -1,6 +1,6 @@
 // CGPlayerShopSize.h
 // 
-// 更改商店大小
+// 鏇存敼鍟嗗簵澶у皬
 // 
 //////////////////////////////////////////////////////
 
@@ -29,7 +29,7 @@ namespace Packets
         }
         virtual ~CGPlayerShopSize( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -45,8 +45,8 @@ namespace Packets
         VOID                    SetOpt(BYTE nOpt) {m_Opt = nOpt;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;    //商店ID
-        BYTE                    m_Opt;        //操作
+        _PLAYERSHOP_GUID        m_ShopID;    //鍟嗗簵ID
+        BYTE                    m_Opt;        //鎿嶄綔
     };
 
     class CGPlayerShopSizeFactory : public PacketFactory 

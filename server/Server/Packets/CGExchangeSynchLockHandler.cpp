@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÍ¨Öª·þÎñÆ÷Í¬²½×Ô¼ºµÄËø±ä»¯¸ø¶Ô·½¿Í»§¶Ë
+å®¢æˆ·ç«¯é€šçŸ¥æœåŠ¡å™¨åŒæ­¥è‡ªå·±çš„é”å˜åŒ–ç»™å¯¹æ–¹å®¢æˆ·ç«¯
 */
 
 #include "CGExchangeSynchLock.h"
@@ -28,33 +28,33 @@ UINT CGExchangeSynchLockHandler::Execute( CGExchangeSynchLock* pPacket, Player* 
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //ÑéÖ¤
+    //éªŒè¯
     EXCHANGE_CERTIFY_EACH_OTHER(pHuman)
     Obj_Human* pDestHuman = pScene->GetHumanManager()->GetHuman( pHuman->m_ExchangBox.m_ObjID );
 
     if(pPacket->GetLockMyself())
-    {//¸ø×Ô¼º¼ÓËø
+    {//ç»™è‡ªå·±åŠ é”
         pHuman->m_ExchangBox.m_IsLocked = TRUE;
         if(pDestHuman->m_ExchangBox.m_IsLocked == TRUE)
-        {//Èç¹û¶Ô·½ÒÑ¾­¼ÓËø
-            //ÉèÖÃË«·½ÏÔÊ¾È·¶¨°´Å¥
+        {//å¦‚æžœå¯¹æ–¹å·²ç»åŠ é”
+            //è®¾ç½®åŒæ–¹æ˜¾ç¤ºç¡®å®šæŒ‰é’®
             pHuman->m_ExchangBox.m_CanConform = TRUE;
             pDestHuman->m_ExchangBox.m_CanConform = TRUE;
 
-            //½øÈëµÈ´ý×îºóÈ·ÈÏ×´Ì¬
+            //è¿›å…¥ç­‰å¾…æœ€åŽç¡®è®¤çŠ¶æ€
             pHuman->m_ExchangBox.m_Status = ServerExchangeBox::EXCHANGE_WAIT_FOR_CONFIRM;
             pDestHuman->m_ExchangBox.m_Status = ServerExchangeBox::EXCHANGE_WAIT_FOR_CONFIRM;
 
-            //Í¨Öª¶Ô·½×Ô¼ºÒÑ¾­¼ÓËø
+            //é€šçŸ¥å¯¹æ–¹è‡ªå·±å·²ç»åŠ é”
             GCExchangeSynchLock Msg;
             Msg.SetIsMyself(FALSE);
             Msg.SetIsLocked(TRUE);
             pDestHuman->GetPlayer()->SendPacket(&Msg);
 
-            //Í¨ÖªË«·½ÏÔÊ¾È·¶¨°´Å¥
+            //é€šçŸ¥åŒæ–¹æ˜¾ç¤ºç¡®å®šæŒ‰é’®
             GCExchangeSynchConfirmII MsgToSelf, MsgToDes;
             MsgToSelf.SetIsEnable(TRUE);
             pHuman->GetPlayer()->SendPacket(&MsgToSelf);
@@ -63,8 +63,8 @@ UINT CGExchangeSynchLockHandler::Execute( CGExchangeSynchLock* pPacket, Player* 
             pDestHuman->GetPlayer()->SendPacket(&MsgToDes);
         }
         else
-        {//¶Ô·½»¹Ã»ÓÐ¼ÓËø
-            //Í¨Öª¶Ô·½×Ô¼ºÒÑ¾­¼ÓËø
+        {//å¯¹æ–¹è¿˜æ²¡æœ‰åŠ é”
+            //é€šçŸ¥å¯¹æ–¹è‡ªå·±å·²ç»åŠ é”
             GCExchangeSynchLock MsgToDes;
             MsgToDes.SetIsMyself(FALSE);
             MsgToDes.SetIsLocked(TRUE);
@@ -73,48 +73,48 @@ UINT CGExchangeSynchLockHandler::Execute( CGExchangeSynchLock* pPacket, Player* 
 
     }
     else
-    {//¸ø×Ô¼º½âËø
+    {//ç»™è‡ªå·±è§£é”
         pHuman->m_ExchangBox.m_IsLocked = FALSE;
         if(pDestHuman->m_ExchangBox.m_IsLocked == TRUE)
-        {//Èç¹û¶Ô·½ÒÑ¾­¼ÓËø
+        {//å¦‚æžœå¯¹æ–¹å·²ç»åŠ é”
             pDestHuman->m_ExchangBox.m_IsLocked = FALSE;
             GCExchangeSynchLock MsgToDes, MsgToSelf;
 
-            //Í¨Öª¶Ô·½£¬½âË«·½Ëø
+            //é€šçŸ¥å¯¹æ–¹ï¼Œè§£åŒæ–¹é”
             MsgToDes.SetIsBoth(TRUE);
             MsgToDes.SetIsLocked(FALSE);
             pDestHuman->GetPlayer()->SendPacket(&MsgToDes);
             
-            //Í¨Öª×Ô¼º½â¶Ô·½Ëø
+            //é€šçŸ¥è‡ªå·±è§£å¯¹æ–¹é”
             MsgToSelf.SetIsMyself(FALSE);
             MsgToSelf.SetIsLocked(FALSE);
             pHuman->GetPlayer()->SendPacket(&MsgToSelf);
 
         }
         else
-        {//¶Ô·½Ã»ÓÐ¼ÓËø£¬Ö±½ÓÍ¬²½
+        {//å¯¹æ–¹æ²¡æœ‰åŠ é”ï¼Œç›´æŽ¥åŒæ­¥
             GCExchangeSynchLock MsgToDes;
             MsgToDes.SetIsMyself (FALSE);
             MsgToDes.SetIsLocked(FALSE);
             pDestHuman->GetPlayer()->SendPacket(&MsgToDes);
         }
 
-        //Ç¿ÐÐ»Ø×´Ì¬
+        //å¼ºè¡Œå›žçŠ¶æ€
         pHuman->m_ExchangBox.m_Status = ServerExchangeBox::EXCHANGE_SYNCH_DATA;
         pDestHuman->m_ExchangBox.m_Status = ServerExchangeBox::EXCHANGE_SYNCH_DATA;
         
-        //¹Ø±ÕÈ·¶¨°´Å¥
+        //å…³é—­ç¡®å®šæŒ‰é’®
         if(pHuman->m_ExchangBox.m_CanConform)
-        {//Í¨Öª¿Í»§¶Ë
+        {//é€šçŸ¥å®¢æˆ·ç«¯
             pHuman->m_ExchangBox.m_CanConform = FALSE;
             GCExchangeSynchConfirmII MsgToSelf;
             MsgToSelf.SetIsEnable(FALSE);
             pHuman->GetPlayer()->SendPacket(&MsgToSelf);
         }
 
-        //¹Ø±ÕÈ·¶¨°´Å¥
+        //å…³é—­ç¡®å®šæŒ‰é’®
         if(pDestHuman->m_ExchangBox.m_CanConform)
-        {//Í¨Öª¿Í»§¶Ë
+        {//é€šçŸ¥å®¢æˆ·ç«¯
             pDestHuman->m_ExchangBox.m_CanConform = FALSE;
             GCExchangeSynchConfirmII MsgToDes;
             MsgToDes.SetIsEnable(FALSE);

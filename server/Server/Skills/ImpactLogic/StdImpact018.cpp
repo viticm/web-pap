@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// Œƒº˛√˚£∫StdImpact018.cpp
-// π¶ƒ‹Àµ√˜£∫–ßπ˚--–ßπ˚--√‚“ﬂÃÿ∂®µƒ–ßπ˚
+// Êñá‰ª∂ÂêçÔºöStdImpact018.cpp
+// ÂäüËÉΩËØ¥ÊòéÔºöÊïàÊûú--ÊïàÊûú--ÂÖçÁñ´ÁâπÂÆöÁöÑÊïàÊûú
 //
-// –ﬁ∏ƒº«¬º£∫
+// ‰øÆÊîπËÆ∞ÂΩïÔºö
 //
 //
 //
@@ -45,7 +45,7 @@ namespace Combat_Module
             INT nRate = GetRefixRate(rImp);
             INT nDispeled = 0;
             nRate += 100;
-            nDispelCount = Float2Int((nDispelCount*nRate)/100.0f); //«øªØ÷ª”∞œÏ«˝…¢ ˝ƒø
+            nDispelCount = Float2Int((nDispelCount*nRate)/100.0f); //Âº∫ÂåñÂè™ÂΩ±ÂìçÈ©±Êï£Êï∞ÁõÆ
             IDCollection_T const* pCollection = NULL;
             for(INT nIdx=0; COLLECTION_NUMBER>nIdx; ++nIdx)
             {
@@ -57,10 +57,10 @@ namespace Combat_Module
                     {
                         nDispeled = rMe.Impact_DispelImpactInSpecificCollection(nCollectionID, nDispelLevel, nDispelCount);
                         if(0<nDispelCount)
-                        {    //«˝…¢”–œﬁ∏ˆ ˝
+                        {    //È©±Êï£ÊúâÈôê‰∏™Êï∞
                             if(nDispeled>=nDispelCount)
                             {
-                                break; //«˝…¢√˚∂Ó“—¬˙
+                                break; //È©±Êï£ÂêçÈ¢ùÂ∑≤Êª°
                             }
                         }
                     }

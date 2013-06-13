@@ -1,8 +1,8 @@
 /************************************************************************* 
- ÎÄ¼þÃû        : AvoidOverlap.h     
- °æ±¾ºÅ     : 0.0.1
- ¹¦  ÄÜ        : ¹ÒÔÚHuman»òPetÉíÉÏÓÃÀ´±ÜÃâ¹ÖÎïºÜ¶àÊ±ObjµÄÖØµþÎÊÌâ
- ÐÞ¸Ä¼ÇÂ¼    : 
+ æ–‡ä»¶å        : AvoidOverlap.h     
+ ç‰ˆæœ¬å·     : 0.0.1
+ åŠŸ  èƒ½        : æŒ‚åœ¨Humanæˆ–Petèº«ä¸Šç”¨æ¥é¿å…æ€ªç‰©å¾ˆå¤šæ—¶Objçš„é‡å é—®é¢˜
+ ä¿®æ”¹è®°å½•    : 
 *************************************************************************/
 #ifndef _AVOID_OVERLAP_
 #define _AVOID_OVERLAP_
@@ -29,12 +29,12 @@ public:
     
     virtual ~AvoidOverlap( VOID ) {}
 
-    /** Desc                :µÃµ½¹ÖÎï¹¥»÷Íæ¼ÒµÄÄ¿±ê×ø±ê
-     *  @param rTar            :Ä¿±ê×ø±ê
-     *  @param rMonsterPos    :¹ÖÎï×ø±ê
-     *  @param rPlayerPos    :Íæ¼Ò×ø±ê
-     *  @param fMaxDist        :¹ÖÎï×î´ó¹¥»÷¾àÀë
-     *  @param fMinDist        :¹ÖÎï×îÐ¡¹¥»÷¾àÀë
+    /** Desc                :å¾—åˆ°æ€ªç‰©æ”»å‡»çŽ©å®¶çš„ç›®æ ‡åæ ‡
+     *  @param rTar            :ç›®æ ‡åæ ‡
+     *  @param rMonsterPos    :æ€ªç‰©åæ ‡
+     *  @param rPlayerPos    :çŽ©å®¶åæ ‡
+     *  @param fMaxDist        :æ€ªç‰©æœ€å¤§æ”»å‡»è·ç¦»
+     *  @param fMinDist        :æ€ªç‰©æœ€å°æ”»å‡»è·ç¦»
      *  @return                :
      */
     VOID GetDirPos( WORLD_POS& rTar, 
@@ -44,13 +44,13 @@ public:
                     FLOAT fMinDist )
     {
     __ENTER_FUNCTION
-        /** ÓÃ¹ÖÎïÓëÍæ¼ÒµÄÎ»ÖÃÈ·¶¨Òª¶¨Î»µÄ·¶Î§ ÈçL1¡«L2Ö®¼äµÄ·½Ïò Mµ½L1ºÍL2Ö®¼äµÄ½Ç¶È¶¼ÊÇPI/4  */
+        /** ç”¨æ€ªç‰©ä¸ŽçŽ©å®¶çš„ä½ç½®ç¡®å®šè¦å®šä½çš„èŒƒå›´ å¦‚L1ï½žL2ä¹‹é—´çš„æ–¹å‘ Måˆ°L1å’ŒL2ä¹‹é—´çš„è§’åº¦éƒ½æ˜¯PI/4  */
         /**
          *        L1|  /M
          *            | /
          *           P|/________L2
          */
-        rTar = rPlayerPos; // ÕâÑùÈ·±£Ä¿±êµãÊÇÒ»¸öÓÐÐ§µÄµã
+        rTar = rPlayerPos; // è¿™æ ·ç¡®ä¿ç›®æ ‡ç‚¹æ˜¯ä¸€ä¸ªæœ‰æ•ˆçš„ç‚¹
         INT nStartIndex = 0,nEndIndex = 0,nIndex = 0;
         FLOAT vX = rPlayerPos.m_fX - rMonsterPos.m_fX;
         FLOAT vZ = rPlayerPos.m_fZ - rMonsterPos.m_fZ;
@@ -61,7 +61,7 @@ public:
         }
         FLOAT fCos = vX / fDist;
         FLOAT fSin = vZ / fDist;
-        /** È·¶¨¿ªÊ¼,½áÊøÎ»ÖÃ */
+        /** ç¡®å®šå¼€å§‹,ç»“æŸä½ç½® */
         FLOAT fRet = ::asin( fSin );
         if ( fRet > 0 && vX < 0 )
         {
@@ -84,17 +84,17 @@ public:
         nStartIndex = GetIndex( fStart );
         nEndIndex = GetIndex( fEnd );
         INT nUsedCount = 0;
-        /** ±ØÈ»ÊÇnStartIndexÔÚµÚËÄÏàÏñ£¬nEndÔÚµÚÒ»ÏàÏñ */
+        /** å¿…ç„¶æ˜¯nStartIndexåœ¨ç¬¬å››ç›¸åƒï¼ŒnEndåœ¨ç¬¬ä¸€ç›¸åƒ */
         nIndex = GetBestPos( nStartIndex, nEndIndex, nUsedCount );
         if (FALSE == HaveMonsterNearly(nIndex))
-        {// Èç¹û¸½½üÃ»ÓÐmonsterÔòÔ­µØ²»¶¯
+        {// å¦‚æžœé™„è¿‘æ²¡æœ‰monsteråˆ™åŽŸåœ°ä¸åŠ¨
             rTar = rMonsterPos;
             return;
         }
-        /** Èç¹û¸Ä__PI/2·¶Î§ÄÚ¹ÖÎï³¬¹ý3¸ö ÔòÆ«ÒÆ__PI/2ÖØÐÂÉ¸Ñ¡ Ö±µ½ÕÒµ½×îºÏÀíµÄ»òÊÇÂÖÑ°ÂúÒ»È¦ */
+        /** å¦‚æžœæ”¹__PI/2èŒƒå›´å†…æ€ªç‰©è¶…è¿‡3ä¸ª åˆ™åç§»__PI/2é‡æ–°ç­›é€‰ ç›´åˆ°æ‰¾åˆ°æœ€åˆç†çš„æˆ–æ˜¯è½®å¯»æ»¡ä¸€åœˆ */
         if ( MAX_FRACTION / 4 - 2 < nUsedCount )
         {
-            /** ±ÜÃâËùÒÔ¹ÖÎïÏòÒ»±ßµ¹µÄÏàÏñ */
+            /** é¿å…æ‰€ä»¥æ€ªç‰©å‘ä¸€è¾¹å€’çš„ç›¸åƒ */
             INT nDir = ( rand() % 2 ) > 0 ? 4 : -4 ;
             for ( INT i = 0; MAX_MOVETIMES > i; ++i )
             {
@@ -112,7 +112,7 @@ public:
             }
         }
 
-        /** È·¶¨ÓëÍæ¼ÒµÄ¾àÀë,¾àÀëÎª×î´ó¾àÀëÓë×îÐ¡¾àÀëÖ®¼äµÄÈÎÒâÖµ */
+        /** ç¡®å®šä¸ŽçŽ©å®¶çš„è·ç¦»,è·ç¦»ä¸ºæœ€å¤§è·ç¦»ä¸Žæœ€å°è·ç¦»ä¹‹é—´çš„ä»»æ„å€¼ */
         rTar.m_fX = rPlayerPos.m_fX + fMinDist * GetCos( nIndex );
         rTar.m_fZ = rPlayerPos.m_fZ + fMinDist * GetSin( nIndex );
         
@@ -129,7 +129,7 @@ protected:
     {
     __ENTER_FUNCTION
         Assert( MAX_FRACTION > nStart && 0 <= nStart && MAX_FRACTION > nEnd && 0 <= nEnd );
-        /** ÆæÅ¼·Ö¿ªÔö¼ÓÐ§¹û */
+        /** å¥‡å¶åˆ†å¼€å¢žåŠ æ•ˆæžœ */
         for ( INT i = nStart; i <= nEnd; )
         {
             if ( m_isUsed[nMinIndex] > m_isUsed[i] ) 
@@ -171,17 +171,17 @@ protected:
     {
     __ENTER_FUNCTION
         INT nIndex = 0;
-        /** ÕÒµ½×îÓÅµÄ·½Ïò */
+        /** æ‰¾åˆ°æœ€ä¼˜çš„æ–¹å‘ */
         INT nMinIndex = nStartIndex;
         INT nStepLen = ( nEndIndex - nStartIndex ) > 0 ? ( nEndIndex - nStartIndex ) / 2 : ( nEndIndex - nStartIndex + MAX_FRACTION ) / 2;
         nMinIndex += nStepLen;
         if (nMinIndex >= MAX_FRACTION)
-        {// ÓÐÐ§ÐÔ¼ì²â
+        {// æœ‰æ•ˆæ€§æ£€æµ‹
             nMinIndex -= MAX_FRACTION; 
         }
         if ( nStartIndex > nEndIndex )
         {
-        /** nStartIndex±ØÈ»ÂäÔÚµÚËÄÏóÏà */
+        /** nStartIndexå¿…ç„¶è½åœ¨ç¬¬å››è±¡ç›¸ */
             INT Min1 = GetMinIndex( 0, nEndIndex, nMinIndex, nUsedCount );
             INT Min2 = GetMinIndex( nStartIndex, MAX_FRACTION - 1, nMinIndex, nUsedCount );
             if (m_isUsed[Min1] > m_isUsed[Min2])
@@ -233,7 +233,7 @@ protected:
     __LEAVE_FUNCTION
         return -1 ;
     }
-    // ÓÐÐ§ÐÔ¼ì²â
+    // æœ‰æ•ˆæ€§æ£€æµ‹
     VOID VerifyIndex(INT& nIndex)
     {
     __ENTER_FUNCTION
@@ -251,7 +251,7 @@ protected:
     BOOL HaveMonsterNearly(INT nIndex)
     {
     __ENTER_FUNCTION
-        // ¶ÔnIndex¸½½üµÄÈý¸ö(°üÀ¨nIndex)½øÐÐ¼ì²â
+        // å¯¹nIndexé™„è¿‘çš„ä¸‰ä¸ª(åŒ…æ‹¬nIndex)è¿›è¡Œæ£€æµ‹
         INT nTempIndex = nIndex-1;
         VerifyIndex(nTempIndex);
         if (m_isUsed[nTempIndex] > 0)
@@ -259,7 +259,7 @@ protected:
 
         nTempIndex = nIndex;
         VerifyIndex(nTempIndex);
-        // ÒòÎªÔÚ´Ëº¯Êý±»µ÷ÓÃÒÔÇ°ÒÑ¾­±»ÀÛ¼Ó¹ýÁË
+        // å› ä¸ºåœ¨æ­¤å‡½æ•°è¢«è°ƒç”¨ä»¥å‰å·²ç»è¢«ç´¯åŠ è¿‡äº†
         if (m_isUsed[nTempIndex] > 1)
             return TRUE;
 

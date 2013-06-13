@@ -562,8 +562,8 @@ __LEAVE_FUNCTION
 BOOL PacketFactoryManager::Init( )
 {
 __ENTER_FUNCTION
-//  ´Ë´¦Ìí¼ÓÃ¿ÖÖÏûÏ¢µÄFactoryĞÅÏ¢
-//ÀıÈç£º
+//  æ­¤å¤„æ·»åŠ æ¯ç§æ¶ˆæ¯çš„Factoryä¿¡æ¯
+//ä¾‹å¦‚ï¼š
 //    AddFactory( new CGAttackFactory() ) ;
 //  .....
 //CL && LC
@@ -1076,7 +1076,7 @@ VOID PacketFactoryManager::AddFactory( PacketFactory* pFactory )
 __ENTER_FUNCTION
         
     if( m_Factories[pFactory->GetPacketID()]!=NULL ) 
-    {//ÖØ¸´Éè¶¨
+    {//é‡å¤è®¾å®š
         Assert( FALSE ) ;
         return ;
     }
@@ -1124,7 +1124,7 @@ __ENTER_FUNCTION
     if( packetID>=m_Size || m_Factories[packetID]==NULL ) 
     {
         char buff[256] = {0};
-        sprintf(buff,"PacketID= %d ÏûÏ¢Ã»ÓĞ×¢²áµ½PacketFactoryManagerÉÏ",packetID);
+        sprintf(buff,"PacketID= %d æ¶ˆæ¯æ²¡æœ‰æ³¨å†Œåˆ°PacketFactoryManagerä¸Š",packetID);
         AssertEx(FALSE,buff) ;
         return 0 ;
     }

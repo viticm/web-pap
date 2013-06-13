@@ -29,7 +29,7 @@ BOOL CityManager::Init( )
 __ENTER_FUNCTION
 
     m_CityManagerRT.m_WorldId = g_Config.m_WorldInfo.m_WorldID;
-    //ÔËĞĞÊ±Êı¾İÓëDBÊı¾İµÄÁ¬½Ó
+    //è¿è¡Œæ—¶æ•°æ®ä¸DBæ•°æ®çš„è¿æ¥
     for(INT i =0;i<MAX_CITY_PER_WORLD; i++)
     {
         m_CityManagerRT.m_Cities[i].Init(&m_pCityManagerDB->m_CityList[i]);
@@ -38,7 +38,7 @@ __ENTER_FUNCTION
     CleanUp();
 
     //
-    //sharememµ¼ÈëÊı¾İ
+    //sharememå¯¼å…¥æ•°æ®
     //
 
     return TRUE;
@@ -60,7 +60,7 @@ __LEAVE_FUNCTION
 }
 
 //-------------------------------------------------------------------------------------------------
-//newÒ»¸öCity
+//newä¸€ä¸ªCity
 City*    CityManager::NewCity()
 {
 __ENTER_FUNCTION
@@ -70,7 +70,7 @@ __ENTER_FUNCTION
 
     CITY.CleanUp();
 
-    //Î¨Ò»ÄÜÉú³É³ÇÊĞGUIDµÄµØ·½
+    //å”¯ä¸€èƒ½ç”ŸæˆåŸå¸‚GUIDçš„åœ°æ–¹
     _CITY_GUID    NewGUID;
     NewGUID.Reset();
     NewGUID.m_World     = m_CityManagerRT.m_WorldId;
@@ -86,7 +86,7 @@ __LEAVE_FUNCTION
 }
 
 //-------------------------------------------------------------------------------------------------
-//Í¨¹ıGuid»ñµÃ³ÇÊĞ
+//é€šè¿‡Guidè·å¾—åŸå¸‚
 City*    CityManager::GetCityByGuid(_CITY_GUID CityGuid)
 {
 
@@ -105,7 +105,7 @@ __LEAVE_FUNCTION
 }
 
 //-------------------------------------------------------------------------------------------------
-//Í¨¹ıË÷Òı»ñµÃÒ»¸ö³ÇÊĞ
+//é€šè¿‡ç´¢å¼•è·å¾—ä¸€ä¸ªåŸå¸‚
 City*    CityManager::GetCityByIndex(INT nIndex)
 {
 __ENTER_FUNCTION
@@ -127,7 +127,7 @@ __LEAVE_FUNCTION
 
 
 //-------------------------------------------------------------------------------------------------
-//É¾³ı³ÇÊĞ
+//åˆ é™¤åŸå¸‚
 BOOL    CityManager::DelCityByGuid(_CITY_GUID CityGuid)
 {
     __ENTER_FUNCTION
@@ -148,7 +148,7 @@ BOOL    CityManager::DelCityByGuid(_CITY_GUID CityGuid)
     return FALSE;
 }
 
-//Âß¼­´¦Àí
+//é€»è¾‘å¤„ç†
 BOOL    CityManager::HeartBeat( UINT uTime )
 {
     return TRUE;

@@ -34,7 +34,7 @@ namespace Packets
         GUID_t                    GetGUID() { return m_GUID; }
 
     private:
-        PlayerID_t                m_PlayerID;    //Á¬½ÓÕß
+        PlayerID_t                m_PlayerID;    //è¿žæŽ¥è€…
         _GUILD_WGC_PACKET        m_GuildPacket;
         GUID_t                    m_GUID;
 

@@ -1,6 +1,6 @@
 // GCPlayerShopMoney.h
 // 
-// Í¨Öª¿Í»§¶Ë½ğÇ®´æÈ¡
+// é€šçŸ¥å®¢æˆ·ç«¯é‡‘é’±å­˜å–
 // 
 //////////////////////////////////////////////////////
 
@@ -24,13 +24,13 @@ namespace Packets
     public:
         GCPlayerShopMoney( )
         {
-            m_Type        =    TYPE_BASE_MONEY;    //´æµ½ÄÄ
-            m_Amount    =    0;                    //ÊıÁ¿
-            m_nShopSerial=  0;                    //ÉÌµêĞòÁĞºÅ
+            m_Type        =    TYPE_BASE_MONEY;    //å­˜åˆ°å“ª
+            m_Amount    =    0;                    //æ•°é‡
+            m_nShopSerial=  0;                    //å•†åº—åºåˆ—å·
         };
         virtual ~GCPlayerShopMoney( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -54,10 +54,10 @@ namespace Packets
         VOID                    SetShopSerial(BYTE nSerial) {m_nShopSerial = nSerial;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
-        BYTE                    m_Type;                //´æµ½ÄÄ
-        UINT                    m_Amount;            //ÊıÁ¿
-        BYTE                    m_nShopSerial;            //ÉÌµêĞòÁĞºÅ
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
+        BYTE                    m_Type;                //å­˜åˆ°å“ª
+        UINT                    m_Amount;            //æ•°é‡
+        BYTE                    m_nShopSerial;            //å•†åº—åºåˆ—å·
         };
 
     class GCPlayerShopMoneyFactory : public PacketFactory 

@@ -4,11 +4,11 @@
 #include "Type.h"
 
 
-//³ÇÊĞµÄÎ¨Ò»ID
+//åŸå¸‚çš„å”¯ä¸€ID
 struct _CITY_GUID
 {
-    ID_t        m_World ;        //ÊÀ½çºÅ: 
-    SHORT        m_PoolPos ;        //Êı¾İ³ØÎ»ÖÃ
+    ID_t        m_World ;        //ä¸–ç•Œå·: 
+    SHORT        m_PoolPos ;        //æ•°æ®æ± ä½ç½®
 
     BOOL    operator ==(_CITY_GUID& Ref)    const
     {
@@ -27,7 +27,7 @@ struct _CITY_GUID
     }
 };
 
-//³ÇÊĞÊı¾İ
+//åŸå¸‚æ•°æ®
 struct CityBuilding_t
 {
     INT        m_BuildingID;
@@ -39,16 +39,16 @@ struct CityBuilding_t
     }
 };
 
-//³ÇÊĞ´æÊı¾İ¿â½á¹¹
+//åŸå¸‚å­˜æ•°æ®åº“ç»“æ„
 struct CityDB_t
 {
-    _CITY_GUID        m_Guid;                                        //Ò»¸ö³ÇÊĞµÄÎ¨Ò»±êÊ¶
-    SceneID_t        m_PortSceneID;                                //³ÇÊĞÈë¿Ú³¡¾°ID
-    GuildID_t        m_GuildID;                                    //°ï»áID
-    BYTE            m_Level;                                    //³ÇÊĞ¼¶±ğ
-    CHAR            m_szCityName[MAX_CITY_NAME_SIZE];            //³ÇÊĞÃû³Æ
-    BYTE            m_BuildingNum;                                //½¨ÖşÎïÊıÁ¿
-    CityBuilding_t    m_Builds[MAX_CITY_BUILDING_NUM];            //½¨ÖşÎïÊı¾İ
+    _CITY_GUID        m_Guid;                                        //ä¸€ä¸ªåŸå¸‚çš„å”¯ä¸€æ ‡è¯†
+    SceneID_t        m_PortSceneID;                                //åŸå¸‚å…¥å£åœºæ™¯ID
+    GuildID_t        m_GuildID;                                    //å¸®ä¼šID
+    BYTE            m_Level;                                    //åŸå¸‚çº§åˆ«
+    CHAR            m_szCityName[MAX_CITY_NAME_SIZE];            //åŸå¸‚åç§°
+    BYTE            m_BuildingNum;                                //å»ºç­‘ç‰©æ•°é‡
+    CityBuilding_t    m_Builds[MAX_CITY_BUILDING_NUM];            //å»ºç­‘ç‰©æ•°æ®
     //...
     //...
     VOID    CleanUp()
@@ -66,17 +66,17 @@ struct CityDB_t
     }
 };
 
-//³ÇÊĞ´æÊı¾İ¿â½á¹¹
+//åŸå¸‚å­˜æ•°æ®åº“ç»“æ„
 struct CityManagerDB_t
 {
     //-------------------------------------------------------------------------------------------------
-    //¿ÕÏĞÎ»ÖÃ±ê¼Ç
+    //ç©ºé—²ä½ç½®æ ‡è®°
     UINT            m_nFreePosition;
     //-------------------------------------------------------------------------------------------------
-    //¿ÕÏĞ³ØId
+    //ç©ºé—²æ± Id
     INT                m_pFreeCities[MAX_CITY_PER_WORLD];
     //-------------------------------------------------------------------------------------------------
-    //¾ßÌå³ÇÊĞÊı¾İ
+    //å…·ä½“åŸå¸‚æ•°æ®
     CityDB_t        m_CityList[MAX_CITY_PER_WORLD];
 
     CityManagerDB_t()

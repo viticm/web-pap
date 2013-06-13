@@ -7,7 +7,7 @@
 class Packet ;
 class USER ;
 
-//邮件数据
+//閭欢鏁版嵁
 class ChatDB
 {
 public :
@@ -23,7 +23,7 @@ public :
 
 };
 
-//聊天频道
+//鑱婂ぉ棰戦亾
 class ChatChannel
 {
 public :
@@ -64,7 +64,7 @@ public :
 
 #define MAX_WORLD_HOLD_CHAT_PACKETS 512
 
-//聊天中心
+//鑱婂ぉ涓績
 class ChatCenter
 {
 public :

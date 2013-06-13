@@ -1,6 +1,6 @@
 // GCShopRepair.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -21,9 +21,9 @@ namespace Packets
     public:
         enum ITEM_POS
         {
-            EQUIP = 0,        // ÉíÉÏ
-            BAG,            // °üÀï
-            BOX,            // Ïä×ÓÀï
+            EQUIP = 0,        // èº«ä¸Š
+            BAG,            // åŒ…é‡Œ
+            BOX,            // ç®±å­é‡Œ
         };
         struct REPAIRED_ITEM
         {
@@ -43,7 +43,7 @@ namespace Packets
         };
         virtual ~GCShopRepair( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -64,9 +64,9 @@ namespace Packets
             memcpy(m_aRepairedList, pSour, m_nRepairedListNum*sizeof(REPAIRED_ITEM));
         }
     private:
-        BYTE                    m_bRepairAllFlag;                            //±êÊ¾ÊÇ²»ÊÇĞŞÀíÈ«²¿
-        BYTE                    m_nRepairedListNum;                            //ĞŞÀíºÃµÄ×°±¸Êı
-        REPAIRED_ITEM            m_aRepairedList[MAX_REPAIRED_NUMBER];        //ĞŞÀíºÃµÄ×°±¸ÁĞ±í
+        BYTE                    m_bRepairAllFlag;                            //æ ‡ç¤ºæ˜¯ä¸æ˜¯ä¿®ç†å…¨éƒ¨
+        BYTE                    m_nRepairedListNum;                            //ä¿®ç†å¥½çš„è£…å¤‡æ•°
+        REPAIRED_ITEM            m_aRepairedList[MAX_REPAIRED_NUMBER];        //ä¿®ç†å¥½çš„è£…å¤‡åˆ—è¡¨
     };
 
     class GCShopRepairFactory : public PacketFactory 

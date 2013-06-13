@@ -1,12 +1,12 @@
 #include "stdafx.h"
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ11ÈÕ
-    ´´½¨Ê±¼ä:    16:35
-    ÎÄ¼şÃû³Æ:    ItemRuler.cpp
-    ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Item\ItemRuler.cpp
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ11æ—¥
+    åˆ›å»ºæ—¶é—´:    16:35
+    æ–‡ä»¶åç§°:    ItemRuler.cpp
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\ItemRuler.cpp
     
-    ÎÄ¼ş¹¦ÄÜ£º ÎïÆ·¹æÔòÏà¹ØµÄÎ¬»¤
-    ĞŞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š ç‰©å“è§„åˆ™ç›¸å…³çš„ç»´æŠ¤
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 
@@ -30,22 +30,22 @@
 
 
 VOID    ItemBoxRuler::CreateItemFromMonsterDrop(
-                                 INT iMonsterValue,                    //¹ÖÎï¼ÛÖµ
-                                 MONSTER_DROPBOXS& mDrop,            //µôÂä°üĞòÁĞ
-                                 INT iPlayerLvl,                    //Íæ¼Ò¼¶±ğ
-                                 INT iMonsterLvl,                    //¹ÖÎï¼¶±ğ
-                                 FLOAT fControlValue,                //¼à¿ØÏµÊı
-                                 ItemBoxContaner& OutBox,            //²úÉúµÄObj_ItemBoxÈİÆ÷
+                                 INT iMonsterValue,                    //æ€ªç‰©ä»·å€¼
+                                 MONSTER_DROPBOXS& mDrop,            //æ‰è½åŒ…åºåˆ—
+                                 INT iPlayerLvl,                    //ç©å®¶çº§åˆ«
+                                 INT iMonsterLvl,                    //æ€ªç‰©çº§åˆ«
+                                 FLOAT fControlValue,                //ç›‘æ§ç³»æ•°
+                                 ItemBoxContaner& OutBox,            //äº§ç”Ÿçš„Obj_ItemBoxå®¹å™¨
                                  FLOAT fWallow)
 {        
 
 __ENTER_FUNCTION
     
-    double        dBaseDropRate;                    //»ù±¾µôÂäÂÊ
-    double        dDeltaDropRate    =    1.0;        //¼¶±ğĞŞÕıÂÊ
-    double        dCurrentRate;                    //µ±Ç°µôÂäÂÊËæ»úÊı
-    FLOAT        fCurrentRate;                    //µ±Ç°ÎïÆ·Ñ¡È¡Ëæ»úÊı
-    UINT        iCanDropItemNumber;                //¿ÉÒÔµôÂäµÄÎïÆ·Êı
+    double        dBaseDropRate;                    //åŸºæœ¬æ‰è½ç‡
+    double        dDeltaDropRate    =    1.0;        //çº§åˆ«ä¿®æ­£ç‡
+    double        dCurrentRate;                    //å½“å‰æ‰è½ç‡éšæœºæ•°
+    FLOAT        fCurrentRate;                    //å½“å‰ç‰©å“é€‰å–éšæœºæ•°
+    UINT        iCanDropItemNumber;                //å¯ä»¥æ‰è½çš„ç‰©å“æ•°
     
     
     
@@ -126,7 +126,7 @@ BOOL        ItemCreateRuler::CreateEquipAttrib(ITEM_LOG_PARAM* pLogParam,_ITEM_T
             break;
         case EQUALITY_BLUE:
             {
-                //À¶×°ÓĞÊôĞÔÉú³É    
+                //è“è£…æœ‰å±æ€§ç”Ÿæˆ    
                 return CreateBlueEquipAttrib(pLogParam,itemType,iPlayerLvl,it,quality);
             }
             break;
@@ -183,7 +183,7 @@ BOOL    ItemCreateRuler::CreateCommonEquipAttrib(_ITEM_TYPE itemType,INT iPlayer
             INT iAttrCount = 0;
             _ITEM_ATTR    itemAttrib;
 
-            //°××°»ù±¾ÊôĞÔ
+            //ç™½è£…åŸºæœ¬å±æ€§
             if(pGET->m_AttackSpeed>0)
             {
                 itemAttrib.m_AttrType        =    IATTRIBUTE_BASE_ATTACK_TIME;
@@ -269,7 +269,7 @@ BOOL    ItemCreateRuler::CreateGreenEquipAttrib(_ITEM_TYPE itemType,INT iPlayerL
 
         INT iAttrCount = 0;
         _ITEM_ATTR    itemAttrib;
-        //ÂÌ×°»ù±¾ÊôĞÔ
+        //ç»¿è£…åŸºæœ¬å±æ€§
         if(pGET->m_AttackSpeed>0)
         {
             itemAttrib.m_AttrType        =    IATTRIBUTE_BASE_ATTACK_TIME;
@@ -317,7 +317,7 @@ BOOL    ItemCreateRuler::CreateGreenEquipAttrib(_ITEM_TYPE itemType,INT iPlayerL
             it.GetEquipData()->m_pAttr[iAttrCount]    =    itemAttrib;
             iAttrCount++;
         }
-        //´´½¨¸½¼ÓÊôĞÔ
+        //åˆ›å»ºé™„åŠ å±æ€§
         
         for(INT i =0;i<MAX_GREEN_ITEM_EXT_ATTR;i++)
         {        
@@ -361,7 +361,7 @@ BOOL    ItemCreateRuler::CreateBlueEquipAttrib(ITEM_LOG_PARAM* pLogParam,_ITEM_T
         it.GetEquipData()->m_CurDamagePoint    =    0;
         it.GetEquipData()->m_MaxDurPoint    =    pGET->m_MaxDur;
         /*
-         *    ±¦Ê¯Éú³É¼¸ÂÊ£¬³ÌĞòĞ´ËÀ
+         *    å®çŸ³ç”Ÿæˆå‡ ç‡ï¼Œç¨‹åºå†™æ­»
          */
         switch(pGET->m_MaxGem) 
         {
@@ -439,7 +439,7 @@ BOOL    ItemCreateRuler::CreateBlueEquipAttrib(ITEM_LOG_PARAM* pLogParam,_ITEM_T
         pLogParam->GemMax                    =    it.GetEquipData()->m_GemMax;
 
         INT            iAttrCount = 0;
-        _ITEM_ATTR    itemAttrib; //À¶×°»ù±¾ÊôĞÔ
+        _ITEM_ATTR    itemAttrib; //è“è£…åŸºæœ¬å±æ€§
         
         if(pGET->m_AttackSpeed>0)
         {
@@ -490,7 +490,7 @@ BOOL    ItemCreateRuler::CreateBlueEquipAttrib(ITEM_LOG_PARAM* pLogParam,_ITEM_T
         }
         BOOL    bHaveBlueAttr = FALSE;
 
-        //»ù´¡ÊôĞÔÍê±Ï£¬¸ù¾İÎïÆ·quality µ÷ÓÃ ItemQuality ±í
+        //åŸºç¡€å±æ€§å®Œæ¯•ï¼Œæ ¹æ®ç‰©å“quality è°ƒç”¨ ItemQuality è¡¨
         if(quality>49) quality = 49;
         if(quality<0) quality = 0;
 
@@ -511,7 +511,7 @@ BOOL    ItemCreateRuler::CreateBlueEquipAttrib(ITEM_LOG_PARAM* pLogParam,_ITEM_T
                             if(pGET->m_AttrRate[iAttr]+iCurrentValue>=iRandValue)
                             {
                                 bHaveBlueAttr = TRUE;
-                                //¼ì²éÖØ¸´ÊôĞÔ
+                                //æ£€æŸ¥é‡å¤å±æ€§
                                 BOOL existSameAttr = FALSE;
 
                                 for(INT existAttr = 0 ;existAttr<iAttrCount;existAttr++)
@@ -529,7 +529,7 @@ BOOL    ItemCreateRuler::CreateBlueEquipAttrib(ITEM_LOG_PARAM* pLogParam,_ITEM_T
                                 INT iQualityLevel = CaculateQualityIndex(fRandValue,pQualityTB);
 
                                 it.GetEquipData()->m_pAttr[iAttrCount].m_AttrType        =    iAttr;
-                                //¸ù¾İÆ·ÖÊ¶Î´¦ÀíÊı¾İ
+                                //æ ¹æ®å“è´¨æ®µå¤„ç†æ•°æ®
 
                                 MINMAX_VALUE    TValue =    g_ItemTable.GetItemValue((ITEM_ATTRIBUTE)iAttr,iQualityLevel);
                                 
@@ -571,14 +571,14 @@ BOOL    ItemCreateRuler::CreateBlueEquipAttrib(ITEM_LOG_PARAM* pLogParam,_ITEM_T
         }
         else
         {
-            Assert(FALSE); //À¶×°¶¼Ó¦¸ÃÓĞquality ÃèĞğ
+            Assert(FALSE); //è“è£…éƒ½åº”è¯¥æœ‰quality æå™
         }
 
         return TRUE;
     }
     else
     {
-        Assert(FALSE);//·Ç·¨itemType
+        Assert(FALSE);//éæ³•itemType
     }
     
     return FALSE;
@@ -673,7 +673,7 @@ BOOL    ItemCreateRuler::CreateMedicAttrib(_ITEM_TYPE itemType,_ITEM& it)
                 it.GetMedicData()->m_nLayedNum        =    pGET->m_nLayedNum;    
                 it.GetMedicData()->m_nScriptID        =    pGET->m_nScriptID;    
                 it.GetMedicData()->m_nSkillID        =    pGET->m_nSkillID;    
-                it.GetMedicData()->m_nCount            =    1; //µş·ÅÎïÆ·£¬²úÉúÒ»¸ö
+                it.GetMedicData()->m_nCount            =    1; //å æ”¾ç‰©å“ï¼Œäº§ç”Ÿä¸€ä¸ª
                 it.GetMedicData()->m_bCosSelf        =    pGET->m_bCosSelf;
                 it.GetMedicData()->m_nReqSkill        =    pGET->m_nReqSkill;
                 it.GetMedicData()->m_nReqSkillLevel    =    pGET->m_nReqSkillLevel;
@@ -813,13 +813,13 @@ BOOL    MonsterDropRuler::CaculateCommOwnerList(Obj_Monster* pMonster)
 
 
         Obj_Human*     pFinalOwner    = 0;
-        //²éÕÒÓĞĞ§ÍÅ¶Ó
+        //æŸ¥æ‰¾æœ‰æ•ˆå›¢é˜Ÿ
         
         FLOAT    fSearchLength    =    pMonster->GetDropSearchRange();
         INT        uMaxTeamCount    =    pMonster->GetDropTeamCount();
         INT        nPercent        =    pMonster->GetMinDamagePercent();
 
-        //ÆÕÍ¨¹ÖÓÀÔ¶Ö»Ñ¡Ò»¸ö¶ÓÎé
+        //æ™®é€šæ€ªæ°¸è¿œåªé€‰ä¸€ä¸ªé˜Ÿä¼
         DAMAGE_MEM_LIST     DRecord = pMonster->GetKillerRec(1,nPercent);
 
         BOOL    bFindTeam        =    FALSE;
@@ -829,7 +829,7 @@ BOOL    MonsterDropRuler::CaculateCommOwnerList(Obj_Monster* pMonster)
 
         for(UINT i = 0;i<DRecord.m_uCount;i++)
         {
-            //²éÕÒ¼¤»îµÄ³ÉÔ±
+            //æŸ¥æ‰¾æ¿€æ´»çš„æˆå‘˜
             SCANOPERATOR_ACTIVETEAMMATES_INIT    SA_Init;
             //SA_Init.m_TeamID        =    DRecord.m_DamageRec[iCurrentDTIndex].m_TeamID;
             //SA_Init.m_MemberObjID    =    DRecord.m_DamageRec[iCurrentDTIndex].m_Killer;
@@ -845,23 +845,23 @@ BOOL    MonsterDropRuler::CaculateCommOwnerList(Obj_Monster* pMonster)
             ScanOpAT.Init(&SA_Init);
             pScene->Scan(&ScanOpAT);
 
-            if(ScanOpAT.m_nActiveTeammateCount>1) //×é¶ÓÇé¿ö
+            if(ScanOpAT.m_nActiveTeammateCount>1) //ç»„é˜Ÿæƒ…å†µ
             {
                 pFinalOwner    =    
                     ScanOpAT.m_aActiveTeammate[rand()%ScanOpAT.m_nActiveTeammateCount];
                 break;
             }
-            else if(ScanOpAT.m_nActiveTeammateCount==1) //Ö»ÓĞÒ»¸öÈË
+            else if(ScanOpAT.m_nActiveTeammateCount==1) //åªæœ‰ä¸€ä¸ªäºº
             {
                 pFinalOwner    = ScanOpAT.m_aActiveTeammate[0];
                 //if(pFinalOwner->IsInValidRadius(pMonster->getWorldPos(),fSearchLength) == FALSE)
                 //{
                 //    pFinalOwner = NULL;
-                //    continue; //Ã»ÓĞÕÒµ½£¬¼ÌĞø
+                //    continue; //æ²¡æœ‰æ‰¾åˆ°ï¼Œç»§ç»­
                 //}
                 break;
             }
-            else    //Ã»ÓĞÕÒµ½
+            else    //æ²¡æœ‰æ‰¾åˆ°
             {
                 //iCurrentDTIndex++;
                 //continue;
@@ -898,7 +898,7 @@ BOOL    MonsterDropRuler::CaculateBossOwnerList(Obj_Monster* pMonster)
             return FALSE;
         }
         Obj_Human*     pFinalOwner;
-        //²éÕÒÓĞĞ§ÍÅ¶Ó
+        //æŸ¥æ‰¾æœ‰æ•ˆå›¢é˜Ÿ
         BOOL    bFindTeam            =    FALSE;
         UINT    iCurrentDTIndex        =    0;
 
@@ -907,23 +907,23 @@ BOOL    MonsterDropRuler::CaculateBossOwnerList(Obj_Monster* pMonster)
         FLOAT    fSearchLength        =  pMonster->GetDropSearchRange();
         
 
-        //Boss¹Ö¿ÉÒÔÑ¡Ôñ¶à¸ö¶ÓÎé
+        //Bossæ€ªå¯ä»¥é€‰æ‹©å¤šä¸ªé˜Ÿä¼
         DAMAGE_MEM_LIST     DRecord    = 
             pMonster->GetKillerRec(uMaxTeamCount,nPercent);
 
-        if(DRecord.m_uCount==0) //Ã»ÓĞÕÒµ½¶ÓÎé
+        if(DRecord.m_uCount==0) //æ²¡æœ‰æ‰¾åˆ°é˜Ÿä¼
             return FALSE;
 
-        UINT uTeamCount            =    DRecord.m_uCount;//²ÎÓëÊ°È¡µÄ¶ÓÎé¸öÊı
+        UINT uTeamCount            =    DRecord.m_uCount;//å‚ä¸æ‹¾å–çš„é˜Ÿä¼ä¸ªæ•°
         
         Assert(uTeamCount<MAX_DAMAGE_REC_COUNT);
 
         ScanOperator_ActiveTeammates    ScanOpAT;
         
-        for(UINT i =0;i<uTeamCount;i++) //±éÀúÃ¿¸öºÏ·¨¶ÓÎé£¬²¢ÇÒ´´½¨¶ÔÓ¦µôÂä°ü
+        for(UINT i =0;i<uTeamCount;i++) //éå†æ¯ä¸ªåˆæ³•é˜Ÿä¼ï¼Œå¹¶ä¸”åˆ›å»ºå¯¹åº”æ‰è½åŒ…
         {
             
-            //²éÕÒ¼¤»îµÄ³ÉÔ±
+            //æŸ¥æ‰¾æ¿€æ´»çš„æˆå‘˜
             SCANOPERATOR_ACTIVETEAMMATES_INIT    SA_Init;
             //SA_Init.m_TeamID        =    DRecord.m_DamageRec[iCurrentDTIndex].m_TeamID;
             //SA_Init.m_MemberObjID    =    DRecord.m_DamageRec[iCurrentDTIndex].m_Killer;
@@ -941,12 +941,12 @@ BOOL    MonsterDropRuler::CaculateBossOwnerList(Obj_Monster* pMonster)
 
             iCurrentDTIndex++;
 
-            if(ScanOpAT.m_nActiveTeammateCount<1) //Ã»ÓĞÕÒµ½
+            if(ScanOpAT.m_nActiveTeammateCount<1) //æ²¡æœ‰æ‰¾åˆ°
             {
                 break ;
 //                continue; 
             }
-            else if(ScanOpAT.m_nActiveTeammateCount==1)//ÕÒµ½Ò»¸ö
+            else if(ScanOpAT.m_nActiveTeammateCount==1)//æ‰¾åˆ°ä¸€ä¸ª
             {
                 pFinalOwner    =    
                     ScanOpAT.m_aActiveTeammate[0];
@@ -957,7 +957,7 @@ BOOL    MonsterDropRuler::CaculateBossOwnerList(Obj_Monster* pMonster)
                 pMonster->GetOwnerList().AddOwner(pFinalOwner->GetID());
                 break ;
             }
-            else//ÕÒµ½¶à¸ö
+            else//æ‰¾åˆ°å¤šä¸ª
             {
                 INT iActivePlayerCount  =  ScanOpAT.m_nActiveTeammateCount;
                 for(UINT iDropBox =0;iDropBox<(UINT)iActivePlayerCount;iDropBox++)
@@ -1040,7 +1040,7 @@ BOOL    MonsterDropRuler::CaculateCommDropRuler(Obj_Monster* pMonster)
         
         WORLD_POS    Pos    =    *pMonster->getWorldPos();
 
-        if((IBContaner.m_nCount<=0) && (TaskDropList.DropCount==0)) //ÅĞ¶ÏÊÇ·ñµô³öÎïÆ·
+        if((IBContaner.m_nCount<=0) && (TaskDropList.DropCount==0)) //åˆ¤æ–­æ˜¯å¦æ‰å‡ºç‰©å“
         {
             pMonster->GetOwnerList().CleanUp();
             return FALSE;
@@ -1048,7 +1048,7 @@ BOOL    MonsterDropRuler::CaculateCommDropRuler(Obj_Monster* pMonster)
 
 
         Obj_ItemBox* pItemBox = 
-            pIBManager->CreateMonsterDropItembox(&Pos);    //´´½¨ItemBox;
+            pIBManager->CreateMonsterDropItembox(&Pos);    //åˆ›å»ºItemBox;
 
         
         for(INT i=0;i<IBContaner.m_nCount;i++)
@@ -1138,7 +1138,7 @@ BOOL    MonsterDropRuler::CaculateBossDropRuler(Obj_Monster*    pMonster, BOX_DI
 
             WORLD_POS    Pos    =    *pMonster->getWorldPos();
 
-            if((IBContaner.m_nCount<=0) && (TaskDropList.DropCount==0)) //ÅĞ¶ÏÊÇ·ñµô³öÎïÆ·
+            if((IBContaner.m_nCount<=0) && (TaskDropList.DropCount==0)) //åˆ¤æ–­æ˜¯å¦æ‰å‡ºç‰©å“
                 continue;
 
             if( DropRuler!=BDR_BOSS && randomindex!=iDropBox && TaskDropList.DropCount==0 )
@@ -1146,20 +1146,20 @@ BOOL    MonsterDropRuler::CaculateBossDropRuler(Obj_Monster*    pMonster, BOX_DI
                 continue ;
             }
 
-            //³¢ÊÔÕÒ¶ÔÓ¦µÄItemBox
-            Obj_ItemBox* pItemBox = pIBManager->CreateMonsterDropItembox(&Pos);    //´´½¨ItemBox;
+            //å°è¯•æ‰¾å¯¹åº”çš„ItemBox
+            Obj_ItemBox* pItemBox = pIBManager->CreateMonsterDropItembox(&Pos);    //åˆ›å»ºItemBox;
         
         
 
             if( DropRuler==BDR_BOSS )
-            {//Èç¹ûÊÇbossÀàĞÍµÄ£¬Ôò¶¼»áÉú³É
+            {//å¦‚æœæ˜¯bossç±»å‹çš„ï¼Œåˆ™éƒ½ä¼šç”Ÿæˆ
                 for(int i=0;i<IBContaner.m_nCount;i++)
                 {
                     pItemBox->AddItem(&IBContaner,i);
                 }
             }
             else if( randomindex==iDropBox )
-            {//Èç¹û²»ÊÇbossĞÍ¹Ö£¬ÔòÖ»ÓĞÒ»¸öÄÜ±»Éú³É
+            {//å¦‚æœä¸æ˜¯bosså‹æ€ªï¼Œåˆ™åªæœ‰ä¸€ä¸ªèƒ½è¢«ç”Ÿæˆ
                 for(int i=0;i<IBContaner.m_nCount;i++)
                 {
                     pItemBox->AddItem(&IBContaner,i);
@@ -1222,7 +1222,7 @@ BOOL    ItemRulerCheck::CheckTypeRuler(ITEM_RULER_LIST ruler,const UINT uItemInd
                     {
                         CHAR Buff[255];
                         memset(Buff,0,255);
-                        sprintf(Buff,"ÕÒ²»µ½¶ÔÓ¦ÎïÆ·µÄ±í¸ñ¶¨Òå£¬ÇëÈ·¶¨°××°±í¸ñÕıÈ· ItemType=%d",uItemIndex);
+                        sprintf(Buff,"æ‰¾ä¸åˆ°å¯¹åº”ç‰©å“çš„è¡¨æ ¼å®šä¹‰ï¼Œè¯·ç¡®å®šç™½è£…è¡¨æ ¼æ­£ç¡® ItemType=%d",uItemIndex);
                         AssertEx(pGET,Buff);
                     }
                     return CheckRuler(ruler,pGET->m_RulerID);
@@ -1236,7 +1236,7 @@ BOOL    ItemRulerCheck::CheckTypeRuler(ITEM_RULER_LIST ruler,const UINT uItemInd
                     {
                         CHAR Buff[255];
                         memset(Buff,0,255);
-                        sprintf(Buff,"ÕÒ²»µ½¶ÔÓ¦ÎïÆ·µÄ±í¸ñ¶¨Òå£¬ÇëÈ·¶¨À¶×°×ÊÔ´ÕıÈ· ItemType=%d",uItemIndex);
+                        sprintf(Buff,"æ‰¾ä¸åˆ°å¯¹åº”ç‰©å“çš„è¡¨æ ¼å®šä¹‰ï¼Œè¯·ç¡®å®šè“è£…èµ„æºæ­£ç¡® ItemType=%d",uItemIndex);
                         AssertEx(pGET,Buff);
                     }
                     return CheckRuler(ruler,pGET->m_RulerID);
@@ -1249,7 +1249,7 @@ BOOL    ItemRulerCheck::CheckTypeRuler(ITEM_RULER_LIST ruler,const UINT uItemInd
                     {
                         CHAR Buff[255];
                         memset(Buff,0,255);
-                        sprintf(Buff,"ÕÒ²»µ½¶ÔÓ¦ÎïÆ·µÄ±í¸ñ¶¨Òå£¬ÇëÈ·¶¨ÂÌ×°×ÊÔ´ÕıÈ· ItemType=%d",uItemIndex);
+                        sprintf(Buff,"æ‰¾ä¸åˆ°å¯¹åº”ç‰©å“çš„è¡¨æ ¼å®šä¹‰ï¼Œè¯·ç¡®å®šç»¿è£…èµ„æºæ­£ç¡® ItemType=%d",uItemIndex);
                         AssertEx(pGET,Buff);
                     }
                     return CheckRuler(ruler,pGET->m_RulerID);
@@ -1257,7 +1257,7 @@ BOOL    ItemRulerCheck::CheckTypeRuler(ITEM_RULER_LIST ruler,const UINT uItemInd
                 break;
             default:
                 {
-                    AssertEx(FALSE,"ÕÒ²»µ½¶ÔÓ¦ÎïÆ·ÀàĞÍ");
+                    AssertEx(FALSE,"æ‰¾ä¸åˆ°å¯¹åº”ç‰©å“ç±»å‹");
                     return FALSE;
                 }
             }
@@ -1273,7 +1273,7 @@ BOOL    ItemRulerCheck::CheckTypeRuler(ITEM_RULER_LIST ruler,const UINT uItemInd
             {
                 CHAR Buff[255];
                 memset(Buff,0,255);
-                sprintf(Buff,"ÕÒ²»µ½¶ÔÓ¦ÎïÆ·µÄ±í¸ñ¶¨Òå£¬ÇëÈ·¶¨CommonItem×ÊÔ´ÕıÈ· ItemType=%d",uItemIndex);
+                sprintf(Buff,"æ‰¾ä¸åˆ°å¯¹åº”ç‰©å“çš„è¡¨æ ¼å®šä¹‰ï¼Œè¯·ç¡®å®šCommonItemèµ„æºæ­£ç¡® ItemType=%d",uItemIndex);
                 AssertEx(pGET,Buff);
             }
 
@@ -1287,7 +1287,7 @@ BOOL    ItemRulerCheck::CheckTypeRuler(ITEM_RULER_LIST ruler,const UINT uItemInd
             {
                 CHAR Buff[255];
                 memset(Buff,0,255);
-                sprintf(Buff,"ÕÒ²»µ½¶ÔÓ¦ÎïÆ·µÄ±í¸ñ¶¨Òå£¬ÇëÈ·¶¨Gem×ÊÔ´ÕıÈ· ItemType=%d",uItemIndex);
+                sprintf(Buff,"æ‰¾ä¸åˆ°å¯¹åº”ç‰©å“çš„è¡¨æ ¼å®šä¹‰ï¼Œè¯·ç¡®å®šGemèµ„æºæ­£ç¡® ItemType=%d",uItemIndex);
                 AssertEx(pGET,Buff);
             }
             return CheckRuler(ruler,pGET->m_nRulerID);
@@ -1300,7 +1300,7 @@ BOOL    ItemRulerCheck::CheckTypeRuler(ITEM_RULER_LIST ruler,const UINT uItemInd
             {
                 CHAR Buff[255];
                 memset(Buff,0,255);
-                sprintf(Buff,"ÕÒ²»µ½¶ÔÓ¦ÎïÆ·µÄ±í¸ñ¶¨Òå£¬ÇëÈ·¶¨²Ø±¦Í¼×ÊÔ´ÕıÈ· ItemType=%d",uItemIndex);
+                sprintf(Buff,"æ‰¾ä¸åˆ°å¯¹åº”ç‰©å“çš„è¡¨æ ¼å®šä¹‰ï¼Œè¯·ç¡®å®šè—å®å›¾èµ„æºæ­£ç¡® ItemType=%d",uItemIndex);
                 AssertEx(pGET,Buff);
             }
             return CheckRuler(ruler,pGET->m_nRulerID);

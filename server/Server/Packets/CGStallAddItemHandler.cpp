@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 /*
-¿Í»§¶ËÍùÌ¯Î»Àï·Å¶«Î÷
+å®¢æˆ·ç«¯å¾€æ‘Šä½é‡Œæ”¾ä¸œè¥¿
 */
 #include "CGStallAddItem.h"
 #include "GCStallAddItem.h"
@@ -31,10 +31,10 @@ UINT CGStallAddItemHandler::Execute( CGStallAddItem* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //²Ù×÷
+    //æ“ä½œ
     _ITEM_GUID    ItemGuid = pPacket->GetObjGUID();
     UINT        ItemPrice = pPacket->GetPrice();
     BYTE        FromType = pPacket->GetFromType();
@@ -72,7 +72,7 @@ UINT CGStallAddItemHandler::Execute( CGStallAddItem* pPacket, Player* pPlayer )
             //    pBagContainer = pBaseContainer;
             //}
             //else
-            //{//guid·Ç·¨
+            //{//guidéæ³•
             //    Assert(0);
             //    GCStallError    Msg;
             //    Msg.SetID(STALL_MSG::ERR_ILLEGAL);
@@ -84,19 +84,19 @@ UINT CGStallAddItemHandler::Execute( CGStallAddItem* pPacket, Player* pPlayer )
 
             INT    IndexInBag = pBaseContainer->GetIndexByGUID(&ItemGuid);
             
-            //ÏÈ²éÒ»±éÌ¯Î»ºĞÖĞÊÇ²»ÊÇÒÑ¾­ÓĞ¸ÃÎïÆ·ÁË
+            //å…ˆæŸ¥ä¸€éæ‘Šä½ç›’ä¸­æ˜¯ä¸æ˜¯å·²ç»æœ‰è¯¥ç‰©å“äº†
             for(INT i = 0; i<STALL_BOX_SIZE; i++)
             {
                 if(pStallContainer->GetItem(i)->GetGUID() == ItemGuid )
-                {//ÎïÆ·ÒÑ¾­ÔÚtÌ¯Î»ºĞÖĞ£¬¶ªÆú¸ÃÏûÏ¢
+                {//ç‰©å“å·²ç»åœ¨tæ‘Šä½ç›’ä¸­ï¼Œä¸¢å¼ƒè¯¥æ¶ˆæ¯
                     g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGStallAddItemHandler::ObjID=%d, Already in box "
                         ,pHuman->GetID()) ;
                     return PACKET_EXE_CONTINUE ;
                 }
             }
 
-            //¿½±´µ½Ì¯Î»ºĞ
-            //×Ô¶¯ÕÒ¸ñ
+            //æ‹·è´åˆ°æ‘Šä½ç›’
+            //è‡ªåŠ¨æ‰¾æ ¼
             INT result = 
                 g_ItemOperator.CopyItem
                 (
@@ -106,21 +106,21 @@ UINT CGStallAddItemHandler::Execute( CGStallAddItem* pPacket, Player* pPlayer )
                 );
 
             if(result>=0)
-            {//¿½±´³É¹¦£¬
-                //·¢ËÍÏûÏ¢¸øË«·½¿Í»§¶Ë
+            {//æ‹·è´æˆåŠŸï¼Œ
+                //å‘é€æ¶ˆæ¯ç»™åŒæ–¹å®¢æˆ·ç«¯
                 Item* pIt = pStallContainer->GetItem(result);
                 if(pIt->IsEmpty() == FALSE)
                 {
-                    //ÏÈËø¶¨´ËÎïÆ·
+                    //å…ˆé”å®šæ­¤ç‰©å“
                     g_ItemOperator.LockItem( pBaseContainer, IndexInBag );
 
-                    //ÉèÖÃ¼Û¸ñ
+                    //è®¾ç½®ä»·æ ¼
                     pHuman->m_StallBox.SetPriceByIndex(result, ItemPrice);
 
-                    //ĞòÁĞºÅµİÔö
+                    //åºåˆ—å·é€’å¢
                     pHuman->m_StallBox.IncSerialByIndex(result);
 
-                    //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                    //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                     MsgAddItem.SetFromType( STALL_MSG::POS_BAG );
                     MsgAddItem.SetToIndex(result);
                     MsgAddItem.SetPrice(ItemPrice);
@@ -140,7 +140,7 @@ UINT CGStallAddItemHandler::Execute( CGStallAddItem* pPacket, Player* pPlayer )
                 }
             }
             else
-            {//¿½±´Ê§°Ü
+            {//æ‹·è´å¤±è´¥
                 if(result == ITEMOE_DESTOPERATOR_FULL)
                 {
                     MsgError.SetID(STALL_MSG::ERR_NOT_ENOUGH_ROOM_IN_STALL);
@@ -168,20 +168,20 @@ UINT CGStallAddItemHandler::Execute( CGStallAddItem* pPacket, Player* pPlayer )
         break;
 
     case STALL_MSG::POS_PET :
-        {//´Ó³èÎïÁĞ±íÖĞÄÃ³ö³èÎïµ½½»Ò×ºĞÖĞ
+        {//ä»å® ç‰©åˆ—è¡¨ä¸­æ‹¿å‡ºå® ç‰©åˆ°äº¤æ˜“ç›’ä¸­
             ItemContainer*    pPetContainer = pHuman->GetPetContain();
             BYTE    FromIndex = pPetContainer->GetIndexByGUID( &PetGuid );
 
-            //ÏÈ²éÒ»±é½»Ò×ºĞÖĞÊÇ²»ÊÇÒÑ¾­ÓĞ¸ÃÎïÆ·ÁË
+            //å…ˆæŸ¥ä¸€éäº¤æ˜“ç›’ä¸­æ˜¯ä¸æ˜¯å·²ç»æœ‰è¯¥ç‰©å“äº†
             for(INT i = 0; i<EXCHANGE_PET_BOX_SIZE; i++)
             {
                 if(pStallPetContainer->GetItem(i)->GetPetGUID() == pPetContainer->GetItem(FromIndex)->GetPetGUID() )
-                {//ÎïÆ·ÒÑ¾­ÔÚ½»Ò×ºĞÖĞ£¬¶ªÆú¸ÃÏûÏ¢
+                {//ç‰©å“å·²ç»åœ¨äº¤æ˜“ç›’ä¸­ï¼Œä¸¢å¼ƒè¯¥æ¶ˆæ¯
                     return PACKET_EXE_CONTINUE ;
                 }
             }
 
-            //×Ô¶¯ÕÒ¸ñ
+            //è‡ªåŠ¨æ‰¾æ ¼
             INT result = 
                 g_ItemOperator.CopyItem
                 (
@@ -191,21 +191,21 @@ UINT CGStallAddItemHandler::Execute( CGStallAddItem* pPacket, Player* pPlayer )
                 );
 
             if(result>=0)
-            {//¿½±´³É¹¦£¬
-                //·¢ËÍÏûÏ¢¸øË«·½¿Í»§¶Ë
+            {//æ‹·è´æˆåŠŸï¼Œ
+                //å‘é€æ¶ˆæ¯ç»™åŒæ–¹å®¢æˆ·ç«¯
                 Item* pIt = pStallPetContainer->GetItem(result);
                 if(pIt->IsEmpty() == FALSE)
                 {
-                    //ÏÈËø¶¨´ËÎïÆ·
+                    //å…ˆé”å®šæ­¤ç‰©å“
                     g_ItemOperator.LockItem( pPetContainer, FromIndex );
 
-                    //ÉèÖÃ¼Û¸ñ
+                    //è®¾ç½®ä»·æ ¼
                     pHuman->m_StallBox.SetPetPriceByIndex(result, ItemPrice);
 
-                    //ĞòÁĞºÅµİÔö
+                    //åºåˆ—å·é€’å¢
                     pHuman->m_StallBox.IncPetSerialByIndex(result);
 
-                    //·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë
+                    //å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯
                     MsgAddItem.SetFromType( STALL_MSG::POS_PET );
                     MsgAddItem.SetToIndex(result);
                     MsgAddItem.SetPrice(ItemPrice);
@@ -225,7 +225,7 @@ UINT CGStallAddItemHandler::Execute( CGStallAddItem* pPacket, Player* pPlayer )
                 }
             }
             else
-            {//¿½±´Ê§°Ü
+            {//æ‹·è´å¤±è´¥
                 if(result == ITEMOE_DESTOPERATOR_FULL)
                 {
                     MsgError.SetID(STALL_MSG::ERR_NOT_ENOUGH_ROOM_IN_STALL);

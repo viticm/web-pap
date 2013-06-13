@@ -64,7 +64,7 @@ __ENTER_FUNCTION
 
     BOOL bRet ;
 
-    //Ê±¼äÄ£¿éĞèÒª×î¿ªÊ¼µÄÊ±ºòÉèÖÃ
+    //æ—¶é—´æ¨¡å—éœ€è¦æœ€å¼€å§‹çš„æ—¶å€™è®¾ç½®
     g_pTimeManager = new TimeManager ;
     Assert( g_pTimeManager ) ;
     g_pTimeManager->Init( ) ;
@@ -191,17 +191,17 @@ BOOL World::NewStaticManager( )
 {
 __ENTER_FUNCTION
     
-//ShareMemory ×îÏÈ
+//ShareMemory æœ€å…ˆ
 
     _WORLD_INFO& WorldInfo = g_Config.m_WorldInfo;
     if(WorldInfo.m_EnableShareMem)
     {
         BOOL ret;
         ret = g_GuildSMUPool.Init(MAX_GUILD_SIZE,WorldInfo.m_GuildKey,SMPT_WORLD);
-        AssertEx(ret,"Guild¹²ÏíÄÚ´æ³õÊ¼»¯´íÎó,ÇëÏÈÆô¶¯ShareMemory ");
+        AssertEx(ret,"Guildå…±äº«å†…å­˜åˆå§‹åŒ–é”™è¯¯,è¯·å…ˆå¯åŠ¨ShareMemory ");
 
         ret = g_MailSMUPool.Init(MAX_MAILNODE_SIZE,WorldInfo.m_MailKey,SMPT_WORLD);
-        AssertEx(ret,"Mail¹²ÏíÄÚ´æ³õÊ¼»¯´íÎó,ÇëÏÈÆô¶¯ShareMemory ");
+        AssertEx(ret,"Mailå…±äº«å†…å­˜åˆå§‹åŒ–é”™è¯¯,è¯·å…ˆå¯åŠ¨ShareMemory ");
     }
 
     //
@@ -428,7 +428,7 @@ __ENTER_FUNCTION
     Log::SaveLog( WORLD_LOGFILE, "g_pSceneInfo delete...OK" ) ;
 
     //
-    //ÒÔÏÂÄ£¿é·ÅºóÃæÉ¾³ı
+    //ä»¥ä¸‹æ¨¡å—æ”¾åé¢åˆ é™¤
     //
     SAFE_DELETE( g_pOnlineUser ) ;
     Log::SaveLog( WORLD_LOGFILE, "g_pOnlineUser delete...OK" ) ;

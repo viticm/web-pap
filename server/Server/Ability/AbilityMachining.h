@@ -12,10 +12,10 @@ class AbilityMachining : public AbilityCompound
 public:
     enum MachiningType
     {
-        NORMAL_TYPE = 0,        // ÆÕÍ¨¼Ó¹¤
-        GEM_COMPOUND,            // ±¦Ê¯ºÏ³É
-        GEM_EMBED,                // ±¦Ê¯ÏâÇ¶
-        TYPE_SIZE,                // ¼Ó¹¤ÀàĞÍÊıÁ¿
+        NORMAL_TYPE = 0,        // æ™®é€šåŠ å·¥
+        GEM_COMPOUND,            // å®çŸ³åˆæˆ
+        GEM_EMBED,                // å®çŸ³é•¶åµŒ
+        TYPE_SIZE,                // åŠ å·¥ç±»å‹æ•°é‡
     };
 
 public:

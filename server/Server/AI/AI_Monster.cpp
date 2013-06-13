@@ -63,7 +63,7 @@ VOID AI_Monster::CleanUp( )
     Init( );
     m_ScanTimer.CleanUp( ) ;
     m_RandMoveTimer.CleanUp( ) ;
-    // { Ç§Íò²»ÄÜ·ÅÔÚInit()ÖĞ½øĞĞ³õÊ¼»¯
+    // { åƒä¸‡ä¸èƒ½æ”¾åœ¨Init()ä¸­è¿›è¡Œåˆå§‹åŒ–
     m_nIndexOfPassed = 0;
     m_nIndexOfMoveTo = 0;
     m_baHead = TRUE;
@@ -104,9 +104,9 @@ VOID AI_Monster::Init( )
     __LEAVE_FUNCTION
 }
 //=======================================================================================
-// Âß¼­×´Ì¬¡¢ÊÂ¼şÏà¹Ø
+// é€»è¾‘çŠ¶æ€ã€äº‹ä»¶ç›¸å…³
 //=======================================================================================
-//¿ÕÏĞ
+//ç©ºé—²
 VOID AI_Monster::AI_Logic_Idle( UINT uTime )
 {
 __ENTER_FUNCTION
@@ -118,12 +118,12 @@ __ENTER_FUNCTION
     if (TRUE == ScanEnemy( uTime ))
         return ;
 
-    /** Ëæ»úÒÆ¶¯´¦Àí */
-    if( AIParam(AIPARAM_RANDMOVETIME)>0    /** ÄÜ¹»Ëæ»úÒÆ¶¯ */
-        && !GetCharacter()->IsMoving()        /** Ã»ÓĞÔÚÒÆ¶¯ */
-        && !HasEnemy()                    /** Ã»ÓĞµĞÈË */
+    /** éšæœºç§»åŠ¨å¤„ç† */
+    if( AIParam(AIPARAM_RANDMOVETIME)>0    /** èƒ½å¤Ÿéšæœºç§»åŠ¨ */
+        && !GetCharacter()->IsMoving()        /** æ²¡æœ‰åœ¨ç§»åŠ¨ */
+        && !HasEnemy()                    /** æ²¡æœ‰æ•Œäºº */
         )
-    {/** ×öËæ»úÒÆ¶¯ */
+    {/** åšéšæœºç§»åŠ¨ */
         if( !m_RandMoveTimer.IsSetTimer() )
         {
             m_RandMoveTimer.BeginTimer(AIParam(AIPARAM_RANDMOVETIME)+(rand()%AIParam(AIPARAM_RANDMOVETIME)), uTime ) ;
@@ -133,17 +133,17 @@ __ENTER_FUNCTION
             ToRandMove( ) ;
         }
     }
-    /** Ö´ĞĞAI½Å±¾ */
+    /** æ‰§è¡ŒAIè„šæœ¬ */
     ExcuteAIScript(SIDLE);
 
 __LEAVE_FUNCTION
 }
 
-//¿¿½ü
+//é è¿‘
 VOID AI_Monster::AI_Logic_Approach( UINT uTime )
 {
 __ENTER_FUNCTION
-    /** ÏÈ½øĞĞApproachÀàĞÍµÄÅĞ¶Ï */
+    /** å…ˆè¿›è¡ŒApproachç±»å‹çš„åˆ¤æ–­ */
     GET_MONSTER_SCENE((VOID)0)
 
     Obj* pObj = pScene->GetObjManager()->GetObj(m_CurEnemyID);
@@ -152,7 +152,7 @@ __ENTER_FUNCTION
         || !((Obj_Character*)pObj)->IsAlive() 
         || !((Obj_Character*)pObj)->IsCanViewMe(pMonster) 
         )
-    {/** µ±Ç°µĞÈËÎŞĞ§ºó×ªÏòÏÂÒ»¸öµĞÈË£¬Ö±µ½È«²¿ÕÒÍêÎªÖ¹ */
+    {/** å½“å‰æ•Œäººæ— æ•ˆåè½¬å‘ä¸‹ä¸€ä¸ªæ•Œäººï¼Œç›´åˆ°å…¨éƒ¨æ‰¾å®Œä¸ºæ­¢ */
         DelEnemy(m_CurEnemyID);
         m_CurEnemyID = GetNextEnemy();
         if (INVALID_ID == m_CurEnemyID) {
@@ -177,13 +177,13 @@ __ENTER_FUNCTION
     }
 
     if (ZERO_VALUE > fMTDist) 
-    {/** Èç¹ûµ½´ïÄ¿µÄµØ */
+    {/** å¦‚æœåˆ°è¾¾ç›®çš„åœ° */
         ToAttack();
     }
     else
     {
         if( fETDist > (FLOAT)AIParam(AIPARAM_RESETTARGET_DIST)/1000.0f)
-        {/** Èç¹ûÄ¿±êÎ»ÖÃºÍµĞÈËÎ»ÖÃµÄ¾àÀë´óÓëÒ»¶¨ÖµÔòĞèÒªÖØĞÂÖÆ¶¨ÒÆ¶¯Ä¿±ê */
+        {/** å¦‚æœç›®æ ‡ä½ç½®å’Œæ•Œäººä½ç½®çš„è·ç¦»å¤§ä¸ä¸€å®šå€¼åˆ™éœ€è¦é‡æ–°åˆ¶å®šç§»åŠ¨ç›®æ ‡ */
             ToApproachTar( ) ;
         }
         else if(!GetCharacter()->IsMoving())
@@ -207,7 +207,7 @@ VOID AI_Monster::AI_Logic_Flee( UINT uTime )
         || !((Obj_Character*)pObj)->IsAlive() 
         || !((Obj_Character*)pObj)->IsCanViewMe(pMonster) 
         )
-    {/** µ±Ç°µĞÈËÎŞĞ§ºó×ªÏòÏÂÒ»¸öµĞÈË£¬Ö±µ½È«²¿ÕÒÍêÎªÖ¹ */
+    {/** å½“å‰æ•Œäººæ— æ•ˆåè½¬å‘ä¸‹ä¸€ä¸ªæ•Œäººï¼Œç›´åˆ°å…¨éƒ¨æ‰¾å®Œä¸ºæ­¢ */
         DelEnemy(m_CurEnemyID);
         m_CurEnemyID = GetNextEnemy();
         if (INVALID_ID == m_CurEnemyID) {
@@ -217,23 +217,23 @@ VOID AI_Monster::AI_Logic_Flee( UINT uTime )
     }
     Obj_Character* pCurEnemy = (Obj_Character*)pObj;
 
-    /** µ±Ç°Î»ÖÃºÍÄ¿µÄµØÖ®¼äµÄ¾àÀë */
+    /** å½“å‰ä½ç½®å’Œç›®çš„åœ°ä¹‹é—´çš„è·ç¦» */
     FLOAT fDist  = MySqrt(GetCharacter()->getWorldPos(),GetCharacter()->GetFinalTarPos());
-    if( pCurEnemy==NULL            /** ÎŞĞ§µĞÈË */
-        || !pCurEnemy->IsAlive()    /** µĞÈËËÀÁË */
-        || fDist < ZERO_VALUE        /** µ½´ïÄ¿µÄµØ */
+    if( pCurEnemy==NULL            /** æ— æ•ˆæ•Œäºº */
+        || !pCurEnemy->IsAlive()    /** æ•Œäººæ­»äº† */
+        || fDist < ZERO_VALUE        /** åˆ°è¾¾ç›®çš„åœ° */
         )    
-    {/** Íüµôµ±Ç°Ä¿±ê */
-        /** ½«×ÔÉíµÄÒÆ¶¯ËÙ¶È»¹Ô­ */
+    {/** å¿˜æ‰å½“å‰ç›®æ ‡ */
+        /** å°†è‡ªèº«çš„ç§»åŠ¨é€Ÿåº¦è¿˜åŸ */
         GetCharacter()->SetMoveMode(Obj_Monster::MOVE_MODE_WALK);
 
         switch(m_FleeType) 
         {
-            /** ·µ»Ø¼ÌĞø¹¥»÷µĞÈË */
+            /** è¿”å›ç»§ç»­æ”»å‡»æ•Œäºº */
         case MONSTERAI_FLEE_RANDOM:
             ToApproachTar();
             break;
-            /** ½«×Ô¼ºµÄ³ğºŞÁĞ±ícopy¸ø¶ÓÓÑ */
+            /** å°†è‡ªå·±çš„ä»‡æ¨åˆ—è¡¨copyç»™é˜Ÿå‹ */
         case MONSTERAI_FLEE_NEARESTFRIEND:
             for (INT i = 0; i < MAX_TEAMMATE_COUNT; ++i)
             {
@@ -242,7 +242,7 @@ VOID AI_Monster::AI_Logic_Flee( UINT uTime )
                 {
                     continue;
                 }
-                /** »î×ÅµÄ£»·ÇµĞ¶ÔµÄ£»Ã»ÓĞµĞÈËµÄ */
+                /** æ´»ç€çš„ï¼›éæ•Œå¯¹çš„ï¼›æ²¡æœ‰æ•Œäººçš„ */
                 if (((Obj_Character*)pObj)->IsAlive() 
                     && !((Obj_Monster*)pObj)->IsEnemy(GetCharacter())
                     && !((Obj_Monster*)pObj)->GetMonsterAI()->HasEnemy()    
@@ -256,7 +256,7 @@ VOID AI_Monster::AI_Logic_Flee( UINT uTime )
             }
             ToApproachTar();
             break;
-            /** ½«×Ô¼ºµÄ³ğºŞÁĞ±ícopy¸øÖÜÎ§Ò»¶¨·¶Î§µÄ¶ÓÓÑ */
+            /** å°†è‡ªå·±çš„ä»‡æ¨åˆ—è¡¨copyç»™å‘¨å›´ä¸€å®šèŒƒå›´çš„é˜Ÿå‹ */
         case MONSTERAI_FLEE_NEARESTPOINT:
             {
                 Scene* pScene = GetCharacter()->getScene() ;
@@ -310,12 +310,12 @@ VOID AI_Monster::AI_Logic_Patrol(UINT uTime)
 __ENTER_FUNCTION
     GET_MONSTER_SCENE((VOID)0)
 
-    /** É¨ÃèµĞÈË */
+    /** æ‰«ææ•Œäºº */
     if (TRUE == ScanEnemy( uTime )) 
     {
         return ;
     }
-    /* ÊÇ·ñÒª¼ÌĞøÑ²Âß */
+    /* æ˜¯å¦è¦ç»§ç»­å·¡é€» */
     if (!m_bConvoyNPC && !m_bContinuePatrol) 
     {
         Stop();
@@ -323,13 +323,13 @@ __ENTER_FUNCTION
     }
 
     if(!pMonster->IsMoving())
-    {/** ÏòÏÂÒ»¸öÑ²ÂßµãMove */
+    {/** å‘ä¸‹ä¸€ä¸ªå·¡é€»ç‚¹Move */
         //AxTrace(0, 0, "Monster Stop Moving objid=%d", pMonster->GetID());
-        // Ö´ĞĞ¸ÃµãµÄÊÂ¼ş, ÒÔºóÀ©Õ¹ÓÃ
+        // æ‰§è¡Œè¯¥ç‚¹çš„äº‹ä»¶, ä»¥åæ‰©å±•ç”¨
         if ( m_PatrolScriptID != (ScriptID_t)(0xFFFFFFFF) ) {
             ProcessPaoPao(); // test only:)
         }
-        // ¿ªÊ¼¶ºÁô
+        // å¼€å§‹é€—ç•™
         if (m_nSettleTime > 0) {        
             m_nSettleTime -= pMonster->GetLogicTime();
             return ;
@@ -360,7 +360,7 @@ VOID AI_Monster::AI_Logic_Gohome(UINT uTime )
 __ENTER_FUNCTION
     RecoverHP();
 
-    /** µ±Ç°Î»ÖÃºÍÄ¿µÄµØÖ®¼äµÄ¾àÀë */
+    /** å½“å‰ä½ç½®å’Œç›®çš„åœ°ä¹‹é—´çš„è·ç¦» */
     FLOAT fDist  = MySqrt(GetCharacter()->getWorldPos(),GetCharacter()->GetFinalTarPos());
     if (fDist < ZERO_VALUE) 
         ToIdle();
@@ -375,7 +375,7 @@ __ENTER_FUNCTION
     if ( m_BodyTimer.CountingTimer( uTime ) )
     {
         m_BodyTimer.CleanUp();
-        // ÖØÉú
+        // é‡ç”Ÿ
         Obj_Monster *pMonster = GetCharacter();
         pMonster->Enter_Respawn();
     }
@@ -394,7 +394,7 @@ __ENTER_FUNCTION
         FALSE == ((Obj_Character*)pObj)->IsAlive() ||
         FALSE == ((Obj_Character*)pObj)->IsCanViewMe(pMonster) 
         )
-    {/** µ±Ç°µĞÈËÎŞĞ§ºó×ªÏòÏÂÒ»¸öµĞÈË£¬Ö±µ½È«²¿ÕÒÍêÎªÖ¹ */
+    {/** å½“å‰æ•Œäººæ— æ•ˆåè½¬å‘ä¸‹ä¸€ä¸ªæ•Œäººï¼Œç›´åˆ°å…¨éƒ¨æ‰¾å®Œä¸ºæ­¢ */
         DelEnemy(m_CurEnemyID);
         m_CurEnemyID = GetNextEnemy();
         if (INVALID_ID == m_CurEnemyID) {
@@ -403,19 +403,19 @@ __ENTER_FUNCTION
         return ;
     }
     Obj_Character* pCurEnemy = (Obj_Character*)pObj;
-    /** µ±Ç°µÄÂß¼­»¹Ã»Í£Ö¹ ¼´»¹ÔÚÊÍ·Å¼¼ÄÜ  */
+    /** å½“å‰çš„é€»è¾‘è¿˜æ²¡åœæ­¢ å³è¿˜åœ¨é‡Šæ”¾æŠ€èƒ½  */
     if (TRUE == pMonster->IsMoving() ||
         FALSE == pMonster->CanUseSkillNow() )
     {
         return ;
     }
-    // ¼ÙÈçÄ¿±ê´¦ÓÚÎŞµĞ×´Ì¬Ôò×ªÏòÏÂÒ»¸öÄ¿±ê
+    // å‡å¦‚ç›®æ ‡å¤„äºæ— æ•ŒçŠ¶æ€åˆ™è½¬å‘ä¸‹ä¸€ä¸ªç›®æ ‡
     if (pCurEnemy->IsUnbreakable()) {
         ObjID_t nextEnemyID = GetNextEnemy();
         if (INVALID_ID != nextEnemyID)
         {
             Obj* pObj = pScene->GetSpecificObjByID(nextEnemyID);
-            // µÃµ½µÄnextenemyÓĞĞ§ÇÒ²»ÊÇÎŞµĞµÄ²Å×ª»»¹¥»÷Ä¿±ê
+            // å¾—åˆ°çš„nextenemyæœ‰æ•ˆä¸”ä¸æ˜¯æ— æ•Œçš„æ‰è½¬æ¢æ”»å‡»ç›®æ ‡
             if (pObj && IsCharacterObj(pObj->GetObjType()) == TRUE && 
                 ((Obj_Character*)pObj)->IsUnbreakable() == FALSE)
             {
@@ -426,7 +426,7 @@ __ENTER_FUNCTION
         }
     }
     
-    /* ÅĞ¶Ïµ±Ç°µĞÈËÓĞÃ»ÓĞ¸¨ÖúÕß£¬Èç¹ûÓĞÔòÒ»¶¨¼¸ÂÊµÄ¹¥»÷¸¨ÖúÕß */
+    /* åˆ¤æ–­å½“å‰æ•Œäººæœ‰æ²¡æœ‰è¾…åŠ©è€…ï¼Œå¦‚æœæœ‰åˆ™ä¸€å®šå‡ ç‡çš„æ”»å‡»è¾…åŠ©è€… */
     if ( pObj->GetObjType() == Obj_Character::CHARACTER_CLASS_HUMAN &&
         ((Obj_Human*)pObj)->GetAssistantID() != INVALID_ID ) 
     {
@@ -442,12 +442,12 @@ __ENTER_FUNCTION
     }
 
     if (m_SAICommand.commandType != E_COMMAND_TYPE_INVALID)
-    {// Èç¹ûÃüÁî»º´æÖĞÓĞÊı¾İÔòÏÈÖ´ĞĞ»º´æÖĞµÄCommand
+    {// å¦‚æœå‘½ä»¤ç¼“å­˜ä¸­æœ‰æ•°æ®åˆ™å…ˆæ‰§è¡Œç¼“å­˜ä¸­çš„Command
         ExcuteCommand();
         return ;
     }
     FLOAT fDist = MySqrt(pMonster->getWorldPos(), pCurEnemy->getWorldPos()) ;
-    /** Èç¹û¹ÖÎïÓëÍæ¼ÒÌ«½ü£¬ÔòË³ÒÆÒ»¶¨¾àÀë */
+    /** å¦‚æœæ€ªç‰©ä¸ç©å®¶å¤ªè¿‘ï¼Œåˆ™é¡ºç§»ä¸€å®šè·ç¦» */
     if (MIN_DIST > fDist ) 
     {
         WORLD_POS Tar;
@@ -457,7 +457,7 @@ __ENTER_FUNCTION
         MovePhonily(Tar);
     }
     //////////////////////////////////////////////////////////////////////////////////////////
-    // ÏÈÊ©·Å»º´æÖĞµÄ¼¼ÄÜ£¬¸Ã»º´æÖĞÖ»ÓĞÒ»¸ö¼¼ÄÜ
+    // å…ˆæ–½æ”¾ç¼“å­˜ä¸­çš„æŠ€èƒ½ï¼Œè¯¥ç¼“å­˜ä¸­åªæœ‰ä¸€ä¸ªæŠ€èƒ½
     if (INVALID_ID != m_NextSkillID)
     {
         ORESULT oResult = UseSkill(m_SkillID, 1, m_CurEnemyID, 
@@ -491,15 +491,15 @@ __ENTER_FUNCTION
     GET_MONSTER_SCENE((VOID)0)
 
     if( !m_ScanTimer.IsSetTimer() )
-    {/** ÉèÖÃÊ±¼ä¿ØÖÆÆ÷ */
+    {/** è®¾ç½®æ—¶é—´æ§åˆ¶å™¨ */
         m_ScanTimer.BeginTimer( AIParam(AIPARAM_SCANTIME), uTime ) ;
         return ;
     }
     if( !m_ScanTimer.CountingTimer( uTime ) )
-    {/** Ê±¼äÃ»µ½ */
+    {/** æ—¶é—´æ²¡åˆ° */
         return ;
     }
-    /** É¨ÃèÖÜÎ§»¹ÓĞÃ»ÓĞhuman */
+    /** æ‰«æå‘¨å›´è¿˜æœ‰æ²¡æœ‰human */
     HUMANLIST listHuman;
     pScene->ScanHuman(pMonster->getZoneID(), 1, &(listHuman));
 
@@ -530,37 +530,37 @@ VOID AI_Monster::Event_OnBeSkill( Obj_Character* pObj_Character, INT nGoodEffect
 {
 __ENTER_FUNCTION
 
-    /** ¼ì²âÊÇ·ñ»á»¹»÷ */
+    /** æ£€æµ‹æ˜¯å¦ä¼šè¿˜å‡» */
     if ( 0 >= AIParam(AIPARAM_STRIKEBACK) )
-    {/** ²»»á»¹»÷Ôò·µ»Ø£¬ÈçÍÃ×ÓµÈĞ¡¶¯Îï */
+    {/** ä¸ä¼šè¿˜å‡»åˆ™è¿”å›ï¼Œå¦‚å…”å­ç­‰å°åŠ¨ç‰© */
         return ;
     }
-    /**  Èç¹ûÊÇ·ÅÆú×·»÷×´Ì¬Ôò²»»¹»÷£¬µ«»ámissµô  */
+    /**  å¦‚æœæ˜¯æ”¾å¼ƒè¿½å‡»çŠ¶æ€åˆ™ä¸è¿˜å‡»ï¼Œä½†ä¼šmissæ‰  */
     if ( ESTATE_GOHOME == GetAIState()->GetStateID() ) 
     {
-        /**    Ïò¿Í»§¶Ë·¢ËÍ±»MissµÄÏûÏ¢ */
+        /**    å‘å®¢æˆ·ç«¯å‘é€è¢«Missçš„æ¶ˆæ¯ */
         g_pLog->FastSaveLog( LOG_FILE_1, "OnBeSkill Obj! ID:%d MISS!!!",
             GetCharacter()->GetID()) ;
         return ;
     }
-    if(NULL == pObj_Character /** ÎŞĞ§¹¥»÷Õß */
-        || pObj_Character->GetID() == GetCharacter()->GetID() /** ¹¥»÷ÕßÊÇ×Ô¼º */
-        || !pObj_Character->IsAlive() /** ¹¥»÷ÕßÊÇ¸öËÀÈË */
+    if(NULL == pObj_Character /** æ— æ•ˆæ”»å‡»è€… */
+        || pObj_Character->GetID() == GetCharacter()->GetID() /** æ”»å‡»è€…æ˜¯è‡ªå·± */
+        || !pObj_Character->IsAlive() /** æ”»å‡»è€…æ˜¯ä¸ªæ­»äºº */
         )
         return ;
-    //ÅĞ¶ÏÊÇ·ñÊÇµĞ¶ÔĞĞÎª
+    //åˆ¤æ–­æ˜¯å¦æ˜¯æ•Œå¯¹è¡Œä¸º
     if (BEHAVIOR_TYPE_HOSTILITY!=nGoodEffect)
     {
-        return; //²»ÊÇµĞ¶ÔĞĞÎª,·µ»Ø
+        return; //ä¸æ˜¯æ•Œå¯¹è¡Œä¸º,è¿”å›
     }
 
     if(INVALID_ID  == m_CurEnemyID)
-    {/** Ã»ÓĞµĞÈËÊ±ºò */
+    {/** æ²¡æœ‰æ•Œäººæ—¶å€™ */
         AddPrimaryEnemy(pObj_Character->GetID());
         return ;
     }
     else if( m_CurEnemyID == pObj_Character->GetID() )
-    {/** ¹¥»÷Õß¾ÍÊÇµ±Ç°µÄµĞÈË */
+    {/** æ”»å‡»è€…å°±æ˜¯å½“å‰çš„æ•Œäºº */
         if (TRUE == GetCharacter()->IsCharacterLogicStopped()) 
         {
             ExcuteAIScript(ONBESKILLSECTION);
@@ -568,7 +568,7 @@ __ENTER_FUNCTION
         return ;
     }
     else if (TRUE == IsAlreadyExist( pObj_Character->GetID()) ) 
-    {/** ¹¥»÷ÕßÒÑ¾­ÔÚµĞÈËÁĞ±íÖĞ ´ËÊ±°´ÕÕÒ»¶¨¼¸ÂÊ¸Ä±äµĞÈË */
+    {/** æ”»å‡»è€…å·²ç»åœ¨æ•Œäººåˆ—è¡¨ä¸­ æ­¤æ—¶æŒ‰ç…§ä¸€å®šå‡ ç‡æ”¹å˜æ•Œäºº */
         if (TRUE == IsNeedChangeEnemy()) 
         {
             SetCurEnemyID( pObj_Character->GetID() );
@@ -576,7 +576,7 @@ __ENTER_FUNCTION
         }
     }
     else
-    {/** ÊÇĞÂµÄ¹¥»÷Õß ´ËÊ±°´ÕÕÒ»¶¨¼¸ÂÊ¸Ä±äµĞÈË */
+    {/** æ˜¯æ–°çš„æ”»å‡»è€… æ­¤æ—¶æŒ‰ç…§ä¸€å®šå‡ ç‡æ”¹å˜æ•Œäºº */
         if ( !AddEnemy(pObj_Character->GetID()) )
         {
             return ;
@@ -618,31 +618,31 @@ VOID AI_Monster::Event_OnDamage(INT nDamage, Obj_Character* pAttacker)
         pMe->UpdateDamageList(nDamage, pAttacker);
     }
 
-    /** Ö´ĞĞAI½Å±¾ */
+    /** æ‰§è¡ŒAIè„šæœ¬ */
     ExcuteAIScript(ONDAMAGESECTION);
     __LEAVE_FUNCTION
 }
 
 //=======================================================================================
-//  µĞÈËÏà¹Ø
+//  æ•Œäººç›¸å…³
 //=======================================================================================
 BOOL AI_Monster::ScanEnemy( UINT uTime )
 {
     __ENTER_FUNCTION
-        if( AIParam(AIPARAM_SCANTIME)>0 /** Ö÷¶¯¹¥»÷µÄ¹Ö²Å»áËÑË÷µĞÈË */
-            && !HasEnemy()                /** Ã»ÓĞµĞÈËµÄ¹Ö²ÅÈ¥ËÑË÷µĞÈË */
+        if( AIParam(AIPARAM_SCANTIME)>0 /** ä¸»åŠ¨æ”»å‡»çš„æ€ªæ‰ä¼šæœç´¢æ•Œäºº */
+            && !HasEnemy()                /** æ²¡æœ‰æ•Œäººçš„æ€ªæ‰å»æœç´¢æ•Œäºº */
             )
         {
             if( !m_ScanTimer.IsSetTimer() )
-            {/** ÉèÖÃÊ±¼ä¿ØÖÆÆ÷ */
+            {/** è®¾ç½®æ—¶é—´æ§åˆ¶å™¨ */
                 m_ScanTimer.BeginTimer( AIParam(AIPARAM_SCANTIME), uTime ) ;
                 return FALSE ;
             }
             if( !m_ScanTimer.CountingTimer( uTime ) )
-            {/** Ê±¼äÃ»µ½ */
+            {/** æ—¶é—´æ²¡åˆ° */
                 return FALSE ;
             }
-            /** É¨ÃèµĞÈË */
+            /** æ‰«ææ•Œäºº */
             Scene* pScene = GetCharacter()->getScene() ;
             
             SCANOPERATOR_ENEMY_INIT Init ;
@@ -659,12 +659,12 @@ BOOL AI_Monster::ScanEnemy( UINT uTime )
             pScene->Scan( &sc ) ;
 
             if( HasEnemy( ) )
-            {/** É¨Ãèµ½ÁËµĞÈË */
-                /* 1. Ö´ĞĞÌØÊâµÄÀ©Õ¹AI£¬ÀıÈç¸ù¾İÍæ¼ÒÉíÉÏµÄÄ³Ğ©±êÊ¶¾ö¶¨ÊÇ·ñÕæÕıµÄÈ¥¹¥»÷Íæ¼Ò */
+            {/** æ‰«æåˆ°äº†æ•Œäºº */
+                /* 1. æ‰§è¡Œç‰¹æ®Šçš„æ‰©å±•AIï¼Œä¾‹å¦‚æ ¹æ®ç©å®¶èº«ä¸Šçš„æŸäº›æ ‡è¯†å†³å®šæ˜¯å¦çœŸæ­£çš„å»æ”»å‡»ç©å®¶ */
 
-                /* 2. ¸ù¾İÓëÍæ¼ÒµÄµÈ¼¶²î¾ö¶¨ÊÇ·ñÕæÕıµÄ¹¥»÷Íæ¼Ò */
+                /* 2. æ ¹æ®ä¸ç©å®¶çš„ç­‰çº§å·®å†³å®šæ˜¯å¦çœŸæ­£çš„æ”»å‡»ç©å®¶ */
 
-                // ½«MonsterÉèÖÃ³ÉÅÜ²½×´Ì¬
+                // å°†Monsterè®¾ç½®æˆè·‘æ­¥çŠ¶æ€
                 GetCharacter()->SetMoveMode(Obj_Monster::MOVE_MODE_RUN);
                 ToApproachTar();
                 //Log::SaveLog( SERVER_LOGFILE, "ScanEnemy Find Obj! ID:%d",
@@ -717,7 +717,7 @@ VOID AI_Monster::AddPrimaryEnemy( ObjID_t EnemyID )
         Assert(NULL && "AI_Monster::AddPrimaryEnemy...pScene=NULL");
         return ;
     }
-    // Èç¹ûÊÇ³èÎïÔò½«ËûµÄÖ÷ÈËÒ²¼ÓÈë³ğºŞÁĞ±í(Èç¹ûÓĞµÄ»°)
+    // å¦‚æœæ˜¯å® ç‰©åˆ™å°†ä»–çš„ä¸»äººä¹ŸåŠ å…¥ä»‡æ¨åˆ—è¡¨(å¦‚æœæœ‰çš„è¯)
     Obj* pObj = pScene->GetObjManager()->GetObj(EnemyID);
     if (pObj && pObj->GetObjType() == Obj::OBJ_TYPE_PET) {
         Obj_Human* pCreator = ((Obj_Pet*)pObj)->GetCreator();
@@ -725,7 +725,7 @@ VOID AI_Monster::AddPrimaryEnemy( ObjID_t EnemyID )
             AddEnemy(pCreator->GetID());
         }
     }
-    // ÕĞºôËùÓĞµÄ¶ÓÓÑÕ½¶·
+    // æ‹›å‘¼æ‰€æœ‰çš„é˜Ÿå‹æˆ˜æ–—
     Teammate_Go_Fight(EnemyID);
 
     m_CurEnemyID = EnemyID;
@@ -776,7 +776,7 @@ ObjID_t    AI_Monster::GetNextEnemy( )
             if (pObj && IsCharacterObj(pObj->GetObjType()))
             {
                 if (FALSE == ((Obj_Character*)pObj)->IsUnbreakable())
-                {// Èç¹û²»ÊÇÎŞµĞ×´Ì¬ÔòÖ±½Ó·µ»Ø¸ÃµĞÈË
+                {// å¦‚æœä¸æ˜¯æ— æ•ŒçŠ¶æ€åˆ™ç›´æ¥è¿”å›è¯¥æ•Œäºº
                     return m_EnemyID[i];        
                 }
                 else
@@ -840,7 +840,7 @@ __ENTER_FUNCTION
         return NULL;
     }
     if (FALSE == pMonster->IsAlive())
-    {// ×ÔÉíÒÑ¾­ËÀÍö
+    {// è‡ªèº«å·²ç»æ­»äº¡
         return NULL;
     }
         
@@ -864,7 +864,7 @@ VOID AI_Monster::ChangePrimaryEnemy()
     }
 }
 //=======================================================================================
-// ¶ÓÓÑÏà¹Ø
+// é˜Ÿå‹ç›¸å…³
 //=======================================================================================
 VOID AI_Monster::AddTeammate( ObjID_t TeammateID )
 {
@@ -933,14 +933,14 @@ VOID AI_Monster::SummonTeammate( UINT uTime, INT type, INT count )
 
         break;
     case MONSTERAI_SUMMON_TEAM:
-        /**    »ñÈ¡ËùÔÚÈº×éµÄ³ÉÔ±£¬²¢½«×Ô¼ºµÄµ±Ç°µĞÈËcopy¸ø¶ÓÓÑ */
+        /**    è·å–æ‰€åœ¨ç¾¤ç»„çš„æˆå‘˜ï¼Œå¹¶å°†è‡ªå·±çš„å½“å‰æ•Œäººcopyç»™é˜Ÿå‹ */
 
         break;
     default:
         Assert(false);
         break;
     }
-    /** É¨Ãèµ½ÁË¶ÓÓÑ,ÊÇ¶ÓÓÑ×ª»»³ÉAPPROCH×´Ì¬ */    
+    /** æ‰«æåˆ°äº†é˜Ÿå‹,æ˜¯é˜Ÿå‹è½¬æ¢æˆAPPROCHçŠ¶æ€ */    
     if( HasTeammate( ) )
     {     
         for (INT i = 0; i < MAX_TEAMMATE_COUNT; ++i)
@@ -982,7 +982,7 @@ WORLD_POS AI_Monster::FindNearestFriend()
 
     pScene->Scan( &sc ) ;
 
-    /** É¨Ãèµ½ÁË¶ÓÓÑ,ÊÇ¶ÓÓÑ×ª»»³ÉAPPROCH×´Ì¬ */    
+    /** æ‰«æåˆ°äº†é˜Ÿå‹,æ˜¯é˜Ÿå‹è½¬æ¢æˆAPPROCHçŠ¶æ€ */    
     if( HasTeammate( ) )
     {     
         for (INT i = 0; i < MAX_TEAMMATE_COUNT; ++i)
@@ -1043,7 +1043,7 @@ __ENTER_FUNCTION
             AI_Monster* pAI = (AI_Monster*)((Obj_Monster*)pObj)->GetAIObj();
             if (pAI) 
             {
-                //pAI->AddPrimaryEnemy(EnemyID); //ÕâÑù»áÒıÆğÑ­»·µ÷ÓÃ-->crash!!
+                //pAI->AddPrimaryEnemy(EnemyID); //è¿™æ ·ä¼šå¼•èµ·å¾ªç¯è°ƒç”¨-->crash!!
                 pAI->AddEnemy(EnemyID);
                 pAI->SetCurEnemyID(EnemyID);
                 pAI->ToApproachTar();
@@ -1063,13 +1063,13 @@ VOID    AI_Monster::Teammate_Go_Fight(ObjID_t EnemyID)
 {
 __ENTER_FUNCTION
     GET_MONSTER_SCENE((VOID)0)
-    // ÊÇ¶Ó³¤µÄ²»¿ÉÒÔÔÙÊÇmember(¼´²»¿ÉÒÔÔÙ¸úËæ±ğÈË)==memberÖ»¿ÉÒÔÓĞleader²»¿ÉÒÔÔÙÓĞmember
+    // æ˜¯é˜Ÿé•¿çš„ä¸å¯ä»¥å†æ˜¯member(å³ä¸å¯ä»¥å†è·Ÿéšåˆ«äºº)==memberåªå¯ä»¥æœ‰leaderä¸å¯ä»¥å†æœ‰member
     if (m_TeammateCount > 0)
-    {// ÊÇ¶Ó³¤!
+    {// æ˜¯é˜Ÿé•¿!
         AddEnemyToTeammate(EnemyID);
     }
     else if (INVALID_ID != pMonster->GetLeaderID())
-    {// ÊÇ³ÉÔ±
+    {// æ˜¯æˆå‘˜
         Obj* pObj = pScene->GetObjManager()->GetObj(pMonster->GetLeaderID());
         if (pObj && pObj->GetObjType() == Obj::OBJ_TYPE_MONSTER)
         {
@@ -1085,7 +1085,7 @@ __LEAVE_FUNCTION
 }
 
 //=======================================================================================
-// Ñ²Âß²¿·Ö
+// å·¡é€»éƒ¨åˆ†
 //=======================================================================================
 VOID AI_Monster::StartPatrol(BOOL bConvoyNPC/*=FALSE*/)
 {
@@ -1104,7 +1104,7 @@ VOID AI_Monster::StartPatrol(BOOL bConvoyNPC/*=FALSE*/)
                                                         m_PatrolScriptID);
 
     GetCharacter()->getScene()->GetMap()->VerifyPos(&Tar);
-    if(GetCharacter()->getScene()->GetMap()->IsCanGo(Tar,0)) {//×îĞ¡µÄlevel
+    if(GetCharacter()->getScene()->GetMap()->IsCanGo(Tar,0)) {//æœ€å°çš„level
         MonsterGo(&Tar);
     }
     else {
@@ -1130,7 +1130,7 @@ __ENTER_FUNCTION
 
     m_nIndexOfPassed = 0;
     Obj_Monster* pMonster = GetCharacter();
-    // ½«NPCË²ÒÆµ½³öÉúµã
+    // å°†NPCç¬ç§»åˆ°å‡ºç”Ÿç‚¹
     if (pMonster)
     {
         pMonster->Teleport( pMonster->GetRespawnPos() );
@@ -1142,7 +1142,7 @@ __LEAVE_FUNCTION
 }
 
 //=======================================================================================
-//  ĞĞÎª²¿·Ö 
+//  è¡Œä¸ºéƒ¨åˆ† 
 //===============================================================================u========
 BOOL AI_Monster::ToRandMove( )
 {
@@ -1177,7 +1177,7 @@ BOOL AI_Monster::ToIdle( )
 {
 __ENTER_FUNCTION
     
-    // ½«MonsterÉèÖÃ³É×ß²½×´Ì¬
+    // å°†Monsterè®¾ç½®æˆèµ°æ­¥çŠ¶æ€
     Obj_Monster* pMonster = GetCharacter();
     if (pMonster)
     {
@@ -1186,7 +1186,7 @@ __ENTER_FUNCTION
 
         Init();
         if ( pMonster->isPatrolMonster() )
-        {// Èç¹ûÊÇÑ²Âß¹ÖÔòÖØĞÂ¿ªÊ¼Ñ²Âß
+        {// å¦‚æœæ˜¯å·¡é€»æ€ªåˆ™é‡æ–°å¼€å§‹å·¡é€»
             StartPatrol();
         }
         else if (INVALID_ID != pMonster->GetLeaderID())
@@ -1198,9 +1198,9 @@ __ENTER_FUNCTION
             ChangeState(ESTATE_IDLE);
         }
 
-        /* ÖØÖÃ×ÔÉíµÄKiller */
+        /* é‡ç½®è‡ªèº«çš„Killer */
         pMonster->ClearKiller();
-        /** ÖØÖÃ½Å±¾ĞÅÏ¢ */
+        /** é‡ç½®è„šæœ¬ä¿¡æ¯ */
         if (m_AIScriptID >= 0 && m_AIScriptID < AISCRIPT_NUM) {
             g_pAIScriptList[m_AIScriptID]->ResetStateList(this);
         }
@@ -1224,16 +1224,16 @@ __ENTER_FUNCTION
     m_FleeType = type;
     switch(type) {
     case MONSTERAI_FLEE_RANDOM:
-        /**    ÏòÒÔ×ÔÉíÎªÔ²ĞÄ£¬AIParam(AIPARAM_SCANENEMYDIST)/1000.0fÎª°ë¾¶µÄÔ²ÖÜÉÏµÄËæ»úÒ»µãÌÓÈ¥ */
+        /**    å‘ä»¥è‡ªèº«ä¸ºåœ†å¿ƒï¼ŒAIParam(AIPARAM_SCANENEMYDIST)/1000.0fä¸ºåŠå¾„çš„åœ†å‘¨ä¸Šçš„éšæœºä¸€ç‚¹é€ƒå» */
         Tar = *pMonster->getWorldPos();
         Tar = GetRandPosOfCircle(&Tar ,MAX_FLEE_LENGTH) ;
         break;
     case MONSTERAI_FLEE_NEARESTFRIEND:
-        /** Ïò×Ô¼ºÉí±ß×î½üµÄ¶ÓÓÑÅÜÈ¥ */
+        /** å‘è‡ªå·±èº«è¾¹æœ€è¿‘çš„é˜Ÿå‹è·‘å» */
         Tar = FindNearestFriend();
         break;
     case MONSTERAI_FLEE_NEARESTPOINT:
-        /** ÏòÖ¸¶¨ÌÓÅÜµãµÄ×î½üÒ»´¦ÌÓÈ¥ */
+        /** å‘æŒ‡å®šé€ƒè·‘ç‚¹çš„æœ€è¿‘ä¸€å¤„é€ƒå» */
         Tar.m_fX = fX;
         Tar.m_fZ = fZ;
         break;
@@ -1242,19 +1242,19 @@ __ENTER_FUNCTION
         break;
     }
     pMonster->getScene()->GetMap()->VerifyPos(&Tar) ;
-    if (FALSE == pMonster->getScene()->GetMap()->IsCanGo(Tar,10))//ÌÓÅÜÓÃ×î´ólevel
+    if (FALSE == pMonster->getScene()->GetMap()->IsCanGo(Tar,10))//é€ƒè·‘ç”¨æœ€å¤§level
     {
         return FALSE;
     }
 
-    /** Ö±ÏßÅĞ¶Ï */
+    /** ç›´çº¿åˆ¤æ–­ */
     //const WORLD_POS* pCur = GetCharacter()->getWorldPos() ;
     //WORLD_POS posNode[MAX_CHAR_PATH_NODE_NUMBER];
     //INT numNode = 0;
     //WORLD_POS curPos = *pCur;
     //GetCharacter()->getScene()->GetMap()->GetPathFinder()->FindPath(&curPos,&Tar,posNode,numNode,true);    
     //Assert( numNode == 1 ) ;
-    /** ½«MonsterµÄÒÆ¶¯ËÙ¶È±äÂı */
+    /** å°†Monsterçš„ç§»åŠ¨é€Ÿåº¦å˜æ…¢ */
     GetCharacter()->SetMoveMode(Obj_Monster::MOVE_MODE_HOBBLE);
 
     if (OR_OK != Move( &Tar ))
@@ -1282,13 +1282,13 @@ __ENTER_FUNCTION
         Assert(NULL && "AI_Monster::ToAttack...pScene=NULL...");
         return FALSE;
     }
-    // ÉèÖÃ³É×ß²½Ä£Ê½
+    // è®¾ç½®æˆèµ°æ­¥æ¨¡å¼
     pMonster->SetMoveMode(Obj_Character::MOVE_MODE_WALK);
 
-    /** Ëæ»úÆ«ÒÆ´¦Àí£¬·ÀÖ¹ËùÓĞ¹ÖÖØµşÔÚÒ»Æğ */ 
+    /** éšæœºåç§»å¤„ç†ï¼Œé˜²æ­¢æ‰€æœ‰æ€ªé‡å åœ¨ä¸€èµ· */ 
     WORLD_POS Tar;
     if (TRUE == GetBestPos(Tar))    
-    {// ÒÑ¾­×öÁËÎ»ÖÃÓĞĞ§ĞÔ¼ì²â
+    {// å·²ç»åšäº†ä½ç½®æœ‰æ•ˆæ€§æ£€æµ‹
         pMonster->DirectMoveTo(&Tar);
     }
 
@@ -1305,11 +1305,11 @@ __ENTER_FUNCTION
     GET_MONSTER_SCENE(FALSE)
     WORLD_POS Tar;
     Tar = m_ToAttackPos;
-    // ÍüµôµĞÈË
+    // å¿˜æ‰æ•Œäºº
     DelAllEnemy();
-    // ½«×Ô¼ºÉèÖÃ³ÉÎŞµĞ×´Ì¬
+    // å°†è‡ªå·±è®¾ç½®æˆæ— æ•ŒçŠ¶æ€
     GetCharacter()->MarkUnbreakableFlag();
-    // ½«MonsterÉèÖÃ³ÉÅÜ²½×´Ì¬
+    // å°†Monsterè®¾ç½®æˆè·‘æ­¥çŠ¶æ€
     GetCharacter()->SetMoveMode(Obj_Monster::MOVE_MODE_RUN);
 
     if(OR_OK != Move(&Tar)) {
@@ -1328,12 +1328,12 @@ BOOL AI_Monster::ToApproachTar( )
     __ENTER_FUNCTION
     GET_MONSTER_SCENE(FALSE);
 
-    // ÉèÖÃ³ÉÅÜ²½Ä£Ê½
+    // è®¾ç½®æˆè·‘æ­¥æ¨¡å¼
     pMonster->SetMoveMode(Obj_Character::MOVE_MODE_RUN);
 
     Obj* pObj = pScene->GetObjManager()->GetObj(m_CurEnemyID);
     if(!pObj || !IsCharacterObj(pObj->GetObjType()) || !((Obj_Character*)pObj)->IsAlive() )
-    {/** µ±Ç°µĞÈËÎŞĞ§ºó×ªÏòÏÂÒ»¸öµĞÈË£¬Ö±µ½È«²¿ÕÒÍêÎªÖ¹ */
+    {/** å½“å‰æ•Œäººæ— æ•ˆåè½¬å‘ä¸‹ä¸€ä¸ªæ•Œäººï¼Œç›´åˆ°å…¨éƒ¨æ‰¾å®Œä¸ºæ­¢ */
         DelEnemy(m_CurEnemyID);
         m_CurEnemyID = GetNextEnemy();
         if (INVALID_ID == m_CurEnemyID) {
@@ -1349,21 +1349,21 @@ BOOL AI_Monster::ToApproachTar( )
         return FALSE;
     }
     FLOAT fMaxRange = 0.0f;
-    /** ÏÖÔÚ³¢ÊÔÄÜ·ñÊ¹ÓÃ¼¼ÄÜ */
+    /** ç°åœ¨å°è¯•èƒ½å¦ä½¿ç”¨æŠ€èƒ½ */
     if (TRUE == ExcuteAIScript(SKILLSECTION))
     { 
         ToAttack();
         return TRUE;
     }
     else
-    {/** ¸ù¾İ¼¼ÄÜ¹¥»÷¾àÀëÈ·¶¨Òªµ½´ïµÄÄ¿µÄµØ */
+    {/** æ ¹æ®æŠ€èƒ½æ”»å‡»è·ç¦»ç¡®å®šè¦åˆ°è¾¾çš„ç›®çš„åœ° */
         SkillTemplateData_T const* pSkillTemplate = g_SkillTemplateDataMgr.GetInstanceByID(m_SkillID);
         if (!pSkillTemplate)
         {
             Assert(NULL && "AI_Monster::ToApproachTar...pSkillTemplate=NULL...");
             return FALSE;
         }
-        /** Õâ²¿·ÖÒÔºóÓÉ¼¼ÄÜÄ£¿éÀ´Ö§³Ö */
+        /** è¿™éƒ¨åˆ†ä»¥åç”±æŠ€èƒ½æ¨¡å—æ¥æ”¯æŒ */
         fMaxRange = pSkillTemplate->GetOptimalRangeMax();
     }
     WORLD_POS Tar ;
@@ -1513,7 +1513,7 @@ VOID    AI_Monster::MovePhonily(const WORLD_POS& rTar)
     pScene->BroadCast(&Msg, pMonster, TRUE);
 }
 //=======================================================================================
-// AIScriptÏà¹Ø 
+// AIScriptç›¸å…³ 
 //=======================================================================================
 FLOAT AI_Monster::GetNeedGoDist(ObjID_t SkillID)
 {
@@ -1529,7 +1529,7 @@ FLOAT AI_Monster::GetNeedGoDist(ObjID_t SkillID)
 
     SkillTemplateData_T const* pSkillTemplate = g_SkillTemplateDataMgr.GetInstanceByID(SkillID);
     if(NULL != pSkillTemplate)
-    {/** Õâ²¿·ÖÒÔºóÓÉ¼¼ÄÜÄ£¿éÀ´Ö§³Ö */
+    {/** è¿™éƒ¨åˆ†ä»¥åç”±æŠ€èƒ½æ¨¡å—æ¥æ”¯æŒ */
         FLOAT fDist = MySqrt(GetCharacter()->getWorldPos(),pCurEnemy->getWorldPos());
         if(fDist > pSkillTemplate->GetOptimalRangeMax() )
             return fDist - pSkillTemplate->GetOptimalRangeMax();
@@ -1557,7 +1557,7 @@ VOID AI_Monster::GetScriptFile(INT ScriptID)
     }
 
     if(pSFileData)
-    {// Ö»ÊÇÖ¤Ã÷¸Ã½Å±¾µÄ´æÔÚĞÔ
+    {// åªæ˜¯è¯æ˜è¯¥è„šæœ¬çš„å­˜åœ¨æ€§
         /////////////////////////////////////////////////////////////////
         memset((VOID*)m_aAIScriptTimes, 0, sizeof(INT)*AISCRIPT_NUM);
         if (m_AIScriptID >= 0 && m_AIScriptID < AISCRIPT_NUM) {
@@ -1578,7 +1578,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 //=======================================================================================
-// ¸¨Öú·½·¨ 
+// è¾…åŠ©æ–¹æ³• 
 //=======================================================================================
 
 INT AI_Monster::AIParam( UINT AIParam )
@@ -1601,7 +1601,7 @@ BOOL AI_Monster::IsToGoHome(FLOAT& fMTDist,FLOAT& fETDist)
     }
     Obj* pObj = pMonster->getScene()->GetObjManager()->GetObj(GetPrimaryEnemyID()) ;
     if( pObj==NULL || !IsCharacterObj( pObj->GetObjType() ) )
-    {/** ×ªÏòÏÂÒ»¸öµĞÈË£¬Ö±µ½È«²¿ÕÒÍêÎªÖ¹ */
+    {/** è½¬å‘ä¸‹ä¸€ä¸ªæ•Œäººï¼Œç›´åˆ°å…¨éƒ¨æ‰¾å®Œä¸ºæ­¢ */
         DelEnemy(m_CurEnemyID);
         m_CurEnemyID = GetNextEnemy();
         if (INVALID_ID == m_CurEnemyID)
@@ -1610,23 +1610,23 @@ BOOL AI_Monster::IsToGoHome(FLOAT& fMTDist,FLOAT& fETDist)
             return TRUE ;
         }
     }
-    /** È¡µÃµĞÈËµÄCharacterÖ¸Õë */
+    /** å–å¾—æ•Œäººçš„CharacteræŒ‡é’ˆ */
     Obj_Character* pCurEnemy = (Obj_Character*)pObj ;
-    /** µĞÈËµ±Ç°Î»ÖÃÓëµ±Ç°ÒÆ¶¯Ä¿±êÎ»ÖÃµÄ¾àÀë£¬¼´FinalTarPosition */
+    /** æ•Œäººå½“å‰ä½ç½®ä¸å½“å‰ç§»åŠ¨ç›®æ ‡ä½ç½®çš„è·ç¦»ï¼Œå³FinalTarPosition */
     fETDist = MySqrt(pCurEnemy->getWorldPos(), pMonster->GetFinalTarPos());
-    /** ×Ô¼ºÓëÄ¿±êµãµÄ¾àÀë */
+    /** è‡ªå·±ä¸ç›®æ ‡ç‚¹çš„è·ç¦» */
     fMTDist = MySqrt(pMonster->getWorldPos(), pMonster->GetFinalTarPos());
-    /** µ±Ç°Î»ÖÃºÍµĞÈËÎ»ÖÃÖ®¼äµÄ¾àÀë */
+    /** å½“å‰ä½ç½®å’Œæ•Œäººä½ç½®ä¹‹é—´çš„è·ç¦» */
     FLOAT fDist  = MySqrt(pMonster->getWorldPos(), pCurEnemy->getWorldPos()) ;
-    /** ×Ô¼ºÎ»ÖÃºÍ±»¹¥»÷»ò·¢ÏÖµĞÈËµÄÎ»ÖÃµÄ¾àÀë */
+    /** è‡ªå·±ä½ç½®å’Œè¢«æ”»å‡»æˆ–å‘ç°æ•Œäººçš„ä½ç½®çš„è·ç¦» */
     FLOAT fRDist = MySqrt(pMonster->getWorldPos(), &m_ToAttackPos) ;
-    if(    /** ²»ÔÚÍ¬Ò»¸ö³¡¾° */
+    if(    /** ä¸åœ¨åŒä¸€ä¸ªåœºæ™¯ */
         pCurEnemy->getScene()->SceneID()!=pMonster->getScene()->SceneID()
-        /**  µĞÈËËÀÁË */
+        /**  æ•Œäººæ­»äº† */
         || !pCurEnemy->IsAlive()    
-        /** Àë¿ªÕ½¶·¿ªÊ¼µÄÎ»ÖÃÌ«Ô¶ÁË£¬¸Ã»Ø¼ÒÁË */
+        /** ç¦»å¼€æˆ˜æ–—å¼€å§‹çš„ä½ç½®å¤ªè¿œäº†ï¼Œè¯¥å›å®¶äº† */
         || fRDist>AIParam(AIPARAM_RETURN)/1000.0f )
-    {/** ×ªÏòÏÂÒ»¸öµĞÈË£¬Ö±µ½È«²¿ÕÒÍêÎªÖ¹ */
+    {/** è½¬å‘ä¸‹ä¸€ä¸ªæ•Œäººï¼Œç›´åˆ°å…¨éƒ¨æ‰¾å®Œä¸ºæ­¢ */
         DelEnemy(m_CurEnemyID);
         m_CurEnemyID = GetNextEnemy();
         if (INVALID_ID == m_CurEnemyID)
@@ -1657,7 +1657,7 @@ VOID AI_Monster::RecoverHP()
 {
 __ENTER_FUNCTION
 
-    /** ½øĞĞ¿ìËÙ»ØÑª*/
+    /** è¿›è¡Œå¿«é€Ÿå›è¡€*/
     INT nCurHP = GetCharacter()->GetHP( ) ; 
     INT nMaxHP = GetCharacter()->GetMaxHP() ;
     if( nCurHP < nMaxHP )
@@ -1714,13 +1714,13 @@ BOOL AI_Monster::GetBestPos(WORLD_POS& Tar)
     FLOAT fMinRange = 0.f;
     SkillTemplateData_T const* pSkillTemplate = g_SkillTemplateDataMgr.GetInstanceByID(m_SkillID);
     if(NULL != pSkillTemplate)
-    {/** Õâ²¿·ÖÒÔºóÓÉ¼¼ÄÜÄ£¿éÀ´Ö§³Ö */
+    {/** è¿™éƒ¨åˆ†ä»¥åç”±æŠ€èƒ½æ¨¡å—æ¥æ”¯æŒ */
         fMaxRange = pSkillTemplate->GetOptimalRangeMax();
         fMinRange = pSkillTemplate->GetOptimalRangeMin();
         fMinRange = fMinRange < fMaxRange*0.8f ? fMaxRange*0.8f : fMinRange;
     }
 
-    /** Ä¿±êÓĞ¿ÉÄÜÊÇHuman */
+    /** ç›®æ ‡æœ‰å¯èƒ½æ˜¯Human */
     if ( pCurEnemy->GetObjType() == Obj::OBJ_TYPE_HUMAN)
     {
         AvoidOverlap* pAvoidOverLap = ((Obj_Human*)pCurEnemy)->GetAvoidOverLap();
@@ -1771,14 +1771,14 @@ __ENTER_FUNCTION
     if (!pScene) {
         return ;
     }
-    // Èç¹ûÕı´¦ÓÚ·±Ã¦×´Ì¬ÔòÖ±½Ó·µ»Ø
+    // å¦‚æœæ­£å¤„äºç¹å¿™çŠ¶æ€åˆ™ç›´æ¥è¿”å›
     if (m_nRefusePaoPaoTime > 0)
     {
         return ;
     }
 
     m_nRefusePaoPaoTime = REFUSEPAOPAO_TIME;
-    // ´ÓÅİÅİË÷Òı±íÖĞÕÒ³öÒ»¸öÅİÅİID
+    // ä»æ³¡æ³¡ç´¢å¼•è¡¨ä¸­æ‰¾å‡ºä¸€ä¸ªæ³¡æ³¡ID
     INT nDataID = pMonster->GetDataID();
     Assert(nDataID >= 0 && nDataID < MAXTYPE_NUMBER);
 

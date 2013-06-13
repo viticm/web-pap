@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////////
-//�ļ�����
-//����������������Χ�ĵ���obj
+//文件名：
+//功能描述：搜索周围的敌人obj
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -32,15 +32,15 @@ public :
     Monster_ScanOperator_Enemy( ) ;
     virtual ~Monster_ScanOperator_Enemy( ) ;
 
-    //��ʼ��ɨ�������
+    //初始化扫描控制器
     virtual BOOL                Init( SCANOPERATOR_ENEMY_INIT* pInit ) ;
-    //ɨ�������ʼǰ�ص�
+    //扫描操作开始前回调
 //    virtual BOOL                On_BeforeScan( ) ;
-    //�жϲ����е�Zone�Ƿ���Ҫɨ��
+    //判断参数中的Zone是否需要扫描
 //    virtual BOOL                On_IsNeedScan( ZoneID_t ZoneID ) ;
-    //������һ��Obj, ����ֵ�� SCANRETURN
+    //搜索到一个Obj, 返回值见 SCANRETURN
     virtual UINT                On_FindObj( Obj* pObj ) ;
-    //ɨ�������ɺ�ص�
+    //扫描操作完成后回调
 //    virtual VOID                On_AfterScan( ) ;
 
 

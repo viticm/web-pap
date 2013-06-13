@@ -26,7 +26,7 @@ public:
     } ;
     virtual ~GCAbilityAction( ){} ;
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream );
     virtual BOOL            Write( SocketOutputStream& oStream ) const;
     virtual UINT            Execute( Player* pPlayer );
@@ -39,7 +39,7 @@ public:
                                                             + sizeof(BYTE); }
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     VOID                    setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t                    getObjID(VOID)const { return m_ObjID; }
 
@@ -58,12 +58,12 @@ public:
     BYTE                    getBeginOrEnd(VOID) { return m_BeginOrEnd; }
     VOID                    setBeginOrEnd(BYTE BeginOrEnd) { m_BeginOrEnd = BeginOrEnd; }
 private:
-    //数据
-    ObjID_t                    m_ObjID;            // 所有Obj类型的ObjID
-    INT                        m_nLogicCount;        // 逻辑计数
-    AbilityID_t                m_AbilityID;        // 生活技能ID
-    PrescriptionID_t        m_PrescriptionID;    // 配方 ID
-    ObjID_t                    m_TargetID;            // 操作台（对象）的 ObjID
+    //鏁版嵁
+    ObjID_t                    m_ObjID;            // 鎵�鏈塐bj绫诲瀷鐨凮bjID
+    INT                        m_nLogicCount;        // 閫昏緫璁℃暟
+    AbilityID_t                m_AbilityID;        // 鐢熸椿鎶�鑳絀D
+    PrescriptionID_t        m_PrescriptionID;    // 閰嶆柟 ID
+    ObjID_t                    m_TargetID;            // 鎿嶄綔鍙帮紙瀵硅薄锛夌殑 ObjID
     BYTE                    m_BeginOrEnd;        // 
 };
 

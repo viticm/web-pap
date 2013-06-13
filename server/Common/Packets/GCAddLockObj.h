@@ -1,6 +1,6 @@
 // GCAddLockObj.h
 // 
-// 请求锁定物品
+// 璇锋眰閿佸畾鐗╁搧
 // 
 //////////////////////////////////////////////////////
 
@@ -37,7 +37,7 @@ public:
     }
     virtual ~GCAddLockObj(){}
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -46,7 +46,7 @@ public:
     virtual UINT            GetPacketSize()const { return sizeof(BYTE)*2; }
     
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     BYTE                    GetLockObj(){return m_bLockObj;}
     VOID                    SetLockObj(BYTE bLockObj) {m_bLockObj=bLockObj;}
 
@@ -54,9 +54,9 @@ public:
     VOID                    SetResult(BYTE bResult) {m_bResult=bResult;}
 
 private:
-    //数据
-    BYTE                    m_bLockObj;        // 给什么类型的东西加锁
-    BYTE                    m_bResult;        // 结果
+    //鏁版嵁
+    BYTE                    m_bLockObj;        // 缁欎粈涔堢被鍨嬬殑涓滆タ鍔犻攣
+    BYTE                    m_bResult;        // 缁撴灉
 
 };
 

@@ -97,7 +97,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //Êı¾İ¶ÁÈ¡
+    //æ•°æ®è¯»å–
     UINT nPlayerCount = GetPlayerNumber() ;
     for( UINT i=0; i<nPlayerCount; i++ )
     {
@@ -112,7 +112,7 @@ __ENTER_FUNCTION
             continue ;
         }
 
-        //Á¬½ÓÒÑ¶Ï¿ª
+        //è¿æ¥å·²æ–­å¼€
         if( pPlayer->IsDisconnect() )
             continue;
 
@@ -122,14 +122,14 @@ __ENTER_FUNCTION
         if( FD_ISSET( s, &m_ReadFDs[SELECT_USE] ) )
         {
             if( pPlayer->GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
+            {//è¿æ¥å‡ºç°é”™è¯¯
                 g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CI0 GUID=%X NeedRemove", 
                     pPlayer->m_HumanGUID ) ;
                     
-                RemovePlayer( pPlayer, "Íæ¼ÒÁ¬½Ó³öÏÖ´íÎó" ) ;
+                RemovePlayer( pPlayer, "ç©å®¶è¿æ¥å‡ºç°é”™è¯¯" ) ;
             }
             else
-            {//Á¬½ÓÕı³£
+            {//è¿æ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = pPlayer->ProcessInput( ) ;
@@ -138,7 +138,7 @@ __ENTER_FUNCTION
                         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CI1 GUID=%X NeedRemove",
                             pPlayer->m_HumanGUID ) ;
 
-                        RemovePlayer( pPlayer, "ProcessInputÖ´ĞĞ·µ»Ø½á¹û³ö´í" ) ;
+                        RemovePlayer( pPlayer, "ProcessInputæ‰§è¡Œè¿”å›ç»“æœå‡ºé”™" ) ;
                     }
                 }
                 _MY_CATCH
@@ -148,7 +148,7 @@ __ENTER_FUNCTION
                     g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CI2 GUID=%X NeedRemove",
                         pPlayer->m_HumanGUID ) ;
 
-                    RemovePlayer( pPlayer, "ProcessInputÖ´ĞĞ·¢ÉúÒì³£" ) ;
+                    RemovePlayer( pPlayer, "ProcessInputæ‰§è¡Œå‘ç”Ÿå¼‚å¸¸" ) ;
                 }
             }
         }
@@ -173,7 +173,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //Êı¾İ·¢ËÍ
+    //æ•°æ®å‘é€
     UINT nPlayerCount = GetPlayerNumber() ;
     for( UINT i=0; i<nPlayerCount; i++ )
     {
@@ -192,14 +192,14 @@ __ENTER_FUNCTION
         if( FD_ISSET( s, &m_WriteFDs[SELECT_USE] ) )
         {
             if( pPlayer->GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
+            {//è¿æ¥å‡ºç°é”™è¯¯
                 g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CO0 GUID=%X NeedRemove",
                     pPlayer->m_HumanGUID ) ;
 
-                RemovePlayer( pPlayer, "ProcessOutputsÊ±Íæ¼ÒÁ¬½Ó³ö´í" ) ;
+                RemovePlayer( pPlayer, "ProcessOutputsæ—¶ç©å®¶è¿æ¥å‡ºé”™" ) ;
             }
             else
-            {//Á¬½ÓÕı³£
+            {//è¿æ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = pPlayer->ProcessOutput( ) ;
@@ -208,7 +208,7 @@ __ENTER_FUNCTION
                         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CO1 GUID=%X NeedRemove",
                             pPlayer->m_HumanGUID ) ;
 
-                        RemovePlayer( pPlayer, "ProcessOutputÖ´ĞĞ³ö´í" ) ;
+                        RemovePlayer( pPlayer, "ProcessOutputæ‰§è¡Œå‡ºé”™" ) ;
                     }
                 }
                 _MY_CATCH
@@ -218,7 +218,7 @@ __ENTER_FUNCTION
                     g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CO2 GUID=%X NeedRemove",
                         pPlayer->m_HumanGUID ) ;
 
-                    RemovePlayer( pPlayer, "ProcessOutputÖ´ĞĞ³öÏÖÒì³£" ) ;
+                    RemovePlayer( pPlayer, "ProcessOutputæ‰§è¡Œå‡ºç°å¼‚å¸¸" ) ;
                 }
             }
         }
@@ -246,7 +246,7 @@ __ENTER_FUNCTION
         if( m_pPlayers[i]==INVALID_ID )
             continue ;
 
-        //Ä³¸öÍæ¼Ò¶Ï¿ªÍøÂçÁ¬½Ó
+        //æŸä¸ªç©å®¶æ–­å¼€ç½‘ç»œè¿æ¥
 
         GamePlayer* pPlayer = g_pPlayerPool->GetPlayer(m_pPlayers[i]) ;
         Assert( pPlayer ) ;
@@ -259,7 +259,7 @@ __ENTER_FUNCTION
 
         if( FD_ISSET( s, &m_ExceptFDs[SELECT_USE] ) )
         {
-            RemovePlayer( pPlayer, "Ä³¸öÍæ¼Ò¶Ï¿ªÍøÂçÁ¬½Ó" ) ;
+            RemovePlayer( pPlayer, "æŸä¸ªç©å®¶æ–­å¼€ç½‘ç»œè¿æ¥" ) ;
         }
     }
 
@@ -300,14 +300,14 @@ __ENTER_FUNCTION
         Assert( s!=INVALID_SOCKET ) ;
 
         if( pPlayer->GetSocket()->isSockError() )
-        {//Á¬½Ó³öÏÖ´íÎó
+        {//è¿æ¥å‡ºç°é”™è¯¯
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CC1 GUID=%X NeedRemove",
                 pPlayer->m_HumanGUID ) ;
 
-            RemovePlayer( pPlayer, "ProcessCommandsÊ±Á¬½Ó³ö´í" ) ;
+            RemovePlayer( pPlayer, "ProcessCommandsæ—¶è¿æ¥å‡ºé”™" ) ;
         }
         else
-        {//Á¬½ÓÕı³£
+        {//è¿æ¥æ­£å¸¸
             _MY_TRY
             {
                 ret = pPlayer->ProcessCommand( FALSE ) ;
@@ -316,7 +316,7 @@ __ENTER_FUNCTION
                     g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CC2 GUID=%X NeedRemove",
                         pPlayer->m_HumanGUID ) ;
 
-                    RemovePlayer( pPlayer, "ProcessCommandÖ´ĞĞ½á¹û³ö´í", TRUE ) ;
+                    RemovePlayer( pPlayer, "ProcessCommandæ‰§è¡Œç»“æœå‡ºé”™", TRUE ) ;
                 }
             }
             _MY_CATCH
@@ -326,7 +326,7 @@ __ENTER_FUNCTION
                 g_pLog->FastSaveLog( LOG_FILE_1, "ERROR CC3 GUID=%X NeedRemove",
                     pPlayer->m_HumanGUID ) ;
 
-                RemovePlayer( pPlayer,  "ProcessCommandÖ´ĞĞ·¢ÉúÒì³£", TRUE ) ;
+                RemovePlayer( pPlayer,  "ProcessCommandæ‰§è¡Œå‘ç”Ÿå¼‚å¸¸", TRUE ) ;
             }
         }
     }
@@ -349,7 +349,7 @@ __ENTER_FUNCTION
 
     BOOL ret = FALSE ;
 
-    //µÚÒ»²½£ºÇå³ıSocketĞÅÏ¢
+    //ç¬¬ä¸€æ­¥ï¼šæ¸…é™¤Socketä¿¡æ¯
     SOCKET fd = pPlayer->GetSocket()->getSOCKET() ;
     if( fd != INVALID_SOCKET )
     {
@@ -361,7 +361,7 @@ __ENTER_FUNCTION
     }
 
     if( !bReal )
-    {//½ö½ö¶ÏÏß
+    {//ä»…ä»…æ–­çº¿
         GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
 
         if( !pGamePlayer->IsDirty( ) )
@@ -382,7 +382,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //µÚ¶ş²½£ºÇå³ı³¡¾°ÖĞµÄÏà¹ØÊı¾İ
+    //ç¬¬äºŒæ­¥ï¼šæ¸…é™¤åœºæ™¯ä¸­çš„ç›¸å…³æ•°æ®
     Scene* pScene;
     _MY_TRY
     {
@@ -419,7 +419,7 @@ __ENTER_FUNCTION
         SaveCodeLog( ) ;
     }
 
-    //µÚÈı²½£ºÇå³ıPlayerManagerÖĞµÄĞÅÏ¢
+    //ç¬¬ä¸‰æ­¥ï¼šæ¸…é™¤PlayerManagerä¸­çš„ä¿¡æ¯
     if( pPlayer->PlayerManagerID()!=INVALID_ID )
     {
         ret = DelPlayer( pPlayer->PlayerID() ) ;
@@ -429,8 +429,8 @@ __ENTER_FUNCTION
         }
     }
 
-    //µÚËÄ²½£ºÇå³ıPlayerPoolÖĞµÄĞÅÏ¢£¬×¢Òâ´Ë²½Öè±ØĞë·ÅÔÚ×îºó£¬
-    //µ±µ÷ÓÃ´Ë²Ù×÷ºó£¬µ±Ç°Player¾ÍÓĞ¿ÉÄÜ»á±»ÂíÉÏ·ÖÅä¸øĞÂ½ÓÈëÍæ¼Ò
+    //ç¬¬å››æ­¥ï¼šæ¸…é™¤PlayerPoolä¸­çš„ä¿¡æ¯ï¼Œæ³¨æ„æ­¤æ­¥éª¤å¿…é¡»æ”¾åœ¨æœ€åï¼Œ
+    //å½“è°ƒç”¨æ­¤æ“ä½œåï¼Œå½“å‰Playerå°±æœ‰å¯èƒ½ä¼šè¢«é©¬ä¸Šåˆ†é…ç»™æ–°æ¥å…¥ç©å®¶
     GUID_t guid = ((GamePlayer*)pPlayer)->GetHuman()->GetGUID() ;
     if( guid!=INVALID_ID )
     {
@@ -453,7 +453,7 @@ BOOL ScenePlayerManager::AddPlayer( Player* pPlayer )
 __ENTER_FUNCTION
 
     if( m_nFDSize>=FD_SETSIZE )
-    {//ÒÑ¾­³¬³öÄÜ¹»¼ì²âµÄÍøÂç¾ä±ú×î´óÊı£»
+    {//å·²ç»è¶…å‡ºèƒ½å¤Ÿæ£€æµ‹çš„ç½‘ç»œå¥æŸ„æœ€å¤§æ•°ï¼›
         return FALSE ;
     }
 
@@ -508,7 +508,7 @@ __ENTER_FUNCTION
 
     Assert( pid!=INVALID_ID) ;
 
-//Çå³ıPlayerManagerÖĞµÄĞÅÏ¢
+//æ¸…é™¤PlayerManagerä¸­çš„ä¿¡æ¯
     PlayerManager::RemovePlayer( pid ) ;
 
 
@@ -672,7 +672,7 @@ __ENTER_FUNCTION
             ret = FALSE ;
         }
         if( !ret )
-        {//Èç¹ûÂß¼­²Ù×÷·µ»ØÊ§°Ü£¬ÔòĞèÒª¶Ï¿ªµ±Ç°Á¬½Ó
+        {//å¦‚æœé€»è¾‘æ“ä½œè¿”å›å¤±è´¥ï¼Œåˆ™éœ€è¦æ–­å¼€å½“å‰è¿æ¥
             if( pPlayer->GetPlayerStatus()==PS_SERVER_ANOTHER_GUID_ENTER 
                 && !pPlayer->IsDirty() )
             {
@@ -686,7 +686,7 @@ __ENTER_FUNCTION
                     pPlayer->m_HumanGUID ) ;
             }
 
-            ret = RemovePlayer( pPlayer, "HeartBeatÂß¼­²Ù×÷·µ»ØÊ§°Ü", TRUE ) ;
+            ret = RemovePlayer( pPlayer, "HeartBeaté€»è¾‘æ“ä½œè¿”å›å¤±è´¥", TRUE ) ;
             Assert( ret ) ;
         }
     }
@@ -715,7 +715,7 @@ __ENTER_FUNCTION
             break ;
         }
 
-        RemovePlayer( pPlayer, "ËùÓĞÍæ¼Ò¶¼¶Ï¿ª", TRUE ) ;
+        RemovePlayer( pPlayer, "æ‰€æœ‰ç©å®¶éƒ½æ–­å¼€", TRUE ) ;
     }
 
 __LEAVE_FUNCTION

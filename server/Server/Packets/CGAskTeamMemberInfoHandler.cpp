@@ -32,7 +32,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
     Obj_Human* pDestHuman = pScene->GetHumanManager()->GetHuman( pPacket->getObjID() );
@@ -87,7 +87,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE;
     }
 
-    // ´Ó·þÎñÆ÷ÇëÇó¾ßÌåÊý¾Ý£¬Êý¾ÝÏî°üÀ¨Íæ¼ÒµÄ GUID¡¢êÇ³Æ¡¢ÃÅÅÉ¡¢µÈ¼¶¡¢Í·Ïñ£¨ÔÚÏß¡¢ËÀÍö×´Ì¬£©
+    // ä»ŽæœåŠ¡å™¨è¯·æ±‚å…·ä½“æ•°æ®ï¼Œæ•°æ®é¡¹åŒ…æ‹¬çŽ©å®¶çš„ GUIDã€æ˜µç§°ã€é—¨æ´¾ã€ç­‰çº§ã€å¤´åƒï¼ˆåœ¨çº¿ã€æ­»äº¡çŠ¶æ€ï¼‰
     GWAskTeamMemberInfo* pMsg = (GWAskTeamMemberInfo*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_ASKTEAMMEMBERINFO));
 
     pMsg->SetObjID( pGamePlayer->PlayerID() );

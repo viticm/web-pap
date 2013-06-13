@@ -27,10 +27,10 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    BYTE    m_nBagIndex    =    pPacket->GetBagIndex();        //°üÖĞµÄÎ»ÖÃ
+    BYTE    m_nBagIndex    =    pPacket->GetBagIndex();        //åŒ…ä¸­çš„ä½ç½®
     UINT    UniqueID    =    pPacket->GetUniqueID();
 
     SceneID_t    SceneID =    UniqueID>>16;
@@ -42,7 +42,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
         return PACKET_EXE_CONTINUE ; 
     }
 
-    //¾àÀëÅĞ¶¨
+    //è·ç¦»åˆ¤å®š
     Obj* pNpcObj = (Obj*) (pScene->GetObjManager()->GetObj(NpcObjID));
     if(pNpcObj == NULL)
     {
@@ -62,23 +62,23 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
 
     if(!pCurrentItem||ConvertSerial2ItemType(pCurrentItem->GetItemTableIndex()).isNull())
     {
-        //±³°üË÷Òı²»´æÔÚ
+        //èƒŒåŒ…ç´¢å¼•ä¸å­˜åœ¨
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR:CGShopSellHandler m_nBagIndex=%d PlayerName=s%",
             m_nBagIndex,  pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE;
     }
 
-    //ÅĞ¶¨Õâ¸öÉÌÈËÊÇ²»ÊÇÊÕ¹ºÕâ¸öÎïÆ·
+    //åˆ¤å®šè¿™ä¸ªå•†äººæ˜¯ä¸æ˜¯æ”¶è´­è¿™ä¸ªç‰©å“
     _SHOP*        pShop    =    pHuman->Shop( )    ;
 
-    //ÉÌµê²»´æÔÚ
+    //å•†åº—ä¸å­˜åœ¨
     if(!pShop)
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR:CGShopSellHandler Npc Shop Lose");
         return PACKET_EXE_CONTINUE;
     }
 
-    //²éÑ¯ÊÕ¹ºµÈ¼¶ÏŞÖÆ
+    //æŸ¥è¯¢æ”¶è´­ç­‰çº§é™åˆ¶
     if( pCurrentItem->GetItemClass() == ICLASS_EQUIP )
     {
         if( pCurrentItem->GetRequireLevel() > pShop->m_nBuyLevel )
@@ -103,7 +103,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
             {
             }
             break;
-        case SHOP_DEFENCE:        //·À¾ß
+        case SHOP_DEFENCE:        //é˜²å…·
             {
                 if( ICLASS_EQUIP == pCurrentItem->GetItemClass())
                 {
@@ -121,7 +121,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
                 }
             }
             break;
-        case SHOP_ADORN:        //ÊÎÎï
+        case SHOP_ADORN:        //é¥°ç‰©
             {
                 if( ICLASS_EQUIP == pCurrentItem->GetItemClass())
                 {
@@ -139,7 +139,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
                 }
             }
             break;
-        case SHOP_WEAPON:        //ÎäÆ÷
+        case SHOP_WEAPON:        //æ­¦å™¨
             {
                 if( ICLASS_EQUIP == pCurrentItem->GetItemClass())
                 {
@@ -154,7 +154,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
                 }
             }
             break;
-        case SHOP_FOOD:            //Ê³Îï
+        case SHOP_FOOD:            //é£Ÿç‰©
             {
                 if( ICLASS_COMITEM != pCurrentItem->GetItemClass())
                 {
@@ -162,7 +162,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
                 }
             }
             break;
-        case SHOP_MATERIAL:        //²ÄÁÏ
+        case SHOP_MATERIAL:        //ææ–™
             {
                 if( ICLASS_MATERIAL != pCurrentItem->GetItemClass())
                 {
@@ -170,7 +170,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
                 }
             }
             break;
-        case SHOP_COMITEM:        //Ò©Æ·
+        case SHOP_COMITEM:        //è¯å“
             {
                 if( ICLASS_COMITEM != pCurrentItem->GetItemClass())
                 {
@@ -186,7 +186,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
         }
     }
     
-    //ÊÇ·ñ·µ»ØÊ§°ÜÏûÏ¢£¿£¿£¿
+    //æ˜¯å¦è¿”å›å¤±è´¥æ¶ˆæ¯ï¼Ÿï¼Ÿï¼Ÿ
     if(bCanBuy == FALSE)
     {
         return PACKET_EXE_CONTINUE;
@@ -195,12 +195,12 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
     INT   iPrice = ShopMgr::ConvertItemType2Money(ConvertSerial2ItemType(pCurrentItem->GetItemTableIndex()));
     iPrice *= pCurrentItem->GetLayedNum();
     //2006-4-21 
-    //Íæ¼ÒÏòÉÌµê³öÊÛÒÑ¾­¼ø¶¨¹ıµÄÎïÆ·»òÕßÎŞĞè¼ø¶¨µÄÎïÆ·°´ÕÕ»ù´¡¼Û¸ñ*ÏµÊıA(=1/3) ¼ÆËã£»
-    //Èô³öÊÛÎ´¼ø¶¨ÎïÆ·£¬¼Û¸ñÓ¦¸Ã¸üµÍ£¬Éè´Ë¼Û¸ñÏµÊıÎªB(=1/10)£¬Õâ¸öÓĞ´ıÓÚµ÷Õû£¬ÇëÔÚconfigÖĞ¿ª·Åµ÷ÕûA,BµÄ½Ó¿Ú¡£
-    //ÄÍ¾ÃË¥¼õÏµÊıD=µ±Ç°ÄÍ¾Ã/×î´óÄÍ¾Ã
-    //ĞŞÀíÊ§°ÜË¥¼õ´ÎÊıF=1/£¨ĞŞÀíÊ§°Ü´ÎÊı+1£©
-    //Òò´Ë×îÖÕµÄ³öÊÛ¼Û¸ñÎªV=»ù´¡¼Û¸ñB*A*D*F
-    //ÔÙ³ËÒÔÉÌµêµÃ¼Û¸ñ±ÈÀı
+    //ç©å®¶å‘å•†åº—å‡ºå”®å·²ç»é‰´å®šè¿‡çš„ç‰©å“æˆ–è€…æ— éœ€é‰´å®šçš„ç‰©å“æŒ‰ç…§åŸºç¡€ä»·æ ¼*ç³»æ•°A(=1/3) è®¡ç®—ï¼›
+    //è‹¥å‡ºå”®æœªé‰´å®šç‰©å“ï¼Œä»·æ ¼åº”è¯¥æ›´ä½ï¼Œè®¾æ­¤ä»·æ ¼ç³»æ•°ä¸ºB(=1/10)ï¼Œè¿™ä¸ªæœ‰å¾…äºè°ƒæ•´ï¼Œè¯·åœ¨configä¸­å¼€æ”¾è°ƒæ•´A,Bçš„æ¥å£ã€‚
+    //è€ä¹…è¡°å‡ç³»æ•°D=å½“å‰è€ä¹…/æœ€å¤§è€ä¹…
+    //ä¿®ç†å¤±è´¥è¡°å‡æ¬¡æ•°F=1/ï¼ˆä¿®ç†å¤±è´¥æ¬¡æ•°+1ï¼‰
+    //å› æ­¤æœ€ç»ˆçš„å‡ºå”®ä»·æ ¼ä¸ºV=åŸºç¡€ä»·æ ¼B*A*D*F
+    //å†ä¹˜ä»¥å•†åº—å¾—ä»·æ ¼æ¯”ä¾‹
 
     FLOAT fCur            = 1;
     FLOAT fMax            = 1;
@@ -222,14 +222,14 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
         iPrice = (INT)( ((FLOAT)iPrice/(FLOAT)10.0) * (fCur/fMax) * ((FLOAT)1/(FLOAT)(iFailTimes+1)) * (pShop->m_scale) );
     }
     
-    //±¸·İÒ»ÏÂ£¬Ò»»á¶ù·Åµ½¹º»ØÁĞ±íÀï
+    //å¤‡ä»½ä¸€ä¸‹ï¼Œä¸€ä¼šå„¿æ”¾åˆ°è´­å›åˆ—è¡¨é‡Œ
     _ITEM tempitem;
     pCurrentItem->SaveValueTo(&tempitem);
 
-    //±¸·İµ½»Ø¹ºÁĞ±íÖĞ
+    //å¤‡ä»½åˆ°å›è´­åˆ—è¡¨ä¸­
     pHuman->AddToSoldList(m_nBagIndex, iPrice);
 
-    //¸øÇ®
+    //ç»™é’±
     pHuman->SetMoney( pHuman->GetMoney() + iPrice);
 
     MONEY_LOG_PARAM    MoneyLogParam;
@@ -241,7 +241,7 @@ UINT CGShopSellHandler::Execute( CGShopSell* pPacket, Player* pPlayer )
     MoneyLogParam.ZPos        =    pHuman->getWorldPos()->m_fZ;
     SaveMoneyLog(&MoneyLogParam);
         
-    //°ÑÕâ¸ö»Ø¹ºÉÌÆ·ÏÔÊ¾µ½½çÃæ
+    //æŠŠè¿™ä¸ªå›è´­å•†å“æ˜¾ç¤ºåˆ°ç•Œé¢
     GCShopSoldList::_MERCHANDISE_ITEM    SoldItem;
     SoldItem.item_data = tempitem;
     GCShopSoldList    MsgSold;

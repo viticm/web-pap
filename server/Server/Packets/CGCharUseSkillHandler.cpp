@@ -43,7 +43,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     if ( MyGetCurrentThreadID() != pScene->m_ThreadID )
     {
@@ -57,18 +57,18 @@ __ENTER_FUNCTION
     ObjID_t idTarget        = pPacket->getTargetID();
     WORLD_POS posTarget        = pPacket->getTargetPos() ;
     FLOAT fDir                = pPacket->getDir() ;
-    //now the target guid only use to call of human(À­ÈËÈ¥Ö¸¶¨Î»ÖÃµÄ²Ù×÷)
+    //now the target guid only use to call of human(æ‹‰äººåŽ»æŒ‡å®šä½ç½®çš„æ“ä½œ)
     GUID_t    guidTarget        = pPacket->getTargetGUID();
 
     Obj_Character *pTarget = (Obj_Character*)(pScene->GetObjManager()->GetObj(idTarget));
     if( pTarget )
     {
-        //¼¼ÄÜ ÀàÐÍ
+        //æŠ€èƒ½ ç±»åž‹
         Skill_Module::SkillTemplateData_T const* pSkillTemplate = g_SkillTemplateDataMgr.GetInstanceByID(idSkill);
         INT SkillType = pSkillTemplate->GetStandFlag();
         if (SkillType > 0)
         {    
-            //ÏàÍ¬ÕóÓª£¬¿ÉÒÔÊÍ·Å
+            //ç›¸åŒé˜µè¥ï¼Œå¯ä»¥é‡Šæ”¾
             if( pHuman->IsEnemy( pTarget ) == TRUE )
             {
                 g_pLog->FastSaveLog( LOG_FILE_1, "CGCharUseSkillHandler: %s and %s  isn't the same camp! ", pHuman->GetName(), pTarget->GetName() ) ;
@@ -76,7 +76,7 @@ __ENTER_FUNCTION
             }
         }else if(SkillType < 0)
         {
-            // ²»Í¬ÕóÓª£¬¿ÉÒÔÊÍ·Å
+            // ä¸åŒé˜µè¥ï¼Œå¯ä»¥é‡Šæ”¾
             if( pHuman->IsEnemy( pTarget ) == FALSE )
             {
                 g_pLog->FastSaveLog( LOG_FILE_1, "CGCharUseSkillHandler: %s and %s  is the same camp! ", pHuman->GetName(), pTarget->GetName() ) ;

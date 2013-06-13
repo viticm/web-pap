@@ -9,17 +9,17 @@
 class DBCreateCharOp:public ODBCBase
 {
     UINT            m_AID;
-    CHAR            m_Account[MAX_ACCOUNT+1];        //ÓÃ»§Ãû³Æ
+    CHAR            m_Account[MAX_ACCOUNT+1];        //ç”¨æˆ·åç§°
     GUID_t            m_CharGuid;
     CHAR            m_CharName[MAX_CHARACTER_NAME];
     BOOL            m_Sex;
-    BYTE            m_HairColor;                    //ĞÂ½ÇÉ«Í··¢ÑÕÉ«    
-    BYTE            m_FaceColor;                    //ĞÂ½ÇÉ«Á³ĞÎÑÕÉ«
-    BYTE            m_HairModel;                    //ĞÂ½ÇÉ«Í··¢Ä£ĞÍ
-    BYTE            m_FaceModel;                    //ĞÂ½ÇÉ«Á³ĞÎÄ£ĞÍ
-    BYTE            m_HeadID;                        //Í·²¿±àºÅ
-    CampID_t        m_Camp    ;                        //ÕóÓª
-    MenPaiID_t        m_MenPai;                        //ÃÅÅÉ
+    BYTE            m_HairColor;                    //æ–°è§’è‰²å¤´å‘é¢œè‰²    
+    BYTE            m_FaceColor;                    //æ–°è§’è‰²è„¸å½¢é¢œè‰²
+    BYTE            m_HairModel;                    //æ–°è§’è‰²å¤´å‘æ¨¡å‹
+    BYTE            m_FaceModel;                    //æ–°è§’è‰²è„¸å½¢æ¨¡å‹
+    BYTE            m_HeadID;                        //å¤´éƒ¨ç¼–å·
+    CampID_t        m_Camp    ;                        //é˜µè¥
+    MenPaiID_t        m_MenPai;                        //é—¨æ´¾
 public:
     DBCreateCharOp(ODBCInterface* pInterface);
 

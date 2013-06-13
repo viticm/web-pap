@@ -5,7 +5,7 @@
 #include "Log.h"
 using namespace RecordOpt;
 //-------------------------------------------------------------------------------------------------
-//³õÊ¼»¯±£´æÈİÆ÷
+//åˆå§‹åŒ–ä¿å­˜å®¹å™¨
 BOOL RecordOpt::InitRecordContainer(RecordContainer_t* pContainer, INT iSize)
 {
     if(iSize>MAX_RECORD_NUM_ENTRY)
@@ -19,7 +19,7 @@ BOOL RecordOpt::InitRecordContainer(RecordContainer_t* pContainer, INT iSize)
 }
 
 //-------------------------------------------------------------------------------------------------
-//»ñµÃµ±Ç°¼ÇÂ¼ÈİÆ÷ÖĞµÄ¼ÇÂ¼ÊıÁ¿
+//è·å¾—å½“å‰è®°å½•å®¹å™¨ä¸­çš„è®°å½•æ•°é‡
 INT RecordOpt::GetRecordNum(RecordContainer_t* pContainer)
 {
     if(pContainer->m_iCurEntry==(pContainer->m_iMaxSize - 1) && pContainer->m_iOldestEntry == 0)
@@ -38,17 +38,17 @@ INT RecordOpt::GetRecordNum(RecordContainer_t* pContainer)
 }
 
 //-------------------------------------------------------------------------------------------------
-//²Ù×÷ÈİÆ÷
+//æ“ä½œå®¹å™¨
 /*
-»ï°é²Ù×÷ĞĞÎª¸ñÊ½£º
-ÉÏ»õ£ºAAAÉÏ»õÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
-È¡»Ø£ºAAAÈ¡»ØÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
-ÉÏ¼Ü£ºAAAÉÏ¼ÜÁËBBBC¼ş£¬±ê¼ÛÎª£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
-ÏÂ¼Ü£ºAAAÏÂ¼ÜÁËBBBC¼ş£¬Ô­±ê¼ÛÎª£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
-¿ªÕÅ£ºAAA¿ªÕÅÁËµÚN¼ä¹ñÌ¨£¨AAAÎª²Ù×÷ÕßÃû£¬NÎª¹ñÌ¨ËùÊô¼äÊı£©
-´òìÈ£ºAAA´òìÈÁËµÚN¼ä¹ñÌ¨£¨AAAÎª²Ù×÷ÕßÃû£¬NÎª¹ñÌ¨ËùÊô¼äÊı£©
-³äÈë±¾½ğ£ºAAAÍùµêÆÌ±¾½ğÖĞ³äÈë£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£©
-³äÈëÓ®Àû×Ê½ğ£ºAAAÍùµêÆÌÓ®Àû×Ê½ğÖĞ³äÈë£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£©
+ä¼™ä¼´æ“ä½œè¡Œä¸ºæ ¼å¼ï¼š
+ä¸Šè´§ï¼šAAAä¸Šè´§äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
+å–å›ï¼šAAAå–å›äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
+ä¸Šæ¶ï¼šAAAä¸Šæ¶äº†BBBCä»¶ï¼Œæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
+ä¸‹æ¶ï¼šAAAä¸‹æ¶äº†BBBCä»¶ï¼ŒåŸæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
+å¼€å¼ ï¼šAAAå¼€å¼ äº†ç¬¬Né—´æŸœå°ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒNä¸ºæŸœå°æ‰€å±é—´æ•°ï¼‰
+æ‰“çƒŠï¼šAAAæ‰“çƒŠäº†ç¬¬Né—´æŸœå°ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒNä¸ºæŸœå°æ‰€å±é—´æ•°ï¼‰
+å……å…¥æœ¬é‡‘ï¼šAAAå¾€åº—é“ºæœ¬é‡‘ä¸­å……å…¥ï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼‰
+å……å…¥èµ¢åˆ©èµ„é‡‘ï¼šAAAå¾€åº—é“ºèµ¢åˆ©èµ„é‡‘ä¸­å……å…¥ï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼‰
 
 */
 BOOL RecordOpt::Excute( OPT_RECORD Opt, RecordContainer_t* pContainer, ... )
@@ -71,135 +71,135 @@ BOOL RecordOpt::Excute( OPT_RECORD Opt, RecordContainer_t* pContainer, ... )
     {
     case REC_EXCHANGEITEM:
         {
-            //ÊÛ³öAA£¬»ñµÃ£¿½ğ£¿Òø£¿Í­¡££¨AAÎªÎïÆ·Ãû£©
+            //å”®å‡ºAAï¼Œè·å¾—ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œã€‚ï¼ˆAAä¸ºç‰©å“åï¼‰
             INT iItemType = va_arg( ParamList, INT);
             INT iItemNum  = va_arg( ParamList, INT);
             INT    iCost      = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: ÊÛ³ö[#{_ITEM%d}]X%d, »ñµÃ#{_MONEY%d}", iCurTime, iItemType, iItemNum, iCost);
+            sprintf(szInputBuffer, "#{_TIME%d}: å”®å‡º[#{_ITEM%d}]X%d, è·å¾—#{_MONEY%d}", iCurTime, iItemType, iItemNum, iCost);
         }
         break;
     case REC_EXCHANGEPET:
         {
-            //ÊÛ³öAA£¬»ñµÃ£¿½ğ£¿Òø£¿Í­¡££¨AAÎªÎïÆ·Ãû£©
+            //å”®å‡ºAAï¼Œè·å¾—ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œã€‚ï¼ˆAAä¸ºç‰©å“åï¼‰
             CHAR*    pszPetName    = va_arg( ParamList, CHAR*);
             INT        iItemNum    = va_arg( ParamList, INT);
             INT        iCost        = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: ÊÛ³ö[%s]X%d, »ñµÃ#{_MONEY%d}", iCurTime, pszPetName, iItemNum, iCost);
+            sprintf(szInputBuffer, "#{_TIME%d}: å”®å‡º[%s]X%d, è·å¾—#{_MONEY%d}", iCurTime, pszPetName, iItemNum, iCost);
         }
         break;
     case REC_ADDITEM:
         {
-            //ÉÏ»õ£ºAAAÉÏ»õÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+            //ä¸Šè´§ï¼šAAAä¸Šè´§äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             INT        iItemType        = va_arg( ParamList, INT);
             INT        iItemNum        = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÉÏ»õÁË[#{_ITEM%d}]X%d¼ş", iCurTime, pszOperatorName, iItemType, iItemNum);
+            sprintf(szInputBuffer, "#{_TIME%d}: %sä¸Šè´§äº†[#{_ITEM%d}]X%dä»¶", iCurTime, pszOperatorName, iItemType, iItemNum);
         }
         break;
     case REC_DELITEM:
         {
-            //È¡»Ø£ºAAAÈ¡»ØÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+            //å–å›ï¼šAAAå–å›äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             INT        iItemType        = va_arg( ParamList, INT);
             INT        iItemNum        = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÈ¡»ØÁË[#{_ITEM%d}]X%d¼ş", iCurTime, pszOperatorName, iItemType, iItemNum);
+            sprintf(szInputBuffer, "#{_TIME%d}: %så–å›äº†[#{_ITEM%d}]X%dä»¶", iCurTime, pszOperatorName, iItemType, iItemNum);
         }
         break;
     case REC_ADDPET:
         {
-            //ÉÏ»õ£ºAAAÉÏ»õÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+            //ä¸Šè´§ï¼šAAAä¸Šè´§äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             CHAR*    pszPetName        = va_arg( ParamList, CHAR*);
             INT        iItemNum        = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÉÏ»õÁË[%s]X%d¼ş", iCurTime, pszOperatorName, pszPetName, iItemNum);
+            sprintf(szInputBuffer, "#{_TIME%d}: %sä¸Šè´§äº†[%s]X%dä»¶", iCurTime, pszOperatorName, pszPetName, iItemNum);
         }
         break;
     case REC_DELPET:
         {
-            //È¡»Ø£ºAAAÈ¡»ØÁËBBBC¼ş¡££¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+            //å–å›ï¼šAAAå–å›äº†BBBCä»¶ã€‚ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             CHAR*    pszPetName        = va_arg( ParamList, CHAR*);
             INT        iItemNum        = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÈ¡»ØÁË[%s]X%d¼ş", iCurTime, pszOperatorName, pszPetName, iItemNum);
+            sprintf(szInputBuffer, "#{_TIME%d}: %så–å›äº†[%s]X%dä»¶", iCurTime, pszOperatorName, pszPetName, iItemNum);
         }
         break;
     case REC_ONSALEITEM:
         {
-            //ÉÏ¼Ü£ºAAAÉÏ¼ÜÁËBBBC¼ş£¬±ê¼ÛÎª£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+            //ä¸Šæ¶ï¼šAAAä¸Šæ¶äº†BBBCä»¶ï¼Œæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             INT        iItemType        = va_arg( ParamList, INT);
             INT        iItemNum        = va_arg( ParamList, INT);
             INT        iPrice            = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÉÏ¼ÜÁË[#{_ITEM%d}]X%d¼ş,±ê¼ÛÎª#r #{_MONEY%d}", iCurTime, pszOperatorName, iItemType, iItemNum, iPrice);
+            sprintf(szInputBuffer, "#{_TIME%d}: %sä¸Šæ¶äº†[#{_ITEM%d}]X%dä»¶,æ ‡ä»·ä¸º#r #{_MONEY%d}", iCurTime, pszOperatorName, iItemType, iItemNum, iPrice);
         }
         break;
     case REC_OFFSALEITEM:
         {
-            //ÏÂ¼Ü£ºAAAÏÂ¼ÜÁËBBBC¼ş£¬Ô­±ê¼ÛÎª£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+            //ä¸‹æ¶ï¼šAAAä¸‹æ¶äº†BBBCä»¶ï¼ŒåŸæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             INT        iItemType        = va_arg( ParamList, INT);
             INT        iItemNum        = va_arg( ParamList, INT);
             INT        iPrice            = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÉÏ¼ÜÁË[#{_ITEM%d}]X%d¼ş,Ô­±ê¼ÛÎª#r #{_MONEY%d}", iCurTime, pszOperatorName, iItemType, iItemNum, iPrice);
+            sprintf(szInputBuffer, "#{_TIME%d}: %sä¸Šæ¶äº†[#{_ITEM%d}]X%dä»¶,åŸæ ‡ä»·ä¸º#r #{_MONEY%d}", iCurTime, pszOperatorName, iItemType, iItemNum, iPrice);
         }
         break;
     case REC_ONSALEPET:
         {
-            //ÉÏ¼Ü£ºAAAÉÏ¼ÜÁËBBBC¼ş£¬±ê¼ÛÎª£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+            //ä¸Šæ¶ï¼šAAAä¸Šæ¶äº†BBBCä»¶ï¼Œæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             CHAR*    pszPetName        = va_arg( ParamList, CHAR*);
             INT        iItemNum        = va_arg( ParamList, INT);
             INT        iPrice            = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÉÏ¼ÜÁË[%s]X%d¼ş,±ê¼ÛÎª#r #{_MONEY%d}", iCurTime, pszOperatorName, pszPetName, iItemNum, iPrice);
+            sprintf(szInputBuffer, "#{_TIME%d}: %sä¸Šæ¶äº†[%s]X%dä»¶,æ ‡ä»·ä¸º#r #{_MONEY%d}", iCurTime, pszOperatorName, pszPetName, iItemNum, iPrice);
         }
         break;
     case REC_OFFSALEPET:
         {
-            //ÏÂ¼Ü£ºAAAÏÂ¼ÜÁËBBBC¼ş£¬Ô­±ê¼ÛÎª£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£¬BBBÎªÉÌÆ·ÃûCÎª¼şÊı£©
+            //ä¸‹æ¶ï¼šAAAä¸‹æ¶äº†BBBCä»¶ï¼ŒåŸæ ‡ä»·ä¸ºï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒBBBä¸ºå•†å“åCä¸ºä»¶æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             CHAR*    pszPetName        = va_arg( ParamList, CHAR*);
             INT        iItemNum        = va_arg( ParamList, INT);
             INT        iPrice            = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÉÏ¼ÜÁË[%s]X%d¼ş,Ô­±ê¼ÛÎª#r #{_MONEY%d}", iCurTime, pszOperatorName, pszPetName, iItemNum, iPrice);
+            sprintf(szInputBuffer, "#{_TIME%d}: %sä¸Šæ¶äº†[%s]X%dä»¶,åŸæ ‡ä»·ä¸º#r #{_MONEY%d}", iCurTime, pszOperatorName, pszPetName, iItemNum, iPrice);
         }
         break;
     case REC_OPEN:
         {
-            //¿ªÕÅ£ºAAA¿ªÕÅÁËµÚN¼ä¹ñÌ¨£¨AAAÎª²Ù×÷ÕßÃû£¬NÎª¹ñÌ¨ËùÊô¼äÊı£©
+            //å¼€å¼ ï¼šAAAå¼€å¼ äº†ç¬¬Né—´æŸœå°ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒNä¸ºæŸœå°æ‰€å±é—´æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             INT        iStallIndex        = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %s¿ªÕÅÁËµÚ%d¼ä¹ñÌ¨", iCurTime, pszOperatorName, iStallIndex);
+            sprintf(szInputBuffer, "#{_TIME%d}: %så¼€å¼ äº†ç¬¬%dé—´æŸœå°", iCurTime, pszOperatorName, iStallIndex);
         }
         break;
     case REC_CLOSE:
         {
-            //´òìÈ£ºAAA´òìÈÁËµÚN¼ä¹ñÌ¨£¨AAAÎª²Ù×÷ÕßÃû£¬NÎª¹ñÌ¨ËùÊô¼äÊı£©
+            //æ‰“çƒŠï¼šAAAæ‰“çƒŠäº†ç¬¬Né—´æŸœå°ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒNä¸ºæŸœå°æ‰€å±é—´æ•°ï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             INT        iStallIndex        = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %s´òìÈÁËµÚ%d¼ä¹ñÌ¨", iCurTime, pszOperatorName, iStallIndex);
+            sprintf(szInputBuffer, "#{_TIME%d}: %sæ‰“çƒŠäº†ç¬¬%dé—´æŸœå°", iCurTime, pszOperatorName, iStallIndex);
         }
         break;
     case REC_INPUT_BASE:
         {
-            //³äÈë±¾½ğ£ºAAAÍùµêÆÌ±¾½ğÖĞ³äÈë£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£©
+            //å……å…¥æœ¬é‡‘ï¼šAAAå¾€åº—é“ºæœ¬é‡‘ä¸­å……å…¥ï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             INT        iMoney            = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÍùµêÆÌ±¾½ğÖĞ³äÈë#r #{_MONEY%d}", iCurTime, pszOperatorName, iMoney);
+            sprintf(szInputBuffer, "#{_TIME%d}: %så¾€åº—é“ºæœ¬é‡‘ä¸­å……å…¥#r #{_MONEY%d}", iCurTime, pszOperatorName, iMoney);
         }
         break;
     case REC_INPUT_PROFIT:
         {
-            //³äÈëÓ®Àû×Ê½ğ£ºAAAÍùµêÆÌÓ®Àû×Ê½ğÖĞ³äÈë£¨»»ĞĞ£©£¿½ğ£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£©
+            //å……å…¥èµ¢åˆ©èµ„é‡‘ï¼šAAAå¾€åº—é“ºèµ¢åˆ©èµ„é‡‘ä¸­å……å…¥ï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼‰
             CHAR*    pszOperatorName = va_arg( ParamList, CHAR*);
             INT        iMoney            = va_arg( ParamList, INT);
-            sprintf(szInputBuffer, "#{_TIME%d}: %sÍùµêÆÌÓ®Àû×Ê½ğÖĞ³äÈë#r #{_MONEY%d}", iCurTime, pszOperatorName, iMoney);
+            sprintf(szInputBuffer, "#{_TIME%d}: %så¾€åº—é“ºèµ¢åˆ©èµ„é‡‘ä¸­å……å…¥#r #{_MONEY%d}", iCurTime, pszOperatorName, iMoney);
         }
         break;
 
     default:
         {
             va_end( ParamList );  
-            g_pLog->FastSaveLog( LOG_FILE_1, "¼ÇÂ¼³ö´í" ) ;
+            g_pLog->FastSaveLog( LOG_FILE_1, "è®°å½•å‡ºé”™" ) ;
             return FALSE;
         }
         break;
@@ -225,7 +225,7 @@ BOOL RecordOpt::Excute( OPT_RECORD Opt, RecordContainer_t* pContainer, ... )
 }
 
 //-------------------------------------------------------------------------------------------------
-//Ã¶¾ÙÈİÆ÷ÖĞµÄÌõÄ¿
+//æšä¸¾å®¹å™¨ä¸­çš„æ¡ç›®
 VOID RecordOpt::BeginEnumEntry(RecordContainer_t* pContainer)
 {
     pContainer->m_iTempEntry = pContainer->m_iOldestEntry;

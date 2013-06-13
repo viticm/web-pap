@@ -59,7 +59,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
     if( !m_LoginTimer.CountingTimer(uTime) )
-    {//时间没到
+    {//鏃堕棿娌″埌
         return TRUE ;
     }
 

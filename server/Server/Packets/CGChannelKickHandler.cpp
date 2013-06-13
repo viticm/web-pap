@@ -32,12 +32,12 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     GWChannelKick* pMsg = (GWChannelKick*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_CHANNELKICK)) ;
-    pMsg->SetSourGUID( pPacket->GetSourGUID() ) ;//ÌßÈËÕß
-    pMsg->SetDestGUID( pPacket->GetDestGUID() ) ;//±»ÌßÕß
+    pMsg->SetSourGUID( pPacket->GetSourGUID() ) ;//è¸¢äººè€…
+    pMsg->SetDestGUID( pPacket->GetDestGUID() ) ;//è¢«è¸¢è€…
 
     g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
 

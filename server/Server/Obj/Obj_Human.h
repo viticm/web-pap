@@ -1,7 +1,7 @@
 //    Obj_Human.h
 //
-//    ¹¦ÄÜ£ºÍæ¼ÒÔÚSERVERÉÏµÄÊµÏÖÀà
-//    ĞŞ¸Ä¼ÇÂ¼£º
+//    åŠŸèƒ½ï¼šç©å®¶åœ¨SERVERä¸Šçš„å®ç°ç±»
+//    ä¿®æ”¹è®°å½•ï¼š
 //////////////////////////////////////////////////////
 
 #ifndef __HUMAN_H__
@@ -26,7 +26,7 @@ struct SKILL_LOG_PARAM;
 struct XINFA_LOG_PARAM;
 
 //////////////////////////////////////////////////////
-// ³õÊ¼»¯Obj_HumanµÄ½á¹¹
+// åˆå§‹åŒ–Obj_Humançš„ç»“æ„
 //////////////////////////////////////////////////////
 struct FULLUSERDATA;
 struct _OBJ_HUMAN_INIT :
@@ -47,7 +47,7 @@ struct _OBJ_HUMAN_INIT :
 };
 
 //////////////////////////////////////////////////////
-// Óë¿Í»§¶ËÍ¬²½¶ÓÓÑĞÅÏ¢Êı¾İ
+// ä¸å®¢æˆ·ç«¯åŒæ­¥é˜Ÿå‹ä¿¡æ¯æ•°æ®
 //////////////////////////////////////////////////////
 struct _TEAM_MEMBER_INFO
 {
@@ -56,29 +56,29 @@ struct _TEAM_MEMBER_INFO
         memset(this, 0, sizeof(_TEAM_MEMBER_INFO));
     }
 
-    UINT                    m_uFamily;                        // 1.ÃÅÅÉ
-    UINT                    m_uLevel;                        // 2.µÈ¼¶
-    WORLD_POS                m_WorldPos;                        // 3.Î»ÖÃ£¨×ø±ê£©
+    UINT                    m_uFamily;                        // 1.é—¨æ´¾
+    UINT                    m_uLevel;                        // 2.ç­‰çº§
+    WORLD_POS                m_WorldPos;                        // 3.ä½ç½®ï¼ˆåæ ‡ï¼‰
     INT                        m_nHP;                            // 4.HP
-    UINT                    m_uMaxHP;                        // 5.HPÉÏÏŞ
+    UINT                    m_uMaxHP;                        // 5.HPä¸Šé™
     INT                        m_nMP;                            // 6.MP
-    UINT                    m_uMaxMP;                        // 7.MPÉÏÏŞ
-    INT                        m_nAnger;                        // 8.Å­Æø
-    UINT                    m_WeaponID;                        // 9.ÎäÆ÷
-    UINT                    m_CapID;                        // 10.Ã±×Ó
-    UINT                    m_ArmourID;                        // 11.ÒÂ·ş
-    UINT                    m_CuffID;                        // 12.»¤Íó
-    UINT                    m_FootID;                        // 13.Ñ¥×Ó
-    // 14.buff£¬ÔİÊ±²»¿¼ÂÇ
-    BOOL                    m_bDeadFlag;                    // 15.ÊÇ·ñËÀÍö
-    UINT                    m_uFaceMeshID;                    // 16.Ãæ²¿Ä£ĞÍ
-    UINT                    m_uHairMeshID;                    // 17.Í··¢Ä£ĞÍ
-    UINT                    m_uHairColor;                    // 18.Í··¢ÑÕÉ«
-    SimpleImpactList        m_SimpleImpactList;                // Buff ÁĞ±í
+    UINT                    m_uMaxMP;                        // 7.MPä¸Šé™
+    INT                        m_nAnger;                        // 8.æ€’æ°”
+    UINT                    m_WeaponID;                        // 9.æ­¦å™¨
+    UINT                    m_CapID;                        // 10.å¸½å­
+    UINT                    m_ArmourID;                        // 11.è¡£æœ
+    UINT                    m_CuffID;                        // 12.æŠ¤è…•
+    UINT                    m_FootID;                        // 13.é´å­
+    // 14.buffï¼Œæš‚æ—¶ä¸è€ƒè™‘
+    BOOL                    m_bDeadFlag;                    // 15.æ˜¯å¦æ­»äº¡
+    UINT                    m_uFaceMeshID;                    // 16.é¢éƒ¨æ¨¡å‹
+    UINT                    m_uHairMeshID;                    // 17.å¤´å‘æ¨¡å‹
+    UINT                    m_uHairColor;                    // 18.å¤´å‘é¢œè‰²
+    SimpleImpactList        m_SimpleImpactList;                // Buff åˆ—è¡¨
 };
 
 //////////////////////////////////////////////////////
-// Óë¿Í»§¶ËÍ¬²½±¸·İÊı¾İ
+// ä¸å®¢æˆ·ç«¯åŒæ­¥å¤‡ä»½æ•°æ®
 //////////////////////////////////////////////////////
 struct _HUMAN_ATTR_BACKUP 
 {
@@ -99,11 +99,11 @@ public:
     INT                    m_nDataID;
     INT                    m_nPortraitID;
     INT                    m_nModelID;
-    INT                    m_nMountID;            //×ùÆïµÄ±àºÅ
-    UINT                m_uFaceMeshID;        // Ãæ²¿Ä£ĞÍ
-    UINT                m_uHairMeshID;        // Í··¢Ä£ĞÍ
-    UINT                m_uHairColor;        // Í··¢ÑÕÉ«
-    INT                    m_nStealthLevel;    // ÒşÉí¼¶±ğ
+    INT                    m_nMountID;            //åº§éª‘çš„ç¼–å·
+    UINT                m_uFaceMeshID;        // é¢éƒ¨æ¨¡å‹
+    UINT                m_uHairMeshID;        // å¤´å‘æ¨¡å‹
+    UINT                m_uHairColor;        // å¤´å‘é¢œè‰²
+    INT                    m_nStealthLevel;    // éšèº«çº§åˆ«
     INT                    m_nMoodState;
 
     //////////////////////////////////////////////////////
@@ -151,13 +151,13 @@ public:
     INT                    m_DoubleExpTime_Num;
     INT                    m_GmRight;
 
-    BOOL                m_bLimitMove;        //ÊÇ·ñÏŞÖÆ²»ÄÜÒÆ¶¯
-    BOOL                m_bCanActionFlag1;    //¼¼ÄÜÏŞÖÆ±ê¼Ç1
-    BOOL                m_bCanActionFlag2;    //¼¼ÄÜÏŞÖÆ±ê¼Ç2
+    BOOL                m_bLimitMove;        //æ˜¯å¦é™åˆ¶ä¸èƒ½ç§»åŠ¨
+    BOOL                m_bCanActionFlag1;    //æŠ€èƒ½é™åˆ¶æ ‡è®°1
+    BOOL                m_bCanActionFlag2;    //æŠ€èƒ½é™åˆ¶æ ‡è®°2
 
     BOOL                m_bMissionHaveDoneFlagsChanged;
 
-    // ×°±¸
+    // è£…å¤‡
     BOOL                m_bWeaponModified;
     BOOL                m_bCapModified;
     BOOL                m_bArmorModified;
@@ -165,28 +165,28 @@ public:
     BOOL                m_bBootModified;
     BOOL                m_bSashModified;
 
-    // µ±Ç°ÊÇ·ñÊÇ°ÚÌ¯×´Ì¬
+    // å½“å‰æ˜¯å¦æ˜¯æ‘†æ‘ŠçŠ¶æ€
     BOOL                m_bStallIsOpen;
     BOOL                m_bStallNameChanged;
 
-    //°ïÅÉË¢ĞÂÊı¾İ
-    GuildID_t            m_GuildID;        //    Íæ¼ÒËùÔÚ°ï»á
+    //å¸®æ´¾åˆ·æ–°æ•°æ®
+    GuildID_t            m_GuildID;        //    ç©å®¶æ‰€åœ¨å¸®ä¼š
 };
 
 //////////////////////////////////////////////////////
-// Éú»î¼¼ÄÜ²Ù×÷Êı¾İ
+// ç”Ÿæ´»æŠ€èƒ½æ“ä½œæ•°æ®
 //////////////////////////////////////////////////////
 struct AbilityOpera
 {
     AbilityID_t            m_AbilityID;
-    BYTE                m_SubType;    // ¼Ó¹¤°üÀ¨ÆÕÍ¨¡¢±¦Ê¯ºÏ³É¡¢ÏâÇ¶
+    BYTE                m_SubType;    // åŠ å·¥åŒ…æ‹¬æ™®é€šã€å®çŸ³åˆæˆã€é•¶åµŒ
     PrescriptionID_t    m_PresID;
     ObjID_t                m_Obj;
     INT                    m_nMaxTime;
     INT                    m_nCurTime;
     INT                    m_nRobotTime;
     BYTE                m_BagPos[MAX_ABILITY_ITEM];
-    UINT                m_uItemIndex; // ±£´æºÏ³É¹ı³ÌÖĞĞèÒªµÄÎïÆ·ĞÅÏ¢£¨ÀıÈç±¦Ê¯ºÏ³É£©
+    UINT                m_uItemIndex; // ä¿å­˜åˆæˆè¿‡ç¨‹ä¸­éœ€è¦çš„ç‰©å“ä¿¡æ¯ï¼ˆä¾‹å¦‚å®çŸ³åˆæˆï¼‰
 
     VOID    CleanUp()
     {
@@ -228,7 +228,7 @@ struct _OBJ_LIST_NODE;
 class Obj_Human : public Obj_Character
 {
 //===========================================
-// Obj¹«ÓĞ½Ó¿Ú¼Ì³Ğ
+// Objå…¬æœ‰æ¥å£ç»§æ‰¿
 //===========================================
 public:
     Obj_Human( );
@@ -251,7 +251,7 @@ public:
     virtual VOID Teleport( const WORLD_POS* pos );
 
 //===========================================
-// Character¹«ÓĞ½Ó¿Ú¼Ì³Ğ
+// Characterå…¬æœ‰æ¥å£ç»§æ‰¿
 //===========================================
 public:
     virtual VOID InitAIObj( );
@@ -265,7 +265,7 @@ public:
     virtual VOID OnExecuteScriptTimer(UINT uTime) ;
 
 //===========================================
-// ÏûÏ¢/ÊôĞÔË¢ĞÂ
+// æ¶ˆæ¯/å±æ€§åˆ·æ–°
 //===========================================
 public:
     virtual Packet        *CreateNewObjPacket( VOID );
@@ -286,49 +286,49 @@ protected:
     _HUMAN_ATTR_BACKUP    m_AttrBackUp;
 
 //===========================================
-//  ¸´»îµã
+//  å¤æ´»ç‚¹
 //===========================================
 public:
-    // µÃµ½¸´»îĞÅÏ¢
-    // bSkillRelive        :    ÊÇ·ñÎª¼¼ÄÜ¸´»î
+    // å¾—åˆ°å¤æ´»ä¿¡æ¯
+    // bSkillRelive        :    æ˜¯å¦ä¸ºæŠ€èƒ½å¤æ´»
     virtual const _RELIVE_INFO        *GetReliveInfo( BOOL bSkillRelive )const;
 
-    // ÉèÖÃ¸´»îÊôĞÔ
-    // bSkillRelive        :    ÊÇ·ñÎª¼¼ÄÜ¸´»î
-    // pReliveInfo        :    ¸´»îĞÅÏ¢
+    // è®¾ç½®å¤æ´»å±æ€§
+    // bSkillRelive        :    æ˜¯å¦ä¸ºæŠ€èƒ½å¤æ´»
+    // pReliveInfo        :    å¤æ´»ä¿¡æ¯
     virtual VOID            SetReliveInfo( BOOL bSkillRelive, const _RELIVE_INFO *pReliveInfo );
 
 protected:
-    // ¸´»îĞÅÏ¢¸Ä±äµÄÊÂ¼ş(Èç£ºÍæ¼Ò¶ÔËÀÈ¥µÄÍæ¼ÒÊ¹ÓÃ¸´»î¼¼ÄÜ)
+    // å¤æ´»ä¿¡æ¯æ”¹å˜çš„äº‹ä»¶(å¦‚ï¼šç©å®¶å¯¹æ­»å»çš„ç©å®¶ä½¿ç”¨å¤æ´»æŠ€èƒ½)
     VOID                    OnReliveInfoChanged( VOID );
 
 protected:
-    _RELIVE_INFO            m_DefaultReliveInfo;        // È±Ê¡¸´»îµÄĞÅÏ¢
+    _RELIVE_INFO            m_DefaultReliveInfo;        // ç¼ºçœå¤æ´»çš„ä¿¡æ¯
     
 
 //===========================================
-//  ÑûÇëµÄ´¦Àí
+//  é‚€è¯·çš„å¤„ç†
 //===========================================
 public:
-    // µÃµ½ÑûÇëĞÅÏ¢
+    // å¾—åˆ°é‚€è¯·ä¿¡æ¯
     const _CALLOF_INFO        *GetCallOfInfo(VOID)const;
 
     VOID                    ResetCallOfInfo(VOID);
 
-    // ÉèÖÃÑûÇëÊôĞÔ
-    // pCallOfInfo        :    ÑûÇëĞÅÏ¢
+    // è®¾ç½®é‚€è¯·å±æ€§
+    // pCallOfInfo        :    é‚€è¯·ä¿¡æ¯
     VOID                    SetCallOfInfo(const _CALLOF_INFO *pCallOfInfo);
 
-    // À­ÈË
+    // æ‹‰äºº
     VOID                    CallOfHuman(GUID_t guidTarget, UINT uDuration);
 
 protected:
-    // ÑûÇëĞÅÏ¢¸Ä±äµÄÊÂ¼ş
+    // é‚€è¯·ä¿¡æ¯æ”¹å˜çš„äº‹ä»¶
     VOID                    OnCallOfInfoChanged( VOID );
 
 protected:
-    _CALLOF_INFO            m_CallOfInfo;            // ÑûÇëµÄĞÅÏ¢
-    UINT                    m_uCallOf_StartTime;    // ÑûÇëĞÅÏ¢µÄÆğÊ¼Ê±¼ä
+    _CALLOF_INFO            m_CallOfInfo;            // é‚€è¯·çš„ä¿¡æ¯
+    UINT                    m_uCallOf_StartTime;    // é‚€è¯·ä¿¡æ¯çš„èµ·å§‹æ—¶é—´
 
 //===========================================
 // AI
@@ -343,14 +343,14 @@ public:
 
 protected:
     AvoidOverlap            *m_pAvoidOverlap;    // 
-    ObjID_t                    m_AssistantID;        //¸¨Öú¹¥»÷Õß
+    ObjID_t                    m_AssistantID;        //è¾…åŠ©æ”»å‡»è€…
 
 //===========================================
-// ÊôĞÔ
+// å±æ€§
 //===========================================
 public:
     virtual UINT            GetUniqueID(VOID) const;
-    //DB½Ó¿Ú
+    //DBæ¥å£
     HumanDB*                GetDB();
     GUID_t                    GetGUID( VOID )const;
 
@@ -383,8 +383,8 @@ public:
     virtual VOID            SetCurrentPetGUID( PET_GUID_t guid );
     virtual PET_GUID_t        GetCurrentPetGUID( VOID )const;
 
-    VOID                    SetAlterExp( INT AlterExp );    //¸Ä±äµÄ¾­Ñé
-    VOID                    SetMonsterAlterExp( INT AlterExp );    //´ò¹ÖÎï¸Ä±äµÄ¾­Ñé
+    VOID                    SetAlterExp( INT AlterExp );    //æ”¹å˜çš„ç»éªŒ
+    VOID                    SetMonsterAlterExp( INT AlterExp );    //æ‰“æ€ªç‰©æ”¹å˜çš„ç»éªŒ
     virtual UINT            GetExp( );
     virtual VOID            SetExp(UINT uExp);
     virtual INT                GetStrikePoint(VOID);
@@ -399,7 +399,7 @@ public:
     //virtual    INT                GetVigorRegeneRate(VOID);
     //virtual    VOID            SetVigorRegeneRate(INT nRate);
 
-    virtual INT                GetDoubleExpTime_Num(VOID); //»ñÈ¡Ë«±¶¾­ÑéÊ±¼äºÍ±¶Êı;
+    virtual INT                GetDoubleExpTime_Num(VOID); //è·å–åŒå€ç»éªŒæ—¶é—´å’Œå€æ•°;
     virtual VOID            SetDoubleExpTime_Num(INT nExpTime_Num);
 
     virtual INT                GetGmRight(VOID);
@@ -435,7 +435,7 @@ public:
 
     UINT                    GetEquipID(HUMAN_EQUIP equipPoint);
 
-    //³ÆºÅ        
+    //ç§°å·        
     const CHAR*                GetCurTitle();
     VOID                    SetCurTitle( const CHAR *pszTitle, BYTE nSize );
     BYTE                    GetLevelTitle();
@@ -467,7 +467,7 @@ public:
     VOID                    UpdateTitlesToClient();
 
 
-    // GM×¨ÓÃ
+    // GMä¸“ç”¨
     VOID                    SetGod( BYTE bGod );
     BOOL                    IsGod(VOID)const;
 
@@ -479,14 +479,14 @@ public:
     FLOAT                    GetWallow(VOID)const;
 
 protected:
-    //´æ·ÅËùÓĞ¹ØÓÚObj_HumanµÄ¡¢´ÓÊı¾İ¿âÀï¶ÁÈ¡µÄĞÅÏ¢
+    //å­˜æ”¾æ‰€æœ‰å…³äºObj_Humançš„ã€ä»æ•°æ®åº“é‡Œè¯»å–çš„ä¿¡æ¯
     HumanDB                    m_DB;
     BYTE                    m_bChangeSceneFlag;
     BYTE                    m_bGod;
-    FLOAT                    m_fWallow; //·À³ÁÃÔÏµÍ³±ê¼Ç
+    FLOAT                    m_fWallow; //é˜²æ²‰è¿·ç³»ç»Ÿæ ‡è®°
 
 //===========================================
-// ¼¼ÄÜ
+// æŠ€èƒ½
 //===========================================
 public:
     virtual INT                SkillCharacter( Obj_Character* pCharacter, SkillID_t SkillID, BOOL bNow=FALSE );
@@ -518,7 +518,7 @@ public:
     virtual BOOL             HeartBeat_Cooldown(UINT uTime = 0);
     virtual BOOL            HeartBeat_Recover(UINT uTime = 0);
 
-    VOID                    ValidateShareMem(BOOL bForceAll); //HeartBeat ×îºó¸üĞÂShareMemory
+    VOID                    ValidateShareMem(BOOL bForceAll); //HeartBeat æœ€åæ›´æ–°ShareMemory
 
 private:
     VOID    Skill_InitSkillList();
@@ -531,11 +531,11 @@ private:
     //VOID    Skill_ADDAllMenPaiSkillAndXinFa(SKILL_LOG_PARAM* pSkillLog,XINFA_LOG_PARAM* pXinFaLog,INT Menpai);
 
 private:
-    BOOL                    m_bCanIncreaseRage; //ÃÅÅÉÌØĞÔ×¨ÓÃ
-    Time_t                    m_nCommonCooldown;    //¹«¹²ÀäÈ´Ê±¼ä
+    BOOL                    m_bCanIncreaseRage; //é—¨æ´¾ç‰¹æ€§ä¸“ç”¨
+    Time_t                    m_nCommonCooldown;    //å…¬å…±å†·å´æ—¶é—´
 
 //===========================================
-// Ğ§¹û
+// æ•ˆæœ
 //===========================================
 public:
 
@@ -548,44 +548,44 @@ private:
     VOID                    Impact_FadeOutAllOfflineFadeImpact(VOID);
 
 //===========================================
-// µÀ¾ß
+// é“å…·
 //===========================================
 public:
-    //ÎïÆ·²¿·ÖÍâ²¿Âß¼­½Ó¿Ú
-    BOOL                    IsVisualPart(HUMAN_EQUIP EquipPoint);                        //ÊÇ·ñÆäËûÍæ¼Ò¿É¼û²¿·Ö
-    BOOL                    ActivateItem(VOID);                                            //Ê¹ÓÃÎïÆ·
-    INT                        UseStoreMap(UINT BagIndex);                                    //Ê¹ÓÃ²Ø±¦Í¼
-    INT                        UseIdentScroll(UINT BagIndex,UINT TargetBagIndex);            //Ê¹ÓÃ¼ø¶¨¾íÖá
-    INT                        UseGem(UINT GemBagIndex,UINT EquipBagIndex);                //Ê¹ÓÃGem
-    INT                        RemoveGem(UINT BagIndex,UINT GemIndex);                        //ÒÆ³öGem
-    INT                        UseEquipSkill(INT iUseEquipSkillOffSet,ObjID_t& Target);    //Ê¹ÓÃ×°±¸ÉÏ¼¼ÄÜ
-    BOOL                    UseItem(ID_t nBagIndex, ObjID_t nTargetObj, const WORLD_POS& posTarget, PET_GUID_t const& guidTargetPet, ID_t nTargetItem);//Ê¹ÓÃÎïÆ·µÄ¹¦ÄÜ
-    BOOL                     VerifyItem(VOID); //Ğ£ÑéÊ¹ÓÃÖĞµÄÎïÆ·ÊÇ·ñ´æÔÚ
+    //ç‰©å“éƒ¨åˆ†å¤–éƒ¨é€»è¾‘æ¥å£
+    BOOL                    IsVisualPart(HUMAN_EQUIP EquipPoint);                        //æ˜¯å¦å…¶ä»–ç©å®¶å¯è§éƒ¨åˆ†
+    BOOL                    ActivateItem(VOID);                                            //ä½¿ç”¨ç‰©å“
+    INT                        UseStoreMap(UINT BagIndex);                                    //ä½¿ç”¨è—å®å›¾
+    INT                        UseIdentScroll(UINT BagIndex,UINT TargetBagIndex);            //ä½¿ç”¨é‰´å®šå·è½´
+    INT                        UseGem(UINT GemBagIndex,UINT EquipBagIndex);                //ä½¿ç”¨Gem
+    INT                        RemoveGem(UINT BagIndex,UINT GemIndex);                        //ç§»å‡ºGem
+    INT                        UseEquipSkill(INT iUseEquipSkillOffSet,ObjID_t& Target);    //ä½¿ç”¨è£…å¤‡ä¸ŠæŠ€èƒ½
+    BOOL                    UseItem(ID_t nBagIndex, ObjID_t nTargetObj, const WORLD_POS& posTarget, PET_GUID_t const& guidTargetPet, ID_t nTargetItem);//ä½¿ç”¨ç‰©å“çš„åŠŸèƒ½
+    BOOL                     VerifyItem(VOID); //æ ¡éªŒä½¿ç”¨ä¸­çš„ç‰©å“æ˜¯å¦å­˜åœ¨
 
     virtual    BOOL            IsCarrayItem(UINT ItemType,UINT ItemCount);
     /*
-    *    ÎïÆ·±³°üÈİÆ÷
+    *    ç‰©å“èƒŒåŒ…å®¹å™¨
     */
-    //ÔÓÏîÎïÆ·°ü
+    //æ‚é¡¹ç‰©å“åŒ…
     ItemContainer*    GetBaseContain();
-    //ÈÎÎñÎïÆ·°ü
+    //ä»»åŠ¡ç‰©å“åŒ…
     //ItemContainer*    GetTaskContain();
-    //²ÄÁÏÎïÆ·°ü
+    //ææ–™ç‰©å“åŒ…
     //ItemContainer*    GetMatContain();
-    //×°±¸
+    //è£…å¤‡
     ItemContainer*    GetEquipContain();
-    //ÒøĞĞ
+    //é“¶è¡Œ
     ItemContainer*    GetBankContain();
-    //³èÎï
+    //å® ç‰©
     ItemContainer*    GetPetContain();
 
-    //¸ù¾İÉíÉÏµÄ×°±¸£¬¼ÆËãÓ°ÏìÒòËØ
-    //Èç¹ûÉíÉÏµÄ×°±¸·¢Éú±ä»¯£¬ÔòĞèÒªµ÷ÓÃÒ»´Î´Ë½Ó¿Ú£¬ÖØĞÂ¼ÆËãÌØÊâĞ§¹û
+    //æ ¹æ®èº«ä¸Šçš„è£…å¤‡ï¼Œè®¡ç®—å½±å“å› ç´ 
+    //å¦‚æœèº«ä¸Šçš„è£…å¤‡å‘ç”Ÿå˜åŒ–ï¼Œåˆ™éœ€è¦è°ƒç”¨ä¸€æ¬¡æ­¤æ¥å£ï¼Œé‡æ–°è®¡ç®—ç‰¹æ®Šæ•ˆæœ
     VOID                    ItemEffectFlush( );
     VOID                    CaculateEffect(_ITEM_ATTR& Attr,INT EquipOffset, INT nItemType=INVALID_ID);
     VOID                    CaculateEquipSetEffect();
 
-    //×°±¸µÄ¸÷¸öÓ°ÏìÒòËØ
+    //è£…å¤‡çš„å„ä¸ªå½±å“å› ç´ 
     _ITEM_EFFECT*        ItemEffect( BYTE AttrType ){//AttrType=enum ITEM_ATTRIBUTE 
         Assert( AttrType<IATTRIBUTE_NUMBER );
         return &m_pItemEffect[AttrType];
@@ -597,29 +597,29 @@ public:
     }
 
 private:
-    //ÓÉÎïÆ·ÒıÆğµÄ¸÷ÖÖĞ§¹û
+    //ç”±ç‰©å“å¼•èµ·çš„å„ç§æ•ˆæœ
     _ITEM_EFFECT        m_pItemEffect[IATTRIBUTE_NUMBER];
-    //ÓÉÎïÆ·ÒıÆğµÄÌØÊâ¼¼ÄÜĞ§¹û
+    //ç”±ç‰©å“å¼•èµ·çš„ç‰¹æ®ŠæŠ€èƒ½æ•ˆæœ
 
     _ITEM_SKILL        m_EquipUseSkillEffect[HEQUIP_NUMBER+MAX_ITEM_SET_ATTR];
     _ITEM_SKILL        m_EquipRandSkillEffect[HEQUIP_NUMBER+MAX_ITEM_SET_ATTR];
 
 private:
-    //ÔÓÏîÎïÆ·°ü
+    //æ‚é¡¹ç‰©å“åŒ…
     HumanItemContainer        m_BaseItem;    
-    //ÈÎÎñÎïÆ·°ü
+    //ä»»åŠ¡ç‰©å“åŒ…
     //HumanItemContainer        m_TaskItem;
-    //²ÄÁÏÎïÆ·
+    //ææ–™ç‰©å“
     //HumanItemContainer        m_MatItem;
-    //½ÇÉ«×°±¸                
+    //è§’è‰²è£…å¤‡                
     HumanItemContainer        m_EquipItem;
-    //½ÇÉ«ÒøĞĞ
+    //è§’è‰²é“¶è¡Œ
     HumanItemContainer        m_BankItem;
-    //³èÎï±³°ü
+    //å® ç‰©èƒŒåŒ…
     HumanPetContainer        m_PetItem;
 
 //===========================================
-// Éú»î¼¼ÄÜ
+// ç”Ÿæ´»æŠ€èƒ½
 //===========================================
 public:
     const _ABILITY_LIST*    GetAbilityList( ) const;
@@ -627,41 +627,41 @@ public:
     VOID                    reset_AbilityOpera( ); 
     VOID                    InterruptCurrentAbilityOpera();
 
-    // »ñÈ¡Íæ¼Ò½øÈëÊÂ¼şÇøÓòµÄÊ±¼ä
+    // è·å–ç©å®¶è¿›å…¥äº‹ä»¶åŒºåŸŸçš„æ—¶é—´
     UINT GetAreaTimeStamp()
     {
         return m_uTimeStamp;
     }
 
-    // ÖØĞÂÉèÖÃÍæ¼Ò½øÈëÊÂ¼şÇøÓòµÄÊ±¼ä£¨×÷ÎªÏÂÒ»´Î´¥·¢ÊÂ¼şµÄÊ±¼ä´Á£©
+    // é‡æ–°è®¾ç½®ç©å®¶è¿›å…¥äº‹ä»¶åŒºåŸŸçš„æ—¶é—´ï¼ˆä½œä¸ºä¸‹ä¸€æ¬¡è§¦å‘äº‹ä»¶çš„æ—¶é—´æˆ³ï¼‰
     VOID ResetAreaTimeStamp(UINT newTimeStamp)
     {
         m_uTimeStamp = newTimeStamp;
     }
 
 protected:
-    virtual    ORESULT            Do_UseAbility( VOID );                //½øÈëUseAbilityÂß¼­
-    virtual    BOOL            Obj_Logic_UseAbility( UINT uTime );            //Ö´ĞĞUseAbilityÂß¼­
+    virtual    ORESULT            Do_UseAbility( VOID );                //è¿›å…¥UseAbilityé€»è¾‘
+    virtual    BOOL            Obj_Logic_UseAbility( UINT uTime );            //æ‰§è¡ŒUseAbilityé€»è¾‘
     virtual VOID            OnCharacterLogicStopped(BOOL bAbortive);
 
 private:
     AbilityOpera            m_LastOpera;    
 
 //===========================================
-// ÈÎÎñ
+// ä»»åŠ¡
 //===========================================
 public:
     const _MISSION_DB_LOAD *GetMissionList( VOID );
     const _MISSION_DB_LOAD *GetConstMissionList( VOID )const;
     //const UINT *GetMissionHaveDoneFlags( VOID )const;
 
-    // ÉèÖÃÊÇ·ñÒÑ¾­×ö¹ıÁËÄ³¸öÈÎÎñ
+    // è®¾ç½®æ˜¯å¦å·²ç»åšè¿‡äº†æŸä¸ªä»»åŠ¡
     VOID SetMissionHaveDone( MissionID_t idMission, BOOL bHaveDone );
 
-    // ÊÇ·ñÒÑ¾­×ö¹ıÁËÄ³¸öÈÎÎñ
+    // æ˜¯å¦å·²ç»åšè¿‡äº†æŸä¸ªä»»åŠ¡
     BOOL IsMissionHaveDone( MissionID_t idMission )const;
 
-    // ¼ÓÒ»¸öÈÎÎñÈëÈÎÎñÁĞ±í
+    // åŠ ä¸€ä¸ªä»»åŠ¡å…¥ä»»åŠ¡åˆ—è¡¨
     ORESULT AddMission( MissionID_t idMission, ScriptID_t idScript, BOOL bKillObjectEvent = TRUE, BOOL bEnterAreaEvent = TRUE, BOOL bItemChangedEvent = TRUE );
     ORESULT AddMissionEx( MissionID_t idMission, ScriptID_t idScript ) ;
     ORESULT SetMissionEvent( MissionID_t idMission, INT EventID/*TASK_EVENT*/ ) ;
@@ -669,20 +669,20 @@ public:
     //ORESULT AddMissionEnterAreaNotify( MissionID_t idMission, ScriptID_t idScript,INT areaId0,INT areaId1,INT areaId2,INT areaId3);
     //ORESULT AddMissionItemChangedNotify( MissionID_t idMission, ScriptID_t idScript,INT itemTypeSn0,INT itemTypeSn1,INT itemTypeSn2,INT itemTypeSn3);
 
-    // ´ÓÈÎÎñÁĞ±íÖĞÉ¾³ıÒ»¸öÈÎÎñ
+    // ä»ä»»åŠ¡åˆ—è¡¨ä¸­åˆ é™¤ä¸€ä¸ªä»»åŠ¡
     VOID DelMission( MissionID_t idMission );
     VOID DelMissionByIndex( UINT uIndex );
 
-    // Í¨¹ıÈÎÎñIDÈ¡¸ÃÈÎÎñÔÚÈÎÎñ±í±íµÄË÷ÒıÖµ£¬ ÎŞ¸ÃÈÎÎñÊ±·µ»ØUINT_MAX
+    // é€šè¿‡ä»»åŠ¡IDå–è¯¥ä»»åŠ¡åœ¨ä»»åŠ¡è¡¨è¡¨çš„ç´¢å¼•å€¼ï¼Œ æ— è¯¥ä»»åŠ¡æ—¶è¿”å›UINT_MAX
     UINT GetMissionIndexByID( MissionID_t idMission )const;
 
-    // ¼ì²âÊÇ·ñÒÑ¾­ÓĞÁËÕâ¸öÈÎÎñ
+    // æ£€æµ‹æ˜¯å¦å·²ç»æœ‰äº†è¿™ä¸ªä»»åŠ¡
     BOOL IsHaveMission( MissionID_t idMission )const;
 
-    // ÉèÖÃÈÎÎñ²ÎÊı
+    // è®¾ç½®ä»»åŠ¡å‚æ•°
     VOID SetMissionParam( UINT uIndexMission, UINT uIndexParam, INT nValue );
 
-    // È¡ÈÎÎñ²ÎÊı
+    // å–ä»»åŠ¡å‚æ•°
     INT GetMissionParam( UINT uIndexMission, UINT uIndexParam )const;
     const _OWN_MISSION *GetMission( UINT uIndex )const;
 
@@ -691,25 +691,25 @@ public:
     //VOID AddCanPickMissionItem( UINT uItemDataID );
     //VOID RemoveCanPickMissionItem( UINT uItemDataID );
 
-    //¶ÁÈ¡¸½¼ÓÈÎÎñÊı¾İ
+    //è¯»å–é™„åŠ ä»»åŠ¡æ•°æ®
     INT GetMissionData( INT nIndex );
 
-    //ÉèÖÃµ±Ç°¸½¼ÓÈÎÎñÊı¾İ
+    //è®¾ç½®å½“å‰é™„åŠ ä»»åŠ¡æ•°æ®
     VOID SetMissionData( INT nIndex, INT nData );
 
-    //µÃµ½Ä³¸öÈÎÎñÒÑ¾­Ö´ĞĞ×Ü´ÎÊı
+    //å¾—åˆ°æŸä¸ªä»»åŠ¡å·²ç»æ‰§è¡Œæ€»æ¬¡æ•°
     INT GetMissionTotalTimes( INT nIndex );
 
-    //µÃµ½Ä³¸öÈÎÎñµ±ÌìÖ´ĞĞµÄ×Ü´ÎÊı
+    //å¾—åˆ°æŸä¸ªä»»åŠ¡å½“å¤©æ‰§è¡Œçš„æ€»æ¬¡æ•°
     INT GetMissionTotalDayTimes( INT nIndex );
 
-    //µÃµ½Ä³¸öÈÎÎñÉÏ´ÎÍê³ÉµÄÊ±¼ä
+    //å¾—åˆ°æŸä¸ªä»»åŠ¡ä¸Šæ¬¡å®Œæˆçš„æ—¶é—´
     INT GetMissionLastTime( INT nIndex );
 
-    //µÃµ½Ä³¸öÈÎÎñÉÏ´ÎÍê³ÉÊÇÄÄÌì
+    //å¾—åˆ°æŸä¸ªä»»åŠ¡ä¸Šæ¬¡å®Œæˆæ˜¯å“ªå¤©
     INT GetMissionLastDay( INT nIndex );
 
-    //µÃµ½Ä³¸öÈÎÎñÒÑ¾­ÅÜÁË¶àÉÙ»·
+    //å¾—åˆ°æŸä¸ªä»»åŠ¡å·²ç»è·‘äº†å¤šå°‘ç¯
     INT GetMissionTotalHuan( INT nIndex );
 protected:
     virtual VOID OnMissionHaveDoneFlagsChanged( MissionID_t idMission );
@@ -721,7 +721,7 @@ protected:
     //virtual VOID OnRemoveCanPickMissionItem( UINT uItemDataID );
 
 protected:
-    // ÕâÀïÒ»¶¨ÒªÖØµãÓÅ»¯£¨É±ËÀOBJECTµÄÊÂ¼ş£¬µÃµ½ºÍÉ¾³ıÎïÆ·µÄÊÂ¼ş£¬ÒÔ¼°ÇøÓòÇĞ»»µÄÊÂ¼ş£©
+    // è¿™é‡Œä¸€å®šè¦é‡ç‚¹ä¼˜åŒ–ï¼ˆæ€æ­»OBJECTçš„äº‹ä»¶ï¼Œå¾—åˆ°å’Œåˆ é™¤ç‰©å“çš„äº‹ä»¶ï¼Œä»¥åŠåŒºåŸŸåˆ‡æ¢çš„äº‹ä»¶ï¼‰
     //UINT                m_uMissionIndex_KillObjectEvent_Num;
     //UINT                m_uMissionIndex_EnterAreaEvent_Num;
     //UINT                m_uMissionIndex_ItemChangedEvent_Num;
@@ -737,7 +737,7 @@ protected:
     //UINT                m_aCanPickMissionItemList[MAX_CHAR_CAN_PICK_MISSION_ITEM_NUM];
 
 //===========================================
-// ¶ÓÎé/ÁªÏµÈË
+// é˜Ÿä¼/è”ç³»äºº
 //===========================================
 public:
     TeamInfo*        GetTeamInfo();
@@ -748,8 +748,8 @@ private :
     BOOL                    m_bTeamFollowSpeedUp;
     time_t                    m_OutofTeamFollowRangeTime;
     _TEAM_MEMBER_INFO        m_SyncTeamMemberInfo;
-    TeamInfo                m_TeamInfo;            //¶ÓÎéÏà¹ØÊı¾İ
-    HumanRelation            m_HumanRelation;    //ÁªÏµÈËÏà¹ØÊı¾İ
+    TeamInfo                m_TeamInfo;            //é˜Ÿä¼ç›¸å…³æ•°æ®
+    HumanRelation            m_HumanRelation;    //è”ç³»äººç›¸å…³æ•°æ®
 
 //===========================================
 // Timer
@@ -769,19 +769,19 @@ private:
     INT*                    m_pUseTimer;
 
 //===========================================
-// °ÚÌ¯/½»Ò×/ÒøĞĞ/ÉÌµê
+// æ‘†æ‘Š/äº¤æ˜“/é“¶è¡Œ/å•†åº—
 //===========================================
 public:
-    //°ÚÌ¯
+    //æ‘†æ‘Š
     VOID                StallNameChanged()    {m_AttrBackUp.m_bStallNameChanged    =    TRUE;}
     BOOL                GetStallIsOpen() { return m_StallBox.GetStallIsOpen(); }
     ServerStallBox        m_StallBox;
 
-    //ÒøĞĞ
+    //é“¶è¡Œ
     BOOL                IsBankOpen(){return BankIsOpen;}
     VOID                SetBankOpen(BOOL bopen){BankIsOpen = bopen;}
 
-    //ÉÌµê
+    //å•†åº—
     VOID                InitialSoldList();
     VOID                AddToSoldList(INT index, UINT uPrice);
     BOOL                GetCurFromSoldList(_ITEM& itemref, UINT& uPrice, BYTE& nCoinType );
@@ -789,32 +789,32 @@ public:
     VOID                DeleteFromSoldList();
     VOID                ClearSoldList();
 
-    //½ğÇ®±ä»¯Ê±
+    //é‡‘é’±å˜åŒ–æ—¶
     VOID                NotifyMoneyChange( UINT uAmount, BOOL bIsReceive);
 
-    //µ±ÊÕµ½ÎïÆ·...callÖ®
+    //å½“æ”¶åˆ°ç‰©å“...callä¹‹
     //VOID                OnItemEnterBag(Item* pItem, UINT uBagIndex);
 
-    //ÉÌÈËÂòÂôÓÃµÄ
+    //å•†äººä¹°å–ç”¨çš„
     VOID                Shop( _SHOP* pShop){m_pShop = pShop;};
     _SHOP*                Shop( ){return m_pShop;};
 
 public:
-    //½»Ò×
-    ServerExchangeBox    m_ExchangBox;//ÉèÎª¹«ÓĞ£¬ÒòÎªĞèÒª½»Ò×¶Ô·½µÄÆµ·±·ÃÎÊ¡£
+    //äº¤æ˜“
+    ServerExchangeBox    m_ExchangBox;//è®¾ä¸ºå…¬æœ‰ï¼Œå› ä¸ºéœ€è¦äº¤æ˜“å¯¹æ–¹çš„é¢‘ç¹è®¿é—®ã€‚
 
 private:
-    //ÒøĞĞ
+    //é“¶è¡Œ
     BOOL                BankIsOpen;
 
-    //ÉÌµê
-    ItemContainer        m_SoldContainer;                            //Âô³öÎïÆ·µÄcontainer;
-    UINT                m_SoldPrice[MAX_BOOTH_SOLD_NUMBER];            //³öÊÛ¼Û¸ñ;
+    //å•†åº—
+    ItemContainer        m_SoldContainer;                            //å–å‡ºç‰©å“çš„container;
+    UINT                m_SoldPrice[MAX_BOOTH_SOLD_NUMBER];            //å‡ºå”®ä»·æ ¼;
     _ITEM                m_ItemHasBeenSold[MAX_BOOTH_SOLD_NUMBER]; 
     INT                    m_nCurSold;
     ObjID_t                m_CurTargetID;
 
-    //´æ·ÅÓë´ËÈË·¢ÉúÂòÂôµÄµ±Ç°NPCÖ¸Õë
+    //å­˜æ”¾ä¸æ­¤äººå‘ç”Ÿä¹°å–çš„å½“å‰NPCæŒ‡é’ˆ
     _SHOP*                m_pShop;
 
 //===========================================
@@ -825,18 +825,18 @@ public:
     VOID CreateCity( SceneID_t PortSceneID) ;
     VOID DeleteCity( SceneID_t PortSceneID, INT iSceneIndex) ;
     VOID ChangeCityBuilding( SceneID_t SceneID, INT BuildingID, INT BuildingLevel) ;
-    // ±È½Ï¶ş¼¶ÃÜÂë
+    // æ¯”è¾ƒäºŒçº§å¯†ç 
     BOOL ComparePasswd( const CHAR* szPasswd );
 
     PlayerID_t                GetPlayerID( );
 
     Player*                    GetPlayer(){ return m_pPlayer; }
     VOID                    SetPlayer( Player* pPlayer ){ m_pPlayer = pPlayer; }
-    VOID                     Levelup(VOID); //Éı¼¶µÄÏà¹ØÊôĞÔ²Ù×÷
-    VOID                    ChangeMenpaiPoints(VOID); //×ª»»ÃÅÅÉÊ±µãÊı´ÓĞÂ¼ÆËã
-    VOID                     WashPoints(VOID);//Ï´µãµÄÏà¹Ø²Ù×÷
-    BOOL                     ManualAttrPoint(CHAR_ATTR_LEVEL1 attrType);//ÊÖ¶¯¼Óµã
-    BOOL                     ManualAttrPoint(INT nStr, INT nSpr, INT nCon, INT nInt, INT nDex);//ÊÖ¶¯¼Óµã
+    VOID                     Levelup(VOID); //å‡çº§çš„ç›¸å…³å±æ€§æ“ä½œ
+    VOID                    ChangeMenpaiPoints(VOID); //è½¬æ¢é—¨æ´¾æ—¶ç‚¹æ•°ä»æ–°è®¡ç®—
+    VOID                     WashPoints(VOID);//æ´—ç‚¹çš„ç›¸å…³æ“ä½œ
+    BOOL                     ManualAttrPoint(CHAR_ATTR_LEVEL1 attrType);//æ‰‹åŠ¨åŠ ç‚¹
+    BOOL                     ManualAttrPoint(INT nStr, INT nSpr, INT nCon, INT nInt, INT nDex);//æ‰‹åŠ¨åŠ ç‚¹
     VOID                    ChangeMenpai(SKILL_LOG_PARAM* pSkillLog,INT Menpai);
     const _SETTING_DB_LOAD *GetSettingList( VOID );
     const _SETTING_DB_LOAD *GetConstSettingList( VOID )const;
@@ -847,25 +847,25 @@ public:
 
 protected:
 
-    BOOL                        m_bIsPasswdUnlock;    // ÃÜÂë½âËø±ê¼Ç
-    BOOL                        m_bUpdateAttr;        //¸üĞÂ·Ç¼´Ê±ĞÅÏ¢
+    BOOL                        m_bIsPasswdUnlock;    // å¯†ç è§£é”æ ‡è®°
+    BOOL                        m_bUpdateAttr;        //æ›´æ–°éå³æ—¶ä¿¡æ¯
     CMyTimer                    m_UpdateTimer;
 
-    //CMyTimer                    m_VERecoverTimer;    // »îÁ¦Óë¾«Á¦µÄ»Ö¸´ĞÄÌø
+    //CMyTimer                    m_VERecoverTimer;    // æ´»åŠ›ä¸ç²¾åŠ›çš„æ¢å¤å¿ƒè·³
     CMyTimer                    m_WallowTimer;
     CMyTimer                    m_WallowAwokeTimer;
 public:
-    CMyTimer                    m_ExpTimer;         //ÉèÖÃ¶à±¶¾­Ñé¼ÆÊ±Æ÷;
+    CMyTimer                    m_ExpTimer;         //è®¾ç½®å¤šå€ç»éªŒè®¡æ—¶å™¨;
 
 
 public:
     //////////////////////////////////////////////////////////////////////////
-    //ÈËÎïÔÚµØÍ¼ÉÏµÄ×¢²á½Úµã
+    //äººç‰©åœ¨åœ°å›¾ä¸Šçš„æ³¨å†ŒèŠ‚ç‚¹
     _OBJ_LIST_NODE*            HumanNode(){ return m_pHumanNode; }
     BYTE                    getMoveIndex( ){ return m_MoveIndex; }
     VOID                    setMoveIndex( BYTE index ){ m_MoveIndex = index; }
 
-    //Ïò×Ô¼º·¢ËÍĞÂ¿´µ½µÄpObjµÄĞÅÏ¢
+    //å‘è‡ªå·±å‘é€æ–°çœ‹åˆ°çš„pObjçš„ä¿¡æ¯
     //VOID                    SendPacket_NewViewObj( Obj* pObj );
 
     SceneID_t            GetTransSceneID( );
@@ -875,24 +875,24 @@ private :
     PlayerID_t            m_PlayerID;
     Player*                m_pPlayer;
 
-    //Íæ¼Ò½ÚµãĞÅÏ¢£¬ÓÃÓÚ×¢²áÔÚZoneµÄHumanListÀïµÄ
+    //ç©å®¶èŠ‚ç‚¹ä¿¡æ¯ï¼Œç”¨äºæ³¨å†Œåœ¨Zoneçš„HumanListé‡Œçš„
     _OBJ_LIST_NODE*        m_pHumanNode;
 
-    BYTE                m_MoveIndex;    //¿Í»§¶ËµÄ·¢ËÍÒÆ¶¯Ë÷ÒıºÅ
+    BYTE                m_MoveIndex;    //å®¢æˆ·ç«¯çš„å‘é€ç§»åŠ¨ç´¢å¼•å·
 
     WORD                m_EquipVer;
     SceneID_t            m_TransSceneID;
 
 protected:
-    CMyTimer            m_CheckZoneTimer; // ¶Ô Zone ½øĞĞ¼ì²é£¨Area etc...£©µÄ¼ÆÊ±Æ÷
+    CMyTimer            m_CheckZoneTimer; // å¯¹ Zone è¿›è¡Œæ£€æŸ¥ï¼ˆArea etc...ï¼‰çš„è®¡æ—¶å™¨
     UINT                m_uAreaID;
     ScriptID_t            m_uAreaScript;
     UINT                m_uTimeStamp;
-    UINT                m_uLastTurnPickTime; //×îºóÒ»´ÎÊ°È¡Ê±¼ä
+    UINT                m_uLastTurnPickTime; //æœ€åä¸€æ¬¡æ‹¾å–æ—¶é—´
 
 protected:
     VOID                CheckArea();
-    //VOID                RefeshAttrMsg() ;        //Ë¢ĞÂ½ÇÉ«µÄ×Ô¶¯Ôö³¤Êı¾İ
+    //VOID                RefeshAttrMsg() ;        //åˆ·æ–°è§’è‰²çš„è‡ªåŠ¨å¢é•¿æ•°æ®
 
 protected:
     //CMyTimer            m_RefeshTimer;
@@ -901,7 +901,7 @@ public:
     BOOL                GetPosition(WORLD_POS& Pos, const WORLD_POS* pRefPos, FLOAT fDir);
 
 //===========================================
-// ³èÎï
+// å® ç‰©
 //===========================================
 public:
     ORESULT                TestCallUpPet(const PET_GUID_t guidPet);
@@ -914,8 +914,8 @@ public:
     BOOL                CapturePet(PET_LOG_PARAM* pPetLogParam, ObjID_t PetID );
     Obj_Pet*            GetPet( VOID ) const { return m_pPet; }
     VOID                CleanupPet() { m_pPet = NULL; }
-    BOOL                CanReturnToChild(PET_GUID_t guid); // ÊÇ·ñ¿ÉÒÔ»¹Í¯
-    BOOL                ReturnToChild(PET_GUID_t guid); // »¹Í¯½Ó¿Ú
+    BOOL                CanReturnToChild(PET_GUID_t guid); // æ˜¯å¦å¯ä»¥è¿˜ç«¥
+    BOOL                ReturnToChild(PET_GUID_t guid); // è¿˜ç«¥æ¥å£
 
     VOID                SetGUIDOfCallUpPet(PET_GUID_t guid) { m_GUIDOfCallUpPet = guid; }
     PET_GUID_t            GetGUIDOfCallUpPet(VOID) const { return m_GUIDOfCallUpPet; }
@@ -927,7 +927,7 @@ public:
     Item                *GetPetItem(PET_GUID_t guid);
     INT                    GetPetIndexByGUID(PET_GUID_t guid);
 
-    // ÁÙÊ±º¯Êı
+    // ä¸´æ—¶å‡½æ•°
     PET_GUID_t            GetPetGUIDByIndex(INT nIndex);
     PET_GUID_t            GetPetGUIDByValidIndex(INT nIndex);
 
@@ -973,7 +973,7 @@ public:
     BOOL                 Pet_Skill_Apperceive(PET_GUID_t guidPet);
 
 //===========================================
-// ÊôĞÔ
+// å±æ€§
 //===========================================
 public:
     //StrikePoint
@@ -1107,99 +1107,99 @@ public:
     VOID                        SetBaseVisionRange(INT const nValue);
 
 //===========================================
-// _ÊôĞÔ½Ó¿Ú
+// _å±æ€§æ¥å£
 //===========================================
 public:
-    virtual const INT            __GetSex( ) const ;//ĞÔ±ğ human
+    virtual const INT            __GetSex( ) const ;//æ€§åˆ« human
     virtual VOID                __SetSex( const INT sex ) ;
-    virtual const UINT            __GetCreateDate( ) const ;//´´½¨Ê±¼ä human
+    virtual const UINT            __GetCreateDate( ) const ;//åˆ›å»ºæ—¶é—´ human
     virtual VOID                __SetCreateDate( const UINT createdate ) ;
-    virtual const CHAR*            __GetNick( ) const ;//êÇ³Æ human
+    virtual const CHAR*            __GetNick( ) const ;//æ˜µç§° human
     virtual VOID                __SetNick( const CHAR* nick ) ;
     virtual BOOL                __IsPasswordSetup();
     virtual BOOL                __IsPasswordUnlock();
-    virtual VOID                __LockPassword(); // ÊäÈë¶ş¼¶ÃÜÂë´íÎó£¬Ôòµ÷ÓÃ
-    virtual VOID                __UnlockPassword(); // ÊäÈë¶ş¼¶ÃÜÂëÕıÈ·
-    virtual const CHAR*            __GetPassword( );//¶ş¼¶ÃÜÂë human
+    virtual VOID                __LockPassword(); // è¾“å…¥äºŒçº§å¯†ç é”™è¯¯ï¼Œåˆ™è°ƒç”¨
+    virtual VOID                __UnlockPassword(); // è¾“å…¥äºŒçº§å¯†ç æ­£ç¡®
+    virtual const CHAR*            __GetPassword( );//äºŒçº§å¯†ç  human
     virtual BOOL                __SetPassword( const CHAR* password );
-    virtual VOID                __DelPassword( ); // É¾³ı¶ş¼¶ÃÜÂë
-    virtual UINT                __GetPasswordDeleteTime( ); // Ç¿ÖÆ½â³ı¶ş¼¶ÃÜÂëµÄÊ±¼ä
-    virtual VOID                __SetPasswordDeleteTime( UINT uTime ); // ÉèÖÃÇ¿ÖÆ½â³ı¶ş¼¶ÃÜÂëµÄÊ±¼ä
-    virtual UINT                __GetPasswordDeleteRemainTime( ); // µÃµ½Ç¿ÖÆ½â³ıÃÜÂëµÄÊ£ÓàÊ±¼ä
-    virtual BOOL                __IsValidToDeletePassword( ); // ÊÇ·ñÂú×ãÇ¿ÖÆ½â³ı¶ş¼¶ÃÜÂëÌõ¼ş
-    virtual UINT                __GetHairColor( ) const ;//Í··¢ÑÕÉ« human
+    virtual VOID                __DelPassword( ); // åˆ é™¤äºŒçº§å¯†ç 
+    virtual UINT                __GetPasswordDeleteTime( ); // å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç çš„æ—¶é—´
+    virtual VOID                __SetPasswordDeleteTime( UINT uTime ); // è®¾ç½®å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç çš„æ—¶é—´
+    virtual UINT                __GetPasswordDeleteRemainTime( ); // å¾—åˆ°å¼ºåˆ¶è§£é™¤å¯†ç çš„å‰©ä½™æ—¶é—´
+    virtual BOOL                __IsValidToDeletePassword( ); // æ˜¯å¦æ»¡è¶³å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç æ¡ä»¶
+    virtual UINT                __GetHairColor( ) const ;//å¤´å‘é¢œè‰² human
     virtual VOID                __SetHairColor( UINT haircolor ) ;
-    virtual BYTE                __GetFaceColor( ) const ;//Á³ÑÕÉ« human
+    virtual BYTE                __GetFaceColor( ) const ;//è„¸é¢œè‰² human
     virtual VOID                __SetFaceColor( BYTE facecolor ) ;
-    virtual BYTE                __GetHairModel( ) const ;//Í··¢Ä£ĞÍ human
+    virtual BYTE                __GetHairModel( ) const ;//å¤´å‘æ¨¡å‹ human
     virtual VOID                __SetHairModel( BYTE hairmodel ) ;
-    virtual BYTE                __GetFaceModel( ) const ;//Á³Ä£ĞÍ human
+    virtual BYTE                __GetFaceModel( ) const ;//è„¸æ¨¡å‹ human
     virtual VOID                __SetFaceModel( BYTE facemodel ) ;
-    virtual const UINT            __GetOnlineTime( ) const ;//ÔÚÏßÊ±¼ä human
+    virtual const UINT            __GetOnlineTime( ) const ;//åœ¨çº¿æ—¶é—´ human
     virtual VOID                __SetOnlineTime( const UINT onlinetime ) ;
-    virtual const UINT            __GetLastLevelUpTime( ) const ;//ÉÏ´ÎÉı¼¶Ê±¼ä human
+    virtual const UINT            __GetLastLevelUpTime( ) const ;//ä¸Šæ¬¡å‡çº§æ—¶é—´ human
     virtual VOID                __SetLastLevelUpTime( const UINT lastleveluptime ) ;
-    virtual const UINT            __GetLastLoginTime( ) const ;//ÉÏ´ÎµÇÂ¼Ê±¼ä human
+    virtual const UINT            __GetLastLoginTime( ) const ;//ä¸Šæ¬¡ç™»å½•æ—¶é—´ human
     virtual VOID                __SetLastLoginTime( const UINT lastlogintime ) ;
-    virtual const UINT            __GetLastLogoutTime( ) const ;//ÉÏ´ÎµÇ³öÊ±¼ä human
+    virtual const UINT            __GetLastLogoutTime( ) const ;//ä¸Šæ¬¡ç™»å‡ºæ—¶é—´ human
     virtual VOID                __SetLastLogoutTime( const UINT lastlogouttime ) ;
-    virtual const INT            __GetBagItemCount( ) const ;//±³°üÖĞÎïÆ·ÊıÁ¿ human
+    virtual const INT            __GetBagItemCount( ) const ;//èƒŒåŒ…ä¸­ç‰©å“æ•°é‡ human
     virtual VOID                __SetBagItemCount( const INT bagitemcount ) ;
-    virtual const _ITEM*        __GetBagItem( const INT bagindex ) const ;//±³°üÖĞÄ³¸öÎ»ÖÃµÄÎïÆ· human
+    virtual const _ITEM*        __GetBagItem( const INT bagindex ) const ;//èƒŒåŒ…ä¸­æŸä¸ªä½ç½®çš„ç‰©å“ human
     virtual VOID                __SetBagItem( const INT bagindex, const _ITEM* item ) ;
-    virtual const INT            __GetBankItemCount( ) const ;//ÒøĞĞÖĞÎïÆ·ÊıÁ¿ human
+    virtual const INT            __GetBankItemCount( ) const ;//é“¶è¡Œä¸­ç‰©å“æ•°é‡ human
     virtual VOID                __SetBankItemCount( const INT Bankitemcount ) ;
-    virtual const _ITEM*        __GetBankItem( const INT bankindex ) const ;//ÒøĞĞÖĞÄ³¸öÎ»ÖÃµÄÎïÆ· human
+    virtual const _ITEM*        __GetBankItem( const INT bankindex ) const ;//é“¶è¡Œä¸­æŸä¸ªä½ç½®çš„ç‰©å“ human
     virtual VOID                __SetBankItem( const INT bankindex, const _ITEM* item ) ;
-    virtual const INT            __GetBankEndIndex( ) const ;//µ±Ç°ÒøĞĞµÄ´óĞ¡
+    virtual const INT            __GetBankEndIndex( ) const ;//å½“å‰é“¶è¡Œçš„å¤§å°
     virtual VOID                __SetBankEndIndex( const INT bankindex ) ;
-    virtual const INT            __GetBankMoney( ) const ;//µ±Ç°ÒøĞĞÄÚµÄÇ®Êı
+    virtual const INT            __GetBankMoney( ) const ;//å½“å‰é“¶è¡Œå†…çš„é’±æ•°
     virtual VOID                __SetBankMoney( const INT money ) ;
-    virtual const INT            __GetEquipItemCount( ) const ;//×°±¸ÊıÁ¿ human
+    virtual const INT            __GetEquipItemCount( ) const ;//è£…å¤‡æ•°é‡ human
     virtual VOID                __SetEquipItemCount( const INT equipitemcount ) ;
-    virtual const _ITEM*        __GetEquipItem( const INT equipindex ) const ;//ÉíÉÏÄ³¸öÎ»ÖÃµÄ×°±¸ human
+    virtual const _ITEM*        __GetEquipItem( const INT equipindex ) const ;//èº«ä¸ŠæŸä¸ªä½ç½®çš„è£…å¤‡ human
     virtual VOID                __SetEquipItem( const INT equipindex, const _ITEM* item ) ;
-    virtual const INT            __GetMissionCount( ) const ;//½ÓÊÜµÄÈÎÎñÊıÁ¿ human
+    virtual const INT            __GetMissionCount( ) const ;//æ¥å—çš„ä»»åŠ¡æ•°é‡ human
     virtual VOID                __SetMissionCount( const INT missioncount ) ;
-    virtual const _OWN_MISSION* __GetMission( const INT missionindex ) const ;//Ä³¸öÈÎÎñÊı¾İ human
+    virtual const _OWN_MISSION* __GetMission( const INT missionindex ) const ;//æŸä¸ªä»»åŠ¡æ•°æ® human
     virtual VOID                __SetMission( const INT missionindex, _OWN_MISSION* mission ) ;
-    virtual const BOOL            __IsMissionHaveDone( MissionID_t missionid ) const ;//ÅĞ¶ÏÄ³¸öÈÎÎñÊÇ·ñÍê³É human
+    virtual const BOOL            __IsMissionHaveDone( MissionID_t missionid ) const ;//åˆ¤æ–­æŸä¸ªä»»åŠ¡æ˜¯å¦å®Œæˆ human
     virtual VOID                __SetMissionDoneFalg( MissionID_t missionid, BOOL flag ) ;
-    virtual const BOOL            __IsAbilityHaveLearned(AbilityID_t abilityid) const; // Ä³ÖÖÉú»î¼¼ÄÜÊÇ·ñÑ§»á
-    virtual const INT            __GetAbilityLevel( const AbilityID_t abilityid ) const ;//Ä³ÖÖÉú»î¼¼ÄÜ¼¶±ğ human
+    virtual const BOOL            __IsAbilityHaveLearned(AbilityID_t abilityid) const; // æŸç§ç”Ÿæ´»æŠ€èƒ½æ˜¯å¦å­¦ä¼š
+    virtual const INT            __GetAbilityLevel( const AbilityID_t abilityid ) const ;//æŸç§ç”Ÿæ´»æŠ€èƒ½çº§åˆ« human
     virtual VOID                __SetAbilityLevel( const AbilityID_t abilityid, INT lvl) ;
-    virtual const INT            __GetAbilityExp( const AbilityID_t abilityid ) const ;//Ä³ÖÖÉú»î¼¼ÄÜÊìÁ·¶È human
+    virtual const INT            __GetAbilityExp( const AbilityID_t abilityid ) const ;//æŸç§ç”Ÿæ´»æŠ€èƒ½ç†Ÿç»ƒåº¦ human
     virtual VOID                __SetAbilityExp( const AbilityID_t abilityid, INT exp) ;
-    virtual const BOOL            __IsPrescrHaveLearned( const PrescriptionID_t prescrid ) const;//Ä³¸öÅä·½ÊÇ·ñÑ§»á human
+    virtual const BOOL            __IsPrescrHaveLearned( const PrescriptionID_t prescrid ) const;//æŸä¸ªé…æ–¹æ˜¯å¦å­¦ä¼š human
     virtual VOID                __SetPrescrLearnedFlag( const PrescriptionID_t prescrid, BOOL flag ) ;
-    virtual const _ITEM_EFFECT* __GetItemEffect( const INT index ) const ;//×°±¸Ğ§¹û human
+    virtual const _ITEM_EFFECT* __GetItemEffect( const INT index ) const ;//è£…å¤‡æ•ˆæœ human
     virtual VOID                __SetItemEffect( const INT index, _ITEM_EFFECT* itemeffect ) ;
-    virtual const _ITEM_VALUE    __GetItemValue( const INT index ) const ;//×°±¸Ğ§¹ûÖµ human
+    virtual const _ITEM_VALUE    __GetItemValue( const INT index ) const ;//è£…å¤‡æ•ˆæœå€¼ human
     virtual VOID                __SetItemValue( const INT index, _ITEM_VALUE value) ;
     virtual const UINT            __GetLastTurnPickTime()    const;
     virtual    VOID                __SetLastTurnPickTime(UINT uTime)    ;
-    virtual const TeamID_t        __GetTeamID( ) const ;//¶ÓÎéºÅ human
+    virtual const TeamID_t        __GetTeamID( ) const ;//é˜Ÿä¼å· human
     virtual VOID                __SetTeamID( const TeamID_t teamid ) ;
-    virtual BOOL                __IsTeamLeader( ) const; // ÊÇ·ñ¶Ó³¤
-    virtual const INT            __GetTeamMemberCount( ) const ;//¶ÓÎéÖĞ³ÉÔ±ÊıÁ¿ human
-    virtual const TEAMMEMBER*    __GetTeamMember( const INT memberindex ) const ;//È¡µÃ¶ÓÎéÖĞÄ³¸ö³ÉÔ±
+    virtual BOOL                __IsTeamLeader( ) const; // æ˜¯å¦é˜Ÿé•¿
+    virtual const INT            __GetTeamMemberCount( ) const ;//é˜Ÿä¼ä¸­æˆå‘˜æ•°é‡ human
+    virtual const TEAMMEMBER*    __GetTeamMember( const INT memberindex ) const ;//å–å¾—é˜Ÿä¼ä¸­æŸä¸ªæˆå‘˜
     virtual VOID                __AddTeamMember( const TEAMMEMBER* member ) ;
-    virtual const INT            __GetTeamSceneMemberCount( ) const ;//¶ÓÎéÖĞÍ¬³¡¾°³ÉÔ±ÊıÁ¿ human
-    virtual const ObjID_t        __GetTeamSceneMember( const INT memberindex ) const ;//È¡µÃ¶ÓÎéÖĞÄ³Í¬³¡¾°³ÉÔ±µÄ OBJID
-    virtual VOID                __SetTeamFollowFlag( BOOL flag ); // ÉèÖÃ¶ÓÎé¸úËæ×´Ì¬
-    virtual const BOOL            __GetTeamFollowFlag( ) const; // »ñµÃ¶ÓÎé¸úËæ×´Ì¬
-    virtual VOID                __AddFollowedMember( const _FOLLOWEDMEMBER& FollowedMember ); // Ôö¼ÓÒ»¸ö¸úËæµÄ¶ÓÔ±
-    virtual VOID                __DelFollowedMember( GUID_t guid ); // ÒÆ³öÒ»¸ö¸úËæ¶ÓÔ±
-    virtual const INT            __GetFollowedMembersCount() const; // µÃµ½¸úËæ×´Ì¬µÄ¶ÓÓÑÊıÁ¿
-    virtual const _FOLLOWEDMEMBER*    __GetFollowedMember( INT i ) const; // µÃµ½µÚ i ¸ö¸úËæµÄ¶ÓÓÑ
-    virtual VOID                __ClearFollowedMembers(); // Çå³ıËùÓĞµÄ¸úËæ¶ÓÓÑÁĞ±í
-    virtual const FLOAT            __GetTeamFollowSpeed( ) const; // µÃµ½×é¶Ó¸úËæµÄËÙ¶È
-    virtual VOID                __SetTeamFollowSpeed( FLOAT fSpeed ); // ÉèÖÃ×é¶Ó¸úËæµÄËÙ¶È
-    virtual VOID                __OutOfTeamFollowRange(); // ³¬³ö×é¶Ó¸úËæ·¶Î§
-    virtual VOID                __InTeamFollowRange(); // ÔÚ×é¶Ó¸úËæ·¶Î§ÄÚ
-    virtual const BOOL            __GetTeamFollowSpeedUp( ) const; // »ñµÃ×é¶Ó¸úËæ¼ÓËÙ×´Ì¬
-    virtual VOID                __SetTeamFollowSpeedUp( BOOL bSpeedUp); // ÉèÖÃ×é¶Ó¸úËæ¼ÓËÙ×´Ì¬
-    virtual VOID                __StopTeamFollow( BOOL bWorldFlag=TRUE ); // Í£Ö¹¸úËæ,flag±íÊ¾ÊÇ·ñÍ¨Öª world
+    virtual const INT            __GetTeamSceneMemberCount( ) const ;//é˜Ÿä¼ä¸­åŒåœºæ™¯æˆå‘˜æ•°é‡ human
+    virtual const ObjID_t        __GetTeamSceneMember( const INT memberindex ) const ;//å–å¾—é˜Ÿä¼ä¸­æŸåŒåœºæ™¯æˆå‘˜çš„ OBJID
+    virtual VOID                __SetTeamFollowFlag( BOOL flag ); // è®¾ç½®é˜Ÿä¼è·ŸéšçŠ¶æ€
+    virtual const BOOL            __GetTeamFollowFlag( ) const; // è·å¾—é˜Ÿä¼è·ŸéšçŠ¶æ€
+    virtual VOID                __AddFollowedMember( const _FOLLOWEDMEMBER& FollowedMember ); // å¢åŠ ä¸€ä¸ªè·Ÿéšçš„é˜Ÿå‘˜
+    virtual VOID                __DelFollowedMember( GUID_t guid ); // ç§»å‡ºä¸€ä¸ªè·Ÿéšé˜Ÿå‘˜
+    virtual const INT            __GetFollowedMembersCount() const; // å¾—åˆ°è·ŸéšçŠ¶æ€çš„é˜Ÿå‹æ•°é‡
+    virtual const _FOLLOWEDMEMBER*    __GetFollowedMember( INT i ) const; // å¾—åˆ°ç¬¬ i ä¸ªè·Ÿéšçš„é˜Ÿå‹
+    virtual VOID                __ClearFollowedMembers(); // æ¸…é™¤æ‰€æœ‰çš„è·Ÿéšé˜Ÿå‹åˆ—è¡¨
+    virtual const FLOAT            __GetTeamFollowSpeed( ) const; // å¾—åˆ°ç»„é˜Ÿè·Ÿéšçš„é€Ÿåº¦
+    virtual VOID                __SetTeamFollowSpeed( FLOAT fSpeed ); // è®¾ç½®ç»„é˜Ÿè·Ÿéšçš„é€Ÿåº¦
+    virtual VOID                __OutOfTeamFollowRange(); // è¶…å‡ºç»„é˜Ÿè·ŸéšèŒƒå›´
+    virtual VOID                __InTeamFollowRange(); // åœ¨ç»„é˜Ÿè·ŸéšèŒƒå›´å†…
+    virtual const BOOL            __GetTeamFollowSpeedUp( ) const; // è·å¾—ç»„é˜Ÿè·ŸéšåŠ é€ŸçŠ¶æ€
+    virtual VOID                __SetTeamFollowSpeedUp( BOOL bSpeedUp); // è®¾ç½®ç»„é˜Ÿè·ŸéšåŠ é€ŸçŠ¶æ€
+    virtual VOID                __StopTeamFollow( BOOL bWorldFlag=TRUE ); // åœæ­¢è·Ÿéš,flagè¡¨ç¤ºæ˜¯å¦é€šçŸ¥ world
 };
 
 

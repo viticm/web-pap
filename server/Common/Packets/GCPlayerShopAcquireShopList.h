@@ -1,6 +1,6 @@
 // GCPlayerShopAcquireShopList.h
 // 
-// °Ñµ±Ç°µÄÉÌµêÁĞ±í·¢¸ø¿Í»§¶Ë
+// æŠŠå½“å‰çš„å•†åº—åˆ—è¡¨å‘ç»™å®¢æˆ·ç«¯
 // 
 //////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace Packets
         };
         virtual ~GCPlayerShopAcquireShopList( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

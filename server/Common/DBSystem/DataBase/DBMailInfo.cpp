@@ -54,7 +54,7 @@ BOOL DBMailInfo::Save(VOID* pSource)
     
     SMUPool<MailSMU>* pPoolPtr = static_cast<SMUPool<MailSMU>*>(pSource);
     Assert(pPoolPtr);
-    //±£´æMailÊý¾Ý
+    //ä¿å­˜Mailæ•°æ®
     do
     {
         INT SmuCount = pPoolPtr->GetPoolMaxSize();
@@ -183,7 +183,7 @@ BOOL DBMailInfo::ParseResult(VOID* pResult)
                 DB_MailInfo,
                 DB_MailCont,
             };
-            //¼ÓÔØEmailÊôÐÔ
+            //åŠ è½½Emailå±žæ€§
             Assert(mInterface);
             INT ErrorCode;
             INT    SmuCount = pPoolPtr->GetPoolMaxSize();

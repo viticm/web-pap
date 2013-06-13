@@ -69,7 +69,7 @@ __ENTER_FUNCTION
             if( c>= MAX_GUID_SIZE ) c = 0 ;
 
             if( m_pGuidItem[c].m_GUID==gid )
-            {//异常，管理器里面有重复的数据
+            {//寮傚父锛岀鐞嗗櫒閲岄潰鏈夐噸澶嶇殑鏁版嵁
                 g_pLog->FastSaveLog( LOG_FILE_3, "ERROR: GUIDManager::Add GUID=%X rep!", gid ) ;
                 break ;
             }

@@ -72,10 +72,10 @@
 #include "ShopManager.h"
 #include "Team.h"
 
-#include "ExchangBox.h"            //½»Ò×ºĞ
-#include "StallBox.h"            //Ì¯Î»ºĞ
-#include "GWCityApplyNewCity.h" //ÉêÇë½¨Á¢³ÇÊĞ
-#include "GWCityClose.h" //ÉêÇë½¨Á¢³ÇÊĞ
+#include "ExchangBox.h"            //äº¤æ˜“ç›’
+#include "StallBox.h"            //æ‘Šä½ç›’
+#include "GWCityApplyNewCity.h" //ç”³è¯·å»ºç«‹åŸå¸‚
+#include "GWCityClose.h" //ç”³è¯·å»ºç«‹åŸå¸‚
 #include "GCCharAllTitles.h"
 #include "HumanItemContainer.h"
 #include "HumanPetContainer.h"
@@ -98,7 +98,7 @@
 
 
 //////////////////////////////////////////////////////
-// Óë¿Í»§¶ËÍ¬²½±¸·İÊı¾İ
+// ä¸å®¢æˆ·ç«¯åŒæ­¥å¤‡ä»½æ•°æ®
 //////////////////////////////////////////////////////
 _HUMAN_ATTR_BACKUP::_HUMAN_ATTR_BACKUP(VOID)
 {
@@ -293,19 +293,19 @@ Obj_Human::Obj_Human( )
     //m_uMissionIndex_ItemChangedEvent_Num    = 0;
 
     //////////////////////////////////////////////////////////////////////////
-    //¸¨Öú¹¦ÄÜ¿ª·¢Ïà¹Ø
+    //è¾…åŠ©åŠŸèƒ½å¼€å‘ç›¸å…³
 
-    //µ±Ç°ÉÌµêid
+    //å½“å‰å•†åº—id
     m_pShop        =    NULL;
     BankIsOpen    =    FALSE;
 
-    //½»Ò×ºĞ³õÊ¼»¯
+    //äº¤æ˜“ç›’åˆå§‹åŒ–
     m_ExchangBox.Init(this);
 
-    //Ì¯Î»ºĞ³õÊ¼»¯
+    //æ‘Šä½ç›’åˆå§‹åŒ–
     m_StallBox.Init(this);
 
-    //¸¨Öú¹¦ÄÜ¿ª·¢Ïà¹Ø
+    //è¾…åŠ©åŠŸèƒ½å¼€å‘ç›¸å…³
     //////////////////////////////////////////////////////////////////////////
 
 
@@ -331,7 +331,7 @@ Obj_Human::Obj_Human( )
 
     m_BaseItem.Init(&containInit);
 
-    //ÔÓÏîÎïÆ·°ü
+    //æ‚é¡¹ç‰©å“åŒ…
     for(UINT i=0;i<m_DB.GetBaseBagSize();i++)
     {
         _ITEM_INIT    itemInit(m_DB.GetBagItem(BASE_CONTAINER_OFFSET+i));
@@ -339,7 +339,7 @@ Obj_Human::Obj_Human( )
     }
 
 
-    ////²ÄÁÏÎïÆ·°ü
+    ////ææ–™ç‰©å“åŒ…
     //containInit.m_nContainerSize    =    m_DB.GetMatBagSize();
     //containInit.m_ICTType            =    ICT_MAT_CONTAINER;
     //containInit.m_DBOffSet            =    MAT_CONTAINER_OFFSET;
@@ -354,7 +354,7 @@ Obj_Human::Obj_Human( )
     //    m_MatItem.GetItem(i)->Init(&itemInit);
     //}
 
-    ////ÈÎÎñÎïÆ·°ü
+    ////ä»»åŠ¡ç‰©å“åŒ…
     //containInit.m_nContainerSize    =    m_DB.GetTaskBagSize();
     //containInit.m_ICTType            =    ICT_TASK_CONTAINER;
     //containInit.m_DBOffSet            =    TASK_CONTAINER_OFFSET;
@@ -369,7 +369,7 @@ Obj_Human::Obj_Human( )
 
     containInit.m_nContainerSize    =    HEQUIP_NUMBER;
     containInit.m_ICTType            =    ICT_EQUIP_CONTAINER;
-    //×°±¸
+    //è£…å¤‡
     m_EquipItem.Init(&containInit);
     for(UINT i=0;i<HEQUIP_NUMBER;i++)
     {
@@ -379,7 +379,7 @@ Obj_Human::Obj_Human( )
 
     containInit.m_nContainerSize    =    MAX_BANK_SIZE;
     containInit.m_ICTType            =    ICT_BANK_CONTAINER;
-    //ÒøĞĞ
+    //é“¶è¡Œ
     m_BankItem.Init(&containInit);
     for(int i=0;i<MAX_BANK_SIZE;i++)
     {
@@ -395,7 +395,7 @@ Obj_Human::Obj_Human( )
     PetContainInit.m_pHumanDB        =    &m_DB;
     PetContainInit.m_ICTType        =    ICT_HUMAN_PET_CONTAINER;
 
-    //³èÎï
+    //å® ç‰©
     m_PetItem.Init(&PetContainInit);
     for(UINT i = 0 ;i<HUMAN_PET_MAX_COUNT;i++)
     {
@@ -481,7 +481,7 @@ BOOL Obj_Human::Init( const _OBJ_INIT *pInit, const BYTE age )
     m_TeamInfo.CleanUp();
     m_TeamInfo.SetMyGUID( GetGUID() );
 
-    m_HumanRelation.Init( this ) ;//³õÊ¼»¯ÁªÏµÈË¹¦ÄÜÄ£¿é
+    m_HumanRelation.Init( this ) ;//åˆå§‹åŒ–è”ç³»äººåŠŸèƒ½æ¨¡å—
 
     //m_RefeshTimer.BeginTimer(RefreshIntervalTime,CreateTime);
 
@@ -494,26 +494,26 @@ BOOL Obj_Human::Init( const _OBJ_INIT *pInit, const BYTE age )
     m_UpdateTimer.BeginTimer(AttrUpdateIntervalTime,CreateTime);
 
     //////////////////////////////////////////////////////////////////////////
-    //¸¨Öú¹¦ÄÜ¿ª·¢Ïà¹Ø
-    //³õÊ¼»¯ÉÌÆ·µÄ»Ø¹ºÁĞ±í
+    //è¾…åŠ©åŠŸèƒ½å¼€å‘ç›¸å…³
+    //åˆå§‹åŒ–å•†å“çš„å›è´­åˆ—è¡¨
     InitialSoldList();
 
     if( (GetMoney() + __GetBankMoney())> (UINT)g_LevelMoneyTbl.Get(GetLevel()) )
     {
-        //Ô­ÔòÊÇÏÈ¿ÛÉíÉÏµÄÇ®
+        //åŸåˆ™æ˜¯å…ˆæ‰£èº«ä¸Šçš„é’±
         UINT    iMaxMoney = g_LevelMoneyTbl.Get(GetLevel());
         if(GetMoney()>iMaxMoney)
-        {//ÉíÉÏµÄÇ®ÒÑ¾­´óÓÚÉÏÏŞ
+        {//èº«ä¸Šçš„é’±å·²ç»å¤§äºä¸Šé™
             SetMoney(iMaxMoney);
         }
         else
-        {//Çå¿ÕÉíÉÏµÄ£¬ÔÙÔÚÒøĞĞÀï¼õ
+        {//æ¸…ç©ºèº«ä¸Šçš„ï¼Œå†åœ¨é“¶è¡Œé‡Œå‡
             __SetBankMoney(__GetBankMoney() - (iMaxMoney - GetMoney()) );
             SetMoney(0);
         }
     }
 
-    //¸¨Öú¹¦ÄÜ¿ª·¢Ïà¹Ø
+    //è¾…åŠ©åŠŸèƒ½å¼€å‘ç›¸å…³
     //////////////////////////////////////////////////////////////////////////
 
     m_bTeamFollowSpeedUp = FALSE;
@@ -525,13 +525,13 @@ BOOL Obj_Human::Init( const _OBJ_INIT *pInit, const BYTE age )
     {
         m_WallowTimer.BeginTimer(g_Config.m_ConfigInfo.m_WallowStartTime, g_pTimeManager->CurrentTime());
     }
-    //Èç¹ûÓĞÊ£ÓàÊ±¼äºÍ¾­Ñé±¶Êı¾Í¿ªÊ¼¼ÆÊ±;
+    //å¦‚æœæœ‰å‰©ä½™æ—¶é—´å’Œç»éªŒå€æ•°å°±å¼€å§‹è®¡æ—¶;
     if(GETHIGH(pHumanInit->m_pUseData->m_Human.m_DoubleExpTime_Num) >0 && GETLOW(pHumanInit->m_pUseData->m_Human.m_DoubleExpTime_Num) >1)
     {
         m_ExpTimer.BeginTimer(GETHIGH(pHumanInit->m_pUseData->m_Human.m_DoubleExpTime_Num)*1000,g_pTimeManager->CurrentTime());
 
     }
-    //µÚÒ»¸ö½ÇÉ«ÉèÎª¹ÜÀíËùÓĞµÄgmÃüÁî
+    //ç¬¬ä¸€ä¸ªè§’è‰²è®¾ä¸ºç®¡ç†æ‰€æœ‰çš„gmå‘½ä»¤
     if(GetGUID() == g_Config.m_ConfigInfo.m_ThisRegion.m_nRegionIndex*10000000+1)
     {
         SetGmRight(4);
@@ -558,11 +558,11 @@ VOID Obj_Human::OnEnterScene(VOID)
     MarkAllBoolAttrDirtyFlags();
     MarkAllIntAttrRefixDirtyFlags();
 
-    //¼¼ÄÜÊı¾İ
+    //æŠ€èƒ½æ•°æ®
     Skill_InitSkillList();
-    //ĞÄ·¨Êı¾İ
+    //å¿ƒæ³•æ•°æ®
     Skill_InitXinFaList();
-    //ÎïÆ·Ğ§¹ûË¢ĞÂ
+    //ç‰©å“æ•ˆæœåˆ·æ–°
     ItemEffectFlush( ) ;
 
     INT iHP = GetHP() ;
@@ -595,7 +595,7 @@ VOID Obj_Human::CleanUp( VOID )
 {
     __ENTER_FUNCTION
 
-        // ¸´»îµãÏà¹Ø
+        // å¤æ´»ç‚¹ç›¸å…³
         m_bCanSkillRelive = FALSE;
     m_DefaultReliveInfo.Reset();
     m_SkillReliveInfo.Reset();
@@ -695,7 +695,7 @@ BOOL Obj_Human::HeartBeat( UINT uTime )
         }
     }    
 
-    ValidateShareMem(FALSE); //×îºó¸üĞÂÊı¾İµ½¹²ÏíÄÚ´æ
+    ValidateShareMem(FALSE); //æœ€åæ›´æ–°æ•°æ®åˆ°å…±äº«å†…å­˜
 
 
     return TRUE;
@@ -740,7 +740,7 @@ VOID Obj_Human::OnUnregisterFromZone( )
     __LEAVE_FUNCTION
 }
 
-// ±È½Ï¶ş¼¶ÃÜÂë
+// æ¯”è¾ƒäºŒçº§å¯†ç 
 BOOL Obj_Human::ComparePasswd( const CHAR* szPasswd )
 {
     return ( strcmp(szPasswd, __GetPassword()) == 0 );
@@ -779,7 +779,7 @@ BOOL Obj_Human::HeartBeat_Recover(UINT uTime)
 
     if(0<nCount)
     {
-        /** ½øĞĞ»Øºì²Ù×÷ */
+        /** è¿›è¡Œå›çº¢æ“ä½œ */
         INT nCur = GetHP( ); 
         INT nMax = GetMaxHP();
         INT nRegenerate = GetHPRegenerate();
@@ -789,7 +789,7 @@ BOOL Obj_Human::HeartBeat_Recover(UINT uTime)
             nCur<nMax?nCur:nCur=nMax;
             SetHP(nCur) ;
         }    
-        /** ½øĞĞ»ØÀ¼²Ù×÷ */
+        /** è¿›è¡Œå›å…°æ“ä½œ */
         nCur = GetMP( ); 
         nMax = GetMaxMP();
         nRegenerate = GetMPRegenerate();
@@ -825,7 +825,7 @@ BOOL Obj_Human::HeartBeat_Recover(UINT uTime)
     {
         if( m_WallowTimer.GetTermTime() == g_Config.m_ConfigInfo.m_WallowStartTime )
         {
-            //½øÈë°ëÊÕÒæ×´Ì¬
+            //è¿›å…¥åŠæ”¶ç›ŠçŠ¶æ€
             m_WallowTimer.SetTermTime( g_Config.m_ConfigInfo.m_WallowStartTime2 - g_Config.m_ConfigInfo.m_WallowStartTime );
 
             m_WallowAwokeTimer.BeginTimer(g_Config.m_ConfigInfo.m_WallowAwokeTime, g_pTimeManager->CurrentTime());
@@ -833,7 +833,7 @@ BOOL Obj_Human::HeartBeat_Recover(UINT uTime)
         }
         else
         {
-            //½øÈëÎŞÊÕÒæ×´Ì¬
+            //è¿›å…¥æ— æ”¶ç›ŠçŠ¶æ€
             m_WallowTimer.CleanUp();
             SetWallow( WALLOW_NONE );
         }
@@ -844,14 +844,14 @@ BOOL Obj_Human::HeartBeat_Recover(UINT uTime)
     }
     if(m_ExpTimer.IsSetTimer())
     {
-        if(m_ExpTimer.CountingTimer(uTime))//¶à±¶¾­Ñéµ½Ê±;
+        if(m_ExpTimer.CountingTimer(uTime))//å¤šå€ç»éªŒåˆ°æ—¶;
         {
             int nExpTime=GETLOW(GetDoubleExpTime_Num());
             SetDoubleExpTime_Num(1);
             m_ExpTimer.CleanUp();
             GCChat msgChat;
             CHAR szChat[MAX_CHAT_SIZE]={0};
-            sprintf(szChat,"ÄãÉèÖÃµÄ%d±¶¾­Ñé×´Ì¬ÒÑ¾­µ½Ê±!",nExpTime);
+            sprintf(szChat,"ä½ è®¾ç½®çš„%då€ç»éªŒçŠ¶æ€å·²ç»åˆ°æ—¶!",nExpTime);
             INT Size = (INT)strlen(szChat) ;
             msgChat.SetChatType( CHAT_TYPE_SELF) ;
             msgChat.SetContexSize( Size ) ;
@@ -911,14 +911,14 @@ VOID Obj_Human::CheckArea()
 
         if ( m_uAreaID != UINT_MAX )
         {
-            // ÉèÖÃÍæ¼Ò½øÈë Area µÄÊ±¿Ì
+            // è®¾ç½®ç©å®¶è¿›å…¥ Area çš„æ—¶åˆ»
             m_uTimeStamp = NowTime();
             m_uAreaScript = pArea->m_uScriptID;
 
             OnEnterArea( m_uAreaID );
 
-            // Ö´ĞĞ Area ½Å±¾£¬Õâ¸ö½Å±¾¿ÉÄÜÊÇ¾ßÓĞÉ±ËÀÍæ¼Ò£¨µ¼ÖÂÎ»ÖÃ±ä»¯£©»òÕß´«ËÍµÄ¹¦ÄÜ
-            // ËùÒÔĞèÒªÔÚÍæ¼Ò½Å±¾Ö´ĞĞ½áÊøÒÔºóÖ´ĞĞ
+            // æ‰§è¡Œ Area è„šæœ¬ï¼Œè¿™ä¸ªè„šæœ¬å¯èƒ½æ˜¯å…·æœ‰æ€æ­»ç©å®¶ï¼ˆå¯¼è‡´ä½ç½®å˜åŒ–ï¼‰æˆ–è€…ä¼ é€çš„åŠŸèƒ½
+            // æ‰€ä»¥éœ€è¦åœ¨ç©å®¶è„šæœ¬æ‰§è¡Œç»“æŸä»¥åæ‰§è¡Œ
             if ( m_uAreaScript != UINT_MAX )
             {
                 pLuaInterface->ExeScript_DDD(m_uAreaScript, DEF_ON_ENTER_AREA_FUNC_NAME, (INT)sceneid, (INT)GetID(), 0);
@@ -931,7 +931,7 @@ VOID Obj_Human::CheckArea()
     }
     else if ( m_uAreaScript != UINT_MAX )
     {
-        // µ÷ÓÃ OnTimer À´Ö´ĞĞ³ÖĞøÊÂ¼ş£¬µ«ÊÇĞèÒªÅĞ¶Ï¸Ã Area ÊÇ·ñº¬ÓĞ³ÖĞøÊÂ¼ş
+        // è°ƒç”¨ OnTimer æ¥æ‰§è¡ŒæŒç»­äº‹ä»¶ï¼Œä½†æ˜¯éœ€è¦åˆ¤æ–­è¯¥ Area æ˜¯å¦å«æœ‰æŒç»­äº‹ä»¶
         getScene()->GetLuaInterface()->ExeScript_DDD(m_uAreaScript, DEF_EVENT_ON_TIMER, (INT)sceneid, GetID(), 0);
     }
 
@@ -939,25 +939,25 @@ VOID Obj_Human::CheckArea()
 }
 
 /****************************************************************************
-*    ¹¦ÄÜËµÃ÷£º
-*                ¸ù¾İÇ°Ò»¸ö¶ÓÔ±µÄ·½Î»£¬Îªµ±Ç°¶ÓÔ±Ñ¡ÔñÒ»¸öºÏÊÊÄ¿±êÎ»ÖÃ
-*                Ö»´Ó 6 ¸ö±¸ÓÃ·½Î»Ñ¡Ôñ£¬ÓÅÏÈË³ĞòÈçÏÂËùÊ¾£º
-*                                4¡ª¡ª * ¡ª¡ª5
+*    åŠŸèƒ½è¯´æ˜ï¼š
+*                æ ¹æ®å‰ä¸€ä¸ªé˜Ÿå‘˜çš„æ–¹ä½ï¼Œä¸ºå½“å‰é˜Ÿå‘˜é€‰æ‹©ä¸€ä¸ªåˆé€‚ç›®æ ‡ä½ç½®
+*                åªä» 6 ä¸ªå¤‡ç”¨æ–¹ä½é€‰æ‹©ï¼Œä¼˜å…ˆé¡ºåºå¦‚ä¸‹æ‰€ç¤ºï¼š
+*                                4â€”â€” * â€”â€”5
 *                                    / | \
 *                                   /  |     \
 *                                  2   1   3
-*                Èç¹ûÕÒ²»µ½ºÏÊÊµÄÎ»ÖÃ£¬ÔòºÍÇ°Ò»¸ö¶ÓÔ±ÖØºÏ£¨µÚ 6 ¸ö·½Î»£©
-*    ²ÎÊıËµÃ÷£º
+*                å¦‚æœæ‰¾ä¸åˆ°åˆé€‚çš„ä½ç½®ï¼Œåˆ™å’Œå‰ä¸€ä¸ªé˜Ÿå‘˜é‡åˆï¼ˆç¬¬ 6 ä¸ªæ–¹ä½ï¼‰
+*    å‚æ•°è¯´æ˜ï¼š
 *                Pos
-*                    ÓÃ×÷Êä³ö
+*                    ç”¨ä½œè¾“å‡º
 *                pPrevPos
-*                    Ç°Ò»¸ö¶ÓÔ±µÄÎ»ÖÃ
+*                    å‰ä¸€ä¸ªé˜Ÿå‘˜çš„ä½ç½®
 *                fDir
-*                    Ç°Ò»¸ö¶ÓÔ±µÄ³¯Ïò
-*    Êä³öËµÃ÷£º
+*                    å‰ä¸€ä¸ªé˜Ÿå‘˜çš„æœå‘
+*    è¾“å‡ºè¯´æ˜ï¼š
 *                Pos
-*                µ±Ç°¶ÓÔ±Ó¦¸ÃÒÆ¶¯µ½µÄÎ»ÖÃ
-*                ³É¹¦·µ»Ø TRUE£¬Ê§°Ü·µ»Ø FALSE
+*                å½“å‰é˜Ÿå‘˜åº”è¯¥ç§»åŠ¨åˆ°çš„ä½ç½®
+*                æˆåŠŸè¿”å› TRUEï¼Œå¤±è´¥è¿”å› FALSE
 *****************************************************************************/
 BOOL Obj_Human::GetPosition(WORLD_POS& Pos, const WORLD_POS* pRefPos, FLOAT fDir)
 {
@@ -1151,33 +1151,33 @@ ORESULT Obj_Human::TestCallUpPet(const PET_GUID_t guidPet)
         {
             return OR_ERROR;
         }
-        // Èç¹ûÊÇÕıÔÚ½»Ò×(±»¼ÓËø)µÄ³èÎï²»¿ÉÒÔÕĞ³ö
+        // å¦‚æœæ˜¯æ­£åœ¨äº¤æ˜“(è¢«åŠ é”)çš„å® ç‰©ä¸å¯ä»¥æ‹›å‡º
         if (TRUE == pPetItem->IsInExchange())
         {
             return OR_PETINEXCHANGE_CANNOT_GOFIGHT;
         }
-        // ÕıÔÚÊ¹ÓÃ¼¼ÄÜÊ±²»ÄÜÔÙ´ÎÕĞ³ö
+        // æ­£åœ¨ä½¿ç”¨æŠ€èƒ½æ—¶ä¸èƒ½å†æ¬¡æ‹›å‡º
         if (FALSE == CanUseSkillNow() )
         {
             return OR_BUSY;
         }
 
-        // HPµÈÓÚ0Ê±²»ÄÜÕĞ³ö
+        // HPç­‰äº0æ—¶ä¸èƒ½æ‹›å‡º
         if (pPetItem->GetHP() <= 0)
         {
             return OR_NOT_ENOUGH_HP;
         }
-        // Èç¹û³èÎïµÈ¼¶¸ßÓÚÍæ¼ÒµÈ¼¶10¼¶ÔòÎŞ·¨ÕĞ»½³öÀ´
+        // å¦‚æœå® ç‰©ç­‰çº§é«˜äºç©å®¶ç­‰çº§10çº§åˆ™æ— æ³•æ‹›å”¤å‡ºæ¥
         if (pPetItem->GetLevel() > (GetLevel() + LEVELDELTA_CALLUP) )
         {
             return OR_NEED_HIGH_LEVEL;
         }
 
-        // ¿ìÀÖ¶ÈĞ¡ÓÚµÈÓÚ50½«ÕĞ²»³öÀ´
+        // å¿«ä¹åº¦å°äºç­‰äº50å°†æ‹›ä¸å‡ºæ¥
         if (pPetItem->GetHappiness() < g_Config.m_ConfigInfo.m_PetCallUpHappiness)
             return OR_NEED_HAPPINESS;
 
-        // ÊÙÃü
+        // å¯¿å‘½
         if (pPetItem->GetLife() <= 0)
             return OR_NEED_LIFE;
 
@@ -1195,7 +1195,7 @@ ORESULT Obj_Human::CallUpPet(VOID)
     {
         return OR_ERROR;
     }
-    // Èç¹ûÊÇÕıÔÚ½»Ò×(±»¼ÓËø)µÄ³èÎï²»¿ÉÒÔÕĞ³ö
+    // å¦‚æœæ˜¯æ­£åœ¨äº¤æ˜“(è¢«åŠ é”)çš„å® ç‰©ä¸å¯ä»¥æ‹›å‡º
     if (TRUE == pPetItem->IsInExchange())
     {
         return OR_PETINEXCHANGE_CANNOT_GOFIGHT;
@@ -1225,10 +1225,10 @@ ORESULT Obj_Human::ReCallPet(VOID)
     SetCurrentPetGUID(m_GUIDOfCallUpPet);
 
     if (m_pPet)
-    {// µ±ÊÕ»Ø³èÎïÊ±½«Ö÷ÈËÉíÉÏËùÓĞ³èÎïÖÖµÄBUFFÍ³Í³Çåµô
+    {// å½“æ”¶å›å® ç‰©æ—¶å°†ä¸»äººèº«ä¸Šæ‰€æœ‰å® ç‰©ç§çš„BUFFç»Ÿç»Ÿæ¸…æ‰
         Impact_CleanAllImpactWhenPetDead(m_pPet->GetID());
         m_pPet->Impact_CleanAllImpactWhenPetDead(m_pPet->GetID());
-        // Ç¿ĞĞË¢ĞÂ³èÎïĞÅÏ¢
+        // å¼ºè¡Œåˆ·æ–°å® ç‰©ä¿¡æ¯
         m_pPet->SendMsg_RefeshAttrib();
     }
 
@@ -1252,7 +1252,7 @@ BOOL Obj_Human::AddPet(const _PET_DB *pPetDB)
     {
         Item* pPetFind = GetPetContain()->GetItem(i);
         if (pPetFind != NULL && pPetFind->IsLock() == FALSE)
-        {// È·±£Òª²Ù×÷µÄ³èÎïÏÖÔÚ´¦ÓÚ·ÇËø¶¨×´Ì¬
+        {// ç¡®ä¿è¦æ“ä½œçš„å® ç‰©ç°åœ¨å¤„äºéé”å®šçŠ¶æ€
             PET_GUID_t guidFind = pPetFind->GetPetGUID();
             if ( guidFind.IsNull() )
             {
@@ -1286,7 +1286,7 @@ BOOL Obj_Human::RemovePet(PET_LOG_PARAM* pPetLogParam,PET_GUID_t guid)
     {
         Item* pPetFind = GetPetContain()->GetItem(i);
         if (pPetFind != NULL && pPetFind->IsLock() == FALSE)
-        {// È·±£Òª²Ù×÷µÄ³èÎïÏÖÔÚ´¦ÓÚ·ÇËø¶¨×´Ì¬
+        {// ç¡®ä¿è¦æ“ä½œçš„å® ç‰©ç°åœ¨å¤„äºéé”å®šçŠ¶æ€
             PET_GUID_t guidFind = pPetFind->GetPetGUID();
             if ( guidFind == guid )
             {
@@ -1343,7 +1343,7 @@ ORESULT Obj_Human::CreatePet(VOID)
     const WORLD_POS* pPos = getWorldPos();
     initPet.m_Pos.m_fX    = pPos->m_fX - 1.f;
     initPet.m_Pos.m_fZ    = pPos->m_fZ;
-    // ¶Ô¸ÃÎ»ÖÃ½øĞĞĞ£Ñé
+    // å¯¹è¯¥ä½ç½®è¿›è¡Œæ ¡éªŒ
     pPos = &initPet.m_Pos;
     pScene->GetMap()->VerifyPos(&initPet.m_Pos);
     if (FALSE == pScene->GetMap()->IsCanGo(*pPos,GetDriverLevel())) {
@@ -1452,7 +1452,7 @@ VOID Obj_Human::BabyToAttack(VOID)
         {
             return ;        
         }
-        // ÈÃ³èÎï½øÈë¹¥»÷×´Ì¬
+        // è®©å® ç‰©è¿›å…¥æ”»å‡»çŠ¶æ€
         if (m_pPet->IsAlive())
         {
             ObjID_t TargetID = GetCurTarget();
@@ -1469,7 +1469,7 @@ BOOL Obj_Human::CapturePet(PET_LOG_PARAM* pPetLogParam, ObjID_t PetID )
     __ENTER_FUNCTION
 
         Assert(pPetLogParam);
-    // ¼ì²âÓĞĞ§ĞÔ
+    // æ£€æµ‹æœ‰æ•ˆæ€§
     Obj* pObj = getScene()->GetObjManager()->GetObj( PetID );
     if ( !pObj ||
         pObj->GetObjType() != Obj::OBJ_TYPE_PET ||
@@ -1485,11 +1485,11 @@ BOOL Obj_Human::CapturePet(PET_LOG_PARAM* pPetLogParam, ObjID_t PetID )
     }
 
     if (NULL != pPet->GetOwner())
-    {// ËµÃ÷¸Ã³èÎïÒÑ¾­ÓĞÖ÷ÈËÁËÔò·µ»Ø
+    {// è¯´æ˜è¯¥å® ç‰©å·²ç»æœ‰ä¸»äººäº†åˆ™è¿”å›
         SendOperateResultMsg(OR_INVALID_TARGET);
         return FALSE;
     }
-    // Èç¹ûĞ¡ÓÚ³èÎïµÄĞ¯´øµÈ¼¶Ôò·µ»Ø
+    // å¦‚æœå°äºå® ç‰©çš„æºå¸¦ç­‰çº§åˆ™è¿”å›
     INT nTakeLevel = pPet->GetPetDB()->m_nTakeLevel;
     if (GetLevel() < nTakeLevel)
     {
@@ -1497,14 +1497,14 @@ BOOL Obj_Human::CapturePet(PET_LOG_PARAM* pPetLogParam, ObjID_t PetID )
         return FALSE;
     }
 
-    // ÊÇ·ñÊôÓÚ×Ô¼ºµÄ¹æÔòÅĞ¶Ï
+    // æ˜¯å¦å±äºè‡ªå·±çš„è§„åˆ™åˆ¤æ–­
     INT nCapturerCount = pPet->GetCaptureCount();    
     if (!nCapturerCount)
         return FALSE;
 
     INT nRet = rand() % nCapturerCount;
     if (0 != nRet)
-    {// Èç¹û²»ÔÚ·¶Î§Ö®ÄÚÔò²¶»ñÊ§°Ü
+    {// å¦‚æœä¸åœ¨èŒƒå›´ä¹‹å†…åˆ™æ•è·å¤±è´¥
         return FALSE;
     }
 
@@ -1556,18 +1556,18 @@ BOOL    Obj_Human::CanReturnToChild(PET_GUID_t guid)
     }
 
     if (pPetDB->m_SpouseGUID.IsNull() != TRUE)
-    {// ÒÑ¾­ÓĞÅäÅ¼µÄ³èÎï²»ÄÜ½øĞĞ»¹Í¯
+    {// å·²ç»æœ‰é…å¶çš„å® ç‰©ä¸èƒ½è¿›è¡Œè¿˜ç«¥
         SendOperateResultMsg(OR_HASSPOUSE_CANNOT_RETURNTOCHILD);
         return FALSE;
     }
     if (pPetDB->m_byPetType == _PET_DB_LOAD::PET_TYPE_VARIANCE)
-    {// ±äÒì³è²»ÄÜ½øĞĞ»¹Í¯
+    {// å˜å¼‚å® ä¸èƒ½è¿›è¡Œè¿˜ç«¥
         SendOperateResultMsg(OR_VARIANCEPET_CANNOT_RETURNTOCHILD);
         return FALSE;
     }
     Obj_Pet* pPet = GetPet();
     if (pPet && pPet->GetPetGUID() == guid)
-    {// Èç¹ûÒª»¹Í¯µÄ³èÎïÕıÔÚ³öÕ½×´Ì¬ÔòÌáÊ¾ÏÈÊÕ»Ø³èÎï
+    {// å¦‚æœè¦è¿˜ç«¥çš„å® ç‰©æ­£åœ¨å‡ºæˆ˜çŠ¶æ€åˆ™æç¤ºå…ˆæ”¶å›å® ç‰©
         SendOperateResultMsg(OR_COMBAT_CANNOT_RETURNTOCHILD);
         return FALSE;
     }
@@ -1794,7 +1794,7 @@ INT Obj_Human::GetPetIndexByGUID(PET_GUID_t guid)
         return -1;
 }
 
-// ÁÙÊ±º¯Êı
+// ä¸´æ—¶å‡½æ•°
 PET_GUID_t Obj_Human::GetPetGUIDByIndex(INT nIndex)
 {
     __ENTER_FUNCTION
@@ -1816,7 +1816,7 @@ PET_GUID_t Obj_Human::GetPetGUIDByIndex(INT nIndex)
         return guidPet;
 }
 
-// ÁÙÊ±º¯Êı
+// ä¸´æ—¶å‡½æ•°
 PET_GUID_t Obj_Human::GetPetGUIDByValidIndex(INT nIndex)
 {
     __ENTER_FUNCTION
@@ -1971,8 +1971,8 @@ BOOL Obj_Human::DelFavorite(_PLAYERSHOP_GUID pGuid)
 
 VOID Obj_Human::UpdateFavorite(_PLAYERSHOP_GUID* pGuidList)
 {
-    //´«ÈëµÄÊÇÈ·Êµ´æÔÚµÄÉÌµêÁĞ±í
-    //¸ù¾İÕâ¸öÁĞ±íË¢ĞÂ×Ô¼ºµÄÊÕ²Ø¼ÒÁĞ±í,ÕæeĞÄ
+    //ä¼ å…¥çš„æ˜¯ç¡®å®å­˜åœ¨çš„å•†åº—åˆ—è¡¨
+    //æ ¹æ®è¿™ä¸ªåˆ—è¡¨åˆ·æ–°è‡ªå·±çš„æ”¶è—å®¶åˆ—è¡¨,çœŸeå¿ƒ
     __ENTER_FUNCTION
         for(INT i=0; i<MAX_FAVORITE_SHOPS; i++)
         {
@@ -2004,7 +2004,7 @@ UINT Obj_Human::GetDataID( VOID )const
 }
 
 ///////////////////////////////////////////////////////////
-// ¸´»îµãÏà¹Ø
+// å¤æ´»ç‚¹ç›¸å…³
 ///////////////////////////////////////////////////////////
 VOID Obj_Human::SetReliveInfo( BOOL bSkillRelive, const _RELIVE_INFO *pReliveInfo )
 {
@@ -2048,7 +2048,7 @@ VOID Obj_Human::OnReliveInfoChanged( VOID )
 }
 
 ///////////////////////////////////////////////////////////
-// ¸´»îµãÏà¹Ø
+// å¤æ´»ç‚¹ç›¸å…³
 ///////////////////////////////////////////////////////////
 VOID Obj_Human::SetCallOfInfo(const _CALLOF_INFO *pCallOfInfo)
 {
@@ -2154,7 +2154,7 @@ INT        Obj_Human::UseStoreMap(UINT BagIndex)
     }
     else
     {
-        // Íæ¼Ò´¦ÓÚ²»¿ÉĞĞ¶¯×´Ì¬
+        // ç©å®¶å¤„äºä¸å¯è¡ŒåŠ¨çŠ¶æ€
         if( !IsAlive() )
         { 
             return USEITEM_SKILL_FAIL;
@@ -2212,12 +2212,12 @@ INT    Obj_Human::UseIdentScroll(UINT BagIndex,UINT TargetBagIndex)
     }
     else
     {
-        // Íæ¼Ò´¦ÓÚ²»¿ÉĞĞ¶¯×´Ì¬
+        // ç©å®¶å¤„äºä¸å¯è¡ŒåŠ¨çŠ¶æ€
         if( !IsAlive() )
         { 
             return USEITEM_SKILL_FAIL;
         }
-        //Ê¹3ÖÖ¼ø¶¨¾íÖáÍ¨ÓÃ fujia 2008.1.2
+        //ä½¿3ç§é‰´å®šå·è½´é€šç”¨ fujia 2008.1.2
         /*switch(pTargetItem->GetEquipPoint()) 
         {
         case HEQUIP_WEAPON    :
@@ -2308,7 +2308,7 @@ BOOL Obj_Human::VerifyItem(VOID)
 {
     __ENTER_FUNCTION
         TargetingAndDepletingParams_T& rParams = GetTargetingAndDepletingParams();
-    //¼ì²éÎïÆ·ÊÇ·ñºÏ·¨
+    //æ£€æŸ¥ç‰©å“æ˜¯å¦åˆæ³•
     INT nBagIndex = rParams.GetBagIndexOfDepletedItem();
     Item*    pBagItem = HumanItemLogic::GetItem(this,nBagIndex);
     INT nItemTableIndex =  rParams.GetItemIndexOfDepletedItem();
@@ -2390,7 +2390,7 @@ BOOL Obj_Human::UseItem(ID_t nBagIndex, ObjID_t nTargetObj, const WORLD_POS& pos
         rParams.SetErrCode(OR_DIE);
         return FALSE;
     }
-    //¼ì²éÎïÆ·ÊÇ·ñºÏ·¨
+    //æ£€æŸ¥ç‰©å“æ˜¯å¦åˆæ³•
     Item*    pBagItem = HumanItemLogic::GetItem(this,nBagIndex);
     if(pBagItem->IsEmpty())
     {
@@ -2400,7 +2400,7 @@ BOOL Obj_Human::UseItem(ID_t nBagIndex, ObjID_t nTargetObj, const WORLD_POS& pos
     AddLogicCount();
 
     // need add...
-    //ÉèÖÃÎïÆ·Ê¹ÓÃĞèÒªµÄ²ÎÊı
+    //è®¾ç½®ç‰©å“ä½¿ç”¨éœ€è¦çš„å‚æ•°
     rParams.SetTargetBagSlot(nTargetItem);
     rParams.SetBagIndexOfDepletedItem(nBagIndex);
     rParams.SetDepletedItemGuid(pBagItem->GetGUID());
@@ -2411,7 +2411,7 @@ BOOL Obj_Human::UseItem(ID_t nBagIndex, ObjID_t nTargetObj, const WORLD_POS& pos
     rParams.SetTargetPetGuid(guidTargetPet);
     rParams.SetTargetPosition(posTarget);
     rParams.SetSkillLevel(1);
-    //ÉèÖÃ½áÊø
+    //è®¾ç½®ç»“æŸ
     //Activate script and skill
     INT nRet = ActivateItem();
     if (GetCharacterLogic() != CHARACTER_LOGIC_USE_SKILL || TRUE==IsCharacterLogicStopped())
@@ -2508,7 +2508,7 @@ INT  Obj_Human::UseGem(UINT GemBagIndex,UINT EquipBagIndex)
             ITEM_LOG_PARAM    ItemLogParam;
             ItemLogParam.OpType    =    ITEM_USEGEM_LOST;
 
-            BOOL bRet = HumanItemLogic::EraseItem(&ItemLogParam,this,GemBagIndex); // É¾³ı±¦Ê¯
+            BOOL bRet = HumanItemLogic::EraseItem(&ItemLogParam,this,GemBagIndex); // åˆ é™¤å®çŸ³
             if(bRet)
             {
                 SaveItemLog(&ItemLogParam);
@@ -2662,7 +2662,7 @@ VOID    Obj_Human::ChangeMenpai(SKILL_LOG_PARAM* pSkillLog,INT Menpai)
 
         if( Menpai<0 || Menpai>=MATTRIBUTE_NUMBER )
         {
-            AssertEx( FALSE, "ÃÅÅÉÈ¡Öµ·¶Î§´íÎó£¡" ) ;
+            AssertEx( FALSE, "é—¨æ´¾å–å€¼èŒƒå›´é”™è¯¯ï¼" ) ;
             return ;
         }
         const _XINFA_LIST& rXinFaList = Skill_GetXinFaList();
@@ -2816,17 +2816,17 @@ INT Obj_Human::SkillCharacter( Obj_Character* pCharacter, SkillID_t SkillID, BOO
         return 0 ;
 }
 
-VOID Obj_Human::SetAlterExp( INT AlterExp )//¸Ä±äµÄ¾­Ñé
+VOID Obj_Human::SetAlterExp( INT AlterExp )//æ”¹å˜çš„ç»éªŒ
 {
     __ENTER_FUNCTION
 
-        AlterExp = (INT)(GetWallow()*(FLOAT)AlterExp); //·À³ÁÃÔ¾­ÑéÏµÊı
+        AlterExp = (INT)(GetWallow()*(FLOAT)AlterExp); //é˜²æ²‰è¿·ç»éªŒç³»æ•°
 
     UINT CurExp = m_DB.GetExp( ) ;
     SetExp( CurExp+AlterExp ) ;
 
 
-    //ÅĞ¶ÏÊÇ·ñÉı¼¶
+    //åˆ¤æ–­æ˜¯å¦å‡çº§
     //...
     UINT    CurrentExp    =    GetExp();
     UINT    iLevel        =    GetLevel();
@@ -2864,7 +2864,7 @@ VOID Obj_Human::SetAlterExp( INT AlterExp )//¸Ä±äµÄ¾­Ñé
 
     UINT afterExp    = GetExp();
     if( afterExp==CurExp )
-    {//¾­Ñéµ½´ïÉÏÏŞºóĞèÒª¿Í»§¶ËÌáÊ¾Ò»ÏÂ
+    {//ç»éªŒåˆ°è¾¾ä¸Šé™åéœ€è¦å®¢æˆ·ç«¯æç¤ºä¸€ä¸‹
         SendOperateResultMsg(OR_EXP_FULL);
     }
 
@@ -2872,7 +2872,7 @@ VOID Obj_Human::SetAlterExp( INT AlterExp )//¸Ä±äµÄ¾­Ñé
 
     __LEAVE_FUNCTION
 }
-VOID Obj_Human::SetMonsterAlterExp( INT AlterExp )//¸Ä±äµÄ¾­Ñé
+VOID Obj_Human::SetMonsterAlterExp( INT AlterExp )//æ”¹å˜çš„ç»éªŒ
 {
     __ENTER_FUNCTION
 
@@ -2889,7 +2889,7 @@ VOID Obj_Human::SetMonsterAlterExp( INT AlterExp )//¸Ä±äµÄ¾­Ñé
 VOID    Obj_Human::SetExp(UINT uExp)
 {
 #define MAX_EXP_RATE 4
-    //ÏŞÖÆ¾­ÑéÎª4±¶µ±Ç°µÈ¼¶Éı¼¶¾­Ñé
+    //é™åˆ¶ç»éªŒä¸º4å€å½“å‰ç­‰çº§å‡çº§ç»éªŒ
     UINT    LevelExp =        g_LevelExpTbl.Get(GetLevel()-1);
     if(uExp>LevelExp*MAX_EXP_RATE)
     {
@@ -2976,7 +2976,7 @@ BOOL Obj_Human::IsPartner(Obj_Character* pCharacter)
 BOOL Obj_Human::IsMySpouse(Obj_Human& rHuman)
 {
     __ENTER_FUNCTION
-        // ÅĞ¶Ï
+        // åˆ¤æ–­
         if(GetHumanRelation()->GetSpouseGUID() == rHuman.GetGUID())
         {
             return TRUE;
@@ -3011,9 +3011,9 @@ BOOL Obj_Human::IsMySpouse(Obj_Human& rHuman)
 //}
 
 
-// Éú»î¼¼ÄÜÏà¹ØµÄº¯Êı
+// ç”Ÿæ´»æŠ€èƒ½ç›¸å…³çš„å‡½æ•°
 
-// ·µ»Ø±³°üÖĞ Item ÀàĞÍµÄÎïÆ·ÊıÁ¿
+// è¿”å›èƒŒåŒ…ä¸­ Item ç±»å‹çš„ç‰©å“æ•°é‡
 /*
 INT Obj_Human::HasItemCount(UINT ItemSerial)
 {
@@ -3037,7 +3037,7 @@ return 0 ;
 }*/
 
 
-//ÊÇ·ñĞ¯´øÎïÆ·
+//æ˜¯å¦æºå¸¦ç‰©å“
 BOOL Obj_Human::IsCarrayItem(UINT ItemType,UINT ItemCount) 
 {
     __ENTER_FUNCTION
@@ -3120,12 +3120,12 @@ BOOL Obj_Human::Obj_Logic_UseAbility( UINT uTime )
 
         //m_bSendMsgDirty    = TRUE;
 
-        // reset_AbilityOpera(); // ÕâÀï²»ÖØÉèÉú»î¼¼ÄÜÊı¾İ£¬ÒÔÃâ½ñºóĞèÒªÅúÁ¿ºÏ³ÉÎïÆ·£¬µ«ÊÇÔÚÓÃ»§Ö¸Áî·¢³öµÄÊ±ºò½øĞĞÖØÉè
+        // reset_AbilityOpera(); // è¿™é‡Œä¸é‡è®¾ç”Ÿæ´»æŠ€èƒ½æ•°æ®ï¼Œä»¥å…ä»Šåéœ€è¦æ‰¹é‡åˆæˆç‰©å“ï¼Œä½†æ˜¯åœ¨ç”¨æˆ·æŒ‡ä»¤å‘å‡ºçš„æ—¶å€™è¿›è¡Œé‡è®¾
         StopCharacterLogic(FALSE);
 
         res = pAbility->OnProcOver(this);
 
-        // ½« res ĞÎ³ÉÏûÏ¢·¢ËÍ³öÈ¥
+        // å°† res å½¢æˆæ¶ˆæ¯å‘é€å‡ºå»
         if( res != OR_OK )
         {
             GCAbilityResult Msg;
@@ -3137,7 +3137,7 @@ BOOL Obj_Human::Obj_Logic_UseAbility( UINT uTime )
 
     }
     else
-    { // ×öÒ»Ğ©ºÏ·¨ĞÔÑéÖ¤
+    { // åšä¸€äº›åˆæ³•æ€§éªŒè¯
         Ability* pAbility;
 
         pAbility = g_pAbilityManager->GetAbility(m_LastOpera.m_AbilityID);
@@ -3181,7 +3181,7 @@ VOID Obj_Human::OnCharacterLogicStopped(BOOL bAbortive)
                     pAbility->OnProcInterrupt(this);
                 }
             }
-            //// ²»¹ÜÊÇÇ¿ĞĞµÄ»¹ÊÇ×ÔÈ»Í£µÄ¶¼ÒªÇó·¢Í£Ö¹
+            //// ä¸ç®¡æ˜¯å¼ºè¡Œçš„è¿˜æ˜¯è‡ªç„¶åœçš„éƒ½è¦æ±‚å‘åœæ­¢
             //GCAbilityAction StopMsg;
             //StopMsg.setObjID( GetID() );
             //StopMsg.setLogicCount( GetLogicCount() );
@@ -3210,7 +3210,7 @@ VOID Obj_Human::OnCharacterLogicStopped(BOOL bAbortive)
     __LEAVE_FUNCTION
 }
 
-// Éú»î¼¼ÄÜÏà¹ØµÄº¯Êı
+// ç”Ÿæ´»æŠ€èƒ½ç›¸å…³çš„å‡½æ•°
 
 VOID Obj_Human::OnKillObject( ObjID_t idObj )
 {
@@ -3230,7 +3230,7 @@ VOID Obj_Human::OnKillObject( ObjID_t idObj )
     uDataID = pObj->GetDataID();
     for(i=0;i<MAX_CHAR_MISSION_NUM;i++)
     {
-        //±£Ö¤ÈÎÎñ½Å±¾Ö»Ö´ĞĞÒ»´Î,ÒÔºóÊÇ·ñĞèÒªÅ²µ½¸üºÏÊÊµÄµØ·½?
+        //ä¿è¯ä»»åŠ¡è„šæœ¬åªæ‰§è¡Œä¸€æ¬¡,ä»¥åæ˜¯å¦éœ€è¦æŒªåˆ°æ›´åˆé€‚çš„åœ°æ–¹?
         const _OWN_MISSION* pMission =    GetMission(i) ;
         if( !pMission->IsActiveMission() || !pMission->IsFlags_KillObject() )
             continue ;
@@ -3329,11 +3329,11 @@ VOID Obj_Human::OnDie( ObjID_t idKiller )
 
     Obj_Character::OnDie(idKiller);
 
-    // Èç¹ûÊÇ±»ÀÏÊÖ´ø×ÅµÄĞÂÊÖ£¬Ôò¿Û³ıÀÏÊÖµÄÉÆ¶ñÖµ
+    // å¦‚æœæ˜¯è¢«è€æ‰‹å¸¦ç€çš„æ–°æ‰‹ï¼Œåˆ™æ‰£é™¤è€æ‰‹çš„å–„æ¶å€¼
     //if( GetLevel() <= g_Config.m_ConfigInfo.m_nMemberLevel )
     //{
     //    if( GetTeamInfo()->HasTeam() && GetTeamInfo()->IsLeader() != TRUE )
-    //    { // ×é¶Ó·Ç¶Ó³¤
+    //    { // ç»„é˜Ÿéé˜Ÿé•¿
     //        Obj_Human* pTeamLeader = NULL;
 
     //        if( GetTeamInfo()->Leader()->m_SceneID != getScene()->SceneID() )
@@ -3356,8 +3356,8 @@ VOID Obj_Human::OnDie( ObjID_t idKiller )
 
     //            nPenalty = g_Config.m_ConfigInfo.m_nPenaltyWhenMemberDie;
     //            nPenalty = pTeamLeader->DecGoodBadValue( nPenalty );
-    //            // nPenalty ÊÇÊµ¼Ê¿Û³ıÖµ
-    //            // ·¢ËÍÏûÏ¢¸ø¿Í»§¶Ë£¬ÒÔÏÔÊ¾ĞÅÏ¢ÌáÊ¾
+    //            // nPenalty æ˜¯å®é™…æ‰£é™¤å€¼
+    //            // å‘é€æ¶ˆæ¯ç»™å®¢æˆ·ç«¯ï¼Œä»¥æ˜¾ç¤ºä¿¡æ¯æç¤º
     //            GCNotifyGoodBad Msg;
     //            Msg.SetNotifyMode( NOTIFY_GOODBAD_NEWBIEDIE );
     //            Msg.SetValue( nPenalty );
@@ -3376,7 +3376,7 @@ VOID Obj_Human::OnEnterArea( UINT uAreaID )
 
         UINT i;
 
-    //Ò»¸öÇøÓò¿É±»Êı¸öÈÎÎñÏìÓ¦,ĞèÒªºÍ²ß»®ÉÌÈ¶
+    //ä¸€ä¸ªåŒºåŸŸå¯è¢«æ•°ä¸ªä»»åŠ¡å“åº”,éœ€è¦å’Œç­–åˆ’å•†æ¦·
     for(i=0;i<MAX_CHAR_MISSION_NUM;i++)
     {
         const _OWN_MISSION* pMission = GetMission(i) ;
@@ -3401,7 +3401,7 @@ Packet *Obj_Human::CreateNewObjPacket( VOID )
         if ( getScene() != NULL )
         {
             if( !IsAlive() )
-            {//Ê¬Ìå
+            {//å°¸ä½“
                 GCNewPlayer_Death *pPacket = (GCNewPlayer_Death*)(getScene()->m_pPacket_NewPlayer_Death);
                 pPacket->setObjID( GetID() );
                 pPacket->setWorldPos( *(getWorldPos()) );
@@ -3938,7 +3938,7 @@ VOID    Obj_Human::InitialSoldList()
 
     m_nCurSold = 0;
 
-    //³õÊ¼»¯container
+    //åˆå§‹åŒ–container
     _ITEMCONTAINER_INIT    containInit;
     containInit.m_nContainerSize    =    MAX_BOOTH_SOLD_NUMBER;
     m_SoldContainer.Init(&containInit);
@@ -3956,14 +3956,14 @@ VOID    Obj_Human::AddToSoldList(INT index, UINT uPrice)
 {
     __ENTER_FUNCTION
 
-        //²»¹ÜÊ²Ã´Ö±½Ó¸²¸Çµô
+        //ä¸ç®¡ä»€ä¹ˆç›´æ¥è¦†ç›–æ‰
         m_nCurSold++;
     m_nCurSold = (m_nCurSold<MAX_BOOTH_SOLD_NUMBER)? m_nCurSold:0; 
-    g_ItemOperator.EraseItem(&m_SoldContainer, m_nCurSold);//Çå¿Õµ±Ç°¸ñ×Ó
+    g_ItemOperator.EraseItem(&m_SoldContainer, m_nCurSold);//æ¸…ç©ºå½“å‰æ ¼å­
 
     INT result = 0;
     ItemContainer*    pBagContainer = HumanItemLogic::GetContainer(this, index);
-    //Ö¸¶¨¸ñ
+    //æŒ‡å®šæ ¼
     result = 
         g_ItemOperator.MoveItem
         (
@@ -3993,7 +3993,7 @@ BOOL    Obj_Human::GetCurFromSoldList(_ITEM& itemref, UINT& uPrice, BYTE& nCoinT
 {
     __ENTER_FUNCTION
 
-        //´Îº¯Êı»ñµÃµ±Ç°ÎïÆ·µÄÊµ¼ÊÊı¾İ
+        //æ¬¡å‡½æ•°è·å¾—å½“å‰ç‰©å“çš„å®é™…æ•°æ®
         if(ITEMISVALID(m_ItemHasBeenSold[m_nCurSold]))
         {
             itemref    = m_ItemHasBeenSold[m_nCurSold];
@@ -4017,7 +4017,7 @@ BOOL    Obj_Human::GetCurFromSoldList(_ITEM& itemref, UINT& uPrice, BYTE& nCoinT
                 m_nCurSold = (m_nCurSold<0)? (MAX_BOOTH_SOLD_NUMBER-1):m_nCurSold; 
             }
             if(m_nCurSold == temp)
-            {//»Ø¹º±íÒÑ¿Õ
+            {//å›è´­è¡¨å·²ç©º
                 return FALSE;
             }
             else
@@ -4054,7 +4054,7 @@ VOID    Obj_Human::ClearSoldList()
     m_nCurSold = 0;
 }
 
-//½ğÇ®±ä»¯Ê±
+//é‡‘é’±å˜åŒ–æ—¶
 VOID    Obj_Human::NotifyMoneyChange(UINT uAmount, BOOL bIsReceive)
 {
     __ENTER_FUNCTION
@@ -4093,30 +4093,30 @@ VOID    Obj_Human::NotifyMoneyChange(UINT uAmount, BOOL bIsReceive)
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//obj ¹«¹²ÊôĞÔ½Ó¿Ú
+//obj å…¬å…±å±æ€§æ¥å£
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//character ¹«¹²ÊôĞÔ½Ó¿Ú
+//character å…¬å…±å±æ€§æ¥å£
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//human ¹«¹²ÊôĞÔ½Ó¿Ú
-const INT Obj_Human::__GetSex( ) const//ĞÔ±ğ human
+//human å…¬å…±å±æ€§æ¥å£
+const INT Obj_Human::__GetSex( ) const//æ€§åˆ« human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetSex( const INT sex )
 {
 }
-const UINT Obj_Human::__GetCreateDate( ) const//´´½¨Ê±¼ä human
+const UINT Obj_Human::__GetCreateDate( ) const//åˆ›å»ºæ—¶é—´ human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetCreateDate( const UINT createdate )
 {
 }
-const CHAR* Obj_Human::__GetNick( ) const//êÇ³Æ human
+const CHAR* Obj_Human::__GetNick( ) const//æ˜µç§° human
 {
     return NULL ;
 }
@@ -4131,15 +4131,15 @@ BOOL Obj_Human::__IsPasswordUnlock()
 {
     return m_bIsPasswdUnlock;
 }
-VOID Obj_Human::__LockPassword() // ÊäÈë¶ş¼¶ÃÜÂë´íÎó£¬Ôòµ÷ÓÃ
+VOID Obj_Human::__LockPassword() // è¾“å…¥äºŒçº§å¯†ç é”™è¯¯ï¼Œåˆ™è°ƒç”¨
 {
     m_bIsPasswdUnlock = FALSE;
 }
-VOID Obj_Human::__UnlockPassword() // ÊäÈë¶ş¼¶ÃÜÂëÕıÈ·
+VOID Obj_Human::__UnlockPassword() // è¾“å…¥äºŒçº§å¯†ç æ­£ç¡®
 {
     m_bIsPasswdUnlock = TRUE;
 }
-const CHAR* Obj_Human::__GetPassword( ) //¶ş¼¶ÃÜÂë human
+const CHAR* Obj_Human::__GetPassword( ) //äºŒçº§å¯†ç  human
 {
     return GetDB()->GetPasswd();
 }
@@ -4160,20 +4160,20 @@ BOOL Obj_Human::__SetPassword( const CHAR* password )
     return TRUE;
 }
 
-VOID Obj_Human::__DelPassword( ) // É¾³ı¶ş¼¶ÃÜÂë
+VOID Obj_Human::__DelPassword( ) // åˆ é™¤äºŒçº§å¯†ç 
 {
     GetDB()->DelPasswd();
 }
-UINT Obj_Human::__GetPasswordDeleteTime( ) // Ç¿ÖÆ½â³ı¶ş¼¶ÃÜÂëµÄÊ±¼ä
+UINT Obj_Human::__GetPasswordDeleteTime( ) // å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç çš„æ—¶é—´
 {
     return GetDB()->GetPasswdDeleteTime();
 }
-VOID Obj_Human::__SetPasswordDeleteTime( UINT uTime ) // ÉèÖÃÇ¿ÖÆ½â³ı¶ş¼¶ÃÜÂëµÄÊ±¼ä
+VOID Obj_Human::__SetPasswordDeleteTime( UINT uTime ) // è®¾ç½®å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç çš„æ—¶é—´
 {
     GetDB()->SetPasswdDeleteTime( uTime );
 }
 
-UINT Obj_Human::__GetPasswordDeleteRemainTime( ) // µÃµ½Ç¿ÖÆ½â³ıÃÜÂëµÄÊ£ÓàÊ±¼ä
+UINT Obj_Human::__GetPasswordDeleteRemainTime( ) // å¾—åˆ°å¼ºåˆ¶è§£é™¤å¯†ç çš„å‰©ä½™æ—¶é—´
 {
     if( __GetPasswordDeleteTime() > 0 )
     {
@@ -4192,7 +4192,7 @@ UINT Obj_Human::__GetPasswordDeleteRemainTime( ) // µÃµ½Ç¿ÖÆ½â³ıÃÜÂëµÄÊ£ÓàÊ±¼ä
     return UINT_MAX;
 }
 
-BOOL Obj_Human::__IsValidToDeletePassword( ) // ÊÇ·ñÂú×ãÇ¿ÖÆ½â³ı¶ş¼¶ÃÜÂëÌõ¼ş
+BOOL Obj_Human::__IsValidToDeletePassword( ) // æ˜¯å¦æ»¡è¶³å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç æ¡ä»¶
 {
     __ENTER_FUNCTION
 
@@ -4213,7 +4213,7 @@ BOOL Obj_Human::__IsValidToDeletePassword( ) // ÊÇ·ñÂú×ãÇ¿ÖÆ½â³ı¶ş¼¶ÃÜÂëÌõ¼ş
             return FALSE;
 }
 
-UINT Obj_Human::__GetHairColor( ) const//Í··¢ÑÕÉ« human
+UINT Obj_Human::__GetHairColor( ) const//å¤´å‘é¢œè‰² human
 {
     return m_DB.GetHairColor() ;
 }
@@ -4223,7 +4223,7 @@ VOID Obj_Human::__SetHairColor( UINT haircolor )
     GetDB()->SetHairColor(haircolor);
 }
 
-BYTE Obj_Human::__GetFaceColor( ) const//Á³ÑÕÉ« human
+BYTE Obj_Human::__GetFaceColor( ) const//è„¸é¢œè‰² human
 {
     return m_DB.GetFaceColor() ;
 }
@@ -4231,7 +4231,7 @@ VOID Obj_Human::__SetFaceColor( BYTE facecolor )
 {
     m_DB.SetFaceColor(facecolor);
 }
-BYTE Obj_Human::__GetHairModel( ) const//Í··¢Ä£ĞÍ human
+BYTE Obj_Human::__GetHairModel( ) const//å¤´å‘æ¨¡å‹ human
 {
     return m_DB.GetHairModel() ;
 }
@@ -4239,7 +4239,7 @@ VOID Obj_Human::__SetHairModel( BYTE hairmodel )
 {
     m_DB.SetHairModel(hairmodel);
 }
-BYTE Obj_Human::__GetFaceModel( ) const//Á³Ä£ĞÍ human
+BYTE Obj_Human::__GetFaceModel( ) const//è„¸æ¨¡å‹ human
 {
     return m_DB.GetFaceModel() ;
 }
@@ -4247,42 +4247,42 @@ VOID Obj_Human::__SetFaceModel( BYTE facemodel )
 {
     m_DB.SetFaceModel(facemodel);
 }
-const UINT Obj_Human::__GetOnlineTime( ) const//ÔÚÏßÊ±¼ä human
+const UINT Obj_Human::__GetOnlineTime( ) const//åœ¨çº¿æ—¶é—´ human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetOnlineTime( const UINT onlinetime )
 {
 }
-const UINT Obj_Human::__GetLastLevelUpTime( ) const//ÉÏ´ÎÉı¼¶Ê±¼ä human
+const UINT Obj_Human::__GetLastLevelUpTime( ) const//ä¸Šæ¬¡å‡çº§æ—¶é—´ human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetLastLevelUpTime( const UINT lastleveluptime )
 {
 }
-const UINT Obj_Human::__GetLastLoginTime( ) const//ÉÏ´ÎµÇÂ¼Ê±¼ä human
+const UINT Obj_Human::__GetLastLoginTime( ) const//ä¸Šæ¬¡ç™»å½•æ—¶é—´ human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetLastLoginTime( const UINT lastlogintime )
 {
 }
-const UINT Obj_Human::__GetLastLogoutTime( ) const//ÉÏ´ÎµÇ³öÊ±¼ä human
+const UINT Obj_Human::__GetLastLogoutTime( ) const//ä¸Šæ¬¡ç™»å‡ºæ—¶é—´ human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetLastLogoutTime( const UINT lastlogouttime )
 {
 }
-const INT Obj_Human::__GetBagItemCount( ) const//±³°üÖĞÎïÆ·ÊıÁ¿ human
+const INT Obj_Human::__GetBagItemCount( ) const//èƒŒåŒ…ä¸­ç‰©å“æ•°é‡ human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetBagItemCount( const INT bagitemcount )
 {
 }
-const _ITEM* Obj_Human::__GetBagItem( const INT bagindex ) const//±³°üÖĞÄ³¸öÎ»ÖÃµÄÎïÆ· human
+const _ITEM* Obj_Human::__GetBagItem( const INT bagindex ) const//èƒŒåŒ…ä¸­æŸä¸ªä½ç½®çš„ç‰©å“ human
 {
     return m_DB.GetBagItem(bagindex);
 }
@@ -4290,7 +4290,7 @@ VOID Obj_Human::__SetBagItem( const INT bagindex, const _ITEM* item )
 {
     m_DB.PutBagDB(item,bagindex);
 }
-const INT Obj_Human::__GetBankItemCount( ) const//ÒøĞĞÖĞÎïÆ·ÊıÁ¿ human
+const INT Obj_Human::__GetBankItemCount( ) const//é“¶è¡Œä¸­ç‰©å“æ•°é‡ human
 {
     return m_DB.GetBankItemCount();
 }
@@ -4298,7 +4298,7 @@ VOID Obj_Human::__SetBankItemCount( const INT Bankitemcount )
 {
     m_DB.SetBankItemCount(Bankitemcount);
 }
-const _ITEM* Obj_Human::__GetBankItem( const INT bankindex ) const//ÒøĞĞÖĞÄ³¸öÎ»ÖÃµÄÎïÆ· human
+const _ITEM* Obj_Human::__GetBankItem( const INT bankindex ) const//é“¶è¡Œä¸­æŸä¸ªä½ç½®çš„ç‰©å“ human
 {
     return m_DB.GetBankItem(bankindex);
 }
@@ -4306,7 +4306,7 @@ VOID Obj_Human::__SetBankItem( const INT bankindex, const _ITEM* item )
 {
     m_DB.SetBankItem(bankindex, item);
 }
-const INT    Obj_Human::__GetBankEndIndex( ) const//µ±Ç°ÒøĞĞµÄ´óĞ¡
+const INT    Obj_Human::__GetBankEndIndex( ) const//å½“å‰é“¶è¡Œçš„å¤§å°
 {
     return m_DB.GetBankEndIndex();
 }
@@ -4314,7 +4314,7 @@ VOID Obj_Human::__SetBankEndIndex( const INT bankindex )
 {
     return m_DB.SetBankEndIndex(bankindex);
 }
-const INT    Obj_Human::__GetBankMoney( ) const//µ±Ç°ÒøĞĞÄÚµÄÇ®Êı
+const INT    Obj_Human::__GetBankMoney( ) const//å½“å‰é“¶è¡Œå†…çš„é’±æ•°
 {
     return m_DB.GetBankMoney();
 }
@@ -4324,35 +4324,35 @@ VOID Obj_Human::__SetBankMoney( const INT money )
 }
 
 
-const INT Obj_Human::__GetEquipItemCount( ) const//×°±¸ÊıÁ¿ human
+const INT Obj_Human::__GetEquipItemCount( ) const//è£…å¤‡æ•°é‡ human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetEquipItemCount( const INT equipitemcount )
 {
 }
-const _ITEM* Obj_Human::__GetEquipItem( const INT equipindex ) const//ÉíÉÏÄ³¸öÎ»ÖÃµÄ×°±¸ human
+const _ITEM* Obj_Human::__GetEquipItem( const INT equipindex ) const//èº«ä¸ŠæŸä¸ªä½ç½®çš„è£…å¤‡ human
 {
     return NULL ;
 }
 VOID Obj_Human::__SetEquipItem( const INT equipindex, const _ITEM* item )
 {
 }
-const INT Obj_Human::__GetMissionCount( ) const//½ÓÊÜµÄÈÎÎñÊıÁ¿ human
+const INT Obj_Human::__GetMissionCount( ) const//æ¥å—çš„ä»»åŠ¡æ•°é‡ human
 {
     return 0 ;
 }
 VOID Obj_Human::__SetMissionCount( const INT missioncount )
 {
 }
-const _OWN_MISSION* Obj_Human::__GetMission( const INT missionindex ) const//Ä³¸öÈÎÎñÊı¾İ human
+const _OWN_MISSION* Obj_Human::__GetMission( const INT missionindex ) const//æŸä¸ªä»»åŠ¡æ•°æ® human
 {
     return NULL ;
 }
 VOID Obj_Human::__SetMission( const INT missionindex, _OWN_MISSION* mission )
 {
 }
-const BOOL Obj_Human::__IsMissionHaveDone( MissionID_t missionid ) const//ÅĞ¶ÏÄ³¸öÈÎÎñÊÇ·ñÍê³É human
+const BOOL Obj_Human::__IsMissionHaveDone( MissionID_t missionid ) const//åˆ¤æ–­æŸä¸ªä»»åŠ¡æ˜¯å¦å®Œæˆ human
 {
     return FALSE ;
 }
@@ -4377,7 +4377,7 @@ const BOOL Obj_Human::__IsAbilityHaveLearned(AbilityID_t abilityid) const
 
             return FALSE;
 }
-const INT Obj_Human::__GetAbilityLevel( const AbilityID_t abilityid ) const//Ä³¸öÉú»î¼¼ÄÜ¼¶±ğ human
+const INT Obj_Human::__GetAbilityLevel( const AbilityID_t abilityid ) const//æŸä¸ªç”Ÿæ´»æŠ€èƒ½çº§åˆ« human
 {
     __ENTER_FUNCTION
 
@@ -4400,7 +4400,7 @@ VOID Obj_Human::__SetAbilityLevel( const AbilityID_t abilityid, INT lvl)
 
     __LEAVE_FUNCTION
 }
-const INT Obj_Human::__GetAbilityExp( const AbilityID_t abilityid ) const//Ä³¸öÉú»î¼¼ÄÜÊìÁ·¶È human
+const INT Obj_Human::__GetAbilityExp( const AbilityID_t abilityid ) const//æŸä¸ªç”Ÿæ´»æŠ€èƒ½ç†Ÿç»ƒåº¦ human
 {
     __ENTER_FUNCTION
 
@@ -4421,7 +4421,7 @@ VOID Obj_Human::__SetAbilityExp( const AbilityID_t abilityid, INT exp )
         m_DB.SetAbilityExp(abilityid,exp);
     __LEAVE_FUNCTION
 }
-const BOOL Obj_Human::__IsPrescrHaveLearned( const PrescriptionID_t prescrid ) const //Ä³¸öÅä·½ÊÇ·ñÑ§»á human
+const BOOL Obj_Human::__IsPrescrHaveLearned( const PrescriptionID_t prescrid ) const //æŸä¸ªé…æ–¹æ˜¯å¦å­¦ä¼š human
 {
     __ENTER_FUNCTION
 
@@ -4453,14 +4453,14 @@ VOID Obj_Human::__SetPrescrLearnedFlag( const PrescriptionID_t prescrid, BOOL fl
         m_DB.SetPrescrLearnedFlag(prescrid,flag);
     __LEAVE_FUNCTION
 }
-const _ITEM_EFFECT* Obj_Human::__GetItemEffect( const INT index ) const//×°±¸Ğ§¹û human
+const _ITEM_EFFECT* Obj_Human::__GetItemEffect( const INT index ) const//è£…å¤‡æ•ˆæœ human
 {
     return &m_pItemEffect[index] ;
 }
 VOID Obj_Human::__SetItemEffect( const INT index, _ITEM_EFFECT* itemeffect )
 {
 }
-const _ITEM_VALUE Obj_Human::__GetItemValue( const INT index ) const//×°±¸Ğ§¹ûÖµ human
+const _ITEM_VALUE Obj_Human::__GetItemValue( const INT index ) const//è£…å¤‡æ•ˆæœå€¼ human
 {
     return m_pItemEffect[index].m_Attr ;
 }
@@ -4479,7 +4479,7 @@ VOID Obj_Human::__SetLastTurnPickTime(UINT uTime)
     m_uLastTurnPickTime = uTime;
 }
 
-const TeamID_t Obj_Human::__GetTeamID( ) const //¶ÓÎéºÅ human
+const TeamID_t Obj_Human::__GetTeamID( ) const //é˜Ÿä¼å· human
 {
     return m_TeamInfo.GetTeamID();
 }
@@ -4487,15 +4487,15 @@ VOID Obj_Human::__SetTeamID( const TeamID_t teamid )
 {
     m_TeamInfo.SetTeamID( teamid );
 }
-BOOL Obj_Human::__IsTeamLeader( ) const // ÊÇ·ñ¶Ó³¤
+BOOL Obj_Human::__IsTeamLeader( ) const // æ˜¯å¦é˜Ÿé•¿
 {
     return m_TeamInfo.IsLeader();
 }
-const INT Obj_Human::__GetTeamMemberCount( ) const //¶ÓÎéÖĞ³ÉÔ±ÊıÁ¿ human
+const INT Obj_Human::__GetTeamMemberCount( ) const //é˜Ÿä¼ä¸­æˆå‘˜æ•°é‡ human
 {
     return m_TeamInfo.GetTeamMemberCount();
 }
-const TEAMMEMBER* Obj_Human::__GetTeamMember( const INT memberindex ) const //È¡µÃ¶ÓÎéÖĞÄ³¸ö³ÉÔ±
+const TEAMMEMBER* Obj_Human::__GetTeamMember( const INT memberindex ) const //å–å¾—é˜Ÿä¼ä¸­æŸä¸ªæˆå‘˜
 {
     return m_TeamInfo.GetTeamMember( memberindex );
 }
@@ -4503,57 +4503,57 @@ VOID Obj_Human::__AddTeamMember( const TEAMMEMBER* member )
 {
     m_TeamInfo.AddMember( member );
 }
-const INT Obj_Human::__GetTeamSceneMemberCount( ) const //¶ÓÎéÖĞÍ¬³¡¾°³ÉÔ±ÊıÁ¿ human
+const INT Obj_Human::__GetTeamSceneMemberCount( ) const //é˜Ÿä¼ä¸­åŒåœºæ™¯æˆå‘˜æ•°é‡ human
 {
     return m_TeamInfo.GetSceneMemberCount();
 }
-const ObjID_t Obj_Human::__GetTeamSceneMember( const INT memberindex ) const //È¡µÃ¶ÓÎéÖĞÄ³Í¬³¡¾°³ÉÔ±µÄ OBJID
+const ObjID_t Obj_Human::__GetTeamSceneMember( const INT memberindex ) const //å–å¾—é˜Ÿä¼ä¸­æŸåŒåœºæ™¯æˆå‘˜çš„ OBJID
 {
     return m_TeamInfo.GetSceneMemberObjID(memberindex);
 }
 
-VOID Obj_Human::__SetTeamFollowFlag( BOOL flag ) // ÉèÖÃ¶ÓÎé¸úËæ×´Ì¬
+VOID Obj_Human::__SetTeamFollowFlag( BOOL flag ) // è®¾ç½®é˜Ÿä¼è·ŸéšçŠ¶æ€
 {
     m_TeamInfo.SetTeamFollowFlag(flag);
 }
 
-const BOOL Obj_Human::__GetTeamFollowFlag( ) const // »ñµÃ¶ÓÎé¸úËæ×´Ì¬
+const BOOL Obj_Human::__GetTeamFollowFlag( ) const // è·å¾—é˜Ÿä¼è·ŸéšçŠ¶æ€
 {
     return m_TeamInfo.GetTeamFollowFlag();
 }
 
-VOID Obj_Human::__AddFollowedMember( const _FOLLOWEDMEMBER& FollowedMember) // Ôö¼ÓÒ»¸ö¸úËæµÄ¶ÓÔ±
+VOID Obj_Human::__AddFollowedMember( const _FOLLOWEDMEMBER& FollowedMember) // å¢åŠ ä¸€ä¸ªè·Ÿéšçš„é˜Ÿå‘˜
 {
     m_TeamInfo.AddFollowedMember( FollowedMember );
 }
 
-VOID Obj_Human::__DelFollowedMember( GUID_t guid ) // ÒÆ³öÒ»¸ö¸úËæ¶ÓÔ±
+VOID Obj_Human::__DelFollowedMember( GUID_t guid ) // ç§»å‡ºä¸€ä¸ªè·Ÿéšé˜Ÿå‘˜
 {
     m_TeamInfo.DelFollowedMember( guid );
 }
 
-const INT Obj_Human::__GetFollowedMembersCount() const // µÃµ½¸úËæ×´Ì¬µÄ¶ÓÓÑÊıÁ¿
+const INT Obj_Human::__GetFollowedMembersCount() const // å¾—åˆ°è·ŸéšçŠ¶æ€çš„é˜Ÿå‹æ•°é‡
 {
     return m_TeamInfo.GetFollowedMembersCount();
 }
 
-const _FOLLOWEDMEMBER* Obj_Human::__GetFollowedMember( INT i ) const // µÃµ½µÚ i ¸ö¸úËæµÄ¶ÓÓÑ
+const _FOLLOWEDMEMBER* Obj_Human::__GetFollowedMember( INT i ) const // å¾—åˆ°ç¬¬ i ä¸ªè·Ÿéšçš„é˜Ÿå‹
 {
     Assert( i>-1 && i<m_TeamInfo.GetFollowedMembersCount() );
     return m_TeamInfo.GetFollowedMember(i);
 }
 
-VOID Obj_Human::__ClearFollowedMembers() // Çå³ıËùÓĞµÄ¸úËæ¶ÓÓÑÁĞ±í
+VOID Obj_Human::__ClearFollowedMembers() // æ¸…é™¤æ‰€æœ‰çš„è·Ÿéšé˜Ÿå‹åˆ—è¡¨
 {
     m_TeamInfo.ClearFollowedMembers();
 }
 
-const FLOAT Obj_Human::__GetTeamFollowSpeed( ) const // µÃµ½×é¶Ó¸úËæµÄËÙ¶È
+const FLOAT Obj_Human::__GetTeamFollowSpeed( ) const // å¾—åˆ°ç»„é˜Ÿè·Ÿéšçš„é€Ÿåº¦
 {
     return m_fTeamFollowSpeed;
 }
 
-VOID Obj_Human::__SetTeamFollowSpeed( FLOAT fSpeed ) // ÉèÖÃ×é¶Ó¸úËæµÄËÙ¶È
+VOID Obj_Human::__SetTeamFollowSpeed( FLOAT fSpeed ) // è®¾ç½®ç»„é˜Ÿè·Ÿéšçš„é€Ÿåº¦
 {
     __ENTER_FUNCTION
 
@@ -4568,7 +4568,7 @@ VOID Obj_Human::__SetTeamFollowSpeed( FLOAT fSpeed ) // ÉèÖÃ×é¶Ó¸úËæµÄËÙ¶È
     __LEAVE_FUNCTION
 }
 
-VOID Obj_Human::__OutOfTeamFollowRange() // ³¬³ö×é¶Ó¸úËæ·¶Î§
+VOID Obj_Human::__OutOfTeamFollowRange() // è¶…å‡ºç»„é˜Ÿè·ŸéšèŒƒå›´
 {
     if( m_OutofTeamFollowRangeTime == 0 )
     {
@@ -4581,7 +4581,7 @@ VOID Obj_Human::__OutOfTeamFollowRange() // ³¬³ö×é¶Ó¸úËæ·¶Î§
     }
 }
 
-VOID Obj_Human::__InTeamFollowRange() // ÔÚ×é¶Ó¸úËæ·¶Î§ÄÚ
+VOID Obj_Human::__InTeamFollowRange() // åœ¨ç»„é˜Ÿè·ŸéšèŒƒå›´å†…
 {
     if( m_OutofTeamFollowRangeTime > 0 )
     {
@@ -4589,17 +4589,17 @@ VOID Obj_Human::__InTeamFollowRange() // ÔÚ×é¶Ó¸úËæ·¶Î§ÄÚ
     }
 }
 
-const BOOL Obj_Human::__GetTeamFollowSpeedUp( ) const // »ñµÃ×é¶Ó¸úËæ¼ÓËÙ×´Ì¬
+const BOOL Obj_Human::__GetTeamFollowSpeedUp( ) const // è·å¾—ç»„é˜Ÿè·ŸéšåŠ é€ŸçŠ¶æ€
 {
     return m_bTeamFollowSpeedUp;
 }
 
-VOID Obj_Human::__SetTeamFollowSpeedUp( BOOL bSpeedUp ) // ÉèÖÃ×é¶Ó¸úËæ¼ÓËÙ×´Ì¬
+VOID Obj_Human::__SetTeamFollowSpeedUp( BOOL bSpeedUp ) // è®¾ç½®ç»„é˜Ÿè·ŸéšåŠ é€ŸçŠ¶æ€
 {
     m_bTeamFollowSpeedUp = bSpeedUp;
 }
 
-VOID Obj_Human::__StopTeamFollow( BOOL bWorldFlag ) // Í£Ö¹¸úËæ
+VOID Obj_Human::__StopTeamFollow( BOOL bWorldFlag ) // åœæ­¢è·Ÿéš
 {
     __ENTER_FUNCTION
 
@@ -4616,9 +4616,9 @@ VOID Obj_Human::__StopTeamFollow( BOOL bWorldFlag ) // Í£Ö¹¸úËæ
     if ( __GetTeamFollowFlag() )
     {
         if ( pTeamInfo->IsLeader() )
-        { // ¶Ó³¤ÍË³ö
+        { // é˜Ÿé•¿é€€å‡º
             for( INT i=__GetFollowedMembersCount()-1; i>=0; --i)
-            { // Ã¿¸öÈË¶¼×Ô¶¯ÍË³ö
+            { // æ¯ä¸ªäººéƒ½è‡ªåŠ¨é€€å‡º
                 Obj_Human* pMember;
 
                 pMember = __GetFollowedMember(i)->m_pHuman;
@@ -4644,18 +4644,18 @@ VOID Obj_Human::__StopTeamFollow( BOOL bWorldFlag ) // Í£Ö¹¸úËæ
         {
             pLeader = __GetFollowedMember(0)->m_pHuman;
             if( pLeader==NULL )
-            { // Ã»ÓĞÕÒµ½¶Ó³¤
+            { // æ²¡æœ‰æ‰¾åˆ°é˜Ÿé•¿
                 bLeaderExist = FALSE;
             }
 
             GUID_t guid = GetGUID();
 
-            __DelFollowedMember( guid ); // ÏÈ×Ô¼º°Ñ×Ô¼ºÇåÁË
+            __DelFollowedMember( guid ); // å…ˆè‡ªå·±æŠŠè‡ªå·±æ¸…äº†
             GetHumanAI()->PushCommand_StopTeamFollow();
             __SetTeamFollowFlag( FALSE );
 
             for( INT i=__GetFollowedMembersCount()-1; i>=0; --i)
-            { // ÆäËû¸úËæ×´Ì¬µÄ¶ÓÓÑ¶¼ÒÆ³öËû
+            { // å…¶ä»–è·ŸéšçŠ¶æ€çš„é˜Ÿå‹éƒ½ç§»å‡ºä»–
                 Obj_Human* pMember = __GetFollowedMember(i)->m_pHuman;
 
                 if ( pMember!=NULL )
@@ -4664,18 +4664,18 @@ VOID Obj_Human::__StopTeamFollow( BOOL bWorldFlag ) // Í£Ö¹¸úËæ
                 }
             }
 
-            __ClearFollowedMembers(); // Çå³ıÕû¸ö¸úËæÁĞ±í
+            __ClearFollowedMembers(); // æ¸…é™¤æ•´ä¸ªè·Ÿéšåˆ—è¡¨
 
             GCReturnTeamFollow RetMsg;
 
             RetMsg.SetReturn( TF_RESULT_STOP_FOLLOW );
             RetMsg.SetGUID( guid );
 
-            GetPlayer()->SendPacket( &RetMsg ); // ·¢¸ø×Ô¼º
+            GetPlayer()->SendPacket( &RetMsg ); // å‘ç»™è‡ªå·±
 
             if ( bLeaderExist )
             {
-                pLeader->GetPlayer()->SendPacket( &RetMsg ); // ·¢¸ø¶Ó³¤
+                pLeader->GetPlayer()->SendPacket( &RetMsg ); // å‘ç»™é˜Ÿé•¿
             }
         }
 
@@ -4725,7 +4725,7 @@ VOID Obj_Human::ChangeScene( SceneID_t sSceneID, SceneID_t dSceneID, const WORLD
         if( pDestScene->GetSceneType() == SCENE_TYPE_COPY )
         {
             if( pDestScene->GetSceneStatus() != SCENE_STATUS_RUNNING )
-            {//Èç¹ûÄ¿±ê³¡¾°²»ÊÇÔËĞĞ×´Ì¬µÄ¸±±¾£¬²»ÄÜ·¢ËÍ´«ËÍÏûÏ¢
+            {//å¦‚æœç›®æ ‡åœºæ™¯ä¸æ˜¯è¿è¡ŒçŠ¶æ€çš„å‰¯æœ¬ï¼Œä¸èƒ½å‘é€ä¼ é€æ¶ˆæ¯
                 return ;
             }
 
@@ -4743,7 +4743,7 @@ VOID Obj_Human::ChangeScene( SceneID_t sSceneID, SceneID_t dSceneID, const WORLD
 VOID Obj_Human::CreateCity( SceneID_t PortSceneID)
 {
     __ENTER_FUNCTION
-        //ÔİÊ±Ò»¸ö³¡¾°Ö»ÄÜ¹ÒÒ»¸ö³ÇÊĞ
+        //æš‚æ—¶ä¸€ä¸ªåœºæ™¯åªèƒ½æŒ‚ä¸€ä¸ªåŸå¸‚
         Scene* pPortScene = g_pSceneManager->GetScene(PortSceneID);
     for(INT    i = 0; i<MAX_CITY_PORT; i++)
     {
@@ -4766,11 +4766,11 @@ VOID Obj_Human::DeleteCity( SceneID_t PortSceneID, INT iSceneIndex)
     __ENTER_FUNCTION
         Scene* pPortScene = g_pSceneManager->GetScene(PortSceneID);
     if(pPortScene->m_CityData.m_ScenePortList[iSceneIndex] != INVALID_ID)
-    {//´æÔÚ´Ë³ÇÊĞ
+    {//å­˜åœ¨æ­¤åŸå¸‚
         Scene* pCityScene = g_pSceneManager->GetScene(pPortScene->m_CityData.m_ScenePortList[iSceneIndex]);
         Assert(pCityScene);
         if(!pCityScene->m_SceneInitData.m_CityData.m_Guid.isNull() && pCityScene->m_SceneInitData.m_nDataType == SCENE_TYPE_CIT)
-        {//³ÇÊĞIDÓĞĞ§
+        {//åŸå¸‚IDæœ‰æ•ˆ
             _CITY_GUID CityGuid = pCityScene->m_SceneInitData.m_CityData.m_Guid;
             GWCityClose* pMsgToWorld = (GWCityClose*)g_pPacketFactoryManager->CreatePacket(PACKET_GW_CITYCLOSE);
             pMsgToWorld->SetCityGuid(CityGuid);
@@ -4806,7 +4806,7 @@ VOID Obj_Human::ChangeCityBuilding( SceneID_t SceneID, INT BuildingID, INT Build
 VOID Obj_Human::OnArmorAbrasion(VOID)
 {
     __ENTER_FUNCTION
-        // ×°±¸ÄÍ¾Ã¶È
+        // è£…å¤‡è€ä¹…åº¦
         GCDetailEquipList msgDetailEquipList;
     msgDetailEquipList.setObjID(GetID());
     msgDetailEquipList.SetAskMode(ASK_EQUIP_SET);
@@ -4887,7 +4887,7 @@ VOID Obj_Human::UpdateViewCharacter(VOID)
 
     if(getZoneID() != INVALID_ID)
     {
-        // ·´ÒşÊı¾İ¸Ä±ä
+        // åéšæ•°æ®æ”¹å˜
         if(m_nView_PrevLevel != GetLevel()
             || m_nView_PrevDetectLevel != GetDetectLevel())
         {
@@ -4924,7 +4924,7 @@ VOID Obj_Human::UpdateViewCharacter(VOID)
                     }
                 }
             }
-            // ·ÅÔÚ×îºó
+            // æ”¾åœ¨æœ€å
             m_nView_PrevLevel        = GetLevel();
             m_nView_PrevDetectLevel    = GetDetectLevel();
         }
@@ -5086,7 +5086,7 @@ VOID Obj_Human::OnHumanLogin( )
         return ;
     Impact_FadeOutAllOfflineFadeImpact();
     if( GetDB()->GetLogoutTime() == 0 )
-    {//ĞÂÓÃ»§µÚÒ»´ÎµÇÂ½ÓÎÏ·£¬·¢ËÍÌáÊ¾ÓÊ¼ş
+    {//æ–°ç”¨æˆ·ç¬¬ä¸€æ¬¡ç™»é™†æ¸¸æˆï¼Œå‘é€æç¤ºé‚®ä»¶
         pScene->OnScenePlayerFirstLogin( this ) ;
 
         GCCharFirstLogin msg;
@@ -5107,7 +5107,7 @@ VOID                    Obj_Human::SetWallow( FLOAT fWallow )
     if( m_fWallow == WALLOW_HALF_INCOME )
     {
         CHAR szContex[256] ;
-        sprintf( szContex, "ÄãÒÑ½øÈë·À³ÁÃÔ×´Ì¬£¬ÊÕÒæ¼õ°ë£¡" ) ;
+        sprintf( szContex, "ä½ å·²è¿›å…¥é˜²æ²‰è¿·çŠ¶æ€ï¼Œæ”¶ç›Šå‡åŠï¼" ) ;
         GCChat Msg ;
         Msg.SetChatType( CHAT_TYPE_SYSTEM ) ;
         Msg.SetContex( szContex ) ;
@@ -5118,7 +5118,7 @@ VOID                    Obj_Human::SetWallow( FLOAT fWallow )
     else if( m_fWallow == WALLOW_NONE )
     {
         CHAR szContex[256] ;
-        sprintf( szContex, "ÄãÒÑ½øÈë·À³ÁÃÔ×´Ì¬£¬²»»á»ñµÃÊÕÒæ£¡" ) ;
+        sprintf( szContex, "ä½ å·²è¿›å…¥é˜²æ²‰è¿·çŠ¶æ€ï¼Œä¸ä¼šè·å¾—æ”¶ç›Šï¼" ) ;
         GCChat Msg ;
         Msg.SetChatType( CHAT_TYPE_SYSTEM ) ;
         Msg.SetContex( szContex ) ;

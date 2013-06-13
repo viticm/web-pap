@@ -82,7 +82,7 @@ BOOL    HumanItemContainer::SetItem(const INT nIndex, const Item* pItem )
     return  FALSE;
 }
 
-//ÉèÖÃÎïÆ·ÖØµşÊıÁ¿
+//è®¾ç½®ç‰©å“é‡å æ•°é‡
 VOID        HumanItemContainer::SetItemLayCount(INT nIndex, INT nCount) 
 {
     __ENTER_FUNCTION
@@ -97,7 +97,7 @@ VOID        HumanItemContainer::SetItemLayCount(INT nIndex, INT nCount)
     __LEAVE_FUNCTION
 
 }
-//¼õÉÙÎïÆ·ÖØµşÊıÁ¿
+//å‡å°‘ç‰©å“é‡å æ•°é‡
 BOOL        HumanItemContainer::DecItemLayCount(INT nIndex, INT nCount)
 {
     __ENTER_FUNCTION
@@ -115,7 +115,7 @@ BOOL        HumanItemContainer::DecItemLayCount(INT nIndex, INT nCount)
 
     return FALSE;
 }
-//Ôö¼ÓÎïÆ·ÖØµşÊıÁ¿
+//å¢åŠ ç‰©å“é‡å æ•°é‡
 BOOL        HumanItemContainer::IncItemLayCount(INT nIndex, INT nCount)
 {
     __ENTER_FUNCTION
@@ -137,7 +137,7 @@ BOOL        HumanItemContainer::IncItemLayCount(INT nIndex, INT nCount)
     return FALSE;
 }
 
-//É¾³ıÎïÆ·
+//åˆ é™¤ç‰©å“
 BOOL        HumanItemContainer::EraseItem(UINT uIndex)
 {
     __ENTER_FUNCTION
@@ -158,7 +158,7 @@ BOOL        HumanItemContainer::EraseItem(UINT uIndex)
     return FALSE;
 }
 
-//ÉèÖÃÎïÆ·ÄÍ¾Ã¶È
+//è®¾ç½®ç‰©å“è€ä¹…åº¦
 BOOL            HumanItemContainer::SetItemDur(INT nIndex, INT nDur)
 {
     __ENTER_FUNCTION
@@ -178,7 +178,7 @@ BOOL            HumanItemContainer::SetItemDur(INT nIndex, INT nDur)
 
         return FALSE;
 }
-//ÉèÖÃÎïÆ·ËğÉËµã
+//è®¾ç½®ç‰©å“æŸä¼¤ç‚¹
 BOOL        HumanItemContainer::SetItemDamagePoint(INT nIndex, INT nPoint)
 {
     __ENTER_FUNCTION
@@ -200,7 +200,7 @@ BOOL        HumanItemContainer::SetItemDamagePoint(INT nIndex, INT nPoint)
 }
 
 
-//ÉèÖÃÎïÆ·×î´óÄÍ¾Ã¶È
+//è®¾ç½®ç‰©å“æœ€å¤§è€ä¹…åº¦
 BOOL            HumanItemContainer::SetItemMaxDur(INT nIndex, INT nDur)
 {
     __ENTER_FUNCTION
@@ -300,7 +300,7 @@ BOOL HumanItemContainer::SetItemCreator(INT nIndex,const CHAR* CreatorName)
 }
 
 
-//Ôö¼ÓÎïÆ·ÊôĞÔ
+//å¢åŠ ç‰©å“å±æ€§
 BOOL        HumanItemContainer::AddItemAttr(INT nIndex,_ITEM_ATTR iA)
 {
 __ENTER_FUNCTION
@@ -322,7 +322,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-//É¾³ıÎïÆ·ÊôĞÔ
+//åˆ é™¤ç‰©å“å±æ€§
 BOOL        HumanItemContainer::DelItemAttr(INT nIndex,_ITEM_ATTR iA)
 {
 __ENTER_FUNCTION
@@ -344,7 +344,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-//É¾³ı±¦Ê¯ĞÅÏ¢
+//åˆ é™¤å®çŸ³ä¿¡æ¯
 BOOL        HumanItemContainer::DelGemInfo(INT nIndex,INT GemIndex)
 {
 __ENTER_FUNCTION
@@ -366,7 +366,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-//Ìí¼Ó±¦Ê¯ĞÅÏ¢
+//æ·»åŠ å®çŸ³ä¿¡æ¯
 BOOL        HumanItemContainer::AddGemInfo(INT nIndex,INT& GemIndex,UINT GemType)
 {
 __ENTER_FUNCTION
@@ -426,7 +426,7 @@ BOOL    HumanItemContainer::SetDBDirty(INT OffSet)
 
     default:
         {
-            AssertEx(FALSE,"ÎŞĞ§ÈİÆ÷ÀàĞÍ");
+            AssertEx(FALSE,"æ— æ•ˆå®¹å™¨ç±»å‹");
             return FALSE;
         }
     }

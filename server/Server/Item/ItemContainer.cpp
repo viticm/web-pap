@@ -169,7 +169,7 @@ UINT    ItemContainer::CalcExchangeItemSpace()
 
     for( INT i=0; i<m_nContainerSize; i++ )
     {
-        //¶ÔÓÚÒÑ¾­»»³öµÄÎïÆ·,¿ÉÒÔµ±×÷¿Õ¸ñÀ´¼ÆËã
+        //å¯¹äºå·²ç»æ¢å‡ºçš„ç‰©å“,å¯ä»¥å½“ä½œç©ºæ ¼æ¥è®¡ç®—
         if( m_aItem[i].IsEmpty() || m_aItem[i].IsInExchange())
         {
             uCount++ ;
@@ -308,7 +308,7 @@ VOID    ItemContainer::SetItemLayCount(INT nIndex, INT nCount)
     __LEAVE_FUNCTION
 
 }
-//¼õÉÙÎïÆ·ÖØµşÊıÁ¿
+//å‡å°‘ç‰©å“é‡å æ•°é‡
 BOOL    ItemContainer::DecItemLayCount( INT nIndex,INT nCount) 
 {
     __ENTER_FUNCTION
@@ -329,7 +329,7 @@ BOOL    ItemContainer::DecItemLayCount( INT nIndex,INT nCount)
         return FALSE;
 
 }
-//Ôö¼ÓÎïÆ·ÖØµşÊıÁ¿
+//å¢åŠ ç‰©å“é‡å æ•°é‡
 BOOL    ItemContainer::IncItemLayCount(INT nIndex, INT nCount/* =1 */)
 {
     __ENTER_FUNCTION
@@ -386,7 +386,7 @@ BOOL    ItemContainer::SetItemDur(INT nIndex, INT nDur)
     
     if(pItem->GetItemClass()!=ICLASS_EQUIP)
     {
-        AssertEx(pItem->GetItemClass()==ICLASS_EQUIP,"·Ç×°±¸²»ÄÜÉèÖÃÄÍ¾Ã¶È");
+        AssertEx(pItem->GetItemClass()==ICLASS_EQUIP,"éè£…å¤‡ä¸èƒ½è®¾ç½®è€ä¹…åº¦");
         return FALSE;
     }
     pItem->m_pItem->GetEquipData()->m_CurDurPoint    =    nDur;
@@ -412,7 +412,7 @@ BOOL    ItemContainer::SetItemDamagePoint(INT nIndex, INT nPoint)
 
     if(pItem->GetItemClass()!=ICLASS_EQUIP)
     {
-        AssertEx(pItem->GetItemClass()==ICLASS_EQUIP,"·Ç×°±¸²»ÄÜÉèÖÃËğÉË¶È");
+        AssertEx(pItem->GetItemClass()==ICLASS_EQUIP,"éè£…å¤‡ä¸èƒ½è®¾ç½®æŸä¼¤åº¦");
         return FALSE;
     }
     pItem->m_pItem->GetEquipData()->m_CurDamagePoint    =    nPoint;
@@ -438,10 +438,10 @@ BOOL    ItemContainer::SetItemMaxDur(INT nIndex, INT nDur)
 
     if(pItem->GetItemClass()!=ICLASS_EQUIP)
     {
-        AssertEx(pItem->GetItemClass()==ICLASS_EQUIP,"·Ç×°±¸²»ÄÜÉèÖÃÄÍ¾Ã¶È");
+        AssertEx(pItem->GetItemClass()==ICLASS_EQUIP,"éè£…å¤‡ä¸èƒ½è®¾ç½®è€ä¹…åº¦");
         return FALSE;
     }
-    AssertEx(nDur<=255,"×°±¸×î´óÄÍ¾Ã¶È255");
+    AssertEx(nDur<=255,"è£…å¤‡æœ€å¤§è€ä¹…åº¦255");
     pItem->m_pItem->GetEquipData()->m_MaxDurPoint    =    nDur;
 
     return TRUE;
@@ -543,7 +543,7 @@ BOOL    ItemContainer::SetItemIdent(INT nIndex)
     return FALSE;
 }
 
-//ÉèÖÃÎïÆ·ĞŞÀí´ÎÊı
+//è®¾ç½®ç‰©å“ä¿®ç†æ¬¡æ•°
 BOOL    ItemContainer::SetItemFailTimes(INT nIndex, INT nTimes)
 {
     __ENTER_FUNCTION
@@ -751,7 +751,7 @@ BOOL ItemContainer::SetItemGuid(INT nIndex,PET_GUID_t* pGUID)
         return FALSE;
 }
 
-BOOL  ItemContainer::SetPetGUID(INT nIndex,PET_GUID_t GUID)                 //ÉèÖÃ³èÎïGUID
+BOOL  ItemContainer::SetPetGUID(INT nIndex,PET_GUID_t GUID)                 //è®¾ç½®å® ç‰©GUID
 {
     __ENTER_FUNCTION
 
@@ -774,7 +774,7 @@ BOOL  ItemContainer::SetPetGUID(INT nIndex,PET_GUID_t GUID)                 //Éè
     return FALSE;
 }
 
-BOOL  ItemContainer::SetSpouseGUID(INT nIndex,PET_GUID_t GUID)                 //ÉèÖÃ³èÎïGUID
+BOOL  ItemContainer::SetSpouseGUID(INT nIndex,PET_GUID_t GUID)                 //è®¾ç½®å® ç‰©GUID
 {
     __ENTER_FUNCTION
 
@@ -796,7 +796,7 @@ BOOL  ItemContainer::SetSpouseGUID(INT nIndex,PET_GUID_t GUID)                 /
 
     return FALSE;
 }
-BOOL  ItemContainer::SetDataID(INT nIndex,INT ID)                            //ÉèÖÃ³èÎïÄ£ĞÍ        
+BOOL  ItemContainer::SetDataID(INT nIndex,INT ID)                            //è®¾ç½®å® ç‰©æ¨¡å‹        
 {
     __ENTER_FUNCTION
 
@@ -818,7 +818,7 @@ BOOL  ItemContainer::SetDataID(INT nIndex,INT ID)                            //É
 
     return FALSE;
 }
-BOOL  ItemContainer::SetName(INT nIndex,const CHAR* pName)                        //ÉèÖÃÃû×Ö
+BOOL  ItemContainer::SetName(INT nIndex,const CHAR* pName)                        //è®¾ç½®åå­—
 {
     __ENTER_FUNCTION
 
@@ -840,7 +840,7 @@ BOOL  ItemContainer::SetName(INT nIndex,const CHAR* pName)                      
 
     return FALSE;
 }
-BOOL  ItemContainer::SetNick(INT nIndex,const CHAR* pNick)                        //ÉèÖÃêÇ³Æ
+BOOL  ItemContainer::SetNick(INT nIndex,const CHAR* pNick)                        //è®¾ç½®æ˜µç§°
 {
     __ENTER_FUNCTION
 
@@ -860,7 +860,7 @@ BOOL  ItemContainer::SetNick(INT nIndex,const CHAR* pNick)                      
 
     return FALSE;
 }
-BOOL  ItemContainer::SetLevel(INT nIndex,INT level)                            //ÉèÖÃµÈ¼¶
+BOOL  ItemContainer::SetLevel(INT nIndex,INT level)                            //è®¾ç½®ç­‰çº§
 {
     __ENTER_FUNCTION
 
@@ -881,7 +881,7 @@ BOOL  ItemContainer::SetLevel(INT nIndex,INT level)                            /
     return FALSE;
 }
 
-BOOL  ItemContainer::SetTakeLevel(INT nIndex,INT takeLevel)                    //ÉèÖÃĞ¯´øµÈ¼¶
+BOOL  ItemContainer::SetTakeLevel(INT nIndex,INT takeLevel)                    //è®¾ç½®æºå¸¦ç­‰çº§
 {
     __ENTER_FUNCTION
 
@@ -901,7 +901,7 @@ BOOL  ItemContainer::SetTakeLevel(INT nIndex,INT takeLevel)                    /
 
     return FALSE;
 }
-BOOL  ItemContainer::SetAttackType(INT nIndex,INT attackType)                //ÉèÖÃ½ø¹¥ÀàĞÍ£¨Îï/·¨£©
+BOOL  ItemContainer::SetAttackType(INT nIndex,INT attackType)                //è®¾ç½®è¿›æ”»ç±»å‹ï¼ˆç‰©/æ³•ï¼‰
 {
     __ENTER_FUNCTION
 
@@ -921,7 +921,7 @@ BOOL  ItemContainer::SetAttackType(INT nIndex,INT attackType)                //É
 
     return FALSE;
 }
-BOOL  ItemContainer::SetAIType(INT nIndex,INT AIType)                        //ÉèÖÃAIÀàĞÍ
+BOOL  ItemContainer::SetAIType(INT nIndex,INT AIType)                        //è®¾ç½®AIç±»å‹
 {
     __ENTER_FUNCTION
 
@@ -941,7 +941,7 @@ BOOL  ItemContainer::SetAIType(INT nIndex,INT AIType)                        //É
 
     return FALSE;
 }
-BOOL  ItemContainer::SetCampData(INT nIndex,const _CAMP_DATA* pCamp)        //ÉèÖÃÕóÓª
+BOOL  ItemContainer::SetCampData(INT nIndex,const _CAMP_DATA* pCamp)        //è®¾ç½®é˜µè¥
 {
     __ENTER_FUNCTION
 
@@ -961,7 +961,7 @@ BOOL  ItemContainer::SetCampData(INT nIndex,const _CAMP_DATA* pCamp)        //Éè
 
     return FALSE;
 }
-BOOL  ItemContainer::SetHP(INT nIndex,INT hp)                                //ÉèÖÃÉúÃüÖµ
+BOOL  ItemContainer::SetHP(INT nIndex,INT hp)                                //è®¾ç½®ç”Ÿå‘½å€¼
 {
     __ENTER_FUNCTION
 
@@ -982,7 +982,7 @@ BOOL  ItemContainer::SetHP(INT nIndex,INT hp)                                //É
     return FALSE;
 }
 
-BOOL  ItemContainer::SetLife(INT nIndex,INT Life)                            //ÉèÖÃµ±Ç°ÊÙÃü
+BOOL  ItemContainer::SetLife(INT nIndex,INT Life)                            //è®¾ç½®å½“å‰å¯¿å‘½
 {
     __ENTER_FUNCTION
 
@@ -1003,7 +1003,7 @@ BOOL  ItemContainer::SetLife(INT nIndex,INT Life)                            //É
 
     return FALSE;
 }
-BOOL  ItemContainer::SetPetType(INT nIndex,BYTE PetType)                    //±¦±¦£¬±äÒì£¬Ò°Éú
+BOOL  ItemContainer::SetPetType(INT nIndex,BYTE PetType)                    //å®å®ï¼Œå˜å¼‚ï¼Œé‡ç”Ÿ
 {
     __ENTER_FUNCTION
 
@@ -1022,7 +1022,7 @@ BOOL  ItemContainer::SetPetType(INT nIndex,BYTE PetType)                    //±¦
 
     return FALSE;
 }
-BOOL  ItemContainer::SetGeneration(INT nIndex,BYTE Gen)                        //¼¸´ú³è
+BOOL  ItemContainer::SetGeneration(INT nIndex,BYTE Gen)                        //å‡ ä»£å® 
 {
     __ENTER_FUNCTION
 
@@ -1041,7 +1041,7 @@ BOOL  ItemContainer::SetGeneration(INT nIndex,BYTE Gen)                        /
 
         return FALSE;
 }
-BOOL  ItemContainer::SetHappiness(INT nIndex,BYTE byHappiness)                        //¿ìÀÖ¶È        
+BOOL  ItemContainer::SetHappiness(INT nIndex,BYTE byHappiness)                        //å¿«ä¹åº¦        
 {
     __ENTER_FUNCTION
 
@@ -1060,7 +1060,7 @@ BOOL  ItemContainer::SetHappiness(INT nIndex,BYTE byHappiness)                  
 
     return FALSE;
 }
-BOOL  ItemContainer::SetStrPer(INT nIndex,INT strper)                        //Á¦Á¿×ÊÖÊ    
+BOOL  ItemContainer::SetStrPer(INT nIndex,INT strper)                        //åŠ›é‡èµ„è´¨    
 {
     __ENTER_FUNCTION
 
@@ -1079,7 +1079,7 @@ BOOL  ItemContainer::SetStrPer(INT nIndex,INT strper)                        //Á
 
     return FALSE;
 }
-BOOL  ItemContainer::SetConPer(INT nIndex,INT conper)                        //ÌåÁ¦×ÊÖÊ    
+BOOL  ItemContainer::SetConPer(INT nIndex,INT conper)                        //ä½“åŠ›èµ„è´¨    
 {
     __ENTER_FUNCTION
 
@@ -1098,7 +1098,7 @@ BOOL  ItemContainer::SetConPer(INT nIndex,INT conper)                        //Ì
 
     return FALSE;
 }
-BOOL  ItemContainer::SetDexPer(INT nIndex,INT dexper)                        //Éí·¨×ÊÖÊ
+BOOL  ItemContainer::SetDexPer(INT nIndex,INT dexper)                        //èº«æ³•èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -1117,7 +1117,7 @@ BOOL  ItemContainer::SetDexPer(INT nIndex,INT dexper)                        //É
 
     return FALSE;
 }
-BOOL  ItemContainer::SetSprPer(INT nIndex,INT sprper)                        //ÁéÆø×ÊÖÊ
+BOOL  ItemContainer::SetSprPer(INT nIndex,INT sprper)                        //çµæ°”èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -1136,7 +1136,7 @@ BOOL  ItemContainer::SetSprPer(INT nIndex,INT sprper)                        //Á
 
     return FALSE;
 }
-BOOL  ItemContainer::SetIntPer(INT nIndex,INT intper)                        //¶¨Á¦×ÊÖÊ
+BOOL  ItemContainer::SetIntPer(INT nIndex,INT intper)                        //å®šåŠ›èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -1155,7 +1155,7 @@ BOOL  ItemContainer::SetIntPer(INT nIndex,INT intper)                        //¶
 
     return FALSE;
 }
-BOOL  ItemContainer::SetGenGu(INT nIndex,INT gengu)                            //¸ù¹Ç
+BOOL  ItemContainer::SetGenGu(INT nIndex,INT gengu)                            //æ ¹éª¨
 {
     __ENTER_FUNCTION
 
@@ -1174,7 +1174,7 @@ BOOL  ItemContainer::SetGenGu(INT nIndex,INT gengu)                            /
 
     return FALSE;
 }
-BOOL  ItemContainer::SetGrowRate(INT nIndex,FLOAT rate)                        //³É³¤ÂÊ
+BOOL  ItemContainer::SetGrowRate(INT nIndex,FLOAT rate)                        //æˆé•¿ç‡
 {
     __ENTER_FUNCTION
 
@@ -1193,7 +1193,7 @@ BOOL  ItemContainer::SetGrowRate(INT nIndex,FLOAT rate)                        /
 
     return FALSE;
 }
-BOOL  ItemContainer::SetRemainPoint(INT nIndex,INT rPoint)                    //Ò»¼¶ÊôĞÔÊ£ÓàµãÊı
+BOOL  ItemContainer::SetRemainPoint(INT nIndex,INT rPoint)                    //ä¸€çº§å±æ€§å‰©ä½™ç‚¹æ•°
 {
     __ENTER_FUNCTION
 
@@ -1212,7 +1212,7 @@ BOOL  ItemContainer::SetRemainPoint(INT nIndex,INT rPoint)                    //
 
     return FALSE;
 }
-BOOL  ItemContainer::SetExp(INT nIndex,INT exp)                            //¾­ÑéÖµ
+BOOL  ItemContainer::SetExp(INT nIndex,INT exp)                            //ç»éªŒå€¼
 {    
     __ENTER_FUNCTION
 
@@ -1231,7 +1231,7 @@ BOOL  ItemContainer::SetExp(INT nIndex,INT exp)                            //¾­Ñ
 
     return FALSE;
 }
-BOOL  ItemContainer::SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value)//»ù´¡Ò»¼¶Õ½¶·ÊôĞÔ£¨²»°üÀ¨¼¼ÄÜºÍ×°±¸Ôö¼ÓµÄ²¿·Ö£©
+BOOL  ItemContainer::SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value)//åŸºç¡€ä¸€çº§æˆ˜æ–—å±æ€§ï¼ˆä¸åŒ…æ‹¬æŠ€èƒ½å’Œè£…å¤‡å¢åŠ çš„éƒ¨åˆ†ï¼‰
 {
     __ENTER_FUNCTION
 
@@ -1250,7 +1250,7 @@ BOOL  ItemContainer::SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value)//»ù
 
     return FALSE;
 }
-BOOL  ItemContainer::SetSkill(INT nIndex,UINT SkillIndex,_PET_SKILL skill)    //³èÎï¼¼ÄÜ
+BOOL  ItemContainer::SetSkill(INT nIndex,UINT SkillIndex,_PET_SKILL skill)    //å® ç‰©æŠ€èƒ½
 {
     __ENTER_FUNCTION
 

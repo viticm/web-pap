@@ -32,7 +32,7 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     UINT indexFrom = pPacket->GetIndexFrom();
@@ -76,14 +76,14 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
                 break;
             case CGBankSwapItem::BANK_POS:            // Bag->Bank
                 {
-                    //ÑéÖ¤Î»ÖÃµÄºÏ·¨ÐÔ
+                    //éªŒè¯ä½ç½®çš„åˆæ³•æ€§
                     if( indexFrom>=0 
                         && indexFrom<MAX_BAG_SIZE 
                         && indexTo>=0 
                         && indexTo<(UINT)(pHuman->__GetBankEndIndex()) 
                         )
                     {
-                        //ÑéÖ¤Î»ÖÃÀïÊÇ·ñÓÐ¶«Î÷
+                        //éªŒè¯ä½ç½®é‡Œæ˜¯å¦æœ‰ä¸œè¥¿
                         if( ITEMREFPTRISVALID(HumanItemLogic::GetItem(pHuman, indexFrom))
                             &&ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, indexTo))
                             )
@@ -95,7 +95,7 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
 
                             Item *pItem1 = pBagContainer->GetItem(pBagContainer->BagIndex2ConIndex(indexFrom));
                             Item *pItem2 = pBankContainer->GetItem(indexTo);
-                            //¼ì²âÊÇ·ñÄÜ¹»ºÏ²¢£¬Èç¹û¿ÉÒÔ£¬¾ÍÖ´ÐÐºÏ²¢¶ø²»ÊÇ½»»»
+                            //æ£€æµ‹æ˜¯å¦èƒ½å¤Ÿåˆå¹¶ï¼Œå¦‚æžœå¯ä»¥ï¼Œå°±æ‰§è¡Œåˆå¹¶è€Œä¸æ˜¯äº¤æ¢
                             if(pItem1->GetItemTableIndex() == pItem2->GetItemTableIndex() && pItem1->IsCanLay())
                             {
                                 if(g_ItemOperator.MoveSpliceItem(  pBagContainer,
@@ -121,21 +121,21 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
                             }
                             else
                             {
-                                //ÅÐ¶ÏÒøÐÐÄÚµÄÕâ¸öÎïÆ·ÊÇ²»ÊÇÄÜ¹»·ÅÈë±³°üÖÐ
+                                //åˆ¤æ–­é“¶è¡Œå†…çš„è¿™ä¸ªç‰©å“æ˜¯ä¸æ˜¯èƒ½å¤Ÿæ”¾å…¥èƒŒåŒ…ä¸­
                                 ItemContainer* pBankContainer = pHuman->GetBankContain();
                                 Item *pItem = pBankContainer->GetItem(indexTo); 
 
                                 ItemContainer *pHumanCon = HumanItemLogic::GetItemContain(pHuman, pItem->GetItemTableIndex());
                                 if( !pHumanCon )
                                 {
-                                    //·µ»Ø´íÎóÐÅÏ¢
+                                    //è¿”å›žé”™è¯¯ä¿¡æ¯
                                     Msg.SetToType(GCBankSwapItem::ERROR_POS);
                                     break;
                                 }
 
                                 if( !pHumanCon->IsInContainer(indexFrom) )
                                 {
-                                    //·µ»Ø´íÎóÐÅÏ¢
+                                    //è¿”å›žé”™è¯¯ä¿¡æ¯
                                     Msg.SetToType(GCBankSwapItem::ERROR_POS);
                                     break;
                                 }
@@ -175,7 +175,7 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
             {
             case CGBankSwapItem::BAG_POS:            // Bank->Bag
                 {
-                    //ÑéÖ¤Î»ÖÃµÄºÏ·¨ÐÔ
+                    //éªŒè¯ä½ç½®çš„åˆæ³•æ€§
                     if( indexTo>=0 
                         && indexTo<MAX_BAG_SIZE 
                         && indexFrom>=0 
@@ -191,20 +191,20 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
 
                             ItemContainer* pBankContainer = pHuman->GetBankContain();
 
-                            //ÅÐ¶ÏÒøÐÐÄÚµÄÕâ¸öÎïÆ·ÊÇ²»ÊÇÄÜ¹»·ÅÈë±³°üÖÐ
+                            //åˆ¤æ–­é“¶è¡Œå†…çš„è¿™ä¸ªç‰©å“æ˜¯ä¸æ˜¯èƒ½å¤Ÿæ”¾å…¥èƒŒåŒ…ä¸­
                             Item *pItem = pBankContainer->GetItem(indexFrom); 
 
                             ItemContainer *pHumanCon = HumanItemLogic::GetItemContain(pHuman, pItem->GetItemTableIndex());
                             if( !pHumanCon )
                             {
-                                //·µ»Ø´íÎóÐÅÏ¢
+                                //è¿”å›žé”™è¯¯ä¿¡æ¯
                                 Msg.SetToType(GCBankSwapItem::ERROR_POS);
                                 break;
                             }
 
                             if( !pHumanCon->IsInContainer(indexTo) )
                             {
-                                //·µ»Ø´íÎóÐÅÏ¢
+                                //è¿”å›žé”™è¯¯ä¿¡æ¯
                                 Msg.SetToType(GCBankSwapItem::ERROR_POS);
                                 break;
                             }
@@ -246,7 +246,7 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
 
                     INT nSpliceType    = 0;
                     INT nSpliceTo    = -1;
-                    //ÒøÐÐÈÝÆ÷
+                    //é“¶è¡Œå®¹å™¨
                     ItemContainer* pBankContain = pHuman->GetBankContain();
                     Item *pItem = pBankContain->GetItem(indexFrom);
                     UINT TempIndexTo =  indexTo;
@@ -465,16 +465,16 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
                         break;
                     }
 
-                    //ÑéÖ¤Î»ÖÃµÄºÏ·¨ÐÔ
+                    //éªŒè¯ä½ç½®çš„åˆæ³•æ€§
                     if( indexTo>=0 
                         && indexTo<(UINT)(pHuman->__GetBankEndIndex()) 
                         && indexFrom>=0 
                         && indexFrom<(UINT)(pHuman->__GetBankEndIndex()) 
                         )
                     {
-                        if(1 == nSpliceType)    //Ö´ÐÐºÏ²¢
+                        if(1 == nSpliceType)    //æ‰§è¡Œåˆå¹¶
                         {
-                            //ÑéÖ¤Î»ÖÃÀïÊÇ·ñÓÐ¶«Î÷
+                            //éªŒè¯ä½ç½®é‡Œæ˜¯å¦æœ‰ä¸œè¥¿
                             if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, indexFrom)))
                             {
                                 if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, nSpliceTo)))
@@ -487,14 +487,14 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
                                     Item *pItem1 = pBankContainer->GetItem(indexFrom);
                                     Item *pItem2 = pBankContainer->GetItem(nSpliceTo);
 
-                                    //·¢Ò»¸öÍ¨Öª¸üÐÂÒøÐÐµÄÏûÏ¢
+                                    //å‘ä¸€ä¸ªé€šçŸ¥æ›´æ–°é“¶è¡Œçš„æ¶ˆæ¯
                                     GCBankItemInfo MsgBankItemInfo1;
                                     MsgBankItemInfo1.setBankIndex((WORD)indexFrom);
                                     MsgBankItemInfo1.setIsNull(pItem1->IsEmpty());
                                     pItem1->SaveValueTo(MsgBankItemInfo1.getItem());
                                     pGamePlayer->SendPacket( &MsgBankItemInfo1 );
 
-                                    //·¢ËÍÒ»¸öÍ¨Öª±³°ü¸üÐÂµÄÏûÏ¢
+                                    //å‘é€ä¸€ä¸ªé€šçŸ¥èƒŒåŒ…æ›´æ–°çš„æ¶ˆæ¯
                                     GCBankItemInfo MsgBankItemInfo2;
                                     MsgBankItemInfo2.setBankIndex((WORD)nSpliceTo);
                                     MsgBankItemInfo2.setIsNull(pItem2->IsEmpty());
@@ -505,9 +505,9 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
                             g_pLog->FastSaveLog( LOG_FILE_1, "CGBankSwapItemHandler: empty item" ) ;
                             return PACKET_EXE_CONTINUE;
                         }
-                        if(2 == nSpliceType)    //Ö´ÐÐºÏ²¢
+                        if(2 == nSpliceType)    //æ‰§è¡Œåˆå¹¶
                         {
-                            //ÑéÖ¤Î»ÖÃÀïÊÇ·ñÓÐ¶«Î÷
+                            //éªŒè¯ä½ç½®é‡Œæ˜¯å¦æœ‰ä¸œè¥¿
                             if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, indexFrom)))
                             {
                                 if(ITEMREFPTRISVALID(HumanItemLogic::GetBankItem(pHuman, nSpliceTo)))
@@ -520,14 +520,14 @@ UINT CGBankSwapItemHandler::Execute( CGBankSwapItem* pPacket, Player* pPlayer )
                                     Item *pItem1 = pBankContainer->GetItem(indexFrom);
                                     Item *pItem2 = pBankContainer->GetItem(nSpliceTo);
 
-                                    //·¢Ò»¸öÍ¨Öª¸üÐÂÒøÐÐµÄÏûÏ¢
+                                    //å‘ä¸€ä¸ªé€šçŸ¥æ›´æ–°é“¶è¡Œçš„æ¶ˆæ¯
                                     GCBankItemInfo MsgBankItemInfo1;
                                     MsgBankItemInfo1.setBankIndex((WORD)indexFrom);
                                     MsgBankItemInfo1.setIsNull(pItem1->IsEmpty());
                                     pItem1->SaveValueTo(MsgBankItemInfo1.getItem());
                                     pGamePlayer->SendPacket( &MsgBankItemInfo1 );
 
-                                    //·¢ËÍÒ»¸öÍ¨Öª±³°ü¸üÐÂµÄÏûÏ¢
+                                    //å‘é€ä¸€ä¸ªé€šçŸ¥èƒŒåŒ…æ›´æ–°çš„æ¶ˆæ¯
                                     GCBankItemInfo MsgBankItemInfo2;
                                     MsgBankItemInfo2.setBankIndex((WORD)nSpliceTo);
                                     MsgBankItemInfo2.setIsNull(pItem2->IsEmpty());

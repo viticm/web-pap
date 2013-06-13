@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
 /*
-ºÏ·¨£¬Ëø×¡¸Ã³ÇÊĞ£¬¹Ø±ÕÕßPlayerGuid·Åµ½ÁÙÊ±½á¹¹ÖĞ±£´æ
-·¢ÏûÏ¢15.WGCityClose,µ½Ö¸¶¨Server
-·Ç·¨£¬·¢ÏûÏ¢6.WGCityErrorÍ¨ÖªServer
+åˆæ³•ï¼Œé”ä½è¯¥åŸå¸‚ï¼Œå…³é—­è€…PlayerGuidæ”¾åˆ°ä¸´æ—¶ç»“æ„ä¸­ä¿å­˜
+å‘æ¶ˆæ¯15.WGCityClose,åˆ°æŒ‡å®šServer
+éæ³•ï¼Œå‘æ¶ˆæ¯6.WGCityErroré€šçŸ¥Server
 
 */
 #include "GWCityClose.h"
@@ -41,7 +41,7 @@ UINT GWCityCloseHandler::Execute( GWCityClose* pPacket, Player* pPlayer )
         }
 
         if(pDelCity->IsLock())
-        {//ÒÑ¾­ÓĞÈËÉ¾³ı´Ë³ÇÊĞÁË
+        {//å·²ç»æœ‰äººåˆ é™¤æ­¤åŸå¸‚äº†
             Log::SaveLog( WORLD_LOGFILE, "GWCityCloseHandler...User GUID world=%d poolpos=%d  not find!", 
                 CityGuid.m_World, CityGuid.m_PoolPos) ;
             return PACKET_EXE_CONTINUE ;

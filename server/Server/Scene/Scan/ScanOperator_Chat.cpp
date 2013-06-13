@@ -51,13 +51,13 @@ BOOL ScanOperator_Chat::On_BeforeScan( )
 __ENTER_FUNCTION
 
     if( m_ZoneID!=INVALID_ID )
-    {//Èç¹ûÊÇ³¡¾°ÀïµÄÆÕÍ¨ÁÄÌìÏûÏ¢£¬Ôò¸ù¾ÝËÑË÷·¢ËÍ
+    {//å¦‚æžœæ˜¯åœºæ™¯é‡Œçš„æ™®é€šèŠå¤©æ¶ˆæ¯ï¼Œåˆ™æ ¹æ®æœç´¢å‘é€
         return TRUE ;
     }
 
     if( m_nChatType == CHAT_TYPE_SYSTEM ||
         m_nChatType == CHAT_TYPE_SCENE )
-    {//È«³¡¾°¹ã²¥
+    {//å…¨åœºæ™¯å¹¿æ’­
         UINT nPlayerCount = GetScene()->GetScenePlayerManager()->GetPlayerNumber() ;
         for( UINT i=0; i<nPlayerCount; i++ )
         {
@@ -74,7 +74,7 @@ __ENTER_FUNCTION
         }
     }
     else if( m_nChatType == CHAT_TYPE_GUILD )
-    {//Ñ°ÕÒ´Ë³¡¾°ÀïÄ³¸ö°ïÅÉµÄ³ÉÔ±·¢ËÍ
+    {//å¯»æ‰¾æ­¤åœºæ™¯é‡ŒæŸä¸ªå¸®æ´¾çš„æˆå‘˜å‘é€
         UINT nPlayerCount = GetScene()->GetScenePlayerManager()->GetPlayerNumber() ;
         for( UINT i=0; i<nPlayerCount; i++ )
         {
@@ -91,7 +91,7 @@ __ENTER_FUNCTION
         }
     }
     else if( m_nChatType == CHAT_TYPE_MENPAI )
-    {//Ñ°ÕÒ´Ë³¡¾°ÀïÄ³¸öÃÅÅÉµÄ³ÉÔ±·¢ËÍ
+    {//å¯»æ‰¾æ­¤åœºæ™¯é‡ŒæŸä¸ªé—¨æ´¾çš„æˆå‘˜å‘é€
         UINT nPlayerCount = GetScene()->GetScenePlayerManager()->GetPlayerNumber() ;
         for( UINT i=0; i<nPlayerCount; i++ )
         {

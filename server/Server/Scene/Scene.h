@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºScene.h
-//¹¦ÄÜÃèÊö£ºÓÎÏ·³¡¾°£¬µ¥¸ö³¡¾°ÓÎÏ·Âß¼­¹¦ÄÜµÄÖ´ĞĞ×Å
-//            ÓµÓĞËùÓĞÔÚÓÎÏ·³¡¾°ÖĞµÄÓÎÏ·Âß¼­Êı¾İ£¬ÓĞ¶ÀÁ¢µÄÖ´ĞĞÏß³ÌÀ´Çı¶¯³¡¾°µÄÖ´ĞĞ
-//            ¹ÜÀíËùÓĞÁ¬½ÓÔÚ³¡¾°ÖĞµÄ¿Í»§¶ËÍøÂçÁ¬½Ó£¬ÄÜ¹»¶ÀÁ¢´¦Àí¿Í»§¶ËÍøÂçÏûÏ¢
-//ĞŞ¸Ä¼ÇÂ¼£º2005-3-23´´½¨
-//ĞŞ¸Ä¼ÇÂ¼£º2005-11-8ÕûÀí³¡¾°ÎÄ¼ş½á¹¹£¬Ö®ºó£¬ËùÓĞ¶Ô³¡¾°×öĞŞ¸Ä¶¼ĞèÒªÁôÏÂ¼ÇÂ¼
-//ĞŞ¸Ä¼ÇÂ¼£º2005-11-14Ôö¼Ó³¡¾°µÄÊÂ¼şÏìÓ¦
-//ĞŞ¸Ä¼ÇÂ¼£º2005-11-15Ôö¼Ó³¡¾°µÄ¸±±¾ÏµÍ³Ïà¹ØÊı¾İºÍ½Ó¿Ú
-//ĞŞ¸Ä¼ÇÂ¼£º2006-2-7¼ÓÈëÌ¯Î»¹ÜÀíÆ÷
+//æ–‡ä»¶åï¼šScene.h
+//åŠŸèƒ½æè¿°ï¼šæ¸¸æˆåœºæ™¯ï¼Œå•ä¸ªåœºæ™¯æ¸¸æˆé€»è¾‘åŠŸèƒ½çš„æ‰§è¡Œç€
+//            æ‹¥æœ‰æ‰€æœ‰åœ¨æ¸¸æˆåœºæ™¯ä¸­çš„æ¸¸æˆé€»è¾‘æ•°æ®ï¼Œæœ‰ç‹¬ç«‹çš„æ‰§è¡Œçº¿ç¨‹æ¥é©±åŠ¨åœºæ™¯çš„æ‰§è¡Œ
+//            ç®¡ç†æ‰€æœ‰è¿æ¥åœ¨åœºæ™¯ä¸­çš„å®¢æˆ·ç«¯ç½‘ç»œè¿æ¥ï¼Œèƒ½å¤Ÿç‹¬ç«‹å¤„ç†å®¢æˆ·ç«¯ç½‘ç»œæ¶ˆæ¯
+//ä¿®æ”¹è®°å½•ï¼š2005-3-23åˆ›å»º
+//ä¿®æ”¹è®°å½•ï¼š2005-11-8æ•´ç†åœºæ™¯æ–‡ä»¶ç»“æ„ï¼Œä¹‹åï¼Œæ‰€æœ‰å¯¹åœºæ™¯åšä¿®æ”¹éƒ½éœ€è¦ç•™ä¸‹è®°å½•
+//ä¿®æ”¹è®°å½•ï¼š2005-11-14å¢åŠ åœºæ™¯çš„äº‹ä»¶å“åº”
+//ä¿®æ”¹è®°å½•ï¼š2005-11-15å¢åŠ åœºæ™¯çš„å‰¯æœ¬ç³»ç»Ÿç›¸å…³æ•°æ®å’Œæ¥å£
+//ä¿®æ”¹è®°å½•ï¼š2006-2-7åŠ å…¥æ‘Šä½ç®¡ç†å™¨
 /////////////////////////////////////////////////////////////////////////////////
 
 #ifndef __SCENE_H__
@@ -60,14 +60,14 @@ using namespace Event_Module;
 
 struct _OBJ_MONSTER_INIT ;
 //
-//// ³¡¾°ÀàĞÍ
+//// åœºæ™¯ç±»å‹
 //enum ENUM_SCENE_TYPE
 //{
 //    SCENE_TYPE_INVALID    = -1,
-//    SCENE_TYPE_NORMAL,            // Õı³£³¡¾°
-//    SCENE_TYPE_COPY,            // ¸±±¾
-//    SCENE_TYPE_BATTLEFIELD,        // Õ½³¡
-//    SCENE_TYPE_ARENA,            // ÀŞÌ¨
+//    SCENE_TYPE_NORMAL,            // æ­£å¸¸åœºæ™¯
+//    SCENE_TYPE_COPY,            // å‰¯æœ¬
+//    SCENE_TYPE_BATTLEFIELD,        // æˆ˜åœº
+//    SCENE_TYPE_ARENA,            // æ“‚å°
 //
 //    SCENE_TYPE_NUMBERS
 //};
@@ -78,89 +78,89 @@ class Scene
 {
 public :
 /////////////////////////////////////////////////////////////////////////////////
-//×îµ×²ã×ÊÔ´¼°²Ù×÷´¦Àí
+//æœ€åº•å±‚èµ„æºåŠæ“ä½œå¤„ç†
 /////////////////////////////////////////////////////////////////////////////////
     Scene( SceneID_t SceneID ) ;
     ~Scene( ) ;
 
-    //¶ÁÈ¡³¡¾°µÄÊı¾İĞÅÏ¢
+    //è¯»å–åœºæ™¯çš„æ•°æ®ä¿¡æ¯
     BOOL                    Load( SCENE_LOAD* load ) ;
     BOOL                    SetLoadData( const CHAR* filename, SCENE_LOAD& SceneLoad ) ;
 
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     BOOL                    Init( ) ;
-    //³¡¾°µÄÖ´ĞĞ½Ó¿Ú£¬´Ë½Ó¿Ú»á±»³¡¾°Ïß³Ì¶¨Ê±µ÷ÓÃ
+    //åœºæ™¯çš„æ‰§è¡Œæ¥å£ï¼Œæ­¤æ¥å£ä¼šè¢«åœºæ™¯çº¿ç¨‹å®šæ—¶è°ƒç”¨
     BOOL                    Tick( ) ;
-    //¿ØÖÆµ±Ç°³¡¾°×´Ì¬µÄÂß¼­½Ó¿Ú
+    //æ§åˆ¶å½“å‰åœºæ™¯çŠ¶æ€çš„é€»è¾‘æ¥å£
     BOOL                    StatusLogic( ) ;
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÓÎÏ·Âß¼­µ×²ã´¦Àí
+//æ¸¸æˆé€»è¾‘åº•å±‚å¤„ç†
 /////////////////////////////////////////////////////////////////////////////////
 protected :
-    //³¡¾°µÄÂß¼­½Ó¿Ú
+    //åœºæ™¯çš„é€»è¾‘æ¥å£
     BOOL                    HeartBeat( ) ;
 
-    //´¦Àí³¡¾°µÄ»º´æÏûÏ¢
+    //å¤„ç†åœºæ™¯çš„ç¼“å­˜æ¶ˆæ¯
     BOOL                    ProcessCacheCommands( ) ;
 
-    //¶ÁÈ¡µ±Ç°³¡¾°»º´æÏûÏ¢
+    //è¯»å–å½“å‰åœºæ™¯ç¼“å­˜æ¶ˆæ¯
     BOOL                    RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& Flag ) ;
 
-    //ÖØĞÂµ÷Õû»º´æ´óĞ¡
+    //é‡æ–°è°ƒæ•´ç¼“å­˜å¤§å°
     BOOL                    ResizeCache( ) ;
 
-    //É¾³ıÄ³¸öPlayerµÄÔÚ³¡¾°ÏûÏ¢»º´æÖĞµÄÏûÏ¢
+    //åˆ é™¤æŸä¸ªPlayerçš„åœ¨åœºæ™¯æ¶ˆæ¯ç¼“å­˜ä¸­çš„æ¶ˆæ¯
     BOOL                    MovePacket( PlayerID_t PlayerID ) ;
 
 
 public :
 /////////////////////////////////////////////////////////////////////////////////
-//³¡¾°ÊÂ¼şÇø
+//åœºæ™¯äº‹ä»¶åŒº
 /////////////////////////////////////////////////////////////////////////////////
-    //³¡¾°³õÊ¼»¯Íê³ÉÊÂ¼ş
+    //åœºæ™¯åˆå§‹åŒ–å®Œæˆäº‹ä»¶
     VOID                    OnSceneInit( ) ;
-    //³¡¾°¼ÆÊ±Æ÷ÊÂ¼ş
+    //åœºæ™¯è®¡æ—¶å™¨äº‹ä»¶
     VOID                    OnSceneTimer( UINT uTime ) ;
-    //³¡¾°ÍË³öÇ°ÊÂ¼ş
+    //åœºæ™¯é€€å‡ºå‰äº‹ä»¶
     VOID                    OnSceneQuit( ) ;
-    //³¡¾°ÖĞ½øÈëÒ»¸öÍæ¼Ò
+    //åœºæ™¯ä¸­è¿›å…¥ä¸€ä¸ªç©å®¶
     VOID                    OnScenePlayerEnter( GamePlayer* pGamePlayer ) ;
-    //³¡¾°ÖĞÒ»¸öÍæ¼Ò¶ÏÏß
+    //åœºæ™¯ä¸­ä¸€ä¸ªç©å®¶æ–­çº¿
     VOID                    OnScenePlayerDisconnect( GamePlayer* pGamePlayer ) ;
-    //³¡¾°ÖĞÒ»¸öÍæ¼ÒÀë¿ª
+    //åœºæ™¯ä¸­ä¸€ä¸ªç©å®¶ç¦»å¼€
     VOID                    OnScenePlayerLeave( GamePlayer* pGamePlayer ) ;
-    //Ä³¸ö¸±±¾³¡¾°»òÕß³ÇÊĞ³¡¾°ÒÑ¾­´´½¨ºÃ
+    //æŸä¸ªå‰¯æœ¬åœºæ™¯æˆ–è€…åŸå¸‚åœºæ™¯å·²ç»åˆ›å»ºå¥½
     VOID                    OnSceneNotify( SceneID_t DestSceneID ) ;
-    //³¡¾°ÖĞÒ»¸öÍæ¼ÒÉı¼¶ÁË
+    //åœºæ™¯ä¸­ä¸€ä¸ªç©å®¶å‡çº§äº†
     VOID                    OnSceneHumanLevelUp( Obj_Human* pHuman ) ;
-    //³¡¾°ÖĞÒ»¸öÍæ¼ÒËÀÍö
+    //åœºæ™¯ä¸­ä¸€ä¸ªç©å®¶æ­»äº¡
     VOID                    OnSceneHumanDie(Obj_Human* pHuman, ObjID_t idKiller);
-    //³¡¾°ÖĞÒ»¸öÍæ¼Ò½ÓÊÜÈÎÎñÌõ¼şÅĞ¶Ï
+    //åœºæ™¯ä¸­ä¸€ä¸ªç©å®¶æ¥å—ä»»åŠ¡æ¡ä»¶åˆ¤æ–­
     BOOL                    OnAcceptMissionCheck(Obj_Human* pHuman,ScriptID_t idMissionScript) ;
-    //Íæ¼Ò´´½¨½ÇÉ«ºóµÚÒ»´ÎµÇÂ½ÓÎÏ·, ´ËÊÂ¼ş·¢ÉúÔÚOnScenePlayerEnterÖ®ºó, OnScenePlayerLoginÖ®Ç°
+    //ç©å®¶åˆ›å»ºè§’è‰²åç¬¬ä¸€æ¬¡ç™»é™†æ¸¸æˆ, æ­¤äº‹ä»¶å‘ç”Ÿåœ¨OnScenePlayerEnterä¹‹å, OnScenePlayerLoginä¹‹å‰
     VOID                    OnScenePlayerFirstLogin( Obj_Human* pHuman ) ;
-    //³¡¾°ÖĞÄ³¸öÍæ¼ÒµÄ¶¨Ê±Æ÷
+    //åœºæ™¯ä¸­æŸä¸ªç©å®¶çš„å®šæ—¶å™¨
     VOID                    OnScenePlayerTimer( Obj_Human* pHuman, UINT uTime ) ;
-    //Íæ¼ÒµÇÂ½ÓÎÏ·ÊÂ¼ş(Ö»µ÷ÓÃÒ»´Î), ´ËÊÂ¼ş·¢ÉúÔÚOnScenePlayerEnterÖ®ºó
+    //ç©å®¶ç™»é™†æ¸¸æˆäº‹ä»¶(åªè°ƒç”¨ä¸€æ¬¡), æ­¤äº‹ä»¶å‘ç”Ÿåœ¨OnScenePlayerEnterä¹‹å
     VOID                    OnScenePlayerLogin( Obj_Human* pHuman ) ;
 
 /////////////////////////////////////////////////////////////////////////////////
-//Í¨ÓÃ»ù´¡½Ó¿Ú
+//é€šç”¨åŸºç¡€æ¥å£
 /////////////////////////////////////////////////////////////////////////////////
 public :
-    //¶ÁÈ¡µ±Ç°³¡¾°×´Ì¬
+    //è¯»å–å½“å‰åœºæ™¯çŠ¶æ€
     INT                        GetSceneStatus(){ return m_nSceneStatus ; }
-    //ÉèÖÃµ±Ç°³¡¾°×´Ì¬
+    //è®¾ç½®å½“å‰åœºæ™¯çŠ¶æ€
     VOID                    SetSceneStatus( INT status ){ m_nSceneStatus = status ; }
 
-    //¶ÁÈ¡µ±Ç°³¡¾°µÄ³¡¾°ID
+    //è¯»å–å½“å‰åœºæ™¯çš„åœºæ™¯ID
     SceneID_t                SceneID(){ return m_SceneID ; } ;
 
-    //¹Ø±Õµ±Ç°³¡¾°
+    //å…³é—­å½“å‰åœºæ™¯
     BOOL                    CloseScene( ) ;
 
-    //¶ÁÈ¡µ±Ç°³¡¾°µÄ¸÷¸öÊı¾İÄ£¿éÖ¸Õë
+    //è¯»å–å½“å‰åœºæ™¯çš„å„ä¸ªæ•°æ®æ¨¡å—æŒ‡é’ˆ
     Map*                    GetMap(){ return m_pMap ; } ;
     ScenePlayerManager*        GetScenePlayerManager(){ return m_pScenePlayerManager ; } ;
     ScenePlayerManager*        GetPlayerManager(){ return m_pScenePlayerManager ; } ;
@@ -190,12 +190,12 @@ public :
 public :
     //*********
     //*********
-    //Ïò´Ë³¡¾°·¢ËÍÏûÏ¢
-    //´Ë½Ó¿ÚÖ§³ÖÊı¾İÍ¬²½£¬¼´¿ÉÒÔÔÚ²»Í¬Ïß³ÌÄÚµ÷ÓÃ
-    //´Ë½Ó¿ÚÊÇ²»Í¬³¡¾°¼äÍ¨Ñ¶µÄÎ¨Ò»½Ó¿Ú
-    //×¢Òâ£ºpPacketÏûÏ¢ĞèÒªÓÃg_pPacketFactoryManager´´½¨³öÀ´£¬ÓÃÍêºó²»ÄÜÉ¾³ı
-    //Èç¹û PlayerIDÎªINVALID_ID, Ôò¹ã²¥´ËÏûÏ¢µ½Õû¸ö³¡¾°
-    //Èç¹û PlayerIDÎªINVALID_ID_EX, Ôò´ËÏûÏ¢»á±»³¡¾°Ö´ĞĞ£¨PlayerÎªNULL£©
+    //å‘æ­¤åœºæ™¯å‘é€æ¶ˆæ¯
+    //æ­¤æ¥å£æ”¯æŒæ•°æ®åŒæ­¥ï¼Œå³å¯ä»¥åœ¨ä¸åŒçº¿ç¨‹å†…è°ƒç”¨
+    //æ­¤æ¥å£æ˜¯ä¸åŒåœºæ™¯é—´é€šè®¯çš„å”¯ä¸€æ¥å£
+    //æ³¨æ„ï¼špPacketæ¶ˆæ¯éœ€è¦ç”¨g_pPacketFactoryManageråˆ›å»ºå‡ºæ¥ï¼Œç”¨å®Œåä¸èƒ½åˆ é™¤
+    //å¦‚æœ PlayerIDä¸ºINVALID_ID, åˆ™å¹¿æ’­æ­¤æ¶ˆæ¯åˆ°æ•´ä¸ªåœºæ™¯
+    //å¦‚æœ PlayerIDä¸ºINVALID_ID_EX, åˆ™æ­¤æ¶ˆæ¯ä¼šè¢«åœºæ™¯æ‰§è¡Œï¼ˆPlayerä¸ºNULLï¼‰
     BOOL                    SendPacket( Packet* pPacket, 
                                         PlayerID_t PlayerID, 
                                         UINT Flag=PF_NONE ) ;
@@ -204,38 +204,38 @@ public :
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//³¡¾°É¨ÃèÏà¹Ø
+//åœºæ™¯æ‰«æç›¸å…³
 public :
-    //±ê×¼µÄ³¡¾°É¨Ãè½Ó¿Ú
+    //æ ‡å‡†çš„åœºæ™¯æ‰«ææ¥å£
     BOOL            Scan( ScanOperator* pScan ) ;
 
-    //ÒÔpPosµãÎªÖĞĞÄ£¬·¶Î§ÎªfRangeÃ×ÄÚµÄHumanList
+    //ä»¥pPosç‚¹ä¸ºä¸­å¿ƒï¼ŒèŒƒå›´ä¸ºfRangeç±³å†…çš„HumanList
     BOOL            ScanHuman( WORLD_POS* pPos, FLOAT fRange, HUMANLIST* pHumanList ) ;
     BOOL            ScanHuman( ZoneID_t idZone, INT nRadius_ZoneCount, HUMANLIST *pOutHumanList );
     
-    //Ïòµ±Ç°³¡¾°ÄÚ·¢ËÍ¹ã²¥ÏûÏ¢£¬¹ã²¥µÄÖĞĞÄµãÎ»ÖÃÎªpOwnCharacterËùÔÚÎ»ÖÃ
-    //¹ã²¥¾àÀëÎªlen¸öµ¥Î»£¬Èç¹ûlenÎª-1£¬Ôò¹ã²¥µ½Õû¸ö³¡¾°Àï
-    //Èç¹ûbSendMeÉèÖÃÎªÕæ£¬ÔòÏûÏ¢Í¬Ê±Ò²·¢¸øpOwnCharacterËùÔÚÍæ¼Ò
+    //å‘å½“å‰åœºæ™¯å†…å‘é€å¹¿æ’­æ¶ˆæ¯ï¼Œå¹¿æ’­çš„ä¸­å¿ƒç‚¹ä½ç½®ä¸ºpOwnCharacteræ‰€åœ¨ä½ç½®
+    //å¹¿æ’­è·ç¦»ä¸ºlenä¸ªå•ä½ï¼Œå¦‚æœlenä¸º-1ï¼Œåˆ™å¹¿æ’­åˆ°æ•´ä¸ªåœºæ™¯é‡Œ
+    //å¦‚æœbSendMeè®¾ç½®ä¸ºçœŸï¼Œåˆ™æ¶ˆæ¯åŒæ—¶ä¹Ÿå‘ç»™pOwnCharacteræ‰€åœ¨ç©å®¶
     BOOL            BroadCast_Scene( Packet* pPacket ) ;
     
-    //ÏòpOwnCharacterËùÔÚµÄÎ»ÖÃ¹ã²¥Ò»¸öÏûÏ¢
-    //ÏûÏ¢µÄ·¶Î§Îªµ±Ç°µÄZoneAºÍZoneAÖÜÎ§µÄNÈ¦Zone
-    //NÎªÅäÖÃºÃµÄĞÅÏ¢
+    //å‘pOwnCharacteræ‰€åœ¨çš„ä½ç½®å¹¿æ’­ä¸€ä¸ªæ¶ˆæ¯
+    //æ¶ˆæ¯çš„èŒƒå›´ä¸ºå½“å‰çš„ZoneAå’ŒZoneAå‘¨å›´çš„NåœˆZone
+    //Nä¸ºé…ç½®å¥½çš„ä¿¡æ¯
     BOOL            BroadCast(    Packet* pPacket, 
                                 Obj_Character* pOwnCharacter,
                                 BOOL bSendMe=FALSE ) ;
 
-    //ÏòZoneIDËùÔÚÇøÓòÎªÖĞĞÄ¹ã²¥Ò»¸öÏûÏ¢
-    //·¶Î§ÎªZoneIDËùÔÚÇøÓòÒÔ¼°ÖÜÎ§NÈ¦Zone
-    //NÎªÅäÖÃºÃµÄĞÅÏ¢
+    //å‘ZoneIDæ‰€åœ¨åŒºåŸŸä¸ºä¸­å¿ƒå¹¿æ’­ä¸€ä¸ªæ¶ˆæ¯
+    //èŒƒå›´ä¸ºZoneIDæ‰€åœ¨åŒºåŸŸä»¥åŠå‘¨å›´NåœˆZone
+    //Nä¸ºé…ç½®å¥½çš„ä¿¡æ¯
     BOOL            BroadCast(Packet* pPacket,
                               ZoneID_t    zoneID);
 
-    //¹ã²¥ÁÄÌìÏûÏ¢Ê±Ê¹ÓÃ
-    //ÏòZoneIDËùÔÚÇøÓòÎªÖĞĞÄ¹ã²¥Ò»¸öÏûÏ¢
-    //·¶Î§ÎªZoneIDËùÔÚÇøÓòÒÔ¼°ÖÜÎ§NÈ¦Zone
-    //NÎªÅäÖÃºÃµÄĞÅÏ¢
-    //zoneIDÎªINVALID_IDÊ±£¬È«³¡¾°¹ã²¥
+    //å¹¿æ’­èŠå¤©æ¶ˆæ¯æ—¶ä½¿ç”¨
+    //å‘ZoneIDæ‰€åœ¨åŒºåŸŸä¸ºä¸­å¿ƒå¹¿æ’­ä¸€ä¸ªæ¶ˆæ¯
+    //èŒƒå›´ä¸ºZoneIDæ‰€åœ¨åŒºåŸŸä»¥åŠå‘¨å›´NåœˆZone
+    //Nä¸ºé…ç½®å¥½çš„ä¿¡æ¯
+    //zoneIDä¸ºINVALID_IDæ—¶ï¼Œå…¨åœºæ™¯å¹¿æ’­
     BOOL            BroadCast_Chat(Packet* pPacket,
                                   ZoneID_t    zoneID);
 
@@ -247,34 +247,34 @@ public :
     // = idZoneA - (idZoneA & idZoneB)
     BOOL            ScanObj_Sub( ZoneID_t idZoneA, ZoneID_t idZoneB, UINT uZoneRadius, OBJLIST *plistOutObj );
 
-    // ÏòHumanListÖĞµÄÃ¿¸öObj_Human·¢ËÍÏûÏ¢
+    // å‘HumanListä¸­çš„æ¯ä¸ªObj_Humanå‘é€æ¶ˆæ¯
     BOOL            SendPacket( Packet *pPacket, HUMANLIST *plistHuman );
     BOOL            SendPacket_CrateAttr( Obj *pObj, HUMANLIST *plistHuman );
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//³¡¾°Âß¼­¹¦ÄÜÏà¹Ø
+//åœºæ™¯é€»è¾‘åŠŸèƒ½ç›¸å…³
 public :
-    //Í¨ÓÃÓÎÏ·½Ó¿Ú
+    //é€šç”¨æ¸¸æˆæ¥å£
     Obj*             GetSpecificObjByID(ObjID_t nID)const;
     BOOL            ObjectEnterScene( Obj *pObj );
     VOID            ObjectLeaveScene( Obj *pObj );
 
-    // ½« Area ×¢²áµ½³¡¾°ÉÏ£¨×¢²áµ½Ã¿¸ö zone ÉÏÃæ£©
+    // å°† Area æ³¨å†Œåˆ°åœºæ™¯ä¸Šï¼ˆæ³¨å†Œåˆ°æ¯ä¸ª zone ä¸Šé¢ï¼‰
     BOOL            RegisterArea( const Area* pArea);
     const Area*        CheckArea( Obj_Human* pHuman );
     ZoneID_t        CalcZoneID( const WORLD_POS* pos ) ;
 
-    // ZONE²Ù×÷OBJECTÏà¹Ø
+    // ZONEæ“ä½œOBJECTç›¸å…³
     BOOL            ObjZone_Register( Obj *pObj, ZoneID_t idZone );
     BOOL            ObjZone_Unregister( Obj *pObj, ZoneID_t idZone );
     BOOL            ObjZone_Changed( Obj *pObj, ZoneID_t idNew, ZoneID_t idOld );
 
-    //ÅĞ¶ÏÊÇ·ñÈËÊı´ïµ½±¥ºÍÉÏÏŞ
+    //åˆ¤æ–­æ˜¯å¦äººæ•°è¾¾åˆ°é¥±å’Œä¸Šé™
     BOOL            IsCanEnter( ) ;
-    //ÅĞ¶ÏÊÇ·ñÈËÊıÍêÈ«±¥ºÍ
+    //åˆ¤æ–­æ˜¯å¦äººæ•°å®Œå…¨é¥±å’Œ
     BOOL            IsFull( ) ;
-    //ÅĞ¶ÏÓÃ»§ÓĞÎŞ½øÈë³¡¾°µÄÈ¨ÏŞ, 0-²»ÄÜ½ø£¬1-¿ÉÒÔ½øÈë£¬2-Æô¶¯±¸·İ³¡¾°
+    //åˆ¤æ–­ç”¨æˆ·æœ‰æ— è¿›å…¥åœºæ™¯çš„æƒé™, 0-ä¸èƒ½è¿›ï¼Œ1-å¯ä»¥è¿›å…¥ï¼Œ2-å¯åŠ¨å¤‡ä»½åœºæ™¯
     INT                CheckEnter( PlayerID_t PlayerID ) ;
 
     VOID            GetRectInRadius( VRECT* pRect, INT nRadius, ZoneID_t zid ) ;
@@ -308,85 +308,85 @@ public :
 
     inline INT            GetCopyScene_HumanCount( ) ;
     inline ObjID_t        GetCopyScene_HumanObjID( INT nIndex ) ;
-    // 0~99µÄËæ»úÊı£¬Ã¿¸ö³¡¾°¾ÍÒ»¸öRand Table.
+    // 0~99çš„éšæœºæ•°ï¼Œæ¯ä¸ªåœºæ™¯å°±ä¸€ä¸ªRand Table.
     INT                    GetRand100(VOID) {return m_Rand100.GetRand();};
 
     
     CHAR*            GetMapName(){ return m_szMapName ; }
-    //ÅĞ¶Ïµ±Ç°³¡¾°ÊÇ·ñÎª¸±±¾³¡¾° ÆÕÍ¨ÓÎÏ·³¡¾° ³ÇÊĞ³¡¾°, enum SCENE_TYPE
+    //åˆ¤æ–­å½“å‰åœºæ™¯æ˜¯å¦ä¸ºå‰¯æœ¬åœºæ™¯ æ™®é€šæ¸¸æˆåœºæ™¯ åŸå¸‚åœºæ™¯, enum SCENE_TYPE
     VOID            SetSceneType( INT type ){ m_SceneType = type ; } ;
     INT                GetSceneType( )const{ return m_SceneType ; } ;
 
     VOID            BeginSceneTimer( UINT uTerm, UINT uNowTime ) ;
     VOID            EndSceneTimer( ) ;
 
-    // ·¢ËÍÆÕÍ¨ÓÊ¼ş
+    // å‘é€æ™®é€šé‚®ä»¶
     VOID            SendNormalMail(const Obj_Human* pHuman, const CHAR* szReceiverName, const CHAR* szContent);
 
-    // ·¢ËÍÏµÍ³ÓÊ¼ş
+    // å‘é€ç³»ç»Ÿé‚®ä»¶
     VOID            SendSystemMail(const CHAR* szReceiverName, const CHAR* szContent);
 
-    // ·¢ËÍ¿ÉÖ´ĞĞÓÊ¼ş
+    // å‘é€å¯æ‰§è¡Œé‚®ä»¶
     VOID            SendScriptMail(const CHAR* szReceiverName, UINT uParam0, UINT uParam1, UINT uParam2, UINT uParam3 );
 
-    //Ö´ĞĞÒ»¸ömonster.iniÎÄ¼ş£¬²úÉúÒ»ÈºÔ¤¶¨ÒåºÃµÄ¹Ö
+    //æ‰§è¡Œä¸€ä¸ªmonster.iniæ–‡ä»¶ï¼Œäº§ç”Ÿä¸€ç¾¤é¢„å®šä¹‰å¥½çš„æ€ª
     BOOL            ExecuteMonsterIni( const CHAR* szFileName ) ;
 
-    //Íâ²¿»ñµÃ´Ë³¡¾°µÄ³ÇÊĞĞÅÏ¢
+    //å¤–éƒ¨è·å¾—æ­¤åœºæ™¯çš„åŸå¸‚ä¿¡æ¯
     CITYSCENE_DATA* GetCityData(){return &m_CityData;}
 
     CHAR*            FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Human* pHuman, const _MISSION_LIST_t* pMis, const _MISSION_DATA_t* pData, const _MISSION_REWARD_t* pReward, BOOL& bConvert);
 
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÒÔÏÂÎªÊı¾İÇø£¬ËùÓĞ³ÉÔ±±äÁ¿¶¨ÒåÔÚÏÂÃæ
+//ä»¥ä¸‹ä¸ºæ•°æ®åŒºï¼Œæ‰€æœ‰æˆå‘˜å˜é‡å®šä¹‰åœ¨ä¸‹é¢
 /////////////////////////////////////////////////////////////////////////////////
 protected :
-    //µ±Ç°³¡¾°µÄ×´Ì¬£¬¼ûSCENE_STATUS
+    //å½“å‰åœºæ™¯çš„çŠ¶æ€ï¼Œè§SCENE_STATUS
     INT                        m_nSceneStatus ;
-    //µ±Ç°³¡¾°µÄµØÍ¼ĞÅÏ¢
+    //å½“å‰åœºæ™¯çš„åœ°å›¾ä¿¡æ¯
     Map*                    m_pMap ;
 
-    //µ±Ç°µØÍ¼ÖĞµÄÇøÓòĞÅÏ¢
+    //å½“å‰åœ°å›¾ä¸­çš„åŒºåŸŸä¿¡æ¯
     Zone*                    m_pZone ;
     _ZONE_INFO                m_ZoneInfo ;
 
-    //µ±Ç°³¡¾°µÄ³¡¾°ID
+    //å½“å‰åœºæ™¯çš„åœºæ™¯ID
     SceneID_t                m_SceneID ;
 
-    //µ±Ç°³¡¾°µÄÓÃ»§Èº¹ÜÀíÄ£¿éÖ¸Õë
+    //å½“å‰åœºæ™¯çš„ç”¨æˆ·ç¾¤ç®¡ç†æ¨¡å—æŒ‡é’ˆ
     ScenePlayerManager*        m_pScenePlayerManager ;
 
-    //µ±Ç°³¡¾°µÈ´ı»ØÊÕµÄÓÃ»§Ö¸Õë
+    //å½“å‰åœºæ™¯ç­‰å¾…å›æ”¶çš„ç”¨æˆ·æŒ‡é’ˆ
     RecyclePlayerManager*    m_pRecyclePlayerManager;
 
-    //OBJ Manager¸ºÔğ¼¯ÖĞ¹ÜÀíµ±Ç°³¡¾°ÀïµÄËùÓĞOBJµÄĞÅÏ¢£¬
-    //¿ÉÒÔÍ¨¹ıObjID²éÑ¯µ½µ±Ç°OBJµÄÖ¸ÕëÊı¾İ
-    //OBJ Manager²»¸ºÔğ´´½¨ºÍÏú»ÙOBJµÄÊı¾İÄÚÈİ
+    //OBJ Managerè´Ÿè´£é›†ä¸­ç®¡ç†å½“å‰åœºæ™¯é‡Œçš„æ‰€æœ‰OBJçš„ä¿¡æ¯ï¼Œ
+    //å¯ä»¥é€šè¿‡ObjIDæŸ¥è¯¢åˆ°å½“å‰OBJçš„æŒ‡é’ˆæ•°æ®
+    //OBJ Managerä¸è´Ÿè´£åˆ›å»ºå’Œé”€æ¯OBJçš„æ•°æ®å†…å®¹
     ObjManager*                m_pObjManager ;
 
-    //Obj_Human Manager¸ºÔğ´¦Àíµ±Ç°³¡¾°ÀïµÄËùÓĞ½ÇÉ«µÄÂß¼­´¦Àí
+    //Obj_Human Managerè´Ÿè´£å¤„ç†å½“å‰åœºæ™¯é‡Œçš„æ‰€æœ‰è§’è‰²çš„é€»è¾‘å¤„ç†
     HumanManager*            m_pHumanManager ;
 
-    //Obj_Monster Manager¸ºÔğ´¦Àíµ±Ç°³¡¾°ÀïµÄËùÓĞµÄ¹ÖÎïµÄÂß¼­´¦Àí
+    //Obj_Monster Managerè´Ÿè´£å¤„ç†å½“å‰åœºæ™¯é‡Œçš„æ‰€æœ‰çš„æ€ªç‰©çš„é€»è¾‘å¤„ç†
     MonsterManager*            m_pMonsterManager ;
 
-    //Obj_Pet Manager¸ºÔğ´¦Àíµ±Ç°³¡¾°ÀïµÄËùÓĞµÄObj_PetµÄÂß¼­´¦Àí
+    //Obj_Pet Managerè´Ÿè´£å¤„ç†å½“å‰åœºæ™¯é‡Œçš„æ‰€æœ‰çš„Obj_Petçš„é€»è¾‘å¤„ç†
     PetManager*                m_pPetManager ;
 
-    //Obj_ItemBox Manager ´¦Àíµ±Ç°³¡¾°ÖĞËùÓĞÎïÆ·ºĞµÄÂß¼­
+    //Obj_ItemBox Manager å¤„ç†å½“å‰åœºæ™¯ä¸­æ‰€æœ‰ç‰©å“ç›’çš„é€»è¾‘
     ItemBoxManager*            m_pItemBoxManager;
 
-    //Obj_Platform Manager ´¦Àíµ±Ç°³¡¾°ÖĞËùÓĞµÄ²Ù×÷Ì¨
+    //Obj_Platform Manager å¤„ç†å½“å‰åœºæ™¯ä¸­æ‰€æœ‰çš„æ“ä½œå°
     PlatformManager*        m_pPlatformManager;
 
-    //StallInfoManager        ´¦Àíµ±Ç°³¡¾°ÖĞ°ÚÌ¯µÄÊÕ·Ñ¼Û¸ñ
+    //StallInfoManager        å¤„ç†å½“å‰åœºæ™¯ä¸­æ‘†æ‘Šçš„æ”¶è´¹ä»·æ ¼
     StallInfoManager*        m_pStallInfoManager;
 
-    //PlayerShopManager        ¹ÜÀíµ±Ç°³¡¾°ÖĞËùÓĞµÄÍæ¼ÒÉÌµê,ÕâÖ»ÊÇÒ»¸öÖ¸ÕëÊı×é£¬×î´óÊıÁ¿²»ÓÃ¶ÁÁË
+    //PlayerShopManager        ç®¡ç†å½“å‰åœºæ™¯ä¸­æ‰€æœ‰çš„ç©å®¶å•†åº—,è¿™åªæ˜¯ä¸€ä¸ªæŒ‡é’ˆæ•°ç»„ï¼Œæœ€å¤§æ•°é‡ä¸ç”¨è¯»äº†
     PlayerShopManager*        m_pPlayerShopManager;
 
-    //Obj_Special Manager ´¦Àíµ±Ç°³¡¾°ÖĞËùÓĞµÄ·¨ÊõOBJ
+    //Obj_Special Manager å¤„ç†å½“å‰åœºæ™¯ä¸­æ‰€æœ‰çš„æ³•æœ¯OBJ
     SpecialManager*            m_pSpecialManager;
 
     StoreManager*            m_pStoreManager;
@@ -394,7 +394,7 @@ protected :
     // Event Zone Manager
     AreaManager*            m_pAreaManager;
 
-    // Combat event ¹ÜÀíÆ÷
+    // Combat event ç®¡ç†å™¨
     EventCore_T                m_EventCore;
 
     GrowPointManager        m_GrowPointGroup;
@@ -410,14 +410,14 @@ protected :
 
 
 private :
-    //µ±Ç°³¡¾°µÄÏûÏ¢»º´æ
+    //å½“å‰åœºæ™¯çš„æ¶ˆæ¯ç¼“å­˜
     ASYNC_PACKET*            m_PacketQue ;
     UINT                    m_QueSize ;
     UINT                    m_Head ;
     UINT                    m_Tail ;
-    _100_PER_RANDOM_TABLE    m_Rand100 ; //Ã¿¸öÏß³ÌÎ¨Ò»µÄËæ»úÊıÉú³ÉÆ÷
+    _100_PER_RANDOM_TABLE    m_Rand100 ; //æ¯ä¸ªçº¿ç¨‹å”¯ä¸€çš„éšæœºæ•°ç”Ÿæˆå™¨
 public:
-    // ±¾³¡¾°µÄ¹²ÓÃ±äÁ¿
+    // æœ¬åœºæ™¯çš„å…±ç”¨å˜é‡
     Packet                    *m_pPacket_NewPlayer;
     Packet                    *m_pPacket_NewPlayer_Move;
     Packet                    *m_pPacket_NewPlayer_Death;
@@ -431,20 +431,20 @@ public:
     Packet                    *m_pPacket_NewSpecial;
     Packet                    *m_pPacket_NewItemBox;
     Packet                    *m_pPacket_DelObject;
-    Packet                    *m_pPacket_SysMsg; //ÏµÍ³¹ã²¥;
+    Packet                    *m_pPacket_SysMsg; //ç³»ç»Ÿå¹¿æ’­;
     MisBuf                    mMisBuf;
     _ITEM_LIST                mItemList;
-    TID                        m_ThreadID ;//³¡¾°µÄÏß³ÌºÅ
+    TID                        m_ThreadID ;//åœºæ™¯çš„çº¿ç¨‹å·
     MISSION_DATA            *m_pMissionData;
-    SCENE_LOAD                m_SceneLoad ;//³¡¾°ÖĞµÄ³õÊ¼»¯ĞÅÏ¢
-    SCENE_INIT_DATA            m_SceneInitData ;//³¡¾°ÖĞµÄ¸½¼ÓĞÅÏ¢
-    CHAR                    m_szMapName[_MAX_PATH] ;//µØÍ¼Ãû³Æ
+    SCENE_LOAD                m_SceneLoad ;//åœºæ™¯ä¸­çš„åˆå§‹åŒ–ä¿¡æ¯
+    SCENE_INIT_DATA            m_SceneInitData ;//åœºæ™¯ä¸­çš„é™„åŠ ä¿¡æ¯
+    CHAR                    m_szMapName[_MAX_PATH] ;//åœ°å›¾åç§°
     COPYSCENE_DATA            m_CopyData ;
-    CITYSCENE_DATA            m_CityData;//³ÇÊĞµÄĞÅÏ¢
-    SCENE_PERFOR            m_Perfor ;//ËÀËø¼ì²â
-    X_PARAM                    m_XParam ;//UICommand²ÎÊı
-    HUMANLIST                m_aHumanList ;//ÓÃÓÚ½Å±¾»º´æÉ¨ÃèÊı¾İ
-    _ObjID_List                m_ObjIDList ;//ÓÃ»§½Å±¾»º´æÉ¨ÃèÊı¾İ
+    CITYSCENE_DATA            m_CityData;//åŸå¸‚çš„ä¿¡æ¯
+    SCENE_PERFOR            m_Perfor ;//æ­»é”æ£€æµ‹
+    X_PARAM                    m_XParam ;//UICommandå‚æ•°
+    HUMANLIST                m_aHumanList ;//ç”¨äºè„šæœ¬ç¼“å­˜æ‰«ææ•°æ®
+    _ObjID_List                m_ObjIDList ;//ç”¨æˆ·è„šæœ¬ç¼“å­˜æ‰«ææ•°æ®
 };
 
 #include "Scene.inl"

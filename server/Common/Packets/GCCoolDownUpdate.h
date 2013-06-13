@@ -1,6 +1,6 @@
 // GCCoolDownUpdate.h
 // 
-// 当前主角的冷却表更新
+// 褰撳墠涓昏鐨勫喎鍗磋〃鏇存柊
 // 
 //////////////////////////////////////////////////////
 
@@ -37,7 +37,7 @@ public:
     };
     virtual ~GCCooldownUpdate( ){};
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;

@@ -1,13 +1,13 @@
 #include "stdafx.h"
 /************************************************************************/
 /*
-´´½¨ÈÕÆÚ:    2006Äê2ÔÂ13ÈÕ
-´´½¨Ê±¼ä:    11:54
-ÎÄ¼şÃû³Æ:    PlayerShop.h
-ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Other\PlayerShopManager.cpp
+åˆ›å»ºæ—¥æœŸ:    2006å¹´2æœˆ13æ—¥
+åˆ›å»ºæ—¶é—´:    11:54
+æ–‡ä»¶åç§°:    PlayerShop.h
+æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Other\PlayerShopManager.cpp
 
-ÎÄ¼ş¹¦ÄÜ£º    Íæ¼ÒÉÌµê¹ÜÀíÆ÷
-ĞŞ¸Ä¼ÍÂ¼£º
+æ–‡ä»¶åŠŸèƒ½ï¼š    ç©å®¶å•†åº—ç®¡ç†å™¨
+ä¿®æ”¹çºªå½•ï¼š
 */
 /************************************************************************/
 
@@ -75,7 +75,7 @@ BOOL PlayerShopManager::RemovePlayerShop(INT iShopIndex)
 
     m_pFreeItemID[m_nPlayerShopNum]    =    iShopIndex;
 
-    //ÔÚ³ØÖĞ»ØÊÕ
+    //åœ¨æ± ä¸­å›æ”¶
     g_pPlayerShopPool->DeleteObj(m_pPlayerShopList[iShopIndex]);
     m_pPlayerShopList[iShopIndex] = NULL;
 
@@ -138,7 +138,7 @@ BOOL PlayerShopManager::RemovePlayerShopByGuid(_PLAYERSHOP_GUID ShopGuid)
 BOOL PlayerShopManager::HeartBeat(UINT uTime)
 {
     __ENTER_FUNCTION
-    //¶¨Ê±¿Û³ıÓªÒµË°
+    //å®šæ—¶æ‰£é™¤è¥ä¸šç¨
     for(UINT i = 0; i<MAX_SHOP_NUM_PER_SCENE; i++ )
     {
         if(m_pPlayerShopList[i] != NULL)
@@ -146,19 +146,19 @@ BOOL PlayerShopManager::HeartBeat(UINT uTime)
             _MY_TRY
             {
                 if(m_pPlayerShopList[i]->GetShopStatus() == PLAYER_SHOP::STATUS_PLAYER_SHOP_OPEN)
-                {//¿ªÕÅµÄÉÌµê£¬ÅÜĞÄÌø
+                {//å¼€å¼ çš„å•†åº—ï¼Œè·‘å¿ƒè·³
                     m_pPlayerShopList[i]->HeartBeat(uTime, m_CommerceFactor);
                 }
                 else if(m_pPlayerShopList[i]->GetShopStatus() == PLAYER_SHOP::STATUS_PLAYER_SHOP_CLOSE)
-                {//´òìÈµÄ
+                {//æ‰“çƒŠçš„
 
                 }
                 else if(m_pPlayerShopList[i]->GetShopStatus() == PLAYER_SHOP::STATUS_PLAYER_SHOP_SHUT_DOWN)
-                {//ÒÑ±»ÏµÍ³¹Ø±ÕµÄÉÌµê£¬ÏµÍ³»ØÊÕ
+                {//å·²è¢«ç³»ç»Ÿå…³é—­çš„å•†åº—ï¼Œç³»ç»Ÿå›æ”¶
                     RemovePlayerShop(i);
                 }
                 else if(m_pPlayerShopList[i]->GetShopStatus() == PLAYER_SHOP::STATUS_PLAYER_SHOP_ON_SALE)
-                {//ÒÑÅÌ³öµÄÉÌµê
+                {//å·²ç›˜å‡ºçš„å•†åº—
                     m_pPlayerShopList[i]->HeartBeat(uTime, m_CommerceFactor);
                 }
             }

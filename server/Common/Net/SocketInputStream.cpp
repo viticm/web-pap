@@ -53,7 +53,7 @@ __LEAVE_FUNCTION_FOXNET
     return 0 ;
 }
 
-//返回0表示没有读到数据
+//杩斿洖0琛ㄧず娌℃湁璇诲埌鏁版嵁
 UINT SocketInputStream::Read( CHAR* buf, UINT len ) 
 {
 __ENTER_FUNCTION_FOXNET

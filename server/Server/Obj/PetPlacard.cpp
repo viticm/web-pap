@@ -208,35 +208,35 @@ ORESULT PetPlacardSystem::IssuePlacard(Obj_Human *pIssuer, PET_GUID_t guidPet, c
         return OR_PET_PLACARD_NOT_APPOINT_PET;
     }
 
-    // Ìõ¼şÅĞ¶Ï
-    //1£®±ØĞëÎª³è±¦±¦£¨ËùÒÔ±¦±¦±ØĞëÊÇÀàĞÍ£©
+    // æ¡ä»¶åˆ¤æ–­
+    //1ï¼å¿…é¡»ä¸ºå® å®å®ï¼ˆæ‰€ä»¥å®å®å¿…é¡»æ˜¯ç±»å‹ï¼‰
     if(pPetItem->GetPetType() != _PET_DB_LOAD::PET_TYPE_BABY)
     {
         return OR_PET_PLACARD_NEED_PET_TYPE;
     }
 
-    //2£®±ØĞëÎª´ïµ½15¼¶ÒÔÉÏ
+    //2ï¼å¿…é¡»ä¸ºè¾¾åˆ°15çº§ä»¥ä¸Š
     if(pPetItem->GetLevel() < g_Config.m_ConfigInfo.m_PetPlacardNeedLevel)
     {
         return OR_PET_PLACARD_NEED_PET_LEVEL;
     }
 
-    //3£®³è±¦±¦µÄ¿ìÀÖÖµ±ØĞëÎª100ÂúÖµ¡£
+    //3ï¼å® å®å®çš„å¿«ä¹å€¼å¿…é¡»ä¸º100æ»¡å€¼ã€‚
     if(pPetItem->GetHappiness() < g_Config.m_ConfigInfo.m_PetPlacardNeedHappiness)
     {
         return OR_PET_PLACARD_NEED_PET_HAPPINESS;
     }
 
-    //4£®±äÒìµÄ³è²»ÄÜ½øĞĞÕ÷ÓÑ¡£
-    //...£¿£¬ÕâÊÇÊ²Ã´£¿µÚÒ»Ìõ²»ÊÇËµÁËÖ»ÓĞ³è±¦±¦²ÅÄÜÕ÷ÓÑÂğ£¿ÊÇ³è±¦±¦»¹»áÊÇ±äÒì³è£¿
+    //4ï¼å˜å¼‚çš„å® ä¸èƒ½è¿›è¡Œå¾å‹ã€‚
+    //...ï¼Ÿï¼Œè¿™æ˜¯ä»€ä¹ˆï¼Ÿç¬¬ä¸€æ¡ä¸æ˜¯è¯´äº†åªæœ‰å® å®å®æ‰èƒ½å¾å‹å—ï¼Ÿæ˜¯å® å®å®è¿˜ä¼šæ˜¯å˜å¼‚å® ï¼Ÿ
 
-    //5£®ÊÙÃü´óÓÚN=3000£»
+    //5ï¼å¯¿å‘½å¤§äºN=3000ï¼›
     if(pPetItem->GetLife() < g_Config.m_ConfigInfo.m_PetPlacardNeedLife)
     {
         return OR_PET_PLACARD_NEED_PET_LIFE;
     }
 
-    // ²»ÄÜÍ¬Ê±·¢²¼1¸öÒÔÉÏµÄ³èÎïĞÅÏ¢
+    // ä¸èƒ½åŒæ—¶å‘å¸ƒ1ä¸ªä»¥ä¸Šçš„å® ç‰©ä¿¡æ¯
     if(m_PetPlacard.GetIndexByHumanGUID(pIssuer->GetGUID()) != -1)
     {
         return OR_PET_PLACARD_ONLY_CAN_ISSUE_ONE;
@@ -266,43 +266,43 @@ ORESULT PetPlacardSystem::IssuePlacard(Obj_Human *pIssuer, PET_GUID_t guidPet, c
         INT nLevel = pPetItem->GetLevel();
         FLOAT fGrowRate = pPetItem->GetGrowRate();
 
-        //Ä§¹¥    ³õÊ¼Ä§¹¥+ÁéÆø*ÁéÆø¶ÔÄ§¹¥¹¥Ó°ÏìÏµÊı*Áé×Ê+µÈ¼¶*µÈ¼¶¶ÔÄ§¹¥Ó°ÏìÏµÊı*³É³¤
+        //é­”æ”»    åˆå§‹é­”æ”»+çµæ°”*çµæ°”å¯¹é­”æ”»æ”»å½±å“ç³»æ•°*çµèµ„+ç­‰çº§*ç­‰çº§å¯¹é­”æ”»å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BaseMgcAttack;
         fAttribRate = g_TableInit.m_PetConfig.m_Spr_MgcAttack_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_MgcAttack_Pram;
         nAttribParam = pPetItem->GetLvl1Attr(CATTR_LEVEL1_SPR);
         nAtt_Magic = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
-        //Îï¹¥    ³õÊ¼Îï¹¥+Á¦Á¿*Á¦Á¿¶ÔÎï¹¥Ó°ÏìÏµÊı*Á¦×Ê+µÈ¼¶*µÈ¼¶¶ÔÎï¹¥Ó°ÏìÏµÊı*³É³¤
+        //ç‰©æ”»    åˆå§‹ç‰©æ”»+åŠ›é‡*åŠ›é‡å¯¹ç‰©æ”»å½±å“ç³»æ•°*åŠ›èµ„+ç­‰çº§*ç­‰çº§å¯¹ç‰©æ”»å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
         fAttribRate = g_TableInit.m_PetConfig.m_Str_PhyAttack_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_PhyAttack_Pram;
         nAttribParam = pPetItem->GetLvl1Attr(CATTR_LEVEL1_STR);
         nAtt_Physics = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
-        //Ä§·À    ³õÊ¼Ä§·À+¶¨Á¦*¶¨Á¦¶ÔÄ§·ÀÓ°ÏìÏµÊı*¶¨×Ê+µÈ¼¶*µÈ¼¶¶ÔÄ§·ÀÓ°ÏìÏµÊı*³É³¤
+        //é­”é˜²    åˆå§‹é­”é˜²+å®šåŠ›*å®šåŠ›å¯¹é­”é˜²å½±å“ç³»æ•°*å®šèµ„+ç­‰çº§*ç­‰çº§å¯¹é­”é˜²å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BaseMgcDefence;
         fAttribRate = g_TableInit.m_PetConfig.m_Int_MgcDefence_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_MgcDefence_Pram;
         nAttribParam = pPetItem->GetLvl1Attr(CATTR_LEVEL1_INT);
         nDef_Magic = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
-        //Îï·À    ³õÊ¼Îï¹¥+ÌåÖÊ*ÌåÖÊ¶ÔÎï·ÀÓ°ÏìÏµÊı*Ìå×Ê+µÈ¼¶*µÈ¼¶¶ÔÎï·ÀÓ°ÏìÏµÊı*³É³¤
+        //ç‰©é˜²    åˆå§‹ç‰©æ”»+ä½“è´¨*ä½“è´¨å¯¹ç‰©é˜²å½±å“ç³»æ•°*ä½“èµ„+ç­‰çº§*ç­‰çº§å¯¹ç‰©é˜²å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BasePhyDefence;
         fAttribRate = g_TableInit.m_PetConfig.m_Con_PhyDefence_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_PhyDefence_Pram;
         nAttribParam = pPetItem->GetLvl1Attr(CATTR_LEVEL1_CON);
         nDef_Physics = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
-        //ÉÁ±Ü    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶ÔÉÁ±ÜÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶ÔÉÁ±ÜÓ°ÏìÏµÊı*³É³¤
+        //é—ªé¿    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹é—ªé¿å½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹é—ªé¿å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
         fAttribRate = g_TableInit.m_PetConfig.m_Dex_Miss_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_Miss_Pram;
         nAttribParam = pPetItem->GetLvl1Attr(CATTR_LEVEL1_DEX);
         nHit = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
-        //ÃüÖĞ    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶ÔÃüÖĞÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶ÔÃüÖĞÓ°ÏìÏµÊı*³É³¤
+        //å‘½ä¸­    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹å‘½ä¸­å½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹å‘½ä¸­å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
         fAttribRate = g_TableInit.m_PetConfig.m_Dex_Hit_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_Hit_Pram;
         nAttribParam = pPetItem->GetLvl1Attr(CATTR_LEVEL1_DEX);
         nMiss = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
-        //»áĞÄ    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶Ô»áĞÄÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶Ô»áĞÄÓ°ÏìÏµÊı*³É³¤
+        //ä¼šå¿ƒ    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹ä¼šå¿ƒå½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹ä¼šå¿ƒå½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BaseCritical;
         fAttribRate = g_TableInit.m_PetConfig.m_Dex_Critical_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_Critical_Pram;

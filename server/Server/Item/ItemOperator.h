@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºItemOperator.h
-//¹¦ÄÜÃèÊö£ºÎïÆ·¼°ÎïÆ·ÈİÆ÷µÄ²Ù×÷·â×°Àà£¬Í¨¹ı´ËÀàÀ´´¦ÀíÁ½¸öÈİÆ÷¼äÎïÆ·µÄ×ªÒÆ£¬Ïú»Ù
-//            Éú³É¡¢ÒÔ¼°ÉèÖÃÎïÆ·Êı¾İµÈ¹¦ÄÜ¡£
-//ĞŞ¸Ä¼ÇÂ¼£º2005-11-2´´½¨
+//æ–‡ä»¶åï¼šItemOperator.h
+//åŠŸèƒ½æè¿°ï¼šç‰©å“åŠç‰©å“å®¹å™¨çš„æ“ä½œå°è£…ç±»ï¼Œé€šè¿‡æ­¤ç±»æ¥å¤„ç†ä¸¤ä¸ªå®¹å™¨é—´ç‰©å“çš„è½¬ç§»ï¼Œé”€æ¯
+//            ç”Ÿæˆã€ä»¥åŠè®¾ç½®ç‰©å“æ•°æ®ç­‰åŠŸèƒ½ã€‚
+//ä¿®æ”¹è®°å½•ï¼š2005-11-2åˆ›å»º
 //
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -14,19 +14,19 @@
 #include "DB_Struct.h"
 
 
-enum ITEM_OPERATOR_ERROR//´ËÃ¶¾Ù½á¹¹ÄÚµÄÊı¾İ±ØĞë¶¼Îª¸ºÊı
+enum ITEM_OPERATOR_ERROR//æ­¤æšä¸¾ç»“æ„å†…çš„æ•°æ®å¿…é¡»éƒ½ä¸ºè´Ÿæ•°
 {
-    ITEMOE_SUCCESS                =  0,    //³É¹¦
-    ITEMOE_UNKNOW                = -1 ,    //Î´ÖªµÄÒì³£´íÎó
-    ITEMOE_DESTOPERATOR_HASITEM = -2 ,  //ÈİÆ÷µÄÄ¿±êÎ»ÖÃÒÑ¾­ÓĞÎïÆ·ÁË
-    ITEMOE_SOUROPERATOR_LOCK    = -3 ,    //Ô´ÈİÆ÷ÖĞµÄÎïÆ·±»ÉÏËøÁË
-    ITEMOE_DESTOPERATOR_LOCK    = -4 ,    //Ä¿±êÈİÆ÷ÖĞµÄÎïÆ·±»ÉÏËøÁË
-    ITEMOE_DESTOPERATOR_FULL    = -5 ,    //Ä¿±êÈİÆ÷ÒÑ¾­ÂúÁË
-    ITEMOE_SOUROPERATOR_EMPTY    = -6 ,    //Ô´ÈİÆ÷ÀïµÄÎïÆ·ÊÇ¿ÕµÄ
-    ITEMOE_DESTOPERATOR_EMPTY   = -7 ,    //Ä¿±êÈİÆ÷µÄÎïÆ·ÊÇ¿ÕµÄ
-    ITEMOE_CREATEITEM_FAIL        = -8,    //ÎïÆ·²úÉúÊ§°Ü
-    ITEMOE_CREATEGUID_FAIL        = -9,    //ÎïÆ·GUID´´½¨Ê§°Ü
-    ITEMOE_DIFF_ITEM_DATA        = -10    //²»Í¬ÀàĞÍÎïÆ·Êı¾İ²»ÄÜ²Ù×÷
+    ITEMOE_SUCCESS                =  0,    //æˆåŠŸ
+    ITEMOE_UNKNOW                = -1 ,    //æœªçŸ¥çš„å¼‚å¸¸é”™è¯¯
+    ITEMOE_DESTOPERATOR_HASITEM = -2 ,  //å®¹å™¨çš„ç›®æ ‡ä½ç½®å·²ç»æœ‰ç‰©å“äº†
+    ITEMOE_SOUROPERATOR_LOCK    = -3 ,    //æºå®¹å™¨ä¸­çš„ç‰©å“è¢«ä¸Šé”äº†
+    ITEMOE_DESTOPERATOR_LOCK    = -4 ,    //ç›®æ ‡å®¹å™¨ä¸­çš„ç‰©å“è¢«ä¸Šé”äº†
+    ITEMOE_DESTOPERATOR_FULL    = -5 ,    //ç›®æ ‡å®¹å™¨å·²ç»æ»¡äº†
+    ITEMOE_SOUROPERATOR_EMPTY    = -6 ,    //æºå®¹å™¨é‡Œçš„ç‰©å“æ˜¯ç©ºçš„
+    ITEMOE_DESTOPERATOR_EMPTY   = -7 ,    //ç›®æ ‡å®¹å™¨çš„ç‰©å“æ˜¯ç©ºçš„
+    ITEMOE_CREATEITEM_FAIL        = -8,    //ç‰©å“äº§ç”Ÿå¤±è´¥
+    ITEMOE_CREATEGUID_FAIL        = -9,    //ç‰©å“GUIDåˆ›å»ºå¤±è´¥
+    ITEMOE_DIFF_ITEM_DATA        = -10    //ä¸åŒç±»å‹ç‰©å“æ•°æ®ä¸èƒ½æ“ä½œ
 
 };
 
@@ -46,25 +46,25 @@ public :
     ItemOperator( ) ;
     ~ItemOperator( ) ;
 
-    BOOL                Init( _ITEMOPERATOR_INIT* pInit ) ;//³õÊ¼»¯ÎïÆ·²Ù×÷ÏµÍ³
+    BOOL                Init( _ITEMOPERATOR_INIT* pInit ) ;//åˆå§‹åŒ–ç‰©å“æ“ä½œç³»ç»Ÿ
 
-    VOID                CleanUp( ) ;//Çå³ı
+    VOID                CleanUp( ) ;//æ¸…é™¤
 
 public :
     //////////////////////////////
-    //ÔÚÁ½¸öÎïÆ·ÈİÆ÷¼äµÄ²Ù×÷½Ó¿Ú//
+    //åœ¨ä¸¤ä¸ªç‰©å“å®¹å™¨é—´çš„æ“ä½œæ¥å£//
     //////////////////////////////
 
 
 
     /*
-     *    ÔÚÈİÆ÷pDestContainerÖĞ´´½¨Ò»¼şÎïÆ·,ÎïÆ·ÀàĞÍ¸ù¾İuItemIndex,uQuality À´¹æ¶¨
+     *    åœ¨å®¹å™¨pDestContainerä¸­åˆ›å»ºä¸€ä»¶ç‰©å“,ç‰©å“ç±»å‹æ ¹æ®uItemIndex,uQuality æ¥è§„å®š
      *  uQuality 
-     *  Èç¹ûÒÑ¾­ÓĞ´ËÀàÎïÆ·Ôò½øĞĞµş¼Ó,·ñÔòÎïÆ·µÄÎ»ÖÃ·ÅÔÚ¿ÕÎ»ÖÃÉÏ
+     *  å¦‚æœå·²ç»æœ‰æ­¤ç±»ç‰©å“åˆ™è¿›è¡Œå åŠ ,å¦åˆ™ç‰©å“çš„ä½ç½®æ”¾åœ¨ç©ºä½ç½®ä¸Š
      *  
-     *    uConIndex ×îºóÎïÆ··ÅÖÃµÄÎ»ÖÃ
+     *    uConIndex æœ€åç‰©å“æ”¾ç½®çš„ä½ç½®
      *
-     *    ´Ë²Ù×÷²úÉúÒ»¸ö¾ßÓĞÎ¨Ò»(GUID) µÄĞÂÎïÆ·
+     *    æ­¤æ“ä½œäº§ç”Ÿä¸€ä¸ªå…·æœ‰å”¯ä¸€(GUID) çš„æ–°ç‰©å“
      */
 
     BOOL                CreateItem(ITEM_LOG_PARAM*    pLogParam,
@@ -82,10 +82,10 @@ public :
 
 
     /*
-     *    ÎïÆ·µôÂäÖĞ³õÊ¼»¯ItemBox µÄÒ»ÖÖ·½Ê½
-     *    ½«pSourceContainer ÖĞ nSourceIndex Î»ÖÃµÄÎïÆ·
-     *  copy µ½ pDestContainer ÖĞ nDestIndex Î»ÖÃ
-     *    Èç¹ûnDestIndex Î´Ö¸¶¨ÔòÑ°ÕÒÒ»¸ö¿Õ¸ñ,»òÕßÎ´ÂúµÄ¸ñ
+     *    ç‰©å“æ‰è½ä¸­åˆå§‹åŒ–ItemBox çš„ä¸€ç§æ–¹å¼
+     *    å°†pSourceContainer ä¸­ nSourceIndex ä½ç½®çš„ç‰©å“
+     *  copy åˆ° pDestContainer ä¸­ nDestIndex ä½ç½®
+     *    å¦‚æœnDestIndex æœªæŒ‡å®šåˆ™å¯»æ‰¾ä¸€ä¸ªç©ºæ ¼,æˆ–è€…æœªæ»¡çš„æ ¼
      */
 
     INT                    CopyItem(ItemBoxContaner*    pSourceContainer,
@@ -98,25 +98,25 @@ public :
     
 
 
-    //½«pSourContainerÈİÆ÷ÄÚµÄnSourIndexÎ»ÖÃµÄÎïÆ·×ªÒÆµ½pDestContainerÈİÆ÷ÄÚµÄ
-    //nDestIndexÎ»ÖÃ
-    //Èç¹ûnDestIndexµÄÖµÎªINVALID_INDEX£¬Ôò½«ÎïÆ·×ªÒÆµ½pDestContainerÈİÆ÷ÄÚµÄËæ
-    //»úÕÒµ½µÄÒ»¸ö¿ÕÎ»ÖÃÉÏ
-    //·µ»ØÖµ£ºÖ´ĞĞ³É¹¦£¬Ôò·µ»ØÎïÆ·ÔÚpDestContainerÈİÆ÷ÄÚµÄÎ»ÖÃ
-    //          Ö´ĞĞÊ§°Ü£¬Ôò·µ»ØITEM_OPERATOR_ERRORÖĞÃèÊöµÄÖµ
-    //×¢Òâ£º´Ë²Ù×÷²»»áÉú³ÉĞÂµÄÎïÆ·Êı¾İ
+    //å°†pSourContainerå®¹å™¨å†…çš„nSourIndexä½ç½®çš„ç‰©å“è½¬ç§»åˆ°pDestContainerå®¹å™¨å†…çš„
+    //nDestIndexä½ç½®
+    //å¦‚æœnDestIndexçš„å€¼ä¸ºINVALID_INDEXï¼Œåˆ™å°†ç‰©å“è½¬ç§»åˆ°pDestContainerå®¹å™¨å†…çš„éš
+    //æœºæ‰¾åˆ°çš„ä¸€ä¸ªç©ºä½ç½®ä¸Š
+    //è¿”å›å€¼ï¼šæ‰§è¡ŒæˆåŠŸï¼Œåˆ™è¿”å›ç‰©å“åœ¨pDestContainerå®¹å™¨å†…çš„ä½ç½®
+    //          æ‰§è¡Œå¤±è´¥ï¼Œåˆ™è¿”å›ITEM_OPERATOR_ERRORä¸­æè¿°çš„å€¼
+    //æ³¨æ„ï¼šæ­¤æ“ä½œä¸ä¼šç”Ÿæˆæ–°çš„ç‰©å“æ•°æ®
     INT                    MoveItem( ItemContainer* pSourContainer,
                                   INT             nSourIndex ,
                                   BOOL&             bNewPos,
                                   ItemContainer* pDestContainer,
                                   INT             nDestIndex=INVALID_INDEX ) ;
 
-    //½«pSourContainerÈİÆ÷ÄÚµÄnSourIndexÎ»ÖÃµÄÎïÆ·×ªÒÆµ½pSourContainerÈİÆ÷ÄÚµÄ
-    //nDestIndexÎ»ÖÃ
-    //·µ»ØÖµ£ºÖ´ĞĞ³É¹¦£¬Ôò·µ»ØÎïÆ·ÔÚpSourContainerÈİÆ÷ÄÚµÄÎ»ÖÃ
-    //          Ö´ĞĞÊ§°Ü£¬Ôò·µ»ØITEM_OPERATOR_ERRORÖĞÃèÊöµÄÖµ
-    //×¢Òâ£º´Ë²Ù×÷²»»áÉú³ÉĞÂµÄÎïÆ·Êı¾İ
-    //²»Ó¦¸ÃĞ´Log ÈİÆ÷ÄÚµÄÒÆ¶¯
+    //å°†pSourContainerå®¹å™¨å†…çš„nSourIndexä½ç½®çš„ç‰©å“è½¬ç§»åˆ°pSourContainerå®¹å™¨å†…çš„
+    //nDestIndexä½ç½®
+    //è¿”å›å€¼ï¼šæ‰§è¡ŒæˆåŠŸï¼Œåˆ™è¿”å›ç‰©å“åœ¨pSourContainerå®¹å™¨å†…çš„ä½ç½®
+    //          æ‰§è¡Œå¤±è´¥ï¼Œåˆ™è¿”å›ITEM_OPERATOR_ERRORä¸­æè¿°çš„å€¼
+    //æ³¨æ„ï¼šæ­¤æ“ä½œä¸ä¼šç”Ÿæˆæ–°çš„ç‰©å“æ•°æ®
+    //ä¸åº”è¯¥å†™Log å®¹å™¨å†…çš„ç§»åŠ¨
     INT                    MoveItem( ItemContainer* pSourContainer,
                                   INT nSourIndex,
                                   INT nDestIndex);
@@ -127,29 +127,29 @@ public :
     
     
 
-    //²ğ·ÖÎïÆ·²Ù×÷
-    //×¢Òâ:´Ë²Ù×÷¿ÉÄÜ²úÉúĞÂµÄGUID
+    //æ‹†åˆ†ç‰©å“æ“ä½œ
+    //æ³¨æ„:æ­¤æ“ä½œå¯èƒ½äº§ç”Ÿæ–°çš„GUID
     INT                    SplitItem(ITEM_LOG_PARAM* pLogParam,
-                                  ItemContainer* pSourContainer,    //Ô­ÈİÆ÷
-                                  UCHAR uSourIndex,                    //Ô­ÈİÆ÷ÖĞÎ»ÖÃ
-                                  UCHAR uCount,                        //·ÖÀë¸öÊı
-                                  ItemContainer* pDestContainer,    //Ä¿±êÈİÆ÷
-                                  INT nDestIndex =INVALID_INDEX );  //Ä¿±êÎ»ÖÃ
+                                  ItemContainer* pSourContainer,    //åŸå®¹å™¨
+                                  UCHAR uSourIndex,                    //åŸå®¹å™¨ä¸­ä½ç½®
+                                  UCHAR uCount,                        //åˆ†ç¦»ä¸ªæ•°
+                                  ItemContainer* pDestContainer,    //ç›®æ ‡å®¹å™¨
+                                  INT nDestIndex =INVALID_INDEX );  //ç›®æ ‡ä½ç½®
 
-    //ºÏ²¢ÎïÆ·²Ù×÷
-    //×¢Òâ:´Ë²Ù×÷²»²úÉúĞÂµÄGUID
-    INT                    SpliceItem(    ItemContainer* pSourContainer,    //Ô­ÈİÆ÷
-                                    UCHAR uSourIndex,                //Ô­ÈİÆ÷ÖĞÎ»ÖÃ
-                                    ItemContainer* pDestContainer,    //Ä¿±êÈİÆ÷
-                                    INT nDestIndex  );                //Ä¿±êÎ»ÖÃ
+    //åˆå¹¶ç‰©å“æ“ä½œ
+    //æ³¨æ„:æ­¤æ“ä½œä¸äº§ç”Ÿæ–°çš„GUID
+    INT                    SpliceItem(    ItemContainer* pSourContainer,    //åŸå®¹å™¨
+                                    UCHAR uSourIndex,                //åŸå®¹å™¨ä¸­ä½ç½®
+                                    ItemContainer* pDestContainer,    //ç›®æ ‡å®¹å™¨
+                                    INT nDestIndex  );                //ç›®æ ‡ä½ç½®
 
     
-    //ºÏ²¢ÎïÆ·²Ù×÷
-    //×¢Òâ:´Ë²Ù×÷²»²úÉúĞÂµÄGUID
-    INT                    MoveSpliceItem(ItemContainer* pSourContainer,    //Ô­ÈİÆ÷
-                                    UCHAR uSourIndex,                    //Ô­ÈİÆ÷ÖĞÎ»ÖÃ
-                                    ItemContainer* pDestContainer,        //Ä¿±êÈİÆ÷
-                                    INT nDestIndex);                    //Ä¿±êÎ»ÖÃ
+    //åˆå¹¶ç‰©å“æ“ä½œ
+    //æ³¨æ„:æ­¤æ“ä½œä¸äº§ç”Ÿæ–°çš„GUID
+    INT                    MoveSpliceItem(ItemContainer* pSourContainer,    //åŸå®¹å™¨
+                                    UCHAR uSourIndex,                    //åŸå®¹å™¨ä¸­ä½ç½®
+                                    ItemContainer* pDestContainer,        //ç›®æ ‡å®¹å™¨
+                                    INT nDestIndex);                    //ç›®æ ‡ä½ç½®
 
 
 
@@ -159,127 +159,127 @@ public :
 
 public :
     ////////////////
-    //²Ù×÷ÎïÆ·½Ó¿Ú//
+    //æ“ä½œç‰©å“æ¥å£//
     ////////////////
 
     
-    //ÉèÖÃÎïÆ·ÖØµşÊıÁ¿
+    //è®¾ç½®ç‰©å“é‡å æ•°é‡
     VOID    SetItemLayCount(ItemContainer* pContainer, INT nIndex, INT nCount) ;
-    //¼õÉÙÎïÆ·ÖØµşÊıÁ¿
+    //å‡å°‘ç‰©å“é‡å æ•°é‡
     BOOL    DecItemLayCount(ItemContainer* pContainer,INT nIndex, INT nCount=1) ;
-    //Ôö¼ÓÎïÆ·ÖØµşÊıÁ¿
+    //å¢åŠ ç‰©å“é‡å æ•°é‡
     BOOL    IncItemLayCount(ItemContainer* pContainer,INT nIndex, INT nCount=1);
-    //ÉèÖÃÎïÆ·ÄÍ¾Ã¶È
+    //è®¾ç½®ç‰©å“è€ä¹…åº¦
     BOOL    SetItemDur(ItemContainer*    pContainer,INT nIndex, INT nDur);
-    //ÉèÖÃÎïÆ·¼ø¶¨ÊôĞÔ
+    //è®¾ç½®ç‰©å“é‰´å®šå±æ€§
     BOOL    SetItemIdent(ItemContainer*    pContainer,INT nIndex);
-    //ÉèÖÃÎïÆ·ËğÉË¶È
+    //è®¾ç½®ç‰©å“æŸä¼¤åº¦
     BOOL    SetItemDamagePoint(ItemContainer*    pContainer,INT nIndex, INT nPoint);
-    //ÉèÖÃÎïÆ·×î´óÄÍ¾Ã¶È
+    //è®¾ç½®ç‰©å“æœ€å¤§è€ä¹…åº¦
     BOOL    SetItemMaxDur(ItemContainer*    pContainer,INT nIndex, INT nDur);
-    //ÉèÖÃÎïÆ·°ó¶¨ÊôĞÔ
+    //è®¾ç½®ç‰©å“ç»‘å®šå±æ€§
     BOOL    SetItemBind(ItemContainer*    pContainer,INT nIndex);
-    //ÉèÖÃÎïÆ·ĞŞÀí´ÎÊı
+    //è®¾ç½®ç‰©å“ä¿®ç†æ¬¡æ•°
     BOOL    SetItemFailTimes(ItemContainer*    pContainer,INT nIndex, INT nTimes);
-    //ÉèÖÃÎïÆ·ÊÇ·ñÊÜÃÜÂë±£»¤
+    //è®¾ç½®ç‰©å“æ˜¯å¦å—å¯†ç ä¿æŠ¤
     BOOL    SetItemPWLock(ItemContainer*    pContainer,INT nIndex, BOOL bLock);
-    //ÉèÖÃÎïÆ·ÖÆÔìÕßĞÅÏ¢
+    //è®¾ç½®ç‰©å“åˆ¶é€ è€…ä¿¡æ¯
     BOOL    SetItemCreator(ItemContainer* pContainer,INT nIndex,const CHAR* CreatorName);
-    //ÉèÖÃÎïÆ·²ÎÊı
+    //è®¾ç½®ç‰©å“å‚æ•°
     BOOL    SetItemParam(ItemContainer* pContainer,INT nIndex,UINT start,INT type,INT value);
 
-    //Ôö¼ÓÎïÆ·ÊôĞÔ
+    //å¢åŠ ç‰©å“å±æ€§
     BOOL            AddItemAttr(ItemContainer*    pContainer,INT nIndex,_ITEM_ATTR    iA);
-    //É¾³ıÎïÆ·ÊôĞÔ
+    //åˆ é™¤ç‰©å“å±æ€§
     BOOL            DelItemAttr(ItemContainer*    pContainer,INT nIndex,_ITEM_ATTR    iA);
-    //É¾³ı±¦Ê¯ĞÅÏ¢
+    //åˆ é™¤å®çŸ³ä¿¡æ¯
     BOOL            DelGemInfo(ItemContainer* pContainer,INT nIndex,INT GemIndex);
-    //Ìí¼Ó±¦Ê¯ĞÅÏ¢
+    //æ·»åŠ å®çŸ³ä¿¡æ¯
     BOOL            AddGemInfo(ItemContainer* pContainer,INT nIndex,INT& GemIndex,UINT GemType);
 
     ////////////////
-    //³èÎï²Ù×÷½Ó¿Ú//
+    //å® ç‰©æ“ä½œæ¥å£//
     ////////////////
 
     BOOL                        SetItemValue(ItemContainer*    pContainer,INT nIndex,const _PET_DB_LOAD*    pPet);
     
-    BOOL                          SetPetGUID(ItemContainer*    pContainer,INT nIndex,PET_GUID_t GUID) ;                //ÉèÖÃ³èÎïGUID
-    BOOL                          SetSpouseGUID(ItemContainer*    pContainer,INT nIndex,PET_GUID_t GUID) ;                                        //ÉèÖÃ³èÎïÅäÅ¼GUID
-    BOOL                        SetDataID(ItemContainer*    pContainer,INT nIndex,INT ID);                            //ÉèÖÃ³èÎïÄ£ĞÍ        
-    BOOL                         SetName(ItemContainer*    pContainer,INT nIndex,const CHAR* pName);                        //ÉèÖÃÃû×Ö
-    BOOL                           SetNick(ItemContainer*    pContainer,INT nIndex,const CHAR* pNick);                        //ÉèÖÃêÇ³Æ
-    BOOL                          SetLevel(ItemContainer*    pContainer,INT nIndex,INT level);                        //ÉèÖÃµÈ¼¶
-    BOOL                          SetTakeLevel(ItemContainer*    pContainer,INT nIndex,INT takeLevel);                //ÉèÖÃĞ¯´øµÈ¼¶
-    BOOL                          SetAttackType(ItemContainer*    pContainer,INT nIndex,INT attackType);                //ÉèÖÃ½ø¹¥ÀàĞÍ£¨Îï/·¨£©
-    BOOL                          SetAIType(ItemContainer*    pContainer,INT nIndex,INT AIType);                        //ÉèÖÃAIÀàĞÍ
-    BOOL                          SetCampData(ItemContainer*    pContainer,INT nIndex,const _CAMP_DATA* pCamp);        //ÉèÖÃÕóÓª
-    BOOL                          SetHP(ItemContainer*    pContainer,INT nIndex,INT hp);                                //ÉèÖÃÉúÃüÖµ
-    BOOL                          SetLife(ItemContainer*    pContainer,INT nIndex,INT Life);                            //ÉèÖÃµ±Ç°ÊÙÃü
-    BOOL                          SetPetType(ItemContainer*    pContainer,INT nIndex,BYTE PetType);                    //±¦±¦£¬±äÒì£¬Ò°Éú
-    BOOL                          SetGeneration(ItemContainer*    pContainer,INT nIndex,BYTE Gen);                    //¼¸´ú³è
-    BOOL                          SetHappiness(ItemContainer*    pContainer,INT nIndex,BYTE byHappiness);                        //¿ìÀÖ¶È        
-    BOOL                          SetStrPer(ItemContainer*    pContainer,INT nIndex,INT strper);                        //Á¦Á¿×ÊÖÊ    
-    BOOL                          SetConPer(ItemContainer*    pContainer,INT nIndex,INT conper);                        //ÌåÁ¦×ÊÖÊ    
-    BOOL                           SetDexPer(ItemContainer*    pContainer,INT nIndex,INT dexper);                        //Éí·¨×ÊÖÊ
-    BOOL                          SetSprPer(ItemContainer*    pContainer,INT nIndex,INT sprper);                        //ÁéÆø×ÊÖÊ
-    BOOL                           SetIntPer(ItemContainer*    pContainer,INT nIndex,INT intper);                        //¶¨Á¦×ÊÖÊ
-    BOOL                        SetGenGu(ItemContainer*    pContainer,INT nIndex,INT gengu);                        //¸ù¹Ç
-    BOOL                          SetGrowRate(ItemContainer*    pContainer,INT nIndex,FLOAT rate);                    //³É³¤ÂÊ
-    BOOL                          SetRemainPoint(ItemContainer*    pContainer,INT nIndex,INT rPoint);                    //Ò»¼¶ÊôĞÔÊ£ÓàµãÊı
-    BOOL                          SetExp(ItemContainer*    pContainer,INT nIndex,INT exp) ;                        //¾­ÑéÖµ
-    BOOL                          SetLvl1Attr(ItemContainer*    pContainer,INT nIndex,CHAR_ATTR_LEVEL1 type,INT value);//»ù´¡Ò»¼¶Õ½¶·ÊôĞÔ£¨²»°üÀ¨¼¼ÄÜºÍ×°±¸Ôö¼ÓµÄ²¿·Ö£©
-    BOOL                          SetSkill(ItemContainer*    pContainer,INT nIndex,UINT SkillIndex,_PET_SKILL skill);     //³èÎï¼¼ÄÜ
+    BOOL                          SetPetGUID(ItemContainer*    pContainer,INT nIndex,PET_GUID_t GUID) ;                //è®¾ç½®å® ç‰©GUID
+    BOOL                          SetSpouseGUID(ItemContainer*    pContainer,INT nIndex,PET_GUID_t GUID) ;                                        //è®¾ç½®å® ç‰©é…å¶GUID
+    BOOL                        SetDataID(ItemContainer*    pContainer,INT nIndex,INT ID);                            //è®¾ç½®å® ç‰©æ¨¡å‹        
+    BOOL                         SetName(ItemContainer*    pContainer,INT nIndex,const CHAR* pName);                        //è®¾ç½®åå­—
+    BOOL                           SetNick(ItemContainer*    pContainer,INT nIndex,const CHAR* pNick);                        //è®¾ç½®æ˜µç§°
+    BOOL                          SetLevel(ItemContainer*    pContainer,INT nIndex,INT level);                        //è®¾ç½®ç­‰çº§
+    BOOL                          SetTakeLevel(ItemContainer*    pContainer,INT nIndex,INT takeLevel);                //è®¾ç½®æºå¸¦ç­‰çº§
+    BOOL                          SetAttackType(ItemContainer*    pContainer,INT nIndex,INT attackType);                //è®¾ç½®è¿›æ”»ç±»å‹ï¼ˆç‰©/æ³•ï¼‰
+    BOOL                          SetAIType(ItemContainer*    pContainer,INT nIndex,INT AIType);                        //è®¾ç½®AIç±»å‹
+    BOOL                          SetCampData(ItemContainer*    pContainer,INT nIndex,const _CAMP_DATA* pCamp);        //è®¾ç½®é˜µè¥
+    BOOL                          SetHP(ItemContainer*    pContainer,INT nIndex,INT hp);                                //è®¾ç½®ç”Ÿå‘½å€¼
+    BOOL                          SetLife(ItemContainer*    pContainer,INT nIndex,INT Life);                            //è®¾ç½®å½“å‰å¯¿å‘½
+    BOOL                          SetPetType(ItemContainer*    pContainer,INT nIndex,BYTE PetType);                    //å®å®ï¼Œå˜å¼‚ï¼Œé‡ç”Ÿ
+    BOOL                          SetGeneration(ItemContainer*    pContainer,INT nIndex,BYTE Gen);                    //å‡ ä»£å® 
+    BOOL                          SetHappiness(ItemContainer*    pContainer,INT nIndex,BYTE byHappiness);                        //å¿«ä¹åº¦        
+    BOOL                          SetStrPer(ItemContainer*    pContainer,INT nIndex,INT strper);                        //åŠ›é‡èµ„è´¨    
+    BOOL                          SetConPer(ItemContainer*    pContainer,INT nIndex,INT conper);                        //ä½“åŠ›èµ„è´¨    
+    BOOL                           SetDexPer(ItemContainer*    pContainer,INT nIndex,INT dexper);                        //èº«æ³•èµ„è´¨
+    BOOL                          SetSprPer(ItemContainer*    pContainer,INT nIndex,INT sprper);                        //çµæ°”èµ„è´¨
+    BOOL                           SetIntPer(ItemContainer*    pContainer,INT nIndex,INT intper);                        //å®šåŠ›èµ„è´¨
+    BOOL                        SetGenGu(ItemContainer*    pContainer,INT nIndex,INT gengu);                        //æ ¹éª¨
+    BOOL                          SetGrowRate(ItemContainer*    pContainer,INT nIndex,FLOAT rate);                    //æˆé•¿ç‡
+    BOOL                          SetRemainPoint(ItemContainer*    pContainer,INT nIndex,INT rPoint);                    //ä¸€çº§å±æ€§å‰©ä½™ç‚¹æ•°
+    BOOL                          SetExp(ItemContainer*    pContainer,INT nIndex,INT exp) ;                        //ç»éªŒå€¼
+    BOOL                          SetLvl1Attr(ItemContainer*    pContainer,INT nIndex,CHAR_ATTR_LEVEL1 type,INT value);//åŸºç¡€ä¸€çº§æˆ˜æ–—å±æ€§ï¼ˆä¸åŒ…æ‹¬æŠ€èƒ½å’Œè£…å¤‡å¢åŠ çš„éƒ¨åˆ†ï¼‰
+    BOOL                          SetSkill(ItemContainer*    pContainer,INT nIndex,UINT SkillIndex,_PET_SKILL skill);     //å® ç‰©æŠ€èƒ½
 
 public:
     /*
-     *    ITEM ºÍ PET ¹«¹²²Ù×÷½Ó¿Ú
+     *    ITEM å’Œ PET å…¬å…±æ“ä½œæ¥å£
      */
-    //Ëø¶¨ÈİÆ÷pContainerÄÚnIndexÎ»ÖÃµÄÎïÆ·
+    //é”å®šå®¹å™¨pContainerå†…nIndexä½ç½®çš„ç‰©å“
     VOID    LockItem(ItemContainer* pContainer, INT nIndex ) ;
-    //½âËøÈİÆ÷pContainerÄÚnIndexÎ»ÖÃµÄÎïÆ·
+    //è§£é”å®¹å™¨pContainerå†…nIndexä½ç½®çš„ç‰©å“
     VOID    UnlockItem(ItemContainer* pContainer, INT nIndex ) ;
     
 
-    //ÔÚÈİÆ÷pDestContainerµÄnDestIndexÎ»ÖÃÉÏÉú³ÉÒ»¼şÎïÆ·£¬´ËÎïÆ·ÓëpTemplateItem¾ßÓĞ
-    //ÏàÍ¬µÄÂß¼­Êı¾İ¼°ÊôĞÔ£¬µ«GUID²»Í¬¡£
-    //Èç¹ûnDestIndexµÄÖµÎªINVALID_INDEX£¬Ôò½«ÎïÆ·Éú³Éµ½pDestContainerÈİÆ÷ÄÚËæ»úÕÒµ½
-    //µÄÒ»¸ö¿ÕÎ»ÖÃÉÏ
-    //·µ»ØÖµ£ºÖ´ĞĞ³É¹¦£¬Ôò·µ»ØÎïÆ·ÔÚpDestContainerÈİÆ÷ÄÚµÄÎ»ÖÃ
-    //          Ö´ĞĞÊ§°Ü£¬Ôò·µ»ØITEM_OPERATOR_ERRORÖĞÃèÊöµÄÖµ
+    //åœ¨å®¹å™¨pDestContainerçš„nDestIndexä½ç½®ä¸Šç”Ÿæˆä¸€ä»¶ç‰©å“ï¼Œæ­¤ç‰©å“ä¸pTemplateItemå…·æœ‰
+    //ç›¸åŒçš„é€»è¾‘æ•°æ®åŠå±æ€§ï¼Œä½†GUIDä¸åŒã€‚
+    //å¦‚æœnDestIndexçš„å€¼ä¸ºINVALID_INDEXï¼Œåˆ™å°†ç‰©å“ç”Ÿæˆåˆ°pDestContainerå®¹å™¨å†…éšæœºæ‰¾åˆ°
+    //çš„ä¸€ä¸ªç©ºä½ç½®ä¸Š
+    //è¿”å›å€¼ï¼šæ‰§è¡ŒæˆåŠŸï¼Œåˆ™è¿”å›ç‰©å“åœ¨pDestContainerå®¹å™¨å†…çš„ä½ç½®
+    //          æ‰§è¡Œå¤±è´¥ï¼Œåˆ™è¿”å›ITEM_OPERATOR_ERRORä¸­æè¿°çš„å€¼
     //
-    //×¢Òâ£º´Ë²Ù×÷»áÉú³ÉÒ»¸ö¾ßÓĞÎ¨Ò»±êÊ¶£¨GUID£©µÄĞÂÎïÆ·
+    //æ³¨æ„ï¼šæ­¤æ“ä½œä¼šç”Ÿæˆä¸€ä¸ªå…·æœ‰å”¯ä¸€æ ‡è¯†ï¼ˆGUIDï¼‰çš„æ–°ç‰©å“
     //
     INT                    CreateItem( ITEM_LOG_PARAM*    pLogParam,
                                     Item* pTemplateItem ,
                                     ItemContainer* pDestContainer,
                                     INT nDestIndex=INVALID_INDEX ) ;
 
-    //É¾³ıÎïÆ·²Ù×÷
-    //É¾³ı pDestContainer ÖĞÓëuIndexÎ»ÖÃµÄÎïÆ·
-    //×¢Òâ:´Ë²Ù×÷»áÏú»ÙÄ¿±êÈİÆ÷µÄuIndex Î»ÖÃµÄÎïÆ·
+    //åˆ é™¤ç‰©å“æ“ä½œ
+    //åˆ é™¤ pDestContainer ä¸­ä¸uIndexä½ç½®çš„ç‰©å“
+    //æ³¨æ„:æ­¤æ“ä½œä¼šé”€æ¯ç›®æ ‡å®¹å™¨çš„uIndex ä½ç½®çš„ç‰©å“
     BOOL                EraseItem(    ItemContainer* pDestContainer, 
                                     UCHAR uIndex );
     
 
-    //½«pSourContainerÈİÆ÷ÄÚµÄnSourIndexÎ»ÖÃµÄÎïÆ·ÓëpDestContainerÈİÆ÷ÄÚµÄ
-    //nDestIndexÎ»ÖÃµÄÎïÆ·½øĞĞ½»»»²Ù×÷
-    //·µ»ØÖµ£ºÖ´ĞĞ³É¹¦£¬Ôò·µ»ØÎïÆ·ÔÚpDestContainerÈİÆ÷ÄÚµÄÎ»ÖÃ
-    //          Ö´ĞĞÊ§°Ü£¬Ôò·µ»ØITEM_OPERATOR_ERRORÖĞÃèÊöµÄÖµ
-    //×¢Òâ£º´Ë²Ù×÷²»»áÉú³ÉĞÂµÄÎïÆ·Êı¾İ
+    //å°†pSourContainerå®¹å™¨å†…çš„nSourIndexä½ç½®çš„ç‰©å“ä¸pDestContainerå®¹å™¨å†…çš„
+    //nDestIndexä½ç½®çš„ç‰©å“è¿›è¡Œäº¤æ¢æ“ä½œ
+    //è¿”å›å€¼ï¼šæ‰§è¡ŒæˆåŠŸï¼Œåˆ™è¿”å›ç‰©å“åœ¨pDestContainerå®¹å™¨å†…çš„ä½ç½®
+    //          æ‰§è¡Œå¤±è´¥ï¼Œåˆ™è¿”å›ITEM_OPERATOR_ERRORä¸­æè¿°çš„å€¼
+    //æ³¨æ„ï¼šæ­¤æ“ä½œä¸ä¼šç”Ÿæˆæ–°çš„ç‰©å“æ•°æ®
     INT                    ExchangeItem( ItemContainer* pSourContainer,
                                       INT nSourIndex ,
                                       ItemContainer* pDestContainer,
                                       INT nDestIndex ) ;
     
 
-    //½«pSourContainerÈİÆ÷ÄÚµÄnSourIndexÎ»ÖÃµÄÎïÆ·¸´ÖÆµ½pDestContainerÈİÆ÷ÄÚµÄ
-    //nDestIndexÎ»ÖÃ
-    //Èç¹ûnDestIndexµÄÖµÎªINVALID_INDEX£¬Ôò½«ÎïÆ·¸´ÖÆµ½pDestContainerÈİÆ÷ÄÚµÄËæ
-    //»úÕÒµ½µÄÒ»¸ö¿ÕÎ»ÖÃÉÏ
-    //·µ»ØÖµ£ºÖ´ĞĞ³É¹¦£¬Ôò·µ»ØÎïÆ·ÔÚpDestContainerÈİÆ÷ÄÚµÄÎ»ÖÃ
-    //          Ö´ĞĞÊ§°Ü£¬Ôò·µ»ØITEM_OPERATOR_ERRORÖĞÃèÊöµÄÖµ
+    //å°†pSourContainerå®¹å™¨å†…çš„nSourIndexä½ç½®çš„ç‰©å“å¤åˆ¶åˆ°pDestContainerå®¹å™¨å†…çš„
+    //nDestIndexä½ç½®
+    //å¦‚æœnDestIndexçš„å€¼ä¸ºINVALID_INDEXï¼Œåˆ™å°†ç‰©å“å¤åˆ¶åˆ°pDestContainerå®¹å™¨å†…çš„éš
+    //æœºæ‰¾åˆ°çš„ä¸€ä¸ªç©ºä½ç½®ä¸Š
+    //è¿”å›å€¼ï¼šæ‰§è¡ŒæˆåŠŸï¼Œåˆ™è¿”å›ç‰©å“åœ¨pDestContainerå®¹å™¨å†…çš„ä½ç½®
+    //          æ‰§è¡Œå¤±è´¥ï¼Œåˆ™è¿”å›ITEM_OPERATOR_ERRORä¸­æè¿°çš„å€¼
     //
-    //×¢Òâ£º´Ë²Ù×÷»á¸´ÖÆ³öÒ»·İÎïÆ·,ĞÂ¾ÉÎïÆ·ÓĞÏàÍ¬µÄGUID
+    //æ³¨æ„ï¼šæ­¤æ“ä½œä¼šå¤åˆ¶å‡ºä¸€ä»½ç‰©å“,æ–°æ—§ç‰©å“æœ‰ç›¸åŒçš„GUID
     //
     INT                    CopyItem( ItemContainer* pSourContainer,
                                   INT             nSourIndex ,
@@ -287,13 +287,13 @@ public:
                                   INT nDestIndex = INVALID_INDEX ) ;
 
 
-    //½«pSourContainerÈİÆ÷ÄÚµÄnSourIndexÎ»ÖÃµÄÎïÆ·×ªÒÆµ½pDestContainerÈİÆ÷ÄÚµÄ
-    //nDestIndexÎ»ÖÃ
-    //Èç¹ûnDestIndexµÄÖµÎªINVALID_INDEX£¬Ôò½«ÎïÆ·×ªÒÆµ½pDestContainerÈİÆ÷ÄÚµÄËæ
-    //»úÕÒµ½µÄÒ»¸ö¿ÕÎ»ÖÃÉÏ
-    //·µ»ØÖµ£ºÖ´ĞĞ³É¹¦£¬Ôò·µ»ØÎïÆ·ÔÚpDestContainerÈİÆ÷ÄÚµÄÎ»ÖÃ
-    //          Ö´ĞĞÊ§°Ü£¬Ôò·µ»ØITEM_OPERATOR_ERRORÖĞÃèÊöµÄÖµ
-    //×¢Òâ£º´Ë²Ù×÷²»»áÉú³ÉĞÂµÄÎïÆ·Êı¾İ
+    //å°†pSourContainerå®¹å™¨å†…çš„nSourIndexä½ç½®çš„ç‰©å“è½¬ç§»åˆ°pDestContainerå®¹å™¨å†…çš„
+    //nDestIndexä½ç½®
+    //å¦‚æœnDestIndexçš„å€¼ä¸ºINVALID_INDEXï¼Œåˆ™å°†ç‰©å“è½¬ç§»åˆ°pDestContainerå®¹å™¨å†…çš„éš
+    //æœºæ‰¾åˆ°çš„ä¸€ä¸ªç©ºä½ç½®ä¸Š
+    //è¿”å›å€¼ï¼šæ‰§è¡ŒæˆåŠŸï¼Œåˆ™è¿”å›ç‰©å“åœ¨pDestContainerå®¹å™¨å†…çš„ä½ç½®
+    //          æ‰§è¡Œå¤±è´¥ï¼Œåˆ™è¿”å›ITEM_OPERATOR_ERRORä¸­æè¿°çš„å€¼
+    //æ³¨æ„ï¼šæ­¤æ“ä½œä¸ä¼šç”Ÿæˆæ–°çš„ç‰©å“æ•°æ®
     INT                    MoveItem( ItemContainer* pSourContainer,
                                   INT nSourIndex ,
                                   ItemContainer* pDestContainer,
@@ -303,21 +303,21 @@ public:
 public:
 
     /*
-     *    PET ×¨ÓÃµÄ²Ù×÷½Ó¿Ú
+     *    PET ä¸“ç”¨çš„æ“ä½œæ¥å£
      */
     
     
 
 protected :
-    //ÄÚ²¿²Ù×÷º¯Êı
+    //å†…éƒ¨æ“ä½œå‡½æ•°
 
-    //ÉèÖÃÎïÆ·µÄGUID
+    //è®¾ç½®ç‰©å“çš„GUID
     VOID            SetItemGUID( ItemContainer* pContainer, INT nIndex, _ITEM_GUID* pGuid ) ;
     VOID            SetItemGUID( ItemContainer* pContainer, INT nIndex, PET_GUID_t* pGuid ) ;
     
     
-    BOOL            GenItemGUID(_ITEM_GUID& ig) ;//´´ÔìÒ»¸öĞÂµÄGUID
-    BOOL            GenItemGUID(PET_GUID_t& ig) ;//´´ÔìÒ»¸öĞÂµÄGUID
+    BOOL            GenItemGUID(_ITEM_GUID& ig) ;//åˆ›é€ ä¸€ä¸ªæ–°çš„GUID
+    BOOL            GenItemGUID(PET_GUID_t& ig) ;//åˆ›é€ ä¸€ä¸ªæ–°çš„GUID
 
 
     

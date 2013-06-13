@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºChannelAction.cpp
-// ¹¦ÄÜËµÃ÷£ºÒıµ¼¶¯×÷Àà
+// æ–‡ä»¶åï¼šChannelAction.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šå¼•å¯¼åŠ¨ä½œç±»
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -117,14 +117,14 @@ namespace Action_Module
     BOOL ActionCallBackFunctorForScript_T::OnDisturbForCharging(ActionParams_T& rParams) const
     {
         __ENTER_FUNCTION
-        return FALSE; //Ö±½Ó´ò¶Ï
+        return FALSE; //ç›´æ¥æ‰“æ–­
         __LEAVE_FUNCTION
         return FALSE;
     }
     BOOL ActionCallBackFunctorForScript_T::OnDisturbForChanneling(ActionParams_T& rParams) const
     {
         __ENTER_FUNCTION
-        return FALSE; //Ö±½Ó´ò¶Ï
+        return FALSE; //ç›´æ¥æ‰“æ–­
         __LEAVE_FUNCTION
         return FALSE;
     }

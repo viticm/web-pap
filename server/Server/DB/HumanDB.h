@@ -39,7 +39,7 @@ public :
     inline VOID                UnLock();
 
     /*=========================================
-     *    »ù±¾ÊôĞÔ·ÃÎÊ·½·¨
+     *    åŸºæœ¬å±æ€§è®¿é—®æ–¹æ³•
      ===========================================*/
     inline    GUID_t                GetGUID()    const;
     inline    VOID                SetGUID( GUID_t guid );
@@ -98,31 +98,31 @@ public :
     inline    VOID                SetFaceModel(BYTE byModel);
 
     inline    UINT                GetEquipID(HUMAN_EQUIP    equipPoint);
-    inline    INT                    GetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType);                    //Ò»¼¶ÊôĞÔGET
-    inline    VOID                SetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType,INT iValue);        //Ò»¼¶ÊôĞÔSET
-    inline    INT                    GetRemainPoints();                                            //Ê£ÓàÒ»¼¶ÊôĞÔµã
-    inline    INT                    GetNeiShang();                                                //ÄÚÉË
+    inline    INT                    GetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType);                    //ä¸€çº§å±æ€§GET
+    inline    VOID                SetDBAttrLvl1(CHAR_ATTR_LEVEL1 enAttrType,INT iValue);        //ä¸€çº§å±æ€§SET
+    inline    INT                    GetRemainPoints();                                            //å‰©ä½™ä¸€çº§å±æ€§ç‚¹
+    inline    INT                    GetNeiShang();                                                //å†…ä¼¤
     inline    VOID                SetDBRemainPoints(INT Point);
-    inline     const _CAMP_DATA    *GetDBCampData(VOID)const;    //È¡ÕóÓª
-    inline    VOID                SetDBCampData(const _CAMP_DATA *pCampData);//ÉèÕóÓª
+    inline     const _CAMP_DATA    *GetDBCampData(VOID)const;    //å–é˜µè¥
+    inline    VOID                SetDBCampData(const _CAMP_DATA *pCampData);//è®¾é˜µè¥
     inline    SceneID_t            GetDBStartScene() ;
     inline    VOID                SetDBStartScene(SceneID_t    sceneID);
     inline    SceneID_t            GetDBBakScene();
     inline    VOID                SetDBBakScene(SceneID_t    sceneID);
-    inline    VOID                SetDBPosition(const WORLD_POS& pos);                        //position ²»ÊµÊ±Ğ´Êı¾İ¿â
+    inline    VOID                SetDBPosition(const WORLD_POS& pos);                        //position ä¸å®æ—¶å†™æ•°æ®åº“
     inline  const WORLD_POS*    GetDBPosition();
     inline    VOID                SetDBBakPosition(const WORLD_POS& pos);
     inline  const WORLD_POS*    GetDBBakPosition();
-    inline    VOID                WriteDBPosition(WORLD_POS& pos);                            //Íæ¼Òlogout Ê±µ÷ÓÃµÄº¯Êı
+    inline    VOID                WriteDBPosition(WORLD_POS& pos);                            //ç©å®¶logout æ—¶è°ƒç”¨çš„å‡½æ•°
     
-    inline    VOID                SetOnlineTime(UINT uTime);    //ÉèÖÃ×ÜÔÚÏßÊ±¼ä
-    inline    UINT                GetOnlineTime();            //È¡µÃ×ÜÔÚÏßÊ±¼ä    
-    inline  VOID                SetLoginTime(UINT uTime);    //ÉèÖÃ×îºóµÇÂ¼Ê±¼ä
-    inline  UINT                GetLoginTime();                //È¡µÃ×îºóµÇÂ¼Ê±¼ä
-    inline  VOID                SetLogoutTime(UINT uTime);    //ÉèÖÃ×îºóÏÂÏßÊ±¼ä
-    inline  UINT                GetLogoutTime();            //È¡µÃ×îºóÏÂÏßÊ±¼ä
-    inline  VOID                SetDBVersion(UINT Ver);        //ÉèÖÃÊı¾İ¿â°æ±¾
-    inline  UINT                GetDBVersion();                //È¡µÃÊı¾İ¿â°æ±¾
+    inline    VOID                SetOnlineTime(UINT uTime);    //è®¾ç½®æ€»åœ¨çº¿æ—¶é—´
+    inline    UINT                GetOnlineTime();            //å–å¾—æ€»åœ¨çº¿æ—¶é—´    
+    inline  VOID                SetLoginTime(UINT uTime);    //è®¾ç½®æœ€åç™»å½•æ—¶é—´
+    inline  UINT                GetLoginTime();                //å–å¾—æœ€åç™»å½•æ—¶é—´
+    inline  VOID                SetLogoutTime(UINT uTime);    //è®¾ç½®æœ€åä¸‹çº¿æ—¶é—´
+    inline  UINT                GetLogoutTime();            //å–å¾—æœ€åä¸‹çº¿æ—¶é—´
+    inline  VOID                SetDBVersion(UINT Ver);        //è®¾ç½®æ•°æ®åº“ç‰ˆæœ¬
+    inline  UINT                GetDBVersion();                //å–å¾—æ•°æ®åº“ç‰ˆæœ¬
 
 
 
@@ -133,7 +133,7 @@ public :
     inline    VOID                SetDBTeamID( TeamID_t teamID ) ;
     
     //////////////////////////////////////////////////////////////////////////
-    //ËùÓĞ³ÆºÅÊı¾İ·ÃÎÊ·½·¨        
+    //æ‰€æœ‰ç§°å·æ•°æ®è®¿é—®æ–¹æ³•        
     //////////////////////////////////////////////////////////////////////////
     inline    const CHAR*            GetCurTitle() const;
     inline    VOID                SetCurTitle( const CHAR *pszTitle, BYTE nSize );
@@ -167,7 +167,7 @@ public :
     inline  VOID                SetShangDianName(const CHAR *pszTitle, BYTE nSize ); 
 
     //////////////////////////////////////////////////////////////////////////
-    //ÒøĞĞÊı¾İ·ÃÎÊ·½·¨        
+    //é“¶è¡Œæ•°æ®è®¿é—®æ–¹æ³•        
     //////////////////////////////////////////////////////////////////////////
     inline    const INT            GetBankItemCount( ) const ;
     inline    VOID                SetBankItemCount( const INT Bankitemcount ) ;
@@ -194,7 +194,7 @@ public :
 
     
     //////////////////////////////////////////////////////////////////////////
-    //±³°üÊı¾İ·ÃÎÊ·½·¨        
+    //èƒŒåŒ…æ•°æ®è®¿é—®æ–¹æ³•        
     //////////////////////////////////////////////////////////////////////////
     inline    VOID                EraseBagItem(UINT BagIndex);
     inline    VOID                SwapEquipBag(HUMAN_EQUIP    equipPoint,UINT iBagIndex);
@@ -211,13 +211,13 @@ public :
     inline    VOID                SetEquipMark(HUMAN_EQUIP eEquipPoint, BYTE bMark);
     inline    VOID                SetEquipDur(HUMAN_EQUIP eEquipPoint, INT Dur);
     inline    VOID                SetItemDur(UINT BagIndex, INT Dur);
-    inline    VOID                RandSet( ) ;                                        //²âÊÔÓÃ£¬Ëæ»úÉèÖÃÓÃ»§Ïà¹ØĞÅÏ¢
+    inline    VOID                RandSet( ) ;                                        //æµ‹è¯•ç”¨ï¼Œéšæœºè®¾ç½®ç”¨æˆ·ç›¸å…³ä¿¡æ¯
     inline    UINT                GetBaseBagSize();
     //inline    UINT                GetTaskBagSize();
     //inline    UINT                GetMatBagSize();
 
     //////////////////////////////////////////////////////////////////////////
-    //ÀäÈ´Ê±¼ä·ÃÎÊ
+    //å†·å´æ—¶é—´è®¿é—®
     //////////////////////////////////////////////////////////////////////////
     
     inline  VOID                SetCooldown(CooldownID_t nID,Time_t nTime);
@@ -225,7 +225,7 @@ public :
     inline    VOID                HeartBeat_Cooldown(Time_t nDeltaTime);
     inline    Time_t                GetCooldownRemain(CooldownID_t nID) const;
     //////////////////////////////////////////////////////////////////////////
-    //¼¼ÄÜÊı¾İ·ÃÎÊ
+    //æŠ€èƒ½æ•°æ®è®¿é—®
     //////////////////////////////////////////////////////////////////////////
     inline BYTE                    GetSkillCount();
     inline VOID                    SetSkillCount(BYTE Count);
@@ -234,7 +234,7 @@ public :
     inline BYTE                    GetSkillLevel(BYTE Index);
     inline VOID                    SetSkillLevel(BYTE Level,BYTE Index);
     //////////////////////////////////////////////////////////////////////////
-    //ĞÄ·¨Êı¾İ·ÃÎÊ
+    //å¿ƒæ³•æ•°æ®è®¿é—®
     //////////////////////////////////////////////////////////////////////////
     //inline BYTE                    GetXinFaCount();
     //inline VOID                    SetXinFaCount(BYTE Count);
@@ -243,16 +243,16 @@ public :
     //inline BYTE                    GetXinfaLevel(BYTE Index);
     //inline VOID                    SetXinfaLevel(BYTE Level,BYTE Index);
     //////////////////////////////////////////////////////////////////////////
-    //ImpactÊı¾İ·ÃÎÊ
+    //Impactæ•°æ®è®¿é—®
     //////////////////////////////////////////////////////////////////////////
     
     //////////////////////////////////////////////////////////////////////////
-    //ÈÎÎñÊı¾İ·ÃÎÊ
+    //ä»»åŠ¡æ•°æ®è®¿é—®
     //////////////////////////////////////////////////////////////////////////
     inline VOID                    SetMissionDone(MissionID_t idMission,MissionID_t idIndex);
     inline VOID                    SetMissionNotDone(MissionID_t idMission,MissionID_t idIndex);
     inline VOID                    SetMissionParam( UINT uIndexMission, UINT uIndexParam, INT nValue );
-    inline VOID                    SetMissionData( INT nIndex, INT nData );//ÉèÖÃµ±Ç°¸½¼ÓÈÎÎñÊı¾İ
+    inline VOID                    SetMissionData( INT nIndex, INT nData );//è®¾ç½®å½“å‰é™„åŠ ä»»åŠ¡æ•°æ®
     inline VOID                    SetMission(UINT uIndex,MissionID_t idMission,ScriptID_t idScript);
     inline VOID                    SetMissionCount(UINT uCount);
     inline VOID                    SetFlags_KillObject(UINT uIndex, BOOL bSet );
@@ -261,7 +261,7 @@ public :
     inline VOID                    SetFlags_PetChanged(UINT uIndex, BOOL bSet );
     inline VOID                    ClearMission(UINT uIndex);
     //////////////////////////////////////////////////////////////////////////
-    //¹ØÏµÊı¾İ·ÃÎÊ·½·¨
+    //å…³ç³»æ•°æ®è®¿é—®æ–¹æ³•
     //////////////////////////////////////////////////////////////////////////
 
     inline  VOID                SetRelation(INT Index, const _OWN_RELATION* pRelation);
@@ -287,19 +287,19 @@ public :
     inline  VOID                SetPrescrLearnedFlag( const PrescriptionID_t prescrid, BOOL flag );
 
     //////////////////////////////////////////////////////////////////////////
-    //³èÎïÊı¾İ·ÃÎÊ·½·¨
+    //å® ç‰©æ•°æ®è®¿é—®æ–¹æ³•
     //////////////////////////////////////////////////////////////////////////
     inline const    _PET_DB_LOAD*    GetPet(UINT    iIndex)    const ;
 
 
     //////////////////////////////////////////////////////////////////////////
-    //ÓÃ»§ÉèÖÃÊı¾İ·ÃÎÊ·½·¨
+    //ç”¨æˆ·è®¾ç½®æ•°æ®è®¿é—®æ–¹æ³•
     //////////////////////////////////////////////////////////////////////////
     inline    VOID                SetSettingData( INT nType, _OWN_SETTING* Value ) ;
     inline const    _OWN_SETTING*    GetSetting( INT nType ) const ;
     inline BOOL                        isSetBit( INT nType, INT bit );
     //////////////////////////////////////////////////////////////////////////
-    //Íæ¼ÒË½ÓĞĞÅÏ¢·ÃÎÊ·½·¨
+    //ç©å®¶ç§æœ‰ä¿¡æ¯è®¿é—®æ–¹æ³•
     //////////////////////////////////////////////////////////////////////////
     inline  VOID                SetPrivateInfo(_PRIVATE_INFO_DB_LOAD* pPrivateInfo);
 
@@ -308,7 +308,7 @@ public :
 
 public :
     /*========================================
-     *    ³õÊ¼»¯½ÇÉ«¸÷ÖÖÊı¾İ¿âĞÅÏ¢
+     *    åˆå§‹åŒ–è§’è‰²å„ç§æ•°æ®åº“ä¿¡æ¯
      ========================================*/
     BOOL                        InitHumanDB( ) ;
     BOOL                        InitEquipDB( ) ;
@@ -324,42 +324,42 @@ public :
 private:
     inline _ITEM*                _GetBagItem(UINT uBagIndex);
     inline _ITEM*                _GetBankItem(UINT uBankIndex);
-    inline VOID                    _RegDBAttr(CHAR_ATTR_DB eOffSet,VOID* pArg,INT iSize);//×¢²áµ¥¸öÊôĞÔ
-    inline VOID                    _RegSMAttr(CHAR_ATTR_DB eOffSet,VOID* pArg,INT iSize);//×¢²áShareMemÊôĞÔ
-    VOID                        _RegisterDBAttributes();  //×¢²áËùÓĞÊôĞÔ
-    VOID                        _RegisterSMAttributes();  //×¢²áËùÓĞShareMemÊôĞÔ
+    inline VOID                    _RegDBAttr(CHAR_ATTR_DB eOffSet,VOID* pArg,INT iSize);//æ³¨å†Œå•ä¸ªå±æ€§
+    inline VOID                    _RegSMAttr(CHAR_ATTR_DB eOffSet,VOID* pArg,INT iSize);//æ³¨å†ŒShareMemå±æ€§
+    VOID                        _RegisterDBAttributes();  //æ³¨å†Œæ‰€æœ‰å±æ€§
+    VOID                        _RegisterSMAttributes();  //æ³¨å†Œæ‰€æœ‰ShareMemå±æ€§
     
 public:
     
-    _PET_DB_LIST_LOAD*                m_dbPetList;    //³èÎï
+    _PET_DB_LIST_LOAD*                m_dbPetList;    //å® ç‰©
 
-    //ÊôĞÔÔà±ê¼Ç·ÃÎÊ·½·¨
+    //å±æ€§è„æ ‡è®°è®¿é—®æ–¹æ³•
     VOID                        SetDBEnumAttrDirty(CHAR_ATTR_DB eOffSet,BOOL bFlag = TRUE);
     BOOL                        GetDBEnumAttrDirty(CHAR_ATTR_DB eOffSet);
 private:
     
     
-    _HUMAN_DB_LOAD*                    m_dbHuman ;        //½ÇÉ«»ù±¾ĞÅÏ¢
-    _BAG_DB_LOAD*                    m_dbBag ;        //½ÇÉ«±³°üÎïÆ·ĞÅÏ¢
-    _EQUIP_DB_LOAD*                    m_dbEquip ;        //½ÇÉ«×°±¸ĞÅÏ¢
-    _BANK_DB_LOAD*                    m_dbBank ;        //½ÇÉ«ÒøĞĞÎïÆ·ĞÅÏ¢
-    _SKILL_DB_LOAD*                    m_dbSkill ;        //½ÇÉ«ÉíÉÏÓµÓĞµÄ¼¼ÄÜĞÅÏ¢
-    _COOLDOWN_DB_LOAD_FOR_HUMAN*    m_dbCooldown ;    //½ÇÉ«ÉíÉÏµÄÀäÈ´ĞÅÏ¢
-    _RELATION_DB_LOAD*                m_dbRelation;    //½ÇÉ«ÁªÏµÈË£¨ºÃÓÑ¡¢ºÚÃûµ¥£©
-    _ABILITY_DB_LOAD*                m_dbAbility;    //½ÇÉ«Ñ§»áµÄÉú»î¼¼ÄÜĞÅÏ¢ÒÔ¼°Åä·½±í
-    _XINFA_DB_LOAD*                    m_dbXinFa ;        //½ÇÉ«Ñ§»áµÄĞÄ·¨ĞÅÏ¢
-    _IMPACT_DB_LOAD*                m_dbImpact ;    //½ÇÉ«ÉíÉÏËùÊ©¼ÓµÄ¸½¼ÓĞ§¹ûĞÅÏ¢
-    _MISSION_DB_LOAD*                m_dbMission;    //ÈÎÎñÁĞ±í
-    _SETTING_DB_LOAD*                m_dbSetting ;    //ÉèÖÃÊı¾İ
-    _PRIVATE_INFO_DB_LOAD*            m_dbPrivateInfo;//Ë½ÈËĞÅÏ¢
+    _HUMAN_DB_LOAD*                    m_dbHuman ;        //è§’è‰²åŸºæœ¬ä¿¡æ¯
+    _BAG_DB_LOAD*                    m_dbBag ;        //è§’è‰²èƒŒåŒ…ç‰©å“ä¿¡æ¯
+    _EQUIP_DB_LOAD*                    m_dbEquip ;        //è§’è‰²è£…å¤‡ä¿¡æ¯
+    _BANK_DB_LOAD*                    m_dbBank ;        //è§’è‰²é“¶è¡Œç‰©å“ä¿¡æ¯
+    _SKILL_DB_LOAD*                    m_dbSkill ;        //è§’è‰²èº«ä¸Šæ‹¥æœ‰çš„æŠ€èƒ½ä¿¡æ¯
+    _COOLDOWN_DB_LOAD_FOR_HUMAN*    m_dbCooldown ;    //è§’è‰²èº«ä¸Šçš„å†·å´ä¿¡æ¯
+    _RELATION_DB_LOAD*                m_dbRelation;    //è§’è‰²è”ç³»äººï¼ˆå¥½å‹ã€é»‘åå•ï¼‰
+    _ABILITY_DB_LOAD*                m_dbAbility;    //è§’è‰²å­¦ä¼šçš„ç”Ÿæ´»æŠ€èƒ½ä¿¡æ¯ä»¥åŠé…æ–¹è¡¨
+    _XINFA_DB_LOAD*                    m_dbXinFa ;        //è§’è‰²å­¦ä¼šçš„å¿ƒæ³•ä¿¡æ¯
+    _IMPACT_DB_LOAD*                m_dbImpact ;    //è§’è‰²èº«ä¸Šæ‰€æ–½åŠ çš„é™„åŠ æ•ˆæœä¿¡æ¯
+    _MISSION_DB_LOAD*                m_dbMission;    //ä»»åŠ¡åˆ—è¡¨
+    _SETTING_DB_LOAD*                m_dbSetting ;    //è®¾ç½®æ•°æ®
+    _PRIVATE_INFO_DB_LOAD*            m_dbPrivateInfo;//ç§äººä¿¡æ¯
 
 
 private:
-    //¹²ÏíÄÚ´æÏà¹ØÊı¾İ
-    HumanSMU*                        m_HumanSMU;        //¹²ÏíÄÚ´æÊı¾İ
-    HUMAN_DB_ATTR_FLAG*                m_AttrFlag;        //½ÇÉ«ÊôĞÔË¢ĞÂ¿ØÖÆÊı¾İ
-    HUMAN_DB_ATTR_REG*                m_AttrReg;        //½ÇÉ«ÊôĞÔ×¢²áÊı¾İ
-    HUMAN_DB_ATTR_REG*                m_AttrRegSM;    //½ÇÉ«ÊôĞÔÔÚShareMemÖĞ×¢²áÊı¾İ
+    //å…±äº«å†…å­˜ç›¸å…³æ•°æ®
+    HumanSMU*                        m_HumanSMU;        //å…±äº«å†…å­˜æ•°æ®
+    HUMAN_DB_ATTR_FLAG*                m_AttrFlag;        //è§’è‰²å±æ€§åˆ·æ–°æ§åˆ¶æ•°æ®
+    HUMAN_DB_ATTR_REG*                m_AttrReg;        //è§’è‰²å±æ€§æ³¨å†Œæ•°æ®
+    HUMAN_DB_ATTR_REG*                m_AttrRegSM;    //è§’è‰²å±æ€§åœ¨ShareMemä¸­æ³¨å†Œæ•°æ®
 
 public:
     inline const    _BAG_DB_LOAD*                    GetBag();
@@ -376,7 +376,7 @@ public:
     inline const    _SETTING_DB_LOAD*                GetSettingDB()  const;
     inline const    _PRIVATE_INFO_DB_LOAD*            GetPrivateInfoDB() const;
 
-    //Çë²»ÒªÔÚhumanµÄÂß¼­¼ÆËãÖĞµ÷ÓÃÏÂÁĞº¯Êı
+    //è¯·ä¸è¦åœ¨humançš„é€»è¾‘è®¡ç®—ä¸­è°ƒç”¨ä¸‹åˆ—å‡½æ•°
     inline VOID                                WriteHumanDB(const    _HUMAN_DB_LOAD* pHumanDB);
     inline VOID                                WriteBagDB(const    _BAG_DB_LOAD* pBagDB);
     inline VOID                                WriteEquipDB(const    _EQUIP_DB_LOAD*    pEquipDB);
@@ -392,9 +392,9 @@ public:
     inline VOID                                WritePrivateInfo(const _PRIVATE_INFO_DB_LOAD* pPrivateDB);
 private:
     //////////////////////////////////////////////////////////////////////////
-    // ½Ó¿ÚºÍ·½·¨  2005.11.25 °æ
+    // æ¥å£å’Œæ–¹æ³•  2005.11.25 ç‰ˆ
     //////////////////////////////////////////////////////////////////////////
-    //¹²ÏíÄÚ´æ¡¢DBÊôĞÔ×¢²áÊı¾İ
+    //å…±äº«å†…å­˜ã€DBå±æ€§æ³¨å†Œæ•°æ®
     VOID*                                    GetDBEnumAttr(CHAR_ATTR_DB eOffSet);
     VOID*                                    GetSMEnumAttr(CHAR_ATTR_DB eOffSet);
     INT                                        GetDBEnumAttrSize(CHAR_ATTR_DB eOffSet);

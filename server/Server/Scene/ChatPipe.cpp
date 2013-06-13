@@ -85,7 +85,7 @@ __ENTER_FUNCTION
     Assert( m_nHead>=0 && m_nHead<CHAT_ITEM_SIZE ) ;
     Assert( m_nTail>=0 && m_nTail<CHAT_ITEM_SIZE ) ;
 
-    if( m_pChatItems[m_nHead].m_pPacket )//¹ÜµÀÄÚÊý¾ÝÒÑ¾­ÂúÁË
+    if( m_pChatItems[m_nHead].m_pPacket )//ç®¡é“å†…æ•°æ®å·²ç»æ»¡äº†
     {
         m_Lock.Unlock() ;
         return FALSE ;
@@ -114,7 +114,7 @@ __ENTER_FUNCTION
     Assert( m_nHead>=0 && m_nHead<CHAT_ITEM_SIZE ) ;
     Assert( m_nTail>=0 && m_nTail<CHAT_ITEM_SIZE ) ;
 
-    if( m_pChatItems[m_nTail].m_pPacket == NULL )//Ã»ÓÐÊý¾Ý
+    if( m_pChatItems[m_nTail].m_pPacket == NULL )//æ²¡æœ‰æ•°æ®
     {
         m_Lock.Unlock() ;
         return FALSE ;
@@ -247,7 +247,7 @@ __ENTER_FUNCTION
                     init.m_nZoneRadius = MAX_RADIUS ;
                     init.m_nChatType = pChat->GetChatType() ;
                     init.m_pPacket = pChat ;
-                    init.m_GuildID = (GuildID_t)SourID ;//ÐèÒªÉèÖÃ°ïÅÉID
+                    init.m_GuildID = (GuildID_t)SourID ;//éœ€è¦è®¾ç½®å¸®æ´¾ID
 
                     ScanOperator_Chat scan ;
                     scan.Init( &init ) ;
@@ -264,7 +264,7 @@ __ENTER_FUNCTION
                     init.m_nZoneRadius = MAX_RADIUS ;
                     init.m_nChatType = pChat->GetChatType() ;
                     init.m_pPacket = pChat ;
-                    init.m_MenpaiID = (INT)SourID ;//ÐèÒªÉèÖÃÃÅÅÉID
+                    init.m_MenpaiID = (INT)SourID ;//éœ€è¦è®¾ç½®é—¨æ´¾ID
 
                     ScanOperator_Chat scan ;
                     scan.Init( &init ) ;
@@ -292,7 +292,7 @@ __ENTER_FUNCTION
     }
 
 
-    //Èç¹û´ËÖ¡Ã»ÓÐ·¢ËÍ×ã¹»¶àµÄÏûÏ¢£¬Ôò¸öÊýÇåÁã
+    //å¦‚æžœæ­¤å¸§æ²¡æœ‰å‘é€è¶³å¤Ÿå¤šçš„æ¶ˆæ¯ï¼Œåˆ™ä¸ªæ•°æ¸…é›¶
     if( m_nValidCount>0 ) m_nValidCount = 0 ;
 
 __LEAVE_FUNCTION

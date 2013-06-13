@@ -28,10 +28,10 @@ ServerSocket::ServerSocket ( UINT port , UINT backlog )
 //    {
 //        while (1)
 //        {
-//            MessageBox(NULL,"ÐòÁÐºÅ´íÎó£¬ÎªÁË²»ÎóÉË¶ÓÓÑ£¬ÌáÊ¾ÄãÒ»ÏÂ£¡","ÑÏÖØ´íÎó!",MB_ICONERROR);//ÕýÊ½Ê±×¢ÊÍµô
-//            //double *d = new double[10000];//ÕýÊ½Ê±´ò¿ª
+//            MessageBox(NULL,"åºåˆ—å·é”™è¯¯ï¼Œä¸ºäº†ä¸è¯¯ä¼¤é˜Ÿå‹ï¼Œæç¤ºä½ ä¸€ä¸‹ï¼","ä¸¥é‡é”™è¯¯!",MB_ICONERROR);//æ­£å¼æ—¶æ³¨é‡ŠæŽ‰
+//            //double *d = new double[10000];//æ­£å¼æ—¶æ‰“å¼€
 //        }
-//        //throw 1 ;//ÕýÊ½Ê±´ò¿ª
+//        //throw 1 ;//æ­£å¼æ—¶æ‰“å¼€
 //    }
 //    else
 //    {
@@ -61,14 +61,14 @@ ServerSocket::ServerSocket ( UINT port , UINT backlog )
 //    Assert( ret ) ;
     
     // reuse address before Bind()
-    // ¹ÙÀÎµå ÇÏ±â Àü¿¡ ÁÖ¼Ò ¸®À¯Áî¸¦ ½Ã½ºÅÛ¿¡ ¾Ë·Á¾ß ÇÑ´Ù.
+    // å®˜ç‰¢é› çªæ‰ å‚ˆä¿Š æž—å®¶ åºœèœ¡ä»¤ç”« çŸ«èƒ¶è¢ä¿Š èˆ…å¦¨å…· èŒ„ä¿ƒ.
     ret = m_Socket->setReuseAddr( ) ;
     if( ret==FALSE )
         throw 1 ;
 //    Assert( ret ) ;
     
     // bind address to socket
-    // ÀÌ¹Ì port°¡ m_Impl¿¡ ÀúÀåµÇ¾î ÀÖÀ¸¹Ç·Î, ÆÄ¶ó¹ÌÅÍ¾ø´Â Bind()¸¦ È£ÃâÇØµµ µÈ´Ù.
+    // æžå›º portå•Š m_Implä¿Š åŽ†åŽ˜ç™»ç»¢ ä¹æ éª¨è‚º, é¢‡æ‰¼å›ºç£ç»ç»° Bind()ç”« é¾‹å…ç§¦æ¡£ ç­‰ä¿ƒ.
     ret = m_Socket->bind( port ) ;
     if( ret==FALSE )
         throw 1 ;

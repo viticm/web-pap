@@ -1,6 +1,6 @@
 // GCPlayerDie.h
 // 
-// 主角死亡
+// 涓昏姝讳骸
 //
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~GCPlayerDie( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -33,7 +33,7 @@ namespace Packets
             sizeof(UINT); }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         VOID                SetCanRelive(BOOL bCanRelive) { m_bCanRelive = bCanRelive; }
         BOOL                IsCanRelive(VOID)const { return m_bCanRelive; }
 
@@ -41,8 +41,8 @@ namespace Packets
         UINT                GetTime(VOID)const { return m_uTime; }
 
     private:
-        BOOL            m_bCanRelive;        // 是否可以复活
-        UINT            m_uTime;            // 时间
+        BOOL            m_bCanRelive;        // 鏄惁鍙互澶嶆椿
+        UINT            m_uTime;            // 鏃堕棿
     };
 
 

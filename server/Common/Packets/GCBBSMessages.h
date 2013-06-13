@@ -50,7 +50,7 @@ namespace Packets
         }
         virtual ~GCBBSMessages( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -117,8 +117,8 @@ namespace Packets
         }
 
     private:
-        ObjID_t                    m_objID;        //Ì¯Ö÷id
-        UINT                    m_Serial;        //ĞòÁĞºÅ
+        ObjID_t                    m_objID;        //æ‘Šä¸»id
+        UINT                    m_Serial;        //åºåˆ—å·
         BYTE                    m_nTitleLength;
         CHAR                    m_szTitle[MAX_BBS_MESSAGE_LENGTH];
         BYTE                    m_MessageNum;

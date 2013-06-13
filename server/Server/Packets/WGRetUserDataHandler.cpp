@@ -46,7 +46,7 @@ __ENTER_FUNCTION
     }
 
     if( pGamePlayer->GetPlayerStatus()==PS_SERVER_WAITING_FOR_SERVER_DATA )
-    {//ÔÚServerManagerÄ£¿éÖÐÖ´ÐÐ²¿·Ö
+    {//åœ¨ServerManageræ¨¡å—ä¸­æ‰§è¡Œéƒ¨åˆ†
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID ) ;
 
         pGamePlayer->SetPlayerStatus( PS_SERVER_WAITING_FOR_SERVER_DATA_INCOMING ) ;
@@ -59,7 +59,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE ;
     }
     else if( pGamePlayer->GetPlayerStatus()==PS_SERVER_WAITING_FOR_SERVER_DATA_INCOMING )
-    {//ÔÚIncomingPlayerManagerÄ£¿éÖÐÖ´ÐÐµÄ
+    {//åœ¨IncomingPlayerManageræ¨¡å—ä¸­æ‰§è¡Œçš„
         Assert( MyGetCurrentThreadID()==g_pIncomingPlayerManager->m_ThreadID ) ;
     
         switch( pPacket->GetReturn() )
@@ -76,13 +76,13 @@ __ENTER_FUNCTION
             {
                 GCConnect Msg ;
                 Msg.SetServerID( g_pServerManager->GetServerID() ) ;
-                //²âÊÔÊý¾Ý
+                //æµ‹è¯•æ•°æ®
                 SceneID_t sceneid = pPacket->GetUserData()->m_Human.m_StartScene ;
                 WORLD_POS enterpos = pPacket->GetUserData()->m_Human.m_Position ;
                 Msg.SetSceneID( sceneid ) ;
                 Msg.SetWorldPos( &enterpos ) ;
                 Msg.SetEstate( 0 );
-                //²âÊÔÊý¾Ý
+                //æµ‹è¯•æ•°æ®
 
                 pGamePlayer->InitHuman( pPacket->GetUserData(),UDR_USERDATA, pPacket->GetPlayerAge() ) ;
 
@@ -99,7 +99,7 @@ __ENTER_FUNCTION
         
         case UDR_USERDATALIVING:
             {
-                //È¡µÃÒÑ¾­ÓÃ»§´ËGUIDÊý¾ÝµÄObj_HumanÐÅÏ¢
+                //å–å¾—å·²ç»ç”¨æˆ·æ­¤GUIDæ•°æ®çš„Obj_Humanä¿¡æ¯
                 Obj_Human* pOldHuman = (Obj_Human*)(g_pGUIDManager->Get(pGamePlayer->m_HumanGUID)) ;
                 if( pOldHuman==NULL )
                 {
@@ -114,7 +114,7 @@ __ENTER_FUNCTION
 
                     return PACKET_EXE_ERROR ;
                 }
-                //È¡µÃÓµÓÐ´ËGUIDµÄObj_HumanËùÔÚµÄ³¡¾°Ö¸Õë
+                //å–å¾—æ‹¥æœ‰æ­¤GUIDçš„Obj_Humanæ‰€åœ¨çš„åœºæ™¯æŒ‡é’ˆ
                 Scene* pScene = pOldHuman->getScene() ;
                 if( pScene==NULL )
                 {
@@ -153,7 +153,7 @@ __ENTER_FUNCTION
 
                     ((GamePlayer*)(pOldHuman->GetPlayer()))->SetPlayerStatus(PS_SERVER_ANOTHER_GUID_ALSO_KICK) ;
 
-                    //Ïò´Ë³¡¾°·¢ËÍµ±Ç°ÏûÏ¢
+                    //å‘æ­¤åœºæ™¯å‘é€å½“å‰æ¶ˆæ¯
                     pScene->SendPacket( pPacket, pOldHuman->GetPlayerID() ) ;
 
                     return PACKET_EXE_NOTREMOVE_ERROR ;
@@ -161,7 +161,7 @@ __ENTER_FUNCTION
 
                 ((GamePlayer*)(pOldHuman->GetPlayer()))->SetPlayerStatus(PS_SERVER_ANOTHER_GUID_ENTER) ;
             
-                //Ïò´Ë³¡¾°·¢ËÍµ±Ç°ÏûÏ¢
+                //å‘æ­¤åœºæ™¯å‘é€å½“å‰æ¶ˆæ¯
                 pScene->SendPacket( pPacket, pOldHuman->GetPlayerID() ) ;
 
                 g_pLog->FastSaveLog( LOG_FILE_1, "WGRetUserDataHandler::Execute(ret=%d) UDR_USERDATALIVING GUID=%X SceneID=%d ...OK ",
@@ -170,7 +170,7 @@ __ENTER_FUNCTION
                 return PACKET_EXE_NOTREMOVE ;
             }
             break ;
-        case UDR_USERSERVERCRASH: //È¡Ïû¶ÔServer Crash Çé¿ö´¦Àí
+        case UDR_USERSERVERCRASH: //å–æ¶ˆå¯¹Server Crash æƒ…å†µå¤„ç†
             {
                 g_pLog->FastSaveLog( LOG_FILE_1, "ERROR:WGRetUserDataHandler::Execute UDR_USERSERVERCRASH(PID=%d, GUID=%X)",
                     pPacket->GetPlayerID(), pGamePlayer->m_HumanGUID ) ;
@@ -194,7 +194,7 @@ __ENTER_FUNCTION
         }
     }
     else if( pGamePlayer->GetPlayerStatus()==PS_SERVER_ANOTHER_GUID_ENTER )
-    {//¾ÉµÄÍæ¼ÒËùÔÚµÄ³¡¾°À´Ö´ÐÐ Scene
+    {//æ—§çš„çŽ©å®¶æ‰€åœ¨çš„åœºæ™¯æ¥æ‰§è¡Œ Scene
         Obj_Human* pHuman = pGamePlayer->GetHuman() ;
         Assert( pHuman ) ;
 
@@ -206,7 +206,7 @@ __ENTER_FUNCTION
             return PACKET_EXE_CONTINUE ;
         }
 
-        //¼ì²âÖ´ÐÐÏß³ÌµÄÊý¾ÝÊÇ·ñÕýÈ·
+        //æ£€æµ‹æ‰§è¡Œçº¿ç¨‹çš„æ•°æ®æ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
         
         GamePlayer* pNewPlayer = g_pPlayerPool->GetPlayer( pPacket->GetPlayerID() ) ;
@@ -214,7 +214,7 @@ __ENTER_FUNCTION
 
         Obj_Human* pNewHuman = pNewPlayer->GetHuman() ;
         Assert( pNewHuman ) ;
-        {//ÖØÉèÏûÏ¢Êý¾Ý
+        {//é‡è®¾æ¶ˆæ¯æ•°æ®
             pPacket->SetReturn( UDR_USERDATA ) ;
             FULLUSERDATA* pData = pPacket->GetUserData() ;
 
@@ -232,7 +232,7 @@ __ENTER_FUNCTION
             memcpy( &(pData->m_PetList), pHuman->GetDB()->m_dbPetList, sizeof(_PET_DB_LIST_LOAD) ) ;
             memcpy( &(pData->m_Relation), pHuman->GetDB()->GetRelationDB(), sizeof(_RELATION_DB_LOAD) ) ;
             memcpy( &(pData->m_PrivateInfo), pHuman->GetDB()->GetPrivateInfoDB(), sizeof(_PRIVATE_INFO_DB_LOAD) ) ;
-            // pData->m_bIsPasswdUnlock = pHuman->__IsPasswordUnlock(); // ´ËÊ±²»ÓèÉèÖÃ
+            // pData->m_bIsPasswdUnlock = pHuman->__IsPasswordUnlock(); // æ­¤æ—¶ä¸äºˆè®¾ç½®
         }
 
         pGamePlayer->SetDirty( TRUE ) ;
@@ -257,7 +257,7 @@ __ENTER_FUNCTION
             return PACKET_EXE_CONTINUE ;
         }
 
-        //¼ì²âÖ´ÐÐÏß³ÌµÄÊý¾ÝÊÇ·ñÕýÈ·
+        //æ£€æµ‹æ‰§è¡Œçº¿ç¨‹çš„æ•°æ®æ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
         g_pLog->FastSaveLog( LOG_FILE_1, "WGRetUserDataHandler::Execute(status=%d) GUID=%X SceneID=%d Kickout OldHuman...OK ",

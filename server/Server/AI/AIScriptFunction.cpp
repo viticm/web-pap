@@ -132,8 +132,8 @@ const INT GetMacrobyName(const CHAR* MacroName)
 }
 
 /******************************************************************************
- * Desc        : »ñÈ¡¹ÖÎï×´Ì¬
- * pChar    : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+ * Desc        : è·å–æ€ªç‰©çŠ¶æ€
+ * pChar    : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
  * param0    : invalid
  * param1    : invalid
  * param2    : invalid
@@ -152,8 +152,8 @@ INT AIS_GetBuffState(const Obj_Character *pChar, INT param0, INT param1, INT par
     return 0;
 }
 /******************************************************************************
-* Desc        : »ñÈ¡¹ÖÎïAI×´Ì¬
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : è·å–æ€ªç‰©AIçŠ¶æ€
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -177,8 +177,8 @@ INT AIS_GetAIState(const Obj_Character *pChar, INT param0, INT param1, INT param
     return 0;
 }
 /******************************************************************************
-* Desc        : »ñÈ¡¹ÖÎïHP
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : è·å–æ€ªç‰©HP
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -201,8 +201,8 @@ INT AIS_GetHP(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : »ñÈ¡¹ÖÎïMP
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : è·å–æ€ªç‰©MP
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -225,8 +225,8 @@ INT AIS_GetMP(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : Ëæ»úÈ¡Öµ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : éšæœºå–å€¼
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -245,8 +245,8 @@ INT AIS_Rand(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : µĞÈË×´Ì¬
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•ŒäººçŠ¶æ€
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -266,8 +266,8 @@ INT AIS_GetEBuffState(const Obj_Character *pChar, INT param0, INT param1, INT pa
 
 }
 /********************************************************************************
-* Desc        : µĞÈËMP
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•ŒäººMP
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -286,8 +286,8 @@ INT AIS_GetEMP(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : µĞÈËHP
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•ŒäººHP
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -306,8 +306,8 @@ INT AIS_GetEHP(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : µĞÈËÃÅÅÉ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•Œäººé—¨æ´¾
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -331,8 +331,8 @@ INT AIS_GetEMenPai(const Obj_Character *pChar, INT param0, INT param1, INT param
     return 0;
 }
 /********************************************************************************
-* Desc        : µĞÈËµÈ¼¶
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•Œäººç­‰çº§
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -351,8 +351,8 @@ INT AIS_GetELevel(const Obj_Character *pChar, INT param0, INT param1, INT param2
     return 0;
 }
 /********************************************************************************
-* Desc        : ÊÇ·ñÄÜËµ»°
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ˜¯å¦èƒ½è¯´è¯
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -372,8 +372,8 @@ INT AIS_IsCanSpeak(const Obj_Character *pChar, INT param0, INT param1, INT param
 
 }
 /********************************************************************************
-* Desc        : ÊÇ·ñÓĞµĞÈË
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ˜¯å¦æœ‰æ•Œäºº
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -397,8 +397,8 @@ INT AIS_IsHasEnemy(const Obj_Character *pChar, INT param0, INT param1, INT param
     return 0;
 }
 /********************************************************************************
-* Desc        : µĞ·½ĞÔ±ğ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•Œæ–¹æ€§åˆ«
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -426,8 +426,8 @@ INT AIS_GetESex(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : ÕóÓªÅĞ¶Ï
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : é˜µè¥åˆ¤æ–­
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -452,8 +452,8 @@ INT AIS_GetCamp(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : PKÖµ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : PKå€¼
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -473,8 +473,8 @@ INT AIS_GetPK(const Obj_Character *pChar, INT param0, INT param1, INT param2)
 
 }
 /********************************************************************************
-* Desc        : µĞ·½¶ÓÎéÈËÊı
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•Œæ–¹é˜Ÿä¼äººæ•°
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -498,8 +498,8 @@ INT AIS_GetETeamNum(const Obj_Character *pChar, INT param0, INT param1, INT para
     return 0;
 }
 /********************************************************************************
-* Desc        : µĞ·½ÊÇ·ñÓĞÌØÊâÎïÆ·
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•Œæ–¹æ˜¯å¦æœ‰ç‰¹æ®Šç‰©å“
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -519,8 +519,8 @@ INT AIS_IsEHasSpecialItem(const Obj_Character *pChar, INT param0, INT param1, IN
 
 }
 /********************************************************************************
-* Desc        : µ¥´ÎÉËº¦Öµ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : å•æ¬¡ä¼¤å®³å€¼
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -544,8 +544,8 @@ INT AIS_GetSingleDamage(const Obj_Character *pChar, INT param0, INT param1, INT 
     return 0;
 }
 /********************************************************************************
-* Desc        : µĞÈË¸öÊı
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ•Œäººä¸ªæ•°
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -569,8 +569,8 @@ INT AIS_GetEnemyNum(const Obj_Character *pChar, INT param0, INT param1, INT para
     return 0;
 }
 /********************************************************************************
-* Desc        : ÊÇ·ñÎªBOSS
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : æ˜¯å¦ä¸ºBOSS
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -590,9 +590,9 @@ INT AIS_IsBoss(const Obj_Character *pChar, INT param0, INT param1, INT param2)
 
 }
 /********************************************************************************
-* Desc        : ±»µĞ·½¼¼ÄÜÃüÖĞ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
-* param0    : ¼¼ÄÜID
+* Desc        : è¢«æ•Œæ–¹æŠ€èƒ½å‘½ä¸­
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
+* param0    : æŠ€èƒ½ID
 * param1    : invalid
 * param2    : invalid
 */
@@ -604,11 +604,11 @@ INT AIS_BeSkill(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : ÌÓÅÜ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
-* param0    : ÌÓÅÜÀàĞÍ
-* param1    : X×ø±ê
-* param2    : Z×ø±ê
+* Desc        : é€ƒè·‘
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
+* param0    : é€ƒè·‘ç±»å‹
+* param1    : Xåæ ‡
+* param2    : Zåæ ‡
 */
 INT AIS_ToFlee(const Obj_Character *pChar, INT param0, INT param1, INT param2)
 {
@@ -633,9 +633,9 @@ INT AIS_ToFlee(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : ÊÇ·ñÄÜÊÍ·Å¼¼ÄÜ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
-* param0    : ¼¼ÄÜID
+* Desc        : æ˜¯å¦èƒ½é‡Šæ”¾æŠ€èƒ½
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
+* param0    : æŠ€èƒ½ID
 * param1    : invalid
 * param2    : invalid
 */
@@ -655,8 +655,8 @@ INT  AIS_IsCanSkill(const Obj_Character *pChar, INT param0, INT param1, INT para
 
         SkillTemplateData_T const* pSkillTemplate = g_SkillTemplateDataMgr.GetInstanceByID(param0);
         if (NULL != pSkillTemplate) 
-        {/** Õâ²¿·ÖÒÔºóÓÉ¼¼ÄÜÄ£¿éÀ´Ö§³Ö */
-            /* ¼ÙÈçÃ»ÓĞ¾àÀëµÃÌõ¼şÏŞÖÆÔò¶¼ÄÜÊÍ·Å */
+        {/** è¿™éƒ¨åˆ†ä»¥åç”±æŠ€èƒ½æ¨¡å—æ¥æ”¯æŒ */
+            /* å‡å¦‚æ²¡æœ‰è·ç¦»å¾—æ¡ä»¶é™åˆ¶åˆ™éƒ½èƒ½é‡Šæ”¾ */
             AI_Monster* pAIMonster = ((Obj_Monster*)pChar)->GetMonsterAI();
             if (!pAIMonster)
             {
@@ -695,9 +695,9 @@ INT  AIS_IsCanSkill(const Obj_Character *pChar, INT param0, INT param1, INT para
     return 0;
 }
 /********************************************************************************
-* Desc        : Ê¹ÓÃ¼¼ÄÜ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
-* param0    : ¼¼ÄÜID
+* Desc        : ä½¿ç”¨æŠ€èƒ½
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
+* param0    : æŠ€èƒ½ID
 * param1    : invalid
 * param2    : invalid
 */
@@ -743,7 +743,7 @@ INT AIS_ToSkill(const Obj_Character *pChar, INT param0, INT param1, INT param2)
             return 1;
         }
         else if (oResult ==OR_COOL_DOWNING)
-        {// Èç¹ûÊÇµ±Ç°¼¼ÄÜÕıÔÚÊ¹ÓÃÖĞ£¬Ôò½«¸Ã¼¼ÄÜ»º´æÆğÀ´£¬ ÏÂ´ÎÊ©·Å¸Ã¼¼ÄÜ£¡
+        {// å¦‚æœæ˜¯å½“å‰æŠ€èƒ½æ­£åœ¨ä½¿ç”¨ä¸­ï¼Œåˆ™å°†è¯¥æŠ€èƒ½ç¼“å­˜èµ·æ¥ï¼Œ ä¸‹æ¬¡æ–½æ”¾è¯¥æŠ€èƒ½ï¼
             pAIMonster->SetNextSkillID(param0);
             return (0);
         }
@@ -758,10 +758,10 @@ INT AIS_ToSkill(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : ÕÙ»½¶ÓÓÑ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
-* param0    : ÕÙ»½ÀàĞÍ
-* param1    : ÕÙ»½¸öÊı
+* Desc        : å¬å”¤é˜Ÿå‹
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
+* param0    : å¬å”¤ç±»å‹
+* param1    : å¬å”¤ä¸ªæ•°
 * param2    : invalid
 */
 INT AIS_ToSummon(const Obj_Character *pChar, INT param0, INT param1, INT param2)
@@ -785,8 +785,8 @@ INT AIS_ToSummon(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : Ô¶³Ì¹¥»÷
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : è¿œç¨‹æ”»å‡»
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -806,8 +806,8 @@ INT AIS_ToLongAttack(const Obj_Character *pChar, INT param0, INT param1, INT par
 
 }
 /********************************************************************************
-* Desc        : ¸úËæ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : è·Ÿéš
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -827,10 +827,10 @@ INT AIS_ToFollow(const Obj_Character *pChar, INT param0, INT param1, INT param2)
 
 }
 /********************************************************************************
-* Desc        : ÅİÅİËµ»°
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
-* param0    : ÅİÅİÆğÊ¼ID
-* param1    : ÅİÅİID·¶Î§
+* Desc        : æ³¡æ³¡è¯´è¯
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
+* param0    : æ³¡æ³¡èµ·å§‹ID
+* param1    : æ³¡æ³¡IDèŒƒå›´
 * param2    : invalid
 */
 INT AIS_ToSpeak(const Obj_Character *pChar, INT param0, INT param1, INT param2)
@@ -855,8 +855,8 @@ INT AIS_ToSpeak(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : ÉèÖÃ¸÷ÖÖĞĞÎªµÄÖ´ĞĞ´ÎÊı
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : è®¾ç½®å„ç§è¡Œä¸ºçš„æ‰§è¡Œæ¬¡æ•°
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -866,8 +866,8 @@ INT AIS_SetTimes(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : ÉèÖÃ¸÷ÖÖĞĞÎªµÄÓÅÏÈ¼¶
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
+* Desc        : è®¾ç½®å„ç§è¡Œä¸ºçš„ä¼˜å…ˆçº§
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
 * param0    : invalid
 * param1    : invalid
 * param2    : invalid
@@ -877,9 +877,9 @@ INT  AIS_SetPRI(const Obj_Character *pChar, INT param0, INT param1, INT param2)
     return 0;
 }
 /********************************************************************************
-* Desc        : Ğ­Öú¶ÓÓÑ
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
-* param0    : ¶ÓÓÑID
+* Desc        : ååŠ©é˜Ÿå‹
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
+* param0    : é˜Ÿå‹ID
 * param1    : invalid
 * param2    : invalid
 */
@@ -888,9 +888,9 @@ INT AIS_ToAssistTeammate(const Obj_Character *pChar, INT param0, INT param1, INT
     return 0;
 }
 /********************************************************************************
-* Desc        : Çı¶¯³èÎïÈ¥¹¥»÷
-* pChar        : º¯Êıµ÷ÓÃÕß£¬Èç£ºMonster»òPet
-* param0    : ¼¼ÄÜÀàĞÍ£»ÈçÎï¹¦£¬·¨¹¦£¬¸¨Öú¹¥»÷ 
+* Desc        : é©±åŠ¨å® ç‰©å»æ”»å‡»
+* pChar        : å‡½æ•°è°ƒç”¨è€…ï¼Œå¦‚ï¼šMonsteræˆ–Pet
+* param0    : æŠ€èƒ½ç±»å‹ï¼›å¦‚ç‰©åŠŸï¼Œæ³•åŠŸï¼Œè¾…åŠ©æ”»å‡» 
 * param1    : invalid
 * param2    : invalid
 */

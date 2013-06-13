@@ -1,6 +1,6 @@
 // GCStudyXinfa.h
 // 
-// ·¢ËÍNPCµÄÃÅÅÉID
+// å‘é€NPCçš„é—¨æ´¾ID
 // 
 //////////////////////////////////////////////////////
 
@@ -17,19 +17,19 @@ namespace Packets
     class GCStudyXinfa : public Packet
     {
     public:
-        struct _STUDERESULT_INFO   //Ñ§Ï°ºóµÄ½á¹û£¨¸Ä±äÁËÊ²Ã´£©
+        struct _STUDERESULT_INFO   //å­¦ä¹ åçš„ç»“æœï¼ˆæ”¹å˜äº†ä»€ä¹ˆï¼‰
         {
-            UINT                    m_uSpareMoney;            //    Éı¼¶ºóÍæ¼ÒÊ£ÓàµÄ½ğÇ®
-            UINT                    m_uSpareExperience;        //    Éı¼¶ºóÍæ¼ÒÊ£ÓàµÄ¾­Ñé
+            UINT                    m_uSpareMoney;            //    å‡çº§åç©å®¶å‰©ä½™çš„é‡‘é’±
+            UINT                    m_uSpareExperience;        //    å‡çº§åç©å®¶å‰©ä½™çš„ç»éªŒ
             
             short                    m_idXinfa;
-            short                    m_StudedLevel;            // Éı¼¶Ö®ºóµÄµÈ¼¶
+            short                    m_StudedLevel;            // å‡çº§ä¹‹åçš„ç­‰çº§
         };
 
         GCStudyXinfa( ){};
         virtual ~GCStudyXinfa( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

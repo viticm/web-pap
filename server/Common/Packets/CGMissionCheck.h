@@ -1,6 +1,6 @@
 // CGMissionCheck.h
 // 
-// 任务完成验证
+// 浠诲姟瀹屾垚楠岃瘉
 // 
 //////////////////////////////////////////////////////
 
@@ -30,7 +30,7 @@ namespace Packets
         }
         virtual ~CGMissionCheck( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -59,7 +59,7 @@ namespace Packets
         BYTE                    m_ItemIndexList[ITEM_MAX_NUM];
         BYTE                    m_PetIndex;
         ObjID_t                    m_idNPC;
-        ScriptID_t                m_idScript;        // 任务的脚本ID
+        ScriptID_t                m_idScript;        // 浠诲姟鐨勮剼鏈琁D
 
 
     };

@@ -26,7 +26,7 @@ __ENTER_FUNCTION
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     ObjID_t SelfID = pHuman->GetID();
@@ -44,7 +44,7 @@ __ENTER_FUNCTION
 
     if(bSelf)
     {
-        //·¢ËÍ×Ô¼ºµÄÐÅÏ¢
+        //å‘é€è‡ªå·±çš„ä¿¡æ¯
         //const _PRIVATE_INFO_DB_LOAD *SelfInfo;
         //SelfInfo = pHuman->GetDB()->GetPrivateInfoDB();
 
@@ -73,7 +73,7 @@ __ENTER_FUNCTION
     }
     else
     {
-        //·¢ËÍ±ðÈËµÄÏûÏ¢
+        //å‘é€åˆ«äººçš„æ¶ˆæ¯
         //Obj_Character *pTarget = (Obj_Character*)(pScene->GetObjManager()->GetObj( pPacket->GetPlayerID() ));
         //if(pTarget->GetObjType() != Obj::OBJ_TYPE_HUMAN)
         //{
@@ -87,7 +87,7 @@ __ENTER_FUNCTION
         //    return PACKET_EXE_ERROR ;
         //}
         //
-        //// ²»Í¬ÕóÓª£¬²»ÈÃ²é¿´
+        //// ä¸åŒé˜µè¥ï¼Œä¸è®©æŸ¥çœ‹
         //if( pHuman->IsEnemy( pTargetHuman ) )
         //{
         //    g_pLog->FastSaveLog( LOG_FILE_1, "CGAskPrivateInfoHandler: %s cann't ask %s's DetailAttr ", pHuman->GetName(), pTargetHuman->GetName() ) ;
@@ -97,19 +97,19 @@ __ENTER_FUNCTION
         //GCPrivateInfo msg;
         //msg.SetSelf(0);
 
-        ////ÐèÒª¸ù¾Ý  GetPrivateInfoDB()->m_InfoType µÄÊý¾ÝÀ´È·¶¨ÊÇ·¢ËÍÊ²Ã´Ñù×ÓµÄÊý¾Ý
-        //if( 2 == pTargetHuman->GetDB()->GetPrivateInfoDB()->m_InfoType)  //ÍêÈ«±£ÃÜ
+        ////éœ€è¦æ ¹æ®  GetPrivateInfoDB()->m_InfoType çš„æ•°æ®æ¥ç¡®å®šæ˜¯å‘é€ä»€ä¹ˆæ ·å­çš„æ•°æ®
+        //if( 2 == pTargetHuman->GetDB()->GetPrivateInfoDB()->m_InfoType)  //å®Œå…¨ä¿å¯†
         //{
         //    msg.SetLuckWordLength( (BYTE)strlen(pTargetHuman->GetDB()->GetPrivateInfoDB()->m_LuckWord) );
         //    msg.SetLuckWord((CHAR *)&pTargetHuman->GetDB()->GetPrivateInfoDB()->m_LuckWord);
         //    pGamePlayer->SendPacket(&msg);
         //    return PACKET_EXE_CONTINUE ;
         //}
-        //if( 1 == pTargetHuman->GetDB()->GetPrivateInfoDB()->m_InfoType )  //ºÃÓÑ¹«¿ª
+        //if( 1 == pTargetHuman->GetDB()->GetPrivateInfoDB()->m_InfoType )  //å¥½å‹å…¬å¼€
         //{
         //    GUID_t SelfGuid = pHuman->GetGUID();
 
-        //    //Ó¦¸ÃÊ¹ÓÃ¶Ô·½×öÎªÖ÷Ìå½øÐÐÅÐ¶¨
+        //    //åº”è¯¥ä½¿ç”¨å¯¹æ–¹åšä¸ºä¸»ä½“è¿›è¡Œåˆ¤å®š
         //    if( ! pTargetHuman->GetHumanRelation()->IsFriend(SelfGuid) )
         //    {
         //        msg.SetLuckWordLength( (BYTE)strlen(pTargetHuman->GetDB()->GetPrivateInfoDB()->m_LuckWord) );
@@ -118,7 +118,7 @@ __ENTER_FUNCTION
         //        return PACKET_EXE_CONTINUE ;
         //    }
         //}
-        ////ÍêÈ«¹«¿ª(¶ÔÅóÓÑ¹«¿ª)
+        ////å®Œå…¨å…¬å¼€(å¯¹æœ‹å‹å…¬å¼€)
         //msg.SetAge(pTargetHuman->GetDB()->GetPrivateInfoDB()->m_Age);
         //msg.SetBloodType(pTargetHuman->GetDB()->GetPrivateInfoDB()->m_BloodType);
         //msg.SetCharGUID((UINT)pTargetHuman->GetGUID());

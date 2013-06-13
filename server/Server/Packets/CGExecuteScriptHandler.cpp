@@ -37,10 +37,10 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     X_SCRIPT* pScript = pPacket->GetScript() ;
-#if 0 //²»ÔÊÐíÖ±½ÓÖ´ÐÐ·þÎñÆ÷¶Ë½Å±¾£¬¶ø²»¾­¹ý¼ì²é
+#if 0 //ä¸å…è®¸ç›´æŽ¥æ‰§è¡ŒæœåŠ¡å™¨ç«¯è„šæœ¬ï¼Œè€Œä¸ç»è¿‡æ£€æŸ¥
     switch( pScript->GetParamCount() )
     {
     case 0:

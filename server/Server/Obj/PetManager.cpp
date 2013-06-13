@@ -105,7 +105,7 @@ __ENTER_FUNCTION
     {
         return FALSE;
     }
-    // ½«ĞÂ´´½¨³èÎïµÄObjID·µ»Ø
+    // å°†æ–°åˆ›å»ºå® ç‰©çš„ObjIDè¿”å›
     rPetID = pPet->GetID();
 
     PET_ATTR* pPetAttr = g_PetAttrTbl.GetAttr(nDataID);
@@ -125,21 +125,21 @@ __ENTER_FUNCTION
     InitPetDB( &initPet.m_PetDB, nDataID );
     initPet.m_GUID        = INVALID_GUID;
 
-    // ³õÊ¼»¯Pet
+    // åˆå§‹åŒ–Pet
     BOOL bResult = pPet->Init( &initPet );
     if ( !bResult )
     {
         return FALSE;
     }
     
-    // ¼¤»î¸ÃPet
+    // æ¿€æ´»è¯¥Pet
     pPet->SetActiveFlag( TRUE );
 
     return TRUE;
 __LEAVE_FUNCTION
     return TRUE;
 }
-// Éú³ÉÒ»¸ö²¶×½ºó³èÎïµÄGUID
+// ç”Ÿæˆä¸€ä¸ªæ•æ‰åå® ç‰©çš„GUID
 BOOL    PetManager::CreateGUIDOfPet(_PET_DB *pPetDB, ObjID_t idHuman, ObjID_t idPet)
 {
     __ENTER_FUNCTION
@@ -234,7 +234,7 @@ __LEAVE_FUNCTION
     return FALSE ;
 }
 
-// Í¨¹ıDataIDÈ¥¸¶ÖµÒ»¸öPET DB
+// é€šè¿‡DataIDå»ä»˜å€¼ä¸€ä¸ªPET DB
 BOOL PetManager::InitPetDB( _PET_DB *pPetDB, INT nDataID )
 {
 __ENTER_FUNCTION
@@ -321,19 +321,19 @@ __ENTER_FUNCTION
 
     INT nRet = RandGen::GetRand(0, 1000);
     if (nRet < nCowardiceRate) {
-        rAIType = _PET_DB_LOAD::PET_AI_COWARDICE;    // µ¨Ğ¡
+        rAIType = _PET_DB_LOAD::PET_AI_COWARDICE;    // èƒ†å°
     }                                                
     else if (nRet < nWarinessRate) {                
-        rAIType = _PET_DB_LOAD::PET_AI_WARINESS;    // ½÷É÷    
+        rAIType = _PET_DB_LOAD::PET_AI_WARINESS;    // è°¨æ…    
     }                                                
     else if (nRet < nLoyalismRate) {
-        rAIType = _PET_DB_LOAD::PET_AI_LOYALISM;    // ÖÒ³Ï
+        rAIType = _PET_DB_LOAD::PET_AI_LOYALISM;    // å¿ è¯š
     }
     else if (nRet < nCanninessRate) {
-        rAIType = _PET_DB_LOAD::PET_AI_CANNINESS;    // ¾«Ã÷
+        rAIType = _PET_DB_LOAD::PET_AI_CANNINESS;    // ç²¾æ˜
     }
     else{
-        rAIType = _PET_DB_LOAD::PET_AI_VALOUR;        // ÓÂÃÍ
+        rAIType = _PET_DB_LOAD::PET_AI_VALOUR;        // å‹‡çŒ›
     }
 
 
@@ -348,15 +348,15 @@ __ENTER_FUNCTION
     BYTE &byType = rPetDB.m_byPetType;
     INT &nLevel = rPetDB.m_nLevel;
     INT &nRemainPoint = rPetDB.m_nRemainPoint;    
-    // ½øĞĞ»¹Í¯´¦Àí
+    // è¿›è¡Œè¿˜ç«¥å¤„ç†
     if (TRUE == bReturnToChild)
     {
         nLevel = 1;
-        byType = _PET_DB_LOAD::PET_TYPE_BABY; // ÉèÖÃ³É´¿±¦±¦
+        byType = _PET_DB_LOAD::PET_TYPE_BABY; // è®¾ç½®æˆçº¯å®å®
         nRemainPoint = 50 + (nLevel - 1) * 8;
         return;
     }
-    // µÈ¼¶²»½øĞĞ²¨¶¯´¦Àí
+    // ç­‰çº§ä¸è¿›è¡Œæ³¢åŠ¨å¤„ç†
     if (FALSE == bNeedLevelFluctuate)
     {
         if (nLevel <= 0)
@@ -374,7 +374,7 @@ __ENTER_FUNCTION
     //    nLevel = 1;
 
     //    UINT uDataID = idData;
-    //    INT nRet = RandGen::GetRand(0, 100000);// µ¥Î»Îª10w
+    //    INT nRet = RandGen::GetRand(0, 100000);// å•ä½ä¸º10w
     //    for (INT i = 0; i < SPetConfig::VARIANCEPET_LEVEL_NUM; ++i)
     //    {
     //        if (nRet < g_TableInit.m_PetConfig.m_aRateOfLevelVariancePet[i])
@@ -383,7 +383,7 @@ __ENTER_FUNCTION
     //            break;
     //        }
     //    }
-    //    // Ò»ÖÖ³èÎï±ØÈ»ÓĞÒ»ÖÖ±äÒìÀàĞÍ
+    //    // ä¸€ç§å® ç‰©å¿…ç„¶æœ‰ä¸€ç§å˜å¼‚ç±»å‹
     //    PET_ATTR* pPetAttr = g_PetAttrTbl.GetAttr(uDataID);
     //    if (pPetAttr)
     //    {
@@ -399,21 +399,21 @@ __ENTER_FUNCTION
     //}
 
     if ((UINT)idData > g_PetAttrTbl.m_MaxType)
-    {// ÀàĞÍ·¶Î§ÅĞ¶Ï
+    {// ç±»å‹èŒƒå›´åˆ¤æ–­
         return;
     }
     if (TRUE == g_PetAttrTbl.m_TableExt[idData].m_bVarPet)
-    {// ÊÇ±äÒì³èÎï
+    {// æ˜¯å˜å¼‚å® ç‰©
         byType = _PET_DB_LOAD::PET_TYPE_VARIANCE;
         nLevel = 1;
     }
     else if (TRUE == g_PetAttrTbl.m_TableExt[idData].m_bBabyPet)
-    {// ÊÇ±¦±¦³èÎï
+    {// æ˜¯å®å®å® ç‰©
         byType = _PET_DB_LOAD::PET_TYPE_BABY;
         nLevel = 1;
     }
     else
-    {// ÊÇÒ°Éú³èÎï
+    {// æ˜¯é‡ç”Ÿå® ç‰©
         byType = _PET_DB_LOAD::PET_TYPE_WILENESS;
 
         INT nTakeLevelRate = g_TableInit.m_PetConfig.m_WilenessPetRate_TakeLevel;
@@ -457,7 +457,7 @@ __ENTER_FUNCTION
     if (nLevel <= 0)
         nLevel = 1;
         
-    // ¹«Ê½50+£¨lv£­1£©*8µÃ³ö³èÎï³õÊ¼ÊôĞÔµãµÄ×ÜÊı
+    // å…¬å¼50+ï¼ˆlvï¼1ï¼‰*8å¾—å‡ºå® ç‰©åˆå§‹å±æ€§ç‚¹çš„æ€»æ•°
     nRemainPoint = 50 + (nLevel - 1) * 8;
 
 __LEAVE_FUNCTION
@@ -554,7 +554,7 @@ __ENTER_FUNCTION
             AddPetSkill(paSkillList, nSkillIndex);
         }
         else
-        {// a+b+c+d+e~¡Æ
+        {// a+b+c+d+e~âˆ‘
         }
     }
 __LEAVE_FUNCTION
@@ -616,7 +616,7 @@ __ENTER_FUNCTION
     INT &nIntPerception = rPetDB.m_nIntPerception;
     INT &nGenGu = rPetDB.m_nGenGu;
 
-    //¢Ù¿ÉĞ¯´øµÄÎï¹¥³èµÄ±ê×¼×ÊÖÊ
+    //â‘ å¯æºå¸¦çš„ç‰©æ”»å® çš„æ ‡å‡†èµ„è´¨
     PET_ATTR* pAttr = g_PetAttrTbl.GetAttr(idData);
     if (!pAttr)
     {
@@ -633,7 +633,7 @@ __ENTER_FUNCTION
     INT nTotalPerception = nStrPerception + nConPerception + 
                         nSprPerception + nDexPerception + nIntPerception;
 
-    //¢Ú°´ÕÕÔÚ±ê×¼×ÊÖÊ90£¥¡«110£¥µÄ·¶Î§ÄÚrandom³öÒ»¸öÁÙÊ±×ÊÖÊÀ´
+    //â‘¡æŒ‰ç…§åœ¨æ ‡å‡†èµ„è´¨90ï¼…ï½110ï¼…çš„èŒƒå›´å†…randomå‡ºä¸€ä¸ªä¸´æ—¶èµ„è´¨æ¥
     INT nStrDelta = (nStrPerception * 10) / 100;
     INT nConDelta = (nConPerception * 10) / 100;
     INT nSprDelta = (nSprPerception * 10) / 100;
@@ -649,13 +649,13 @@ __ENTER_FUNCTION
     INT nTempPerception = nStrPerception + nConPerception + 
                         nSprPerception + nDexPerception + nIntPerception;
 
-    //¢ÛÔÚ×Ü±ê×¼×ÊÖÊÖ®ºÍµÄ0¡«5%·¶Î§ÄÚrandomÒ»¸ö½±Àø×ÊÖÊ£¬
+    //â‘¢åœ¨æ€»æ ‡å‡†èµ„è´¨ä¹‹å’Œçš„0ï½5%èŒƒå›´å†…randomä¸€ä¸ªå¥–åŠ±èµ„è´¨ï¼Œ
     INT nEncouragePer = RandGen::GetRand( 0, ((nTotalPerception * 5) / 100) );
 
-    //¢Ü½«½±Àø×ÊÖÊ+£¨×Ü±ê×¼×ÊÖÊ£­×ÜÁÙÊ±×ÊÖÊ£©µÄ½á¹û£¨¿ÉÄÜÊÇ¸ºÊı£©×÷Îª×îÖÕ½±Àø×ÊÖÊ£¬
+    //â‘£å°†å¥–åŠ±èµ„è´¨+ï¼ˆæ€»æ ‡å‡†èµ„è´¨ï¼æ€»ä¸´æ—¶èµ„è´¨ï¼‰çš„ç»“æœï¼ˆå¯èƒ½æ˜¯è´Ÿæ•°ï¼‰ä½œä¸ºæœ€ç»ˆå¥–åŠ±èµ„è´¨ï¼Œ
     INT nFinallyEncouragePer = nEncouragePer + (nTotalPerception - nTempPerception);
 
-    //¢İ½«×îÖÕ½±Àø×ÊÖÊËæ»ú¸½¼Óµ½³èÎïµÄÄ³Ò»Ïî×ÊÖÊÉÏ£¬×÷Îª×îÖÕµÄ½±Àø×ÊÖÊ
+    //â‘¤å°†æœ€ç»ˆå¥–åŠ±èµ„è´¨éšæœºé™„åŠ åˆ°å® ç‰©çš„æŸä¸€é¡¹èµ„è´¨ä¸Šï¼Œä½œä¸ºæœ€ç»ˆçš„å¥–åŠ±èµ„è´¨
     INT nSelectedAttr = RandGen::GetRand(0, CATTR_LEVEL1_NUMBER);
     switch (nSelectedAttr)
     {
@@ -678,7 +678,7 @@ __ENTER_FUNCTION
         break;
     }
 
-    //¢Ş¸ù¹Ç¸ù¾İÒÔÏÂ¼¸ÂÊÔÚÏàÓ¦·¶Î§¶Îrandom,random³ö·¶Î§¶ÎºóÔÙ¼ÌĞøÔÚ·¶Î§¶ÎÀïrandom³öÒ»¸ö¾ßÌåÊıÖµ
+    //â‘¥æ ¹éª¨æ ¹æ®ä»¥ä¸‹å‡ ç‡åœ¨ç›¸åº”èŒƒå›´æ®µrandom,randomå‡ºèŒƒå›´æ®µåå†ç»§ç»­åœ¨èŒƒå›´æ®µé‡Œrandomå‡ºä¸€ä¸ªå…·ä½“æ•°å€¼
     INT nGenGuRate0 = g_TableInit.m_PetConfig.m_vGenGu[0].m_Rate;
     INT nGenGuRate1 = nGenGuRate0 + g_TableInit.m_PetConfig.m_vGenGu[1].m_Rate;
     INT nGenGuRate2 = nGenGuRate1 + g_TableInit.m_PetConfig.m_vGenGu[2].m_Rate;
@@ -718,7 +718,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// Ïò³èÎïµÄ¼¼ÄÜÁĞ±íÖĞÔö¼ÓĞÂ¼¼ÄÜ
+// å‘å® ç‰©çš„æŠ€èƒ½åˆ—è¡¨ä¸­å¢åŠ æ–°æŠ€èƒ½
 VOID PetManager::AddPetSkill(_PET_SKILL *paSkillList, INT& rSkillIndex)
 {
 __ENTER_FUNCTION
@@ -731,11 +731,11 @@ __ENTER_FUNCTION
     INT nSkillID = -1;
     INT nSkillType = -1;
     for (INT i = 0; i < PET_SKILL_NUM; ++i)
-    {// ¸ù¾İË÷Òı²éÕÒÏàÓ¦µÄSkillID
+    {// æ ¹æ®ç´¢å¼•æŸ¥æ‰¾ç›¸åº”çš„SkillID
         if (g_PetSkillIndexTbl[i].m_nIndex == rSkillIndex)
         {
             nSkillID = g_PetSkillIndexTbl[i].m_nSkillID;
-            // ¸ù¾İ¼¼ÄÜIDÅĞ¶Ï¸Ã¼¼ÄÜÊÇ·ñÊÇÊÖ¶¯¼¼ÄÜ£¬Èç¹ûÊÇÊÖ¶¯¼¼ÄÜÔò¼ÓÈëµ½ÊÖ¶¯¼¼ÄÜ²ÛÖĞ
+            // æ ¹æ®æŠ€èƒ½IDåˆ¤æ–­è¯¥æŠ€èƒ½æ˜¯å¦æ˜¯æ‰‹åŠ¨æŠ€èƒ½ï¼Œå¦‚æœæ˜¯æ‰‹åŠ¨æŠ€èƒ½åˆ™åŠ å…¥åˆ°æ‰‹åŠ¨æŠ€èƒ½æ§½ä¸­
             SkillTemplateData_T const* pSkillTemplateData = g_SkillTemplateDataMgr.GetInstanceByID(nSkillID);
             if (!pSkillTemplateData)
             {
@@ -743,7 +743,7 @@ __ENTER_FUNCTION
             }
             ID_t OperateModeOfPetSkill = pSkillTemplateData->GetOperateModeForPetSkill();
             if (PET_SKILL_OPERATE_NEEDOWNER == OperateModeOfPetSkill)
-            {// ÊÇÊÖ¶¯¼¼ÄÜ
+            {// æ˜¯æ‰‹åŠ¨æŠ€èƒ½
                 paSkillList[PET_SKILL_INDEX_CONTROL_BY_PLAYER].m_nSkillID = nSkillID;
                 return ;
             }
@@ -753,12 +753,12 @@ __ENTER_FUNCTION
 
     for (INT j = PET_SKILL_INDEX_CONTROL_BY_AI0 ; j < PET_MAX_SKILL_COUNT; ++j) 
     {
-        // Èç¹ûÒÑ¾­ÓµÓĞ¸Ã¼¼ÄÜÔòÖ±½Ó·µ»Ø
+        // å¦‚æœå·²ç»æ‹¥æœ‰è¯¥æŠ€èƒ½åˆ™ç›´æ¥è¿”å›
         if (paSkillList[j].m_nSkillID == nSkillID)
         {
             return ;
         }
-        // Èç¹ûÓĞ¿ÉÓÃµÄ¼¼ÄÜ²Û²Å¼ÓÈë¼¼ÄÜÁĞ±í
+        // å¦‚æœæœ‰å¯ç”¨çš„æŠ€èƒ½æ§½æ‰åŠ å…¥æŠ€èƒ½åˆ—è¡¨
         if (paSkillList[j].m_nSkillID == INVALID_ID) 
         {
             paSkillList[j].m_nSkillID = nSkillID;

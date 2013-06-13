@@ -124,7 +124,7 @@ __LEAVE_FUNCTION
     return FALSE;
 }
 
-// Œ¥±ªª˜ªÓµƒObjÀ˘÷¥––µƒ¬ﬂº≠
+// Êú™Ë¢´ÂáªÊ¥ªÁöÑObjÊâÄÊâßË°åÁöÑÈÄªËæë
 BOOL Obj::HeartBeat_OutZone( UINT uTime )
 {
 __ENTER_FUNCTION
@@ -182,7 +182,7 @@ __ENTER_FUNCTION
     if ( m_bActive != bNewActive )
     {
         m_bActive = bNewActive;
-        // Ω´∂‘œÛ◊¢≤·ªÚ∑¥◊¢≤·µΩœ‡”¶µƒZone÷–
+        // Â∞ÜÂØπË±°Ê≥®ÂÜåÊàñÂèçÊ≥®ÂÜåÂà∞Áõ∏Â∫îÁöÑZone‰∏≠
         if ( m_ZoneID != INVALID_ID )
         {
             if ( m_bActive )
@@ -274,7 +274,7 @@ __ENTER_FUNCTION
         return ;
     }
 
-    // Õ¨≤Ω“ª∏ˆTeleportµƒMSGµΩøÕªß∂À
+    // ÂêåÊ≠•‰∏Ä‰∏™TeleportÁöÑMSGÂà∞ÂÆ¢Êà∑Á´Ø
     // to be continue...
     GCObjTeleport msgTeleport;
     msgTeleport.setObjID( GetID() );
@@ -353,7 +353,7 @@ __LEAVE_FUNCTION
 }
 
 /////////////////////////////////////////////////////////////////////////////////
-//obj π´π≤ Ù–‘µ˜”√Ω”ø⁄
+//obj ÂÖ¨ÂÖ±Â±ûÊÄßË∞ÉÁî®Êé•Âè£
 UINT Obj::GetUniqueID(VOID) const
 {
     UINT nValue = __GetSceneID();
@@ -361,13 +361,13 @@ UINT Obj::GetUniqueID(VOID) const
     nValue += GetID()&0x0000FFFF;
     return nValue;
 }
-const SceneID_t Obj::__GetSceneID( ) const//≥°æ∞∫≈ obj
+const SceneID_t Obj::__GetSceneID( ) const//Âú∫ÊôØÂè∑ obj
 {
     if( m_pScene ) return m_pScene->SceneID() ;
 
     return INVALID_ID ;
 }
-Scene* Obj::__GetScene( )//≥°æ∞÷∏’Î
+Scene* Obj::__GetScene( )//Âú∫ÊôØÊåáÈíà
 {
     return m_pScene ;
 }
@@ -375,7 +375,7 @@ VOID Obj::__SetScene( Scene* scene )
 {
     m_pScene = scene ;
 }
-const ZoneID_t Obj::__GetZoneID( ) const//«¯”Ú∫≈ obj
+const ZoneID_t Obj::__GetZoneID( ) const//Âå∫ÂüüÂè∑ obj
 {
     return m_ZoneID ;
 }
@@ -383,14 +383,14 @@ VOID Obj::__SetZoneID( const ZoneID_t zoneid )
 {
     m_ZoneID = zoneid ;
 }
-const ScriptID_t Obj::__GetScriptID( ) const//Ω≈±æ∫≈ obj
+const ScriptID_t Obj::__GetScriptID( ) const//ËÑöÊú¨Âè∑ obj
 {
     return INVALID_ID ;
 }
 VOID Obj::__SetScriptID( const ScriptID_t scriptid )
 {
 }
-const WORLD_POS* Obj::__GetWorldPos( ) const//Œª÷√ obj
+const WORLD_POS* Obj::__GetWorldPos( ) const//‰ΩçÁΩÆ obj
 {
     return &m_Pos ;
 }
@@ -398,7 +398,7 @@ VOID Obj::__SetWorldPos( const WORLD_POS* worldpos )
 {
     m_Pos = *worldpos ;
 }
-const FLOAT Obj::__GetDir( ) const//∑ΩœÚ obj
+const FLOAT Obj::__GetDir( ) const//ÊñπÂêë obj
 {
     return m_Dir ;
 }
@@ -406,7 +406,7 @@ VOID Obj::__SetDir( const FLOAT dir )
 {
     m_Dir = dir ;
 }
-const ObjID_t Obj::__GetID( ) const//obj∫≈ obj
+const ObjID_t Obj::__GetID( ) const//objÂè∑ obj
 {
     return m_ObjID ;
 }

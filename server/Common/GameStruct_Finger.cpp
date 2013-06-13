@@ -11,7 +11,7 @@
 VOID FINGER_BY_GUID::CleanUp( )
 {
     m_TargetGUID = INVALID_ID;
-    m_uOnlineFlag = 1;            // 默认搜索在线玩家...
+    m_uOnlineFlag = 1;            // 榛樿鎼滅储鍦ㄧ嚎鐜╁...
 }
 
 UINT FINGER_BY_GUID::GetSize( ) const
@@ -36,8 +36,8 @@ VOID FINGER_BY_NAME::CleanUp( )
 {
     m_uNameSize = 0;
     memset((void*)m_szTargetName, 0, sizeof(m_szTargetName));
-    m_uOnlineFlag = 1;            // 默认搜索在线玩家...
-    m_uPreciseFlag = 1;            // 默认精确查找...
+    m_uOnlineFlag = 1;            // 榛樿鎼滅储鍦ㄧ嚎鐜╁...
+    m_uPreciseFlag = 1;            // 榛樿绮剧‘鏌ユ壘...
     m_uPosition = 0;
 }
 
@@ -175,7 +175,7 @@ VOID ADVANCED_FINGER::Write( SocketOutputStream& oStream ) const
 }
 
 
-//客户端向服务器发送的玩家查询相关结构数据
+//瀹㈡埛绔悜鏈嶅姟鍣ㄥ彂閫佺殑鐜╁鏌ヨ鐩稿叧缁撴瀯鏁版嵁
 VOID CG_FINGER::CleanUp( )
 {
     m_Type = FREQ_NONE;
@@ -280,7 +280,7 @@ VOID GW_FINGER::Write( SocketOutputStream& oStream ) const
 
 //////////////////////////////////////////////////////////////////////////
 
-// 昵称 + GUID + OnlineFlag + Level + Sex + MenpaiID + GuildID + 头像
+// 鏄电О + GUID + OnlineFlag + Level + Sex + MenpaiID + GuildID + 澶村儚
 VOID FINGER_PLAYER_INFO::CleanUp()
 {
     m_GUID = INVALID_ID;

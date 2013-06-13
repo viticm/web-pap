@@ -142,7 +142,7 @@ BOOL    ItemManager::_CreateMedicFromTable(_ITEM_TYPE it,_ITEM& item)
 }
 
 /*
- *    ¸ù¾İ_ITEM_TYPE½á¹¹    ´´½¨²Ø±¦Í¼
+ *    æ ¹æ®_ITEM_TYPEç»“æ„    åˆ›å»ºè—å®å›¾
  */
 BOOL    ItemManager::_CreateStoreMapFromTable(_ITEM_TYPE it,_ITEM& item)
 {

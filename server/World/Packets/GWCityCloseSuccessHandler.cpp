@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¸ù¾ÝCityGuidÕÒµ½Ö¸¶¨³ÇÊÐ,½âËø,»ØÊÕ,»ØÏûÏ¢17.WGCityCloseSuccessµ½Server.
+æ ¹æ®CityGuidæ‰¾åˆ°æŒ‡å®šåŸŽå¸‚,è§£é”,å›žæ”¶,å›žæ¶ˆæ¯17.WGCityCloseSuccessåˆ°Server.
 */
 
 #include "GWCityCloseSuccess.h"
@@ -21,7 +21,7 @@ UINT GWCityCloseSuccessHandler::Execute( GWCityCloseSuccess* pPacket, Player* pP
 
         City* pDelCity = g_pCityManager->GetCityByGuid(CityGuid);
         if(!pDelCity->IsLock())
-        {//ÒÑ¾­ÓÐÈËÔÚÉ¾³ý´Ë³ÇÊÐÁË
+        {//å·²ç»æœ‰äººåœ¨åˆ é™¤æ­¤åŸŽå¸‚äº†
             Assert(FALSE);
             return PACKET_EXE_CONTINUE ;
         }

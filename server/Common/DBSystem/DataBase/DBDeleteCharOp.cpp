@@ -93,55 +93,55 @@ BOOL DBDeleteCharOp::ParseResult(VOID* pResult)
 
     if(*pAskResult == ASKDELETECHAR_SUCCESS    )
     {
-        //É¾³ı×°±¸
+        //åˆ é™¤è£…å¤‡
         DBItemList    ItemListObject(mInterface);
         ItemListObject.SetCharGuid(m_CharGuid);
         if(!ItemListObject.Delete())
             return FALSE;
         ItemListObject.ParseResult(pAskResult);
 
-        //É¾³ı¼¼ÄÜ
+        //åˆ é™¤æŠ€èƒ½
         DBSkillList    SkillListObject(mInterface);
         SkillListObject.SetCharGuid(m_CharGuid);
         if(!SkillListObject.Delete())
             return FALSE;
         SkillListObject.ParseResult(pAskResult);
 
-        //É¾³ıĞÄ·¨
+        //åˆ é™¤å¿ƒæ³•
         DBXinFaList    XinFaListObject(mInterface);
         XinFaListObject.SetCharGuid(m_CharGuid);
         if(!XinFaListObject.Delete())
             return FALSE;
         XinFaListObject.ParseResult(pAskResult);
 
-        //É¾³ıÉú»î¼¼ÄÜ
+        //åˆ é™¤ç”Ÿæ´»æŠ€èƒ½
         DBAbilityList AbilityListObject(mInterface);
         AbilityListObject.SetCharGuid(m_CharGuid);
         if(!AbilityListObject.Delete())
             return FALSE;
         AbilityListObject.ParseResult(pAskResult);
 
-        //É¾³ıÈÎÎñĞÅÏ¢
+        //åˆ é™¤ä»»åŠ¡ä¿¡æ¯
         DBTaskList    TaskListObject(mInterface);
         TaskListObject.SetCharGuid(m_CharGuid);
         if(!TaskListObject.Delete())
             return FALSE;
         TaskListObject.ParseResult(pAskResult);
 
-        //É¾³ı¹ØÏµÁĞ±í
+        //åˆ é™¤å…³ç³»åˆ—è¡¨
         DBRelationList    RelationListObject(mInterface);
         RelationListObject.SetCharGuid(m_CharGuid);
         if(!RelationListObject.Delete())
             return FALSE;
         RelationListObject.ParseResult(pAskResult);
 
-        //É¾³ıImpact ÁĞ±í
+        //åˆ é™¤Impact åˆ—è¡¨
         DBImpactList    ImpactListObject(mInterface);
         ImpactListObject.SetCharGuid(m_CharGuid);
         if(!ImpactListObject.Delete())
             return FALSE;
         ImpactListObject.ParseResult(pAskResult);
-        //É¾³ı³èÎïÁĞ±í
+        //åˆ é™¤å® ç‰©åˆ—è¡¨
         DBPetList    PetListObject(mInterface);
         PetListObject.SetCharGuid(m_CharGuid);
         if(!PetListObject.Delete())

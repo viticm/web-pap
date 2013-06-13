@@ -31,7 +31,7 @@ __ENTER_FUNCTION
     }
 
     if( pUser->GetChannelID() != INVALID_ID )
-    {//´ËÓÃ»§ÒÑ¾­´´½¨ÁËÒ»¸öÁÄÌìÆµµÀ
+    {//æ­¤ç”¨æˆ·å·²ç»åˆ›å»ºäº†ä¸€ä¸ªèŠå¤©é¢‘é“
         WGChannelError Msg ;
 
         Msg.SetPlayerID( pUser->GetPlayerID() ) ;
@@ -63,10 +63,10 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //ÉèÖÃ×Ô½¨ÁÄÌìÆµµÀÐÅÏ¢
+    //è®¾ç½®è‡ªå»ºèŠå¤©é¢‘é“ä¿¡æ¯
     pUser->SetChannelID( cid );
 
-    //·¢ËÍ½á¹û
+    //å‘é€ç»“æžœ
     WGChannelResult Msg ;
     Msg.SetPlayerID( pUser->GetPlayerID() ) ;
     Msg.SetReturn( CHANNEL_RESULT_CREATE ) ;

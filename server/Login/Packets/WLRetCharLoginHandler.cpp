@@ -44,7 +44,7 @@ UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
                 pPacket->GetAccount(),pPacket->GetAccount());
                 return PACKET_EXE_CONTINUE;
             }
-            if(pPacket->GetHoldStatus() == TRUE) //ÓÃ»§ÔÚÏß
+            if(pPacket->GetHoldStatus() == TRUE) //ç”¨æˆ·åœ¨çº¿
             {
                 LCRetCharLogin Msg;
                 Msg.SetResult(pPacket->GetResult());
@@ -61,14 +61,14 @@ UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
 
                 if(pPacket->GetResult() == ASKCHARLOGIN_SUCCESS)
                 {
-                    //¼ÆËã½ÇÉ«ËùÔÚ·şÎñÆ÷ĞÅÏ¢
+                    //è®¡ç®—è§’è‰²æ‰€åœ¨æœåŠ¡å™¨ä¿¡æ¯
                     ID_t    ServerID = pPacket->GetPlayerServerID();
                     INT index = g_Config.m_ServerInfo.m_HashServer[ServerID] ;
                     _SERVER_DATA* pServerData =     &(g_Config.m_ServerInfo.m_pServer[index]);
                     Assert(pServerData);
                     Msg.SetServerIP(pServerData->m_IP0);
                     Msg.SetServerPort(pServerData->m_Port0);
-                    //È¡µÃÓÃ»§µÇÂ½KeyÖµ
+                    //å–å¾—ç”¨æˆ·ç™»é™†Keyå€¼
                     Msg.SetUserKey(pLoginPlayer->GetUserKey());
                     pLoginPlayer->SendPacket(&Msg);
                     pLoginPlayer->SetPlayerStatus(PS_LOGIN_SERVER_READY);
@@ -79,13 +79,13 @@ UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
                     return PACKET_EXE_CONTINUE;
                 }
             }
-            else //ÓÃ»§²»ÔÚÏß ,ĞèÒªLoad Êı¾İ
+            else //ç”¨æˆ·ä¸åœ¨çº¿ ,éœ€è¦Load æ•°æ®
             {
-                //¶ÔÊı¾İ¿â²Ù×÷Æµ·±¶ÈÅĞ¶Ï
+                //å¯¹æ•°æ®åº“æ“ä½œé¢‘ç¹åº¦åˆ¤æ–­
                 UINT uTime = g_pTimeManager->CurrentTime();
                 if(uTime<pLoginPlayer->m_LastDBOpTime+DB_OPERATION_TIME)
                 {
-                    //ÓÃ»§²Ù×÷¹ıÓÚÆµ·±
+                    //ç”¨æˆ·æ“ä½œè¿‡äºé¢‘ç¹
                     LCRetCharLogin Msg;
                     Msg.SetResult(ASKCHARLOGIN_OP_TIMES);
                     pLoginPlayer->SendPacket(&Msg);
@@ -109,13 +109,13 @@ UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
                 if (pPacket->GetResult() == ASKCHARLOGIN_LOADDB_ERROR)
                 {
                     if(g_pDBThreadManager->SendPacket(pPacket,pLoginPlayer->PlayerID()))
-                    {//¼ÓÈë³É¹¦£¬½«ÏûÏ¢·¢ËÍµ½DB´¦Àí
+                    {//åŠ å…¥æˆåŠŸï¼Œå°†æ¶ˆæ¯å‘é€åˆ°DBå¤„ç†
                         pLoginPlayer->m_LastDBOpTime = uTime;
                         return PACKET_EXE_NOTREMOVE;    
                     }
                     else
                     {
-                        //DB Ñ¹Á¦¹ı´ó£¬ÈÃÓÃ»§ÖØĞÂ³¢ÊÔ
+                        //DB å‹åŠ›è¿‡å¤§ï¼Œè®©ç”¨æˆ·é‡æ–°å°è¯•
                         LCRetCharLogin Msg;
                         Msg.SetResult(ASKCHARLOGIN_SERVER_BUSY);
                         pLoginPlayer->SendPacket(&Msg);
@@ -143,11 +143,11 @@ UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
                     (LCRetCharLogin*)g_pPacketFactoryManager->CreatePacket(PACKET_LC_RETCHARLOGIN);
                 if(!pRetCharLoginMsg)
                 {
-                    AssertEx(FALSE,"´´½¨ LCRetCharLogin ÏûÏ¢Ê§°Ü");
+                    AssertEx(FALSE,"åˆ›å»º LCRetCharLogin æ¶ˆæ¯å¤±è´¥");
                 }
                 pRetCharLoginMsg->SetResult(ASKCHARLOGIN_SERVER_BUSY);
                 g_pProcessManager->SendPacket(pRetCharLoginMsg,PlayerID);
-                Log::SaveLog( LOGIN_LOGFILE, "WLRetCharLoginHandler::Execute()....Êı¾İ¿â²Ù×÷³åÍ»!") ;
+                Log::SaveLog( LOGIN_LOGFILE, "WLRetCharLoginHandler::Execute()....æ•°æ®åº“æ“ä½œå†²çª!") ;
                 return PACKET_EXE_CONTINUE;
             }
 
@@ -170,7 +170,7 @@ UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
 
                 if(!pRetCharLoginMsg)
                 {
-                    AssertEx(FALSE,"´´½¨ LCRetCharLogin ÏûÏ¢Ê§°Ü");
+                    AssertEx(FALSE,"åˆ›å»º LCRetCharLogin æ¶ˆæ¯å¤±è´¥");
                 }
 
                 pRetCharLoginMsg->SetResult(ASKCHARLOGIN_LOADDB_ERROR);
@@ -198,7 +198,7 @@ UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
                 (LWAskCharLogin*)g_pPacketFactoryManager->CreatePacket(PACKET_LW_ASKCHARLOGIN);
             if(!pMsg)
             {
-                AssertEx(FALSE,"´´½¨ LWAskCharLogin ÏûÏ¢Ê§°Ü");
+                AssertEx(FALSE,"åˆ›å»º LWAskCharLogin æ¶ˆæ¯å¤±è´¥");
             }
 
             UINT res1, res2, res3, res4;
@@ -219,7 +219,7 @@ UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
         }
         else 
         {
-            AssertEx(FALSE,"WLRetCharLoginHandler Ïß³Ì×ÊÔ´Ö´ĞĞ´íÎó!");
+            AssertEx(FALSE,"WLRetCharLoginHandler çº¿ç¨‹èµ„æºæ‰§è¡Œé”™è¯¯!");
         }
 
         Log::SaveLog(LOGIN_LOGFILE,"WLRetCharLoginHandler::Execute()....OK!");

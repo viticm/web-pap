@@ -24,14 +24,14 @@ UINT CGCityAskAttrHandler::Execute( CGCityAskAttr* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-    //ÏûÏ¢µÄºÏ·¨ĞÔ
+    //æ¶ˆæ¯çš„åˆæ³•æ€§
     if(pScene->m_SceneInitData.m_nDataType != SCENE_TYPE_CIT)
     {
         return PACKET_EXE_CONTINUE;
     }
-    //µ±Ç°³¡¾°ÖĞµÄ½¨ÖşÎïË¢¹ıÀ´£¬½«À´ÔÙÕûºÏÏûÏ¢
+    //å½“å‰åœºæ™¯ä¸­çš„å»ºç­‘ç‰©åˆ·è¿‡æ¥ï¼Œå°†æ¥å†æ•´åˆæ¶ˆæ¯
     for(INT i = 0; i<MAX_CITY_BUILDING_NUM; i++)
     {
         if(pScene->m_SceneInitData.m_CityData.m_Builds[i].m_BuildingID != INVALID_ID)

@@ -158,7 +158,7 @@ __ENTER_FUNCTION_FOXNET
     UINT nLeft;
 
     if( m_BufferLen>m_MaxBufferLen )
-    {//如果单个客户端的缓存太大，则重新设置缓存，并将此客户端断开连接
+    {//濡傛灉鍗曚釜瀹㈡埛绔殑缂撳瓨澶ぇ锛屽垯閲嶆柊璁剧疆缂撳瓨锛屽苟灏嗘瀹㈡埛绔柇寮�杩炴帴
         Initsize( ) ;
         
         return SOCKET_ERROR-1 ;

@@ -31,12 +31,12 @@ __ENTER_FUNCTION
     switch( pPacket->GetType() )
     {
     case CGTest::TYPE_CG_ASK_ENTER_SCENE:
-        {//¿Í»§¶Ë·¢ËÍÀ´µÃÏûÏ¢£¬´¦ÀíÖ®
+        {//å®¢æˆ·ç«¯å‘é€æ¥å¾—æ¶ˆæ¯ï¼Œå¤„ç†ä¹‹
 
             GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
             PlayerID_t PlayerID = pPlayer->PlayerID( ) ;
 
-            //Ëæ»úÕÒÒ»¸ö³¡¾°
+            //éšæœºæ‰¾ä¸€ä¸ªåœºæ™¯
             INT index = rand()%g_Config.m_SceneInfo.m_SceneCount ;
             SceneID_t SceneID = g_Config.m_SceneInfo.m_pScene[index].m_SceneID ;
             Scene* pScene = g_pSceneManager->GetScene( SceneID ) ;
@@ -46,7 +46,7 @@ __ENTER_FUNCTION
                 return PACKET_EXE_ERROR ;
             }
 
-            //É¾³ı½ÓÈëÄ£¿éÖĞÊı¾İ
+            //åˆ é™¤æ¥å…¥æ¨¡å—ä¸­æ•°æ®
             BOOL ret = g_pIncomingPlayerManager->DelPlayer( pGamePlayer->PlayerID() ) ;
             if( !ret )
             {
@@ -54,7 +54,7 @@ __ENTER_FUNCTION
                 return PACKET_EXE_ERROR ;
             }
 
-            //ÏòÄ¿µÄ³¡¾°·¢ËÍ×ªÒÆÏûÏ¢
+            //å‘ç›®çš„åœºæ™¯å‘é€è½¬ç§»æ¶ˆæ¯
             CGTest* pTest = (CGTest*)(g_pPacketFactoryManager->CreatePacket(PACKET_CG_TEST)) ;
             pTest->SetType( CGTest::TYPE_CG_DO_ENTER_SCENE ) ;
             pTest->GetTest()->SceneID = SceneID ;
@@ -67,12 +67,12 @@ __ENTER_FUNCTION
         }
         break ;
     case CGTest::TYPE_CG_DO_ENTER_SCENE:
-        {//½ÓÊÕµ½³¡¾°»º´æÀïµÄÏûÏ¢£¬´¦ÀíÖ®
+        {//æ¥æ”¶åˆ°åœºæ™¯ç¼“å­˜é‡Œçš„æ¶ˆæ¯ï¼Œå¤„ç†ä¹‹
 
             GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
             SceneID_t SceneID = pPacket->GetTest()->SceneID ;
 
-            //È¡µÃÄ¿µÄ³¡¾°
+            //å–å¾—ç›®çš„åœºæ™¯
             Scene* pScene = g_pSceneManager->GetScene( SceneID ) ;
             if( pScene==NULL )
             {
@@ -80,11 +80,11 @@ __ENTER_FUNCTION
                 return PACKET_EXE_ERROR ;
             }
 
-            //½«¿Í»§¶Ë¼ÓÈëÄ¿µÄ³¡¾°
+            //å°†å®¢æˆ·ç«¯åŠ å…¥ç›®çš„åœºæ™¯
             BOOL ret = pScene->GetScenePlayerManager()->AddPlayer( pPlayer ) ;
             if( !ret )
-            {//Èç¹û¼ÓÈë³¡¾°Ê§°Ü£¬ÓÉÓÚµ±Ç°Íæ¼ÒÒÑ¾­´ÓÔ­ÏÈµÄ³¡¾°ÀïÍÑÀë£¬
-             //ËùÒÔÖ»ÄÜ¶Ï¿ª´ËÍæ¼ÒµÄÍøÂçÁ¬½Ó
+            {//å¦‚æœåŠ å…¥åœºæ™¯å¤±è´¥ï¼Œç”±äºå½“å‰ç©å®¶å·²ç»ä»åŸå…ˆçš„åœºæ™¯é‡Œè„±ç¦»ï¼Œ
+             //æ‰€ä»¥åªèƒ½æ–­å¼€æ­¤ç©å®¶çš„ç½‘ç»œè¿æ¥
 
                 BOOL boo = pGamePlayer->ChooseFreeOwn(pScene->GetRecyclePlayerManager(),3) ;
                 Assert( boo ) ;
@@ -108,7 +108,7 @@ __ENTER_FUNCTION
             PlayerID_t PlayerID = pPlayer->PlayerID( ) ;
 
             if( SceneID == INVALID_ID )
-            {//Ëæ»úÕÒÒ»¸ö³¡¾°
+            {//éšæœºæ‰¾ä¸€ä¸ªåœºæ™¯
                 INT index = rand()%g_Config.m_SceneInfo.m_SceneCount ;
                 SceneID = g_Config.m_SceneInfo.m_pScene[index].m_SceneID ;
             }
@@ -142,7 +142,7 @@ __ENTER_FUNCTION
             }
 
             if( CurSceneID == SceneID )
-            {//ÏàÍ¬³¡¾°£¬²»ĞèÒª×ªÒÆ
+            {//ç›¸åŒåœºæ™¯ï¼Œä¸éœ€è¦è½¬ç§»
                 return PACKET_EXE_CONTINUE ;
             }
 
@@ -265,14 +265,14 @@ __ENTER_FUNCTION
             if( pScene==NULL )
                 return PACKET_EXE_ERROR ;
 
-            //¼ÆËãµôÂäÎïÆ·
+            //è®¡ç®—æ‰è½ç‰©å“
             UINT    iMonsterLevel    =    10;
             UINT    iKillerLevel    =    10;
             INT        iMonsterType    =    0;
 
             
 
-            ////Obj_ItemBoxÍøÂçÏûÏ¢´¦Àí
+            ////Obj_ItemBoxç½‘ç»œæ¶ˆæ¯å¤„ç†
 
             //GCNewItemBox ItemMsg ;
 

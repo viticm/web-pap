@@ -26,7 +26,7 @@ __ENTER_FUNCTION
     }
 
     if( pUser==NULL )
-    {//Ã»ÓÐ·¢ÏÖÔÚ¡°ÔÚÏßÓÃ»§ÁÐ±í¡±Àï¶ÔÓ¦´ËGUIDµÄÓÃ»§
+    {//æ²¡æœ‰å‘çŽ°åœ¨â€œåœ¨çº¿ç”¨æˆ·åˆ—è¡¨â€é‡Œå¯¹åº”æ­¤GUIDçš„ç”¨æˆ·
         
         Log::SaveLog( WORLD_LOGFILE, "GWAskUserDataHandler...User GUID=%X not find!", 
             pPacket->GetGUID() ) ;
@@ -43,18 +43,18 @@ __ENTER_FUNCTION
         }
 
 //
-//²âÊÔÊý¾Ý
+//æµ‹è¯•æ•°æ®
         pUser = g_pOnlineUser->LoadUser( pPacket->GetGUID() ) ;
 
         if( pUser )
         {
             _HUMAN_DB_LOAD* pDBHuman = &(pUser->GetFullUserData()->m_Human);
 
-            //ÁÙÊ±²âÊÔÊý¾Ý
+            //ä¸´æ—¶æµ‹è¯•æ•°æ®
             strncpy( pDBHuman->m_Name, pPacket->GetAccount(), MAX_ACCOUNT ) ;
             pDBHuman->m_Sex = (BOOL)(pPacket->GetGender()) ;
             pUser->SetKey( pPacket->GetKey() );
-            //ÁÙÊ±²âÊÔÊý¾Ý
+            //ä¸´æ—¶æµ‹è¯•æ•°æ®
 
             g_pOnlineUser->OnUserLogin( pUser ) ;
 
@@ -66,13 +66,13 @@ __ENTER_FUNCTION
             Msg.SetPlayerAge( pUser->GetUserAge() );
 
 
-            //»ØÊÕÊý¾Ý¿é, ÉèÖÃÓÃ»§×´Ì¬
+            //å›žæ”¶æ•°æ®å—, è®¾ç½®ç”¨æˆ·çŠ¶æ€
             g_pOnlineUser->DelData( pUser->GetFullUserData() ) ;
             pUser->SetFullUserData( NULL );
             pUser->SetUserStatus( US_NORMAL );
             pUser->ResetKickTime();
 
-            //½«ÓÃ»§ËùÔÚ·þÎñÆ÷µÄPlayerID¼ÇÂ¼µ½ÓÃ»§Êý¾ÝÀï
+            //å°†ç”¨æˆ·æ‰€åœ¨æœåŠ¡å™¨çš„PlayerIDè®°å½•åˆ°ç”¨æˆ·æ•°æ®é‡Œ
             pUser->SetPlayerID( pPacket->GetPlayerID() );
 
             pServerPlayer->SendPacket( &Msg ) ;
@@ -85,7 +85,7 @@ __ENTER_FUNCTION
             Log::SaveLog( WORLD_LOGFILE, "ERROR:GWAskUserDataHandler...Load GUID=%X false!", 
                 pPacket->GetGUID() ) ;
         }
-//²âÊÔÊý¾Ý
+//æµ‹è¯•æ•°æ®
 //
 
         return PACKET_EXE_CONTINUE ;
@@ -94,7 +94,7 @@ __ENTER_FUNCTION
     int iUserStatus = pUser->UserStatus() ;
 
     if( pUser->GetKey() != pPacket->GetKey() )
-    {//ÑéÖ¤Âë´íÎó£¬¾¯±¨£¬Ò²ÐíÊÜµ½¹¥»÷
+    {//éªŒè¯ç é”™è¯¯ï¼Œè­¦æŠ¥ï¼Œä¹Ÿè®¸å—åˆ°æ”»å‡»
         WGRetUserData Msg ;
         Msg.SetPlayerID( pPacket->GetPlayerID() ) ;
         Msg.SetReturn( UDR_KEYERROR ) ;
@@ -107,7 +107,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //½«ÓÃ»§ËùÔÚ·þÎñÆ÷µÄPlayerID¼ÇÂ¼µ½ÓÃ»§Êý¾ÝÀï
+    //å°†ç”¨æˆ·æ‰€åœ¨æœåŠ¡å™¨çš„PlayerIDè®°å½•åˆ°ç”¨æˆ·æ•°æ®é‡Œ
     pUser->SetPlayerID( pPacket->GetPlayerID() );
 
     switch( iUserStatus )
@@ -129,7 +129,7 @@ __ENTER_FUNCTION
             Msg.SetUserData( pUser->GetFullUserData() ) ;
             Msg.SetPlayerAge( pUser->GetUserAge() );
 
-            g_pOnlineUser->DelData( pUser->GetFullUserData() ) ;//»ØÊÕÊý¾Ý¿é
+            g_pOnlineUser->DelData( pUser->GetFullUserData() ) ;//å›žæ”¶æ•°æ®å—
             pUser->SetFullUserData( NULL );
             pUser->SetUserStatus( US_NORMAL );
             pUser->ResetKickTime();
@@ -174,7 +174,7 @@ __ENTER_FUNCTION
             Msg.SetUserData( pUser->GetFullUserData() ) ;
             Msg.SetPlayerAge( pUser->GetUserAge() );
 
-            g_pOnlineUser->DelData( pUser->GetFullUserData() ) ;//»ØÊÕÊý¾Ý¿é
+            g_pOnlineUser->DelData( pUser->GetFullUserData() ) ;//å›žæ”¶æ•°æ®å—
             pUser->SetFullUserData( NULL );
             pUser->SetUserStatus( US_NORMAL );
             pUser->ResetKickTime();
@@ -196,7 +196,7 @@ __ENTER_FUNCTION
             pServerPlayer->SendPacket( &Msg ) ;
         }
         break ;
-    case US_CRASH_DOWN://È¡Ïû¶ÔÕâÖÖÇé¿ö´¦Àí,ÓÉÆäËû·½Ê½±£Ö¤ÕâÖÖÇé¿ö²»»á³öÏÖ
+    case US_CRASH_DOWN://å–æ¶ˆå¯¹è¿™ç§æƒ…å†µå¤„ç†,ç”±å…¶ä»–æ–¹å¼ä¿è¯è¿™ç§æƒ…å†µä¸ä¼šå‡ºçŽ°
         {
             Assert(FALSE);
             /*

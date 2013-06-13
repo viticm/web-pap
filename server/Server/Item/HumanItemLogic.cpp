@@ -331,14 +331,14 @@ BOOL    HumanItemLogic::CalcItemSpace(Obj_Human* pHuman,UINT uItemIndex,INT Numb
      Assert(Number>0);
      Assert(uItemIndex!=INVALID_ID);
         
-     INT        Count        = 0; // ¿Õ¸ñ×ÓÄÜ¹»Ìá¹©µÄ¿Õ¼ä
-     INT        PileCount    = 0; // ÒÑ¾­Õ¼ÓÃÁË¸ñ×ÓµÄÍ¬ÀàÎïÆ·¿ÉÒÔÌá¹©µÄÈİÄÉ¿Õ¼ä£¬½ö¶Ô¿Éµş¼ÓÎïÆ·ÓĞĞ§
-     INT        Tile        = 0; // Ò»¸ñÄÜ¹»·Å¼¸¸öÍ¬ÀàÎïÆ·
+     INT        Count        = 0; // ç©ºæ ¼å­èƒ½å¤Ÿæä¾›çš„ç©ºé—´
+     INT        PileCount    = 0; // å·²ç»å ç”¨äº†æ ¼å­çš„åŒç±»ç‰©å“å¯ä»¥æä¾›çš„å®¹çº³ç©ºé—´ï¼Œä»…å¯¹å¯å åŠ ç‰©å“æœ‰æ•ˆ
+     INT        Tile        = 0; // ä¸€æ ¼èƒ½å¤Ÿæ”¾å‡ ä¸ªåŒç±»ç‰©å“
      
      _ITEM_TYPE     type = ConvertSerial2ItemType(uItemIndex);
      Tile    =    GetItemTileMax(type);
 
-     //ÕÒµ½¶ÔÓ¦µÄContainer 
+     //æ‰¾åˆ°å¯¹åº”çš„Container 
 
      ItemContainer*    pContainer = GetItemContain(pHuman,uItemIndex);
 
@@ -638,7 +638,7 @@ ItemContainer*    HumanItemLogic::GetContainer(Obj_Human* pHuman,UINT uBagIndex)
     if( uBagIndex >= BASE_CONTAINER_OFFSET && uBagIndex < MAX_BAG_SIZE )
         return pHuman->GetBaseContain();
     else
-        AssertEx(FALSE,"HumanItemLogic::GetItem()    uBagIndex ±àºÅ³ö´í");
+        AssertEx(FALSE,"HumanItemLogic::GetItem()    uBagIndex ç¼–å·å‡ºé”™");
 
     __LEAVE_FUNCTION
 
@@ -830,7 +830,7 @@ BOOL    HumanItemLogic::CreateMultiItemToBag(ITEM_LOG_PARAM* pLogParam, Obj_Huma
                     pHuman->GetPlayer()->SendPacket(&Msg);
                     iOldBagIndex =    iBagIndex;
                     
-                    //×îºóÒ»¶ÑµÄ¸öÊı
+                    //æœ€åä¸€å †çš„ä¸ªæ•°
                     uLastCount -= uEachPileCount;
                     uEachPileCount = 1;
                 }
@@ -906,9 +906,9 @@ BOOL    HumanItemLogic::CreateItemToBag(ITEM_LOG_PARAM* pLogParam,Obj_Human* pHu
         
         if(bRet)
         {
-            pHuman->OnItemChanged( uItemIndex ); //Í¨Öª½Å±¾
+            pHuman->OnItemChanged( uItemIndex ); //é€šçŸ¥è„šæœ¬
             uBagIndex = pContainer->ConIndex2BagIndex(uContainerPos);
-            //°ó¶¨´¦Àí
+            //ç»‘å®šå¤„ç†
             Item* pItem = pContainer->GetItem(uContainerPos);
             Assert(pItem);
             if(pItem->IsRuler(IRL_PICKBIND))
@@ -938,7 +938,7 @@ BOOL    HumanItemLogic::MoveItem(ITEM_LOG_PARAM* pLogParam,Obj_Human* pHuman,Ite
         Assert(pContainer);
         Assert(uIndex<(UINT)pContainer->GetContainerSize());
         
-        //µÃµ½Ô´ÎïÆ·Êı¾İ
+        //å¾—åˆ°æºç‰©å“æ•°æ®
         Item*    pSourItem = pContainer->GetItem(uIndex);
         Assert(pSourItem);
         
@@ -955,26 +955,26 @@ BOOL    HumanItemLogic::MoveItem(ITEM_LOG_PARAM* pLogParam,Obj_Human* pHuman,Ite
         UINT uItemIndex = pSourItem->GetItemTableIndex();
         
         pLogParam->ItemType    =    uItemIndex;
-        //ÅĞ¶Ï·ÅÖÃµÄ±³°üÎ»ÖÃ
+        //åˆ¤æ–­æ”¾ç½®çš„èƒŒåŒ…ä½ç½®
         ItemContainer*    pHumanContainer = 
             GetItemContain(pHuman,pSourItem->GetItemTableIndex());
 
         if(!pHumanContainer)
         {
-            AssertEx(FALSE,"Ã»ÓĞÕÒµ½¶ÔÓ¦±³°ü");
+            AssertEx(FALSE,"æ²¡æœ‰æ‰¾åˆ°å¯¹åº”èƒŒåŒ…");
             return FALSE;
         }
         
-        //»ñµÃÄ¿µÄ°üÎ»ÖÃ
+        //è·å¾—ç›®çš„åŒ…ä½ç½®
         UINT uContainIndex = g_ItemOperator.MoveItem(pContainer,uIndex,pHumanContainer);
         if(uContainIndex<(UINT)pHumanContainer->GetContainerSize())
         {
-            //×ª»»³ÉBagIndex
+            //è½¬æ¢æˆBagIndex
             uBagPos = pHumanContainer->ConIndex2BagIndex(uContainIndex);
             
             
-            pHuman->OnItemChanged( uItemIndex); //Í¨Öª½Å±¾
-            return TRUE; //³É¹¦
+            pHuman->OnItemChanged( uItemIndex); //é€šçŸ¥è„šæœ¬
+            return TRUE; //æˆåŠŸ
         }
 
         return FALSE;
@@ -1033,7 +1033,7 @@ BOOL    HumanItemLogic::SplitItem(Obj_Human* pHuman,
         return FALSE;
 }
 
-    //ÔÚÈİÆ÷Ö®¼äºÏ²¢ÎïÆ·
+    //åœ¨å®¹å™¨ä¹‹é—´åˆå¹¶ç‰©å“
 BOOL    HumanItemLogic::SpliceItem(Obj_Human* pHuman,
                                        ItemContainer* pSourContainer, 
                                        UCHAR uSourIndex,
@@ -1078,7 +1078,7 @@ Item*    HumanItemLogic::GetEquip(Obj_Human* pHuman,HUMAN_EQUIP EquipPoint)
     Assert(EquipPoint>=0);
     if(EquipPoint<0||EquipPoint>HEQUIP_NUMBER)
     {
-        AssertEx(FALSE,"HumanItemLogic::SetBagItemDur() EquipPoint ²»ÔÚºÏ·¨·¶Î§ ");
+        AssertEx(FALSE,"HumanItemLogic::SetBagItemDur() EquipPoint ä¸åœ¨åˆæ³•èŒƒå›´ ");
         return NULL;
     }
 
@@ -1151,7 +1151,7 @@ BOOL    HumanItemLogic::SetEquipDur(Obj_Human* pHuman,HUMAN_EQUIP EquipPoint, IN
         Assert(EquipPoint>=0);
         if(EquipPoint<0||EquipPoint>HEQUIP_NUMBER)
         {
-            AssertEx(FALSE,"HumanItemLogic::SetBagItemDur() EquipPoint ²»ÔÚºÏ·¨·¶Î§ ");
+            AssertEx(FALSE,"HumanItemLogic::SetBagItemDur() EquipPoint ä¸åœ¨åˆæ³•èŒƒå›´ ");
             return FALSE;
         }
         
@@ -1172,7 +1172,7 @@ BOOL    HumanItemLogic::SetEquipMaxDur(Obj_Human* pHuman,HUMAN_EQUIP EquipPoint,
     Assert(EquipPoint>=0);
     if(EquipPoint<0||EquipPoint>HEQUIP_NUMBER)
     {
-        AssertEx(FALSE,"HumanItemLogic::SetBagItemDur() EquipPoint ²»ÔÚºÏ·¨·¶Î§ ");
+        AssertEx(FALSE,"HumanItemLogic::SetBagItemDur() EquipPoint ä¸åœ¨åˆæ³•èŒƒå›´ ");
         return FALSE;
     }
 
@@ -1193,7 +1193,7 @@ Item*    HumanItemLogic::GetBankItem(Obj_Human* pHuman,UINT BankIndex)
     Assert(BankIndex>=0);
     if(BankIndex<0||BankIndex>MAX_BANK_SIZE)
     {
-        AssertEx(FALSE,"HumanItemLogic::GetBankItem() BankIndex ²»ÔÚºÏ·¨·¶Î§ ");
+        AssertEx(FALSE,"HumanItemLogic::GetBankItem() BankIndex ä¸åœ¨åˆæ³•èŒƒå›´ ");
         return NULL;
     }
 
@@ -1234,7 +1234,7 @@ BOOL    HumanItemLogic::RecieveItemToBag(Obj_Human* pHuman, ItemContainer* pCont
     BOOL    bFlag = FALSE;
     g_ItemOperator.UnlockItem( pContainer, uIndex );
 
-    //×Ô¶¯ÕÒ¸ñ,Ö§³Ö×Ô¶¯µş¼Ó
+    //è‡ªåŠ¨æ‰¾æ ¼,æ”¯æŒè‡ªåŠ¨å åŠ 
     INT result = 
         g_ItemOperator.MoveItem
         (
@@ -1245,7 +1245,7 @@ BOOL    HumanItemLogic::RecieveItemToBag(Obj_Human* pHuman, ItemContainer* pCont
         );
 
     if(result<0)
-    {//¿½±´Ê§°Ü
+    {//æ‹·è´å¤±è´¥
         return FALSE;
     }
     Item*    pItemDest = pMyContainer->GetItem(result);

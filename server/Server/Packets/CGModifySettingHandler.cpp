@@ -30,7 +30,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     const _OWN_SETTING* pCurSetting = pHuman->GetDB()->GetSetting( SETTING_TYPE_GAME );
@@ -42,7 +42,7 @@ __ENTER_FUNCTION
 
     pHuman->GetDB()->SetSettingData( pPacket->GetType(), pPacket->GetValue() ) ;
 
-    //ÓÎÏ·ÉèÖÃ¸Ä±ä²¢ÇÒÐèÒªÍ¨ÖªWorld
+    //æ¸¸æˆè®¾ç½®æ”¹å˜å¹¶ä¸”éœ€è¦é€šçŸ¥World
     if ( (SETTING_TYPE)pPacket->GetType() == SETTING_TYPE_GAME && nCurSettingData != nThisSettingData )
     {
         GWRelation* pMsg = (GWRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_GW_RELATION);

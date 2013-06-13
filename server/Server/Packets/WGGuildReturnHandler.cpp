@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼þÃû£º    WGGuildReturnHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\WGGuildReturnHandler.cpp
- *    ´´½¨Ê±¼ä£º    2005 Äê 12 ÔÂ 12 ÈÕ    17:12
+ *    æ–‡ä»¶åï¼š    WGGuildReturnHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\WGGuildReturnHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2005 å¹´ 12 æœˆ 12 æ—¥    17:12
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ÐÞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜Žï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "WGGuildReturn.h"
@@ -46,7 +46,7 @@ __ENTER_FUNCTION
     }
 
     if( pPlayer->IsServerPlayer() )
-    {//·þÎñÆ÷ÊÕµ½ÊÀ½ç·þÎñÆ÷·¢À´µÄÊý¾Ý
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pScene->SendPacket( pPacket, PlayerID );
@@ -57,7 +57,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         GUILD_RETURN_TYPE ReturnType = (GUILD_RETURN_TYPE)pPacket->GetGuildReturn()->m_ReturnType;
@@ -77,13 +77,13 @@ __ENTER_FUNCTION
                 pHuman->SetMoney(pHuman->GetMoney()-500000);
                 pHuman->SetGuildID( pPacket->GetGuildReturn()->m_GuildID );
                 CHAR zsMsgBangPaiTitle[MAX_NICK_NAME] = {0};
-                sprintf(zsMsgBangPaiTitle, "%s°ïÖ÷",pPacket->GetGuildReturn()->m_GuildName);
+                sprintf(zsMsgBangPaiTitle, "%så¸®ä¸»",pPacket->GetGuildReturn()->m_GuildName);
                 pHuman->SetBangPaiName(zsMsgBangPaiTitle, (BYTE)strlen(zsMsgBangPaiTitle));
                 pHuman->UpdateTitlesToClient();
             }
             break;
         case GUILD_RETURN_JOIN:
-            { // ¸øÍæ¼ÒÉèÉÏ GuildID
+            { // ç»™çŽ©å®¶è®¾ä¸Š GuildID
                 pHuman->SetGuildID( INVALID_ID );
             }
             break;
@@ -99,11 +99,11 @@ __ENTER_FUNCTION
             }
             break;
         case GUILD_RETURN_RECRUIT:
-            {//¸øÓë³ÆºÅ
+            {//ç»™ä¸Žç§°å·
                 if( pPacket->GetGuildReturn()->m_GUID == pHuman->GetGUID() )
                 {
                     CHAR zsMsgBangPaiTitle[MAX_NICK_NAME] = {0};
-                    sprintf(zsMsgBangPaiTitle, "%s°ïÖÚ",pPacket->GetGuildReturn()->m_GuildName);
+                    sprintf(zsMsgBangPaiTitle, "%så¸®ä¼—",pPacket->GetGuildReturn()->m_GuildName);
                     pHuman->SetBangPaiName(zsMsgBangPaiTitle, (BYTE)strlen(zsMsgBangPaiTitle));
                     pHuman->UpdateTitlesToClient();
                     pHuman->SetGuildID( pPacket->GetGuildReturn()->m_GuildID );

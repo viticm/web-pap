@@ -134,7 +134,7 @@ ORESULT    AI_Character::Move(const WORLD_POS* pTar)
     WORLD_POS posCur = *pCur;
     pCharacter->getScene()->GetMap()->VerifyPos( const_cast<WORLD_POS*>(pTar) );
     if (FALSE == pCharacter->getScene()->GetMap()->IsCanGo(*pTar,pCharacter->GetDriverLevel()))
-    {// Œ™≤ªø…◊ﬂ«¯”Ú
+    {// ‰∏∫‰∏çÂèØËµ∞Âå∫Âüü
         return OR_IMPASSABLE_ZONE;
     }
     pCharacter->getScene()->GetMap()->GetPathFinder()->FindPath(&posCur,
@@ -186,10 +186,10 @@ ORESULT AI_Character::Move(INT nHandleID, WORD& wNumTargetPos, WORLD_POS *paTarg
             posCur = *(paTargetPos+w);
         }
 
-        if( w == 0 ) //µ⁄“ª≤ΩæÕ≤ªƒ‹◊ﬂ
+        if( w == 0 ) //Á¨¨‰∏ÄÊ≠•Â∞±‰∏çËÉΩËµ∞
             return OR_ERROR;
 
-        if( w < wNumTargetPos )//Ωÿ∂Ã
+        if( w < wNumTargetPos )//Êà™Áü≠
             nNumPos = w;
     }
     ORESULT oResult = _state->Move(this, nHandleID, nNumPos, paTargetPos);
@@ -218,13 +218,13 @@ ORESULT AI_Character::Move(INT nHandleID, WORD& wNumTargetPos, WORLD_POS *paTarg
     //WORLD_POS posCur = *pCur;
     //pCharacter->getScene()->GetMap()->VerifyPos(paTargetPos);
     //if( posCur == *paTargetPos )
-    //{//∆µ„÷’µ„“ª—˘
+    //{//Ëµ∑ÁÇπÁªàÁÇπ‰∏ÄÊ†∑
     //    return OR_ERROR;
     //}
     //if( pCharacter->getScene()->GetMap()->IsCanGo(posCur,pCharacter->GetDriverLevel()) )
     //{
     //    //if (FALSE == pCharacter->getScene()->GetMap()->IsCanGo(*paTargetPos))
-    //    //{// Œ™≤ªø…◊ﬂ«¯”Ú
+    //    //{// ‰∏∫‰∏çÂèØËµ∞Âå∫Âüü
     //    //    return OR_IMPASSABLE_ZONE;
     //    //}
     //    pCharacter->getScene()->GetMap()->GetPathFinder()->FindPath(&posCur,
@@ -234,7 +234,7 @@ ORESULT AI_Character::Move(INT nHandleID, WORD& wNumTargetPos, WORLD_POS *paTarg
     //        return OR_ERROR;
 
     //    if( numNode < wNumTargetPos )
-    //    {//Ωÿ∂Ã
+    //    {//Êà™Áü≠
     //        if( posNode[numNode-1] == posCur )
     //            return OR_ERROR;
 
@@ -323,10 +323,10 @@ VOID AI_Character::OnBeSkill(Obj_Character* pCharacter, INT nGoodEffect)
 }
 
 WORLD_POS AI_Character::GetRandPosOfCircle( const WORLD_POS* pPos,FLOAT fRadio )
-{/** …˙≥…“‘pPosŒ™‘≤–ƒ£¨fRadioŒ™∞Îæ∂µƒ‘≤÷‹…œµƒÀÊª˙“ªµ„ */
+{/** ÁîüÊàê‰ª•pPos‰∏∫ÂúÜÂøÉÔºåfRadio‰∏∫ÂçäÂæÑÁöÑÂúÜÂë®‰∏äÁöÑÈöèÊú∫‰∏ÄÁÇπ */
     WORLD_POS Tar;
 __ENTER_FUNCTION
-    /** ºŸ…Ë∞Îæ∂Œ™10µƒ‘≤ */
+    /** ÂÅáËÆæÂçäÂæÑ‰∏∫10ÁöÑÂúÜ */
     FLOAT Vx = (FLOAT)(rand() % 11) ;
     INT nDir = rand() % 2 ;
     if ( !nDir )

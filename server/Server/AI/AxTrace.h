@@ -1,30 +1,30 @@
 //////////////////////////////////////////////////////
 //
-//    AIXA|Trace2 (C) Copyright é_Ôª. 2004
+//    AIXA|Trace2 (C) Copyright é–‹å…ƒ. 2004
 //
-//    Ê¹ÓÃ·½·¨:
-//        1. °üº¬ AxTrace.h AxTrace.cppµ½¹¤³ÌÖÐ,½¨Òé½«AxTrace.h°üº¬µ½Ô¤±àÒëÍ·StdAfx.hÖÐ
+//    ä½¿ç”¨æ–¹æ³•:
+//        1. åŒ…å« AxTrace.h AxTrace.cppåˆ°å·¥ç¨‹ä¸­,å»ºè®®å°†AxTrace.håŒ…å«åˆ°é¢„ç¼–è¯‘å¤´StdAfx.hä¸­
 //
-//        2. Ê¹ÓÃ AxTrace Êä³öµ÷ÊÔÐÅÏ¢
+//        2. ä½¿ç”¨ AxTrace è¾“å‡ºè°ƒè¯•ä¿¡æ¯
 //
 //            VOID AxTrace(unsigned char nWnd, unsigned char nType, const char *pszFmt, ...);
-//                    nWnd        -- ½ÓÊÕÏûÏ¢µÄ×Ó´°¿Ú±àºÅ
-//                    nType        -- ÏûÏ¢ÏÔÊ¾ÀàÐÍ£¬¿ÉÔÚ½ÓÊÕ´°¿ÚÉèÖÃÏÔÊ¾¸ÃÏûÏ¢ËùÓÃ×ÖÌå
-//                    pszFmt,...    -- ÏûÏ¢ÄÚÈÝ
-//            ÀýÈç:
+//                    nWnd        -- æŽ¥æ”¶æ¶ˆæ¯çš„å­çª—å£ç¼–å·
+//                    nType        -- æ¶ˆæ¯æ˜¾ç¤ºç±»åž‹ï¼Œå¯åœ¨æŽ¥æ”¶çª—å£è®¾ç½®æ˜¾ç¤ºè¯¥æ¶ˆæ¯æ‰€ç”¨å­—ä½“
+//                    pszFmt,...    -- æ¶ˆæ¯å†…å®¹
+//            ä¾‹å¦‚:
 //                    AxTrace(0, 1, "nIndex=%d", nIndex);
 //
-//        3. Ê¹ÓÃ AxVar Êä³ö±äÁ¿¼à¿ØÐÅÏ¢
+//        3. ä½¿ç”¨ AxVar è¾“å‡ºå˜é‡ç›‘æŽ§ä¿¡æ¯
 //            VOID AxVar(unsigned char nWnd, unsigned char nType, AXVALUE nVariableType, const char *szValueName, VOID* pValue);
-//                    nWnd            -- ½ÓÊÕ±äÁ¿¼à¿ØµÄ×Ó´°¿Ú±àºÅ
-//                    nType            -- ÏûÏ¢ÏÔÊ¾ÀàÐÍ£¬¿ÉÔÚ½ÓÊÕ´°¿ÚÉèÖÃÏÔÊ¾¸ÃÏûÏ¢ËùÓÃ×ÖÌå
-//                    nVariableType    -- ±äÁ¿ÀàÐÍ
-//                    szValueName        -- ±äÁ¿ÀàÐÍ
-//                    pValue            -- Ö¸Ïò±äÁ¿Ö¸Õë
-//            ÀýÈç:
+//                    nWnd            -- æŽ¥æ”¶å˜é‡ç›‘æŽ§çš„å­çª—å£ç¼–å·
+//                    nType            -- æ¶ˆæ¯æ˜¾ç¤ºç±»åž‹ï¼Œå¯åœ¨æŽ¥æ”¶çª—å£è®¾ç½®æ˜¾ç¤ºè¯¥æ¶ˆæ¯æ‰€ç”¨å­—ä½“
+//                    nVariableType    -- å˜é‡ç±»åž‹
+//                    szValueName        -- å˜é‡ç±»åž‹
+//                    pValue            -- æŒ‡å‘å˜é‡æŒ‡é’ˆ
+//            ä¾‹å¦‚:
 //                    AxVar(0, 1, AX_INT32, "nVar", &nVar);
 //
-//        4. ¶¨Òå _AXTRACE_DISABLE_ ¿ÉÒÔÆÁ±ÎËùÓÐµÄÐÅÏ¢Êä³ö¹¦ÄÜ
+//        4. å®šä¹‰ _AXTRACE_DISABLE_ å¯ä»¥å±è”½æ‰€æœ‰çš„ä¿¡æ¯è¾“å‡ºåŠŸèƒ½
 //        
 //////////////////////////////////////////////////////
 

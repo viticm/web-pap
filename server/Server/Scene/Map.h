@@ -10,8 +10,8 @@
 //struct _MAP_HEAD
 //{
 //    UINT        uMagic;        // 'MAPU'   0X5550414D
-//    UINT        nXSize;            // X·½Ïò´óÐ¡
-//    UINT        nZSize;            // Z·½Ïò´óÐ¡
+//    UINT        nXSize;            // Xæ–¹å‘å¤§å°
+//    UINT        nZSize;            // Zæ–¹å‘å¤§å°
 //};
 //
 //#define BLOCKSIZE 4
@@ -136,16 +136,16 @@ private :
 //                         (0,0)       (m_CX,0)
 //
 
-    UINT            m_CX ;//µØÍ¼ºá³¤£¬×óÎª0¡¢ÓÒÎª×î´ó
-    UINT            m_CZ ;//µØÍ¼×Ý³¤£¬ÉÏÎª0¡¢ÏÂÎª×î´ó
+    UINT            m_CX ;//åœ°å›¾æ¨ªé•¿ï¼Œå·¦ä¸º0ã€å³ä¸ºæœ€å¤§
+    UINT            m_CZ ;//åœ°å›¾çºµé•¿ï¼Œä¸Šä¸º0ã€ä¸‹ä¸ºæœ€å¤§
 
 
-    //Ñ°Â·Æ÷
+    //å¯»è·¯å™¨
     PathFinder*                m_pPathFinder;
 
 
 public :
-    //Í¨ÓÃ½Ó¿Ú
+    //é€šç”¨æŽ¥å£
 
     VOID            VerifyPos( WORLD_POS* Pos ){
         Pos->m_fX = Pos->m_fX<0?0:Pos->m_fX ;

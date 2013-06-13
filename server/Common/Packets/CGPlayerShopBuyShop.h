@@ -1,6 +1,6 @@
 // CGPlayerShopBuyShop.h
 // 
-// 通知服务器要盘入某店
+// 閫氱煡鏈嶅姟鍣ㄨ鐩樺叆鏌愬簵
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~CGPlayerShopBuyShop( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,7 +39,7 @@ namespace Packets
         VOID                    SetSerial(BYTE nSerial) {m_Serial = nSerial;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //商店ID
+        _PLAYERSHOP_GUID        m_ShopID;            //鍟嗗簵ID
         BYTE                    m_Serial;
     };
 

@@ -17,9 +17,9 @@ UINT GWTeamLeaderRetInviteHandler::Execute( GWTeamLeaderRetInvite* pPacket, Play
 {
 __ENTER_FUNCTION
 
-    GUID_t sGuid = pPacket->GetSourGUID();//ÑûÇëÈËµÄGUID
-    GUID_t dGuid = pPacket->GetDestGUID();//±»ÑûÇëÈËµÄGUID
-    GUID_t lGuid = pPacket->GetLeaderGUID();//¶Ó³¤µÄGUID
+    GUID_t sGuid = pPacket->GetSourGUID();//é‚€è¯·äººçš„GUID
+    GUID_t dGuid = pPacket->GetDestGUID();//è¢«é‚€è¯·äººçš„GUID
+    GUID_t lGuid = pPacket->GetLeaderGUID();//é˜Ÿé•¿çš„GUID
 
 
     USER* pSourUser = g_pOnlineUser->FindUser( sGuid );
@@ -68,7 +68,7 @@ __ENTER_FUNCTION
     ServerPlayer* pLeaderServerPlayer = (ServerPlayer*)pPlayer;
 
     if( pSourUser->GetTeamID() != pLeaderUser->GetTeamID() )
-    { // ÑûÇëÈËºÍ¶Ó³¤ÒÑ¾­²»ÔÚÒ»¸ö¶ÓÎéÁË
+    { // é‚€è¯·äººå’Œé˜Ÿé•¿å·²ç»ä¸åœ¨ä¸€ä¸ªé˜Ÿä¼äº†
         WGTeamError lMsg;
         lMsg.SetPlayerID( pLeaderUser->GetPlayerID() );
         lMsg.SetGUID( pLeaderUser->GetGUID() );
@@ -79,7 +79,7 @@ __ENTER_FUNCTION
             sGuid, dGuid, lGuid );
     }
     else if( pPacket->GetReturn()==FALSE )
-    {//¶Ó³¤²»Í¬Òâ
+    {//é˜Ÿé•¿ä¸åŒæ„
         WGTeamError sMsg;
         sMsg.SetPlayerID( pSourUser->GetPlayerID() );
         sMsg.SetGUID( pLeaderUser->GetGUID() );
@@ -95,7 +95,7 @@ __ENTER_FUNCTION
             sGuid, dGuid, lGuid );
     }
     else if( pDestUser->GetTeamID() != INVALID_ID )
-    {//±»ÑûÇëÈËÒÑÓĞ¶ÓÎéÁË
+    {//è¢«é‚€è¯·äººå·²æœ‰é˜Ÿä¼äº†
         WGTeamError sMsg;
         sMsg.SetPlayerID( pSourUser->GetPlayerID() );
         sMsg.SetGUID( pLeaderUser->GetGUID() );
@@ -117,12 +117,12 @@ __ENTER_FUNCTION
             sGuid, dGuid, lGuid );
     }
     else
-    {//¶ÓÎé´æÔÚ
+    {//é˜Ÿä¼å­˜åœ¨
         TeamID_t tid = pLeaderUser->GetTeamID();
         Team* pTeam = g_pTeamList->GetTeam( tid );
         Assert( pTeam );
         if( pTeam->IsFull() )
-        {//¶ÓÎéÈËÊıÒÑ¾­ÂúÁË
+        {//é˜Ÿä¼äººæ•°å·²ç»æ»¡äº†
             WGTeamError sMsg;
             sMsg.SetPlayerID( pSourUser->GetPlayerID() );
             sMsg.SetGUID( pLeaderUser->GetGUID() );
@@ -144,11 +144,11 @@ __ENTER_FUNCTION
                 sGuid, dGuid, lGuid );
         }
         else
-        {//Í¬Òâ±»ÑûÇëÈË¼ÓÈë¶ÓÎé
+        {//åŒæ„è¢«é‚€è¯·äººåŠ å…¥é˜Ÿä¼
             ID_t DestServerID = pDestUser->GetServerID();
             ServerPlayer* pDestServerPlayer = g_pServerManager->GetServerPlayer( DestServerID );
             if( pDestServerPlayer )
-            {//Ïò±»ÑûÇëÈË·¢ËÍÑûÇëÏûÏ¢
+            {//å‘è¢«é‚€è¯·äººå‘é€é‚€è¯·æ¶ˆæ¯
                 WGTeamAskInvite Msg;
                 Msg.SetPlayerID( pDestUser->GetPlayerID() );
                 Msg.SetdGUID( dGuid );
@@ -167,7 +167,7 @@ __ENTER_FUNCTION
 
                     USER* pUser = g_pOnlineUser->FindUser( pMember->m_Member );
                     if( pUser == NULL )
-                    {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êı¾İÊÇ¿Õ
+                    {//å¦‚æœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
                         continue ;
                     }
 

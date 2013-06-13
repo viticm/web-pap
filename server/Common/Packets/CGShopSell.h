@@ -1,6 +1,6 @@
 // CGShopSell.h
 // 
-// ¿Í»§¶ËÍ¨Öª·şÎñÆ÷ÒªÂôÊ²Ã´¶«Î÷
+// å®¢æˆ·ç«¯é€šçŸ¥æœåŠ¡å™¨è¦å–ä»€ä¹ˆä¸œè¥¿
 // 
 //////////////////////////////////////////////////////
 
@@ -24,7 +24,7 @@ namespace Packets
         };
         virtual ~CGShopSell( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -40,7 +40,7 @@ namespace Packets
         UINT                    GetUniqueID(void) { return m_UniqueID; }
 
     private:
-        BYTE                    m_nBagIndex;    //¸ñ×ÓË÷Òı
+        BYTE                    m_nBagIndex;    //æ ¼å­ç´¢å¼•
         UINT                    m_UniqueID;        
     };
 

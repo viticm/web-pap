@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼þÃû£ºSkillLogic.cpp
-// ¹¦ÄÜËµÃ÷£º¼¼ÄÜµÄ»ù´¡Àà£¬¶¨ÒåÁËËùÓÐ¼¼ÄÜ¿ÉÄÜÐèÒªÌá¹©µÄ½Ó¿ÚºÍÒ»Ð©³£ÓÃµÄ¹Ì¶¨Âß¼­
+// æ–‡ä»¶åï¼šSkillLogic.cpp
+// åŠŸèƒ½è¯´æ˜Žï¼šæŠ€èƒ½çš„åŸºç¡€ç±»ï¼Œå®šä¹‰äº†æ‰€æœ‰æŠ€èƒ½å¯èƒ½éœ€è¦æä¾›çš„æŽ¥å£å’Œä¸€äº›å¸¸ç”¨çš„å›ºå®šé€»è¾‘
 //
-// ÐÞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -39,7 +39,7 @@ namespace Combat_Module
         BOOL SkillLogic_T::SpecificOperationOnSkillStart(Obj_Character& rMe) const
         {
             __ENTER_FUNCTION
-            return TRUE; //È±Ê¡µÄÊÇÃ»ÓÐÆäËûµÄÌØÊâÌõ¼þºÍ²Ù×÷
+            return TRUE; //ç¼ºçœçš„æ˜¯æ²¡æœ‰å…¶ä»–çš„ç‰¹æ®Šæ¡ä»¶å’Œæ“ä½œ
             __LEAVE_FUNCTION
             return FALSE;
         };
@@ -80,7 +80,7 @@ namespace Combat_Module
             {
                 return FALSE;
             }
-            return TRUE;//ÎÞÌØÊâÌõ¼þÐèÒªÂú×ã
+            return TRUE;//æ— ç‰¹æ®Šæ¡ä»¶éœ€è¦æ»¡è¶³
             __LEAVE_FUNCTION        
             return FALSE;
         };
@@ -95,7 +95,7 @@ namespace Combat_Module
             {
                 return FALSE;
             }
-            return TRUE;//ÎÞÌØÊâÌõ¼þÐèÒªÂú×ã
+            return TRUE;//æ— ç‰¹æ®Šæ¡ä»¶éœ€è¦æ»¡è¶³
             __LEAVE_FUNCTION        
             return FALSE;
         };
@@ -136,7 +136,7 @@ namespace Combat_Module
                 rParams.SetErrCode(OR_ERROR);
                 return FALSE;
             }
-            //¼¼ÄÜÏûºÄ
+            //æŠ€èƒ½æ¶ˆè€—
             BOOL bRet = TRUE;
             if(FALSE==rParams.GetIgnoreConditionCheckFlag())
             {
@@ -144,11 +144,11 @@ namespace Combat_Module
             }
             if(TRUE == bRet)
             {
-                //¼¼ÄÜÊ¹ÓÃ³É¹¦
+                //æŠ€èƒ½ä½¿ç”¨æˆåŠŸ
                 rMe.OnUseSkillSuccessfully(rSkillInfo);
                 if(TRUE==GetGlobalActionDelegator().RegisterChannelActionForSkill(rMe, rSkillInfo.GetSkillID(), nMaxTime, rSkillInfo.GetChargesOrInterval()))
                 {
-                    //ÀäÈ´Ê±¼ä
+                    //å†·å´æ—¶é—´
                     CooldownProcess(rMe);
                     rParams.SetErrCode(OR_OK);
                     ActivateOnce(rMe);
@@ -171,12 +171,12 @@ namespace Combat_Module
             __ENTER_FUNCTION
             SkillInfo_T& rSkillInfo = rMe.GetSkillInfo();
             TargetingAndDepletingParams_T& rParams = rMe.GetTargetingAndDepletingParams();
-            //ÖØÐÂÐ£Ñé¼¼ÄÜÊ¹ÓÃÌõ¼þ
+            //é‡æ–°æ ¡éªŒæŠ€èƒ½ä½¿ç”¨æ¡ä»¶
             if(FALSE == IsConditionSatisfied(rMe))
             {
                 return FALSE;
             }
-            //¼¼ÄÜÏûºÄ
+            //æŠ€èƒ½æ¶ˆè€—
             BOOL bRet = TRUE;
             if(FALSE==rParams.GetIgnoreConditionCheckFlag())
             {
@@ -184,16 +184,16 @@ namespace Combat_Module
             }
             if(TRUE == bRet)
             {
-                //¼¼ÄÜÊ¹ÓÃ³É¹¦
+                //æŠ€èƒ½ä½¿ç”¨æˆåŠŸ
                 rMe.OnUseSkillSuccessfully(rSkillInfo);
-                //¶¯×÷ÑÝÊ¾Ê±¼ä
+                //åŠ¨ä½œæ¼”ç¤ºæ—¶é—´
                 Time_t nPlayActionTime = CalculateActionTime(rMe);
                 if(FALSE==GetGlobalActionDelegator().RegisterInstantActionForSkill(rMe, rSkillInfo.GetSkillID(), nPlayActionTime))
                 {
                     return FALSE;
                 }
                 rMe.SetActionTime(nPlayActionTime);
-                //ÀäÈ´´¦Àí
+                //å†·å´å¤„ç†
                 CooldownProcess(rMe);
                 INT nActivateTimes = rSkillInfo.GetChargesOrInterval();
                 if(0>=nActivateTimes)
@@ -246,7 +246,7 @@ namespace Combat_Module
             }
             return nPlayActionTime;
             __LEAVE_FUNCTION
-            return 1000; //1Ãë£¬°²È«Öµ
+            return 1000; //1ç§’ï¼Œå®‰å…¨å€¼
         }
 
         VOID SkillLogic_T::CooldownProcess(Obj_Character& rMe) const
@@ -270,18 +270,18 @@ namespace Combat_Module
                     Obj_Pet& rPet = static_cast<Obj_Pet&>(rMe);
                 }
             }
-            if(nCooldown<nPlayActionTime) //ÀäÈ´Ê±¼ä²»ÄÜÐ¡ÓÚ¶¯×÷Ê±¼ä
+            if(nCooldown<nPlayActionTime) //å†·å´æ—¶é—´ä¸èƒ½å°äºŽåŠ¨ä½œæ—¶é—´
             {
                 nCooldown = nPlayActionTime;
             }
-            //ÏÖÔÚ²»ÓÃÐÞÕýÁË£¬µ«ÊÇÇë±£ÁôÕâ¶Î´úÂëÒÑ·ÀÖ¹ÒÔºó¸ü¸Ä¡£
+            //çŽ°åœ¨ä¸ç”¨ä¿®æ­£äº†ï¼Œä½†æ˜¯è¯·ä¿ç•™è¿™æ®µä»£ç å·²é˜²æ­¢ä»¥åŽæ›´æ”¹ã€‚
             /*
             if(TRUE==rSkillInfo.UseNormalAttackRate())
             {
                 nCoolDown = RefixCooldownTimeWithAttackRate(nCoolDown,rMe.GetAttackSpeed()); 
             }
             */
-            //¼¼ÄÜÀäÈ´
+            //æŠ€èƒ½å†·å´
             if(TRUE==rSkillInfo.IsAutoShotSkill())
             {
                 SetAutoRepeatCooldown(rMe, nCooldown);
@@ -342,7 +342,7 @@ namespace Combat_Module
             __ENTER_FUNCTION
             SkillInfo_T& rSkillInfo = rMe.GetSkillInfo();
             TargetingAndDepletingParams_T& rParams = rMe.GetTargetingAndDepletingParams();
-            if(1!=rSkillInfo.GetSelectType()) //¼¼ÄÜ±ØÐëµãÑ¡Ä¿±ê·ñ
+            if(1!=rSkillInfo.GetSelectType()) //æŠ€èƒ½å¿…é¡»ç‚¹é€‰ç›®æ ‡å¦
             {
                 return TRUE;
             }
@@ -360,7 +360,7 @@ namespace Combat_Module
                     }
                     switch (rSkillInfo.GetTargetMustInSpecialState())
                     {
-                        case 0: //Ä¿±ê±ØÐëÊÇ»îµÄ
+                        case 0: //ç›®æ ‡å¿…é¡»æ˜¯æ´»çš„
                             if(FALSE == rTar.IsAlive())
                             {
                                 rParams.SetErrCode(OR_TARGET_DIE);
@@ -368,7 +368,7 @@ namespace Combat_Module
                                 return FALSE;
                             }
                             break;
-                        case 1://Ä¿±ê±ØÐëÊÇÊ¬Ìå
+                        case 1://ç›®æ ‡å¿…é¡»æ˜¯å°¸ä½“
                             if(TRUE == rTar.IsAliveInDeed())
                             {
                                 rParams.SetErrCode(OR_INVALID_TARGET);
@@ -396,9 +396,9 @@ namespace Combat_Module
             __ENTER_FUNCTION
             SkillInfo_T& rSkillInfo = rMe.GetSkillInfo();
             TargetingAndDepletingParams_T& rParams = rMe.GetTargetingAndDepletingParams();
-            if(1!=rSkillInfo.GetSelectType()) //¼¼ÄÜ±ØÐëµãÑ¡Ä¿±ê·ñ
+            if(1!=rSkillInfo.GetSelectType()) //æŠ€èƒ½å¿…é¡»ç‚¹é€‰ç›®æ ‡å¦
             {
-                if(2==rSkillInfo.GetSelectType()) //µãÑ¡×ø±êÊÇ·ñ³ö½ç
+                if(2==rSkillInfo.GetSelectType()) //ç‚¹é€‰åæ ‡æ˜¯å¦å‡ºç•Œ
                 {
                     WORLD_POS TargetPosition = rParams.GetTargetPosition();
                     if(TRUE == IsOutOfRange(rMe, TargetPosition))
@@ -422,28 +422,28 @@ namespace Combat_Module
                     }
                     switch (rSkillInfo.GetTargetCheckByObjType())
                     {
-                        case 0: //Ä¿±ê±ØÐëÊÇÍæ¼Ò
+                        case 0: //ç›®æ ‡å¿…é¡»æ˜¯çŽ©å®¶
                             if(Obj::OBJ_TYPE_HUMAN!=rTar.GetObjType())
                             {
                                 rParams.SetErrCode(OR_INVALID_TARGET);
                                 rParams.SetErrParam(0);
-                                return FALSE;//Ìõ¼þ²»·û
+                                return FALSE;//æ¡ä»¶ä¸ç¬¦
                             };
                             break;
-                        case 1://Ä¿±ê±ØÐëÊÇ³èÎï
+                        case 1://ç›®æ ‡å¿…é¡»æ˜¯å® ç‰©
                             if(Obj::OBJ_TYPE_PET!=rTar.GetObjType())
                             {
                                 rParams.SetErrCode(OR_INVALID_TARGET);
                                 rParams.SetErrParam(0);
-                                return FALSE;//Ìõ¼þ²»·û
+                                return FALSE;//æ¡ä»¶ä¸ç¬¦
                             }
                             break;
-                        case 2://Ä¿±ê±ØÐëÊÇ¹ÖÎï
+                        case 2://ç›®æ ‡å¿…é¡»æ˜¯æ€ªç‰©
                             if(Obj::OBJ_TYPE_MONSTER!=rTar.GetObjType())
                             {
                                 rParams.SetErrCode(OR_INVALID_TARGET);
                                 rParams.SetErrParam(0);
-                                return FALSE;//Ìõ¼þ²»·û
+                                return FALSE;//æ¡ä»¶ä¸ç¬¦
                             }
                             break;
                         case -1:
@@ -452,20 +452,20 @@ namespace Combat_Module
                     };
                     switch (rSkillInfo.GetTargetLogicByStand())
                     {
-                        case 0: //Ä¿±êºÍÊ¹ÓÃÕßÓ¦¸ÃÊÇÓÑºÃ¹ØÏµ
+                        case 0: //ç›®æ ‡å’Œä½¿ç”¨è€…åº”è¯¥æ˜¯å‹å¥½å…³ç³»
                             if(rMe.IsEnemy(&rTar) && rTar.IsEnemy(&rMe))
                             {
                                 rParams.SetErrCode(OR_INVALID_TARGET);
                                 rParams.SetErrParam(0);
-                                return FALSE;//Ìõ¼þ²»·û
+                                return FALSE;//æ¡ä»¶ä¸ç¬¦
                             };
                             break;
-                        case 1://Ä¿±êºÍÊ¹ÓÃÕßÓ¦¸ÃÊÇµÐ¶Ô¹ØÏµ
+                        case 1://ç›®æ ‡å’Œä½¿ç”¨è€…åº”è¯¥æ˜¯æ•Œå¯¹å…³ç³»
                             if(rMe.IsFriend(&rTar) && rTar.IsFriend(&rMe))
                             {
                                 rParams.SetErrCode(OR_INVALID_TARGET);
                                 rParams.SetErrParam(0);
-                                return FALSE;//Ìõ¼þ²»·û
+                                return FALSE;//æ¡ä»¶ä¸ç¬¦
                             }
                             break;
                         case -1:
@@ -474,7 +474,7 @@ namespace Combat_Module
                     };
                     switch (rSkillInfo.GetTargetMustInSpecialState())
                     {
-                        case 0: //Ä¿±ê±ØÐëÊÇ»îµÄ
+                        case 0: //ç›®æ ‡å¿…é¡»æ˜¯æ´»çš„
                             if(FALSE == rTar.IsAlive())
                             {
                                 rParams.SetErrCode(OR_TARGET_DIE);
@@ -482,7 +482,7 @@ namespace Combat_Module
                                 return FALSE;
                             }
                             break;
-                        case 1://Ä¿±ê±ØÐëÊÇÊ¬Ìå
+                        case 1://ç›®æ ‡å¿…é¡»æ˜¯å°¸ä½“
                             if(TRUE == rTar.IsAliveInDeed())
                             {
                                 rParams.SetErrCode(OR_INVALID_TARGET);
@@ -554,7 +554,7 @@ namespace Combat_Module
 
             if(CHARACTER_LOGIC_MOVE == rTar.GetCharacterLogic())
             {
-                fAcceptableDistanceError += 0.5; //Ä¿±êÒÆ¶¯ÖÐ£¬Îó²îÔÙ·Å´ó0.5Ã×
+                fAcceptableDistanceError += 0.5; //ç›®æ ‡ç§»åŠ¨ä¸­ï¼Œè¯¯å·®å†æ”¾å¤§0.5ç±³
             }
             FLOAT fRangeMinSq = rSkillInfo.GetOptimalRangeMin();
             FLOAT fRangeMaxSq = rSkillInfo.GetOptimalRangeMax();
@@ -587,7 +587,7 @@ namespace Combat_Module
         {
             __ENTER_FUNCTION
             if (rMe.GetObjType() == Obj::OBJ_TYPE_PET)
-            {// Èç¹ûÊÇ³èÎïÔòÃ»ÓÐ¾àÀëµÄÏÞÖÆ
+            {// å¦‚æžœæ˜¯å® ç‰©åˆ™æ²¡æœ‰è·ç¦»çš„é™åˆ¶
                 return FALSE;
             }
             SkillInfo_T& rSkillInfo = rMe.GetSkillInfo();
@@ -754,7 +754,7 @@ namespace Combat_Module
             ScanOperatorIniter.m_CentrePoint.m_fX = fX;
             ScanOperatorIniter.m_CentrePoint.m_fZ = fZ;
 
-            if(-1==rSkillInfo.GetMaxTargetNumber()) //-1Îª²»ÏÞÊýÁ¿
+            if(-1==rSkillInfo.GetMaxTargetNumber()) //-1ä¸ºä¸é™æ•°é‡
             {
                 ScanOperatorIniter.m_nCount = rTargets.MAX_OBJ_LIST_SIZE-1;
             }
@@ -893,7 +893,7 @@ namespace Combat_Module
             Scene* pScene = rMe.getScene();
             if(TRUE==rMe.IsFriend(&rTar))
             {
-                //¸øÓÑ·½Ê¹ÓÃµÄ¼¼ÄÜ100%ÃüÖÐ
+                //ç»™å‹æ–¹ä½¿ç”¨çš„æŠ€èƒ½100%å‘½ä¸­
                 return TRUE;
             }
             //Hit Or Miss
@@ -921,7 +921,7 @@ namespace Combat_Module
             
             if(TRUE==rMe.IsFriend(&rTar))
             {
-                //¹¥»÷ÐÔ¼¼ÄÜ²ÅÓÐ»áÐÄÒ»»÷£¬ÓÑºÃ¼¼ÄÜÃ»ÓÐ
+                //æ”»å‡»æ€§æŠ€èƒ½æ‰æœ‰ä¼šå¿ƒä¸€å‡»ï¼Œå‹å¥½æŠ€èƒ½æ²¡æœ‰
                 return FALSE;
             }
             // calculate critical hit
@@ -1154,22 +1154,22 @@ namespace Combat_Module
             __ENTER_FUNCTION
             switch (rSkillInfo.GetTargetCheckByObjType())
             {
-                case 0: //Ä¿±ê±ØÐëÊÇÍæ¼Ò
+                case 0: //ç›®æ ‡å¿…é¡»æ˜¯çŽ©å®¶
                     if(Obj::OBJ_TYPE_HUMAN!=rTar.GetObjType())
                     {
-                        return FALSE;//Ìõ¼þ²»·û
+                        return FALSE;//æ¡ä»¶ä¸ç¬¦
                     };
                     break;
-                case 1://Ä¿±ê±ØÐëÊÇ³èÎï
+                case 1://ç›®æ ‡å¿…é¡»æ˜¯å® ç‰©
                     if(Obj::OBJ_TYPE_PET!=rTar.GetObjType())
                     {
-                        return FALSE;//Ìõ¼þ²»·û
+                        return FALSE;//æ¡ä»¶ä¸ç¬¦
                     }
                     break;
-                case 2://Ä¿±ê±ØÐëÊÇ¹ÖÎï
+                case 2://ç›®æ ‡å¿…é¡»æ˜¯æ€ªç‰©
                     if(Obj::OBJ_TYPE_MONSTER!=rTar.GetObjType())
                     {
-                        return FALSE;//Ìõ¼þ²»·û
+                        return FALSE;//æ¡ä»¶ä¸ç¬¦
                     }
                     break;
                 case -1:

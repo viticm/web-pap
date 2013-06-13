@@ -30,10 +30,10 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    // ¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    // æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
-    // Íæ¼Ò´¦ÓÚ²»¿ÉÐÐ¶¯×´Ì¬
+    // çŽ©å®¶å¤„äºŽä¸å¯è¡ŒåŠ¨çŠ¶æ€
     if( !pHuman->IsAlive() )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGGemCompoundHandler: Name=%s is not alive.", pHuman->GetName() );
@@ -67,7 +67,7 @@ __ENTER_FUNCTION
     }
 
     if( res == OR_OK )
-    { // Í¨¹ý³õ²½ÑéÖ¤
+    { // é€šè¿‡åˆæ­¥éªŒè¯
         LuaInterface* pLuaInterface = pHuman->getScene()->GetLuaInterface();
         if( pLuaInterface == NULL )
         {
@@ -79,7 +79,7 @@ __ENTER_FUNCTION
             (INT)pScene->SceneID(), (INT)pHuman->GetID(), nBagIndex1, nBagIndex2);
         if( res != OR_OK )
         {
-            // ·¢ËÍÊ§°ÜÏûÏ¢
+            // å‘é€å¤±è´¥æ¶ˆæ¯
             pHuman->SendOperateResultMsg(res);
         }
     }

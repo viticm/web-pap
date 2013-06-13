@@ -265,7 +265,7 @@ BOOL    GrowPointManager::Load(GROWPOINT_LOAD* pGPLoad)
         {
             CHAR ErrorMsg[255];
             sprintf(ErrorMsg,
-                "³¡¾°ÖÐÅäÖÃÉú³¤µãÎ»ÖÃµÄÊýÁ¿Ð¡ÓÚÐèÇóÍ¬Ê±³öÏÖµÄÊýÁ¿,³¡¾°ºÅÎª%d",
+                "åœºæ™¯ä¸­é…ç½®ç”Ÿé•¿ç‚¹ä½ç½®çš„æ•°é‡å°äºŽéœ€æ±‚åŒæ—¶å‡ºçŽ°çš„æ•°é‡,åœºæ™¯å·ä¸º%d",
                 m_pScene->SceneID());
             AssertEx(FALSE,ErrorMsg);
             pTypeGPManager->m_MaxApperaCount=pTypeGPManager->m_TypeCount;
@@ -347,7 +347,7 @@ BOOL    GrowPointManager::HeartBeat(UINT    uTime)
                     {
                         if(!CallScriptCreateFunc(m_GrowPointMgr[iGrowPointIndex]->m_ScriptID,x,y,m_GrowPointMgr[iGrowPointIndex]->m_GrowPointType,m_pScene->SceneID()))
                         {
-                            AssertEx(FALSE,"´´½¨Éú³¤µã·µ»ØÊ§°Ü");
+                            AssertEx(FALSE,"åˆ›å»ºç”Ÿé•¿ç‚¹è¿”å›žå¤±è´¥");
                             m_GrowPointMgr[iGrowPointIndex]->ReleaseGrowPointPos(x,y);
                         }
                         else
@@ -360,7 +360,7 @@ BOOL    GrowPointManager::HeartBeat(UINT    uTime)
                         }
                     }
                     else
-                    {//Èç¹ûÃ»°ó½Å±¾ÔõÃ´°ì
+                    {//å¦‚æžœæ²¡ç»‘è„šæœ¬æ€Žä¹ˆåŠž
                         Log::SaveLog( SERVER_LOGFILE, "GrowPointManager...No ScriptID %d !", iGrowPointIndex );
                     }
                 }
@@ -406,7 +406,7 @@ BOOL    GrowPointManager::GrowPointDataInit(CHAR*    strGrowPointData)
 {
     __ENTER_FUNCTION
 
-    //³¡¾°Ð¯´ø*.txtÎÄ¼þ ÃèÐðGrowPoint ÅäÖÃ
+    //åœºæ™¯æºå¸¦*.txtæ–‡ä»¶ æå™GrowPoint é…ç½®
     enum SceneGrowPointsData
     {
         TBIndex,
@@ -510,7 +510,7 @@ BOOL    GrowPointManager::GrowPointSetupInit(CHAR* strGrowPointSetup)
 {
     __ENTER_FUNCTION
 
-        //³¡¾°Ð¯´ø*.txtÎÄ¼þ ¶ÔÉú³¤µã½øÐÐÅäÖÃ
+        //åœºæ™¯æºå¸¦*.txtæ–‡ä»¶ å¯¹ç”Ÿé•¿ç‚¹è¿›è¡Œé…ç½®
     enum    SceneGrowPointsSetup
     {
         TBType,
@@ -554,7 +554,7 @@ BOOL    GrowPointManager::GrowPointSetupInit(CHAR* strGrowPointSetup)
         {
             CHAR ErrorMsg[255];
             sprintf(ErrorMsg,
-                "³¡¾°ÖÐÅäÖÃÉú³¤µãÎ»ÖÃµÄÊýÁ¿Ð¡ÓÚÐèÇóÍ¬Ê±³öÏÖµÄÊýÁ¿,³¡¾°ºÅÎª%d",
+                "åœºæ™¯ä¸­é…ç½®ç”Ÿé•¿ç‚¹ä½ç½®çš„æ•°é‡å°äºŽéœ€æ±‚åŒæ—¶å‡ºçŽ°çš„æ•°é‡,åœºæ™¯å·ä¸º%d",
                 m_pScene->SceneID());
             AssertEx(FALSE,ErrorMsg);
             pTypeGPManager->m_MaxApperaCount=pTypeGPManager->m_TypeCount;
@@ -581,7 +581,7 @@ BOOL    GrowPointManager::GrowPointSetupInit(CHAR* strGrowPointSetup)
     return TRUE;
 }
 
-//µ÷ÓÃÔ¼¶¨Ó¦Ò»ÖÂ
+//è°ƒç”¨çº¦å®šåº”ä¸€è‡´
 BOOL    GrowPointManager::CallScriptCreateFunc(ScriptID_t    FileID,FLOAT x,FLOAT y,INT iItemBoxType,SceneID_t sceneId)
 {
     __ENTER_FUNCTION

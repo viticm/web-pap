@@ -29,7 +29,7 @@ UINT CGPlayerShopEstablishHandler::Execute( CGPlayerShopEstablish* pPacket, Play
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ĞĞ×ÊÔ´ÊÇ·ñÕıÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     CHAR* pszShopName        =    pPacket->GetShopName();
@@ -43,7 +43,7 @@ UINT CGPlayerShopEstablishHandler::Execute( CGPlayerShopEstablish* pPacket, Play
     FLOAT CommercialFactor = pPlayerShopManager->GetComFactor();
     UINT uCost = (UINT)(300000*CommercialFactor*2*1.03);
 
-    //½ğÇ®ÑéÖ¤
+    //é‡‘é’±éªŒè¯
     if(uCost>pHuman->GetMoney())
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: CGPlayerShopApplyHandler::Name=%s Cost = %d Money = %d ", pHuman->GetName(), uCost, pHuman->GetMoney() ) ;
@@ -52,7 +52,7 @@ UINT CGPlayerShopEstablishHandler::Execute( CGPlayerShopEstablish* pPacket, Play
         return PACKET_EXE_CONTINUE ;
     }
 
-    //ĞèÒªÔÙÑéÖ¤ÊÇ²»ÊÇÒÑ¾­½¨Á¢ÂúÁËÉÌµêÁË
+    //éœ€è¦å†éªŒè¯æ˜¯ä¸æ˜¯å·²ç»å»ºç«‹æ»¡äº†å•†åº—äº†
     if(nShopType == PLAYERSHOP_MSG::TYPE_ITEM)
     {
         if( !pHuman->GetShopGuid(0).isNull() )
@@ -107,7 +107,7 @@ UINT CGPlayerShopEstablishHandler::Execute( CGPlayerShopEstablish* pPacket, Play
     }
     //...
 
-    //ÖØÃûÑéÖ¤
+    //é‡åéªŒè¯
     for(UINT i =0; i<MAX_SHOP_NUM_PER_SCENE; i++)
     {
         PlayerShop* pTempShop = pPlayerShopManager->GetPlayerShopByIndex(i);
@@ -127,7 +127,7 @@ UINT CGPlayerShopEstablishHandler::Execute( CGPlayerShopEstablish* pPacket, Play
         }
     }
 
-    //NewÒ»¸öÉÌµê
+    //Newä¸€ä¸ªå•†åº—
     INT nIndex    = pPlayerShopManager->NewPlayerShop();
 
     if(nIndex < 0)
@@ -140,56 +140,56 @@ UINT CGPlayerShopEstablishHandler::Execute( CGPlayerShopEstablish* pPacket, Play
 
     PlayerShop*            pPlayerShop    = pPlayerShopManager->GetPlayerShopByIndex(nIndex);
     
-    //Ê±¼ä²ÉÑù
+    //æ—¶é—´é‡‡æ ·
     UINT  nYear        =    (UINT)g_pTimeManager->GetYear();
     BYTE  nMonth    =    (BYTE)g_pTimeManager->GetMonth();
     BYTE  nDay        =    (BYTE)g_pTimeManager->GetDay();
     BYTE  nHour        =    (BYTE)g_pTimeManager->GetHour();
     BYTE  nMin        =    (BYTE)g_pTimeManager->GetMinute();
 
-    //¿ªÕÅÁË
+    //å¼€å¼ äº†
     pPlayerShop->SetShopStatus(STATUS_PLAYER_SHOP_OPEN);
-    //ÉÌµêÀàĞÍ
+    //å•†åº—ç±»å‹
     if(nShopType == 1)
-    {//ÎïÆ·µã
+    {//ç‰©å“ç‚¹
         pPlayerShop->SetShopType(TYPE_PLAYER_SHOP_ITEM);
         pHuman->SetShopGuid(0,pPlayerShop->GetShopGUID());
     }
     else
-    {//³èÎïµê
+    {//å® ç‰©åº—
         pPlayerShop->SetShopType(TYPE_PLAYER_SHOP_PET);
         pHuman->SetShopGuid(1,pPlayerShop->GetShopGUID());
     }
-    //³åÈë±¾½ğ
+    //å†²å…¥æœ¬é‡‘
     pPlayerShop->SetBaseMoney(uCost/2);
-    //±¾½ğÉÏÏŞ
+    //æœ¬é‡‘ä¸Šé™
     pPlayerShop->SetMaxBaseMoney(uCost/2);
-    //³åÈëÍ¶×Ê½ğ
+    //å†²å…¥æŠ•èµ„é‡‘
     pPlayerShop->SetProfitMoney(uCost/2);
-    //ÉÌµêÃû
+    //å•†åº—å
     pPlayerShop->SetShopName(pszShopName, nShopNameSize);
-    //ÉÌµêÃèÊö
+    //å•†åº—æè¿°
     pPlayerShop->SetShopDesc("",0);
-    //µêÖ÷Ãû
+    //åº—ä¸»å
     pPlayerShop->SetOwnerName(pHuman->GetName());
-    //µêÖ÷GUID
+    //åº—ä¸»GUID
     pPlayerShop->SetOwnerGuid(pHuman->GetGUID());
-    //ÉÌµêµÄ½¨Á¢Ê±¼ä
+    //å•†åº—çš„å»ºç«‹æ—¶é—´
     pPlayerShop->SetFoundedYear(nYear);
     pPlayerShop->SetFoundedMonth(nMonth);
     pPlayerShop->SetFoundedDay(nDay);
     pPlayerShop->SetFoundedHour(nHour);
     pPlayerShop->SetFoundedMin(nMin);
-    //ÉèÖÃ¿ª·ÅµÄ¹ñÌ¨Êı
+    //è®¾ç½®å¼€æ”¾çš„æŸœå°æ•°
     pPlayerShop->SetNumStallOpened(1);
-    //ÉèÖÃ¿ªÕÅµÄ¹ñÌ¨Êı
+    //è®¾ç½®å¼€å¼ çš„æŸœå°æ•°
     pPlayerShop->SetNumStallOnSale(0);
 
-    //¹ñÌ¨¿ªÕÅ
+    //æŸœå°å¼€å¼ 
     PlayerStallBox*        pNewPlayerStallBox    = pPlayerShop->GetPlayerStallBoxByIndex(0);
     pNewPlayerStallBox->SetStallStatus(PLAYER_SHOP::STALL_CLOSE);
 
-    //¿ÛÇ®
+    //æ‰£é’±
     pHuman->SetMoney(pHuman->GetMoney()-uCost);
 
     MONEY_LOG_PARAM    MoneyLogParam;
@@ -202,7 +202,7 @@ UINT CGPlayerShopEstablishHandler::Execute( CGPlayerShopEstablish* pPacket, Play
     MoneyLogParam.ZPos        =    pHuman->getWorldPos()->m_fZ;
     SaveMoneyLog(&MoneyLogParam);
 
-    //"AAA£¨µêÆÌÎ¨Ò»ID£©¿ªÕÅ´ó¼ª£¬´óÕÆ¹ñBBB(Íæ¼Ò×ÔÉíÃû×Ö)¹§Ó­»İ¹Ë¡£" 
+    //"AAAï¼ˆåº—é“ºå”¯ä¸€IDï¼‰å¼€å¼ å¤§å‰ï¼Œå¤§æŒæŸœBBB(ç©å®¶è‡ªèº«åå­—)æ­è¿æƒ é¡¾ã€‚" 
     CHAR    szMsgChat[256] = {0};
     sprintf(szMsgChat, "@*;SrvMsg;CHAT_PS_OPEN;%s;%s", pszShopName, pHuman->GetName());
     GWChat* pChatPacket = (GWChat*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_CHAT)) ;
@@ -214,7 +214,7 @@ UINT CGPlayerShopEstablishHandler::Execute( CGPlayerShopEstablish* pPacket, Play
     g_pServerManager->SendPacket( pChatPacket, INVALID_ID );
 
     CHAR    szMsgTitle[256] = {0};
-    sprintf(szMsgTitle, "%s´óÕÆ¹ñ", pszShopName);
+    sprintf(szMsgTitle, "%så¤§æŒæŸœ", pszShopName);
     pHuman->SetShangDianName(szMsgTitle,(BYTE)strlen(szMsgTitle));
     pHuman->UpdateTitlesToClient();
 

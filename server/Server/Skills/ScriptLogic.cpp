@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºScriptLogic.cpp
-// ¹¦ÄÜËµÃ÷£º
+// æ–‡ä»¶åï¼šScriptLogic.cpp
+// åŠŸèƒ½è¯´æ˜ï¼š
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -242,7 +242,7 @@ namespace Script_Module
 
         //Set Action time
         rMe.SetActionTime(nPlayActionTime);
-        //¼¼ÄÜÀäÈ´
+        //æŠ€èƒ½å†·å´
         SetCooldown(rMe,(CooldownID_t)rSkillInfo.GetCooldownID(),nCooldown);
         rParams.SetDelayTime(rSkillInfo.GetDelayTime());
         return Script_OnActivateOnce(rMe);

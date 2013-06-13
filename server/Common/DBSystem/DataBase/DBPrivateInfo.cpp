@@ -62,7 +62,7 @@ BOOL DBPrivateInfo::Save(VOID* pSource)
     FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
     Assert(pCharFullData);
     
-    //±£´æË½ÈËÊı¾İ
+    //ä¿å­˜ç§äººæ•°æ®
     do
     {
 
@@ -130,7 +130,7 @@ BOOL DBPrivateInfo::ParseResult(VOID* pResult)
                 DB_PrivateInfo,
             };
 
-            //¼ÓÔØË½ÈËÊôĞÔ
+            //åŠ è½½ç§äººå±æ€§
             Assert(mResultCount<MAX_CHAR_MISSION_NUM);
             Assert(mInterface);
             INT ErrorCode;

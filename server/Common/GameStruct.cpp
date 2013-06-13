@@ -37,7 +37,7 @@ _ITEM_TYPE    ConvertSerial2ItemType(UINT Serial)
     return it;
 }
 
-//»ñµÃÎïÆ·ÓĞĞ§Êı¾İ´óĞ¡
+//è·å¾—ç‰©å“æœ‰æ•ˆæ•°æ®å¤§å°
 UINT    GetItemRealSize(const _ITEM& it)
 {
     INT CreatorSize = it.GetCreatorVar()?(sizeof(CHAR)*MAX_ITEM_CREATOR_NAME):0;
@@ -320,7 +320,7 @@ VOID    _ITEM::SetItemBind(BOOL bBind)
     if(bBind)
         m_nsBind |= IEI_BIND_INFO;
     else
-        m_nsBind &= (~(IEI_BIND_INFO));//Õâ¸ö²Ù×÷Ò»°ã²»»áÖ´ĞĞ
+        m_nsBind &= (~(IEI_BIND_INFO));//è¿™ä¸ªæ“ä½œä¸€èˆ¬ä¸ä¼šæ‰§è¡Œ
 }
 
 BOOL    _ITEM::GetItemIdent() const
@@ -334,7 +334,7 @@ VOID    _ITEM::SetItemIdent(BOOL bIdent)
     if(bIdent)
         m_nsBind |= IEI_IDEN_INFO;
     else
-        m_nsBind &= (~(IEI_IDEN_INFO));//Õâ¸ö²Ù×÷Ò»°ã²»»áÖ´ĞĞ
+        m_nsBind &= (~(IEI_IDEN_INFO));//è¿™ä¸ªæ“ä½œä¸€èˆ¬ä¸ä¼šæ‰§è¡Œ
 }
 
 BOOL    _ITEM::GetCreatorVar()    const
@@ -349,7 +349,7 @@ VOID    _ITEM::SetCreatorVar(BOOL bCreator)
     if(bCreator)
         m_nsBind |= IEL_CREATOR;
     else
-        m_nsBind &= (~(IEL_CREATOR));//Õâ¸ö²Ù×÷Ò»°ã²»»áÖ´ĞĞ
+        m_nsBind &= (~(IEL_CREATOR));//è¿™ä¸ªæ“ä½œä¸€èˆ¬ä¸ä¼šæ‰§è¡Œ
 }
 
 BOOL    _ITEM::GetItemPLock() const
@@ -363,7 +363,7 @@ VOID    _ITEM::SetItemPLock(BOOL bLock)
     if(bLock)
         m_nsBind |= IEI_PLOCK_INFO;
     else
-        m_nsBind &= (~(IEI_PLOCK_INFO));//Õâ¸ö²Ù×÷Ò»°ã²»»áÖ´ĞĞ
+        m_nsBind &= (~(IEI_PLOCK_INFO));//è¿™ä¸ªæ“ä½œä¸€èˆ¬ä¸ä¼šæ‰§è¡Œ
 }
 
 INT        _ITEM::GetItemFailTimes() const
@@ -480,29 +480,29 @@ BOOL    _ITEM::WriteFixAttr(CHAR* pIn,INT BuffLength)
         {
             
             
-            GetEquipData()->m_SetNum    =    *((SHORT*)pBuff);                    //Ì××°±àºÅ
+            GetEquipData()->m_SetNum    =    *((SHORT*)pBuff);                    //å¥—è£…ç¼–å·
             pBuff        +=    sizeof(SHORT);
 
-            GetEquipData()->m_BasePrice    =    *((UINT*)pBuff);                    //ÊÛ³ö¼Û¸ñ
+            GetEquipData()->m_BasePrice    =    *((UINT*)pBuff);                    //å”®å‡ºä»·æ ¼
             pBuff        +=    sizeof(UINT);
 
-            GetEquipData()->m_MaxNum    =    *pBuff;                                //Ì××°
+            GetEquipData()->m_MaxNum    =    *pBuff;                                //å¥—è£…
             pBuff        +=   sizeof(CHAR);
 
 
-            GetEquipData()->m_EquipPoint    =    *((BYTE*)pBuff);                //ÎïÆ·×°Ååµã
+            GetEquipData()->m_EquipPoint    =    *((BYTE*)pBuff);                //ç‰©å“è£…ä½©ç‚¹
             pBuff        +=    sizeof(BYTE);
 
-            GetEquipData()->m_MaxDurPoint    =    *((BYTE*)pBuff);                //×î´óÄÍ¾ÃÖµ
+            GetEquipData()->m_MaxDurPoint    =    *((BYTE*)pBuff);                //æœ€å¤§è€ä¹…å€¼
             pBuff        +=    sizeof(BYTE);
 
-            GetEquipData()->m_NeedLevel =    *((BYTE*)pBuff);                    //ĞèÇóµÈ¼¶
+            GetEquipData()->m_NeedLevel =    *((BYTE*)pBuff);                    //éœ€æ±‚ç­‰çº§
             pBuff        +=    sizeof(BYTE);
 
-            //GetEquipData()->m_GemMax    =    *((BYTE*)pBuff);                    //×î´ó±¦Ê¯¸öÊı
+            //GetEquipData()->m_GemMax    =    *((BYTE*)pBuff);                    //æœ€å¤§å®çŸ³ä¸ªæ•°
             //pBuff        +=    sizeof(BYTE);
 
-            //¹Ì¶¨ÊôĞÔÔÚÇ°Ãæ
+            //å›ºå®šå±æ€§åœ¨å‰é¢
             for(INT i = 0 ; i<FixAttrCount;i++)
             {
                 GetEquipData()->m_pAttr[i].m_AttrType    =    *((BYTE*)pBuff);
@@ -512,7 +512,7 @@ BOOL    _ITEM::WriteFixAttr(CHAR* pIn,INT BuffLength)
                 pBuff    += sizeof(SHORT);
             }
 
-            GetEquipData()->m_AttrCount    =    FixAttrCount; //ÏÈ±£´æFixAttrCount;
+            GetEquipData()->m_AttrCount    =    FixAttrCount; //å…ˆä¿å­˜FixAttrCount;
 
         }
         break;
@@ -599,22 +599,22 @@ BOOL    _ITEM::ReadFixAttr(CHAR* pOut,INT& OutLength,INT BuffLength)
         {
 
 
-            *((SHORT*)pBuff)  =    GetEquipData()->m_SetNum;                    //Ì××°±àºÅ
+            *((SHORT*)pBuff)  =    GetEquipData()->m_SetNum;                    //å¥—è£…ç¼–å·
             pBuff        +=    sizeof(SHORT);
-            *((UINT*)pBuff) = GetEquipData()->m_BasePrice;                //ÊÛ³ö¼Û¸ñ
+            *((UINT*)pBuff) = GetEquipData()->m_BasePrice;                //å”®å‡ºä»·æ ¼
             pBuff        +=    sizeof(UINT);
-            *pBuff            =    GetEquipData()->m_MaxNum;                    //Ì××°
+            *pBuff            =    GetEquipData()->m_MaxNum;                    //å¥—è£…
             pBuff        +=   sizeof(CHAR);
-            *((BYTE*)pBuff)  = GetEquipData()->m_EquipPoint;                //ÎïÆ·×°Ååµã
+            *((BYTE*)pBuff)  = GetEquipData()->m_EquipPoint;                //ç‰©å“è£…ä½©ç‚¹
             pBuff        +=    sizeof(BYTE);
-            *((BYTE*)pBuff)  = GetEquipData()->m_MaxDurPoint;                //×î´óÄÍ¾ÃÖµ
+            *((BYTE*)pBuff)  = GetEquipData()->m_MaxDurPoint;                //æœ€å¤§è€ä¹…å€¼
             pBuff        +=    sizeof(BYTE);
-            *((BYTE*)pBuff)  = GetEquipData()->m_NeedLevel;                    //ĞèÇóµÈ¼¶
+            *((BYTE*)pBuff)  = GetEquipData()->m_NeedLevel;                    //éœ€æ±‚ç­‰çº§
             pBuff        +=    sizeof(BYTE);
-            //*((BYTE*)pBuff)  =    GetEquipData()->m_GemMax;                    //×î´ó±¦Ê¯¸öÊı
+            //*((BYTE*)pBuff)  =    GetEquipData()->m_GemMax;                    //æœ€å¤§å®çŸ³ä¸ªæ•°
             //pBuff        +=    sizeof(BYTE);
 
-            //¹Ì¶¨ÊôĞÔÔÚÇ°Ãæ
+            //å›ºå®šå±æ€§åœ¨å‰é¢
             for(INT i = 0 ; i<FixAttrCount;i++)
             {
                 *((BYTE*)pBuff)    =    GetEquipData()->m_pAttr[i].m_AttrType;
@@ -687,8 +687,8 @@ BOOL    _ITEM::ReadFixAttr(CHAR* pOut,INT& OutLength,INT BuffLength)
     return TRUE;
 }
 
-//Ò»¶¨ÒªÏÈĞòÁĞ»¯¹Ì¶¨ÊôĞÔ
-//CHAR* pIn Êµ¼ÊÉÏÊÇÕûÊıĞòÁĞ
+//ä¸€å®šè¦å…ˆåºåˆ—åŒ–å›ºå®šå±æ€§
+//CHAR* pIn å®é™…ä¸Šæ˜¯æ•´æ•°åºåˆ—
 BOOL    _ITEM::WriteVarAttr(CHAR* pIn,INT BuffLength)
 {
     Assert(pIn);
@@ -710,31 +710,31 @@ BOOL    _ITEM::WriteVarAttr(CHAR* pIn,INT BuffLength)
             BYTE FixAttrCount = GetEquipData()->m_AttrCount;
             GetEquipData()->m_AttrCount    =    *((BYTE*)pBuff);
             pBuff    +=    sizeof(BYTE);
-            //µÚÒ»¸öÕûÊıÍê±Ï
+            //ç¬¬ä¸€ä¸ªæ•´æ•°å®Œæ¯•
 
             Assert(GetEquipData()->m_AttrCount<=MAX_ITEM_ATTR);
-            //Ã¿¸öËæ»úÊôĞÔÒ»¸öINT
+            //æ¯ä¸ªéšæœºå±æ€§ä¸€ä¸ªINT
             for(INT i = FixAttrCount; i<GetEquipData()->m_AttrCount;i++)
             {
-                GetEquipData()->m_pAttr[i].m_AttrType    =    (BYTE)(*((SHORT*)pBuff));    //ÀàĞÍÕ¼Ò»¸öShort
+                GetEquipData()->m_pAttr[i].m_AttrType    =    (BYTE)(*((SHORT*)pBuff));    //ç±»å‹å ä¸€ä¸ªShort
                 pBuff    += sizeof(SHORT);
 
-                GetEquipData()->m_pAttr[i].m_Value.m_Value    =    *((SHORT*)pBuff);//ÀàĞÍÖµÕ¼Ò»¸öShort
+                GetEquipData()->m_pAttr[i].m_Value.m_Value    =    *((SHORT*)pBuff);//ç±»å‹å€¼å ä¸€ä¸ªShort
                 pBuff    += sizeof(SHORT);
             }
             
-            GetEquipData()->m_StoneCount    =    (BYTE)(*((BYTE*)pBuff)); //±¦Ê¯¸öÊıÒ»¸öSHORT
+            GetEquipData()->m_StoneCount    =    (BYTE)(*((BYTE*)pBuff)); //å®çŸ³ä¸ªæ•°ä¸€ä¸ªSHORT
             pBuff    += sizeof(SHORT);
 
-            GetEquipData()->m_GemMax        =    (BYTE)(*((BYTE*)pBuff)); //±¦Ê¯¸öÊıÒ»¸öSHORT
+            GetEquipData()->m_GemMax        =    (BYTE)(*((BYTE*)pBuff)); //å®çŸ³ä¸ªæ•°ä¸€ä¸ªSHORT
             pBuff    += sizeof(BYTE);
 
-            GetEquipData()->m_CurDamagePoint    =    *((USHORT*)pBuff); //ËğÉË¶ÈÒ»¸öSHORT
+            GetEquipData()->m_CurDamagePoint    =    *((USHORT*)pBuff); //æŸä¼¤åº¦ä¸€ä¸ªSHORT
             pBuff    += sizeof(USHORT);
 
             Assert(GetEquipData()->m_StoneCount<=MAX_ITEM_GEM);
             
-            //Ã¿¸ö±¦Ê¯ÀàĞÍÒ»¸öINT
+            //æ¯ä¸ªå®çŸ³ç±»å‹ä¸€ä¸ªINT
             for( int i = 0;i<MAX_ITEM_GEM;i++)
             {
                 GetEquipData()->m_pGemInfo[i].m_GemType    =    *((UINT*)pBuff);
@@ -944,13 +944,13 @@ BYTE    _ITEM::GetItemTileMax() const
 
 
 
-//ÊÇ·ñ´ïµ½µ¥µş×î´ó¸öÊı
+//æ˜¯å¦è¾¾åˆ°å•å æœ€å¤§ä¸ªæ•°
 BOOL    _ITEM::isFullTile() const
 {
     return GetItemCount()>=GetItemTileMax();
 }
 
-//Ôö¼Ó¸öÊı
+//å¢åŠ ä¸ªæ•°
 BOOL    _ITEM::IncCount(UINT nCount /* =1 */)
 {
     
@@ -984,7 +984,7 @@ BOOL    _ITEM::IncCount(UINT nCount /* =1 */)
     
 }
 
-//¼õÉÙ¸öÊı
+//å‡å°‘ä¸ªæ•°
 BOOL    _ITEM::DecCount(UINT nCount /* =1 */)
 {
     const    BYTE    bClass = ItemClass();

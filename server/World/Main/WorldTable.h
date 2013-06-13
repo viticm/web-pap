@@ -1,8 +1,8 @@
 
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºWorldTable.h
-//¹¦ÄÜÃèÊö£ºÊÀ½çÊı¾İ·şÎñÆ÷ËùÓÃµ½µÄ×ÊÔ´±í¸ñ
-//ĞŞ¸Ä¼ÇÂ¼£º
+//æ–‡ä»¶åï¼šWorldTable.h
+//åŠŸèƒ½æè¿°ï¼šä¸–ç•Œæ•°æ®æœåŠ¡å™¨æ‰€ç”¨åˆ°çš„èµ„æºè¡¨æ ¼
+//ä¿®æ”¹è®°å½•ï¼š
 //
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -12,7 +12,7 @@
 #include "Type.h"
 #include "../Common/Combat/CampAndStand.h"
 
-//°ïÅÉ£¬³ÇÊĞ ¡¾Ö°Î»¡¿£­¡¾È¨ÏŞ¡¿¶ÔÕÕ±í
+//å¸®æ´¾ï¼ŒåŸå¸‚ ã€èŒä½ã€‘ï¼ã€æƒé™ã€‘å¯¹ç…§è¡¨
 #define MAX_MEMBER_TYPES 100
 struct _GUILD_MEMBER_ACCESS
 {
@@ -34,20 +34,20 @@ extern _GUILD_MEMBER_ACCESS g_GuildMemberAccessTbl ;
 struct _DBC_CITY_BUILDING
 {
     INT        nID;                    //id
-    INT        nCityID;                //³ÇÊĞid(DBC_CITY_DEINFE)
-    INT        nBuildingType;            //½¨ÖşÀàĞÍ
-    INT        nBuildingID;            //½¨ÖşÎïid(DBC_BUILDING_DEINFE)
-    INT        nInitialLevel;            //½¨ÖşÎïµÄ³õÊ¼¼¶±ğ
-    INT        nLevelRequire1;            //Éıµ½1¼¶ËùĞèÌõ¼ş
-    INT        nLevelRequire2;            //Éıµ½2¼¶ËùĞèÌõ¼ş
-    INT        nLevelRequire3;            //Éıµ½3¼¶ËùĞèÌõ¼ş
-    INT        nLevelRequire4;            //Éıµ½4¼¶ËùĞèÌõ¼ş
-    INT        nLevelRequire5;            //Éıµ½4¼¶ËùĞèÌõ¼ş
-    INT        nResearchItem0;            //0¼¶ËùÄÜÑĞ¾¿µÄÅä·½
-    INT        nResearchItem1;            //1¼¶ËùÄÜÑĞ¾¿µÄÅä·½
-    INT        nResearchItem2;            //2¼¶ËùÄÜÑĞ¾¿µÄÅä·½
-    INT        nResearchItem3;            //3¼¶ËùÄÜÑĞ¾¿µÄÅä·½
-    INT        nResearchItem4;            //4¼¶ËùÄÜÑĞ¾¿µÄÅä·½
+    INT        nCityID;                //åŸå¸‚id(DBC_CITY_DEINFE)
+    INT        nBuildingType;            //å»ºç­‘ç±»å‹
+    INT        nBuildingID;            //å»ºç­‘ç‰©id(DBC_BUILDING_DEINFE)
+    INT        nInitialLevel;            //å»ºç­‘ç‰©çš„åˆå§‹çº§åˆ«
+    INT        nLevelRequire1;            //å‡åˆ°1çº§æ‰€éœ€æ¡ä»¶
+    INT        nLevelRequire2;            //å‡åˆ°2çº§æ‰€éœ€æ¡ä»¶
+    INT        nLevelRequire3;            //å‡åˆ°3çº§æ‰€éœ€æ¡ä»¶
+    INT        nLevelRequire4;            //å‡åˆ°4çº§æ‰€éœ€æ¡ä»¶
+    INT        nLevelRequire5;            //å‡åˆ°4çº§æ‰€éœ€æ¡ä»¶
+    INT        nResearchItem0;            //0çº§æ‰€èƒ½ç ”ç©¶çš„é…æ–¹
+    INT        nResearchItem1;            //1çº§æ‰€èƒ½ç ”ç©¶çš„é…æ–¹
+    INT        nResearchItem2;            //2çº§æ‰€èƒ½ç ”ç©¶çš„é…æ–¹
+    INT        nResearchItem3;            //3çº§æ‰€èƒ½ç ”ç©¶çš„é…æ–¹
+    INT        nResearchItem4;            //4çº§æ‰€èƒ½ç ”ç©¶çš„é…æ–¹
 };
 
 struct _DBC_CITY_DEFINE
@@ -69,7 +69,7 @@ struct SKILL_DATA
     INT nSkillID;
     INT nMenPai;
 };
-extern SKILL_DATA*        g_SkillData; //¼¼ÄÜÊı¾İ
+extern SKILL_DATA*        g_SkillData; //æŠ€èƒ½æ•°æ®
 extern INT                g_SkillData_Count;
 extern CampAndStandDataMgr_T g_CampAndStandDataMgr;
 

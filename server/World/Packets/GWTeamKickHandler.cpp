@@ -14,8 +14,8 @@ __ENTER_FUNCTION
 
     ServerPlayer* pSourServerPlayer = (ServerPlayer*)pPlayer;
 
-    GUID_t sGuid = pPacket->GetSourGUID(); // ¶Ó³¤
-    GUID_t dGuid = pPacket->GetDestGUID(); // µ¹Ã¹µ°
+    GUID_t sGuid = pPacket->GetSourGUID(); // é˜Ÿé•¿
+    GUID_t dGuid = pPacket->GetDestGUID(); // å€’éœ‰è›‹
 
     USER* pSourUser = g_pOnlineUser->FindUser( sGuid );
     if( pSourUser==NULL )
@@ -47,7 +47,7 @@ __ENTER_FUNCTION
     }
 
     if( i >= nMemberCount )
-    { // ±»ÌßÕß²»ÔÚ¶ÓÎéÀï
+    { // è¢«è¸¢è€…ä¸åœ¨é˜Ÿä¼é‡Œ
         Log::SaveLog( WORLD_LOGFILE, "GWTeamKickHandler...User dGUID=%X not in sTeamID=%d(sGUID=%X)!", 
             dGuid, tid, sGuid );
 
@@ -55,7 +55,7 @@ __ENTER_FUNCTION
     }
 
     if( pTeam->Leader()->m_Member != sGuid )
-    { // ÌßÈËÕß²»ÊÇ¶Ó³¤
+    { // è¸¢äººè€…ä¸æ˜¯é˜Ÿé•¿
         WGTeamError Msg;
         Msg.SetPlayerID( pSourUser->GetPlayerID() );
         Msg.SetGUID( pSourUser->GetGUID() );
@@ -74,7 +74,7 @@ __ENTER_FUNCTION
     Msg.SetGUID( dGuid );
     Msg.SetTeamID( tid );
 
-    //Í¨ÖªËùÓĞ×éÄÚµÄÍæ¼Ò
+    //é€šçŸ¥æ‰€æœ‰ç»„å†…çš„ç©å®¶
     for( int i=0; i<pTeam->MemberCount(); i++ )
     {
         TEAMMEMBER* pMember = pTeam->Member( i );
@@ -86,7 +86,7 @@ __ENTER_FUNCTION
 
         USER* pUser = g_pOnlineUser->FindUser( pMember->m_Member );
         if( pUser==NULL )
-        {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êı¾İÊÇ¿Õ
+        {//å¦‚æœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
             continue;
         }
         
@@ -103,12 +103,12 @@ __ENTER_FUNCTION
         pServerPlayer->SendPacket( &Msg );
     }
 
-    //ÌŞ³ı¶ÓÔ±
+    //å‰”é™¤é˜Ÿå‘˜
     TEAMMEMBER Member;
     Member.m_Member = dGuid;
     pTeam->DelMember( &Member );
 
-    //ÉèÖÃ±»ÌßÕßµÄ¶ÓÎéĞÅÏ¢
+    //è®¾ç½®è¢«è¸¢è€…çš„é˜Ÿä¼ä¿¡æ¯
     USER* pDestUser = g_pOnlineUser->FindUser( dGuid );
     if ( pDestUser!=NULL )
     {

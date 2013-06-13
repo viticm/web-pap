@@ -34,7 +34,7 @@ UINT CGDiscardEquipHandler::Execute(CGDiscardEquip* pPacket, Player* pPlayer )
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
 
@@ -77,7 +77,7 @@ UINT CGDiscardEquipHandler::Execute(CGDiscardEquip* pPacket, Player* pPlayer )
         pHuman->ItemEffectFlush();
         Msg.SetResult(DISCARDEQUIP_SUCCESS);
         Msg.SetEquipPoint(EquipPoint);
-        //Èç¹û¿É¼û
+        //å¦‚æžœå¯è§
         if(pHuman->IsVisualPart(EquipPoint))
         {    
             GCCharEquipment OtherMsg;

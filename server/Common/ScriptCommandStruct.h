@@ -13,14 +13,14 @@
 enum ENUM_SCRIPT_COMMAND
 {
     SCRIPT_COMMAND_INVALID    = -1,
-    SCRIPT_COMMAND_EVENT_LIST_RESPONSE,            // ÊÂ¼þÁÐ±í·µ»Ø
-    SCRIPT_COMMAND_MISSION_RESPONSE,            // ÈÎÎñÊÂ¼þµÄ²éÑ¯·µ»Ø
-    SCRIPT_COMMAND_MISSION_REGIE,                // äîÔËÈÎÎñ²éÑ¯·µ»Ø
-    SCRIPT_COMMAND_MISSION_DEMAND_RESPONSE,        // ÈÎÎñÐèÇóµÄ²éÑ¯·µ»Ø
-    SCRIPT_COMMAND_MISSION_CONTINUE_RESPONSE,    // ÈÎÎñµÄ¼ÌÐø°´Å¥ÊÂ¼þ·µ»Ø
-    SCRIPT_COMMAND_MISSION_TIPS,                // ÈÎÎñÌáÊ¾
-    SCRIPT_COMMAND_TRADE,                        // ½»Ò×
-    SCRIPT_COMMAND_SKILL_STUDY,                    // ¼¼ÄÜÑ§Ï°
+    SCRIPT_COMMAND_EVENT_LIST_RESPONSE,            // äº‹ä»¶åˆ—è¡¨è¿”å›ž
+    SCRIPT_COMMAND_MISSION_RESPONSE,            // ä»»åŠ¡äº‹ä»¶çš„æŸ¥è¯¢è¿”å›ž
+    SCRIPT_COMMAND_MISSION_REGIE,                // æ¼•è¿ä»»åŠ¡æŸ¥è¯¢è¿”å›ž
+    SCRIPT_COMMAND_MISSION_DEMAND_RESPONSE,        // ä»»åŠ¡éœ€æ±‚çš„æŸ¥è¯¢è¿”å›ž
+    SCRIPT_COMMAND_MISSION_CONTINUE_RESPONSE,    // ä»»åŠ¡çš„ç»§ç»­æŒ‰é’®äº‹ä»¶è¿”å›ž
+    SCRIPT_COMMAND_MISSION_TIPS,                // ä»»åŠ¡æç¤º
+    SCRIPT_COMMAND_TRADE,                        // äº¤æ˜“
+    SCRIPT_COMMAND_SKILL_STUDY,                    // æŠ€èƒ½å­¦ä¹ 
 };
 
 #define    DEF_SCRIPT_STRING_LEN    (256)
@@ -65,13 +65,13 @@ struct ScriptString
 };
 
 /////////////////////////////////////////////////////////////////
-// ÊÂ¼þÁÐ±í 
+// äº‹ä»¶åˆ—è¡¨ 
 enum ENUM_EVENT_ITEM_TYPE
 {
-    EVENT_ITEM_TYPE_INVALID    = -1,    // ÎÞÐ§
-    EVENT_ITEM_TYPE_SECTION,        // ½Úµã
-    EVENT_ITEM_TYPE_SCRIPT_ID,        // Ñ¡Ïî
-    EVENT_ITEM_TYPE_TEXT,            // ÎÄ±¾
+    EVENT_ITEM_TYPE_INVALID    = -1,    // æ— æ•ˆ
+    EVENT_ITEM_TYPE_SECTION,        // èŠ‚ç‚¹
+    EVENT_ITEM_TYPE_SCRIPT_ID,        // é€‰é¡¹
+    EVENT_ITEM_TYPE_TEXT,            // æ–‡æœ¬
 };
 
 struct ScriptEventItem
@@ -147,7 +147,7 @@ struct ScriptParam_EventList
 };
 
 /////////////////////////////////////////////////////////////////
-// ÈÎÎñÐÅÏ¢
+// ä»»åŠ¡ä¿¡æ¯
 struct SMissionBonusItem
 {
     BYTE        m_yCount;
@@ -163,7 +163,7 @@ struct SMissionBonusItem
     BOOL Read( SocketInputStream& iStream );
     BOOL Write( SocketOutputStream& oStream )const;
 };
-//ÈÎÎñÐèÒªÉ±ËÀµÄNPC
+//ä»»åŠ¡éœ€è¦æ€æ­»çš„NPC
 struct SMissionDemandKill
 {
     BYTE        m_yCount;
@@ -182,14 +182,14 @@ struct SMissionDemandKill
 enum ENUM_MISSION_BONUS_TYPE
 {
     MISSION_BONUS_TYPE_INVALID    = -1,
-    MISSION_BONUS_TYPE_MONEY,            // ½ðÇ®
-    MISSION_BONUS_TYPE_ITEM,            // ÎïÆ·
-    MISSION_BONUS_TYPE_ITEM_RAND,        // Ëæ»úÎïÆ·
-    MISSION_BONUS_TYPE_ITEM_RADIO,        // ¶àÑ¡1ÎïÆ·
-    MISSION_BONUS_TYPE_EXP,                // ½±Àø¾­Ñé
+    MISSION_BONUS_TYPE_MONEY,            // é‡‘é’±
+    MISSION_BONUS_TYPE_ITEM,            // ç‰©å“
+    MISSION_BONUS_TYPE_ITEM_RAND,        // éšæœºç‰©å“
+    MISSION_BONUS_TYPE_ITEM_RADIO,        // å¤šé€‰1ç‰©å“
+    MISSION_BONUS_TYPE_EXP,                // å¥–åŠ±ç»éªŒ
 };
 
-// ½±ÀøµÄ½á¹¹
+// å¥–åŠ±çš„ç»“æž„
 struct SMissionBonus
 {
     INT                            m_nType;        // ENUM_MISSION_BONUS_TYPE
@@ -235,9 +235,9 @@ struct SMissionBonus
 #define MAX_MISSION_BONUS_COUNT        (16)
 struct ScriptParam_MissionInfo
 {
-    ObjID_t            m_idNPC;            // Ïò·þÎñÆ÷·µ»ØÊ±µÄ²ÎÊý
-    ScriptID_t        m_idScript;            // ÓÃÓÚÏò·þÎñÆ÷·µ»Ø²Ù×÷£¬Èç£º½ÓÊÜÈÎÎñ£¨´«µ½·þÎñÆ÷µÄ²»ÊÇÈÎÎñID£¬¶øÊÇ½Å±¾ID£©
-    MissionID_t        m_idMission;        // ÓÃÓÚ¿Í»§¶ËÏÔÊ¾ÐÅÏ¢µÄ²éÑ¯
+    ObjID_t            m_idNPC;            // å‘æœåŠ¡å™¨è¿”å›žæ—¶çš„å‚æ•°
+    ScriptID_t        m_idScript;            // ç”¨äºŽå‘æœåŠ¡å™¨è¿”å›žæ“ä½œï¼Œå¦‚ï¼šæŽ¥å—ä»»åŠ¡ï¼ˆä¼ åˆ°æœåŠ¡å™¨çš„ä¸æ˜¯ä»»åŠ¡IDï¼Œè€Œæ˜¯è„šæœ¬IDï¼‰
+    MissionID_t        m_idMission;        // ç”¨äºŽå®¢æˆ·ç«¯æ˜¾ç¤ºä¿¡æ¯çš„æŸ¥è¯¢
     BYTE            m_yTextCount;
     ScriptString    m_aText[MAX_MISSION_TEXT_COUNT];
     BYTE            m_yBonusCount;
@@ -285,13 +285,13 @@ struct ScriptParam_MissionInfo
 };
 
 /////////////////////////////////////////////////////////////////
-// äîÔËÈÎÎñ²éÑ¯·µ»Ø
+// æ¼•è¿ä»»åŠ¡æŸ¥è¯¢è¿”å›ž
 typedef ScriptParam_EventList    ScriptParam_MissionRegie;
 
 /////////////////////////////////////////////////////////////////
-// ÈÎÎñÐèÇóÐÅÏ¢
+// ä»»åŠ¡éœ€æ±‚ä¿¡æ¯
 
-// ÐèÇó½á¹¹¶¨Òå
+// éœ€æ±‚ç»“æž„å®šä¹‰
 typedef SMissionBonusItem SMissionDemandItem;
 
 #define MAX_MISSION_DEMAND_COUNT        (8)
@@ -303,10 +303,10 @@ struct ScriptParam_MissionDemandInfo
         MISSION_DONE,
         MISSION_CHECK,
     };
-    ObjID_t                m_idNPC;            // Ïò·þÎñÆ÷·µ»ØÊ±µÄ²ÎÊý
-    ScriptID_t            m_idScript;            // Ïò·þÎñÆ÷·µ»ØÊ±µÄ²ÎÊý
-    MissionID_t            m_idMission;        // ÓÃÓÚ¿Í»§¶ËÏÔÊ¾ÐÅÏ¢µÄ²éÑ¯
-    INT                    m_bDone;            // Íê³É±êÖ¾ 0:Î´Íê³É£¬1:Íê³É£¬2:ÐèÒª¶þ´ÎÅÐ¶¨
+    ObjID_t                m_idNPC;            // å‘æœåŠ¡å™¨è¿”å›žæ—¶çš„å‚æ•°
+    ScriptID_t            m_idScript;            // å‘æœåŠ¡å™¨è¿”å›žæ—¶çš„å‚æ•°
+    MissionID_t            m_idMission;        // ç”¨äºŽå®¢æˆ·ç«¯æ˜¾ç¤ºä¿¡æ¯çš„æŸ¥è¯¢
+    INT                    m_bDone;            // å®Œæˆæ ‡å¿— 0:æœªå®Œæˆï¼Œ1:å®Œæˆï¼Œ2:éœ€è¦äºŒæ¬¡åˆ¤å®š
     BYTE                m_yTextCount;
     ScriptString        m_aText[MAX_MISSION_TEXT_COUNT];
     BYTE                m_yDemandCount;
@@ -353,16 +353,16 @@ struct ScriptParam_MissionDemandInfo
 };
 
 /////////////////////////////////////////////////////////////////
-// ÈÎÎñµÄ¼ÌÐø°´Å¥ÊÂ¼þ·µ»Ø(·µ»ØÈÎÎñµÄ½±ÀøµÈµÈ)
+// ä»»åŠ¡çš„ç»§ç»­æŒ‰é’®äº‹ä»¶è¿”å›ž(è¿”å›žä»»åŠ¡çš„å¥–åŠ±ç­‰ç­‰)
 struct ScriptParam_MissionContinueInfo
 {
-    ObjID_t                m_idNPC;            // Ïò·þÎñÆ÷·µ»ØÊ±µÄ²ÎÊý
-    ScriptID_t            m_idScript;            // Ïò·þÎñÆ÷·µ»ØÊ±µÄ²ÎÊý
-    MissionID_t            m_idMission;        // ÓÃÓÚ¿Í»§¶ËÏÔÊ¾ÐÅÏ¢µÄ²éÑ¯
-    BYTE                m_yTextCount;                        // ËµÃ÷ÐÔÎÄ±¾µÄÊýÄ¿
-    ScriptString        m_aText[MAX_MISSION_TEXT_COUNT];    // ËµÃ÷ÐÔÎÄ±¾
-    BYTE                m_yBonusCount;                        // ÈÎÎñµÀ¾ß½±ÀøµÄÊýÄ¿
-    SMissionBonus        m_aBonus[MAX_MISSION_BONUS_COUNT];    // ÈÎÎñµÀ¾ßÁÐ±í
+    ObjID_t                m_idNPC;            // å‘æœåŠ¡å™¨è¿”å›žæ—¶çš„å‚æ•°
+    ScriptID_t            m_idScript;            // å‘æœåŠ¡å™¨è¿”å›žæ—¶çš„å‚æ•°
+    MissionID_t            m_idMission;        // ç”¨äºŽå®¢æˆ·ç«¯æ˜¾ç¤ºä¿¡æ¯çš„æŸ¥è¯¢
+    BYTE                m_yTextCount;                        // è¯´æ˜Žæ€§æ–‡æœ¬çš„æ•°ç›®
+    ScriptString        m_aText[MAX_MISSION_TEXT_COUNT];    // è¯´æ˜Žæ€§æ–‡æœ¬
+    BYTE                m_yBonusCount;                        // ä»»åŠ¡é“å…·å¥–åŠ±çš„æ•°ç›®
+    SMissionBonus        m_aBonus[MAX_MISSION_BONUS_COUNT];    // ä»»åŠ¡é“å…·åˆ—è¡¨
 
     VOID Reset( VOID ){
         m_idNPC            = INVALID_ID;
@@ -415,7 +415,7 @@ struct ScriptParam_MissionContinueInfo
 };
 
 /////////////////////////////////////////////////////////////////
-// ÈÎÎñÌáÊ¾
+// ä»»åŠ¡æç¤º
 struct ScriptParam_MissionTips
 {
     ScriptString        m_strText;
@@ -431,13 +431,13 @@ struct ScriptParam_MissionTips
 };
 
 /////////////////////////////////////////////////////////////////
-// ½»Ò×
+// äº¤æ˜“
 #define MAX_TRADE_ITEM_COUNT    (128)
 struct STradeItem
 {
-    UINT        m_uDataID;                // ExcelÖÐµÄIndex
-    _ITEM_TYPE    m_typeItem;                // µÀ¾ßÀàÐÍ
-    BYTE        m_yCount;                // µÀ¾ßÊýÁ¿
+    UINT        m_uDataID;                // Excelä¸­çš„Index
+    _ITEM_TYPE    m_typeItem;                // é“å…·ç±»åž‹
+    BYTE        m_yCount;                // é“å…·æ•°é‡
 
     VOID Reset( VOID ){
         m_uDataID    = UINT_MAX;
@@ -451,12 +451,12 @@ struct STradeItem
     BOOL Write( SocketOutputStream& oStream )const;
 };
 
-// ½»Ò×ÏûÏ¢ËùÓÃµ½µÄ½á¹¹
+// äº¤æ˜“æ¶ˆæ¯æ‰€ç”¨åˆ°çš„ç»“æž„
 struct ScriptParam_Trade
 {
-    BYTE            m_yItemCount;                            // µÀ¾ßÊýÄ¿
-    STradeItem        m_aTradeItem[MAX_TRADE_ITEM_COUNT];        // µÀ¾ßÁÐ±í
-    BOOL            m_bRepair;                                // ÊÇ·ñÓÐÐÞÀí¹¦ÄÜ
+    BYTE            m_yItemCount;                            // é“å…·æ•°ç›®
+    STradeItem        m_aTradeItem[MAX_TRADE_ITEM_COUNT];        // é“å…·åˆ—è¡¨
+    BOOL            m_bRepair;                                // æ˜¯å¦æœ‰ä¿®ç†åŠŸèƒ½
 
     VOID Reset( VOID ){
         m_yItemCount    = 0;
@@ -473,7 +473,7 @@ struct ScriptParam_Trade
     BOOL Write( SocketOutputStream& oStream )const;
 };
 
-//¼¼ÄÜÑ§Ï°ÏûÏ¢µÄ½á¹¹Ìå
+//æŠ€èƒ½å­¦ä¹ æ¶ˆæ¯çš„ç»“æž„ä½“
 #define MAX_SKILL_ITEM_COUNT (128)
 struct SSkillItem
 {
@@ -488,8 +488,8 @@ struct SSkillItem
 
 struct ScriptParam_SkillStudy
 {
-    BYTE            m_yStudyCount;                            // ¼¼ÄÜÊýÄ¿
-    SSkillItem        m_aSkillItem[MAX_SKILL_ITEM_COUNT];        // ¼¼ÄÜÁÐ±í
+    BYTE            m_yStudyCount;                            // æŠ€èƒ½æ•°ç›®
+    SSkillItem        m_aSkillItem[MAX_SKILL_ITEM_COUNT];        // æŠ€èƒ½åˆ—è¡¨
     INT                m_nReserve;
 
     VOID Reset( VOID ){

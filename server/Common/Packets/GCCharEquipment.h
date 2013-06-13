@@ -21,7 +21,7 @@ public:
         m_wFlags        = 0;
     }
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -42,7 +42,7 @@ public:
                             }
 
 public:
-    //使用数据接口
+    //浣跨敤鏁版嵁鎺ュ彛
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -132,28 +132,28 @@ private:
     /*
     |  ref [HUMAN_EQUIP]
     |     00000000 xxxxxxxx
-    |             ||||||||__ 武器  WEAPON
-    |             |||||||___ 帽子     DEFENCE
-    |             ||||||____ 衣服  DEFENCE
-    |             |||||_____ 护腕  DEFENCE
-    |             ||||______ 靴子  DEFENCE
-    |             |||_______ 腰带    ADORN
-    |             ||________ 戒子    ADORN
-    |             |_________ 项链    ADORN
+    |             ||||||||__ 姝﹀櫒  WEAPON
+    |             |||||||___ 甯藉瓙     DEFENCE
+    |             ||||||____ 琛ｆ湇  DEFENCE
+    |             |||||_____ 鎶よ厱  DEFENCE
+    |             ||||______ 闈村瓙  DEFENCE
+    |             |||_______ 鑵板甫    ADORN
+    |             ||________ 鎴掑瓙    ADORN
+    |             |_________ 椤归摼    ADORN
     |
     */
-    WORD            m_wFlags;        // 每个位表示一个属性是否要刷新 HUMAN_EQUIP
+    WORD            m_wFlags;        // 姣忎釜浣嶈〃绀轰竴涓睘鎬ф槸鍚﹁鍒锋柊 HUMAN_EQUIP
 
-    UINT            m_WeaponID;        // 武器 - 资源表ID
-    UINT            m_WeaponGemID;    // 武器宝石 - 资源表ID
-    UINT            m_CapID;        // 帽子 - 资源表ID
-    UINT            m_CapGemID;        // 帽子宝石 - 资源表ID
-    UINT            m_ArmourID;        // 衣服 - 资源表ID
-    UINT            m_ArmourGemID;    // 衣服宝石 - 资源表ID
-    UINT            m_CuffID;        // 护腕 - 资源表ID
-    UINT            m_CuffGemID;    // 护腕宝石 - 资源表ID
-    UINT            m_BootID;        // 靴子 - 资源表ID
-    UINT            m_BootGemID;    // 靴子宝石 - 资源表ID
+    UINT            m_WeaponID;        // 姝﹀櫒 - 璧勬簮琛↖D
+    UINT            m_WeaponGemID;    // 姝﹀櫒瀹濈煶 - 璧勬簮琛↖D
+    UINT            m_CapID;        // 甯藉瓙 - 璧勬簮琛↖D
+    UINT            m_CapGemID;        // 甯藉瓙瀹濈煶 - 璧勬簮琛↖D
+    UINT            m_ArmourID;        // 琛ｆ湇 - 璧勬簮琛↖D
+    UINT            m_ArmourGemID;    // 琛ｆ湇瀹濈煶 - 璧勬簮琛↖D
+    UINT            m_CuffID;        // 鎶よ厱 - 璧勬簮琛↖D
+    UINT            m_CuffGemID;    // 鎶よ厱瀹濈煶 - 璧勬簮琛↖D
+    UINT            m_BootID;        // 闈村瓙 - 璧勬簮琛↖D
+    UINT            m_BootGemID;    // 闈村瓙瀹濈煶 - 璧勬簮琛↖D
 };
 
 

@@ -12,12 +12,12 @@ class Obj_Human;
 class Obj_Monster;
 
 /*
-_SHOP,һ���̵�
+_SHOP,一个商店
 */
 struct _SHOP
 {
     /*
-    _MERCHANDISE_LIST,�̵��е���Ʒ�б�
+    _MERCHANDISE_LIST,商店中的商品列表
     */
     struct _MERCHANDISE_LIST
     {
@@ -27,9 +27,9 @@ struct _SHOP
         INT*            m_TypeCount;
         INT*            m_TypeMaxNum;
         FLOAT*            m_AppearRate;
-        //INT*            m_pnPrice;                // �۸񣬵����̵���ҵ�λ���� CU_MONEY ʱ��Ч
-        BOOL*            m_pbForSale;            // ����̵�ʹ�ã�������Ʒ
-        INT                m_nCurrent;                // ����ʱ����
+        //INT*            m_pnPrice;                // 价格，当该商店货币单位不是 CU_MONEY 时生效
+        BOOL*            m_pbForSale;            // 随机商店使用：待售商品
+        INT                m_nCurrent;                // 运行时数据
 
         //
         _MERCHANDISE_LIST() 
@@ -134,16 +134,16 @@ struct _SHOP
     UCHAR                GetSerialNum( ) { return m_uSerialNum; }
     VOID                UpdateSerialNum( ) { m_uSerialNum = (m_uSerialNum+1) % 255; }
 
-    // ��֤�����ĺϷ��ԣ�[����̵����ã�����ʾ�б�������ת�����̵��б��е�ʵ������]
+    // 验证索引的合法性，[随机商店适用：将显示列表的索引转换成商店列表中的实际索引]
     INT                    ConvertIndex( INT nIndex );
 
-    // ���������Ʒ�б�
+    // 设置随机商品列表
     //VOID                SetRandPriceItemList(RandPriceItemList_t* pItemList);
 
-    // ��������۸�
+    // 产生随机价格
     BOOL                GenerateRandItemPrice();
 
-    // �������۸�
+    // 获得随机价格
     INT                    GetRPItemValue(UINT uItemIdx, ValueType valuetype);
 
     //
@@ -151,32 +151,32 @@ struct _SHOP
 
     CHAR                m_szShopName[MAX_SHOP_NAME];
 
-    INT                    m_ShopType;        //0��ͨ�̵꣬ 1Ԫ���̵�
-    // ����̵�����
+    INT                    m_ShopType;        //0普通商店， 1元宝商店
+    // 随机商店属性
     BOOL                m_bIsRandShop;
-    INT                    m_nCountForSell;            // ���������ѡ�������۵���Ʒ����
-    // ����̵�����
+    INT                    m_nCountForSell;            // 随机库中挑选出来出售的商品数量
+    // 随机商店属性
 
-    INT                    m_nCurrencyUnit;            // ���ҵ�λ enum CURRENCY_UNIT
+    INT                    m_nCurrencyUnit;            // 货币单位 enum CURRENCY_UNIT
     INT                    m_refreshTime;
 
-    // ����ֻ�л��ҵ�λ�� CU_MONEY ʱ��Ч
-    INT                    m_nRepairLevel;                // �����ȼ�
-    INT                    m_nBuyLevel;                // �չ��ȼ�
-    INT                    m_nRepairType;                // ��������
-    INT                    m_nBuyType;                    // �̵���չ�����
-    FLOAT                m_nRepairSpend;                // ��������
-    FLOAT                m_nRepairOkProb;            // �����ɹ�����
-    BOOL                m_bCanBuyBack;                // �Ƿ��ܻع�
+    // 以下只有货币单位是 CU_MONEY 时生效
+    INT                    m_nRepairLevel;                // 修理等级
+    INT                    m_nBuyLevel;                // 收购等级
+    INT                    m_nRepairType;                // 修理类型
+    INT                    m_nBuyType;                    // 商店的收购类型
+    FLOAT                m_nRepairSpend;                // 修理花费
+    FLOAT                m_nRepairOkProb;            // 修理成功几率
+    BOOL                m_bCanBuyBack;                // 是否能回购
 
     FLOAT                m_scale;
-    // ����ֻ�л��ҵ�λ�� CU_MONEY ʱ��Ч
+    // 以上只有货币单位是 CU_MONEY 时生效
 
     _MERCHANDISE_LIST*    m_ItemList;
     BOOL                m_IsDyShop;
-    BOOL                m_bCanMultiBuy;                //�Ƿ��ܹ���������Ʒ
+    BOOL                m_bCanMultiBuy;                //是否能够购买多个商品
 
-    UCHAR                m_uSerialNum;                // ����̵���ˮ�ţ���¼������Ϊ������˲�ͬ�汾���̵����Ʒ���´�����
+    UCHAR                m_uSerialNum;                // 随机商店流水号，记录以免因为玩家买了不同版本的商店的物品导致错误购买
 
     _100_PER_RANDOM_TABLE        m_Rand100;
     //RandPriceItemList_t            m_aRPItemList;    
@@ -184,7 +184,7 @@ struct _SHOP
 };
 
 /*
-ShopMgr,�������ݵķ��������
+ShopMgr,负责数据的访问与管理
 */
 class ShopMgr
 {
@@ -212,8 +212,8 @@ protected:
 };
 
 /*
-StaticShopManager,��̬̬���̵������,������Ϸ����ֻ��һ����̬�̵��������ʵ����
-�����������в���仯���̵����Ϣ����ͬʱҲ�����ж�̬�̵�������������̵��ģ�森
+StaticShopManager,静态态的商店管理器,整个游戏世界只有一个静态商店管理器的实例，
+用来保存所有不会变化的商店的信息．它同时也是所有动态商店管理器的生成商店的模版．
 */
 class StaticShopManager    : public ShopMgr
 {
@@ -228,9 +228,9 @@ private:
 };
 
 /*
-DynamicShopManager,����˼��,��̬���̵������,
-����ÿ��ʵ������ÿ��NPC�ϣ���NPC���������ԣ���()
-��̬���̵��������ʱ��ˢ�£��������Լ��ľֲ�����
+DynamicShopManager,顾名思义,动态的商店管理器,
+它的每个实例挂在每个NPC上，由NPC心跳触发Ｔｉｃｋ()
+动态的商店可以随着时间刷新，来更改自己的局部数据
 */
 class DynamicShopManager : public ShopMgr
 {

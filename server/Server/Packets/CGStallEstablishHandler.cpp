@@ -29,10 +29,10 @@ UINT CGStallEstablishHandler::Execute( CGStallEstablish* pPacket, Player* pPlaye
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    // Í¨¹ýAIÅÐ¶Ïµ±Ç°×´Ì¬ÏÂÄÜ·ñ°ÚÌ¯
+    // é€šè¿‡AIåˆ¤æ–­å½“å‰çŠ¶æ€ä¸‹èƒ½å¦æ‘†æ‘Š
     AI_Human* pAIHuman = (AI_Human*)(pHuman->GetAIObj());
     if (!pAIHuman) {
         return PACKET_EXE_ERROR;
@@ -43,7 +43,7 @@ UINT CGStallEstablishHandler::Execute( CGStallEstablish* pPacket, Player* pPlaye
         pHuman->SendOperateResultMsg(oResult);
         return PACKET_EXE_ERROR;
     }
-    //ÑéÖ¤ÊÇ·ñÓÐ×Ê¸ñ°ÚÌ¯
+    //éªŒè¯æ˜¯å¦æœ‰èµ„æ ¼æ‘†æ‘Š
     if(pHuman->m_StallBox.GetStallStatus() != ServerStallBox::STALL_READY)
     {
         GCStallError    Msg;
@@ -89,18 +89,18 @@ UINT CGStallEstablishHandler::Execute( CGStallEstablish* pPacket, Player* pPlaye
 
         }
 
-        //ÑéÖ¤Íê±Ï,ÉèÖÃÌ¯Î»ºÐ
+        //éªŒè¯å®Œæ¯•,è®¾ç½®æ‘Šä½ç›’
         pHuman->m_StallBox.SetStallStatus(ServerStallBox::STALL_OPEN);
-        pHuman->m_StallBox.SetStallIsOpen(TRUE);//Õâ¸öÓï¾ä»áÒýÆð¿Í»§¶ËµÄÏÔÊ¾¸üÐÂ
+        pHuman->m_StallBox.SetStallIsOpen(TRUE);//è¿™ä¸ªè¯­å¥ä¼šå¼•èµ·å®¢æˆ·ç«¯çš„æ˜¾ç¤ºæ›´æ–°
         pHuman->m_StallBox.SetPosTax(PosTax);
         pHuman->m_StallBox.SetTradeTax(TradeTax);
         //pHuman->m_StallBox.SetFirstPage(0);
 
-        //Õ¼ÁËÕâ¸ñ£¬²»×¼±ðÈËÔÙ°ÚÌ¯ÁË
+        //å äº†è¿™æ ¼ï¼Œä¸å‡†åˆ«äººå†æ‘†æ‘Šäº†
         pStallInfoMgr->SetCanStall(PosX, PosZ, FALSE);
         pHuman->m_StallBox.SetStallPos(PosX, PosZ);
 
-        //Í¨Öª×Ô¼º³õÊ¼»¯×Ô¼ºµÄÌ¯Î»ºÐ
+        //é€šçŸ¥è‡ªå·±åˆå§‹åŒ–è‡ªå·±çš„æ‘Šä½ç›’
         GCStallEstablish Msg;
         pGamePlayer->SendPacket(&Msg);
         g_pLog->FastSaveLog( LOG_FILE_1, "CGStallEstablishHandler::ObjID=%d"

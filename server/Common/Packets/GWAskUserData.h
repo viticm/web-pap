@@ -18,7 +18,7 @@ public:
     GWAskUserData( ){} ;
     virtual ~GWAskUserData( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream ) const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -31,7 +31,7 @@ public:
                                                             sizeof(UINT) ; }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID                    SetPlayerID( PlayerID_t pid ){ m_PlayerID = pid ; } ;
     PlayerID_t                GetPlayerID( ){ return m_PlayerID ; } ;
 
@@ -52,14 +52,14 @@ public:
 
 
 private:
-    //Êı¾İ
-    PlayerID_t                m_PlayerID ;    //µ±Ç°Á¬½ÓµÄÍæ¼ÒºÅ
-    GUID_t                    m_GUID ;        //Íæ¼ÒµÄGUID
-    UINT                    m_uKey ;        //ÑéÖ¤Âë
+    //æ•°æ®
+    PlayerID_t                m_PlayerID ;    //å½“å‰è¿æ¥çš„ç©å®¶å·
+    GUID_t                    m_GUID ;        //ç©å®¶çš„GUID
+    UINT                    m_uKey ;        //éªŒè¯ç 
 
-    //²âÊÔÓÃ
+    //æµ‹è¯•ç”¨
     CHAR                    m_szAccount[MAX_ACCOUNT+1] ;
-    INT                        m_nGender;            //ĞÔ±ğ
+    INT                        m_nGender;            //æ€§åˆ«
 };
 
 

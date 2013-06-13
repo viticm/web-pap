@@ -195,7 +195,7 @@ BOOL DBAbilityList::ParseResult(VOID* pResult)
             Assert(mInterface);
             INT       ErrorCode;
         
-            //¼ÓÔØ¼¼ÄÜÊôÐÔ
+            //åŠ è½½æŠ€èƒ½å±žæ€§
             for(INT i =0;i<MAX_CHAR_ABILITY_NUM;i++)
             {    
                 if(!mInterface->Fetch())
@@ -236,7 +236,7 @@ BOOL DBAbilityList::ParseResult(VOID* pResult)
                 };
 
                 Assert(mInterface);
-                Assert(mResultCount <= 1); //Ó¦¸ÃÖ»ÓÐÒ»¸ö½á¹û
+                Assert(mResultCount <= 1); //åº”è¯¥åªæœ‰ä¸€ä¸ªç»“æžœ
                 INT ErrorCode;
                 for(INT i =0;i<1;i++)
                 {

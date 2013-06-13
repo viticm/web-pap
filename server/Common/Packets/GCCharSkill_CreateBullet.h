@@ -1,6 +1,6 @@
 // GCCharSkill_CreateBullet.h
 // 
-// ¼¼ÄÜËù²úÉúµÄ×Óµ¯
+// æŠ€èƒ½æ‰€äº§ç”Ÿçš„å­å¼¹
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
     GCCharSkill_CreateBullet( ){}
     virtual ~GCCharSkill_CreateBullet( ){}
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -31,7 +31,7 @@ public:
                                                             sizeof(WORLD_POS); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -46,10 +46,10 @@ public:
 
 private:
     ObjID_t            m_ObjID;            // ObjID
-    SkillID_t        m_SkillDataID;        // ¼¼ÄÜµÄ×ÊÔ´ID
+    SkillID_t        m_SkillDataID;        // æŠ€èƒ½çš„èµ„æºID
     //union{
-        ObjID_t        m_TargetID;            // Ä¿±ê½ÇÉ«
-        WORLD_POS    m_posTarget;        // Ä¿±ê×ø±ê
+        ObjID_t        m_TargetID;            // ç›®æ ‡è§’è‰²
+        WORLD_POS    m_posTarget;        // ç›®æ ‡åæ ‡
     //};
 };
 

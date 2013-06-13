@@ -43,13 +43,13 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     INT i ;
     BOOL bIsCanSay = TRUE ;
     BYTE bChatType = pPacket->GetChatType() ;
-    //ÏûºÄÅÐ¶Ï
+    //æ¶ˆè€—åˆ¤æ–­
     for( i=0; i<g_ChatConsumeTbl.m_ChatComsumeType[bChatType].m_ConsumeCount; i++ )
     {
         if( bIsCanSay==FALSE )
@@ -86,7 +86,7 @@ __ENTER_FUNCTION
         };
     }
 
-    if( bIsCanSay == TRUE )//µÈ¼¶ÅÐ¶Ï
+    if( bIsCanSay == TRUE )//ç­‰çº§åˆ¤æ–­
     {
         if( pHuman->GetLevel() < g_ChatConsumeTbl.m_ChatComsumeType[bChatType].m_NeedLevel )
         {
@@ -194,7 +194,7 @@ __ENTER_FUNCTION
     case CHAT_TYPE_SCENE:
     case CHAT_TYPE_SYSTEM:
         {
-            char sysNotifyMsg[MAX_CHAT_SIZE]={"ÏµÍ³:ÄãÏûºÄÁËÒ»¸öµÀ¾ß!"};
+            char sysNotifyMsg[MAX_CHAT_SIZE]={"ç³»ç»Ÿ:ä½ æ¶ˆè€—äº†ä¸€ä¸ªé“å…·!"};
             int nItemIndex=g_Config.m_ConfigInfo.m_nWorldChatItemIndex;
             int nBagIndex=INVALID_ID;
             BOOL bContiune=1;
@@ -206,7 +206,7 @@ __ENTER_FUNCTION
                 if(nBagIndex == -1)
                 {
                     memset(sysNotifyMsg,0,sizeof(sysNotifyMsg));
-                    strcpy(sysNotifyMsg,"ÏµÍ³:¶Ô²»Æð£¡,ÄãÃ»ÓÐµÀ¾ß!");
+                    strcpy(sysNotifyMsg,"ç³»ç»Ÿ:å¯¹ä¸èµ·ï¼,ä½ æ²¡æœ‰é“å…·!");
                     bContiune=0;
 
                 }
@@ -218,7 +218,7 @@ __ENTER_FUNCTION
                 if(NULL==pItem)
                 {
                     memset(sysNotifyMsg,0,sizeof(sysNotifyMsg));
-                    strcpy(sysNotifyMsg,"ÏµÍ³:¶Ô²»Æð£¡,ÄãÃ»ÓÐµÀ¾ß!");
+                    strcpy(sysNotifyMsg,"ç³»ç»Ÿ:å¯¹ä¸èµ·ï¼,ä½ æ²¡æœ‰é“å…·!");
                     bContiune=0;
                 }
 
@@ -231,7 +231,7 @@ __ENTER_FUNCTION
                     if(pItem->GetLayedNum()<1)
                     {
                         memset(sysNotifyMsg,0,sizeof(sysNotifyMsg));
-                        strcpy(sysNotifyMsg,"ÏµÍ³:¶Ô²»Æð£¡,ÄãÃ»ÓÐµÀ¾ß!");
+                        strcpy(sysNotifyMsg,"ç³»ç»Ÿ:å¯¹ä¸èµ·ï¼,ä½ æ²¡æœ‰é“å…·!");
                         bContiune=0;
 
                     }
@@ -251,7 +251,7 @@ __ENTER_FUNCTION
 
             }
         
-            //·¢ËÍÊÀ½çÆµµÀÁÄÌì
+            //å‘é€ä¸–ç•Œé¢‘é“èŠå¤©
 
             if(bContiune)
             {
@@ -265,7 +265,7 @@ __ENTER_FUNCTION
 
             }
             
-            /////ÌáÊ¾ÐÅÏ¢£»
+            /////æç¤ºä¿¡æ¯ï¼›
             ObjID_t SourID = pHuman->GetID() ;
             ObjID_t DestID = INVALID_ID ;
             GCChat* pChatPacketinfo = (GCChat*)(g_pPacketFactoryManager->CreatePacket(PACKET_GC_CHAT)) ;

@@ -164,7 +164,7 @@ VOID Obj_Character::OnEnterScene(VOID)
     __ENTER_FUNCTION
 
     Obj::OnEnterScene();
-    //¸½¼ÓĞ§¹ûÊı¾İ
+    //é™„åŠ æ•ˆæœæ•°æ®
     Impact_InitList();
     __LEAVE_FUNCTION
 }
@@ -229,15 +229,15 @@ BOOL Obj_Character::HeartBeat( UINT uTime )
             }
         }
 
-        if( m_nScriptTime>0    //ÉèÖÃÁË¶¨Ê±Æ÷Ê±¼äµÄ
-            && m_ScriptTimer.CountingTimer(uTime) //Ê±¼äµ½ÁË
+        if( m_nScriptTime>0    //è®¾ç½®äº†å®šæ—¶å™¨æ—¶é—´çš„
+            && m_ScriptTimer.CountingTimer(uTime) //æ—¶é—´åˆ°äº†
             )
         {
             OnExecuteScriptTimer( uTime ) ;
         }
     }
 
-    //¹ÖÎïµÄ¶¨Ê±ÏûÊ§
+    //æ€ªç‰©çš„å®šæ—¶æ¶ˆå¤±
     if( m_DieTime >= 0 )
     {
         INT uDelta = (INT)(GetLogicTime()) ;
@@ -266,7 +266,7 @@ BOOL Obj_Character::HeartBeat( UINT uTime )
     return FALSE ;
 }
 
-// Î´±»»÷»îµÄObjËùÖ´ĞĞµÄÂß¼­
+// æœªè¢«å‡»æ´»çš„Objæ‰€æ‰§è¡Œçš„é€»è¾‘
 BOOL Obj_Character::HeartBeat_OutZone( UINT uTime )
 {
     __ENTER_FUNCTION
@@ -301,7 +301,7 @@ __LEAVE_FUNCTION
 }
 
 ///////////////////////////////////////////////////////////
-// ¸´»îµãÏà¹Ø
+// å¤æ´»ç‚¹ç›¸å…³
 ///////////////////////////////////////////////////////////
 BOOL Obj_Character::IsCanRelive( VOID )const
 {
@@ -317,7 +317,7 @@ const Obj_Character::_RELIVE_INFO *Obj_Character::GetReliveInfo( BOOL bSkillReli
     return NULL;
 }
 
-// ÖØÖÃ¸´»îµÄĞÅÏ¢
+// é‡ç½®å¤æ´»çš„ä¿¡æ¯
 VOID Obj_Character::ResetReliveInfo( VOID )
 {
     __ENTER_FUNCTION
@@ -330,7 +330,7 @@ BOOL Obj_Character::HeartBeat_Action(UINT uTime)
 {
 __ENTER_FUNCTION
     Time_t m_nDeltaTime = GetLogicTime();
-    //¶¯×÷Ê±¼ä
+    //åŠ¨ä½œæ—¶é—´
     if(0<m_nActionTime)
     {
         m_nActionTime -= m_nDeltaTime;
@@ -345,7 +345,7 @@ BOOL Obj_Character::HeartBeat_AutoRepeatCooldown(UINT uTime)
 {
 __ENTER_FUNCTION
     Time_t m_nDeltaTime = GetLogicTime();
-    //×Ô¶¯ÖØ¸´¼¼ÄÜµÄÀäÈ´Ê±¼ä
+    //è‡ªåŠ¨é‡å¤æŠ€èƒ½çš„å†·å´æ—¶é—´
     if(0<m_nAutoRepeatCooldown)
     {
         m_nAutoRepeatCooldown -= m_nDeltaTime;
@@ -411,7 +411,7 @@ Obj* Obj_Character::GetMyMaster(VOID)
 
 VOID Obj_Character::UpdateViewCharacter(VOID)
 {
-    // ÒşÉíÊı¾İ¸Ä±ä
+    // éšèº«æ•°æ®æ”¹å˜
     if(m_nView_PrevStealthLevel != GetStealthLevel() && getZoneID() != INVALID_ID)
     {
         HUMANLIST listHuman;
@@ -441,7 +441,7 @@ VOID Obj_Character::UpdateViewCharacter(VOID)
         DestroyNewObjPacket( pNewObjPacket );
         DestroyDeleteObjPacket( pDeleteObjPacket );
 
-        // ·ÅÔÚ×îºó
+        // æ”¾åœ¨æœ€å
         m_nView_PrevStealthLevel = GetStealthLevel();
     }
 }

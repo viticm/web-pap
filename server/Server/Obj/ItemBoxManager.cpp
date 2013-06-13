@@ -12,9 +12,9 @@
 
 
 
-//Ä¬ÈÏItemBoxManager ¹ÜÀíµÄObj_ItemBox ¸öÊı
+//é»˜è®¤ItemBoxManager ç®¡ç†çš„Obj_ItemBox ä¸ªæ•°
 #define            DEFAULT_ITEMBOX_MANAGER_SIZE            512 
-//Ä¬ÈÏItemBoxManager HeartBeat ¼ä¸ô
+//é»˜è®¤ItemBoxManager HeartBeat é—´éš”
 #define            ITEMBOXMANAGER_LOGIC_INTERVAL            500
 
 
@@ -286,7 +286,7 @@ ItemBoxContaner    ItemBoxManager::CaculateItemDropFromMonster(  UINT iMonsterLe
                 {
                     CHAR ErrorMsg[255];
                     
-                    sprintf(ErrorMsg,"µôÂä°üÖĞÎïÆ·´´½¨Ê§°Ü£¬Çë¼ì²é²ß»®ÌîĞ´µÄµôÂä°üÄÚÈİ!,\
+                    sprintf(ErrorMsg,"æ‰è½åŒ…ä¸­ç‰©å“åˆ›å»ºå¤±è´¥ï¼Œè¯·æ£€æŸ¥ç­–åˆ’å¡«å†™çš„æ‰è½åŒ…å†…å®¹!,\
                             MonsterType = %d,\
                             m_ItemIndex = %d ",\
                             iMonsterType,IBContaner.m_Item[i].m_ItemIndex);

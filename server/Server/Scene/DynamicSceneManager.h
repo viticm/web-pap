@@ -38,7 +38,7 @@ struct DYNAMICSCENE_SELECT
 class DynamicSceneManager
 {
 public:
-    //³ÇÊÐÓÃ½Úµã
+    //åŸŽå¸‚ç”¨èŠ‚ç‚¹
     struct CITY_NODE_t
     {
         Scene*        m_pScene;

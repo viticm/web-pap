@@ -24,7 +24,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     ObjID_t ObjID = pHuman->GetID();
@@ -41,14 +41,14 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    // ²»Í¬ÕóÓª£¬²»ÈÃ²é¿´
+    // ä¸åŒé˜µè¥ï¼Œä¸è®©æŸ¥çœ‹
     if( pHuman->IsEnemy( pTarget ) )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGAskDetailAttribHandler: %s cann't ask %s's DetailAttr ", pHuman->GetName(), pTarget->GetName() ) ;
         return    PACKET_EXE_CONTINUE;
     }
 
-    // È¨ÏÞÅÐ¶Ï
+    // æƒé™åˆ¤æ–­
     // to be continue...
     
     if(pTarget->GetObjType() == Obj::OBJ_TYPE_HUMAN)
@@ -66,7 +66,7 @@ __ENTER_FUNCTION
     }
     else if(pTarget->GetObjType() == Obj::OBJ_TYPE_PET)
     {
-        // ³èÎï²»Í¨¹ý´Ë·½·¨µÃÏêÏ¸ÊôÐÔ
+        // å® ç‰©ä¸é€šè¿‡æ­¤æ–¹æ³•å¾—è¯¦ç»†å±žæ€§
         g_pLog->FastSaveLog( LOG_FILE_1, "CGAskDetailAttribHandler: Not Implement Obj_Pet Target obj=%d", ObjID ) ;
         return    PACKET_EXE_CONTINUE;
     }

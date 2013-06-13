@@ -9,27 +9,27 @@
 #include "IDTable.h"
 
 
-//¹ÜÀíÒ»ÈºÍæ¼Ò¹¦ÄÜµÄ»ù±¾Ä£¿é,Ò»°ãÎªÃ¿¸ö³¡¾°´´½¨Ò»¸öPlayerManager
-//²¢ÇÒÔÚÒ»¸ö¶ÀÁ¢µÄÏß³ÌÄÚÖ´ĞĞ
+//ç®¡ç†ä¸€ç¾¤ç©å®¶åŠŸèƒ½çš„åŸºæœ¬æ¨¡å—,ä¸€èˆ¬ä¸ºæ¯ä¸ªåœºæ™¯åˆ›å»ºä¸€ä¸ªPlayerManager
+//å¹¶ä¸”åœ¨ä¸€ä¸ªç‹¬ç«‹çš„çº¿ç¨‹å†…æ‰§è¡Œ
 class PlayerManager
 {
 public :
     PlayerManager( ) ;
     ~PlayerManager( ) ;
 
-    //Çå³ıµ±Ç°Ä£¿éÄÚµÄÊı¾İĞÅÏ¢
+    //æ¸…é™¤å½“å‰æ¨¡å—å†…çš„æ•°æ®ä¿¡æ¯
     VOID                CleanUp( ) ;
 
-    //Âß¼­½Ó¿Ú
+    //é€»è¾‘æ¥å£
     virtual BOOL        HeartBeat( UINT uTime=0 ) ;
 
-    //Ôö¼ÓÒ»¸öÍæ¼Ò
+    //å¢åŠ ä¸€ä¸ªç©å®¶
     BOOL                AddPlayer( Player* pPlayer ) ;
-    //É¾³ıÒ»¸öÍæ¼Ò
+    //åˆ é™¤ä¸€ä¸ªç©å®¶
 //    VOID                RemovePlayer( SOCKET fd ) ;
     VOID                RemovePlayer( PlayerID_t pid ) ;
 
-    //¸ù¾İÍøÂç¾ä±úºÅÈ¡µÃÍæ¼ÒÖ¸Õë
+    //æ ¹æ®ç½‘ç»œå¥æŸ„å·å–å¾—ç©å®¶æŒ‡é’ˆ
 //    Player*                GetPlayer( SOCKET fd ) ;
 
     PlayerID_t*            GetPlayers( ){ return m_pPlayers ; } ;
@@ -39,14 +39,14 @@ public :
 
 
 
-    BOOL                AddPlayer( PlayerID_t pid ) ;        //Î´Ìá¹©¹¦ÄÜ½Ó¿Ú
+    BOOL                AddPlayer( PlayerID_t pid ) ;        //æœªæä¾›åŠŸèƒ½æ¥å£
 
 protected :
     //
     PlayerID_t    m_pPlayers[MAX_PLAYER] ;
     UINT        m_nPlayers ;
 
-    //ÓÃÓÚ±£´æÍøÂç¾ä±úºÅºÍÍæ¼ÒPlayerÊı¾İÖ¸ÕëµÄ¹şÏ£±í
+    //ç”¨äºä¿å­˜ç½‘ç»œå¥æŸ„å·å’Œç©å®¶Playeræ•°æ®æŒ‡é’ˆçš„å“ˆå¸Œè¡¨
 //    IDTable        m_SockTable ;
 
 

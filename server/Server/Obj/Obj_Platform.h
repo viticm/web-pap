@@ -7,9 +7,9 @@
 
 struct _OBJ_PLATFORM_INIT :    public _OBJ_STATIC_INIT
 {
-    INT                    m_Class;            //²Ù×÷Ì¨ÀàĞÍ
+    INT                    m_Class;            //æ“ä½œå°ç±»å‹
     INT                    m_Type;
-    ScriptID_t            m_Script;            //½Å±¾ ID
+    ScriptID_t            m_Script;            //è„šæœ¬ ID
 
     _OBJ_PLATFORM_INIT( VOID )
     {
@@ -54,7 +54,7 @@ public :
 
 private:
     INT                    m_PlatformClass;
-    BYTE                m_type;                //²Ù×÷Ì¨µÄ¾ßÌåÑùÊ½£¨ÅäÖÃ±íÖĞµÄ±àºÅ£©
+    BYTE                m_type;                //æ“ä½œå°çš„å…·ä½“æ ·å¼ï¼ˆé…ç½®è¡¨ä¸­çš„ç¼–å·ï¼‰
     ScriptID_t            m_Script;
 };
 

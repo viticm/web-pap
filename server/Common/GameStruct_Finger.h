@@ -11,44 +11,44 @@ class SocketOutputStream;
 enum FINGER_REQUEST_TYPE
 {
     FREQ_NONE                            = 0,
-    FREQ_GUID,                                                // GUID ²éÕÒÍæ¼Ò
-    FREQ_NAME,                                                // êÇ³Æ²éÕÒ
-    FREQ_ADVANCED,                                            // ¸ß¼¶²éÕÒ
+    FREQ_GUID,                                                // GUID æŸ¥æ‰¾ç©å®¶
+    FREQ_NAME,                                                // æ˜µç§°æŸ¥æ‰¾
+    FREQ_ADVANCED,                                            // é«˜çº§æŸ¥æ‰¾
 };
 
 enum FINGER_RETURN_TYPE
 {
     FRET_NONE                            = 0,
-    FRET_PLAYERLIST,                                        // ¶ş¼¶ÃÜÂëÇ¿ÖÆ½â³ı³É¹¦
+    FRET_PLAYERLIST,                                        // äºŒçº§å¯†ç å¼ºåˆ¶è§£é™¤æˆåŠŸ
 
     FRET_ERR_START,
-    FRET_ERR_NORESULT,                                        // Ã»ÓĞÈÎºÎÆ¥Åä½á¹û
+    FRET_ERR_NORESULT,                                        // æ²¡æœ‰ä»»ä½•åŒ¹é…ç»“æœ
 };
 
 enum ADVANCED_FINGER_TYPE
 {
     AFT_INVALID                            = -1,
-    AFT_MENPAI,                                                // Í¨¹ıÃÅÅÉ²éÑ¯
-    AFT_GUILD,                                                // Í¨¹ı°ï»á²éÑ¯
-    AFT_SEX,                                                // Í¨¹ıĞÔ±ğ²éÑ¯
-    AFT_LEVEL,                                                // Í¨¹ı¼¶±ğ²éÑ¯
+    AFT_MENPAI,                                                // é€šè¿‡é—¨æ´¾æŸ¥è¯¢
+    AFT_GUILD,                                                // é€šè¿‡å¸®ä¼šæŸ¥è¯¢
+    AFT_SEX,                                                // é€šè¿‡æ€§åˆ«æŸ¥è¯¢
+    AFT_LEVEL,                                                // é€šè¿‡çº§åˆ«æŸ¥è¯¢
     AFT_NUMBER,
 };
 
 // FREQ_GUID
 struct FINGER_BY_GUID
 {
-    //Êı¾İ
-    GUID_t                                m_TargetGUID;        // Ä³Íæ¼ÒµÄ GUID
-    UCHAR                                m_uOnlineFlag;        // ÊÇ·ñÔÚÏß
+    //æ•°æ®
+    GUID_t                                m_TargetGUID;        // æŸç©å®¶çš„ GUID
+    UCHAR                                m_uOnlineFlag;        // æ˜¯å¦åœ¨çº¿
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetTargetGUID( ) { return m_TargetGUID; }
     VOID                                SetTargetGUID( GUID_t guid ) { m_TargetGUID = guid; }
 
@@ -59,20 +59,20 @@ struct FINGER_BY_GUID
 // FREQ_NAME
 struct FINGER_BY_NAME
 {
-    //Êı¾İ
+    //æ•°æ®
     UCHAR                                m_uNameSize;
     CHAR                                m_szTargetName[MAX_CHARACTER_NAME];
-    UCHAR                                m_uOnlineFlag;        // ÊÇ·ñÔÚÏß
-    UCHAR                                m_uPreciseFlag;        // ÊÇ·ñ¾«È·²éÕÒ
-    UINT                                m_uPosition;        // µ±Ç°ËÑË÷Î»ÖÃ
+    UCHAR                                m_uOnlineFlag;        // æ˜¯å¦åœ¨çº¿
+    UCHAR                                m_uPreciseFlag;        // æ˜¯å¦ç²¾ç¡®æŸ¥æ‰¾
+    UINT                                m_uPosition;        // å½“å‰æœç´¢ä½ç½®
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     VOID                                SetTargetName( const CHAR* pName )
     {
         strncpy( m_szTargetName, pName, sizeof(m_szTargetName)-1 );
@@ -93,22 +93,22 @@ struct FINGER_BY_NAME
 // FREQ_ADVANCED
 struct ADVANCED_FINGER
 {
-    //Êı¾İ
-    UCHAR                                m_Flags;            // Ã¿¸öÎ»±íÊ¾ÒÔÏÂÌõ¼şÊÇ·ñÅĞ¶Ï ADVANCED_FINGER_TYPE
-    UINT                                m_uPosition;        // µ±Ç°ËÑË÷Î»ÖÃ
-    INT                                    m_nMenPai;            // ÃÅÅÉ MENPAI_ATTRIBUTE
-    GuildID_t                            m_GuildID;            // °ï»áID
-    CHAR                                m_Sex;                // ĞÔ±ğ
-    INT                                    m_nBottomLevel;        // µÈ¼¶·¶Î§
-    INT                                    m_nTopLevel;        // µÈ¼¶·¶Î§
+    //æ•°æ®
+    UCHAR                                m_Flags;            // æ¯ä¸ªä½è¡¨ç¤ºä»¥ä¸‹æ¡ä»¶æ˜¯å¦åˆ¤æ–­ ADVANCED_FINGER_TYPE
+    UINT                                m_uPosition;        // å½“å‰æœç´¢ä½ç½®
+    INT                                    m_nMenPai;            // é—¨æ´¾ MENPAI_ATTRIBUTE
+    GuildID_t                            m_GuildID;            // å¸®ä¼šID
+    CHAR                                m_Sex;                // æ€§åˆ«
+    INT                                    m_nBottomLevel;        // ç­‰çº§èŒƒå›´
+    INT                                    m_nTopLevel;        // ç­‰çº§èŒƒå›´
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     VOID                                SetFingerCondition( ADVANCED_FINGER_TYPE eType, BOOL bFlag )
     {
         if ( bFlag )                    { m_Flags |= (1<<(INT)eType); }
@@ -189,43 +189,43 @@ struct CG_FINGER
 
 struct GW_FINGER : public CG_FINGER
 {
-    //Êı¾İ
-    GUID_t                                m_GUID;                // ×Ô¼ºµÄ GUID
+    //æ•°æ®
+    GUID_t                                m_GUID;                // è‡ªå·±çš„ GUID
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetGUID( ) { return m_GUID; }
     VOID                                SetGUID( GUID_t guid ) { m_GUID = guid; }
 };
 
 /////////////////////////////////////////////////////////////////////////////////
 
-// êÇ³Æ + GUID + OnlineFlag + Level + Sex + MenpaiID + GuildID + Í·Ïñ
+// æ˜µç§° + GUID + OnlineFlag + Level + Sex + MenpaiID + GuildID + å¤´åƒ
 struct FINGER_PLAYER_INFO
 {
-    //Êı¾İ
+    //æ•°æ®
     GUID_t                                m_GUID;                                // GUID
     UCHAR                                m_uNameSize;
-    CHAR                                m_szName[MAX_CHARACTER_NAME];        // Ãû×Ö
-    UCHAR                                m_uOnlineFlag;                        // ÊÇ·ñÔÚÏß
-    INT                                    m_nLevel;                            // ½ÇÉ«µÈ¼¶
-    CHAR                                m_Sex;                                // ĞÔ±ğ
-    INT                                    m_nMenPai;                            // ÃÅÅÉ MENPAI_ATTRIBUTE
-    GuildID_t                            m_GuildID;                            // °ï»áID£¨ÓÃÓÚ·¢¸ø·şÎñ¶Ë£©
+    CHAR                                m_szName[MAX_CHARACTER_NAME];        // åå­—
+    UCHAR                                m_uOnlineFlag;                        // æ˜¯å¦åœ¨çº¿
+    INT                                    m_nLevel;                            // è§’è‰²ç­‰çº§
+    CHAR                                m_Sex;                                // æ€§åˆ«
+    INT                                    m_nMenPai;                            // é—¨æ´¾ MENPAI_ATTRIBUTE
+    GuildID_t                            m_GuildID;                            // å¸®ä¼šIDï¼ˆç”¨äºå‘ç»™æœåŠ¡ç«¯ï¼‰
     UCHAR                                m_uGuildNameSize;                    // 
-    CHAR                                m_szGuildName[MAX_GUILD_NAME_SIZE];    // °ï»áÃû³Æ£¨ÓÃÓÚ Server ·¢¸ø¿Í»§¶Ë£©
-    INT                                    m_nPortrait;                        // Í·Ïñ
+    CHAR                                m_szGuildName[MAX_GUILD_NAME_SIZE];    // å¸®ä¼šåç§°ï¼ˆç”¨äº Server å‘ç»™å®¢æˆ·ç«¯ï¼‰
+    INT                                    m_nPortrait;                        // å¤´åƒ
 
     VOID                                CleanUp();
     UINT                                GetSize() const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     GUID_t                                GetGUID( ) { return m_GUID; }
     VOID                                SetGUID( GUID_t guid ) { m_GUID = guid; }
 
@@ -267,19 +267,19 @@ struct FINGER_PLAYER_INFO
 // FRET_PLAYERLIST
 struct RETURN_FINGER_PLAYERLIST
 {
-    //Êı¾İ
+    //æ•°æ®
     UCHAR                                m_uPlayerCount;
     FINGER_PLAYER_INFO                    m_FingerPlayerInfo[FINGER_PLAYER_COUNT];
-    // ÒÔÏÂÊı¾İÎªÁË¼ÇÂ¼Íæ¼ÒµÄËÑË÷×´Ì¬£¬ÒÔÊµÏÖ <ÏÂÒ»Ò³> ¹¦ÄÜ
-    UCHAR                                m_FingerFlag;                    // ÊÇ·ñ²éÕÒ¹ıÈ«²¿·¶Î§(Ã»ÓĞÏÂÒ»Ò³)
-    UINT                                m_uPosition;                    // µ±Ç°ËÑË÷Î»ÖÃ
+    // ä»¥ä¸‹æ•°æ®ä¸ºäº†è®°å½•ç©å®¶çš„æœç´¢çŠ¶æ€ï¼Œä»¥å®ç° <ä¸‹ä¸€é¡µ> åŠŸèƒ½
+    UCHAR                                m_FingerFlag;                    // æ˜¯å¦æŸ¥æ‰¾è¿‡å…¨éƒ¨èŒƒå›´(æ²¡æœ‰ä¸‹ä¸€é¡µ)
+    UINT                                m_uPosition;                    // å½“å‰æœç´¢ä½ç½®
 
     VOID                                CleanUp();
     UINT                                GetSize() const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     UCHAR                                GetPlayerCount( ) { return m_uPlayerCount; }
 
     FINGER_PLAYER_INFO*                    GetPlayerInfo( INT idx )
@@ -293,11 +293,11 @@ struct RETURN_FINGER_PLAYERLIST
         return &(m_FingerPlayerInfo[m_uPlayerCount-1]);
     }
 
-    // ÉèÖÃ·½·¨
-    // 1. World ÉèÖÃÊı¾İ
+    // è®¾ç½®æ–¹æ³•
+    // 1. World è®¾ç½®æ•°æ®
     VOID                                AddPlayerInfo( const USER_SIMPLE_DATA* pPlayerInfo );
 
-    // 2. World ·¢µ½ Server ºó£¬Server ¿ÉÒÔÖ±½Óµ÷ÓÃÕâ¸öº¯ÊıÑ­»·¸³Öµ
+    // 2. World å‘åˆ° Server åï¼ŒServer å¯ä»¥ç›´æ¥è°ƒç”¨è¿™ä¸ªå‡½æ•°å¾ªç¯èµ‹å€¼
     VOID                                AddPlayerInfo( const FINGER_PLAYER_INFO* pPlayerInfo )
     {
         Assert( pPlayerInfo && m_uPlayerCount < FINGER_PLAYER_COUNT );
@@ -329,15 +329,15 @@ struct GC_FINGER
 
 struct WG_FINGER : public GC_FINGER
 {
-    //Êı¾İ
-    PlayerID_t                            m_PlayerID;            // ±¾ÈËµÄ PlayerID
+    //æ•°æ®
+    PlayerID_t                            m_PlayerID;            // æœ¬äººçš„ PlayerID
 
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êı¾İÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æ¥å£
     PlayerID_t                            GetPlayerID( ) { return m_PlayerID; }
     VOID                                SetPlayerID( PlayerID_t pid ) { m_PlayerID = pid; }
 };

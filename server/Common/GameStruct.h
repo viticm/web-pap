@@ -9,7 +9,7 @@
 
 //#pragma pack(push, 1)
 
-//ÓÃÀ´¶¨ÒåÔÚÊÀ½çµÄ¸¡µãÎ»ÖÃ
+//ç”¨æ¥å®šä¹‰åœ¨ä¸–ç•Œçš„æµ®ç‚¹ä½ç½®
 struct WORLD_POS
 {
     //enum
@@ -75,7 +75,7 @@ struct WORLD_POS
     }
 };
 
-//ÓÃÀ´¶¨ÒåÔÚÊÀ½çµÄÍø¸ñÎ»ÖÃ
+//ç”¨æ¥å®šä¹‰åœ¨ä¸–ç•Œçš„ç½‘æ ¼ä½ç½®
 struct MAP_POS
 {
     Coord_t     m_nX ;
@@ -92,12 +92,12 @@ struct MAP_POS
 
 
 
-//Ğ§¹û×´Ì¬
+//æ•ˆæœçŠ¶æ€
 struct _EFFECT
 {
     BOOL                m_bActive ;
-    INT                    m_Value ;    //Ğ§¹ûÖµ
-    INT                    m_Time ;    //Ğ§¹ûÊ±¼ä
+    INT                    m_Value ;    //æ•ˆæœå€¼
+    INT                    m_Time ;    //æ•ˆæœæ—¶é—´
 
     _EFFECT( )
     {
@@ -114,7 +114,7 @@ struct _EFFECT
     VOID                SetActive( BOOL bActive ){ m_bActive = bActive ; } ;
 };
 
-//¹ÖÎïÉú³ÉÆ÷³õÊ¼»¯Êı¾İ
+//æ€ªç‰©ç”Ÿæˆå™¨åˆå§‹åŒ–æ•°æ®
 struct _MONSTERCREATER_INIT
 {
     CHAR                m_FileName[_MAX_PATH] ;
@@ -122,39 +122,39 @@ struct _MONSTERCREATER_INIT
 };
 
 
-#define            DEFAULT_ITEMBOX_RECYCLE_TIME    300000        //300Ãë£¬5·ÖÖÓ
+#define            DEFAULT_ITEMBOX_RECYCLE_TIME    300000        //300ç§’ï¼Œ5åˆ†é’Ÿ
 
 
 
-//×°±¸¶¨Òå
+//è£…å¤‡å®šä¹‰
 struct EQUIP_LIST
 {
-    GUID_t    m_GUID;            //×°±¸ÀàĞÍID
-    UINT    m_uParam1;        //×°±¸ÊôĞÔ1
-    UINT    m_uParam2;        //×°±¸ÊôĞÔ2
+    GUID_t    m_GUID;            //è£…å¤‡ç±»å‹ID
+    UINT    m_uParam1;        //è£…å¤‡å±æ€§1
+    UINT    m_uParam2;        //è£…å¤‡å±æ€§2
 };
-#define EQUIP_PLAYER_FIXNUM        (8)        //Íæ¼ÒÉíÉÏ×î¶à¿ÉÅå´÷µÄ×°±¸Êı
+#define EQUIP_PLAYER_FIXNUM        (8)        //ç©å®¶èº«ä¸Šæœ€å¤šå¯ä½©æˆ´çš„è£…å¤‡æ•°
 
-//ÊÎÆ·¶¨Òå
+//é¥°å“å®šä¹‰
 struct EMBELLISH_LIST
 {
-    GUID_t    m_GUID;            //ÊÎÆ·ÀàĞÍID
-    UINT    m_uParam1;        //ÊÎÆ·ÊôĞÔ1
-    UINT    m_uParam2;        //ÊÎÆ·ÊôĞÔ2
+    GUID_t    m_GUID;            //é¥°å“ç±»å‹ID
+    UINT    m_uParam1;        //é¥°å“å±æ€§1
+    UINT    m_uParam2;        //é¥°å“å±æ€§2
 };
-#define EMBELLISH_PLAYER_FIXNUM        (6)        //Íæ¼ÒÉíÉÏ×î¶à¿ÉÅå´÷µÄÊÎÆ·Êı
+#define EMBELLISH_PLAYER_FIXNUM        (6)        //ç©å®¶èº«ä¸Šæœ€å¤šå¯ä½©æˆ´çš„é¥°å“æ•°
 
 
-//Íæ¼Ò»ù±¾ĞòÁĞ»¯ĞÅÏ¢
+//ç©å®¶åŸºæœ¬åºåˆ—åŒ–ä¿¡æ¯
 struct PLAYER_OWN
 {
-    GUID_t    m_nGUID;                        //Íæ¼ÒÍêÈ«Î¨Ò»ID
-    CHAR      m_szName[MAX_CHARACTER_NAME];    //Íæ¼ÒĞÕÃû
+    GUID_t    m_nGUID;                        //ç©å®¶å®Œå…¨å”¯ä¸€ID
+    CHAR      m_szName[MAX_CHARACTER_NAME];    //ç©å®¶å§“å
     
-    Coord_t   m_nX;                        //Íæ¼ÒÎ»ÖÃX
-    Coord_t   m_nZ;                        //Íæ¼ÒÎ»ÖÃZ
+    Coord_t   m_nX;                        //ç©å®¶ä½ç½®X
+    Coord_t   m_nZ;                        //ç©å®¶ä½ç½®Z
 
-    FLOAT     m_fDir;                        //Íæ¼ÒÃæ³¯µÄ·½Ïò£¨·¶Î§£º0~1.0£©
+    FLOAT     m_fDir;                        //ç©å®¶é¢æœçš„æ–¹å‘ï¼ˆèŒƒå›´ï¼š0~1.0ï¼‰
                                         //
                                         //       0.25 
                                         //    \   |   /
@@ -176,13 +176,13 @@ struct PLAYER_OWN
 
 struct PLAYER_S
 {
-    GUID_t    m_nGUID;                        //Íæ¼ÒÍêÈ«Î¨Ò»ID
-    CHAR      m_szName[MAX_CHARACTER_NAME];    //Íæ¼ÒĞÕÃû
+    GUID_t    m_nGUID;                        //ç©å®¶å®Œå…¨å”¯ä¸€ID
+    CHAR      m_szName[MAX_CHARACTER_NAME];    //ç©å®¶å§“å
     
-    Coord_t   m_nX;                        //Íæ¼ÒÎ»ÖÃX
-    Coord_t   m_nZ;                        //Íæ¼ÒÎ»ÖÃZ
+    Coord_t   m_nX;                        //ç©å®¶ä½ç½®X
+    Coord_t   m_nZ;                        //ç©å®¶ä½ç½®Z
 
-    FLOAT     m_fDir;                        //Íæ¼ÒÃæ³¯µÄ·½Ïò£¨·¶Î§£º0~1.0£©
+    FLOAT     m_fDir;                        //ç©å®¶é¢æœçš„æ–¹å‘ï¼ˆèŒƒå›´ï¼š0~1.0ï¼‰
                                         //
                                         //       0.25 
                                         //    \   |   /
@@ -226,7 +226,7 @@ struct VRECT
     }
 };
 
-//Ò»¼¶Õ½¶·ÊôĞÔ½á¹¹
+//ä¸€çº§æˆ˜æ–—å±æ€§ç»“æ„
 struct _ATTR_LEVEL1
 {
     INT        m_pAttr[CATTR_LEVEL1_NUMBER] ;
@@ -249,7 +249,7 @@ struct _ATTR_LEVEL1
     } ;
 };
 
-//¶ş¼¶Õ½¶·ÊôĞÔ½á¹¹
+//äºŒçº§æˆ˜æ–—å±æ€§ç»“æ„
 struct _ATTR_LEVEL2
 {
     INT        m_pAttr[CATTR_LEVEL2_NUMBER] ;
@@ -268,8 +268,8 @@ struct _ATTR_LEVEL2
     } ;
 };
 
-//½ÇÉ«ËùÓµÓĞµÄ³ÆºÅ
-//#¿ªÍ·µÄ×Ö·û´®´ú±íÊÇÒ»¸ö×Ö·û´®×ÊÔ´ID,±ØĞëÍ¨¹ı±í¸ñË÷Òı£¬·şÎñÆ÷²»ÓÃ±£ÁôÕâ¸ö±í¸ñ
+//è§’è‰²æ‰€æ‹¥æœ‰çš„ç§°å·
+//#å¼€å¤´çš„å­—ç¬¦ä¸²ä»£è¡¨æ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²èµ„æºID,å¿…é¡»é€šè¿‡è¡¨æ ¼ç´¢å¼•ï¼ŒæœåŠ¡å™¨ä¸ç”¨ä¿ç•™è¿™ä¸ªè¡¨æ ¼
 #define IDTOSTRING(str, strid, strsize)    char str[strsize];\
                                         memset(str, 0, strsize);\
                                         sprintf(str, "#%d", strid);\
@@ -280,7 +280,7 @@ struct _ATTR_LEVEL2
 struct _TITLE
 {
     enum
-    {//±êÊ¾µ±Ç°title
+    {//æ ‡ç¤ºå½“å‰title
         NO_TITLE = 0,
         LEVEL_TITLE,
         LIFE_TITLE,
@@ -317,14 +317,14 @@ struct _TITLE
     BYTE                m_KillBossTitle;
     BYTE                m_TreasureTitle;
     SHORT                m_aDyTitle[MAX_DYNAMIC_TITLE_SIZE];
-    CHAR                m_szNick[MAX_NICK_NAME];        //½ÇÉ«êÇ³Æ
-    CHAR                m_szSpouse[MAX_NICK_NAME];        //ÅäÅ¼Ãû³Æ
-    CHAR                m_szBangPai[MAX_NICK_NAME];        //°ïÅÉÃû³Æ
-    CHAR                m_szJieBai[MAX_NICK_NAME];        //½á°İÃû³Æ
-    CHAR                m_szShiTu[MAX_NICK_NAME];        //Ê¦Í½³ÆºÅ
-    CHAR                m_szShangDian[MAX_NICK_NAME];    //ÉÌµê³ÆºÅ
+    CHAR                m_szNick[MAX_NICK_NAME];        //è§’è‰²æ˜µç§°
+    CHAR                m_szSpouse[MAX_NICK_NAME];        //é…å¶åç§°
+    CHAR                m_szBangPai[MAX_NICK_NAME];        //å¸®æ´¾åç§°
+    CHAR                m_szJieBai[MAX_NICK_NAME];        //ç»“æ‹œåç§°
+    CHAR                m_szShiTu[MAX_NICK_NAME];        //å¸ˆå¾’ç§°å·
+    CHAR                m_szShangDian[MAX_NICK_NAME];    //å•†åº—ç§°å·
 
-    BYTE                m_CurTitle;                        //µ±Ç°³ÆºÅÀàĞÍ
+    BYTE                m_CurTitle;                        //å½“å‰ç§°å·ç±»å‹
 
     VOID    CleanUp()
     {
@@ -334,10 +334,10 @@ struct _TITLE
 
 struct    ITEM_PICK_CTL
 {
-    ObjID_t                OwnerID;            //×îÖÕµÄÊ°È¡ÕßID
-    UINT                uBetTime;            //ÏµÍ³¶Ä²©Ê±¼ä
-    UCHAR                uMaxBetPoint;        //×î´óBetµãÊı
-    PICK_RULER            ePickRuler;            //ÏµÍ³¿ØÖÆ·ûºÅ
+    ObjID_t                OwnerID;            //æœ€ç»ˆçš„æ‹¾å–è€…ID
+    UINT                uBetTime;            //ç³»ç»ŸèµŒåšæ—¶é—´
+    UCHAR                uMaxBetPoint;        //æœ€å¤§Betç‚¹æ•°
+    PICK_RULER            ePickRuler;            //ç³»ç»Ÿæ§åˆ¶ç¬¦å·
 
 
     ITEM_PICK_CTL()
@@ -347,9 +347,9 @@ struct    ITEM_PICK_CTL
 
     VOID    CleanUp()
     {
-        OwnerID            =    INVALID_ID;        //ÎŞËùÓĞÕß
-        ePickRuler        =    IPR_FREE_PICK;    //×ÔÓÉÊ°È¡
-        uBetTime        =    0;                //¿ÉÒÔÊ°È¡
+        OwnerID            =    INVALID_ID;        //æ— æ‰€æœ‰è€…
+        ePickRuler        =    IPR_FREE_PICK;    //è‡ªç”±æ‹¾å–
+        uBetTime        =    0;                //å¯ä»¥æ‹¾å–
         uMaxBetPoint    =    0;
     }
 };
@@ -359,7 +359,7 @@ typedef    ITEM_PICK_CTL    IPC;
 #define MAX_PICKER_COUNT    6
 
 
-//¶ÓÎéÄÜ²ÎÓëÊ°È¡µÄÈËÔ±ÁĞ±í
+//é˜Ÿä¼èƒ½å‚ä¸æ‹¾å–çš„äººå‘˜åˆ—è¡¨
 struct TEAM_PICKER
 {
     UINT        m_uCount;
@@ -388,11 +388,11 @@ struct TEAM_PICKER
 
 
 
-//×î´óÉËº¦¼ÍÂ¼
+//æœ€å¤§ä¼¤å®³çºªå½•
 #define        MAX_DAMAGE_REC_COUNT    10
 
 
-//ÉËº¦¼ÍÂ¼
+//ä¼¤å®³çºªå½•
 struct DAMAGE_RECORD
 {
     ObjID_t        m_Killer;
@@ -413,7 +413,7 @@ struct DAMAGE_RECORD
 
 
 
-//ÉËº¦¶ÓÁĞ
+//ä¼¤å®³é˜Ÿåˆ—
 struct DAMAGE_MEM_LIST
 {
     UINT                m_uCount;
@@ -488,9 +488,9 @@ struct DAMAGE_MEM_LIST
 
 struct _OWN_ABILITY 
 {
-    // AbilityID_t    m_Ability_ID; ²»ĞèÒª ID£¬Ë÷Òı¾ÍÊÇ ID
-    WORD        m_Level; // ¼¼ÄÜµÈ¼¶
-    WORD        m_Exp; // ¼¼ÄÜÊìÁ·¶È
+    // AbilityID_t    m_Ability_ID; ä¸éœ€è¦ IDï¼Œç´¢å¼•å°±æ˜¯ ID
+    WORD        m_Level; // æŠ€èƒ½ç­‰çº§
+    WORD        m_Exp; // æŠ€èƒ½ç†Ÿç»ƒåº¦
 };
 
 
@@ -560,17 +560,17 @@ struct RELATION_MEMBER
 {
     GUID_t            m_MemberGUID ;
     CHAR            m_szMemberName[MAX_CHARACTER_NAME] ;
-    INT                m_nLevel;                            //½ÇÉ«µÈ¼¶
-    INT                m_nMenPai;                            //ÃÅÅÉ MENPAI_ATTRIBUTE
-    INT                m_nPortrait;                        // Í·Ïñ
-    GuildID_t        m_GuildID;                            //°ï»áID
+    INT                m_nLevel;                            //è§’è‰²ç­‰çº§
+    INT                m_nMenPai;                            //é—¨æ´¾ MENPAI_ATTRIBUTE
+    INT                m_nPortrait;                        // å¤´åƒ
+    GuildID_t        m_GuildID;                            //å¸®ä¼šID
     
     struct ReMember_ExtData
     {
-        INT            m_nLevel;                            //½ÇÉ«µÈ¼¶
-        INT            m_nMenPai;                            //ÃÅÅÉ MENPAI_ATTRIBUTE
-        INT            m_nPortrait;                        //Í·Ïñ
-        GuildID_t    m_GuildID;                            //°ï»áID
+        INT            m_nLevel;                            //è§’è‰²ç­‰çº§
+        INT            m_nMenPai;                            //é—¨æ´¾ MENPAI_ATTRIBUTE
+        INT            m_nPortrait;                        //å¤´åƒ
+        GuildID_t    m_GuildID;                            //å¸®ä¼šID
     };
 
     RELATION_MEMBER( )
@@ -610,8 +610,8 @@ struct RELATION_MEMBER
 
 struct MarriageInfo
 {
-    GUID_t        m_SpouseGUID;                                // ÅäÅ¼µÄ GUID
-//    UINT        m_uWeddingTime;                                // »éÀñÊ±¼ä
+    GUID_t        m_SpouseGUID;                                // é…å¶çš„ GUID
+//    UINT        m_uWeddingTime;                                // å©šç¤¼æ—¶é—´
 
     MarriageInfo()
     {
@@ -626,11 +626,11 @@ struct MarriageInfo
 
 struct PrenticeInfo
 {
-//    UINT        m_uRecruitingTime;                            // ÊÕÍ½Ê±¼ä
-    time_t        m_BetrayingTime;                            // ×îºóÒ»´ÎÅÑÊ¦Ê±¼ä
-    UINT        m_uMoralPoint;                                // Ê¦µÂµã
-    UCHAR        m_uPrenticeCount;                            // Í½µÜÊıÁ¿
-    GUID_t        m_PrenticeGUID[MAX_PRENTICE_COUNT];            // Í½µÜµÄ GUID
+//    UINT        m_uRecruitingTime;                            // æ”¶å¾’æ—¶é—´
+    time_t        m_BetrayingTime;                            // æœ€åä¸€æ¬¡å›å¸ˆæ—¶é—´
+    UINT        m_uMoralPoint;                                // å¸ˆå¾·ç‚¹
+    UCHAR        m_uPrenticeCount;                            // å¾’å¼Ÿæ•°é‡
+    GUID_t        m_PrenticeGUID[MAX_PRENTICE_COUNT];            // å¾’å¼Ÿçš„ GUID
 
     PrenticeInfo()
     {
@@ -653,10 +653,10 @@ struct PrenticeInfo
 
 struct MasterInfo
 {
-    GUID_t        m_MasterGUID;                                // Ê¦¸µµÄ GUID
-//    UINT        m_uApprenticingTime;                        // °İÊ¦Ê±¼ä
-//    UINT        m_uBetrayingTime;                            // ÉÏ´ÎÅÑÊ¦Ê±¼ä
-//    UINT        m_uBetrayTimes;                                // ÅÑÊ¦´ÎÊı
+    GUID_t        m_MasterGUID;                                // å¸ˆå‚…çš„ GUID
+//    UINT        m_uApprenticingTime;                        // æ‹œå¸ˆæ—¶é—´
+//    UINT        m_uBetrayingTime;                            // ä¸Šæ¬¡å›å¸ˆæ—¶é—´
+//    UINT        m_uBetrayTimes;                                // å›å¸ˆæ¬¡æ•°
 
     MasterInfo()
     {
@@ -672,7 +672,7 @@ struct MasterInfo
 
 class SocketOutputStream ;
 class SocketInputStream ;
-//ÓÊ¼ş
+//é‚®ä»¶
 struct MAIL
 {
 
@@ -680,15 +680,15 @@ struct MAIL
 
     struct MailInfo
     {
-        GUID_t        m_GUID;                                // ·¢ĞÅÈË GUID
+        GUID_t        m_GUID;                                // å‘ä¿¡äºº GUID
         BYTE        m_SourSize ;
-        INT            m_nPortrait;                        // ·¢ĞÅÈËÍ·Ïñ
+        INT            m_nPortrait;                        // å‘ä¿¡äººå¤´åƒ
         BYTE        m_DestSize ;
         WORD        m_ContexSize ;
-        UINT        m_uFlag ;                            //ÓÊ¼ş±êÖ¾ enum MAIL_TYPE
-        time_t        m_uCreateTime ;                        //ÓÊ¼ş´´½¨Ê±¼ä
+        UINT        m_uFlag ;                            //é‚®ä»¶æ ‡å¿— enum MAIL_TYPE
+        time_t        m_uCreateTime ;                        //é‚®ä»¶åˆ›å»ºæ—¶é—´
         CampID_t    m_Camp;
-        //Ö´ĞĞÓÊ¼şÓ¦ÓÃ²ÎÊı
+        //æ‰§è¡Œé‚®ä»¶åº”ç”¨å‚æ•°
         UINT        m_uParam0 ;
         UINT        m_uParam1 ;
         UINT        m_uParam2 ;
@@ -726,24 +726,24 @@ struct MAIL
         m_uParam3        =     mInfo.m_uParam3;
         m_Camp            =    mInfo.m_Camp;
     }
-    GUID_t        m_GUID;                                // ·¢ĞÅÈË GUID
+    GUID_t        m_GUID;                                // å‘ä¿¡äºº GUID
     BYTE        m_SourSize ;
-    CHAR        m_szSourName[MAX_CHARACTER_NAME] ;    //·¢ĞÅÈË
+    CHAR        m_szSourName[MAX_CHARACTER_NAME] ;    //å‘ä¿¡äºº
 
-    INT            m_nPortrait;                        // ·¢ĞÅÈËÍ·Ïñ
+    INT            m_nPortrait;                        // å‘ä¿¡äººå¤´åƒ
 
     BYTE        m_DestSize ;
-    CHAR        m_szDestName[MAX_CHARACTER_NAME] ;    //ÊÕĞÅÈË
+    CHAR        m_szDestName[MAX_CHARACTER_NAME] ;    //æ”¶ä¿¡äºº
 
     WORD        m_ContexSize ;
-    CHAR        m_szContex[MAX_MAIL_CONTEX] ;        //ÄÚÈİ
+    CHAR        m_szContex[MAX_MAIL_CONTEX] ;        //å†…å®¹
 
-    UINT        m_uFlag ;                            //ÓÊ¼ş±êÖ¾ enum MAIL_TYPE
-    time_t        m_uCreateTime ;                        //ÓÊ¼ş´´½¨Ê±¼ä
+    UINT        m_uFlag ;                            //é‚®ä»¶æ ‡å¿— enum MAIL_TYPE
+    time_t        m_uCreateTime ;                        //é‚®ä»¶åˆ›å»ºæ—¶é—´
 
-    CampID_t    m_Camp;                                //·¢ĞÅÈËÕóÓª
+    CampID_t    m_Camp;                                //å‘ä¿¡äººé˜µè¥
 
-    //Ö´ĞĞÓÊ¼şÓ¦ÓÃ²ÎÊı
+    //æ‰§è¡Œé‚®ä»¶åº”ç”¨å‚æ•°
     UINT        m_uParam0 ;
     UINT        m_uParam1 ;
     UINT        m_uParam2 ;
@@ -784,8 +784,8 @@ struct MAIL
 struct MAIL_LIST
 {
     MAIL        m_aMail[MAX_MAIL_SIZE] ;
-    BYTE        m_Count ;//ÓÊ¼şÊıÁ¿
-    BYTE        m_TotalLeft ;//ÓÃ»§ÕÊºÅÀïµÄÓÊ¼şÊ£ÓàÊıÁ¿
+    BYTE        m_Count ;//é‚®ä»¶æ•°é‡
+    BYTE        m_TotalLeft ;//ç”¨æˆ·å¸å·é‡Œçš„é‚®ä»¶å‰©ä½™æ•°é‡
 
     MAIL_LIST( )
     {
@@ -804,29 +804,29 @@ struct MAIL_LIST
     VOID Write( SocketOutputStream& oStream ) const ;
 };
 
-// ÅúÁ¿ÓÊ¼ş£¬Ö¸·¢ËÍ¸ø²»Í¬ÈËµÄÍ¬ÄÚÈİÓÊ¼ş
+// æ‰¹é‡é‚®ä»¶ï¼ŒæŒ‡å‘é€ç»™ä¸åŒäººçš„åŒå†…å®¹é‚®ä»¶
 #define MAX_RECEIVER 100
 struct BATCH_MAIL
 {
     GUID_t                m_GUID;                                // GUID
 
     BYTE                m_SourSize;
-    CHAR                m_szSourName[MAX_CHARACTER_NAME];    //·¢ĞÅÈË
+    CHAR                m_szSourName[MAX_CHARACTER_NAME];    //å‘ä¿¡äºº
 
-    BYTE                m_ReceiverCount;                    //ÊÕĞÅÈËÊıÁ¿
+    BYTE                m_ReceiverCount;                    //æ”¶ä¿¡äººæ•°é‡
     struct
     {
         BYTE            m_DestSize;
-        CHAR            m_szDestName[MAX_CHARACTER_NAME];    //ÊÕĞÅÈË
+        CHAR            m_szDestName[MAX_CHARACTER_NAME];    //æ”¶ä¿¡äºº
     }m_Receivers[MAX_RECEIVER];
 
     WORD                m_ContentSize;
-    CHAR                m_szContent[MAX_MAIL_CONTEX];        //ÄÚÈİ
+    CHAR                m_szContent[MAX_MAIL_CONTEX];        //å†…å®¹
 
-    UCHAR                m_uFlag;                            //ÓÊ¼ş±êÖ¾ enum MAIL_TYPE
-    time_t                m_uCreateTime;                        //ÓÊ¼ş´´½¨Ê±¼ä
+    UCHAR                m_uFlag;                            //é‚®ä»¶æ ‡å¿— enum MAIL_TYPE
+    time_t                m_uCreateTime;                        //é‚®ä»¶åˆ›å»ºæ—¶é—´
 
-    CampID_t            m_Camp;                                //·¢ĞÅÕßµÄÕóÓª
+    CampID_t            m_Camp;                                //å‘ä¿¡è€…çš„é˜µè¥
 
     BATCH_MAIL()        { CleanUp(); }
 
@@ -916,19 +916,19 @@ struct BATCH_MAIL
 
 struct USER_SIMPLE_DATA
 {
-    CHAR                m_Account[MAX_CHARACTER_NAME];    // ´ËÓÃ»§µÄÕË»§Ãû×Ö
-    GUID_t                m_AccountGUID;                    // ¹ÙÍøGUID
-    CHAR                m_Name[MAX_CHARACTER_NAME];        // ´ËÓÃ»§µÄ½ÇÉ«Ãû×Ö
-    GUID_t                m_GUID;                            // ´ËÓÃ»§µÄÎ¨Ò»ºÅ
-    UINT                m_uMenPai;                        // ÃÅÅÉ
-    INT                    m_nPortrait;                    // Í·Ïñ
-    UCHAR                m_uFaceMeshID;                    // Á³²¿Ä£ĞÍ
-    UCHAR                m_uHairMeshID;                    // Í··¢Ä£ĞÍ
-    UINT                m_uHairColor;                    // ·¢É«
-    INT                    m_nLevel;                        // ¼¶±ğ
-    USHORT                m_uSex;                            // ĞÔ±ğ
-    CHAR                m_szTitle[MAX_CHARACTER_TITLE];    // ³ÆºÅ
-    GuildID_t            m_GuildID;                        // °ï»á ID
+    CHAR                m_Account[MAX_CHARACTER_NAME];    // æ­¤ç”¨æˆ·çš„è´¦æˆ·åå­—
+    GUID_t                m_AccountGUID;                    // å®˜ç½‘GUID
+    CHAR                m_Name[MAX_CHARACTER_NAME];        // æ­¤ç”¨æˆ·çš„è§’è‰²åå­—
+    GUID_t                m_GUID;                            // æ­¤ç”¨æˆ·çš„å”¯ä¸€å·
+    UINT                m_uMenPai;                        // é—¨æ´¾
+    INT                    m_nPortrait;                    // å¤´åƒ
+    UCHAR                m_uFaceMeshID;                    // è„¸éƒ¨æ¨¡å‹
+    UCHAR                m_uHairMeshID;                    // å¤´å‘æ¨¡å‹
+    UINT                m_uHairColor;                    // å‘è‰²
+    INT                    m_nLevel;                        // çº§åˆ«
+    USHORT                m_uSex;                            // æ€§åˆ«
+    CHAR                m_szTitle[MAX_CHARACTER_TITLE];    // ç§°å·
+    GuildID_t            m_GuildID;                        // å¸®ä¼š ID
 
     USER_SIMPLE_DATA( )
     {
@@ -954,7 +954,7 @@ struct USER_SIMPLE_DATA
 
 struct DB_QUERY
 {
-    UCHAR    m_SqlStr[MAX_SQL_LENGTH];        //Ö´ĞĞµÄSqlÓï¾ä
+    UCHAR    m_SqlStr[MAX_SQL_LENGTH];        //æ‰§è¡Œçš„Sqlè¯­å¥
     
     VOID    Clear()
     {
@@ -967,7 +967,7 @@ struct DB_QUERY
 
 struct LONG_DB_QUERY
 {
-    UCHAR    m_SqlStr[MAX_LONG_SQL_LENGTH];        //Ö´ĞĞµÄSqlÓï¾ä
+    UCHAR    m_SqlStr[MAX_LONG_SQL_LENGTH];        //æ‰§è¡Œçš„Sqlè¯­å¥
 
     VOID    Clear()
     {
@@ -988,7 +988,7 @@ struct DB_CHAR_EQUIP_LIST
     {
         memset(this,0,sizeof(*this));
     }
-    UINT        m_Equip[HEQUIP_NUMBER];            //×°±¸
+    UINT        m_Equip[HEQUIP_NUMBER];            //è£…å¤‡
 };
 
 struct DB_CHAR_BASE_INFO
@@ -1004,31 +1004,31 @@ struct DB_CHAR_BASE_INFO
         memset(this,0,sizeof(*this));
     }
 
-    GUID_t                m_GUID;                            //½ÇÉ«È«¾Ö±àºÅ
-    BOOL                m_Sex;                            //ĞÔ±ğ
-    CHAR                m_Name[MAX_CHARACTER_NAME];        //½ÇÉ«Ãû×Ö
-    INT                    m_Level;                        //½ÇÉ«µÈ¼¶
-    UINT                m_HairColor;                    //Í··¢ÑÕÉ«    
-    BYTE                m_FaceColor;                    //Á³ĞÎÑÕÉ«
-    BYTE                m_HairModel;                    //Í··¢Ä£ĞÍ
-    BYTE                m_FaceModel;                    //Á³ĞÎÄ£ĞÍ
-    SceneID_t            m_StartScene;                    //½ÇÉ«ËùÔÚ³¡¾°
-    INT                    m_Menpai;                        //½ÇÉ«ÃÅÅÉ
-    INT                    m_HeadID;                        //Í·²¿±àºÅ
-    CampID_t            m_Camp;                            //ÕóÓª±àºÅ
-    DB_CHAR_EQUIP_LIST    m_EquipList;                    //×°±¸ÁĞ±í
+    GUID_t                m_GUID;                            //è§’è‰²å…¨å±€ç¼–å·
+    BOOL                m_Sex;                            //æ€§åˆ«
+    CHAR                m_Name[MAX_CHARACTER_NAME];        //è§’è‰²åå­—
+    INT                    m_Level;                        //è§’è‰²ç­‰çº§
+    UINT                m_HairColor;                    //å¤´å‘é¢œè‰²    
+    BYTE                m_FaceColor;                    //è„¸å½¢é¢œè‰²
+    BYTE                m_HairModel;                    //å¤´å‘æ¨¡å‹
+    BYTE                m_FaceModel;                    //è„¸å½¢æ¨¡å‹
+    SceneID_t            m_StartScene;                    //è§’è‰²æ‰€åœ¨åœºæ™¯
+    INT                    m_Menpai;                        //è§’è‰²é—¨æ´¾
+    INT                    m_HeadID;                        //å¤´éƒ¨ç¼–å·
+    CampID_t            m_Camp;                            //é˜µè¥ç¼–å·
+    DB_CHAR_EQUIP_LIST    m_EquipList;                    //è£…å¤‡åˆ—è¡¨
 };
 
-// ¶ÓÔ±ÁĞ±íÖĞµÄ¶ÓÔ±ĞÅÏ¢Ïî
+// é˜Ÿå‘˜åˆ—è¡¨ä¸­çš„é˜Ÿå‘˜ä¿¡æ¯é¡¹
 struct TEAM_LIST_ENTRY
 {
     GUID_t                m_GUID;                            // GUID
-    SceneID_t            m_SceneID;                        // ³¡¾°ID
-    UINT                m_ExtraID;                        // ¶ÓÔ±µÄ PlayerID(WG) »ò ObjID(GC)
-    UCHAR                m_NameSize;                        // ĞÕÃû³¤¶È
-    CHAR                m_Name[MAX_CHARACTER_NAME];        // ¶ÓÔ±µÄÃû×Ö
-    INT                    m_nPortrait;                    // Í·Ïñ
-    USHORT                m_uDataID;                        // ¶ÓÔ±µÄĞÔ±ğ
+    SceneID_t            m_SceneID;                        // åœºæ™¯ID
+    UINT                m_ExtraID;                        // é˜Ÿå‘˜çš„ PlayerID(WG) æˆ– ObjID(GC)
+    UCHAR                m_NameSize;                        // å§“åé•¿åº¦
+    CHAR                m_Name[MAX_CHARACTER_NAME];        // é˜Ÿå‘˜çš„åå­—
+    INT                    m_nPortrait;                    // å¤´åƒ
+    USHORT                m_uDataID;                        // é˜Ÿå‘˜çš„æ€§åˆ«
 
     TEAM_LIST_ENTRY( )
     {
@@ -1105,13 +1105,13 @@ typedef struct _ObjID_List
     ObjID_t m_aIDs[MAX_LIST_SIZE];
 } ObjID_List;
 
-//Íæ¼ÒÉÌµêµÄÎ¨Ò»ID
+//ç©å®¶å•†åº—çš„å”¯ä¸€ID
 struct _PLAYERSHOP_GUID
 {
-    ID_t    m_World ;        //ÊÀ½çºÅ: 
-    ID_t    m_Server ;        //·şÎñ¶Ë³ÌĞòºÅ£º
-    ID_t    m_Scene ;        //³¡¾°ºÅ
-    INT        m_PoolPos ;        //Êı¾İ³ØÎ»ÖÃ
+    ID_t    m_World ;        //ä¸–ç•Œå·: 
+    ID_t    m_Server ;        //æœåŠ¡ç«¯ç¨‹åºå·ï¼š
+    ID_t    m_Scene ;        //åœºæ™¯å·
+    INT        m_PoolPos ;        //æ•°æ®æ± ä½ç½®
 
     _PLAYERSHOP_GUID()
     {
@@ -1172,7 +1172,7 @@ struct GLOBAL_CONFIG
     SM_COMMANDS_STATE        Commands;
 };
 
-//ºóÃæµÄÎÄ¼ş»áÓÃµ½Ç°ÃæµÄ¶¨Òå
+//åé¢çš„æ–‡ä»¶ä¼šç”¨åˆ°å‰é¢çš„å®šä¹‰
 #include "GameStruct_Item.h"
 #include "GameStruct_Skill.h"
 #include "GameStruct_Scene.h"

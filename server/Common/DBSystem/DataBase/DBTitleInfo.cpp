@@ -62,7 +62,7 @@ BOOL DBTitleInfo::Save(VOID* pSource)
     FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
     Assert(pCharFullData);
     
-    //±£´æTitleÊı¾İ
+    //ä¿å­˜Titleæ•°æ®
     do
     {
         CHAR    TitleInfo[2048];
@@ -127,7 +127,7 @@ BOOL DBTitleInfo::ParseResult(VOID* pResult)
                 DB_TitleInfo,
             };
 
-            //¼ÓÔØ¼¼ÄÜÊôĞÔ
+            //åŠ è½½æŠ€èƒ½å±æ€§
             //Assert(mResultCount<MAX_CHAR_MISSION_NUM);
             Assert(mInterface);
             INT ErrorCode;

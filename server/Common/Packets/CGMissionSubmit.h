@@ -1,6 +1,6 @@
 // CGMissionSubmit.h
 // 
-// 递交任务
+// 閫掍氦浠诲姟
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ namespace Packets
         CGMissionSubmit( ){}
         virtual ~CGMissionSubmit( ){}
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -39,8 +39,8 @@ namespace Packets
 
     private:
         ObjID_t                    m_idNPC;
-        ScriptID_t                m_idScript;            // 任务的脚本ID
-        UINT                    m_idSelectRadio;    // 多选一物品的选择ID
+        ScriptID_t                m_idScript;            // 浠诲姟鐨勮剼鏈琁D
+        UINT                    m_idSelectRadio;    // 澶氶�変竴鐗╁搧鐨勯�夋嫨ID
     };
 
 

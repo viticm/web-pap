@@ -1,9 +1,9 @@
 #include "stdafx.h"
 //-----------------------------------------------------------------------------
-// ÎÄ¼şÃû : LuaFnRegister.cpp
-// Ä£¿é    :    Script
-// ¹¦ÄÜ     :  ÏòLua×¢²ácµ¼³öº¯Êı
-// ĞŞ¸ÄÀúÊ·:
+// æ–‡ä»¶å : LuaFnRegister.cpp
+// æ¨¡å—    :    Script
+// åŠŸèƒ½     :  å‘Luaæ³¨å†Œcå¯¼å‡ºå‡½æ•°
+// ä¿®æ”¹å†å²:
 //-----------------------------------------------------------------------------
 #include "LuaFnRegister.h"
 #include "LuaFnTbl_Mission.h"
@@ -49,7 +49,7 @@ namespace LuaFnTbl
         {"LuaFnSetNumText",FuncProto(LuaFnSetNumText)},
         {"GetNumText",FuncProto(LuaFnGetNumText)},
         {"GetEventList",FuncProto(LuaFnGetNumText)},
-        //ÈÎÎñ½±ÀøÌáÊ¾Ïà¹Ø        
+        //ä»»åŠ¡å¥–åŠ±æç¤ºç›¸å…³        
         {"BeginEvent", FuncProto(LuaFnBeginEvent)},
         {"EndEvent", FuncProto(LuaFnEndEvent)},
         {"DispatchEventList", FuncProto(LuaFnDispatchEventList)},
@@ -77,16 +77,16 @@ namespace LuaFnTbl
         {"UICommand_AddString", FuncProto(LuaFnUICommand_AddString)},
         {"GetQuestionsRecord", FuncProto(LuaFnGetQuestionsRecord)},
 
-        //ÈÎÎñ½±ÀøÏà¹Ø            
+        //ä»»åŠ¡å¥–åŠ±ç›¸å…³            
         {"BeginAddItem", FuncProto(LuaFnBeginAddItem)},
         {"AddItem", FuncProto(LuaFnAddItem)},
         {"EndAddItem", FuncProto(LuaFnEndAddItem)},
         {"AddItemListToHuman", FuncProto(LuaFnAddItemListToHuman)},
-        //{"AddGemsToHuman", FuncProto(LuaFnAddGemsToHuman)}, //½ö½öÓÃÓÚ²âÊÔ
-        //ÈÎÎñµ÷ÓÃÔ¼¶¨Ïà¹Ø        
+        //{"AddGemsToHuman", FuncProto(LuaFnAddGemsToHuman)}, //ä»…ä»…ç”¨äºæµ‹è¯•
+        //ä»»åŠ¡è°ƒç”¨çº¦å®šç›¸å…³        
         {"CallScriptFunction", FuncProto(LuaFnCallScriptFunction)},
 
-        //ĞÂÈÎÎñÏµÍ³Ïà¹ØNewMission
+        //æ–°ä»»åŠ¡ç³»ç»Ÿç›¸å…³NewMission
         {"MissionCheckAcceptNM", FuncProto(LuaFnMissionCheckAcceptNM)},
         {"MissionCheckSubmitNM", FuncProto(LuaFnMissionCheckSubmitNM)},
         {"AddMissionTextNM", FuncProto(LuaFnAddMissionTextNM)},
@@ -119,7 +119,7 @@ namespace LuaFnTbl
         {"SetMissionHaveDoneFlagNM", FuncProto(LuaFnSetMissionHaveDoneFlagNM)},
 
 
-        //×é¶ÓÏà¹Ø                
+        //ç»„é˜Ÿç›¸å…³                
         {"IsCaptain", FuncProto(LuaFnIsCaptain)},
         {"GetTeamId", FuncProto(LuaFnGetTeamId)},
         {"LeaveTeam", FuncProto(LuaFnLeaveTeam)},
@@ -143,7 +143,7 @@ namespace LuaFnTbl
         {"GetMonsterTeamID",FuncProto(LuaFnGetMonsterTeamID)},
         {"GetMonsterDataID",FuncProto(LuaFnGetMonsterDataID)},
 
-        //¼¼ÄÜÄ§·¨Ïà¹Ø            
+        //æŠ€èƒ½é­”æ³•ç›¸å…³            
         //{"AddXinFa", FuncProto(LuaFnAddXinFa)},
         {"AddSkill", FuncProto(LuaFnAddSkill)},
         //{"DelXinFa", FuncProto(LuaFnDelXinFa)},
@@ -158,19 +158,19 @@ namespace LuaFnTbl
         {"GetSkillNameNS", FuncProto(LuaFnGetSkillNameNS)},
         {"GetStudyMoneyNS", FuncProto(LuaFnGetStudyMoneyNS)},
         {"SaveLog", FuncProto(LuaFnSaveLog)},
-        //ÕóÓªÏà¹Ø                
+        //é˜µè¥ç›¸å…³                
         {"GetCurCamp", FuncProto(LuaFnGetCurCamp)},
         {"SetCurCamp", FuncProto(LuaFnSetCurCamp)},
         {"RestoreNpcCamp", FuncProto(LuaFnRestoreNpcCamp)},
         {"SetNpcCurCamp", FuncProto(LuaFnSetNpcCurCamp)},
-        //ÃÅÅÉÏà¹Ø                
+        //é—¨æ´¾ç›¸å…³                
         {"GetMenPai", FuncProto(LuaFnGetMenPai)},
         {"SetMenPai", FuncProto(LuaFnSetMenPai)},
         {"GetMenPaiMaster", FuncProto(LuaFnGetMenPaiMaster)},
         {"GetMenPaiFigure", FuncProto(LuaFnGetMenPaiFigure)},
         {"DestroyMenPai", FuncProto(LuaFnDestroyMenPai)},
         {"GetMenPaiTitle", FuncProto(LuaFnGetMenPaiTitle)},
-        //ÈËÎïÊôĞÔÏà¹Ø            
+        //äººç‰©å±æ€§ç›¸å…³            
         {"LuaFnGetGUID", FuncProto(LuaFnGetGUID)},
         {"GetExp", FuncProto(LuaFnGetExp)},
         {"AddExp", FuncProto(LuaFnAddExp)},
@@ -222,16 +222,16 @@ namespace LuaFnTbl
         {"SetDoubleExp", FuncProto(LuaFnSetDoubleExp)},
         
 
-        //WebÉÌµêÏà¹Ø
+        //Webå•†åº—ç›¸å…³
         {"LuaFnGetWebShopInfoNum", FuncProto(LuaFnGetWebShopInfoNum)},
         {"LuaFnGetWebShopItemNum", FuncProto(LuaFnGetWebShopItemNum)},
         {"LuaFnGetWebShopMoney", FuncProto(LuaFnGetWebShopMoney)},
         {"LuaFnGetWebShopItem", FuncProto(LuaFnGetWebShopItem)},
         {"LuaFnWebShopReceive", FuncProto(LuaFnWebShopReceive)},
 
-        //Ñ²ÂßÏà¹Ø                
+        //å·¡é€»ç›¸å…³                
         {"SetPatrolId", FuncProto(LuaFnSetPatrolId)},
-        //¼ÆÊ±Æ÷Ïà¹Ø            
+        //è®¡æ—¶å™¨ç›¸å…³            
         {"SetTimer", FuncProto(LuaFnSetTimer)},
         {"StopTimer", FuncProto(LuaFnStopTimer)},
         {"CheckTimer", FuncProto(LuaFnCheckTimer)},
@@ -240,7 +240,7 @@ namespace LuaFnTbl
         {"SetCharacterTimer", FuncProto(LuaFnSetCharacterTimer)},
         {"SetCharacterDieTime", FuncProto(LuaFnSetCharacterDieTime)},
         
-        //ÔÓÏîÏà¹Ø                
+        //æ‚é¡¹ç›¸å…³                
         {"AddGlobalCountNews", FuncProto(LuaFnAddGlobalCountNews)},
         {"GetGameTime", FuncProto(LuaFnGetGameTime)},
         {"PrintNum", FuncProto(LuaFnPrintNum)},
@@ -253,7 +253,7 @@ namespace LuaFnTbl
         {"QueryAreaStandingTime",FuncProto(LuaFnQueryAreaStandingTime)},
         {"ResetAreaStandingTime",FuncProto(LuaFnResetAreaStandingTime)},
         {"LuaFnGetCurrentTime",FuncProto(LuaFnGetCurrentTime)},
-        //Éú»îºÍÎïÆ·ÏµÍ³Ïà¹Øº¯Êı
+        //ç”Ÿæ´»å’Œç‰©å“ç³»ç»Ÿç›¸å…³å‡½æ•°
         {"GetHumanGUID", FuncProto(LuaFnGetHumanGUID)},
         {"GetItemIndex", FuncProto(LuaFnGetItemIndex)},
         {"GetGemEmbededCount", FuncProto(LuaFnGetGemEmbededCount)},
@@ -313,20 +313,20 @@ namespace LuaFnTbl
         {"GetAbilityOperaRobotTime", FuncProto(LuaFnGetAbilityOperaRobotTime)},
         {"SetAbilityOperaTime", FuncProto(LuaFnSetAbilityOperaTime)},
         {"LuaFnSendAbilitySuccessMsg", FuncProto(LuaFnSendAbilitySuccessMsg)},
-        //ÉÌµêÏà¹Ø                
+        //å•†åº—ç›¸å…³                
         {"DispatchShopItem", FuncProto(LuaFnDispatchShopItem)},
         {"ApplyPlayerShop", FuncProto(LuaFnApplyPlayerShop)},
         {"DispatchPlayerShopList", FuncProto(LuaFnDispatchPlayerShopList)},
         {"DispatchPlayerShopSaleOutList", FuncProto(LuaFnDispatchPlayerShopSaleOutList)},
 
 
-        //ÃÅÅÉÏà¹Ø
+        //é—¨æ´¾ç›¸å…³
         {"DispatchMenpaiInfo", FuncProto(LuaFnDispatchMenpaiInfo)},
         {"DispatchXinfaLevelInfo", FuncProto(LuaFnDispatchXinfaLevelInfo)},
         {"LuaFnJoinMenpai", FuncProto(LuaFnJoinMenpai)},
-        //Ñ§Ï°Éú»î¼¼ÄÜ
+        //å­¦ä¹ ç”Ÿæ´»æŠ€èƒ½
         {"DispatchAbilityInfo",FuncProto(LuaFnDispatchAbilityInfo)},
-        //³ÆºÅÏà¹Ø
+        //ç§°å·ç›¸å…³
         {"AwardTitle", FuncProto(LuaFnAwardTitle)},
         {"GetTitle", FuncProto(LuaFnGetTitle)},
         {"DeleteTitle", FuncProto(LuaFnDeleteTitle)},
@@ -345,7 +345,7 @@ namespace LuaFnTbl
         {"SetRMB", FuncProto(LuaFnSetRMB)},
         {"BankBegin", FuncProto(LuaFnBankBegin)},
         {"SetPlayerDefaultReliveInfo", FuncProto(LuaSetPlayerDefaultReliveInfo)},
-        //³¡¾°Ïà¹Ø
+        //åœºæ™¯ç›¸å…³
         {"LuaFnGetSceneType",FuncProto(LuaFnGetSceneType)},
         {"LuaFnCreateCopyScene",FuncProto(LuaFnCreateCopyScene)},
         {"LuaFnSetSceneLoad_Map",FuncProto(LuaFnSetSceneLoad_Map)},
@@ -383,21 +383,21 @@ namespace LuaFnTbl
 
 
 
-        // ¹ØÏµÏµÍ³Ïà¹Ø
-        // ºÃÓÑ
+        // å…³ç³»ç³»ç»Ÿç›¸å…³
+        // å¥½å‹
         {"LuaFnIsFriend",FuncProto(LuaFnIsFriend)},
         {"LuaFnGetFriendName",FuncProto(LuaFnGetFriendName)},
         {"LuaFnGetFriendPoint",FuncProto(LuaFnGetFriendPoint)},
         {"LuaFnSetFriendPoint",FuncProto(LuaFnSetFriendPoint)},
         {"LuaFnSetFriendPointByGUID",FuncProto(LuaFnSetFriendPointByGUID)},
-        // ½á»é
+        // ç»“å©š
         {"LuaFnIsMarried",FuncProto(LuaFnIsMarried)},
         {"LuaFnGetSpouseGUID",FuncProto(LuaFnGetSpouseGUID)},
         {"LuaFnMarry",FuncProto(LuaFnMarry)},
         {"LuaFnIsSpouses",FuncProto(LuaFnIsSpouses)},
         {"LuaFnUnMarry",FuncProto(LuaFnUnMarry)},
         {"LuaFnDivorce",FuncProto(LuaFnDivorce)},
-        // Ê¦Í½
+        // å¸ˆå¾’
         {"LuaFnIsMaster",FuncProto(LuaFnIsMaster)},
         {"LuaFnIsPrentice",FuncProto(LuaFnIsPrentice)},
         {"LuaFnGetPrenticeGUID",FuncProto(LuaFnGetPrenticeGUID)},
@@ -414,9 +414,9 @@ namespace LuaFnTbl
         {"LuaFnUpdateAttr",FuncProto(LuaFnUpdateAttr)},
         {"LuaFnIsPasswordSetup",FuncProto(LuaFnIsPasswordSetup)},
         {"LuaFnIsPasswordUnlocked",FuncProto(LuaFnIsPasswordUnlocked)},
-        // ½á°İ
+        // ç»“æ‹œ
         {"LuaFnIsBrother",FuncProto(LuaFnIsBrother)},
-        //³ÌĞòÌí¼Óº¯Êı×¢²á,ÊÖ¹¤Ìí¼ÓÇë²»Òª·ÅÔÚÕâÀï
+        //ç¨‹åºæ·»åŠ å‡½æ•°æ³¨å†Œ,æ‰‹å·¥æ·»åŠ è¯·ä¸è¦æ”¾åœ¨è¿™é‡Œ
         {"LuaFnAddExp",FuncProto(LuaFnAddExp)},
         {"LuaFnAddGlobalCountNews",FuncProto(LuaFnAddGlobalCountNews)},
         {"LuaFnAddItem",FuncProto(LuaFnAddItem)},
@@ -449,7 +449,7 @@ namespace LuaFnTbl
         {"LuaFnMsg2Player",FuncProto(LuaFnMsg2Player)},
         {"LuaFnTryRecieveItem",FuncProto(LuaFnTryRecieveItem)},
 
-        //³èÎï
+        //å® ç‰©
         {"LuaFnGetPetCount",FuncProto(LuaFnGetPetCount)},
         {"LuaFnGetPet_DataID",FuncProto(LuaFnGetPet_DataID)},
         {"LuaFnGetPet_Level",FuncProto(LuaFnGetPet_Level)},
@@ -485,13 +485,13 @@ namespace LuaFnTbl
         {"LuaFnPetCanReturnToChild",FuncProto(LuaFnPetCanReturnToChild)},
         {"LuaFnGetPetGUID",FuncProto(LuaFnGetPetGUID)},
 
-        //³èÎï¹«¸æ°åÏà¹ØLUAº¯Êı½Ó¿Ú
+        //å® ç‰©å…¬å‘Šæ¿ç›¸å…³LUAå‡½æ•°æ¥å£
         {"IssuePetPlacardByIndex",FuncProto(LuaFnIssuePetPlacardByIndex)},
         {"IssuePetPlacard",FuncProto(LuaFnIssuePetPlacard)},
         {"CancelPetPlacard",FuncProto(LuaFnCancelPetPlacard)},
         {"DispatchPetPlacardList",FuncProto(LuaFnDispatchPetPlacardList)},
 
-        //³èÎïÑµÁ·Ïà¹Ø
+        //å® ç‰©è®­ç»ƒç›¸å…³
         {"CalcPetDomesticationMoney", FuncProto(LuaFnCalcPetDomesticationMoney)},
         {"PetDomestication", FuncProto(LuaFnPetDomestication)},
 
@@ -521,11 +521,11 @@ namespace LuaFnTbl
         {"LuaFnSetDriverLevel", FuncProto(LuaFnSetDriverLevel)},
         {"LuaFnGetDriverLevel", FuncProto(LuaFnGetDriverLevel)},
 
-        //°ïÅÉ
+        //å¸®æ´¾
         {"GuildCreate", FuncProto(LuaFnGuildCreate)},
         {"GuildList", FuncProto(LuaFnGuildList)},
 
-        //³ÇÊĞ
+        //åŸå¸‚
         {"CityCreate", FuncProto(LuaFnCityCreate)},
         {"CityDelete", FuncProto(LuaFnCityDelete)},
         //{"CityGetCityList", FuncProto(LuaFnCityGetCityList)},
@@ -545,9 +545,9 @@ LuaCFuncRegister::~LuaCFuncRegister()
     /**/
 }
 
-//ÁÙÊ±¼òÒ×¼ì²âº¯Êı,Ö»ÔÚdebugÏÂÔËĞĞµÄ²âÊÔ³ÌĞò
-//°Ñ¸÷¸öLua×¢²áº¯ÊıµÄ×¢ÊÍÉ¨Ãè³öÀ´
-//²¢ÔÚ¸ÃÔ´ÂëÎÄ¼şµÄËùÔÚÄ¿Â¼Éú³ÉScriptFuncForDesigner.h
+//ä¸´æ—¶ç®€æ˜“æ£€æµ‹å‡½æ•°,åªåœ¨debugä¸‹è¿è¡Œçš„æµ‹è¯•ç¨‹åº
+//æŠŠå„ä¸ªLuaæ³¨å†Œå‡½æ•°çš„æ³¨é‡Šæ‰«æå‡ºæ¥
+//å¹¶åœ¨è¯¥æºç æ–‡ä»¶çš„æ‰€åœ¨ç›®å½•ç”ŸæˆScriptFuncForDesigner.h
 #ifdef _DEBUG
 //#include <direct.h>
 
@@ -584,8 +584,8 @@ CHAR* GetFuncName(CHAR* pStr1,CHAR* pStr2)
     Q_strncpyz(strbuf,pStr1,MAX_FILE_PATH);
     
     //"INT aaa ()"
-    //ÕÒµ½º¯ÊıÃûµÄÍ·Ö¸Õë
-    //ÕÒµ½º¯ÊıÃûµÄÎ²Ö¸Õë
+    //æ‰¾åˆ°å‡½æ•°åçš„å¤´æŒ‡é’ˆ
+    //æ‰¾åˆ°å‡½æ•°åçš„å°¾æŒ‡é’ˆ
     
     CHAR* temp = strbuf;
     temp = temp + 3;
@@ -615,7 +615,7 @@ CHAR funcname[FUNCNUM][NAMELEN];
 INT numFunc = 0;
 INT numReg = 0;
 
-//Õâ¸öÊı×é¿¼ÂÇÉ¨Ãè±¾µØÄ¿Â¼µÃµ½?
+//è¿™ä¸ªæ•°ç»„è€ƒè™‘æ‰«ææœ¬åœ°ç›®å½•å¾—åˆ°?
 CHAR* pLuaFnTblFile[] =
 {
     "LuaFnTbl_Ability.h",
@@ -635,12 +635,12 @@ CHAR* pLuaFnTblFile[] =
     '\0'
 };
 
-//¶ÁLuaº¯Êı±íÎÄ¼ş
+//è¯»Luaå‡½æ•°è¡¨æ–‡ä»¶
 VOID ReadLuaFnTblFiles()
 {
     CHAR** pScanFile = pLuaFnTblFile;
 
-    //É¨ÃèÎÄ¼ş
+    //æ‰«ææ–‡ä»¶
     while(*pScanFile)
     {
         CHAR buf[256];
@@ -668,8 +668,8 @@ VOID ReadLuaFnTblFiles()
                 if(strstr(line,"endnamespace"))
                     break;
 
-                //ÕÒµ½º¯ÊıÉùÃ÷
-                if( (pStr1 = strstr(line,"INT")) && (pStr2 = strstr(line,"Lua_State")) && (pStr2 > pStr1))//¼ò»¯ 
+                //æ‰¾åˆ°å‡½æ•°å£°æ˜
+                if( (pStr1 = strstr(line,"INT")) && (pStr2 = strstr(line,"Lua_State")) && (pStr2 > pStr1))//ç®€åŒ– 
                 {
                     Assert((pStr2 - pStr1) <= NAMELEN);
                     if((pStr2 - pStr1) <= NAMELEN)
@@ -679,7 +679,7 @@ VOID ReadLuaFnTblFiles()
                     }
                 }
 
-                //ÕÒµ½ÒÑ×¢²áº¯Êı,Ã»ÓĞ¿¼ÂÇ¿Õ¸ñ
+                //æ‰¾åˆ°å·²æ³¨å†Œå‡½æ•°,æ²¡æœ‰è€ƒè™‘ç©ºæ ¼
                 if((pStr1 = strstr(line,"FuncProto")))
                 {
                     pStr2 = strstr(line,")");
@@ -691,7 +691,7 @@ VOID ReadLuaFnTblFiles()
                     char szFuncName[NAMELEN];
                     char szRegName[NAMELEN];
 
-                    Q_strncpyz(szFuncName,pStr1,pStr2 - pStr1 + 1);//¼ÓÒ»
+                    Q_strncpyz(szFuncName,pStr1,pStr2 - pStr1 + 1);//åŠ ä¸€
                     Q_strncpyz(szRegName,pStr3 + 1,pStr4 - pStr3);
 
                     BOOL toggle = FALSE; 
@@ -706,7 +706,7 @@ VOID ReadLuaFnTblFiles()
                     }
                 
                     if(!toggle)
-                    {//µÚÒ»´Î×¢²á¸Ãº¯Êı
+                    {//ç¬¬ä¸€æ¬¡æ³¨å†Œè¯¥å‡½æ•°
                         Q_strncpyz(regInfo[numReg++].funcname,szFuncName,NAMELEN);
                         Q_strncpyz(regInfo[numReg - 1].regname[regInfo[numReg -1].regCount++],szRegName,NAMELEN);                        
                     }
@@ -721,7 +721,7 @@ VOID ReadLuaFnTblFiles()
             
         }
 
-        pScanFile++;//É¨ÃèÏÂÒ»¸öÎÄ¼ş
+        pScanFile++;//æ‰«æä¸‹ä¸€ä¸ªæ–‡ä»¶
     }
 }
 
@@ -730,10 +730,10 @@ VOID ParseTheResult()
     qsort(funcname,numFunc,NAMELEN,compare);
     qsort(regInfo,numReg,sizeof(_RegisterInfo),compareRegInfo);
 
-    //½âÎö
-    //numReg×¢²áº¯ÊıÊıÄ¿
-    //numFuncÊµ¼Êº¯ÊıÊıÄ¿
-    //Ö»»á³öÏÖÒ»¸öº¯ÊıÒÔÊı¸ö×¢²áÃû×¢²á`
+    //è§£æ
+    //numRegæ³¨å†Œå‡½æ•°æ•°ç›®
+    //numFuncå®é™…å‡½æ•°æ•°ç›®
+    //åªä¼šå‡ºç°ä¸€ä¸ªå‡½æ•°ä»¥æ•°ä¸ªæ³¨å†Œåæ³¨å†Œ`
     if(numReg != numFunc)
     {
         INT inuseDecl[FUNCNUM];
@@ -786,7 +786,7 @@ VOID ParseTheResult()
     }
 }
 
-//Ğ´ÎÄ¼ş
+//å†™æ–‡ä»¶
 VOID WriteScriptFile()
 {
     CHAR buf[256];
@@ -806,8 +806,8 @@ VOID WriteScriptFile()
 
         if( fp != NULL  && fpScriptFile != NULL) 
         {
-            //Ğ´ÎÄ¼şÍ·
-            fprintf(fpScriptFile,"%s\t%s\n","½Å±¾ÏµÍ³Cµ¼³öº¯ÊıÎÄµµ",*pScanFile);
+            //å†™æ–‡ä»¶å¤´
+            fprintf(fpScriptFile,"%s\t%s\n","è„šæœ¬ç³»ç»ŸCå¯¼å‡ºå‡½æ•°æ–‡æ¡£",*pScanFile);
 
             CHAR line[_MAX_PATH * 4];
             
@@ -843,7 +843,7 @@ VOID WriteScriptFile()
                     continue;
                 }
 
-                if( (pStr1 = strstr(line,"INT")) && (pStr2 = strstr(line,"Lua_State")) && (pStr2 > pStr1))//¼ò»¯ 
+                if( (pStr1 = strstr(line,"INT")) && (pStr2 = strstr(line,"Lua_State")) && (pStr2 > pStr1))//ç®€åŒ– 
                 {
                     Assert((pStr2 - pStr1) <= NAMELEN);
                     
@@ -854,11 +854,11 @@ VOID WriteScriptFile()
                         if(!strcmp(regInfo[i].funcname,temp))
                         {
                             for(int j=0;j<regInfo[i].regCount;j++)
-                                fprintf(fpScriptFile,"\t¸Ãº¯Êı×¢²áÎª %s\n",regInfo[i].regname[j]);
+                                fprintf(fpScriptFile,"\tè¯¥å‡½æ•°æ³¨å†Œä¸º %s\n",regInfo[i].regname[j]);
                         }
                     }
                     
-                    //ÌŞ³öLua_StateÃèÊö
+                    //å‰”å‡ºLua_Stateæè¿°
                     /*char* pDelim = strchr(line,',');
                     if(pDelim){
                         char szLine[_MAX_PATH];
@@ -898,21 +898,21 @@ VOID WriteScriptFile()
             
         }
 
-        pScanFile++;//¶ÁÏÂÒ»¸öÎÄ¼ş
+        pScanFile++;//è¯»ä¸‹ä¸€ä¸ªæ–‡ä»¶
     }
 
     if(fpScriptFile)
     {
-        //Ğ´ÎÄ¼şÎ²
-        fprintf(fpScriptFile,"ÎÄµµÉú³ÉÈÕÆÚ:%dÄê%dÔÂ%dÈÕ%dÊ±",g_pTimeManager->GetYear(),g_pTimeManager->GetMonth(),g_pTimeManager->GetDay(),g_pTimeManager->GetHour());
+        //å†™æ–‡ä»¶å°¾
+        fprintf(fpScriptFile,"æ–‡æ¡£ç”Ÿæˆæ—¥æœŸ:%då¹´%dæœˆ%dæ—¥%dæ—¶",g_pTimeManager->GetYear(),g_pTimeManager->GetMonth(),g_pTimeManager->GetDay(),g_pTimeManager->GetHour());
         fclose(fpScriptFile);
     }
 }
 
-//ĞèÒªÌí¼ÓLuaFn×¢²áÍ·µÄº¯Êı
+//éœ€è¦æ·»åŠ LuaFnæ³¨å†Œå¤´çš„å‡½æ•°
 VOID NeedAddLuaFn()
 {
-    //ÎÄ¼şÂ·¾¶Ãû
+    //æ–‡ä»¶è·¯å¾„å
     CHAR buf[256];
     tsnprintf(buf,256,__FILE__);
     CHAR* pStr = strrchr(buf,'\\');
@@ -937,7 +937,7 @@ VOID NeedAddLuaFn()
             if(!fpScriptFile)
                 fpScriptFile = fopen(buf,"w");
             
-            //¸ñÊ½
+            //æ ¼å¼
             //{"AddEventList",FuncProto(LuaFnAddNumText)},
             fprintf(fpScriptFile,"{\"%s\",FuncProto(%s)},\n",regInfo[i].funcname,regInfo[i].funcname);
         }
@@ -947,11 +947,11 @@ VOID NeedAddLuaFn()
         fclose(fpScriptFile);
 }
 
-//µ¼³öLua½Å±¾ÖĞ´ıÌæ»»×¢²áº¯Êı
-//ExportLuaFn.hÎÄ¼şÓÉLuaTool¶ÁÈ¡
+//å¯¼å‡ºLuaè„šæœ¬ä¸­å¾…æ›¿æ¢æ³¨å†Œå‡½æ•°
+//ExportLuaFn.hæ–‡ä»¶ç”±LuaToolè¯»å–
 VOID ExportRegName()
 {
-    //ÎÄ¼şÂ·¾¶Ãû
+    //æ–‡ä»¶è·¯å¾„å
     CHAR buf[256];
     tsnprintf(buf,256,__FILE__);
     CHAR* pStr = strrchr(buf,'\\');
@@ -973,7 +973,7 @@ VOID ExportRegName()
                     fprintf(fpScriptFile,"\n");                    
                 }
 
-                //¸ñÊ½
+                //æ ¼å¼
                 //{"AddEventList",},
                 fprintf(fpScriptFile,"\"%s\"",regInfo[i].regname[j]);
                 

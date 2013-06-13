@@ -17,7 +17,7 @@ namespace Packets
         }
         virtual        ~WGTeamAskInvite(){}
 
-        //¹«ÓÃ½Ó¿Ú
+        //å…¬ç”¨æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -44,11 +44,11 @@ namespace Packets
         {
             PlayerID_t            m_PlayerID;
             UCHAR                m_NickSize;
-            CHAR                m_szNick[MAX_CHARACTER_NAME];    // 1.êÇ³Æ
-            UINT                m_uFamily;                        // 2.ÃÅÅÉ
-            SceneID_t            m_Scene;                        // 3.³¡¾°
-            INT                    m_Level;                        // 4.µÈ¼¶
-            USHORT                m_uDataID;                        // 5.Íæ¼ÒĞÔ±ğ
+            CHAR                m_szNick[MAX_CHARACTER_NAME];    // 1.æ˜µç§°
+            UINT                m_uFamily;                        // 2.é—¨æ´¾
+            SceneID_t            m_Scene;                        // 3.åœºæ™¯
+            INT                    m_Level;                        // 4.ç­‰çº§
+            USHORT                m_uDataID;                        // 5.ç©å®¶æ€§åˆ«
         };
     public :
         VOID                    SetPlayerID( PlayerID_t pid ) { m_PlayerID = pid; }
@@ -82,10 +82,10 @@ namespace Packets
         }
 
     public :
-        PlayerID_t                m_PlayerID;                        //Á¬½ÓÕß
+        PlayerID_t                m_PlayerID;                        //è¿æ¥è€…
         GUID_t                    m_dGUID;
         GUID_t                    m_sGUID;
-        UCHAR                    m_uMemberSize;                    //ĞèÒª·¢ËÍµÄÑûÇë¶ÓÔ±ÊıÁ¿
+        UCHAR                    m_uMemberSize;                    //éœ€è¦å‘é€çš„é‚€è¯·é˜Ÿå‘˜æ•°é‡
         InviterInfo                m_InviterInfo[MAX_TEAM_MEMBER];
     };
 

@@ -36,7 +36,7 @@ UINT CGReqLevelUpHandler::Execute(CGReqLevelUp* pPacket,Player* pPlayer)
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     if(!pHuman->IsAlive())
@@ -60,12 +60,12 @@ UINT CGReqLevelUpHandler::Execute(CGReqLevelUp* pPacket,Player* pPlayer)
     UINT    LevelExp =        g_LevelExpTbl.Get(iLevel-1);    
     
     if((INVALID_ID==pHuman->GetMenPai()|| MenPai_T::ID_WUMENPAI==pHuman->GetMenPai()) && 10<=pHuman->GetLevel())
-    {    //¼ÌÐøÉý¼¶Ç°£¬ÐèÒª¼ÓÈëÃÅÅÉ
+    {    //ç»§ç»­å‡çº§å‰ï¼Œéœ€è¦åŠ å…¥é—¨æ´¾
         pHuman->SendOperateResultMsg(OR_NEED_MENPAI_FOR_LEVELUP);
     }
     else if(CurrentExp>=LevelExp)
     {
-        //¿ÉÒÔÉý¼¶
+        //å¯ä»¥å‡çº§
         CurrentExp-=LevelExp;
         pHuman->SetExp(CurrentExp);
         pHuman->Levelup();

@@ -37,7 +37,7 @@ __ENTER_FUNCTION
     while( IsActive() )
     {
         BOOL ret = FALSE ;
-        UINT uTime = g_pTimeManager->CurrentTime() ;//µ±Ç°Ê±¼ä
+        UINT uTime = g_pTimeManager->CurrentTime() ;//å½“å‰æ—¶é—´
         if( !m_WorkingTime.IsSetTimer() )
         {
             m_WorkingTime.BeginTimer( 1000, uTime ) ;
@@ -49,7 +49,7 @@ __ENTER_FUNCTION
             continue ;
         }
 
-        //ÈÕÖ¾Ë¢ÈëÎÄ¼ş
+        //æ—¥å¿—åˆ·å…¥æ–‡ä»¶
         _MY_TRY
         {
             if( m_FlushLogTimer.CountingTimer(uTime) && g_pLog )
@@ -66,7 +66,7 @@ __ENTER_FUNCTION
         {
         }
 
-        //¸±±¾³¡¾°¹ÜÀí¹ÜÀíÆ÷µÄÂß¼­µ÷ÓÃ
+        //å‰¯æœ¬åœºæ™¯ç®¡ç†ç®¡ç†å™¨çš„é€»è¾‘è°ƒç”¨
         _MY_TRY
         {
             if( g_pCopySceneManager )
@@ -76,7 +76,7 @@ __ENTER_FUNCTION
         {
         }
 
-        //¶¯Ì¬³¡¾°¹ÜÀí¹ÜÀíÆ÷µÄÂß¼­µ÷ÓÃ______________________________
+        //åŠ¨æ€åœºæ™¯ç®¡ç†ç®¡ç†å™¨çš„é€»è¾‘è°ƒç”¨______________________________
         //_MY_TRY
         //{
         //    if( g_pDynamicSceneManager )
@@ -86,7 +86,7 @@ __ENTER_FUNCTION
         //{
         //}
 
-        //Êı¾İ¼à¿ØÂß¼­µ÷ÓÃ
+        //æ•°æ®ç›‘æ§é€»è¾‘è°ƒç”¨
         _MY_TRY
         {
             if( g_pPerformanceManager )
@@ -98,7 +98,7 @@ __ENTER_FUNCTION
         {
         }
         
-        //¶¨Ê±¹Ø±Õ·şÎñÆ÷´¦Àí
+        //å®šæ—¶å…³é—­æœåŠ¡å™¨å¤„ç†
         if( g_Server.m_TimeToQuit.IsSetTimer() )
         {
             if( g_Server.m_TimeToQuit.CountingTimer(uTime) )

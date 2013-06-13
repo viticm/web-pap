@@ -30,7 +30,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     Item *pPetItem = pHuman->GetPetItem(pPacket->GetGUID());
@@ -46,7 +46,7 @@ __ENTER_FUNCTION
     switch(nType)
     {
     case MANIPULATE_CREATEPET:
-        {// ÕÙ»½³èÎï
+        {// å¬å”¤å® ç‰©
             ORESULT oResult = pHuman->TestCallUpPet(pPacket->GetGUID() );
             if( OR_SUCCEEDED(oResult) )
             {
@@ -72,7 +72,7 @@ __ENTER_FUNCTION
         }
         break;
     case MANIPULATE_DELETEPET:
-        {// ÊÕ»Ø³èÎï
+        {// æ”¶å›žå® ç‰©
             ORESULT oResult = pHuman->ReCallPet();
             GCManipulatePetRet msg;
             if (OR_FAILED(oResult))
@@ -87,7 +87,7 @@ __ENTER_FUNCTION
         }
         break;
     case MANIPULATE_FREEPET:
-        {// ·ÅÉú³èÎï
+        {// æ”¾ç”Ÿå® ç‰©
             PET_LOG_PARAM    PetLogParam;
             ORESULT oResult = pHuman->FreePetToNature(&PetLogParam,pPacket->GetGUID());
             GCManipulatePetRet msg;
@@ -103,7 +103,7 @@ __ENTER_FUNCTION
         }
         break;
     case MANIPULATE_ASKOTHERPETINFO:
-        {// ²ì¿´ÆäËûÍæ¼ÒµÄ³èÎïÐÅÏ¢
+        {// å¯Ÿçœ‹å…¶ä»–çŽ©å®¶çš„å® ç‰©ä¿¡æ¯
             ObjID_t objID = pPacket->GetObjID();
             Obj* pObj = pScene->GetObjManager()->GetObj(objID);
             if (pObj && pObj->GetObjType() == Obj::OBJ_TYPE_PET)

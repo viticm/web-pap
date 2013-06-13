@@ -64,7 +64,7 @@ BOOL DBXinFaList::Save(VOID* pSource)
     Assert(pCharFullData);
 
     INT XinFaCount =     pCharFullData->m_Skill.m_Count / 2;
-    if( pCharFullData->m_Skill.m_Count % 2 ) //ÆæÊý
+    if( pCharFullData->m_Skill.m_Count % 2 ) //å¥‡æ•°
         XinFaCount ++;
 
     for(INT i =0;i<XinFaCount;i++)
@@ -147,7 +147,7 @@ BOOL DBXinFaList::ParseResult(VOID* pResult)
                 DB_XinFaLvl,
             };
 
-            //¼ÓÔØ¼¼ÄÜÊôÐÔ
+            //åŠ è½½æŠ€èƒ½å±žæ€§
             
             Assert(mResultCount<MAX_CHAR_XINFA_NUM);
             Assert(mInterface);

@@ -1,11 +1,11 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºStdImpact022.cpp
-// ¹¦ÄÜËµÃ÷£º³èÎï¸´³ğ¼¼ÄÜÍ³Ò»Ğ§¹û
+// æ–‡ä»¶åï¼šStdImpact022.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šå® ç‰©å¤ä»‡æŠ€èƒ½ç»Ÿä¸€æ•ˆæœ
 //
-// Ğ§¹ûÃèÊö²¿·ÖµÄ¸ñÊ½£º|Ğ§¹ûID|ÉúĞ§¼¸ÂÊ|ÉËº¦´ÎÊı|·µ»ØÉËº¦°Ù·ÖÂÊ|ÎüÈ¡ÉËº¦°Ù·ÖÂÊ|
+// æ•ˆæœæè¿°éƒ¨åˆ†çš„æ ¼å¼ï¼š|æ•ˆæœID|ç”Ÿæ•ˆå‡ ç‡|ä¼¤å®³æ¬¡æ•°|è¿”å›ä¼¤å®³ç™¾åˆ†ç‡|å¸å–ä¼¤å®³ç™¾åˆ†ç‡|
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -45,14 +45,14 @@ namespace Combat_Module
             {
                 return;
             }
-            // ÉúĞ§¼¸ÂÊ 
+            // ç”Ÿæ•ˆå‡ ç‡ 
             INT nActivateOdds = GetActivateOdds(rImp);
             INT nRet = pScene->GetRand100();
             if (nRet > nActivateOdds)
-            {// Ã»ÓĞÉúĞ§ÔòÖ±½Ó·µ»Ø
+            {// æ²¡æœ‰ç”Ÿæ•ˆåˆ™ç›´æ¥è¿”å›
                 return;
             }
-            // ¶à³ö¼¸´ÎÉËº¦£¬µ«²»·¢³öÕĞ¶¯×÷
+            // å¤šå‡ºå‡ æ¬¡ä¼¤å®³ï¼Œä½†ä¸å‘å‡ºæ‹›åŠ¨ä½œ
             INT nDamageCount = GetDamageCount(rImp);
             for (INT i = 0; i < nDamageCount; ++i)
             {
@@ -64,7 +64,7 @@ namespace Combat_Module
 
                 pScene->GetEventCore().RegisterImpactEvent(pAttacker->GetID(), rMe.GetID(), impact, 500);
             }
-            // ·µ»ØÉËº¦°Ù·ÖÂÊ
+            // è¿”å›ä¼¤å®³ç™¾åˆ†ç‡
             INT nReflectRate = GetReflectRate(rImp);
             if(0<nReflectRate)
             {
@@ -91,10 +91,10 @@ namespace Combat_Module
             {
                 return;
             }
-            // ÎüÈ¡ÉËº¦°Ù·ÖÂÊ
+            // å¸å–ä¼¤å®³ç™¾åˆ†ç‡
             INT nAbsorbRate = GetAbsorbRate(rImp);
             INT nAbsorbHP = (rDamage * nAbsorbRate) / 100;
-            // µ±Ä¿±êÊÜµ½ÉËº¦Ê±½«ÉËº¦µÄÒ»¶¨±ÈÂÊ×ª»»³É×Ô¼ºµÄHP            
+            // å½“ç›®æ ‡å—åˆ°ä¼¤å®³æ—¶å°†ä¼¤å®³çš„ä¸€å®šæ¯”ç‡è½¬æ¢æˆè‡ªå·±çš„HP            
             rMe.HealthIncrement(nAbsorbHP, &rMe);
             __LEAVE_FUNCTION
         }

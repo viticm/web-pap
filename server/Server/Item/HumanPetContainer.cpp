@@ -45,7 +45,7 @@ BOOL    HumanPetContainer::SetItem(const INT nIndex, const Item* pItem )
     return  FALSE;
 }
 
-//É¾³ıÎïÆ·
+//åˆ é™¤ç‰©å“
 BOOL        HumanPetContainer::EraseItem(UINT uIndex)
 {
     __ENTER_FUNCTION
@@ -87,7 +87,7 @@ BOOL        HumanPetContainer::SetItemValue(INT nIndex,const _PET_DB_LOAD* pPet)
     return FALSE;
 }
 
-BOOL      HumanPetContainer::SetPetGUID(INT nIndex,PET_GUID_t GUID)                //ÉèÖÃ³èÎïGUID
+BOOL      HumanPetContainer::SetPetGUID(INT nIndex,PET_GUID_t GUID)                //è®¾ç½®å® ç‰©GUID
 {
     __ENTER_FUNCTION
 
@@ -126,7 +126,7 @@ BOOL      HumanPetContainer::SetSpouseGUID(INT nIndex,PET_GUID_t GUID)
 
     return FALSE;
 }
-BOOL    HumanPetContainer::SetDataID(INT nIndex,INT ID)                            //ÉèÖÃ³èÎïÄ£ĞÍ        
+BOOL    HumanPetContainer::SetDataID(INT nIndex,INT ID)                            //è®¾ç½®å® ç‰©æ¨¡å‹        
 {
     __ENTER_FUNCTION
 
@@ -145,7 +145,7 @@ BOOL    HumanPetContainer::SetDataID(INT nIndex,INT ID)                         
 
     return FALSE;
 }
-BOOL     HumanPetContainer::SetName(INT nIndex, const CHAR* pName)                        //ÉèÖÃÃû×Ö
+BOOL     HumanPetContainer::SetName(INT nIndex, const CHAR* pName)                        //è®¾ç½®åå­—
 {
 
     __ENTER_FUNCTION
@@ -164,7 +164,7 @@ BOOL     HumanPetContainer::SetName(INT nIndex, const CHAR* pName)              
 
         return FALSE;
 }
-BOOL       HumanPetContainer::SetNick(INT nIndex, const CHAR* pNick)                        //ÉèÖÃêÇ³Æ
+BOOL       HumanPetContainer::SetNick(INT nIndex, const CHAR* pNick)                        //è®¾ç½®æ˜µç§°
 {
 
     __ENTER_FUNCTION
@@ -183,7 +183,7 @@ BOOL       HumanPetContainer::SetNick(INT nIndex, const CHAR* pNick)            
 
         return FALSE;
 }
-BOOL      HumanPetContainer::SetLevel(INT nIndex,INT level)                            //ÉèÖÃµÈ¼¶
+BOOL      HumanPetContainer::SetLevel(INT nIndex,INT level)                            //è®¾ç½®ç­‰çº§
 {
 
     __ENTER_FUNCTION
@@ -202,7 +202,7 @@ BOOL      HumanPetContainer::SetLevel(INT nIndex,INT level)                     
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetTakeLevel(INT nIndex,INT takeLevel)                    //ÉèÖÃĞ¯´øµÈ¼¶
+BOOL      HumanPetContainer::SetTakeLevel(INT nIndex,INT takeLevel)                    //è®¾ç½®æºå¸¦ç­‰çº§
 {
     __ENTER_FUNCTION
 
@@ -221,7 +221,7 @@ BOOL      HumanPetContainer::SetTakeLevel(INT nIndex,INT takeLevel)             
 
         return FALSE;
 }
-BOOL      HumanPetContainer::SetAttackType(INT nIndex,INT attackType)                //ÉèÖÃ½ø¹¥ÀàĞÍ£¨Îï/·¨£©
+BOOL      HumanPetContainer::SetAttackType(INT nIndex,INT attackType)                //è®¾ç½®è¿›æ”»ç±»å‹ï¼ˆç‰©/æ³•ï¼‰
 {
     __ENTER_FUNCTION
 
@@ -240,7 +240,7 @@ BOOL      HumanPetContainer::SetAttackType(INT nIndex,INT attackType)           
 
         return FALSE;
 }
-BOOL      HumanPetContainer::SetAIType(INT nIndex,INT AIType)                        //ÉèÖÃAIÀàĞÍ
+BOOL      HumanPetContainer::SetAIType(INT nIndex,INT AIType)                        //è®¾ç½®AIç±»å‹
 {
     __ENTER_FUNCTION
 
@@ -259,7 +259,7 @@ BOOL      HumanPetContainer::SetAIType(INT nIndex,INT AIType)                   
 
         return FALSE;
 }
-BOOL      HumanPetContainer::SetCampData(INT nIndex,const _CAMP_DATA* pCamp)        //ÉèÖÃÕóÓª
+BOOL      HumanPetContainer::SetCampData(INT nIndex,const _CAMP_DATA* pCamp)        //è®¾ç½®é˜µè¥
 {
     __ENTER_FUNCTION
 
@@ -278,7 +278,7 @@ BOOL      HumanPetContainer::SetCampData(INT nIndex,const _CAMP_DATA* pCamp)    
 
         return FALSE;
 }
-BOOL      HumanPetContainer::SetHP(INT nIndex,INT hp)                                //ÉèÖÃÉúÃüÖµ
+BOOL      HumanPetContainer::SetHP(INT nIndex,INT hp)                                //è®¾ç½®ç”Ÿå‘½å€¼
 {
     __ENTER_FUNCTION
 
@@ -298,7 +298,7 @@ BOOL      HumanPetContainer::SetHP(INT nIndex,INT hp)                           
     return FALSE;
 }
 
-BOOL      HumanPetContainer::SetLife(INT nIndex,INT Life)                            //ÉèÖÃµ±Ç°ÊÙÃü
+BOOL      HumanPetContainer::SetLife(INT nIndex,INT Life)                            //è®¾ç½®å½“å‰å¯¿å‘½
 {
     __ENTER_FUNCTION
 
@@ -317,7 +317,7 @@ BOOL      HumanPetContainer::SetLife(INT nIndex,INT Life)                       
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetPetType(INT nIndex,BYTE PetType)                //±¦±¦£¬±äÒì£¬Ò°Éú
+BOOL      HumanPetContainer::SetPetType(INT nIndex,BYTE PetType)                //å®å®ï¼Œå˜å¼‚ï¼Œé‡ç”Ÿ
 {
     __ENTER_FUNCTION
 
@@ -336,7 +336,7 @@ BOOL      HumanPetContainer::SetPetType(INT nIndex,BYTE PetType)                
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetGeneration(INT nIndex,BYTE Gen)                        //¼¸´ú³è
+BOOL      HumanPetContainer::SetGeneration(INT nIndex,BYTE Gen)                        //å‡ ä»£å® 
 {    
     __ENTER_FUNCTION
 
@@ -356,7 +356,7 @@ BOOL      HumanPetContainer::SetGeneration(INT nIndex,BYTE Gen)                 
     return FALSE;
 
 }
-BOOL      HumanPetContainer::SetHappiness(INT nIndex,BYTE byHappiness)                        //¿ìÀÖ¶È        
+BOOL      HumanPetContainer::SetHappiness(INT nIndex,BYTE byHappiness)                        //å¿«ä¹åº¦        
 {
     __ENTER_FUNCTION
 
@@ -375,7 +375,7 @@ BOOL      HumanPetContainer::SetHappiness(INT nIndex,BYTE byHappiness)          
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetStrPer(INT nIndex,INT strper)                        //Á¦Á¿×ÊÖÊ
+BOOL      HumanPetContainer::SetStrPer(INT nIndex,INT strper)                        //åŠ›é‡èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -394,7 +394,7 @@ BOOL      HumanPetContainer::SetStrPer(INT nIndex,INT strper)                   
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetConPer(INT nIndex,INT conper)                        //ÌåÁ¦×ÊÖÊ    
+BOOL      HumanPetContainer::SetConPer(INT nIndex,INT conper)                        //ä½“åŠ›èµ„è´¨    
 {    
     __ENTER_FUNCTION
 
@@ -413,7 +413,7 @@ BOOL      HumanPetContainer::SetConPer(INT nIndex,INT conper)                   
 
     return FALSE;
 }    
-BOOL       HumanPetContainer::SetDexPer(INT nIndex,INT dexper)                        //Éí·¨×ÊÖÊ
+BOOL       HumanPetContainer::SetDexPer(INT nIndex,INT dexper)                        //èº«æ³•èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -432,7 +432,7 @@ BOOL       HumanPetContainer::SetDexPer(INT nIndex,INT dexper)                  
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetSprPer(INT nIndex,INT sprper)                        //ÁéÆø×ÊÖÊ
+BOOL      HumanPetContainer::SetSprPer(INT nIndex,INT sprper)                        //çµæ°”èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -452,7 +452,7 @@ BOOL      HumanPetContainer::SetSprPer(INT nIndex,INT sprper)                   
     return FALSE;
 }
 
-BOOL       HumanPetContainer::SetIntPer(INT nIndex,INT intper)                        //¶¨Á¦×ÊÖÊ
+BOOL       HumanPetContainer::SetIntPer(INT nIndex,INT intper)                        //å®šåŠ›èµ„è´¨
 {
     __ENTER_FUNCTION
 
@@ -471,7 +471,7 @@ BOOL       HumanPetContainer::SetIntPer(INT nIndex,INT intper)                  
 
     return FALSE;
 }
-BOOL    HumanPetContainer::SetGenGu(INT nIndex,INT gengu)                            //¸ù¹Ç
+BOOL    HumanPetContainer::SetGenGu(INT nIndex,INT gengu)                            //æ ¹éª¨
 {
     __ENTER_FUNCTION
 
@@ -490,7 +490,7 @@ BOOL    HumanPetContainer::SetGenGu(INT nIndex,INT gengu)                       
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetGrowRate(INT nIndex,FLOAT rate)                        //³É³¤ÂÊ
+BOOL      HumanPetContainer::SetGrowRate(INT nIndex,FLOAT rate)                        //æˆé•¿ç‡
 {
     __ENTER_FUNCTION
 
@@ -509,7 +509,7 @@ BOOL      HumanPetContainer::SetGrowRate(INT nIndex,FLOAT rate)                 
 
         return FALSE;
 }
-BOOL      HumanPetContainer::SetRemainPoint(INT nIndex,INT rPoint)                    //Ò»¼¶ÊôĞÔÊ£ÓàµãÊı
+BOOL      HumanPetContainer::SetRemainPoint(INT nIndex,INT rPoint)                    //ä¸€çº§å±æ€§å‰©ä½™ç‚¹æ•°
 {
     __ENTER_FUNCTION
 
@@ -528,7 +528,7 @@ BOOL      HumanPetContainer::SetRemainPoint(INT nIndex,INT rPoint)              
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetExp(INT nIndex,INT exp)                            //¾­ÑéÖµ
+BOOL      HumanPetContainer::SetExp(INT nIndex,INT exp)                            //ç»éªŒå€¼
 {
     __ENTER_FUNCTION
 
@@ -547,7 +547,7 @@ BOOL      HumanPetContainer::SetExp(INT nIndex,INT exp)                         
 
     return FALSE;
 }
-BOOL      HumanPetContainer::SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value)//»ù´¡Ò»¼¶Õ½¶·ÊôĞÔ£¨²»°üÀ¨¼¼ÄÜºÍ×°±¸Ôö¼ÓµÄ²¿·Ö£©
+BOOL      HumanPetContainer::SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT value)//åŸºç¡€ä¸€çº§æˆ˜æ–—å±æ€§ï¼ˆä¸åŒ…æ‹¬æŠ€èƒ½å’Œè£…å¤‡å¢åŠ çš„éƒ¨åˆ†ï¼‰
 {
     __ENTER_FUNCTION
 
@@ -567,7 +567,7 @@ BOOL      HumanPetContainer::SetLvl1Attr(INT nIndex,CHAR_ATTR_LEVEL1 type,INT va
     return FALSE;
 }
 
-BOOL      HumanPetContainer::SetSkill(INT nIndex,UINT SkillIndex,_PET_SKILL skill)    //³èÎï¼¼ÄÜ
+BOOL      HumanPetContainer::SetSkill(INT nIndex,UINT SkillIndex,_PET_SKILL skill)    //å® ç‰©æŠ€èƒ½
 {
     __ENTER_FUNCTION
 
@@ -600,7 +600,7 @@ BOOL    HumanPetContainer::SetDBDirty()
 
     default:
         {
-            AssertEx(FALSE,"ÎŞĞ§ÈİÆ÷ÀàĞÍ");
+            AssertEx(FALSE,"æ— æ•ˆå®¹å™¨ç±»å‹");
             return FALSE;
         }
     }

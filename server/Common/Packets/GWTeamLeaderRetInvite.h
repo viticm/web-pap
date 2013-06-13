@@ -13,7 +13,7 @@ namespace Packets
             GWTeamLeaderRetInvite(){};
             virtual        ~GWTeamLeaderRetInvite(){};
 
-            //公用接口
+            //鍏敤鎺ュ彛
             virtual BOOL            Read( SocketInputStream& iStream ) ;
             virtual BOOL            Write( SocketOutputStream& oStream )const ;
             virtual UINT            Execute( Player* pPlayer ) ;
@@ -37,9 +37,9 @@ namespace Packets
 
     public :
         BYTE                m_Return ;
-        GUID_t            m_SourGUID ;        //邀请人
-        GUID_t            m_DestGUID ;        //被邀请人
-        GUID_t            m_LeaderGUID ;        //队长
+        GUID_t            m_SourGUID ;        //閭�璇蜂汉
+        GUID_t            m_DestGUID ;        //琚個璇蜂汉
+        GUID_t            m_LeaderGUID ;        //闃熼暱
 
     };
 

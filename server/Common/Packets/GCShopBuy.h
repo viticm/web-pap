@@ -1,6 +1,6 @@
 // GCShopBuy.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -19,12 +19,12 @@ namespace Packets
     public:
         enum
         {
-            BUY_OK = 0,                // ¹ºÂò³É¹¦
-            BUY_BACK_OK,            // »Ø¹º³É¹¦
-            BUY_MONEY_FAIL,            // Ã»Ç®ÁË
-            BUY_RMB_FAIL,            // Ã»Ç®ÁË
-            BUY_NO_MERCH,            // ÒÑ¾­ÂôÍêÁË
-            BUY_BAG_FULL,            // ·Å²»ÏÂÁË
+            BUY_OK = 0,                // è´­ä¹°æˆåŠŸ
+            BUY_BACK_OK,            // å›è´­æˆåŠŸ
+            BUY_MONEY_FAIL,            // æ²¡é’±äº†
+            BUY_RMB_FAIL,            // æ²¡é’±äº†
+            BUY_NO_MERCH,            // å·²ç»å–å®Œäº†
+            BUY_BAG_FULL,            // æ”¾ä¸ä¸‹äº†
         };
     public:
         GCShopBuy( )
@@ -33,7 +33,7 @@ namespace Packets
         };
         virtual ~GCShopBuy( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -51,9 +51,9 @@ namespace Packets
         BYTE                    GetNum(VOID) const {return m_ItemNum;};
         VOID                    SetNum(BYTE ItemNum) {m_ItemNum = ItemNum;};
     private:
-        BYTE                    m_IsBuyOk;        //³É¹¦Óë·ñ
-        UINT                    m_ItemIndex;    //¹ºÂòµÄÎïÆ·Ë÷Òı
-        BYTE                    m_ItemNum;        //¹ºÂòµÄÎïÆ·ÊıÁ¿
+        BYTE                    m_IsBuyOk;        //æˆåŠŸä¸å¦
+        UINT                    m_ItemIndex;    //è´­ä¹°çš„ç‰©å“ç´¢å¼•
+        BYTE                    m_ItemNum;        //è´­ä¹°çš„ç‰©å“æ•°é‡
 
     };
 

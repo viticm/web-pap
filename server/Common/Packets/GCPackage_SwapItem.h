@@ -13,7 +13,7 @@ namespace Packets
         GCPackage_SwapItem(){};
         virtual        ~GCPackage_SwapItem(){};
 
-        //¹«ÓÃ½Ó¿Ú
+        //å…¬ç”¨æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -31,11 +31,11 @@ namespace Packets
         BYTE                    GetPackageIndex2(){return m_nPackageIndex2;}
 
     private:
-        //½á¹û
-        // 0 - ³É¹¦
-        // 1 - Ê§°Ü
+        //ç»“æœ
+        // 0 - æˆåŠŸ
+        // 1 - å¤±è´¥
         BYTE                    m_nResult;
-        //ÒªÇó½»»»µÄÁ½¸öItemµÄË÷Òı
+        //è¦æ±‚äº¤æ¢çš„ä¸¤ä¸ªItemçš„ç´¢å¼•
         BYTE                    m_nPackageIndex1;
         BYTE                    m_nPackageIndex2;
     };

@@ -1,6 +1,6 @@
 // GCMissionList.h
 // 
-// ·µ»ØÈÎÎñÁĞ±í
+// è¿”å›ä»»åŠ¡åˆ—è¡¨
 // 
 //////////////////////////////////////////////////////
 
@@ -26,7 +26,7 @@ namespace Packets
         }
         virtual ~GCMissionList( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -70,7 +70,7 @@ namespace Packets
     private:
         ObjID_t                m_ObjID;
 
-        UINT                m_uMissionListFlags;        // 1Î»±íÊ¾1ÌõÒªË¢ĞÂµÄ
+        UINT                m_uMissionListFlags;        // 1ä½è¡¨ç¤º1æ¡è¦åˆ·æ–°çš„
         _MISSION_LIST        m_listMission;
     };
 

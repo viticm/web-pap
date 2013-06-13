@@ -1,4 +1,4 @@
-// ºÃÓÑÏûÏ¢½á¹¹
+// å¥½å‹æ¶ˆæ¯ç»“æž„
 
 #ifndef __GAMESTRUCT_MINORPASSWD_H__
 #define __GAMESTRUCT_MINORPASSWD_H__
@@ -13,53 +13,53 @@ class SocketOutputStream;
 enum MINORPASSWD_REQUEST_TYPE
 {
     MREQT_NONE                            = 0,
-    MREQT_PASSWDSETUP,                                    // Ñ¯ÎÊ¶þ¼¶ÃÜÂëÊÇ·ñÒÑ¾­ÉèÖÃ
-    MREQT_DELETEPASSWDTIME,                                // Ñ¯ÎÊÊÇ·ñ´¦ÓÚÇ¿ÖÆ½â³ý½×¶Î
-    MREQT_SETPASSWD,                                    // ÉèÖÃ¶þ¼¶ÃÜÂë
-    MREQT_MODIFYPASSWD,                                    // ÐÞ¸Ä¶þ¼¶ÃÜÂë
-    MREQT_UNLOCKPASSWD,                                    // ¶þ¼¶ÃÜÂë½âËø
-    MREQT_DELETEPASSWD,                                    // Ç¿ÖÆ½â³ý¶þ¼¶ÃÜÂë
+    MREQT_PASSWDSETUP,                                    // è¯¢é—®äºŒçº§å¯†ç æ˜¯å¦å·²ç»è®¾ç½®
+    MREQT_DELETEPASSWDTIME,                                // è¯¢é—®æ˜¯å¦å¤„äºŽå¼ºåˆ¶è§£é™¤é˜¶æ®µ
+    MREQT_SETPASSWD,                                    // è®¾ç½®äºŒçº§å¯†ç 
+    MREQT_MODIFYPASSWD,                                    // ä¿®æ”¹äºŒçº§å¯†ç 
+    MREQT_UNLOCKPASSWD,                                    // äºŒçº§å¯†ç è§£é”
+    MREQT_DELETEPASSWD,                                    // å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç 
 };
 
 enum MINORPASSWD_RETURN_TYPE
 {
     MRETT_NONE                            = 0,
-    MRETT_PASSWDSETUP,                                    // ¶þ¼¶ÃÜÂëÊÇ·ñÒÑ¾­ÉèÖÃ
-    MRETT_DELETEPASSWDTIME,                                // ¶þ¼¶ÃÜÂë½â³ýÊ£ÓàÊ±¼ä£¨»òÕß²»ÔÚ½â³ý½×¶Î£©
-    MRETT_SETPASSWDSUCC,                                // ¶þ¼¶ÃÜÂëÉèÖÃ³É¹¦
-    MRETT_MODIFYPASSWDSUCC,                                // ¶þ¼¶ÃÜÂëÐÞ¸Ä³É¹¦
-    MRETT_UNLOCKPASSWDSUCC,                                // ¶þ¼¶ÃÜÂë½âËø³É¹¦
-    MRETT_DELETEPASSWDCANCEL,                            // Ç¿ÖÆ½â³ý¶þ¼¶ÃÜÂëÊ§Ð§
-    MRETT_DELETEPASSWDSUCC,                                // ¶þ¼¶ÃÜÂëÇ¿ÖÆ½â³ý³É¹¦
+    MRETT_PASSWDSETUP,                                    // äºŒçº§å¯†ç æ˜¯å¦å·²ç»è®¾ç½®
+    MRETT_DELETEPASSWDTIME,                                // äºŒçº§å¯†ç è§£é™¤å‰©ä½™æ—¶é—´ï¼ˆæˆ–è€…ä¸åœ¨è§£é™¤é˜¶æ®µï¼‰
+    MRETT_SETPASSWDSUCC,                                // äºŒçº§å¯†ç è®¾ç½®æˆåŠŸ
+    MRETT_MODIFYPASSWDSUCC,                                // äºŒçº§å¯†ç ä¿®æ”¹æˆåŠŸ
+    MRETT_UNLOCKPASSWDSUCC,                                // äºŒçº§å¯†ç è§£é”æˆåŠŸ
+    MRETT_DELETEPASSWDCANCEL,                            // å¼ºåˆ¶è§£é™¤äºŒçº§å¯†ç å¤±æ•ˆ
+    MRETT_DELETEPASSWDSUCC,                                // äºŒçº§å¯†ç å¼ºåˆ¶è§£é™¤æˆåŠŸ
 
     MRETT_ERR_START,
-    MRETT_ERR_SETPASSWDFAIL,                            // ¶þ¼¶ÃÜÂëÉèÖÃÊ§°Ü
-    MRETT_ERR_MODIFYPASSWDFAIL,                            // ¶þ¼¶ÃÜÂëÐÞ¸ÄÊ§°Ü
-    MRETT_ERR_UNLOCKPASSWDFAIL,                            // ¶þ¼¶ÃÜÂë½âËøÊ§°Ü
-    MRETT_ERR_DELETEPASSWDFAIL,                            // ¶þ¼¶ÃÜÂëÇ¿ÖÆ½â³ýÊ§°Ü
+    MRETT_ERR_SETPASSWDFAIL,                            // äºŒçº§å¯†ç è®¾ç½®å¤±è´¥
+    MRETT_ERR_MODIFYPASSWDFAIL,                            // äºŒçº§å¯†ç ä¿®æ”¹å¤±è´¥
+    MRETT_ERR_UNLOCKPASSWDFAIL,                            // äºŒçº§å¯†ç è§£é”å¤±è´¥
+    MRETT_ERR_DELETEPASSWDFAIL,                            // äºŒçº§å¯†ç å¼ºåˆ¶è§£é™¤å¤±è´¥
 };
 
-// ÎÞ²ÎÊý
+// æ— å‚æ•°
 // MREQT_PASSWDSETUP
 // MREQT_DELETEPASSWDTIME
 // MREQT_DELETEPASSWD
 
-// ÊäÈëÒ»¸öÃÜÂë
+// è¾“å…¥ä¸€ä¸ªå¯†ç 
 // MREQT_SETPASSWD
 // MREQT_UNLOCKPASSWD
 struct MINORPASSWD_PWD
 {
-    //Êý¾Ý
+    //æ•°æ®
     UCHAR                                m_uPasswdSize;
-    CHAR                                m_Passwd[MAX_PWD];        //¶þ¼¶ÃÜÂë
+    CHAR                                m_Passwd[MAX_PWD];        //äºŒçº§å¯†ç 
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æŽ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êý¾ÝÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æŽ¥å£
     UCHAR                                GetPasswdSize( ) { return m_uPasswdSize; }
 
     const CHAR*                            GetPasswd( ) { return m_Passwd; }
@@ -74,19 +74,19 @@ struct MINORPASSWD_PWD
 // MREQT_MODIFYPASSWD
 struct REQUEST_MINORPASSWD_MODIFY
 {
-    //Êý¾Ý
+    //æ•°æ®
     UCHAR                                m_uOldPasswdSize;
-    CHAR                                m_OldPasswd[MAX_PWD];    // ¾É¶þ¼¶ÃÜÂë
+    CHAR                                m_OldPasswd[MAX_PWD];    // æ—§äºŒçº§å¯†ç 
     UCHAR                                m_uNewPasswdSize;
-    CHAR                                m_NewPasswd[MAX_PWD];    // ÐÂ¶þ¼¶ÃÜÂë
+    CHAR                                m_NewPasswd[MAX_PWD];    // æ–°äºŒçº§å¯†ç 
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æŽ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êý¾ÝÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æŽ¥å£
     UCHAR                                GetOldPasswdSize( ) { return m_uOldPasswdSize; }
 
     const CHAR*                            GetOldPasswd( ) { return m_OldPasswd; }
@@ -136,7 +136,7 @@ struct CG_MINORPASSWD
 
 /////////////////////////////////////////////////////////////////////////////////
 
-// ÎÞ²ÎÊý
+// æ— å‚æ•°
 
 // MRETT_SETPASSWDSUCC
 // MRETT_MODIFYPASSWDSUCC
@@ -152,15 +152,15 @@ struct CG_MINORPASSWD
 // MRETT_PASSWDSETUP
 struct RETURN_MINORPASSWD_SETUP
 {
-    UCHAR                                m_uFlag;            // 0 ÎªÎ´ÉèÖÃ£¬1 ÎªÒÑÉèÖÃ
+    UCHAR                                m_uFlag;            // 0 ä¸ºæœªè®¾ç½®ï¼Œ1 ä¸ºå·²è®¾ç½®
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æŽ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êý¾ÝÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æŽ¥å£
     UCHAR                                GetSetupFlag( ) { return m_uFlag; }
     VOID                                SetSetupFlag( UCHAR uFlag ) { m_uFlag = uFlag; }
 };
@@ -168,15 +168,15 @@ struct RETURN_MINORPASSWD_SETUP
 // MRETT_DELETEPASSWDTIME
 struct RETURN_DELETE_MINORPASSWD_TIME
 {
-    UINT                                m_uTime;            // 0 ÎªÎ´´¦ÓÚÇ¿ÖÆ½â³ý½×¶Î£¬·ñÔòÎªÇ¿ÖÆ½â³ýµÄÊ±¼ä
+    UINT                                m_uTime;            // 0 ä¸ºæœªå¤„äºŽå¼ºåˆ¶è§£é™¤é˜¶æ®µï¼Œå¦åˆ™ä¸ºå¼ºåˆ¶è§£é™¤çš„æ—¶é—´
 
-    //»ù±¾½Ó¿Ú
+    //åŸºæœ¬æŽ¥å£
     VOID                                CleanUp( );
     UINT                                GetSize( ) const;
     VOID                                Read( SocketInputStream& iStream );
     VOID                                Write( SocketOutputStream& oStream ) const;
 
-    //Êý¾ÝÓ¦ÓÃ½Ó¿Ú
+    //æ•°æ®åº”ç”¨æŽ¥å£
     UINT                                GetDeleteTime( ) { return m_uTime; }
     VOID                                SetDeleteTime( UINT uTime ) { m_uTime = uTime; }
 };

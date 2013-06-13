@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºCommonSkill001.cpp
-// ¹¦ÄÜËµÃ÷£º×½³èÎï
+// æ–‡ä»¶åï¼šCommonSkill001.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šæ‰å® ç‰©
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -49,12 +49,12 @@ namespace Combat_Module
             }
 
             if (((Obj_Pet*)pTar)->GetCreator() )
-            {// Èç¹ûÒÑ¾­ÓĞÖ÷ÈËÔò²»¿ÉÒÔ²¶×½
+            {// å¦‚æœå·²ç»æœ‰ä¸»äººåˆ™ä¸å¯ä»¥æ•æ‰
                 rParams.SetErrCode(OR_INVALID_TARGET);
                 return FALSE;
             }
 
-            // Ôö¼Ó¸Ã³èÎïÉíÉÏµÄ²¶»ñÍæ¼ÒÊı
+            // å¢åŠ è¯¥å® ç‰©èº«ä¸Šçš„æ•è·ç©å®¶æ•°
             ((Obj_Pet*)pTar)->AddCapturer(rMe.GetID());            
             rParams.SetErrCode(OR_OK);
             return TRUE;
@@ -85,11 +85,11 @@ namespace Combat_Module
             msg.SetManipulateRet(GCManipulatePetRet::MANIPULATEPET_RET_CALLUPFALID);
 
             ((Obj_Human*)&rMe)->GetPlayer()->SendPacket(&msg);
-            // ¼õÉÙ¸Ã³èÎïÉíÉÏµÄ²¶»ñÍæ¼ÒÊı
+            // å‡å°‘è¯¥å® ç‰©èº«ä¸Šçš„æ•è·ç©å®¶æ•°
             ((Obj_Pet*)pTar)->DelCapturer(rMe.GetID());
 
             // removed by  {
-            // µİ¹éµ÷ÓÃ»áÒıÆğ
+            // é€’å½’è°ƒç”¨ä¼šå¼•èµ·
             //rMe.GetAIObj()->Stop();
             // }
 
@@ -122,7 +122,7 @@ namespace Combat_Module
             msg.SetManipulateRet(GCManipulatePetRet::MANIPULATEPET_RET_CALLUPFALID);
 
             ((Obj_Human*)&rMe)->GetPlayer()->SendPacket(&msg);
-            // ¼õÉÙ¸Ã³èÎïÉíÉÏµÄ²¶»ñÍæ¼ÒÊı
+            // å‡å°‘è¯¥å® ç‰©èº«ä¸Šçš„æ•è·ç©å®¶æ•°
             ((Obj_Pet*)pTar)->DelCapturer(rMe.GetID());
 
             return TRUE;
@@ -159,9 +159,9 @@ namespace Combat_Module
                 msg.SetManipulateRet(GCManipulatePetRet::MANIPULATEPET_RET_CAPTURESUCC);
 
                 ((Obj_Human*)&rMe)->GetPlayer()->SendPacket(&msg);
-                // ÏòÕıÔÚ²¶»ñµÄÍæ¼Ò·¢ËÍÊ§°ÜÏûÏ¢
+                // å‘æ­£åœ¨æ•è·çš„ç©å®¶å‘é€å¤±è´¥æ¶ˆæ¯
                 ((Obj_Pet&)rTar).SendCaptureFailedToOthers(rMe.GetID());
-                // Çå¿Õ³èÎïÉíÉÏËùÓĞµÄÍæ¼ÒÊı
+                // æ¸…ç©ºå® ç‰©èº«ä¸Šæ‰€æœ‰çš„ç©å®¶æ•°
                 ((Obj_Pet&)rTar).DelCapturer(rMe.GetID());
                 PetManager* pPetMgr = rMe.getScene()->GetPetManager();
                 if (pPetMgr)
@@ -174,7 +174,7 @@ namespace Combat_Module
             }
             else
             {
-                // ¼õÉÙ¸Ã³èÎïÉíÉÏµÄ²¶»ñÍæ¼ÒÊı
+                // å‡å°‘è¯¥å® ç‰©èº«ä¸Šçš„æ•è·ç©å®¶æ•°
                 ((Obj_Pet&)rTar).DelCapturer(rMe.GetID());
 
                 msg.SetManipulateRet(GCManipulatePetRet::MANIPULATEPET_RET_CAPTUREFALID);

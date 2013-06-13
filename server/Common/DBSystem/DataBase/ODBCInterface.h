@@ -28,26 +28,26 @@ class ODBCInterface
 
     BOOL            mConnected;
 public:
-    SQLHENV            hEnv;                                                // Êı¾İ¿â»·¾³
+    SQLHENV            hEnv;                                                // æ•°æ®åº“ç¯å¢ƒ
     SQLHDBC            hDbc;                                                //  
-    SQLRETURN        mResult;                                            // Sql²éÑ¯·µ»ØÖµ
-    CHAR            Col[MAXCOL][MAX_COLUMN_BUFFER];                        // Column Êı¾İ
+    SQLRETURN        mResult;                                            // SqlæŸ¥è¯¢è¿”å›å€¼
+    CHAR            Col[MAXCOL][MAX_COLUMN_BUFFER];                        // Column æ•°æ®
     
     
     CHAR    mConnectStr[DATABASE_STR_LEN];
     CHAR    mUserName[DB_USE_STR_LEN];
     CHAR    mPassWord[DB_PASSWORD_STR_LEN];
 
-    SQLINTEGER    mAffectCount;                        // Ó°ÏìĞĞÊı
-    SQLHSTMT    hStmt;                                // ×´Ì¬¾ä±ú
-    SQLSMALLINT mColCount;                            // Column ÊıÁ¿
-    SQLCHAR        ColName[MAXCOL][MAX_COLUMN_NAME];    // Column Ãû³Æ
-    SQLINTEGER  mCollocate[MAXCOL];                    // Col    Î»ÖÃ
+    SQLINTEGER    mAffectCount;                        // å½±å“è¡Œæ•°
+    SQLHSTMT    hStmt;                                // çŠ¶æ€å¥æŸ„
+    SQLSMALLINT mColCount;                            // Column æ•°é‡
+    SQLCHAR        ColName[MAXCOL][MAX_COLUMN_NAME];    // Column åç§°
+    SQLINTEGER  mCollocate[MAXCOL];                    // Col    ä½ç½®
 
-    DB_QUERY        m_Query;                            //²éÑ¯½á¹¹Ìå
-    LONG_DB_QUERY    m_LongQuery;                        //´ó½á¹¹Ìå
+    DB_QUERY        m_Query;                            //æŸ¥è¯¢ç»“æ„ä½“
+    LONG_DB_QUERY    m_LongQuery;                        //å¤§ç»“æ„ä½“
     SQLINTEGER    mErrorCode;
-    SQLCHAR        mErrorMsg[MAX_ERROR_MSG_LENGHT];                        //ÏûÏ¢´íÎóÄÚÈİ
+    SQLCHAR        mErrorMsg[MAX_ERROR_MSG_LENGHT];                        //æ¶ˆæ¯é”™è¯¯å†…å®¹
 public:
 
     ODBCInterface();
@@ -123,7 +123,7 @@ public:
     VOID            GetField(INT nCol, CHAR*buf,INT BufLen,INT& ErrorCode);
     VOID            GetLongField(INT nCol, CHAR*buf,INT BufLen,INT& ErrorCode);
 
-    //·ÖÎöSqlState
+    //åˆ†æSqlState
     VOID            DiagState();
     VOID            DiagStateEx();
     VOID            SaveLog(const CHAR* pLog);

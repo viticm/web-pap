@@ -39,7 +39,7 @@ __ENTER_FUNCTION
     GUID_t dGuid = pDestUser->GetGUID();
 
     if( pSourUser->GetTeamID() != INVALID_ID )
-    {//ÉêÇëÈËÒÑ¾­ÊôÓÚÄ³¸ö¶ÓÎéÁË
+    {//ç”³è¯·äººå·²ç»å±äºæŸä¸ªé˜Ÿä¼äº†
         WGTeamError Msg;
         Msg.SetPlayerID( pSourUser->GetPlayerID() );
         Msg.SetGUID(pPacket->GetGUID());
@@ -52,7 +52,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE;
     }
     else if( pDestUser->GetTeamID() == INVALID_ID )
-    {//±»ÉêÇëÕß²»ÊôÓÚÄ³¸ö×é
+    {//è¢«ç”³è¯·è€…ä¸å±äºæŸä¸ªç»„
         WGTeamError Msg;
         Msg.SetPlayerID( pSourUser->GetPlayerID() );
         Msg.SetGUID(pPacket->GetGUID());
@@ -75,7 +75,7 @@ __ENTER_FUNCTION
 
     USER* pUser = g_pOnlineUser->FindUser( pTeam->Leader()->m_Member );
     if( pUser==NULL )
-    {//Òì³£, ¶Ó³¤²»ÄÜÊÇÀëÏßÍæ¼Ò
+    {//å¼‚å¸¸, é˜Ÿé•¿ä¸èƒ½æ˜¯ç¦»çº¿ç©å®¶
         Assert(FALSE);
         return PACKET_EXE_CONTINUE;
     }

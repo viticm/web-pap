@@ -17,7 +17,7 @@ __ENTER_FUNCTION
 
     USER* pUser = g_pOnlineUser->FindUser( pRecv->GetGUID() );
     if ( pUser == NULL )
-    { //Ã»ÓÐ·¢ÏÖÔÚ¡°ÔÚÏßÓÃ»§ÁÐ±í¡±Àï¶ÔÓ¦´Ë GUID µÄÓÃ»§
+    { //æ²¡æœ‰å‘çŽ°åœ¨â€œåœ¨çº¿ç”¨æˆ·åˆ—è¡¨â€é‡Œå¯¹åº”æ­¤ GUID çš„ç”¨æˆ·
         Log::SaveLog( WORLD_LOGFILE, "GWFingerHandler...User GUID=%X not find!",
             pRecv->GetGUID() );
 
@@ -33,16 +33,16 @@ __ENTER_FUNCTION
 
     switch( pRecv->m_Type )
     {
-    case FREQ_GUID:    // GUID ËÑË÷
+    case FREQ_GUID:    // GUID æœç´¢
         {
             GUID_t guid = pRecv->m_FingerByGUID.GetTargetGUID();
             BOOL bOnlineFlag = pRecv->m_FingerByGUID.GetOnlineFlag();
             USER* pTargetUser;
 
-            // ÏÈ´Ó OnlineUser ÖÐ²éÕÒ
+            // å…ˆä»Ž OnlineUser ä¸­æŸ¥æ‰¾
             pTargetUser = g_pOnlineUser->FindUser(guid);
 
-            // ÕÒµ½ÁËÖ±½Ó·µ»Ø
+            // æ‰¾åˆ°äº†ç›´æŽ¥è¿”å›ž
             if ( pTargetUser != NULL )
             {
                 pSend->m_Type = FRET_PLAYERLIST;
@@ -55,22 +55,22 @@ __ENTER_FUNCTION
                 pPlayerInfo->SetGuildName( g_pGuildManager->GetGuildName(pPlayerInfo->GetGuildID()) );
             }
             else if ( bOnlineFlag )
-            { // Ã»ÓÐÕÒµ½ÔòÅÐ¶ÏÊÇ·ñÐèÒª²éÕÒÀëÏßÍæ¼Ò£¬²»ÐèÒª·µ»Ø´íÎóÏûÏ¢
+            { // æ²¡æœ‰æ‰¾åˆ°åˆ™åˆ¤æ–­æ˜¯å¦éœ€è¦æŸ¥æ‰¾ç¦»çº¿çŽ©å®¶ï¼Œä¸éœ€è¦è¿”å›žé”™è¯¯æ¶ˆæ¯
                 pSend->m_Type = FRET_ERR_NORESULT;
             }
             else
-            { // ÐèÒªÔò´ÓÀëÏßÍæ¼ÒÖÐ²éÕÒ
+            { // éœ€è¦åˆ™ä»Žç¦»çº¿çŽ©å®¶ä¸­æŸ¥æ‰¾
                 pSend->m_Type = FRET_PLAYERLIST;
                 pSend->m_FingerPlayerList.CleanUp();
 
                 if ( g_pAllUser->Select( guid, &(pSend->m_FingerPlayerList) ) < 1 )
-                { // ÕÒµ½ÁË·µ»Ø£¬·ñÔò·µ»Ø´íÎóÏûÏ¢
+                { // æ‰¾åˆ°äº†è¿”å›žï¼Œå¦åˆ™è¿”å›žé”™è¯¯æ¶ˆæ¯
                     pSend->m_Type = FRET_ERR_NORESULT;
                 }
             }
         }
         break;
-    case FREQ_NAME: // NAME ËÑË÷
+    case FREQ_NAME: // NAME æœç´¢
         {
             const CHAR* szName = pRecv->m_FingerByName.GetTargetName();
             BOOL bOnlineFlag = pRecv->m_FingerByName.GetOnlineFlag();
@@ -81,31 +81,31 @@ __ENTER_FUNCTION
 
             BOOL bRes;
             if ( bOnlineFlag )
-            { // ÔÚÏß²éÕÒ
+            { // åœ¨çº¿æŸ¥æ‰¾
                 bRes = g_pOnlineUser->Select( szName, &(pSend->m_FingerPlayerList), bPreciseFlag, nPosition ) > 0;
             }
             else
-            { // ÀëÏß²éÕÒ
+            { // ç¦»çº¿æŸ¥æ‰¾
                 bRes = g_pAllUser->Select( szName, &(pSend->m_FingerPlayerList), bPreciseFlag, nPosition ) > 0;
             }
 
             if ( bRes )
-            { //    ÕÒµ½ÁË
+            { //    æ‰¾åˆ°äº†
                 pSend->m_Type = FRET_PLAYERLIST;
             }
             else
-            { //    Ã»ÕÒµ½
+            { //    æ²¡æ‰¾åˆ°
                 pSend->m_Type = FRET_ERR_NORESULT;
             }
         }
         break;
-    case FREQ_ADVANCED:    // ¸ß¼¶ËÑË÷
+    case FREQ_ADVANCED:    // é«˜çº§æœç´¢
         {
             UINT uCount;
 
             pSend->m_FingerPlayerList.CleanUp();
 
-            // ½«²ÎÊý´«¸ø½Ó¿Ú£¬È»ºó²éÕÒ
+            // å°†å‚æ•°ä¼ ç»™æŽ¥å£ï¼Œç„¶åŽæŸ¥æ‰¾
             uCount = g_pOnlineUser->Select( pRecv->m_AdvancedFinger.GetMenPai(),
                                             pRecv->m_AdvancedFinger.GetGuildID(),
                                             pRecv->m_AdvancedFinger.GetSex(),
@@ -114,11 +114,11 @@ __ENTER_FUNCTION
                                             &(pSend->m_FingerPlayerList),
                                             pRecv->m_AdvancedFinger.GetPosition() );
             if ( uCount == 0 )
-            { //    Ã»ÕÒµ½
+            { //    æ²¡æ‰¾åˆ°
                 pSend->m_Type = FRET_ERR_NORESULT;
             }
             else
-            { //    ÕÒµ½ÁË
+            { //    æ‰¾åˆ°äº†
                 pSend->m_Type = FRET_PLAYERLIST;
             }
         }

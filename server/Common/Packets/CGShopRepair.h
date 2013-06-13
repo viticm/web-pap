@@ -1,6 +1,6 @@
 // CGShopRepair.h
 // 
-// ¿Í»§¶ËÍ¨Öª·şÎñÆ÷ÒªĞŞÊ²Ã´¶«Î÷
+// å®¢æˆ·ç«¯é€šçŸ¥æœåŠ¡å™¨è¦ä¿®ä»€ä¹ˆä¸œè¥¿
 // 
 //////////////////////////////////////////////////////
 
@@ -32,7 +32,7 @@ namespace Packets
         };
         virtual ~CGShopRepair( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -55,8 +55,8 @@ namespace Packets
 
     private:
         BYTE                    m_Opt;
-        BOOL                    m_bRepairAllFlag;        //±êÊ¾ÊÇ²»ÊÇĞŞÀíÈ«²¿
-        BYTE                    m_nBagIndex;            //¸ñ×ÓË÷Òı
+        BOOL                    m_bRepairAllFlag;        //æ ‡ç¤ºæ˜¯ä¸æ˜¯ä¿®ç†å…¨éƒ¨
+        BYTE                    m_nBagIndex;            //æ ¼å­ç´¢å¼•
         UINT                    m_UniqueID;        
 
     };

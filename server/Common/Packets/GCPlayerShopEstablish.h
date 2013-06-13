@@ -1,6 +1,6 @@
 // GCPlayerShopEstablish.h
 // 
-// 玩家商店是否建立成功
+// 鐜╁鍟嗗簵鏄惁寤虹珛鎴愬姛
 // 
 //////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ namespace Packets
         }
         virtual ~GCPlayerShopEstablish( ){};
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

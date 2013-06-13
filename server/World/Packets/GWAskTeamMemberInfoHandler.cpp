@@ -13,7 +13,7 @@ UINT GWAskTeamMemberInfoHandler::Execute( GWAskTeamMemberInfo* pPacket, Player* 
 __ENTER_FUNCTION
 
     ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
-    GUID_t guid = pPacket->GetGUID(); // ±»ÇëÇóĞÅÏ¢µÄÍæ¼ÒµÄ GUID
+    GUID_t guid = pPacket->GetGUID(); // è¢«è¯·æ±‚ä¿¡æ¯çš„ç©å®¶çš„ GUID
     WGTeamMemberInfo Msg;
 
     Msg.SetPlayerID( pPacket->GetObjID() );
@@ -21,7 +21,7 @@ __ENTER_FUNCTION
 
     USER* pUser = g_pOnlineUser->FindUser( guid );
     if( pUser == NULL )
-    { // ÀëÏß×´Ì¬
+    { // ç¦»çº¿çŠ¶æ€
         Log::SaveLog( WORLD_LOGFILE, "GWAskTeamInfoHandler...User GUID=%X not find!", guid );
         return PACKET_EXE_CONTINUE;
     }

@@ -126,12 +126,12 @@ __ENTER_FUNCTION
 
     BOOL ret = FALSE ;
     
-    //µÚÒ»²½£ºÇå³ıPlayerManagerÖĞµÄĞÅÏ¢
+    //ç¬¬ä¸€æ­¥ï¼šæ¸…é™¤PlayerManagerä¸­çš„ä¿¡æ¯
     ret = DelPlayer( pPlayer->PlayerID() ) ;
     Assert( ret ) ;
 
-    //µÚ¶ş²½£ºÇå³ıPlayerPoolÖĞµÄĞÅÏ¢£¬×¢Òâ´Ë²½Öè±ØĞë·ÅÔÚ×îºó£¬
-    //µ±µ÷ÓÃ´Ë²Ù×÷ºó£¬µ±Ç°Player¾ÍÓĞ¿ÉÄÜ»á±»ÂíÉÏ·ÖÅä¸øĞÂ½ÓÈëÍæ¼Ò
+    //ç¬¬äºŒæ­¥ï¼šæ¸…é™¤PlayerPoolä¸­çš„ä¿¡æ¯ï¼Œæ³¨æ„æ­¤æ­¥éª¤å¿…é¡»æ”¾åœ¨æœ€åï¼Œ
+    //å½“è°ƒç”¨æ­¤æ“ä½œåï¼Œå½“å‰Playerå°±æœ‰å¯èƒ½ä¼šè¢«é©¬ä¸Šåˆ†é…ç»™æ–°æ¥å…¥ç©å®¶
 //    ((GamePlayer*)pPlayer)->ChooseFreeOwn(mRecyclePlayerManager) ;
     ((GamePlayer*)pPlayer)->FreeOwn() ;
 
@@ -156,7 +156,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //ĞÂÁ¬½Ó½ÓÈë£º
+    //æ–°è¿æ¥æ¥å…¥ï¼š
     if( FD_ISSET(m_SocketID,&m_ReadFDs[SELECT_USE]) )
     {
         for( INT i=0; i<ACCEPT_ONESTEP; i++ )
@@ -166,7 +166,7 @@ __ENTER_FUNCTION
         }
     }
 
-    //Êı¾İ¶ÁÈ¡
+    //æ•°æ®è¯»å–
     UINT nPlayerCount = GetPlayerNumber() ;
     for( UINT i=0; i<nPlayerCount; i++ )
     {
@@ -183,23 +183,23 @@ __ENTER_FUNCTION
         if( FD_ISSET( s, &m_ReadFDs[SELECT_USE] ) )
         {
             if( pPlayer->GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
-                RemovePlayer( pPlayer, "ÍøÂçÁ¬½Ó³öÏÖ´íÎó" ) ;
+            {//è¿æ¥å‡ºç°é”™è¯¯
+                RemovePlayer( pPlayer, "ç½‘ç»œè¿æ¥å‡ºç°é”™è¯¯" ) ;
             }
             else
-            {//Á¬½ÓÕı³£
+            {//è¿æ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = pPlayer->ProcessInput( ) ;
                     if( !ret )
                     {
-                        RemovePlayer( pPlayer, "ProcessInputº¯ÊıÖ´ĞĞ´íÎó" ) ;
+                        RemovePlayer( pPlayer, "ProcessInputå‡½æ•°æ‰§è¡Œé”™è¯¯" ) ;
                     }
                 }
                 _MY_CATCH
                 {
                     SaveCodeLog( ) ;
-                    RemovePlayer( pPlayer, "ProcessInputº¯ÊıÖ´ĞĞÖĞ·¢ÉúÒì³£" ) ;
+                    RemovePlayer( pPlayer, "ProcessInputå‡½æ•°æ‰§è¡Œä¸­å‘ç”Ÿå¼‚å¸¸" ) ;
                 }
             }
         }
@@ -224,7 +224,7 @@ __ENTER_FUNCTION
         return TRUE ;
     }
 
-    //Êı¾İ·¢ËÍ
+    //æ•°æ®å‘é€
     UINT nPlayerCount = GetPlayerNumber() ;
     for( UINT i=0; i<nPlayerCount; i++ )
     {
@@ -241,23 +241,23 @@ __ENTER_FUNCTION
         if( FD_ISSET( s, &m_WriteFDs[SELECT_USE] ) )
         {
             if( pPlayer->GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
-                RemovePlayer( pPlayer, "Player SocketÁ¬½Ó³öÏÖ´íÎó" ) ;
+            {//è¿æ¥å‡ºç°é”™è¯¯
+                RemovePlayer( pPlayer, "Player Socketè¿æ¥å‡ºç°é”™è¯¯" ) ;
             }
             else
-            {//Á¬½ÓÕı³£
+            {//è¿æ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = pPlayer->ProcessOutput( ) ;
                     if( !ret )
                     {
-                        RemovePlayer( pPlayer, "ProcessOutputº¯ÊıÖ´ĞĞ´íÎó" ) ;
+                        RemovePlayer( pPlayer, "ProcessOutputå‡½æ•°æ‰§è¡Œé”™è¯¯" ) ;
                     }
                 }
                 _MY_CATCH
                 {
                     SaveCodeLog( ) ;
-                    RemovePlayer( pPlayer, "ProcessOutputº¯ÊıÖ´ĞĞÖĞ³öÏÖÒì³£" ) ;
+                    RemovePlayer( pPlayer, "ProcessOutputå‡½æ•°æ‰§è¡Œä¸­å‡ºç°å¼‚å¸¸" ) ;
                 }
             }
         }
@@ -285,21 +285,21 @@ __ENTER_FUNCTION
         if( m_pPlayers[i]==INVALID_ID )
             continue ;
 
-        //Ä³¸öÍæ¼Ò¶Ï¿ªÍøÂçÁ¬½Ó
+        //æŸä¸ªç©å®¶æ–­å¼€ç½‘ç»œè¿æ¥
 
         GamePlayer* pPlayer = g_pPlayerPool->GetPlayer(m_pPlayers[i]) ;
         Assert( pPlayer ) ;
 
         SOCKET s = pPlayer->GetSocket()->getSOCKET() ;
         if( s == m_SocketID )
-        {//ÕìÌı¾ä±ú³öÏÖÎÊÌâ£¬ÄÑ¡£¡£¡£
+        {//ä¾¦å¬å¥æŸ„å‡ºç°é—®é¢˜ï¼Œéš¾ã€‚ã€‚ã€‚
             Assert( FALSE ) ;
             continue ;
         }
 
         if( FD_ISSET( s, &m_ExceptFDs[SELECT_USE] ) )
         {
-            RemovePlayer( pPlayer, "ProcessExceptionsÒì³££¬Ä³¸öÍæ¼Ò¶Ï¿ªÍøÂçÁ¬½Ó" ) ;
+            RemovePlayer( pPlayer, "ProcessExceptionså¼‚å¸¸ï¼ŒæŸä¸ªç©å®¶æ–­å¼€ç½‘ç»œè¿æ¥" ) ;
         }
     }
 
@@ -339,23 +339,23 @@ __ENTER_FUNCTION
             continue ;
 
         if( pPlayer->GetSocket()->isSockError() )
-        {//Á¬½Ó³öÏÖ´íÎó
-            RemovePlayer( pPlayer, "Socket Á¬½Ó³öÏÖ´íÎó" ) ;
+        {//è¿æ¥å‡ºç°é”™è¯¯
+            RemovePlayer( pPlayer, "Socket è¿æ¥å‡ºç°é”™è¯¯" ) ;
         }
         else
-        {//Á¬½ÓÕı³£
+        {//è¿æ¥æ­£å¸¸
             _MY_TRY
             {
                 ret = pPlayer->ProcessCommand( FALSE ) ;
                 if( !ret )
                 {
-                    RemovePlayer( pPlayer , "ProcessCommandº¯ÊıÖ´ĞĞ´íÎóA" ) ;
+                    RemovePlayer( pPlayer , "ProcessCommandå‡½æ•°æ‰§è¡Œé”™è¯¯A" ) ;
                 }
             }
             _MY_CATCH
             {
                 SaveCodeLog( ) ;
-                RemovePlayer( pPlayer , "ProcessCommandº¯ÊıÖ´ĞĞÖĞ·¢ÉúÒì³£A" ) ;
+                RemovePlayer( pPlayer , "ProcessCommandå‡½æ•°æ‰§è¡Œä¸­å‘ç”Ÿå¼‚å¸¸A" ) ;
             }
         }
     }
@@ -375,7 +375,7 @@ __ENTER_FUNCTION
     INT iStep = 0 ;
     BOOL ret = FALSE ;
 
-    //´ÓÍæ¼Ò³ØÖĞÕÒ³öÒ»¸ö¿ÕÏĞµÄÍæ¼ÒÊı¾İ¼¯
+    //ä»ç©å®¶æ± ä¸­æ‰¾å‡ºä¸€ä¸ªç©ºé—²çš„ç©å®¶æ•°æ®é›†
     GamePlayer* client = g_pPlayerPool->NewPlayer() ;
 //    Assert( client ) ;
     if( client==NULL )
@@ -389,7 +389,7 @@ __ENTER_FUNCTION
     iStep = 10 ;
     _MY_TRY
     {
-        //½ÓÊÜ¿Í»§¶Ë½ÓÈëSocket¾ä±ú
+        //æ¥å—å®¢æˆ·ç«¯æ¥å…¥Socketå¥æŸ„
         ret = m_pServerSocket->accept( client->GetSocket() ) ;
         if( !ret )
         {
@@ -438,9 +438,9 @@ __ENTER_FUNCTION
         }
 
         iStep = 70 ;
-        //³õÊ¼»¯»ù±¾Íæ¼ÒĞÅÏ¢
+        //åˆå§‹åŒ–åŸºæœ¬ç©å®¶ä¿¡æ¯
         client->Init( ) ;
-        //ÉèÖÃµ±Ç°¿Í»§¶ËÁ¬½ÓµÄ×´Ì¬
+        //è®¾ç½®å½“å‰å®¢æˆ·ç«¯è¿æ¥çš„çŠ¶æ€
         client->SetPlayerStatus( PS_SERVER_CONNECT ) ;
 
         iStep = 80 ;
@@ -488,7 +488,7 @@ BOOL IncomingPlayerManager::AddPlayer( Player* pPlayer )
 __ENTER_FUNCTION
 
     if( m_nFDSize>=FD_SETSIZE )
-    {//ÒÑ¾­³¬³öÄÜ¹»¼ì²âµÄÍøÂç¾ä±ú×î´óÊı£»
+    {//å·²ç»è¶…å‡ºèƒ½å¤Ÿæ£€æµ‹çš„ç½‘ç»œå¥æŸ„æœ€å¤§æ•°ï¼›
         return FALSE ;
     }
     SOCKET fd = pPlayer->GetSocket()->getSOCKET() ;
@@ -675,8 +675,8 @@ __ENTER_FUNCTION
             ret = FALSE ;
         }
         if( !ret )
-        {//Èç¹ûÂß¼­²Ù×÷·µ»ØÊ§°Ü£¬ÔòĞèÒª¶Ï¿ªµ±Ç°Á¬½Ó
-            ret = RemovePlayer( pPlayer, "Âß¼­²Ù×÷·µ»ØÊ§°Ü£¬ÔòĞèÒª¶Ï¿ªµ±Ç°Á¬½Ó" ) ;
+        {//å¦‚æœé€»è¾‘æ“ä½œè¿”å›å¤±è´¥ï¼Œåˆ™éœ€è¦æ–­å¼€å½“å‰è¿æ¥
+            ret = RemovePlayer( pPlayer, "é€»è¾‘æ“ä½œè¿”å›å¤±è´¥ï¼Œåˆ™éœ€è¦æ–­å¼€å½“å‰è¿æ¥" ) ;
             Assert( ret ) ;
         }
     }
@@ -708,7 +708,7 @@ __ENTER_FUNCTION
             break ;
         }
     
-        RemovePlayer( pPlayer, "¶Ï¿ªËùÓĞÍæ¼Ò" ) ;
+        RemovePlayer( pPlayer, "æ–­å¼€æ‰€æœ‰ç©å®¶" ) ;
     }
 
 __LEAVE_FUNCTION
@@ -772,7 +772,7 @@ __ENTER_FUNCTION
 
                 if( uret == PACKET_EXE_ERROR )
                 {
-                    RemovePlayer( pPlayer, "°üÖ´ĞĞ´íÎó" ) ;
+                    RemovePlayer( pPlayer, "åŒ…æ‰§è¡Œé”™è¯¯" ) ;
                     MovePacket( PlayerID ) ;
                 }
                 else if( uret == PACKET_EXE_BREAK )
@@ -789,7 +789,7 @@ __ENTER_FUNCTION
                 {
                     bNeedRemove = FALSE ;
 
-                    RemovePlayer( pPlayer, "°üÖ´ĞĞºó¶Ï¿ªÍæ¼Ò" ) ;
+                    RemovePlayer( pPlayer, "åŒ…æ‰§è¡Œåæ–­å¼€ç©å®¶" ) ;
                     MovePacket( PlayerID ) ;
                 }
             }
@@ -799,7 +799,7 @@ __ENTER_FUNCTION
             }
         }
 
-        //»ØÊÕÏûÏ¢
+        //å›æ”¶æ¶ˆæ¯
         if( bNeedRemove )
             g_pPacketFactoryManager->RemovePacket( pPacket ) ;
     }
@@ -880,7 +880,7 @@ __ENTER_FUNCTION
     Lock( ) ;
 
     if( m_PacketQue[m_Tail].m_pPacket )
-    {//»º³åÇøÂú
+    {//ç¼“å†²åŒºæ»¡
         BOOL ret = ResizeCache( ) ;
         Assert( ret ) ;
     }
@@ -909,7 +909,7 @@ __ENTER_FUNCTION
     Lock( ) ;
 
     if( m_PacketQue[m_Head].m_pPacket==NULL )
-    {//»º³åÇøÖĞÃ»ÓĞÏûÏ¢
+    {//ç¼“å†²åŒºä¸­æ²¡æœ‰æ¶ˆæ¯
         Unlock( ) ;
         return FALSE ;
     }

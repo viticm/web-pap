@@ -26,29 +26,29 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //ºÏ≤Èœﬂ≥Ã÷¥––◊ ‘¥ «∑Ò’˝»∑
+    //Ê£ÄÊü•Á∫øÁ®ãÊâßË°åËµÑÊ∫êÊòØÂê¶Ê≠£Á°Æ
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-    //µ√µΩÀ˘“™Ωªªªµƒ¡Ω∏ˆÀ˜“˝
+    //ÂæóÂà∞ÊâÄË¶Å‰∫§Êç¢ÁöÑ‰∏§‰∏™Á¥¢Âºï
     INT index1 = pPacket->GetPackageIndex1();
     INT index2 = pPacket->GetPackageIndex2();
 
-    //≈–∂œ «∑Ò‘⁄Õ¨“ª∏ˆ»›∆˜ƒ⁄
+    //Âà§Êñ≠ÊòØÂê¶Âú®Âêå‰∏Ä‰∏™ÂÆπÂô®ÂÜÖ
     ItemContainer* pBagContainer = HumanItemLogic::GetContainer(pHuman, index1);
     if(pBagContainer != HumanItemLogic::GetContainer(pHuman, index2)) return PACKET_EXE_CONTINUE;
 
-    //µ˜”√ŒÔ∆∑µ◊≤„ΩªªªŒÔ∆∑
+    //Ë∞ÉÁî®Áâ©ÂìÅÂ∫ïÂ±Ç‰∫§Êç¢Áâ©ÂìÅ
     Item* pItem1 = HumanItemLogic::GetItem(pHuman, index1);
     Item* pItem2 = HumanItemLogic::GetItem(pHuman, index2);
 
 
 
-    //◊™ªªIndexª˘ ˝
+    //ËΩ¨Êç¢IndexÂü∫Êï∞
     INT index_container1 = pBagContainer->BagIndex2ConIndex(index1);
     INT index_container2 = pBagContainer->BagIndex2ConIndex(index2);
 
     BOOL bSucc = FALSE;
-    //¡Ω∏ˆŒÔ∆∑∏Ò∂º «ø’∏Ò
+    //‰∏§‰∏™Áâ©ÂìÅÊ†ºÈÉΩÊòØÁ©∫Ê†º
     if(pItem1->IsEmpty() && pItem2->IsEmpty())
     {
         return PACKET_EXE_CONTINUE;
@@ -68,15 +68,15 @@ __ENTER_FUNCTION
     {
         ITEM_LOG_PARAM    ItemLogParam;
 
-        //∫œ≤¢œ‡Õ¨µƒŒÔ∆∑
-        //1°¢≈–∂œ¡Ω∏ˆŒÔ∆∑ «≤ª «ø…“‘µ˛º”µƒ
+        //ÂêàÂπ∂Áõ∏ÂêåÁöÑÁâ©ÂìÅ
+        //1„ÄÅÂà§Êñ≠‰∏§‰∏™Áâ©ÂìÅÊòØ‰∏çÊòØÂèØ‰ª•Âè†Âä†ÁöÑ
         if(pItem1->GetItemTableIndex() == pItem2->GetItemTableIndex() && pItem1->IsCanLay())
         {
             int Count  = pItem1->GetLayedNum();
-            //2°¢◊™“∆ŒÔ∆∑
+            //2„ÄÅËΩ¨ÁßªÁâ©ÂìÅ
             if(g_ItemOperator.MoveItem(pBagContainer, index_container1, index_container2) >= 0)
             {
-                //∫œ≤¢≥…π¶£¨Ω´Ω·π˚Õ®÷™øÕªß∂À£¨≤ªƒ‹÷ª∑¢ÀÕIndex£¨–Ë“™∞¸¿®ƒ⁄»›£ª
+                //ÂêàÂπ∂ÊàêÂäüÔºåÂ∞ÜÁªìÊûúÈÄöÁü•ÂÆ¢Êà∑Á´ØÔºå‰∏çËÉΩÂè™ÂèëÈÄÅIndexÔºåÈúÄË¶ÅÂåÖÊã¨ÂÜÖÂÆπÔºõ
                 _ITEM temp1;
                 pItem1->SaveValueTo(&temp1);
                 GCItemInfo msg1;
@@ -120,7 +120,7 @@ __ENTER_FUNCTION
             }
         }
 
-        // Ωªªª¡ΩŒÔ∆∑
+        // ‰∫§Êç¢‰∏§Áâ©ÂìÅ
         bSucc = g_ItemOperator.ExchangeItem(pBagContainer, index_container1, pBagContainer, index_container2) == ITEMOE_SUCCESS;
     }
 

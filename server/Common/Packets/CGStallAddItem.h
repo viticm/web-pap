@@ -1,6 +1,6 @@
 // CGStallAddItem.h
-// ²ÎÊı ÎïÆ·GUID, ÉÌÆ·¼Û¸ñ£¬À´×ÔÄÄÀï
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‚æ•° ç‰©å“GUID, å•†å“ä»·æ ¼ï¼Œæ¥è‡ªå“ªé‡Œ
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace Packets
         }
         virtual ~CGStallAddItem( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;

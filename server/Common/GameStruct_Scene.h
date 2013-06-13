@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼þÃû£ºGameStruct_Scene.h
-//¹¦ÄÜÃèÊö£º¶¨Òå³¡¾°ÖÐµÄ³õÊ¼»¯ÐÅÏ¢Êý¾Ý½á¹¹
+//æ–‡ä»¶åï¼šGameStruct_Scene.h
+//åŠŸèƒ½æè¿°ï¼šå®šä¹‰åœºæ™¯ä¸­çš„åˆå§‹åŒ–ä¿¡æ¯æ•°æ®ç»“æž„
 /////////////////////////////////////////////////////////////////////////////////
 #include "GameUtil.h"
 #include "GameStruct_City.h"
@@ -8,8 +8,8 @@
 #ifndef __GAMESTRUCT_SCENE_H__
 #define __GAMESTRUCT_SCENE_H__
 
-//Load³¡¾°ÖÐµÄÐÅÏ¢£¬ÓÐ£º³¡¾°µØÍ¼¡¢¹ÖÎï£¨NPC£©·Ö²¼¡¢²Ù×÷Ì¨·Ö²¼¡¢Éú³¤µãÐÅÏ¢
-//Ñ²ÂßÂ·¾¶ÐÅÏ¢¡¢ÊÂ¼þÇøÓòÐÅÏ¢¡¢³èÎï·Ö²¼ÐÅÏ¢
+//Loadåœºæ™¯ä¸­çš„ä¿¡æ¯ï¼Œæœ‰ï¼šåœºæ™¯åœ°å›¾ã€æ€ªç‰©ï¼ˆNPCï¼‰åˆ†å¸ƒã€æ“ä½œå°åˆ†å¸ƒã€ç”Ÿé•¿ç‚¹ä¿¡æ¯
+//å·¡é€»è·¯å¾„ä¿¡æ¯ã€äº‹ä»¶åŒºåŸŸä¿¡æ¯ã€å® ç‰©åˆ†å¸ƒä¿¡æ¯
 struct SCENE_LOAD
 {
     CHAR        m_szMap[_MAX_PATH] ;
@@ -36,15 +36,15 @@ struct SCENE_LOAD
     }
 };
 
-//³õÊ¼»¯³¡¾°µÄÊý¾Ý£¬ÀýÈç£º³ÇÊÐÖÐµÄ½¨ÖþÐÅÏ¢¡¢¸±±¾ÖÐµÄÌØÊâÐÅÏ¢¡¢·¿×ÓÖÐµÄ¼Ò¾ßÐÅÏ¢
-//Í¥ÔºÖÐµÄ²¼¾ÖÐÅÏ¢µÈ
+//åˆå§‹åŒ–åœºæ™¯çš„æ•°æ®ï¼Œä¾‹å¦‚ï¼šåŸŽå¸‚ä¸­çš„å»ºç­‘ä¿¡æ¯ã€å‰¯æœ¬ä¸­çš„ç‰¹æ®Šä¿¡æ¯ã€æˆ¿å­ä¸­çš„å®¶å…·ä¿¡æ¯
+//åº­é™¢ä¸­çš„å¸ƒå±€ä¿¡æ¯ç­‰
 
 struct SCENE_INIT_DATA
 {
-    INT                    m_nDataType;//³¡¾°ÀàÐÍ ¼ûSCENE_TYPE£»
+    INT                    m_nDataType;//åœºæ™¯ç±»åž‹ è§SCENE_TYPEï¼›
     union
     {
-        CityDB_t            m_CityData;//³ÇÊÐ³õÊ¼»¯Êý¾Ý
+        CityDB_t            m_CityData;//åŸŽå¸‚åˆå§‹åŒ–æ•°æ®
     };
     
     SCENE_INIT_DATA( )
@@ -61,17 +61,17 @@ struct SCENE_INIT_DATA
     }
 };
 
-//ÎªÁË´´½¨¸±±¾ÐèÒª±£´æµÄÊý¾Ý
+//ä¸ºäº†åˆ›å»ºå‰¯æœ¬éœ€è¦ä¿å­˜çš„æ•°æ®
 //
 #define MAX_COPY_MEMBER 6
 #define MAX_COPYSCENE_DATA_PARAM 32
 struct COPYSCENE_DATA
 {
-    SceneID_t                m_SourSceneID ;//´´½¨¸±±¾µÄ³¡¾°
-    GUID_t                    m_TeamLeader;//¸±±¾µÄ´´½¨Õß
-    TeamID_t                m_TeamID;//¶ÓÎéID
-    UINT                    m_NoUserCloseTime;//¸±±¾ÖÐÃ»ÓÐÈËºó×Ô¶¯¹Ø±ÕµÄÊ±¼ä
-    UINT                    m_SceneTimer;//³¡¾°ÖÐ¶¨Ê±Æ÷µÄ¼ä¸ôÊ±¼ä,0±íÊ¾Ã»ÓÐ¶¨Ê±Æ÷
+    SceneID_t                m_SourSceneID ;//åˆ›å»ºå‰¯æœ¬çš„åœºæ™¯
+    GUID_t                    m_TeamLeader;//å‰¯æœ¬çš„åˆ›å»ºè€…
+    TeamID_t                m_TeamID;//é˜Ÿä¼ID
+    UINT                    m_NoUserCloseTime;//å‰¯æœ¬ä¸­æ²¡æœ‰äººåŽè‡ªåŠ¨å…³é—­çš„æ—¶é—´
+    UINT                    m_SceneTimer;//åœºæ™¯ä¸­å®šæ—¶å™¨çš„é—´éš”æ—¶é—´,0è¡¨ç¤ºæ²¡æœ‰å®šæ—¶å™¨
     INT                        m_Param[MAX_COPYSCENE_DATA_PARAM] ;
     GUID_t                    m_MemberGUID[MAX_COPY_MEMBER] ;
     
@@ -115,7 +115,7 @@ struct COPYSCENE_DATA
 };
 
 
-//´¦ÓÚ´Ë³¡¾°ÉÏµÄ³ÇÊÐËùÐèÒªµÄÐÅÏ¢
+//å¤„äºŽæ­¤åœºæ™¯ä¸Šçš„åŸŽå¸‚æ‰€éœ€è¦çš„ä¿¡æ¯
 struct    CITYSCENE_DATA
 {
     SceneID_t    m_ScenePortList[MAX_CITY_PORT];

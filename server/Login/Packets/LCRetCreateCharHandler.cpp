@@ -18,7 +18,7 @@ UINT    LCRetCreateCharHandler::Execute(LCRetCreateChar* pPacket, Player* pPlaye
                 return PACKET_EXE_CONTINUE ;
             }
 
-            //¼ì²éÕËºÅÊÇ·ñÕıÈ·
+            //æ£€æŸ¥è´¦å·æ˜¯å¦æ­£ç¡®
             if(strcmp(pLoginPlayer->GetAccount(),pPacket->GetAccount()) != 0)
             {
                 
@@ -33,7 +33,7 @@ UINT    LCRetCreateCharHandler::Execute(LCRetCreateChar* pPacket, Player* pPlaye
         }
         else
         {
-            AssertEx(FALSE,"LCRetCreateCharHandler Ïß³Ì×ÊÔ´Ö´ĞĞ´íÎó!");
+            AssertEx(FALSE,"LCRetCreateCharHandler çº¿ç¨‹èµ„æºæ‰§è¡Œé”™è¯¯!");
         }
 
         return PACKET_EXE_CONTINUE;

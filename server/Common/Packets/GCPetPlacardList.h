@@ -1,6 +1,6 @@
 // GCPetPlacardList.h
 // 
-// ³èÎï¹«¸æ°åĞÅÏ¢
+// å® ç‰©å…¬å‘Šæ¿ä¿¡æ¯
 // 
 //////////////////////////////////////////////////////
 
@@ -25,7 +25,7 @@ namespace Packets
         }
         virtual ~GCPetPlacardList( ){}
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -61,8 +61,8 @@ namespace Packets
         }
 
     private:
-        INT                        m_nCount;                                    // ÌõÊı
-        _PET_PLACARD_ITEM        m_aItems[MAX_PETPLACARD_LIST_ITEM_NUM];        // Êı¾İ
+        INT                        m_nCount;                                    // æ¡æ•°
+        _PET_PLACARD_ITEM        m_aItems[MAX_PETPLACARD_LIST_ITEM_NUM];        // æ•°æ®
     };
 
     class GCPetPlacardListFactory : public PacketFactory 

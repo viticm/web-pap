@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /********************************************************************************
- *    ÎÄ¼şÃû£º    WGTeamListHandler.cpp
- *    È«Â·¾¶£º    d:\Prj\Server\Server\Packets\WGTeamListHandler.cpp
- *    ´´½¨Ê±¼ä£º    2006 Äê 1 ÔÂ 16 ÈÕ    10:10
+ *    æ–‡ä»¶åï¼š    WGTeamListHandler.cpp
+ *    å…¨è·¯å¾„ï¼š    d:\Prj\Server\Server\Packets\WGTeamListHandler.cpp
+ *    åˆ›å»ºæ—¶é—´ï¼š    2006 å¹´ 1 æœˆ 16 æ—¥    10:10
  *
- *    ¹¦ÄÜËµÃ÷£º    
- *    ĞŞ¸Ä¼ÇÂ¼£º
+ *    åŠŸèƒ½è¯´æ˜ï¼š    
+ *    ä¿®æ”¹è®°å½•ï¼š
 *********************************************************************************/
 
 #include "WGTeamList.h"
@@ -47,7 +47,7 @@ __ENTER_FUNCTION
     }
 
     if( pPlayer->IsServerPlayer() )
-    {//·şÎñÆ÷ÊÕµ½ÊÀ½ç·şÎñÆ÷·¢À´µÄÊı¾İ
+    {//æœåŠ¡å™¨æ”¶åˆ°ä¸–ç•ŒæœåŠ¡å™¨å‘æ¥çš„æ•°æ®
         Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
         pScene->SendPacket( pPacket, PlayerID );
@@ -58,12 +58,12 @@ __ENTER_FUNCTION
         return PACKET_EXE_NOTREMOVE;
     }
     else if( pPlayer->IsGamePlayer() )
-    {//³¡¾°ÊÕµ½CacheÀïµÄÏûÏ¢
+    {//åœºæ™¯æ”¶åˆ°Cacheé‡Œçš„æ¶ˆæ¯
         Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
         TeamInfo* pTeamInfo = pHuman->GetTeamInfo();
         if ( pTeamInfo->HasTeam() )
-        { // Ö»Òª¿Í»§¶ËÇëÇóÍê³ÉµÄ¶ÓÎéĞÅÏ¢£¬¾ÍÇå¿Õ·şÎñÆ÷¶ËµÄ¶ÓÎéÁĞ±í
+        { // åªè¦å®¢æˆ·ç«¯è¯·æ±‚å®Œæˆçš„é˜Ÿä¼ä¿¡æ¯ï¼Œå°±æ¸…ç©ºæœåŠ¡å™¨ç«¯çš„é˜Ÿä¼åˆ—è¡¨
             pTeamInfo->DisMiss();
         }
 
@@ -93,12 +93,12 @@ __ENTER_FUNCTION
 
                 if ( ptempGamePlayer == NULL )
                 {
-                    Assert(FALSE && "¶ÓÓÑÊ§È¥ÁËÁ¬½Ó¡£");
+                    Assert(FALSE && "é˜Ÿå‹å¤±å»äº†è¿æ¥ã€‚");
                     Member.m_ObjID = INVALID_ID;
                 }
                 else if ( (ptempHuman = ptempGamePlayer->GetHuman()) == NULL )
                 {
-                    Assert(FALSE && "¶ÓÓÑÕÒ²»µ½ÁË¡­¡­");
+                    Assert(FALSE && "é˜Ÿå‹æ‰¾ä¸åˆ°äº†â€¦â€¦");
                     Member.m_ObjID = INVALID_ID;
                 }
                 else

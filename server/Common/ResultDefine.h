@@ -9,9 +9,9 @@ enum USEITEM_RESULT
     USEITEM_TYPE_FAIL        =    3,
     USEITEM_TARGET_TYPE_FAIL=    4,
     USEITEM_SKILL_FAIL        =    5,
-    USEITEM_IDENT_TYPE_FAIL    =    6, //¾íÖáÀàÐÍ´íÎó
-    USEITEM_IDENT_TARGET_TYPE_FAIL =7,//Ä¿±êÀàÐÍ´íÎó
-    USEITEM_IDENT_LEVEL_FAIL    = 8,//¾íÖáµÈ¼¶²»¹»
+    USEITEM_IDENT_TYPE_FAIL    =    6, //å·è½´ç±»åž‹é”™è¯¯
+    USEITEM_IDENT_TARGET_TYPE_FAIL =7,//ç›®æ ‡ç±»åž‹é”™è¯¯
+    USEITEM_IDENT_LEVEL_FAIL    = 8,//å·è½´ç­‰çº§ä¸å¤Ÿ
 
     USEITEM_INVALID
 };
@@ -78,9 +78,9 @@ enum    PickResultCode
     PICK_SUCCESS,
     PICK_BAG_FULL,
     PICK_INVALID_OWNER,            
-    PICK_INVALID_ITEM,            //Ê°È¡ÎïÆ·²»´æÔÚ
-    PICK_TOO_FAR,                //½ÇÉ«¾àÀëÌ«Ô¶
-    PICK_DEAD,                    //½ÇÉ«ÒÑ¾­ËÀÍö
+    PICK_INVALID_ITEM,            //æ‹¾å–ç‰©å“ä¸å­˜åœ¨
+    PICK_TOO_FAR,                //è§’è‰²è·ç¦»å¤ªè¿œ
+    PICK_DEAD,                    //è§’è‰²å·²ç»æ­»äº¡
     PICK_CLOSED_BOX
 };
 
@@ -108,72 +108,72 @@ enum    DISCARDITEM_RESULT
 
 enum LOGIN_CONNECT_RESULT
 {
-    LOGINCR_SUCCESS,            //³É¹¦
-    LOGINCR_FULL,                //LoginÂú
-    LOGINCR_STOP_SERVICE,        //ÔÝÊ±Í£Ö¹·þÎñ
+    LOGINCR_SUCCESS,            //æˆåŠŸ
+    LOGINCR_FULL,                //Loginæ»¡
+    LOGINCR_STOP_SERVICE,        //æš‚æ—¶åœæ­¢æœåŠ¡
 };
 
 enum LOGIN_RESULT
 {
-    LOGINR_SUCCESS,                //³É¹¦
-    LOGINR_AUTH_FAIL,            //ÑéÖ¤Ê§°Ü
-    LOGINR_VERSION_FAIL,        //°æ±¾´íÎó
-    LOGINR_NOT_EN_POINT,        //µãÊý²»¹»
-    LOGINR_STOP_SERVICE,        //ÔÝÊ±Í£Ö¹·þÎñ
+    LOGINR_SUCCESS,                //æˆåŠŸ
+    LOGINR_AUTH_FAIL,            //éªŒè¯å¤±è´¥
+    LOGINR_VERSION_FAIL,        //ç‰ˆæœ¬é”™è¯¯
+    LOGINR_NOT_EN_POINT,        //ç‚¹æ•°ä¸å¤Ÿ
+    LOGINR_STOP_SERVICE,        //æš‚æ—¶åœæ­¢æœåŠ¡
 };
 
 
 
 enum ASKCHARLIST_RESULT
 {
-    ASKCHARLIST_SUCCESS,        //³É¹¦
-    ASKCHARLIST_OP_FAILS,        //²Ù×÷Ê§°Ü
-    ASKCHARLIST_SERVER_BUSY,    //·þÎñÆ÷Ã¦£¬ÖØÊÔ
-    ASKCHARLIST_OP_TIMES,        //²Ù×÷¹ýÓÚÆµ·±
+    ASKCHARLIST_SUCCESS,        //æˆåŠŸ
+    ASKCHARLIST_OP_FAILS,        //æ“ä½œå¤±è´¥
+    ASKCHARLIST_SERVER_BUSY,    //æœåŠ¡å™¨å¿™ï¼Œé‡è¯•
+    ASKCHARLIST_OP_TIMES,        //æ“ä½œè¿‡äºŽé¢‘ç¹
 };
 
 enum ASKCREATECHAR_RESULT
 {
-    ASKCREATECHAR_SUCCESS,            //³É¹¦
-    ASKCREATECHAR_SERVER_BUSY,        //·þÎñÆ÷Ã¦£¬ÖØÊÔ
-    ASKCREATECHAR_OP_TIMES,            //²Ù×÷¹ýÓÚÆµ·±
-    ASKCREATECHAR_FULL,                //½ÇÉ«ÒÑ¾­ÂúÁË
-    ASKCREATECHAR_SAME_NAME,        //½ÇÉ«ÖØÃû
-    ASKCREATECHAR_OP_ERROR,            //´íÎó²Ù×÷Á÷³Ì
-    ASKCREATECHAR_INTERNAL_ERROR,    //ÄÚ²¿´íÎó
-    ASKCREATECHAR_INVALID_NAME,        //½ÇÉ«Ãû´íÎó
+    ASKCREATECHAR_SUCCESS,            //æˆåŠŸ
+    ASKCREATECHAR_SERVER_BUSY,        //æœåŠ¡å™¨å¿™ï¼Œé‡è¯•
+    ASKCREATECHAR_OP_TIMES,            //æ“ä½œè¿‡äºŽé¢‘ç¹
+    ASKCREATECHAR_FULL,                //è§’è‰²å·²ç»æ»¡äº†
+    ASKCREATECHAR_SAME_NAME,        //è§’è‰²é‡å
+    ASKCREATECHAR_OP_ERROR,            //é”™è¯¯æ“ä½œæµç¨‹
+    ASKCREATECHAR_INTERNAL_ERROR,    //å†…éƒ¨é”™è¯¯
+    ASKCREATECHAR_INVALID_NAME,        //è§’è‰²åé”™è¯¯
 };
 
 enum ASKDELETECHAR_RESULT
 {
-    ASKDELETECHAR_SUCCESS,            //³É¹¦
-    ASKDELETECHAR_SERVER_BUSY,        //·þÎñÆ÷Ã¦£¬ÖØÊÔ
-    ASKDELETECHAR_OP_TIMES,            //²Ù×÷¹ýÓÚÆµ·±
-    ASKDELETECHARR_EMPTY,            //Ã»ÓÐ½ÇÉ«É¾³ý
-    ASKDELETECHAR_OP_ERROR,            //´íÎó²Ù×÷Á÷³Ì
-    ASKDELETECHAR_NOT_OWNER,        //²»ÊÇ½ÇÉ«µÄËùÓÐÕß
-    ASKDELETECHAR_INTERNAL_ERROR,    //ÄÚ²¿´íÎó
-    ASKDELETECHAR_ONLINE,            //½ÇÉ«ÔÚÏß
+    ASKDELETECHAR_SUCCESS,            //æˆåŠŸ
+    ASKDELETECHAR_SERVER_BUSY,        //æœåŠ¡å™¨å¿™ï¼Œé‡è¯•
+    ASKDELETECHAR_OP_TIMES,            //æ“ä½œè¿‡äºŽé¢‘ç¹
+    ASKDELETECHARR_EMPTY,            //æ²¡æœ‰è§’è‰²åˆ é™¤
+    ASKDELETECHAR_OP_ERROR,            //é”™è¯¯æ“ä½œæµç¨‹
+    ASKDELETECHAR_NOT_OWNER,        //ä¸æ˜¯è§’è‰²çš„æ‰€æœ‰è€…
+    ASKDELETECHAR_INTERNAL_ERROR,    //å†…éƒ¨é”™è¯¯
+    ASKDELETECHAR_ONLINE,            //è§’è‰²åœ¨çº¿
 };
 
 
 enum ASKCHARLOGIN_RESULT
 {
-    ASKCHARLOGIN_SUCCESS,        //³É¹¦
-    ASKCHARLIST_WORLD_FULL,        //ÊÀ½çÂúÁË
-    ASKCHARLOGIN_SERVER_BUSY,    //·þÎñÆ÷Ã¦£¬ÖØÊÔ
-    ASKCHARLOGIN_LOADDB_ERROR,    //½ÇÉ«ÔØÈë³ö´í
-    ASKCHARLOGIN_OP_TIMES,        //²Ù×÷¹ýÓÚÆµ·±
-    ASKCHARLOGIN_NOT_OWNER,        //²»ÊÇ½ÇÉ«µÄËùÓÐÕß
-    ASKCHARLOGIN_SERVER_STOP,    //·þÎñÆ÷Î¬»¤
-    ASKCHARLOGIN_CHANGE_SCENE,    //ÇÐ»»³¡¾°
+    ASKCHARLOGIN_SUCCESS,        //æˆåŠŸ
+    ASKCHARLIST_WORLD_FULL,        //ä¸–ç•Œæ»¡äº†
+    ASKCHARLOGIN_SERVER_BUSY,    //æœåŠ¡å™¨å¿™ï¼Œé‡è¯•
+    ASKCHARLOGIN_LOADDB_ERROR,    //è§’è‰²è½½å…¥å‡ºé”™
+    ASKCHARLOGIN_OP_TIMES,        //æ“ä½œè¿‡äºŽé¢‘ç¹
+    ASKCHARLOGIN_NOT_OWNER,        //ä¸æ˜¯è§’è‰²çš„æ‰€æœ‰è€…
+    ASKCHARLOGIN_SERVER_STOP,    //æœåŠ¡å™¨ç»´æŠ¤
+    ASKCHARLOGIN_CHANGE_SCENE,    //åˆ‡æ¢åœºæ™¯
 };
 
 
 enum CLIENT_TURN_STATUS
 {
-    CTS_TURN,                    //ÅÅ¶Ó×´Ì¬
-    CTS_NORMAL,                    //ÅÅ¶ÓÍê±Ï×´Ì¬
+    CTS_TURN,                    //æŽ’é˜ŸçŠ¶æ€
+    CTS_NORMAL,                    //æŽ’é˜Ÿå®Œæ¯•çŠ¶æ€
 };
 
 

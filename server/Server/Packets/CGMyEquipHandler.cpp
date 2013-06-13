@@ -23,7 +23,7 @@ __ENTER_FUNCTION
     Scene* pScene = pHuman->getScene() ;
     Assert( pScene ) ;
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
     ObjID_t ObjID = pHuman->GetID() ;
@@ -37,7 +37,7 @@ __ENTER_FUNCTION
     Msg.setObjID( ObjID ) ;
     Msg.setName( pHuman->GetName() ) ;
     Msg.setDirectory( pHuman->getDir() ) ;
-//ÆäËûÐÅÏ¢ÉèÖÃ
+//å…¶ä»–ä¿¡æ¯è®¾ç½®
 
     pGamePlayer->SendPacket( &Msg ) ;
 

@@ -35,8 +35,8 @@ namespace Packets
 
 
     private:
-        BYTE            m_EquipPoint;        //×°ÅäµãĞÅÏ¢
-        BYTE            m_BagIndex;            //È¡ÏÂÀ´·ÅÖÃÔÚ°üÖĞµÄÎ»ÖÃ
+        BYTE            m_EquipPoint;        //è£…é…ç‚¹ä¿¡æ¯
+        BYTE            m_BagIndex;            //å–ä¸‹æ¥æ”¾ç½®åœ¨åŒ…ä¸­çš„ä½ç½®
     };
 
 

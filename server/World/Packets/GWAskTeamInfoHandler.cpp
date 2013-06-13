@@ -17,7 +17,7 @@ UINT GWAskTeamInfoHandler::Execute( GWAskTeamInfo* pPacket, Player* pPlayer )
 __ENTER_FUNCTION
 
     ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
-    GUID_t guid = pPacket->GetGUID(); // ±»ÇëÇóĞÅÏ¢µÄÍæ¼ÒµÄ GUID
+    GUID_t guid = pPacket->GetGUID(); // è¢«è¯·æ±‚ä¿¡æ¯çš„ç©å®¶çš„ GUID
 
     USER* pUser = g_pOnlineUser->FindUser( guid );
     if( pUser == NULL )
@@ -45,8 +45,8 @@ __ENTER_FUNCTION
         Member.m_Member = pUser->GetGUID();
 
         if ( pTeam->IsMember( &Member ) == FALSE )
-        { // Ä³Ğ©Çé¿öÏÂ£¬Íæ¼Ò±£´æÁË¹ıÆÚµÄ¶ÓÎéºÅ
-            AssertEx( FALSE, "¹ıÆÚ¶ÓÎéºÅ£¬ºöÂÔ¡£" );
+        { // æŸäº›æƒ…å†µä¸‹ï¼Œç©å®¶ä¿å­˜äº†è¿‡æœŸçš„é˜Ÿä¼å·
+            AssertEx( FALSE, "è¿‡æœŸé˜Ÿä¼å·ï¼Œå¿½ç•¥ã€‚" );
             return PACKET_EXE_CONTINUE;
         }
     }
@@ -55,7 +55,7 @@ __ENTER_FUNCTION
     Msg.SetPlayerID(pPacket->GetPlayerID());
     Msg.SetTeamID( pUser->GetTeamID() );
     Msg.SetGUID( guid );
-    WGTeamResult MsgtoEveryMember; // Í¨ÖªÆäËû¶ÓÔ±Ä³ÈË½øÈëĞÂ³¡¾°ÁË
+    WGTeamResult MsgtoEveryMember; // é€šçŸ¥å…¶ä»–é˜Ÿå‘˜æŸäººè¿›å…¥æ–°åœºæ™¯äº†
     MsgtoEveryMember.SetReturn( TEAM_RESULT_ENTERSCENE );
     MsgtoEveryMember.SetTeamID( pTeam->GetTeamID() );
     MsgtoEveryMember.SetGUID( pUser->GetGUID() );
@@ -117,7 +117,7 @@ __ENTER_FUNCTION
         for( INT i=0; i<pTeam->GetFollowedmemberCount(); ++i )
         {
             if ( FollowedMembers[i] == guid )
-            { // Èç¹ûÉí´¦×é¶Ó¸úËæ×´Ì¬Ôò·¢ËÍ×é¶ÓÁĞ±í
+            { // å¦‚æœèº«å¤„ç»„é˜Ÿè·ŸéšçŠ¶æ€åˆ™å‘é€ç»„é˜Ÿåˆ—è¡¨
                 flag = TRUE;
                 break;
             }

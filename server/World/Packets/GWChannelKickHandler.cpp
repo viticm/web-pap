@@ -44,7 +44,7 @@ __ENTER_FUNCTION
     }
 
     if( pSourUser->GetChannelID() == INVALID_ID )
-    {//ÌßÈËÕßÃ»ÓĞ´´½¨ÆµµÀ
+    {//è¸¢äººè€…æ²¡æœ‰åˆ›å»ºé¢‘é“
         WGChannelError Msg ;
         Msg.SetPlayerID( pSourUser->GetPlayerID() ) ;
         Msg.SetGUID( pSourUser->GetGUID() );
@@ -65,7 +65,7 @@ __ENTER_FUNCTION
         }
 
         if( !pChannel->IsMember( pDestUser->GetGUID() ) )
-        {//±»ÌßÕß²»ÔÚ´ËÆµµÀÄÚ
+        {//è¢«è¸¢è€…ä¸åœ¨æ­¤é¢‘é“å†…
             WGChannelError Msg ;
             Msg.SetPlayerID( pSourUser->GetPlayerID() ) ;
             Msg.SetGUID( pSourUser->GetGUID() );
@@ -83,7 +83,7 @@ __ENTER_FUNCTION
             Msg.SetChannelID( pSourUser->GetChannelID() ) ;
             Msg.SetGUID( pDestUser->GetGUID() ) ;
 
-            //Í¨ÖªËùÓĞÆµµÀÄÚµÄÍæ¼Ò
+            //é€šçŸ¥æ‰€æœ‰é¢‘é“å†…çš„ç©å®¶
             for( int i=0; i<pChannel->MemberCount(); i++ )
             {
                 GUID_t guid = pChannel->Member( i ) ;
@@ -95,7 +95,7 @@ __ENTER_FUNCTION
 
                 USER* pUser = g_pOnlineUser->FindUser( guid ) ;
                 if( pUser==NULL )
-                {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êı¾İÊÇ¿Õ
+                {//å¦‚æœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
                     continue ;
                 }
                 
@@ -112,7 +112,7 @@ __ENTER_FUNCTION
                 pServerPlayer->SendPacket( &Msg ) ;
             }
 
-            //É¾³ıÆµµÀÄÚÊı¾İ
+            //åˆ é™¤é¢‘é“å†…æ•°æ®
             pChannel->DelMember( pDestUser->GetGUID() ) ;
 
             Log::SaveLog( WORLD_LOGFILE, "GWChannelKickHandler...User Dest GUID=%X kicked from ChannelID=%d!", 

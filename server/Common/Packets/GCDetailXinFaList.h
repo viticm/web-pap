@@ -1,6 +1,6 @@
 // GCDetailXinFaList.h
 // 
-// 当前主角的详细技能表
+// 褰撳墠涓昏鐨勮缁嗘妧鑳借〃
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
     GCSkillClass( ){}
     virtual ~GCSkillClass( ){}
 
-    //公用继承接口
+    //鍏敤缁ф壙鎺ュ彛
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -41,7 +41,7 @@ public:
                     memcpy( m_aXinFa, paXinFa, sizeof(_OWN_XINFA)*m_wNumXinFa );
                 }
 private:
-    ObjID_t        m_ObjID;    // 所有Obj类型的ObjID
+    ObjID_t        m_ObjID;    // 鎵�鏈塐bj绫诲瀷鐨凮bjID
     WORD        m_wNumXinFa;
     _OWN_XINFA    m_aXinFa[MAX_CHAR_XINFA_NUM];
 };

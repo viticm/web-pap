@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ItemHelper.h"
 #include "Rand.h"
-//最大物品随机分辨率
+//鏈�澶х墿鍝侀殢鏈哄垎杈ㄧ巼
 #define            MAX_ITEM_RAND_QUOATE    100000000
 
 

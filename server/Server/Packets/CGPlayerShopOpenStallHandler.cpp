@@ -26,27 +26,27 @@ UINT CGPlayerShopOpenStallHandler::Execute( CGPlayerShopOpenStall* pPacket, Play
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-    _PLAYERSHOP_GUID    nShopID            =    pPacket->GetShopID();            //ÉÌµêID
-    BYTE                nStallIndex        =    pPacket->GetStallIndex();        //¹ñÌ¨Ë÷Òý
-    BYTE                bOpen            =    pPacket->GetOpen();                //ÊÇ·ñ¿ªÕÅ
+    _PLAYERSHOP_GUID    nShopID            =    pPacket->GetShopID();            //å•†åº—ID
+    BYTE                nStallIndex        =    pPacket->GetStallIndex();        //æŸœå°ç´¢å¼•
+    BYTE                bOpen            =    pPacket->GetOpen();                //æ˜¯å¦å¼€å¼ 
     BYTE                nShopSerial        =    pPacket->GetShopSerial();
     GCPlayerShopError MsgError;
     PlayerShopManager*    pPlayerShopManager = pScene->GetPlayerShopManager();
     PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
     Assert(pPlayerShop);
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE)
-    {//ÉÌµêÎ´¿ªÕÅ
+    {//å•†åº—æœªå¼€å¼ 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopOpenStallHandler::Name=%s shop close"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-    //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
     BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
     if(bIsMine == FALSE)
@@ -73,7 +73,7 @@ UINT CGPlayerShopOpenStallHandler::Execute( CGPlayerShopOpenStall* pPacket, Play
         BYTE nStallOnSale = pPlayerShop->GetNumStallOnSale();
         pPlayerShop->SetNumStallOnSale(nStallOnSale+1);
         bRefresh = TRUE;
-        //¿ªÕÅ£ºAAA¿ªÕÅÁËµÚN¼ä¹ñÌ¨£¨AAAÎª²Ù×÷ÕßÃû£¬NÎª¹ñÌ¨ËùÊô¼äÊý£©
+        //å¼€å¼ ï¼šAAAå¼€å¼ äº†ç¬¬Né—´æŸœå°ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒNä¸ºæŸœå°æ‰€å±žé—´æ•°ï¼‰
         RecordOpt::Excute(REC_OPEN, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)nStallIndex);
         
     }
@@ -83,7 +83,7 @@ UINT CGPlayerShopOpenStallHandler::Execute( CGPlayerShopOpenStall* pPacket, Play
         BYTE nStallOnSale = pPlayerShop->GetNumStallOnSale();
         pPlayerShop->SetNumStallOnSale(nStallOnSale-1);
         bRefresh = TRUE;
-        //´òìÈ£ºAAA´òìÈÁËµÚN¼ä¹ñÌ¨£¨AAAÎª²Ù×÷ÕßÃû£¬NÎª¹ñÌ¨ËùÊô¼äÊý£©
+        //æ‰“çƒŠï¼šAAAæ‰“çƒŠäº†ç¬¬Né—´æŸœå°ï¼ˆAAAä¸ºæ“ä½œè€…åï¼ŒNä¸ºæŸœå°æ‰€å±žé—´æ•°ï¼‰
         RecordOpt::Excute(REC_CLOSE, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)nStallIndex);
     }
 

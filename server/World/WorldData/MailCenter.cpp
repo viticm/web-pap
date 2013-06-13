@@ -7,7 +7,7 @@
 #include "OnlineUser.h"
 #include "TimeManager.h"
 
-const UINT uMaxHoldMailTick = 864000 ;//·şÎñÆ÷¿ÉÒÔ±£´æÓÊ¼şµÄ×î³£Ê±¼ä
+const UINT uMaxHoldMailTick = 864000 ;//æœåŠ¡å™¨å¯ä»¥ä¿å­˜é‚®ä»¶çš„æœ€å¸¸æ—¶é—´
 
 MailCenter*    g_pMailCenter = NULL ;
 
@@ -81,7 +81,7 @@ __ENTER_FUNCTION
     while( pUserNode!=NULL )
     {
         if( pUserNode->m_ChainMail.GetNum() <= 0 )
-        {//Èç¹ûÓÃ»§½ÚµãÖĞÃ»ÓĞÓÊ¼ş£¬Ôò»ØÊÕÓÃ»§½Úµã
+        {//å¦‚æœç”¨æˆ·èŠ‚ç‚¹ä¸­æ²¡æœ‰é‚®ä»¶ï¼Œåˆ™å›æ”¶ç”¨æˆ·èŠ‚ç‚¹
 
             m_UserHashTable.Del( pUserNode->m_szName ) ;
             m_UserChain.m_ChainUser.OutChain() ;
@@ -92,8 +92,8 @@ __ENTER_FUNCTION
         }
 
         if( pUserNode->m_uTickCount > uMaxHoldMailTick )
-        {//Èç¹ûÓÃ»§½ÚµãÔÚ·şÎñÆ÷±£ÁôµÄºÜ³¤Ê±¼ä£¬Ôò»ØÊÕÓÃ»§½ÚµãÊı¾İ
-         //²¢ÇÒ»ØÊÕµ±Ç°ÓÃ»§½ÚµãËù¹ØÁªµÄËùÓĞÓÊ¼ş½ÚµãÊı¾İ
+        {//å¦‚æœç”¨æˆ·èŠ‚ç‚¹åœ¨æœåŠ¡å™¨ä¿ç•™çš„å¾ˆé•¿æ—¶é—´ï¼Œåˆ™å›æ”¶ç”¨æˆ·èŠ‚ç‚¹æ•°æ®
+         //å¹¶ä¸”å›æ”¶å½“å‰ç”¨æˆ·èŠ‚ç‚¹æ‰€å…³è”çš„æ‰€æœ‰é‚®ä»¶èŠ‚ç‚¹æ•°æ®
 
             pUserNode->m_ChainMail.First() ;
             while( pUserNode->m_ChainMail.GetNum()>0 )
@@ -148,18 +148,18 @@ UINT MailCenter::RegisterMailNode(MailNode* pMailNode)
     pUserNode = m_UserHashTable.Get( szDestName );
 
     if( pUserNode == NULL )
-    {//µ±Ç°Ã»ÓĞÄ¿±êÍæ¼ÒµÄÓÊ¼şÊı¾İ
-        pUserNode = g_pUserNodePool->NewNode( ) ;//·ÖÅäÒ»¸öÓÃ»§½Úµã
+    {//å½“å‰æ²¡æœ‰ç›®æ ‡ç©å®¶çš„é‚®ä»¶æ•°æ®
+        pUserNode = g_pUserNodePool->NewNode( ) ;//åˆ†é…ä¸€ä¸ªç”¨æˆ·èŠ‚ç‚¹
 
         strncpy( pUserNode->m_szName, pMail->m_szDestName, MAX_CHARACTER_NAME-1 ) ;
-        //½«ÓÃ»§½Úµã×¢²áµ½Hash±íÀï
+        //å°†ç”¨æˆ·èŠ‚ç‚¹æ³¨å†Œåˆ°Hashè¡¨é‡Œ
         m_UserHashTable.Add( pUserNode->m_szName, pUserNode ) ;
-        //½«ÓÃ»§½ÚµãÌí¼Óµ½½ÚµãÁ´±íÀï
+        //å°†ç”¨æˆ·èŠ‚ç‚¹æ·»åŠ åˆ°èŠ‚ç‚¹é“¾è¡¨é‡Œ
         m_UserChain.m_ChainUser.Add( pUserNode ) ;
     }
-    pMailNode->m_nUserNodePoolIndex = pUserNode->m_nPoolIndex ;//ÓÊ¼ş½ÚµãÖĞ±£´æËùÔÚÓÃ»§½ÚµãÖµ
+    pMailNode->m_nUserNodePoolIndex = pUserNode->m_nPoolIndex ;//é‚®ä»¶èŠ‚ç‚¹ä¸­ä¿å­˜æ‰€åœ¨ç”¨æˆ·èŠ‚ç‚¹å€¼
 
-    //¸ù¾İÓÊ¼şÀàĞÍ£¬½«ÓÊ¼ş½ÚµãÌí¼Óµ½ÓÃ»§µÄÓÊ¼şÁĞ±íÀï
+    //æ ¹æ®é‚®ä»¶ç±»å‹ï¼Œå°†é‚®ä»¶èŠ‚ç‚¹æ·»åŠ åˆ°ç”¨æˆ·çš„é‚®ä»¶åˆ—è¡¨é‡Œ
     switch( pMail->m_uFlag )
     {
     case MAIL_TYPE_SCRIPT:
@@ -173,12 +173,12 @@ UINT MailCenter::RegisterMailNode(MailNode* pMailNode)
     default :
         {
             if ( pUserNode->m_ChainMail.GetNum() >= MAX_MAIL )
-            { // Èç¹ûĞÅ¼ş³¬¹ı MAX_MAIL Ìõ£¬ÔòÉ¾µô
-                //½«ÓÊ¼ş´ÓÁ´±íÀï¶Ï¿ª
+            { // å¦‚æœä¿¡ä»¶è¶…è¿‡ MAX_MAIL æ¡ï¼Œåˆ™åˆ æ‰
+                //å°†é‚®ä»¶ä»é“¾è¡¨é‡Œæ–­å¼€
                 MailNode* pOldMailNode = (MailNode*)(pUserNode->m_ChainMail.OutChain());
                 if( pOldMailNode!=NULL )
                 {
-                    //É¾³ıÓÊ¼ş½Úµã
+                    //åˆ é™¤é‚®ä»¶èŠ‚ç‚¹
                     g_pMailNodePool->DeleteNode( pOldMailNode );
                 }
                 else
@@ -193,8 +193,8 @@ UINT MailCenter::RegisterMailNode(MailNode* pMailNode)
     };
 
 
-    //Èç¹û´ËÓÃ»§½ÚµãÀï±£´æµÄÓÊ¼şÊıÁ¿³¬³ö×î´óÖµ£¬Ôò´¦Àí
-    //...Î´¶¨
+    //å¦‚æœæ­¤ç”¨æˆ·èŠ‚ç‚¹é‡Œä¿å­˜çš„é‚®ä»¶æ•°é‡è¶…å‡ºæœ€å¤§å€¼ï¼Œåˆ™å¤„ç†
+    //...æœªå®š
     OnUserSendMail( pMail ) ;
 
     return pUserNode->GetMailCount()+pUserNode->GetScriptMailCount() ;
@@ -204,7 +204,7 @@ UINT MailCenter::RegisterMailNode(MailNode* pMailNode)
         return 0 ;
 }
 
-//Ïò·¢ËÍmail¸øÄ¿±ê£¨Ä¿±êĞÅÏ¢ÔÚmailÊı¾İÀï£©
+//å‘å‘é€mailç»™ç›®æ ‡ï¼ˆç›®æ ‡ä¿¡æ¯åœ¨mailæ•°æ®é‡Œï¼‰
 UINT MailCenter::MailTo( const MAIL* pMail )
 {
 __ENTER_FUNCTION
@@ -217,21 +217,21 @@ __ENTER_FUNCTION
     pUserNode = m_UserHashTable.Get( szDestName );
 
     if( pUserNode == NULL )
-    {//µ±Ç°Ã»ÓĞÄ¿±êÍæ¼ÒµÄÓÊ¼şÊı¾İ
-        pUserNode = g_pUserNodePool->NewNode( ) ;//·ÖÅäÒ»¸öÓÃ»§½Úµã
+    {//å½“å‰æ²¡æœ‰ç›®æ ‡ç©å®¶çš„é‚®ä»¶æ•°æ®
+        pUserNode = g_pUserNodePool->NewNode( ) ;//åˆ†é…ä¸€ä¸ªç”¨æˆ·èŠ‚ç‚¹
 
         strncpy( pUserNode->m_szName, pMail->m_szDestName, MAX_CHARACTER_NAME-1 ) ;
-        //½«ÓÃ»§½Úµã×¢²áµ½Hash±íÀï
+        //å°†ç”¨æˆ·èŠ‚ç‚¹æ³¨å†Œåˆ°Hashè¡¨é‡Œ
         m_UserHashTable.Add( pUserNode->m_szName, pUserNode ) ;
-        //½«ÓÃ»§½ÚµãÌí¼Óµ½½ÚµãÁ´±íÀï
+        //å°†ç”¨æˆ·èŠ‚ç‚¹æ·»åŠ åˆ°èŠ‚ç‚¹é“¾è¡¨é‡Œ
         m_UserChain.m_ChainUser.Add( pUserNode ) ;
     }
 
-    MailNode* pMailNode = g_pMailNodePool->NewNode()  ;//·ÖÅäÒ»¸öÓÊ¼ş½Úµã
-    pMailNode->SetMail( pMail ) ;//¸´ÖÆÓÊ¼şÊı¾İ
-    pMailNode->m_nUserNodePoolIndex = pUserNode->m_nPoolIndex ;//ÓÊ¼ş½ÚµãÖĞ±£´æËùÔÚÓÃ»§½ÚµãÖµ
+    MailNode* pMailNode = g_pMailNodePool->NewNode()  ;//åˆ†é…ä¸€ä¸ªé‚®ä»¶èŠ‚ç‚¹
+    pMailNode->SetMail( pMail ) ;//å¤åˆ¶é‚®ä»¶æ•°æ®
+    pMailNode->m_nUserNodePoolIndex = pUserNode->m_nPoolIndex ;//é‚®ä»¶èŠ‚ç‚¹ä¸­ä¿å­˜æ‰€åœ¨ç”¨æˆ·èŠ‚ç‚¹å€¼
 
-    //¸ù¾İÓÊ¼şÀàĞÍ£¬½«ÓÊ¼ş½ÚµãÌí¼Óµ½ÓÃ»§µÄÓÊ¼şÁĞ±íÀï
+    //æ ¹æ®é‚®ä»¶ç±»å‹ï¼Œå°†é‚®ä»¶èŠ‚ç‚¹æ·»åŠ åˆ°ç”¨æˆ·çš„é‚®ä»¶åˆ—è¡¨é‡Œ
     switch( pMail->m_uFlag )
     {
     case MAIL_TYPE_SCRIPT:
@@ -245,12 +245,12 @@ __ENTER_FUNCTION
     default :
         {
             if ( pUserNode->m_ChainMail.GetNum() > MAX_MAIL )
-            { // Èç¹ûĞÅ¼ş³¬¹ı MAX_MAIL Ìõ£¬ÔòÉ¾µô
-                //½«ÓÊ¼ş´ÓÁ´±íÀï¶Ï¿ª
+            { // å¦‚æœä¿¡ä»¶è¶…è¿‡ MAX_MAIL æ¡ï¼Œåˆ™åˆ æ‰
+                //å°†é‚®ä»¶ä»é“¾è¡¨é‡Œæ–­å¼€
                 MailNode* pOldMailNode = (MailNode*)(pUserNode->m_ChainMail.OutChain());
                 if( pOldMailNode!=NULL )
                 {
-                    //É¾³ıÓÊ¼ş½Úµã
+                    //åˆ é™¤é‚®ä»¶èŠ‚ç‚¹
                     g_pMailNodePool->DeleteNode( pOldMailNode );
                 }
                 else
@@ -265,8 +265,8 @@ __ENTER_FUNCTION
     };
 
 
-    //Èç¹û´ËÓÃ»§½ÚµãÀï±£´æµÄÓÊ¼şÊıÁ¿³¬³ö×î´óÖµ£¬Ôò´¦Àí
-    //...Î´¶¨
+    //å¦‚æœæ­¤ç”¨æˆ·èŠ‚ç‚¹é‡Œä¿å­˜çš„é‚®ä»¶æ•°é‡è¶…å‡ºæœ€å¤§å€¼ï¼Œåˆ™å¤„ç†
+    //...æœªå®š
 
     OnUserSendMail( pMail ) ;
 
@@ -302,7 +302,7 @@ __LEAVE_FUNCTION
 //}
 
 
-//ÇëÇóÃû×Ö½ĞszNameÍæ¼ÒµÄÓÊ¼şĞÅÏ¢£¬pList·µ»ØÓÊ¼şÁĞ±í, ·µ»ØÖµÎªÓÊ¼şÊıÁ¿
+//è¯·æ±‚åå­—å«szNameç©å®¶çš„é‚®ä»¶ä¿¡æ¯ï¼ŒpListè¿”å›é‚®ä»¶åˆ—è¡¨, è¿”å›å€¼ä¸ºé‚®ä»¶æ•°é‡
 UINT MailCenter::AskMail( const CHAR* szName, MAIL_LIST* pListOut )
 {
 __ENTER_FUNCTION
@@ -325,23 +325,23 @@ __ENTER_FUNCTION
     pUserNode->m_ChainMail.First() ;
     while( pUserNode->m_ChainMail.GetNum()>0 )
     {
-        //½«ÓÊ¼ş´ÓÁ´±íÀï¶Ï¿ª
+        //å°†é‚®ä»¶ä»é“¾è¡¨é‡Œæ–­å¼€
         MailNode* pMailNode = (MailNode*)(pUserNode->m_ChainMail.OutChain()) ;
         if( pMailNode==NULL )
         {
             Assert( FALSE ) ;
             break ;
         }
-        //½«ÓÊ¼şĞÅÏ¢´æµ½Êä³ö½á¹¹Àï
+        //å°†é‚®ä»¶ä¿¡æ¯å­˜åˆ°è¾“å‡ºç»“æ„é‡Œ
         pListOut->m_aMail[pListOut->m_Count] = *pMailNode->GetMail() ;
         pListOut->m_Count++ ;
-        //É¾³ıÓÊ¼ş½Úµã
+        //åˆ é™¤é‚®ä»¶èŠ‚ç‚¹
         g_pMailNodePool->DeleteNode( pMailNode ) ;
 
-        //·µ»ØÒ»·âÓÊ¼ş
+        //è¿”å›ä¸€å°é‚®ä»¶
         break ;
     }
-    //½«´ËÓÃ»§»¹ÓµÓĞµÄÓÊ¼şÊıÁ¿´æÈëÊä³ö½á¹¹
+    //å°†æ­¤ç”¨æˆ·è¿˜æ‹¥æœ‰çš„é‚®ä»¶æ•°é‡å­˜å…¥è¾“å‡ºç»“æ„
     pListOut->m_TotalLeft = pUserNode->m_ChainMail.GetNum() ;
 
     OnUserRecvMail( pListOut ) ;
@@ -353,7 +353,7 @@ __LEAVE_FUNCTION
     return 0 ;
 }
 
-//ËÑË÷ËùÓĞÆÕÍ¨ÓÊ¼ş£¬²é¿´ÓĞĞ§µÄÓÊ¼şÊıÁ¿
+//æœç´¢æ‰€æœ‰æ™®é€šé‚®ä»¶ï¼ŒæŸ¥çœ‹æœ‰æ•ˆçš„é‚®ä»¶æ•°é‡
 UINT MailCenter::CheckMail( USER* pUser )
 {
     __ENTER_FUNCTION
@@ -381,17 +381,17 @@ UINT MailCenter::CheckMail( USER* pUser )
 
         if( pUser->ValidateMail( pMailNode->GetMail() ) == 0 )
         {
-            //ÓĞĞ§ÓÊ¼ş
+            //æœ‰æ•ˆé‚®ä»¶
             nMailCount ++;
             pMailNode = (MailNode*)pUserNode->m_ChainMail.Next();
         }
         else
         {
-            //ÎŞĞ§ÓÊ¼ş£¬É¾³ı
+            //æ— æ•ˆé‚®ä»¶ï¼Œåˆ é™¤
             pUserNode->m_ChainMail.OutChain();
             g_pMailNodePool->DeleteNode( pMailNode ) ;
 
-            //È¡µÃµ±Ç°½Úµã
+            //å–å¾—å½“å‰èŠ‚ç‚¹
             pMailNode = (MailNode*)pUserNode->m_ChainMail.Current();
         }
     }
@@ -426,7 +426,7 @@ __LEAVE_FUNCTION
     return 0 ;
 }
 
-//ÇëÇóÃû×Ö½ĞszNameÍæ¼ÒµÄÓÊ¼şĞÅÏ¢£¬pList·µ»ØÓÊ¼şÁĞ±í, ·µ»ØÖµÎªÓÊ¼şÊıÁ¿
+//è¯·æ±‚åå­—å«szNameç©å®¶çš„é‚®ä»¶ä¿¡æ¯ï¼ŒpListè¿”å›é‚®ä»¶åˆ—è¡¨, è¿”å›å€¼ä¸ºé‚®ä»¶æ•°é‡
 UINT MailCenter::AskScriptMail( const CHAR* szName, MAIL_LIST* pListOut )
 {
 __ENTER_FUNCTION
@@ -449,23 +449,23 @@ __ENTER_FUNCTION
     pUserNode->m_ChainScriptMail.First() ;
     while( pUserNode->m_ChainScriptMail.GetNum()>0 )
     {
-        //½«ÓÊ¼ş´ÓÁ´±íÀï¶Ï¿ª
+        //å°†é‚®ä»¶ä»é“¾è¡¨é‡Œæ–­å¼€
         MailNode* pMailNode = (MailNode*)(pUserNode->m_ChainScriptMail.OutChain()) ;
         if( pMailNode==NULL )
         {
             Assert( FALSE ) ;
             break ;
         }
-        //½«ÓÊ¼şĞÅÏ¢´æµ½Êä³ö½á¹¹Àï
+        //å°†é‚®ä»¶ä¿¡æ¯å­˜åˆ°è¾“å‡ºç»“æ„é‡Œ
         pListOut->m_aMail[pListOut->m_Count] = *pMailNode->GetMail() ;
         pListOut->m_Count++ ;
-        //É¾³ıÓÊ¼ş½Úµã
+        //åˆ é™¤é‚®ä»¶èŠ‚ç‚¹
         g_pMailNodePool->DeleteNode( pMailNode ) ;
 
         if( pListOut->m_Count>=MAX_MAIL_SIZE )
             break ;
     }
-    //½«´ËÓÃ»§»¹ÓµÓĞµÄÓÊ¼şÊıÁ¿´æÈëÊä³ö½á¹¹
+    //å°†æ­¤ç”¨æˆ·è¿˜æ‹¥æœ‰çš„é‚®ä»¶æ•°é‡å­˜å…¥è¾“å‡ºç»“æ„
     pListOut->m_TotalLeft = pUserNode->m_ChainScriptMail.GetNum() ;
 
     OnUserRecvMail( pListOut ) ;
@@ -477,7 +477,7 @@ __LEAVE_FUNCTION
     return 0 ;
 }
 
-//Íæ¼Ò½ÓÊÕµ½ĞÂÓÊ¼ş
+//ç©å®¶æ¥æ”¶åˆ°æ–°é‚®ä»¶
 VOID MailCenter::OnUserRecvMail( const MAIL_LIST* pList )
 {
 __ENTER_FUNCTION
@@ -486,7 +486,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-//Íæ¼Ò·¢ËÍÁËÓÊ¼ş
+//ç©å®¶å‘é€äº†é‚®ä»¶
 VOID MailCenter::OnUserSendMail( const MAIL* pMail )
 {
 __ENTER_FUNCTION
@@ -494,7 +494,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ·¢ËÍÓÊ¼ş
+// å‘é€é‚®ä»¶
 VOID MailCenter::SendNormalMail( const CHAR* szReceiverName, const CHAR* szContent)
 {
 __ENTER_FUNCTION
@@ -517,7 +517,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ·¢ËÍ¿ÉÖ´ĞĞÓÊ¼ş
+// å‘é€å¯æ‰§è¡Œé‚®ä»¶
 VOID MailCenter::SendScriptMail(const CHAR* szReceiverName, UINT uParam0, UINT uParam1, UINT uParam2, UINT uParam3 )
 {
 __ENTER_FUNCTION
@@ -539,7 +539,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-// ¹© SendNormalMail¡¢SendScriptMail µ÷ÓÃ
+// ä¾› SendNormalMailã€SendScriptMail è°ƒç”¨
 VOID MailCenter::SendMail(const MAIL* pMail)
 {
 __ENTER_FUNCTION
@@ -548,7 +548,7 @@ __ENTER_FUNCTION
 
     USER* pUser = g_pOnlineUser->FindUser( pMail->m_szDestName );
     if( pUser )
-    {//µ±Ç°ÓÃ»§ÔÚÏß
+    {//å½“å‰ç”¨æˆ·åœ¨çº¿
         pUser->RecvMail( pMail );
     }
     else

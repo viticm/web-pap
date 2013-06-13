@@ -1,7 +1,7 @@
 /*
-л╞н╩пео╒╧эюМфВё╛ц©╦ЖЁ║╬╟╧рр╩╦Ж║ё
-╦╨тПл╞н╩пео╒нд╪Ч╣д╤ах║║ё
-л╞н╩╥ясц╣д╧эюМё╛╟Эю╗╣зр╩╢н╟зл╞╣дл╞н╩╥яё╛ц©╢н╫╩рв╣д╫╩рвк╟ё╛╢к╣ьйг╥Я©ирт╟зл╞║ё
+Ф▒┼Д╫█Д©║Ф│╞Г╝║Г░├Е≥╗О╪▄Ф╞▐Д╦╙Е°╨Ф≥╞Ф▄┌Д╦─Д╦╙Ц─┌
+Х╢÷Х╢ёФ▒┼Д╫█Д©║Ф│╞Ф√┤Д╩╤Г └Х╞╩Е▐√Ц─┌
+Ф▒┼Д╫█Х╢╧Г■╗Г └Г╝║Г░├О╪▄Е▄┘Ф▀╛Г╛╛Д╦─Ф╛║Ф▒├Ф▒┼Г └Ф▒┼Д╫█Х╢╧О╪▄Ф╞▐Ф╛║Д╨╓Ф≤⌠Г └Д╨╓Ф≤⌠Г╗▌О╪▄Ф╜╓Е°╟Ф≤╞Е░╕Е▐╞Д╩╔Ф▒├Ф▒┼Ц─┌
 */
 
 #ifndef _STALLINFO_MANAGER_H_
@@ -9,7 +9,7 @@
 #include "Type.h"
 
 /*
-╣╔╦Ж╣ьпн©И╣дл╞н╩пео╒
+Е█∙Д╦╙Е°╟Е╫╒Е²≈Г └Ф▒┼Д╫█Д©║Ф│╞
 */
 struct StallInfoData_t
 {
@@ -18,10 +18,10 @@ struct StallInfoData_t
         memset(this, 0, sizeof(StallInfoData_t));
     }
 
-    BYTE    m_bCanStall;    //йг╥Я©ирт╟зл╞
-    BYTE    m_iTradeTax;    //╫╩рвк╟
-    UINT    m_dwPosTax;        //л╞н╩╥я
-    BYTE    m_iExtraInfo;    //╦╫╪спео╒
+    BYTE    m_bCanStall;    //Ф≤╞Е░╕Е▐╞Д╩╔Ф▒├Ф▒┼
+    BYTE    m_iTradeTax;    //Д╨╓Ф≤⌠Г╗▌
+    UINT    m_dwPosTax;        //Ф▒┼Д╫█Х╢╧
+    BYTE    m_iExtraInfo;    //И≥└Е┼═Д©║Ф│╞
 
     StallInfoData_t& operator=(const StallInfoData_t& stallInfo)
     {
@@ -33,7 +33,7 @@ struct StallInfoData_t
 };
 
 /*
-StallInfoManager,╦╨тПл╞н╩йЩ╬щ╣д╤ах║ё╛╥цнй║ё
+StallInfoManager,Х╢÷Х╢ёФ▒┼Д╫█Ф∙╟Ф█╝Г └Х╞╩Е▐√О╪▄Х╝©И≈╝Ц─┌
 */
 class StallInfoManager
 {
@@ -42,7 +42,7 @@ public:
     ~StallInfoManager();
 public:
     //-------------------------------------------------------------------------------------------------
-    //InitюО╥жеДдз╢Фё╛╤тс╕тзCleanUpжпйм╥едз╢Ф
+    //InitИ┤▄Е┬├И┘█Е├┘Е╜≤О╪▄Е╞╧Е╨■Е°╗CleanUpД╦╜И┤┼Ф■╬Е├┘Е╜≤
     BOOL        Init(UINT uMapWidth = 0, UINT uMapHeight = 0);
     VOID        CleanUp();
 

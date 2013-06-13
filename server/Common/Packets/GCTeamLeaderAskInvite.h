@@ -20,7 +20,7 @@ namespace Packets
         }
         virtual        ~GCTeamLeaderAskInvite(){}
 
-        //公用接口
+        //鍏敤鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -52,10 +52,10 @@ namespace Packets
         const CHAR*                GetDestName( ){ return m_DestName; }
 
     public :
-        GUID_t                    m_SourGUID;        //邀请人
-        GUID_t                    m_DestGUID;        //被邀请人
-        CHAR                    m_SourName[MAX_CHARACTER_NAME];            //邀请人名字
-        CHAR                    m_DestName[MAX_CHARACTER_NAME];            //被邀请人名字
+        GUID_t                    m_SourGUID;        //閭�璇蜂汉
+        GUID_t                    m_DestGUID;        //琚個璇蜂汉
+        CHAR                    m_SourName[MAX_CHARACTER_NAME];            //閭�璇蜂汉鍚嶅瓧
+        CHAR                    m_DestName[MAX_CHARACTER_NAME];            //琚個璇蜂汉鍚嶅瓧
         UCHAR                    m_SourNameSize;
         UCHAR                    m_DestNameSize;
 

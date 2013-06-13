@@ -7,20 +7,20 @@
 
 enum USER_STATUS
 {
-    US_NONE = 0 ,        //¿Õ
-    US_HOLDUSERDATA ,    //ÓµÓĞµ±Ç°Íæ¼ÒµÄµµ°¸ĞÅÏ¢
-    US_CHANGESCENE,        //¿ç·şÎñÆ÷ÇĞ»»³¡¾°
-    US_NORMAL ,            //Íæ¼ÒÕıÔÚÓÎÏ·ÖĞ£¬Ò»ÇĞÕı³£
-    US_OFFLINE ,        //Íæ¼Ò´¦ÓÚ¶ÏÏß×´Ì¬ÖĞ
-    US_CRASH_DOWN,        //Server ±ÀÀ£µÄÍæ¼Ò
-    US_WAIT_SHUTDOWN,    //Server ·¢ËÍÁË°²È«Í£»úµÄÍæ¼Ò
+    US_NONE = 0 ,        //ç©º
+    US_HOLDUSERDATA ,    //æ‹¥æœ‰å½“å‰ç©å®¶çš„æ¡£æ¡ˆä¿¡æ¯
+    US_CHANGESCENE,        //è·¨æœåŠ¡å™¨åˆ‡æ¢åœºæ™¯
+    US_NORMAL ,            //ç©å®¶æ­£åœ¨æ¸¸æˆä¸­ï¼Œä¸€åˆ‡æ­£å¸¸
+    US_OFFLINE ,        //ç©å®¶å¤„äºæ–­çº¿çŠ¶æ€ä¸­
+    US_CRASH_DOWN,        //Server å´©æºƒçš„ç©å®¶
+    US_WAIT_SHUTDOWN,    //Server å‘é€äº†å®‰å…¨åœæœºçš„ç©å®¶
 
     US_SIZE,
 };
 
 struct USER_GUILD_DATA
 {
-    UINT                    m_uAccess;                    //È¨ÏŞ
+    UINT                    m_uAccess;                    //æƒé™
 
     USER_GUILD_DATA( )
     {
@@ -35,7 +35,7 @@ struct _RELATION_USER
 {
     GUID_t                    m_UserGUID;
     RELATION_TYPE            m_RelationType;
-    INT                        m_nFriendPoint;                // Ä¿Ç°Õâ¸öÓÑºÃ¶È²»»á¼´Ê±¸üĞÂ£¬½öÓÃ×öÅĞ¶ÏÊÇ·ñĞèÒªÉÏÏÂÏßÌáÊ¾
+    INT                        m_nFriendPoint;                // ç›®å‰è¿™ä¸ªå‹å¥½åº¦ä¸ä¼šå³æ—¶æ›´æ–°ï¼Œä»…ç”¨åšåˆ¤æ–­æ˜¯å¦éœ€è¦ä¸Šä¸‹çº¿æç¤º
 
     VOID                    CleanUp()
     {
@@ -63,11 +63,11 @@ struct _RELATION_LIST
 
 struct USER_RELATION_DATA
 {
-    Flag16                    m_Flag;                            //½ÓÊÕĞÅÏ¢±êÖ¾£¬¼û enum GAME_SETTING_FLAG
-    CHAR                    m_szMood[MOOD_DATA_SIZE];        // ĞÄÇé
-    _RELATION_LIST            m_RelationList;                    // ¹ØÏµÈËÀàĞÍ
+    Flag16                    m_Flag;                            //æ¥æ”¶ä¿¡æ¯æ ‡å¿—ï¼Œè§ enum GAME_SETTING_FLAG
+    CHAR                    m_szMood[MOOD_DATA_SIZE];        // å¿ƒæƒ…
+    _RELATION_LIST            m_RelationList;                    // å…³ç³»äººç±»å‹
 
-    IDTable                    m_RelationGUIDTable;            // ºÃÓÑºÍºÚÃûµ¥¶¼ÔÚ´Ë»º´æ
+    IDTable                    m_RelationGUIDTable;            // å¥½å‹å’Œé»‘åå•éƒ½åœ¨æ­¤ç¼“å­˜
 
     USER_RELATION_DATA()
     {
@@ -112,211 +112,211 @@ public:
         m_LastTime            = 0;
     }
 
-    // È¡µÃÍæ¼ÒµÄ UserID
+    // å–å¾—ç©å®¶çš„ UserID
     inline ID_t                GetUserID() const;
 
-    // ÉèÖÃÍæ¼ÒµÄ UserID
+    // è®¾ç½®ç©å®¶çš„ UserID
     inline VOID                SetUserID( ID_t id );
 
-    // È¡µÃÍæ¼Ò×´Ì¬
+    // å–å¾—ç©å®¶çŠ¶æ€
     inline UINT                UserStatus() const;
 
-    // ÉèÖÃÍæ¼Ò×´Ì¬
+    // è®¾ç½®ç©å®¶çŠ¶æ€
     inline VOID                SetUserStatus( UINT uStatus );
 
-    // È¡µÃÍêÕûÍæ¼ÒÊı¾İ
+    // å–å¾—å®Œæ•´ç©å®¶æ•°æ®
     inline FULLUSERDATA*    GetFullUserData() const;
 
-    // ÉèÖÃÍêÕûÍæ¼ÒÊı¾İ
+    // è®¾ç½®å®Œæ•´ç©å®¶æ•°æ®
     inline VOID                SetFullUserData( FULLUSERDATA* pData );
 
-    // È¡µÃÍæ¼ÒµÄ ServerID
+    // å–å¾—ç©å®¶çš„ ServerID
     inline ID_t                GetServerID() const;
 
-    // È¡µÃÍæ¼Ò PlayerID
+    // å–å¾—ç©å®¶ PlayerID
     inline PlayerID_t        GetPlayerID() const;
 
-    // ÉèÖÃÍæ¼Ò PlayerID
+    // è®¾ç½®ç©å®¶ PlayerID
     inline VOID                SetPlayerID( PlayerID_t pid );
 
-    // È¡µÃÍæ¼Ò GUID
+    // å–å¾—ç©å®¶ GUID
     inline GUID_t            GetGUID() const;
 
-    // ÉèÖÃÍæ¼Ò GUID
+    // è®¾ç½®ç©å®¶ GUID
     inline VOID                SetGUID( GUID_t guid );
 
-    // È¡µÃÍæ¼Ò SceneID
+    // å–å¾—ç©å®¶ SceneID
     inline SceneID_t        GetSceneID() const;
 
-    // ÉèÖÃÍæ¼Ò SceneID
+    // è®¾ç½®ç©å®¶ SceneID
     inline VOID                SetSceneID( SceneID_t SceneID );
 
-    // È¡µÃÍæ¼Ò SceneID
+    // å–å¾—ç©å®¶ SceneID
     inline SceneID_t        GetOldSceneID() const;
 
-    // ÉèÖÃÍæ¼Ò SceneID
+    // è®¾ç½®ç©å®¶ SceneID
     inline VOID                SetOldSceneID( SceneID_t SceneID );
 
-    // µÃµ½Íæ¼Ò³£ÓÃÊı¾İ
+    // å¾—åˆ°ç©å®¶å¸¸ç”¨æ•°æ®
     inline const USER_SIMPLE_DATA* GetUserSimpleData() const;
 
-    // È¡µÃÍæ¼ÒÃû×Ö
+    // å–å¾—ç©å®¶åå­—
     inline const CHAR*        GetName() const;
 
-    // ÉèÖÃÍæ¼ÒÃû×Ö
+    // è®¾ç½®ç©å®¶åå­—
     inline VOID                SetName( const CHAR* szName );
 
-    // È¡µÃÕË»§Ãû×Ö
+    // å–å¾—è´¦æˆ·åå­—
     inline const CHAR*        GetAccount() const;
 
-    // ÉèÖÃÕË»§Ãû×Ö
+    // è®¾ç½®è´¦æˆ·åå­—
     inline VOID                SetAccount( const CHAR* szName );
 
-    // È¡µÃ¹ÙÍøGUID
+    // å–å¾—å®˜ç½‘GUID
     inline GUID_t            GetAccountGUID() const;
 
-    // ÉèÖÃ¹ÙÍøGUID
+    // è®¾ç½®å®˜ç½‘GUID
     inline VOID                SetAccountGUID( UINT uAccountGUID );
 
-    // È¡µÃÍæ¼ÒĞÔ±ğ
+    // å–å¾—ç©å®¶æ€§åˆ«
     inline UINT                GetSex() const;
 
-    // ÉèÖÃÍæ¼ÒĞÔ±ğ
+    // è®¾ç½®ç©å®¶æ€§åˆ«
     inline VOID                SetSex( UINT uSex );
 
-    // È¡µÃÍæ¼ÒµÄÃÅÅÉºÅ
+    // å–å¾—ç©å®¶çš„é—¨æ´¾å·
     inline INT                GetMenpai() const;
 
-    // ÉèÖÃÍæ¼ÒµÄÃÅÅÉºÅ
+    // è®¾ç½®ç©å®¶çš„é—¨æ´¾å·
     inline VOID                SetMenpai(INT nMenpai);
 
-    // µÃµ½Íæ¼ÒµÈ¼¶
+    // å¾—åˆ°ç©å®¶ç­‰çº§
     inline INT                GetLevel() const;
 
-    // ÉèÖÃÍæ¼ÒµÈ¼¶
+    // è®¾ç½®ç©å®¶ç­‰çº§
     inline VOID                SetLevel(INT nLevel);
 
-    // µÃµ½Íæ¼ÒµÄÍ·Ïñ
+    // å¾—åˆ°ç©å®¶çš„å¤´åƒ
     inline INT                GetPortrait() const;
 
-    // ÉèÖÃÍæ¼ÒÍ·Ïñ
+    // è®¾ç½®ç©å®¶å¤´åƒ
     inline VOID                SetPortrait(INT nPortrait);
 
-    // µÃµ½Á³²¿Ä£ĞÍ
+    // å¾—åˆ°è„¸éƒ¨æ¨¡å‹
     inline UCHAR            GetFaceModel() const;
 
-    // ÉèÖÃÁ³²¿Ä£ĞÍ
+    // è®¾ç½®è„¸éƒ¨æ¨¡å‹
     inline VOID                SetFaceModel(UCHAR uFaceMeshID);
 
-    // µÃµ½Í··¢Ä£ĞÍ
+    // å¾—åˆ°å¤´å‘æ¨¡å‹
     inline UCHAR            GetHairModel() const;
 
-    // ÉèÖÃÍ··¢Ä£ĞÍ
+    // è®¾ç½®å¤´å‘æ¨¡å‹
     inline VOID                SetHairModel(UCHAR uHairMeshID);
 
-    // µÃµ½·¢É«
+    // å¾—åˆ°å‘è‰²
     inline UINT                GetHairColor() const;
 
-    // ÉèÖÃ·¢É«
+    // è®¾ç½®å‘è‰²
     inline VOID                SetHairColor(UINT uHairColor);
 
-    // È¡µÃÍæ¼ÒµÄ¶ÓÎéºÅ
+    // å–å¾—ç©å®¶çš„é˜Ÿä¼å·
     inline TeamID_t            GetTeamID() const;
 
-    // ÉèÖÃÍæ¼Ò¶ÓÎéºÅ
+    // è®¾ç½®ç©å®¶é˜Ÿä¼å·
     inline VOID                SetTeamID( TeamID_t tid );
 
-    // È¡µÃÍæ¼ÒµÄ³ÆºÅ
+    // å–å¾—ç©å®¶çš„ç§°å·
     inline const CHAR*        GetTitle() const;
 
-    // ÉèÖÃÍæ¼ÒµÄ³ÆºÅ
+    // è®¾ç½®ç©å®¶çš„ç§°å·
     inline VOID                SetTitle(const CHAR* szTitle);
 
-    // µÃµ½Íæ¼Ò°ï»á ID
+    // å¾—åˆ°ç©å®¶å¸®ä¼š ID
     inline GuildID_t        GetGuildID() const;
 
-    // ÉèÖÃÍæ¼Ò°ï»á ID
+    // è®¾ç½®ç©å®¶å¸®ä¼š ID
     inline VOID                SetGuildID(GuildID_t gid);
 
-    // µÃµ½Íæ¼Ò´´½¨µÄÁÄÌìÆµµÀºÅ
+    // å¾—åˆ°ç©å®¶åˆ›å»ºçš„èŠå¤©é¢‘é“å·
     inline ChannelID_t        GetChannelID() const;
 
-    // ÉèÖÃÍæ¼Ò´´½¨µÄÁÄÌìÆµµÀºÅ
+    // è®¾ç½®ç©å®¶åˆ›å»ºçš„èŠå¤©é¢‘é“å·
     inline VOID                SetChannelID( ChannelID_t cid );
 
-    // µÃµ½ÓÃ»§ÑéÖ¤Âë
+    // å¾—åˆ°ç”¨æˆ·éªŒè¯ç 
     inline UINT                GetKey() const;
 
-    // ÉèÖÃÓÃ»§ÑéÖ¤Âë
+    // è®¾ç½®ç”¨æˆ·éªŒè¯ç 
     inline VOID                SetKey( UINT uKey );
 
-    // Çå³ı°ï»áÊı¾İ
+    // æ¸…é™¤å¸®ä¼šæ•°æ®
     inline VOID                CleanUpGuildData();
 
-    // Çå³ıÍæ¼Ò¹ØÏµÊı¾İ
+    // æ¸…é™¤ç©å®¶å…³ç³»æ•°æ®
     inline VOID                CleanUpRelationData();
 
-    // Ôö¼ÓÒ»¸ö¹ØÏµÈË
+    // å¢åŠ ä¸€ä¸ªå…³ç³»äºº
     VOID                    AddRelation( GUID_t guid, const _RELATION_USER* pUser );
 
-    // ÒÆ³ıÒ»¸ö¹ØÏµÈË
+    // ç§»é™¤ä¸€ä¸ªå…³ç³»äºº
     VOID                    DelRelation( GUID_t guid );
 
-    // µÃµ½ºÍÄ³Íæ¼ÒµÄ¹ØÏµ×´Ì¬
+    // å¾—åˆ°å’ŒæŸç©å®¶çš„å…³ç³»çŠ¶æ€
     enum RELATION_TYPE        GetRelationType( GUID_t guid );
 
-    // ÅĞ¶Ï guid ÊÇ·ñÇ×ÃÜºÃÓÑ
+    // åˆ¤æ–­ guid æ˜¯å¦äº²å¯†å¥½å‹
     BOOL                    IsGoodFriend(GUID_t guid);
 
-    // Ôö¼ÓÒ»¸öÇ×ÃÜºÃÓÑ
+    // å¢åŠ ä¸€ä¸ªäº²å¯†å¥½å‹
     VOID                    AddGoodFriend(GUID_t guid);
 
-    // È¡µÃÍæ¼ÒµÄĞÄÇé
+    // å–å¾—ç©å®¶çš„å¿ƒæƒ…
     inline const CHAR*        GetMood() const;
 
-    // ±£´æĞÄÇé
+    // ä¿å­˜å¿ƒæƒ…
     inline VOID                SetMood( const CHAR* szMood );
 
-    // ±£´æÉèÖÃ
+    // ä¿å­˜è®¾ç½®
     inline VOID                SetSettings(USHORT uSettings);
 
-    // ÊÇ·ñ¾Ü¾ø±»¼ÓÎªºÃÓÑ
+    // æ˜¯å¦æ‹’ç»è¢«åŠ ä¸ºå¥½å‹
     inline BOOL                IsCannotAddFriend();
 
-    // ÊÇ·ñ¾Ü¾øÊÕ·¢ÓÊ¼ş
+    // æ˜¯å¦æ‹’ç»æ”¶å‘é‚®ä»¶
     inline BOOL                IsCannotRecvMail();
 
-    // ÊÇ·ñ¾Ü¾øÄ°ÉúÈËµÄÓÊ¼ş
+    // æ˜¯å¦æ‹’ç»é™Œç”Ÿäººçš„é‚®ä»¶
     inline BOOL                IsCannotRecvStrangerMail();
 
-    // ÊÇ·ñ¾Ü¾ø×é¶ÓÑûÇë
+    // æ˜¯å¦æ‹’ç»ç»„é˜Ÿé‚€è¯·
     inline BOOL                IsRefuseTeamInvite();
 
-    // Ìî³äÃÜÓÑÔÚÏßÁĞ±í
+    // å¡«å……å¯†å‹åœ¨çº¿åˆ—è¡¨
     VOID                    FillOnlineList( RETURN_ONLINE_LIST* pSend );
 
-    // Í¨ÖªÔÚÏßÃÜÓÑÉÏÏßĞÅÏ¢
+    // é€šçŸ¥åœ¨çº¿å¯†å‹ä¸Šçº¿ä¿¡æ¯
     VOID                    InformOnlineMsg();
 
-    // Í¨ÖªÔÚÏßÃÜÓÑÏÂÏßĞÅÏ¢
+    // é€šçŸ¥åœ¨çº¿å¯†å‹ä¸‹çº¿ä¿¡æ¯
     VOID                    InformOfflineMsg();
 
-    // ¸ø¸ÃÍæ¼Ò·¢ËÍÄ³ºÃÓÑÉÏÏßµÄĞÅÏ¢
+    // ç»™è¯¥ç©å®¶å‘é€æŸå¥½å‹ä¸Šçº¿çš„ä¿¡æ¯
     VOID                    SendRelationOnlineMsg(USER* pUser);
 
-    // ¸ø¸ÃÍæ¼Ò·¢ËÍÄ³ºÃÓÑÏÂÏßµÄĞÅÏ¢
+    // ç»™è¯¥ç©å®¶å‘é€æŸå¥½å‹ä¸‹çº¿çš„ä¿¡æ¯
     VOID                    SendRelationOfflineMsg(USER* pUser);
 
-    // ·µ»ØÊÇ·ñ¿ÉÒÔ·¢ËÍÓÊ¼ş£¬Èç¹û¿ÉÒÔµÄ»°£¬Ôò·µ»Ø 0£¬·ñÔò·µ»Ø´íÎóºÅ£¬´íÎóºÅ²Î¼û enum RELATION_RETURN_TYPE
+    // è¿”å›æ˜¯å¦å¯ä»¥å‘é€é‚®ä»¶ï¼Œå¦‚æœå¯ä»¥çš„è¯ï¼Œåˆ™è¿”å› 0ï¼Œå¦åˆ™è¿”å›é”™è¯¯å·ï¼Œé”™è¯¯å·å‚è§ enum RELATION_RETURN_TYPE
     UCHAR                    ValidateMail(const MAIL* pMail);
 
-    // ÊÕµ½Ò»·âÓÊ¼ş
+    // æ”¶åˆ°ä¸€å°é‚®ä»¶
     BOOL                    RecvMail(const MAIL* pMail);
 
-    // ĞÄÌø´¦Àí
+    // å¿ƒè·³å¤„ç†
     BOOL                    HeartBeat( UINT uTime );
 
-    // ÉèÖÃÌß³ıÊ±¼ä
+    // è®¾ç½®è¸¢é™¤æ—¶é—´
     VOID                    ResetKickTime( );
 
     const _CAMP_DATA*        GetUserCampData();
@@ -330,22 +330,22 @@ public:
     BOOL                    IsEnemy( const _CAMP_DATA* pData );
 
 private:
-    ID_t                    m_UserID;            //ÔÚÏßÍæ¼ÒµÄÓÃ»§ ID, ¼´ÔÚÏßÓÃ»§ÁĞ±íµÄÊı×éÏÂ±ê
-    UINT                    m_UserStatus;        //ÔÚÏßÍæ¼ÒµÄ×´Ì¬£¬ enum USER_STATUS
-    FULLUSERDATA*            m_pFullUserData;    //ÔÚÏßÍæ¼ÒµÄÍêÕûÊı¾İ
-    PlayerID_t                m_PlayerID;            //´ËÓÃ»§ËùÔÚ³¡¾°µÄPlayerID
-    SceneID_t                m_SceneID;            //´ËÓÃ»§ËùÔÚ³¡¾°ID
-    SceneID_t                m_OldSceneID;        //´ËÓÃ»§ËùÔÚ³¡¾°ID
-    TeamID_t                m_TeamID;            //´ËÓÃ»§ËùÔÚµÄ¶ÓÎéID
-    ChannelID_t                m_ChannelID;        //´ËÓÃ»§´´½¨µÄÁÄÌìÆµµÀºÅ
-    UINT                    m_uKey;                //ÓÃ»§ÑéÖ¤Âë
-    USER_SIMPLE_DATA        m_SimpleData;        //´ËÓÃ»§µÄ»ù±¾ĞÅÏ¢
-    USER_GUILD_DATA            m_GuildData;        //°ïÅÉÏà¹ØÊı¾İ
-    USER_RELATION_DATA        m_RelationData;        //ÁªÏµÈËÏà¹ØÊı¾İ
-    INT                        m_KickTime;            //Ã»ÓĞÏûÏ¢Ê±ºòµÄÌß³ıÊ£ÓàÊ±¼ä
-    UINT                    m_LastTime;            //ÉÏÒ»´Îµ÷ÓÃÊ±¼ä
-    _CAMP_DATA                m_CampData;            //Íæ¼ÒÕóÓª
-    BYTE                    m_Age;                //Íæ¼ÒÄêÁä
+    ID_t                    m_UserID;            //åœ¨çº¿ç©å®¶çš„ç”¨æˆ· ID, å³åœ¨çº¿ç”¨æˆ·åˆ—è¡¨çš„æ•°ç»„ä¸‹æ ‡
+    UINT                    m_UserStatus;        //åœ¨çº¿ç©å®¶çš„çŠ¶æ€ï¼Œ enum USER_STATUS
+    FULLUSERDATA*            m_pFullUserData;    //åœ¨çº¿ç©å®¶çš„å®Œæ•´æ•°æ®
+    PlayerID_t                m_PlayerID;            //æ­¤ç”¨æˆ·æ‰€åœ¨åœºæ™¯çš„PlayerID
+    SceneID_t                m_SceneID;            //æ­¤ç”¨æˆ·æ‰€åœ¨åœºæ™¯ID
+    SceneID_t                m_OldSceneID;        //æ­¤ç”¨æˆ·æ‰€åœ¨åœºæ™¯ID
+    TeamID_t                m_TeamID;            //æ­¤ç”¨æˆ·æ‰€åœ¨çš„é˜Ÿä¼ID
+    ChannelID_t                m_ChannelID;        //æ­¤ç”¨æˆ·åˆ›å»ºçš„èŠå¤©é¢‘é“å·
+    UINT                    m_uKey;                //ç”¨æˆ·éªŒè¯ç 
+    USER_SIMPLE_DATA        m_SimpleData;        //æ­¤ç”¨æˆ·çš„åŸºæœ¬ä¿¡æ¯
+    USER_GUILD_DATA            m_GuildData;        //å¸®æ´¾ç›¸å…³æ•°æ®
+    USER_RELATION_DATA        m_RelationData;        //è”ç³»äººç›¸å…³æ•°æ®
+    INT                        m_KickTime;            //æ²¡æœ‰æ¶ˆæ¯æ—¶å€™çš„è¸¢é™¤å‰©ä½™æ—¶é—´
+    UINT                    m_LastTime;            //ä¸Šä¸€æ¬¡è°ƒç”¨æ—¶é—´
+    _CAMP_DATA                m_CampData;            //ç©å®¶é˜µè¥
+    BYTE                    m_Age;                //ç©å®¶å¹´é¾„
 };
 
 #include "User.inl"

@@ -29,14 +29,14 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
 
 
     GWTeamAppoint* pMsg = (GWTeamAppoint*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_TEAMAPPOINT)) ;
-    pMsg->SetSourGUID( pPacket->GetSourGUID() ) ;//¾É¶Ó³¤
-    pMsg->SetDestGUID( pPacket->GetDestGUID() ) ;//ÐÂ¶Ó³¤
+    pMsg->SetSourGUID( pPacket->GetSourGUID() ) ;//æ—§é˜Ÿé•¿
+    pMsg->SetDestGUID( pPacket->GetDestGUID() ) ;//æ–°é˜Ÿé•¿
 
     g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
 

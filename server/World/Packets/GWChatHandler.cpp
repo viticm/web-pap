@@ -81,7 +81,7 @@ __ENTER_FUNCTION
 
                 USER* pUser = g_pOnlineUser->FindUser( pMember->m_Member ) ;
                 if( pUser==NULL )
-                {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êı¾İÊÇ¿Õ
+                {//å¦‚æœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
                     continue ;
                 }
                 
@@ -106,12 +106,12 @@ __ENTER_FUNCTION
             if( pUser )
             {
                 if( pSourUser->IsEnemy( pUser->GetUserCampData() ) )
-                    pUser = NULL;    //Èç¹ûÊÇµĞ¶ÔÕóÓª£¬´¦Àí·½·¨¸ú²éÎŞ´ËÈËÏàÍ¬!!
-                                    //°´µÀÀíËµÊÇ²»ÄÜÃÜµÄÅ¶¡«¡«
+                    pUser = NULL;    //å¦‚æœæ˜¯æ•Œå¯¹é˜µè¥ï¼Œå¤„ç†æ–¹æ³•è·ŸæŸ¥æ— æ­¤äººç›¸åŒ!!
+                                    //æŒ‰é“ç†è¯´æ˜¯ä¸èƒ½å¯†çš„å“¦ï½ï½
             }
 
             if( pUser==NULL )
-            {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êı¾İÊÇ¿Õ
+            {//å¦‚æœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
                 CHAR* szName="system" ;
                 CHAR szContex[32] ;
                 sprintf( szContex, "@@%s", pPacket->GetTargetName() ) ;
@@ -161,7 +161,7 @@ __ENTER_FUNCTION
 
                 USER* pUser = g_pOnlineUser->FindUser( memberguid ) ;
                 if( pUser==NULL )
-                {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êı¾İÊÇ¿Õ
+                {//å¦‚æœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
                     continue ;
                 }
                 
@@ -191,7 +191,7 @@ __ENTER_FUNCTION
     Log::SaveLog( WORLD_LOGFILE, "GWChatHandler...GUID=%X ChatType=%d Contex=%s", 
         SourGUID, pPacket->GetChatType(), pPacket->GetContex() ) ;
 
-    return PACKET_EXE_NOTREMOVE ;//²»ÄÜÉ¾³ıpPacket, ÒÑ¾­·ÅÈëÔ¤´æ¹ÜµÀ
+    return PACKET_EXE_NOTREMOVE ;//ä¸èƒ½åˆ é™¤pPacket, å·²ç»æ”¾å…¥é¢„å­˜ç®¡é“
 
 __LEAVE_FUNCTION
 

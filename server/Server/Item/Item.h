@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////
-//ÎÄ¼şÃû£ºItem.h
-//¹¦ÄÜÃèÊö£ºÎïÆ·Êı¾İµÄ·â×°Àà£¬Í¨¹ı´ËÀàÀ´¶ÁÈ¡¼°ÉèÖÃÒ»¸öÎïÆ·µÄĞÅÏ¢
-//ĞŞ¸Ä¼ÇÂ¼£º2005-11-2´´½¨
+//æ–‡ä»¶åï¼šItem.h
+//åŠŸèƒ½æè¿°ï¼šç‰©å“æ•°æ®çš„å°è£…ç±»ï¼Œé€šè¿‡æ­¤ç±»æ¥è¯»å–åŠè®¾ç½®ä¸€ä¸ªç‰©å“çš„ä¿¡æ¯
+//ä¿®æ”¹è®°å½•ï¼š2005-11-2åˆ›å»º
 //
 /////////////////////////////////////////////////////////////////////////////////
 #ifndef __ITEM_H__
@@ -28,8 +28,8 @@ public:
         m_pPet    = pPet;
         m_pItem = NULL;
     }
-    const    _ITEM*                m_pItem ;//ÎïÆ·ÏêÏ¸Êı¾İ
-    const    _PET_DB_LOAD*        m_pPet;     //³èÎïÏêÏ¸Êı¾İ
+    const    _ITEM*                m_pItem ;//ç‰©å“è¯¦ç»†æ•°æ®
+    const    _PET_DB_LOAD*        m_pPet;     //å® ç‰©è¯¦ç»†æ•°æ®
 };
 
 enum ITEM_DATA_TYPE
@@ -50,112 +50,112 @@ public :
     Item( ) ;
     ~Item( ) ;
 
-    ITEM_DATA_TYPE            GetDataType(){ return m_Type;}//È¡µÃÊı¾İÀàĞÍ
+    ITEM_DATA_TYPE            GetDataType(){ return m_Type;}//å–å¾—æ•°æ®ç±»å‹
 
     VOID                    SaveValueTo(_ITEM* pItem);
     VOID                    SaveValueTo(_PET_DB_LOAD* pPet);
-    inline  _ITEM_GUID        GetGUID( ) ;                    //È¡µÃÎïÆ·GUID
-    inline  UINT            GetItemTableIndex( ) const;     //È¡µÃÎïÆ·±íÀïµÄÎïÆ·Ë÷Òı±àºÅ
-    inline    UCHAR            GetItemClass()         const;        //È¡µÃÎïÆ·µÄ    enum ITEM_CLASS
-    inline  UCHAR            GetItemQual()         const;        //È¡µÃÎïÆ·µÄÆ·ÖÊ
-    inline    UCHAR            GetItemType()         const;        //È¡µÃÎïÆ·µÄĞ¡ÀàWEAPON_TYPE DEFENCE_TYPE µÈ
-    inline    UCHAR            GetItemIndex()         const;        //È¡µÃÎïÆ·µÄÁ÷Ë®ºÅ
+    inline  _ITEM_GUID        GetGUID( ) ;                    //å–å¾—ç‰©å“GUID
+    inline  UINT            GetItemTableIndex( ) const;     //å–å¾—ç‰©å“è¡¨é‡Œçš„ç‰©å“ç´¢å¼•ç¼–å·
+    inline    UCHAR            GetItemClass()         const;        //å–å¾—ç‰©å“çš„    enum ITEM_CLASS
+    inline  UCHAR            GetItemQual()         const;        //å–å¾—ç‰©å“çš„å“è´¨
+    inline    UCHAR            GetItemType()         const;        //å–å¾—ç‰©å“çš„å°ç±»WEAPON_TYPE DEFENCE_TYPE ç­‰
+    inline    UCHAR            GetItemIndex()         const;        //å–å¾—ç‰©å“çš„æµæ°´å·
 
 
 
-    BOOL                    IsCanEquipBind()    const;        //È¡µÃÎïÆ·ÊÇ·ñ¾ßÓĞ°ó¶¨ÊôĞÔ
-    BOOL                    IsRuler(ITEM_RULER_LIST    ruler)    const;            //È¡µÃÎïÆ·ÊÇ·ñ¿ÉÒÔÖ´ĞĞÖ¸¶¨¹æÔò
+    BOOL                    IsCanEquipBind()    const;        //å–å¾—ç‰©å“æ˜¯å¦å…·æœ‰ç»‘å®šå±æ€§
+    BOOL                    IsRuler(ITEM_RULER_LIST    ruler)    const;            //å–å¾—ç‰©å“æ˜¯å¦å¯ä»¥æ‰§è¡ŒæŒ‡å®šè§„åˆ™
     
     UINT                    GetPrice()    const;
     INT                        GetItemParam(UINT start,ItemParamValue& ipv);
     /*=============================================
-     *    ×°±¸ÊôĞÔ
+     *    è£…å¤‡å±æ€§
      =============================================*/
-    inline USHORT            GetSetNum()                    const;            //Ì××°±àºÅ
-    inline BYTE                GetMaxSetCount()            const;            //Ì××°¸öÊı
-    inline BYTE                GetEquipPoint()                const;            //ÎïÆ·×°Ååµã
-    inline BYTE                GetMaxDurPoint()            const ;            //×î´óÄÍ¾ÃÖµ
-    inline BYTE                GetRequireLevel()            const;            //ĞèÇóµÈ¼¶
-    inline BYTE                GetGemSlotMax()                const;            //×î´ó±¦Ê¯¸öÊı
-    inline BYTE                GetFailTimes()                const;            //ĞŞÀíÊ§°Ü´ÎÊı
-    inline BYTE                GetDurPoints()                const;             //µ±Ç°ÄÍ¾ÃÖµ
-    inline BYTE                GetAttrCount()                const;            //ÊôĞÔµÄÊıÁ¿
-    inline USHORT            GetDamagePoint()            const;            //ÎïÆ·ËğÉËÀÛ¼ÆÖµ
-    inline BOOL                GetItemBind()                const;            //ÎïÆ·ÊÇ·ñ°ó¶¨
-    inline BOOL                GetItemIdent()                const;            //ÎïÆ·ÊÇ·ñ¼ø¶¨
-    inline BYTE                GetEquipGemCount()            const;            //ÏâÇ¶±¦Ê¯µÄÊıÁ¿
-    inline const _ITEM_ATTR        GetEquipAttr(UCHAR    nIndex)        const;        //»ñµÃ×°±¸ÊôĞÔ
-    inline const _ITEM_GEMINFO    GetEquipGemInfo(UCHAR nIndex)    const;        //»ñµÃ×°±¸ÉÏ±¦Ê¯µÄ±àºÅĞÅÏ¢
+    inline USHORT            GetSetNum()                    const;            //å¥—è£…ç¼–å·
+    inline BYTE                GetMaxSetCount()            const;            //å¥—è£…ä¸ªæ•°
+    inline BYTE                GetEquipPoint()                const;            //ç‰©å“è£…ä½©ç‚¹
+    inline BYTE                GetMaxDurPoint()            const ;            //æœ€å¤§è€ä¹…å€¼
+    inline BYTE                GetRequireLevel()            const;            //éœ€æ±‚ç­‰çº§
+    inline BYTE                GetGemSlotMax()                const;            //æœ€å¤§å®çŸ³ä¸ªæ•°
+    inline BYTE                GetFailTimes()                const;            //ä¿®ç†å¤±è´¥æ¬¡æ•°
+    inline BYTE                GetDurPoints()                const;             //å½“å‰è€ä¹…å€¼
+    inline BYTE                GetAttrCount()                const;            //å±æ€§çš„æ•°é‡
+    inline USHORT            GetDamagePoint()            const;            //ç‰©å“æŸä¼¤ç´¯è®¡å€¼
+    inline BOOL                GetItemBind()                const;            //ç‰©å“æ˜¯å¦ç»‘å®š
+    inline BOOL                GetItemIdent()                const;            //ç‰©å“æ˜¯å¦é‰´å®š
+    inline BYTE                GetEquipGemCount()            const;            //é•¶åµŒå®çŸ³çš„æ•°é‡
+    inline const _ITEM_ATTR        GetEquipAttr(UCHAR    nIndex)        const;        //è·å¾—è£…å¤‡å±æ€§
+    inline const _ITEM_GEMINFO    GetEquipGemInfo(UCHAR nIndex)    const;        //è·å¾—è£…å¤‡ä¸Šå®çŸ³çš„ç¼–å·ä¿¡æ¯
 
     /*==========================================
-     *    ÆÕÍ¨ÎïÆ·ÊôĞÔ
+     *    æ™®é€šç‰©å“å±æ€§
      ============================================*/
     
-    inline BYTE                GetItemLevel()            const;                //ÎïÆ·¼¶±ğ,²ß»®ĞèÇó
-    inline BYTE                GetReqSkillLevel()        const;                //»ñµÃ¼¼ÄÜ¼¶±ğĞèÇó
-    inline INT                GetReqSkill()            const;                //ĞèÒªÓµÓĞµÄ¼¼ÄÜºÅ
-    inline INT                GetScriptID()            const;                //»ñµÃÏà¹Ø½Å±¾±àºÅ
-    inline INT                GetSkillID()            const;                //»ñµÃÏà¹Ø¼¼ÄÜ±àºÅ
-    inline BOOL                IsCosSelf()                const;                //ÊÇ·ñÏûºÄ×Ô¼º
+    inline BYTE                GetItemLevel()            const;                //ç‰©å“çº§åˆ«,ç­–åˆ’éœ€æ±‚
+    inline BYTE                GetReqSkillLevel()        const;                //è·å¾—æŠ€èƒ½çº§åˆ«éœ€æ±‚
+    inline INT                GetReqSkill()            const;                //éœ€è¦æ‹¥æœ‰çš„æŠ€èƒ½å·
+    inline INT                GetScriptID()            const;                //è·å¾—ç›¸å…³è„šæœ¬ç¼–å·
+    inline INT                GetSkillID()            const;                //è·å¾—ç›¸å…³æŠ€èƒ½ç¼–å·
+    inline BOOL                IsCosSelf()                const;                //æ˜¯å¦æ¶ˆè€—è‡ªå·±
     inline BYTE                GetTargetType()            const;
     
     /*==============================================
-     *±¦Ê¯ÊôĞÔ    
+     *å®çŸ³å±æ€§    
      ===============================================*/
-    inline const _ITEM_ATTR        GetGemAttr()            const;                //±¦Ê¯ÊôĞÔ
+    inline const _ITEM_ATTR        GetGemAttr()            const;                //å®çŸ³å±æ€§
 
     /*==========================================
-     *²Ø±¦Í¼ÊôĞÔ    
+     *è—å®å›¾å±æ€§    
     ============================================*/
 
-    inline INT                GetMapLevel()            const;                //²Ø±¦Í¼¼¶±ğ
-    inline FLOAT            GetXPos()                const;                //x×ø±ê
-    inline FLOAT            GetZPos()                const;                //z×ø±ê
-    inline INT                GetSceneID()            const;                //³¡¾°±àºÅ
-    inline INT                GetGrowType()            const;                //¶ÔÓ¦Éú³¤µãÀàĞÍ
+    inline INT                GetMapLevel()            const;                //è—å®å›¾çº§åˆ«
+    inline FLOAT            GetXPos()                const;                //xåæ ‡
+    inline FLOAT            GetZPos()                const;                //zåæ ‡
+    inline INT                GetSceneID()            const;                //åœºæ™¯ç¼–å·
+    inline INT                GetGrowType()            const;                //å¯¹åº”ç”Ÿé•¿ç‚¹ç±»å‹
 public:
-    //ITEM ºÍPET ¹«ÓÃº¯Êı
+    //ITEM å’ŒPET å…¬ç”¨å‡½æ•°
     
-    BOOL                    Init( const _ITEM_INIT* pInit );//³õÊ¼»¯ÎïÆ·
-    BOOL                    IsEmpty( ) ;                    //ÅĞ¶ÏÎïÆ·ÊÇ·ñÎª¿Õ£¬¼´Ã»ÓĞÎïÆ·Êı¾İ
-    BOOL                    IsEquip( ) const;                //ÅĞ¶Ï´ËÎïÆ·ÊÇ·ñÎªÒ»¼ş×°±¸
-    BOOL                    IsLock( ){ return m_bLock ; } ; //ÅĞ¶Ï´ËÎïÆ·ÊÇ·ñ±»Ëø¶¨
-    BOOL                    IsCanLay( )            const;        //È¡µÃÎïÆ·ÊÇ·ñ¿ÉÒÔµş·Å
-    inline    INT                GetLayedNum( )  const;            //È¡µÃµş·ÅÎïÆ·µÄÊıÁ¿
-    inline    INT                GetMaxLayedNum( ) const;        //È¡µÃÄÜ¹»µş·ÅÎïÆ·µÄ×î´óÊıÁ¿
-    inline  BOOL            IsFull()    const;                //ÊÇ·ñÒÑ¾­´ïµ½×î´óµş¼ÓÊıÄ¿
+    BOOL                    Init( const _ITEM_INIT* pInit );//åˆå§‹åŒ–ç‰©å“
+    BOOL                    IsEmpty( ) ;                    //åˆ¤æ–­ç‰©å“æ˜¯å¦ä¸ºç©ºï¼Œå³æ²¡æœ‰ç‰©å“æ•°æ®
+    BOOL                    IsEquip( ) const;                //åˆ¤æ–­æ­¤ç‰©å“æ˜¯å¦ä¸ºä¸€ä»¶è£…å¤‡
+    BOOL                    IsLock( ){ return m_bLock ; } ; //åˆ¤æ–­æ­¤ç‰©å“æ˜¯å¦è¢«é”å®š
+    BOOL                    IsCanLay( )            const;        //å–å¾—ç‰©å“æ˜¯å¦å¯ä»¥å æ”¾
+    inline    INT                GetLayedNum( )  const;            //å–å¾—å æ”¾ç‰©å“çš„æ•°é‡
+    inline    INT                GetMaxLayedNum( ) const;        //å–å¾—èƒ½å¤Ÿå æ”¾ç‰©å“çš„æœ€å¤§æ•°é‡
+    inline  BOOL            IsFull()    const;                //æ˜¯å¦å·²ç»è¾¾åˆ°æœ€å¤§å åŠ æ•°ç›®
 
-    inline  BOOL            IsPWLock()    const;                //ÊÜÃÜÂë±£»¤
+    inline  BOOL            IsPWLock()    const;                //å—å¯†ç ä¿æŠ¤
 public:
-    //³èÎïº¯Êı
+    //å® ç‰©å‡½æ•°
 
-    inline  PET_GUID_t            GetPetGUID( ) ;                    //È¡µÃ³èÎïGUID
-    inline  PET_GUID_t            GetSpouseGUID( ) ;                //È¡µÃ³èÎïÅäÅ¼GUID
-    inline    INT                    GetDataID();                    //È¡µÃ³èÎïÄ£ĞÍ        
-    inline  const CHAR*            GetName()    const;                //È¡µÃÃû×Ö
-    inline  const CHAR*            GetNick() const;                //È¡µÃêÇ³Æ
-    inline  INT                    GetLevel() const;                //È¡µÃµÈ¼¶
-    inline  INT                    GetTakeLevel() const;            //È¡µÃĞ¯´øµÈ¼¶
-    inline  INT                    GetAttackType() const;            //È¡µÃ½ø¹¥ÀàĞÍ£¨Îï/·¨£©
-    inline  INT                    GetAIType() const;                //È¡µÃAIÀàĞÍ
-    inline  const _CAMP_DATA    *GetCampData() const;            //È¡µÃÕóÓª
-    inline  INT                    GetHP() const;                    //È¡µÃÉúÃüÖµ
-    inline  INT                    GetBaseMaxHP() const;            //È¡µÃÉúÃüÖµÉÏÏŞ
-    inline  INT                    GetLife() const;                //È¡µÃµ±Ç°ÊÙÃü
-    inline  BYTE                GetPetType() const;                //±¦±¦£¬±äÒì£¬Ò°Éú
-    inline  BYTE                GetGeneration() const;            //¼¸´ú³è
-    inline  BYTE                GetHappiness() const;            //¿ìÀÖ¶È        
-    inline  INT                    GetStrPer() const;                //Á¦Á¿×ÊÖÊ    
-    inline  INT                    GetConPer() const;                //ÌåÁ¦×ÊÖÊ    
-    inline  INT                 GetDexPer() const;                //Éí·¨×ÊÖÊ
-    inline  INT                    GetSprPer() const;                //ÁéÆø×ÊÖÊ
-    inline  INT                 GetIntPer() const;                //¶¨Á¦×ÊÖÊ
-    inline    INT                    GetGenGu() const;                //¸ù¹Ç
-    inline  FLOAT                GetGrowRate() const ;            //³É³¤ÂÊ
-    inline  INT                    GetRemainPoint() const;            //Ò»¼¶ÊôĞÔÊ£ÓàµãÊı
-    inline  INT                    GetExp() const;                    //¾­ÑéÖµ
-    inline  INT                    GetLvl1Attr(CHAR_ATTR_LEVEL1 type)const;// »ù´¡Ò»¼¶Õ½¶·ÊôĞÔ£¨²»°üÀ¨¼¼ÄÜºÍ×°±¸Ôö¼ÓµÄ²¿·Ö£©
-    inline  _PET_SKILL            GetSkill(UINT SkillIndex);        // ³èÎï¼¼ÄÜ
+    inline  PET_GUID_t            GetPetGUID( ) ;                    //å–å¾—å® ç‰©GUID
+    inline  PET_GUID_t            GetSpouseGUID( ) ;                //å–å¾—å® ç‰©é…å¶GUID
+    inline    INT                    GetDataID();                    //å–å¾—å® ç‰©æ¨¡å‹        
+    inline  const CHAR*            GetName()    const;                //å–å¾—åå­—
+    inline  const CHAR*            GetNick() const;                //å–å¾—æ˜µç§°
+    inline  INT                    GetLevel() const;                //å–å¾—ç­‰çº§
+    inline  INT                    GetTakeLevel() const;            //å–å¾—æºå¸¦ç­‰çº§
+    inline  INT                    GetAttackType() const;            //å–å¾—è¿›æ”»ç±»å‹ï¼ˆç‰©/æ³•ï¼‰
+    inline  INT                    GetAIType() const;                //å–å¾—AIç±»å‹
+    inline  const _CAMP_DATA    *GetCampData() const;            //å–å¾—é˜µè¥
+    inline  INT                    GetHP() const;                    //å–å¾—ç”Ÿå‘½å€¼
+    inline  INT                    GetBaseMaxHP() const;            //å–å¾—ç”Ÿå‘½å€¼ä¸Šé™
+    inline  INT                    GetLife() const;                //å–å¾—å½“å‰å¯¿å‘½
+    inline  BYTE                GetPetType() const;                //å®å®ï¼Œå˜å¼‚ï¼Œé‡ç”Ÿ
+    inline  BYTE                GetGeneration() const;            //å‡ ä»£å® 
+    inline  BYTE                GetHappiness() const;            //å¿«ä¹åº¦        
+    inline  INT                    GetStrPer() const;                //åŠ›é‡èµ„è´¨    
+    inline  INT                    GetConPer() const;                //ä½“åŠ›èµ„è´¨    
+    inline  INT                 GetDexPer() const;                //èº«æ³•èµ„è´¨
+    inline  INT                    GetSprPer() const;                //çµæ°”èµ„è´¨
+    inline  INT                 GetIntPer() const;                //å®šåŠ›èµ„è´¨
+    inline    INT                    GetGenGu() const;                //æ ¹éª¨
+    inline  FLOAT                GetGrowRate() const ;            //æˆé•¿ç‡
+    inline  INT                    GetRemainPoint() const;            //ä¸€çº§å±æ€§å‰©ä½™ç‚¹æ•°
+    inline  INT                    GetExp() const;                    //ç»éªŒå€¼
+    inline  INT                    GetLvl1Attr(CHAR_ATTR_LEVEL1 type)const;// åŸºç¡€ä¸€çº§æˆ˜æ–—å±æ€§ï¼ˆä¸åŒ…æ‹¬æŠ€èƒ½å’Œè£…å¤‡å¢åŠ çš„éƒ¨åˆ†ï¼‰
+    inline  _PET_SKILL            GetSkill(UINT SkillIndex);        // å® ç‰©æŠ€èƒ½
     inline  VOID                SetCooldown(CooldownID_t nID, Time_t nTime);
     inline    BOOL                IsCooldowned(CooldownID_t nID) const;
     inline    VOID                HeartBeat_Cooldown(Time_t nDeltaTime);
@@ -164,9 +164,9 @@ public:
     inline    BYTE                GetCoinType(VOID) { return m_nCoinType; }
 
     /*==============================================
-    *¹¦ÄÜ½Ó¿Ú
+    *åŠŸèƒ½æ¥å£
     ===============================================*/
-    //½»Ò×
+    //äº¤æ˜“
     BOOL                        IsInExchange(){return m_bIsInExchange;}
     VOID                        SetInExchange(BOOL bIsInExchange){m_bIsInExchange = bIsInExchange;}
 
@@ -174,16 +174,16 @@ protected :
     VOID                    Lock( ){ m_bLock = TRUE ; }
     VOID                    Unlock( ){ m_bLock = FALSE ; }
     VOID                    SetItemValue(_ITEM* pItem);
-    VOID                    CleanUp( ) ;//Çå³ıÎïÆ·Êı¾İ
+    VOID                    CleanUp( ) ;//æ¸…é™¤ç‰©å“æ•°æ®
 
 
 private :
     ITEM_DATA_TYPE            m_Type;
-    _ITEM*                    m_pItem ;                    //ÎïÆ·ÏêÏ¸Êı¾İ
+    _ITEM*                    m_pItem ;                    //ç‰©å“è¯¦ç»†æ•°æ®
     _PET_DB_LOAD*            m_pPet;                        //
     BOOL                    m_bLock ;
-    BOOL                    m_bIsInExchange;            //±ê¼Ç´ËÎïÆ·ÕıÔÚ±»·Åµ½½»Ò×À¸ÖĞ
-    BYTE                    m_nCoinType;                //»õ±ÒÀàĞÍ
+    BOOL                    m_bIsInExchange;            //æ ‡è®°æ­¤ç‰©å“æ­£åœ¨è¢«æ”¾åˆ°äº¤æ˜“æ ä¸­
+    BYTE                    m_nCoinType;                //è´§å¸ç±»å‹
 };
 
 #include "Item.inl"

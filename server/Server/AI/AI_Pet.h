@@ -27,11 +27,11 @@ public:
     virtual VOID Relive(BOOL bSkillRelive);
     
     Obj_Pet* GetCharacter(VOID) const { return ((Obj_Pet*)AI_Character::GetCharacter()); }
-    // ´¦Àí¿Í»§¶ËÓÉÖ÷ÈË·¢ÆğµÄÖ÷¶¯¼¼ÄÜ²Ù×÷
+    // å¤„ç†å®¢æˆ·ç«¯ç”±ä¸»äººå‘èµ·çš„ä¸»åŠ¨æŠ€èƒ½æ“ä½œ
     ORESULT PushCommand_UseSkill(ObjID_t idSkill, ObjID_t idTarget, FLOAT fTargetX, FLOAT fTargetZ, FLOAT fDir, GUID_t guidTarget);
 
 //=======================================================================================
-// Âß¼­×´Ì¬¡¢ÊÂ¼şÏà¹Ø
+// é€»è¾‘çŠ¶æ€ã€äº‹ä»¶ç›¸å…³
 //=======================================================================================    
 protected:
     virtual VOID Event_OnDie(Obj *pKiller = NULL);
@@ -41,7 +41,7 @@ protected:
     virtual VOID AI_Logic_Combat(UINT uTime);
 
 //=======================================================================================
-// ĞĞÎªÏà¹Ø
+// è¡Œä¸ºç›¸å…³
 //=======================================================================================    
 public:
     struct SLogicSkill_Param
@@ -74,11 +74,11 @@ public:
         }
     };
 
-    // ´¥·¢baby½øĞĞ¸úËæ
+    // è§¦å‘babyè¿›è¡Œè·Ÿéš
     VOID    Baby_Go(const WORLD_POS *paTargetPos);
     VOID    BabyToAttack(VOID);
     VOID    After_Die(VOID);
-    // ´¦Àí»º´æÖĞµÄ¼¼ÄÜ    
+    // å¤„ç†ç¼“å­˜ä¸­çš„æŠ€èƒ½    
     BOOL    ProcessSkillInCache(BOOL IsAttackState = TRUE);
 
 protected:
@@ -98,10 +98,10 @@ protected:
 
 private:
     SLogicSkill_Param    m_SkillParamCache;
-    CMyTimer            m_RandMoveTimer;    // Ëæ»úÒÆ¶¯µÄ¼ÆÊ±Æ÷
-    CMyTimer            m_BodyTimer;        // Ê¬Ìå´æÔÚµÄÊ±¼ä
-    CMyTimer            m_ScanImpactOfOwnerTimer;    // É¨ÃèÖ÷ÈËÉíÉÏBUFFµÄ¼ÆÊ±Æ÷
-    INT                    m_nDelayTime;        // ÁÙÊ±ÑÓ³Ù±äÁ¿
+    CMyTimer            m_RandMoveTimer;    // éšæœºç§»åŠ¨çš„è®¡æ—¶å™¨
+    CMyTimer            m_BodyTimer;        // å°¸ä½“å­˜åœ¨çš„æ—¶é—´
+    CMyTimer            m_ScanImpactOfOwnerTimer;    // æ‰«æä¸»äººèº«ä¸ŠBUFFçš„è®¡æ—¶å™¨
+    INT                    m_nDelayTime;        // ä¸´æ—¶å»¶è¿Ÿå˜é‡
         
 };
 

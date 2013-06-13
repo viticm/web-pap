@@ -18,7 +18,7 @@ public:
     GCErrorAttack( ){} ;
     virtual ~GCErrorAttack( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -27,11 +27,11 @@ public:
     virtual UINT            GetPacketSize()const { return    sizeof(BYTE) +
                                                             sizeof(ObjID_t)*2; }
 public:    
-    //Ê§°ÜÔ­Òò
-    //¼û GameDefine2.h ATTACK_ERROR
+    //å¤±è´¥åŸå› 
+    //è§ GameDefine2.h ATTACK_ERROR
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     BYTE            getReason(VOID) { return m_byReason; }
     VOID            setReason(BYTE byReason) { m_byReason = byReason; }
 
@@ -42,10 +42,10 @@ public:
     VOID            setTargetID(ObjID_t idTarget) { m_TarObjID = idTarget; }
 
 private:
-    //Êı¾İ
-    BYTE            m_byReason;        //Ê§°ÜÔ­Òò enum ATTACK_ERROR
-    ObjID_t            m_AttObjID;        //¹¥»÷·½µÄID
-    ObjID_t            m_TarObjID;        //±»¹¥»÷·½µÄID
+    //æ•°æ®
+    BYTE            m_byReason;        //å¤±è´¥åŸå›  enum ATTACK_ERROR
+    ObjID_t            m_AttObjID;        //æ”»å‡»æ–¹çš„ID
+    ObjID_t            m_TarObjID;        //è¢«æ”»å‡»æ–¹çš„ID
 };
 
 

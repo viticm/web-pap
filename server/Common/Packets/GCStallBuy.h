@@ -1,6 +1,6 @@
 // GCStallBuy.h
 // 
-// ¸æËß¿Í»§¶ËÂòÂôÊÇ·ñ³É¹¦
+// å‘Šè¯‰å®¢æˆ·ç«¯ä¹°å–æ˜¯å¦æˆåŠŸ
 // 
 //////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ namespace Packets
         };
         virtual ~GCStallBuy( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -58,7 +58,7 @@ namespace Packets
         VOID                    SetToType(BYTE ToType) {m_ToType = ToType;}
 
     public:
-        ObjID_t                    m_objID;        //Ì¯Ö÷objid
+        ObjID_t                    m_objID;        //æ‘Šä¸»objid
         _ITEM_GUID                m_ItemGuid;
         PET_GUID_t                m_PetGuid;
         UINT                    m_nSerial;

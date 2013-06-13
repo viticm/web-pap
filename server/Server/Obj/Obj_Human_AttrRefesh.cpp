@@ -162,18 +162,18 @@ __ENTER_FUNCTION
 
     pTeamInfo = GetTeamInfo();
     if ( pTeamInfo == NULL )
-    { // ³öÎÊÌâÁË
+    { // å‡ºé—®é¢˜äº†
         Assert(FALSE);
         return;
     }
 
     if ( pTeamInfo->HasTeam() == FALSE )
-    { // Ã»ÓĞ×é¶Ó
+    { // æ²¡æœ‰ç»„é˜Ÿ
         return;
     }
 
     if ( pTeamInfo->GetSceneMemberCount() < 1 )
-    { // Ã»ÓĞ¶ÓÓÑÔÚÍ¬³¡¾°
+    { // æ²¡æœ‰é˜Ÿå‹åœ¨åŒåœºæ™¯
         return;
     }
 
@@ -233,7 +233,7 @@ __ENTER_FUNCTION
         msgTeamMember.SetAnger( GetRage() );
     }
 
-    // ×°±¸Ë¢ĞÂ
+    // è£…å¤‡åˆ·æ–°
     UINT uWeaponID = GetEquipID( HEQUIP_WEAPON );
     if ( m_SyncTeamMemberInfo.m_WeaponID != uWeaponID )
     {
@@ -298,7 +298,7 @@ __ENTER_FUNCTION
     BOOL bImpactInfo = FALSE;
 
     if ( msgTeamMember.GetFlags() != 0 )
-    { // Ã»ÓĞĞèÒª¸üĞÂµÄĞÅÏ¢
+    { // æ²¡æœ‰éœ€è¦æ›´æ–°çš„ä¿¡æ¯
         bMemberInfo = TRUE;
     }
 
@@ -321,7 +321,7 @@ __ENTER_FUNCTION
 
 
     if ( !bMemberInfo && !bImpactInfo )
-    { // Ã»ÓĞÈÎºÎĞèÒª¸üĞÂµÄĞÅÏ¢
+    { // æ²¡æœ‰ä»»ä½•éœ€è¦æ›´æ–°çš„ä¿¡æ¯
         return;
     }
 
@@ -592,7 +592,7 @@ __ENTER_FUNCTION
     }
 
     if ( m_AttrBackUp.m_bStallIsOpen != m_StallBox.GetStallIsOpen() )
-    {//Ì¯Î»×´Ì¬·¢Éú±ä»¯
+    {//æ‘Šä½çŠ¶æ€å‘ç”Ÿå˜åŒ–
         bPublicAttrModified = TRUE;
         m_AttrBackUp.m_bStallIsOpen = m_StallBox.GetStallIsOpen();
 
@@ -600,7 +600,7 @@ __ENTER_FUNCTION
     }
 
     if ( m_AttrBackUp.m_bStallNameChanged )
-    {//Ì¯Î»Ãû·¢Éú±ä»¯
+    {//æ‘Šä½åå‘ç”Ÿå˜åŒ–
         m_AttrBackUp.m_bStallNameChanged = FALSE;
         if(m_StallBox.GetStallIsOpen())
         {
@@ -886,7 +886,7 @@ __ENTER_FUNCTION
         msgDetail.SetDefPoison(nAttr);
     }
 
-    // ×°±¸Ë¢ĞÂ
+    // è£…å¤‡åˆ·æ–°
     if ( m_AttrBackUp.m_bWeaponModified )
     {
         bEquipmentModified = TRUE;
@@ -999,7 +999,7 @@ __ENTER_FUNCTION
     bDetailAttrModified |= bPublicAttrModified;
     if ( bDetailAttrModified )
     {
-        GetPlayer()->SendPacket(&msgDetail); //·¢ËÍ¸ø×Ô¼ºµÄÏêÏ¸ÏûÏ¢
+        GetPlayer()->SendPacket(&msgDetail); //å‘é€ç»™è‡ªå·±çš„è¯¦ç»†æ¶ˆæ¯
     }
 __LEAVE_FUNCTION
 }
@@ -1084,18 +1084,18 @@ __ENTER_FUNCTION
 
     if ( bMySelfAsk )
     {
-        // ¿ÉÒÔÊ°È¡µÄÈÎÎñµÀ¾ß
+        // å¯ä»¥æ‹¾å–çš„ä»»åŠ¡é“å…·
         //GCCanPickMissionItemList msgCanPick;
         //msgCanPick.SetCanPickMissionItemList( (BYTE)(GetCanPickMissionItemCount()), GetCanPickMissionItemList() );
         //pAskPlayer->SendPacket( &msgCanPick );
 
-        //Óë´ËÍ¬Ê±£¬·¢ËÍ½ÇÉ«ÏêÏ¸Ğ§¹ûÁĞ±íĞÅÏ¢¸ø¿Í»§¶Ë
+        //ä¸æ­¤åŒæ—¶ï¼Œå‘é€è§’è‰²è¯¦ç»†æ•ˆæœåˆ—è¡¨ä¿¡æ¯ç»™å®¢æˆ·ç«¯
         GCDetailImpactListUpdate ImpactListUpdate;
         ImpactListUpdate.SetOwnerID(GetID());
         ImpactListUpdate.SetImpactList(Impact_GetImpactList());
         pAskPlayer->SendPacket(&ImpactListUpdate);
         
-        //Óë´ËÍ¬Ê±£¬·¢ËÍ½ÇÉ«µÄÀäÈ´ÁĞ±í
+        //ä¸æ­¤åŒæ—¶ï¼Œå‘é€è§’è‰²çš„å†·å´åˆ—è¡¨
         GCCooldownUpdate    Msg;
         CooldownListForHuman_T const* pCooldownList = m_DB.GetCooldownDB();
         Assert(pCooldownList);
@@ -1109,7 +1109,7 @@ __ENTER_FUNCTION
             }
         }
         pAskPlayer->SendPacket( &Msg ) ;
-        // ³èÎï
+        // å® ç‰©
         for ( INT i = 0; i < HUMAN_PET_MAX_COUNT; ++i )
         {
             Item* pPetFind = GetPetContain()->GetItem(i);
@@ -1167,7 +1167,7 @@ __LEAVE_FUNCTION
 //    INT nLevel = pPetItem->GetLevel();
 //    FLOAT fGrowRate = pPetItem->GetGrowRate();
 //
-//    //HP    ³õÊ¼HP+ÌåÖÊ*ÌåÖÊ¶ÔHPÓ°ÏìÏµÊı*Ìå×Ê+µÈ¼¶*µÈ¼¶¶ÔHPÓ°ÏìÏµÊı*³É³¤
+//    //HP    åˆå§‹HP+ä½“è´¨*ä½“è´¨å¯¹HPå½±å“ç³»æ•°*ä½“èµ„+ç­‰çº§*ç­‰çº§å¯¹HPå½±å“ç³»æ•°*æˆé•¿
 //    nBaseParam = g_TableInit.m_PetConfig.m_BaseHP;
 //    fAttribRate = g_TableInit.m_PetConfig.m_Con_HP_Pram;
 //    fLevelRate = g_TableInit.m_PetConfig.m_Level_HP_Pram;
@@ -1175,7 +1175,7 @@ __LEAVE_FUNCTION
 //    nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 //    
 //    rMsg.SetHPMax(nValue);
-//    //Ä§¹¥    ³õÊ¼Ä§¹¥+ÁéÆø*ÁéÆø¶ÔÄ§¹¥¹¥Ó°ÏìÏµÊı*Áé×Ê+µÈ¼¶*µÈ¼¶¶ÔÄ§¹¥Ó°ÏìÏµÊı*³É³¤
+//    //é­”æ”»    åˆå§‹é­”æ”»+çµæ°”*çµæ°”å¯¹é­”æ”»æ”»å½±å“ç³»æ•°*çµèµ„+ç­‰çº§*ç­‰çº§å¯¹é­”æ”»å½±å“ç³»æ•°*æˆé•¿
 //    nBaseParam = g_TableInit.m_PetConfig.m_BaseMgcAttack;
 //    fAttribRate = g_TableInit.m_PetConfig.m_Spr_MgcAttack_Pram;
 //    fLevelRate = g_TableInit.m_PetConfig.m_Level_MgcAttack_Pram;
@@ -1183,7 +1183,7 @@ __LEAVE_FUNCTION
 //    nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 //
 //    rMsg.SetAtt_Magic(nValue);
-//    //Îï¹¥    ³õÊ¼Îï¹¥+Á¦Á¿*Á¦Á¿¶ÔÎï¹¥Ó°ÏìÏµÊı*Á¦×Ê+µÈ¼¶*µÈ¼¶¶ÔÎï¹¥Ó°ÏìÏµÊı*³É³¤
+//    //ç‰©æ”»    åˆå§‹ç‰©æ”»+åŠ›é‡*åŠ›é‡å¯¹ç‰©æ”»å½±å“ç³»æ•°*åŠ›èµ„+ç­‰çº§*ç­‰çº§å¯¹ç‰©æ”»å½±å“ç³»æ•°*æˆé•¿
 //    nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
 //    fAttribRate = g_TableInit.m_PetConfig.m_Str_PhyAttack_Pram;
 //    fLevelRate = g_TableInit.m_PetConfig.m_Level_PhyAttack_Pram;
@@ -1191,7 +1191,7 @@ __LEAVE_FUNCTION
 //    nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 //
 //    rMsg.SetAtt_Physics(nValue);
-//    //Ä§·À    ³õÊ¼Ä§·À+¶¨Á¦*¶¨Á¦¶ÔÄ§·ÀÓ°ÏìÏµÊı*¶¨×Ê+µÈ¼¶*µÈ¼¶¶ÔÄ§·ÀÓ°ÏìÏµÊı*³É³¤
+//    //é­”é˜²    åˆå§‹é­”é˜²+å®šåŠ›*å®šåŠ›å¯¹é­”é˜²å½±å“ç³»æ•°*å®šèµ„+ç­‰çº§*ç­‰çº§å¯¹é­”é˜²å½±å“ç³»æ•°*æˆé•¿
 //    nBaseParam = g_TableInit.m_PetConfig.m_BaseMgcDefence;
 //    fAttribRate = g_TableInit.m_PetConfig.m_Int_MgcDefence_Pram;
 //    fLevelRate = g_TableInit.m_PetConfig.m_Level_MgcDefence_Pram;
@@ -1199,7 +1199,7 @@ __LEAVE_FUNCTION
 //    nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 //
 //    rMsg.SetDef_Magic(nValue);
-//    //Îï·À    ³õÊ¼Îï¹¥+ÌåÖÊ*ÌåÖÊ¶ÔÎï·ÀÓ°ÏìÏµÊı*Ìå×Ê+µÈ¼¶*µÈ¼¶¶ÔÎï·ÀÓ°ÏìÏµÊı*³É³¤
+//    //ç‰©é˜²    åˆå§‹ç‰©æ”»+ä½“è´¨*ä½“è´¨å¯¹ç‰©é˜²å½±å“ç³»æ•°*ä½“èµ„+ç­‰çº§*ç­‰çº§å¯¹ç‰©é˜²å½±å“ç³»æ•°*æˆé•¿
 //    nBaseParam = g_TableInit.m_PetConfig.m_BasePhyDefence;
 //    fAttribRate = g_TableInit.m_PetConfig.m_Con_PhyDefence_Pram;
 //    fLevelRate = g_TableInit.m_PetConfig.m_Level_PhyDefence_Pram;
@@ -1207,7 +1207,7 @@ __LEAVE_FUNCTION
 //    nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 //
 //    rMsg.SetDef_Physics(nValue);
-//    //ÉÁ±Ü    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶ÔÉÁ±ÜÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶ÔÉÁ±ÜÓ°ÏìÏµÊı*³É³¤
+//    //é—ªé¿    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹é—ªé¿å½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹é—ªé¿å½±å“ç³»æ•°*æˆé•¿
 //    nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
 //    fAttribRate = g_TableInit.m_PetConfig.m_Dex_Miss_Pram;
 //    fLevelRate = g_TableInit.m_PetConfig.m_Level_Miss_Pram;
@@ -1215,7 +1215,7 @@ __LEAVE_FUNCTION
 //    nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 //
 //    rMsg.SetMiss(nValue);
-//    //ÃüÖĞ    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶ÔÃüÖĞÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶ÔÃüÖĞÓ°ÏìÏµÊı*³É³¤
+//    //å‘½ä¸­    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹å‘½ä¸­å½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹å‘½ä¸­å½±å“ç³»æ•°*æˆé•¿
 //    nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
 //    fAttribRate = g_TableInit.m_PetConfig.m_Dex_Hit_Pram;
 //    fLevelRate = g_TableInit.m_PetConfig.m_Level_Hit_Pram;
@@ -1223,7 +1223,7 @@ __LEAVE_FUNCTION
 //    nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 //
 //    rMsg.SetHit(nValue);
-//    //»áĞÄ    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶Ô»áĞÄÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶Ô»áĞÄÓ°ÏìÏµÊı*³É³¤
+//    //ä¼šå¿ƒ    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹ä¼šå¿ƒå½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹ä¼šå¿ƒå½±å“ç³»æ•°*æˆé•¿
 //    nBaseParam = g_TableInit.m_PetConfig.m_BaseCritical;
 //    fAttribRate = g_TableInit.m_PetConfig.m_Dex_Critical_Pram;
 //    fLevelRate = g_TableInit.m_PetConfig.m_Level_Critical_Pram;
@@ -1292,7 +1292,7 @@ VOID Obj_Human::CalculatePetDetailAttrib(Packets::GCDetailAttrib_Pet& rMsg, Item
         INT nLevel = pPetItem->GetLevel();
         FLOAT fGrowRate = pPetItem->GetGrowRate();
 
-        //Ä§¹¥    ³õÊ¼Ä§¹¥+ÁéÆø*ÁéÆø¶ÔÄ§¹¥¹¥Ó°ÏìÏµÊı*Áé×Ê+µÈ¼¶*µÈ¼¶¶ÔÄ§¹¥Ó°ÏìÏµÊı*³É³¤
+        //é­”æ”»    åˆå§‹é­”æ”»+çµæ°”*çµæ°”å¯¹é­”æ”»æ”»å½±å“ç³»æ•°*çµèµ„+ç­‰çº§*ç­‰çº§å¯¹é­”æ”»å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BaseMgcAttack;
         fAttribRate = g_TableInit.m_PetConfig.m_Spr_MgcAttack_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_MgcAttack_Pram;
@@ -1300,7 +1300,7 @@ VOID Obj_Human::CalculatePetDetailAttrib(Packets::GCDetailAttrib_Pet& rMsg, Item
         nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
         rMsg.SetAtt_Magic(Attr_VerifyGeneralAttack(nValue));
-        //Îï¹¥    ³õÊ¼Îï¹¥+Á¦Á¿*Á¦Á¿¶ÔÎï¹¥Ó°ÏìÏµÊı*Á¦×Ê+µÈ¼¶*µÈ¼¶¶ÔÎï¹¥Ó°ÏìÏµÊı*³É³¤
+        //ç‰©æ”»    åˆå§‹ç‰©æ”»+åŠ›é‡*åŠ›é‡å¯¹ç‰©æ”»å½±å“ç³»æ•°*åŠ›èµ„+ç­‰çº§*ç­‰çº§å¯¹ç‰©æ”»å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
         fAttribRate = g_TableInit.m_PetConfig.m_Str_PhyAttack_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_PhyAttack_Pram;
@@ -1308,7 +1308,7 @@ VOID Obj_Human::CalculatePetDetailAttrib(Packets::GCDetailAttrib_Pet& rMsg, Item
         nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
         rMsg.SetAtt_Physics(Attr_VerifyGeneralAttack(nValue));
-        //Ä§·À    ³õÊ¼Ä§·À+¶¨Á¦*¶¨Á¦¶ÔÄ§·ÀÓ°ÏìÏµÊı*¶¨×Ê+µÈ¼¶*µÈ¼¶¶ÔÄ§·ÀÓ°ÏìÏµÊı*³É³¤
+        //é­”é˜²    åˆå§‹é­”é˜²+å®šåŠ›*å®šåŠ›å¯¹é­”é˜²å½±å“ç³»æ•°*å®šèµ„+ç­‰çº§*ç­‰çº§å¯¹é­”é˜²å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BaseMgcDefence;
         fAttribRate = g_TableInit.m_PetConfig.m_Int_MgcDefence_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_MgcDefence_Pram;
@@ -1316,7 +1316,7 @@ VOID Obj_Human::CalculatePetDetailAttrib(Packets::GCDetailAttrib_Pet& rMsg, Item
         nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
         rMsg.SetDef_Magic(Attr_VerifyDefence(nValue));
-        //Îï·À    ³õÊ¼Îï¹¥+ÌåÖÊ*ÌåÖÊ¶ÔÎï·ÀÓ°ÏìÏµÊı*Ìå×Ê+µÈ¼¶*µÈ¼¶¶ÔÎï·ÀÓ°ÏìÏµÊı*³É³¤
+        //ç‰©é˜²    åˆå§‹ç‰©æ”»+ä½“è´¨*ä½“è´¨å¯¹ç‰©é˜²å½±å“ç³»æ•°*ä½“èµ„+ç­‰çº§*ç­‰çº§å¯¹ç‰©é˜²å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BasePhyDefence;
         fAttribRate = g_TableInit.m_PetConfig.m_Con_PhyDefence_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_PhyDefence_Pram;
@@ -1324,7 +1324,7 @@ VOID Obj_Human::CalculatePetDetailAttrib(Packets::GCDetailAttrib_Pet& rMsg, Item
         nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
         rMsg.SetDef_Physics(Attr_VerifyDefence(nValue));
-        //ÉÁ±Ü    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶ÔÉÁ±ÜÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶ÔÉÁ±ÜÓ°ÏìÏµÊı*³É³¤
+        //é—ªé¿    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹é—ªé¿å½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹é—ªé¿å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
         fAttribRate = g_TableInit.m_PetConfig.m_Dex_Miss_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_Miss_Pram;
@@ -1332,7 +1332,7 @@ VOID Obj_Human::CalculatePetDetailAttrib(Packets::GCDetailAttrib_Pet& rMsg, Item
         nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
         rMsg.SetMiss(Attr_VerifyHitMiss(nValue));
-        //ÃüÖĞ    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶ÔÃüÖĞÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶ÔÃüÖĞÓ°ÏìÏµÊı*³É³¤
+        //å‘½ä¸­    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹å‘½ä¸­å½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹å‘½ä¸­å½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BasePhyAttack;
         fAttribRate = g_TableInit.m_PetConfig.m_Dex_Hit_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_Hit_Pram;
@@ -1340,7 +1340,7 @@ VOID Obj_Human::CalculatePetDetailAttrib(Packets::GCDetailAttrib_Pet& rMsg, Item
         nValue = (INT)(nBaseParam + nAttribParam*fAttribRate + nLevel*fLevelRate*fGrowRate);
 
         rMsg.SetHit(Attr_VerifyHitMiss(nValue));
-        //»áĞÄ    ³õÊ¼Îï¹¥+Ãô½İ*Ãô½İ¶Ô»áĞÄÓ°ÏìÏµÊı*Ãô×Ê+µÈ¼¶*µÈ¼¶¶Ô»áĞÄÓ°ÏìÏµÊı*³É³¤
+        //ä¼šå¿ƒ    åˆå§‹ç‰©æ”»+æ•æ·*æ•æ·å¯¹ä¼šå¿ƒå½±å“ç³»æ•°*æ•èµ„+ç­‰çº§*ç­‰çº§å¯¹ä¼šå¿ƒå½±å“ç³»æ•°*æˆé•¿
         nBaseParam = g_TableInit.m_PetConfig.m_BaseCritical;
         fAttribRate = g_TableInit.m_PetConfig.m_Dex_Critical_Pram;
         fLevelRate = g_TableInit.m_PetConfig.m_Level_Critical_Pram;
@@ -1383,7 +1383,7 @@ __ENTER_FUNCTION
     CalculatePetDetailAttrib(msgDetail, pPetItem);
 
     GetPlayer()->SendPacket( &msgDetail );
-    //Óë´ËÍ¬Ê±£¬·¢ËÍ³èÎïµÄÀäÈ´ÁĞ±í
+    //ä¸æ­¤åŒæ—¶ï¼Œå‘é€å® ç‰©çš„å†·å´åˆ—è¡¨
     GCCooldownUpdate Msg;
     Msg.SetPetGuid(guidPet);
     CooldownListForHuman_T const* pCooldownList = m_DB.GetCooldownDB();
@@ -1397,7 +1397,7 @@ __ENTER_FUNCTION
             Msg.CooldownModified(rCooldownInfo);
         }
     }
-    GetPlayer()->SendPacket(&Msg); //·¢ËÍ³èÎïµÄÀäÈ´ĞÅÏ¢
+    GetPlayer()->SendPacket(&Msg); //å‘é€å® ç‰©çš„å†·å´ä¿¡æ¯
 __LEAVE_FUNCTION
 }
 
@@ -1443,15 +1443,15 @@ __ENTER_FUNCTION
         msgAttr.setLevel( GetLevel() );
 
         pTargetHuman->GetPlayer()->SendPacket( &msgAttr );
-        //ÔÚ·¢ËÍÊôĞÔÊı¾İµÄÍ¬Ê±·¢ËÍ½ÇÉ«µÄĞ§¹ûÁĞ±íÊı¾İ
+        //åœ¨å‘é€å±æ€§æ•°æ®çš„åŒæ—¶å‘é€è§’è‰²çš„æ•ˆæœåˆ—è¡¨æ•°æ®
         GCCharImpactListUpdate ImpactListUpdate;
         ImpactListUpdate.SetOwnerID(GetID());
         ImpactListUpdate.SetImpactList(Impact_GetImpactList());
         pTargetHuman->GetPlayer()->SendPacket(&ImpactListUpdate);
-        //¶ÓÎéÏà¹Ø
+        //é˜Ÿä¼ç›¸å…³
         TeamInfo* pTeamInfo = GetTeamInfo();
         if ( pTeamInfo->HasTeam() )
-        { // ÊÇÆÕÍ¨¶ÓÔ±
+        { // æ˜¯æ™®é€šé˜Ÿå‘˜
             GCNotifyTeamInfo msgTeamFlag;
             msgTeamFlag.SetObjID( GetID() );
             msgTeamFlag.SetHaveTeamFlag( TRUE );
@@ -1462,7 +1462,7 @@ __ENTER_FUNCTION
             pTargetHuman->GetPlayer()->SendPacket( &msgTeamFlag );
 
             if ( pTeamInfo->IsLeader() && __GetTeamFollowFlag() )
-            { // ÊÇ¶Ó³¤£¬·¢ËÍ¸úËæÁĞ±í¸øËùÓĞ¿Í»§¶Ë£¬ÒÔ¹©Â·ÏßÄ£Äâ
+            { // æ˜¯é˜Ÿé•¿ï¼Œå‘é€è·Ÿéšåˆ—è¡¨ç»™æ‰€æœ‰å®¢æˆ·ç«¯ï¼Œä»¥ä¾›è·¯çº¿æ¨¡æ‹Ÿ
                 GCTeamFollowList msgFollowList;
                 msgFollowList.SetObjID( GetID() );
 

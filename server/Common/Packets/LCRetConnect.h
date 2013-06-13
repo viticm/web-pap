@@ -16,7 +16,7 @@ namespace Packets
         LCRetConnect( ){} ;
         virtual ~LCRetConnect( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream ) const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -30,7 +30,7 @@ namespace Packets
         }
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         LOGIN_CONNECT_RESULT    GetResult()
         {
             return Result;
@@ -59,7 +59,7 @@ namespace Packets
         }
         
     private:
-        //数据
+        //鏁版嵁
         CHAR                    LoginIP[IP_SIZE];
         UINT                    LoginPort;
         LOGIN_CONNECT_RESULT    Result;

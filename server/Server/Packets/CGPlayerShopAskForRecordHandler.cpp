@@ -1,6 +1,6 @@
 #include "stdafx.h"
 /*
-¿Í»§¶ËÉêÇë°ÚÌ¯
+å®¢æˆ·ç«¯ç”³è¯·æ‘†æ‘Š
 */
 
 #include "CGPlayerShopAskForRecord.h"
@@ -29,7 +29,7 @@ UINT CGPlayerShopAskForRecordHandler::Execute( CGPlayerShopAskForRecord* pPacket
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     
     _PLAYERSHOP_GUID    nShopID     = pPacket->GetShopID();
@@ -41,7 +41,7 @@ UINT CGPlayerShopAskForRecordHandler::Execute( CGPlayerShopAskForRecord* pPacket
     PlayerShop*        pPlayerShop        = pPlayerShopManager->GetPlayerShopByGUID(nShopID);
     Assert(pPlayerShop);
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê.Ö»ÓÐµêÖ÷ÓÐ×Ê¸ñ¸ü¸Ä´ËÊôÐÔ
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—.åªæœ‰åº—ä¸»æœ‰èµ„æ ¼æ›´æ”¹æ­¤å±žæ€§
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
     if(bIsMine == FALSE )
     {
@@ -52,12 +52,12 @@ UINT CGPlayerShopAskForRecordHandler::Execute( CGPlayerShopAskForRecord* pPacket
 
     RecordContainer_t*    pRecContainer = NULL;
 
-    //ÇëÇó½»Ò×¼ÇÂ¼
+    //è¯·æ±‚äº¤æ˜“è®°å½•
     if(bType == CGPlayerShopAskForRecord::TYPE_EXCHANGE_RECORD)
     {
         pRecContainer = pPlayerShop->GetExchangeRecord();
     }
-    //ÇëÇó¹ÜÀí¼ÇÂ¼
+    //è¯·æ±‚ç®¡ç†è®°å½•
     else if(bType == CGPlayerShopAskForRecord::TYPE_MANAGER_RECORD)
     {
         pRecContainer = pPlayerShop->GetManagerRecord();
@@ -73,7 +73,7 @@ UINT CGPlayerShopAskForRecordHandler::Execute( CGPlayerShopAskForRecord* pPacket
         pszMes = RecordOpt::EnumEntry(pRecContainer);
     }
 
-    //ÕâÒ³ÊÇ¿ÕµÄ
+    //è¿™é¡µæ˜¯ç©ºçš„
     if(pszMes == NULL && bPage != 0)
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopAskForRecordHandler::ObjName=%s, this page is empty"

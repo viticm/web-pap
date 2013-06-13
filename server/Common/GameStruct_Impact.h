@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-// �ļ�����GameStruct_Impact.h
-// ����˵����Ч���Ĵ洢�ṹ
+// 文件名：GameStruct_Impact.h
+// 功能说明：效果的存储结构
 //
-// �޸ļ�¼��
+// 修改记录：
 //
 //
 //
@@ -22,13 +22,13 @@ typedef enum _DIRECT_IMPACT_SEID
     SPECIAL_DROPBOX = -3,//DROPBOX
     SPECIAL_DIE = -2,    //DIE
     DISPLAY_MISS = -1,    //MISS
-    DAMAGE_PHYSICS = 0, //�����˺�
-    DAMAGE_MAGIC = 1,     //ħ���˺�
-    DAMAGE_COLD = 2,     //���˺�
-    DAMAGE_FIRE = 3,    //���˺�
-    DAMAGE_LIGHT = 4,    //���˺�
-    DAMAGE_POISON = 5,    //���˺�
-    DISPEL_RAGE = 6,    //��ŭ��
+    DAMAGE_PHYSICS = 0, //物理伤害
+    DAMAGE_MAGIC = 1,     //魔法伤害
+    DAMAGE_COLD = 2,     //冰伤害
+    DAMAGE_FIRE = 3,    //火伤害
+    DAMAGE_LIGHT = 4,    //电伤害
+    DAMAGE_POISON = 5,    //毒伤害
+    DISPEL_RAGE = 6,    //减怒气
     
     MAX_DIRECT_IMPACT_SEID, 
 } DIRECT_IMPACT_SEID;
@@ -148,7 +148,7 @@ typedef class _OWN_IMPACT //struct like class, can use memcpy to copy it
             m_nContinuanceElapsed = 0;
             m_nIntervalElapsed = 0;
             m_Flags.ClearAllFlags();
-            //MarkFadeOutFlag();// ȱʡ����Ч��
+            //MarkFadeOutFlag();// 缺省是无效的
             memset((VOID*)m_aParams, 0, sizeof(m_aParams));        
         };
         _OWN_IMPACT& operator=(_OWN_IMPACT const& rhs)

@@ -1,6 +1,6 @@
 // GCPlayerShopApply.h
 // 
-// ·şÎñÆ÷Í¨Öª¿Í»§¶Ë´´½¨Íæ¼ÒÉÌµêËùĞèµÄÅĞ¶¨ĞÅÏ¢
+// æœåŠ¡å™¨é€šçŸ¥å®¢æˆ·ç«¯åˆ›å»ºç©å®¶å•†åº—æ‰€éœ€çš„åˆ¤å®šä¿¡æ¯
 // 
 //////////////////////////////////////////////////////
 
@@ -19,15 +19,15 @@ namespace Packets
     public:
         GCPlayerShopApply( )
         {
-            m_ComFactor    =    0;        //µ±Ç°ÉÌÒµÖ¸Êı
-            m_Cost        =    0;        //¿ªµê½ğ¶î
-            m_Type        =    0;        //¿É¿ªµÄÀàĞÍ
-            m_NpcId        =    0;        //ÉÌµê¹ÜÀíµÄNpcId
+            m_ComFactor    =    0;        //å½“å‰å•†ä¸šæŒ‡æ•°
+            m_Cost        =    0;        //å¼€åº—é‡‘é¢
+            m_Type        =    0;        //å¯å¼€çš„ç±»å‹
+            m_NpcId        =    0;        //å•†åº—ç®¡ç†çš„NpcId
 
         }
         virtual ~GCPlayerShopApply( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -49,9 +49,9 @@ namespace Packets
         VOID                    SetNpcId(ObjID_t NpcId){m_NpcId = NpcId;}
 
     private:
-        FLOAT                    m_ComFactor;    //µ±Ç°ÉÌÒµÖ¸Êı
-        UINT                    m_Cost;            //¿ªµê½ğ¶î
-        BYTE                    m_Type;            //¿É¿ªµÄÀàĞÍ
+        FLOAT                    m_ComFactor;    //å½“å‰å•†ä¸šæŒ‡æ•°
+        UINT                    m_Cost;            //å¼€åº—é‡‘é¢
+        BYTE                    m_Type;            //å¯å¼€çš„ç±»å‹
         ObjID_t                    m_NpcId;        //Npc Id
     };
 

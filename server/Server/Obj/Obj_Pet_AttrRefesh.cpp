@@ -25,7 +25,7 @@ __ENTER_FUNCTION
     if ( getScene() != NULL )
     {
         if( !IsAlive() )
-        {//尸体
+        {//灏镐綋
             GCNewPet_Death *pPacket = (GCNewPet_Death*)(getScene()->m_pPacket_NewPet_Death);
             pPacket->setObjID( GetID() );
             pPacket->setWorldPos( *(getWorldPos()) );
@@ -589,7 +589,7 @@ __ENTER_FUNCTION
             break;
         }
         pTargetHuman->GetPlayer()->SendPacket( &msgAttr );
-        //在发送属性数据的同时发送角色的效果列表数据
+        //鍦ㄥ彂閫佸睘鎬ф暟鎹殑鍚屾椂鍙戦�佽鑹茬殑鏁堟灉鍒楄〃鏁版嵁
         GCCharImpactListUpdate ImpactListUpdate;
         ImpactListUpdate.SetOwnerID(GetID());
         ImpactListUpdate.SetImpactList(Impact_GetImpactList());
@@ -645,7 +645,7 @@ __ENTER_FUNCTION
         msgDetail.SetGenGu(GetGenGu());
         msgDetail.SetRemainPoint(GetRemainPoint());
         pTargetHuman->GetPlayer()->SendPacket(&msgDetail);
-        //在发送详细属性数据的同时发送角色宠物的效果列表详细数据
+        //鍦ㄥ彂閫佽缁嗗睘鎬ф暟鎹殑鍚屾椂鍙戦�佽鑹插疇鐗╃殑鏁堟灉鍒楄〃璇︾粏鏁版嵁
         GCDetailImpactListUpdate ImpactListUpdate;
         ImpactListUpdate.SetOwnerID(GetID());
         ImpactListUpdate.SetImpactList(Impact_GetImpactList());

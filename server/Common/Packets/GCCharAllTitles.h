@@ -19,14 +19,14 @@ namespace Packets
         struct TitleString
         {
             BYTE    m_titleid;
-            BYTE    m_strlength;                    //×Ö·û´®³¤¶È
-            CHAR    m_szTitle[MAX_CHARACTER_TITLE];    // Íæ¼ÒÍ·ÏÎ
+            BYTE    m_strlength;                    //å­—ç¬¦ä¸²é•¿åº¦
+            CHAR    m_szTitle[MAX_CHARACTER_TITLE];    // ç©å®¶å¤´è¡”
         };
     public:
         GCCharAllTitles( ){} ;
         virtual ~GCCharAllTitles( ){} ;
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -44,7 +44,7 @@ namespace Packets
         }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         ObjID_t                    getTargetID(VOID) { return m_ObjID; }
         VOID                    setTargetID(ObjID_t idTarget) { m_ObjID = idTarget; }
 
@@ -69,15 +69,15 @@ namespace Packets
 
     private:
 
-        //Êı¾İ
+        //æ•°æ®
         ObjID_t                    m_ObjID;    
-        //Title¸öÊı
+        //Titleä¸ªæ•°
         BYTE                    m_nTitleId;
-        //ËùÓĞTitlesÁĞ±í
+        //æ‰€æœ‰Titlesåˆ—è¡¨
         TitleId                    m_TitleIdList[MAX_TITLE_ID_SIZE];
-        //Title¸öÊı
+        //Titleä¸ªæ•°
         BYTE                    m_nTitleStr;
-        //ËùÓĞTitles×Ö·û´®ÁĞ±í
+        //æ‰€æœ‰Titleså­—ç¬¦ä¸²åˆ—è¡¨
         TitleString                m_TitleStrList[MAX_STRING_TITLE_SIZE];
     };
 

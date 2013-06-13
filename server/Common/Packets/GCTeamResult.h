@@ -17,7 +17,7 @@ namespace Packets
             }
             virtual        ~GCTeamResult(){};
 
-            //公用接口
+            //鍏敤鎺ュ彛
             virtual BOOL            Read( SocketInputStream& iStream ) ;
             virtual BOOL            Write( SocketOutputStream& oStream )const ;
             virtual UINT            Execute( Player* pPlayer ) ;
@@ -69,9 +69,9 @@ namespace Packets
         GUID_t                m_GUIDEx ;
         SceneID_t            m_SceneID ;
         UCHAR                m_NameSize;
-        CHAR                m_Name[MAX_CHARACTER_NAME];            // 队员的名字，在队员入队的时候用
-        INT                    m_nPortrait;                        // 头像
-        USHORT                m_uDataID;                            // 队员的性别
+        CHAR                m_Name[MAX_CHARACTER_NAME];            // 闃熷憳鐨勫悕瀛楋紝鍦ㄩ槦鍛樺叆闃熺殑鏃跺�欑敤
+        INT                    m_nPortrait;                        // 澶村儚
+        USHORT                m_uDataID;                            // 闃熷憳鐨勬�у埆
 
     };
 

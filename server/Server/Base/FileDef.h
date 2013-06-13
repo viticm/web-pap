@@ -1,7 +1,7 @@
 #ifndef __FILEDEF_H__
 #define __FILEDEF_H__
 
-// œ¬√Ê « INI ≤ø∑÷
+// ‰∏ãÈù¢ÊòØ INI ÈÉ®ÂàÜ
 
 #define FILE_CONFIG_INFO                    "./Config/ConfigInfo.ini"
 #define FILE_LOGIN_INFO                        "./Config/LoginInfo.ini"
@@ -21,7 +21,7 @@
 #define FILE_IPRANGE                        "./Config/IPRange.ini"
 #define FILE_GMLIST                            "./Config/GMList.ini"
 
-// œ¬√Ê « TXT ≤ø∑÷
+// ‰∏ãÈù¢ÊòØ TXT ÈÉ®ÂàÜ
 
 #define FILE_PLAYER_EXP_LEVEL                "../Public/Config/PlayerExpLevel.txt"
 #define FILE_NPC_CHAT                        "./Config/NPCChat.txt"
@@ -81,14 +81,14 @@
 
 #define FILE_CITY_BUILDING                    "../Public/Config/CityBuilding.txt"
 
-//∆’Õ®»ŒŒÒ ˝æ›±Ì
+//ÊôÆÈÄö‰ªªÂä°Êï∞ÊçÆË°®
 #define FILE_MISSION_DATA                    "../Public/Config/MissionData.txt"
 #define FILE_MISSION_REWARD                    "../Public/Config/MissionReward.txt"
 #define FILE_MISSION_PUNISH                    "../Public/Config/MissionPunish.txt"
 #define FILE_MISSION_DIALOG                    "../Public/Config/MissionDialog.txt"
 #define FILE_MISSION_LIST                    "../Public/Config/MissionList.txt"
 
-// ∆‰À˚
+// ÂÖ∂‰ªñ
 
 #define FILE_AI_SCRIPT                        "../Public/Data/AIScript.dat"
 #define FILE_SCRIPT                            "../Public/Data/Script.dat"

@@ -61,7 +61,7 @@ VOID CreateExceptionDesc(PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastEr
     EXCEPTION_RECORD &    E = *pException->ExceptionRecord;
     CONTEXT &            C = *pException->ContextRecord;
 
-    //È¡µÃÒì³£·¢ÉúµØ
+    //å–å¾—å¼‚å¸¸å‘ç”Ÿåœ°
     TCHAR        szModeleInfo[MAX_PATH];
     TCHAR        Module_Name[MAX_PATH];
     PBYTE        Module_Addr;
@@ -76,7 +76,7 @@ VOID CreateExceptionDesc(PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastEr
 
     switch(E.ExceptionCode)
     {
-        //×ª»¯ºóµÄc++Òì³£
+        //è½¬åŒ–åŽçš„c++å¼‚å¸¸
     case 0XE000C0DE:
         {
             _ftprintf(fp,
@@ -101,7 +101,7 @@ VOID CreateExceptionDesc(PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastEr
         }
         break;
 
-        //ÊÔÍ¼¶ÔÒ»¸öÐéµØÖ·½øÐÐ¶ÁÐ´
+        //è¯•å›¾å¯¹ä¸€ä¸ªè™šåœ°å€è¿›è¡Œè¯»å†™
     case EXCEPTION_ACCESS_VIOLATION:
         {
             // Access violation type - Write/Read.
@@ -279,7 +279,7 @@ VOID Get_Exception_Info(PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastErr
 
         _ftprintf(fp, _T("------------------------------------------------------------------------------\n"));
 
-        //¼ÓÈë¾ßÌåÒì³£½âÊÍÐÅÏ¢
+        //åŠ å…¥å…·ä½“å¼‚å¸¸è§£é‡Šä¿¡æ¯
         CreateExceptionDesc(pException, fp, dwLastError);
 
     }
@@ -315,18 +315,18 @@ BOOL CreateBigInfoFile(PEXCEPTION_POINTERS pException, CHAR* szBigFile, UINT dwL
 
 VOID tProcessException(PEXCEPTION_POINTERS pException) throw()
 {
-    //±£´æ×îºóµÄ´íÎó´úÂë
+    //ä¿å­˜æœ€åŽçš„é”™è¯¯ä»£ç 
     UINT    dwLastError = ::GetLastError();
     if(!pException) return;
 
-    //Éú³ÉÍêÕû±íÊöÎÄ¼þ
+    //ç”Ÿæˆå®Œæ•´è¡¨è¿°æ–‡ä»¶
     CHAR szBigInfoFile[MAX_PATH] = {0};
     if(!CreateBigInfoFile(pException, szBigInfoFile, dwLastError))
     {
         return;
     }
 
-    //Éú³Édump±¨¸æ
+    //ç”ŸæˆdumpæŠ¥å‘Š
     CHAR szDumpFile[MAX_PATH] = {0};
     //CreateDumpHelpFile(pException, szDumpFile);
 }

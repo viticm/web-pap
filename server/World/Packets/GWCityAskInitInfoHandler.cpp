@@ -22,14 +22,14 @@ UINT GWCityAskInitInfoHandler::Execute( GWCityAskInitInfo* pPacket, Player* pPla
         for(SceneID_t i = 0; i<g_Config.m_SceneInfo.m_SceneCount; i++)
         {
             if(g_Config.m_SceneInfo.m_pScene[i].m_ServerID == ServerID)
-            {//±¾·şÎñÆ÷µÄ³¡¾°
+            {//æœ¬æœåŠ¡å™¨çš„åœºæ™¯
                 for(INT j =0; j<MAX_CITY_PER_WORLD; j++ )
                 {
                     City* pCity = g_pCityManager->GetCityByIndex(j);
                     if(pCity)
                     {
                         if(pCity->GetPortSceneID() == g_Config.m_SceneInfo.m_pScene[i].m_SceneID)
-                        {//µ±Ç°³ÇÊĞÊÇ¹ÒÔÚÕâ¸ö³¡¾°ÉÏµÄ
+                        {//å½“å‰åŸå¸‚æ˜¯æŒ‚åœ¨è¿™ä¸ªåœºæ™¯ä¸Šçš„
                             /*WGCityInitInfo*/
 
                         }

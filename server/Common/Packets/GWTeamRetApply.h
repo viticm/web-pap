@@ -13,7 +13,7 @@ namespace Packets
         GWTeamRetApply(){};
         virtual        ~GWTeamRetApply(){};
 
-        //¹«ÓÃ½Ó¿Ú
+        //å…¬ç”¨æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -34,8 +34,8 @@ namespace Packets
 
     public :
         BYTE            m_Return ;
-        GUID_t            m_SourGUID ;        //ÉêÇëÈË
-        GUID_t            m_LeaderGUID ;        //¶Ó³¤
+        GUID_t            m_SourGUID ;        //ç”³è¯·äºº
+        GUID_t            m_LeaderGUID ;        //é˜Ÿé•¿
 
 
     };

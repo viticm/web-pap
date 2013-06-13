@@ -203,7 +203,7 @@ BOOL WebPlayer::ProcessInputs( )
         return TRUE ;
     }
 
-    //Êý¾Ý¶ÁÈ¡
+    //æ•°æ®è¯»å–
     do
     {
         if( m_WebPlayer.IsValid())
@@ -219,7 +219,7 @@ BOOL WebPlayer::ProcessInputs( )
                 {
                     _MY_TRY
                     {
-                        //´¦Àí·þÎñÆ÷·¢ËÍ¹ýÀ´µÄÏûÏ¢
+                        //å¤„ç†æœåŠ¡å™¨å‘é€è¿‡æ¥çš„æ¶ˆæ¯
                         ret = m_WebPlayer.ProcessInput( ) ;
                         if( !ret )
                         {
@@ -253,7 +253,7 @@ BOOL WebPlayer::ProcessOutputs( )
         return TRUE ;
     }
 
-    //Êý¾Ý·¢ËÍ
+    //æ•°æ®å‘é€
     do
     {
         if(m_WebPlayer.IsValid())
@@ -269,7 +269,7 @@ BOOL WebPlayer::ProcessOutputs( )
                 {
                     _MY_TRY
                     {
-                        //·¢ËÍÊý¾Ý
+                        //å‘é€æ•°æ®
                         ret = m_WebPlayer.ProcessOutput( ) ;
                         if( !ret )
                         {
@@ -339,11 +339,11 @@ BOOL WebPlayer::ProcessCommands( )
         if( m_WebPlayer.IsValid() )
         {
             if( m_WebPlayer.GetSocket()->isSockError() )
-            {//Á¬½Ó³öÏÖ´íÎó
+            {//è¿žæŽ¥å‡ºçŽ°é”™è¯¯
                 RemoveServer( ) ;
             }
             else
-            {//Á¬½ÓÕý³£
+            {//è¿žæŽ¥æ­£å¸¸
                 _MY_TRY
                 {
                     ret = m_WebPlayer.ProcessCommand( FALSE ) ;
@@ -374,7 +374,7 @@ BOOL WebPlayer::AddServer( SOCKET fd )
         Assert( fd!=INVALID_SOCKET ) ;
 
     if( m_nFDSize>=FD_SETSIZE )
-    {//ÒÑ¾­³¬³öÄÜ¹»¼ì²âµÄÍøÂç¾ä±ú×î´óÊý£»
+    {//å·²ç»è¶…å‡ºèƒ½å¤Ÿæ£€æµ‹çš„ç½‘ç»œå¥æŸ„æœ€å¤§æ•°ï¼›
         Assert(FALSE) ;
         return FALSE ;
     }

@@ -14,7 +14,7 @@ public:
     GCNewItem( ){} ;
     virtual ~GCNewItem( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -25,7 +25,7 @@ public:
                                                             sizeof(WORLD_POS); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -39,12 +39,12 @@ public:
     const WORLD_POS&    getWorldPos(VOID)const { return m_posWorld; }
 
 private:
-    //Êı¾İ
+    //æ•°æ®
 
-    ObjID_t            m_ObjID;        //ÎïÆ·µÄObjID
-    UINT            m_uAmount;        //ÎïÆ·µÄÊıÖµ»òÕßÆäËûÊôĞÔ
-    GUID_t            m_idOwner;        //ÎïÆ·Ö÷ÈËµÄGUID_t
-    WORLD_POS        m_posWorld;        //ÎïÆ·µÄÎ»ÖÃ
+    ObjID_t            m_ObjID;        //ç‰©å“çš„ObjID
+    UINT            m_uAmount;        //ç‰©å“çš„æ•°å€¼æˆ–è€…å…¶ä»–å±æ€§
+    GUID_t            m_idOwner;        //ç‰©å“ä¸»äººçš„GUID_t
+    WORLD_POS        m_posWorld;        //ç‰©å“çš„ä½ç½®
 
 };
 

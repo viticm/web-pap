@@ -1,6 +1,6 @@
 // GCPlayerShopType.h
 // 
-// Í¨Öª¿Í»§¶ËÉÌµêÀàĞÍ¸ü¸Ä
+// é€šçŸ¥å®¢æˆ·ç«¯å•†åº—ç±»å‹æ›´æ”¹
 // 
 //////////////////////////////////////////////////////
 
@@ -22,7 +22,7 @@ namespace Packets
         };
         virtual ~GCPlayerShopType( ){};
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -38,8 +38,8 @@ namespace Packets
         VOID                    SetType(BYTE nType) {m_Type = nType;}
 
     private:
-        _PLAYERSHOP_GUID        m_ShopID;            //ÉÌµêID
-        BYTE                    m_Type;                //ĞÂµÄÀàĞÍ
+        _PLAYERSHOP_GUID        m_ShopID;            //å•†åº—ID
+        BYTE                    m_Type;                //æ–°çš„ç±»å‹
     };
 
     class GCPlayerShopTypeFactory : public PacketFactory 

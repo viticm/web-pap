@@ -50,9 +50,9 @@ namespace Packets
     private:
         ObjID_t            m_ObjID;
         _ITEM_GUID        m_ItemID;
-        _ITEM_GUID        m_BagItemGUID;        //���λ�õ���Ʒ��GUID
-        BYTE            m_Result;            //�Ƿ�ɹ������ɹ�����������Ϣ
-        BYTE            m_BagIndex;            //�ɹ��󣬴�ŵ�λ��
+        _ITEM_GUID        m_BagItemGUID;        //存放位置的物品的GUID
+        BYTE            m_Result;            //是否成功，不成功包含错误信息
+        BYTE            m_BagIndex;            //成功后，存放的位置
         WORD            m_ItemTableIndex;
 
     };

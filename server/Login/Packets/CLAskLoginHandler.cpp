@@ -15,15 +15,15 @@ UINT    CLAskLoginHandler::Execute(CLAskLogin* pPacket, Player* pPlayer )
 {
     __ENTER_FUNCTION
 
-        //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+        //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
         Assert( MyGetCurrentThreadID()== g_pLoginPlayerManager->m_ThreadID) ;
 
     LoginPlayer* pLoginPlayer = static_cast<LoginPlayer*>(pPlayer);
 
     Assert(pLoginPlayer);
     
-    //¼ì²éÓÃ»§ÊÇ·ñÖ¸¶¨×´Ì¬
-    //Ö»ÓÐ¸ÕÁ¬½Ó½øÈëµÄÓÃ»§²Å¿ÉÒÔ·¢Õâ¸öÏûÏ¢
+    //æ£€æŸ¥ç”¨æˆ·æ˜¯å¦æŒ‡å®šçŠ¶æ€
+    //åªæœ‰åˆšè¿žæŽ¥è¿›å…¥çš„ç”¨æˆ·æ‰å¯ä»¥å‘è¿™ä¸ªæ¶ˆæ¯
     if(pLoginPlayer->GetPlayerStatus()!= PS_LOGIN_CONNECT)
     {
         return PACKET_EXE_ERROR;
@@ -55,7 +55,7 @@ UINT    CLAskLoginHandler::Execute(CLAskLogin* pPacket, Player* pPlayer )
         
     }
     
-    //½«ÓÃ»§¿Í»§¶Ë°æ±¾¼ÍÂ¼×¡
+    //å°†ç”¨æˆ·å®¢æˆ·ç«¯ç‰ˆæœ¬çºªå½•ä½
     pLoginPlayer->SetVersion(pPacket->GetVersion());
     pLoginPlayer->SetPlayerStatus(PS_LOGIN_WAIT_AUTH);
     pLoginPlayer->SetAccount(pPacket->GetAccount());
@@ -66,11 +66,11 @@ UINT    CLAskLoginHandler::Execute(CLAskLogin* pPacket, Player* pPlayer )
         ;
     }
     
-    //½«ÏûÏ¢·¢ËÍµ½BillingSystem,²¢ÉèÖÃ×´Ì¬ÎªPS_LOGIN_WAIT_AUTH
+    //å°†æ¶ˆæ¯å‘é€åˆ°BillingSystem,å¹¶è®¾ç½®çŠ¶æ€ä¸ºPS_LOGIN_WAIT_AUTH
     LBAskAuth* pMsg = (LBAskAuth*)g_pPacketFactoryManager->CreatePacket(PACKET_LB_ASKAUTH);
     if(!pMsg)
     {
-        AssertEx(FALSE,"´´½¨ LBAskAuth ÏûÏ¢Ê§°Ü");
+        AssertEx(FALSE,"åˆ›å»º LBAskAuth æ¶ˆæ¯å¤±è´¥");
     }
 
     pMsg->SetAccount(pPacket->GetAccount());

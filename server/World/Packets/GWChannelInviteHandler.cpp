@@ -42,7 +42,7 @@ __ENTER_FUNCTION
     }
 
     if( pSourUser->GetChannelID() == INVALID_ID )
-    {//ÑûÇëÕßÃ»ÓÐ´´½¨ÆµµÀ
+    {//é‚€è¯·è€…æ²¡æœ‰åˆ›å»ºé¢‘é“
         WGChannelError Msg ;
         Msg.SetPlayerID( pSourUser->GetPlayerID() ) ;
         Msg.SetGUID( pSourUser->GetGUID() );
@@ -63,7 +63,7 @@ __ENTER_FUNCTION
         }
 
         if( pChannel->IsFull() )
-        {//ÁÄÌìÆµµÀÄÚÈËÊýÒÑÂú
+        {//èŠå¤©é¢‘é“å†…äººæ•°å·²æ»¡
             WGChannelError Msg ;
             Msg.SetPlayerID( pSourUser->GetPlayerID() ) ;
             Msg.SetGUID( pSourUser->GetGUID() );
@@ -88,7 +88,7 @@ __ENTER_FUNCTION
         }
         else
         {
-            //Ìí¼Ó³ÉÔ±
+            //æ·»åŠ æˆå‘˜
             pChannel->AddMember( pDestUser->GetGUID() ) ;
 
             WGChannelResult Msg ;
@@ -96,7 +96,7 @@ __ENTER_FUNCTION
             Msg.SetChannelID( pSourUser->GetChannelID() ) ;
             Msg.SetGUID( pDestUser->GetGUID() ) ;
 
-            //Í¨ÖªËùÓÐÆµµÀÄÚµÄÍæ¼Ò
+            //é€šçŸ¥æ‰€æœ‰é¢‘é“å†…çš„çŽ©å®¶
             for( int i=0; i<pChannel->MemberCount(); i++ )
             {
                 GUID_t guid = pChannel->Member( i ) ;
@@ -108,7 +108,7 @@ __ENTER_FUNCTION
 
                 USER* pUser = g_pOnlineUser->FindUser( guid ) ;
                 if( pUser==NULL )
-                {//Èç¹û¶ÓÔ±ÀëÏß,ÔòÓÃ»§Êý¾ÝÊÇ¿Õ
+                {//å¦‚æžœé˜Ÿå‘˜ç¦»çº¿,åˆ™ç”¨æˆ·æ•°æ®æ˜¯ç©º
                     continue ;
                 }
                 

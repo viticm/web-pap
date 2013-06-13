@@ -1,9 +1,9 @@
 #include "stdafx.h"
 /*************************************************************************
-ÎÄ¼şÃû    :     AIScript.cpp
-°æ±¾ºÅ :    0.0.2
-¹¦  ÄÜ    :    Õë¶ÔÌØÓĞµÄÀ©Õ¹AI½Å±¾±àĞ´µÄ½âÎö¼°Ö´ĞĞÀà
-ĞŞ¸Ä¼ÇÂ¼:    ĞŞ¸ÄÁËÇ°°æ½Ó¿Úº¯ÊıÀ©Õ¹ĞÔ²»Ç¿µÄÈ±µã
+æ–‡ä»¶å    :     AIScript.cpp
+ç‰ˆæœ¬å· :    0.0.2
+åŠŸ  èƒ½    :    é’ˆå¯¹ç‰¹æœ‰çš„æ‰©å±•AIè„šæœ¬ç¼–å†™çš„è§£æåŠæ‰§è¡Œç±»
+ä¿®æ”¹è®°å½•:    ä¿®æ”¹äº†å‰ç‰ˆæ¥å£å‡½æ•°æ‰©å±•æ€§ä¸å¼ºçš„ç¼ºç‚¹
 *************************************************************************/
 
 
@@ -51,7 +51,7 @@ BOOL AIScript::ParseScriptForPet(const CHAR* filename)
     CHAR*    szScript;
 
     //////////////////////////////////////////////////////////////////////////
-    //½âÎöfollow²¿·Ö
+    //è§£æfollowéƒ¨åˆ†
     szScript = NULL;
     INT start = m_file.ReturnLineNum("follow");
     INT end = m_file.ReturnLineNum("followend");
@@ -67,7 +67,7 @@ BOOL AIScript::ParseScriptForPet(const CHAR* filename)
     }
     InitList(SFOLLOW);
     //////////////////////////////////////////////////////////////////////////
-    //½âÎöattack²¿·Ö
+    //è§£æattackéƒ¨åˆ†
     szScript = NULL;
     start = m_file.ReturnLineNum("attack");
     end = m_file.ReturnLineNum("attackend");
@@ -83,7 +83,7 @@ BOOL AIScript::ParseScriptForPet(const CHAR* filename)
     }
     InitList(SATTACK);
     //////////////////////////////////////////////////////////////////////////
-    //½âÎöbeskill²¿·Ö
+    //è§£æbeskilléƒ¨åˆ†
     szScript = NULL;
     start = m_file.ReturnLineNum("beskill");
     end = m_file.ReturnLineNum("beskillend");
@@ -113,7 +113,7 @@ BOOL AIScript::ParseScript(const CHAR* filename)
 
     m_nID = -1;
     //////////////////////////////////////////////////////////////////////////
-    //½âÎöcommon²¿·Ö
+    //è§£æcommonéƒ¨åˆ†
     szScript = NULL;
     INT start = m_file.ReturnLineNum("common");
     INT end = m_file.ReturnLineNum("commonend");
@@ -127,10 +127,10 @@ BOOL AIScript::ParseScript(const CHAR* filename)
 
         ParseOneScript(szScript);
     }
-    //´¦Àím_pcdtList£¬½«Æä·Ö½âµ½¸÷¸ö×´Ì¬ListÖĞ£¬Èçm_pIdleList,m_pAttackList...
+    //å¤„ç†m_pcdtListï¼Œå°†å…¶åˆ†è§£åˆ°å„ä¸ªçŠ¶æ€Listä¸­ï¼Œå¦‚m_pIdleList,m_pAttackList...
     InitAllStateList();
     //////////////////////////////////////////////////////////////////////////
-    //½âÎöskill²¿·Ö
+    //è§£æskilléƒ¨åˆ†
     szScript = NULL;
     start = m_file.ReturnLineNum("skill");
     end = m_file.ReturnLineNum("skillend");
@@ -146,7 +146,7 @@ BOOL AIScript::ParseScript(const CHAR* filename)
     }
     InitList(SKILLSECTION);
     //////////////////////////////////////////////////////////////////////////
-    //½âÎöbeskill²¿·Ö
+    //è§£æbeskilléƒ¨åˆ†
     szScript = NULL;
     start = m_file.ReturnLineNum("beskill");
     end = m_file.ReturnLineNum("beskillend");
@@ -162,7 +162,7 @@ BOOL AIScript::ParseScript(const CHAR* filename)
     }
     InitList(ONBESKILLSECTION);
     //////////////////////////////////////////////////////////////////////////
-    //½âÎödamage²¿·Ö
+    //è§£ædamageéƒ¨åˆ†
     szScript = NULL;
     start = m_file.ReturnLineNum("damage");
     end = m_file.ReturnLineNum("damageend");
@@ -178,7 +178,7 @@ BOOL AIScript::ParseScript(const CHAR* filename)
     }
     InitList(ONDAMAGESECTION);
     //////////////////////////////////////////////////////////////////////////
-    //½âÎödead²¿·Ö
+    //è§£ædeadéƒ¨åˆ†
     szScript = NULL;
     start = m_file.ReturnLineNum("dead");
     end = m_file.ReturnLineNum("deadend");
@@ -202,7 +202,7 @@ BOOL AIScript::ParseScript(const CHAR* filename)
 BOOL AIScript::ParseOneScript(const CHAR* szScript)
 {
     __ENTER_FUNCTION
-    //¶ÔÃ¿ĞĞ×Ö·û´®½øĞĞ×Ó×Ö·û´®²éÕÒ
+    //å¯¹æ¯è¡Œå­—ç¬¦ä¸²è¿›è¡Œå­å­—ç¬¦ä¸²æŸ¥æ‰¾
     CHAR        szCmd[32];
     const CHAR*        pDest;        
     INT j = 0;
@@ -240,7 +240,7 @@ BOOL AIScript::ParseOneScript(const CHAR* szScript)
         switch(ParseCHAR(&szScript[j])) 
         {
         case ANDOROP:
-            {//Èç¹ûÊÇ'&','|','(',')'
+            {//å¦‚æœæ˜¯'&','|','(',')'
                 Atom atom;
                 memcpy(atom.szCHAR, &szScript[j], 1);
                 atom.pos = j;
@@ -271,7 +271,7 @@ BOOL AIScript::ParseOneScript(const CHAR* szScript)
                     if (!bToDoFlag)
                     {
                         for(INT m = m_array.array[m_array.count-1]+1; m < static_cast<INT>(m_operatorQ.size()); m++)
-                        {//Ê¹±»()À¨×¡µÄ'&','|'µÄÓÅÏÈ¼¶Ôö¼Ó
+                        {//ä½¿è¢«()æ‹¬ä½çš„'&','|'çš„ä¼˜å…ˆçº§å¢åŠ 
                             if(m_operatorQ[m].szCHAR[0]=='&'
                                 ||m_operatorQ[m].szCHAR[0]=='|')
                             {
@@ -317,13 +317,13 @@ BOOL AIScript::ParseOneScript(const CHAR* szScript)
                     }
                 }
 
-                //Ïò²Ù×÷·û¶ÓÁĞÌí¼Ó
+                //å‘æ“ä½œç¬¦é˜Ÿåˆ—æ·»åŠ 
                 if (!bToDoFlag)
                 {
                     m_operatorQ.push_back(atom);
                 }
                 
-                //ÏòÌõ¼ş±í´ïÊ½¶ÓÁĞÌí¼Ó
+                //å‘æ¡ä»¶è¡¨è¾¾å¼é˜Ÿåˆ—æ·»åŠ 
                 if (strcmp(szCmd, "") != 0)
                 {
                     sprintf(szCmd, "%s", const_cast<CHAR*>(szCmd));
@@ -353,7 +353,7 @@ BOOL AIScript::ParseOneScript(const CHAR* szScript)
             {
                 bToDoFlag = TRUE;
                 Atom atom;
-                //ÏòĞĞÎª±í´ïÊ½¶ÓÁĞÌí¼Ó
+                //å‘è¡Œä¸ºè¡¨è¾¾å¼é˜Ÿåˆ—æ·»åŠ 
                 if (strcmp(szCmd, "") != 0)
                 {
                     //if(VerifyExpress(szCmd)==FALSE)
@@ -364,7 +364,7 @@ BOOL AIScript::ParseOneScript(const CHAR* szScript)
                     index = 0;
                 }
                 if (szScript[j] == '}')
-                {//ÎªÁËÄÜÔÚÌõ¼ş½Å±¾µÄºóÃæÌí¼Ó×¢ÊÍ
+                {//ä¸ºäº†èƒ½åœ¨æ¡ä»¶è„šæœ¬çš„åé¢æ·»åŠ æ³¨é‡Š
                     goto Next;
                 }
             }
@@ -397,11 +397,11 @@ Next:
     ClearQ();
 
     //PrINTList();
-    //Éú³ÉÌõ¼şÊ÷
+    //ç”Ÿæˆæ¡ä»¶æ ‘
     CreateCdtTree();
-    //Éú³ÉÌõ¼ş½Úµã
+    //ç”Ÿæˆæ¡ä»¶èŠ‚ç‚¹
     CreateCdtNode();
-    //¼ÓÈëµ½Ìõ¼ş½ÚµãÁ´±íÖĞ
+    //åŠ å…¥åˆ°æ¡ä»¶èŠ‚ç‚¹é“¾è¡¨ä¸­
     InsertCdtNodeToCdtList();
 
     ClearList();
@@ -428,19 +428,19 @@ BOOL AIScript::ProcessScript(INT nState, AI_Character* pAI)
     }
 
     ((AI_Monster*)pAI)->ReSetNeedGoDist();
-    //½«m_pcdtListÖĞµÄÌõ¼ş½ÚµãÒÀ´ÎÈ¡³ö
+    //å°†m_pcdtListä¸­çš„æ¡ä»¶èŠ‚ç‚¹ä¾æ¬¡å–å‡º
     ConditionList* pCur = NULL;
     pCur = m_vStateLists[nState];
 
     while(pCur)
     {
         BOOL ret = FALSE;
-        //ÅĞ¶ÏÌõ¼şÊÇ·ñ³É¹¦£¬Ö´ĞĞÌõ¼şÓï¾ä
-        //È¡³öm_pcdtListÖĞµÄConditionTree,½âÎöÊ÷½á¹¹
+        //åˆ¤æ–­æ¡ä»¶æ˜¯å¦æˆåŠŸï¼Œæ‰§è¡Œæ¡ä»¶è¯­å¥
+        //å–å‡ºm_pcdtListä¸­çš„ConditionTree,è§£ææ ‘ç»“æ„
         ConditionTree* pTree = NULL;
         pTree = pCur->pNode->pRootCondition;
         
-        //½«AI_xxxÖĞµÄtimesµÄÊı¾İ¸´ÖÆ¸øÏàÓ¦µÄNodeµÄtimes
+        //å°†AI_xxxä¸­çš„timesçš„æ•°æ®å¤åˆ¶ç»™ç›¸åº”çš„Nodeçš„times
         INT id = pCur->pNode->id;
         if (id >= AISCRIPT_NUM)
         {
@@ -459,15 +459,15 @@ BOOL AIScript::ProcessScript(INT nState, AI_Character* pAI)
             continue;
         }
 
-        //Èç¹ûÌõ¼ş³ÉÁ¢£¬ÔòÖ´ĞĞĞĞÎªÓï¾ä
-        //È¡³öm_pcdtListÖĞµÄpToDo,½âÎötoDo½á¹¹
+        //å¦‚æœæ¡ä»¶æˆç«‹ï¼Œåˆ™æ‰§è¡Œè¡Œä¸ºè¯­å¥
+        //å–å‡ºm_pcdtListä¸­çš„pToDo,è§£ætoDoç»“æ„
         if (TRUE == ret)
         {
             ExcuteToDoScript(pCur->pNode->pToDo, pAI);
-            pCur->pNode->SetDownFlag(1);//ÉèÖÃ¸Ã²Ù×÷Ö´ĞĞ¹ı
+            pCur->pNode->SetDownFlag(1);//è®¾ç½®è¯¥æ“ä½œæ‰§è¡Œè¿‡
 
             if (pCur->pNode->times > 0)
-            {// Ö»ÊÇ²»Ïë¸Ä±äÔ­À´µÄ½á¹¹ºÍÂß¼­ ¹ÊÕâÑù×ö:)...
+            {// åªæ˜¯ä¸æƒ³æ”¹å˜åŸæ¥çš„ç»“æ„å’Œé€»è¾‘ æ•…è¿™æ ·åš:)...
                 pCur->pNode->times--;
                 if (pCur->pNode->times < 0)
                     pCur->pNode->times = 0;
@@ -477,7 +477,7 @@ BOOL AIScript::ProcessScript(INT nState, AI_Character* pAI)
             }
             if (pCur->pNode->times == 0)
             {
-                pCur->pNode->SetDownFlag(0);//ÉèÖÃ¸Ã²Ù×÷Ö´ĞĞÍê
+                pCur->pNode->SetDownFlag(0);//è®¾ç½®è¯¥æ“ä½œæ‰§è¡Œå®Œ
             }
             //if (pAI->GetCharacter()->GetObjType() == Obj::OBJ_TYPE_MONSTER) 
             //{
@@ -506,7 +506,7 @@ BOOL AIScript::ProcessScript(INT nState, AI_Character* pAI)
         pCur = pCur->pNext;
     }
     if (NULL == pCur) 
-    {/** Ò»¸öÒ²Ã»ÓĞÖ´ĞĞ³É¹¦ */
+    {/** ä¸€ä¸ªä¹Ÿæ²¡æœ‰æ‰§è¡ŒæˆåŠŸ */
         return FALSE;
     }
 
@@ -514,7 +514,7 @@ BOOL AIScript::ProcessScript(INT nState, AI_Character* pAI)
     __LEAVE_FUNCTION
     return TRUE;
 }
-//pReturnÎªÉÏÒ»´ÎÖ´ĞĞµÄ½á¹û
+//pReturnä¸ºä¸Šä¸€æ¬¡æ‰§è¡Œçš„ç»“æœ
 BOOL AIScript::ExcuteCdtScript(ConditionTree* p, const AI_Character* pAI)
 {
     __ENTER_FUNCTION
@@ -524,7 +524,7 @@ BOOL AIScript::ExcuteCdtScript(ConditionTree* p, const AI_Character* pAI)
     {
         return FALSE;
     }
-    // È·±£stackµÄÕıÈ·ĞÔ, Ã¿´ÎÊ¹ÓÃÇ°ÏÈÖØÖÃÒ»´Î
+    // ç¡®ä¿stackçš„æ­£ç¡®æ€§, æ¯æ¬¡ä½¿ç”¨å‰å…ˆé‡ç½®ä¸€æ¬¡
     m_stack.Reset();
     do
     {
@@ -545,7 +545,7 @@ BOOL AIScript::ExcuteCdtScript(ConditionTree* p, const AI_Character* pAI)
             }
             if (p->Node.op != OPTAND && p->Node.op != OPTOR && p->Node.op != OPTROOT) 
             {
-                //Ö´ĞĞÌõ¼ş±í´ïÊ½
+                //æ‰§è¡Œæ¡ä»¶è¡¨è¾¾å¼
                 ret = ExcuteExpress(&p->Node, pAI);
 
                 if (ret==TRUE && p->pParent->Node.op==OPTOR
@@ -763,7 +763,7 @@ BOOL AIScript::CreateCdtTree(VOID)
         return FALSE;
     }
 
-    //Éú³ÉĞÂµÄÌõ¼şÊ÷µÄ¸ù½Úµã
+    //ç”Ÿæˆæ–°çš„æ¡ä»¶æ ‘çš„æ ¹èŠ‚ç‚¹
     ConditionTree* pRoot = NULL;
     pRoot = new ConditionTree;
     if(pRoot == NULL)
@@ -772,11 +772,11 @@ BOOL AIScript::CreateCdtTree(VOID)
         return FALSE;
     }
 
-    //µÚÒ»²½£¬¸ù¾İ²Ù×÷·ûlistÉú³ÉÊ÷¿ò¼Ü
+    //ç¬¬ä¸€æ­¥ï¼Œæ ¹æ®æ“ä½œç¬¦listç”Ÿæˆæ ‘æ¡†æ¶
     TreeNodeList* pList = m_poptorNodeList;
     while(pList)
     {
-        //new³öÒ»¸öĞÂµÄÊ÷½áµã
+        //newå‡ºä¸€ä¸ªæ–°çš„æ ‘ç»“ç‚¹
         ConditionTree* pNewTree = NULL;
         pNewTree = new ConditionTree;
         if (pNewTree == NULL)
@@ -784,12 +784,12 @@ BOOL AIScript::CreateCdtTree(VOID)
             Assert(FALSE);
             return FALSE;
         }
-        //½øĞĞ²åÈë²Ù×÷-->ÊÇµÚÒ»´Î²åÈë
+        //è¿›è¡Œæ’å…¥æ“ä½œ-->æ˜¯ç¬¬ä¸€æ¬¡æ’å…¥
         if(m_pcdtTree == NULL)
         {
-            //¸ù½Úµã²»½øĞĞ¸³Öµ
+            //æ ¹èŠ‚ç‚¹ä¸è¿›è¡Œèµ‹å€¼
             m_pcdtTree = pRoot; 
-            //½«list±íÖĞµÄNode¸´ÖÆÒ»·İµ½pNewTree;
+            //å°†listè¡¨ä¸­çš„Nodeå¤åˆ¶ä¸€ä»½åˆ°pNewTree;
             pNewTree->Node = pList->Node;
             m_pcdtTree->pLeft = pNewTree;
             pNewTree->pParent = pRoot;
@@ -797,7 +797,7 @@ BOOL AIScript::CreateCdtTree(VOID)
         }
         else
         {
-            //´Ó¸ù½ÚµãµÄ×ó×Ó½ÚµãÑ°ÕÒÎ»ÖÃ
+            //ä»æ ¹èŠ‚ç‚¹çš„å·¦å­èŠ‚ç‚¹å¯»æ‰¾ä½ç½®
             ConditionTree* pCur = pRoot->pLeft;
             ConditionTree* pParent = NULL;
             while(pCur)
@@ -830,11 +830,11 @@ BOOL AIScript::CreateCdtTree(VOID)
         pList = pList->pNext;
     }
 
-    //µÚ¶ş²½£¬¸ù¾İÌõ¼ş±í´ïÊ½listÉú³ÉÍêÕûµÄÌõ¼şÊ÷
+    //ç¬¬äºŒæ­¥ï¼Œæ ¹æ®æ¡ä»¶è¡¨è¾¾å¼listç”Ÿæˆå®Œæ•´çš„æ¡ä»¶æ ‘
     pList = m_pcdtNodeList;
     while (pList)
     {
-        //new³öÒ»¸öĞÂµÄÊ÷½áµã
+        //newå‡ºä¸€ä¸ªæ–°çš„æ ‘ç»“ç‚¹
         ConditionTree* pNewTree = NULL;
         pNewTree = new ConditionTree;
         if(pNewTree == NULL)
@@ -842,13 +842,13 @@ BOOL AIScript::CreateCdtTree(VOID)
             Assert(FALSE);
             return FALSE;
         }
-        //½øĞĞ²åÈë²Ù×÷-->ÊÇµÚÒ»´Î²åÈë
-        //¸ÃÇé¿öÖ»ÓĞµ±Ìõ¼ş±í´ïÊ½Îªif(HP<10)ÕâÑùµÄÊ±ºò²ÅÄÜ½øÈë
+        //è¿›è¡Œæ’å…¥æ“ä½œ-->æ˜¯ç¬¬ä¸€æ¬¡æ’å…¥
+        //è¯¥æƒ…å†µåªæœ‰å½“æ¡ä»¶è¡¨è¾¾å¼ä¸ºif(HP<10)è¿™æ ·çš„æ—¶å€™æ‰èƒ½è¿›å…¥
         if (m_pcdtTree==NULL)
         {
-            //¸ù½Úµã²»½øĞĞ¸³Öµ
+            //æ ¹èŠ‚ç‚¹ä¸è¿›è¡Œèµ‹å€¼
             m_pcdtTree = pRoot; 
-            //½«list±íÖĞµÄNode¸´ÖÆÒ»·İµ½pNew;
+            //å°†listè¡¨ä¸­çš„Nodeå¤åˆ¶ä¸€ä»½åˆ°pNew;
             pNewTree->Node = pList->Node;
             m_pcdtTree->pLeft = pNewTree;
             pNewTree->pParent = pRoot;
@@ -856,7 +856,7 @@ BOOL AIScript::CreateCdtTree(VOID)
         }
         else
         {
-            //´Ó¸ù½ÚµãµÄ×ó×Ó½ÚµãÑ°ÕÒÎ»ÖÃ
+            //ä»æ ¹èŠ‚ç‚¹çš„å·¦å­èŠ‚ç‚¹å¯»æ‰¾ä½ç½®
             ConditionTree* pCur = pRoot->pLeft;
             ConditionTree* pParent=NULL;
             while (pCur)
@@ -897,13 +897,13 @@ BOOL AIScript::CreateCdtNode(VOID)
 {
     __ENTER_FUNCTION
     m_pcdtNode = NULL;
-    //ÅĞ¶ÏÌõ¼şÊ÷ÊÇ·ñ´æÔÚ
+    //åˆ¤æ–­æ¡ä»¶æ ‘æ˜¯å¦å­˜åœ¨
     if (m_pcdtTree == NULL)
     {
         return FALSE;
     }
 
-    //Éú³ÉĞÂµÄÌõ¼ş½Úµã
+    //ç”Ÿæˆæ–°çš„æ¡ä»¶èŠ‚ç‚¹
     m_pcdtNode = new ConditionNode;
     if (m_pcdtNode == NULL)
     {
@@ -911,12 +911,12 @@ BOOL AIScript::CreateCdtNode(VOID)
         return FALSE;
     }
 
-    //½«½âÎöµÄid¸³Öµ¸øm_pcdtNode->id
+    //å°†è§£æçš„idèµ‹å€¼ç»™m_pcdtNode->id
     m_pcdtNode->id = m_nID;
-    //Ê¹Ìõ¼ş½ÚµãÖĞµÄÊ÷Ö¸ÕëÖ¸ÏòÉú³ÉµÄÌõ¼şÊ÷½áµã
+    //ä½¿æ¡ä»¶èŠ‚ç‚¹ä¸­çš„æ ‘æŒ‡é’ˆæŒ‡å‘ç”Ÿæˆçš„æ¡ä»¶æ ‘ç»“ç‚¹
     m_pcdtNode->pRootCondition = m_pcdtTree;
 
-    //¸ù¾İĞĞÎª±í´ïÊ½listÉú³ÉÌõ¼ş½ÚµãµÄtoDoÏî
+    //æ ¹æ®è¡Œä¸ºè¡¨è¾¾å¼listç”Ÿæˆæ¡ä»¶èŠ‚ç‚¹çš„toDoé¡¹
     TreeNodeList* pCur = NULL;
     //-------------------------------------------------------------------------
     pCur = m_ptodoNodeList;
@@ -924,7 +924,7 @@ BOOL AIScript::CreateCdtNode(VOID)
     INT i=0, count = 0;
     while (pCur)
     {
-        //°ÑTIMESµÄ±í´ïÊ½ÌáÈ¡µ½Node½á¹¹ÌåÖĞ
+        //æŠŠTIMESçš„è¡¨è¾¾å¼æå–åˆ°Nodeç»“æ„ä½“ä¸­
         const CHAR* FuncName = GetFuncNamebyPtr(pCur->Node.FuncPtr);
         if(FuncName && strcmp(FuncName, "AIS_SetTimes") == 0)
         {
@@ -944,7 +944,7 @@ BOOL AIScript::CreateCdtNode(VOID)
                 pCur = pCur->pNext ;
                 pTemp->pNext = NULL;
             }
-            SAFE_DELETE(pTemp) ; // É¾³ı¸Ã½Úµã
+            SAFE_DELETE(pTemp) ; // åˆ é™¤è¯¥èŠ‚ç‚¹
 
             continue;
         }
@@ -965,7 +965,7 @@ BOOL AIScript::CreateCdtNode(VOID)
                 pCur = pCur->pNext ;
                 pTemp->pNext = NULL;
             }
-            SAFE_DELETE(pTemp) ; // É¾³ı¸Ã½Úµã
+            SAFE_DELETE(pTemp) ; // åˆ é™¤è¯¥èŠ‚ç‚¹
 
             continue;
         }
@@ -1016,13 +1016,13 @@ BOOL AIScript::CreateCdtNode(VOID)
 BOOL AIScript::InsertCdtNodeToCdtList(VOID)
 {
     __ENTER_FUNCTION
-    //ÅĞ¶ÏÌõ¼ş½ÚµãÊÇ·ñ´æÔÚ
+    //åˆ¤æ–­æ¡ä»¶èŠ‚ç‚¹æ˜¯å¦å­˜åœ¨
     if (m_pcdtNode == NULL)
     {
         return FALSE;
     }
 
-    //Éú³ÉĞÂµÄÌõ¼şlist½Úµã
+    //ç”Ÿæˆæ–°çš„æ¡ä»¶listèŠ‚ç‚¹
     ConditionList* pNewListNode = NULL;
     pNewListNode = new ConditionList;
     if (pNewListNode == NULL)
@@ -1032,14 +1032,14 @@ BOOL AIScript::InsertCdtNodeToCdtList(VOID)
     }
 
     pNewListNode->pNode = m_pcdtNode;
-    //½«Ìõ¼şlist½ÚµãÖĞµÄÌõ¼ş½ÚµãÖ¸ÕëÖ¸ÏòÉú³ÉµÄÌõ¼ş½Úµã
+    //å°†æ¡ä»¶listèŠ‚ç‚¹ä¸­çš„æ¡ä»¶èŠ‚ç‚¹æŒ‡é’ˆæŒ‡å‘ç”Ÿæˆçš„æ¡ä»¶èŠ‚ç‚¹
     if (m_pcdtList == NULL)
     {
         m_pcdtList = pNewListNode;
     }
     else
-    {//°´ÕÕÌõ¼ş½ÚµãµÄÓÅÏÈ¼¶²åÈëÌõ¼şlist£¬×îÖÕÉú³ÉµÄÌõ¼şlistÊÇ°´
-        //Ìõ¼ş½ÚµãÓÅÏÈ¼¶½µĞòµÄList.
+    {//æŒ‰ç…§æ¡ä»¶èŠ‚ç‚¹çš„ä¼˜å…ˆçº§æ’å…¥æ¡ä»¶listï¼Œæœ€ç»ˆç”Ÿæˆçš„æ¡ä»¶listæ˜¯æŒ‰
+        //æ¡ä»¶èŠ‚ç‚¹ä¼˜å…ˆçº§é™åºçš„List.
         ConditionList* pCur = NULL;
         ConditionList* pParent = NULL;
         pCur = m_pcdtList;
@@ -1106,19 +1106,19 @@ BOOL AIScript::InsertToNodeList(Atom atom, INT flag)
                 m_poptorNodeList = ptreeNodeList;
             }
             else
-            {//¶Ô'&','|'°´¸÷×ÔµÄÓÅÏÈ¼¶ÅÅĞò£¨ÉıĞò£©
+            {//å¯¹'&','|'æŒ‰å„è‡ªçš„ä¼˜å…ˆçº§æ’åºï¼ˆå‡åºï¼‰
                 TreeNodeList* pParent;
                 TreeNodeList* pCur;
                 pCur = m_poptorNodeList;
 
                 if (ptreeNodeList->Node.PRI < pCur->Node.PRI)
-                {//ĞÂ²åÈëµÄ½ÚµãµÄÓÅÏÈ¼¶±ÈµÚÒ»¸ö½ÚµãµÄĞ¡Ê±£¬Ó¦Ìæ»»Ê×½Úµã
+                {//æ–°æ’å…¥çš„èŠ‚ç‚¹çš„ä¼˜å…ˆçº§æ¯”ç¬¬ä¸€ä¸ªèŠ‚ç‚¹çš„å°æ—¶ï¼Œåº”æ›¿æ¢é¦–èŠ‚ç‚¹
                     ptreeNodeList->pNext = pCur;
                     m_poptorNodeList = ptreeNodeList;
                     pCur = ptreeNodeList;
                 }
                 else
-                {//ÕÒµ½ÊÊºÏµÄÎ»ÖÃ,È»ºó½øĞĞ²åÈë
+                {//æ‰¾åˆ°é€‚åˆçš„ä½ç½®,ç„¶åè¿›è¡Œæ’å…¥
                     while (pCur != NULL && ptreeNodeList->Node.PRI >= pCur->Node.PRI)
                     {
                         pParent = pCur;
@@ -1215,7 +1215,7 @@ TreeNode AIScript::ParseExpress(Atom atom)
                 if (atom.szCHAR[i] == '(')
                 {
                     if (strcmp(szCmd, "") != 0)
-                    {//ÊÇÃüÁî,ÈçMP<5 or 5>MP
+                    {//æ˜¯å‘½ä»¤,å¦‚MP<5 or 5>MP
                         PLAISFunc FuncPtr = GetFuncPtrbyName(szCmd);
                         if (FuncPtr)
                         {
@@ -1279,7 +1279,7 @@ TreeNode AIScript::ParseExpress(Atom atom)
         case OTHEROP:
             {
                 memcpy(&szCmd[index++], &atom.szCHAR[i], 1);
-                if (i == len-1)//ÕâÊ±µÄszCmd±ØÈ»ÊÇÓÒ±ßµÄvalueÖµ,ÈçMP<HP
+                if (i == len-1)//è¿™æ—¶çš„szCmdå¿…ç„¶æ˜¯å³è¾¹çš„valueå€¼,å¦‚MP<HP
                 {
                     if (strcmp(szCmd,"") != 0)
                     {
@@ -1403,8 +1403,8 @@ VOID AIScript::ClearCdtList(VOID)
     while(m_pcdtList2)
     {
     pTmp = m_pcdtList2->pNext;
-    //´Ë´¦ÒÑ¾­½«Êµ¼ÊµÄNode(°üÀ¨TreeNode,ToDoNode...)½Úµãdelete,¹ÊÏÂÃæµÄ¸÷¸ö×´Ì¬Á´±íÖ»Òª¸ºÔğ
-    //delete±¾ÉíµÄÁ´±í½Úµã¾Í¿ÉÒÔÁË.
+    //æ­¤å¤„å·²ç»å°†å®é™…çš„Node(åŒ…æ‹¬TreeNode,ToDoNode...)èŠ‚ç‚¹delete,æ•…ä¸‹é¢çš„å„ä¸ªçŠ¶æ€é“¾è¡¨åªè¦è´Ÿè´£
+    //deleteæœ¬èº«çš„é“¾è¡¨èŠ‚ç‚¹å°±å¯ä»¥äº†.
     ClearNode(m_pcdtList2->pNode);
     SAFE_DELETE(m_pcdtList2);
     m_pcdtList2 = pTmp;
@@ -1473,7 +1473,7 @@ VOID AIScript::ResetStateList(const AI_Character* pAI)
                 break;
             pCur->pNode->ResetTimes();
             /////////////////////////////////////////////////////
-            // ÖØÖÃAI_MonsterÖĞµÄScriptµÄ´ÎÊıTimes
+            // é‡ç½®AI_Monsterä¸­çš„Scriptçš„æ¬¡æ•°Times
             id = pCur->pNode->id;
             ((AI_Monster*)pAI)->m_aAIScriptTimes[id] = pCur->pNode->times2;
             ////////////////////////////////////////////////////
@@ -1495,7 +1495,7 @@ VOID AIScript::InitAllStateList(VOID)
         INT ret = 0;
         VerdictState(pCur->pNode->pRootCondition, pCur->pNode, ret);
         if(!ret)
-        {// Ã»ÓĞ¼ÓÈëÈÎºÎ×´Ì¬ListÖĞ£¬ÏòËùÓĞµÄListÌí¼Ó¸ÃÌõ¼şÓï¾ä
+        {// æ²¡æœ‰åŠ å…¥ä»»ä½•çŠ¶æ€Listä¸­ï¼Œå‘æ‰€æœ‰çš„Listæ·»åŠ è¯¥æ¡ä»¶è¯­å¥
             for (INT i = 0; SRETURN > i; ++i)
             {
                 ConditionList* p = new ConditionList;
@@ -1573,7 +1573,7 @@ VOID AIScript::VerdictState(ConditionTree* t, ConditionNode* p, INT& ret)
             }
             pCur->pNext = pp;
         }
-        ret = 1;//±ê¼ÇÒÑ¾­¼ÓÈë¹ıÁË
+        ret = 1;//æ ‡è®°å·²ç»åŠ å…¥è¿‡äº†
     }
 
     VerdictState(t->pRight, p, ret);
@@ -1605,7 +1605,7 @@ VOID AIScript::SetParam(const CHAR* szCmd, Atom& atom)
         pos2 = (INT)sParam.find(',', pos1);
         ++i;
         if (pos2 < 0)
-        {// ×îºóÒ»¸ö²ÎÊı
+        {// æœ€åä¸€ä¸ªå‚æ•°
             atom.param[i] = atoi(sParam.substr(pos1).c_str());
             return ;
         }

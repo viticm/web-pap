@@ -8,7 +8,7 @@
 
 #define MAX_POOL_SIZE 1280
 
-//·ÖÅäÍæ¼ÒÊý¾ÝµÄÊý¾Ý³Ø
+//åˆ†é…çŽ©å®¶æ•°æ®çš„æ•°æ®æ± 
 //
 class PlayerPool
 {
@@ -16,10 +16,10 @@ public :
     PlayerPool( ) ;
     ~PlayerPool( ) ;
 
-    //³õÊ¼»¯Êý¾Ý³Ø
+    //åˆå§‹åŒ–æ•°æ®æ± 
     BOOL                Init( UINT MaxPlayerCount = MAX_POOL_SIZE ) ;
 
-    //¸ù¾ÝÍæ¼ÒµÄPlayerIDÈ¡µÃÊý¾ÝÖ¸Õë
+    //æ ¹æ®çŽ©å®¶çš„PlayerIDå–å¾—æ•°æ®æŒ‡é’ˆ
     ServerPlayer*        GetPlayer( PlayerID_t PlayerID )
     {
         if( PlayerID==INVALID_ID || PlayerID>=(PlayerID_t)m_MaxPlayerCount || PlayerID<0 )
@@ -27,9 +27,9 @@ public :
         return &(m_pPlayer[PlayerID]) ;
     };
 
-    //´Ó¿ÕÏÐÊý¾Ý³ØÀï·ÖÅäÒ»¸öÍæ¼ÒÊý¾Ý
+    //ä»Žç©ºé—²æ•°æ®æ± é‡Œåˆ†é…ä¸€ä¸ªçŽ©å®¶æ•°æ®
     ServerPlayer*        NewPlayer( ) ;
-    //½«Ò»¸öÍæ¼ÒÊý¾ÝÇå¿Õ»ØÊÕ
+    //å°†ä¸€ä¸ªçŽ©å®¶æ•°æ®æ¸…ç©ºå›žæ”¶
     void                DelPlayer( PlayerID_t PlayerID ) ;
 
     void                Lock( ){ m_Lock.Lock() ; } ;

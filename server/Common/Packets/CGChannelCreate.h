@@ -15,7 +15,7 @@ namespace Packets
         CGChannelCreate( ){} ;
         virtual ~CGChannelCreate( ){} ;
 
-        //公用继承接口
+        //鍏敤缁ф壙鎺ュ彛
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -26,12 +26,12 @@ namespace Packets
     public :
 
     public:
-        //使用数据接口
+        //浣跨敤鏁版嵁鎺ュ彛
         VOID                SetGUID( GUID_t guid ){    m_GUID = guid ; }
         GUID_t                GetGUID( ){ return m_GUID ; }
 
     private:
-        //数据
+        //鏁版嵁
         GUID_t                m_GUID ;
 
     };

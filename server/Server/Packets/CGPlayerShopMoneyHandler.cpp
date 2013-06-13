@@ -25,13 +25,13 @@ UINT CGPlayerShopMoneyHandler::Execute( CGPlayerShopMoney* pPacket, Player* pPla
         Assert(FALSE) ;
         return PACKET_EXE_ERROR ;
     }
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-    _PLAYERSHOP_GUID    nShopID    =    pPacket->GetShopID();            //ÉÌµêID
-    BYTE                nOpt    =    pPacket->GetOpt();                //²Ù×÷
-    BYTE                nType    =    pPacket->GetType();                //´æµ½ÄÄ
-    UINT                uAmount    =    pPacket->GetAmount();            //ÊýÁ¿
-    BYTE            nShopSerial =    pPacket->GetShopSerial();        //ÉÌµêÐòÁÐºÅ
+    _PLAYERSHOP_GUID    nShopID    =    pPacket->GetShopID();            //å•†åº—ID
+    BYTE                nOpt    =    pPacket->GetOpt();                //æ“ä½œ
+    BYTE                nType    =    pPacket->GetType();                //å­˜åˆ°å“ª
+    UINT                uAmount    =    pPacket->GetAmount();            //æ•°é‡
+    BYTE            nShopSerial =    pPacket->GetShopSerial();        //å•†åº—åºåˆ—å·
 
     GCPlayerShopError MsgError;
 
@@ -40,16 +40,16 @@ UINT CGPlayerShopMoneyHandler::Execute( CGPlayerShopMoney* pPacket, Player* pPla
     Assert(pPlayerShop);
 
     if(pPlayerShop->GetShopStatus() == STATUS_PLAYER_SHOP_ON_SALE)
-    {//ÉÌµêÎ´¿ªÕÅ
+    {//å•†åº—æœªå¼€å¼ 
         g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopMoneyHandler::Name=%s shop close"
             ,pHuman->GetName()) ;
         return PACKET_EXE_CONTINUE ;
     }
 
-    //ÊÇ²»ÊÇ×Ô¼ºµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±çš„åº—
     BOOL bIsMine = (pHuman->GetGUID() == pPlayerShop->GetOwnerGuid())? TRUE:FALSE;
 
-    //ÊÇ²»ÊÇ×Ô¼º¿ÉÒÔ¹ÜÀíµÄµê
+    //æ˜¯ä¸æ˜¯è‡ªå·±å¯ä»¥ç®¡ç†çš„åº—
     BOOL bCanManager = pPlayerShop->IsPartner(pHuman->GetGUID());
 
     if(bIsMine == FALSE && bCanManager == FALSE)
@@ -72,7 +72,7 @@ UINT CGPlayerShopMoneyHandler::Execute( CGPlayerShopMoney* pPacket, Player* pPla
     switch(nOpt)
     {
         case CGPlayerShopMoney::OPT_SAVE_MONEY:
-            {//´æÇ®
+            {//å­˜é’±
 
                 if(pHuman->GetMoney() < uAmount)
                 {
@@ -87,7 +87,7 @@ UINT CGPlayerShopMoneyHandler::Execute( CGPlayerShopMoney* pPacket, Player* pPla
                 {
                     UINT uBaseMoney = pPlayerShop->GetBaseMoney();
                     if(uBaseMoney+uAmount > 10000000)
-                    {//³¬¹ý1000½ð
+                    {//è¶…è¿‡1000é‡‘
                         Assert(0);
                         g_pLog->FastSaveLog( LOG_FILE_1, "ERROR:CGPlayerShopMoneyHandler::Name=%s, uBaseMoney+uAmount > 10000000"
                             ,pHuman->GetName()) ;
@@ -96,7 +96,7 @@ UINT CGPlayerShopMoneyHandler::Execute( CGPlayerShopMoney* pPacket, Player* pPla
                     UINT    uRealBaseMoney =  (UINT)(uBaseMoney+(FLOAT)uAmount*(1-0.03));
                     pPlayerShop->SetBaseMoney(uRealBaseMoney);
 
-                    //³äÈë±¾½ð£ºAAAÍùµêÆÌ±¾½ðÖÐ³äÈë£¨»»ÐÐ£©£¿½ð£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£©
+                    //å……å…¥æœ¬é‡‘ï¼šAAAå¾€åº—é“ºæœ¬é‡‘ä¸­å……å…¥ï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼‰
                     RecordOpt::Excute(REC_INPUT_BASE, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)(uRealBaseMoney - uBaseMoney));
                     
                     MsgToClient.SetType(GCPlayerShopMoney::TYPE_BASE_MONEY);
@@ -113,7 +113,7 @@ UINT CGPlayerShopMoneyHandler::Execute( CGPlayerShopMoney* pPacket, Player* pPla
                     MsgToClient.SetAmount(uRealProfitMoney);
                     MsgToClient.SetShopSerial(pPlayerShop->IncSerial());
 
-                    //³äÈëÓ®Àû×Ê½ð£ºAAAÍùµêÆÌÓ®Àû×Ê½ðÖÐ³äÈë£¨»»ÐÐ£©£¿½ð£¿Òø£¿Í­£¨AAAÎª²Ù×÷ÕßÃû£©
+                    //å……å…¥èµ¢åˆ©èµ„é‡‘ï¼šAAAå¾€åº—é“ºèµ¢åˆ©èµ„é‡‘ä¸­å……å…¥ï¼ˆæ¢è¡Œï¼‰ï¼Ÿé‡‘ï¼Ÿé“¶ï¼Ÿé“œï¼ˆAAAä¸ºæ“ä½œè€…åï¼‰
                     RecordOpt::Excute(REC_INPUT_PROFIT, pPlayerShop->GetManagerRecord(), (CHAR*)pHuman->GetName(), (INT)(uRealProfitMoney - uProfitMoney));
                     
                     pGamePlayer->SendPacket(&MsgToClient);
@@ -133,7 +133,7 @@ UINT CGPlayerShopMoneyHandler::Execute( CGPlayerShopMoney* pPacket, Player* pPla
             }
             break;
         case CGPlayerShopMoney::OPT_GET_MONEY:
-            {//È¡Ç®
+            {//å–é’±
                 if(nType == CGPlayerShopMoney::TYPE_BASE_MONEY)
                 {
                     UINT uBaseMoney = pPlayerShop->GetBaseMoney();

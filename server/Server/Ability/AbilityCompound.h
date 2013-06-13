@@ -11,7 +11,7 @@ public:
     AbilityCompound(const Ability& a) : Ability(a) {}
 
     /*
-     * 判断是否可以合成
+     * 鍒ゆ柇鏄惁鍙互鍚堟垚
      */
     virtual
         ORESULT                    CanUseAbility(Obj_Human* pHuman);
@@ -24,7 +24,7 @@ public:
 
 protected:
     /*
-     * 有配方的合成成功情况
+     * 鏈夐厤鏂圭殑鍚堟垚鎴愬姛鎯呭喌
      */
     virtual
         ORESULT                    OnProcSuccess(Obj_Human* pHuman, const _PRESCRIPTION_DATA* pPrescrData);
@@ -36,7 +36,7 @@ protected:
         ORESULT                    OnProcFailure(Obj_Human* pHuman, const _PRESCRIPTION_DATA* pPrescrData);
 
     /*
-     * 判断是否满足配方要求
+     * 鍒ゆ柇鏄惁婊¤冻閰嶆柟瑕佹眰
      */
     virtual
         ORESULT                    IsFitPrescr(Obj_Human* pHuman, const _PRESCRIPTION_DATA* pPrescrData);

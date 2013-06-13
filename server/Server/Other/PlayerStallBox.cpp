@@ -1,13 +1,13 @@
 #include "stdafx.h"
 /************************************************************************/
 /*
-´´½¨ÈÕÆÚ:    2006Äê2ÔÂ13ÈÕ
-´´½¨Ê±¼ä:    11:54
-ÎÄ¼şÃû³Æ:    PlayerStallBox.h
-ÎÄ¼şÂ·¾¶:    d:\Prj\Server\Server\Other\PlayerStallBox.cpp
+åˆ›å»ºæ—¥æœŸ:    2006å¹´2æœˆ13æ—¥
+åˆ›å»ºæ—¶é—´:    11:54
+æ–‡ä»¶åç§°:    PlayerStallBox.h
+æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Other\PlayerStallBox.cpp
 
-ÎÄ¼ş¹¦ÄÜ£º    Íæ¼ÒÉÌµêµÄÒ»¸ö¹ñÌ¨
-ĞŞ¸Ä¼ÍÂ¼£º
+æ–‡ä»¶åŠŸèƒ½ï¼š    ç©å®¶å•†åº—çš„ä¸€ä¸ªæŸœå°
+ä¿®æ”¹çºªå½•ï¼š
 */
 /************************************************************************/
 
@@ -21,10 +21,10 @@ VOID PlayerStallBox::Init(StallBoxDB_t* pStallBoxDB, PlayerShop* pShop)
         return;
     m_pStallBoxDB            = pStallBoxDB;
 
-    //Á¬½Óµ½ÔËĞĞÊ±Êı¾İ
+    //è¿æ¥åˆ°è¿è¡Œæ—¶æ•°æ®
     m_StallBoxRT.m_pShop    =    pShop;
 
-    //³õÊ¼»¯container
+    //åˆå§‹åŒ–container
     _ITEMCONTAINER_INIT    containInit;
     containInit.m_nContainerSize    =    STALL_BOX_SIZE;
     m_StallBoxRT.m_Container.Init(&containInit);
@@ -36,7 +36,7 @@ VOID PlayerStallBox::Init(StallBoxDB_t* pStallBoxDB, PlayerShop* pShop)
         m_StallBoxRT.m_Serial[i] = 0;
     }
 
-    //³õÊ¼»¯container
+    //åˆå§‹åŒ–container
     _ITEMCONTAINER_INIT    petcontainInit;
     petcontainInit.m_nContainerSize    =    STALL_PET_BOX_SIZE;
     m_StallBoxRT.m_PetContainer.Init(&petcontainInit);

@@ -36,7 +36,7 @@ namespace Packets
             m_DirtyFlags.ClearAllFlags();
         }
 
-        //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+        //å…¬ç”¨ç»§æ‰¿æ¥å£
         virtual BOOL            Read(SocketInputStream& iStream);
         virtual BOOL            Write(SocketOutputStream& oStream)const;
         virtual UINT            Execute(Player* pPlayer);
@@ -57,7 +57,7 @@ namespace Packets
                                 }
 
     public:
-        //Ê¹ÓÃÊı¾İ½Ó¿Ú
+        //ä½¿ç”¨æ•°æ®æ¥å£
         VOID            SetReceiverID(ObjID_t id) {m_nReceiverID = id;}
         ObjID_t            GetReceiverID(VOID)const {return m_nReceiverID;}
 
@@ -88,15 +88,15 @@ namespace Packets
         BOOL            IsStrikePointModificationDirty(VOID) const {return m_DirtyFlags.GetFlagByIndex(IDX_STRIKE_POINT_MODIFICATION);};
         
     private:
-        ObjID_t            m_nReceiverID;    // Ğ§¹û½ÓÊÜÕßµÄID
-        ObjID_t            m_nSenderID;    // Ğ§¹û·¢ËÍÕßµÄID
-        INT                m_nSenderLogicCount; //Ğ§¹û´´½¨ÕßµÄÂß¼­¼ÆÊı
-        INT                m_nHpModification; //ÉúÃü±ä»¯Á¿
-        INT                m_nMpModification; //ÄÚÁ¦±ä»¯Á¿
-        INT             m_nRageModification; //Å­Æø±ä»¯Á¿
-        INT                m_nStrikePointModification; //Á¬»÷µã±ä»¯Á¿
-        BOOL            m_bIsCriticalHit;    //ÊÇ·ñÊÇ»áĞÄÒ»»÷
-        DirtyFlagSet_T     m_DirtyFlags; //ÓĞÄÄĞ©ÓòÓĞÊı¾İµÄÔà±ê¼Ç
+        ObjID_t            m_nReceiverID;    // æ•ˆæœæ¥å—è€…çš„ID
+        ObjID_t            m_nSenderID;    // æ•ˆæœå‘é€è€…çš„ID
+        INT                m_nSenderLogicCount; //æ•ˆæœåˆ›å»ºè€…çš„é€»è¾‘è®¡æ•°
+        INT                m_nHpModification; //ç”Ÿå‘½å˜åŒ–é‡
+        INT                m_nMpModification; //å†…åŠ›å˜åŒ–é‡
+        INT             m_nRageModification; //æ€’æ°”å˜åŒ–é‡
+        INT                m_nStrikePointModification; //è¿å‡»ç‚¹å˜åŒ–é‡
+        BOOL            m_bIsCriticalHit;    //æ˜¯å¦æ˜¯ä¼šå¿ƒä¸€å‡»
+        DirtyFlagSet_T     m_DirtyFlags; //æœ‰å“ªäº›åŸŸæœ‰æ•°æ®çš„è„æ ‡è®°
     };
 
     class GCDetailHealsAndDamagesFactory : public PacketFactory 

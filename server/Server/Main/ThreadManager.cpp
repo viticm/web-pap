@@ -41,8 +41,8 @@ __ENTER_FUNCTION
 
     BOOL ret = FALSE ;
 
-    //¸ù¾İÅäÖÃÎÄ¼ş¶ÁÈ¡ĞèÒªÊ¹ÓÃµÄ³¡¾°£¬ÎªÃ¿¸ö³¡¾°·ÖÅäÒ»¸öÏß³Ì£»
-    //¶ÁÈ¡³¡¾°ÊıÁ¿
+    //æ ¹æ®é…ç½®æ–‡ä»¶è¯»å–éœ€è¦ä½¿ç”¨çš„åœºæ™¯ï¼Œä¸ºæ¯ä¸ªåœºæ™¯åˆ†é…ä¸€ä¸ªçº¿ç¨‹ï¼›
+    //è¯»å–åœºæ™¯æ•°é‡
     UINT count = MaxSceneCount ;
 
     Assert( count<=MAX_SCENE ) ;
@@ -51,17 +51,17 @@ __ENTER_FUNCTION
     UINT i ;
     for( i=0; i<count; i++ )
     {
-        //¶ÁÈ¡³¡¾°¡°i¡±
+        //è¯»å–åœºæ™¯â€œiâ€
         SceneID_t SceneID = (SceneID_t)(g_Config.m_SceneInfo.m_pScene[i].m_SceneID) ;
         Assert( SceneID<MAX_SCENE ) ;
 
         UINT ServerID = g_Config.m_SceneInfo.m_pScene[i].m_ServerID ;
         if( ServerID != g_Config.m_ConfigInfo.m_ServerID )
-        {//²»ÊÇµ±Ç°·şÎñÆ÷µÄ³ÌĞòÔËĞĞµÄ³¡¾°
+        {//ä¸æ˜¯å½“å‰æœåŠ¡å™¨çš„ç¨‹åºè¿è¡Œçš„åœºæ™¯
             continue ;
         }
         if( g_Config.m_SceneInfo.m_pScene[i].m_IsActive==0 )
-        {//²»ÊÇ¼¤»îµÄ³¡¾°
+        {//ä¸æ˜¯æ¿€æ´»çš„åœºæ™¯
             continue ;
         }
 
@@ -87,24 +87,24 @@ __ENTER_FUNCTION
 
     for( i=0; i<count; i++ )
     {
-        //¶ÁÈ¡³¡¾°¡°i¡±
+        //è¯»å–åœºæ™¯â€œiâ€
         SceneID_t SceneID = (SceneID_t)(g_Config.m_SceneInfo.m_pScene[i].m_SceneID) ;
         Assert( SceneID<MAX_SCENE ) ;
 
         UINT ServerID = g_Config.m_SceneInfo.m_pScene[i].m_ServerID ;
         if( ServerID != g_Config.m_ConfigInfo.m_ServerID )
-        {//²»ÊÇµ±Ç°·şÎñÆ÷µÄ³ÌĞòÔËĞĞµÄ³¡¾°
+        {//ä¸æ˜¯å½“å‰æœåŠ¡å™¨çš„ç¨‹åºè¿è¡Œçš„åœºæ™¯
             continue ;
         }
         if( g_Config.m_SceneInfo.m_pScene[i].m_IsActive==0 )
-        {//²»ÊÇ¼¤»îµÄ³¡¾°
+        {//ä¸æ˜¯æ¿€æ´»çš„åœºæ™¯
             continue ;
         }
 
         SceneThread* pSceneThread = (SceneThread*)(m_pThreadPool->GetThreadByIndex(g_Config.m_SceneInfo.m_pScene[i].m_ThreadIndex)) ;
         if( pSceneThread==NULL )
         {
-            AssertEx(FALSE,"Ã»ÓĞ´´½¨ËùĞèµÄÏß³Ì") ;
+            AssertEx(FALSE,"æ²¡æœ‰åˆ›å»ºæ‰€éœ€çš„çº¿ç¨‹") ;
         }
         else
         {

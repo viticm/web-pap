@@ -15,9 +15,9 @@ UINT GWCityApplyNewCityHandler::Execute( GWCityApplyNewCity* pPacket, Player* pP
     __ENTER_FUNCTION
 
         ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
-        //入口场景ID
+        //鍏ュ彛鍦烘櫙ID
         SceneID_t    PortSceneID        =    pPacket->GetSceneID();
-        //申请人GUID
+        //鐢宠浜篏UID
         GUID_t        ApplicantGuid    =    pPacket->GetPlayerGuid();
 
         WGCityError MsgError;
@@ -31,7 +31,7 @@ UINT GWCityApplyNewCityHandler::Execute( GWCityApplyNewCity* pPacket, Player* pP
             return PACKET_EXE_CONTINUE ;
         }
 
-        //这里要判定当前任务是否有权利建立城市，当前工会是否有资格申请城市
+        //杩欓噷瑕佸垽瀹氬綋鍓嶄换鍔℃槸鍚︽湁鏉冨埄寤虹珛鍩庡競锛屽綋鍓嶅伐浼氭槸鍚︽湁璧勬牸鐢宠鍩庡競
         GuildID_t guildID = pUser->GetGuildID();
         Guild* pGuild = g_pGuildManager->GetGuild( guildID );
 
@@ -42,8 +42,8 @@ UINT GWCityApplyNewCityHandler::Execute( GWCityApplyNewCity* pPacket, Player* pP
         //    return PACKET_EXE_CONTINUE ;
         //}
 
-        //合法
-        //通知Server去load城市场景，返回城市场景号
+        //鍚堟硶
+        //閫氱煡Server鍘籰oad鍩庡競鍦烘櫙锛岃繑鍥炲煄甯傚満鏅彿
         WGCityApplyNewCity MsgToServer;
         MsgToServer.SetSceneID(PortSceneID);
         MsgToServer.SetPlayerGuid(ApplicantGuid);

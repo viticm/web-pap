@@ -30,7 +30,7 @@ enum ENUM_CHARACTER_LOGIC
     CHARACTER_LOGIC_USE_SKILL,
     //CHARACTER_LOGIC_DEAD,
     //CHARACTER_LOGIC_SIT,
-    CHARACTER_LOGIC_USE_ABILITY,    // Ê¹ÓÃÉú»î¼¼ÄÜ
+    CHARACTER_LOGIC_USE_ABILITY,    // ä½¿ç”¨ç”Ÿæ´»æŠ€èƒ½
 
     CHARACTER_LOGIC_NUMBERS
 };
@@ -220,7 +220,7 @@ public:
     VOID OnMyTrapActivated(Obj_Special& rTrap);
     VOID OnDepleteStrikePoints(INT nStrikePoints);
     
-// Ğ§¹û²ã´¦Àí
+// æ•ˆæœå±‚å¤„ç†
 public:
     INT            Impact_GetListSize(VOID)const;
     VOID         Impact_HeartBeat(VOID);
@@ -236,12 +236,12 @@ public:
     BOOL         Impact_HaveImpactOfSpecificMutexID(INT const nMutexID);
     BOOL         Impact_HaveImpactOfSpecificSkillID(INT const nSkillID);
     BOOL         Impact_HaveImpactInSpecificCollection(INT const nCollectionID);
-    INT            Impact_DispelSpecificImpactByDataIndex(INT nDataIndex, INT nNeedDispel=-1);//-1ÊÇÇıÉ¢ËùÓĞµÄ´ËÀàĞ§¹û
-    INT            Impact_DispelImpactOfSpecificImpactID(INT nImpactID, INT nNeedDispel=-1); //-1ÊÇÇıÉ¢ËùÓĞµÄ´ËÀàĞ§¹û
-    INT            Impact_DispelImpactOfSpecificMutexID(INT nMutexID, INT nNeedDispel=-1);//-1ÊÇÇıÉ¢ËùÓĞµÄ´ËÀàĞ§¹û
-    INT            Impact_DispelImpactOfSpecificLogicID(INT nLogicID, INT nNeedDispel=-1);//-1ÊÇÇıÉ¢ËùÓĞµÄ´ËÀàĞ§¹û
-    INT            Impact_DispelImpactOfSpecificSkillID(INT nSkillID, INT nNeedDispel=-1);//-1ÊÇÇıÉ¢ËùÓĞµÄ´ËÀàĞ§¹û
-    INT            Impact_DispelImpactInSpecificCollection(INT nCollectionID, INT nDispelLevel, INT nNeedDispel=-1);//-1ÊÇÇıÉ¢ËùÓĞµÄ´ËÀàĞ§¹û
+    INT            Impact_DispelSpecificImpactByDataIndex(INT nDataIndex, INT nNeedDispel=-1);//-1æ˜¯é©±æ•£æ‰€æœ‰çš„æ­¤ç±»æ•ˆæœ
+    INT            Impact_DispelImpactOfSpecificImpactID(INT nImpactID, INT nNeedDispel=-1); //-1æ˜¯é©±æ•£æ‰€æœ‰çš„æ­¤ç±»æ•ˆæœ
+    INT            Impact_DispelImpactOfSpecificMutexID(INT nMutexID, INT nNeedDispel=-1);//-1æ˜¯é©±æ•£æ‰€æœ‰çš„æ­¤ç±»æ•ˆæœ
+    INT            Impact_DispelImpactOfSpecificLogicID(INT nLogicID, INT nNeedDispel=-1);//-1æ˜¯é©±æ•£æ‰€æœ‰çš„æ­¤ç±»æ•ˆæœ
+    INT            Impact_DispelImpactOfSpecificSkillID(INT nSkillID, INT nNeedDispel=-1);//-1æ˜¯é©±æ•£æ‰€æœ‰çš„æ­¤ç±»æ•ˆæœ
+    INT            Impact_DispelImpactInSpecificCollection(INT nCollectionID, INT nDispelLevel, INT nNeedDispel=-1);//-1æ˜¯é©±æ•£æ‰€æœ‰çš„æ­¤ç±»æ•ˆæœ
     OWN_IMPACT* Impact_GetFirstImpactOfSpecificImpactID(INT nImpactID);
     OWN_IMPACT* Impact_GetFirstImpactOfSpecificLogicID(INT nLogicID);
     OWN_IMPACT* Impact_GetFirstImpactOfSpecificMutexID(INT nMutexID);
@@ -281,7 +281,7 @@ private:
 private:
     virtual VOID     Impact_InitList(VOID);
     UINT     m_nSNSeedOfImpacts;
-//³ÖĞøĞÔĞ§¹û
+//æŒç»­æ€§æ•ˆæœ
 protected:
     UINT                    Impact_GetSNSeed(VOID) const{return m_nSNSeedOfImpacts;};
     VOID                    Impact_SetSNSeed(INT const nValue) {m_nSNSeedOfImpacts=nValue;};
@@ -291,7 +291,7 @@ private:
     //_IMPACT_LIST    m_ImpactList;
     
 ///////////////////////////////////////////////////////////////////////////////////
-// ¼¼ÄÜ²ãºÍÕ½¶·Ïà¹Ø
+// æŠ€èƒ½å±‚å’Œæˆ˜æ–—ç›¸å…³
 public:
     Obj*             GetMyShadowGuard(VOID);
     Obj*             GetMyPet(VOID);
@@ -322,14 +322,14 @@ public:
     SkillInfo_T&    GetSkillInfo(VOID) {return m_SkillInfo;};
     TargetingAndDepletingParams_T& GetTargetingAndDepletingParams(VOID) {return m_TargetingAndDepletingParams;};
 protected:
-    Time_t    m_nElapsedRevocerTick; //ÒÑ¾­ÊÅÈ¥µÄ»Ö¸´Ê±¼ä
+    Time_t    m_nElapsedRevocerTick; //å·²ç»é€å»çš„æ¢å¤æ—¶é—´
 private:
-    ObjID_t m_nLockedTargetID; //Ëø¶¨µÄÄ¿±ê 
-    SkillInfo_T m_SkillInfo; //¼¼ÄÜÊµÀı
-    TargetingAndDepletingParams_T m_TargetingAndDepletingParams; //Ä¿±êºÍÏûºÄÊı¾İ
-    Time_t    m_nActionTime; //ÅäºÏ¿Í»§¶Ë×÷¶¯×÷ÑİÊ¾µÄÊ±¼ä¿ØÖÆ£¬Ê±¼ä²»ÎªÁãÊ±²»Òª½øĞĞÏÂÒ»¸ö¶¯×÷¡£Ïàµ±ÓÚÉíÌå½©Ö±²»ÄÜ¶¯×÷.
+    ObjID_t m_nLockedTargetID; //é”å®šçš„ç›®æ ‡ 
+    SkillInfo_T m_SkillInfo; //æŠ€èƒ½å®ä¾‹
+    TargetingAndDepletingParams_T m_TargetingAndDepletingParams; //ç›®æ ‡å’Œæ¶ˆè€—æ•°æ®
+    Time_t    m_nActionTime; //é…åˆå®¢æˆ·ç«¯ä½œåŠ¨ä½œæ¼”ç¤ºçš„æ—¶é—´æ§åˆ¶ï¼Œæ—¶é—´ä¸ä¸ºé›¶æ—¶ä¸è¦è¿›è¡Œä¸‹ä¸€ä¸ªåŠ¨ä½œã€‚ç›¸å½“äºèº«ä½“åƒµç›´ä¸èƒ½åŠ¨ä½œ.
     Time_t  m_nAutoRepeatCooldown;
-//¼¼ÄÜ²ãºÍĞÄ·¨
+//æŠ€èƒ½å±‚å’Œå¿ƒæ³•
 public:
     VOID            Skill_ExecFromItemScript(SkillID_t const nID);
     VOID            Skill_ExecFromScript(SkillID_t const nID, BYTE nLevel, ObjID_t nTargetID, WORLD_POS& pos, FLOAT fDir, BOOL bPassSkillCheck);
@@ -354,12 +354,12 @@ public:
 
 protected:
 private:
-    Obj_Character*    m_pGuard; // ·ÖÉíÖ¸Õë³ÉÔ±
+    Obj_Character*    m_pGuard; // åˆ†èº«æŒ‡é’ˆæˆå‘˜
 
-// ¶¯×÷²ã
-// ¶¯×÷¹ÜÀíºÍ¹æÔòÔÚÕâÀïÊµÏÖ
+// åŠ¨ä½œå±‚
+// åŠ¨ä½œç®¡ç†å’Œè§„åˆ™åœ¨è¿™é‡Œå®ç°
 public:
-    //¶¯×÷µÄ´¦ÀíÎ¯ÍĞ¸øActionDelegator_T´¦Àí
+    //åŠ¨ä½œçš„å¤„ç†å§”æ‰˜ç»™ActionDelegator_Tå¤„ç†
 protected:
     ActionParams_T&    GetActionParams(VOID) {return m_ActionParams;}
     ActionLogic_T const* GetActionLogic(VOID) {return m_pActionLogic;}
@@ -367,7 +367,7 @@ protected:
 private:
     ActionParams_T            m_ActionParams;
     ActionLogic_T const*     m_pActionLogic;
-// ÃÅÅÉÌØĞÔµÄ´¦Àí
+// é—¨æ´¾ç‰¹æ€§çš„å¤„ç†
 public:
     VOID MenPai_OnDamage(INT nDamage);
     VOID MenPai_OnDamageTarget(INT nDamage);
@@ -377,14 +377,14 @@ public:
 protected:
 private:
 
-// ³£ÓÃÊôĞÔºÍ±ê¼Ç
+// å¸¸ç”¨å±æ€§å’Œæ ‡è®°
 public:
-    //Obj_Character id ÊÇµ±Ç°½ÇÉ«ÔÚCharacterManagerÀàÖĞµÄÊı×éÏÂ±ê£¬ÆäÖµÓÉ
-    //CharacterManagerÍ³Ò»¸ºÔğ´¦Àí
+    //Obj_Character id æ˜¯å½“å‰è§’è‰²åœ¨CharacterManagerç±»ä¸­çš„æ•°ç»„ä¸‹æ ‡ï¼Œå…¶å€¼ç”±
+    //CharacterManagerç»Ÿä¸€è´Ÿè´£å¤„ç†
     VOID    SetCharacterID( ObjID_t id ){ m_CharacterID = id ; }
     ObjID_t    GetCharacterID( ){ return m_CharacterID ; }
 
-    // »ñÈ¡AIÊı¾İ
+    // è·å–AIæ•°æ®
     AI_Character*    GetAIObj( VOID ) const {  return m_pAI_Character; }
 // Flags
 public:
@@ -412,7 +412,7 @@ public:
     //INT                        GetMoveHandleID( VOID )const{ return m_paramLogic_Move.m_nHandleID; }
 
 protected:
-    // ½ûÖ¹¿ª·Å
+    // ç¦æ­¢å¼€æ”¾
     VOID                    SetCharacterLogic( ENUM_CHARACTER_LOGIC eLogic );
 
     virtual VOID            OnCharacterLogicStopped(BOOL bAbortive);
@@ -420,16 +420,16 @@ protected:
 public:
     VOID                    FaceTo( const WORLD_POS* pPos );
     VOID                    FaceTo( const Obj* pObj );
-    BOOL                    IsLimitMove( VOID );            // ÊÇ·ñÏŞÖÆÁËÒÆ¶¯²Ù×÷
+    BOOL                    IsLimitMove( VOID );            // æ˜¯å¦é™åˆ¶äº†ç§»åŠ¨æ“ä½œ
     VOID                    DirectMoveTo(const WORLD_POS* pTar) ;
     /*
-    BOOL                    IsLimitUseSkill( VOID );        // ÊÇ·ñÏŞÖÆÁËÊ¹ÓÃ¼¼ÄÜµÄ²Ù×÷
-    BOOL                    IsLimitAttack( VOID );            // ÊÇ·ñÏŞÖÆÁË¹¥»÷
-    BOOL                    IsLimitAllHandle( VOID );        // ÊÇ·ñÏŞÖÆÁËËùÓĞ²Ù×÷
+    BOOL                    IsLimitUseSkill( VOID );        // æ˜¯å¦é™åˆ¶äº†ä½¿ç”¨æŠ€èƒ½çš„æ“ä½œ
+    BOOL                    IsLimitAttack( VOID );            // æ˜¯å¦é™åˆ¶äº†æ”»å‡»
+    BOOL                    IsLimitAllHandle( VOID );        // æ˜¯å¦é™åˆ¶äº†æ‰€æœ‰æ“ä½œ
     */
 
 //=========================================================================================
-// ÒÔÏÂĞĞÎª¡¢Âß¼­Ö»ÄÜÓÉObj×ÔÉí»òAI²ÅÄÜµ÷ÓÃ(½ûÖ¹¿ª·Å!!!) -- 06/03/16
+// ä»¥ä¸‹è¡Œä¸ºã€é€»è¾‘åªèƒ½ç”±Objè‡ªèº«æˆ–AIæ‰èƒ½è°ƒç”¨(ç¦æ­¢å¼€æ”¾!!!) -- 06/03/16
 //=========================================================================================
 private:
     ORESULT                    Do_Idle( VOID );
@@ -447,7 +447,7 @@ private:
     BOOL                    Obj_Logic_UseSkill( UINT uTime );
 
 //=========================================================================================
-// ÒÔÏÂÁ½¸ö³ÉÔ±º¯ÊıÎªÉú»î¼¼ÄÜ·şÎñ£¬·ÅÔÚÕâÀï²»Ì«ÊÊºÏ£¬½¨ÒéÓë¼¼ÄÜÏµÍ³ºÏ²¢ -- 06/03/16
+// ä»¥ä¸‹ä¸¤ä¸ªæˆå‘˜å‡½æ•°ä¸ºç”Ÿæ´»æŠ€èƒ½æœåŠ¡ï¼Œæ”¾åœ¨è¿™é‡Œä¸å¤ªé€‚åˆï¼Œå»ºè®®ä¸æŠ€èƒ½ç³»ç»Ÿåˆå¹¶ -- 06/03/16
 //=========================================================================================
 protected:
     virtual ORESULT            Do_UseAbility( VOID ) { return OR_OK; }
@@ -462,7 +462,7 @@ public:
     virtual VOID            AskMsg_BaseAttrib( Obj_Human *pTargetHuman );
 
 //=========================================================================================
-// ¿É¼ûĞÔ
+// å¯è§æ€§
 //=========================================================================================
 public:
     virtual VOID            UpdateViewCharacter(VOID);
@@ -472,13 +472,13 @@ public:
     INT                        GetPrevDetectLevel(VOID)const{return m_nView_PrevDetectLevel;}
 
 protected:
-    INT            m_nView_PrevLevel;                    // µÈ¼¶
-    INT            m_nView_PrevStealthLevel;            // ÒşÉíµÈ¼¶
-    INT            m_nView_PrevDetectLevel;            // ·´ÒşµÈ¼¶
-    CMyTimer    m_UpdateViewCharacterTimer;            // ÒşÉí±ä»¯µÄĞÄÌø¼ä¸ô
+    INT            m_nView_PrevLevel;                    // ç­‰çº§
+    INT            m_nView_PrevStealthLevel;            // éšèº«ç­‰çº§
+    INT            m_nView_PrevDetectLevel;            // åéšç­‰çº§
+    CMyTimer    m_UpdateViewCharacterTimer;            // éšèº«å˜åŒ–çš„å¿ƒè·³é—´éš”
 
 //=========================================================================================
-// ¸´»îµãÏà¹Ø
+// å¤æ´»ç‚¹ç›¸å…³
 //=========================================================================================
 public:
 
@@ -500,7 +500,7 @@ public:
             INT            m_nMPPercent;
         };
 
-        // SP---ÁíÒ»ÖÖÅ­Æø½Ğ·¨¡£¡£ÒÔºóÔÙ¸Ärage°É¡£
+        // SP---å¦ä¸€ç§æ€’æ°”å«æ³•ã€‚ã€‚ä»¥åå†æ”¹rageå§ã€‚
         BOOL        m_bSPUsePercent;
         union
         {
@@ -508,7 +508,7 @@ public:
             INT            m_nSPPercent;
         };
 
-        // ¸´»îµã
+        // å¤æ´»ç‚¹
         SceneID_t        m_SceneID;
         WORLD_POS        m_Pos;
 
@@ -538,24 +538,24 @@ public:
     };
 
 public:
-    // ÊÇ·ñ¿ÉÒÔ¼¼ÄÜÊ¹ÓÃ¼¼ÄÜ¸´»î
+    // æ˜¯å¦å¯ä»¥æŠ€èƒ½ä½¿ç”¨æŠ€èƒ½å¤æ´»
     BOOL                    IsCanRelive( VOID )const;
 
-    // µÃµ½¸´»îĞÅÏ¢
-    // bSkillRelive        :    ÊÇ·ñÎª¼¼ÄÜ¸´»î
+    // å¾—åˆ°å¤æ´»ä¿¡æ¯
+    // bSkillRelive        :    æ˜¯å¦ä¸ºæŠ€èƒ½å¤æ´»
     virtual const _RELIVE_INFO        *GetReliveInfo( BOOL bSkillRelive )const;
 
-    // ÉèÖÃ¸´»îÊôĞÔ
-    // bSkillRelive        :    ÊÇ·ñÎª¼¼ÄÜ¸´»î
-    // pReliveInfo        :    ¸´»îĞÅÏ¢
+    // è®¾ç½®å¤æ´»å±æ€§
+    // bSkillRelive        :    æ˜¯å¦ä¸ºæŠ€èƒ½å¤æ´»
+    // pReliveInfo        :    å¤æ´»ä¿¡æ¯
     virtual VOID            SetReliveInfo( BOOL bSkillRelive, const _RELIVE_INFO *pReliveInfo );
 
-    // ÖØÖÃ¸´»îµÄĞÅÏ¢
+    // é‡ç½®å¤æ´»çš„ä¿¡æ¯
     VOID                    ResetReliveInfo( VOID );
 
 protected:
-    BOOL                    m_bCanSkillRelive;            // ÊÇ·ñÓĞ¼¼ÄÜ¸´»î
-    _RELIVE_INFO            m_SkillReliveInfo;            // ¼¼ÄÜ¸´»îµÄĞÅÏ¢
+    BOOL                    m_bCanSkillRelive;            // æ˜¯å¦æœ‰æŠ€èƒ½å¤æ´»
+    _RELIVE_INFO            m_SkillReliveInfo;            // æŠ€èƒ½å¤æ´»çš„ä¿¡æ¯
 
 
 public:
@@ -605,15 +605,15 @@ public:
 
     virtual UINT            GetDataID( VOID )const{ return UINT_MAX; }
 
-    virtual FLOAT            GetDropSearchRange() const {return 20.0f;}  //µôÂäËÑË÷°ë¾¶
-    virtual INT                GetDropTeamCount() const {return 1;}        //µôÂäÓĞĞ§×éÊıÁ¿
-    virtual INT                GetMinDamagePercent() const {return 20;};    //×îĞ¡ÉËÑª°Ù·Ö±È
+    virtual FLOAT            GetDropSearchRange() const {return 20.0f;}  //æ‰è½æœç´¢åŠå¾„
+    virtual INT                GetDropTeamCount() const {return 1;}        //æ‰è½æœ‰æ•ˆç»„æ•°é‡
+    virtual INT                GetMinDamagePercent() const {return 20;};    //æœ€å°ä¼¤è¡€ç™¾åˆ†æ¯”
 
 protected:
-    INT                        m_nMoodState;    // ±íÇé×´Ì¬
+    INT                        m_nMoodState;    // è¡¨æƒ…çŠ¶æ€
 
 public:
-//ÎïÆ·²¿·ÖĞé½Ó¿Ú
+//ç‰©å“éƒ¨åˆ†è™šæ¥å£
     virtual    BOOL            IsCarrayItem(UINT ItemType,UINT ItemCount)    { return TRUE;}
     virtual _ITEM_VALUE        ItemValue( BYTE AttrType )
     {//AttrType=enum ITEM_ATTRIBUTE 
@@ -623,13 +623,13 @@ public:
     };
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// ¸Ä±äËÙ¶È²¿·Ö
+// æ”¹å˜é€Ÿåº¦éƒ¨åˆ†
 public:
     enum ENUM_MOVE_MODE{
-        MOVE_MODE_HOBBLE = 0,    // õçõÇ
-        MOVE_MODE_WALK,            // ×ß    
-        MOVE_MODE_RUN,            // ÅÜ
-        MOVE_MODE_SPRINT,        // ¼²ÅÜ
+        MOVE_MODE_HOBBLE = 0,    // è¹’è·š
+        MOVE_MODE_WALK,            // èµ°    
+        MOVE_MODE_RUN,            // è·‘
+        MOVE_MODE_SPRINT,        // ç–¾è·‘
     };
 
     VOID SetMoveMode(ENUM_MOVE_MODE eMoveMode) { m_eMoveMode = eMoveMode; }
@@ -640,26 +640,26 @@ private:
 
 ///////////////////////////////////////////////////////////////////////////////////////
 protected :
-    CMyTimer                m_SendMsgTimer ;    // ·¢ËÍÍøÂçÏûÏ¢µÄ¼ÆÊ±
-    BOOL                    m_bSendMsgDirty;    // ÊÇ·ñ·¢ËÍ¹ıÍøÂçÏûÏ¢
+    CMyTimer                m_SendMsgTimer ;    // å‘é€ç½‘ç»œæ¶ˆæ¯çš„è®¡æ—¶
+    BOOL                    m_bSendMsgDirty;    // æ˜¯å¦å‘é€è¿‡ç½‘ç»œæ¶ˆæ¯
 
-    CMyTimer                m_AttrMsgTimer ;                // ÊôĞÔË¢ĞÂÏûÏ¢µÄ¼ÆÊ±
-    BYTE                    m_AttrMsgToTeamIntervalCount;    // ÊôĞÔË¢ĞÂÏûÏ¢Ë¢ĞÂµ½¶ÓÔ±µÄ¼ä¸ô´ÎÊı
-    BYTE                    m_PublicAttrVersion;            // ¹«¿ªÊôĞÔµÄ°æ±¾
-    BYTE                    m_ProtectedAttrVersion;            // ÏŞÖÆÊôĞÔµÄ°æ±¾
+    CMyTimer                m_AttrMsgTimer ;                // å±æ€§åˆ·æ–°æ¶ˆæ¯çš„è®¡æ—¶
+    BYTE                    m_AttrMsgToTeamIntervalCount;    // å±æ€§åˆ·æ–°æ¶ˆæ¯åˆ·æ–°åˆ°é˜Ÿå‘˜çš„é—´éš”æ¬¡æ•°
+    BYTE                    m_PublicAttrVersion;            // å…¬å¼€å±æ€§çš„ç‰ˆæœ¬
+    BYTE                    m_ProtectedAttrVersion;            // é™åˆ¶å±æ€§çš„ç‰ˆæœ¬
 
 protected :
-    ObjID_t                    m_CharacterID ;        // ½ÇÉ«ID
-    CMyTimer                m_RecoverTimer ;    // »Ø¸´Ê±¼ä¿ØÖÆÆ÷
-    INT                        m_nScriptTime ;//¶¨Ê±µ÷ÓÃ½Å±¾µÄÊ±¼ä£¬µ¥Î»£¨ºÁÃë£©
-    CMyTimer                m_ScriptTimer ;    //¶¨Ê±µ÷ÓÃ½Å±¾
+    ObjID_t                    m_CharacterID ;        // è§’è‰²ID
+    CMyTimer                m_RecoverTimer ;    // å›å¤æ—¶é—´æ§åˆ¶å™¨
+    INT                        m_nScriptTime ;//å®šæ—¶è°ƒç”¨è„šæœ¬çš„æ—¶é—´ï¼Œå•ä½ï¼ˆæ¯«ç§’ï¼‰
+    CMyTimer                m_ScriptTimer ;    //å®šæ—¶è°ƒç”¨è„šæœ¬
     _LOGICPARAM_MOVE        m_paramLogic_Move;
     ENUM_CHARACTER_LOGIC    m_eCharacterLogic;
     BOOL                    m_bCharacterLogicStopped;
-    INT                        m_DieTime;        //¶¨Ê±ËÀÍöÊ±¼ä
-    INT                        m_DriverLevel;    //×øÆïµÈ¼¶
+    INT                        m_DieTime;        //å®šæ—¶æ­»äº¡æ—¶é—´
+    INT                        m_DriverLevel;    //åéª‘ç­‰çº§
 
-    AI_Character*            m_pAI_Character;    //AIÊı¾İ
+    AI_Character*            m_pAI_Character;    //AIæ•°æ®
 
 public:
     virtual ObjID_t            GetOwnerID( VOID ) const { return INVALID_ID; }
@@ -675,7 +675,7 @@ public:
 protected :
     _CAMP_DATA                m_CampDataRefix;
 
-//½ÇÉ«ÊôĞÔ²¿·Ö
+//è§’è‰²å±æ€§éƒ¨åˆ†
 public:
     //StrikePoint
     virtual INT     GetMaxStrikePoint(VOID)        =    0;
@@ -836,7 +836,7 @@ public:
     //MountID
     virtual INT     GetMountID(VOID);
     virtual INT     GetBaseMountID(VOID) const{return INVALID_ID;};
-    virtual VOID    SetBaseMountID(INT const nID){}; //²»ÔÊĞí½øĞĞĞŞ¸Ä
+    virtual VOID    SetBaseMountID(INT const nID){}; //ä¸å…è®¸è¿›è¡Œä¿®æ”¹
     INT                GetMountIDRefix(VOID);
     VOID            SetMountIDRefix(ID_t const nID);
     BOOL            GetMountIDDirtyFlag(VOID);
@@ -848,7 +848,7 @@ public:
     //Exp Refix
     INT             GetExpRefix(VOID);
     INT             GetBaseExpRefix(VOID) const{return 100;};//100%
-    VOID            SetBaseExpRefix(INT const nID){}; //²»ÔÊĞí½øĞĞĞŞ¸Ä
+    VOID            SetBaseExpRefix(INT const nID){}; //ä¸å…è®¸è¿›è¡Œä¿®æ”¹
     INT                GetExpRefixRefix(VOID);
     VOID            SetExpRefixRefix(ID_t const nID);
     BOOL            GetExpRefixDirtyFlag(VOID);
@@ -1209,74 +1209,74 @@ public:
     VOID            MarkVisionRangeRefixDirtyFlag(VOID);
 protected:
     //Here open to sub class to modify those is virtual functions.
-    //ÕûÊıÊôĞÔ
+    //æ•´æ•°å±æ€§
     INT        GetIntAttr(CharIntAttrs_T::Index_T const nIdx) const {return m_IntAttrs.GetAttr(nIdx);};
     VOID     SetIntAttr(CharIntAttrs_T::Index_T const nIdx, INT const nValue){m_IntAttrs.SetAttr(nIdx, nValue);};
     VOID     ResetIntAttrs(VOID);
     
-    //ÕûÊıÊôĞÔĞŞÕı
+    //æ•´æ•°å±æ€§ä¿®æ­£
     INT        GetIntAttrRefix(CharIntAttrRefixs_T::Index_T const nIdx) const {return m_IntAttrRefixs.GetAttr(nIdx);};
     VOID    SetIntAttrRefix(CharIntAttrRefixs_T::Index_T const nIdx, INT const nValue){m_IntAttrRefixs.SetAttr(nIdx,nValue);};
     VOID     ResetIntAttrRefixs(VOID);
 
-    //BOOLÊôĞÔ
+    //BOOLå±æ€§
     BOOL    GetBoolAttr(CharBoolAttrs_T::Index_T const nIdx) const{return m_BoolAttrs.GetAttr(nIdx);};
     VOID    SetBoolAttr(CharBoolAttrs_T::Index_T const nIdx, BOOL const bFlag) {m_BoolAttrs.SetAttr(nIdx, bFlag);};
     VOID    ResetBoolAttr(VOID);
 
-    //ÉèÖÃËùÓĞµÄÔà±ê¼Ç
+    //è®¾ç½®æ‰€æœ‰çš„è„æ ‡è®°
     VOID    MarkAllIntAttrDirtyFlags(VOID) {m_IntAttrDirtyFlags.MarkAllFlags();};
     VOID    MarkAllBoolAttrDirtyFlags(VOID) {m_BoolAttrDirtyFlags.MarkAllFlags();};    
     VOID    MarkAllIntAttrRefixDirtyFlags(VOID) {m_IntAttrRefixDirtyFlags.MarkAllFlags();};
 
 private:
-    //ÕûÊıÊôĞÔÔà±ê¼Ç
+    //æ•´æ•°å±æ€§è„æ ‡è®°
     BOOL    GetIntAttrDirtyFlag(CharIntAttrs_T::Index_T const nIdx) const {return m_IntAttrDirtyFlags.GetFlagByIndex(nIdx);};
     VOID    ClearIntAttrDirtyFlag(CharIntAttrs_T::Index_T const nIdx) {m_IntAttrDirtyFlags.ClearFlagByIndex(nIdx);};
     VOID    MarkIntAttrDirtyFlag(CharIntAttrs_T::Index_T const nIdx) {m_IntAttrDirtyFlags.MarkFlagByIndex(nIdx);};
 
 
-    //BOOLÊôĞÔÔà±ê¼Ç
+    //BOOLå±æ€§è„æ ‡è®°
     BOOL    GetBoolAttrDirtyFlag(CharBoolAttrs_T::Index_T const nIdx) const {m_BoolAttrDirtyFlags.GetFlagByIndex(nIdx);};
     VOID    ClearBoolAttrDirtyFlag(CharBoolAttrs_T::Index_T const nIdx) {m_BoolAttrDirtyFlags.ClearFlagByIndex(nIdx);};
     VOID    MarkBoolAttrDirtyFlag(CharBoolAttrs_T::Index_T const nIdx) {m_BoolAttrDirtyFlags.MarkFlagByIndex(nIdx);};
 
-    //ÕûÊıÊôĞÔĞŞÕıµÄÔà±ê¼Ç
+    //æ•´æ•°å±æ€§ä¿®æ­£çš„è„æ ‡è®°
     BOOL    GetIntAttrRefixDirtyFlag(CharIntAttrRefixs_T::Index_T const nIdx) const {return m_IntAttrRefixDirtyFlags.GetFlagByIndex(nIdx);};
     VOID    ClearIntAttrRefixDirtyFlag(CharIntAttrRefixs_T::Index_T const nIdx) {m_IntAttrRefixDirtyFlags.ClearFlagByIndex(nIdx);};
     VOID    MarkIntAttrRefixDirtyFlag(CharIntAttrRefixs_T::Index_T const nIdx) {m_IntAttrRefixDirtyFlags.MarkFlagByIndex(nIdx);};
 /*
-    //BOOLÊôĞÔĞŞÕıµÄÔà±ê¼Ç
+    //BOOLå±æ€§ä¿®æ­£çš„è„æ ‡è®°
     BOOL    GetBoolAttrRefixDirtyFlag(CharBoolAttrs_T::Index_T const nIdx) const {return m_BoolAttrRefixDirtyFlags.GetFlagByIndex(nIdx);};
     VOID    ClearBoolAttrRefixDirtyFlag(CharBoolAttrs_T::Index_T const nIdx) {m_BoolAttrRefixDirtyFlags.ClearFlagByIndex(nIdx);};
     VOID    MarkBoolAttrRefixDirtyFlag(CharBoolAttrs_T::Index_T const nIdx) {m_BoolAttrRefixDirtyFlags.MarkFlagByIndex(nIdx);};
     VOID    MarkAllBoolAttrRefixDirtyFlags(VOID) {m_BoolAttrRefixDirtyFlags.MarkAllFlags();};
 */
 private :
-    //ÕûÊıÊôĞÔ
+    //æ•´æ•°å±æ€§
     CharIntAttrs_T m_IntAttrs;
-    //ÕûÊıÊôĞÔĞŞÕı
+    //æ•´æ•°å±æ€§ä¿®æ­£
     CharIntAttrRefixs_T m_IntAttrRefixs;
-    //ÕûÊıÊôĞÔÔà±ê¼Ç
+    //æ•´æ•°å±æ€§è„æ ‡è®°
     typedef BitFlagSet_T<CharIntAttrs_T::MAX_INDEX> CharIntAttrDirtyFlags_T;
     CharIntAttrDirtyFlags_T m_IntAttrDirtyFlags;
-    //BOOLÊôĞÔ
+    //BOOLå±æ€§
     CharBoolAttrs_T m_BoolAttrs;
-    //BOOLÊôĞÔÔà±ê¼Ç
+    //BOOLå±æ€§è„æ ‡è®°
     typedef BitFlagSet_T<CharBoolAttrs_T::MAX_INDEX> CharBoolAttrDirtyFlags_T;
     CharBoolAttrDirtyFlags_T m_BoolAttrDirtyFlags;
-    //ÕûÊıÊôĞÔĞŞÕıµÄÔà±ê¼Ç
+    //æ•´æ•°å±æ€§ä¿®æ­£çš„è„æ ‡è®°
     typedef BitFlagSet_T<CharIntAttrRefixs_T::MAX_INDEX> CharIntAttrRefixDirtyFlags_T;
     CharIntAttrRefixDirtyFlags_T m_IntAttrRefixDirtyFlags;
-/*    //BOOLÊôĞÔĞŞÕıµÄÔà±ê¼Ç
+/*    //BOOLå±æ€§ä¿®æ­£çš„è„æ ‡è®°
     typedef BitFlagSet_T<CharBoolAttrs_T::MAX_INDEX> CharBoolAttrRefixDirtyFlags_T;
     CharBoolAttrRefixDirtyFlags_T m_BoolAttrRefixDirtyFlags;
 */
 /////////////////////////////////////////////////////////////////////////////////
-//obj ¹«¹²ÊôĞÔ½Ó¿Ú
+//obj å…¬å…±å±æ€§æ¥å£
 
 /////////////////////////////////////////////////////////////////////////////////
-//character ¹«¹²ÊôĞÔ½Ó¿Ú
+//character å…¬å…±å±æ€§æ¥å£
 public :
 };
 #endif

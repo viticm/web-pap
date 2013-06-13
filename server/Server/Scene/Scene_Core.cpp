@@ -53,7 +53,7 @@
 #define MANAGER_HUMAN_LOGIC_INTERVAL            (0)
 #define MANAGER_MONSTER_LOGIC_INTERVAL            (200)
 #define MANAGER_PET_LOGIC_INTERVAL                (100)
-#define MANAGER_PLATFORM_LOGIC_INTERVAL            (10000000)        // ÎÞÐèµ÷ÓÃHeartBeat
+#define MANAGER_PLATFORM_LOGIC_INTERVAL            (10000000)        // æ— éœ€è°ƒç”¨HeartBeat
 #define MANAGER_SPECIAL_LOGIC_INTERVAL            (200)
 
 Scene::Scene( SceneID_t SceneID )
@@ -172,7 +172,7 @@ __ENTER_FUNCTION
     
     m_pZone = NULL ;
 
-    //³õÊ¼»¯ÁÄÌì¹ÜµÀÊý¾Ý
+    //åˆå§‹åŒ–èŠå¤©ç®¡é“æ•°æ®
     m_pChatPipe = new ChatPipe ;
     Assert( m_pChatPipe ) ;
     m_pChatPipe->Init( this ) ;
@@ -183,15 +183,15 @@ __ENTER_FUNCTION
     m_SceneType = SCENE_TYPE_GAMELOGIC ;
     m_Perfor.m_SceneID = SceneID ;
 
-    //³ÇÊÐÊý¾Ý
+    //åŸŽå¸‚æ•°æ®
     m_CityData.CleanUp();
 
-    //³õÊ¼»¯Ñ²ÂßÂ·µãÊý¾Ý
+    //åˆå§‹åŒ–å·¡é€»è·¯ç‚¹æ•°æ®
     m_pPatrolPathMgr = new PatrolPathMgr;
     Assert( m_pPatrolPathMgr );
     m_pPatrolPathMgr->Init( this );
 
-    //Õ½¶·ÊÂ¼þ¹ÜÀíÆ÷³õÊ¼»¯
+    //æˆ˜æ–—äº‹ä»¶ç®¡ç†å™¨åˆå§‹åŒ–
     m_EventCore.Init(this);
 
     m_pPacket_NewPlayer            = new GCNewPlayer;
@@ -297,7 +297,7 @@ __ENTER_FUNCTION
     BOOL    IsStallInfoExist;
 
     ////////////////////////////////////////////////////////////////////////////////
-    //¶ÁÈ¡³¡¾°ÎÄ¼þ .scn
+    //è¯»å–åœºæ™¯æ–‡ä»¶ .scn
     memset( szTemp, 0, _MAX_PATH ) ;
     GET_SCENE_FULL_PATH( szTemp, filename);
 
@@ -323,7 +323,7 @@ __ENTER_FUNCTION
         f.ReadText( "System", "growpointsetup", szGrowPointSetup, _MAX_PATH ) ;
     }
 
-    //Ì¯Î»ÐÅÏ¢
+    //æ‘Šä½ä¿¡æ¯
     memset( szStallInfo, 0, _MAX_PATH ) ;
     IsStallInfoExist=    f.ReadTextIfExist( "System", "stallinfodata", szStallInfo, _MAX_PATH ) ;
     if(IsStallInfoExist)
@@ -404,7 +404,7 @@ __ENTER_FUNCTION
     IsPlatformExist = load->m_IsPlatformExist ;
     IsStallInfoExist = load->m_IsStallInfoExist ;
 
-    //Çå³ýµ±Ç°³¡¾°ÖÐµÄPlayerÐÅÏ¢
+    //æ¸…é™¤å½“å‰åœºæ™¯ä¸­çš„Playerä¿¡æ¯
     if( m_pScenePlayerManager )
     {
         m_pScenePlayerManager->RemoveAllPlayer() ;
@@ -413,7 +413,7 @@ __ENTER_FUNCTION
     Log::SaveLog( SERVER_LOGFILE, "BeginLoad %d", this->SceneID() ) ;
 
     ////////////////////////////////////////////////////////////////////////////////
-    //¶ÁÈ¡µØÍ¼ÐÅÏ¢
+    //è¯»å–åœ°å›¾ä¿¡æ¯
     memset( szTemp, 0, _MAX_PATH ) ;
     GET_SCENE_FULL_PATH( szTemp, szMap );
     
@@ -459,7 +459,7 @@ __ENTER_FUNCTION
 
 
     //////////////////////////////////////////////////////////////////////////
-    // ¶ÁÈ¡Ñ²ÂßÂ·ÏßÐÅÏ¢ 
+    // è¯»å–å·¡é€»è·¯çº¿ä¿¡æ¯ 
     memset( szTemp, 0, _MAX_PATH ) ;
     GET_SCENE_FULL_PATH( szTemp, szPatrolPointData );
 
@@ -469,11 +469,11 @@ __ENTER_FUNCTION
 
 
     ////////////////////////////////////////////////////////////////////////////////
-    //¶ÁÈ¡¹ÖÎïÐÅÏ¢ ÒÑ¾­°üº¬¡°¶ÁÈ¡³èÎïÐÅÏ¢¡±
+    //è¯»å–æ€ªç‰©ä¿¡æ¯ å·²ç»åŒ…å«â€œè¯»å–å® ç‰©ä¿¡æ¯â€
     memset( szTemp, 0, _MAX_PATH ) ;
     GET_SCENE_FULL_PATH( szTemp, szMonster );
 
-    // ÖØÖÃ³èÎïÐÅÏ¢
+    // é‡ç½®å® ç‰©ä¿¡æ¯
     m_pPetManager->RemoveAllPet() ;
     m_pPetManager->Reset();
 
@@ -488,7 +488,7 @@ __ENTER_FUNCTION
 
 
     ////////////////////////////////////////////////////////////////////////////////
-    // ¶ÁÈ¡²Ù×÷Ì¨
+    // è¯»å–æ“ä½œå°
     if( IsPlatformExist != FALSE )
     {
         memset( szTemp, 0, _MAX_PATH );
@@ -512,16 +512,16 @@ __ENTER_FUNCTION
     }
 
     ////////////////////////////////////////////////////////////////////////////////
-    //¶ÁÈ¡Ì¯Î»ÐÅÏ¢, ²»ÄÜÓÃÓÚ¿ª±Ù¸±±¾
+    //è¯»å–æ‘Šä½ä¿¡æ¯, ä¸èƒ½ç”¨äºŽå¼€è¾Ÿå‰¯æœ¬
     if(IsStallInfoExist)
     {
         memset( szTemp, 0, _MAX_PATH );
         GET_SCENE_FULL_PATH( szTemp, szStallInfo );
 
         m_pStallInfoManager->CleanUp();
-        //·ÖÅäÄÚ´æ
+        //åˆ†é…å†…å­˜
         m_pStallInfoManager->Init( m_pMap->CX(), m_pMap->CZ() );
-        //¶ÁÈ¡Êý¾Ý
+        //è¯»å–æ•°æ®
         if(m_pStallInfoManager->Load( szTemp ) == FALSE)
         {
             m_pStallInfoManager->CleanUp();
@@ -539,23 +539,23 @@ __ENTER_FUNCTION
     }
 
     ////////////////////////////////////////////////////////////////////////////////
-    //¶ÁÈ¡³õÊ¼»¯Íæ¼ÒÉÌµê¹ÜÀíÆ÷
+    //è¯»å–åˆå§‹åŒ–çŽ©å®¶å•†åº—ç®¡ç†å™¨
     m_pPlayerShopManager->Init(this);
     Log::SaveLog( SERVER_LOGFILE, "Init m_pPlayerShopManager OK!" );
 
     ////////////////////////////////////////////////////////////////////////////////
-    //¶ÁÈ¡³õÊ¼»¯µôÂä°ü¹ÜÀíÆ÷
+    //è¯»å–åˆå§‹åŒ–æŽ‰è½åŒ…ç®¡ç†å™¨
     m_pItemBoxManager->Init();
     Log::SaveLog( SERVER_LOGFILE, "Init ItemBoxManager OK!" );
 
     ////////////////////////////////////////////////////////////////////////////////
-    //ÈÎÎñÏà¹Ø
+    //ä»»åŠ¡ç›¸å…³
     m_pLuaInterface->Destroy() ;
     m_pLuaInterface->Init(this);
     Log::SaveLog( SERVER_LOGFILE, "Init LuaInterface OK!" );
 
     ////////////////////////////////////////////////////////////////////////////////
-    //½Å±¾×¢²áÏà¹Ø
+    //è„šæœ¬æ³¨å†Œç›¸å…³
     if( !m_pScriptFileMgr->IsInit() )
     {
         m_pScriptFileMgr->Init( FILE_SCRIPT, FALSE);
@@ -563,7 +563,7 @@ __ENTER_FUNCTION
     Log::SaveLog( SERVER_LOGFILE, "Load ../Public/Data/script.dat OK!" );
 
     ////////////////////////////////////////////////////////////////////////////////
-    //³¡¾°¶¨Ê±Æ÷
+    //åœºæ™¯å®šæ—¶å™¨
     if( !m_pSceneTimers->IsInit() )
     {
         m_pSceneTimers->CreateTimer(g_Config.m_ConfigInfo.m_MaxTimerCount,this);
@@ -574,7 +574,7 @@ __ENTER_FUNCTION
     }
                                 
     ////////////////////////////////////////////////////////////////////////////////
-    //³¡¾°Éú³¤µã
+    //åœºæ™¯ç”Ÿé•¿ç‚¹
     if(IsGrowPointExist)
     {
         memset( szTemp, 0, _MAX_PATH ) ;
@@ -598,7 +598,7 @@ __ENTER_FUNCTION
     }
 
     ////////////////////////////////////////////////////////////////////////////////
-    //ÊÂ¼þÇø
+    //äº‹ä»¶åŒº
     memset( szTemp, 0, _MAX_PATH ) ;
     GET_SCENE_FULL_PATH( szTemp, szArea );
 
@@ -647,7 +647,7 @@ __ENTER_FUNCTION
     }
     m_Perfor.m_aPerfor[SPT_TICK_LOGIC] ++ ;
 
-    //ÍøÂç´¦Àí
+    //ç½‘ç»œå¤„ç†
     _MY_TRY
     {
         ret = m_pScenePlayerManager->Select( ) ;
@@ -692,7 +692,7 @@ __ENTER_FUNCTION
     }
     m_Perfor.m_aPerfor[SPT_TICK_PROCESSOUTPUTS] ++ ;
 
-    //ÏûÏ¢´¦Àí
+    //æ¶ˆæ¯å¤„ç†
     _MY_TRY
     {
         ret = m_pScenePlayerManager->ProcessCommands( ) ;
@@ -704,7 +704,7 @@ __ENTER_FUNCTION
     }
     m_Perfor.m_aPerfor[SPT_TICK_PROCESSCOMMANDS] ++ ;
 
-    //»º´æÏûÏ¢´¦Àí
+    //ç¼“å­˜æ¶ˆæ¯å¤„ç†
     _MY_TRY
     {
         ProcessCacheCommands( ) ;
@@ -716,7 +716,7 @@ __ENTER_FUNCTION
     m_Perfor.m_aPerfor[SPT_TICK_PROCESSCACHECOMMANDS] ++ ;
 
 
-    //Âß¼­´¦Àí
+    //é€»è¾‘å¤„ç†
     _MY_TRY
     {
         ret = HeartBeat( ) ;
@@ -791,10 +791,10 @@ __ENTER_FUNCTION
     BOOL ret ;
 
     UINT uTime = g_pTimeManager->CurrentTime() ;
-    //Éè¶¨´ËèåµÄÊ±¼ä
+    //è®¾å®šæ­¤æ¡¢çš„æ—¶é—´
     g_pTimeManager->SetTime();
 
-    //³¡¾°¹Ø±ÕÂß¼­
+    //åœºæ™¯å…³é—­é€»è¾‘
     if( m_QuitTimer.IsSetTimer() )
     {
         if( m_QuitTimer.CountingTimer( uTime ) )
@@ -811,11 +811,11 @@ __ENTER_FUNCTION
     else
     {
         if( m_pScenePlayerManager->HasPlayer() )
-        {//³¡¾°ÀïÓÐÈË
+        {//åœºæ™¯é‡Œæœ‰äºº
             m_CopySceneQuitTimer.CleanUp() ;
         }
         else if( GetSceneType()==SCENE_TYPE_COPY )
-        {//Èç¹ûµ±Ç°³¡¾°ÀïÃæÃ»ÓÐÈË£¬²¢ÇÒÃ»ÓÐÈË
+        {//å¦‚æžœå½“å‰åœºæ™¯é‡Œé¢æ²¡æœ‰äººï¼Œå¹¶ä¸”æ²¡æœ‰äºº
             if( !m_CopySceneQuitTimer.IsSetTimer() )
             {
                 m_CopySceneQuitTimer.BeginTimer(m_CopyData.m_NoUserCloseTime, uTime) ;
@@ -829,7 +829,7 @@ __ENTER_FUNCTION
             }
         }
         else if( GetSceneType()==SCENE_TYPE_CIT && m_CityData.m_bClose)
-        {//Æô¶¯¹Ø±Õ³ÇÊÐÂß¼­
+        {//å¯åŠ¨å…³é—­åŸŽå¸‚é€»è¾‘
             if( !m_CityData.m_DynamicSceneQuitTimer.IsSetTimer() )
             {
                 m_CityData.m_DynamicSceneQuitTimer.BeginTimer(5000, uTime) ;
@@ -847,7 +847,7 @@ __ENTER_FUNCTION
     }
     m_Perfor.m_aPerfor[SPT_HEARTBEAT_CLOSELOGIC] ++ ;
 
-    //³¡¾°¶¨Ê±Æ÷Âß¼­
+    //åœºæ™¯å®šæ—¶å™¨é€»è¾‘
     _MY_TRY
     {
         if( m_SceneTimer.CountingTimer(uTime) )
@@ -975,7 +975,7 @@ __ENTER_FUNCTION
     m_Perfor.m_aPerfor[SPT_HEARTBEAT_SCENETIMERS] ++ ;
 
 
-    //ÓÃ»§»ØÊÕ´¦Àí
+    //ç”¨æˆ·å›žæ”¶å¤„ç†
     _MY_TRY
     {
         ret = m_pRecyclePlayerManager->HeartBeat(uTime);
@@ -1081,7 +1081,7 @@ __ENTER_FUNCTION
                 }
                 if( uret == PACKET_EXE_ERROR )
                 {
-                    GetScenePlayerManager()->RemovePlayer( pPlayer, "°üÖ´ÐÐ´íÎó", TRUE ) ;
+                    GetScenePlayerManager()->RemovePlayer( pPlayer, "åŒ…æ‰§è¡Œé”™è¯¯", TRUE ) ;
                     MovePacket( PlayerID ) ;
                 }
                 else if( uret == PACKET_EXE_BREAK )
@@ -1098,7 +1098,7 @@ __ENTER_FUNCTION
                 {
                     bNeedRemove = FALSE ;
 
-                    GetScenePlayerManager()->RemovePlayer( pPlayer, "°üÖ´ÐÐÍê±Ïºó¶Ï¿ªÁ¬½Ó ", TRUE ) ;
+                    GetScenePlayerManager()->RemovePlayer( pPlayer, "åŒ…æ‰§è¡Œå®Œæ¯•åŽæ–­å¼€è¿žæŽ¥ ", TRUE ) ;
                     MovePacket( PlayerID ) ;
                 }
             }
@@ -1108,7 +1108,7 @@ __ENTER_FUNCTION
             }
         }
 
-        //»ØÊÕÏûÏ¢
+        //å›žæ”¶æ¶ˆæ¯
         if( bNeedRemove )
             g_pPacketFactoryManager->RemovePacket( pPacket ) ;
     }
@@ -1158,7 +1158,7 @@ __ENTER_FUNCTION
     m_pScenePlayerManager->Lock( ) ;
 
     if( m_PacketQue[m_Tail].m_pPacket )
-    {//»º³åÇøÂú
+    {//ç¼“å†²åŒºæ»¡
         BOOL ret = ResizeCache( ) ;
         Assert( ret ) ;
     }
@@ -1218,7 +1218,7 @@ __ENTER_FUNCTION
     m_pScenePlayerManager->Lock( ) ;
 
     if( m_PacketQue[m_Head].m_pPacket==NULL )
-    {//»º³åÇøÖÐÃ»ÓÐÏûÏ¢
+    {//ç¼“å†²åŒºä¸­æ²¡æœ‰æ¶ˆæ¯
         m_pScenePlayerManager->Unlock( ) ;
         return FALSE ;
     }

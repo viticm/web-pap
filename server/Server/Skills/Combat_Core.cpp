@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºCombat_Core.cpp
-// ¹¦ÄÜËµÃ÷£ºÕ½¶·Âß¼­ÄÚºË
+// æ–‡ä»¶åï¼šCombat_Core.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šæˆ˜æ–—é€»è¾‘å†…æ ¸
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -191,8 +191,8 @@ namespace Combat_Module
         __ENTER_FUNCTION
         nCriticalRate = Attr_VerifyCritical(nCriticalRate);
         if( nRand < nCriticalRate )
-            return TRUE;//»áĞÄÒ»»÷
-        return FALSE;//ÆÕÍ¨Ò»»÷
+            return TRUE;//ä¼šå¿ƒä¸€å‡»
+        return FALSE;//æ™®é€šä¸€å‡»
         __LEAVE_FUNCTION
         return FALSE;
     }

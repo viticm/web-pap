@@ -14,16 +14,16 @@ UINT LBAskAuthHandler::Execute(LBAskAuth* pPacket, Player* pPlayer )
         Assert(pPlayer);
         Assert(pPacket);
 
-        //нчхож╓
+        //Ф≈═Х╝╓Х╞│
         BLRetAuth Msg;
         Msg.SetAccount(pPacket->GetAccount());
         Msg.SetPlayerID(pPacket->GetPlayerID());
         Msg.SetResult(LOGINR_SUCCESS);
         Msg.SetAge(20);
         ((ServerPlayer*)pPlayer)->SendPacket(&Msg);
-        //нчхож╓
+        //Ф≈═Х╝╓Х╞│
 
-        //Webхож╓
+        //WebХ╝╓Х╞│
         //BWValidateUser BWMsg;
         //BWMsg.SetUserName(pPacket->GetAccount());
         //BWMsg.SetPassword(pPacket->GetPassWord());
@@ -31,7 +31,7 @@ UINT LBAskAuthHandler::Execute(LBAskAuth* pPacket, Player* pPlayer )
         //BWMsg.SetLoginID(((ServerPlayer*)pPlayer)->PlayerManagerID());
         //Msg.SetAge(pPacket->getAge());
         //g_pWebPlayer->SendPacket(&BWMsg);
-        //Webхож╓
+        //WebХ╝╓Х╞│
         return PACKET_EXE_CONTINUE;
 
     __LEAVE_FUNCTION

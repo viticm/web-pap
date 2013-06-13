@@ -3,25 +3,25 @@
 
 #include "Config.h"
 
-// È¡µÃÍæ¼ÒµÄ UserID
+// å–å¾—çŽ©å®¶çš„ UserID
 ID_t USER::GetUserID() const
 {
     return m_UserID;
 }
 
-// ÉèÖÃÍæ¼ÒµÄ UserID
+// è®¾ç½®çŽ©å®¶çš„ UserID
 VOID USER::SetUserID( ID_t id )
 {
     m_UserID = id;
 }
 
-// È¡µÃÍæ¼Ò×´Ì¬
+// å–å¾—çŽ©å®¶çŠ¶æ€
 UINT USER::UserStatus() const
 {
     return m_UserStatus;
 };
 
-// ÉèÖÃÍæ¼Ò×´Ì¬
+// è®¾ç½®çŽ©å®¶çŠ¶æ€
 VOID USER::SetUserStatus( UINT uStatus )
 {
     if( uStatus > US_NONE && uStatus < US_SIZE )
@@ -34,313 +34,313 @@ VOID USER::SetUserStatus( UINT uStatus )
     }
 }
 
-// È¡µÃÍêÕûÍæ¼ÒÊý¾Ý
+// å–å¾—å®Œæ•´çŽ©å®¶æ•°æ®
 FULLUSERDATA* USER::GetFullUserData() const
 {
     return m_pFullUserData;
 }
 
-// ÉèÖÃÍêÕûÍæ¼ÒÊý¾Ý
+// è®¾ç½®å®Œæ•´çŽ©å®¶æ•°æ®
 VOID USER::SetFullUserData( FULLUSERDATA* pData )
 {
     m_pFullUserData = pData;
 }
 
-// È¡µÃÍæ¼ÒµÄ ServerID
+// å–å¾—çŽ©å®¶çš„ ServerID
 ID_t USER::GetServerID() const
 {
     if( GetSceneID()<0 ) return INVALID_ID ;
     return g_Config.SceneID2ServerID(GetSceneID()) ;
 }
 
-// È¡µÃÍæ¼Ò PlayerID
+// å–å¾—çŽ©å®¶ PlayerID
 PlayerID_t USER::GetPlayerID() const
 {
     return m_PlayerID;
 }
 
-// ÉèÖÃÍæ¼Ò PlayerID
+// è®¾ç½®çŽ©å®¶ PlayerID
 VOID USER::SetPlayerID( PlayerID_t pid )
 {
     m_PlayerID = pid;
 }
 
-// È¡µÃÍæ¼Ò GUID
+// å–å¾—çŽ©å®¶ GUID
 GUID_t USER::GetGUID() const
 {
     return m_SimpleData.m_GUID;
 }
 
-// ÉèÖÃÍæ¼Ò GUID
+// è®¾ç½®çŽ©å®¶ GUID
 VOID USER::SetGUID( GUID_t guid )
 {
     m_SimpleData.m_GUID = guid;
 }
 
-// È¡µÃÍæ¼Ò SceneID
+// å–å¾—çŽ©å®¶ SceneID
 SceneID_t USER::GetSceneID() const
 {
     return m_SceneID;
 }
 
-// ÉèÖÃÍæ¼Ò SceneID
+// è®¾ç½®çŽ©å®¶ SceneID
 VOID USER::SetSceneID( SceneID_t SceneID )
 {
     m_SceneID = SceneID;
 }
 
-// È¡µÃÍæ¼Ò SceneID
+// å–å¾—çŽ©å®¶ SceneID
 SceneID_t USER::GetOldSceneID() const
 {
     return m_OldSceneID;
 }
 
-// ÉèÖÃÍæ¼Ò SceneID
+// è®¾ç½®çŽ©å®¶ SceneID
 VOID USER::SetOldSceneID( SceneID_t SceneID )
 {
     m_OldSceneID = SceneID;
 }
 
-// µÃµ½Íæ¼Ò³£ÓÃÊý¾Ý
+// å¾—åˆ°çŽ©å®¶å¸¸ç”¨æ•°æ®
 const USER_SIMPLE_DATA* USER::GetUserSimpleData() const
 {
     return &m_SimpleData;
 }
 
-// È¡µÃÍæ¼ÒÃû×Ö
+// å–å¾—çŽ©å®¶åå­—
 const CHAR* USER::GetName() const
 {
     return m_SimpleData.m_Name;
 }
 
-// ÉèÖÃÍæ¼ÒÃû×Ö
+// è®¾ç½®çŽ©å®¶åå­—
 VOID USER::SetName( const CHAR* szName )
 {
     Assert(szName);
     strncpy( m_SimpleData.m_Name, szName, sizeof(m_SimpleData.m_Name)-1 );
 }
 
-// È¡µÃÕË»§Ãû×Ö
+// å–å¾—è´¦æˆ·åå­—
 const CHAR* USER::GetAccount() const
 {
     return m_SimpleData.m_Account;
 }
 
-// ÉèÖÃÕË»§Ãû×Ö
+// è®¾ç½®è´¦æˆ·åå­—
 VOID USER::SetAccount( const CHAR* szName )
 {
     Assert(szName);
     strncpy( m_SimpleData.m_Account, szName, sizeof(m_SimpleData.m_Account)-1 );
 }
 
-// È¡µÃ¹ÙÍøGUID
+// å–å¾—å®˜ç½‘GUID
 inline GUID_t USER::GetAccountGUID() const
 {
     return m_SimpleData.m_AccountGUID;
 }
 
-// ÉèÖÃ¹ÙÍøGUID
+// è®¾ç½®å®˜ç½‘GUID
 inline VOID USER::SetAccountGUID( UINT uAccountGUID )
 {
     m_SimpleData.m_AccountGUID = uAccountGUID;
 }
 
-// È¡µÃÍæ¼ÒÐÔ±ð
+// å–å¾—çŽ©å®¶æ€§åˆ«
 UINT USER::GetSex() const
 {
     return m_SimpleData.m_uSex;
 }
 
-// ÉèÖÃÍæ¼ÒÐÔ±ð
+// è®¾ç½®çŽ©å®¶æ€§åˆ«
 VOID USER::SetSex( UINT uSex )
 {
     m_SimpleData.m_uSex = uSex;
 }
 
-// È¡µÃÍæ¼ÒµÄÃÅÅÉºÅ
+// å–å¾—çŽ©å®¶çš„é—¨æ´¾å·
 INT USER::GetMenpai() const
 {
     return m_SimpleData.m_uMenPai;
 }
 
-// ÉèÖÃÍæ¼ÒµÄÃÅÅÉºÅ
+// è®¾ç½®çŽ©å®¶çš„é—¨æ´¾å·
 VOID USER::SetMenpai(INT nMenpai)
 {
     m_SimpleData.m_uMenPai = nMenpai;
 }
 
-// µÃµ½Íæ¼ÒµÈ¼¶
+// å¾—åˆ°çŽ©å®¶ç­‰çº§
 INT USER::GetLevel() const
 {
     return m_SimpleData.m_nLevel;
 }
 
-// ÉèÖÃÍæ¼ÒµÈ¼¶
+// è®¾ç½®çŽ©å®¶ç­‰çº§
 VOID USER::SetLevel(INT nLevel)
 {
     m_SimpleData.m_nLevel = nLevel;
 }
 
-// µÃµ½Íæ¼ÒµÄÍ·Ïñ
+// å¾—åˆ°çŽ©å®¶çš„å¤´åƒ
 INT USER::GetPortrait() const
 {
     return m_SimpleData.m_nPortrait;
 }
 
-// ÉèÖÃÍæ¼ÒÍ·Ïñ
+// è®¾ç½®çŽ©å®¶å¤´åƒ
 VOID USER::SetPortrait(INT nPortrait)
 {
     m_SimpleData.m_nPortrait = nPortrait;
 }
 
-// µÃµ½Á³²¿Ä£ÐÍ
+// å¾—åˆ°è„¸éƒ¨æ¨¡åž‹
 UCHAR USER::GetFaceModel() const
 {
     return m_SimpleData.m_uFaceMeshID;
 }
 
-// ÉèÖÃÁ³²¿Ä£ÐÍ
+// è®¾ç½®è„¸éƒ¨æ¨¡åž‹
 VOID USER::SetFaceModel(UCHAR uFaceMeshID)
 {
     m_SimpleData.m_uFaceMeshID = uFaceMeshID;
 }
 
-// µÃµ½Í··¢Ä£ÐÍ
+// å¾—åˆ°å¤´å‘æ¨¡åž‹
 UCHAR USER::GetHairModel() const
 {
     return m_SimpleData.m_uHairMeshID;
 }
 
-// ÉèÖÃÍ··¢Ä£ÐÍ
+// è®¾ç½®å¤´å‘æ¨¡åž‹
 VOID USER::SetHairModel(UCHAR uHairMeshID)
 {
     m_SimpleData.m_uHairMeshID = uHairMeshID;
 }
 
-// µÃµ½·¢É«
+// å¾—åˆ°å‘è‰²
 UINT USER::GetHairColor() const
 {
     return m_SimpleData.m_uHairColor;
 }
 
-// ÉèÖÃ·¢É«
+// è®¾ç½®å‘è‰²
 VOID USER::SetHairColor(UINT uHairColor)
 {
     m_SimpleData.m_uHairColor = uHairColor;
 }
 
-// È¡µÃÍæ¼ÒµÄ¶ÓÎéºÅ
+// å–å¾—çŽ©å®¶çš„é˜Ÿä¼å·
 TeamID_t USER::GetTeamID() const
 {
     return m_TeamID;
 }
 
-// ÉèÖÃÍæ¼Ò¶ÓÎéºÅ
+// è®¾ç½®çŽ©å®¶é˜Ÿä¼å·
 VOID USER::SetTeamID( TeamID_t tid )
 {
     m_TeamID = tid;
 }
 
-// È¡µÃÍæ¼ÒµÄ³ÆºÅ
+// å–å¾—çŽ©å®¶çš„ç§°å·
 const CHAR* USER::GetTitle() const
 {
     return m_SimpleData.m_szTitle;
 }
 
-// ÉèÖÃÍæ¼ÒµÄ³ÆºÅ
+// è®¾ç½®çŽ©å®¶çš„ç§°å·
 VOID USER::SetTitle(const CHAR* szTitle)
 {
     Assert(szTitle);
     strncpy( m_SimpleData.m_szTitle, szTitle, MAX_CHARACTER_TITLE-1 );
 }
 
-// µÃµ½Íæ¼Ò°ï»á ID
+// å¾—åˆ°çŽ©å®¶å¸®ä¼š ID
 GuildID_t USER::GetGuildID() const
 {
     return m_SimpleData.m_GuildID;
 }
 
-// ÉèÖÃÍæ¼Ò°ï»á ID
+// è®¾ç½®çŽ©å®¶å¸®ä¼š ID
 VOID USER::SetGuildID(GuildID_t gid)
 {
     m_SimpleData.m_GuildID = gid;
 }
 
-// µÃµ½Íæ¼Ò´´½¨µÄÁÄÌìÆµµÀºÅ
+// å¾—åˆ°çŽ©å®¶åˆ›å»ºçš„èŠå¤©é¢‘é“å·
 ChannelID_t USER::GetChannelID() const
 {
     return m_ChannelID;
 }
 
-// ÉèÖÃÍæ¼Ò´´½¨µÄÁÄÌìÆµµÀºÅ
+// è®¾ç½®çŽ©å®¶åˆ›å»ºçš„èŠå¤©é¢‘é“å·
 VOID USER::SetChannelID( ChannelID_t cid )
 {
     m_ChannelID = cid;
 }
 
-// µÃµ½ÓÃ»§ÑéÖ¤Âë
+// å¾—åˆ°ç”¨æˆ·éªŒè¯ç 
 UINT USER::GetKey() const
 {
     return m_uKey;
 }
 
-// ÉèÖÃÓÃ»§ÑéÖ¤Âë
+// è®¾ç½®ç”¨æˆ·éªŒè¯ç 
 VOID USER::SetKey( UINT uKey )
 {
     m_uKey = uKey;
 }
 
-// Çå³ý°ï»áÊý¾Ý
+// æ¸…é™¤å¸®ä¼šæ•°æ®
 VOID USER::CleanUpGuildData()
 {
     m_SimpleData.m_GuildID = INVALID_ID;
     m_GuildData.CleanUp();
 }
 
-// Çå³ýÍæ¼Ò¹ØÏµÊý¾Ý
+// æ¸…é™¤çŽ©å®¶å…³ç³»æ•°æ®
 VOID USER::CleanUpRelationData()
 {
     m_RelationData.CleanUp();
 }
 
-// È¡µÃÍæ¼ÒµÄÐÄÇé
+// å–å¾—çŽ©å®¶çš„å¿ƒæƒ…
 const CHAR* USER::GetMood() const
 {
     return m_RelationData.m_szMood;
 }
 
-// ±£´æÐÄÇé
+// ä¿å­˜å¿ƒæƒ…
 VOID USER::SetMood( const CHAR* szMood )
 {
     Assert( szMood );
     strncpy( m_RelationData.m_szMood, szMood, MOOD_DATA_SIZE-1 );
 }
 
-// ±£´æÉèÖÃ
+// ä¿å­˜è®¾ç½®
 VOID USER::SetSettings(USHORT uSettings)
 {
     m_RelationData.m_Flag.m_wFlags = uSettings;
 }
 
-// ÊÇ·ñ¾Ü¾ø±»¼ÓÎªºÃÓÑ
+// æ˜¯å¦æ‹’ç»è¢«åŠ ä¸ºå¥½å‹
 BOOL USER::IsCannotAddFriend()
 {
     return m_RelationData.m_Flag.isSetBit(GSF_CANNOT_ADD_FRIEND);
 }
 
-// ÊÇ·ñ¾Ü¾øÊÕ·¢ÓÊ¼þ
+// æ˜¯å¦æ‹’ç»æ”¶å‘é‚®ä»¶
 BOOL USER::IsCannotRecvMail()
 {
     return m_RelationData.m_Flag.isSetBit(GSF_CANNOT_RECV_MAIL);
 }
 
-// ÊÇ·ñ¾Ü¾øÄ°ÉúÈËµÄÓÊ¼þ
+// æ˜¯å¦æ‹’ç»é™Œç”Ÿäººçš„é‚®ä»¶
 BOOL USER::IsCannotRecvStrangerMail()
 {
     return m_RelationData.m_Flag.isSetBit(GSF_CANNOT_RECV_STRANGER_MAIL);
 }
 
-// ÊÇ·ñ¾Ü¾ø×é¶ÓÉêÇë
+// æ˜¯å¦æ‹’ç»ç»„é˜Ÿç”³è¯·
 BOOL USER::IsRefuseTeamInvite()
 {
     return m_RelationData.m_Flag.isSetBit(GSF_REFUSE_TEAM_INVITE);

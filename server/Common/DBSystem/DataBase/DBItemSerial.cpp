@@ -56,7 +56,7 @@ BOOL DBItemSerial::Save(VOID* pSource)
 
     UINT    ItemSerial = *((UINT*)pSource);
 
-    //±£´æÎïÆ·ĞòÁĞºÅÊı¾İ
+    //ä¿å­˜ç‰©å“åºåˆ—å·æ•°æ®
     do
     {
         DB_QUERY* pQuery = GetInternalQuery();
@@ -112,7 +112,7 @@ BOOL DBItemSerial::ParseResult(VOID* pResult)
                 DB_ServerItemSerial,
             };
 
-            //¼ÓÔØ¼¼ÄÜÊôĞÔ
+            //åŠ è½½æŠ€èƒ½å±æ€§
             
             Assert(mInterface);
             INT ErrorCode;

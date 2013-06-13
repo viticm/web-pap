@@ -1,6 +1,6 @@
 // GCPlayerShopUpdatePartners.h
 // 
-// ֪ͨ�ͻ��˽�Ǯ��ȡ
+// 通知客户端金钱存取
 // 
 //////////////////////////////////////////////////////
 
@@ -37,7 +37,7 @@ namespace Packets
         };
         virtual ~GCPlayerShopUpdatePartners( ){};
 
-        //���ü̳нӿ�
+        //公用继承接口
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -59,7 +59,7 @@ namespace Packets
             memcpy(m_PartnerList, pPartnerList, m_PartnerNum*sizeof(MsgPartner_t));
         }
     private:
-        _PLAYERSHOP_GUID        m_ShopID;                                    //�̵�ID
+        _PLAYERSHOP_GUID        m_ShopID;                                    //商店ID
         BYTE                    m_PartnerNum;                                //
         MsgPartner_t            m_PartnerList[MAX_PARTNER_PER_SHOP];        //
     };

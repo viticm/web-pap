@@ -13,7 +13,7 @@ namespace Packets
         WGTeamFollowList(){ m_Count = 0; }
         virtual        ~WGTeamFollowList(){};
 
-        //π´”√Ω”ø⁄
+        //ÂÖ¨Áî®Êé•Âè£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -45,7 +45,7 @@ namespace Packets
         GUID_t                    GetGUID() { return m_GUID; }
 
     public :
-        PlayerID_t                m_PlayerID ;    //¡¨Ω”’ﬂ
+        PlayerID_t                m_PlayerID ;    //ËøûÊé•ËÄÖ
         UCHAR                    m_Count;
         GUID_t                    m_GUIDs[MAX_TEAM_MEMBER];
         GUID_t                    m_GUID;

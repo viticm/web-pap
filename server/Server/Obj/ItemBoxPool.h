@@ -1,11 +1,11 @@
 /********************************************************************
-    ´´½¨ÈÕÆÚ:    2005Äê11ÔÂ1ÈÕ
-    ´´½¨Ê±¼ä:    9:22
-    ÎÄ¼þÃû³Æ:    ItemBoxPool.h
-    ÎÄ¼þÂ·¾¶:    d:\Prj\Server\Server\Item\ItemBoxPool.h
+    åˆ›å»ºæ—¥æœŸ:    2005å¹´11æœˆ1æ—¥
+    åˆ›å»ºæ—¶é—´:    9:22
+    æ–‡ä»¶åç§°:    ItemBoxPool.h
+    æ–‡ä»¶è·¯å¾„:    d:\Prj\Server\Server\Item\ItemBoxPool.h
     
-    ÎÄ¼þ¹¦ÄÜ£º ?
-    ÐÞ¸Ä¼ÍÂ¼£º
+    æ–‡ä»¶åŠŸèƒ½ï¼š ?
+    ä¿®æ”¹çºªå½•ï¼š
     
 *********************************************************************/
 
@@ -15,7 +15,7 @@
 #define        _ITEMBOX_POOL_H_
 #include    "Type.h"
 #include    "ItemTypes.h"
-#define        ITEM_POOL_INVAILD    -1                //ÎÞÐ§Obj_ItemBox±àºÅ
+#define        ITEM_POOL_INVAILD    -1                //æ— æ•ˆObj_ItemBoxç¼–å·
 
 
 class Obj_ItemBox;
@@ -23,19 +23,19 @@ class Obj_ItemBox;
 
 
  /*
-  *        Obj_ItemBox    ³ØÀà
+  *        Obj_ItemBox    æ± ç±»
   */
 class ItemBoxPool
 {
-    //Obj_ItemBoxÊý×é
+    //Obj_ItemBoxæ•°ç»„
     Obj_ItemBox*        m_pItemBox;
-    //¿ÕÏÐItembox³ØId
+    //ç©ºé—²Itemboxæ± Id
     INT*            m_pFreeItemID;
-    //Ê¹ÓÃµÄObj_ItemBox³ØIdÊý×é
+    //ä½¿ç”¨çš„Obj_ItemBoxæ± Idæ•°ç»„
     INT*            m_pUseItemID;
-    //¿ÕÏÐÎ»ÖÃ±ê¼Ç
+    //ç©ºé—²ä½ç½®æ ‡è®°
     INT                m_nFreePosition;
-    //¹²ÏíËø
+    //å…±äº«é”
     MyLock            m_Lock;
 
     UINT            m_ItemBoxMaxCount;
@@ -44,26 +44,26 @@ public:
     ItemBoxPool();
     ~ItemBoxPool();
     /*
-     *    Íê³ÉItemBoxPool ³õÊ¼»¯,ÔÚServer->InitÖÐÖ´ÐÐ
+     *    å®ŒæˆItemBoxPool åˆå§‹åŒ–,åœ¨Server->Initä¸­æ‰§è¡Œ
      */
     BOOL            Init(UINT ItemBoxMaxCount = MAX_ITEM_BOX_POOL);
     
     /*
-     *    ²úÉúÒ»¸öÐÂµÄObj_ItemBox
+     *    äº§ç”Ÿä¸€ä¸ªæ–°çš„Obj_ItemBox
      *
      *    
      */
     
     Obj_ItemBox*        NewItemBox();
     
-    /*    É¾³ýÒ»¸öItembox
+    /*    åˆ é™¤ä¸€ä¸ªItembox
      *    
      *    
      *
      */
-    //¸ù¾ÝÎ»ÖÃÉ¾³ý
+    //æ ¹æ®ä½ç½®åˆ é™¤
     VOID            DelItemBox(UINT iItemPos);
-    //¸ù¾ÝÖ¸ÕëÉ¾³ý
+    //æ ¹æ®æŒ‡é’ˆåˆ é™¤
     VOID            DeleteObj(Obj_ItemBox*    pItem);
 
     UINT            GetItemBoxMaxCount() 

@@ -25,7 +25,7 @@ __ENTER_FUNCTION
 
     Assert(pPacket);
 
-    //ÅĞ¶¨Éı¼¶Ìõ¼şÊÇ·ñÂú×ã£¨Money,Exp,SkillExp£©
+    //åˆ¤å®šå‡çº§æ¡ä»¶æ˜¯å¦æ»¡è¶³ï¼ˆMoney,Exp,SkillExpï¼‰
     AbilityID_t nId        = pPacket->GetAbilityTeacherInfo();
     UINT nNeedMoney        = (UINT)pPacket->GetNeedMoney();
     UINT nNeedExp        = (UINT)pPacket->GetNeedExp();
@@ -41,11 +41,11 @@ __ENTER_FUNCTION
         nNeedSkillExp    <= pHuman->__GetAbilityExp(nId) &&
         nMyLevel        <= pAbility->AbilityLevelLimit())
     {
-        // Éı¼¶¼¼ÄÜ
+        // å‡çº§æŠ€èƒ½
         INT nMyLevel = pHuman->__GetAbilityLevel(nId);
         pHuman->__SetAbilityLevel(nId, nMyLevel + 1);
         
-        // ¿Û³ı½ğÇ®ºÍ¾­ÑéÖµ
+        // æ‰£é™¤é‡‘é’±å’Œç»éªŒå€¼
         UINT uSpareExp   = pHuman->GetDB()->GetExp()    - (UINT)nNeedExp;
         UINT uSpareMoney = pHuman->GetDB()->GetMoney()    - (UINT)nNeedMoney;
         pHuman->GetDB()->SetExp(uSpareExp );
@@ -61,8 +61,8 @@ __ENTER_FUNCTION
         MoneyLogParam.ZPos        =    pHuman->getWorldPos()->m_fZ;
         SaveMoneyLog(&MoneyLogParam);
 
-        //µ÷ÓÃĞŞ¸Ä¿Í»§¶ËÉú»î¼¼ÄÜµÄÏûÏ¢
-        //ĞŞ¸ÄÉú»î¼¼ÄÜµÈ¼¶
+        //è°ƒç”¨ä¿®æ”¹å®¢æˆ·ç«¯ç”Ÿæ´»æŠ€èƒ½çš„æ¶ˆæ¯
+        //ä¿®æ”¹ç”Ÿæ´»æŠ€èƒ½ç­‰çº§
         GCAbilityLevel MsgLevel;
         MsgLevel.setAbilityId(nId);
         MsgLevel.setLevel(nMyLevel + 1);
@@ -71,7 +71,7 @@ __ENTER_FUNCTION
     }
     else
     {
-        //Éı¼¶Ê§°ÜµÄÌáÊ¾
+        //å‡çº§å¤±è´¥çš„æç¤º
         ;
     }
     return PACKET_EXE_CONTINUE ;

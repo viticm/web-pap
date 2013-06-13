@@ -27,7 +27,7 @@ __ENTER_FUNCTION
         return PACKET_EXE_ERROR;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
     CG_RELATION* pRelationPacket = pPacket->GetRelation();
@@ -63,7 +63,7 @@ __ENTER_FUNCTION
         }
         break;
     case REQ_RELATIONINFO:
-        { // ÒòÎª¿ÉÄÜÇëÇóµÄÊÇÁÙÊ±ºÃÓÑµÄÐÅÏ¢£¬ËùÒÔÔÚ´Ë²»×÷ÅÐ¶Ï£¬Ö±½Ó·¢¸ø World
+        { // å› ä¸ºå¯èƒ½è¯·æ±‚çš„æ˜¯ä¸´æ—¶å¥½å‹çš„ä¿¡æ¯ï¼Œæ‰€ä»¥åœ¨æ­¤ä¸ä½œåˆ¤æ–­ï¼Œç›´æŽ¥å‘ç»™ World
             GWRelation* pMsg = (GWRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_GW_RELATION);
             GW_RELATION* pRelation = pMsg->GetRelation();
             pRelation->CleanUp();
@@ -132,7 +132,7 @@ __ENTER_FUNCTION
 
             RELATION_GROUP grp = (RELATION_GROUP)pMyFriend->GetGroup();
             switch( grp )
-            { // Ö»ÄÜÊÇÒÔÏÂ·Ö×é
+            { // åªèƒ½æ˜¯ä»¥ä¸‹åˆ†ç»„
             case RELATION_GROUP_F1:
             case RELATION_GROUP_F2:
             case RELATION_GROUP_F3:
@@ -143,18 +143,18 @@ __ENTER_FUNCTION
                 return PACKET_EXE_CONTINUE;
             }
 
-            // ¿´¿´ÊÇ·ñ»¹ÓÐ¿ÕÎ»
+            // çœ‹çœ‹æ˜¯å¦è¿˜æœ‰ç©ºä½
             if( pMyRelation->IsGroupFull( grp ) )
-            { // Ã»ÓÐ¿ÕÎ»ÁË
+            { // æ²¡æœ‰ç©ºä½äº†
                 nErr = RET_ERR_GROUPISFULL;
                 break;
             }
 
-            // ¿´¿´Ä¿Ç°¹ØÏµ±íÖÐÒÑ¾­ÓÐ¸ÃÍæ¼Ò£¨²»¹ÜÊÇÅóÓÑ»¹ÊÇºÚÃûµ¥£©
+            // çœ‹çœ‹ç›®å‰å…³ç³»è¡¨ä¸­å·²ç»æœ‰è¯¥çŽ©å®¶ï¼ˆä¸ç®¡æ˜¯æœ‹å‹è¿˜æ˜¯é»‘åå•ï¼‰
             RELATION_TYPE RelationType;
 
             if( pMyFriend->GetTargetGUID() != INVALID_ID )
-            { // Ò²ÐíÊÇÎó²Ù×÷»òÕßÖØ¸´²Ù×÷µ¼ÖÂ¶à´Î¼ÓÈëÍ¬Ò»¸öºÃÓÑµÈ
+            { // ä¹Ÿè®¸æ˜¯è¯¯æ“ä½œæˆ–è€…é‡å¤æ“ä½œå¯¼è‡´å¤šæ¬¡åŠ å…¥åŒä¸€ä¸ªå¥½å‹ç­‰
                 RelationType = pMyRelation->GetRelationType( pMyFriend->GetTargetGUID() );
             }
             else
@@ -171,7 +171,7 @@ __ENTER_FUNCTION
                 nErr = RET_ERR_ISBLACKNAME;
                 break;
             case RELATION_TYPE_STRANGER:
-                { // ÕýÈ·¹ØÏµ
+                { // æ­£ç¡®å…³ç³»
                     GWRelation* pMsg = (GWRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_GW_RELATION);
 
                     GW_RELATION* pRelation = pMsg->GetRelation();
@@ -228,7 +228,7 @@ __ENTER_FUNCTION
                 return PACKET_EXE_CONTINUE;
             }
 
-            // ¿´¿´Ä¿Ç°¹ØÏµ±íÖÐÒÑ¾­ÓÐ¸ÃÍæ¼Ò£¨²»¹ÜÊÇÅóÓÑ»¹ÊÇºÚÃûµ¥£©
+            // çœ‹çœ‹ç›®å‰å…³ç³»è¡¨ä¸­å·²ç»æœ‰è¯¥çŽ©å®¶ï¼ˆä¸ç®¡æ˜¯æœ‹å‹è¿˜æ˜¯é»‘åå•ï¼‰
             RELATION_TYPE RelationType;
 
             if( pNewBlackName->GetTargetGUID() != INVALID_ID )
@@ -258,7 +258,7 @@ __ENTER_FUNCTION
                 nErr = RET_ERR_BROTHERTOBLACKLIST;
                 break;
             case RELATION_TYPE_FRIEND:
-                { // ÓÃ×ª»»
+                { // ç”¨è½¬æ¢
                     if( pMyRelation->RelationTransition( RELATION_TYPE_BLACKNAME, pNewBlackName->GetTargetGUID() ) != TRUE )
                     {
                         nErr = RET_ERR_RELATIONUNKNOWN;
@@ -279,7 +279,7 @@ __ENTER_FUNCTION
                 }
                 break;
             case RELATION_TYPE_STRANGER:
-                { // ÕýÈ·¹ØÏµ
+                { // æ­£ç¡®å…³ç³»
                     GWRelation* pMsg = (GWRelation*)g_pPacketFactoryManager->CreatePacket(PACKET_GW_RELATION);
                     GW_RELATION* pRelation = pMsg->GetRelation();
                     pRelation->CleanUp();
@@ -311,16 +311,16 @@ __ENTER_FUNCTION
             RELATION_GUID_UCHAR_UCHAR* pTrans = &(pRelationPacket->m_RelationGUIDUCHARUCHAR);
             GUID_t guid = pTrans->GetTargetGUID();
 
-            // ÏÈÅÐ¶ÏÊÇ·ñºÃÓÑµÄ¸÷¸ö×éÖ®¼äµÄ×ª»»
+            // å…ˆåˆ¤æ–­æ˜¯å¦å¥½å‹çš„å„ä¸ªç»„ä¹‹é—´çš„è½¬æ¢
             RELATION_TYPE oldRelationType = pMyRelation->GetRelationType( guid );
 
             if( pMyRelation->IsFriend( guid )
              && oldRelationType == (RELATION_TYPE)pTrans->GetRelationType()
-             ) // ºÃÓÑ»»×é£¬°üÀ¨ÅäÅ¼£¬Ê¦Í½£¬½á°ÝÐÖµÜµÈµÈ
+             ) // å¥½å‹æ¢ç»„ï¼ŒåŒ…æ‹¬é…å¶ï¼Œå¸ˆå¾’ï¼Œç»“æ‹œå…„å¼Ÿç­‰ç­‰
             {
                 RELATION_GROUP grp = (RELATION_GROUP)pTrans->GetGroup();
                 switch( grp )
-                { // Ö»ÄÜÊÇÒÔÏÂ·Ö×é
+                { // åªèƒ½æ˜¯ä»¥ä¸‹åˆ†ç»„
                 case RELATION_GROUP_F1:
                 case RELATION_GROUP_F2:
                 case RELATION_GROUP_F3:
@@ -331,9 +331,9 @@ __ENTER_FUNCTION
                     return PACKET_EXE_CONTINUE;
                 }
 
-                // ¿´¿´ÊÇ·ñ»¹ÓÐ¿ÕÎ»
+                // çœ‹çœ‹æ˜¯å¦è¿˜æœ‰ç©ºä½
                 if( pMyRelation->IsGroupFull( grp ) )
-                { // Ã»ÓÐ¿ÕÎ»ÁË
+                { // æ²¡æœ‰ç©ºä½äº†
                     nErr = RET_ERR_GROUPISFULL;
                 }
                 else
@@ -348,7 +348,7 @@ __ENTER_FUNCTION
                 }
             }
             else
-            { // ÆäËûµÄ×ª»»Çé¿ö
+            { // å…¶ä»–çš„è½¬æ¢æƒ…å†µ
                 if( pMyRelation->CanTransition( oldRelationType, (RELATION_TYPE)pTrans->GetRelationType() ) != TRUE )
                 {
                     nErr = RET_ERR_CANNOTTRANSITION;
@@ -387,7 +387,7 @@ __ENTER_FUNCTION
             HumanRelation* pMyRelation = pHuman->GetHumanRelation();
             GUID_t guid = pRelationPacket->m_DelFriend.GetTargetGUID();
 
-            // ¿´ÊÇ·ñÓÐÕâÃ´¸öÅóÓÑ
+            // çœ‹æ˜¯å¦æœ‰è¿™ä¹ˆä¸ªæœ‹å‹
             RELATION_TYPE RelationType = pMyRelation->GetRelationType( guid );
 
             switch( RelationType )
@@ -404,7 +404,7 @@ __ENTER_FUNCTION
             case RELATION_TYPE_BROTHER:
                 nErr = RET_ERR_DELBROTHER;
                 break;
-            case RELATION_TYPE_FRIEND: // Õý³£Çé¿ö
+            case RELATION_TYPE_FRIEND: // æ­£å¸¸æƒ…å†µ
                 break;
             default:
                 nErr = RET_ERR_ISNOTFRIEND;
@@ -412,18 +412,18 @@ __ENTER_FUNCTION
             }
 
             if ( nErr )
-            { // Èç¹ûÓÐÎÊÌâ£¬ÂíÉÏÍË³ö
+            { // å¦‚æžœæœ‰é—®é¢˜ï¼Œé©¬ä¸Šé€€å‡º
                 break;
             }
 
             if( pMyRelation->GetRelationInfo( guid )->m_FriendPoint >= g_Config.m_ConfigInfo.m_nPasswdPoint
              && (pHuman->__IsPasswordSetup() && pHuman->__IsPasswordUnlock() != TRUE)
              )
-            { // ¿´ÊÇ·ñÐèÒª¶Ô±È¶þ¼¶ÃÜÂë
+            { // çœ‹æ˜¯å¦éœ€è¦å¯¹æ¯”äºŒçº§å¯†ç 
                 nErr = RET_ERR_PASSWDMISMATCH;
             }
             else if( pMyRelation->DelRelation( RELATION_TYPE_FRIEND, guid ) != TRUE )
-            { // É¾µôËü
+            { // åˆ æŽ‰å®ƒ
                 nErr = RET_ERR_RELATIONUNKNOWN;
             }
             else
@@ -453,13 +453,13 @@ __ENTER_FUNCTION
             HumanRelation* pMyRelation = pHuman->GetHumanRelation();
             GUID_t guid = pRelationPacket->m_RelationGUID.GetTargetGUID();
 
-            // ¿´ÊÇ·ñ´æÔÚÓÚºÚÃûµ¥
+            // çœ‹æ˜¯å¦å­˜åœ¨äºŽé»‘åå•
             if( pMyRelation->HaveRelation( RELATION_TYPE_BLACKNAME, guid ) != TRUE )
             {
                 nErr = RET_ERR_ISNOTINBLACKLIST;
             }
             else if( pMyRelation->DelRelation( RELATION_TYPE_BLACKNAME, guid ) != TRUE )
-            { // É¾µôËü
+            { // åˆ æŽ‰å®ƒ
                 nErr = RET_ERR_RELATIONUNKNOWN;
             }
             else
@@ -499,7 +499,7 @@ __ENTER_FUNCTION
             Relation.CleanUp();
             Relation.SetMood( pHuman->GetHumanRelation()->GetMood() );
 
-            //Èç¹ûµ±Ç°ÏÔÊ¾µÄÐÄÇé±»ÖÃÎª³ÆºÅ£¬ÄÇÃ´Í¬Ê±¸üÐÂµ±Ç°³ÆºÅ
+            //å¦‚æžœå½“å‰æ˜¾ç¤ºçš„å¿ƒæƒ…è¢«ç½®ä¸ºç§°å·ï¼Œé‚£ä¹ˆåŒæ—¶æ›´æ–°å½“å‰ç§°å·
             if( pHuman->GetTitleType() == _TITLE::MOOD_TITLE )
             {
                 pHuman->SetTitleType(_TITLE::MOOD_TITLE);

@@ -31,7 +31,7 @@ __ENTER_FUNCTION
 
     AREA_FILE* pAreaFile = g_pSceneManager->FindAreaFile(pszPathName) ;
     if( pAreaFile==NULL )
-    {//û�ж�������    
+    {//没有读到数据    
         pAreaFile = g_pSceneManager->FindEmptyAreaFile() ;
         if( pAreaFile==NULL )
         {
@@ -102,7 +102,7 @@ __ENTER_FUNCTION
         iniArea.Close();
     }
 
-    //�����¼�������
+    //设置事件区数据
     for( INT i=0; i<pAreaFile->m_Count; i++ )
     {
         Area *pArea = &(pAreaFile->m_pArea[i]);
@@ -129,7 +129,7 @@ __LEAVE_FUNCTION
 UINT AreaManager::GetZoneID( FLOAT x, FLOAT z )
 {
 __ENTER_FUNCTION
-    // �˴��Ժ�һ��Ҫ�Ż�
+    // 此处以后一定要优化
     // to be contione ...
     UINT i;
     for ( i = 0; i < m_uAreaCount; i++ )

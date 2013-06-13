@@ -39,15 +39,15 @@ __ENTER_FUNCTION
         return PACKET_EXE_CONTINUE ;
     }
 
-    //¼ì²éÏß³ÌÖ´ÐÐ×ÊÔ´ÊÇ·ñÕýÈ·
+    //æ£€æŸ¥çº¿ç¨‹æ‰§è¡Œèµ„æºæ˜¯å¦æ­£ç¡®
     Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
     if ( MyGetCurrentThreadID() != pScene->m_ThreadID )
     {
         g_pLog->FastSaveLog( LOG_FILE_1, "CGCharStopLogicHandler: Error Obj = %d (MyGetCurrentThreadID() != pScene->m_ThreadID) ", pHuman->GetID() ) ;
         return PACKET_EXE_CONTINUE ;
     }
-    /* ÍõÆÈ½ü£¬ ÄãÀ´Ð´×ÅÒ»²¿·Ö¡£
-    //ÖÐ¶Ïµ±Ç°Âß¼­
+    /* çŽ‹è¿«è¿‘ï¼Œ ä½ æ¥å†™ç€ä¸€éƒ¨åˆ†ã€‚
+    //ä¸­æ–­å½“å‰é€»è¾‘
     AI_Human* pAI = pHuman->GetHumanAI();
     if(NULL!=pAI)
     {

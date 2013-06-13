@@ -1,6 +1,6 @@
 //
-//�ļ����ƣ�    SocketInputStream.h
-//����������    ��Ϣ���ݵĽ��ջ��棬�ṩ���ݵĽ��պ͸�ʽ����ȡ����
+//文件名称：    SocketInputStream.h
+//功能描述：    消息数据的接收缓存，提供数据的接收和格式化读取功能
 //                
 //
 //
@@ -12,9 +12,9 @@
 #include "BaseType.h"
 #include "Socket.h"
 
-//��ʼ���Ľ��ջ��泤��
+//初始化的接收缓存长度
 #define DEFAULTSOCKETINPUTBUFFERSIZE 64*1024
-//�����������Ļ��泤�ȣ������������ֵ����Ͽ�����
+//最大可以允许的缓存长度，如果超过此数值，则断开连接
 #define DISCONNECTSOCKETINPUTSIZE 96*1024
 
 class Packet ;

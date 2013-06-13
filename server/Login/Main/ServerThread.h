@@ -7,7 +7,7 @@
 #include "Thread.h"
 
 
-//ÓÃÀ´´¦Àí·şÎñÆ÷Ö®¼äÊı¾İÍ¨Ñ¶µÄÏß³Ì
+//ç”¨æ¥å¤„ç†æœåŠ¡å™¨ä¹‹é—´æ•°æ®é€šè®¯çš„çº¿ç¨‹
 
 class ServerThread : public Thread
 {
@@ -15,13 +15,13 @@ public :
     ServerThread( ) ;
     ~ServerThread( ) ;
 
-    //Ö÷Ñ­»·
+    //ä¸»å¾ªç¯
     virtual VOID    run( ) ;
 
-    //Í£Ö¹Ïß³ÌÖ´ĞĞ
+    //åœæ­¢çº¿ç¨‹æ‰§è¡Œ
     virtual VOID    stop( ) { m_Active = FALSE ; } ;
 
-    //ÅĞ¶Ïµ±Ç°Ïß³ÌÊÇ·ñ¼¤»î
+    //åˆ¤æ–­å½“å‰çº¿ç¨‹æ˜¯å¦æ¿€æ´»
     BOOL            IsActive( ){ return m_Active ; } ;
 
 

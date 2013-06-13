@@ -18,7 +18,7 @@ public:
     GCOperateResult( ){} ;
     virtual ~GCOperateResult( ){} ;
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -27,13 +27,13 @@ public:
     virtual UINT            GetPacketSize()const { return     sizeof(INT); }
     
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     INT            getResult(VOID) { return m_nResult; }
     VOID        setResult(INT nResult) { m_nResult = nResult; }
 
 private:
-    //Êı¾İ
-    INT            m_nResult;        // ·µ»ØÖµ OPERATE_RESULT
+    //æ•°æ®
+    INT            m_nResult;        // è¿”å›å€¼ OPERATE_RESULT
 };
 
 

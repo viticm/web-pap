@@ -13,7 +13,7 @@ namespace Packets
         GCTeamList() { m_nMemberCount = 0; }
         virtual ~GCTeamList() {}
 
-        //¹«ÓÃ½Ó¿Ú
+        //å…¬ç”¨æ¥å£
         virtual BOOL            Read( SocketInputStream& iStream );
         virtual BOOL            Write( SocketOutputStream& oStream ) const;
         virtual UINT            Execute( Player* pPlayer );
@@ -51,8 +51,8 @@ namespace Packets
         UCHAR                    GetMemberCount( ) { return m_nMemberCount; }
 
     public :
-        TeamID_t                m_TeamID;                // ¶ÓÎéºÅ
-        UCHAR                    m_nMemberCount;            // ÓĞ¼¸¸ö¶ÓÔ±
+        TeamID_t                m_TeamID;                // é˜Ÿä¼å·
+        UCHAR                    m_nMemberCount;            // æœ‰å‡ ä¸ªé˜Ÿå‘˜
         TEAM_LIST_ENTRY            m_Members[MAX_TEAM_MEMBER];
     };
 

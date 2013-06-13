@@ -1,6 +1,6 @@
 // GCCharSkill_Lead_Modify.h
 // 
-// ¼¼ÄÜÒıµ¼Ê±¼äµÄËõ¶ÌµÈµÈ
+// æŠ€èƒ½å¼•å¯¼æ—¶é—´çš„ç¼©çŸ­ç­‰ç­‰
 // 
 //////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
     GCCharSkill_Lead_Modify( ){}
     virtual ~GCCharSkill_Lead_Modify( ){}
 
-    //¹«ÓÃ¼Ì³Ğ½Ó¿Ú
+    //å…¬ç”¨ç»§æ‰¿æ¥å£
     virtual BOOL            Read( SocketInputStream& iStream ) ;
     virtual BOOL            Write( SocketOutputStream& oStream )const ;
     virtual UINT            Execute( Player* pPlayer ) ;
@@ -29,7 +29,7 @@ public:
                                                             sizeof(FLOAT); }
 
 public:
-    //Ê¹ÓÃÊı¾İ½Ó¿Ú
+    //ä½¿ç”¨æ•°æ®æ¥å£
     VOID            setObjID(ObjID_t id) { m_ObjID = id; }
     ObjID_t            getObjID(VOID)const { return m_ObjID; }
 
@@ -38,7 +38,7 @@ public:
 
 private:
     ObjID_t            m_ObjID;            // ObjID
-    INT                m_nSubTime;            // Ëõ¶ÌµÄÒıµ¼Ê±¼ä
+    INT                m_nSubTime;            // ç¼©çŸ­çš„å¼•å¯¼æ—¶é—´
 };
 
 

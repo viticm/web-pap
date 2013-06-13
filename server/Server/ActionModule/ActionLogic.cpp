@@ -1,9 +1,9 @@
 #include "stdafx.h"
 ///////////////////////////////////////////////////////////////////////////////
-// ÎÄ¼şÃû£ºVirtualAction.cpp
-// ¹¦ÄÜËµÃ÷£º¶¯×÷½Ó¿ÚÀà
+// æ–‡ä»¶åï¼šVirtualAction.cpp
+// åŠŸèƒ½è¯´æ˜ï¼šåŠ¨ä½œæ¥å£ç±»
 //
-// ĞŞ¸Ä¼ÇÂ¼£º
+// ä¿®æ”¹è®°å½•ï¼š
 //
 //
 //
@@ -41,7 +41,7 @@ namespace Action_Module
         return FALSE;
     }
 
-    //È«¾ÖÎ¨Ò»µÄ¶¯×÷Âß¼­ÊµÌå
+    //å…¨å±€å”¯ä¸€çš„åŠ¨ä½œé€»è¾‘å®ä½“
     ChargeActionLogic_T const g_ChargeActionLogic;
     ChannelActionLogic_T const g_ChannelActionLogic;
     InstantActionLogic_T const g_InstantActionLogic;

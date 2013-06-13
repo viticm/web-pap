@@ -27,11 +27,11 @@ __ENTER_FUNCTION
 
     USER* pUser = g_pOnlineUser->FindUser( pRelationPacket->GetGUID() );
     if ( pUser == NULL )
-    { //Ã»ÓÐ·¢ÏÖÔÚ¡°ÔÚÏßÓÃ»§ÁÐ±í¡±Àï¶ÔÓ¦´Ë GUID µÄÓÃ»§
+    { //æ²¡æœ‰å‘çŽ°åœ¨â€œåœ¨çº¿ç”¨æˆ·åˆ—è¡¨â€é‡Œå¯¹åº”æ­¤ GUID çš„ç”¨æˆ·
         Log::SaveLog( WORLD_LOGFILE, "GWRelationHandler...User GUID=%X not find!",
             pRelationPacket->GetGUID() );
 
-        Assert( FALSE && "ÕÒ²»µ½ÐÅÏ¢·¢ËÍÕß" );
+        Assert( FALSE && "æ‰¾ä¸åˆ°ä¿¡æ¯å‘é€è€…" );
         return PACKET_EXE_CONTINUE;
     }
 
@@ -53,7 +53,7 @@ __ENTER_FUNCTION
             }
 
             if ( pTargetUser == NULL )
-            { // Íæ¼Ò¿ÉÄÜ²»´æÔÚÒ²¿ÉÄÜ²»ÔÚÏß£¬ÓÉ Server À´ÅÐ¶Ï
+            { // çŽ©å®¶å¯èƒ½ä¸å­˜åœ¨ä¹Ÿå¯èƒ½ä¸åœ¨çº¿ï¼Œç”± Server æ¥åˆ¤æ–­
                 uErr = RET_TARGETNOTONLINE;
 
                 Msg.GetRelation()->m_RelationGUID.CleanUp();
@@ -71,7 +71,7 @@ __ENTER_FUNCTION
             Relation.CleanUp();
 
             pRelationData = Relation.GetRelationData();
-            // pRelationData µÄÊý¾ÝÔÚ switch Ö®ºóÌî³ä
+            // pRelationData çš„æ•°æ®åœ¨ switch ä¹‹åŽå¡«å……
 
             Log::SaveLog( WORLD_LOGFILE, "GWRelationHandler...get User info of Name=%s!",
                 pTargetUser->GetName() );
@@ -87,7 +87,7 @@ __ENTER_FUNCTION
             }
 
             if ( pTargetUser == NULL )
-            { // Íæ¼Ò¿ÉÄÜ²»´æÔÚÒ²¿ÉÄÜ²»ÔÚÏß
+            { // çŽ©å®¶å¯èƒ½ä¸å­˜åœ¨ä¹Ÿå¯èƒ½ä¸åœ¨çº¿
                 uErr = RET_ERR_TARGETNOTEXIST;
 
                 Log::SaveLog( WORLD_LOGFILE, "GWRelationHandler...User Name=%s not find!",
@@ -100,7 +100,7 @@ __ENTER_FUNCTION
             RETURN_VIEW_PLAYER& Send = Msg.GetRelation()->m_ViewPlayer;
             Send.CleanUp();
 
-            // Ìî³äÊý¾Ý
+            // å¡«å……æ•°æ®
             Send.SetGUID( pTargetUser->GetGUID() );
             Send.SetName( pTargetUser->GetName() );
             // ...
@@ -111,7 +111,7 @@ __ENTER_FUNCTION
         break;
     case REQ_ADDFRIEND:
     case REQ_TEMPFRIEND_TO_FRIEND:
-        { // ¼ì²éÐèÒªÌí¼ÓµÄºÃÓÑÊÇ·ñÔÚÏß£¬²¢·¢»ØÐÂºÃÓÑµÄÏêÏ¸ÐÅÏ¢£¬ÕâÀï²»×öºÏ·¨ÐÔÅÐ¶Ï
+        { // æ£€æŸ¥éœ€è¦æ·»åŠ çš„å¥½å‹æ˜¯å¦åœ¨çº¿ï¼Œå¹¶å‘å›žæ–°å¥½å‹çš„è¯¦ç»†ä¿¡æ¯ï¼Œè¿™é‡Œä¸åšåˆæ³•æ€§åˆ¤æ–­
             REQUEST_ADD_RELATION_WITH_GROUP& ReqRelation = pRelationPacket->m_AddRelationWithGroup;
 
             if ( ReqRelation.GetTargetGUID() != INVALID_ID )
@@ -124,16 +124,16 @@ __ENTER_FUNCTION
             }
 
             if ( pTargetUser == NULL )
-            { //Ã»ÓÐ·¢ÏÖÔÚ¡°ÔÚÏßÓÃ»§ÁÐ±í¡±Àï¶ÔÓ¦´ËÃû×ÖµÄÓÃ»§
+            { //æ²¡æœ‰å‘çŽ°åœ¨â€œåœ¨çº¿ç”¨æˆ·åˆ—è¡¨â€é‡Œå¯¹åº”æ­¤åå­—çš„ç”¨æˆ·
                 uErr = RET_ERR_TARGETNOTEXIST;
 
                 Log::SaveLog( WORLD_LOGFILE, "GWRelationHandler...User Name=%s not find!",
                     ReqRelation.GetTargetName() );
-                Assert( FALSE && "ÕÒ²»µ½¸ÃºÃÓÑ" );
+                Assert( FALSE && "æ‰¾ä¸åˆ°è¯¥å¥½å‹" );
                 break;
             }
 
-            // ÅÐ¶Ï pTargetUser ÊÇ·ñ¾Ü¾ø±»¼ÓÎªºÃÓÑ
+            // åˆ¤æ–­ pTargetUser æ˜¯å¦æ‹’ç»è¢«åŠ ä¸ºå¥½å‹
             if ( pTargetUser->IsCannotAddFriend() )
             {
                 uErr = RET_ERR_CANNOT_ADDFRIEND;
@@ -169,14 +169,14 @@ __ENTER_FUNCTION
                 break;
             }
 
-            // ¼ÓÈëºÃÓÑÃûµ¥
+            // åŠ å…¥å¥½å‹åå•
             _RELATION_USER RUser;
             RUser.m_UserGUID = pTargetUser->GetGUID();
             RUser.m_RelationType = RELATION_TYPE_FRIEND;
             RUser.m_nFriendPoint = 0;
             pUser->AddRelation( pTargetUser->GetGUID(), &RUser );
 
-            // ´«»ØÈ¥ÔÚÏßÐÅÏ¢
+            // ä¼ å›žåŽ»åœ¨çº¿ä¿¡æ¯
             if ( pRelationPacket->m_Type == REQ_ADDFRIEND )
             {
                 Msg.GetRelation()->m_Type = RET_ADDFRIEND;
@@ -193,13 +193,13 @@ __ENTER_FUNCTION
             Relation.SetGroup( ReqRelation.GetGroup() );
 
             pRelationData = Relation.GetRelationData();
-            // pRelationData µÄÊý¾ÝÔÚ switch Ö®ºóÌî³ä
+            // pRelationData çš„æ•°æ®åœ¨ switch ä¹‹åŽå¡«å……
 
             Log::SaveLog( WORLD_LOGFILE, "GWRelationHandler...User Name=%s added to friend list!",
                 ReqRelation.GetTargetName() );
 
             if ( pTargetUser->UserStatus() == US_NORMAL )
-            { // Í¨Öª±»¼ÓµÄÈË
+            { // é€šçŸ¥è¢«åŠ çš„äºº
                 WGRelation NotifyMsg;
 
                 NotifyMsg.GetRelation()->CleanUp();
@@ -224,7 +224,7 @@ __ENTER_FUNCTION
         break;
     case REQ_ADDTOBLACKLIST:
     case REQ_TEMPFRIEND_ADDTO_BLACKLIST:
-        { // ¼ì²éÐèÒªÌí¼ÓµÄÊÇ·ñÔÚÏß£¬²¢·¢»ØÏêÏ¸ÐÅÏ¢£¬ÕâÀï²»×öºÏ·¨ÐÔÅÐ¶Ï
+        { // æ£€æŸ¥éœ€è¦æ·»åŠ çš„æ˜¯å¦åœ¨çº¿ï¼Œå¹¶å‘å›žè¯¦ç»†ä¿¡æ¯ï¼Œè¿™é‡Œä¸åšåˆæ³•æ€§åˆ¤æ–­
             REQUEST_ADD_RELATION& ReqRelation = pRelationPacket->m_AddRelation;
 
             if ( ReqRelation.GetTargetGUID() != INVALID_ID )
@@ -237,12 +237,12 @@ __ENTER_FUNCTION
             }
 
             if ( pTargetUser == NULL )
-            { //Ã»ÓÐ·¢ÏÖÔÚ¡°ÔÚÏßÓÃ»§ÁÐ±í¡±Àï¶ÔÓ¦´ËÃû×ÖµÄÓÃ»§
+            { //æ²¡æœ‰å‘çŽ°åœ¨â€œåœ¨çº¿ç”¨æˆ·åˆ—è¡¨â€é‡Œå¯¹åº”æ­¤åå­—çš„ç”¨æˆ·
                 uErr = RET_ERR_TARGETNOTEXIST;
 
                 Log::SaveLog( WORLD_LOGFILE, "GWRelationHandler...User Name=%s not find!",
                     ReqRelation.GetTargetName() );
-                Assert( FALSE && "ÕÒ²»µ½¸ÃÈË" );
+                Assert( FALSE && "æ‰¾ä¸åˆ°è¯¥äºº" );
                 break;
             }
 
@@ -283,14 +283,14 @@ __ENTER_FUNCTION
                 }
             }
 
-            // ¼ÓÈëºÚÃûµ¥
+            // åŠ å…¥é»‘åå•
             _RELATION_USER RUser;
             RUser.m_UserGUID = pTargetUser->GetGUID();
             RUser.m_RelationType = RELATION_TYPE_BLACKNAME;
             RUser.m_nFriendPoint = 0;
             pUser->AddRelation( pTargetUser->GetGUID(), &RUser );
 
-            // ´«»ØÈ¥ÔÚÏßÐÅÏ¢
+            // ä¼ å›žåŽ»åœ¨çº¿ä¿¡æ¯
             if ( pRelationPacket->m_Type == REQ_ADDTOBLACKLIST )
             {
                 Msg.GetRelation()->m_Type = RET_ADDTOBLACKLIST;
@@ -306,7 +306,7 @@ __ENTER_FUNCTION
             Relation.SetRelationType( ReqRelation.GetRelationType() );
 
             pRelationData = Relation.GetRelationData();
-            // pRelationData µÄÊý¾ÝÔÚ switch Ö®ºóÌî³ä
+            // pRelationData çš„æ•°æ®åœ¨ switch ä¹‹åŽå¡«å……
 
             Log::SaveLog( WORLD_LOGFILE, "GWRelationHandler...User Name=%s added to black list!",
                 ReqRelation.GetTargetName() );
@@ -330,13 +330,13 @@ __ENTER_FUNCTION
         }
         break;
     case REQ_NEWGOODFRIEND:
-        { // ¼ÓÈëÒ»¸öÇ×ÃÜºÃÓÑ
+        { // åŠ å…¥ä¸€ä¸ªäº²å¯†å¥½å‹
             pUser->AddGoodFriend( pRelationPacket->m_RelationGUID.GetTargetGUID() );
             return PACKET_EXE_CONTINUE;
         }
         break;
     case REQ_RELATIONONLINE:
-        { // »ñÈ¡ÃÜÓÑµÄÔÚÏßÁÐ±í
+        { // èŽ·å–å¯†å‹çš„åœ¨çº¿åˆ—è¡¨
             Msg.GetRelation()->m_Type = RET_ONLINELIST;
             RETURN_ONLINE_LIST* pSend = &(Msg.GetRelation()->m_RelationOnline);
             pSend->CleanUp();
@@ -365,7 +365,7 @@ __ENTER_FUNCTION
             }
 
             if ( pTargetUser == NULL )
-            { // Íæ¼Ò¿ÉÄÜ²»´æÔÚÒ²¿ÉÄÜ²»ÔÚÏß£¬ÓÉ Server À´ÅÐ¶Ï
+            { // çŽ©å®¶å¯èƒ½ä¸å­˜åœ¨ä¹Ÿå¯èƒ½ä¸åœ¨çº¿ï¼Œç”± Server æ¥åˆ¤æ–­
                 Log::SaveLog( WORLD_LOGFILE, "GWRelationHandler...User GUID=%s not find!",
                     Recv.GetTargetName() );
                 return PACKET_EXE_CONTINUE;
@@ -400,7 +400,7 @@ __ENTER_FUNCTION
         pRelationData->SetGuildName( g_pGuildManager->GetGuildName(pTargetUser->GetGuildID()) );
 
         if ( pTargetUser->UserStatus() == US_NORMAL )
-        { // Ö»ÓÐÔÚÏß²Å·¢Ê£ÓàÐÅÏ¢
+        { // åªæœ‰åœ¨çº¿æ‰å‘å‰©ä½™ä¿¡æ¯
             pRelationData->SetOnlineFlag(1);
             pRelationData->SetMood( pTargetUser->GetMood() );
             pRelationData->SetTitle( pTargetUser->GetTitle() );

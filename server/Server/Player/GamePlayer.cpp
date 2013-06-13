@@ -121,7 +121,7 @@ __ENTER_FUNCTION
     {
         m_LeftTimeToQuit -= (uTime-m_CurrentTime) ;
         if( m_LeftTimeToQuit<0 )
-        {//ÕæÕýÖ´ÐÐÍË³ö´¦Àí
+        {//çœŸæ­£æ‰§è¡Œé€€å‡ºå¤„ç†
             return FALSE ;
         }
     }
@@ -147,8 +147,8 @@ __ENTER_FUNCTION
     }
     else
     {
-        //Èç¹ûPlayerÔÚÒ»¶¨Ê±¼äÄÚÃ»ÓÐÊÕµ½ÈÎºÎÏûÏ¢£¬Ôò¶Ï¿ª¿Í»§¶ËÁ¬½Ó
-        //ÔÚPlayer´¦ÀíÏûÏ¢Ç°»áÖ´ÐÐResetKickº¯ÊýÐÞÕým_KickTimeÐÅÏ¢
+        //å¦‚æžœPlayeråœ¨ä¸€å®šæ—¶é—´å†…æ²¡æœ‰æ”¶åˆ°ä»»ä½•æ¶ˆæ¯ï¼Œåˆ™æ–­å¼€å®¢æˆ·ç«¯è¿žæŽ¥
+        //åœ¨Playerå¤„ç†æ¶ˆæ¯å‰ä¼šæ‰§è¡ŒResetKickå‡½æ•°ä¿®æ­£m_KickTimeä¿¡æ¯
         if(uTime>m_KickTime+MAX_KICK_TIME )
         {
             g_pLog->FastSaveLog( LOG_FILE_1, "ERROR: Player::HeartBeat Didn't recv message for too long time. Kicked!" ) ;
@@ -195,7 +195,7 @@ BOOL    GamePlayer::ChooseFreeOwn(RecyclePlayerManager* pRecycler, INT nReason)
         PlayerID_t    PlayerID  = this->PlayerID();
         if( pRecycler->AddPlayer(this) )
         {
-            SetPlayerStatus( PS_SERVER_ENTER_RECYCLE ) ;//ÉèÖÃÍæ¼ÒÁ¬½ÓµÄ×´Ì¬
+            SetPlayerStatus( PS_SERVER_ENTER_RECYCLE ) ;//è®¾ç½®çŽ©å®¶è¿žæŽ¥çš„çŠ¶æ€
             g_pLog->FastSaveLog( LOG_FILE_1, "Send FreePlayer CMD to SM,HumanGUID = %X,PlayerID = %d, Reason=%d",
                 HumanGUID,PlayerID, nReason);
             return    ReadyFreeOwn();
@@ -230,7 +230,7 @@ BOOL GamePlayer::ReadyFreeOwn()
     }
     else
     {
-        AssertEx(FALSE,"Ã»ÓÐ³õÊ¼»¯HumanÊý¾Ý");
+        AssertEx(FALSE,"æ²¡æœ‰åˆå§‹åŒ–Humanæ•°æ®");
     }
 
     return FALSE;
@@ -247,7 +247,7 @@ INT    GamePlayer::GetFreeOwnFlag()
     if(m_pHuman)
         return m_pHuman->GetDB()->GetFreeOwnFlag();
     else
-        AssertEx(FALSE,"Ã»ÓÐ³õÊ¼»¯HumanÊý¾Ý");
+        AssertEx(FALSE,"æ²¡æœ‰åˆå§‹åŒ–Humanæ•°æ®");
 
     return -1;
 
@@ -315,7 +315,7 @@ __ENTER_FUNCTION
 
 
     if( Type==UDR_USERDATA )
-    {//´ÓÊÀ½çÊý¾Ý·þÎñÆ÷È¡µÃÊý¾Ý
+    {//ä»Žä¸–ç•Œæ•°æ®æœåŠ¡å™¨å–å¾—æ•°æ®
         //memcpy( GetHuman()->GetDB()->m_dbHuman, &(pData->m_Human), sizeof(_HUMAN_DB_LOAD) ) ;
         //memcpy( GetHuman()->GetDB()->m_dbEquip, &(pData->m_Equip), sizeof(_EQUIP_DB_LOAD) ) ;
         //memcpy( GetHuman()->GetDB()->m_dbBag, &(pData->m_Bag), sizeof(_BAG_DB_LOAD) ) ;
@@ -339,7 +339,7 @@ __ENTER_FUNCTION
         m_pHuman->GetDB()->SetFreeOwnFlag(SM_USE_FREE);
     
     }
-    else if(Type == UDR_USERSERVERCRASH)//ÕâÖÖÇé¿öÄ¿Ç°²»»á³öÏÖ
+    else if(Type == UDR_USERSERVERCRASH)//è¿™ç§æƒ…å†µç›®å‰ä¸ä¼šå‡ºçŽ°
     {
         Assert(FALSE);
     }
@@ -376,7 +376,7 @@ __ENTER_FUNCTION
         g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
     }
 
-//²âÊÔ£¬±£´æÓÃ»§Êý¾Ý
+//æµ‹è¯•ï¼Œä¿å­˜ç”¨æˆ·æ•°æ®
     if( !IsDirty( ) )
     {
         if( !g_pServerManager->IsEnableShareMem() )
@@ -385,7 +385,7 @@ __ENTER_FUNCTION
         }
         Save( ) ;
     }
-//²âÊÔ
+//æµ‹è¯•
     
     m_pHuman->GetDB()->SetFreeOwnFlag(SM_USE_FREE);
     return TRUE ;

@@ -337,7 +337,7 @@ BOOL ShareMemory::NewStaticManager( )
     __ENTER_FUNCTION
 
     g_pDBManager    =     new    ShareDBManager();
-    AssertEx(g_pDBManager,"·ÖÅäÊý¾Ý¿â¹ÜÀíÆ÷Ê§°Ü!");
+    AssertEx(g_pDBManager,"åˆ†é…æ•°æ®åº“ç®¡ç†å™¨å¤±è´¥!");
     Log::SaveLog("./Log/ShareMemory.log","new ShareDBManager ...OK");
 
     
@@ -412,7 +412,7 @@ BOOL ShareMemory::InitStaticManager( )
 
     BOOL bRet = FALSE;
 
-    //DB µÄ³õÊ¼»¯,Á¬½ÓÊý¾Ý¿â
+    //DB çš„åˆå§‹åŒ–,è¿žæŽ¥æ•°æ®åº“
     Assert(g_pDBManager);
     bRet = g_pDBManager->Init();
     if(!bRet)

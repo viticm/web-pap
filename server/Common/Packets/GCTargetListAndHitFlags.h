@@ -1,6 +1,6 @@
 // GCTargetListAndHitFlags.h
 // 
-// ���ܷ���
+// 技能发招
 // 
 //////////////////////////////////////////////////////
 
@@ -31,7 +31,7 @@ namespace Packets
         GCTargetListAndHitFlags(){}
         virtual ~GCTargetListAndHitFlags(){}
 
-        //���ü̳нӿ�
+        //公用继承接口
         virtual BOOL            Read( SocketInputStream& iStream ) ;
         virtual BOOL            Write( SocketOutputStream& oStream )const ;
         virtual UINT            Execute( Player* pPlayer ) ;
@@ -54,7 +54,7 @@ namespace Packets
         }
 
     public:
-        //ʹ�����ݽӿ�
+        //使用数据接口
         VOID                SetDataType(BYTE nType) { m_nDataType= nType; }
         BYTE                GetDataType(VOID)const { return m_nDataType; }
         VOID                SetObjID(ObjID_t id) { m_nObjID = id; }
@@ -90,17 +90,17 @@ namespace Packets
             }
         }
     private:
-        BYTE                m_nDataType;        // �ǽ�ɫʹ�ü��ܻ�������֮����������ը�򼤻�
-        ObjID_t                m_nObjID;            // ObjID�� ����ʹ���߻����ڼ���Ķ���
-        INT                    m_nLogicCount;        // �߼������� ����ʹ���߻����ڼ���Ķ�����߼�����
-        SkillID_t            m_nSkillOrSpecialObjDataID;        // ���ܻ�����������ԴID
-        WORLD_POS            m_posUser;            // ʹ������������ڼ���Ķ��������
-        ObjID_t                m_nTargetID;            // Ŀ���ɫ����Ҫ��ʹ������Ҫ�����Ŀ��
-        WORLD_POS            m_posTarget;        // Ŀ�����꣬��Ҫ��ʹ������Ҫ�����λ��
-        FLOAT                m_fDir;                // ���ܵķ�����Ҫ��ʹ������Ҫ����ķ���
-        HitFlagList_T        m_HitFlagList;        // Ŀ�걻�������ı���б���һ����Ƕ�Ӧ�����Ŀ���б��е�һ��Ŀ�������������Ӧ��
-        BYTE                m_nTargetNum;        // Ӱ���Ŀ����Ŀ
-        ObjID_t                m_aTargetList[MAX_TARGET_LIST_SIZE];        // Ӱ���Ŀ��ID�б�
+        BYTE                m_nDataType;        // 是角色使用技能还是陷阱之类的特殊对象爆炸或激活
+        ObjID_t                m_nObjID;            // ObjID， 技能使用者或正在激活的对象
+        INT                    m_nLogicCount;        // 逻辑计数， 技能使用者或正在激活的对象的逻辑计数
+        SkillID_t            m_nSkillOrSpecialObjDataID;        // 技能或特殊对象的资源ID
+        WORLD_POS            m_posUser;            // 使用者坐标或正在激活的对象的坐标
+        ObjID_t                m_nTargetID;            // 目标角色，主要是使用者需要面向的目标
+        WORLD_POS            m_posTarget;        // 目标坐标，主要是使用者需要面向的位置
+        FLOAT                m_fDir;                // 技能的方向，主要是使用者需要面向的方向
+        HitFlagList_T        m_HitFlagList;        // 目标被击中与否的标记列表，一个标记对应下面的目标列表中的一个目标对象，用索引对应。
+        BYTE                m_nTargetNum;        // 影响的目标数目
+        ObjID_t                m_aTargetList[MAX_TARGET_LIST_SIZE];        // 影响的目标ID列表
     };
 
 
