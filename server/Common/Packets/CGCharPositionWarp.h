@@ -13,63 +13,63 @@
 
 namespace Packets
 {
-	class CGCharPositionWarp :
-		public Packet
-	{
-	public:
-		CGCharPositionWarp( )
-		{
-		}
-		virtual ~CGCharPositionWarp( )
-		{
-		}
+    class CGCharPositionWarp :
+        public Packet
+    {
+    public:
+        CGCharPositionWarp( )
+        {
+        }
+        virtual ~CGCharPositionWarp( )
+        {
+        }
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const
-		{
-			return PACKET_CG_CHARPOSITIONWARP ;
-		}
+        virtual PacketID_t        GetPacketID()const
+        {
+            return PACKET_CG_CHARPOSITIONWARP ;
+        }
 
-		virtual UINT			GetPacketSize()const
-		{
-			return sizeof(m_ObjID) + sizeof(m_posServer) + sizeof(m_posClient);
-		}
+        virtual UINT            GetPacketSize()const
+        {
+            return sizeof(m_ObjID) + sizeof(m_posServer) + sizeof(m_posClient);
+        }
 
-	public:
-		//使用数据接口
-		VOID				setObjID(ObjID_t id) { m_ObjID = id; }
-		ObjID_t				getObjID(VOID)const { return m_ObjID; }
+    public:
+        //使用数据接口
+        VOID                setObjID(ObjID_t id) { m_ObjID = id; }
+        ObjID_t                getObjID(VOID)const { return m_ObjID; }
 
-		VOID				setServerPos(const WORLD_POS& pos) { m_posServer = pos; }
-		const WORLD_POS&	getServerPos(VOID)const { return m_posServer; }
+        VOID                setServerPos(const WORLD_POS& pos) { m_posServer = pos; }
+        const WORLD_POS&    getServerPos(VOID)const { return m_posServer; }
 
-		VOID				setClientPos(const WORLD_POS& pos) { m_posClient = pos; }
-		const WORLD_POS&	getClientPos(VOID)const { return m_posClient; }
+        VOID                setClientPos(const WORLD_POS& pos) { m_posClient = pos; }
+        const WORLD_POS&    getClientPos(VOID)const { return m_posClient; }
 
-	private:
-		ObjID_t				m_ObjID;			// ObjID
-		WORLD_POS			m_posServer;		// 服务器当前位置
-		WORLD_POS			m_posClient;		// 客户端当前位置
-	};
+    private:
+        ObjID_t                m_ObjID;            // ObjID
+        WORLD_POS            m_posServer;        // 服务器当前位置
+        WORLD_POS            m_posClient;        // 客户端当前位置
+    };
 
 
-	class CGCharPositionWarpFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGCharPositionWarp() ; }
-		PacketID_t	GetPacketID()const { return PACKET_CG_CHARPOSITIONWARP; }
-		UINT		GetPacketMaxSize()const { return	sizeof(CGCharPositionWarp) - sizeof(Packet); }
-	};
+    class CGCharPositionWarpFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGCharPositionWarp() ; }
+        PacketID_t    GetPacketID()const { return PACKET_CG_CHARPOSITIONWARP; }
+        UINT        GetPacketMaxSize()const { return    sizeof(CGCharPositionWarp) - sizeof(Packet); }
+    };
 
-	class CGCharPositionWarpHandler 
-	{
-	public:
-		static UINT Execute( CGCharPositionWarp* pPacket, Player* pPlayer ) ;
-	};
+    class CGCharPositionWarpHandler 
+    {
+    public:
+        static UINT Execute( CGCharPositionWarp* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

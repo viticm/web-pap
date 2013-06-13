@@ -10,37 +10,37 @@ BOOL GWRelation::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	m_Relation.Read( iStream ) ;
+    m_Relation.Read( iStream ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GWRelation::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	m_Relation.Write( oStream ) ;
+    m_Relation.Write( oStream ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GWRelation::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GWRelationHandler::Execute( this, pPlayer ) ;
+    return GWRelationHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 

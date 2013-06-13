@@ -11,33 +11,33 @@ class DBC::DBCFile;
 class CSkillDataMgr
 {
 protected:
-	static CSkillDataMgr		*s_pSkillDataMgr;
+    static CSkillDataMgr        *s_pSkillDataMgr;
 public:
-	static CSkillDataMgr *GetSkillDataMgr( VOID ){
-		return s_pSkillDataMgr;
-	}
+    static CSkillDataMgr *GetSkillDataMgr( VOID ){
+        return s_pSkillDataMgr;
+    }
 public:
-	CSkillDataMgr( VOID );
-	~CSkillDataMgr( VOID );
+    CSkillDataMgr( VOID );
+    ~CSkillDataMgr( VOID );
 
-	BOOL Init( const CHAR *lpszPathName );
-	BOOL Init( const DBC::DBCFile *pDataBase );
-	VOID Term( VOID );
+    BOOL Init( const CHAR *lpszPathName );
+    BOOL Init( const DBC::DBCFile *pDataBase );
+    VOID Term( VOID );
 
-	SSkillData *GetSkillData( UINT dwID );
-	const SSkillData *GetConstSkillData( UINT dwID )const;
+    SSkillData *GetSkillData( UINT dwID );
+    const SSkillData *GetConstSkillData( UINT dwID )const;
 
-	INT	GetRandAnim(UINT dwSkillID, INT nActionIndex = -1, BOOL bSendAnim = TRUE) const;
-	INT	GetAnimCount(UINT dwSkillID, BOOL bSendAnim = TRUE) const;
+    INT    GetRandAnim(UINT dwSkillID, INT nActionIndex = -1, BOOL bSendAnim = TRUE) const;
+    INT    GetAnimCount(UINT dwSkillID, BOOL bSendAnim = TRUE) const;
 
 protected:
-	const std::vector< INT > *GetAnimList(UINT uSkillID, BOOL bSendAnim = TRUE)const;
+    const std::vector< INT > *GetAnimList(UINT uSkillID, BOOL bSendAnim = TRUE)const;
 
 protected:
-	DBC::DBCFile			*m_pDBCFileLoad;
-	const DBC::DBCFile		*m_pDataBase;
+    DBC::DBCFile            *m_pDBCFileLoad;
+    const DBC::DBCFile        *m_pDataBase;
 };
 
 inline CSkillDataMgr *GetSkillDataMgr( VOID ){
-	return CSkillDataMgr::GetSkillDataMgr();
+    return CSkillDataMgr::GetSkillDataMgr();
 }

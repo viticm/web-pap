@@ -2,40 +2,40 @@
 #include "GCTeamFollowErr.h"
 
 
-BOOL	GCTeamFollowErr::Read(SocketInputStream& iStream )
+BOOL    GCTeamFollowErr::Read(SocketInputStream& iStream )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		iStream.Read( (CHAR*)&m_uErr, sizeof(UCHAR) );
-	return TRUE;
+        iStream.Read( (CHAR*)&m_uErr, sizeof(UCHAR) );
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 
-BOOL	GCTeamFollowErr::Write(SocketOutputStream& oStream ) const
+BOOL    GCTeamFollowErr::Write(SocketOutputStream& oStream ) const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		oStream.Write( (CHAR*)&m_uErr, sizeof(UCHAR) );
-	return TRUE;
+        oStream.Write( (CHAR*)&m_uErr, sizeof(UCHAR) );
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 
-UINT	GCTeamFollowErr::Execute(Player* pPlayer )
+UINT    GCTeamFollowErr::Execute(Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCTeamFollowErrHandler::Execute(this,pPlayer);
+        return GCTeamFollowErrHandler::Execute(this,pPlayer);
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 

@@ -13,49 +13,49 @@
 
 namespace Packets
 {
-	class CGPlayerShopType : public Packet
-	{
-	public:
-		CGPlayerShopType( )
-		{
-			m_Type		=	0;	
-		};
-		virtual ~CGPlayerShopType( ){};
+    class CGPlayerShopType : public Packet
+    {
+    public:
+        CGPlayerShopType( )
+        {
+            m_Type        =    0;    
+        };
+        virtual ~CGPlayerShopType( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_CG_PLAYERSHOPTYPE; }
-		virtual UINT			GetPacketSize()const { return	sizeof(_PLAYERSHOP_GUID) +
-																sizeof(BYTE);}
+        virtual PacketID_t        GetPacketID()const { return PACKET_CG_PLAYERSHOPTYPE; }
+        virtual UINT            GetPacketSize()const { return    sizeof(_PLAYERSHOP_GUID) +
+                                                                sizeof(BYTE);}
 
-		_PLAYERSHOP_GUID		GetShopID(VOID) const {return m_ShopID;}
-		VOID					SetShopID(_PLAYERSHOP_GUID nShopID) {m_ShopID = nShopID;}
+        _PLAYERSHOP_GUID        GetShopID(VOID) const {return m_ShopID;}
+        VOID                    SetShopID(_PLAYERSHOP_GUID nShopID) {m_ShopID = nShopID;}
 
-		BYTE					GetType(VOID) const {return m_Type;}
-		VOID					SetType(BYTE nType) {m_Type = nType;}
+        BYTE                    GetType(VOID) const {return m_Type;}
+        VOID                    SetType(BYTE nType) {m_Type = nType;}
 
-	private:
-		_PLAYERSHOP_GUID		m_ShopID;			//商店ID
-		BYTE					m_Type;				//新的类型
-	};
+    private:
+        _PLAYERSHOP_GUID        m_ShopID;            //商店ID
+        BYTE                    m_Type;                //新的类型
+    };
 
-	class CGPlayerShopTypeFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGPlayerShopType() ; }
-		PacketID_t	GetPacketID()const { return PACKET_CG_PLAYERSHOPTYPE; };
-		UINT		GetPacketMaxSize()const { return	sizeof(_PLAYERSHOP_GUID) +
-														sizeof(BYTE);}
-	};
+    class CGPlayerShopTypeFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGPlayerShopType() ; }
+        PacketID_t    GetPacketID()const { return PACKET_CG_PLAYERSHOPTYPE; };
+        UINT        GetPacketMaxSize()const { return    sizeof(_PLAYERSHOP_GUID) +
+                                                        sizeof(BYTE);}
+    };
 
-	class CGPlayerShopTypeHandler 
-	{
-	public:
-		static UINT Execute( CGPlayerShopType* pPacket, Player* pPlayer ) ;
-	};
+    class CGPlayerShopTypeHandler 
+    {
+    public:
+        static UINT Execute( CGPlayerShopType* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

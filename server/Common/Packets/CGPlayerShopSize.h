@@ -14,55 +14,55 @@
 
 namespace Packets
 {
-	class CGPlayerShopSize : public Packet
-	{
-	public:
-		enum
-		{
-			TYPE_EXPAND = 0,
-			TYPE_SHRINK,
-		};
-	public:
-		CGPlayerShopSize( )
-		{
-			m_Opt = TYPE_EXPAND;	
-		}
-		virtual ~CGPlayerShopSize( ){};
+    class CGPlayerShopSize : public Packet
+    {
+    public:
+        enum
+        {
+            TYPE_EXPAND = 0,
+            TYPE_SHRINK,
+        };
+    public:
+        CGPlayerShopSize( )
+        {
+            m_Opt = TYPE_EXPAND;    
+        }
+        virtual ~CGPlayerShopSize( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_CG_PLAYERSHOPSIZE; }
-		virtual UINT			GetPacketSize()const { return sizeof(_PLAYERSHOP_GUID) + 
-															  sizeof(BYTE);	}
+        virtual PacketID_t        GetPacketID()const { return PACKET_CG_PLAYERSHOPSIZE; }
+        virtual UINT            GetPacketSize()const { return sizeof(_PLAYERSHOP_GUID) + 
+                                                              sizeof(BYTE);    }
 
-		_PLAYERSHOP_GUID		GetShopID(VOID) const {return m_ShopID;}
-		VOID					SetShopID(_PLAYERSHOP_GUID nShopID) {m_ShopID = nShopID;}
+        _PLAYERSHOP_GUID        GetShopID(VOID) const {return m_ShopID;}
+        VOID                    SetShopID(_PLAYERSHOP_GUID nShopID) {m_ShopID = nShopID;}
 
-		BYTE					GetOpt(VOID) const {return m_Opt;}
-		VOID					SetOpt(BYTE nOpt) {m_Opt = nOpt;}
+        BYTE                    GetOpt(VOID) const {return m_Opt;}
+        VOID                    SetOpt(BYTE nOpt) {m_Opt = nOpt;}
 
-	private:
-		_PLAYERSHOP_GUID		m_ShopID;	//商店ID
-		BYTE					m_Opt;		//操作
-	};
+    private:
+        _PLAYERSHOP_GUID        m_ShopID;    //商店ID
+        BYTE                    m_Opt;        //操作
+    };
 
-	class CGPlayerShopSizeFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGPlayerShopSize() ; }
-		PacketID_t	GetPacketID()const { return PACKET_CG_PLAYERSHOPSIZE; };
-		UINT		GetPacketMaxSize()const { return	sizeof(_PLAYERSHOP_GUID) + 
-														sizeof(BYTE);}
-	};
+    class CGPlayerShopSizeFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGPlayerShopSize() ; }
+        PacketID_t    GetPacketID()const { return PACKET_CG_PLAYERSHOPSIZE; };
+        UINT        GetPacketMaxSize()const { return    sizeof(_PLAYERSHOP_GUID) + 
+                                                        sizeof(BYTE);}
+    };
 
-	class CGPlayerShopSizeHandler 
-	{
-	public:
-		static UINT Execute( CGPlayerShopSize* pPacket, Player* pPlayer ) ;
-	};
+    class CGPlayerShopSizeHandler 
+    {
+    public:
+        static UINT Execute( CGPlayerShopSize* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

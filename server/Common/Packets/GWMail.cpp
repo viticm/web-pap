@@ -7,39 +7,39 @@
 
 BOOL GWMail::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	m_Mail.Read( iStream ) ;
-	
-	return TRUE ;
+    m_Mail.Read( iStream ) ;
+    
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GWMail::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	m_Mail.Write( oStream ) ;
-	
-	return TRUE ;
+    m_Mail.Write( oStream ) ;
+    
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GWMail::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GWMailHandler::Execute( this, pPlayer ) ;
+        return GWMailHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 

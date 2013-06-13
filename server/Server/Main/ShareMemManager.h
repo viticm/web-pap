@@ -13,15 +13,15 @@ template<typename T>
 class SMUManager;
 
 
-extern SMUPool<HumanSMU>				g_HumanSMUPool;
+extern SMUPool<HumanSMU>                g_HumanSMUPool;
 
-extern SMUManager<HumanSMU>				g_HumanSMUManager;				
+extern SMUManager<HumanSMU>                g_HumanSMUManager;                
 
-extern SMUPool<PlayerShopSM>			g_PlayerShopSMUPool;
+extern SMUPool<PlayerShopSM>            g_PlayerShopSMUPool;
 
-extern SMUManager<PlayerShopSM>			g_PlayerShopSMUManager;		
+extern SMUManager<PlayerShopSM>            g_PlayerShopSMUManager;        
 
-extern SMUPool<ItemSerialKeySMU>				g_ItemSerialSMUPool;
-extern SMUManager<ItemSerialKeySMU>		g_ItemSerialSMUManager;
+extern SMUPool<ItemSerialKeySMU>                g_ItemSerialSMUPool;
+extern SMUManager<ItemSerialKeySMU>        g_ItemSerialSMUManager;
 
 #endif

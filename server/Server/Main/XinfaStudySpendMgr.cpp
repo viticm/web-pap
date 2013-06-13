@@ -23,26 +23,26 @@ __LEAVE_FUNCTION
 BOOL XinfaStudySpendMgr::Init()
 {
 __ENTER_FUNCTION
-	DBC::DBCFile ThirdFile(0);
-	BOOL ret = ThirdFile.OpenFromTXT( FILE_XINFA_STUDY_SPEND );
+    DBC::DBCFile ThirdFile(0);
+    BOOL ret = ThirdFile.OpenFromTXT( FILE_XINFA_STUDY_SPEND );
 
-	INT iTableCount			=	ThirdFile.GetRecordsNum();
-	INT iColumnCount		=	ThirdFile.GetFieldsNum();
+    INT iTableCount            =    ThirdFile.GetRecordsNum();
+    INT iColumnCount        =    ThirdFile.GetFieldsNum();
 
-	Assert(iTableCount <= MAX_XINFA_LEVEL_NUM);
+    Assert(iTableCount <= MAX_XINFA_LEVEL_NUM);
 
-	m_nMaxLevel = iTableCount;
+    m_nMaxLevel = iTableCount;
 
-	for(INT i=0; i<iTableCount; ++i)
-	{
-		m_pXinfaLevel[i+1].m_uMoney		= ThirdFile.Search_Posistion(i,1)->iValue;
-		m_pXinfaLevel[i+1].m_uExperience	= ThirdFile.Search_Posistion(i,2)->iValue;
-	}
+    for(INT i=0; i<iTableCount; ++i)
+    {
+        m_pXinfaLevel[i+1].m_uMoney        = ThirdFile.Search_Posistion(i,1)->iValue;
+        m_pXinfaLevel[i+1].m_uExperience    = ThirdFile.Search_Posistion(i,2)->iValue;
+    }
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

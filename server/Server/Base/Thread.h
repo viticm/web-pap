@@ -36,15 +36,15 @@ class Thread
 // constants
 //////////////////////////////////////////////////
 public :
-	
-	enum ThreadStatus 
-	{
-		READY ,		// 当前线程处于准备状态
-		RUNNING ,	// 处于运行状态
-		EXITING ,	// 线程正在退出
-		EXIT		// 已经退出 
-	};
-	
+    
+    enum ThreadStatus 
+    {
+        READY ,        // 当前线程处于准备状态
+        RUNNING ,    // 处于运行状态
+        EXITING ,    // 线程正在退出
+        EXIT        // 已经退出 
+    };
+    
 
 //////////////////////////////////////////////////
 // constructor and destructor
@@ -52,11 +52,11 @@ public :
 
 public :
 
-	// constructor
-	Thread ( ) ;
+    // constructor
+    Thread ( ) ;
 
-	// destructor
-	virtual ~Thread () ;
+    // destructor
+    virtual ~Thread () ;
 
 
 //////////////////////////////////////////////////
@@ -65,26 +65,26 @@ public :
 
 public :
 
-	VOID start () ;
-	
-	virtual VOID stop () ;
+    VOID start () ;
+    
+    virtual VOID stop () ;
 
-	VOID exit ( VOID * retval = NULL ) ;
+    VOID exit ( VOID * retval = NULL ) ;
 
-	virtual VOID run () ;
+    virtual VOID run () ;
 
 
 //////////////////////////////////////////////////
 // 
 //////////////////////////////////////////////////
 public :
-	// get thread identifier
-	TID getTID () { return m_TID; }
-	
-	// get/set thread's status
-	ThreadStatus getStatus () { return m_Status; }
-	VOID setStatus ( ThreadStatus status ) { m_Status = status; }
-	
+    // get thread identifier
+    TID getTID () { return m_TID; }
+    
+    // get/set thread's status
+    ThreadStatus getStatus () { return m_Status; }
+    VOID setStatus ( ThreadStatus status ) { m_Status = status; }
+    
 
 //////////////////////////////////////////////////
 // data members
@@ -92,14 +92,14 @@ public :
 
 private :
 
-	// thread identifier variable
-	TID m_TID;
-	
-	// thread status
-	ThreadStatus m_Status;
+    // thread identifier variable
+    TID m_TID;
+    
+    // thread status
+    ThreadStatus m_Status;
 
 #if defined(__WINDOWS__)
-	HANDLE m_hThread ;
+    HANDLE m_hThread ;
 #endif
 
 };

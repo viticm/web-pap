@@ -9,14 +9,14 @@
 class WorldManager
 {
 public :
-	WorldManager( ) ;
-	~WorldManager( ) ;
+    WorldManager( ) ;
+    ~WorldManager( ) ;
 
 
-	BOOL			Init( ) ;
+    BOOL            Init( ) ;
 
 
-	ID_t			GetWorldID( ) ;
+    ID_t            GetWorldID( ) ;
 
 
 private :

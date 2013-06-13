@@ -13,27 +13,27 @@
 class DaemonThread
 {
 public :
-	DaemonThread( ) ;
-	~DaemonThread( ) ;
+    DaemonThread( ) ;
+    ~DaemonThread( ) ;
 
-	BOOL					Init( ) ;
-	VOID					CleanUp( ) ;
+    BOOL                    Init( ) ;
+    VOID                    CleanUp( ) ;
 
-	BOOL					Loop( ) ;
+    BOOL                    Loop( ) ;
 
-	VOID					Stop( ){ m_Active = FALSE ; }
+    VOID                    Stop( ){ m_Active = FALSE ; }
 
-	//模块退出处理
-	VOID					Quit( ) ;
+    //模块退出处理
+    VOID                    Quit( ) ;
 
-	//判断当前模块是否处于活动状态
-	BOOL			IsActive( ){ return m_Active ; } ;
+    //判断当前模块是否处于活动状态
+    BOOL            IsActive( ){ return m_Active ; } ;
 
 private :
-	BOOL			m_Active ;//是否活动的标志
-	CMyTimer		m_WorkingTime ;//
+    BOOL            m_Active ;//是否活动的标志
+    CMyTimer        m_WorkingTime ;//
 
-	CMyTimer		m_FlushLogTimer ;
+    CMyTimer        m_FlushLogTimer ;
 };
 
 extern DaemonThread* g_pDaemonThread ;

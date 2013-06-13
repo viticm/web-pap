@@ -6,16 +6,16 @@
 
 class DBGuildInfo:public ODBCBase
 {
-	
+    
 public:
-	DBGuildInfo(ODBCInterface* pInterface);
-	virtual BOOL	Load();
-	virtual BOOL	Save(VOID* pSource);
-	virtual BOOL	Delete();
-	virtual BOOL	ParseResult(VOID* pResult);
+    DBGuildInfo(ODBCInterface* pInterface);
+    virtual BOOL    Load();
+    virtual BOOL    Save(VOID* pSource);
+    virtual BOOL    Delete();
+    virtual BOOL    ParseResult(VOID* pResult);
 
 public:
-	
+    
 };
 
 

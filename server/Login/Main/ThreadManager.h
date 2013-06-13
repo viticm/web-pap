@@ -14,28 +14,28 @@
 class ThreadManager
 {
 public :
-	ThreadManager( ) ;
-	~ThreadManager( ) ;
+    ThreadManager( ) ;
+    ~ThreadManager( ) ;
 
-	//初始化
-	BOOL				Init( ) ;
-	//启动所有线程
-	BOOL				Start( ) ;
-	//停止所有线程
-	BOOL				Stop( ) ;
-	
-	//取得当前的服务器线程
-	ServerThread*		GetServerThread(){ 
-		return m_pServerThread ; 
-	} ;
-	//取得当前运行的线程总数
-	UINT				GetTotalThreads(){ return m_nThreads ; } ;
+    //初始化
+    BOOL                Init( ) ;
+    //启动所有线程
+    BOOL                Start( ) ;
+    //停止所有线程
+    BOOL                Stop( ) ;
+    
+    //取得当前的服务器线程
+    ServerThread*        GetServerThread(){ 
+        return m_pServerThread ; 
+    } ;
+    //取得当前运行的线程总数
+    UINT                GetTotalThreads(){ return m_nThreads ; } ;
 protected :
-	ServerThread*		m_pServerThread ;
-	UINT				m_nThreads ;
+    ServerThread*        m_pServerThread ;
+    UINT                m_nThreads ;
 
 };
-extern ThreadManager*	g_pThreadManager ;
+extern ThreadManager*    g_pThreadManager ;
 
 
 

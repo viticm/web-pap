@@ -8,36 +8,36 @@
 
 UINT LWAskDeleteCharHandler::Execute(LWAskDeleteChar* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
-	
-	Assert(pPacket);
-	
-	ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer ;
-	Assert(pServerPlayer);
+    __ENTER_FUNCTION
+    
+    Assert(pPacket);
+    
+    ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer ;
+    Assert(pServerPlayer);
 
-	WLRetDeleteChar Msg;
-	Msg.SetAccount( pPacket->GetAccount() );
-	Msg.SetPlayerGUID( pPacket->GetPlayerGUID() );
-	Msg.SetPlayerID( pPacket->GetPlayerID() );
+    WLRetDeleteChar Msg;
+    Msg.SetAccount( pPacket->GetAccount() );
+    Msg.SetPlayerGUID( pPacket->GetPlayerGUID() );
+    Msg.SetPlayerID( pPacket->GetPlayerID() );
 
-	USER* pUser = g_pOnlineUser->FindUser( pPacket->GetPlayerGUID() );
-	if( pUser )
-	{
-		Msg.SetResult( ASKDELETECHAR_ONLINE );
-		Log::SaveLog( WORLD_LOGFILE, "LWAskDeleteCharHandler...Cannot Delete User, CharGUID = %X",pPacket->GetPlayerGUID()) ;
-	}
-	else
-	{
-		Msg.SetResult( ASKDELETECHAR_SUCCESS );
-		Log::SaveLog( WORLD_LOGFILE, "LWAskDeleteCharHandler...Can Delete User, CharGUID = %X",pPacket->GetPlayerGUID()) ;
-	}
+    USER* pUser = g_pOnlineUser->FindUser( pPacket->GetPlayerGUID() );
+    if( pUser )
+    {
+        Msg.SetResult( ASKDELETECHAR_ONLINE );
+        Log::SaveLog( WORLD_LOGFILE, "LWAskDeleteCharHandler...Cannot Delete User, CharGUID = %X",pPacket->GetPlayerGUID()) ;
+    }
+    else
+    {
+        Msg.SetResult( ASKDELETECHAR_SUCCESS );
+        Log::SaveLog( WORLD_LOGFILE, "LWAskDeleteCharHandler...Can Delete User, CharGUID = %X",pPacket->GetPlayerGUID()) ;
+    }
 
-	pServerPlayer->SendPacket(&Msg);
+    pServerPlayer->SendPacket(&Msg);
 
 
-	return PACKET_EXE_CONTINUE;
+    return PACKET_EXE_CONTINUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR;
+    return PACKET_EXE_ERROR;
 }

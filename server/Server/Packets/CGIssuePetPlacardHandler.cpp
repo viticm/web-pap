@@ -15,50 +15,50 @@ UINT CGIssuePetPlacardHandler::Execute( CGIssuePetPlacard* pPacket, Player* pPla
 {
 __ENTER_FUNCTION
 
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
-	
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL )
-	{
-		Assert(FALSE) ;
-		return PACKET_EXE_ERROR ;
-	}
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
+    
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL )
+    {
+        Assert(FALSE) ;
+        return PACKET_EXE_ERROR ;
+    }
 
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-	Obj_Monster *pNpc = (Obj_Monster*)(pScene->GetObjManager()->GetObj(pPacket->GetNpcID()));
-	if(pNpc != NULL)
-	{
-		PetPlacardSystem *pPetPlacardSystem = pNpc->GetPetPlacardSystem();
-		if(pPetPlacardSystem == NULL)
-		{
-			pNpc->CreatePetPlacardSystem();
-			pPetPlacardSystem = pNpc->GetPetPlacardSystem();
-		}
-		if(pPetPlacardSystem != NULL)
-		{
-			CHAR* pMessage = pPacket->GetMessage();
-			BYTE nMessageSize = (BYTE)strlen( pMessage );
-			if( nMessageSize >= PET_PLACARD_ITEM_MESSAGE_SIZE ) nMessageSize = PET_PLACARD_ITEM_MESSAGE_SIZE-1;
-			pMessage[PET_PLACARD_ITEM_MESSAGE_SIZE-1] = 0;
-			ReplaceIllegalString( pMessage, nMessageSize );
+    Obj_Monster *pNpc = (Obj_Monster*)(pScene->GetObjManager()->GetObj(pPacket->GetNpcID()));
+    if(pNpc != NULL)
+    {
+        PetPlacardSystem *pPetPlacardSystem = pNpc->GetPetPlacardSystem();
+        if(pPetPlacardSystem == NULL)
+        {
+            pNpc->CreatePetPlacardSystem();
+            pPetPlacardSystem = pNpc->GetPetPlacardSystem();
+        }
+        if(pPetPlacardSystem != NULL)
+        {
+            CHAR* pMessage = pPacket->GetMessage();
+            BYTE nMessageSize = (BYTE)strlen( pMessage );
+            if( nMessageSize >= PET_PLACARD_ITEM_MESSAGE_SIZE ) nMessageSize = PET_PLACARD_ITEM_MESSAGE_SIZE-1;
+            pMessage[PET_PLACARD_ITEM_MESSAGE_SIZE-1] = 0;
+            ReplaceIllegalString( pMessage, nMessageSize );
 
-			ORESULT oResult = pPetPlacardSystem->IssuePlacard(pHuman, pPacket->GetGUID(), pMessage);
-			if(OR_FAILED(oResult))
-			{
-				pHuman->SendOperateResultMsg(oResult);
-			}
-		}
-	}
+            ORESULT oResult = pPetPlacardSystem->IssuePlacard(pHuman, pPacket->GetGUID(), pMessage);
+            if(OR_FAILED(oResult))
+            {
+                pHuman->SendOperateResultMsg(oResult);
+            }
+        }
+    }
 
-	return PACKET_EXE_CONTINUE ;
+    return PACKET_EXE_CONTINUE ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

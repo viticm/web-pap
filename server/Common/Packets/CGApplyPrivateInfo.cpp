@@ -7,38 +7,38 @@
 
 BOOL CGApplyPrivateInfo::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	//iStream.Read( (CHAR*)(&m_CharGUID), sizeof(UINT));
+    //iStream.Read( (CHAR*)(&m_CharGUID), sizeof(UINT));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGApplyPrivateInfo::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	//oStream.Write( (CHAR*)(&m_CharGUID), sizeof(UINT));
+    //oStream.Write( (CHAR*)(&m_CharGUID), sizeof(UINT));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGApplyPrivateInfo::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return CGApplyPrivateInfoHandler::Execute( this, pPlayer ) ;
+        return CGApplyPrivateInfoHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 

@@ -11,7 +11,7 @@ ServerThread::ServerThread( )
 {
 __ENTER_FUNCTION
 
-	m_Active = TRUE ;
+    m_Active = TRUE ;
 
 __LEAVE_FUNCTION
 }
@@ -30,37 +30,37 @@ VOID ServerThread::run( )
 {
 __ENTER_FUNCTION
 
-	_MY_TRY
-	{
-		Log::SaveLog( SERVER_LOGFILE, "ServerThread::run() Thread ID:%d ServerID:%d...", 
-			getTID(), g_pServerManager->GetServerID() ) ;
+    _MY_TRY
+    {
+        Log::SaveLog( SERVER_LOGFILE, "ServerThread::run() Thread ID:%d ServerID:%d...", 
+            getTID(), g_pServerManager->GetServerID() ) ;
 
-		g_pServerManager->m_ThreadID = getTID() ;
+        g_pServerManager->m_ThreadID = getTID() ;
 
-		while( IsActive() )
-		{
-			if( g_pServerManager )
-			{
-				BOOL ret = g_pServerManager->Tick( ) ;
-				Assert( ret ) ;
-			}
+        while( IsActive() )
+        {
+            if( g_pServerManager )
+            {
+                BOOL ret = g_pServerManager->Tick( ) ;
+                Assert( ret ) ;
+            }
 
 #ifdef _EXEONECE
-			static INT ic=_EXEONECE ;
-			ic-- ;
-			if( ic<=0 )
-			{
-				Log::SaveLog( SERVER_LOGFILE, "ServerThread::Exit() Thread ID:%d ServerID:%d...", 
-					getTID(), g_pServerManager->GetServerID() ) ;
-				return ;
-			}
+            static INT ic=_EXEONECE ;
+            ic-- ;
+            if( ic<=0 )
+            {
+                Log::SaveLog( SERVER_LOGFILE, "ServerThread::Exit() Thread ID:%d ServerID:%d...", 
+                    getTID(), g_pServerManager->GetServerID() ) ;
+                return ;
+            }
 #endif
-		}
-	}
-	_MY_CATCH
-	{
-		SaveCodeLog( ) ;
-	}
+        }
+    }
+    _MY_CATCH
+    {
+        SaveCodeLog( ) ;
+    }
 
 
 __LEAVE_FUNCTION

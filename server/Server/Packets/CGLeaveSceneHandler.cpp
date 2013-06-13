@@ -13,27 +13,27 @@ UINT CGLeaveSceneHandler::Execute( CGLeaveScene* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
 
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL ) return PACKET_EXE_CONTINUE ;
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL ) return PACKET_EXE_CONTINUE ;
 
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-
-
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
 
 
-	g_pLog->FastSaveLog( LOG_FILE_1, "CGLeaveSceneHandler: " ) ;
 
-	return PACKET_EXE_ERROR ;
+
+    g_pLog->FastSaveLog( LOG_FILE_1, "CGLeaveSceneHandler: " ) ;
+
+    return PACKET_EXE_ERROR ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

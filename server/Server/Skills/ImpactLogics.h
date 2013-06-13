@@ -173,9 +173,9 @@
 */
 namespace Combat_Module
 {
-	namespace Impact_Module
-	{
-	};
+    namespace Impact_Module
+    {
+    };
 };
 #endif //IMPACTLOGICS_H
 

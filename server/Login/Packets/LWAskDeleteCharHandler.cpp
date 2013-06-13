@@ -8,30 +8,30 @@
 
 UINT LWAskDeleteCharHandler::Execute(LWAskDeleteChar* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
-	
-		TID CurrentThreadID = MyGetCurrentThreadID();
+    __ENTER_FUNCTION
+    
+        TID CurrentThreadID = MyGetCurrentThreadID();
 
-		if(CurrentThreadID == g_pServerManager->m_ThreadID)
-		{
+        if(CurrentThreadID == g_pServerManager->m_ThreadID)
+        {
 
-			Assert(pPacket);
-			
-			ServerPlayer* pServerPlayer  = (ServerPlayer*)pPlayer;
-			
-			Assert(pServerPlayer);
+            Assert(pPacket);
+            
+            ServerPlayer* pServerPlayer  = (ServerPlayer*)pPlayer;
+            
+            Assert(pServerPlayer);
 
-			pServerPlayer->SendPacket(pPacket);
-		}
-		else
-		{
-			AssertEx(FALSE,"LWAskDeleteCharHandler 线程资源执行错误!");
-		}
-		Log::SaveLog(LOGIN_LOGFILE,"LWAskDeleteCharHandler::Execute() ....OK");
+            pServerPlayer->SendPacket(pPacket);
+        }
+        else
+        {
+            AssertEx(FALSE,"LWAskDeleteCharHandler 线程资源执行错误!");
+        }
+        Log::SaveLog(LOGIN_LOGFILE,"LWAskDeleteCharHandler::Execute() ....OK");
 
-		return PACKET_EXE_CONTINUE;
+        return PACKET_EXE_CONTINUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return PACKET_EXE_ERROR;
+        return PACKET_EXE_ERROR;
 }

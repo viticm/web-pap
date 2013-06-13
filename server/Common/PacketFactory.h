@@ -11,14 +11,14 @@
 class PacketFactory 
 {
 public :
-	
-	virtual ~PacketFactory ()  {}
+    
+    virtual ~PacketFactory ()  {}
 
-	virtual Packet*		CreatePacket ()  = 0;
+    virtual Packet*        CreatePacket ()  = 0;
 
-	virtual PacketID_t	GetPacketID ()const  = 0;
+    virtual PacketID_t    GetPacketID ()const  = 0;
 
-	virtual UINT		GetPacketMaxSize ()const  = 0;
+    virtual UINT        GetPacketMaxSize ()const  = 0;
 
 };
 

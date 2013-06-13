@@ -22,12 +22,12 @@
 
 struct _USERINFO
 {
-	ID_t		m_UID ;
+    ID_t        m_UID ;
 
 
-	_USERINFO(){
-		m_UID = INVALID_UID ;
-	};
+    _USERINFO(){
+        m_UID = INVALID_UID ;
+    };
 };
 
 
@@ -37,13 +37,13 @@ struct _USERINFO
 class User
 {
 public :
-	User() ;
-	~User() ;
+    User() ;
+    ~User() ;
 
 
 
 public :
-	_USERINFO	m_Info ;
+    _USERINFO    m_Info ;
 
 };
 

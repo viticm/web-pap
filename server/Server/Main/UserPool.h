@@ -10,15 +10,15 @@
 class UserPool
 {
 public :
-	UserPool( ) ;
-	~UserPool( ) ;
+    UserPool( ) ;
+    ~UserPool( ) ;
 
-	BOOL			Init( ) ;
+    BOOL            Init( ) ;
 
 
 
 public :
-	User			m_pUser[MAX_USER] ;
+    User            m_pUser[MAX_USER] ;
 
 
 

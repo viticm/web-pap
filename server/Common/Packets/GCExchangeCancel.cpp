@@ -7,34 +7,34 @@
 
 BOOL GCExchangeCancel::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL GCExchangeCancel::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT GCExchangeCancel::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCExchangeCancelHandler::Execute( this, pPlayer ) ;
+        return GCExchangeCancelHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 

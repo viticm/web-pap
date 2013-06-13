@@ -7,33 +7,33 @@
 
 BOOL CGShopClose::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
-	return FALSE ;
+    __LEAVE_FUNCTION
+    return FALSE ;
 }
 
 BOOL CGShopClose::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGShopClose::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return CGShopCloseHandler::Execute( this, pPlayer ) ;
+        return CGShopCloseHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 

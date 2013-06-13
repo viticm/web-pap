@@ -10,10 +10,10 @@ PlayerPool::PlayerPool( )
 {
 __ENTER_FUNCTION
 
-	m_pPlayer = NULL ;
-	m_Position = 0 ;
-	m_PlayerCount = 0 ;
-	m_MaxPlayerCount = 0 ;
+    m_pPlayer = NULL ;
+    m_Position = 0 ;
+    m_PlayerCount = 0 ;
+    m_MaxPlayerCount = 0 ;
 
 __LEAVE_FUNCTION
 }
@@ -22,7 +22,7 @@ PlayerPool::~PlayerPool( )
 {
 __ENTER_FUNCTION
 
-	SAFE_DELETE_ARRAY( m_pPlayer ) ;
+    SAFE_DELETE_ARRAY( m_pPlayer ) ;
 
 
 __LEAVE_FUNCTION
@@ -32,23 +32,23 @@ BOOL PlayerPool::Init( UINT MaxPlayerCount )
 {
 __ENTER_FUNCTION
 
-	m_pPlayer = new LoginPlayer[MaxPlayerCount] ;
-	Assert( m_pPlayer ) ;
+    m_pPlayer = new LoginPlayer[MaxPlayerCount] ;
+    Assert( m_pPlayer ) ;
 
-	for( UINT i=0; i<MaxPlayerCount; i++ )
-	{
-		m_pPlayer[i].SetPlayerID( (PlayerID_t)i ) ;
-		m_pPlayer[i].SetEmpty(TRUE) ;
-	}
-	m_Position = 0 ;
-	m_PlayerCount = MaxPlayerCount ;
-	m_MaxPlayerCount = MaxPlayerCount ;
+    for( UINT i=0; i<MaxPlayerCount; i++ )
+    {
+        m_pPlayer[i].SetPlayerID( (PlayerID_t)i ) ;
+        m_pPlayer[i].SetEmpty(TRUE) ;
+    }
+    m_Position = 0 ;
+    m_PlayerCount = MaxPlayerCount ;
+    m_MaxPlayerCount = MaxPlayerCount ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 
@@ -56,87 +56,87 @@ __LEAVE_FUNCTION
 LoginPlayer* PlayerPool::NewPlayer( )
 {
 __ENTER_FUNCTION
-	AutoLock_T autolock(m_Lock);
+    AutoLock_T autolock(m_Lock);
 
-	INT iRet = 0 ;
-	for( UINT i=0; i<m_MaxPlayerCount; i++ )
-	{
-		if( m_pPlayer[m_Position].IsEmpty() )
-		{
-			iRet = m_Position ;
-			m_pPlayer[m_Position].SetEmpty( FALSE ) ;
+    INT iRet = 0 ;
+    for( UINT i=0; i<m_MaxPlayerCount; i++ )
+    {
+        if( m_pPlayer[m_Position].IsEmpty() )
+        {
+            iRet = m_Position ;
+            m_pPlayer[m_Position].SetEmpty( FALSE ) ;
 
-			m_Position ++ ;
-			if( m_Position >= m_MaxPlayerCount ) 
-				m_Position = 0 ;
+            m_Position ++ ;
+            if( m_Position >= m_MaxPlayerCount ) 
+                m_Position = 0 ;
 
-			m_PlayerCount -- ;
+            m_PlayerCount -- ;
 
-			return &(m_pPlayer[iRet]) ;
-		}
+            return &(m_pPlayer[iRet]) ;
+        }
 
-		m_Position ++ ;
-		if( m_Position >= m_MaxPlayerCount ) 
-			m_Position = 0 ;
-	}
+        m_Position ++ ;
+        if( m_Position >= m_MaxPlayerCount ) 
+            m_Position = 0 ;
+    }
 
-	return NULL ;
+    return NULL ;
 
 __LEAVE_FUNCTION
 
-	return NULL ;
+    return NULL ;
 }
 
 LoginPlayer* PlayerPool::NewPlayer( PlayerID_t PlayerID)
 {
-	__ENTER_FUNCTION
-	AutoLock_T autolock(m_Lock);
+    __ENTER_FUNCTION
+    AutoLock_T autolock(m_Lock);
 
-	if(PlayerID>=(PlayerID_t)m_MaxPlayerCount)
-	{
-		return NULL;
-	}
+    if(PlayerID>=(PlayerID_t)m_MaxPlayerCount)
+    {
+        return NULL;
+    }
 
 
-	if(m_pPlayer[PlayerID].IsEmpty())
-	{
-		LoginPlayer* pPlayer = &(m_pPlayer[PlayerID]);
-		pPlayer->SetEmpty(FALSE);
-		m_PlayerCount--;
-		m_Position = PlayerID;
-		m_Position ++ ;
-		if( m_Position >= m_MaxPlayerCount ) 
-			m_Position = 0 ;
+    if(m_pPlayer[PlayerID].IsEmpty())
+    {
+        LoginPlayer* pPlayer = &(m_pPlayer[PlayerID]);
+        pPlayer->SetEmpty(FALSE);
+        m_PlayerCount--;
+        m_Position = PlayerID;
+        m_Position ++ ;
+        if( m_Position >= m_MaxPlayerCount ) 
+            m_Position = 0 ;
 
-		return pPlayer;
+        return pPlayer;
 
-	}
+    }
 
-	return NULL ;
-	__LEAVE_FUNCTION
-	return NULL ;
+    return NULL ;
+    __LEAVE_FUNCTION
+    return NULL ;
 }
 
 VOID PlayerPool::DelPlayer( PlayerID_t PlayerID )
 {
 __ENTER_FUNCTION
-	AutoLock_T autolock(m_Lock);
+    AutoLock_T autolock(m_Lock);
 
-	if( (UINT)PlayerID >= m_MaxPlayerCount )
-	{
-		Assert( FALSE ) ;
-		return ;
-	}
+    if( (UINT)PlayerID >= m_MaxPlayerCount )
+    {
+        Assert( FALSE ) ;
+        return ;
+    }
 
-	m_pPlayer[PlayerID].SetEmpty( TRUE ) ;
-	
+    m_pPlayer[PlayerID].SetEmpty( TRUE ) ;
+    
 
-	m_PlayerCount ++ ;
+    m_PlayerCount ++ ;
 
-	return ;
+    return ;
 
 __LEAVE_FUNCTION
 
-	return ;
+    return ;
 }
 

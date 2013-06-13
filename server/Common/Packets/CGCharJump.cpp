@@ -9,36 +9,36 @@ BOOL CGCharJump::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
+    iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGCharJump::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
+    oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGCharJump::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGCharJumpHandler::Execute( this, pPlayer ) ;
+    return CGCharJumpHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

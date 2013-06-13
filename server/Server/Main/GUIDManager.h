@@ -10,48 +10,48 @@
 
 struct _GUIDITEM
 {
-	GUID_t	m_GUID ;
-	VOID*	m_pPtr ;
-	UINT	m_Status ;
+    GUID_t    m_GUID ;
+    VOID*    m_pPtr ;
+    UINT    m_Status ;
 };
 
 
 class GUIDManager
 {
 public :
-	GUIDManager( ) ;
-	~GUIDManager( ) ;
+    GUIDManager( ) ;
+    ~GUIDManager( ) ;
 
-	BOOL					Init( ) ;
+    BOOL                    Init( ) ;
 
 
-	BOOL					Add( GUID_t gid, VOID* pPtr ) ;
-	VOID*					Get( GUID_t gid ) ;
-	BOOL					Del( GUID_t gid, VOID* pPtr ) ;
+    BOOL                    Add( GUID_t gid, VOID* pPtr ) ;
+    VOID*                    Get( GUID_t gid ) ;
+    BOOL                    Del( GUID_t gid, VOID* pPtr ) ;
 
-	VOID					CleanUp( ) ;
+    VOID                    CleanUp( ) ;
 
-	//临时使用
-	GUID_t					CreateGUID( ){ return m_TempGUID++ ; } ;
+    //临时使用
+    GUID_t                    CreateGUID( ){ return m_TempGUID++ ; } ;
 
 
 public :
-	enum 
-	{
-		GUIDTS_EMPTY = 0 ,
-		GUIDTS_SET = 1 ,
-		GUIDTS_USE = 2 ,
-	};
+    enum 
+    {
+        GUIDTS_EMPTY = 0 ,
+        GUIDTS_SET = 1 ,
+        GUIDTS_USE = 2 ,
+    };
 
 
 private :
-	_GUIDITEM				m_pGuidItem[MAX_GUID_SIZE] ;
-	INT						m_nCount ;
+    _GUIDITEM                m_pGuidItem[MAX_GUID_SIZE] ;
+    INT                        m_nCount ;
 
-	MyLock					m_Lock ;
+    MyLock                    m_Lock ;
 
-	//临时使用
-	GUID_t					m_TempGUID ;
+    //临时使用
+    GUID_t                    m_TempGUID ;
 
 };
 

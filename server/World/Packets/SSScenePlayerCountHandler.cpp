@@ -8,9 +8,9 @@ UINT SSScenePlayerCountHandler::Execute( SSScenePlayerCount* pPacket, Player* pP
 {
 __ENTER_FUNCTION
 
-	return PACKET_EXE_CONTINUE ;
+    return PACKET_EXE_CONTINUE ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

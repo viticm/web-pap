@@ -13,35 +13,35 @@
 #include "GCPlayerShopError.h"
 namespace Packets
 {
-	class CGPlayerShopAcquireShopList : public Packet
-	{
-	public:
-		CGPlayerShopAcquireShopList( ){};
-		virtual ~CGPlayerShopAcquireShopList( ){};
+    class CGPlayerShopAcquireShopList : public Packet
+    {
+    public:
+        CGPlayerShopAcquireShopList( ){};
+        virtual ~CGPlayerShopAcquireShopList( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_CG_PLAYERSHOPACQUIRESHOPLIST; }
-		virtual UINT			GetPacketSize()const { return	0;}
+        virtual PacketID_t        GetPacketID()const { return PACKET_CG_PLAYERSHOPACQUIRESHOPLIST; }
+        virtual UINT            GetPacketSize()const { return    0;}
 
-	};
+    };
 
-	class CGPlayerShopAcquireShopListFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGPlayerShopAcquireShopList() ; }
-		PacketID_t	GetPacketID()const { return PACKET_CG_PLAYERSHOPACQUIRESHOPLIST; };
-		UINT		GetPacketMaxSize()const { return 0;};
-	};
+    class CGPlayerShopAcquireShopListFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGPlayerShopAcquireShopList() ; }
+        PacketID_t    GetPacketID()const { return PACKET_CG_PLAYERSHOPACQUIRESHOPLIST; };
+        UINT        GetPacketMaxSize()const { return 0;};
+    };
 
-	class CGPlayerShopAcquireShopListHandler 
-	{
-	public:
-		static UINT Execute( CGPlayerShopAcquireShopList* pPacket, Player* pPlayer ) ;
-	};
+    class CGPlayerShopAcquireShopListHandler 
+    {
+    public:
+        static UINT Execute( CGPlayerShopAcquireShopList* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

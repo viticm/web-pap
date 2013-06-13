@@ -9,37 +9,37 @@ BOOL GCMinorPasswd::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	m_MinorPassword.Read(iStream);
+    m_MinorPassword.Read(iStream);
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL GCMinorPasswd::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	m_MinorPassword.Write(oStream);
+    m_MinorPassword.Write(oStream);
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 UINT GCMinorPasswd::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCMinorPasswdHandler::Execute( this, pPlayer );
+    return GCMinorPasswdHandler::Execute( this, pPlayer );
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 

@@ -10,37 +10,37 @@ BOOL GWCallOfHuman::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_guidTarget), sizeof(m_guidTarget) );
-	iStream.Read( (CHAR*)(&m_infoCallOf), sizeof(m_infoCallOf) );
+    iStream.Read( (CHAR*)(&m_guidTarget), sizeof(m_guidTarget) );
+    iStream.Read( (CHAR*)(&m_infoCallOf), sizeof(m_infoCallOf) );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL GWCallOfHuman::Write( SocketOutputStream& oStream ) const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_guidTarget), sizeof(m_guidTarget) );
-	oStream.Write( (CHAR*)(&m_infoCallOf), sizeof(m_infoCallOf) );
+    oStream.Write( (CHAR*)(&m_guidTarget), sizeof(m_guidTarget) );
+    oStream.Write( (CHAR*)(&m_infoCallOf), sizeof(m_infoCallOf) );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 UINT GWCallOfHuman::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GWCallOfHumanHandler::Execute( this, pPlayer );
-	
+    return GWCallOfHumanHandler::Execute( this, pPlayer );
+    
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }

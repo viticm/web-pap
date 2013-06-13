@@ -1,8 +1,8 @@
 /*************************************************************************
- 文件名	: 	AIScriptFunction.h
- 版本号 :	0.0.1
- 功  能	:	AIScript的专用函数
- 修改记录:	
+ 文件名    :     AIScriptFunction.h
+ 版本号 :    0.0.1
+ 功  能    :    AIScript的专用函数
+ 修改记录:    
  *************************************************************************/
 
 
@@ -16,24 +16,24 @@ typedef INT (*PLAISFunc)( const Obj_Character *pChar, INT param0, INT param1, IN
 
 struct AISFuncMap
 {
-	CHAR* funcname;
-	PLAISFunc Func;
+    CHAR* funcname;
+    PLAISFunc Func;
 };
 
 struct AISMacroMap
 {
-	CHAR* Macroname;
-	INT	  MacroID;
+    CHAR* Macroname;
+    INT      MacroID;
 };
 
 const PLAISFunc GetFuncPtrbyName( const CHAR* funcName );
-const CHAR*		GetFuncNamebyPtr( const PLAISFunc FuncPtr );
-const INT		GetMacrobyName( const CHAR* MacroName );
+const CHAR*        GetFuncNamebyPtr( const PLAISFunc FuncPtr );
+const INT        GetMacrobyName( const CHAR* MacroName );
 // 接口部分
 //////////////////////////////////////////////////////////////////////////
-INT	 AIS_GetBuffState( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
+INT     AIS_GetBuffState( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
-INT	 AIS_GetAIState( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
+INT     AIS_GetAIState( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
 INT  AIS_GetHP( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
@@ -45,9 +45,9 @@ INT  AIS_GetEBuffState( const Obj_Character *pChar, INT param0, INT param1, INT 
 
 INT  AIS_GetEMP( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
-INT  AIS_GetEHP( const Obj_Character *pChar, INT param0, INT param1, INT param2 );	
+INT  AIS_GetEHP( const Obj_Character *pChar, INT param0, INT param1, INT param2 );    
 
-INT  AIS_GetEMenPai( const Obj_Character *pChar, INT param0, INT param1, INT param2 );	
+INT  AIS_GetEMenPai( const Obj_Character *pChar, INT param0, INT param1, INT param2 );    
 
 INT  AIS_GetELevel( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
@@ -77,7 +77,7 @@ INT  AIS_ToFlee( const Obj_Character *pChar, INT param0, INT param1, INT param2 
 
 INT  AIS_IsCanSkill( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
-INT  AIS_ToSkill( const Obj_Character *pChar, INT param0, INT param1, INT param2 );	
+INT  AIS_ToSkill( const Obj_Character *pChar, INT param0, INT param1, INT param2 );    
 
 INT  AIS_ToSummon( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
@@ -85,7 +85,7 @@ INT  AIS_ToLongAttack( const Obj_Character *pChar, INT param0, INT param1, INT p
 
 INT  AIS_ToFollow( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
-INT  AIS_ToSpeak( const Obj_Character *pChar, INT param0, INT param1, INT param2 );	
+INT  AIS_ToSpeak( const Obj_Character *pChar, INT param0, INT param1, INT param2 );    
 
 INT  AIS_SetTimes( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
@@ -94,6 +94,6 @@ INT  AIS_SetPRI( const Obj_Character *pChar, INT param0, INT param1, INT param2 
 INT  AIS_ToAssistTeammate( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
 
 //INT  AIS_PetToAttack( const Obj_Character *pChar, INT param0, INT param1, INT param2 );
-	   
+       
 
 #endif

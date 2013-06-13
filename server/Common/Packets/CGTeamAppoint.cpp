@@ -2,41 +2,41 @@
 #include  "CGTeamAppoint.h"
 
 
-BOOL		CGTeamAppoint::Read(SocketInputStream& iStream )
+BOOL        CGTeamAppoint::Read(SocketInputStream& iStream )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		iStream.Read((CHAR*)&m_SourGUID,sizeof(GUID_t));
-		iStream.Read((CHAR*)&m_DestGUID,sizeof(GUID_t));
+        iStream.Read((CHAR*)&m_SourGUID,sizeof(GUID_t));
+        iStream.Read((CHAR*)&m_DestGUID,sizeof(GUID_t));
 
-		return TRUE;
+        return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 
-BOOL	CGTeamAppoint::Write(SocketOutputStream& oStream )	const
+BOOL    CGTeamAppoint::Write(SocketOutputStream& oStream )    const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		oStream.Write((CHAR*)&m_SourGUID,sizeof(GUID_t));
-		oStream.Write((CHAR*)&m_DestGUID,sizeof(GUID_t));
+        oStream.Write((CHAR*)&m_SourGUID,sizeof(GUID_t));
+        oStream.Write((CHAR*)&m_DestGUID,sizeof(GUID_t));
 
-		return TRUE;
+        return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 
-UINT	CGTeamAppoint::Execute(Player* pPlayer )
+UINT    CGTeamAppoint::Execute(Player* pPlayer )
 {
-	__ENTER_FUNCTION
-			return CGTeamAppointHandler::Execute(this,pPlayer);
-	__LEAVE_FUNCTION
-			return FALSE;
+    __ENTER_FUNCTION
+            return CGTeamAppointHandler::Execute(this,pPlayer);
+    __LEAVE_FUNCTION
+            return FALSE;
 }
 

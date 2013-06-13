@@ -1,12 +1,12 @@
 /********************************************************************
-	创建日期:	2005年11月1日
-	创建时间:	13:48
-	文件名称:	ItemHelper.h
-	文件路径:	d:\Prj\Server\Server\Item\ItemHelper.h
-	
-	文件功能： 物品系统辅助类
-	修改纪录：
-	
+    创建日期:    2005年11月1日
+    创建时间:    13:48
+    文件名称:    ItemHelper.h
+    文件路径:    d:\Prj\Server\Server\Item\ItemHelper.h
+    
+    文件功能： 物品系统辅助类
+    修改纪录：
+    
 *********************************************************************/
 
 
@@ -19,78 +19,78 @@
 //序列号帮助类
 struct TSerialHelper {
 
-	UINT	m_SN;
+    UINT    m_SN;
 
-	TSerialHelper(){m_SN = 0;};
-	TSerialHelper(UINT uiSN){m_SN = uiSN;};
-	TSerialHelper(CHAR* pStr)
-	{
-		__ENTER_FUNCTION
+    TSerialHelper(){m_SN = 0;};
+    TSerialHelper(UINT uiSN){m_SN = uiSN;};
+    TSerialHelper(CHAR* pStr)
+    {
+        __ENTER_FUNCTION
 
-			Assert(pStr!=NULL);
+            Assert(pStr!=NULL);
 
-			m_SN = atoi(pStr);
+            m_SN = atoi(pStr);
 
-		__LEAVE_FUNCTION
-	}
+        __LEAVE_FUNCTION
+    }
 
-	BOOL		GetItemTypeStruct( _ITEM_TYPE& it )
-	{
-		it.m_Class		=	GetItemClass();
-		it.m_Index		=	GetItemIndex();
-		it.m_Quality	=	GetItemQual();
-		it.m_Type		=	GetItemType();
+    BOOL        GetItemTypeStruct( _ITEM_TYPE& it )
+    {
+        it.m_Class        =    GetItemClass();
+        it.m_Index        =    GetItemIndex();
+        it.m_Quality    =    GetItemQual();
+        it.m_Type        =    GetItemType();
 
-		return TRUE;
-	}
+        return TRUE;
+    }
 
-	_ITEM_TYPE	GetItemTypeStruct()
-	{
-		_ITEM_TYPE it;
+    _ITEM_TYPE    GetItemTypeStruct()
+    {
+        _ITEM_TYPE it;
 
-		it.m_Class		=	GetItemClass();
-		it.m_Index		=	GetItemIndex();
-		it.m_Quality	=	GetItemQual();
-		it.m_Type		=	GetItemType();
+        it.m_Class        =    GetItemClass();
+        it.m_Index        =    GetItemIndex();
+        it.m_Quality    =    GetItemQual();
+        it.m_Type        =    GetItemType();
 
-		return it;
-	}
-	ITEM_CLASS	GetItemClass()
-	{
-		return	(ITEM_CLASS)GetSerialClass(m_SN);
-	}
-	VOID		SetClass(ITEM_CLASS rh)
-	{
-		m_SN = rh*1000000+m_SN%1000000;
-	}
-	UINT		GetItemQual()
-	{
-		return	GetSerialQual(m_SN);
-	}
+        return it;
+    }
+    ITEM_CLASS    GetItemClass()
+    {
+        return    (ITEM_CLASS)GetSerialClass(m_SN);
+    }
+    VOID        SetClass(ITEM_CLASS rh)
+    {
+        m_SN = rh*1000000+m_SN%1000000;
+    }
+    UINT        GetItemQual()
+    {
+        return    GetSerialQual(m_SN);
+    }
 
-	VOID		SetItemQual(UINT uiQual)
-	{
-		m_SN = m_SN + (uiQual-GetItemQual())*10000;
-	}
+    VOID        SetItemQual(UINT uiQual)
+    {
+        m_SN = m_SN + (uiQual-GetItemQual())*10000;
+    }
 
-	UINT		GetItemType()
-	{
-		return GetSerialType(m_SN);
-	}
+    UINT        GetItemType()
+    {
+        return GetSerialType(m_SN);
+    }
 
-	VOID		SetItemType(UINT	uiType)
-	{
-		m_SN  = m_SN + (uiType-GetItemType())*100;
-	}
+    VOID        SetItemType(UINT    uiType)
+    {
+        m_SN  = m_SN + (uiType-GetItemType())*100;
+    }
 
-	UINT		GetItemIndex()
-	{
-		return	GetSerialIndex(m_SN);
-	}
-	VOID		SetItemIndex(UINT	uiIndex)
-	{
-		m_SN	=	m_SN +(uiIndex-GetItemIndex());
-	}
+    UINT        GetItemIndex()
+    {
+        return    GetSerialIndex(m_SN);
+    }
+    VOID        SetItemIndex(UINT    uiIndex)
+    {
+        m_SN    =    m_SN +(uiIndex-GetItemIndex());
+    }
 
 };
 
@@ -98,8 +98,8 @@ struct TSerialHelper {
 class ItemRander
 {
 public:
-	static	double		DoubleRand();
-	static	INT			IntRand();
+    static    double        DoubleRand();
+    static    INT            IntRand();
 };
 
 #endif

@@ -9,38 +9,38 @@ BOOL CGCharIdle::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
-	iStream.Read( (CHAR*)(&m_posCurrent), sizeof(WORLD_POS));
+    iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
+    iStream.Read( (CHAR*)(&m_posCurrent), sizeof(WORLD_POS));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGCharIdle::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
-	oStream.Write( (CHAR*)(&m_posCurrent), sizeof(WORLD_POS));
+    oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
+    oStream.Write( (CHAR*)(&m_posCurrent), sizeof(WORLD_POS));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGCharIdle::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGCharIdleHandler::Execute( this, pPlayer ) ;
+    return CGCharIdleHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

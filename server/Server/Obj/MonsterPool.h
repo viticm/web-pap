@@ -7,7 +7,7 @@
 #include "ObjPool.h"
 #include "Obj_Monster.h"
 
-typedef ObjPool< Obj_Monster >	MonsterPool;
+typedef ObjPool< Obj_Monster >    MonsterPool;
 
 extern MonsterPool* g_pMonsterPool ;
 

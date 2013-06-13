@@ -9,37 +9,37 @@ BOOL CGCharAskBaseAttrib::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
+    iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGCharAskBaseAttrib::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
+    oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGCharAskBaseAttrib::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGCharAskBaseAttribHandler::Execute( this, pPlayer ) ;
+    return CGCharAskBaseAttribHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 

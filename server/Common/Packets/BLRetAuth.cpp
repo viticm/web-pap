@@ -5,96 +5,96 @@
 
 BOOL BLRetAuth::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&szAccount), sizeof(CHAR)*MAX_ACCOUNT);
-	iStream.Read((CHAR*)(&Result),sizeof(LOGIN_RESULT));
-	iStream.Read( (CHAR*)(&PlayerID), sizeof(PlayerID_t));
-	iStream.Read( (CHAR*)(&PlayerGUID), sizeof(GUID_t));
-	iStream.Read( (CHAR*)(&m_Age), sizeof(m_Age));
+    iStream.Read( (CHAR*)(&szAccount), sizeof(CHAR)*MAX_ACCOUNT);
+    iStream.Read((CHAR*)(&Result),sizeof(LOGIN_RESULT));
+    iStream.Read( (CHAR*)(&PlayerID), sizeof(PlayerID_t));
+    iStream.Read( (CHAR*)(&PlayerGUID), sizeof(GUID_t));
+    iStream.Read( (CHAR*)(&m_Age), sizeof(m_Age));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL BLRetAuth::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&szAccount), sizeof(CHAR)*MAX_ACCOUNT);
-	oStream.Write((CHAR*)(&Result),sizeof(LOGIN_RESULT));
-	oStream.Write((CHAR*)(&PlayerID),sizeof(PlayerID_t));
-	oStream.Write((CHAR*)(&PlayerGUID),sizeof(GUID_t));
-	oStream.Write((CHAR*)(&m_Age),sizeof(m_Age));
+    oStream.Write( (CHAR*)(&szAccount), sizeof(CHAR)*MAX_ACCOUNT);
+    oStream.Write((CHAR*)(&Result),sizeof(LOGIN_RESULT));
+    oStream.Write((CHAR*)(&PlayerID),sizeof(PlayerID_t));
+    oStream.Write((CHAR*)(&PlayerGUID),sizeof(GUID_t));
+    oStream.Write((CHAR*)(&m_Age),sizeof(m_Age));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT BLRetAuth::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return BLRetAuthHandler::Execute( this, pPlayer ) ;
+        return BLRetAuthHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
-const	CHAR*	BLRetAuth::GetAccount()	const
+const    CHAR*    BLRetAuth::GetAccount()    const
 {
-	return szAccount;
+    return szAccount;
 }
-VOID			BLRetAuth::SetAccount(const CHAR*	pAccount)
+VOID            BLRetAuth::SetAccount(const CHAR*    pAccount)
 {
-	Assert(pAccount);
-	strncpy(szAccount,pAccount,MAX_ACCOUNT*sizeof(CHAR));
-	szAccount[MAX_ACCOUNT] = '\0' ;
+    Assert(pAccount);
+    strncpy(szAccount,pAccount,MAX_ACCOUNT*sizeof(CHAR));
+    szAccount[MAX_ACCOUNT] = '\0' ;
 }
 
-LOGIN_RESULT	BLRetAuth::GetResult() const
+LOGIN_RESULT    BLRetAuth::GetResult() const
 {
-	return Result;
+    return Result;
 }
 
 VOID BLRetAuth::SetResult(LOGIN_RESULT result)
 {
-	Result = result;
+    Result = result;
 }
 
 const PlayerID_t BLRetAuth::GetPlayerID() const
 {
-	return PlayerID;
+    return PlayerID;
 }
 
-VOID		BLRetAuth::SetPlayerID(PlayerID_t pID)
+VOID        BLRetAuth::SetPlayerID(PlayerID_t pID)
 {
-	PlayerID = pID;
+    PlayerID = pID;
 }
 
 const GUID_t BLRetAuth::GetPlayerGUID() const
 {
-	return PlayerGUID;
+    return PlayerGUID;
 }
 
-VOID		BLRetAuth::SetPlayerGUID(GUID_t guid)
+VOID        BLRetAuth::SetPlayerGUID(GUID_t guid)
 {
-	PlayerGUID	 = guid;
+    PlayerGUID     = guid;
 }
 
 
-SHORT		BLRetAuth::GetAge()const
+SHORT        BLRetAuth::GetAge()const
 {
-	return m_Age;
+    return m_Age;
 }
-VOID		BLRetAuth::SetAge(SHORT NewAge)
+VOID        BLRetAuth::SetAge(SHORT NewAge)
 {
-	m_Age = NewAge;
+    m_Age = NewAge;
 }

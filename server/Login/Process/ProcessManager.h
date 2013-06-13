@@ -10,72 +10,72 @@
 
 class ProcessPlayerManager;
 
-class	ProcessManager: public Thread
+class    ProcessManager: public Thread
 {
 public:
 
-	ProcessManager();
-	~ProcessManager();
-	
-	//初始化操作
-	BOOL			Init();
-	
-	//模块处理循环
-	virtual VOID	run();
+    ProcessManager();
+    ~ProcessManager();
+    
+    //初始化操作
+    BOOL            Init();
+    
+    //模块处理循环
+    virtual VOID    run();
 
-	//模块退出
-	virtual VOID	stop(){	m_Active = FALSE;}
-	
-	//退出处理
-	VOID			Quit();
+    //模块退出
+    virtual VOID    stop(){    m_Active = FALSE;}
+    
+    //退出处理
+    VOID            Quit();
 
-	BOOL			IsActive()	{return m_Active;}
+    BOOL            IsActive()    {return m_Active;}
 
-	//*********
-	//*********
-	//此接口支持数据同步，即可以在不同线程内调用
-	//此接口是异步通讯的唯一接口
-	//注意：pPacket消息需要用g_pPacketFactoryManager创建出来，用完后不能删除
-	BOOL			SendPacket( Packet* pPacket, 
-								PlayerID_t PlayerID, 
-								UINT Flag=PF_NONE ) ;
+    //*********
+    //*********
+    //此接口支持数据同步，即可以在不同线程内调用
+    //此接口是异步通讯的唯一接口
+    //注意：pPacket消息需要用g_pPacketFactoryManager创建出来，用完后不能删除
+    BOOL            SendPacket( Packet* pPacket, 
+                                PlayerID_t PlayerID, 
+                                UINT Flag=PF_NONE ) ;
 
 private:
-	BOOL			m_Active;
+    BOOL            m_Active;
 
 private :
-	
-	//当前模块的消息缓存
-	ASYNC_PACKET*			m_PacketQue ;
-	UINT					m_QueSize ;
-	UINT					m_Head ;
-	UINT					m_Tail ;
-	MyLock					m_Lock ;
+    
+    //当前模块的消息缓存
+    ASYNC_PACKET*            m_PacketQue ;
+    UINT                    m_QueSize ;
+    UINT                    m_Head ;
+    UINT                    m_Tail ;
+    MyLock                    m_Lock ;
 
 private:
-	BOOL					DoTick(UINT uTime);
+    BOOL                    DoTick(UINT uTime);
 
-	//处理缓存消息
-	BOOL					ProcessCacheCommands( ) ;
+    //处理缓存消息
+    BOOL                    ProcessCacheCommands( ) ;
 
-	//读取缓存消息
-	BOOL					RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& Flag ) ;
+    //读取缓存消息
+    BOOL                    RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& Flag ) ;
 
-	//重新调整缓存大小
-	BOOL					ResizeCache( ) ;
+    //重新调整缓存大小
+    BOOL                    ResizeCache( ) ;
 
-	//删除某个Player的在消息缓存中的消息
-	BOOL					MovePacket( PlayerID_t PlayerID ) ;
+    //删除某个Player的在消息缓存中的消息
+    BOOL                    MovePacket( PlayerID_t PlayerID ) ;
 
-	//将队列中玩家加入到逻辑管理
-	BOOL					MoveQueuePlayer();
+    //将队列中玩家加入到逻辑管理
+    BOOL                    MoveQueuePlayer();
 
-	
+    
 
 };
 
 
-extern ProcessManager*	g_pProcessManager;
+extern ProcessManager*    g_pProcessManager;
 
 
 

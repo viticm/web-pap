@@ -6,37 +6,37 @@ BOOL GWBatchMail::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	m_BatchMail.Read( iStream );
+    m_BatchMail.Read( iStream );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL GWBatchMail::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	m_BatchMail.Write( oStream );
-	
-	return TRUE;
+    m_BatchMail.Write( oStream );
+    
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 UINT GWBatchMail::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GWBatchMailHandler::Execute( this, pPlayer );
+    return GWBatchMailHandler::Execute( this, pPlayer );
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 

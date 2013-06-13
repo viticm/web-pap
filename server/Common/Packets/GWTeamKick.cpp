@@ -3,41 +3,41 @@
 #include  "GWTeamKick.h"
 
 
-BOOL		GWTeamKick::Read(SocketInputStream& iStream )
+BOOL        GWTeamKick::Read(SocketInputStream& iStream )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		iStream.Read((CHAR*)&m_SourGUID,sizeof(GUID_t));
-		iStream.Read((CHAR*)&m_DestGUID,sizeof(GUID_t));
+        iStream.Read((CHAR*)&m_SourGUID,sizeof(GUID_t));
+        iStream.Read((CHAR*)&m_DestGUID,sizeof(GUID_t));
 
-		return TRUE;
+        return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 
-BOOL	GWTeamKick::Write(SocketOutputStream& oStream )	const
+BOOL    GWTeamKick::Write(SocketOutputStream& oStream )    const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		oStream.Write((CHAR*)&m_SourGUID,sizeof(GUID_t));
-		oStream.Write((CHAR*)&m_DestGUID,sizeof(GUID_t));
+        oStream.Write((CHAR*)&m_SourGUID,sizeof(GUID_t));
+        oStream.Write((CHAR*)&m_DestGUID,sizeof(GUID_t));
 
-		return TRUE;
+        return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 
-UINT	GWTeamKick::Execute(Player* pPlayer )
+UINT    GWTeamKick::Execute(Player* pPlayer )
 {
-	__ENTER_FUNCTION
-			return GWTeamKickHandler::Execute(this,pPlayer);
-	__LEAVE_FUNCTION
-			return FALSE;
+    __ENTER_FUNCTION
+            return GWTeamKickHandler::Execute(this,pPlayer);
+    __LEAVE_FUNCTION
+            return FALSE;
 }
 

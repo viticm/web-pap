@@ -9,15 +9,15 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 /** \file TemplateManager.cpp
-*		\brief 各种模板数据管理器的定义
+*        \brief 各种模板数据管理器的定义
 */
 #include "TemplateManager.h"
 #include "TLBB_DBC.h"
 
 namespace Combat_Module
 {
-	namespace Skill_Module
-	{
-		
-	}
+    namespace Skill_Module
+    {
+        
+    }
 }

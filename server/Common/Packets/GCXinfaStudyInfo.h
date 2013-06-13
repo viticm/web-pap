@@ -14,45 +14,45 @@
 
 namespace Packets
 {
-	class GCXinfaStudyInfo : public Packet
-	{
-	public:
-		GCXinfaStudyInfo( ){};
-		virtual ~GCXinfaStudyInfo( ){};
+    class GCXinfaStudyInfo : public Packet
+    {
+    public:
+        GCXinfaStudyInfo( ){};
+        virtual ~GCXinfaStudyInfo( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_GC_XINFASTUDYINFO ; }
-		virtual UINT			GetPacketSize()const { return	sizeof(short) + sizeof(ObjID_t);}
+        virtual PacketID_t        GetPacketID()const { return PACKET_GC_XINFASTUDYINFO ; }
+        virtual UINT            GetPacketSize()const { return    sizeof(short) + sizeof(ObjID_t);}
 
-	public:
-		short			GetMenpaiInfo_ID(VOID) const {return m_idMenpai;};
-		VOID			SetMenpaiInfo_ID(short idMenpai) {m_idMenpai = idMenpai;};
+    public:
+        short            GetMenpaiInfo_ID(VOID) const {return m_idMenpai;};
+        VOID            SetMenpaiInfo_ID(short idMenpai) {m_idMenpai = idMenpai;};
 
-		ObjID_t			GetTeacherId(VOID) const {return m_uTeacherId; }
-		VOID			SetTeacherId(ObjID_t uTeacherId) {m_uTeacherId = uTeacherId;}
-	private:
-		short			m_idMenpai;
-		ObjID_t			m_uTeacherId;
-	};
+        ObjID_t            GetTeacherId(VOID) const {return m_uTeacherId; }
+        VOID            SetTeacherId(ObjID_t uTeacherId) {m_uTeacherId = uTeacherId;}
+    private:
+        short            m_idMenpai;
+        ObjID_t            m_uTeacherId;
+    };
 
 
-	class GCXinfaStudyInfoFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new GCXinfaStudyInfo() ; }
-		PacketID_t	GetPacketID()const { return PACKET_GC_XINFASTUDYINFO; };
-		UINT		GetPacketMaxSize()const { return sizeof(short) + sizeof(ObjID_t);};
-	};
+    class GCXinfaStudyInfoFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new GCXinfaStudyInfo() ; }
+        PacketID_t    GetPacketID()const { return PACKET_GC_XINFASTUDYINFO; };
+        UINT        GetPacketMaxSize()const { return sizeof(short) + sizeof(ObjID_t);};
+    };
 
-	class GCXinfaStudyInfoHandler 
-	{
-	public:
-		static UINT Execute( GCXinfaStudyInfo* pPacket, Player* pPlayer ) ;
-	};
+    class GCXinfaStudyInfoHandler 
+    {
+    public:
+        static UINT Execute( GCXinfaStudyInfo* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

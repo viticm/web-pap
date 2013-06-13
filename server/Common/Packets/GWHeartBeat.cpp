@@ -9,37 +9,37 @@ BOOL GWHeartBeat::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_GUID), sizeof(GUID_t) ) ;
+    iStream.Read( (CHAR*)(&m_GUID), sizeof(GUID_t) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GWHeartBeat::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_GUID), sizeof(GUID_t) ) ;
+    oStream.Write( (CHAR*)(&m_GUID), sizeof(GUID_t) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GWHeartBeat::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GWHeartBeatHandler::Execute( this, pPlayer ) ;
+    return GWHeartBeatHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 

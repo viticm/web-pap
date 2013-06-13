@@ -10,30 +10,30 @@ class Scene ;
 
 struct COPYSCENE_SELECT
 {
-	SCENE_LOAD			m_Load ;
-	INT					m_SceneDataType ;
-	COPYSCENE_DATA		m_CopyData ;
+    SCENE_LOAD            m_Load ;
+    INT                    m_SceneDataType ;
+    COPYSCENE_DATA        m_CopyData ;
 
-	VOID CleanUp( )
-	{
-		m_Load.CleanUp() ;
-		m_SceneDataType=0 ;
-		m_CopyData.CleanUp( ) ;
-	};
+    VOID CleanUp( )
+    {
+        m_Load.CleanUp() ;
+        m_SceneDataType=0 ;
+        m_CopyData.CleanUp( ) ;
+    };
 };
 
 struct LOAD_NODE
 {
-	Scene*				m_pScene ;
+    Scene*                m_pScene ;
 
-	LOAD_NODE( )
-	{
-		CleanUp( ) ;
-	}
-	VOID CleanUp( )
-	{
-		m_pScene = NULL ;
-	}
+    LOAD_NODE( )
+    {
+        CleanUp( ) ;
+    }
+    VOID CleanUp( )
+    {
+        m_pScene = NULL ;
+    }
 };
 
 
@@ -43,24 +43,24 @@ struct LOAD_NODE
 class CopySceneManager
 {
 public :
-	CopySceneManager( ) ;
-	~CopySceneManager( ) ;
+    CopySceneManager( ) ;
+    ~CopySceneManager( ) ;
 
-	BOOL				Init( ) ;
+    BOOL                Init( ) ;
 
-	SceneID_t			SelectScene( COPYSCENE_SELECT* pSelect ) ;
-	BOOL				PushScene( Scene* pScene ) ;
-	Scene*				PopScene( ) ;
+    SceneID_t            SelectScene( COPYSCENE_SELECT* pSelect ) ;
+    BOOL                PushScene( Scene* pScene ) ;
+    Scene*                PopScene( ) ;
 
-	BOOL				HeartBeat( UINT uTime=0 ) ;
+    BOOL                HeartBeat( UINT uTime=0 ) ;
 
 private :
-	MyLock				m_Lock ;
+    MyLock                m_Lock ;
 
-	LOAD_NODE			m_aLoadNode[MAX_SCENE] ;
-	UINT				m_uHead ;
-	UINT				m_uTail ;
-	UINT				m_uTotalCount ;
+    LOAD_NODE            m_aLoadNode[MAX_SCENE] ;
+    UINT                m_uHead ;
+    UINT                m_uTail ;
+    UINT                m_uTotalCount ;
 };
 
 extern CopySceneManager* g_pCopySceneManager ;

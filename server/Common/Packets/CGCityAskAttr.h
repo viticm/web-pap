@@ -13,40 +13,40 @@
 
 namespace Packets
 {
-	class CGCityAskAttr : public Packet 
-	{
-	public:
-		CGCityAskAttr( ){} ;
-		virtual ~CGCityAskAttr( ){} ;
+    class CGCityAskAttr : public Packet 
+    {
+    public:
+        CGCityAskAttr( ){} ;
+        virtual ~CGCityAskAttr( ){} ;
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream ) const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream ) const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID() const { return PACKET_CG_CITYASKATTR; }
-		virtual UINT			GetPacketSize() const { return 0; }
+        virtual PacketID_t        GetPacketID() const { return PACKET_CG_CITYASKATTR; }
+        virtual UINT            GetPacketSize() const { return 0; }
 
-	public:
-		//使用数据接口
+    public:
+        //使用数据接口
 
-	private:
+    private:
 
-	};
+    };
 
-	class CGCityAskAttrFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGCityAskAttr() ; }
-		PacketID_t	GetPacketID() const { return PACKET_CG_CITYASKATTR ; }
-		UINT		GetPacketMaxSize() const { return 0; }
-	};
+    class CGCityAskAttrFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGCityAskAttr() ; }
+        PacketID_t    GetPacketID() const { return PACKET_CG_CITYASKATTR ; }
+        UINT        GetPacketMaxSize() const { return 0; }
+    };
 
-	class CGCityAskAttrHandler 
-	{
-	public:
-		static UINT Execute( CGCityAskAttr* pPacket, Player* pPlayer ) ;
-	};
+    class CGCityAskAttrHandler 
+    {
+    public:
+        static UINT Execute( CGCityAskAttr* pPacket, Player* pPlayer ) ;
+    };
 };
 
 using namespace Packets ;

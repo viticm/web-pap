@@ -9,37 +9,37 @@ BOOL GWFinger::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	m_Finger.Read( iStream );
+    m_Finger.Read( iStream );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL GWFinger::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	m_Finger.Write( oStream );
+    m_Finger.Write( oStream );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 UINT GWFinger::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GWFingerHandler::Execute( this, pPlayer );
+    return GWFingerHandler::Execute( this, pPlayer );
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 

@@ -11,36 +11,36 @@ BOOL GCMissionAdd::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_Mission), sizeof(m_Mission));
+    iStream.Read( (CHAR*)(&m_Mission), sizeof(m_Mission));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCMissionAdd::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_Mission), sizeof(m_Mission));
+    oStream.Write( (CHAR*)(&m_Mission), sizeof(m_Mission));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCMissionAdd::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCMissionAddHandler::Execute( this, pPlayer ) ;
+    return GCMissionAddHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

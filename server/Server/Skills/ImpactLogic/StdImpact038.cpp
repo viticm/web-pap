@@ -13,10 +13,10 @@
 
 namespace Combat_Module
 {
-	using namespace Combat_Module::Skill_Module;
+    using namespace Combat_Module::Skill_Module;
 
-	namespace Impact_Module
-	{
-	};
+    namespace Impact_Module
+    {
+    };
 };
 

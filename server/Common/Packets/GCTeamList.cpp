@@ -1,52 +1,52 @@
 #include "stdafx.h"
 #include "GCTeamList.h"
 
-BOOL	GCTeamList::Read(SocketInputStream& iStream )
+BOOL    GCTeamList::Read(SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)&m_TeamID, sizeof(m_TeamID) );
-	iStream.Read( (CHAR*)&m_nMemberCount, sizeof(m_nMemberCount) );
+    iStream.Read( (CHAR*)&m_TeamID, sizeof(m_TeamID) );
+    iStream.Read( (CHAR*)&m_nMemberCount, sizeof(m_nMemberCount) );
 
-	for( INT i=0; i<m_nMemberCount; ++i )
-	{
-		m_Members[i].Read(iStream);
-	}
+    for( INT i=0; i<m_nMemberCount; ++i )
+    {
+        m_Members[i].Read(iStream);
+    }
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
-BOOL	GCTeamList::Write(SocketOutputStream& oStream ) const
+BOOL    GCTeamList::Write(SocketOutputStream& oStream ) const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)&m_TeamID, sizeof(m_TeamID) );
-	oStream.Write( (CHAR*)&m_nMemberCount, sizeof(m_nMemberCount) );
+    oStream.Write( (CHAR*)&m_TeamID, sizeof(m_TeamID) );
+    oStream.Write( (CHAR*)&m_nMemberCount, sizeof(m_nMemberCount) );
 
-	for( INT i=0; i<m_nMemberCount; ++i )
-	{
-		m_Members[i].Write(oStream);
-	}
+    for( INT i=0; i<m_nMemberCount; ++i )
+    {
+        m_Members[i].Write(oStream);
+    }
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
-UINT	GCTeamList::Execute(Player* pPlayer )
+UINT    GCTeamList::Execute(Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCTeamListHandler::Execute(this,pPlayer);
+    return GCTeamListHandler::Execute(this,pPlayer);
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 

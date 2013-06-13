@@ -14,40 +14,40 @@ class Packet;
 class CharacterManager
 {
 public :
-	CharacterManager( ) ;
-	~CharacterManager( ) ;
+    CharacterManager( ) ;
+    ~CharacterManager( ) ;
 
-	virtual VOID	CleanUp( ) ;
+    virtual VOID    CleanUp( ) ;
 
-	virtual BOOL	AddCharacter( Obj_Character* pCharacter ) ;
-	virtual BOOL	DelCharacter( ObjID_t ObjID ) ;
+    virtual BOOL    AddCharacter( Obj_Character* pCharacter ) ;
+    virtual BOOL    DelCharacter( ObjID_t ObjID ) ;
 
-	Obj_Character*	GetCharacter( ObjID_t ObjID ) ;
+    Obj_Character*    GetCharacter( ObjID_t ObjID ) ;
 
-	virtual BOOL	KillCharacter( Obj_Character* pCharacter ) ;
-	virtual BOOL	HeartBeat( UINT uTime=0 ) ;
+    virtual BOOL    KillCharacter( Obj_Character* pCharacter ) ;
+    virtual BOOL    HeartBeat( UINT uTime=0 ) ;
 
-	BOOL			BroadCast( Packet* pPacket, Obj_Character* pOwn ) ;
+    BOOL            BroadCast( Packet* pPacket, Obj_Character* pOwn ) ;
 
-	UINT			GetCount( ){ return m_Count ; } ;
+    UINT            GetCount( ){ return m_Count ; } ;
 
-	VOID			SetScene( Scene* pScene )
-	{ 
-		Assert( pScene ) ;
-		m_pScene = pScene ; 
-	} ;
-	Scene*			GetScene(){ return m_pScene ; } ;
-
-private :
-	BOOL			Resize( UINT iSize ) ;
-
+    VOID            SetScene( Scene* pScene )
+    { 
+        Assert( pScene ) ;
+        m_pScene = pScene ; 
+    } ;
+    Scene*            GetScene(){ return m_pScene ; } ;
 
 private :
-	ObjID_t*		m_pObjIDs ;
-	UINT			m_TotalSize ;
-	UINT			m_Count ;
+    BOOL            Resize( UINT iSize ) ;
 
-	Scene*			m_pScene ;
+
+private :
+    ObjID_t*        m_pObjIDs ;
+    UINT            m_TotalSize ;
+    UINT            m_Count ;
+
+    Scene*            m_pScene ;
 
 
 };

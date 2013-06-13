@@ -7,11 +7,11 @@
 
 uint GCCityAttrHandler::Execute( GCCityAttr* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return PACKET_EXE_CONTINUE ;
+        return PACKET_EXE_CONTINUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return PACKET_EXE_ERROR ;
+        return PACKET_EXE_ERROR ;
 }

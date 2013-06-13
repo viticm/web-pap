@@ -7,42 +7,42 @@
 
 BOOL GCShopBuy::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		iStream.Read( (CHAR*)(&m_IsBuyOk), sizeof(BYTE));
-		iStream.Read( (CHAR*)(&m_ItemIndex), sizeof(UINT));
-		iStream.Read( (CHAR*)(&m_ItemNum), sizeof(BYTE));
+        iStream.Read( (CHAR*)(&m_IsBuyOk), sizeof(BYTE));
+        iStream.Read( (CHAR*)(&m_ItemIndex), sizeof(UINT));
+        iStream.Read( (CHAR*)(&m_ItemNum), sizeof(BYTE));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL GCShopBuy::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_IsBuyOk), sizeof(BYTE));
-	oStream.Write( (CHAR*)(&m_ItemIndex), sizeof(UINT));
-	oStream.Write( (CHAR*)(&m_ItemNum), sizeof(BYTE));
+    oStream.Write( (CHAR*)(&m_IsBuyOk), sizeof(BYTE));
+    oStream.Write( (CHAR*)(&m_ItemIndex), sizeof(UINT));
+    oStream.Write( (CHAR*)(&m_ItemNum), sizeof(BYTE));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT GCShopBuy::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCShopBuyHandler::Execute( this, pPlayer ) ;
+        return GCShopBuyHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 

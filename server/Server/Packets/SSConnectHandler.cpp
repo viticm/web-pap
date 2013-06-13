@@ -12,11 +12,11 @@ UINT SSConnectHandler::Execute( SSConnect* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	g_pLog->FastSaveLog( LOG_FILE_1, "SSConnectHandler::Execute(...) ServerID:%d ...OK ", pPacket->GetServerID() ) ;
+    g_pLog->FastSaveLog( LOG_FILE_1, "SSConnectHandler::Execute(...) ServerID:%d ...OK ", pPacket->GetServerID() ) ;
 
-	return PACKET_EXE_CONTINUE ;
+    return PACKET_EXE_CONTINUE ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

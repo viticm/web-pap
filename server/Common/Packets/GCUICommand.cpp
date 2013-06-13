@@ -7,40 +7,40 @@ BOOL GCUICommand::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	m_Param.Read( iStream ) ;
-	iStream.Read((CHAR*)&m_nUIIndex,sizeof(INT));
+    m_Param.Read( iStream ) ;
+    iStream.Read((CHAR*)&m_nUIIndex,sizeof(INT));
 
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCUICommand::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	m_Param.Write( oStream ) ;
-	oStream.Write((CHAR*)&m_nUIIndex,sizeof(INT));
+    m_Param.Write( oStream ) ;
+    oStream.Write((CHAR*)&m_nUIIndex,sizeof(INT));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCUICommand::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCUICommandHandler::Execute( this, pPlayer ) ;
+    return GCUICommandHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 

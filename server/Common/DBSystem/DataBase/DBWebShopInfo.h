@@ -6,29 +6,29 @@
 
 class DBWebShopInfo:public ODBCBase
 {
-	GUID_t			m_CharGuid;
-	UINT			m_DBVersion;
-	UINT			m_IsSucceed;
+    GUID_t            m_CharGuid;
+    UINT            m_DBVersion;
+    UINT            m_IsSucceed;
 
-	UINT			m_Id;
+    UINT            m_Id;
 public:
-	DBWebShopInfo(ODBCInterface* pInterface);
+    DBWebShopInfo(ODBCInterface* pInterface);
 
-	virtual BOOL	Load();
-	virtual BOOL	Save(VOID* pSource);
-	virtual BOOL	Delete();
+    virtual BOOL    Load();
+    virtual BOOL    Save(VOID* pSource);
+    virtual BOOL    Delete();
 
-	virtual BOOL	ParseResult(VOID* pResult);
+    virtual BOOL    ParseResult(VOID* pResult);
 
 public:
-	VOID			SetCharGuid(GUID_t guid);
-	GUID_t			GetCharGuid();
-	VOID			SetIsSucceed(UINT succ);
-	UINT			GetIsSucceed();
-	VOID			SetWebShopInfoId(UINT id);
-	UINT			GetWebShopInfoId();
-	VOID			SetDBVersion(UINT version);
-	UINT			GetDBVersion();
+    VOID            SetCharGuid(GUID_t guid);
+    GUID_t            GetCharGuid();
+    VOID            SetIsSucceed(UINT succ);
+    UINT            GetIsSucceed();
+    VOID            SetWebShopInfoId(UINT id);
+    UINT            GetWebShopInfoId();
+    VOID            SetDBVersion(UINT version);
+    UINT            GetDBVersion();
 };
 
 

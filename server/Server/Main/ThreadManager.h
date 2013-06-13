@@ -14,39 +14,39 @@
 class ThreadManager
 {
 public :
-	ThreadManager( ) ;
-	~ThreadManager( ) ;
+    ThreadManager( ) ;
+    ~ThreadManager( ) ;
 
-	//初始化
-	BOOL				Init( UINT MaxSceneCount = MAX_SCENE ) ;
-	//启动所有线程
-	BOOL				Start( ) ;
-	//停止所有线程
-	BOOL				Stop( ) ;
+    //初始化
+    BOOL                Init( UINT MaxSceneCount = MAX_SCENE ) ;
+    //启动所有线程
+    BOOL                Start( ) ;
+    //停止所有线程
+    BOOL                Stop( ) ;
 
-	//取得当前的线程池
-	ThreadPool*			GetThreadPool(){ return m_pThreadPool ; } ;
+    //取得当前的线程池
+    ThreadPool*            GetThreadPool(){ return m_pThreadPool ; } ;
 
-	//取得当前的服务器线程
-	ServerThread*		GetServerThread(){ 
-		return m_pServerThread ; 
-	} ;
+    //取得当前的服务器线程
+    ServerThread*        GetServerThread(){ 
+        return m_pServerThread ; 
+    } ;
 
-	//取得当前运行的线程总数
-	UINT				GetTotalThreads(){ return m_nThreads ; } ;
+    //取得当前运行的线程总数
+    UINT                GetTotalThreads(){ return m_nThreads ; } ;
 
 
 protected :
-	ThreadPool*			m_pThreadPool ;
-	ServerThread*		m_pServerThread ;
-	UINT				m_nThreads ;
+    ThreadPool*            m_pThreadPool ;
+    ServerThread*        m_pServerThread ;
+    UINT                m_nThreads ;
 
 
 
 
 };
 
-extern ThreadManager*	g_pThreadManager ;
+extern ThreadManager*    g_pThreadManager ;
 
 
 

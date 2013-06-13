@@ -9,36 +9,36 @@ BOOL CGPlayerDieResult::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_nResultCode), sizeof(m_nResultCode));
+    iStream.Read( (CHAR*)(&m_nResultCode), sizeof(m_nResultCode));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGPlayerDieResult::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_nResultCode), sizeof(m_nResultCode));
+    oStream.Write( (CHAR*)(&m_nResultCode), sizeof(m_nResultCode));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGPlayerDieResult::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGPlayerDieResultHandler::Execute( this, pPlayer ) ;
+    return CGPlayerDieResultHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

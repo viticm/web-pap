@@ -9,15 +9,15 @@ BOOL GCCanPickMissionItemList::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_yItemCount), sizeof(m_yItemCount) );
-	if ( m_yItemCount > 0 )
-		iStream.Read( (CHAR*)(&m_aCanPickMissionItemList[0]), sizeof(UINT) * m_yItemCount );
+    iStream.Read( (CHAR*)(&m_yItemCount), sizeof(m_yItemCount) );
+    if ( m_yItemCount > 0 )
+        iStream.Read( (CHAR*)(&m_aCanPickMissionItemList[0]), sizeof(UINT) * m_yItemCount );
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCCanPickMissionItemList::Write( SocketOutputStream& oStream )const
@@ -25,25 +25,25 @@ BOOL GCCanPickMissionItemList::Write( SocketOutputStream& oStream )const
 __ENTER_FUNCTION
 
 
-	oStream.Write( (CHAR*)(&m_yItemCount), sizeof(m_yItemCount) );
-	if ( m_yItemCount > 0 )
-		oStream.Write( (CHAR*)(&m_aCanPickMissionItemList[0]), sizeof(UINT) * m_yItemCount );
+    oStream.Write( (CHAR*)(&m_yItemCount), sizeof(m_yItemCount) );
+    if ( m_yItemCount > 0 )
+        oStream.Write( (CHAR*)(&m_aCanPickMissionItemList[0]), sizeof(UINT) * m_yItemCount );
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCCanPickMissionItemList::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCCanPickMissionItemListHandler::Execute( this, pPlayer ) ;
+    return GCCanPickMissionItemListHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

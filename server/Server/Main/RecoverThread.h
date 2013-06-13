@@ -11,20 +11,20 @@
 class RecoverThread : public Thread
 {
 public :
-	RecoverThread( ){} ;
-	~RecoverThread( ){} ;
+    RecoverThread( ){} ;
+    ~RecoverThread( ){} ;
 
-	//主循环
-	virtual VOID	run( ) ;
+    //主循环
+    virtual VOID    run( ) ;
 
-	//停止线程执行
-	virtual VOID	stop( ) { m_bActive = FALSE ; } ;
+    //停止线程执行
+    virtual VOID    stop( ) { m_bActive = FALSE ; } ;
 
-	//判断当前线程是否激活
-	BOOL			IsActive( ){ return m_bActive ; } ;
+    //判断当前线程是否激活
+    BOOL            IsActive( ){ return m_bActive ; } ;
 private :
-	//是否激活
-	BOOL		m_bActive ;
+    //是否激活
+    BOOL        m_bActive ;
 
 
 };

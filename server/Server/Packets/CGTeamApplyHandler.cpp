@@ -17,40 +17,40 @@ UINT CGTeamApplyHandler::Execute( CGTeamApply* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
-	
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL )
-	{
-		Assert(FALSE) ;
-		return PACKET_EXE_ERROR ;
-	}
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
+    
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL )
+    {
+        Assert(FALSE) ;
+        return PACKET_EXE_ERROR ;
+    }
 
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-
-
-
-	GWTeamApply* pMsg = (GWTeamApply*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_TEAMAPPLY)) ;
-	pMsg->SetSourGUID( pPacket->GetSourGUID() ) ;//申请人
-	pMsg->SetDestName( pPacket->GetDestName() ) ;//被申请人
-
-	g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
-
-
-	g_pLog->FastSaveLog( LOG_FILE_1, "CGTeamApplyHandler: sGUID=%X dName=%s", 
-		pPacket->GetSourGUID(), pPacket->GetDestName() ) ;
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
 
 
+    GWTeamApply* pMsg = (GWTeamApply*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_TEAMAPPLY)) ;
+    pMsg->SetSourGUID( pPacket->GetSourGUID() ) ;//申请人
+    pMsg->SetDestName( pPacket->GetDestName() ) ;//被申请人
 
-	return PACKET_EXE_CONTINUE ;
+    g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
+
+
+    g_pLog->FastSaveLog( LOG_FILE_1, "CGTeamApplyHandler: sGUID=%X dName=%s", 
+        pPacket->GetSourGUID(), pPacket->GetDestName() ) ;
+
+
+
+
+    return PACKET_EXE_CONTINUE ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

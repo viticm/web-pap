@@ -8,9 +8,9 @@
 
 class AbilityTailor : public AbilityCompound
 {
-	
+    
 public:
-	AbilityTailor(const Ability& a);
+    AbilityTailor(const Ability& a);
 
 private:
 };

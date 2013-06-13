@@ -7,40 +7,40 @@
 
 BOOL GCModifySpeed::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
-		iStream.Read( (CHAR*)(&m_uMoveSpeed), sizeof(UINT) ) ;
+        iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
+        iStream.Read( (CHAR*)(&m_uMoveSpeed), sizeof(UINT) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL GCModifySpeed::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
-		
-		oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
-		oStream.Write( (CHAR*)(&m_uMoveSpeed), sizeof(UINT) ) ;
+    __ENTER_FUNCTION
+        
+        oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
+        oStream.Write( (CHAR*)(&m_uMoveSpeed), sizeof(UINT) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT GCModifySpeed::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCModifySpeedHandler::Execute( this, pPlayer ) ;
+        return GCModifySpeedHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 

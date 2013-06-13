@@ -9,36 +9,36 @@ BOOL GCJoinMenpai::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_SucceedJoin), sizeof(short) ) ;
+    iStream.Read( (CHAR*)(&m_SucceedJoin), sizeof(short) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCJoinMenpai::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_SucceedJoin), sizeof(short) ) ;
+    oStream.Write( (CHAR*)(&m_SucceedJoin), sizeof(short) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCJoinMenpai::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCJoinMenpaiHandler::Execute( this, pPlayer ) ;
+    return GCJoinMenpaiHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

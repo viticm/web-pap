@@ -16,40 +16,40 @@ namespace Packets
 class CGAskJoinMenpai : public Packet
 {
 public:
-	CGAskJoinMenpai( ){}
-	virtual ~CGAskJoinMenpai( ){}
+    CGAskJoinMenpai( ){}
+    virtual ~CGAskJoinMenpai( ){}
 
-	//公用继承接口
-	virtual BOOL			Read( SocketInputStream& iStream ) ;
-	virtual BOOL			Write( SocketOutputStream& oStream )const ;
-	virtual UINT			Execute( Player* pPlayer ) ;
+    //公用继承接口
+    virtual BOOL            Read( SocketInputStream& iStream ) ;
+    virtual BOOL            Write( SocketOutputStream& oStream )const ;
+    virtual UINT            Execute( Player* pPlayer ) ;
 
-	virtual PacketID_t		GetPacketID()const { return PACKET_CG_ASKJOINMENPAI ; }
-	virtual UINT			GetPacketSize()const { return sizeof(TeamID_t) ; }
-	
+    virtual PacketID_t        GetPacketID()const { return PACKET_CG_ASKJOINMENPAI ; }
+    virtual UINT            GetPacketSize()const { return sizeof(TeamID_t) ; }
+    
 public:
-	//使用数据接口
-	TeamID_t				GetMenpaiID(VOID) { return m_MenpaiID; }
-	VOID					SetMenpaiID(TeamID_t idMenpai) { m_MenpaiID = idMenpai; }
+    //使用数据接口
+    TeamID_t                GetMenpaiID(VOID) { return m_MenpaiID; }
+    VOID                    SetMenpaiID(TeamID_t idMenpai) { m_MenpaiID = idMenpai; }
 
 private:
-	//数据
-	TeamID_t				m_MenpaiID;	
+    //数据
+    TeamID_t                m_MenpaiID;    
 };
 
 
 class CGAskJoinMenpaiFactory : public PacketFactory 
 {
 public:
-	Packet*		CreatePacket() { return new CGAskJoinMenpai() ; }
-	PacketID_t	GetPacketID()const { return PACKET_CG_ASKJOINMENPAI; }
-	UINT		GetPacketMaxSize()const { return sizeof(TeamID_t) ; }
+    Packet*        CreatePacket() { return new CGAskJoinMenpai() ; }
+    PacketID_t    GetPacketID()const { return PACKET_CG_ASKJOINMENPAI; }
+    UINT        GetPacketMaxSize()const { return sizeof(TeamID_t) ; }
 };
 
 class CGAskJoinMenpaiHandler 
 {
 public:
-	static UINT Execute( CGAskJoinMenpai* pPacket, Player* pPlayer ) ;
+    static UINT Execute( CGAskJoinMenpai* pPacket, Player* pPlayer ) ;
 };
 
 }

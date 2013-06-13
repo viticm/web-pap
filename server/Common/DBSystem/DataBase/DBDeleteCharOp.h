@@ -8,23 +8,23 @@
 
 class DBDeleteCharOp:public ODBCBase
 {
-	UINT			m_AID;
-	CHAR			m_Account[MAX_ACCOUNT+1];	//用户名称
-	GUID_t			m_CharGuid;
+    UINT            m_AID;
+    CHAR            m_Account[MAX_ACCOUNT+1];    //用户名称
+    GUID_t            m_CharGuid;
 public:
-	DBDeleteCharOp(ODBCInterface* pInterface);
+    DBDeleteCharOp(ODBCInterface* pInterface);
 
-	virtual BOOL	Load();
-	virtual BOOL	AddNew();
-	virtual BOOL	Delete();
-	virtual BOOL	ParseResult(VOID* pResult);
+    virtual BOOL    Load();
+    virtual BOOL    AddNew();
+    virtual BOOL    Delete();
+    virtual BOOL    ParseResult(VOID* pResult);
 
 public:
-	const	CHAR*	GetAccount()	const;
-	VOID			SetAccount(const CHAR*	pAccount);
+    const    CHAR*    GetAccount()    const;
+    VOID            SetAccount(const CHAR*    pAccount);
 
-	VOID			SetCharGuid(GUID_t guid);
-	GUID_t			GetCharGuid();
+    VOID            SetCharGuid(GUID_t guid);
+    GUID_t            GetCharGuid();
 
 };
 

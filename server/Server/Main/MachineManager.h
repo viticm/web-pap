@@ -10,16 +10,16 @@
 class MachineManager
 {
 public :
-	MachineManager( ) ;
-	~MachineManager( ) ;
+    MachineManager( ) ;
+    ~MachineManager( ) ;
 
-	BOOL			Init( ) ;
+    BOOL            Init( ) ;
 
-	ID_t			GetMachineID( ) ;
-	ID_t			GetMachineID( ID_t ServerID ) ;
+    ID_t            GetMachineID( ) ;
+    ID_t            GetMachineID( ID_t ServerID ) ;
 
-	_MACHINE_DATA*	GetMachineInfo( ) ;
-	_MACHINE_DATA*	GetMachineInfo( ID_t MachineID ) ;
+    _MACHINE_DATA*    GetMachineInfo( ) ;
+    _MACHINE_DATA*    GetMachineInfo( ID_t MachineID ) ;
 
 
 };

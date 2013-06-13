@@ -36,7 +36,7 @@ end
 --返回1：技能类似的物品，可以继续类似技能的执行；返回0：忽略后面的操作。
 --**********************************
 function IsSkillLikeScript( sceneId, selfId)
-	return 1; --这个脚本需要动作支持
+    return 1; --这个脚本需要动作支持
 end
 
 --**********************************
@@ -45,12 +45,12 @@ end
 --返回1：已经取消对应效果，不再执行后续操作；返回0：没有检测到相关效果，继续执行。
 --**********************************
 function CancelImpacts( sceneId, selfId )
-	nRet = 0;
-	nRet = LuaFnCancelSpecificImpact(sceneId, selfId, g_Impact1)
-	if(0<nRet) then
-		return 1;
-	end
-	return 0;
+    nRet = 0;
+    nRet = LuaFnCancelSpecificImpact(sceneId, selfId, g_Impact1)
+    if(0<nRet) then
+        return 1;
+    end
+    return 0;
 end
 
 --**********************************
@@ -59,20 +59,20 @@ end
 --返回1：条件检测通过，可以继续执行；返回0：条件检测失败，中断后续执行。
 --**********************************
 function OnConditionCheck( sceneId, selfId )
-	--校验使用的物品
-	if(1~=LuaFnVerifyUsedItem(sceneId, selfId)) then
-		return 0
-	end
-	if(-1~=g_MenPai) then
-		if(LuaFnGetMenPai(sceneId, selfId)==g_MenPai) then --门派专用座骑检查
-			return 1;
-		else
-			Msg2Player( sceneId,selfId,"您不能骑这种座骑。",MSG2PLAYER_PARA) --通知玩家
-		end
-	else
-		return 1;
-	end
-	return 0; --骑乘不需要任何条件
+    --校验使用的物品
+    if(1~=LuaFnVerifyUsedItem(sceneId, selfId)) then
+        return 0
+    end
+    if(-1~=g_MenPai) then
+        if(LuaFnGetMenPai(sceneId, selfId)==g_MenPai) then --门派专用座骑检查
+            return 1;
+        else
+            Msg2Player( sceneId,selfId,"您不能骑这种座骑。",MSG2PLAYER_PARA) --通知玩家
+        end
+    else
+        return 1;
+    end
+    return 0; --骑乘不需要任何条件
 end
 
 --**********************************
@@ -82,7 +82,7 @@ end
 --注意：这不光负责消耗的检测也负责消耗的执行。
 --**********************************
 function OnDeplete( sceneId, selfId )
-	return 1; --骑乘不消耗
+    return 1; --骑乘不消耗
 end
 
 --**********************************
@@ -93,11 +93,11 @@ end
 --注：这里是技能生效一次的入口
 --**********************************
 function OnActivateOnce( sceneId, selfId )
-	if(-1~=g_Impact1) then
-		LuaFnSendSpecificImpactToUnit(sceneId, selfId, selfId, selfId, g_Impact1, 0);
-	end
-	Msg2Player( sceneId,selfId,"您已经骑上座骑了。",MSG2PLAYER_PARA) --通知玩家
-	return 1;
+    if(-1~=g_Impact1) then
+        LuaFnSendSpecificImpactToUnit(sceneId, selfId, selfId, selfId, g_Impact1, 0);
+    end
+    Msg2Player( sceneId,selfId,"您已经骑上座骑了。",MSG2PLAYER_PARA) --通知玩家
+    return 1;
 end
 
 --**********************************
@@ -107,5 +107,5 @@ end
 --注：这里是技能生效一次的入口
 --**********************************
 function OnActivateEachTick( sceneId, selfId)
-	return 1; --骑乘不是引导性脚本, 只保留空函数.
+    return 1; --骑乘不是引导性脚本, 只保留空函数.
 end

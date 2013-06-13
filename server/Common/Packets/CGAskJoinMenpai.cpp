@@ -9,36 +9,36 @@ BOOL CGAskJoinMenpai::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_MenpaiID), sizeof(TeamID_t) ) ;
+    iStream.Read( (CHAR*)(&m_MenpaiID), sizeof(TeamID_t) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGAskJoinMenpai::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_MenpaiID), sizeof(TeamID_t) ) ;
+    oStream.Write( (CHAR*)(&m_MenpaiID), sizeof(TeamID_t) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGAskJoinMenpai::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGAskJoinMenpaiHandler::Execute( this, pPlayer ) ;
+    return CGAskJoinMenpaiHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

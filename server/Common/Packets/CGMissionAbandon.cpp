@@ -11,36 +11,36 @@ BOOL CGMissionAbandon::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_idMissionScript), sizeof(ScriptID_t) ) ;
+    iStream.Read( (CHAR*)(&m_idMissionScript), sizeof(ScriptID_t) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGMissionAbandon::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_idMissionScript), sizeof(ScriptID_t) ) ;
+    oStream.Write( (CHAR*)(&m_idMissionScript), sizeof(ScriptID_t) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGMissionAbandon::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGMissionAbandonHandler::Execute( this, pPlayer ) ;
+    return CGMissionAbandonHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

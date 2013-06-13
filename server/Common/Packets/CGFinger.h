@@ -12,28 +12,28 @@ namespace Packets
 class CGFinger : public Packet 
 {
 public:
-	CGFinger( ){}
-	virtual ~CGFinger( ){}
+    CGFinger( ){}
+    virtual ~CGFinger( ){}
 
-	//公用继承接口
-	virtual BOOL			Read( SocketInputStream& iStream );
-	virtual BOOL			Write( SocketOutputStream& oStream ) const;
-	virtual UINT			Execute( Player* pPlayer );
+    //公用继承接口
+    virtual BOOL            Read( SocketInputStream& iStream );
+    virtual BOOL            Write( SocketOutputStream& oStream ) const;
+    virtual UINT            Execute( Player* pPlayer );
 
-	virtual PacketID_t		GetPacketID() const { return PACKET_CG_FINGER; }
-	virtual UINT			GetPacketSize() const 
-	{ 
-		return m_Finger.GetSize(); 
-	}
+    virtual PacketID_t        GetPacketID() const { return PACKET_CG_FINGER; }
+    virtual UINT            GetPacketSize() const 
+    { 
+        return m_Finger.GetSize(); 
+    }
 
 public:
-	//使用数据接口
-	CG_FINGER*				GetFinger( ){ return &m_Finger; }
-	VOID					SetFinger( CG_FINGER* pFinger ){ m_Finger = *pFinger; };
+    //使用数据接口
+    CG_FINGER*                GetFinger( ){ return &m_Finger; }
+    VOID                    SetFinger( CG_FINGER* pFinger ){ m_Finger = *pFinger; };
 
 private:
-	//数据
-	CG_FINGER				m_Finger;
+    //数据
+    CG_FINGER                m_Finger;
 
 };
 
@@ -41,16 +41,16 @@ private:
 class CGFingerFactory : public PacketFactory 
 {
 public:
-	Packet*		CreatePacket() { return new CGFinger(); }
-	PacketID_t	GetPacketID() const { return PACKET_CG_FINGER; }
-	UINT		GetPacketMaxSize() const { return sizeof(CG_FINGER); }
+    Packet*        CreatePacket() { return new CGFinger(); }
+    PacketID_t    GetPacketID() const { return PACKET_CG_FINGER; }
+    UINT        GetPacketMaxSize() const { return sizeof(CG_FINGER); }
 };
 
 
 class CGFingerHandler 
 {
 public:
-	static UINT Execute( CGFinger* pPacket, Player* pPlayer );
+    static UINT Execute( CGFinger* pPacket, Player* pPlayer );
 };
 
 

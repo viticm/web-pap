@@ -9,11 +9,11 @@
 #include "Socket.h"
 
 //#ifdef __WINDOWS__
-//	#pragma comment(lib, "../../Common/KeyDog.lib")
-//	extern BOOL GetMacByCmd(char *lpszMac);
+//    #pragma comment(lib, "../../Common/KeyDog.lib")
+//    extern BOOL GetMacByCmd(char *lpszMac);
 ////#else
-////	#pragma comment(lib, "../../Common/libCFG.a")
-////	extern int		 CheckSystem();
+////    #pragma comment(lib, "../../Common/libCFG.a")
+////    extern int         CheckSystem();
 //#endif
 //////////////////////////////////////////////////////////////////////
 //
@@ -24,26 +24,26 @@
 class ServerSocket 
 {
 public :
-	
-	// constructor
-	ServerSocket (UINT port, UINT backlog = 5) ;
-	
-	// destructor
-	~ServerSocket () ;
-	
+    
+    // constructor
+    ServerSocket (UINT port, UINT backlog = 5) ;
+    
+    // destructor
+    ~ServerSocket () ;
+    
 
 //////////////////////////////////////////////////
 // methods
 //////////////////////////////////////////////////
 public :
-	
-	// close socket
-	VOID close () ;
-	
-	// accept new connection
-	BOOL accept ( Socket* socket ) ;
+    
+    // close socket
+    VOID close () ;
+    
+    // accept new connection
+    BOOL accept ( Socket* socket ) ;
 
-	// get/set socket's linger status
+    // get/set socket's linger status
     UINT getLinger () { return m_Socket->getLinger(); }
     VOID setLinger (UINT lingertime) { m_Socket->setLinger(lingertime); }
  
@@ -59,15 +59,15 @@ public :
     UINT getSendBufferSize () const { return m_Socket->getSendBufferSize(); }
     VOID setSendBufferSize (UINT size) { m_Socket->setSendBufferSize(size); }
  
-	SOCKET getSOCKET () { return m_Socket->getSOCKET(); }
+    SOCKET getSOCKET () { return m_Socket->getSOCKET(); }
 
 //////////////////////////////////////////////////
 // attributes
 //////////////////////////////////////////////////
 protected :
-	
-	// socket implementation object
-	Socket* m_Socket;
+    
+    // socket implementation object
+    Socket* m_Socket;
 
 
 

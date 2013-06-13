@@ -11,36 +11,36 @@ BOOL GCMissionRemove::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_idMission), sizeof(m_idMission));
+    iStream.Read( (CHAR*)(&m_idMission), sizeof(m_idMission));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCMissionRemove::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_idMission), sizeof(m_idMission));
+    oStream.Write( (CHAR*)(&m_idMission), sizeof(m_idMission));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCMissionRemove::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCMissionRemoveHandler::Execute( this, pPlayer ) ;
+    return GCMissionRemoveHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

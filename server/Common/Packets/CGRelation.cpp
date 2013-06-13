@@ -9,37 +9,37 @@ BOOL CGRelation::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	m_Relation.Read( iStream ) ;
+    m_Relation.Read( iStream ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGRelation::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	m_Relation.Write( oStream ) ;
+    m_Relation.Write( oStream ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGRelation::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGRelationHandler::Execute( this, pPlayer ) ;
+    return CGRelationHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 

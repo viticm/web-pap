@@ -21,31 +21,31 @@
 
 namespace Combat_Module
 {
-	namespace Skill_Module
-	{
-		using namespace Combat_Module;
-		using namespace Combat_Module::Impact_Module;
-		//class DaLiSkill007_T : public SkillLogic_T
-		BOOL DaLiSkill007_T::EffectOnUnitOnce(Obj_Character& rMe, Obj_Character& rTar, BOOL bCriticalFlag) const
-		{
-			__ENTER_FUNCTION
-			SkillInfo_T& rSkillInfo = rMe.GetSkillInfo();
-			TargetingAndDepletingParams_T& rParams = rMe.GetTargetingAndDepletingParams();
-			// Init impact
-			OWN_IMPACT impact;
-			SOT_DaLi007_T const logic;
-			logic.InitStruct(impact);
+    namespace Skill_Module
+    {
+        using namespace Combat_Module;
+        using namespace Combat_Module::Impact_Module;
+        //class DaLiSkill007_T : public SkillLogic_T
+        BOOL DaLiSkill007_T::EffectOnUnitOnce(Obj_Character& rMe, Obj_Character& rTar, BOOL bCriticalFlag) const
+        {
+            __ENTER_FUNCTION
+            SkillInfo_T& rSkillInfo = rMe.GetSkillInfo();
+            TargetingAndDepletingParams_T& rParams = rMe.GetTargetingAndDepletingParams();
+            // Init impact
+            OWN_IMPACT impact;
+            SOT_DaLi007_T const logic;
+            logic.InitStruct(impact);
 
-			impact.m_nImpactID = rSkillInfo.GetDescriptorByIndex(0)->GetValue();
-			logic.SetContinuance(impact, rSkillInfo.GetDescriptorByIndex(1)->GetValue());
-			logic.SetEffectedSkillCollection(impact, rSkillInfo.GetDescriptorByIndex(2)->GetValue());
-			logic.SetAttackRefixRate(impact, rSkillInfo.GetDescriptorByIndex(3)->GetValue());
-			logic.SetRageConvertRate(impact, rSkillInfo.GetDescriptorByIndex(4)->GetValue());
-			//register impact on target
-			RegisterImpactEvent(rTar, rMe, impact, rParams.GetDelayTime(), bCriticalFlag);
-			return TRUE;
-			__LEAVE_FUNCTION
-			return FALSE;
-		}
-	};
+            impact.m_nImpactID = rSkillInfo.GetDescriptorByIndex(0)->GetValue();
+            logic.SetContinuance(impact, rSkillInfo.GetDescriptorByIndex(1)->GetValue());
+            logic.SetEffectedSkillCollection(impact, rSkillInfo.GetDescriptorByIndex(2)->GetValue());
+            logic.SetAttackRefixRate(impact, rSkillInfo.GetDescriptorByIndex(3)->GetValue());
+            logic.SetRageConvertRate(impact, rSkillInfo.GetDescriptorByIndex(4)->GetValue());
+            //register impact on target
+            RegisterImpactEvent(rTar, rMe, impact, rParams.GetDelayTime(), bCriticalFlag);
+            return TRUE;
+            __LEAVE_FUNCTION
+            return FALSE;
+        }
+    };
 };

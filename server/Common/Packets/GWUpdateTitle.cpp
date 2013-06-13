@@ -9,47 +9,47 @@ BOOL GWUpdateTitle::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_GUID), sizeof(GUID_t) );
-	iStream.Read( (CHAR*)(&m_uTitleSize), sizeof(UCHAR) );
+    iStream.Read( (CHAR*)(&m_GUID), sizeof(GUID_t) );
+    iStream.Read( (CHAR*)(&m_uTitleSize), sizeof(UCHAR) );
 
-	if( m_uTitleSize > 0 )
-	{
-		iStream.Read( m_szTitle, sizeof(CHAR) * m_uTitleSize );
-	}
+    if( m_uTitleSize > 0 )
+    {
+        iStream.Read( m_szTitle, sizeof(CHAR) * m_uTitleSize );
+    }
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL GWUpdateTitle::Write( SocketOutputStream& oStream ) const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_GUID), sizeof(GUID_t) );
-	oStream.Write( (CHAR*)(&m_uTitleSize), sizeof(UCHAR) );
+    oStream.Write( (CHAR*)(&m_GUID), sizeof(GUID_t) );
+    oStream.Write( (CHAR*)(&m_uTitleSize), sizeof(UCHAR) );
 
-	if( m_uTitleSize > 0 )
-	{
-		oStream.Write( m_szTitle, sizeof(CHAR) * m_uTitleSize );
-	}
+    if( m_uTitleSize > 0 )
+    {
+        oStream.Write( m_szTitle, sizeof(CHAR) * m_uTitleSize );
+    }
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 UINT GWUpdateTitle::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GWUpdateTitleHandler::Execute( this, pPlayer );
-	
+    return GWUpdateTitleHandler::Execute( this, pPlayer );
+    
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }

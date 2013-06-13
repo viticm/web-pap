@@ -20,53 +20,53 @@
 
 namespace Combat_Module
 {
-	namespace Skill_Module
-	{
-		using namespace Combat_Module;
-		using namespace Impact_Module;
-		//class ArmorMastery_T : public SkillLogic_T
-		BOOL ArmorMastery_T::Refix_ItemEffect(SkillInfo_T & rThisPassiveSkill, INT nSlotID, INT nItemType, INT nAttrID, SHORT & nAttrValue) const
-		{
-			__ENTER_FUNCTION
-			INT nRefixDefencePhysics = rThisPassiveSkill.GetDescriptorByIndex(BASE_DEFENCE_PHYSICS)->GetValue();
-			INT nRefixDefenceMagic = rThisPassiveSkill.GetDescriptorByIndex(BASE_DEFENCE_MAGIC)->GetValue();
-			switch (nSlotID)
-			{
-				case	HEQUIP_WEAPON: 	//ÎäÆ÷	WEAPON
-					break;
-				case	HEQUIP_CAP:		//Ã±×Ó	DEFENCE
-				case	HEQUIP_ARMOR:	//¿ø¼×	DEFENCE
-				case	HEQUIP_CUFF:	//»¤Íó	DEFENCE
-				case	HEQUIP_BOOT:	//Ð¬	DEFENCE
-				case	HEQUIP_SASH:	//Ñü´ø	ADORN
-					{
-						switch (nAttrID)
-						{
-							case IATTRIBUTE_BASE_DEFENCE_P:			//»ù´¡ÎïÀí·ÀÓù
-								{
-									nAttrValue = Float2Int((nAttrValue * nRefixDefencePhysics)/100.0f);
-								}
-								break;
-							case IATTRIBUTE_BASE_DEFENCE_M:			//»ù´¡Ä§·¨·ÀÓù
-								{
-									nAttrValue = Float2Int((nAttrValue * nRefixDefenceMagic)/100.0f);
-								}
-								break;
-							default:
-								break;
-						}
-					}
-					break;
-				case	HEQUIP_RING:	//½ä×Ó	ADORN
-				case	HEQUIP_NECKLACE://ÏîÁ´	ADORN
-				case	HEQUIP_RIDER:   //Æï³Ë  ADORN
-					break;
-				default:
-					break;
-			}
-			return TRUE;
-			__LEAVE_FUNCTION
-			return FALSE;
-		}
-	};
+    namespace Skill_Module
+    {
+        using namespace Combat_Module;
+        using namespace Impact_Module;
+        //class ArmorMastery_T : public SkillLogic_T
+        BOOL ArmorMastery_T::Refix_ItemEffect(SkillInfo_T & rThisPassiveSkill, INT nSlotID, INT nItemType, INT nAttrID, SHORT & nAttrValue) const
+        {
+            __ENTER_FUNCTION
+            INT nRefixDefencePhysics = rThisPassiveSkill.GetDescriptorByIndex(BASE_DEFENCE_PHYSICS)->GetValue();
+            INT nRefixDefenceMagic = rThisPassiveSkill.GetDescriptorByIndex(BASE_DEFENCE_MAGIC)->GetValue();
+            switch (nSlotID)
+            {
+                case    HEQUIP_WEAPON:     //ÎäÆ÷    WEAPON
+                    break;
+                case    HEQUIP_CAP:        //Ã±×Ó    DEFENCE
+                case    HEQUIP_ARMOR:    //¿ø¼×    DEFENCE
+                case    HEQUIP_CUFF:    //»¤Íó    DEFENCE
+                case    HEQUIP_BOOT:    //Ð¬    DEFENCE
+                case    HEQUIP_SASH:    //Ñü´ø    ADORN
+                    {
+                        switch (nAttrID)
+                        {
+                            case IATTRIBUTE_BASE_DEFENCE_P:            //»ù´¡ÎïÀí·ÀÓù
+                                {
+                                    nAttrValue = Float2Int((nAttrValue * nRefixDefencePhysics)/100.0f);
+                                }
+                                break;
+                            case IATTRIBUTE_BASE_DEFENCE_M:            //»ù´¡Ä§·¨·ÀÓù
+                                {
+                                    nAttrValue = Float2Int((nAttrValue * nRefixDefenceMagic)/100.0f);
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    break;
+                case    HEQUIP_RING:    //½ä×Ó    ADORN
+                case    HEQUIP_NECKLACE://ÏîÁ´    ADORN
+                case    HEQUIP_RIDER:   //Æï³Ë  ADORN
+                    break;
+                default:
+                    break;
+            }
+            return TRUE;
+            __LEAVE_FUNCTION
+            return FALSE;
+        }
+    };
 };

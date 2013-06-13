@@ -5,57 +5,57 @@
 
 BOOL LCRetCreateChar::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
-		
+    __ENTER_FUNCTION
+        
 
-		iStream.Read((CHAR*)(&Result),sizeof(ASKCREATECHAR_RESULT));
-		return TRUE ;
+        iStream.Read((CHAR*)(&Result),sizeof(ASKCREATECHAR_RESULT));
+        return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL LCRetCreateChar::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		oStream.Write((CHAR*)(&Result),sizeof(ASKCREATECHAR_RESULT));
-		return TRUE ;
+        oStream.Write((CHAR*)(&Result),sizeof(ASKCREATECHAR_RESULT));
+        return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT LCRetCreateChar::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return	LCRetCreateCharHandler::Execute( this, pPlayer ) ;
+        return    LCRetCreateCharHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
-ASKCREATECHAR_RESULT	LCRetCreateChar::GetResult() const
+ASKCREATECHAR_RESULT    LCRetCreateChar::GetResult() const
 {
-	return Result;
+    return Result;
 }
 
 VOID LCRetCreateChar::SetResult(ASKCREATECHAR_RESULT result)
 {
-	Result = result;
+    Result = result;
 }
 
-const	CHAR*	LCRetCreateChar::GetAccount()	const
+const    CHAR*    LCRetCreateChar::GetAccount()    const
 {
-	return szAccount;
+    return szAccount;
 }
-VOID			LCRetCreateChar::SetAccount(const CHAR*	pAccount)
+VOID            LCRetCreateChar::SetAccount(const CHAR*    pAccount)
 {
-	Assert(pAccount);
-	strncpy(szAccount,pAccount,MAX_ACCOUNT*sizeof(CHAR));
-	szAccount[MAX_ACCOUNT] = '\0' ;
+    Assert(pAccount);
+    strncpy(szAccount,pAccount,MAX_ACCOUNT*sizeof(CHAR));
+    szAccount[MAX_ACCOUNT] = '\0' ;
 }

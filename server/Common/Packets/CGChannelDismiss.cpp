@@ -7,39 +7,39 @@
 
 BOOL CGChannelDismiss::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		iStream.Read( (CHAR*)&m_GUID, sizeof(GUID_t) );
-	
-	return TRUE ;
+        iStream.Read( (CHAR*)&m_GUID, sizeof(GUID_t) );
+    
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGChannelDismiss::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		oStream.Write( (CHAR*)&m_GUID, sizeof(GUID_t) );
-	
-	return TRUE ;
+        oStream.Write( (CHAR*)&m_GUID, sizeof(GUID_t) );
+    
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGChannelDismiss::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return CGChannelDismissHandler::Execute( this, pPlayer ) ;
+        return CGChannelDismissHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 

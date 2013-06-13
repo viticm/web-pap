@@ -6,13 +6,13 @@ class LoginDBManager:public DBManager
 {
 
 public:
-	virtual  BOOL	Init();
-	virtual  VOID	run();
+    virtual  BOOL    Init();
+    virtual  VOID    run();
 
 };
 
 
-extern DBManager*	g_pDataBaseManager;
+extern DBManager*    g_pDataBaseManager;
 
 #endif
 

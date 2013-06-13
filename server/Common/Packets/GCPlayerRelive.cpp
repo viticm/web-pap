@@ -9,32 +9,32 @@ BOOL GCPlayerRelive::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCPlayerRelive::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCPlayerRelive::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCPlayerReliveHandler::Execute( this, pPlayer ) ;
+    return GCPlayerReliveHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

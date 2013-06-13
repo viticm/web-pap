@@ -7,40 +7,40 @@
 
 BOOL GCBankMoney::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_Save), sizeof(BYTE));
-	iStream.Read( (CHAR*)(&m_Amount), sizeof(INT));
-	iStream.Read( (CHAR*)(&m_AmountRMB), sizeof(INT));
-	return TRUE ;
+    iStream.Read( (CHAR*)(&m_Save), sizeof(BYTE));
+    iStream.Read( (CHAR*)(&m_Amount), sizeof(INT));
+    iStream.Read( (CHAR*)(&m_AmountRMB), sizeof(INT));
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL GCBankMoney::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_Save), sizeof(BYTE));
-	oStream.Write( (CHAR*)(&m_Amount), sizeof(INT));
-	oStream.Write( (CHAR*)(&m_AmountRMB), sizeof(INT));
-	return TRUE ;
+    oStream.Write( (CHAR*)(&m_Save), sizeof(BYTE));
+    oStream.Write( (CHAR*)(&m_Amount), sizeof(INT));
+    oStream.Write( (CHAR*)(&m_AmountRMB), sizeof(INT));
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT GCBankMoney::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCBankMoneyHandler::Execute( this, pPlayer ) ;
+        return GCBankMoneyHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 

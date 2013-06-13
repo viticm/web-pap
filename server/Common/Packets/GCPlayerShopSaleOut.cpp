@@ -7,41 +7,41 @@
 
 BOOL GCPlayerShopSaleOut::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_bSaleOut), sizeof(BYTE));
-	iStream.Read( (CHAR*)(&m_Serial), sizeof(BYTE));
+    iStream.Read( (CHAR*)(&m_bSaleOut), sizeof(BYTE));
+    iStream.Read( (CHAR*)(&m_Serial), sizeof(BYTE));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL GCPlayerShopSaleOut::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
 
-	oStream.Write( (CHAR*)(&m_bSaleOut), sizeof(BYTE));
-	oStream.Write( (CHAR*)(&m_Serial), sizeof(BYTE));
+    oStream.Write( (CHAR*)(&m_bSaleOut), sizeof(BYTE));
+    oStream.Write( (CHAR*)(&m_Serial), sizeof(BYTE));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT GCPlayerShopSaleOut::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCPlayerShopSaleOutHandler::Execute( this, pPlayer ) ;
+        return GCPlayerShopSaleOutHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 

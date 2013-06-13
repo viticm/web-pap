@@ -15,15 +15,15 @@ class Obj_Human ;
 class Human_Mission
 {
 public :
-	Human_Mission( ) ;
-	~Human_Mission( ) ;
+    Human_Mission( ) ;
+    ~Human_Mission( ) ;
 
 
 
 
 
 private :
-	Obj_Human*				m_pHuman ;
+    Obj_Human*                m_pHuman ;
 
 
 };

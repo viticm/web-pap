@@ -18,40 +18,40 @@ using namespace Combat_Module;
 using namespace Combat_Module::Skill_Module;
 namespace Combat_Module
 {
-	namespace Skill_Module
-	{
-		class ImpactsToTarget_T : public SkillLogic_T
-		{
-			public:
-				enum
-				{
-					ID = IMPACTS_TO_TARGET,
-				};
-				enum
-				{
-					IMPACT_NUMBER = 2,
-				};
-				class SkillInfoDescriptorIndex_T
-				{
-					public:
-						enum
-						{
-							IDX_ACTIVATE_ONCE_IMPACT =0,
-							IDX_ACTIVATE_EACH_TICK_IMPACT,
-						};
-				};
-				// public interface
-				ImpactsToTarget_T(){};
-				~ImpactsToTarget_T(){};
-				BOOL IsPassive(VOID) const {return FALSE;};
-				// Accessor
-				INT GetActivateOnceImpactByIndex(SkillInfo_T const& rSkill, INT nIndex) const;
-				INT GetActivateEachTickImpactByIndex(SkillInfo_T const& rSkill, INT nIndex) const;
-			protected: //interface for interval using 
-				BOOL EffectOnUnitOnce(Obj_Character& rMe, Obj_Character& rTar, BOOL bCriticalFlag=FALSE) const;
-				BOOL EffectOnUnitEachTick(Obj_Character& rMe, Obj_Character& rTar, BOOL bCriticalFlag=FALSE) const;
-			private:
-		};
-	};
+    namespace Skill_Module
+    {
+        class ImpactsToTarget_T : public SkillLogic_T
+        {
+            public:
+                enum
+                {
+                    ID = IMPACTS_TO_TARGET,
+                };
+                enum
+                {
+                    IMPACT_NUMBER = 2,
+                };
+                class SkillInfoDescriptorIndex_T
+                {
+                    public:
+                        enum
+                        {
+                            IDX_ACTIVATE_ONCE_IMPACT =0,
+                            IDX_ACTIVATE_EACH_TICK_IMPACT,
+                        };
+                };
+                // public interface
+                ImpactsToTarget_T(){};
+                ~ImpactsToTarget_T(){};
+                BOOL IsPassive(VOID) const {return FALSE;};
+                // Accessor
+                INT GetActivateOnceImpactByIndex(SkillInfo_T const& rSkill, INT nIndex) const;
+                INT GetActivateEachTickImpactByIndex(SkillInfo_T const& rSkill, INT nIndex) const;
+            protected: //interface for interval using 
+                BOOL EffectOnUnitOnce(Obj_Character& rMe, Obj_Character& rTar, BOOL bCriticalFlag=FALSE) const;
+                BOOL EffectOnUnitEachTick(Obj_Character& rMe, Obj_Character& rTar, BOOL bCriticalFlag=FALSE) const;
+            private:
+        };
+    };
 };
 #endif //IMPACTTOTARGET_H

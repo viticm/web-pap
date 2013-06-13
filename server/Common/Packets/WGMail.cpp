@@ -7,43 +7,43 @@
 
 BOOL WGMail::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
- 	iStream.Read( (CHAR*)(&m_PlayerID), sizeof(PlayerID_t) ) ;
-	m_MailList.Read( iStream ) ;
-	iStream.Read( (CHAR*)(&m_GUID), sizeof(m_GUID) ) ;
-	
-	return TRUE ;
+     iStream.Read( (CHAR*)(&m_PlayerID), sizeof(PlayerID_t) ) ;
+    m_MailList.Read( iStream ) ;
+    iStream.Read( (CHAR*)(&m_GUID), sizeof(m_GUID) ) ;
+    
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL WGMail::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
- 	oStream.Write( (CHAR*)(&m_PlayerID), sizeof(PlayerID_t) ) ;
-	m_MailList.Write( oStream ) ;
-	oStream.Write( (CHAR*)(&m_GUID), sizeof(m_GUID) ) ;
-	
-	return TRUE ;
+     oStream.Write( (CHAR*)(&m_PlayerID), sizeof(PlayerID_t) ) ;
+    m_MailList.Write( oStream ) ;
+    oStream.Write( (CHAR*)(&m_GUID), sizeof(m_GUID) ) ;
+    
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT WGMail::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return WGMailHandler::Execute( this, pPlayer ) ;
+        return WGMailHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 

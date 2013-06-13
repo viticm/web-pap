@@ -7,41 +7,41 @@
 
 BOOL CGPlayerShopBuyShop::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_ShopID), sizeof(_PLAYERSHOP_GUID));
-	iStream.Read( (CHAR*)(&m_Serial), sizeof(BYTE));
+    iStream.Read( (CHAR*)(&m_ShopID), sizeof(_PLAYERSHOP_GUID));
+    iStream.Read( (CHAR*)(&m_Serial), sizeof(BYTE));
 
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL CGPlayerShopBuyShop::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_ShopID), sizeof(_PLAYERSHOP_GUID));
-	oStream.Write( (CHAR*)(&m_Serial), sizeof(BYTE));
+    oStream.Write( (CHAR*)(&m_ShopID), sizeof(_PLAYERSHOP_GUID));
+    oStream.Write( (CHAR*)(&m_Serial), sizeof(BYTE));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT CGPlayerShopBuyShop::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return CGPlayerShopBuyShopHandler::Execute( this, pPlayer ) ;
+        return CGPlayerShopBuyShopHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 

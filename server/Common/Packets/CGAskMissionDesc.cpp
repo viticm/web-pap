@@ -11,36 +11,36 @@ BOOL CGAskMissionDesc::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_nMissionIndex), sizeof(m_nMissionIndex) ) ;
+    iStream.Read( (CHAR*)(&m_nMissionIndex), sizeof(m_nMissionIndex) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGAskMissionDesc::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_nMissionIndex), sizeof(m_nMissionIndex) ) ;
+    oStream.Write( (CHAR*)(&m_nMissionIndex), sizeof(m_nMissionIndex) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGAskMissionDesc::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGAskMissionDescHandler::Execute( this, pPlayer ) ;
+    return CGAskMissionDescHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

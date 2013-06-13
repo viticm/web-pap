@@ -6,40 +6,40 @@
 #include "CGCharStopLogic.h"
 namespace Packets
 {
-	BOOL CGCharStopLogic::Read( SocketInputStream& iStream ) 
-	{
-	__ENTER_FUNCTION
+    BOOL CGCharStopLogic::Read( SocketInputStream& iStream ) 
+    {
+    __ENTER_FUNCTION
 
-		iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
+        iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
 
-		return TRUE ;
+        return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
-	}
+        return FALSE ;
+    }
 
-	BOOL CGCharStopLogic::Write( SocketOutputStream& oStream )const
-	{
-	__ENTER_FUNCTION
+    BOOL CGCharStopLogic::Write( SocketOutputStream& oStream )const
+    {
+    __ENTER_FUNCTION
 
-		oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
+        oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t));
 
-		return TRUE ;
+        return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
-	}
+        return FALSE ;
+    }
 
-	UINT CGCharStopLogic::Execute( Player* pPlayer )
-	{
-	__ENTER_FUNCTION
+    UINT CGCharStopLogic::Execute( Player* pPlayer )
+    {
+    __ENTER_FUNCTION
 
-		return CGCharStopLogicHandler::Execute( this, pPlayer ) ;
+        return CGCharStopLogicHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
-	}
+        return FALSE ;
+    }
 }

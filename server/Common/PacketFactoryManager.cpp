@@ -523,39 +523,39 @@ PacketFactoryManager::PacketFactoryManager( )
 {
 __ENTER_FUNCTION
 
-	m_Factories = NULL ;
-	m_Size = PACKET_MAX ;
+    m_Factories = NULL ;
+    m_Size = PACKET_MAX ;
 
-	Assert( m_Size>0 ) ;
-	
-	m_Factories = new PacketFactory*[ m_Size ];
-	Assert( m_Factories ) ;
-	m_pPacketAllocCount = new UINT[m_Size] ;
-	Assert( m_pPacketAllocCount ) ;
-	
-	for( INT i=0; i<m_Size; i++ ) 
-	{
-		m_Factories[i] = NULL ;
-		m_pPacketAllocCount[i] = 0 ;
-	}
-			
+    Assert( m_Size>0 ) ;
+    
+    m_Factories = new PacketFactory*[ m_Size ];
+    Assert( m_Factories ) ;
+    m_pPacketAllocCount = new UINT[m_Size] ;
+    Assert( m_pPacketAllocCount ) ;
+    
+    for( INT i=0; i<m_Size; i++ ) 
+    {
+        m_Factories[i] = NULL ;
+        m_pPacketAllocCount[i] = 0 ;
+    }
+            
 __LEAVE_FUNCTION
 }
 
 PacketFactoryManager::~PacketFactoryManager( ) 
 {
 __ENTER_FUNCTION
-		
-	Assert( m_Factories!=NULL ) ;
+        
+    Assert( m_Factories!=NULL ) ;
 
-	for( INT i=0; i<m_Size; i++ ) 
-	{
-		SAFE_DELETE(m_Factories[i]) ;
-	}
-	
-	SAFE_DELETE_ARRAY(m_Factories) ;
-	SAFE_DELETE_ARRAY(m_pPacketAllocCount) ;
-			
+    for( INT i=0; i<m_Size; i++ ) 
+    {
+        SAFE_DELETE(m_Factories[i]) ;
+    }
+    
+    SAFE_DELETE_ARRAY(m_Factories) ;
+    SAFE_DELETE_ARRAY(m_pPacketAllocCount) ;
+            
 __LEAVE_FUNCTION
 }
 
@@ -564,385 +564,385 @@ BOOL PacketFactoryManager::Init( )
 __ENTER_FUNCTION
 //  此处添加每种消息的Factory信息
 //例如：
-//	AddFactory( new CGAttackFactory() ) ;
+//    AddFactory( new CGAttackFactory() ) ;
 //  .....
 //CL && LC
 #if defined (_FOX_CLIENT) && defined (_FOX_LOGIN)
 //CL
-	AddFactory( new CLAskLoginFactory()) ;
-	AddFactory( new CLAskCharListFactory()) ;
-	AddFactory( new CLAskCharLoginFactory());
-	AddFactory( new CLConnectFactory());
-	AddFactory( new CLAskCreateCharFactory());
-	AddFactory( new CLAskDeleteCharFactory());
-	
+    AddFactory( new CLAskLoginFactory()) ;
+    AddFactory( new CLAskCharListFactory()) ;
+    AddFactory( new CLAskCharLoginFactory());
+    AddFactory( new CLConnectFactory());
+    AddFactory( new CLAskCreateCharFactory());
+    AddFactory( new CLAskDeleteCharFactory());
+    
 //LC
-	AddFactory( new LCRetLoginFactory()) ;
-	AddFactory( new LCRetCharListFactory()) ;
-	AddFactory( new LCStatusFactory()) ;
-	AddFactory( new LCRetCharLoginFactory());
-	AddFactory( new LCRetConnectFactory());
-	AddFactory( new LCRetCreateCharFactory());
-	AddFactory( new LCRetDeleteCharFactory());
+    AddFactory( new LCRetLoginFactory()) ;
+    AddFactory( new LCRetCharListFactory()) ;
+    AddFactory( new LCStatusFactory()) ;
+    AddFactory( new LCRetCharLoginFactory());
+    AddFactory( new LCRetConnectFactory());
+    AddFactory( new LCRetCreateCharFactory());
+    AddFactory( new LCRetDeleteCharFactory());
 #endif
 
 //CG && GC
 #if defined (_FOX_CLIENT) && defined (_FOX_SERVER)
 //CG
-	AddFactory( new CGConnectFactory()) ;
-	AddFactory( new CGTestFactory()) ;
-	AddFactory( new CGEnterSceneFactory()) ;
-	AddFactory( new CGLeaveSceneFactory()) ;
-	AddFactory( new CGEnvRequestFactory()) ;
-	AddFactory( new CGOtherEquipFactory()) ;
-	AddFactory( new CGAttackFactory()) ;
-	AddFactory( new CGSkillFactory()) ;
-	AddFactory( new CGHeartBeatFactory()) ;
-	AddFactory( new CGOpenItemBoxFactory()) ;
-	AddFactory( new CGPickBoxItemFactory()) ;
-	AddFactory( new CGUseEquipFactory()) ;
-	AddFactory( new CGAskDetailAttribFactory()) ;
-	AddFactory( new CGAskDetailXinFaListFactory()) ;
-	AddFactory( new CGAskDetailSkillListFactory()) ;
-	AddFactory( new CGDoEventFactory()) ;
-	AddFactory( new CGAskMissionListFactory()) ;
-	AddFactory( new CGEventRequestFactory()) ;
-	AddFactory( new CGMissionAcceptFactory()) ;
-	AddFactory( new CGAskMissionDescFactory()) ;
-	AddFactory( new CGMissionAbandonFactory()) ;
-	AddFactory( new CGMissionRefuseFactory()) ;
-	AddFactory( new CGMissionSubmitFactory()) ;
-	AddFactory( new CGMissionContinueFactory()) ;
-	AddFactory( new CGCharAskBaseAttribFactory()) ;
-	AddFactory( new CGCharAskEquipmentFactory()) ;
-	AddFactory( new CGCharDefaultEventFactory()) ;
-	AddFactory( new CGCharIdleFactory()) ;
-	AddFactory( new CGCharJumpFactory()) ;
-	AddFactory( new CGCharSitFactory()) ;
-	AddFactory( new CGCharMoodStateFactory()) ;
-	AddFactory( new CGCharMoveFactory()) ;
-	AddFactory( new CGCharPositionWarpFactory()) ;
-	AddFactory( new CGCharUseSkillFactory()) ;
-	AddFactory( new CGSetPetAttribFactory()) ;
-	AddFactory( new CGPlayerDieResultFactory()) ;
-	AddFactory( new CGMissionCheckFactory()) ;
-	AddFactory( new CGCommandFactory()) ;
-	AddFactory( new CGAskMyBagListFactory()) ;
-	AddFactory( new CGUnEquipFactory()) ;
-	AddFactory( new CGAskChangeSceneFactory()) ;
-	AddFactory( new CGAskItemInfoFactory()) ;
-	AddFactory( new CGAskDetailEquipListFactory()) ;
-	AddFactory( new CGChatFactory()) ;
-	AddFactory( new CGReqLevelUpFactory()) ;
-	AddFactory( new CGReqManualAttrFactory()) ;
-	AddFactory( new CGReqResetAttrFactory()) ;
-	AddFactory( new CGUseItemFactory()) ;
-	AddFactory( new CGDiscardItemFactory()) ;
-	AddFactory( new CGDispelBuffReqFactory()) ;
-	AddFactory( new CGDiscardEquipFactory()) ;
-	AddFactory( new CGUseGemFactory()) ;
-	AddFactory( new CGRemoveGemFactory()) ;
-	AddFactory( new CGUseAbilityFactory()) ;
-	AddFactory( new CGAskDetailAbilityInfoFactory()) ;
-	AddFactory( new CGGemCompoundFactory()) ;
-	AddFactory( new CGTeamRetInviteFactory()) ;
-	AddFactory( new CGTeamRetApplyFactory()) ;
-	AddFactory( new CGTeamLeaveFactory()) ;
-	AddFactory( new CGTeamLeaderRetInviteFactory()) ;
-	AddFactory( new CGTeamKickFactory()) ;
-	AddFactory( new CGTeamInviteFactory()) ;
-	AddFactory( new CGTeamDismissFactory()) ;
-	AddFactory( new CGTeamApplyFactory()) ;
-	AddFactory( new CGAskTeamInfoFactory()) ;
-	AddFactory( new CGAskTeamMemberInfoFactory()) ;
-	AddFactory( new CGTeamAppointFactory()) ;
-	AddFactory( new CGAskTeamFollowFactory()) ;
-	AddFactory( new CGReturnTeamFollowFactory()) ;
-	AddFactory( new CGStopTeamFollowFactory()) ;
-	AddFactory( new CGAskMailFactory()) ;
-	AddFactory( new CGChannelCreateFactory()) ;
-	AddFactory( new CGChannelDismissFactory()) ;
-	AddFactory( new CGChannelInviteFactory()) ;
-	AddFactory( new CGChannelKickFactory()) ;
-	AddFactory( new CGMailFactory()) ;
-	AddFactory( new CGLockTargetFactory()) ;
-	AddFactory( new CGAskJoinMenpaiFactory()) ;
-	AddFactory( new CGAskStudyXinfaFactory()) ;
-	AddFactory( new CGAskLeanAbilityFactory()) ;
-	AddFactory( new CGShopBuyFactory()) ;
-	AddFactory( new CGShopSellFactory()) ;
-	AddFactory( new CGShopRepairFactory()) ;
-	AddFactory( new CGShopCloseFactory()) ;
-	AddFactory( new CGCharAllTitlesFactory()) ;
-	AddFactory( new CGCharUpdateCurTitleFactory()) ;
-	AddFactory( new CGBankAcquireListFactory()) ;
-	AddFactory( new CGBankAddItemFactory()) ;
-	AddFactory( new CGBankRemoveItemFactory()) ;
-	AddFactory( new CGBankSwapItemFactory()) ;
-	AddFactory( new CGBankMoneyFactory()) ;
-	AddFactory( new CGBankCloseFactory()) ;
-	AddFactory( new CGExchangeReplyIFactory()) ;
-	AddFactory( new CGExchangeApplyIFactory()) ;
-	AddFactory( new CGExchangeSynchLockFactory()) ;
-	AddFactory( new CGExchangeSynchItemIIFactory()) ;
-	AddFactory( new CGExchangeSynchMoneyIIFactory()) ;
-	AddFactory( new CGExchangeOkIIIFactory()) ;
-	AddFactory( new CGExchangeCancelFactory()) ;
-	AddFactory( new CGManipulatePetFactory()) ;
-	AddFactory( new CGIssuePetPlacardFactory()) ;
-	AddFactory( new CGPackage_SwapItemFactory()) ;
-	AddFactory( new CGCharStopLogicFactory()) ;
-	AddFactory( new CGStallApplyFactory()) ;
-	AddFactory( new CGStallEstablishFactory()) ;
-	AddFactory( new CGStallOpenFactory()) ;
-	AddFactory( new CGStallAddItemFactory()) ;
-	AddFactory( new CGStallRemoveItemFactory()) ;
-	AddFactory( new CGStallItemPriceFactory()) ;
-	AddFactory( new CGStallShopNameFactory()) ;
-	AddFactory( new CGStallCloseFactory()) ;
-	AddFactory( new CGStallBuyFactory()) ;
-	AddFactory( new CGBBSApplyFactory()) ;
-	AddFactory( new CGBBSSychMessagesFactory()) ;
-	AddFactory( new CGGuildFactory()) ;
-	AddFactory( new CGItemSynchFactory()) ;
-	AddFactory( new CGRelationFactory() );
-	AddFactory( new CGExecuteScriptFactory() );
-	AddFactory( new CGSplitItemFactory() );
-	AddFactory( new CGPlayerShopApplyFactory()) ;
-	AddFactory( new CGPlayerShopEstablishFactory()) ;
-	AddFactory( new CGPlayerShopAcquireShopListFactory()) ;
-	AddFactory( new CGPlayerShopAcquireItemListFactory()) ;
-	AddFactory( new CGPackUpPacketFactory() );
-	AddFactory( new CGPlayerShopOnSaleFactory() );
-	AddFactory( new CGPlayerShopBuyItemFactory() );
-	AddFactory( new CGPlayerShopMoneyFactory() );
-	AddFactory( new CGAskSettingFactory() );
-	AddFactory( new CGModifySettingFactory() );
-	AddFactory( new CGPlayerShopNameFactory() );
-	AddFactory( new CGPlayerShopDescFactory() );
-	AddFactory( new CGPlayerShopOpenStallFactory() );
-	AddFactory( new CGCityAskAttrFactory() );
-	AddFactory( new CGMinorPasswdFactory() );
-	AddFactory( new CGPlayerShopSaleOutFactory() );
-	AddFactory( new CGPlayerShopBuyShopFactory() );
-	AddFactory( new CGAskPrivateInfoFactory() );
-	AddFactory( new CGApplyPrivateInfoFactory() );
-	AddFactory( new CGGuildApplyFactory() );
-	AddFactory( new CGGuildJoinFactory() );
-	AddFactory( new CGStallDefaultPageFactory() );
-	AddFactory( new CGPlayerCallOfResultFactory()) ;
-	AddFactory( new CGSetMoodToHeadFactory()) ;
-	AddFactory( new CGFingerFactory());
-	AddFactory( new CGPlayerShopAskForRecordFactory()) ;
-	AddFactory( new CGPlayerShopPartnerFactory()) ;
-	AddFactory( new CGPlayerShopFavoriteFactory()) ;
-	AddFactory( new CGPlayerShopTypeFactory()) ;
-	AddFactory( new CGPlayerShopSizeFactory()) ;
-	AddFactory( new CGAskLockObjFactory()) ;
-	//AddFactory( new CGSystemMsgFactory());
-	
+    AddFactory( new CGConnectFactory()) ;
+    AddFactory( new CGTestFactory()) ;
+    AddFactory( new CGEnterSceneFactory()) ;
+    AddFactory( new CGLeaveSceneFactory()) ;
+    AddFactory( new CGEnvRequestFactory()) ;
+    AddFactory( new CGOtherEquipFactory()) ;
+    AddFactory( new CGAttackFactory()) ;
+    AddFactory( new CGSkillFactory()) ;
+    AddFactory( new CGHeartBeatFactory()) ;
+    AddFactory( new CGOpenItemBoxFactory()) ;
+    AddFactory( new CGPickBoxItemFactory()) ;
+    AddFactory( new CGUseEquipFactory()) ;
+    AddFactory( new CGAskDetailAttribFactory()) ;
+    AddFactory( new CGAskDetailXinFaListFactory()) ;
+    AddFactory( new CGAskDetailSkillListFactory()) ;
+    AddFactory( new CGDoEventFactory()) ;
+    AddFactory( new CGAskMissionListFactory()) ;
+    AddFactory( new CGEventRequestFactory()) ;
+    AddFactory( new CGMissionAcceptFactory()) ;
+    AddFactory( new CGAskMissionDescFactory()) ;
+    AddFactory( new CGMissionAbandonFactory()) ;
+    AddFactory( new CGMissionRefuseFactory()) ;
+    AddFactory( new CGMissionSubmitFactory()) ;
+    AddFactory( new CGMissionContinueFactory()) ;
+    AddFactory( new CGCharAskBaseAttribFactory()) ;
+    AddFactory( new CGCharAskEquipmentFactory()) ;
+    AddFactory( new CGCharDefaultEventFactory()) ;
+    AddFactory( new CGCharIdleFactory()) ;
+    AddFactory( new CGCharJumpFactory()) ;
+    AddFactory( new CGCharSitFactory()) ;
+    AddFactory( new CGCharMoodStateFactory()) ;
+    AddFactory( new CGCharMoveFactory()) ;
+    AddFactory( new CGCharPositionWarpFactory()) ;
+    AddFactory( new CGCharUseSkillFactory()) ;
+    AddFactory( new CGSetPetAttribFactory()) ;
+    AddFactory( new CGPlayerDieResultFactory()) ;
+    AddFactory( new CGMissionCheckFactory()) ;
+    AddFactory( new CGCommandFactory()) ;
+    AddFactory( new CGAskMyBagListFactory()) ;
+    AddFactory( new CGUnEquipFactory()) ;
+    AddFactory( new CGAskChangeSceneFactory()) ;
+    AddFactory( new CGAskItemInfoFactory()) ;
+    AddFactory( new CGAskDetailEquipListFactory()) ;
+    AddFactory( new CGChatFactory()) ;
+    AddFactory( new CGReqLevelUpFactory()) ;
+    AddFactory( new CGReqManualAttrFactory()) ;
+    AddFactory( new CGReqResetAttrFactory()) ;
+    AddFactory( new CGUseItemFactory()) ;
+    AddFactory( new CGDiscardItemFactory()) ;
+    AddFactory( new CGDispelBuffReqFactory()) ;
+    AddFactory( new CGDiscardEquipFactory()) ;
+    AddFactory( new CGUseGemFactory()) ;
+    AddFactory( new CGRemoveGemFactory()) ;
+    AddFactory( new CGUseAbilityFactory()) ;
+    AddFactory( new CGAskDetailAbilityInfoFactory()) ;
+    AddFactory( new CGGemCompoundFactory()) ;
+    AddFactory( new CGTeamRetInviteFactory()) ;
+    AddFactory( new CGTeamRetApplyFactory()) ;
+    AddFactory( new CGTeamLeaveFactory()) ;
+    AddFactory( new CGTeamLeaderRetInviteFactory()) ;
+    AddFactory( new CGTeamKickFactory()) ;
+    AddFactory( new CGTeamInviteFactory()) ;
+    AddFactory( new CGTeamDismissFactory()) ;
+    AddFactory( new CGTeamApplyFactory()) ;
+    AddFactory( new CGAskTeamInfoFactory()) ;
+    AddFactory( new CGAskTeamMemberInfoFactory()) ;
+    AddFactory( new CGTeamAppointFactory()) ;
+    AddFactory( new CGAskTeamFollowFactory()) ;
+    AddFactory( new CGReturnTeamFollowFactory()) ;
+    AddFactory( new CGStopTeamFollowFactory()) ;
+    AddFactory( new CGAskMailFactory()) ;
+    AddFactory( new CGChannelCreateFactory()) ;
+    AddFactory( new CGChannelDismissFactory()) ;
+    AddFactory( new CGChannelInviteFactory()) ;
+    AddFactory( new CGChannelKickFactory()) ;
+    AddFactory( new CGMailFactory()) ;
+    AddFactory( new CGLockTargetFactory()) ;
+    AddFactory( new CGAskJoinMenpaiFactory()) ;
+    AddFactory( new CGAskStudyXinfaFactory()) ;
+    AddFactory( new CGAskLeanAbilityFactory()) ;
+    AddFactory( new CGShopBuyFactory()) ;
+    AddFactory( new CGShopSellFactory()) ;
+    AddFactory( new CGShopRepairFactory()) ;
+    AddFactory( new CGShopCloseFactory()) ;
+    AddFactory( new CGCharAllTitlesFactory()) ;
+    AddFactory( new CGCharUpdateCurTitleFactory()) ;
+    AddFactory( new CGBankAcquireListFactory()) ;
+    AddFactory( new CGBankAddItemFactory()) ;
+    AddFactory( new CGBankRemoveItemFactory()) ;
+    AddFactory( new CGBankSwapItemFactory()) ;
+    AddFactory( new CGBankMoneyFactory()) ;
+    AddFactory( new CGBankCloseFactory()) ;
+    AddFactory( new CGExchangeReplyIFactory()) ;
+    AddFactory( new CGExchangeApplyIFactory()) ;
+    AddFactory( new CGExchangeSynchLockFactory()) ;
+    AddFactory( new CGExchangeSynchItemIIFactory()) ;
+    AddFactory( new CGExchangeSynchMoneyIIFactory()) ;
+    AddFactory( new CGExchangeOkIIIFactory()) ;
+    AddFactory( new CGExchangeCancelFactory()) ;
+    AddFactory( new CGManipulatePetFactory()) ;
+    AddFactory( new CGIssuePetPlacardFactory()) ;
+    AddFactory( new CGPackage_SwapItemFactory()) ;
+    AddFactory( new CGCharStopLogicFactory()) ;
+    AddFactory( new CGStallApplyFactory()) ;
+    AddFactory( new CGStallEstablishFactory()) ;
+    AddFactory( new CGStallOpenFactory()) ;
+    AddFactory( new CGStallAddItemFactory()) ;
+    AddFactory( new CGStallRemoveItemFactory()) ;
+    AddFactory( new CGStallItemPriceFactory()) ;
+    AddFactory( new CGStallShopNameFactory()) ;
+    AddFactory( new CGStallCloseFactory()) ;
+    AddFactory( new CGStallBuyFactory()) ;
+    AddFactory( new CGBBSApplyFactory()) ;
+    AddFactory( new CGBBSSychMessagesFactory()) ;
+    AddFactory( new CGGuildFactory()) ;
+    AddFactory( new CGItemSynchFactory()) ;
+    AddFactory( new CGRelationFactory() );
+    AddFactory( new CGExecuteScriptFactory() );
+    AddFactory( new CGSplitItemFactory() );
+    AddFactory( new CGPlayerShopApplyFactory()) ;
+    AddFactory( new CGPlayerShopEstablishFactory()) ;
+    AddFactory( new CGPlayerShopAcquireShopListFactory()) ;
+    AddFactory( new CGPlayerShopAcquireItemListFactory()) ;
+    AddFactory( new CGPackUpPacketFactory() );
+    AddFactory( new CGPlayerShopOnSaleFactory() );
+    AddFactory( new CGPlayerShopBuyItemFactory() );
+    AddFactory( new CGPlayerShopMoneyFactory() );
+    AddFactory( new CGAskSettingFactory() );
+    AddFactory( new CGModifySettingFactory() );
+    AddFactory( new CGPlayerShopNameFactory() );
+    AddFactory( new CGPlayerShopDescFactory() );
+    AddFactory( new CGPlayerShopOpenStallFactory() );
+    AddFactory( new CGCityAskAttrFactory() );
+    AddFactory( new CGMinorPasswdFactory() );
+    AddFactory( new CGPlayerShopSaleOutFactory() );
+    AddFactory( new CGPlayerShopBuyShopFactory() );
+    AddFactory( new CGAskPrivateInfoFactory() );
+    AddFactory( new CGApplyPrivateInfoFactory() );
+    AddFactory( new CGGuildApplyFactory() );
+    AddFactory( new CGGuildJoinFactory() );
+    AddFactory( new CGStallDefaultPageFactory() );
+    AddFactory( new CGPlayerCallOfResultFactory()) ;
+    AddFactory( new CGSetMoodToHeadFactory()) ;
+    AddFactory( new CGFingerFactory());
+    AddFactory( new CGPlayerShopAskForRecordFactory()) ;
+    AddFactory( new CGPlayerShopPartnerFactory()) ;
+    AddFactory( new CGPlayerShopFavoriteFactory()) ;
+    AddFactory( new CGPlayerShopTypeFactory()) ;
+    AddFactory( new CGPlayerShopSizeFactory()) ;
+    AddFactory( new CGAskLockObjFactory()) ;
+    //AddFactory( new CGSystemMsgFactory());
+    
 //GC
-	AddFactory( new GCConnectFactory()) ;
-	AddFactory( new GCEnterSceneFactory()) ;
-	AddFactory( new GCLeaveSceneFactory()) ;
-	AddFactory( new GCPlayerRealMoveFactory()) ;
-	AddFactory( new GCNewItemFactory()) ;
-	AddFactory( new GCMonsterRealMoveFactory()) ;
-	AddFactory( new GCOtherEquipFactory()) ;
-	AddFactory( new GCArriveFactory()) ;
-	AddFactory( new GCAttackFactory()) ;
-	AddFactory( new GCOtherAttackFactory()) ;
-	AddFactory( new GCErrorAttackFactory()) ;
-	AddFactory( new GCSkillFactory()) ;
-	AddFactory( new GCOtherSkillFactory()) ;
-	AddFactory( new GCErrorSkillFactory()) ;
-	AddFactory( new GCOperateResultFactory()) ;
-	AddFactory( new GCSkillPrepareFactory()) ;
-	AddFactory( new GCObjTeleportFactory()) ;
-	AddFactory( new GCDieFactory()) ;
-	AddFactory( new GCNewItemBoxFactory()) ;
-	AddFactory( new GCBoxItemListFactory()) ;
-	AddFactory( new GCPickResultFactory()) ;
-	AddFactory( new GCUseEquipResultFactory()) ;
-	AddFactory( new GCLevelUpFactory()) ;
-	AddFactory( new GCCharBaseAttribFactory()) ;
-	AddFactory( new GCCharEquipmentFactory()) ;
-	AddFactory( new GCCharImpactListUpdateFactory());
-	AddFactory( new GCCharIdleFactory()) ;
-	AddFactory( new GCCharJumpFactory()) ;
-	AddFactory( new GCCharMoveFactory()) ;
-	AddFactory( new GCCharMoveResultFactory()) ;
-	AddFactory( new GCCharSkill_CreateBulletFactory()) ;
-	AddFactory( new GCCharSkill_GatherFactory()) ;
-	AddFactory( new GCCharSkill_Gather_ModifyFactory()) ;
-	AddFactory( new GCCharSkill_LeadFactory()) ;
-	AddFactory( new GCCharSkill_Lead_ModifyFactory()) ;
-	AddFactory( new GCCharSkill_SendFactory()) ;
-	AddFactory( new GCCharActionFactory()) ;
-	AddFactory( new GCCharModifyActionFactory()) ;
-	AddFactory( new GCCharStopActionFactory()) ;
-	AddFactory( new GCDelObjectFactory()) ;
-	AddFactory( new GCDetailAttribFactory()) ;
-	AddFactory( new GCDetailAttrib_PetFactory()) ;
-	AddFactory( new GCDetailHealsAndDamagesFactory());
-	AddFactory( new GCDetailImpactListUpdateFactory());
-	AddFactory( new GCDetailSkillListFactory()) ;
-	AddFactory( new GCDetailXinFaListFactory()) ;
-	AddFactory( new GCTestFactory()) ;
-	AddFactory( new GCSpecialObj_ActNowFactory() );
-	AddFactory( new GCSpecialObj_FadeOutFactory() );
-	AddFactory( new GCPlayerDieFactory()) ;
-	AddFactory( new GCPlayerReliveFactory()) ;
-	AddFactory( new GCPlayerCallOfFactory()) ;
-	AddFactory( new GCScriptCommandFactory()) ;
-	AddFactory( new GCMissionListFactory()) ;
-	AddFactory( new GCMissionAddFactory()) ;
-	AddFactory( new GCMissionRemoveFactory()) ;
-	AddFactory( new GCMissionModifyFactory()) ;
-	AddFactory( new GCMissionResultFactory()) ;
-	AddFactory( new GCRetMissionDescFactory()) ;
-	AddFactory( new GCCanPickMissionItemListFactory()) ;
-	AddFactory( new GCAddCanPickMissionItemFactory()) ;
-	AddFactory( new GCRemoveCanPickMissionItemFactory()) ;
-	AddFactory( new GCNewMonsterFactory()) ;
-	AddFactory( new GCNewMonster_MoveFactory()) ;
-	AddFactory( new GCNewMonster_DeathFactory()) ;
-	AddFactory( new GCNewPetFactory()) ;
-	AddFactory( new GCNewPet_MoveFactory()) ;
-	AddFactory( new GCNewPet_DeathFactory()) ;
-	AddFactory( new GCNewPlayerFactory()) ;
-	AddFactory( new GCNewPlayer_MoveFactory()) ;
-	AddFactory( new GCNewPlayer_DeathFactory()) ;
-	AddFactory( new GCMyBagListFactory()) ;
-	AddFactory( new GCUnEquipResultFactory()) ;
-	AddFactory( new GCRetChangeSceneFactory()) ;
-	AddFactory( new GCChatFactory()) ;
-	AddFactory( new GCNotifyChangeSceneFactory()) ;
-	AddFactory( new GCItemInfoFactory()) ;
-	AddFactory( new GCDetailEquipListFactory()) ;
-	AddFactory( new GCNewPortalFactory()) ;
-	AddFactory( new GCLevelUpResultFactory()) ;
-	AddFactory( new GCManualAttrResultFactory()) ;
-	AddFactory( new GCReqResetAttrResultFactory()) ;
-	AddFactory( new GCUseItemResultFactory()) ;
-	AddFactory( new GCDiscardItemResultFactory()) ;
-	AddFactory( new GCDiscardEquipResultFactory()) ;
-	AddFactory( new GCNewSkillObjFactory()) ;
-	AddFactory( new GCNotifyEquipFactory()) ;
-	AddFactory( new GCUseGemResultFactory()) ;
-	AddFactory( new GCRemoveGemResultFactory()) ;
-	AddFactory( new GCDetailAbilityInfoFactory()) ;
-	AddFactory( new GCAbilityResultFactory()) ;
-	AddFactory( new GCAbilityActionFactory()) ;
-	AddFactory( new GCAbilitySuccFactory()) ;
-	AddFactory( new GCNewPlatformFactory()) ;
-	AddFactory( new GCNewSpecialFactory()) ;
-	AddFactory( new GCAbilityLevelFactory()) ;
-	AddFactory( new GCAbandonAbilityFactory()) ;
-	AddFactory( new GCAbilityExpFactory()) ;
-	AddFactory( new GCPrescriptionFactory()) ;
-	AddFactory( new GCTeamResultFactory()) ;
-	AddFactory( new GCTeamLeaderAskInviteFactory()) ;
-	AddFactory( new GCTeamErrorFactory()) ;
-	AddFactory( new GCTeamAskInviteFactory()) ;
-	AddFactory( new GCTeamAskApplyFactory()) ;
-	AddFactory( new GCCooldownUpdateFactory()) ;
-	AddFactory( new GCNotifyTeamInfoFactory()) ;
-	AddFactory( new GCTeamMemberInfoFactory()) ;
-	AddFactory( new GCAskTeamFollowFactory()) ;
-	AddFactory( new GCReturnTeamFollowFactory()) ;
-	AddFactory( new GCTeamFollowListFactory()) ;
-	AddFactory( new GCTeamFollowErrFactory()) ;
-	AddFactory( new GCChannelErrorFactory()) ;
-	AddFactory( new GCChannelResultFactory()) ;
-	AddFactory( new GCMailFactory()) ;
-	AddFactory( new GCNotifyMailFactory()) ;
-	AddFactory( new GCMonsterSpeakFactory()) ;
-	AddFactory( new GCModifySpeedFactory()) ;
-	AddFactory( new GCMenpaiInfoFactory()) ;
-	AddFactory( new GCJoinMenpaiFactory()) ;
-	AddFactory( new GCXinfaStudyInfoFactory()) ;
-	AddFactory( new GCStudyXinfaFactory()) ;
-	AddFactory( new GCAbilityTeacherInfoFactory()) ;
-	AddFactory( new GCShopMerchandiseListFactory()) ;
-	AddFactory( new GCShopSoldListFactory()) ;
-	AddFactory( new GCShopUpdateMerchandiseListFactory()) ;
-	AddFactory( new GCShopBuyFactory()) ;
-	AddFactory( new GCShopRepairFactory()) ;
-	AddFactory( new GCShopSellFactory()) ;
-	AddFactory( new GCBankBeginFactory()) ;
-	AddFactory( new GCBankAcquireListFactory()) ;
-	AddFactory( new GCBankAddItemFactory()) ;
-	AddFactory( new GCBankRemoveItemFactory()) ;
-	AddFactory( new GCBankSwapItemFactory()) ;
-	AddFactory( new GCBankMoneyFactory()) ;
-	AddFactory( new GCCharAllTitlesFactory()) ;
-	AddFactory( new GCExchangeErrorFactory()) ;
-	AddFactory( new GCExchangeEstablishIFactory()) ;
-	AddFactory( new GCExchangeApplyIFactory()) ;
-	AddFactory( new GCExchangeSynchLockFactory()) ;
-	AddFactory( new GCExchangeSynchConfirmIIFactory()) ;
-	AddFactory( new GCExchangeSynchIIFactory()) ;
-	AddFactory( new GCExchangeSuccessIIIFactory()) ;
-	AddFactory( new GCExchangeCancelFactory()) ;
-	AddFactory( new GCManipulatePetRetFactory()) ;
-	AddFactory( new GCRemovePetFactory()) ;
-	AddFactory( new GCPetPlacardListFactory()) ;
-	AddFactory( new GCPackage_SwapItemFactory()) ;
-	AddFactory( new GCCharDirectImpactFactory()) ;
-	AddFactory( new GCCharBuffFactory()) ;
-	AddFactory( new GCDetailBuffFactory()) ;
-	AddFactory( new GCCharSkill_MissedFactory()) ;
-	AddFactory( new GCStallApplyFactory()) ;
-	AddFactory( new GCStallEstablishFactory()) ;
-	AddFactory( new GCStallOpenFactory()) ;
-	AddFactory( new GCStallAddItemFactory()) ;
-	AddFactory( new GCStallRemoveItemFactory()) ;
-	AddFactory( new GCStallItemPriceFactory()) ;
-	AddFactory( new GCStallBuyFactory()) ;
-	AddFactory( new GCStallCloseFactory()) ;
-	AddFactory( new GCStallErrorFactory()) ;
-	AddFactory( new GCBBSMessagesFactory()) ;
-	AddFactory( new GCGuildReturnFactory()) ;
-	AddFactory( new GCGuildErrorFactory()) ;
-	AddFactory( new GCGuildFactory()) ;
-	AddFactory( new GCItemSynchFactory()) ;
-	AddFactory( new GCItemListFactory()) ;
-	AddFactory( new GCRelationFactory() );
-	AddFactory( new GCTeamListFactory() );
-	AddFactory( new GCUICommandFactory() );
-	AddFactory( new GCSplitItemResultFactory() );
-	AddFactory( new GCBankItemInfoFactory() );
-	AddFactory( new GCPlayerShopApplyFactory()) ;
-	AddFactory( new GCPlayerShopEstablishFactory()) ;
-	AddFactory( new GCPlayerShopErrorFactory()) ;
-	AddFactory( new GCPlayerShopAcquireShopListFactory()) ;
-	AddFactory( new GCPackUpPacketFactory() );
-	AddFactory( new GCPlayerShopOnSaleFactory() );
-	AddFactory( new GCPlayerShopOpenStallFactory() );
-	AddFactory( new GCPlayerShopMoneyFactory() );
-	AddFactory( new GCRetSettingFactory() );
-	AddFactory( new GCCityErrorFactory() );
-	AddFactory( new GCCityNotifyFactory() );
-	AddFactory( new GCCityAttrFactory() );
-	AddFactory( new GCMinorPasswdFactory() );
-	AddFactory( new GCPlayerShopSaleOutFactory() );
-	AddFactory( new GCPlayerShopBuyShopFactory() );
-	AddFactory( new GCPrivateInfoFactory() );
-	AddFactory( new GCGuildApplyFactory() );
-	AddFactory( new GCTargetListAndHitFlagsFactory() );
-	AddFactory( new GCWorldTimeFactory());
-	AddFactory( new GCFingerFactory());
-	AddFactory( new GCPlayerShopRecordListFactory());
-	AddFactory( new GCPlayerShopUpdatePartnersFactory());
-	AddFactory( new GCPlayerShopUpdateFavoriteFactory());
-	AddFactory( new GCPlayerShopTypeFactory());
-	AddFactory( new GCPlayerShopStallStatusFactory());
-	AddFactory( new GCCharDoActionFactory());
-	AddFactory( new GCNotifyRMBMoneyFactory());
-	AddFactory( new GCAddLockObjFactory()) ;
-	AddFactory( new GCCharFirstLoginFactory()) ;
-	AddFactory( new GCSystemMsgFactory());
+    AddFactory( new GCConnectFactory()) ;
+    AddFactory( new GCEnterSceneFactory()) ;
+    AddFactory( new GCLeaveSceneFactory()) ;
+    AddFactory( new GCPlayerRealMoveFactory()) ;
+    AddFactory( new GCNewItemFactory()) ;
+    AddFactory( new GCMonsterRealMoveFactory()) ;
+    AddFactory( new GCOtherEquipFactory()) ;
+    AddFactory( new GCArriveFactory()) ;
+    AddFactory( new GCAttackFactory()) ;
+    AddFactory( new GCOtherAttackFactory()) ;
+    AddFactory( new GCErrorAttackFactory()) ;
+    AddFactory( new GCSkillFactory()) ;
+    AddFactory( new GCOtherSkillFactory()) ;
+    AddFactory( new GCErrorSkillFactory()) ;
+    AddFactory( new GCOperateResultFactory()) ;
+    AddFactory( new GCSkillPrepareFactory()) ;
+    AddFactory( new GCObjTeleportFactory()) ;
+    AddFactory( new GCDieFactory()) ;
+    AddFactory( new GCNewItemBoxFactory()) ;
+    AddFactory( new GCBoxItemListFactory()) ;
+    AddFactory( new GCPickResultFactory()) ;
+    AddFactory( new GCUseEquipResultFactory()) ;
+    AddFactory( new GCLevelUpFactory()) ;
+    AddFactory( new GCCharBaseAttribFactory()) ;
+    AddFactory( new GCCharEquipmentFactory()) ;
+    AddFactory( new GCCharImpactListUpdateFactory());
+    AddFactory( new GCCharIdleFactory()) ;
+    AddFactory( new GCCharJumpFactory()) ;
+    AddFactory( new GCCharMoveFactory()) ;
+    AddFactory( new GCCharMoveResultFactory()) ;
+    AddFactory( new GCCharSkill_CreateBulletFactory()) ;
+    AddFactory( new GCCharSkill_GatherFactory()) ;
+    AddFactory( new GCCharSkill_Gather_ModifyFactory()) ;
+    AddFactory( new GCCharSkill_LeadFactory()) ;
+    AddFactory( new GCCharSkill_Lead_ModifyFactory()) ;
+    AddFactory( new GCCharSkill_SendFactory()) ;
+    AddFactory( new GCCharActionFactory()) ;
+    AddFactory( new GCCharModifyActionFactory()) ;
+    AddFactory( new GCCharStopActionFactory()) ;
+    AddFactory( new GCDelObjectFactory()) ;
+    AddFactory( new GCDetailAttribFactory()) ;
+    AddFactory( new GCDetailAttrib_PetFactory()) ;
+    AddFactory( new GCDetailHealsAndDamagesFactory());
+    AddFactory( new GCDetailImpactListUpdateFactory());
+    AddFactory( new GCDetailSkillListFactory()) ;
+    AddFactory( new GCDetailXinFaListFactory()) ;
+    AddFactory( new GCTestFactory()) ;
+    AddFactory( new GCSpecialObj_ActNowFactory() );
+    AddFactory( new GCSpecialObj_FadeOutFactory() );
+    AddFactory( new GCPlayerDieFactory()) ;
+    AddFactory( new GCPlayerReliveFactory()) ;
+    AddFactory( new GCPlayerCallOfFactory()) ;
+    AddFactory( new GCScriptCommandFactory()) ;
+    AddFactory( new GCMissionListFactory()) ;
+    AddFactory( new GCMissionAddFactory()) ;
+    AddFactory( new GCMissionRemoveFactory()) ;
+    AddFactory( new GCMissionModifyFactory()) ;
+    AddFactory( new GCMissionResultFactory()) ;
+    AddFactory( new GCRetMissionDescFactory()) ;
+    AddFactory( new GCCanPickMissionItemListFactory()) ;
+    AddFactory( new GCAddCanPickMissionItemFactory()) ;
+    AddFactory( new GCRemoveCanPickMissionItemFactory()) ;
+    AddFactory( new GCNewMonsterFactory()) ;
+    AddFactory( new GCNewMonster_MoveFactory()) ;
+    AddFactory( new GCNewMonster_DeathFactory()) ;
+    AddFactory( new GCNewPetFactory()) ;
+    AddFactory( new GCNewPet_MoveFactory()) ;
+    AddFactory( new GCNewPet_DeathFactory()) ;
+    AddFactory( new GCNewPlayerFactory()) ;
+    AddFactory( new GCNewPlayer_MoveFactory()) ;
+    AddFactory( new GCNewPlayer_DeathFactory()) ;
+    AddFactory( new GCMyBagListFactory()) ;
+    AddFactory( new GCUnEquipResultFactory()) ;
+    AddFactory( new GCRetChangeSceneFactory()) ;
+    AddFactory( new GCChatFactory()) ;
+    AddFactory( new GCNotifyChangeSceneFactory()) ;
+    AddFactory( new GCItemInfoFactory()) ;
+    AddFactory( new GCDetailEquipListFactory()) ;
+    AddFactory( new GCNewPortalFactory()) ;
+    AddFactory( new GCLevelUpResultFactory()) ;
+    AddFactory( new GCManualAttrResultFactory()) ;
+    AddFactory( new GCReqResetAttrResultFactory()) ;
+    AddFactory( new GCUseItemResultFactory()) ;
+    AddFactory( new GCDiscardItemResultFactory()) ;
+    AddFactory( new GCDiscardEquipResultFactory()) ;
+    AddFactory( new GCNewSkillObjFactory()) ;
+    AddFactory( new GCNotifyEquipFactory()) ;
+    AddFactory( new GCUseGemResultFactory()) ;
+    AddFactory( new GCRemoveGemResultFactory()) ;
+    AddFactory( new GCDetailAbilityInfoFactory()) ;
+    AddFactory( new GCAbilityResultFactory()) ;
+    AddFactory( new GCAbilityActionFactory()) ;
+    AddFactory( new GCAbilitySuccFactory()) ;
+    AddFactory( new GCNewPlatformFactory()) ;
+    AddFactory( new GCNewSpecialFactory()) ;
+    AddFactory( new GCAbilityLevelFactory()) ;
+    AddFactory( new GCAbandonAbilityFactory()) ;
+    AddFactory( new GCAbilityExpFactory()) ;
+    AddFactory( new GCPrescriptionFactory()) ;
+    AddFactory( new GCTeamResultFactory()) ;
+    AddFactory( new GCTeamLeaderAskInviteFactory()) ;
+    AddFactory( new GCTeamErrorFactory()) ;
+    AddFactory( new GCTeamAskInviteFactory()) ;
+    AddFactory( new GCTeamAskApplyFactory()) ;
+    AddFactory( new GCCooldownUpdateFactory()) ;
+    AddFactory( new GCNotifyTeamInfoFactory()) ;
+    AddFactory( new GCTeamMemberInfoFactory()) ;
+    AddFactory( new GCAskTeamFollowFactory()) ;
+    AddFactory( new GCReturnTeamFollowFactory()) ;
+    AddFactory( new GCTeamFollowListFactory()) ;
+    AddFactory( new GCTeamFollowErrFactory()) ;
+    AddFactory( new GCChannelErrorFactory()) ;
+    AddFactory( new GCChannelResultFactory()) ;
+    AddFactory( new GCMailFactory()) ;
+    AddFactory( new GCNotifyMailFactory()) ;
+    AddFactory( new GCMonsterSpeakFactory()) ;
+    AddFactory( new GCModifySpeedFactory()) ;
+    AddFactory( new GCMenpaiInfoFactory()) ;
+    AddFactory( new GCJoinMenpaiFactory()) ;
+    AddFactory( new GCXinfaStudyInfoFactory()) ;
+    AddFactory( new GCStudyXinfaFactory()) ;
+    AddFactory( new GCAbilityTeacherInfoFactory()) ;
+    AddFactory( new GCShopMerchandiseListFactory()) ;
+    AddFactory( new GCShopSoldListFactory()) ;
+    AddFactory( new GCShopUpdateMerchandiseListFactory()) ;
+    AddFactory( new GCShopBuyFactory()) ;
+    AddFactory( new GCShopRepairFactory()) ;
+    AddFactory( new GCShopSellFactory()) ;
+    AddFactory( new GCBankBeginFactory()) ;
+    AddFactory( new GCBankAcquireListFactory()) ;
+    AddFactory( new GCBankAddItemFactory()) ;
+    AddFactory( new GCBankRemoveItemFactory()) ;
+    AddFactory( new GCBankSwapItemFactory()) ;
+    AddFactory( new GCBankMoneyFactory()) ;
+    AddFactory( new GCCharAllTitlesFactory()) ;
+    AddFactory( new GCExchangeErrorFactory()) ;
+    AddFactory( new GCExchangeEstablishIFactory()) ;
+    AddFactory( new GCExchangeApplyIFactory()) ;
+    AddFactory( new GCExchangeSynchLockFactory()) ;
+    AddFactory( new GCExchangeSynchConfirmIIFactory()) ;
+    AddFactory( new GCExchangeSynchIIFactory()) ;
+    AddFactory( new GCExchangeSuccessIIIFactory()) ;
+    AddFactory( new GCExchangeCancelFactory()) ;
+    AddFactory( new GCManipulatePetRetFactory()) ;
+    AddFactory( new GCRemovePetFactory()) ;
+    AddFactory( new GCPetPlacardListFactory()) ;
+    AddFactory( new GCPackage_SwapItemFactory()) ;
+    AddFactory( new GCCharDirectImpactFactory()) ;
+    AddFactory( new GCCharBuffFactory()) ;
+    AddFactory( new GCDetailBuffFactory()) ;
+    AddFactory( new GCCharSkill_MissedFactory()) ;
+    AddFactory( new GCStallApplyFactory()) ;
+    AddFactory( new GCStallEstablishFactory()) ;
+    AddFactory( new GCStallOpenFactory()) ;
+    AddFactory( new GCStallAddItemFactory()) ;
+    AddFactory( new GCStallRemoveItemFactory()) ;
+    AddFactory( new GCStallItemPriceFactory()) ;
+    AddFactory( new GCStallBuyFactory()) ;
+    AddFactory( new GCStallCloseFactory()) ;
+    AddFactory( new GCStallErrorFactory()) ;
+    AddFactory( new GCBBSMessagesFactory()) ;
+    AddFactory( new GCGuildReturnFactory()) ;
+    AddFactory( new GCGuildErrorFactory()) ;
+    AddFactory( new GCGuildFactory()) ;
+    AddFactory( new GCItemSynchFactory()) ;
+    AddFactory( new GCItemListFactory()) ;
+    AddFactory( new GCRelationFactory() );
+    AddFactory( new GCTeamListFactory() );
+    AddFactory( new GCUICommandFactory() );
+    AddFactory( new GCSplitItemResultFactory() );
+    AddFactory( new GCBankItemInfoFactory() );
+    AddFactory( new GCPlayerShopApplyFactory()) ;
+    AddFactory( new GCPlayerShopEstablishFactory()) ;
+    AddFactory( new GCPlayerShopErrorFactory()) ;
+    AddFactory( new GCPlayerShopAcquireShopListFactory()) ;
+    AddFactory( new GCPackUpPacketFactory() );
+    AddFactory( new GCPlayerShopOnSaleFactory() );
+    AddFactory( new GCPlayerShopOpenStallFactory() );
+    AddFactory( new GCPlayerShopMoneyFactory() );
+    AddFactory( new GCRetSettingFactory() );
+    AddFactory( new GCCityErrorFactory() );
+    AddFactory( new GCCityNotifyFactory() );
+    AddFactory( new GCCityAttrFactory() );
+    AddFactory( new GCMinorPasswdFactory() );
+    AddFactory( new GCPlayerShopSaleOutFactory() );
+    AddFactory( new GCPlayerShopBuyShopFactory() );
+    AddFactory( new GCPrivateInfoFactory() );
+    AddFactory( new GCGuildApplyFactory() );
+    AddFactory( new GCTargetListAndHitFlagsFactory() );
+    AddFactory( new GCWorldTimeFactory());
+    AddFactory( new GCFingerFactory());
+    AddFactory( new GCPlayerShopRecordListFactory());
+    AddFactory( new GCPlayerShopUpdatePartnersFactory());
+    AddFactory( new GCPlayerShopUpdateFavoriteFactory());
+    AddFactory( new GCPlayerShopTypeFactory());
+    AddFactory( new GCPlayerShopStallStatusFactory());
+    AddFactory( new GCCharDoActionFactory());
+    AddFactory( new GCNotifyRMBMoneyFactory());
+    AddFactory( new GCAddLockObjFactory()) ;
+    AddFactory( new GCCharFirstLoginFactory()) ;
+    AddFactory( new GCSystemMsgFactory());
 
 #endif
 
@@ -950,139 +950,139 @@ __ENTER_FUNCTION
 //GW && WG
 #if defined (_FOX_SERVER) && defined (_FOX_WORLD)
 //GW
-	AddFactory( new GWAskUserDataFactory()) ;
-	AddFactory( new GWAskChangeSceneFactory()) ;
-	AddFactory( new GWNotifyUserFactory()) ;
-	AddFactory( new GWTeamRetInviteFactory()) ;
-	AddFactory( new GWTeamRetApplyFactory()) ;
-	AddFactory( new GWTeamLeaveFactory()) ;
-	AddFactory( new GWTeamLeaderRetInviteFactory()) ;
-	AddFactory( new GWTeamKickFactory()) ;
-	AddFactory( new GWTeamInviteFactory()) ;
-	AddFactory( new GWTeamDismissFactory()) ;
-	AddFactory( new GWTeamApplyFactory()) ;
-	AddFactory( new GWAskTeamInfoFactory()) ;
-	AddFactory( new GWAskTeamMemberInfoFactory()) ;
-	AddFactory( new GWTeamAppointFactory()) ;
-	AddFactory( new GWTeamMemberEnterSceneFactory()) ;
-	AddFactory( new GWLevelUpFactory()) ;
-	AddFactory( new GWEnterTeamFollowFactory()) ;
-	AddFactory( new GWStopTeamFollowFactory()) ;
-	AddFactory( new GWChannelCreateFactory()) ;
-	AddFactory( new GWChannelDismissFactory()) ;
-	AddFactory( new GWChannelInviteFactory()) ;
-	AddFactory( new GWChannelKickFactory()) ;
-	AddFactory( new GWChatFactory()) ;
-	AddFactory( new GWMailFactory()) ;
-	AddFactory( new GWAskMailFactory()) ;
-	AddFactory( new GWAskSceneDataFactory()) ;
-	AddFactory( new GWGuildFactory()) ;
-	AddFactory( new GWCommandFactory()) ;
-	AddFactory( new GWRelationFactory()) ;
-	AddFactory( new GWBatchMailFactory());
-	AddFactory( new GWCityApplyNewCityFactory());
-	AddFactory( new GWCityAskInitInfoFactory());
-	AddFactory( new GWCityCloseFactory());
-	AddFactory( new GWCityCloseSuccessFactory());
-	AddFactory( new GWCityOptFactory());
-	AddFactory( new GWUpdateTitleFactory() );
-	AddFactory( new GWChangeMenpaiFactory() );
-	AddFactory( new GWCallOfHumanFactory());
-	AddFactory( new GWFingerFactory());
-	AddFactory( new GWHeartBeatFactory());
-	AddFactory( new GWSystemMsgFactory());
+    AddFactory( new GWAskUserDataFactory()) ;
+    AddFactory( new GWAskChangeSceneFactory()) ;
+    AddFactory( new GWNotifyUserFactory()) ;
+    AddFactory( new GWTeamRetInviteFactory()) ;
+    AddFactory( new GWTeamRetApplyFactory()) ;
+    AddFactory( new GWTeamLeaveFactory()) ;
+    AddFactory( new GWTeamLeaderRetInviteFactory()) ;
+    AddFactory( new GWTeamKickFactory()) ;
+    AddFactory( new GWTeamInviteFactory()) ;
+    AddFactory( new GWTeamDismissFactory()) ;
+    AddFactory( new GWTeamApplyFactory()) ;
+    AddFactory( new GWAskTeamInfoFactory()) ;
+    AddFactory( new GWAskTeamMemberInfoFactory()) ;
+    AddFactory( new GWTeamAppointFactory()) ;
+    AddFactory( new GWTeamMemberEnterSceneFactory()) ;
+    AddFactory( new GWLevelUpFactory()) ;
+    AddFactory( new GWEnterTeamFollowFactory()) ;
+    AddFactory( new GWStopTeamFollowFactory()) ;
+    AddFactory( new GWChannelCreateFactory()) ;
+    AddFactory( new GWChannelDismissFactory()) ;
+    AddFactory( new GWChannelInviteFactory()) ;
+    AddFactory( new GWChannelKickFactory()) ;
+    AddFactory( new GWChatFactory()) ;
+    AddFactory( new GWMailFactory()) ;
+    AddFactory( new GWAskMailFactory()) ;
+    AddFactory( new GWAskSceneDataFactory()) ;
+    AddFactory( new GWGuildFactory()) ;
+    AddFactory( new GWCommandFactory()) ;
+    AddFactory( new GWRelationFactory()) ;
+    AddFactory( new GWBatchMailFactory());
+    AddFactory( new GWCityApplyNewCityFactory());
+    AddFactory( new GWCityAskInitInfoFactory());
+    AddFactory( new GWCityCloseFactory());
+    AddFactory( new GWCityCloseSuccessFactory());
+    AddFactory( new GWCityOptFactory());
+    AddFactory( new GWUpdateTitleFactory() );
+    AddFactory( new GWChangeMenpaiFactory() );
+    AddFactory( new GWCallOfHumanFactory());
+    AddFactory( new GWFingerFactory());
+    AddFactory( new GWHeartBeatFactory());
+    AddFactory( new GWSystemMsgFactory());
 
 //WG
-	AddFactory( new WGRetUserDataFactory()) ;
-	AddFactory( new WGRetChangeSceneFactory()) ;
-	AddFactory( new WGNotifyUserFactory()) ;
-	AddFactory( new WGTeamResultFactory()) ;
-	AddFactory( new WGTeamLeaderAskInviteFactory()) ;
-	AddFactory( new WGTeamErrorFactory()) ;
-	AddFactory( new WGTeamAskInviteFactory()) ;
-	AddFactory( new WGTeamAskApplyFactory()) ;
-	AddFactory( new WGTeamMemberInfoFactory()) ;
-	AddFactory( new WGTeamFollowListFactory()) ;
-	AddFactory( new WGChannelErrorFactory()) ;
-	AddFactory( new WGChannelResultFactory()) ;
-	AddFactory( new WGChatFactory()) ;
-	AddFactory( new WGMailFactory()) ;
-	AddFactory( new WGNotifyMailFactory()) ;
-	AddFactory( new WGRetSceneDataFactory()) ;
-	AddFactory( new WGGuildReturnFactory()) ;
-	AddFactory( new WGGuildErrorFactory()) ;
-	AddFactory( new WGGuildFactory()) ;
-	AddFactory( new WGRelationFactory()) ;
-	AddFactory( new WGTeamListFactory() );
-	AddFactory( new WGCityApplyNewCityFactory() );
-	AddFactory( new WGCityErrorFactory() );
-	AddFactory( new WGCityCloseFactory());
-	AddFactory( new WGCityCloseSuccessFactory());
-	AddFactory( new WGCityAttrFactory());
-	AddFactory( new WGCityInitInfoFactory());
-	AddFactory( new WGWorldTimeFactory());
-	AddFactory( new WGCallOfHumanFactory());
-	AddFactory( new WGFingerFactory());
-	AddFactory( new WGSystemMsgFactory());
+    AddFactory( new WGRetUserDataFactory()) ;
+    AddFactory( new WGRetChangeSceneFactory()) ;
+    AddFactory( new WGNotifyUserFactory()) ;
+    AddFactory( new WGTeamResultFactory()) ;
+    AddFactory( new WGTeamLeaderAskInviteFactory()) ;
+    AddFactory( new WGTeamErrorFactory()) ;
+    AddFactory( new WGTeamAskInviteFactory()) ;
+    AddFactory( new WGTeamAskApplyFactory()) ;
+    AddFactory( new WGTeamMemberInfoFactory()) ;
+    AddFactory( new WGTeamFollowListFactory()) ;
+    AddFactory( new WGChannelErrorFactory()) ;
+    AddFactory( new WGChannelResultFactory()) ;
+    AddFactory( new WGChatFactory()) ;
+    AddFactory( new WGMailFactory()) ;
+    AddFactory( new WGNotifyMailFactory()) ;
+    AddFactory( new WGRetSceneDataFactory()) ;
+    AddFactory( new WGGuildReturnFactory()) ;
+    AddFactory( new WGGuildErrorFactory()) ;
+    AddFactory( new WGGuildFactory()) ;
+    AddFactory( new WGRelationFactory()) ;
+    AddFactory( new WGTeamListFactory() );
+    AddFactory( new WGCityApplyNewCityFactory() );
+    AddFactory( new WGCityErrorFactory() );
+    AddFactory( new WGCityCloseFactory());
+    AddFactory( new WGCityCloseSuccessFactory());
+    AddFactory( new WGCityAttrFactory());
+    AddFactory( new WGCityInitInfoFactory());
+    AddFactory( new WGWorldTimeFactory());
+    AddFactory( new WGCallOfHumanFactory());
+    AddFactory( new WGFingerFactory());
+    AddFactory( new WGSystemMsgFactory());
 
 #endif
 
 //SS : Server to Server
 #if ( defined (_FOX_LOGIN) && defined (_FOX_WORLD) ) || ( defined (_FOX_SERVER) && defined (_FOX_WORLD) )|| (defined (_FOX_LOGIN) && defined (_FOX_BILLING) )
-	AddFactory( new SSConnectFactory()) ;
-	AddFactory( new SSScenePlayerCountFactory()) ;
+    AddFactory( new SSConnectFactory()) ;
+    AddFactory( new SSScenePlayerCountFactory()) ;
 #endif
 
 //LW: LOGIN to WORLD
 
 #if defined(_FOX_LOGIN) && defined (_FOX_WORLD)
-		AddFactory(new LWAskCharLoginFactory());
-		AddFactory(new LWAskDeleteCharFactory());
-		AddFactory(new WLRetCharLoginFactory());
-		AddFactory(new WLRetDeleteCharFactory());
+        AddFactory(new LWAskCharLoginFactory());
+        AddFactory(new LWAskDeleteCharFactory());
+        AddFactory(new WLRetCharLoginFactory());
+        AddFactory(new WLRetDeleteCharFactory());
 #endif
 
 
 //GG : Game to Game
 #if defined (_FOX_CLIENT) && defined (_FOX_WORLD) && defined (_FOX_SERVER)
-	AddFactory( new GGSceneNotifyFactory()) ;
+    AddFactory( new GGSceneNotifyFactory()) ;
 #endif
 
 //LB && BL
 #if defined (_FOX_LOGIN) && defined (_FOX_BILLING)
 //LB
-	AddFactory( new LBAskAuthFactory()) ;
+    AddFactory( new LBAskAuthFactory()) ;
 //BL
-	AddFactory( new BLRetAuthFactory()) ;
+    AddFactory( new BLRetAuthFactory()) ;
 #endif
 
 //WebToBilling && BillingToWeb
 #if defined (_FOX_WEB) && defined (_FOX_BILLING)
-	//BW
-	AddFactory( new WBRetValidateUserFactory()) ;
+    //BW
+    AddFactory( new WBRetValidateUserFactory()) ;
 #endif
 
 
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 VOID PacketFactoryManager::AddFactory( PacketFactory* pFactory ) 
 {
 __ENTER_FUNCTION
-		
-	if( m_Factories[pFactory->GetPacketID()]!=NULL ) 
-	{//重复设定
-		Assert( FALSE ) ;
-		return ;
-	}
-	
-	m_Factories[pFactory->GetPacketID()] = pFactory ;
-			
+        
+    if( m_Factories[pFactory->GetPacketID()]!=NULL ) 
+    {//重复设定
+        Assert( FALSE ) ;
+        return ;
+    }
+    
+    m_Factories[pFactory->GetPacketID()] = pFactory ;
+            
 __LEAVE_FUNCTION
 }
 
@@ -1090,30 +1090,30 @@ Packet* PacketFactoryManager::CreatePacket( PacketID_t packetID )
 {
 __ENTER_FUNCTION
 
-	if( packetID>=m_Size || m_Factories[packetID]==NULL ) 
-	{
-		Assert(FALSE) ;
-		return NULL ;
-	}
+    if( packetID>=m_Size || m_Factories[packetID]==NULL ) 
+    {
+        Assert(FALSE) ;
+        return NULL ;
+    }
 
-	Packet* pPacket = NULL ;
-	Lock() ;
-	_MY_TRY
-	{
-		pPacket = m_Factories[packetID]->CreatePacket();
-		m_pPacketAllocCount[packetID]++ ;
-	}
-	_MY_CATCH
-	{
-		pPacket = NULL ;
-	}
-	Unlock() ;
+    Packet* pPacket = NULL ;
+    Lock() ;
+    _MY_TRY
+    {
+        pPacket = m_Factories[packetID]->CreatePacket();
+        m_pPacketAllocCount[packetID]++ ;
+    }
+    _MY_CATCH
+    {
+        pPacket = NULL ;
+    }
+    Unlock() ;
 
-	return pPacket ;
-			
+    return pPacket ;
+            
 __LEAVE_FUNCTION
 
-	return NULL ;
+    return NULL ;
 }
 
 UINT PacketFactoryManager::GetPacketMaxSize( PacketID_t packetID ) 
@@ -1121,57 +1121,57 @@ UINT PacketFactoryManager::GetPacketMaxSize( PacketID_t packetID )
 __ENTER_FUNCTION
 
 
-	if( packetID>=m_Size || m_Factories[packetID]==NULL ) 
-	{
-		char buff[256] = {0};
-		sprintf(buff,"PacketID= %d 消息没有注册到PacketFactoryManager上",packetID);
-		AssertEx(FALSE,buff) ;
-		return 0 ;
-	}
+    if( packetID>=m_Size || m_Factories[packetID]==NULL ) 
+    {
+        char buff[256] = {0};
+        sprintf(buff,"PacketID= %d 消息没有注册到PacketFactoryManager上",packetID);
+        AssertEx(FALSE,buff) ;
+        return 0 ;
+    }
 
-	Lock() ;
-	UINT iRet = m_Factories[packetID]->GetPacketMaxSize( ) ;
-	Unlock() ;
+    Lock() ;
+    UINT iRet = m_Factories[packetID]->GetPacketMaxSize( ) ;
+    Unlock() ;
 
-	return iRet ;
-			
+    return iRet ;
+            
 __LEAVE_FUNCTION
 
-	return 0 ;
+    return 0 ;
 }
 
 VOID PacketFactoryManager::RemovePacket( Packet* pPacket )
 {
 __ENTER_FUNCTION
 
-	if( pPacket==NULL )
-	{
-		Assert(FALSE) ;
-		return ;
-	}
+    if( pPacket==NULL )
+    {
+        Assert(FALSE) ;
+        return ;
+    }
 
-	PacketID_t packetID = pPacket->GetPacketID() ;
-	if( packetID>=m_Size ) 
-	{
-		Assert(FALSE) ;
-		return ;
-	}
+    PacketID_t packetID = pPacket->GetPacketID() ;
+    if( packetID>=m_Size ) 
+    {
+        Assert(FALSE) ;
+        return ;
+    }
 
-	Lock() ;
-	_MY_TRY
-	{
-		SAFE_DELETE( pPacket ) ;
-		m_pPacketAllocCount[packetID] -- ;
-	}
-	_MY_CATCH
-	{
-	}
-	Unlock() ;
-	return ;
+    Lock() ;
+    _MY_TRY
+    {
+        SAFE_DELETE( pPacket ) ;
+        m_pPacketAllocCount[packetID] -- ;
+    }
+    _MY_CATCH
+    {
+    }
+    Unlock() ;
+    return ;
 
 __LEAVE_FUNCTION
 
-	return ;
+    return ;
 }
 
 

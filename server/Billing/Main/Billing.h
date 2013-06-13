@@ -7,20 +7,20 @@
 class Billing
 {
 public :
-	Billing( ) ;
-	~Billing( ) ;
+    Billing( ) ;
+    ~Billing( ) ;
 
 
 
-	BOOL		Init( ) ;
-	BOOL		Loop( ) ;
-	BOOL		Exit( ) ;	
+    BOOL        Init( ) ;
+    BOOL        Loop( ) ;
+    BOOL        Exit( ) ;    
 
 
 protected :
-	BOOL		NewStaticManager( ) ;
-	BOOL		InitStaticManager( ) ;
-	BOOL		DelStaticManager( ) ;
+    BOOL        NewStaticManager( ) ;
+    BOOL        InitStaticManager( ) ;
+    BOOL        DelStaticManager( ) ;
 
 
 

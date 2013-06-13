@@ -3,40 +3,40 @@
 
 BOOL CGAskDetailEquipList::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
-		iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
-		iStream.Read((CHAR*)(&m_Mode), sizeof(ASK_EQUIP_MODE));
-		iStream.Read((CHAR*)(&m_wPartFlags),sizeof(WORD));
+    __ENTER_FUNCTION
+        iStream.Read( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
+        iStream.Read((CHAR*)(&m_Mode), sizeof(ASK_EQUIP_MODE));
+        iStream.Read((CHAR*)(&m_wPartFlags),sizeof(WORD));
 
-		return TRUE ;
+        return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL CGAskDetailEquipList::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
-	oStream.Write((CHAR*)(&m_Mode), sizeof(ASK_EQUIP_MODE));
-	oStream.Write((CHAR*)(&m_wPartFlags),sizeof(WORD));
+    oStream.Write( (CHAR*)(&m_ObjID), sizeof(ObjID_t) ) ;
+    oStream.Write((CHAR*)(&m_Mode), sizeof(ASK_EQUIP_MODE));
+    oStream.Write((CHAR*)(&m_wPartFlags),sizeof(WORD));
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
-UINT	CGAskDetailEquipList::Execute( Player* pPlayer )
+UINT    CGAskDetailEquipList::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return CGAskDetailEquipListHandler::Execute( this, pPlayer ) ;
+        return CGAskDetailEquipListHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }

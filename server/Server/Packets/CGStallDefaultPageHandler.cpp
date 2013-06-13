@@ -13,29 +13,29 @@ UINT CGStallDefaultPageHandler::Execute( CGStallDefaultPage* pPacket, Player* pP
 {
 __ENTER_FUNCTION
 
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
 
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL )
-	{
-		Assert(FALSE) ;
-		return PACKET_EXE_ERROR ;
-	}
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL )
+    {
+        Assert(FALSE) ;
+        return PACKET_EXE_ERROR ;
+    }
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-	pHuman->m_StallBox.SetFirstPage( (UINT)pPacket->GetDefaultPage() );
+    pHuman->m_StallBox.SetFirstPage( (UINT)pPacket->GetDefaultPage() );
 
-	g_pLog->FastSaveLog( LOG_FILE_1, "CGStallDefaultPageHandler::ObjName=%s"
-		,pHuman->GetName());
+    g_pLog->FastSaveLog( LOG_FILE_1, "CGStallDefaultPageHandler::ObjName=%s"
+        ,pHuman->GetName());
 
-	return PACKET_EXE_CONTINUE ;
+    return PACKET_EXE_CONTINUE ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

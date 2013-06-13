@@ -2,44 +2,44 @@
 #include "GCReturnTeamFollow.h"
 
 
-BOOL	GCReturnTeamFollow::Read(SocketInputStream& iStream )
+BOOL    GCReturnTeamFollow::Read(SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)&m_Return, sizeof(UCHAR) );
-	iStream.Read( (CHAR*)&m_GUID,sizeof(GUID_t) );
+    iStream.Read( (CHAR*)&m_Return, sizeof(UCHAR) );
+    iStream.Read( (CHAR*)&m_GUID,sizeof(GUID_t) );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 
-BOOL	GCReturnTeamFollow::Write(SocketOutputStream& oStream )	const
+BOOL    GCReturnTeamFollow::Write(SocketOutputStream& oStream )    const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)&m_Return, sizeof(UCHAR) );
-	oStream.Write( (CHAR*)&m_GUID,sizeof(GUID_t) );
+    oStream.Write( (CHAR*)&m_Return, sizeof(UCHAR) );
+    oStream.Write( (CHAR*)&m_GUID,sizeof(GUID_t) );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 
-UINT	GCReturnTeamFollow::Execute(Player* pPlayer )
+UINT    GCReturnTeamFollow::Execute(Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCReturnTeamFollowHandler::Execute(this,pPlayer);
+    return GCReturnTeamFollowHandler::Execute(this,pPlayer);
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 

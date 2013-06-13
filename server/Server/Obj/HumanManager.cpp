@@ -23,21 +23,21 @@ Obj_Human *HumanManager::GetHuman( ObjID_t idObj )
 {
 __ENTER_FUNCTION
 
-	Obj_Human *pHuman = (Obj_Human*)(GetScene()->GetObjManager()->GetObj( idObj ));
-	if ( pHuman == NULL )
-	{
-		return NULL;
-	}
+    Obj_Human *pHuman = (Obj_Human*)(GetScene()->GetObjManager()->GetObj( idObj ));
+    if ( pHuman == NULL )
+    {
+        return NULL;
+    }
 
-	if ( pHuman->GetObjType() != Obj::OBJ_TYPE_HUMAN )
-	{
-		Assert( (pHuman->GetObjType() == Obj::OBJ_TYPE_HUMAN) && "HumanManager::GetHuman" );
-		return NULL;
-	}
-	return pHuman;
+    if ( pHuman->GetObjType() != Obj::OBJ_TYPE_HUMAN )
+    {
+        Assert( (pHuman->GetObjType() == Obj::OBJ_TYPE_HUMAN) && "HumanManager::GetHuman" );
+        return NULL;
+    }
+    return pHuman;
 
 __LEAVE_FUNCTION
 
-	return NULL ;
+    return NULL ;
 }
 

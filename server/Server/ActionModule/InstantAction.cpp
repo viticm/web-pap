@@ -15,6 +15,6 @@
 
 namespace Action_Module
 {
-	using namespace Action_Module;
-	//class InstantActionLogic_T : ActionLogic_T
+    using namespace Action_Module;
+    //class InstantActionLogic_T : ActionLogic_T
 }

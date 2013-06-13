@@ -7,35 +7,35 @@
 
 namespace Packets
 {
-	class CGStopTeamFollow:	public Packet
-	{
-	public:
-		CGStopTeamFollow(){}
-		virtual		~CGStopTeamFollow(){}
+    class CGStopTeamFollow:    public Packet
+    {
+    public:
+        CGStopTeamFollow(){}
+        virtual        ~CGStopTeamFollow(){}
 
-		//公用接口
-		virtual BOOL			Read( SocketInputStream& iStream );
-		virtual BOOL			Write( SocketOutputStream& oStream ) const;
-		virtual UINT			Execute( Player* pPlayer );
+        //公用接口
+        virtual BOOL            Read( SocketInputStream& iStream );
+        virtual BOOL            Write( SocketOutputStream& oStream ) const;
+        virtual UINT            Execute( Player* pPlayer );
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_CG_STOP_TEAMFOLLOW; }
-		virtual UINT			GetPacketSize()const { return 0; }
+        virtual PacketID_t        GetPacketID()const { return PACKET_CG_STOP_TEAMFOLLOW; }
+        virtual UINT            GetPacketSize()const { return 0; }
 
-	};
+    };
 
-	class CGStopTeamFollowFactory: public	PacketFactory
-	{
-	public:
-		Packet*		CreatePacket() { return new CGStopTeamFollow(); }
-		PacketID_t	GetPacketID() const	 { return PACKET_CG_STOP_TEAMFOLLOW; }
-		UINT		GetPacketMaxSize() const { return 0; }			
-	};
+    class CGStopTeamFollowFactory: public    PacketFactory
+    {
+    public:
+        Packet*        CreatePacket() { return new CGStopTeamFollow(); }
+        PacketID_t    GetPacketID() const     { return PACKET_CG_STOP_TEAMFOLLOW; }
+        UINT        GetPacketMaxSize() const { return 0; }            
+    };
 
-	class CGStopTeamFollowHandler
-	{
-	public:
-		static UINT Execute(CGStopTeamFollow* pPacket,Player* pPlayer);
-	};
+    class CGStopTeamFollowHandler
+    {
+    public:
+        static UINT Execute(CGStopTeamFollow* pPacket,Player* pPlayer);
+    };
 
 }
 

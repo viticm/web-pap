@@ -6,31 +6,31 @@ BOOL CGEnvRequest::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGEnvRequest::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGEnvRequest::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGEnvRequestHandler::Execute( this, pPlayer ) ;
+    return CGEnvRequestHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }

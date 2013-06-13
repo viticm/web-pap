@@ -13,35 +13,35 @@
 #include "GCPlayerShopError.h"
 namespace Packets
 {
-	class CGPlayerShopApply : public Packet
-	{
-	public:
-		CGPlayerShopApply( ){};
-		virtual ~CGPlayerShopApply( ){};
+    class CGPlayerShopApply : public Packet
+    {
+    public:
+        CGPlayerShopApply( ){};
+        virtual ~CGPlayerShopApply( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_CG_PLAYERSHOPAPPLY; }
-		virtual UINT			GetPacketSize()const { return	0;}
+        virtual PacketID_t        GetPacketID()const { return PACKET_CG_PLAYERSHOPAPPLY; }
+        virtual UINT            GetPacketSize()const { return    0;}
 
-	};
+    };
 
-	class CGPlayerShopApplyFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGPlayerShopApply() ; }
-		PacketID_t	GetPacketID()const { return PACKET_CG_PLAYERSHOPAPPLY; };
-		UINT		GetPacketMaxSize()const { return 0;};
-	};
+    class CGPlayerShopApplyFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGPlayerShopApply() ; }
+        PacketID_t    GetPacketID()const { return PACKET_CG_PLAYERSHOPAPPLY; };
+        UINT        GetPacketMaxSize()const { return 0;};
+    };
 
-	class CGPlayerShopApplyHandler 
-	{
-	public:
-		static UINT Execute( CGPlayerShopApply* pPacket, Player* pPlayer ) ;
-	};
+    class CGPlayerShopApplyHandler 
+    {
+    public:
+        static UINT Execute( CGPlayerShopApply* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

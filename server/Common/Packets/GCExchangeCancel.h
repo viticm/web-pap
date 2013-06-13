@@ -14,35 +14,35 @@
 
 namespace Packets
 {
-	class GCExchangeCancel : public Packet
-	{
-	public:
-		GCExchangeCancel( ){};
-		virtual ~GCExchangeCancel( ){};
+    class GCExchangeCancel : public Packet
+    {
+    public:
+        GCExchangeCancel( ){};
+        virtual ~GCExchangeCancel( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_GC_EXCHANGECANCEL; }
-		virtual UINT			GetPacketSize()const { return	0;}
+        virtual PacketID_t        GetPacketID()const { return PACKET_GC_EXCHANGECANCEL; }
+        virtual UINT            GetPacketSize()const { return    0;}
 
-	};
+    };
 
-	class GCExchangeCancelFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new GCExchangeCancel() ; }
-		PacketID_t	GetPacketID()const { return PACKET_GC_EXCHANGECANCEL; };
-		UINT		GetPacketMaxSize()const { return 0;};
-	};
+    class GCExchangeCancelFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new GCExchangeCancel() ; }
+        PacketID_t    GetPacketID()const { return PACKET_GC_EXCHANGECANCEL; };
+        UINT        GetPacketMaxSize()const { return 0;};
+    };
 
-	class GCExchangeCancelHandler 
-	{
-	public:
-		static UINT Execute( GCExchangeCancel* pPacket, Player* pPlayer ) ;
-	};
+    class GCExchangeCancelHandler 
+    {
+    public:
+        static UINT Execute( GCExchangeCancel* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

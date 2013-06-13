@@ -10,50 +10,50 @@
 
 namespace Packets
 {
-	class CGUseEquip:public Packet
-	{
+    class CGUseEquip:public Packet
+    {
 
-	public:
-		CGUseEquip(){};
-		virtual				~CGUseEquip(){};
+    public:
+        CGUseEquip(){};
+        virtual                ~CGUseEquip(){};
 
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream ) const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream ) const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID() const { return PACKET_CG_USEEQUIP; }
+        virtual PacketID_t        GetPacketID() const { return PACKET_CG_USEEQUIP; }
 
-		virtual UINT			GetPacketSize() const 
-		{
-			return sizeof(BYTE);
-		}
+        virtual UINT            GetPacketSize() const 
+        {
+            return sizeof(BYTE);
+        }
 
-	public:
-		VOID			setBagIndex(BYTE index){m_BagIndex = index;}
-		BYTE			getBagIndex(){return m_BagIndex;}
-
-
-	private:
-		
-		BYTE			m_BagIndex;		//使用Bag中的位置存放的位置
-
-	};
+    public:
+        VOID            setBagIndex(BYTE index){m_BagIndex = index;}
+        BYTE            getBagIndex(){return m_BagIndex;}
 
 
-	class CGUseEquipFactory:public PacketFactory
-	{
-	public:
-		Packet*		CreatePacket() { return new CGUseEquip(); }
-		PacketID_t	GetPacketID() const { return PACKET_CG_USEEQUIP; }
-		UINT		GetPacketMaxSize() const { return	sizeof(BYTE); }
-	};
+    private:
+        
+        BYTE            m_BagIndex;        //使用Bag中的位置存放的位置
+
+    };
 
 
-	class CGUseEquipHandler
-	{
-	public:
-		static UINT	Execute( CGUseEquip* pPacket, Player* pPlayer );
-	};
+    class CGUseEquipFactory:public PacketFactory
+    {
+    public:
+        Packet*        CreatePacket() { return new CGUseEquip(); }
+        PacketID_t    GetPacketID() const { return PACKET_CG_USEEQUIP; }
+        UINT        GetPacketMaxSize() const { return    sizeof(BYTE); }
+    };
+
+
+    class CGUseEquipHandler
+    {
+    public:
+        static UINT    Execute( CGUseEquip* pPacket, Player* pPlayer );
+    };
 
 
 

@@ -17,35 +17,35 @@ UINT CGChannelDismissHandler::Execute( CGChannelDismiss* pPacket, Player* pPlaye
 {
 __ENTER_FUNCTION
 
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
-	
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL )
-	{
-		Assert(FALSE) ;
-		return PACKET_EXE_ERROR ;
-	}
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
+    
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL )
+    {
+        Assert(FALSE) ;
+        return PACKET_EXE_ERROR ;
+    }
 
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-
-
-	GWChannelDismiss* pMsg = (GWChannelDismiss*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_CHANNELDISMISS)) ;
-	pMsg->SetGUID( pPacket->GetGUID() ) ;
-
-	g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
 
-	g_pLog->FastSaveLog( LOG_FILE_1, "CGChannelDismissHandler: GUID=%X", 
-		pPacket->GetGUID() ) ;
+    GWChannelDismiss* pMsg = (GWChannelDismiss*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_CHANNELDISMISS)) ;
+    pMsg->SetGUID( pPacket->GetGUID() ) ;
 
-	return PACKET_EXE_CONTINUE ;
+    g_pServerManager->SendPacket( pMsg, INVALID_ID ) ;
+
+
+    g_pLog->FastSaveLog( LOG_FILE_1, "CGChannelDismissHandler: GUID=%X", 
+        pPacket->GetGUID() ) ;
+
+    return PACKET_EXE_CONTINUE ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

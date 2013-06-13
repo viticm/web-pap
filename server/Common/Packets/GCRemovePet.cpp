@@ -9,36 +9,36 @@ BOOL GCRemovePet::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_GUID), sizeof(m_GUID));
+    iStream.Read( (CHAR*)(&m_GUID), sizeof(m_GUID));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCRemovePet::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_GUID), sizeof(m_GUID));
+    oStream.Write( (CHAR*)(&m_GUID), sizeof(m_GUID));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCRemovePet::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCRemovePetHandler::Execute( this, pPlayer ) ;
+    return GCRemovePetHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

@@ -9,35 +9,35 @@
 BOOL CGAskActiveTimeUpdate::Read( SocketInputStream& iStream ) 
 {
 __ENTER_FUNCTION
-	iStream.Read( (CHAR*)(&m_nActiveTime), sizeof(m_nActiveTime));
-	return TRUE ;
+    iStream.Read( (CHAR*)(&m_nActiveTime), sizeof(m_nActiveTime));
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGAskActiveTimeUpdate::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_nActiveTime), sizeof(SHORT));
+    oStream.Write( (CHAR*)(&m_nActiveTime), sizeof(SHORT));
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGAskActiveTimeUpdate::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGAskActiveTimeUpdateHandler::Execute( this, pPlayer ) ;
+    return CGAskActiveTimeUpdateHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

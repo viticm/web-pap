@@ -7,39 +7,39 @@
 
 BOOL GCRetSetting::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)&m_aSetting, sizeof(_OWN_SETTING)*SETTING_TYPE_NUMBER );
+    iStream.Read( (CHAR*)&m_aSetting, sizeof(_OWN_SETTING)*SETTING_TYPE_NUMBER );
 
-	return TRUE ;
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCRetSetting::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)&m_aSetting, sizeof(_OWN_SETTING)*SETTING_TYPE_NUMBER );
-	
-	return TRUE ;
+    oStream.Write( (CHAR*)&m_aSetting, sizeof(_OWN_SETTING)*SETTING_TYPE_NUMBER );
+    
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCRetSetting::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCRetSettingHandler::Execute( this, pPlayer ) ;
+        return GCRetSettingHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 

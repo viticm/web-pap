@@ -8,65 +8,65 @@
 
 
 
-UINT	CGAskItemInfoHandler::Execute(CGAskItemInfo* pPacket, Player* pPlayer )
+UINT    CGAskItemInfoHandler::Execute(CGAskItemInfo* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
 
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL )
-	{
-		Assert(FALSE) ;
-		return PACKET_EXE_ERROR ;
-	}
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL )
+    {
+        Assert(FALSE) ;
+        return PACKET_EXE_ERROR ;
+    }
 
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-	WORD	BagIndex	=	pPacket->getID();
+    WORD    BagIndex    =    pPacket->getID();
 
-	if(BagIndex<MAX_BAG_SIZE)
-	{
-		Item*			pBagItem = HumanItemLogic::GetItem(pHuman,BagIndex);
-		if(pBagItem ==NULL)
-		{
-			Assert(FALSE);
-			g_pLog->FastSaveLog( LOG_FILE_1, "CGAskItemInfoHandler: BagIndex=%d occur bad memory ",	BagIndex ) ;
-			return PACKET_EXE_ERROR ;
-		}
-		
-		GCItemInfo	Msg;
+    if(BagIndex<MAX_BAG_SIZE)
+    {
+        Item*            pBagItem = HumanItemLogic::GetItem(pHuman,BagIndex);
+        if(pBagItem ==NULL)
+        {
+            Assert(FALSE);
+            g_pLog->FastSaveLog( LOG_FILE_1, "CGAskItemInfoHandler: BagIndex=%d occur bad memory ",    BagIndex ) ;
+            return PACKET_EXE_ERROR ;
+        }
+        
+        GCItemInfo    Msg;
 
-		if(!pBagItem->IsEmpty())
-		{
+        if(!pBagItem->IsEmpty())
+        {
 
-				Msg.setID(BagIndex);
-				pBagItem->SaveValueTo(Msg.getItem());
-				Msg.setIsNull(FALSE);
-				pGamePlayer->SendPacket(&Msg);
-		}
-		else
-		{
-				Msg.setID(BagIndex);
-				Msg.setIsNull(TRUE);
-				pGamePlayer->SendPacket(&Msg);
+                Msg.setID(BagIndex);
+                pBagItem->SaveValueTo(Msg.getItem());
+                Msg.setIsNull(FALSE);
+                pGamePlayer->SendPacket(&Msg);
+        }
+        else
+        {
+                Msg.setID(BagIndex);
+                Msg.setIsNull(TRUE);
+                pGamePlayer->SendPacket(&Msg);
 
-		}
+        }
 
-	}
+    }
 
-	g_pLog->FastSaveLog( LOG_FILE_1, "CGAskItemInfoHandler: BagIndex=%d",
-		BagIndex ) ;
+    g_pLog->FastSaveLog( LOG_FILE_1, "CGAskItemInfoHandler: BagIndex=%d",
+        BagIndex ) ;
 
-	return PACKET_EXE_CONTINUE ;
+    return PACKET_EXE_CONTINUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

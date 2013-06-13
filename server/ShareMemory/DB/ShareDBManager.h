@@ -7,13 +7,13 @@ class ShareDBManager:public DBManager
 {
 
 public:
-	virtual  BOOL	Init();
-	virtual  VOID	run();
+    virtual  BOOL    Init();
+    virtual  VOID    run();
 
 };
 
 
-//extern DBManager*	g_pShareMemoryDBManager;
+//extern DBManager*    g_pShareMemoryDBManager;
 
 #endif
 

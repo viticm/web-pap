@@ -7,180 +7,180 @@
 
 DBPrivateInfo::DBPrivateInfo(ODBCInterface* pInterface)
 {
-	mDBName = CHARACTER_DATABASE;
-	mResult			= 0;
-	mResultCount	= 0;
-	m_CharGuid		= INVALID_ID;
-	m_DBVersion		= 0;
-	Assert(pInterface);
-	mInterface		=	pInterface;
+    mDBName = CHARACTER_DATABASE;
+    mResult            = 0;
+    mResultCount    = 0;
+    m_CharGuid        = INVALID_ID;
+    m_DBVersion        = 0;
+    Assert(pInterface);
+    mInterface        =    pInterface;
 }
 
 BOOL DBPrivateInfo::Load()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	DB_QUERY* pQuery = GetInternalQuery();
+    DB_QUERY* pQuery = GetInternalQuery();
 
-	if(!pQuery)
-	{
-		Assert(FALSE);
-	}
+    if(!pQuery)
+    {
+        Assert(FALSE);
+    }
 
-	pQuery->Clear();
+    pQuery->Clear();
 
-	if(m_CharGuid==INVALID_ID)
-	{
-		return FALSE;
-	}
+    if(m_CharGuid==INVALID_ID)
+    {
+        return FALSE;
+    }
 
-	pQuery->Parse(LoadCharPrivateInfo,CHAR_TABLE,m_CharGuid,m_DBVersion);
+    pQuery->Parse(LoadCharPrivateInfo,CHAR_TABLE,m_CharGuid,m_DBVersion);
 
-	return ODBCBase::Load();
+    return ODBCBase::Load();
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 BOOL DBPrivateInfo::Save(VOID* pSource)
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	enum 
-	{
-		DB_CharGuid	=	1,
-		DB_PrivateInfo,
-	};
+    enum 
+    {
+        DB_CharGuid    =    1,
+        DB_PrivateInfo,
+    };
 
-	//INT Result;
-	//if(!Delete())
-	//	return FALSE;
-	//ParseResult(&Result);
+    //INT Result;
+    //if(!Delete())
+    //    return FALSE;
+    //ParseResult(&Result);
 
-	
-	FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
-	Assert(pCharFullData);
-	
-	//保存私人数据
-	do
-	{
+    
+    FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
+    Assert(pCharFullData);
+    
+    //保存私人数据
+    do
+    {
 
-	
+    
 
-		CHAR	PrivateInfo[1024];
-		memset(PrivateInfo,0,1024);
-	
-		Binary2String((CHAR*)(&pCharFullData->m_PrivateInfo),
-					  sizeof(_PRIVATE_INFO_DB_LOAD),
-					  PrivateInfo);
-		DB_QUERY* pQuery = GetInternalQuery();
+        CHAR    PrivateInfo[1024];
+        memset(PrivateInfo,0,1024);
+    
+        Binary2String((CHAR*)(&pCharFullData->m_PrivateInfo),
+                      sizeof(_PRIVATE_INFO_DB_LOAD),
+                      PrivateInfo);
+        DB_QUERY* pQuery = GetInternalQuery();
 
-		if(!pQuery)
-		{
-			Assert(FALSE);
-		}
+        if(!pQuery)
+        {
+            Assert(FALSE);
+        }
 
-		pQuery->Clear();
-		
-		pQuery->Parse(UpdateCharPrivateInfo,
-					  CHAR_TABLE,
-					  PrivateInfo,
-					  m_CharGuid,
-					  m_DBVersion);
+        pQuery->Clear();
+        
+        pQuery->Parse(UpdateCharPrivateInfo,
+                      CHAR_TABLE,
+                      PrivateInfo,
+                      m_CharGuid,
+                      m_DBVersion);
 
-		if(!ODBCBase::Save(pCharFullData))
-			return FALSE;
+        if(!ODBCBase::Save(pCharFullData))
+            return FALSE;
 
 
-	}while(0);
-	
-	return TRUE;
+    }while(0);
+    
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL DBPrivateInfo::Delete()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	return TRUE;
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL DBPrivateInfo::ParseResult(VOID* pResult)
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	switch(mOPType)
-	{
-	case DB_LOAD:
-		{
-			FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pResult);
-			Assert(pCharFullData);
+    switch(mOPType)
+    {
+    case DB_LOAD:
+        {
+            FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pResult);
+            Assert(pCharFullData);
 
-			enum 
-			{
-				DB_CharGuid	=	1,
-				DB_PrivateInfo,
-			};
+            enum 
+            {
+                DB_CharGuid    =    1,
+                DB_PrivateInfo,
+            };
 
-			//加载私人属性
-			Assert(mResultCount<MAX_CHAR_MISSION_NUM);
-			Assert(mInterface);
-			INT ErrorCode;
-			for(INT i =0;i<MAX_CHAR_MISSION_NUM;i++)
-			{
-				if(!mInterface->Fetch())
-					break;
+            //加载私人属性
+            Assert(mResultCount<MAX_CHAR_MISSION_NUM);
+            Assert(mInterface);
+            INT ErrorCode;
+            for(INT i =0;i<MAX_CHAR_MISSION_NUM;i++)
+            {
+                if(!mInterface->Fetch())
+                    break;
 
-				UINT		CharGuid	= mInterface->GetUInt(DB_CharGuid,ErrorCode);
-				mInterface->GetField(DB_PrivateInfo,
-					(CHAR*)(&pCharFullData->m_PrivateInfo),
-					sizeof(_PRIVATE_INFO_DB_LOAD),
-					ErrorCode) ;
-			}
-			
-			mInterface->Clear();
-		}
-		break;
-	case DB_DELETE:
-		{
-	
-		}
-		break;
-	default:
-		break;
-	}
-	
+                UINT        CharGuid    = mInterface->GetUInt(DB_CharGuid,ErrorCode);
+                mInterface->GetField(DB_PrivateInfo,
+                    (CHAR*)(&pCharFullData->m_PrivateInfo),
+                    sizeof(_PRIVATE_INFO_DB_LOAD),
+                    ErrorCode) ;
+            }
+            
+            mInterface->Clear();
+        }
+        break;
+    case DB_DELETE:
+        {
+    
+        }
+        break;
+    default:
+        break;
+    }
+    
 
-	return TRUE;
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
-GUID_t	DBPrivateInfo::GetCharGuid()
+GUID_t    DBPrivateInfo::GetCharGuid()
 {
-	return m_CharGuid;
+    return m_CharGuid;
 }
 
-VOID	DBPrivateInfo::SetCharGuid(GUID_t guid)
+VOID    DBPrivateInfo::SetCharGuid(GUID_t guid)
 {
-	m_CharGuid	 = guid;
+    m_CharGuid     = guid;
 }
 
-UINT	DBPrivateInfo::GetDBVersion()
+UINT    DBPrivateInfo::GetDBVersion()
 {
-	return m_DBVersion;
+    return m_DBVersion;
 }
-VOID	DBPrivateInfo::SetDBVersion(UINT version)
+VOID    DBPrivateInfo::SetDBVersion(UINT version)
 {
-	m_DBVersion = version;
+    m_DBVersion = version;
 }

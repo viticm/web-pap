@@ -16,74 +16,74 @@
 
 UINT CGPlayerShopFavoriteHandler::Execute( CGPlayerShopFavorite* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
 
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL )
-	{
-		Assert(FALSE) ;
-		return PACKET_EXE_ERROR ;
-	}
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL )
+    {
+        Assert(FALSE) ;
+        return PACKET_EXE_ERROR ;
+    }
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-	BYTE			 bOpt			=	pPacket->GetOpt();
-	_PLAYERSHOP_GUID nFavoriteID	=	pPacket->GetFavoriteID();			//商店ID
+    BYTE             bOpt            =    pPacket->GetOpt();
+    _PLAYERSHOP_GUID nFavoriteID    =    pPacket->GetFavoriteID();            //商店ID
 
-	GCPlayerShopError MsgError;
-	GCPlayerShopUpdateFavorite	MsgToClient;
-	switch(bOpt)
-	{
-	case CGPlayerShopFavorite::OPT_ADD_FAVORITE:
-		{
-			if(pHuman->AddFavorite( nFavoriteID ) == FALSE)
-			{
-				MsgError.SetID(PLAYERSHOP_MSG::ERR_SHOP_ADD_TO_FAVORITE);
-				pGamePlayer->SendPacket(&MsgError);
+    GCPlayerShopError MsgError;
+    GCPlayerShopUpdateFavorite    MsgToClient;
+    switch(bOpt)
+    {
+    case CGPlayerShopFavorite::OPT_ADD_FAVORITE:
+        {
+            if(pHuman->AddFavorite( nFavoriteID ) == FALSE)
+            {
+                MsgError.SetID(PLAYERSHOP_MSG::ERR_SHOP_ADD_TO_FAVORITE);
+                pGamePlayer->SendPacket(&MsgError);
 
-				g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopPartnerHandler::ObjName=%s, ERROR ADD"
-					,pHuman->GetName());
+                g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopPartnerHandler::ObjName=%s, ERROR ADD"
+                    ,pHuman->GetName());
 
-				return PACKET_EXE_CONTINUE ;
-			}
-			MsgToClient.SetShopID(nFavoriteID);
-			MsgToClient.SetIsInFavorite(TRUE);
-		}
-		break;
-	case CGPlayerShopFavorite::OPT_DEL_FAVORITE:
-		{
-			if(pHuman->DelFavorite( nFavoriteID ) == FALSE)
-			{
-				MsgError.SetID(PLAYERSHOP_MSG::ERR_SHOP_DEL_FROM_FAVORITE);
-				pGamePlayer->SendPacket(&MsgError);
+                return PACKET_EXE_CONTINUE ;
+            }
+            MsgToClient.SetShopID(nFavoriteID);
+            MsgToClient.SetIsInFavorite(TRUE);
+        }
+        break;
+    case CGPlayerShopFavorite::OPT_DEL_FAVORITE:
+        {
+            if(pHuman->DelFavorite( nFavoriteID ) == FALSE)
+            {
+                MsgError.SetID(PLAYERSHOP_MSG::ERR_SHOP_DEL_FROM_FAVORITE);
+                pGamePlayer->SendPacket(&MsgError);
 
-				g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopPartnerHandler::ObjName=%s, ERROR DEL"
-					,pHuman->GetName());
+                g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopPartnerHandler::ObjName=%s, ERROR DEL"
+                    ,pHuman->GetName());
 
-				return PACKET_EXE_CONTINUE ;
-			}
-			MsgToClient.SetShopID(nFavoriteID);
-			MsgToClient.SetIsInFavorite(FALSE);
-		}
-		break;
-	default:
-		break;
-	}
+                return PACKET_EXE_CONTINUE ;
+            }
+            MsgToClient.SetShopID(nFavoriteID);
+            MsgToClient.SetIsInFavorite(FALSE);
+        }
+        break;
+    default:
+        break;
+    }
 
-	g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopPartnerHandler::ObjName=%s"
-		,pHuman->GetName());
+    g_pLog->FastSaveLog( LOG_FILE_1, "CGPlayerShopPartnerHandler::ObjName=%s"
+        ,pHuman->GetName());
 
-	pGamePlayer->SendPacket(&MsgToClient);
+    pGamePlayer->SendPacket(&MsgToClient);
 
-	return PACKET_EXE_CONTINUE ;
+    return PACKET_EXE_CONTINUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

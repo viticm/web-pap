@@ -3,24 +3,24 @@
 #include "WLRetCharLogin.h"
 UINT WLRetCharLoginHandler::Execute(WLRetCharLogin* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
-	
-		return PACKET_EXE_CONTINUE;
+    __ENTER_FUNCTION
+    
+        return PACKET_EXE_CONTINUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return PACKET_EXE_ERROR;
+        return PACKET_EXE_ERROR;
 }
 
 #include "WLRetDeleteChar.h"
 UINT WLRetDeleteCharHandler::Execute(WLRetDeleteChar* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return PACKET_EXE_CONTINUE;
+        return PACKET_EXE_CONTINUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return PACKET_EXE_ERROR;
+        return PACKET_EXE_ERROR;
 }
 

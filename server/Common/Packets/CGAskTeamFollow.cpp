@@ -2,38 +2,38 @@
 #include  "CGAskTeamFollow.h"
 
 
-BOOL	CGAskTeamFollow::Read(SocketInputStream& iStream )
+BOOL    CGAskTeamFollow::Read(SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 
-BOOL	CGAskTeamFollow::Write(SocketOutputStream& oStream ) const
+BOOL    CGAskTeamFollow::Write(SocketOutputStream& oStream ) const
 {
 __ENTER_FUNCTION
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 
-UINT	CGAskTeamFollow::Execute(Player* pPlayer )
+UINT    CGAskTeamFollow::Execute(Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGAskTeamFollowHandler::Execute(this,pPlayer);
+    return CGAskTeamFollowHandler::Execute(this,pPlayer);
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 

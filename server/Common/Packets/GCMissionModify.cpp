@@ -11,53 +11,53 @@ BOOL GCMissionModify::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_nFlag), sizeof(m_nFlag));
-	if( m_nFlag==MISSIONMODIFY_MISSION )
-	{
-		iStream.Read( (CHAR*)(&m_Mission), sizeof(m_Mission));
-	}
-	else if( m_nFlag==MISSIONMODIFY_MISSIONDATA )
-	{
-		iStream.Read( (CHAR*)(&m_aMissionData), sizeof(m_aMissionData));
-	}
+    iStream.Read( (CHAR*)(&m_nFlag), sizeof(m_nFlag));
+    if( m_nFlag==MISSIONMODIFY_MISSION )
+    {
+        iStream.Read( (CHAR*)(&m_Mission), sizeof(m_Mission));
+    }
+    else if( m_nFlag==MISSIONMODIFY_MISSIONDATA )
+    {
+        iStream.Read( (CHAR*)(&m_aMissionData), sizeof(m_aMissionData));
+    }
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL GCMissionModify::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_nFlag), sizeof(m_nFlag));
-	if( m_nFlag==MISSIONMODIFY_MISSION )
-	{
-		oStream.Write( (CHAR*)(&m_Mission), sizeof(m_Mission));
-	}
-	else if( m_nFlag==MISSIONMODIFY_MISSIONDATA )
-	{
-		oStream.Write( (CHAR*)(&m_aMissionData), sizeof(m_aMissionData));
-	}
+    oStream.Write( (CHAR*)(&m_nFlag), sizeof(m_nFlag));
+    if( m_nFlag==MISSIONMODIFY_MISSION )
+    {
+        oStream.Write( (CHAR*)(&m_Mission), sizeof(m_Mission));
+    }
+    else if( m_nFlag==MISSIONMODIFY_MISSIONDATA )
+    {
+        oStream.Write( (CHAR*)(&m_aMissionData), sizeof(m_aMissionData));
+    }
 
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT GCMissionModify::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return GCMissionModifyHandler::Execute( this, pPlayer ) ;
+    return GCMissionModifyHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 

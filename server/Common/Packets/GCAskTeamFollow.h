@@ -7,35 +7,35 @@
 
 namespace Packets
 {
-	class GCAskTeamFollow:	public Packet
-	{
-	public:
-		GCAskTeamFollow(){}
-		virtual		~GCAskTeamFollow(){}
+    class GCAskTeamFollow:    public Packet
+    {
+    public:
+        GCAskTeamFollow(){}
+        virtual        ~GCAskTeamFollow(){}
 
-		//公用接口
-		virtual BOOL			Read( SocketInputStream& iStream );
-		virtual BOOL			Write( SocketOutputStream& oStream ) const;
-		virtual UINT			Execute( Player* pPlayer );
+        //公用接口
+        virtual BOOL            Read( SocketInputStream& iStream );
+        virtual BOOL            Write( SocketOutputStream& oStream ) const;
+        virtual UINT            Execute( Player* pPlayer );
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_GC_ASK_TEAMFOLLOW; }
-		virtual UINT			GetPacketSize()const { return 0; }
+        virtual PacketID_t        GetPacketID()const { return PACKET_GC_ASK_TEAMFOLLOW; }
+        virtual UINT            GetPacketSize()const { return 0; }
 
-	};
+    };
 
-	class GCAskTeamFollowFactory: public	PacketFactory
-	{
-	public:
-		Packet*		CreatePacket() { return new GCAskTeamFollow(); }
-		PacketID_t	GetPacketID() const	 { return PACKET_GC_ASK_TEAMFOLLOW; }
-		UINT		GetPacketMaxSize() const { return 0; }			
-	};
+    class GCAskTeamFollowFactory: public    PacketFactory
+    {
+    public:
+        Packet*        CreatePacket() { return new GCAskTeamFollow(); }
+        PacketID_t    GetPacketID() const     { return PACKET_GC_ASK_TEAMFOLLOW; }
+        UINT        GetPacketMaxSize() const { return 0; }            
+    };
 
-	class GCAskTeamFollowHandler
-	{
-	public:
-		static UINT Execute(GCAskTeamFollow* pPacket,Player* pPlayer);
-	};
+    class GCAskTeamFollowHandler
+    {
+    public:
+        static UINT Execute(GCAskTeamFollow* pPacket,Player* pPlayer);
+    };
 
 }
 

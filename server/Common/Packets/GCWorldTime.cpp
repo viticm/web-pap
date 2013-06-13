@@ -2,37 +2,37 @@
 #include "GCWorldTime.h"
 
 
-BOOL	GCWorldTime::Read(SocketInputStream& iStream )
+BOOL    GCWorldTime::Read(SocketInputStream& iStream )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		iStream.Read((CHAR*)(&m_Time),sizeof(WORLD_TIME));
-		return TRUE;
+        iStream.Read((CHAR*)(&m_Time),sizeof(WORLD_TIME));
+        return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
-BOOL	GCWorldTime::Write(SocketOutputStream& oStream )	const
+BOOL    GCWorldTime::Write(SocketOutputStream& oStream )    const
 {
-	__ENTER_FUNCTION
-		
-		oStream.Write((CHAR*)(&m_Time),sizeof(WORLD_TIME));
-		return TRUE;
+    __ENTER_FUNCTION
+        
+        oStream.Write((CHAR*)(&m_Time),sizeof(WORLD_TIME));
+        return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 UINT GCWorldTime::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCWorldTimeHandler::Execute( this, pPlayer ) ;
+        return GCWorldTimeHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }

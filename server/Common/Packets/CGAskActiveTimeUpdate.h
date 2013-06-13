@@ -17,37 +17,37 @@ namespace Packets
 class CGAskActiveTimeUpdate : public Packet
 {
 public:
-	CGAskActiveTimeUpdate( ):m_nActiveTime(INVALID_ID)	{};
-	virtual ~CGAskActiveTimeUpdate( ){};
+    CGAskActiveTimeUpdate( ):m_nActiveTime(INVALID_ID)    {};
+    virtual ~CGAskActiveTimeUpdate( ){};
 
-	//公用继承接口
-	virtual BOOL			Read( SocketInputStream& iStream ) ;
-	virtual BOOL			Write( SocketOutputStream& oStream )const ;
-	virtual UINT			Execute( Player* pPlayer ) ;
+    //公用继承接口
+    virtual BOOL            Read( SocketInputStream& iStream ) ;
+    virtual BOOL            Write( SocketOutputStream& oStream )const ;
+    virtual UINT            Execute( Player* pPlayer ) ;
 
-	virtual PacketID_t		GetPacketID()const { return PACKET_CG_ASK_ACTIVETIME_UPDATE ; }
-	virtual UINT			GetPacketSize()const { return	sizeof(SHORT);}
+    virtual PacketID_t        GetPacketID()const { return PACKET_CG_ASK_ACTIVETIME_UPDATE ; }
+    virtual UINT            GetPacketSize()const { return    sizeof(SHORT);}
 
 public:
-	SHORT			ActiveTimeID(VOID) const {return m_nActiveTime;};
-	VOID			ActiveTimeID(SHORT const nID) {m_nActiveTime = nID;};
+    SHORT            ActiveTimeID(VOID) const {return m_nActiveTime;};
+    VOID            ActiveTimeID(SHORT const nID) {m_nActiveTime = nID;};
 private:
-	SHORT			m_nActiveTime;
+    SHORT            m_nActiveTime;
 };
 
 
 class CGAskActiveTimeUpdateFactory : public PacketFactory 
 {
 public:
-	Packet*		CreatePacket() { return new CGAskActiveTimeUpdate() ; }
-	PacketID_t	GetPacketID()const { return PACKET_CG_ASK_ACTIVETIME_UPDATE; };
-	UINT		GetPacketMaxSize()const { return	sizeof(SHORT);};
+    Packet*        CreatePacket() { return new CGAskActiveTimeUpdate() ; }
+    PacketID_t    GetPacketID()const { return PACKET_CG_ASK_ACTIVETIME_UPDATE; };
+    UINT        GetPacketMaxSize()const { return    sizeof(SHORT);};
 };
 
 class CGAskActiveTimeUpdateHandler 
 {
 public:
-	static UINT Execute( CGAskActiveTimeUpdate* pPacket, Player* pPlayer ) ;
+    static UINT Execute( CGAskActiveTimeUpdate* pPacket, Player* pPlayer ) ;
 };
 
 

@@ -1,5 +1,5 @@
 /********************************************************************
-	
+    
 *********************************************************************/
 
 
@@ -7,16 +7,16 @@
 #define _DB_TYPES_H_
 
 
-#define		USE_MYSQL
+#define        USE_MYSQL
 
 
-#define		HOST_STR_LEN				30
-#define		CONNECTION_NAME_LEN			32
+#define        HOST_STR_LEN                30
+#define        CONNECTION_NAME_LEN            32
 
 
 enum DB_NAMES
 {
-	CHARACTER_DATABASE	= 1,
+    CHARACTER_DATABASE    = 1,
 };
 
 

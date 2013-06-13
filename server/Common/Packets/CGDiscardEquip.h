@@ -8,49 +8,49 @@
 
 namespace Packets
 {
-	class CGDiscardEquip:public Packet
-	{
+    class CGDiscardEquip:public Packet
+    {
 
-	public:
-		CGDiscardEquip(){};
-		virtual				~CGDiscardEquip(){};
+    public:
+        CGDiscardEquip(){};
+        virtual                ~CGDiscardEquip(){};
 
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream ) const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream ) const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID() const { return PACKET_CG_DISCARDEQUIP; }
+        virtual PacketID_t        GetPacketID() const { return PACKET_CG_DISCARDEQUIP; }
 
-		virtual UINT			GetPacketSize() const 
-		{
-			return sizeof(BYTE);
-		}
+        virtual UINT            GetPacketSize() const 
+        {
+            return sizeof(BYTE);
+        }
 
-	public:
+    public:
 
-		VOID			SetEquipPoint(BYTE index){m_EquipPoint = index;}
-		BYTE			GetEquipPoint(){return m_EquipPoint;}
+        VOID            SetEquipPoint(BYTE index){m_EquipPoint = index;}
+        BYTE            GetEquipPoint(){return m_EquipPoint;}
 
-	private:
+    private:
 
-		BYTE			m_EquipPoint;
-	};
-
-
-	class CGDiscardEquipFactory:public PacketFactory
-	{
-	public:
-		Packet*		CreatePacket() { return new CGDiscardEquip(); }
-		PacketID_t	GetPacketID() const { return PACKET_CG_DISCARDEQUIP; }
-		UINT		GetPacketMaxSize() const { return sizeof(BYTE); }
-	};
+        BYTE            m_EquipPoint;
+    };
 
 
-	class CGDiscardEquipHandler
-	{
-	public:
-		static UINT Execute( CGDiscardEquip* pPacket, Player* pPlayer );
-	};
+    class CGDiscardEquipFactory:public PacketFactory
+    {
+    public:
+        Packet*        CreatePacket() { return new CGDiscardEquip(); }
+        PacketID_t    GetPacketID() const { return PACKET_CG_DISCARDEQUIP; }
+        UINT        GetPacketMaxSize() const { return sizeof(BYTE); }
+    };
+
+
+    class CGDiscardEquipHandler
+    {
+    public:
+        static UINT Execute( CGDiscardEquip* pPacket, Player* pPlayer );
+    };
 
 }
 

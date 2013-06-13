@@ -14,32 +14,32 @@ namespace Packets
 class CGAskChangeScene : public Packet 
 {
 public:
-	CGAskChangeScene( ){} ;
-	virtual ~CGAskChangeScene( ){} ;
+    CGAskChangeScene( ){} ;
+    virtual ~CGAskChangeScene( ){} ;
 
-	//公用继承接口
-	virtual BOOL			Read( SocketInputStream& iStream ) ;
-	virtual BOOL			Write( SocketOutputStream& oStream ) const ;
-	virtual UINT			Execute( Player* pPlayer ) ;
+    //公用继承接口
+    virtual BOOL            Read( SocketInputStream& iStream ) ;
+    virtual BOOL            Write( SocketOutputStream& oStream ) const ;
+    virtual UINT            Execute( Player* pPlayer ) ;
 
-	virtual PacketID_t		GetPacketID() const { return PACKET_CG_ASKCHANGESCENE ; }
-	virtual UINT			GetPacketSize() const 
-	{ 
-		return	sizeof(SceneID_t)*2 ; 
-	}
-	
+    virtual PacketID_t        GetPacketID() const { return PACKET_CG_ASKCHANGESCENE ; }
+    virtual UINT            GetPacketSize() const 
+    { 
+        return    sizeof(SceneID_t)*2 ; 
+    }
+    
 public:
-	//使用数据接口
-	VOID					SetSourSceneID( SceneID_t id ){ m_SourSceneID = id ; } ;
-	SceneID_t				GetSourSceneID( ){ return m_SourSceneID ; } ;
+    //使用数据接口
+    VOID                    SetSourSceneID( SceneID_t id ){ m_SourSceneID = id ; } ;
+    SceneID_t                GetSourSceneID( ){ return m_SourSceneID ; } ;
 
-	VOID					SetDestSceneID( SceneID_t id ){ m_DestSceneID = id ; } ;
-	SceneID_t				GetDestSceneID( ){ return m_DestSceneID ; } ;
+    VOID                    SetDestSceneID( SceneID_t id ){ m_DestSceneID = id ; } ;
+    SceneID_t                GetDestSceneID( ){ return m_DestSceneID ; } ;
 
 private:
-	//数据
-	SceneID_t				m_SourSceneID ;
-	SceneID_t				m_DestSceneID ;
+    //数据
+    SceneID_t                m_SourSceneID ;
+    SceneID_t                m_DestSceneID ;
 
 };
 
@@ -47,16 +47,16 @@ private:
 class CGAskChangeSceneFactory : public PacketFactory 
 {
 public:
-	Packet*		CreatePacket() { return new CGAskChangeScene() ; }
-	PacketID_t	GetPacketID() const { return PACKET_CG_ASKCHANGESCENE ; }
-	UINT		GetPacketMaxSize() const { return	sizeof(SceneID_t)*2 ; }
+    Packet*        CreatePacket() { return new CGAskChangeScene() ; }
+    PacketID_t    GetPacketID() const { return PACKET_CG_ASKCHANGESCENE ; }
+    UINT        GetPacketMaxSize() const { return    sizeof(SceneID_t)*2 ; }
 };
 
 
 class CGAskChangeSceneHandler 
 {
 public:
-	static UINT Execute( CGAskChangeScene* pPacket, Player* pPlayer ) ;
+    static UINT Execute( CGAskChangeScene* pPacket, Player* pPlayer ) ;
 };
 
 

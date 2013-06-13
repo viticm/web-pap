@@ -18,41 +18,41 @@ struct MailSMU;
 class MailNode : public CChainItem
 {
 public :
-	MailNode( ) ;
-	virtual ~MailNode( ) ;
+    MailNode( ) ;
+    virtual ~MailNode( ) ;
 
-	VOID			CleanUp( ) ;
+    VOID            CleanUp( ) ;
 
-	const MAIL*		GetMail( ){ return &m_Mail ; } ;
-	VOID			SetMail( const MAIL* pMail ) ;
-	VOID			ValidateShareMem();
+    const MAIL*        GetMail( ){ return &m_Mail ; } ;
+    VOID            SetMail( const MAIL* pMail ) ;
+    VOID            ValidateShareMem();
 
 public :
-	MAIL			m_Mail ;
-	MailSMU*		m_pMailSMU;
-	INT				m_nPoolIndex ;
-	INT				m_nUserNodePoolIndex ;//挂接在此用户节点名下
+    MAIL            m_Mail ;
+    MailSMU*        m_pMailSMU;
+    INT                m_nPoolIndex ;
+    INT                m_nUserNodePoolIndex ;//挂接在此用户节点名下
 };
 
 //用户节点
 class UserNode : public CChainItem
 {
 public :
-	UserNode( ) ;
-	virtual ~UserNode( ) ;
+    UserNode( ) ;
+    virtual ~UserNode( ) ;
 
-	VOID			CleanUp( ) ;
+    VOID            CleanUp( ) ;
 
-	INT				GetMailCount( ) ;//返回此用户的邮件数量
-	INT				GetScriptMailCount( ) ;//返回此用户的邮件数量
+    INT                GetMailCount( ) ;//返回此用户的邮件数量
+    INT                GetScriptMailCount( ) ;//返回此用户的邮件数量
 
 
 public :
-	CChainHeader	m_ChainMail ;
-	CChainHeader	m_ChainScriptMail ;
-	INT				m_nPoolIndex ;
-	UINT			m_uTickCount ;
-	CHAR			m_szName[MAX_CHARACTER_NAME] ;
+    CChainHeader    m_ChainMail ;
+    CChainHeader    m_ChainScriptMail ;
+    INT                m_nPoolIndex ;
+    UINT            m_uTickCount ;
+    CHAR            m_szName[MAX_CHARACTER_NAME] ;
 
 };
 
@@ -60,21 +60,21 @@ public :
 class UserChain
 {
 public :
-	UserChain( ) ;
-	~UserChain( ) ;
+    UserChain( ) ;
+    ~UserChain( ) ;
 
-	BOOL			Init( ) ;
-	VOID			CleanUp( ) ;
+    BOOL            Init( ) ;
+    VOID            CleanUp( ) ;
 
-	INT				GetUserCount( ) ;//返回此用户的邮件数量
+    INT                GetUserCount( ) ;//返回此用户的邮件数量
 
-	UserNode*		GetHeadNode( ) ;
-	UserNode*		GetPrevNode( ) ;
-	UserNode*		GetNextNode( ) ;
-	UserNode*		GetTailNode( ) ;
+    UserNode*        GetHeadNode( ) ;
+    UserNode*        GetPrevNode( ) ;
+    UserNode*        GetNextNode( ) ;
+    UserNode*        GetTailNode( ) ;
 
 public :
-	CChainHeader	m_ChainUser ;
+    CChainHeader    m_ChainUser ;
 
 };
 
@@ -82,18 +82,18 @@ public :
 class UserHashTable
 {
 public :
-	UserHashTable( ) ;
-	~UserHashTable( ) ;
+    UserHashTable( ) ;
+    ~UserHashTable( ) ;
 
-	VOID			CleanUp( ) ;
-	BOOL			Init( ) ;
+    VOID            CleanUp( ) ;
+    BOOL            Init( ) ;
 
-	BOOL			Add( CHAR* szName, UserNode* pNode ) ;
-	VOID			Del( CHAR* szName ) ;
-	UserNode*		Get( CHAR* szName ) ;
+    BOOL            Add( CHAR* szName, UserNode* pNode ) ;
+    VOID            Del( CHAR* szName ) ;
+    UserNode*        Get( CHAR* szName ) ;
 
 protected :
-	StrTable		m_NameTable ;
+    StrTable        m_NameTable ;
 
 };
 

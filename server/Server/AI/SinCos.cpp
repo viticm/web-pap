@@ -9,47 +9,47 @@ SinCos g_SinCos;
 
 SinCos::SinCos( unsigned int trigTableSize )
 {
-	mTrigTableSize = trigTableSize;
-	mTrigTableFactor = mTrigTableSize / (2*__PI);
+    mTrigTableSize = trigTableSize;
+    mTrigTableFactor = mTrigTableSize / (2*__PI);
 
-	mSinTable = new float[mTrigTableSize];
+    mSinTable = new float[mTrigTableSize];
 
-	buildTrigTables();
+    buildTrigTables();
 }
 
 //-----------------------------------------------------------------------
 SinCos::~SinCos()
 {
-	delete [] mSinTable;
+    delete [] mSinTable;
 }
 
 //-----------------------------------------------------------------------
 void SinCos::buildTrigTables(void)
 {
-	// Build trig lookup tables
-	// Could get away with building only PI sized Sin table but simpler this 
-	// way. Who cares, it'll ony use an extra 8k of memory anyway and I like 
-	// simplicity.
-	float angle;
-	for (int i = 0; i < mTrigTableSize; ++i)
-	{
-		angle = 2*__PI * i / mTrigTableSize;
-		mSinTable[i] = sin(angle);
-	}
+    // Build trig lookup tables
+    // Could get away with building only PI sized Sin table but simpler this 
+    // way. Who cares, it'll ony use an extra 8k of memory anyway and I like 
+    // simplicity.
+    float angle;
+    for (int i = 0; i < mTrigTableSize; ++i)
+    {
+        angle = 2*__PI * i / mTrigTableSize;
+        mSinTable[i] = sin(angle);
+    }
 }
-//-----------------------------------------------------------------------	
+//-----------------------------------------------------------------------    
 float SinCos::SinTable (float fValue)
 {
-	// Convert range to index values, wrap if required
-	int idx;
-	if (fValue >= 0)
-	{
-		idx = int(fValue * mTrigTableFactor) % mTrigTableSize;
-	}
-	else
-	{
-		idx = mTrigTableSize - (int(-fValue * mTrigTableFactor) % mTrigTableSize) - 1;
-	}
+    // Convert range to index values, wrap if required
+    int idx;
+    if (fValue >= 0)
+    {
+        idx = int(fValue * mTrigTableFactor) % mTrigTableSize;
+    }
+    else
+    {
+        idx = mTrigTableSize - (int(-fValue * mTrigTableFactor) % mTrigTableSize) - 1;
+    }
 
-	return mSinTable[idx];
+    return mSinTable[idx];
 }

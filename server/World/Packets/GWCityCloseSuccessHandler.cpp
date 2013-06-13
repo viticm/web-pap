@@ -14,31 +14,31 @@
 
 UINT GWCityCloseSuccessHandler::Execute( GWCityCloseSuccess* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
-		_CITY_GUID	CityGuid = pPacket->GetCityGuid();
+        ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
+        _CITY_GUID    CityGuid = pPacket->GetCityGuid();
 
-		City* pDelCity = g_pCityManager->GetCityByGuid(CityGuid);
-		if(!pDelCity->IsLock())
-		{//已经有人在删除此城市了
-			Assert(FALSE);
-			return PACKET_EXE_CONTINUE ;
-		}
+        City* pDelCity = g_pCityManager->GetCityByGuid(CityGuid);
+        if(!pDelCity->IsLock())
+        {//已经有人在删除此城市了
+            Assert(FALSE);
+            return PACKET_EXE_CONTINUE ;
+        }
 
-		SceneID_t CitySceneID = pDelCity->GetSceneID();
+        SceneID_t CitySceneID = pDelCity->GetSceneID();
 
-		GUID_t PlayerGuid = pDelCity->GetApplicantGuid();
-		g_pCityManager->DelCityByGuid(CityGuid);
+        GUID_t PlayerGuid = pDelCity->GetApplicantGuid();
+        g_pCityManager->DelCityByGuid(CityGuid);
 
-		WGCityCloseSuccess MsgToServer;
-		MsgToServer.SetPlayerGuid(PlayerGuid);
-		MsgToServer.SetSceneID(CitySceneID);
-		pServerPlayer->SendPacket(&MsgToServer);
-		
-		return PACKET_EXE_CONTINUE ;
+        WGCityCloseSuccess MsgToServer;
+        MsgToServer.SetPlayerGuid(PlayerGuid);
+        MsgToServer.SetSceneID(CitySceneID);
+        pServerPlayer->SendPacket(&MsgToServer);
+        
+        return PACKET_EXE_CONTINUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return PACKET_EXE_ERROR ;
+        return PACKET_EXE_ERROR ;
 }

@@ -14,22 +14,22 @@
 
 namespace Action_Module
 {
-	class ChargeActionLogic_T : public ActionLogic_T
-	{
-		public:
-			enum
-			{
-				ID = ACTION_CHARGE,
-			};
-			ChargeActionLogic_T(VOID) {};
-			~ChargeActionLogic_T(VOID) {};
-			virtual INT GetLogicID(VOID) const {return ID;}
-			virtual BOOL HeartBeat(ActionParams_T& rParams, Time_t nDeltaTime) const;
-			virtual BOOL OnDisturb(ActionParams_T& rParams) const;
-			virtual BOOL OnInterrupt(ActionParams_T& rParams) const;
-		protected:
-		private:
-	};
-	
+    class ChargeActionLogic_T : public ActionLogic_T
+    {
+        public:
+            enum
+            {
+                ID = ACTION_CHARGE,
+            };
+            ChargeActionLogic_T(VOID) {};
+            ~ChargeActionLogic_T(VOID) {};
+            virtual INT GetLogicID(VOID) const {return ID;}
+            virtual BOOL HeartBeat(ActionParams_T& rParams, Time_t nDeltaTime) const;
+            virtual BOOL OnDisturb(ActionParams_T& rParams) const;
+            virtual BOOL OnInterrupt(ActionParams_T& rParams) const;
+        protected:
+        private:
+    };
+    
 }
 #endif //CHARGEACTION_H

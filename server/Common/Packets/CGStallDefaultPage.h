@@ -14,52 +14,52 @@
 
 namespace Packets
 {
-	class CGStallDefaultPage : public Packet
-	{
-	public:
-		enum
-		{
-			SAVE_MONEY = 0,
-			PUTOUT_MONEY,
-			UPDATE_MONEY,
-		};
-	public:
-		CGStallDefaultPage( )
-		{
-			m_DefaultPage		= 0;//0:Item,2:Pet
-		};
-		virtual ~CGStallDefaultPage( ){};
+    class CGStallDefaultPage : public Packet
+    {
+    public:
+        enum
+        {
+            SAVE_MONEY = 0,
+            PUTOUT_MONEY,
+            UPDATE_MONEY,
+        };
+    public:
+        CGStallDefaultPage( )
+        {
+            m_DefaultPage        = 0;//0:Item,2:Pet
+        };
+        virtual ~CGStallDefaultPage( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_CG_STALL_DEFAULT_PAGE; }
-		virtual UINT			GetPacketSize()const { return	sizeof(BYTE);}
+        virtual PacketID_t        GetPacketID()const { return PACKET_CG_STALL_DEFAULT_PAGE; }
+        virtual UINT            GetPacketSize()const { return    sizeof(BYTE);}
 
-	public:
+    public:
 
-		BYTE					GetDefaultPage(VOID) const {return m_DefaultPage;};
-		VOID					SetDefaultPage(BYTE DefaultPage) {m_DefaultPage = DefaultPage;};
+        BYTE                    GetDefaultPage(VOID) const {return m_DefaultPage;};
+        VOID                    SetDefaultPage(BYTE DefaultPage) {m_DefaultPage = DefaultPage;};
 
-	private:
-		BYTE					m_DefaultPage;
-	};
+    private:
+        BYTE                    m_DefaultPage;
+    };
 
-	class CGStallDefaultPageFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGStallDefaultPage() ; }
-		PacketID_t	GetPacketID()const { return PACKET_CG_STALL_DEFAULT_PAGE; };
-		UINT		GetPacketMaxSize()const { return sizeof(BYTE);};
-	};
+    class CGStallDefaultPageFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGStallDefaultPage() ; }
+        PacketID_t    GetPacketID()const { return PACKET_CG_STALL_DEFAULT_PAGE; };
+        UINT        GetPacketMaxSize()const { return sizeof(BYTE);};
+    };
 
-	class CGStallDefaultPageHandler 
-	{
-	public:
-		static UINT Execute( CGStallDefaultPage* pPacket, Player* pPlayer ) ;
-	};
+    class CGStallDefaultPageHandler 
+    {
+    public:
+        static UINT Execute( CGStallDefaultPage* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

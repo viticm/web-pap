@@ -5,12 +5,12 @@ BOOL CGCityAskAttr::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	
-	return TRUE ;
+    
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGCityAskAttr::Write( SocketOutputStream& oStream ) const
@@ -18,22 +18,22 @@ BOOL CGCityAskAttr::Write( SocketOutputStream& oStream ) const
 __ENTER_FUNCTION
 
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGCityAskAttr::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGCityAskAttrHandler::Execute( this, pPlayer ) ;
+    return CGCityAskAttrHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 

@@ -7,151 +7,151 @@
 
 DBItemSerial::DBItemSerial(ODBCInterface* pInterface)
 {
-	mDBName			= CHARACTER_DATABASE;
-	mResult			= 0;
-	mResultCount	= 0;
-	Assert(pInterface);
-	mInterface		=	pInterface;
+    mDBName            = CHARACTER_DATABASE;
+    mResult            = 0;
+    mResultCount    = 0;
+    Assert(pInterface);
+    mInterface        =    pInterface;
 }
 
 BOOL DBItemSerial::Load()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	DB_QUERY* pQuery = GetInternalQuery();
+    DB_QUERY* pQuery = GetInternalQuery();
 
-	if(!pQuery)
-	{
-		Assert(FALSE);
-	}
+    if(!pQuery)
+    {
+        Assert(FALSE);
+    }
 
-	pQuery->Clear();
+    pQuery->Clear();
 
-	if(m_ServerID==INVALID_ID)
-	{
-		return FALSE;
-	}
+    if(m_ServerID==INVALID_ID)
+    {
+        return FALSE;
+    }
 
-	pQuery->Parse(LoadServerItemSerial,ISERIAL_TABLE,m_ServerID);
+    pQuery->Parse(LoadServerItemSerial,ISERIAL_TABLE,m_ServerID);
 
-	return ODBCBase::Load();
+    return ODBCBase::Load();
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 BOOL DBItemSerial::Save(VOID* pSource)
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	enum 
-	{
-		DB_ServerID			=	1,
-		DB_ServerItemSerial,
-	};
+    enum 
+    {
+        DB_ServerID            =    1,
+        DB_ServerItemSerial,
+    };
 
 
-	Assert(pSource);
+    Assert(pSource);
 
-	UINT	ItemSerial = *((UINT*)pSource);
+    UINT    ItemSerial = *((UINT*)pSource);
 
-	//保存物品序列号数据
-	do
-	{
-		DB_QUERY* pQuery = GetInternalQuery();
+    //保存物品序列号数据
+    do
+    {
+        DB_QUERY* pQuery = GetInternalQuery();
 
-		if(!pQuery)
-		{
-			Assert(FALSE);
-		}
+        if(!pQuery)
+        {
+            Assert(FALSE);
+        }
 
-		pQuery->Clear();
-		
-		pQuery->Parse(UpdateServerItemSerial,
-					  ISERIAL_TABLE,
-					  ItemSerial,
-					  m_ServerID);
+        pQuery->Clear();
+        
+        pQuery->Parse(UpdateServerItemSerial,
+                      ISERIAL_TABLE,
+                      ItemSerial,
+                      m_ServerID);
 
-		if(!ODBCBase::Save(pSource))
-			return FALSE;
+        if(!ODBCBase::Save(pSource))
+            return FALSE;
 
-	}while(0);
-	
-	return TRUE;
+    }while(0);
+    
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL DBItemSerial::Delete()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	return TRUE;
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL DBItemSerial::ParseResult(VOID* pResult)
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	switch(mOPType)
-	{
-	case DB_LOAD:
-		{
-			
-			Assert(pResult);
-			enum 
-			{
-				DB_ServerID			=	1,
-				DB_ServerItemSerial,
-			};
+    switch(mOPType)
+    {
+    case DB_LOAD:
+        {
+            
+            Assert(pResult);
+            enum 
+            {
+                DB_ServerID            =    1,
+                DB_ServerItemSerial,
+            };
 
-			//加载技能属性
-			
-			Assert(mInterface);
-			INT ErrorCode;
-			for(INT i =0;i<1;i++)
-			{
-				if(!mInterface->Fetch())
-					break;
+            //加载技能属性
+            
+            Assert(mInterface);
+            INT ErrorCode;
+            for(INT i =0;i<1;i++)
+            {
+                if(!mInterface->Fetch())
+                    break;
 
-				UINT		ServerID 	= mInterface->GetUInt(DB_ServerID,ErrorCode);
-				*((UINT*)pResult)		= mInterface->GetUInt(DB_ServerItemSerial,ErrorCode);
-			}
-			
-			mInterface->Clear();
-		}
-		break;
-	case DB_DELETE:
-		{
-	
-		}
-		break;
-	default:
-		break;
-	}
-	
+                UINT        ServerID     = mInterface->GetUInt(DB_ServerID,ErrorCode);
+                *((UINT*)pResult)        = mInterface->GetUInt(DB_ServerItemSerial,ErrorCode);
+            }
+            
+            mInterface->Clear();
+        }
+        break;
+    case DB_DELETE:
+        {
+    
+        }
+        break;
+    default:
+        break;
+    }
+    
 
-	return TRUE;
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
-ID_t	DBItemSerial::GetSID()
+ID_t    DBItemSerial::GetSID()
 {
-	return m_ServerID;
+    return m_ServerID;
 }
 
-VOID	DBItemSerial::SetSID(ID_t sid)
+VOID    DBItemSerial::SetSID(ID_t sid)
 {
-	m_ServerID = sid;
+    m_ServerID = sid;
 }
 

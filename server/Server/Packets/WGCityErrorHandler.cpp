@@ -12,14 +12,14 @@ UINT WGCityErrorHandler::Execute( WGCityError* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	if( pPlayer->IsServerPlayer() )
-	{//服务器收到世界服务器发来的数据
+    if( pPlayer->IsServerPlayer() )
+    {//服务器收到世界服务器发来的数据
 
-	}
+    }
 
-	return PACKET_EXE_CONTINUE;
+    return PACKET_EXE_CONTINUE;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR;
+    return PACKET_EXE_ERROR;
 }

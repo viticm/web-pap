@@ -15,65 +15,65 @@ UINT WGTeamMemberInfoHandler::Execute( WGTeamMemberInfo* pPacket, Player* pPlaye
 {
 __ENTER_FUNCTION
 
-	PlayerID_t PlayerID = pPacket->GetPlayerID();
-	GamePlayer* pGamePlayer = g_pPlayerPool->GetPlayer(PlayerID);
-	if( pGamePlayer==NULL )
-	{
-		g_pLog->FastSaveLog( LOG_FILE_3, "WGTeamMemberInfoHandler::Execute pGamePlayer==NULL" );
-		return PACKET_EXE_CONTINUE;
-	}
+    PlayerID_t PlayerID = pPacket->GetPlayerID();
+    GamePlayer* pGamePlayer = g_pPlayerPool->GetPlayer(PlayerID);
+    if( pGamePlayer==NULL )
+    {
+        g_pLog->FastSaveLog( LOG_FILE_3, "WGTeamMemberInfoHandler::Execute pGamePlayer==NULL" );
+        return PACKET_EXE_CONTINUE;
+    }
 
-	if (pGamePlayer->m_HumanGUID != pPacket->GetGUID())
-	{
-		g_pLog->FastSaveLog( LOG_FILE_3, "WGTeamMemberInfoHandler::Execute pGamePlayer->m_HumanGUID[%d] != pPacket->GetGUID()[%d]",pGamePlayer->m_HumanGUID, pPacket->GetGUID());
-		return PACKET_EXE_CONTINUE;
-	}
+    if (pGamePlayer->m_HumanGUID != pPacket->GetGUID())
+    {
+        g_pLog->FastSaveLog( LOG_FILE_3, "WGTeamMemberInfoHandler::Execute pGamePlayer->m_HumanGUID[%d] != pPacket->GetGUID()[%d]",pGamePlayer->m_HumanGUID, pPacket->GetGUID());
+        return PACKET_EXE_CONTINUE;
+    }
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman();
-	Assert( pHuman );
-	Scene* pScene = pHuman->getScene();
-	if( !pScene )
-	{
-		g_pLog->FastSaveLog( LOG_FILE_3, "WGTeamMemberInfoHandler::Execute pHuman->getScene() == NULL" );
-		return PACKET_EXE_CONTINUE;
-	}
+    Obj_Human* pHuman = pGamePlayer->GetHuman();
+    Assert( pHuman );
+    Scene* pScene = pHuman->getScene();
+    if( !pScene )
+    {
+        g_pLog->FastSaveLog( LOG_FILE_3, "WGTeamMemberInfoHandler::Execute pHuman->getScene() == NULL" );
+        return PACKET_EXE_CONTINUE;
+    }
 
-	if( pPlayer->IsServerPlayer() )
-	{//服务器收到世界服务器发来的数据
-		Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
+    if( pPlayer->IsServerPlayer() )
+    {//服务器收到世界服务器发来的数据
+        Assert( MyGetCurrentThreadID()==g_pServerManager->m_ThreadID );
 
-		pScene->SendPacket( pPacket, PlayerID );
+        pScene->SendPacket( pPacket, PlayerID );
 
-		g_pLog->FastSaveLog( LOG_FILE_1, "WGTeamMemberInfoHandler: ServerPlayer (GUID=%X) ",
-			pPacket->GetGUID() );
+        g_pLog->FastSaveLog( LOG_FILE_1, "WGTeamMemberInfoHandler: ServerPlayer (GUID=%X) ",
+            pPacket->GetGUID() );
 
-		return PACKET_EXE_NOTREMOVE;
-	}
-	else if( pPlayer->IsGamePlayer() )
-	{//场景收到Cache里的消息
-		Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
+        return PACKET_EXE_NOTREMOVE;
+    }
+    else if( pPlayer->IsGamePlayer() )
+    {//场景收到Cache里的消息
+        Assert( MyGetCurrentThreadID()==pScene->m_ThreadID );
 
-		GCTeamMemberInfo Msg;
+        GCTeamMemberInfo Msg;
 
-		Msg.setGUID( pPacket->GetGUID() );
-		Msg.SetFamily( pPacket->GetFamily() );
-		Msg.SetLevel( pPacket->GetLevel() );
-		Msg.SetDead( FALSE ); // 不在同一个场景则默认是活的
-		Msg.SetDeadLink( pPacket->GetDeadLinkFlag() );
+        Msg.setGUID( pPacket->GetGUID() );
+        Msg.SetFamily( pPacket->GetFamily() );
+        Msg.SetLevel( pPacket->GetLevel() );
+        Msg.SetDead( FALSE ); // 不在同一个场景则默认是活的
+        Msg.SetDeadLink( pPacket->GetDeadLinkFlag() );
 
-		pGamePlayer->SendPacket( &Msg );
+        pGamePlayer->SendPacket( &Msg );
 
-		g_pLog->FastSaveLog( LOG_FILE_1, "WGTeamMemberInfoHandler: GamePlayer (GUID=%X) ",
-			pPacket->GetGUID() );
-	}
-	else
-	{
-		Assert(FALSE);
-	}
+        g_pLog->FastSaveLog( LOG_FILE_1, "WGTeamMemberInfoHandler: GamePlayer (GUID=%X) ",
+            pPacket->GetGUID() );
+    }
+    else
+    {
+        Assert(FALSE);
+    }
 
-	return PACKET_EXE_CONTINUE;
+    return PACKET_EXE_CONTINUE;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR;
+    return PACKET_EXE_ERROR;
 }

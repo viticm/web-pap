@@ -16,48 +16,48 @@
 #include "WGCityClose.h"
 UINT GWCityCloseHandler::Execute( GWCityClose* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
+        ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
 
-		_CITY_GUID	  CityGuid		= pPacket->GetCityGuid();
-		GUID_t		  PlayerGuid	= pPacket->GetPlayerGuid();
-		WGCityError MsgError;
+        _CITY_GUID      CityGuid        = pPacket->GetCityGuid();
+        GUID_t          PlayerGuid    = pPacket->GetPlayerGuid();
+        WGCityError MsgError;
 
-		USER* pUser = g_pOnlineUser->FindUser( PlayerGuid ) ;
-		if( pUser==NULL )
-		{
-			Log::SaveLog( WORLD_LOGFILE, "GWCityCloseHandler...User GUID=%X not find!", 
-				PlayerGuid) ;
-			return PACKET_EXE_CONTINUE ;
-		}
+        USER* pUser = g_pOnlineUser->FindUser( PlayerGuid ) ;
+        if( pUser==NULL )
+        {
+            Log::SaveLog( WORLD_LOGFILE, "GWCityCloseHandler...User GUID=%X not find!", 
+                PlayerGuid) ;
+            return PACKET_EXE_CONTINUE ;
+        }
 
-		City* pDelCity = g_pCityManager->GetCityByGuid(CityGuid);
-		if(!pDelCity)
-		{
-			Log::SaveLog( WORLD_LOGFILE, "GWCityCloseHandler...User GUID world=%d poolpos=%d  not find!", 
-				CityGuid.m_World, CityGuid.m_PoolPos) ;
-			return PACKET_EXE_CONTINUE ;
-		}
+        City* pDelCity = g_pCityManager->GetCityByGuid(CityGuid);
+        if(!pDelCity)
+        {
+            Log::SaveLog( WORLD_LOGFILE, "GWCityCloseHandler...User GUID world=%d poolpos=%d  not find!", 
+                CityGuid.m_World, CityGuid.m_PoolPos) ;
+            return PACKET_EXE_CONTINUE ;
+        }
 
-		if(pDelCity->IsLock())
-		{//已经有人删除此城市了
-			Log::SaveLog( WORLD_LOGFILE, "GWCityCloseHandler...User GUID world=%d poolpos=%d  not find!", 
-				CityGuid.m_World, CityGuid.m_PoolPos) ;
-			return PACKET_EXE_CONTINUE ;
-		}
-		
-		pDelCity->SetApplicantGuid(PlayerGuid);
-		pDelCity->SetLock(TRUE);
-		
-		WGCityClose MsgToServer;
-		MsgToServer.SetSceneID(pDelCity->GetSceneID());
-		MsgToServer.SetPlayerID(pUser->GetPlayerID());
-		pServerPlayer->SendPacket(&MsgToServer);
-		
-		return PACKET_EXE_CONTINUE ;
+        if(pDelCity->IsLock())
+        {//已经有人删除此城市了
+            Log::SaveLog( WORLD_LOGFILE, "GWCityCloseHandler...User GUID world=%d poolpos=%d  not find!", 
+                CityGuid.m_World, CityGuid.m_PoolPos) ;
+            return PACKET_EXE_CONTINUE ;
+        }
+        
+        pDelCity->SetApplicantGuid(PlayerGuid);
+        pDelCity->SetLock(TRUE);
+        
+        WGCityClose MsgToServer;
+        MsgToServer.SetSceneID(pDelCity->GetSceneID());
+        MsgToServer.SetPlayerID(pUser->GetPlayerID());
+        pServerPlayer->SendPacket(&MsgToServer);
+        
+        return PACKET_EXE_CONTINUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return PACKET_EXE_ERROR ;
+        return PACKET_EXE_ERROR ;
 }

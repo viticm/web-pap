@@ -1,7 +1,7 @@
 //
-//文件名称：	SocketInputStream.h
-//功能描述：	消息数据的接收缓存，提供数据的接收和格式化读取功能
-//				
+//文件名称：    SocketInputStream.h
+//功能描述：    消息数据的接收缓存，提供数据的接收和格式化读取功能
+//                
 //
 //
 
@@ -21,51 +21,51 @@ class Packet ;
 class SocketInputStream
 {
 public :
-	SocketInputStream( Socket* sock, 
-					   UINT BufferSize = DEFAULTSOCKETINPUTBUFFERSIZE,
-					   UINT MaxBufferSize = DISCONNECTSOCKETINPUTSIZE ) ;
-	virtual ~SocketInputStream( ) ;
+    SocketInputStream( Socket* sock, 
+                       UINT BufferSize = DEFAULTSOCKETINPUTBUFFERSIZE,
+                       UINT MaxBufferSize = DISCONNECTSOCKETINPUTSIZE ) ;
+    virtual ~SocketInputStream( ) ;
 
 
 public :
-	UINT						Read( CHAR* buf, UINT len ) ;
-	BOOL						ReadPacket( Packet* p ) ;
+    UINT                        Read( CHAR* buf, UINT len ) ;
+    BOOL                        ReadPacket( Packet* p ) ;
 
-	BOOL						Peek( CHAR* buf, UINT len ) ;
+    BOOL                        Peek( CHAR* buf, UINT len ) ;
 
-	BOOL						Find( CHAR* buf ) ;
-	
-	BOOL						Skip( UINT len ) ;
-	
-	UINT						Fill( ) ;
-	UINT						Fill_RAW( ) ;
+    BOOL                        Find( CHAR* buf ) ;
+    
+    BOOL                        Skip( UINT len ) ;
+    
+    UINT                        Fill( ) ;
+    UINT                        Fill_RAW( ) ;
 
-	VOID						Initsize( ) ;
-	BOOL						Resize( INT size ) ;
-	
-	UINT						Capacity( )const { return m_BufferLen; }
-	
-	UINT						Length( )const ;
-	UINT						Size( )const { return Length(); }
+    VOID                        Initsize( ) ;
+    BOOL                        Resize( INT size ) ;
+    
+    UINT                        Capacity( )const { return m_BufferLen; }
+    
+    UINT                        Length( )const ;
+    UINT                        Size( )const { return Length(); }
 
-	BOOL						IsEmpty( )const { return m_Head==m_Tail; }
+    BOOL                        IsEmpty( )const { return m_Head==m_Tail; }
 
-	VOID						CleanUp( ) ;
+    VOID                        CleanUp( ) ;
 
-	UINT						GetHead(){return m_Head;}
-	UINT						GetTail(){return m_Tail;}
-	UINT						GetBuffLen(){return m_BufferLen;}
-	CHAR*						GetBuff(){return m_Buffer;}
+    UINT                        GetHead(){return m_Head;}
+    UINT                        GetTail(){return m_Tail;}
+    UINT                        GetBuffLen(){return m_BufferLen;}
+    CHAR*                        GetBuff(){return m_Buffer;}
 //private :
-	Socket*		m_pSocket ;
-	
-	CHAR*		m_Buffer ;
-	
-	UINT		m_BufferLen ;
-	UINT		m_MaxBufferLen ;
-	
-	UINT		m_Head ;
-	UINT		m_Tail ;
+    Socket*        m_pSocket ;
+    
+    CHAR*        m_Buffer ;
+    
+    UINT        m_BufferLen ;
+    UINT        m_MaxBufferLen ;
+    
+    UINT        m_Head ;
+    UINT        m_Tail ;
 
 
 

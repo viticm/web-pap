@@ -8,27 +8,27 @@ class RecoverManager
 {
 
 public:
-	RecoverManager()
-	{
-		memset(m_PlayerPtr,0,sizeof(GamePlayer*)*MAX_POOL_SIZE);
+    RecoverManager()
+    {
+        memset(m_PlayerPtr,0,sizeof(GamePlayer*)*MAX_POOL_SIZE);
 
-	}
-	~RecoverManager(){}
+    }
+    ~RecoverManager(){}
 
-	BOOL		Init();
-	BOOL		Tick();
+    BOOL        Init();
+    BOOL        Tick();
 
 
-	BOOL		AddPlayer(GamePlayer* pPlayer);
-	BOOL		RemovePlayer(GUID_t guid);
+    BOOL        AddPlayer(GamePlayer* pPlayer);
+    BOOL        RemovePlayer(GUID_t guid);
 
 
 private:
 
-	GamePlayer*		m_PlayerPtr[MAX_POOL_SIZE];
-	uint			m_Count;
+    GamePlayer*        m_PlayerPtr[MAX_POOL_SIZE];
+    uint            m_Count;
 
-	MyLock			m_Lock ;
+    MyLock            m_Lock ;
 
 };
 

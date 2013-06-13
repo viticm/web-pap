@@ -18,9 +18,9 @@
 
 namespace Combat_Module
 {
-	namespace Special_Obj_Module
-	{
-	};
+    namespace Special_Obj_Module
+    {
+    };
 };
 #endif //SPECIALOBJLOGICS_H
 

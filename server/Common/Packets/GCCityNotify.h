@@ -14,44 +14,44 @@
 
 namespace Packets
 {
-	class GCCityNotify : public Packet
-	{
-	public:
-		GCCityNotify( )
-		{
-			m_ID = 0;
-		}
-		virtual ~GCCityNotify( ){};
+    class GCCityNotify : public Packet
+    {
+    public:
+        GCCityNotify( )
+        {
+            m_ID = 0;
+        }
+        virtual ~GCCityNotify( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_GC_CITYNOTIFY; }
-		virtual UINT			GetPacketSize()const { return	sizeof(BYTE);}
+        virtual PacketID_t        GetPacketID()const { return PACKET_GC_CITYNOTIFY; }
+        virtual UINT            GetPacketSize()const { return    sizeof(BYTE);}
 
-	public:
-		BYTE					GetID(VOID) const {return m_ID;};
-		VOID					SetID(BYTE EID) {m_ID = EID;};
+    public:
+        BYTE                    GetID(VOID) const {return m_ID;};
+        VOID                    SetID(BYTE EID) {m_ID = EID;};
 
-	private:
-		BYTE					m_ID;		//成功与否
-	};
+    private:
+        BYTE                    m_ID;        //成功与否
+    };
 
-	class GCCityNotifyFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new GCCityNotify() ; }
-		PacketID_t	GetPacketID()const { return PACKET_GC_CITYNOTIFY; };
-		UINT		GetPacketMaxSize()const { return sizeof(BYTE);};
-	};
+    class GCCityNotifyFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new GCCityNotify() ; }
+        PacketID_t    GetPacketID()const { return PACKET_GC_CITYNOTIFY; };
+        UINT        GetPacketMaxSize()const { return sizeof(BYTE);};
+    };
 
-	class GCCityNotifyHandler 
-	{
-	public:
-		static UINT Execute( GCCityNotify* pPacket, Player* pPlayer ) ;
-	};
+    class GCCityNotifyHandler 
+    {
+    public:
+        static UINT Execute( GCCityNotify* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

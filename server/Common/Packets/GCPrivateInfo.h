@@ -13,47 +13,47 @@
 
 namespace Packets
 {
-	class GCPrivateInfo : public Packet
-	{
-	public:
-		GCPrivateInfo( )
-		{
-			m_CharGUID		= 0;							
-		}
+    class GCPrivateInfo : public Packet
+    {
+    public:
+        GCPrivateInfo( )
+        {
+            m_CharGUID        = 0;                            
+        }
 
-		virtual ~GCPrivateInfo( ){};
+        virtual ~GCPrivateInfo( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_GC_PRIVATEINFO; }
-		virtual UINT			GetPacketSize()const { return sizeof(UINT);}
+        virtual PacketID_t        GetPacketID()const { return PACKET_GC_PRIVATEINFO; }
+        virtual UINT            GetPacketSize()const { return sizeof(UINT);}
 
-	public:
-		//UINT m_CharGUID
-		UINT		GetCharGUID()  {return m_CharGUID;}
-		VOID		SetCharGUID(UINT CharGUID)  {m_CharGUID = CharGUID;}
+    public:
+        //UINT m_CharGUID
+        UINT        GetCharGUID()  {return m_CharGUID;}
+        VOID        SetCharGUID(UINT CharGUID)  {m_CharGUID = CharGUID;}
 
-	private:
-		UINT		m_CharGUID;							//角色编号
+    private:
+        UINT        m_CharGUID;                            //角色编号
 
-	};
+    };
 
-	class GCPrivateInfoFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new GCPrivateInfo() ; }
-		PacketID_t	GetPacketID()const { return PACKET_GC_PRIVATEINFO; };
-		UINT		GetPacketMaxSize()const { return sizeof(UINT);}
-	};
+    class GCPrivateInfoFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new GCPrivateInfo() ; }
+        PacketID_t    GetPacketID()const { return PACKET_GC_PRIVATEINFO; };
+        UINT        GetPacketMaxSize()const { return sizeof(UINT);}
+    };
 
-	class GCPrivateInfoHandler 
-	{
-	public:
-		static UINT Execute( GCPrivateInfo* pPacket, Player* pPlayer ) ;
-	};
+    class GCPrivateInfoHandler 
+    {
+    public:
+        static UINT Execute( GCPrivateInfo* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

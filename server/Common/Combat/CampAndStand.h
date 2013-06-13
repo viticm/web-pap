@@ -8,7 +8,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 /** \file CampAndStand.h
-*		\brief the defination camp and stand record structure 
+*        \brief the defination camp and stand record structure 
 */
 
 #ifndef CAMPANDSTAND_H
@@ -19,34 +19,34 @@
 
 namespace DBC
 {
-	class DBCFile;
+    class DBCFile;
 }
 
 namespace Combat_Module
 {
-	using namespace DBC;
-	namespace Camp_Stand
-	{
-		class CampStandRecord_T
-		{
-			public:
-				enum
-				{
-					MAX_ID = 31,
-					MAX_SIZE = MAX_ID+1,
-				};
-				
-				CampStandRecord_T();
-				~CampStandRecord_T(){};
-				BOOL IsInited(VOID) const{return m_bInited;};
-				BOOL InitFromDB(const DBCFile* pDB, INT const nRow);
-				BOOL StandByCampID(CampID_t const nCampID)const;
-			protected:
-			private:
-				BOOL m_bInited;
-				BOOL m_aStands[MAX_SIZE];
-		};
-	};
+    using namespace DBC;
+    namespace Camp_Stand
+    {
+        class CampStandRecord_T
+        {
+            public:
+                enum
+                {
+                    MAX_ID = 31,
+                    MAX_SIZE = MAX_ID+1,
+                };
+                
+                CampStandRecord_T();
+                ~CampStandRecord_T(){};
+                BOOL IsInited(VOID) const{return m_bInited;};
+                BOOL InitFromDB(const DBCFile* pDB, INT const nRow);
+                BOOL StandByCampID(CampID_t const nCampID)const;
+            protected:
+            private:
+                BOOL m_bInited;
+                BOOL m_aStands[MAX_SIZE];
+        };
+    };
 };
 
 using namespace Combat_Module;

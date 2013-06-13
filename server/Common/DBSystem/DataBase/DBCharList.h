@@ -9,23 +9,23 @@
 
 class DBCharList:public ODBCBase
 {
-	CHAR			szAccount[MAX_ACCOUNT+1] ;	//用户名称
-	UINT			m_CharNumber;
-	GUID_t			m_GuidList[DB_CHAR_NUMBER];
+    CHAR            szAccount[MAX_ACCOUNT+1] ;    //用户名称
+    UINT            m_CharNumber;
+    GUID_t            m_GuidList[DB_CHAR_NUMBER];
 public:
-	DBCharList(ODBCInterface* pInterface);
-	VOID			CleanUp();
-	virtual BOOL	Load();
-	virtual BOOL	Save();
-	virtual BOOL	ParseResult(VOID* pResult);
+    DBCharList(ODBCInterface* pInterface);
+    VOID            CleanUp();
+    virtual BOOL    Load();
+    virtual BOOL    Save();
+    virtual BOOL    ParseResult(VOID* pResult);
 
 public:
-	const	CHAR*			GetAccount()	const;
-	VOID					SetAccount(const CHAR*	pAccount);
+    const    CHAR*            GetAccount()    const;
+    VOID                    SetAccount(const CHAR*    pAccount);
 
-	UINT					GetCharNumber();
-	GUID_t					GetGuid(UINT Index);
-	
+    UINT                    GetCharNumber();
+    GUID_t                    GetGuid(UINT Index);
+    
 };
 
 

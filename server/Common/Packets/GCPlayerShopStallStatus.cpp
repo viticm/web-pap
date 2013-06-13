@@ -7,41 +7,41 @@
 
 BOOL GCPlayerShopStallStatus::Read( SocketInputStream& iStream ) 
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_ShopID), sizeof(_PLAYERSHOP_GUID));
-	iStream.Read( (CHAR*)(&m_nStallIndex), sizeof(BYTE));
-	iStream.Read( (CHAR*)(&m_bStatus), sizeof(BYTE));
-	iStream.Read( (CHAR*)(&m_FinalStallNum), sizeof(BYTE));
-	return TRUE ;
+    iStream.Read( (CHAR*)(&m_ShopID), sizeof(_PLAYERSHOP_GUID));
+    iStream.Read( (CHAR*)(&m_nStallIndex), sizeof(BYTE));
+    iStream.Read( (CHAR*)(&m_bStatus), sizeof(BYTE));
+    iStream.Read( (CHAR*)(&m_FinalStallNum), sizeof(BYTE));
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 BOOL GCPlayerShopStallStatus::Write( SocketOutputStream& oStream )const
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_ShopID), sizeof(_PLAYERSHOP_GUID));
-	oStream.Write( (CHAR*)(&m_nStallIndex), sizeof(BYTE));
-	oStream.Write( (CHAR*)(&m_bStatus), sizeof(BYTE));
-	oStream.Write( (CHAR*)(&m_FinalStallNum), sizeof(BYTE));
-	return TRUE ;
+    oStream.Write( (CHAR*)(&m_ShopID), sizeof(_PLAYERSHOP_GUID));
+    oStream.Write( (CHAR*)(&m_nStallIndex), sizeof(BYTE));
+    oStream.Write( (CHAR*)(&m_bStatus), sizeof(BYTE));
+    oStream.Write( (CHAR*)(&m_FinalStallNum), sizeof(BYTE));
+    return TRUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }
 
 UINT GCPlayerShopStallStatus::Execute( Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		return GCPlayerShopStallStatusHandler::Execute( this, pPlayer ) ;
+        return GCPlayerShopStallStatusHandler::Execute( this, pPlayer ) ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE ;
+        return FALSE ;
 }

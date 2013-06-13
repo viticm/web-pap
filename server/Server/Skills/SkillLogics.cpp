@@ -9,6 +9,6 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 /** \file SkillLogic.cpp
-*		\brief the implement of process logic of skills
+*        \brief the implement of process logic of skills
 */
 

@@ -8,41 +8,41 @@
 
 namespace Packets
 {
-	class GCGuildApply : public Packet
-	{
-	public:
-		GCGuildApply(){}
-		virtual					~GCGuildApply(){}
+    class GCGuildApply : public Packet
+    {
+    public:
+        GCGuildApply(){}
+        virtual                    ~GCGuildApply(){}
 
-		virtual BOOL			Read( SocketInputStream& iStream );
-		virtual BOOL			Write( SocketOutputStream& oStream ) const;
-		virtual UINT			Execute( Player* pPlayer );
+        virtual BOOL            Read( SocketInputStream& iStream );
+        virtual BOOL            Write( SocketOutputStream& oStream ) const;
+        virtual UINT            Execute( Player* pPlayer );
 
-		virtual PacketID_t		GetPacketID() const { return PACKET_GC_GUILDAPPLY; }
+        virtual PacketID_t        GetPacketID() const { return PACKET_GC_GUILDAPPLY; }
 
-		virtual UINT			GetPacketSize() const{return sizeof(ObjID_t);}
+        virtual UINT            GetPacketSize() const{return sizeof(ObjID_t);}
 
-	public:
-		ObjID_t					GetNpcId(){return m_NpcId;}
-		VOID					SetNpcId(ObjID_t NpcId){m_NpcId = NpcId;}
+    public:
+        ObjID_t                    GetNpcId(){return m_NpcId;}
+        VOID                    SetNpcId(ObjID_t NpcId){m_NpcId = NpcId;}
 
-	private:
-		ObjID_t					m_NpcId;
-	};
+    private:
+        ObjID_t                    m_NpcId;
+    };
 
-	class GCGuildApplyFactory : public PacketFactory
-	{
-	public:
-		Packet*					CreatePacket() { return new GCGuildApply(); }
-		PacketID_t				GetPacketID() const { return PACKET_GC_GUILDAPPLY; }
-		UINT					GetPacketMaxSize() const { return sizeof(ObjID_t); }
-	};
+    class GCGuildApplyFactory : public PacketFactory
+    {
+    public:
+        Packet*                    CreatePacket() { return new GCGuildApply(); }
+        PacketID_t                GetPacketID() const { return PACKET_GC_GUILDAPPLY; }
+        UINT                    GetPacketMaxSize() const { return sizeof(ObjID_t); }
+    };
 
-	class GCGuildApplyHandler
-	{
-	public:
-		static UINT Execute( GCGuildApply* pPacket, Player* pPlayer );
-	};
+    class GCGuildApplyHandler
+    {
+    public:
+        static UINT Execute( GCGuildApply* pPacket, Player* pPlayer );
+    };
 
 }
 

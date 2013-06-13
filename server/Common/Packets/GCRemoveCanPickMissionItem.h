@@ -14,43 +14,43 @@
 
 namespace Packets
 {
-	class GCRemoveCanPickMissionItem :
-		public Packet
-	{
-	public:
-		GCRemoveCanPickMissionItem( ){
-		}
-		virtual ~GCRemoveCanPickMissionItem( ){}
+    class GCRemoveCanPickMissionItem :
+        public Packet
+    {
+    public:
+        GCRemoveCanPickMissionItem( ){
+        }
+        virtual ~GCRemoveCanPickMissionItem( ){}
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_GC_REMOVECANPICKMISSIONITEM; }
-		virtual UINT			GetPacketSize()const{ return sizeof( UINT ); }
+        virtual PacketID_t        GetPacketID()const { return PACKET_GC_REMOVECANPICKMISSIONITEM; }
+        virtual UINT            GetPacketSize()const{ return sizeof( UINT ); }
 
-	public:
-		VOID			SetItemDataID( UINT uItemDataID ){ m_uItemDataID =uItemDataID; }
-		UINT			GetItemDataID( VOID )const{ return m_uItemDataID; }
+    public:
+        VOID            SetItemDataID( UINT uItemDataID ){ m_uItemDataID =uItemDataID; }
+        UINT            GetItemDataID( VOID )const{ return m_uItemDataID; }
 
-	private:
-		UINT			m_uItemDataID;
-	};
+    private:
+        UINT            m_uItemDataID;
+    };
 
-	class GCRemoveCanPickMissionItemFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new GCRemoveCanPickMissionItem() ; }
-		PacketID_t	GetPacketID()const { return PACKET_GC_REMOVECANPICKMISSIONITEM; }
-		UINT		GetPacketMaxSize()const { return sizeof(UINT); }
-	};
+    class GCRemoveCanPickMissionItemFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new GCRemoveCanPickMissionItem() ; }
+        PacketID_t    GetPacketID()const { return PACKET_GC_REMOVECANPICKMISSIONITEM; }
+        UINT        GetPacketMaxSize()const { return sizeof(UINT); }
+    };
 
-	class GCRemoveCanPickMissionItemHandler 
-	{
-	public:
-		static UINT Execute( GCRemoveCanPickMissionItem* pPacket, Player* pPlayer ) ;
-	};
+    class GCRemoveCanPickMissionItemHandler 
+    {
+    public:
+        static UINT Execute( GCRemoveCanPickMissionItem* pPacket, Player* pPlayer ) ;
+    };
 }
 
 #endif // __GCREMOVECANPICKMISSIONITEM_H__

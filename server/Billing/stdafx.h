@@ -7,7 +7,7 @@
  
 
 #ifdef __WINDOWS__
-#define WIN32_LEAN_AND_MEAN		// 从 Windows 头中排除极少使用的资料
+#define WIN32_LEAN_AND_MEAN        // 从 Windows 头中排除极少使用的资料
 #define _USE_32BIT_TIME_T
 #include <tchar.h>
 #endif

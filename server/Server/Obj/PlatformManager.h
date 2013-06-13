@@ -9,17 +9,17 @@
 #include "ObjSingleManager.h"
 
 class Obj_Platform;
-class PlatformManager :	public ObjSingleManager
+class PlatformManager :    public ObjSingleManager
 {
 public :
-	PlatformManager( VOID );
-	virtual ~PlatformManager( VOID );
+    PlatformManager( VOID );
+    virtual ~PlatformManager( VOID );
 
-	Obj_Platform *GetPlatform( ObjID_t idObj );
+    Obj_Platform *GetPlatform( ObjID_t idObj );
 
 public :
-	BOOL LoadPlatform( const CHAR *pszFileName );
-	BOOL RemoveAllPlatform( VOID );
+    BOOL LoadPlatform( const CHAR *pszFileName );
+    BOOL RemoveAllPlatform( VOID );
 };
 
 

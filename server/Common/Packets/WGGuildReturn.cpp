@@ -1,44 +1,44 @@
 #include "stdafx.h"
 #include "WGGuildReturn.h"
 
-BOOL	WGGuildReturn::Read(SocketInputStream& iStream )
+BOOL    WGGuildReturn::Read(SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_PlayerID), sizeof(m_PlayerID) );
-	m_GuildReturn.Read(iStream);
-	iStream.Read( (CHAR*)(&m_GUID), sizeof(m_GUID) );
+    iStream.Read( (CHAR*)(&m_PlayerID), sizeof(m_PlayerID) );
+    m_GuildReturn.Read(iStream);
+    iStream.Read( (CHAR*)(&m_GUID), sizeof(m_GUID) );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
-BOOL	WGGuildReturn::Write(SocketOutputStream& oStream )	const
+BOOL    WGGuildReturn::Write(SocketOutputStream& oStream )    const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_PlayerID), sizeof(m_PlayerID) );
-	m_GuildReturn.Write(oStream);
-	oStream.Write( (CHAR*)(&m_GUID), sizeof(m_GUID) );
+    oStream.Write( (CHAR*)(&m_PlayerID), sizeof(m_PlayerID) );
+    m_GuildReturn.Write(oStream);
+    oStream.Write( (CHAR*)(&m_GUID), sizeof(m_GUID) );
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 
-UINT	WGGuildReturn::Execute(Player* pPlayer )
+UINT    WGGuildReturn::Execute(Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return WGGuildReturnHandler::Execute(this, pPlayer);
+    return WGGuildReturnHandler::Execute(this, pPlayer);
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }

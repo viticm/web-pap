@@ -16,34 +16,34 @@
 class SceneInfo
 {
 public :
-	SceneInfo( ) ;
-	~SceneInfo( ) ;
+    SceneInfo( ) ;
+    ~SceneInfo( ) ;
 
-	BOOL				Init( ) ;
-	VOID				CleanUp( ) ;
+    BOOL                Init( ) ;
+    VOID                CleanUp( ) ;
 
-	VOID				IncScenePlayerCount(SceneID_t sceneid){
-		m_aScenePlayerCount[sceneid] ++ ;
-	}
-	VOID				DecScenePlayerCount(SceneID_t sceneid){
-		m_aScenePlayerCount[sceneid] -- ;
-	}
+    VOID                IncScenePlayerCount(SceneID_t sceneid){
+        m_aScenePlayerCount[sceneid] ++ ;
+    }
+    VOID                DecScenePlayerCount(SceneID_t sceneid){
+        m_aScenePlayerCount[sceneid] -- ;
+    }
 
 
-	BOOL				HeartBeat( UINT uTime ) ;
+    BOOL                HeartBeat( UINT uTime ) ;
 
 
 protected :
-	INT					m_aScenePlayerCount[MAX_SCENE] ;	//当前的场景实际人数
-	INT					m_aScenePlayerCount_Bak[MAX_SCENE] ;//上次逻辑的场景人数
+    INT                    m_aScenePlayerCount[MAX_SCENE] ;    //当前的场景实际人数
+    INT                    m_aScenePlayerCount_Bak[MAX_SCENE] ;//上次逻辑的场景人数
 
 
-	CMyTimer			m_LoginTimer ;
+    CMyTimer            m_LoginTimer ;
 
 
 };
 
-extern SceneInfo*		g_pSceneInfo ;
+extern SceneInfo*        g_pSceneInfo ;
 
 
 

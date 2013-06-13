@@ -6,33 +6,33 @@ BOOL CGGuildJoin::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_GuildID), sizeof(GuildID_t) );
-	return TRUE;
+    iStream.Read( (CHAR*)(&m_GuildID), sizeof(GuildID_t) );
+    return TRUE;
 
 __LEAVE_FUNCTION
-	
-	return FALSE;
+    
+    return FALSE;
 }
 
 BOOL CGGuildJoin::Write( SocketOutputStream& oStream ) const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_GuildID), sizeof(GuildID_t) );
-	return TRUE;
+    oStream.Write( (CHAR*)(&m_GuildID), sizeof(GuildID_t) );
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 UINT CGGuildJoin::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGGuildJoinHandler::Execute( this, pPlayer );
+    return CGGuildJoinHandler::Execute( this, pPlayer );
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }

@@ -3,5 +3,5 @@
 
 #include "PetPool.h"
 
-PetPool		*g_pPetPool = NULL;
+PetPool        *g_pPetPool = NULL;
 

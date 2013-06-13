@@ -6,21 +6,21 @@
 
 class DBCharFullData:public ODBCBase
 {
-	GUID_t			m_CharGuid;
+    GUID_t            m_CharGuid;
 public:
-	DBCharFullData(ODBCInterface* pInterface);
+    DBCharFullData(ODBCInterface* pInterface);
 
-	virtual BOOL	Load();
-	virtual BOOL	Save(VOID* pSource);
-	virtual BOOL	ParseResult(VOID* pResult);
-	INT		ParseResult(VOID* pResult, UINT& result1, UINT& result2, UINT& result3, UINT& result4);
+    virtual BOOL    Load();
+    virtual BOOL    Save(VOID* pSource);
+    virtual BOOL    ParseResult(VOID* pResult);
+    INT        ParseResult(VOID* pResult, UINT& result1, UINT& result2, UINT& result3, UINT& result4);
 
 public:
-	VOID			SetCharGuid(GUID_t guid);
-	GUID_t			GetCharGuid();
+    VOID            SetCharGuid(GUID_t guid);
+    GUID_t            GetCharGuid();
 
 private:
-	UINT			CalcCRC(VOID* pSource);
+    UINT            CalcCRC(VOID* pSource);
 };
 
 

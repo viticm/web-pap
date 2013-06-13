@@ -13,33 +13,33 @@ namespace Packets
 class WGFinger : public Packet 
 {
 public:
-	WGFinger( ){}
-	virtual ~WGFinger( ){}
+    WGFinger( ){}
+    virtual ~WGFinger( ){}
 
-	//公用继承接口
-	virtual BOOL			Read( SocketInputStream& iStream );
-	virtual BOOL			Write( SocketOutputStream& oStream ) const;
-	virtual UINT			Execute( Player* pPlayer );
+    //公用继承接口
+    virtual BOOL            Read( SocketInputStream& iStream );
+    virtual BOOL            Write( SocketOutputStream& oStream ) const;
+    virtual UINT            Execute( Player* pPlayer );
 
-	virtual PacketID_t		GetPacketID() const { return PACKET_WG_FINGER; }
-	virtual UINT			GetPacketSize() const 
-	{ 
-		return m_Finger.GetSize() + sizeof(m_GUID); 
-	}
+    virtual PacketID_t        GetPacketID() const { return PACKET_WG_FINGER; }
+    virtual UINT            GetPacketSize() const 
+    { 
+        return m_Finger.GetSize() + sizeof(m_GUID); 
+    }
 
 public:
-	//使用数据接口
-	WG_FINGER*				GetFinger( ){ return &m_Finger; }
-	VOID					SetFinger( WG_FINGER* pFinger ){ m_Finger = *pFinger; };
+    //使用数据接口
+    WG_FINGER*                GetFinger( ){ return &m_Finger; }
+    VOID                    SetFinger( WG_FINGER* pFinger ){ m_Finger = *pFinger; };
 
-	VOID					SetGUID(GUID_t guid) { m_GUID = guid; }
-	GUID_t					GetGUID() { return m_GUID; }
+    VOID                    SetGUID(GUID_t guid) { m_GUID = guid; }
+    GUID_t                    GetGUID() { return m_GUID; }
 
 private:
-	//数据
-	WG_FINGER				m_Finger;
+    //数据
+    WG_FINGER                m_Finger;
 
-	GUID_t					m_GUID;
+    GUID_t                    m_GUID;
 
 };
 
@@ -47,16 +47,16 @@ private:
 class WGFingerFactory : public PacketFactory 
 {
 public:
-	Packet*		CreatePacket() { return new WGFinger(); }
-	PacketID_t	GetPacketID() const { return PACKET_WG_FINGER; }
-	UINT		GetPacketMaxSize() const { return sizeof(WG_FINGER) + sizeof(GUID_t); }
+    Packet*        CreatePacket() { return new WGFinger(); }
+    PacketID_t    GetPacketID() const { return PACKET_WG_FINGER; }
+    UINT        GetPacketMaxSize() const { return sizeof(WG_FINGER) + sizeof(GUID_t); }
 };
 
 
 class WGFingerHandler 
 {
 public:
-	static UINT Execute( WGFinger* pPacket, Player* pPlayer );
+    static UINT Execute( WGFinger* pPacket, Player* pPlayer );
 };
 
 

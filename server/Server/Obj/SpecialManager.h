@@ -9,18 +9,18 @@
 #include "ObjSingleManager.h"
 
 class Obj_Special;
-class SpecialManager :	public ObjSingleManager
+class SpecialManager :    public ObjSingleManager
 {
 public :
-	SpecialManager( VOID );
-	virtual ~SpecialManager( VOID );
+    SpecialManager( VOID );
+    virtual ~SpecialManager( VOID );
 
-	virtual BOOL HeartBeat( UINT uTime = 0 );
+    virtual BOOL HeartBeat( UINT uTime = 0 );
 
-	Obj_Special *GetSpecial( ObjID_t idObj );
+    Obj_Special *GetSpecial( ObjID_t idObj );
 
 public :
-	BOOL RemoveAllSpecial( VOID );
+    BOOL RemoveAllSpecial( VOID );
 };
 
 

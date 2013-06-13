@@ -15,36 +15,36 @@
 
 UINT GWCityAskInitInfoHandler::Execute( GWCityAskInitInfo* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-		ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
-		ID_t	ServerID = pServerPlayer->GetServerData()->m_ServerID;
-		for(SceneID_t i = 0; i<g_Config.m_SceneInfo.m_SceneCount; i++)
-		{
-			if(g_Config.m_SceneInfo.m_pScene[i].m_ServerID == ServerID)
-			{//本服务器的场景
-				for(INT j =0; j<MAX_CITY_PER_WORLD; j++ )
-				{
-					City* pCity = g_pCityManager->GetCityByIndex(j);
-					if(pCity)
-					{
-						if(pCity->GetPortSceneID() == g_Config.m_SceneInfo.m_pScene[i].m_SceneID)
-						{//当前城市是挂在这个场景上的
-							/*WGCityInitInfo*/
+        ServerPlayer* pServerPlayer = (ServerPlayer*)pPlayer;
+        ID_t    ServerID = pServerPlayer->GetServerData()->m_ServerID;
+        for(SceneID_t i = 0; i<g_Config.m_SceneInfo.m_SceneCount; i++)
+        {
+            if(g_Config.m_SceneInfo.m_pScene[i].m_ServerID == ServerID)
+            {//本服务器的场景
+                for(INT j =0; j<MAX_CITY_PER_WORLD; j++ )
+                {
+                    City* pCity = g_pCityManager->GetCityByIndex(j);
+                    if(pCity)
+                    {
+                        if(pCity->GetPortSceneID() == g_Config.m_SceneInfo.m_pScene[i].m_SceneID)
+                        {//当前城市是挂在这个场景上的
+                            /*WGCityInitInfo*/
 
-						}
-						
-					}
-				}
-					
+                        }
+                        
+                    }
+                }
+                    
 
-			}
+            }
 
 
-		}
-		return PACKET_EXE_CONTINUE ;
+        }
+        return PACKET_EXE_CONTINUE ;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return PACKET_EXE_ERROR ;
+        return PACKET_EXE_ERROR ;
 }

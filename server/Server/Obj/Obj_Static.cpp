@@ -22,7 +22,7 @@ __LEAVE_FUNCTION
 BOOL Obj_Static::HeartBeat( UINT uTime/* = 0*/ )
 {
 __ENTER_FUNCTION
-	return Obj::HeartBeat(uTime);
+    return Obj::HeartBeat(uTime);
 __LEAVE_FUNCTION
-	return FALSE;
+    return FALSE;
 }

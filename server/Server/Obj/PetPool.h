@@ -9,8 +9,8 @@
 #include "ObjPool.h"
 #include "Obj_Pet.h"
 
-typedef ObjPool< Obj_Pet >	PetPool;
+typedef ObjPool< Obj_Pet >    PetPool;
 
-extern PetPool	*g_pPetPool;
+extern PetPool    *g_pPetPool;
 
-#endif	// __PETPOOL_H__
+#endif    // __PETPOOL_H__

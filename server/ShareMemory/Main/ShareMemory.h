@@ -12,76 +12,76 @@
 
 class ShareMemory
 {
-	
+    
 
-	struct SMUPool_T 
-	{
-		_SHAREMEM_DATA	m_Data;
-		void*			m_Pool;
+    struct SMUPool_T 
+    {
+        _SHAREMEM_DATA    m_Data;
+        void*            m_Pool;
 
-		SMUPool_T()
-		{
-			m_Pool	=	NULL;
-		}
-	};
+        SMUPool_T()
+        {
+            m_Pool    =    NULL;
+        }
+    };
 
 
-	struct SMUManager_T
-	{
-		void*				m_SMULogicManager;
-		SHAREMEM_TYPE		m_Type;
-		SMUManager_T()
-		{
-			m_Type = ST_INVAILD;
-			m_SMULogicManager	=	0;
-		}
-	};
+    struct SMUManager_T
+    {
+        void*                m_SMULogicManager;
+        SHAREMEM_TYPE        m_Type;
+        SMUManager_T()
+        {
+            m_Type = ST_INVAILD;
+            m_SMULogicManager    =    0;
+        }
+    };
 public :
-	ShareMemory( ) ;
-	~ShareMemory( ) ;
+    ShareMemory( ) ;
+    ~ShareMemory( ) ;
 
 
 
-	BOOL		Init( ) ;
-	BOOL		Loop( ) ;
-	BOOL		Exit( ) ;
+    BOOL        Init( ) ;
+    BOOL        Loop( ) ;
+    BOOL        Exit( ) ;
 
-	BOOL		DoWork();
+    BOOL        DoWork();
 
-	VOID		ConsoleCommand();
+    VOID        ConsoleCommand();
 
 
 protected :
-	BOOL					NewStaticManager( ) ;
-	BOOL					InitStaticManager( ) ;
-	BOOL					DelStaticManager( ) ;
+    BOOL                    NewStaticManager( ) ;
+    BOOL                    InitStaticManager( ) ;
+    BOOL                    DelStaticManager( ) ;
 
 
 private:
 
-	SMUPool_T				m_SMUPool[MAX_SM_OBJ_NUM];
-	SMUManager_T			m_SMULogicManager[MAX_SM_OBJ_NUM];
+    SMUPool_T                m_SMUPool[MAX_SM_OBJ_NUM];
+    SMUManager_T            m_SMULogicManager[MAX_SM_OBJ_NUM];
 
-	BOOL					m_bExited;
+    BOOL                    m_bExited;
 
 };
 
 extern ShareMemory g_ShareMemory ;
-extern INT		   g_CmdArgv;
-extern INT		   g_CmdInput;
+extern INT           g_CmdArgv;
+extern INT           g_CmdInput;
 
 
 class ShmExceptionHandler
 {
 public:
-	ShmExceptionHandler();
-	//VOID INTHandler(INT);
-	//VOID TERMHandler(INT);
-	//VOID ABORTHandler(INT);
-	//VOID ILLHandler(INT);
-	//VOID FPEHandler(INT);
-	//VOID SEGHandler(INT);
-	//VOID XFSZHandler(INT);
+    ShmExceptionHandler();
+    //VOID INTHandler(INT);
+    //VOID TERMHandler(INT);
+    //VOID ABORTHandler(INT);
+    //VOID ILLHandler(INT);
+    //VOID FPEHandler(INT);
+    //VOID SEGHandler(INT);
+    //VOID XFSZHandler(INT);
 };
 
 extern ShmExceptionHandler g_ShmExceptionHandler;

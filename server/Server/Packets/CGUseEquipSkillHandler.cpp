@@ -11,38 +11,38 @@ using namespace Packets;
 
 UINT CGUseEquipSkillHandler::Execute(CGUseEquipSkill* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
-	
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    __ENTER_FUNCTION
+    
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
 
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL )
-	{
-		Assert(FALSE) ;
-		return PACKET_EXE_ERROR ;
-	}
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL )
+    {
+        Assert(FALSE) ;
+        return PACKET_EXE_ERROR ;
+    }
 
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-	
-	BYTE		skillOffSet = pPacket->getSkillOffSet();
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
+    
+    BYTE        skillOffSet = pPacket->getSkillOffSet();
 
-	Assert(skillOffSet<HEQUIP_NUMBER+MAX_ITEM_SET_ATTR);
+    Assert(skillOffSet<HEQUIP_NUMBER+MAX_ITEM_SET_ATTR);
 
-	ObjID_t		Target =	pPacket->getTarget();
+    ObjID_t        Target =    pPacket->getTarget();
 
-	Assert(Target!=INVALID_ID);
+    Assert(Target!=INVALID_ID);
 
-	USE_EQUIPSKILL_RESULT	Result = (USE_EQUIPSKILL_RESULT)pHuman->UseEquipSkill(skillOffSet,Target);
+    USE_EQUIPSKILL_RESULT    Result = (USE_EQUIPSKILL_RESULT)pHuman->UseEquipSkill(skillOffSet,Target);
 
 
-	return PACKET_EXE_CONTINUE;
+    return PACKET_EXE_CONTINUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR;
+    return PACKET_EXE_ERROR;
 }

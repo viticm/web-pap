@@ -8,9 +8,9 @@
 
 class AbilityFoundry : public AbilityCompound
 {
-	
+    
 public:
-	AbilityFoundry(const Ability& a);
+    AbilityFoundry(const Ability& a);
 
 private:
 };

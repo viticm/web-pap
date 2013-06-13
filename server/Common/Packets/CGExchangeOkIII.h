@@ -14,34 +14,34 @@
 
 namespace Packets
 {
-	class CGExchangeOkIII : public Packet
-	{
-	public:
-		CGExchangeOkIII( ){};
-		virtual ~CGExchangeOkIII( ){};
+    class CGExchangeOkIII : public Packet
+    {
+    public:
+        CGExchangeOkIII( ){};
+        virtual ~CGExchangeOkIII( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_CG_EXCHANGEOKIII; }
-		virtual UINT			GetPacketSize()const { return	0;}
-	};
+        virtual PacketID_t        GetPacketID()const { return PACKET_CG_EXCHANGEOKIII; }
+        virtual UINT            GetPacketSize()const { return    0;}
+    };
 
-	class CGExchangeOkIIIFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGExchangeOkIII() ; }
-		PacketID_t	GetPacketID()const { return PACKET_CG_EXCHANGEOKIII; };
-		UINT		GetPacketMaxSize()const { return 0;}
-	};
+    class CGExchangeOkIIIFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGExchangeOkIII() ; }
+        PacketID_t    GetPacketID()const { return PACKET_CG_EXCHANGEOKIII; };
+        UINT        GetPacketMaxSize()const { return 0;}
+    };
 
-	class CGExchangeOkIIIHandler 
-	{
-	public:
-		static UINT Execute( CGExchangeOkIII* pPacket, Player* pPlayer ) ;
-	};
+    class CGExchangeOkIIIHandler 
+    {
+    public:
+        static UINT Execute( CGExchangeOkIII* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

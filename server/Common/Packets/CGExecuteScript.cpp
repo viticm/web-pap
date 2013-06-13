@@ -7,37 +7,37 @@ BOOL CGExecuteScript::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	m_Script.Read( iStream ) ;
+    m_Script.Read( iStream ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGExecuteScript::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	m_Script.Write( oStream ) ;
+    m_Script.Write( oStream ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGExecuteScript::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGExecuteScriptHandler::Execute( this, pPlayer ) ;
+    return CGExecuteScriptHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 

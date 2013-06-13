@@ -7,42 +7,42 @@
 
 namespace Packets
 {
-	class GCGuildError:			public Packet
-	{
-	public:
-		GCGuildError(){}
-		virtual					~GCGuildError(){}
+    class GCGuildError:            public Packet
+    {
+    public:
+        GCGuildError(){}
+        virtual                    ~GCGuildError(){}
 
-		//公用接口
-		virtual BOOL			Read( SocketInputStream& iStream );
-		virtual BOOL			Write( SocketOutputStream& oStream ) const;
-		virtual UINT			Execute( Player* pPlayer );
+        //公用接口
+        virtual BOOL            Read( SocketInputStream& iStream );
+        virtual BOOL            Write( SocketOutputStream& oStream ) const;
+        virtual UINT            Execute( Player* pPlayer );
 
-		virtual PacketID_t		GetPacketID() const { return PACKET_GC_GUILDERROR; }
-		virtual UINT			GetPacketSize() const { return sizeof(m_Error); }
+        virtual PacketID_t        GetPacketID() const { return PACKET_GC_GUILDERROR; }
+        virtual UINT            GetPacketSize() const { return sizeof(m_Error); }
 
-	public :
-		VOID					SetErrorCode( CHAR Error ){ m_Error = Error; }
-		CHAR					GetErrorCode( ){ return m_Error; }
+    public :
+        VOID                    SetErrorCode( CHAR Error ){ m_Error = Error; }
+        CHAR                    GetErrorCode( ){ return m_Error; }
 
-	private :
-		CHAR					m_Error;
+    private :
+        CHAR                    m_Error;
 
-	};
+    };
 
-	class GCGuildErrorFactory:	public PacketFactory
-	{
-	public:
-		Packet*					CreatePacket() { return new GCGuildError(); }
-		PacketID_t				GetPacketID() const { return PACKET_GC_GUILDERROR; }
-		UINT					GetPacketMaxSize() const { return sizeof(CHAR); }
-	};
+    class GCGuildErrorFactory:    public PacketFactory
+    {
+    public:
+        Packet*                    CreatePacket() { return new GCGuildError(); }
+        PacketID_t                GetPacketID() const { return PACKET_GC_GUILDERROR; }
+        UINT                    GetPacketMaxSize() const { return sizeof(CHAR); }
+    };
 
-	class GCGuildErrorHandler
-	{
-	public:
-		static UINT				Execute(GCGuildError* pPacket, Player* pPlayer);
-	};
+    class GCGuildErrorHandler
+    {
+    public:
+        static UINT                Execute(GCGuildError* pPacket, Player* pPlayer);
+    };
 
 }
 

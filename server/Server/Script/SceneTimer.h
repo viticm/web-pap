@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
 // 文件名 : SceneTimer.h
-// 模块	:	Script
-// 功能	 :  隶属于场景的计时器,脚本系统专用
+// 模块    :    Script
+// 功能     :  隶属于场景的计时器,脚本系统专用
 // 修改历史:
 //-----------------------------------------------------------------------------
 #ifndef __SCENETIMER__H_
@@ -12,66 +12,66 @@
 class LuaInterface;
 class Scene;
 
-class SceneTimer	
+class SceneTimer    
 {
 public:
-	CMyTimer			mRefeshTimer;
+    CMyTimer            mRefeshTimer;
 
 
 #define FuncNameLen 32
 
-	typedef struct  _MyTimers
-	{
-		CHAR scriptFuncName[FuncNameLen];
+    typedef struct  _MyTimers
+    {
+        CHAR scriptFuncName[FuncNameLen];
 
-		INT selfId;
-		INT scriptId;
+        INT selfId;
+        INT scriptId;
 
-		CMyTimer timer;
-	}MyTimer;
+        CMyTimer timer;
+    }MyTimer;
 
-	MyTimer* m_pTimers;
-	MyTimer* head;
-	INT index;
-	INT maxCount;
-	Scene* m_pScene;
+    MyTimer* m_pTimers;
+    MyTimer* head;
+    INT index;
+    INT maxCount;
+    Scene* m_pScene;
 
-	//仅测试
+    //仅测试
 #if _DEBUG
-	INT m_currentUse;
+    INT m_currentUse;
 #endif
-	
+    
 
-	SceneTimer();
+    SceneTimer();
 
-	~SceneTimer();
+    ~SceneTimer();
 
-	VOID CleanUp() ;
+    VOID CleanUp() ;
 
-	BOOL IsInit()
-	{ 
-		if( m_pScene==NULL ) return FALSE ;
-		else return TRUE ;
-	};
-	
-	VOID CreateTimer(INT maxCount,Scene* pScene);
+    BOOL IsInit()
+    { 
+        if( m_pScene==NULL ) return FALSE ;
+        else return TRUE ;
+    };
+    
+    VOID CreateTimer(INT maxCount,Scene* pScene);
 
-	VOID InitOne(INT i);
+    VOID InitOne(INT i);
 
-	INT GetTimer();
+    INT GetTimer();
 
-	VOID StartTheTimer(INT sceneTimerIndex,INT selfId,INT scriptId,const CHAR* funcName,INT tickTime);
+    VOID StartTheTimer(INT sceneTimerIndex,INT selfId,INT scriptId,const CHAR* funcName,INT tickTime);
 
-	VOID FreeTimer(INT index);
+    VOID FreeTimer(INT index);
 
-	BOOL CheckTimer(INT index);
+    BOOL CheckTimer(INT index);
 
-	VOID OnTimer(UINT uTime);
+    VOID OnTimer(UINT uTime);
 
-	Scene* GetScene()
-	{
-		return m_pScene;
-	}
+    Scene* GetScene()
+    {
+        return m_pScene;
+    }
 };
 
 #endif

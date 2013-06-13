@@ -12,10 +12,10 @@ class Obj_Human;
 class HumanManager : public ObjSingleManager
 {
 public:
-	HumanManager( VOID );
-	virtual ~HumanManager( VOID );
+    HumanManager( VOID );
+    virtual ~HumanManager( VOID );
 
-	Obj_Human *GetHuman( ObjID_t idObj );
+    Obj_Human *GetHuman( ObjID_t idObj );
 };
 
-#endif	// __HUMANMANAGER_H__
+#endif    // __HUMANMANAGER_H__

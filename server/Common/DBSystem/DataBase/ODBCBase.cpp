@@ -5,209 +5,209 @@
 
 ODBCBase::ODBCBase()
 {
-	mResult = 0;
-	mResultCount = 0;
-	
+    mResult = 0;
+    mResultCount = 0;
+    
 }
 
 UINT ODBCBase::GetResultCount()
 {
-	return mResultCount;
+    return mResultCount;
 }
 
-DB_QUERY*	ODBCBase::GetInternalQuery()
+DB_QUERY*    ODBCBase::GetInternalQuery()
 {
-	return &mInterface->GetQuery();
+    return &mInterface->GetQuery();
 }
-LONG_DB_QUERY*	ODBCBase::GetLongInterQuery()
+LONG_DB_QUERY*    ODBCBase::GetLongInterQuery()
 {
-	return &mInterface->GetLongQuery();
-}
-
-INT			ODBCBase::GetInternalAffectCount()
-{
-	return mInterface->GetAffectedRowCount();
+    return &mInterface->GetLongQuery();
 }
 
-BOOL	ODBCBase::IsPrepare()
+INT            ODBCBase::GetInternalAffectCount()
 {
-	__ENTER_FUNCTION
-
-	return mInterface->IsPrepare();
-
-	__LEAVE_FUNCTION
-
-	return FALSE;
+    return mInterface->GetAffectedRowCount();
 }
 
-BOOL	ODBCBase::Load()
+BOOL    ODBCBase::IsPrepare()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
+    return mInterface->IsPrepare();
 
-	if(!IsPrepare())
-		return FALSE;
+    __LEAVE_FUNCTION
 
-	ODBCInterface* pInterface= 	mInterface;
-	
-	if(!pInterface)
-		return FALSE;
-
-	mOPType = DB_LOAD;
-
-	mResult = pInterface->Execute();
-	
-	mResultCount	= pInterface->mAffectCount;
-
-	return mResult;
-
-	__LEAVE_FUNCTION
-
-	return FALSE;
+    return FALSE;
 }
 
-BOOL	ODBCBase::LongLoad()
+BOOL    ODBCBase::Load()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
 
-		if(!IsPrepare())
-			return FALSE;
+    if(!IsPrepare())
+        return FALSE;
 
-	ODBCInterface* pInterface= 	mInterface;
+    ODBCInterface* pInterface=     mInterface;
+    
+    if(!pInterface)
+        return FALSE;
 
-	if(!pInterface)
-		return FALSE;
+    mOPType = DB_LOAD;
 
-	mOPType = DB_LOAD;
+    mResult = pInterface->Execute();
+    
+    mResultCount    = pInterface->mAffectCount;
 
-	mResult = pInterface->LongExecute();
+    return mResult;
 
-	mResultCount	= pInterface->mAffectCount;
+    __LEAVE_FUNCTION
 
-	return mResult;
+    return FALSE;
+}
 
-	__LEAVE_FUNCTION
+BOOL    ODBCBase::LongLoad()
+{
+    __ENTER_FUNCTION
 
-		return FALSE;
+
+        if(!IsPrepare())
+            return FALSE;
+
+    ODBCInterface* pInterface=     mInterface;
+
+    if(!pInterface)
+        return FALSE;
+
+    mOPType = DB_LOAD;
+
+    mResult = pInterface->LongExecute();
+
+    mResultCount    = pInterface->mAffectCount;
+
+    return mResult;
+
+    __LEAVE_FUNCTION
+
+        return FALSE;
 }
 
 
-BOOL	ODBCBase::AddNew()
+BOOL    ODBCBase::AddNew()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	if(!IsPrepare())
-		return FALSE;
+    if(!IsPrepare())
+        return FALSE;
 
-	ODBCInterface* pInterface= 	mInterface;
+    ODBCInterface* pInterface=     mInterface;
 
-	if(!pInterface)
-		return FALSE;
+    if(!pInterface)
+        return FALSE;
 
-	mOPType = DB_ADDNEW;
+    mOPType = DB_ADDNEW;
 
-	mResult = pInterface->Execute();
+    mResult = pInterface->Execute();
 
-	mResultCount	= pInterface->mAffectCount;
+    mResultCount    = pInterface->mAffectCount;
 
-	return mResult;
+    return mResult;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL ODBCBase::Delete()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
     if(!IsPrepare())
-		return FALSE;
+        return FALSE;
 
-	ODBCInterface* pInterface= 	mInterface;
+    ODBCInterface* pInterface=     mInterface;
 
-	if(!pInterface)
-		return FALSE;
+    if(!pInterface)
+        return FALSE;
 
-	mOPType = DB_DELETE;
+    mOPType = DB_DELETE;
 
-	mResult = pInterface->Execute();
+    mResult = pInterface->Execute();
 
-	mResultCount	= pInterface->mAffectCount;
+    mResultCount    = pInterface->mAffectCount;
 
-	return mResult;
+    return mResult;
 
-	__LEAVE_FUNCTION	
+    __LEAVE_FUNCTION    
 
-	return FALSE;
+    return FALSE;
 }
 
-BOOL	ODBCBase::Save(VOID* pSource)
+BOOL    ODBCBase::Save(VOID* pSource)
 {
 
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	if(!IsPrepare())
-		return FALSE;
+    if(!IsPrepare())
+        return FALSE;
 
-	ODBCInterface* pInterface= 	mInterface;
+    ODBCInterface* pInterface=     mInterface;
 
-	if(!pInterface)
-		return FALSE;
+    if(!pInterface)
+        return FALSE;
 
-	mOPType = DB_SAVE;
+    mOPType = DB_SAVE;
 
-	mResult = pInterface->Execute();
+    mResult = pInterface->Execute();
 
-	mResultCount	= pInterface->mAffectCount;
+    mResultCount    = pInterface->mAffectCount;
 
-	return mResult;
+    return mResult;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
-BOOL	ODBCBase::LongSave(VOID* pSource)
+BOOL    ODBCBase::LongSave(VOID* pSource)
 {
 
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	if(!IsPrepare())
-		return FALSE;
+    if(!IsPrepare())
+        return FALSE;
 
-	ODBCInterface* pInterface= 	mInterface;
+    ODBCInterface* pInterface=     mInterface;
 
-	if(!pInterface)
-		return FALSE;
+    if(!pInterface)
+        return FALSE;
 
-	mOPType = DB_SAVE;
+    mOPType = DB_SAVE;
 
-	mResult = pInterface->LongExecute();
+    mResult = pInterface->LongExecute();
 
-	mResultCount	= pInterface->mAffectCount;
+    mResultCount    = pInterface->mAffectCount;
 
-	return mResult;
+    return mResult;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 
 
 VOID ODBCBase::SetDBName(DB_NAMES dbName)
 {
-	mDBName = dbName;
+    mDBName = dbName;
 }
 
-INT	ODBCBase::GetErrorCode()
+INT    ODBCBase::GetErrorCode()
 {
-	return mInterface->GetError();
+    return mInterface->GetError();
 }
 
 CHAR* ODBCBase::GetErrorMessage()
 {
-	return mInterface->GetErrorMsg();
+    return mInterface->GetErrorMsg();
 }

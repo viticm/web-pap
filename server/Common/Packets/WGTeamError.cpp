@@ -3,44 +3,44 @@
 #include "WGTeamError.h"
 
 
-BOOL	WGTeamError::Read(SocketInputStream& iStream )
+BOOL    WGTeamError::Read(SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_PlayerID), sizeof(PlayerID_t) ) ;
-	iStream.Read( (CHAR*)(&m_Error), sizeof(BYTE) ) ;
+    iStream.Read( (CHAR*)(&m_PlayerID), sizeof(PlayerID_t) ) ;
+    iStream.Read( (CHAR*)(&m_Error), sizeof(BYTE) ) ;
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 
-BOOL	WGTeamError::Write(SocketOutputStream& oStream )	const
+BOOL    WGTeamError::Write(SocketOutputStream& oStream )    const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_PlayerID), sizeof(PlayerID_t) ) ;
-	oStream.Write( (CHAR*)(&m_Error), sizeof(BYTE) ) ;
+    oStream.Write( (CHAR*)(&m_PlayerID), sizeof(PlayerID_t) ) ;
+    oStream.Write( (CHAR*)(&m_Error), sizeof(BYTE) ) ;
 
-	return TRUE;
+    return TRUE;
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 
-UINT	WGTeamError::Execute(Player* pPlayer )
+UINT    WGTeamError::Execute(Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return WGTeamErrorHandler::Execute(this,pPlayer);
+    return WGTeamErrorHandler::Execute(this,pPlayer);
 
 __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 

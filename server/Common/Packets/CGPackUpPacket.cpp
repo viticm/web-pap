@@ -8,37 +8,37 @@ BOOL CGPackUpPacket::Read( SocketInputStream& iStream )
 {
 __ENTER_FUNCTION
 
-	iStream.Read( (CHAR*)(&m_nConIndex), sizeof(INT) ) ;
+    iStream.Read( (CHAR*)(&m_nConIndex), sizeof(INT) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 BOOL CGPackUpPacket::Write( SocketOutputStream& oStream )const
 {
 __ENTER_FUNCTION
 
-	oStream.Write( (CHAR*)(&m_nConIndex), sizeof(INT) ) ;
+    oStream.Write( (CHAR*)(&m_nConIndex), sizeof(INT) ) ;
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 UINT CGPackUpPacket::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	return CGPackUpPacketHandler::Execute( this, pPlayer ) ;
+    return CGPackUpPacketHandler::Execute( this, pPlayer ) ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }
 
 

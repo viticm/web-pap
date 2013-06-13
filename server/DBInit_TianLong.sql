@@ -169,7 +169,7 @@ create table if not exists t_char
    mdata                          text,
    mflag                          text,
    relflag                        text,
-   settings                       text	                         not null,
+   settings                       text                             not null,
    shopinfo                       text,
    carrypet                       varchar(20)                    not null,
    guldid                         int                            not null,
@@ -178,7 +178,7 @@ create table if not exists t_char
    erecover                       int                            not null,
    RMB                            int                            not null default 0,
    vigor                          int                            not null,
-   maxvigor                       int                            not null,		
+   maxvigor                       int                            not null,        
    BankRMB                        int                            not null default 0,
    vrecover                       int                            not null,
    energymax                      int                            not null,
@@ -239,7 +239,7 @@ start transaction;
 select charguid,level,deltime,crc32 into rcharguid,rlevel,rdeltime,rcrc from t_char
     where accname=paccount and charguid = pcharguid and isvalid=1;
 if rcharguid<>-1 then
-	if rlevel<1 then
+    if rlevel<1 then
           update t_char set isvalid = 0,charname = CONCAT(charname,'@DELETE_',pcharguid)
             where accname= paccount and charguid = pcharguid;
           select dbversion into rdbversion from t_char
@@ -247,10 +247,10 @@ if rcharguid<>-1 then
           set rnext = 1;
     else 
        set rcrc = rcrc + pcrc32;
-	   if rdeltime=0 then
+       if rdeltime=0 then
             update t_char set deltime= pdeltime,crc32=rcrc where charguid= pcharguid;        
-	   end if;
-	end if;
+       end if;
+    end if;
 end if;
 commit;
     select rnext,rdbversion;
@@ -260,37 +260,37 @@ delimiter ;
 delimiter //
 drop procedure fetch_savetime//
 create procedure fetch_savetime(
-pcharguid	int
+pcharguid    int
 )
 begin
-	declare 	visvalidtime 		 	int;
-	declare 	vsavetime		 	int;
-	declare 	vnowtime		 	 int;
+    declare     visvalidtime              int;
+    declare     vsavetime             int;
+    declare     vnowtime              int;
     declare     vupdatetime          int;
-	set 		vsavetime = -1;
-	set 		vnowtime  = -1;
-	set 		visvalidtime = 0;
- 	start transaction;
-	 select savetime into vsavetime from t_char where charguid = pcharguid;
-	 if vsavetime = -1 then
-		set  visvalidtime = 1;
-	 else
+    set         vsavetime = -1;
+    set         vnowtime  = -1;
+    set         visvalidtime = 0;
+     start transaction;
+     select savetime into vsavetime from t_char where charguid = pcharguid;
+     if vsavetime = -1 then
+        set  visvalidtime = 1;
+     else
           set vnowtime = time_to_sec(now());
-	 	  if	abs(vsavetime-vnowtime)<300 then
-	 	 	set  visvalidtime = 2;
-		  else
-	 	   
-	 	  	update t_char set savetime = vnowtime where charguid = pcharguid;
-	 	  	select savetime into vupdatetime from t_char where charguid = pcharguid;
-	 	  	if vupdatetime = vnowtime then
-	 	  		set visvalidtime = 3;
-	 	  	else
-	 	  	 	set visvalidtime = 4;
-	 	  	end if;
-	 	  end if;
-	 end if;
+           if    abs(vsavetime-vnowtime)<300 then
+              set  visvalidtime = 2;
+          else
+            
+               update t_char set savetime = vnowtime where charguid = pcharguid;
+               select savetime into vupdatetime from t_char where charguid = pcharguid;
+               if vupdatetime = vnowtime then
+                   set visvalidtime = 3;
+               else
+                    set visvalidtime = 4;
+               end if;
+           end if;
+     end if;
   commit;
-	select visvalidtime;
+    select visvalidtime;
 end;//
 delimiter ;
 /*==============================================================*/
@@ -340,7 +340,7 @@ pkmcount            int,
 pcmcount            tinyint
 )
 begin
-	declare sameid  int;
+    declare sameid  int;
     set sameid = -1;
     
     select charguid into sameid from t_charextra where charguid=pcharguid;
@@ -375,11 +375,11 @@ declare rcount int;
 start transaction;
 select poolid into rcount from t_city where poolid = ppoolid;
 if rcount = ppoolid then
-		update t_city set citydata=pcitydata,isvalid=pisvalid
-            	where poolid=ppoolid;
+        update t_city set citydata=pcitydata,isvalid=pisvalid
+                where poolid=ppoolid;
 else
-		insert into t_city(poolid,citydata,
-        	isvalid)  values(ppoolid,pcitydata,pisvalid);	
+        insert into t_city(poolid,citydata,
+            isvalid)  values(ppoolid,pcitydata,pisvalid);    
 end if;
 commit;
 end;//
@@ -438,7 +438,7 @@ ppoolid             int,
 pcshopid            int
 )
 begin
-	declare sameid  int;
+    declare sameid  int;
     set sameid = -1;
     
 start transaction;
@@ -502,7 +502,7 @@ pctime              int,
 pcostctime          int
 )
 begin
-	declare sameid  int;
+    declare sameid  int;
     declare samepos int;
     set sameid = -1;
     set samepos = -1;
@@ -554,7 +554,7 @@ ppoolid             int,
 pdata1              int
 )
 begin
-	declare sameid  int;
+    declare sameid  int;
     set sameid = -1;
     
     select poolid into sameid from t_global where poolid=ppoolid;
@@ -628,7 +628,7 @@ pcomlvl               int          ,
 pdeflvl               int          ,
 ptechlvl              int          ,
 pambilvl              int          ,
-padmin                text 				 ,
+padmin                text                  ,
 pguilddesc            varchar(150) ,
 pchiefname            varchar(50)  ,
 pcname                varchar(50)  ,
@@ -643,7 +643,7 @@ declare rcount int;
 start transaction;
 select guildid into rcount from t_guild where guildid = pguildid;
 if rcount = pguildid then
-			update t_guild set guildid          =pguildid,   
+            update t_guild set guildid          =pguildid,   
           guildname        =pguildname ,
           guildstat        =pguildstat ,
           chiefguid        =pchiefguid ,
@@ -671,9 +671,9 @@ if rcount = pguildid then
           guilduser        =pguilduser,
           isvalid          =pisvalid,
           guildmsg         =pguildmsg 
-          where guildid	   =pguildid;
+          where guildid       =pguildid;
 else
-	insert into t_guild(guildid,
+    insert into t_guild(guildid,
                             guildname,   
                             guildstat,   
                             chiefguid,   
@@ -837,62 +837,62 @@ pvar                  varchar(40))
 begin
 
 declare rguid      int;
-declare rpos	   int;
+declare rpos       int;
 declare rdbversion int;
 declare sameid     int;
-set 	sameid 	=   -1;
+set     sameid     =   -1;
 
 start transaction;
 select guid into sameid from t_iteminfo
     where world=pworld and server=pserver and guid=pguid and isvalid=1;
 
 if sameid<>-1 then
-	update t_iteminfo set isvalid =0 where world=pworld and server=pserver and guid=pguid;
+    update t_iteminfo set isvalid =0 where world=pworld and server=pserver and guid=pguid;
 end if;
 
 select charguid,pos,dbversion into rguid,rpos,rdbversion from t_iteminfo
-	where charguid = pcharguid and pos=ppos limit 1;
-	if rguid = pcharguid then
-	 update t_iteminfo set charguid = pcharguid,
-		guid		 	= pguid,
-		world		 	= pworld,
-		server	 		= pserver,
-		itemtype 		= pitemtype,
-		pos			= ppos,
+    where charguid = pcharguid and pos=ppos limit 1;
+    if rguid = pcharguid then
+     update t_iteminfo set charguid = pcharguid,
+        guid             = pguid,
+        world             = pworld,
+        server             = pserver,
+        itemtype         = pitemtype,
+        pos            = ppos,
         visualid        = pvisualid,
         maxgemid        = pmaxgemid,
-		fixattr	 		= pfixattr,
-		p1			= pp1,
-		p2			= pp2,
-		p3			= pp3,
-		p4			= pp4,
-		p5			= pp5,
-		p6			= pp6,
-		p7			= pp7,
-		p8			= pp8,
-		p9			= pp9,
-		p10			= pp10,
-		p11			= pp11,
-		p12			= pp12,
-		p13			= pp13,
-		p14			= pp14,
-		p15			= pp15,
-		p16			= pp16,
-		p17			= pp17,
-		isvalid  		= pisvalid,
-		dbversion		= pdbversion,
-		creator  		= pcreator,
-		var			= pvar where
-		charguid=pcharguid and pos=ppos and rdbversion<=pdbversion;
+        fixattr             = pfixattr,
+        p1            = pp1,
+        p2            = pp2,
+        p3            = pp3,
+        p4            = pp4,
+        p5            = pp5,
+        p6            = pp6,
+        p7            = pp7,
+        p8            = pp8,
+        p9            = pp9,
+        p10            = pp10,
+        p11            = pp11,
+        p12            = pp12,
+        p13            = pp13,
+        p14            = pp14,
+        p15            = pp15,
+        p16            = pp16,
+        p17            = pp17,
+        isvalid          = pisvalid,
+        dbversion        = pdbversion,
+        creator          = pcreator,
+        var            = pvar where
+        charguid=pcharguid and pos=ppos and rdbversion<=pdbversion;
 
-	else
-		insert into t_iteminfo(charguid,world,server,guid,itemtype,
-		pos,visualid,maxgemid,fixattr,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,
-		isvalid,dbversion,creator,var)
-		values(pcharguid,pworld,pserver,pguid,pitemtype,ppos,pvisualid,pmaxgemid,
-		pfixattr,pp1,pp2,pp3,pp4,pp5,pp6,pp7,pp8,pp9,pp10,
-		pp11,pp12,pp13,pp14,pp15,pp16,pp17,pisvalid,pdbversion,pcreator,pvar);
-	end if;
+    else
+        insert into t_iteminfo(charguid,world,server,guid,itemtype,
+        pos,visualid,maxgemid,fixattr,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,
+        isvalid,dbversion,creator,var)
+        values(pcharguid,pworld,pserver,pguid,pitemtype,ppos,pvisualid,pmaxgemid,
+        pfixattr,pp1,pp2,pp3,pp4,pp5,pp6,pp7,pp8,pp9,pp10,
+        pp11,pp12,pp13,pp14,pp15,pp16,pp17,pisvalid,pdbversion,pcreator,pvar);
+    end if;
 commit;
 end;//
 delimiter ;
@@ -1006,11 +1006,11 @@ declare rcount int;
 start transaction;
 select pindex into rcount from t_mail where pindex = p5;
 if rcount = p5 then
-		update t_mail set sender=p1,recer=p2,mailinfo=p3,
-        	mailcont=p4,isvalid=p6 where pindex=p5;
+        update t_mail set sender=p1,recer=p2,mailinfo=p3,
+            mailcont=p4,isvalid=p6 where pindex=p5;
 else
-		insert into t_mail(pindex,sender,recer,mailinfo,mailcont,isvalid)
-		  values(p5,p1,p2,p3,p4,p6);
+        insert into t_mail(pindex,sender,recer,mailinfo,mailcont,isvalid)
+          values(p5,p1,p2,p3,p4,p6);
 end if;
 commit;
 end;//
@@ -1132,11 +1132,11 @@ declare rcount int;
 start transaction;
 select pindex into rcount from t_petcreate where pindex = ppoolid;
 if rcount = ppoolid then
-		update t_petcreate set pairdata=ppairdata,isvalid=pisvalid
-            	where pindex=ppoolid;
+        update t_petcreate set pairdata=ppairdata,isvalid=pisvalid
+                where pindex=ppoolid;
 else
-		insert into t_petcreate(pindex,pairdata,isvalid)  
-		values(ppoolid,ppairdata,pisvalid);	
+        insert into t_petcreate(pindex,pairdata,isvalid)  
+        values(ppoolid,ppairdata,pisvalid);    
 end if;
 commit;
 end;//
@@ -1210,7 +1210,7 @@ declare rindex int;
 start transaction;
 select sid ,poolid into rcount,rindex from t_pshop where sid = psid and poolid=ppoolid;
 if rcount = psid then
-		update t_pshop set  shopguid=pshopguid,
+        update t_pshop set  shopguid=pshopguid,
                             type=ptype,
                             stat=pstat,
                             maxbmoney=pmaxbmoney,
@@ -1230,7 +1230,7 @@ if rcount = psid then
                             subtype=subtype 
                             where sid=psid and poolid=ppoolid;
 else
-		insert into t_pshop(sid,       
+        insert into t_pshop(sid,       
                             poolid,    
                             shopguid,  
                             type,      
@@ -1636,8 +1636,8 @@ pheadid               int,
 pdefeq                int)
 begin
 
-declare rguid      	  int default -1;
-declare result		  int default -1;
+declare rguid            int default -1;
+declare result          int default -1;
 start transaction; 
  select charguid into rguid from t_char where charname=pcharname limit 1;
  if found_rows() = 0 then
@@ -1654,14 +1654,14 @@ start transaction;
    values(paccname,rguid,pcharname,'','',psex,1,0,0,0,100,100,9,
     5000,5000,0,5,5,5,5,5,0,0,0,pcreatetime,0,phaircolor,
     phairmodel,pfacecolor,pfacemodel,0,'',1,0,'',
-		'','',-1,-1,pheadid,0,0,0,0,0,0,
-		'',0,0,0,'',0,0,20,'',pdefeq);
+        '','',-1,-1,pheadid,0,0,0,0,0,0,
+        '',0,0,0,'',0,0,20,'',pdefeq);
    select row_count() into result;
   else
    set result = -3; 
   end if;
  else
-   set result = -2;	
+   set result = -2;    
  end if;
 commit;
 select result,rguid;

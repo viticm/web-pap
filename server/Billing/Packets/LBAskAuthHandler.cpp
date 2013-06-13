@@ -9,34 +9,34 @@
 
 UINT LBAskAuthHandler::Execute(LBAskAuth* pPacket, Player* pPlayer )
 {
-	__ENTER_FUNCTION
-		
-		Assert(pPlayer);
-		Assert(pPacket);
+    __ENTER_FUNCTION
+        
+        Assert(pPlayer);
+        Assert(pPacket);
 
-		//无认证
-		BLRetAuth Msg;
-		Msg.SetAccount(pPacket->GetAccount());
-		Msg.SetPlayerID(pPacket->GetPlayerID());
-		Msg.SetResult(LOGINR_SUCCESS);
-		Msg.SetAge(20);
-		((ServerPlayer*)pPlayer)->SendPacket(&Msg);
-		//无认证
+        //无认证
+        BLRetAuth Msg;
+        Msg.SetAccount(pPacket->GetAccount());
+        Msg.SetPlayerID(pPacket->GetPlayerID());
+        Msg.SetResult(LOGINR_SUCCESS);
+        Msg.SetAge(20);
+        ((ServerPlayer*)pPlayer)->SendPacket(&Msg);
+        //无认证
 
-		//Web认证
-		//BWValidateUser BWMsg;
-		//BWMsg.SetUserName(pPacket->GetAccount());
-		//BWMsg.SetPassword(pPacket->GetPassWord());
-		//BWMsg.SetPID(pPacket->GetPlayerID());
-		//BWMsg.SetLoginID(((ServerPlayer*)pPlayer)->PlayerManagerID());
-		//Msg.SetAge(pPacket->getAge());
-		//g_pWebPlayer->SendPacket(&BWMsg);
-		//Web认证
-		return PACKET_EXE_CONTINUE;
+        //Web认证
+        //BWValidateUser BWMsg;
+        //BWMsg.SetUserName(pPacket->GetAccount());
+        //BWMsg.SetPassword(pPacket->GetPassWord());
+        //BWMsg.SetPID(pPacket->GetPlayerID());
+        //BWMsg.SetLoginID(((ServerPlayer*)pPlayer)->PlayerManagerID());
+        //Msg.SetAge(pPacket->getAge());
+        //g_pWebPlayer->SendPacket(&BWMsg);
+        //Web认证
+        return PACKET_EXE_CONTINUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return PACKET_EXE_ERROR;
+        return PACKET_EXE_ERROR;
 }
 
 
@@ -50,22 +50,22 @@ UINT LBAskAuthHandler::Execute(LBAskAuth* pPacket, Player* pPlayer )
 //
 //
 //
-//BLRetAuth	Msg;
+//BLRetAuth    Msg;
 //
 //Msg.SetAccount(pPacket->GetAccount());
 //Msg.SetPlayerID(pPacket->GetPlayerID());
 //
 //
 //{
-//	Msg.SetResult(LOGINR_SUCCESS);
-//	Log::SaveLog("./Log/Billing.log","Account = %s Check Password SUCCESS!",pPacket->GetAccount());
+//    Msg.SetResult(LOGINR_SUCCESS);
+//    Log::SaveLog("./Log/Billing.log","Account = %s Check Password SUCCESS!",pPacket->GetAccount());
 //
 //}
-//		else
-//		{
-//			Msg.SetResult(LOGINR_AUTH_FAIL);
-//			Log::SaveLog("./Log/Billing.log","Account = %s Check Password FAIL!",pPacket->GetAccount());
-//		}
+//        else
+//        {
+//            Msg.SetResult(LOGINR_AUTH_FAIL);
+//            Log::SaveLog("./Log/Billing.log","Account = %s Check Password FAIL!",pPacket->GetAccount());
+//        }
 //
 //
-//		((ServerPlayer*)pPlayer)->SendPacket(&Msg);
+//        ((ServerPlayer*)pPlayer)->SendPacket(&Msg);

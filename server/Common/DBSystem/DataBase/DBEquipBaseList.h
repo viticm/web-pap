@@ -6,17 +6,17 @@
 
 class DBEquipBaseList:public ODBCBase
 {
-	GUID_t			m_CharGuid;
+    GUID_t            m_CharGuid;
 public:
-	DBEquipBaseList(ODBCInterface* pInterface);
+    DBEquipBaseList(ODBCInterface* pInterface);
 
-	virtual BOOL	Load();
-	virtual BOOL	Save();
-	virtual BOOL	ParseResult(VOID* pResult);
+    virtual BOOL    Load();
+    virtual BOOL    Save();
+    virtual BOOL    ParseResult(VOID* pResult);
 
 public:
-	VOID			SetCharGuid(GUID_t guid);
-	GUID_t			GetCharGuid();
+    VOID            SetCharGuid(GUID_t guid);
+    GUID_t            GetCharGuid();
 };
 
 

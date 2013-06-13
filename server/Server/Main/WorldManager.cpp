@@ -23,20 +23,20 @@ ID_t WorldManager::GetWorldID( )
 {
 __ENTER_FUNCTION
 
-	return g_Config.m_WorldInfo.m_WorldID ;
+    return g_Config.m_WorldInfo.m_WorldID ;
 
 __LEAVE_FUNCTION
-	
-	return INVALID_ID ;
+    
+    return INVALID_ID ;
 }
 
 BOOL WorldManager::Init( )
 {
 __ENTER_FUNCTION
 
-	return TRUE ;
+    return TRUE ;
 
 __LEAVE_FUNCTION
 
-	return FALSE ;
+    return FALSE ;
 }

@@ -8,62 +8,62 @@
 
 namespace Packets
 {
-	class CGDiscardItem:public Packet
-	{
-	public:
-		enum
-		{
-			FromBag = 0,
-			FromBank,
-		};
+    class CGDiscardItem:public Packet
+    {
+    public:
+        enum
+        {
+            FromBag = 0,
+            FromBank,
+        };
 
-	public:
-		CGDiscardItem()
-		{
-			m_Opt	=	FromBag;
-			m_BagIndex	=	0;
-		};
-		virtual				~CGDiscardItem(){};
+    public:
+        CGDiscardItem()
+        {
+            m_Opt    =    FromBag;
+            m_BagIndex    =    0;
+        };
+        virtual                ~CGDiscardItem(){};
 
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream ) const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream ) const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID() const { return PACKET_CG_DISCARDITEM; }
+        virtual PacketID_t        GetPacketID() const { return PACKET_CG_DISCARDITEM; }
 
-		virtual UINT			GetPacketSize() const 
-		{
-			return sizeof(BYTE)*2;
-		}
+        virtual UINT            GetPacketSize() const 
+        {
+            return sizeof(BYTE)*2;
+        }
 
-	public:
+    public:
 
-		VOID			SetBagIndex(BYTE index){m_BagIndex = index;}
-		BYTE			GetBagIndex(){return m_BagIndex;}
+        VOID            SetBagIndex(BYTE index){m_BagIndex = index;}
+        BYTE            GetBagIndex(){return m_BagIndex;}
 
-		VOID			SetOpt(BYTE Opt){m_Opt = Opt;}
-		BYTE			GetOpt(){return m_Opt;}
+        VOID            SetOpt(BYTE Opt){m_Opt = Opt;}
+        BYTE            GetOpt(){return m_Opt;}
 
-	private:
-		BYTE			m_Opt;
-		BYTE			m_BagIndex;
-	};
-
-
-	class CGDiscardItemFactory:public PacketFactory
-	{
-	public:
-		Packet*		CreatePacket() { return new CGDiscardItem(); }
-		PacketID_t	GetPacketID() const { return PACKET_CG_DISCARDITEM; }
-		UINT		GetPacketMaxSize() const { return sizeof(BYTE)*2; }
-	};
+    private:
+        BYTE            m_Opt;
+        BYTE            m_BagIndex;
+    };
 
 
-	class CGDiscardItemHandler
-	{
-	public:
-		static UINT	Execute( CGDiscardItem* pPacket, Player* pPlayer );
-	};
+    class CGDiscardItemFactory:public PacketFactory
+    {
+    public:
+        Packet*        CreatePacket() { return new CGDiscardItem(); }
+        PacketID_t    GetPacketID() const { return PACKET_CG_DISCARDITEM; }
+        UINT        GetPacketMaxSize() const { return sizeof(BYTE)*2; }
+    };
+
+
+    class CGDiscardItemHandler
+    {
+    public:
+        static UINT    Execute( CGDiscardItem* pPacket, Player* pPlayer );
+    };
 
 }
 

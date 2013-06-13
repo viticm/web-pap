@@ -14,55 +14,55 @@ using namespace Packets;
 UINT CGCharDefaultEventHandler::Execute(CGCharDefaultEvent* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer != NULL ) ;
-	if ( pGamePlayer == NULL )
-	{
-		g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: Error (pGamePlayer == NULL) " ) ;
-		return PACKET_EXE_CONTINUE ;
-	}
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer != NULL ) ;
+    if ( pGamePlayer == NULL )
+    {
+        g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: Error (pGamePlayer == NULL) " ) ;
+        return PACKET_EXE_CONTINUE ;
+    }
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman != NULL ) ;
-	if ( pHuman == NULL )
-	{
-		g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: Error (pHuman == NULL) " ) ;
-		return PACKET_EXE_CONTINUE ;
-	}
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman != NULL ) ;
+    if ( pHuman == NULL )
+    {
+        g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: Error (pHuman == NULL) " ) ;
+        return PACKET_EXE_CONTINUE ;
+    }
 
-	Scene* pScene = pHuman->getScene() ;
-	Assert( pScene != NULL ) ;
-	if ( pScene == NULL )
-	{
-		g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: Error Obj = %d (pScene == NULL) ", pHuman->GetID() ) ;
-		return PACKET_EXE_CONTINUE ;
-	}
+    Scene* pScene = pHuman->getScene() ;
+    Assert( pScene != NULL ) ;
+    if ( pScene == NULL )
+    {
+        g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: Error Obj = %d (pScene == NULL) ", pHuman->GetID() ) ;
+        return PACKET_EXE_CONTINUE ;
+    }
 
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
-	if ( MyGetCurrentThreadID() != pScene->m_ThreadID )
-	{
-		g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: Error Obj = %d (MyGetCurrentThreadID() != pScene->m_ThreadID) ", pHuman->GetID() ) ;
-		return PACKET_EXE_CONTINUE ;
-	}
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
+    if ( MyGetCurrentThreadID() != pScene->m_ThreadID )
+    {
+        g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: Error Obj = %d (MyGetCurrentThreadID() != pScene->m_ThreadID) ", pHuman->GetID() ) ;
+        return PACKET_EXE_CONTINUE ;
+    }
 
-	ObjID_t ObjID = pHuman->GetID() ;
-	ObjID_t idTarget	= pPacket->getObjID();
+    ObjID_t ObjID = pHuman->GetID() ;
+    ObjID_t idTarget    = pPacket->getObjID();
 
-	ORESULT oResult = pHuman->GetHumanAI()->PushCommand_DefaultEvent( idTarget );
-	if ( OR_FAILED( oResult ) )
-	{
-		pHuman->SendOperateResultMsg(oResult);
-	}
+    ORESULT oResult = pHuman->GetHumanAI()->PushCommand_DefaultEvent( idTarget );
+    if ( OR_FAILED( oResult ) )
+    {
+        pHuman->SendOperateResultMsg(oResult);
+    }
 
-	g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: TargetObjID:%d ", 
-		pPacket->getObjID() ) ;
+    g_pLog->FastSaveLog( LOG_FILE_1, "CGCharDefaultEventHandler: TargetObjID:%d ", 
+        pPacket->getObjID() ) ;
 
 
-	return PACKET_EXE_CONTINUE ;
+    return PACKET_EXE_CONTINUE ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 
 }

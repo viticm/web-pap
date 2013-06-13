@@ -7,172 +7,172 @@
 
 DBCoolDownInfo::DBCoolDownInfo(ODBCInterface* pInterface)
 {
-	mDBName = CHARACTER_DATABASE;
-	mResult			= 0;
-	mResultCount	= 0;
-	m_CharGuid		= INVALID_ID;
-	m_DBVersion		= 0;
-	Assert(pInterface);
-	mInterface		=	pInterface;
+    mDBName = CHARACTER_DATABASE;
+    mResult            = 0;
+    mResultCount    = 0;
+    m_CharGuid        = INVALID_ID;
+    m_DBVersion        = 0;
+    Assert(pInterface);
+    mInterface        =    pInterface;
 }
 
 BOOL DBCoolDownInfo::Load()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	DB_QUERY* pQuery = GetInternalQuery();
+    DB_QUERY* pQuery = GetInternalQuery();
 
-	if(!pQuery)
-	{
-		Assert(FALSE);
-	}
+    if(!pQuery)
+    {
+        Assert(FALSE);
+    }
 
-	pQuery->Clear();
+    pQuery->Clear();
 
-	if(m_CharGuid==INVALID_ID)
-	{
-		return FALSE;
-	}
+    if(m_CharGuid==INVALID_ID)
+    {
+        return FALSE;
+    }
 
-	pQuery->Parse(LoadCharCoolDownInfo,CHAR_TABLE,m_CharGuid,m_DBVersion);
+    pQuery->Parse(LoadCharCoolDownInfo,CHAR_TABLE,m_CharGuid,m_DBVersion);
 
-	return ODBCBase::Load();
+    return ODBCBase::Load();
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-		return FALSE;
+        return FALSE;
 }
 
 BOOL DBCoolDownInfo::Save(VOID* pSource)
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	enum 
-	{
-		DB_CharGuid	=	1,
-		DB_CoolDownInfo,
-	};
+    enum 
+    {
+        DB_CharGuid    =    1,
+        DB_CoolDownInfo,
+    };
 
-	
-	FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
-	Assert(pCharFullData);
-	
-	//保存CoolDown数据
-	do
-	{
-		CHAR	CoolDownInfo[2048];
-		memset(CoolDownInfo,0,2048);
-	
-		Binary2String((CHAR*)(&pCharFullData->m_Cooldown),
-					  sizeof(_COOLDOWN_DB_LOAD_FOR_HUMAN),
-					  CoolDownInfo);
-		DB_QUERY* pQuery = GetInternalQuery();
+    
+    FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pSource);
+    Assert(pCharFullData);
+    
+    //保存CoolDown数据
+    do
+    {
+        CHAR    CoolDownInfo[2048];
+        memset(CoolDownInfo,0,2048);
+    
+        Binary2String((CHAR*)(&pCharFullData->m_Cooldown),
+                      sizeof(_COOLDOWN_DB_LOAD_FOR_HUMAN),
+                      CoolDownInfo);
+        DB_QUERY* pQuery = GetInternalQuery();
 
-		if(!pQuery)
-		{
-			Assert(FALSE);
-		}
+        if(!pQuery)
+        {
+            Assert(FALSE);
+        }
 
-		pQuery->Clear();
-		
-		pQuery->Parse(UpdateCharCoolDownInfo,
-					  CHAR_TABLE,
-					  CoolDownInfo,
-					  m_CharGuid,
-					  m_DBVersion);
+        pQuery->Clear();
+        
+        pQuery->Parse(UpdateCharCoolDownInfo,
+                      CHAR_TABLE,
+                      CoolDownInfo,
+                      m_CharGuid,
+                      m_DBVersion);
 
-		if(!ODBCBase::Save(pCharFullData))
-			return FALSE;
+        if(!ODBCBase::Save(pCharFullData))
+            return FALSE;
 
 
-	}while(0);
-	
-	return TRUE;
+    }while(0);
+    
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL DBCoolDownInfo::Delete()
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	return TRUE;
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
 BOOL DBCoolDownInfo::ParseResult(VOID* pResult)
 {
-	__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-	switch(mOPType)
-	{
-	case DB_LOAD:
-		{
-			FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pResult);
-			Assert(pCharFullData);
+    switch(mOPType)
+    {
+    case DB_LOAD:
+        {
+            FULLUSERDATA* pCharFullData = static_cast<FULLUSERDATA*>(pResult);
+            Assert(pCharFullData);
 
-			enum 
-			{
-				DB_CharGuid	=	1,
-				DB_CoolDownInfo,
-			};
+            enum 
+            {
+                DB_CharGuid    =    1,
+                DB_CoolDownInfo,
+            };
 
-			//加载技能属性
-			//Assert(mResultCount<MAX_CHAR_MISSION_NUM);
-			Assert(mInterface);
-			INT ErrorCode;
-			for(INT i =0;i<1;i++)
-			{
-				if(!mInterface->Fetch())
-					break;
+            //加载技能属性
+            //Assert(mResultCount<MAX_CHAR_MISSION_NUM);
+            Assert(mInterface);
+            INT ErrorCode;
+            for(INT i =0;i<1;i++)
+            {
+                if(!mInterface->Fetch())
+                    break;
 
-				UINT		CharGuid	= mInterface->GetUInt(DB_CharGuid,ErrorCode);
-				mInterface->GetField(DB_CoolDownInfo,
-					(CHAR*)(&pCharFullData->m_Cooldown),
-					sizeof(_COOLDOWN_DB_LOAD_FOR_HUMAN),
-					ErrorCode) ;
-			}
-			
-			mInterface->Clear();
-		}
-		break;
-	case DB_DELETE:
-		{
-	
-		}
-		break;
-	default:
-		break;
-	}
-	
+                UINT        CharGuid    = mInterface->GetUInt(DB_CharGuid,ErrorCode);
+                mInterface->GetField(DB_CoolDownInfo,
+                    (CHAR*)(&pCharFullData->m_Cooldown),
+                    sizeof(_COOLDOWN_DB_LOAD_FOR_HUMAN),
+                    ErrorCode) ;
+            }
+            
+            mInterface->Clear();
+        }
+        break;
+    case DB_DELETE:
+        {
+    
+        }
+        break;
+    default:
+        break;
+    }
+    
 
-	return TRUE;
+    return TRUE;
 
-	__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-	return FALSE;
+    return FALSE;
 }
 
-GUID_t	DBCoolDownInfo::GetCharGuid()
+GUID_t    DBCoolDownInfo::GetCharGuid()
 {
-	return m_CharGuid;
+    return m_CharGuid;
 }
 
-VOID	DBCoolDownInfo::SetCharGuid(GUID_t guid)
+VOID    DBCoolDownInfo::SetCharGuid(GUID_t guid)
 {
-	m_CharGuid	 = guid;
+    m_CharGuid     = guid;
 }
 
-UINT	DBCoolDownInfo::GetDBVersion()
+UINT    DBCoolDownInfo::GetDBVersion()
 {
-	return m_DBVersion;
+    return m_DBVersion;
 }
-VOID	DBCoolDownInfo::SetDBVersion(UINT version)
+VOID    DBCoolDownInfo::SetDBVersion(UINT version)
 {
-	m_DBVersion = version;
+    m_DBVersion = version;
 }

@@ -15,35 +15,35 @@
 
 namespace Packets
 {
-	class CGStallEstablish : public Packet
-	{
-	public:
-		CGStallEstablish( ){};
-		virtual ~CGStallEstablish( ){};
+    class CGStallEstablish : public Packet
+    {
+    public:
+        CGStallEstablish( ){};
+        virtual ~CGStallEstablish( ){};
 
-		//公用继承接口
-		virtual BOOL			Read( SocketInputStream& iStream ) ;
-		virtual BOOL			Write( SocketOutputStream& oStream )const ;
-		virtual UINT			Execute( Player* pPlayer ) ;
+        //公用继承接口
+        virtual BOOL            Read( SocketInputStream& iStream ) ;
+        virtual BOOL            Write( SocketOutputStream& oStream )const ;
+        virtual UINT            Execute( Player* pPlayer ) ;
 
-		virtual PacketID_t		GetPacketID()const { return PACKET_CG_STALLESTABLISH; }
-		virtual UINT			GetPacketSize()const { return	0;}
+        virtual PacketID_t        GetPacketID()const { return PACKET_CG_STALLESTABLISH; }
+        virtual UINT            GetPacketSize()const { return    0;}
 
-	};
+    };
 
-	class CGStallEstablishFactory : public PacketFactory 
-	{
-	public:
-		Packet*		CreatePacket() { return new CGStallEstablish() ; }
-		PacketID_t	GetPacketID()const { return PACKET_CG_STALLESTABLISH; };
-		UINT		GetPacketMaxSize()const { return 0;};
-	};
+    class CGStallEstablishFactory : public PacketFactory 
+    {
+    public:
+        Packet*        CreatePacket() { return new CGStallEstablish() ; }
+        PacketID_t    GetPacketID()const { return PACKET_CG_STALLESTABLISH; };
+        UINT        GetPacketMaxSize()const { return 0;};
+    };
 
-	class CGStallEstablishHandler 
-	{
-	public:
-		static UINT Execute( CGStallEstablish* pPacket, Player* pPlayer ) ;
-	};
+    class CGStallEstablishHandler 
+    {
+    public:
+        static UINT Execute( CGStallEstablish* pPacket, Player* pPlayer ) ;
+    };
 }
 
 using namespace Packets;

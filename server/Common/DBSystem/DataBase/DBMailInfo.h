@@ -6,17 +6,17 @@
 
 class DBMailInfo:public ODBCBase
 {
-	
+    
 public:
-	DBMailInfo(ODBCInterface* pInterface);
+    DBMailInfo(ODBCInterface* pInterface);
 
-	virtual BOOL	Load();
-	virtual BOOL	Save(VOID* pSource);
-	virtual BOOL	Delete();
-	virtual BOOL	ParseResult(VOID* pResult);
+    virtual BOOL    Load();
+    virtual BOOL    Save(VOID* pSource);
+    virtual BOOL    Delete();
+    virtual BOOL    ParseResult(VOID* pResult);
 
 public:
-	
+    
 };
 
 

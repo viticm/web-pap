@@ -23,21 +23,21 @@
 class MailNodePool
 {
 public :
-	MailNodePool( ) ;
-	~MailNodePool( ) ;
+    MailNodePool( ) ;
+    ~MailNodePool( ) ;
 
-	BOOL				Init( UINT MaxMailNode = MAX_MAILNODE_SIZE ) ;
-	VOID				CleanUp( ) ;
+    BOOL                Init( UINT MaxMailNode = MAX_MAILNODE_SIZE ) ;
+    VOID                CleanUp( ) ;
 
-	MailNode*			NewNode( ) ;
-	VOID				DeleteNode( MailNode* pNode ) ;
-	
-	MailNode*			GetNode(UINT Index);
+    MailNode*            NewNode( ) ;
+    VOID                DeleteNode( MailNode* pNode ) ;
+    
+    MailNode*            GetNode(UINT Index);
 protected :
-	MailNode*			m_pMailNode ;
-	
-	INT					m_nMailNodeNumber ;
-	INT					m_nCurrentOffset ;
+    MailNode*            m_pMailNode ;
+    
+    INT                    m_nMailNodeNumber ;
+    INT                    m_nCurrentOffset ;
 };
 
 extern MailNodePool* g_pMailNodePool ;
@@ -47,20 +47,20 @@ extern MailNodePool* g_pMailNodePool ;
 class UserNodePool
 {
 public :
-	UserNodePool( ) ;
-	~UserNodePool( ) ;
+    UserNodePool( ) ;
+    ~UserNodePool( ) ;
 
-	BOOL				Init( ) ;
-	VOID				CleanUp( ) ;
+    BOOL                Init( ) ;
+    VOID                CleanUp( ) ;
 
-	UserNode*			NewNode( ) ;
-	VOID				DeleteNode( UserNode* pNode ) ;
+    UserNode*            NewNode( ) ;
+    VOID                DeleteNode( UserNode* pNode ) ;
 
 protected :
-	UserNode*			m_pUserNode ;
+    UserNode*            m_pUserNode ;
 
-	INT					m_nUserNodeNumber ;
-	INT					m_nCurrentOffset ;
+    INT                    m_nUserNodeNumber ;
+    INT                    m_nCurrentOffset ;
 
 };
 

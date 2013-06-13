@@ -16,48 +16,48 @@ UINT CGAskTeamInfoHandler::Execute( CGAskTeamInfo* pPacket, Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-	GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
-	Assert( pGamePlayer ) ;
+    GamePlayer* pGamePlayer = (GamePlayer*)pPlayer ;
+    Assert( pGamePlayer ) ;
 
-	Obj_Human* pHuman = pGamePlayer->GetHuman() ;
-	Assert( pHuman ) ;
+    Obj_Human* pHuman = pGamePlayer->GetHuman() ;
+    Assert( pHuman ) ;
 
-	Scene* pScene = pHuman->getScene() ;
-	if( pScene==NULL )
-	{
-		Assert(FALSE) ;
-		return PACKET_EXE_ERROR ;
-	}
+    Scene* pScene = pHuman->getScene() ;
+    if( pScene==NULL )
+    {
+        Assert(FALSE) ;
+        return PACKET_EXE_ERROR ;
+    }
 
-	//检查线程执行资源是否正确
-	Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
+    //检查线程执行资源是否正确
+    Assert( MyGetCurrentThreadID()==pScene->m_ThreadID ) ;
 
-	if( pHuman->GetID() != pPacket->GetObjID() )
-	{ // 为以后留接口
-		Assert(FALSE);
-		return PACKET_EXE_ERROR;
-	}
+    if( pHuman->GetID() != pPacket->GetObjID() )
+    { // 为以后留接口
+        Assert(FALSE);
+        return PACKET_EXE_ERROR;
+    }
 
-	Obj_Human *pDestHuman = pScene->GetHumanManager()->GetHuman( pPacket->GetObjID() );
-	if( pDestHuman == NULL )
-	{
-		Assert(FALSE);
-		return PACKET_EXE_CONTINUE;
-	}
+    Obj_Human *pDestHuman = pScene->GetHumanManager()->GetHuman( pPacket->GetObjID() );
+    if( pDestHuman == NULL )
+    {
+        Assert(FALSE);
+        return PACKET_EXE_CONTINUE;
+    }
 
-	GWAskTeamInfo* pMsg = (GWAskTeamInfo*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_ASKTEAMINFO));
+    GWAskTeamInfo* pMsg = (GWAskTeamInfo*)(g_pPacketFactoryManager->CreatePacket(PACKET_GW_ASKTEAMINFO));
 
-	pMsg->SetPlayerID( pGamePlayer->PlayerID() );
-	pMsg->SetGUID( pDestHuman->GetGUID() );
+    pMsg->SetPlayerID( pGamePlayer->PlayerID() );
+    pMsg->SetGUID( pDestHuman->GetGUID() );
 
-	g_pServerManager->SendPacket( pMsg, INVALID_ID );
+    g_pServerManager->SendPacket( pMsg, INVALID_ID );
 
-	g_pLog->FastSaveLog( LOG_FILE_1, "CGAskTeamInfoHandler: AskManObjID=%X TargetManGUID=%X", 
-		pGamePlayer->PlayerID(), pDestHuman->GetGUID() ) ;
+    g_pLog->FastSaveLog( LOG_FILE_1, "CGAskTeamInfoHandler: AskManObjID=%X TargetManGUID=%X", 
+        pGamePlayer->PlayerID(), pDestHuman->GetGUID() ) ;
 
-	return PACKET_EXE_CONTINUE ;
+    return PACKET_EXE_CONTINUE ;
 
 __LEAVE_FUNCTION
 
-	return PACKET_EXE_ERROR ;
+    return PACKET_EXE_ERROR ;
 }

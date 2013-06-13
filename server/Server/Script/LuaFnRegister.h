@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
 // 文件名 : LuaFnRegister.h
-// 模块	:	Script
-// 功能	 :  向Lua注册c导出函数
+// 模块    :    Script
+// 功能     :  向Lua注册c导出函数
 // 修改历史:
 //-----------------------------------------------------------------------------
 #ifndef __LUACFUNREGISTER_H__
@@ -17,27 +17,27 @@ typedef INT (*FuncProto)(Lua_State * L);
 
 struct _Str2Func
 {
-	CHAR* funcname;
-	FuncProto proto;
+    CHAR* funcname;
+    FuncProto proto;
 };
 
 class LuaCFuncRegister
 {
 private:
-	LuaInterface* mOwner;
+    LuaInterface* mOwner;
 public:
-	LuaCFuncRegister();
-	~LuaCFuncRegister();
+    LuaCFuncRegister();
+    ~LuaCFuncRegister();
 
-	VOID SetOwner(LuaInterface* pInter);
-	LuaInterface* GetOwner();
+    VOID SetOwner(LuaInterface* pInter);
+    LuaInterface* GetOwner();
 
 #ifdef _DEBUG
-	//CHAR* GetFuncName(CHAR* pStr1,CHAR* pStr2);
-	VOID ValidateFuncs();
+    //CHAR* GetFuncName(CHAR* pStr1,CHAR* pStr2);
+    VOID ValidateFuncs();
 #endif
 
-	VOID RegisterCFunction();
+    VOID RegisterCFunction();
 };
 
 #endif
