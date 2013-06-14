@@ -173,7 +173,7 @@ struct _LOGIN_INFO
     CHAR            m_DBUser[DB_USE_STR_LEN];
     CHAR            m_DBPassword[DB_PASSWORD_STR_LEN];
     INT                m_AskAuthType;
-    CHAR            m_ClientMainPath[MAX_PATH];
+    CHAR            m_ClientMainPath[_MAX_PATH];
 
     _LOGIN_INFO()
     {

@@ -1,0 +1,1 @@
+g++ -I../Packets -I../../Server/Base -I../../Common -I../../Common/Combat -I../../Common/DataBase -I../../Common/DBSystem/DataBase -I../../Common/Net -I../../Common/Packets -I../ -I/usr/local/unixODBC/include -c *.cpp
