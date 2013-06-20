@@ -28,26 +28,26 @@ class ODBCInterface
 
     BOOL            mConnected;
 public:
-    SQLHENV            hEnv;                                                // 数据库环境
-    SQLHDBC            hDbc;                                                //  
-    SQLRETURN        mResult;                                            // Sql查询返回值
-    CHAR            Col[MAXCOL][MAX_COLUMN_BUFFER];                        // Column 数据
+    SQLHENV            hEnv;                                               // 数据库环境
+    SQLHDBC            hDbc;                                               //  
+    SQLRETURN          mResult;                                            // Sql查询返回值
+    CHAR               Col[MAXCOL][MAX_COLUMN_BUFFER];                     // Column 数据
     
     
     CHAR    mConnectStr[DATABASE_STR_LEN];
     CHAR    mUserName[DB_USE_STR_LEN];
     CHAR    mPassWord[DB_PASSWORD_STR_LEN];
 
-    SQLINTEGER    mAffectCount;                        // 影响行数
+    SQLLEN      mAffectCount;                        // 影响行数 changed from SQLINTEGER by viticm
     SQLHSTMT    hStmt;                                // 状态句柄
     SQLSMALLINT mColCount;                            // Column 数量
-    SQLCHAR        ColName[MAXCOL][MAX_COLUMN_NAME];    // Column 名称
-    SQLINTEGER  mCollocate[MAXCOL];                    // Col    位置
+    SQLCHAR     ColName[MAXCOL][MAX_COLUMN_NAME];    // Column 名称
+    SQLLEN      mCollocate[MAXCOL];                    // Col    位置 changed from SQLINTEGER by viticm
 
-    DB_QUERY        m_Query;                            //查询结构体
+    DB_QUERY         m_Query;                            //查询结构体
     LONG_DB_QUERY    m_LongQuery;                        //大结构体
-    SQLINTEGER    mErrorCode;
-    SQLCHAR        mErrorMsg[MAX_ERROR_MSG_LENGHT];                        //消息错误内容
+    SQLINTEGER       mErrorCode;
+    SQLCHAR          mErrorMsg[MAX_ERROR_MSG_LENGHT];                        //消息错误内容
 public:
 
     ODBCInterface();

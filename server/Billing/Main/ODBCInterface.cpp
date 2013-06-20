@@ -158,7 +158,7 @@ BOOL ODBCInterface::Execute()
         
             return FALSE;
         }
-            // Update, Delete, Insert 影响的结果
+        // Update, Delete, Insert 影响的结果
         SQLRowCount(hStmt,&mAffectCount);
         SQLNumResultCols(hStmt,&mColCount);
         if (mColCount > MAXCOL) 
@@ -301,8 +301,8 @@ BOOL ODBCInterface::LongFetch()
     for (int ColIndex=0;ColIndex<mColCount;ColIndex++)
     {
         int                TotalGet = 0;
-        SQLINTEGER        LenData  = 0;
-        int                Ret         = 0;
+        SQLLEN             LenData  = 0; // changed from SQLINTEGER by viticm
+        int                Ret      = 0;
         while(Ret=SQLGetData(hStmt, ColIndex+1, SQL_C_CHAR,Col[ColIndex]+TotalGet,MAX_LONG_COLUMN_BUFFER,&LenData)!=SQL_NO_DATA)
         {
             break;

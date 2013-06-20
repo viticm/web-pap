@@ -86,7 +86,7 @@ typedef UINT            GUID_t;    //32位唯一编号。
 #if defined(__LINUX__) || defined(__WIN_CONSOLE__)
     typedef UCHAR  BYTE;
     typedef USHORT WORD;
-    typedef    ULONG  DWORD;
+    typedef ULONG  DWORD;
 #endif
 
 
