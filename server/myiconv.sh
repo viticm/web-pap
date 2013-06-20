@@ -5,7 +5,7 @@ for file in ${Arr_Files}
 do
     cBaseDir=`dirname ${file}`
     mkdir -p ${cDstDir}${cBaseDir}
-    cLibGrep=`grep '*.lib' ${file}`
+    cLibGrep=`echo ${file} | grep '.lib'`
     if [[ "" == ${cLibGrep} ]] ; then
         iconv -f GBK -t UTF-8 ${file} > ${cDstDir}${file}
     else
