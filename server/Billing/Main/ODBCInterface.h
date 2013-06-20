@@ -17,13 +17,13 @@
 class ODBCInterface
 {
     enum { 
-            MAXCOL=100, 
+            MAXCOL       =    100, 
             BLOBBATCH    =    10000,
-            QUERYOK        =    0,
+            QUERYOK      =    0,
             QUERYNULL    =    -100, 
-            QUERYEOF    =    -101, 
-            QUERYNOCOL    =    -102, 
-            QUERYERROR    =    -103 
+            QUERYEOF     =    -101, 
+            QUERYNOCOL   =    -102, 
+            QUERYERROR   =    -103 
          };
 
     BOOL            mConnected;
@@ -38,16 +38,16 @@ public:
     CHAR    mUserName[DB_USE_STR_LEN];
     CHAR    mPassWord[DB_PASSWORD_STR_LEN];
 
-    SQLLEN      mAffectCount;                        // 影响行数 changed from SQLINTEGER by viticm
+    SQLLEN      mAffectCount;                         // 影响行数 changed from SQLINTEGER by viticm
     SQLHSTMT    hStmt;                                // 状态句柄
     SQLSMALLINT mColCount;                            // Column 数量
-    SQLCHAR     ColName[MAXCOL][MAX_COLUMN_NAME];    // Column 名称
-    SQLLEN      mCollocate[MAXCOL];                    // Col    位置 changed from SQLINTEGER by viticm
+    SQLCHAR     ColName[MAXCOL][MAX_COLUMN_NAME];     // Column 名称
+    SQLLEN      mCollocate[MAXCOL];                   // Col    位置 changed from SQLINTEGER by viticm
 
     DB_QUERY         m_Query;                            //查询结构体
     LONG_DB_QUERY    m_LongQuery;                        //大结构体
     SQLINTEGER       mErrorCode;
-    SQLCHAR          mErrorMsg[MAX_ERROR_MSG_LENGHT];                        //消息错误内容
+    SQLCHAR          mErrorMsg[MAX_ERROR_MSG_LENGHT];    //消息错误内容
 public:
 
     ODBCInterface();
@@ -103,10 +103,10 @@ public:
     BOOL        Execute();        
     BOOL        LongExecute();
 
-    INT                GetInt(INT         ColIndex,INT& ErrorCode);
-    UINT            GetUInt(INT        ColIndex,INT& ErrorCode);
-    FLOAT            GetFloat(INT    ColIndex,INT& ErrorCode);
-    UCHAR            GetBYTE(INT        ColIndex,INT& ErrorCode)
+    INT              GetInt   (INT ColIndex,INT& ErrorCode);
+    UINT             GetUInt  (INT ColIndex,INT& ErrorCode);
+    FLOAT            GetFloat (INT ColIndex,INT& ErrorCode);
+    UCHAR            GetBYTE  (INT ColIndex,INT& ErrorCode)
     {
         return(UCHAR)GetInt(ColIndex,ErrorCode);
     }
