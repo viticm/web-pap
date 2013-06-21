@@ -64,10 +64,10 @@ COMMON_LDS                = -L$(BASEDIR)/Common \
 SERVER_BASE_LDS           = -L$(BASEDIR)/Server/Base
 
 
-GCFLAGS                   = $(COMMON_INCLUDES)
+GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES)
 
 release:GLDFLAGS = $(COMMON_LDS)
-debug:GLDFLAGS = $(COMMON_LDS) $(UNIX_ODBC_INCLUDES)
+debug:GLDFLAGS = $(COMMON_LDS) 
 
 ARFLAGS = -sr
 AR      = ar
