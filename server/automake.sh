@@ -85,7 +85,7 @@ function getModelName()
 #@return void
 function replaceSpecialWords()
 {
-#<TAB> \t | <S4> "    " | <DD> $$
+#<TAB> \t | <S4> "    " | <DD> $$ | <SLASH> \
     local cFileName=${1}
     sed -i 's;<TAB>;\t;g'  ${cFileName}
     sed -i 's;<S4>;    ;g' ${cFileName}
@@ -152,8 +152,10 @@ function main()
                 Arr_SonDirObjs=`getSonDirObjs ${dir}`
                 if [[ "Server" == ${cModleName} ]] ; then
                     cLdFlags="\$(COMMON_LD)"
+                    cCFlags="\$(COMMON_INCLUDES)"
                 else
                     cLdFlags="\$(COMMON_LD) \$(SERVER_BASE_LDS)"
+                    cCFlags="\$(COMMON_INCLUDES) \$(SERVER_BASE_INCLUDES)"
                 fi
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModleName}
@@ -161,7 +163,7 @@ function main()
 # @date `date +"%Y-%m-%d %H:%M:%S"`
 include ${cInlude}
 
-CFLAGS =
+CFLAGS = ${cCFlags}
 debug:LDFLAGS = ${cLdFlags}
 release:LDFLAGS = ${cLdFlags}
 
@@ -192,13 +194,14 @@ clean:
 EOF
             else
 # not need build bin file
+                cCFlags="\$(COMMON_INCLUDES) \$(SERVER_BASE_INCLUDES) -I\$(BASEDIR)/${cModleName}"
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModleName}
 # @author viticm<viticm.ti@gmail.com>
 # @date `date +"%Y-%m-%d %H:%M:%S"`
 include ${cInlude}
 
-CFLAGS =
+CFLAGS = ${cCFlags}
 LDFLAGS =
 DIRS = ${Arr_SonDir}
 
