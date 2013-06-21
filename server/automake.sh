@@ -2,7 +2,7 @@
 cBaseDir=`pwd` # default use cur dir, you can define it
 Arr_BinDir="Billing Server Login World ShareMemory"
 Arr_ModelName="Billing Server Login World ShareMemory Common"
-Arr_NotMakeFile=`pwd`
+Arr_NotMakeFile="`pwd`"
 Arr_Dir=`find ${cBaseDir} -type d`
 cInludeFile=premake.mk
 
@@ -40,12 +40,20 @@ function inArray()
 
 #@desc get son dir array by path
 #@param string cPath
+#@param int iMaxdepth
 #@return void
 function getSonDirs()
 {
     local cPath=${1}
+    local iMaxdepth=${2}
+    local Arr_FoundDir=""
     local Arr_SonDir=""
-    local Arr_FoundDir=`find ${cPath} -type d`
+    if [[ "" != ${iMaxdepth} ]] ; then
+        Arr_FoundDir=`find ${cPath} -maxdepth ${iMaxdepth} -type d`
+    else
+        Arr_FoundDir=`find ${cPath} -type d`
+    fi
+    
     for dir in ${Arr_FoundDir}
     do
         if [[ ${dir} != ${cPath} ]] ; then
@@ -82,6 +90,22 @@ function replaceSpecialWords()
     sed -i 's;<TAB>;\t;g'  ${cFileName}
     sed -i 's;<S4>;    ;g' ${cFileName}
     sed -i 's;<DD>;$$;g'   ${cFileName}
+    sed -i 's;<SLASH>;\\;g'  ${cFileName}
+}
+
+#@desc get will includes objs dirs
+#@param string cPath
+#@return void
+function getSonDirObjs()
+{
+    local cPath=${1}
+    local Arr_SonDir=`getSonDirs ${cPath}`
+    local Arr_SonDirObjs=""
+    for dir in ${Arr_SonDir}
+    do
+        Arr_SonDirObjs+="${dir}/*.o "
+    done
+    echo ${Arr_SonDirObjs}
 }
 
 #@desc get objs files in dir
@@ -98,7 +122,7 @@ function getObjs()
         if [[ "" == ${Arr_Objs} ]] ; then
             Arr_Objs+=${cObjName}
         else
-            Arr_Objs+=" \\ \n<TAB><TAB>"${cObjName}
+            Arr_Objs+=" <SLASH>\n<TAB><TAB>"${cObjName}
         fi
     done
     echo ${Arr_Objs}
@@ -115,10 +139,7 @@ function main()
         cCurDir=`basename ${dir}`
         cModleName=`getModelName ${dir} "${Arr_ModelName}"`
         Arr_Objs=`getObjs ${dir}`
-        if inArray ${cCurDir} "${Arr_BinDir}"
-        then :
-            Arr_SonDir=`getSonDirs ${dir}`
-        fi
+        Arr_SonDir=`getSonDirs ${dir} 1`
         if inArray ${dir} "${Arr_NotMakeFile}"
         then :
             echo ${dir} not in make
@@ -127,6 +148,13 @@ function main()
             if inArray ${cCurDir} "${Arr_BinDir}"
             then :
 # need build bin file
+                echo ${cModleName}
+                Arr_SonDirObjs=`getSonDirObjs ${dir}`
+                if [[ "Server" == ${cModleName} ]] ; then
+                    cLdFlags="\$(COMMON_LD)"
+                else
+                    cLdFlags="\$(COMMON_LD) \$(SERVER_BASE_LDS)"
+                fi
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModleName}
 # @author viticm<viticm.ti@gmail.com>
@@ -134,30 +162,31 @@ function main()
 include ${cInlude}
 
 CFLAGS =
-debug:LDFLAGS =
-release:LDFLAGS =
+debug:LDFLAGS = ${cLdFlags}
+release:LDFLAGS = ${cLdFlags}
 
-DIRS =
-DEBUG_DIRS = 
+DIRS = ${Arr_SonDir}
+DEBUG_DIRS = ${Arr_SonDir}
 
 OBJS =  `echo -e "${Arr_Objs}"`
+
 debug:\$(OBJS)
-<TAB>for dir in \$(DEBUG_DIRS); do \ 
-<TAB><TAB>\$(MAKE) debug -C <DD>dir; \  
+<TAB>for dir in \$(DEBUG_DIRS); do <SLASH>
+<TAB><TAB>\$(MAKE) debug -C <DD>dir; <SLASH>
 <TAB>done
-<TAB>\$(CPP) -o ./${cModleName} \$(OBJS) ${cSelfSonObjs} \$(LDFLAGS) \$(GLDFLAGS)
+<TAB>\$(CPP) -o ./${cModleName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
 
 release:\$(OBJS)
-<TAB>for dir in \$(DIRS); do \ 
-<TAB><TAB>\$(MAKE) debug -C <DD>dir; \  
+<TAB>for dir in \$(DIRS); do <SLASH>
+<TAB><TAB>\$(MAKE) release -C <DD>dir; <SLASH>
 <TAB>done
-<TAB>\$(CPP) -o ./${cModleName} \$(OBJS) ${cSelfSonObjs} \$(LDFLAGS) \$(GLDFLAGS)
+<TAB>\$(CPP) -o ./${cModleName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
 
 all:debug
 
 clean:
-<TAB>for dir in \$(DIRS); do \ 
-<TAB><TAB>\$(MAKE) clean -C <DD>dir; \ 
+<TAB>for dir in \$(DIRS); do <SLASH>
+<TAB><TAB>\$(MAKE) clean -C <DD>dir; <SLASH>
 <TAB>done
 <TAB>\$(RM) -f *.o ${cModleName}
 EOF
@@ -171,12 +200,19 @@ include ${cInlude}
 
 CFLAGS =
 LDFLAGS =
-DIRS =
+DIRS = ${Arr_SonDir}
 
 OBJS =  `echo -e "${Arr_Objs}"`
+
 debug:\$(OBJS)
+<TAB>for dir in \$(DIRS); do <SLASH>
+<TAB><TAB>\$(MAKE) debug -C <DD>dir; <SLASH>
+<TAB>done
 
 release:\$(OBJS)
+<TAB>for dir in \$(DIRS); do <SLASH>
+<TAB><TAB>\$(MAKE) release -C <DD>dir; <SLASH>
+<TAB>done
 
 all:debug
 
