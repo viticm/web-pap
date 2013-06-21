@@ -150,12 +150,9 @@ function main()
 # need build bin file
                 echo ${cModleName}
                 Arr_SonDirObjs=`getSonDirObjs ${dir}`
-                if [[ "Server" == ${cModleName} ]] ; then
-                    cLdFlags="\$(COMMON_LD)"
-                    cCFlags="\$(COMMON_INCLUDES)"
-                else
-                    cLdFlags="\$(COMMON_LD) \$(SERVER_BASE_LDS)"
-                    cCFlags="\$(COMMON_INCLUDES) \$(SERVER_BASE_INCLUDES)"
+                if [[ "Server" != ${cModleName} ]] ; then
+                    cLdFlags="\$(SERVER_BASE_LDS)"
+                    cCFlags="\$(SERVER_BASE_INCLUDES)"
                 fi
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModleName}
@@ -194,7 +191,7 @@ clean:
 EOF
             else
 # not need build bin file
-                cCFlags="\$(COMMON_INCLUDES) \$(SERVER_BASE_INCLUDES) -I\$(BASEDIR)/${cModleName}"
+                cCFlags="\$(SERVER_BASE_INCLUDES) -I\$(BASEDIR)/${cModleName}"
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModleName}
 # @author viticm<viticm.ti@gmail.com>
