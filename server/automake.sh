@@ -149,6 +149,8 @@ function main()
             then :
 # need build bin file
                 echo ${cModleName}
+                #bin dir not need objs
+                Arr_Objs=""
                 Arr_SonDirObjs=`getSonDirObjs ${dir}`
                 if [[ "Server" != ${cModleName} ]] ; then
                     cLdFlags="\$(SERVER_BASE_LDS)"

@@ -74,6 +74,7 @@ AR      = ar
 CC      = gcc
 CXX     = g++
 CPP     = g++
+RM      = rm
 
 %.o:%.c
 	$(CC) $(VFLAGS) $(GCFLAGS) $(CFLAGS) -c $< -o $@
