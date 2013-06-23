@@ -5,7 +5,7 @@ Arr_ModelName="Billing Server Login World ShareMemory Common"
 Arr_NotMakeFile="`pwd`"
 Arr_Dir=`find ${cBaseDir} -type d`
 cInludeFile=premake.mk
-
+iSystemBit=`getconf LONG_BIT`
 #@desc get include premake file by path
 #@param string cPath
 #@return string
@@ -133,6 +133,7 @@ function getObjs()
 #@return int
 function main()
 {
+    sed -i "s;-D_FILE_OFFSET_BITS=64;-D_FILE_OFFSET_BITS=${iSystemBit};g" ${cBaseDir}/${cInludeFile}
     for dir in ${Arr_Dir}
     do
         cInlude=`getIncludeFile ${dir} "${Arr_NotMakeFile}"`
@@ -195,7 +196,7 @@ EOF
 # not need build bin file
                 cCFlags="\$(SERVER_BASE_INCLUDES) -I\$(BASEDIR)/${cModleName}"
                 if [[ "Main" != ${cCurDir} ]] ; then
-                    cCFlags+=" -I\$(BASEDIR)/Main"
+                    cCFlags+=" -I\$(BASEDIR)/${cModleName}/Main"
                 fi
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModleName}
