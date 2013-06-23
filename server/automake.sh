@@ -194,6 +194,9 @@ EOF
             else
 # not need build bin file
                 cCFlags="\$(SERVER_BASE_INCLUDES) -I\$(BASEDIR)/${cModleName}"
+                if [[ "Main" != ${cCurDir} ]] ; then
+                    cCFlags+=" -I\$(BASEDIR)/Main"
+                fi
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModleName}
 # @author viticm<viticm.ti@gmail.com>
