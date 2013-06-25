@@ -6,6 +6,7 @@ COMMON_INCLUDES           = -I$(BASEDIR)/Common \
                             -I$(BASEDIR)/Common/Combat \
                             -I$(BASEDIR)/Common/DataBase \
                             -I$(BASEDIR)/Common/DBSystem \
+                            -I$(BASEDIR)/Common/DBSystem/DataBase \
                             -I$(BASEDIR)/Common/Net \
                             -I$(BASEDIR)/Common/Packets
 

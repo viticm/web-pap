@@ -232,7 +232,7 @@ include ${cInlude}
 
 CFLAGS  = ${cCFlags}
 LDFLAGS =
-DIRS = ${Arr_SonDir}
+DIRS =  ${Arr_SonDir}
 OBJS =  `echo -e "${Arr_Objs}"`
 
 debug:\$(OBJS)
