@@ -1,10 +1,15 @@
 
-BASEDIR=/home/dc/develop/pap/server
+BASEDIR = /home/dc/develop/pap/server
+UNIX_ODBC_INCLUDES = -I/usr/local/unixODBC/include
+
+release: VFLAGS = -O2 -Wall -DRELEASE -DNDEBUG -D_FILE_OFFSET_BITS=64
+debug:   VFLAGS = -g -Wall -DDEBUG -D_FILE_OFFSET_BITS=64
 
 COMMON_INCLUDES           = -I$(BASEDIR)/Common \
                             -I$(BASEDIR)/Common/Combat \
                             -I$(BASEDIR)/Common/DataBase \
                             -I$(BASEDIR)/Common/DBSystem \
+                            -I$(BASEDIR)/Common/DBSystem/DataBase \
                             -I$(BASEDIR)/Common/Net \
                             -I$(BASEDIR)/Common/Packets
 
@@ -53,10 +58,31 @@ WORLD_INCLUDES            = -I$(BASEDIR)/World \
                             -I$(BASEDIR)/World/Packets \
                             -I$(BASEDIR)/World/WorldData
 
+COMMON_LDS                = -L$(BASEDIR)/Common \
+                            -L$(BASEDIR)/Common/Combat \
+                            -L$(BASEDIR)/Common/DataBase \
+                            -L$(BASEDIR)/Common/DBSystem \
+                            -L$(BASEDIR)/Common/Net \
+                            -L$(BASEDIR)/Common/Packets
+
+SERVER_BASE_LDS           = -L$(BASEDIR)/Server/Base
+
+
+GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES)
+
+release:GLDFLAGS = $(COMMON_LDS)
+debug:GLDFLAGS = $(COMMON_LDS) 
 
 ARFLAGS = -sr
 AR      = ar
 CC      = gcc
 CXX     = g++
 CPP     = g++
+RM      = rm
+
+%.o:%.c
+	$(CC) $(VFLAGS) $(GCFLAGS) $(CFLAGS) -c $< -o $@
+
+%.o:%.cpp
+	$(CPP) $(VFLAGS) $(GCFLAGS) $(CFLAGS) -c $< -o $@
 

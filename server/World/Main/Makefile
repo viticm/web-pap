@@ -1,19 +1,17 @@
-# @desc makefile for Billing
+# @desc makefile for World
 # @author viticm<viticm.ti@gmail.com>
 # @date 2013-06-25 20:00:12
 include ../../premake.mk
 
-CFLAGS  = -I$(BASEDIR)/Billing/Main -I$(BASEDIR)/Billing/Packets -I$(BASEDIR)/Billing $(SERVER_BASE_INCLUDES)
+CFLAGS  = -I$(BASEDIR)/World/Main -I$(BASEDIR)/World/Packets -I$(BASEDIR)/World/WorldData -I$(BASEDIR)/World $(SERVER_BASE_INCLUDES) -I$(BASEDIR)/Server/SMU
 LDFLAGS =
 DIRS =  
 OBJS =  PlayerPool.o \
-		DBManager.o \
-		WebPlayer.o \
-		ODBCInterface.o \
+		WorldTable.o \
+		World.o \
 		PlayerManager.o \
-		Billing.o \
+		ShareMemManager.o \
 		ServerPlayer.o \
-		UserDBManager.o \
 		ServerManager.o \
 		Player.o
 

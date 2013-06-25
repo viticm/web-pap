@@ -6,16 +6,13 @@ include ../../premake.mk
 CFLAGS  = -I$(BASEDIR)/Billing/Main -I$(BASEDIR)/Billing/Packets -I$(BASEDIR)/Billing $(SERVER_BASE_INCLUDES)
 LDFLAGS =
 DIRS =  
-OBJS =  PlayerPool.o \
-		DBManager.o \
-		WebPlayer.o \
-		ODBCInterface.o \
-		PlayerManager.o \
-		Billing.o \
-		ServerPlayer.o \
-		UserDBManager.o \
-		ServerManager.o \
-		Player.o
+OBJS =  BLRetAuthHandler.o \
+		SSScenePlayerCountHandler.o \
+		BWConnectHandler.o \
+		BWValidateUserHandler.o \
+		SSConnectHandler.o \
+		LBAskAuthHandler.o \
+		WBRetValidateUserHandler.o
 
 debug:$(OBJS)
 	for dir in $(DIRS); do \
