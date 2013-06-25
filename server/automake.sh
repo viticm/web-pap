@@ -222,6 +222,9 @@ EOF
                 if [[  "Server" != ${cModelName} ]] ; then
                     cCFlags+=" \$(SERVER_BASE_INCLUDES)"
                 fi
+                if [[ "World" == ${cModelName} ]] ; then
+                    cCFlags+=" -I\$(BASEDIR)/Server/SMU"
+                fi
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModelName}
 # @author viticm<viticm.ti@gmail.com>
