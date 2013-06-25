@@ -143,7 +143,7 @@ function getIncludes()
     for dir in ${Arr_ModelSonDir}
     do
         if [[ ${cCurDirBaseName} != ${dir} ]] ; then
-            cIncludes+=" -I${cBaseDir}/${cModelName}/${dir}"
+            cIncludes+=" -I\$(BASEDIR)/${cModelName}/${dir}"
         fi
     done
     echo ${cIncludes}
@@ -230,10 +230,9 @@ EOF
 # @date `date +"%Y-%m-%d %H:%M:%S"`
 include ${cInlude}
 
-CFLAGS = ${cCFlags}
+CFLAGS  = ${cCFlags}
 LDFLAGS =
 DIRS = ${Arr_SonDir}
-
 OBJS =  `echo -e "${Arr_Objs}"`
 
 debug:\$(OBJS)
