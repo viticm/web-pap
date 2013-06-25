@@ -142,9 +142,7 @@ function getIncludes()
     local cIncludes=""
     for dir in ${Arr_ModelSonDir}
     do
-        if [[ ${cCurDirBaseName} != ${dir} ]] ; then
-            cIncludes+=" -I\$(BASEDIR)/${cModelName}/${dir}"
-        fi
+        cIncludes+=" -I\$(BASEDIR)/${cModelName}/${dir}"
     done
     echo ${cIncludes}
 }
