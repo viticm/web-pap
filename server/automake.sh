@@ -6,6 +6,7 @@ Arr_NotMakeFile="`pwd`"
 Arr_Dir=`find ${cBaseDir} -type d`
 cInludeFile=premake.mk
 iSystemBit=`getconf LONG_BIT`
+
 #@desc get include premake file by path
 #@param string cPath
 #@return string
@@ -128,6 +129,27 @@ function getObjs()
     echo ${Arr_Objs}
 }
 
+#@desc get self includes from dir
+#@param string cModelName
+#@param string cCurDirBaseName
+#@param string Arr_ModelSonDir
+#@return void
+function getIncludes()
+{
+    local cModelName=${1}
+    local cCurDirBaseName=${2}
+    local Arr_ModelSonDir=${3}
+    local cIncludes=""
+    for dir in ${Arr_ModelSonDir}
+    do
+        if [[ ${cCurDirBaseName} != ${dir} ]] ; then
+            cIncludes+=" -I${cBaseDir}/${cModelName}/${dir}"
+        fi
+    done
+    echo ${cIncludes}
+}
+
+
 #@desc main function
 #@param void
 #@return int
@@ -138,9 +160,13 @@ function main()
     do
         cInlude=`getIncludeFile ${dir} "${Arr_NotMakeFile}"`
         cCurDir=`basename ${dir}`
-        cModleName=`getModelName ${dir} "${Arr_ModelName}"`
+        cModelName=`getModelName ${dir} "${Arr_ModelName}"`
         Arr_Objs=`getObjs ${dir}`
         Arr_SonDir=`getSonDirs ${dir} 1`
+        Arr_ModelSonDir=`getSonDirs ${cBaseDir}/${cModelName}`
+        cCFlags=""
+        cLdFlags=""
+        cCFlags=`getIncludes ${cModelName} ${cCurDir} "${Arr_ModelSonDir}"`
         if inArray ${dir} "${Arr_NotMakeFile}"
         then :
             echo ${dir} not in make
@@ -149,16 +175,16 @@ function main()
             if inArray ${cCurDir} "${Arr_BinDir}"
             then :
 # need build bin file
-                echo ${cModleName}
+                echo ${cModelName}
                 #bin dir not need objs
                 Arr_Objs=""
                 Arr_SonDirObjs=`getSonDirObjs ${dir}`
-                if [[ "Server" != ${cModleName} ]] ; then
-                    cLdFlags="\$(SERVER_BASE_LDS)"
-                    cCFlags="\$(SERVER_BASE_INCLUDES)"
+                if [[ "Server" != ${cModelName} ]] ; then
+                    cLdFlags+=" \$(SERVER_BASE_LDS)"
+                    cCFlags+=" \$(SERVER_BASE_INCLUDES)"
                 fi
                 cat > ${dir}/Makefile <<EOF
-# @desc makefile for ${cModleName}
+# @desc makefile for ${cModelName}
 # @author viticm<viticm.ti@gmail.com>
 # @date `date +"%Y-%m-%d %H:%M:%S"`
 include ${cInlude}
@@ -176,13 +202,13 @@ debug:\$(OBJS)
 <TAB>for dir in \$(DEBUG_DIRS); do <SLASH>
 <TAB><TAB>\$(MAKE) debug -C <DD>dir; <SLASH>
 <TAB>done
-<TAB>\$(CPP) -o ./${cModleName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
+<TAB>\$(CPP) -o ./${cModelName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
 
 release:\$(OBJS)
 <TAB>for dir in \$(DIRS); do <SLASH>
 <TAB><TAB>\$(MAKE) release -C <DD>dir; <SLASH>
 <TAB>done
-<TAB>\$(CPP) -o ./${cModleName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
+<TAB>\$(CPP) -o ./${cModelName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
 
 all:debug
 
@@ -190,16 +216,16 @@ clean:
 <TAB>for dir in \$(DIRS); do <SLASH>
 <TAB><TAB>\$(MAKE) clean -C <DD>dir; <SLASH>
 <TAB>done
-<TAB>\$(RM) -f *.o ${cModleName}
+<TAB>\$(RM) -f *.o ${cModelName}
 EOF
             else
 # not need build bin file
-                cCFlags="\$(SERVER_BASE_INCLUDES) -I\$(BASEDIR)/${cModleName}"
-                if [[ "Main" != ${cCurDir} ]] ; then
-                    cCFlags+=" -I\$(BASEDIR)/${cModleName}/Main"
+                cCFlags+=" -I\$(BASEDIR)/${cModelName}"
+                if [[  "Server" != ${cModelName} ]] ; then
+                    cCFlags+=" \$(SERVER_BASE_INCLUDES)"
                 fi
                 cat > ${dir}/Makefile <<EOF
-# @desc makefile for ${cModleName}
+# @desc makefile for ${cModelName}
 # @author viticm<viticm.ti@gmail.com>
 # @date `date +"%Y-%m-%d %H:%M:%S"`
 include ${cInlude}
