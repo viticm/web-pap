@@ -4,7 +4,7 @@
 #include "Packet.h"
 #include "GuildManager.h"
 #include "OnlineUser.h"
-#include "config.h"
+#include "Config.h"
 #include "TimeManager.h"
 #include "ServerPlayer.h"
 #include "ServerManager.h"
