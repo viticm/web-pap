@@ -1,3 +1,3 @@
 #include "stdafx.h"
 
-#include "smconfig.h"
+#include "SMConfig.h"
