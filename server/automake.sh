@@ -39,7 +39,8 @@ function arrayPos()
         if [[ ${mNeedle} == ${val} ]] ; then
             break
         fi
-        iIndex+=1
+        echo ${val}
+        ((iIndex+=1))
     done
     echo ${iIndex}
 }
@@ -55,19 +56,20 @@ function getIncludeNeedCompileObjsByModelIndex()
     local Arr_IncludeFile=${Arr_ModelIncludeNeedCompile[${iModelIndex}]}
     for file in ${Arr_IncludeFile}
     do
-        local cFileName=`echo ${file} | awk -F / '{print $NF}'`
-        local cDirName=`echo ${file} | sed "s;${cFileName};;g"`
-        local Arr_SourceFile=`find ${cBaseDir}/${cDirName} -maxdepth 1 -type f -name ${cFileName}`
-        for sourceFile in ${Arr_SourceFile}
-        do
-            local cObjName=`${sourceFile} | sed 's;\.cpp;\.o;g' | sed 's;\.c;\.o;g'`
-            if [[ "" == ${Arr_Objs} ]] ; then
-                Arr_Objs+=${cObjName}
-            else
-                Arr_Objs+=" <SLASH>\n<TAB><TAB>"${cObjName}
-            fi
-        done
+#        local cFileName=`echo ${file} | awk -F / '{print $NF}'`
+#        local cDirName=`echo ${file} | sed "s;${cFileName};;g"`
+#        local Arr_SourceFile=`find ${cBaseDir}/${cDirName} -maxdepth 1 -type f -name ${cFileName}`
+#        for sourceFile in ${Arr_SourceFile}
+#        do
+        local cObjName=`echo ${file} | sed 's;\.cpp;\.o;g' | sed 's;\.c;\.o;g'`
+        if [[ "" == ${Arr_Objs} ]] ; then
+            Arr_Objs+="\$(BASEDIR)/${cObjName}"
+        else
+            Arr_Objs+=" <SLASH>\n<TAB><TAB>\$(BASEDIR)/${cObjName}"
+        fi
+#        done
     done
+    echo ${Arr_Objs}
 }
 
 #@desc check string is in array
@@ -213,6 +215,11 @@ function main()
         cCFlags=""
         cLdFlags=""
         cCFlags=`getIncludes ${cModelName} ${cCurDir} "${Arr_ModelSonDir}"`
+        cCFlags+=" -I\$(BASEDIR)/${cModelName}"
+        if [[  "Server" != ${cModelName} ]] ; then
+            cCFlags+=" \$(SERVER_BASE_INCLUDES)"
+        fi
+
         if inArray ${dir} "${Arr_NotMakeFile}"
         then :
             echo ${dir} not in make
@@ -224,7 +231,14 @@ function main()
                 echo ${cModelName}
                 #bin dir not need objs
                 Arr_Objs=""
+                Arr_IncludeObjs=""
+                iModelIndex=`arrayPos "${Arr_ModelName}" ${cModelName}`
+                Arr_IncludeObjs=`getIncludeNeedCompileObjsByModelIndex ${iModelIndex} "${Arr_ModelIncludeNeedCompile}"`
+                Arr_Objs+=${Arr_IncludeObjs}
                 Arr_SonDirObjs=`getSonDirObjs ${dir}`
+                if [[  "Server" != ${cModelName} ]] ; then
+                    cCFlags+=" \$(SERVER_BASE_INCLUDES)"
+                fi
                 if [[ "Server" != ${cModelName} ]] ; then
                     cLdFlags+=" \$(SERVER_BASE_LDS)"
                     cCFlags+=" \$(SERVER_BASE_INCLUDES)"
@@ -266,10 +280,6 @@ clean:
 EOF
             else
 # not need build bin file
-                cCFlags+=" -I\$(BASEDIR)/${cModelName}"
-                if [[  "Server" != ${cModelName} ]] ; then
-                    cCFlags+=" \$(SERVER_BASE_INCLUDES)"
-                fi
                 if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/SMU"
                 fi
