@@ -2,6 +2,9 @@
 cBaseDir=`pwd` # default use cur dir, you can define it
 Arr_BinDir="Billing Server Login World ShareMemory"
 Arr_ModelName="Billing Server Login World ShareMemory Common"
+Arr_ModelIncludeNeedCompile=(
+    "Common/Assertx.cpp Common/Net/*.cpp"
+)
 Arr_NotMakeFile="`pwd`"
 Arr_Dir=`find ${cBaseDir} -type d`
 cInludeFile=premake.mk
@@ -15,11 +18,56 @@ function getIncludeFile()
     local cPath=${1}
     local iDepth=`echo ${cPath} | sed "s;${cBaseDir};;g" | awk -F '/' '{print NF}'`
     local cInludePath=""
-    for (( i=1;i<iDepth;i++ ))
+    for (( i=1;i<${iDepth};i++ ))
     do
         cInludePath+="../"
     done
     echo ${cInludePath}${cInludeFile}
+}
+
+#@desc get first position form array by val
+#@param array Arr_Haystack
+#@param mixed mNeedle
+#@return void
+function arrayPos()
+{
+    local Arr_Haystack=${1}
+    local mNeedle=${2}
+    local iIndex=0
+    for val in ${Arr_Haystack}
+    do
+        if [[ ${mNeedle} == ${val} ]] ; then
+            break
+        fi
+        iIndex+=1
+    done
+    echo ${iIndex}
+}
+#@desc get include need compile objs by modele index
+#@param int iModelIndex
+#@param array Arr_ModelIncludeNeedCompile
+#@return void
+function getIncludeNeedCompileObjsByModelIndex()
+{
+    local iModelIndex=${1}
+    local Arr_ModelIncludeNeedCompile=${2}
+    local Arr_Objs=""
+    local Arr_IncludeFile=${Arr_ModelIncludeNeedCompile[${iModelIndex}]}
+    for file in ${Arr_IncludeFile}
+    do
+        local cFileName=`echo ${file} | awk -F / '{print $NF}'`
+        local cDirName=`echo ${file} | sed "s;${cFileName};;g"`
+        local Arr_SourceFile=`find ${cBaseDir}/${cDirName} -maxdepth 1 -type f -name ${cFileName}`
+        for sourceFile in ${Arr_SourceFile}
+        do
+            local cObjName=`${sourceFile} | sed 's;\.cpp;\.o;g' | sed 's;\.c;\.o;g'`
+            if [[ "" == ${Arr_Objs} ]] ; then
+                Arr_Objs+=${cObjName}
+            else
+                Arr_Objs+=" <SLASH>\n<TAB><TAB>"${cObjName}
+            fi
+        done
+    done
 }
 
 #@desc check string is in array
@@ -222,8 +270,11 @@ EOF
                 if [[  "Server" != ${cModelName} ]] ; then
                     cCFlags+=" \$(SERVER_BASE_INCLUDES)"
                 fi
-                if [[ "World" == ${cModelName} ]] ; then
+                if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/SMU"
+                fi
+                if [[ "ShareMemory" == ${cModelName} ]] ; then
+                    cCFlags+=" -I\$(BASEDIR)/Server/Other"
                 fi
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModelName}
