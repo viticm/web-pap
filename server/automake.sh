@@ -39,7 +39,6 @@ function arrayPos()
         if [[ ${mNeedle} == ${val} ]] ; then
             break
         fi
-        echo ${val}
         ((iIndex+=1))
     done
     echo ${iIndex}
