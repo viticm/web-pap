@@ -64,6 +64,7 @@ COMMON_LDS                = -L$(BASEDIR)/Common \
 
 SERVER_BASE_LDS           = -L$(BASEDIR)/Server/Base
 
+OTHER_LDB                 = -lpthread
 
 GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES)
 

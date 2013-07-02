@@ -3,11 +3,13 @@ cBaseDir=`pwd` # default use cur dir, you can define it
 Arr_BinDir="Billing Server Login World ShareMemory"
 Arr_ModelName="Billing Server Login World ShareMemory Common"
 Arr_ModelIncludeNeedCompile=(
-    "Common/Assertx.cpp Common/Net/*.cpp"
+    "Common/Assertx.cpp Common/Net/*.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
+    Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Common/GameUtil.cpp 
+    "
 )
 Arr_NotMakeFile="`pwd`"
 Arr_Dir=`find ${cBaseDir} -type d`
-cInludeFile=premake.mk
+cInludeFile=premake
 iSystemBit=`getconf LONG_BIT`
 
 #@desc get include premake file by path
@@ -22,7 +24,7 @@ function getIncludeFile()
     do
         cInludePath+="../"
     done
-    echo ${cInludePath}${cInludeFile}
+    echo ${cInludePath}${cInludeFile}.mk
 }
 
 #@desc get first position form array by val
@@ -275,7 +277,7 @@ clean:
 <TAB>for dir in \$(DIRS); do <SLASH>
 <TAB><TAB>\$(MAKE) clean -C <DD>dir; <SLASH>
 <TAB>done
-<TAB>\$(RM) -f *.o ${cModelName}
+<TAB>\$(RM) -f \$(OBJS) ${cModelName} 
 EOF
             else
 # not need build bin file
