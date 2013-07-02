@@ -4,7 +4,8 @@ Arr_BinDir="Billing Server Login World ShareMemory"
 Arr_ModelName="Billing Server Login World ShareMemory Common"
 Arr_ModelIncludeNeedCompile=(
     "Common/Assertx.cpp Common/Net/*.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
-    Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Common/GameUtil.cpp 
+    Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Common/GameUtil.cpp Common/PacketFactoryManager.cpp 
+    Common/Packets/LBAskAuth.cpp Common/Packets/BWConnect.cpp Common/Packets/BLRetAuth.cpp
     "
 )
 Arr_NotMakeFile="`pwd`"
