@@ -64,12 +64,12 @@ COMMON_LDS                = -L$(BASEDIR)/Common \
 
 SERVER_BASE_LDS           = -L$(BASEDIR)/Server/Base
 
-OTHER_LDS                 = -lpthread
+OTHER_LDS                 = -lpthread -L$(UNIX_ODBC_LIBS)
 
-GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES) $(OTHER_LDS)
+GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES) 
 
-release:GLDFLAGS = $(COMMON_LDS)
-debug:GLDFLAGS = $(COMMON_LDS) 
+release:GLDFLAGS = $(COMMON_LDS) $(OTHER_LDS)
+debug:GLDFLAGS = $(COMMON_LDS) $(OTHER_LDS)
 
 ARFLAGS = -sr
 AR      = ar
