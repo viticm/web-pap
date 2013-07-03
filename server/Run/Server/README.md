@@ -1,4 +1,6 @@
 Notice:
 =======
-Please run this bin file need use cur dir libs then: export LD_LIBRARY_PATH=`pwd`
---------------------------------------------------------------------------------
+```shell
+Please run this bin file need use current dir libs then do this cmd:
+    export LD_LIBRARY_PATH=`pwd`
+```
