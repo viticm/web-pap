@@ -11,7 +11,9 @@
 #include "PlayerShopDefine.h"
 
 #if __LINUX__
+#include <stdlib.h>
 #include <sys/types.h> 
+#include <signal.h> 
 #include <sys/ipc.h> 
 #include <sys/shm.h> 
 #include <errno.h>
