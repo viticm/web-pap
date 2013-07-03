@@ -1,0 +1,4 @@
+Notice:
+=======
+Please run this bin file need use cur dir libs then: export LD_LIBRARY_PATH=`pwd`
+--------------------------------------------------------------------------------
