@@ -954,7 +954,7 @@ struct USER_SIMPLE_DATA
 
 struct DB_QUERY
 {
-    UCHAR    m_SqlStr[MAX_SQL_LENGTH];        //执行的Sql语句
+    CHAR    m_SqlStr[MAX_SQL_LENGTH];        //执行的Sql语句 change UCHAR TO CHAR based on mysql5.6 viticm
     
     VOID    Clear()
     {

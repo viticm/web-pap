@@ -3,7 +3,7 @@
 #include "DBInterface.h"
 #include "Type.h"
 #include "TimeManager.h"
-#include "log.h"
+#include "Log.h"
 
 #ifdef USE_MYSQL
     #include "mysql.h"
