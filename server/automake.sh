@@ -10,8 +10,7 @@ Arr_ModelIncludeNeedCompile=(
     ""
     ""
     ""
-    "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
-    Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp
+    "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
     Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp
     " #ShareMemory
