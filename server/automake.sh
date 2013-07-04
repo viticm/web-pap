@@ -6,7 +6,15 @@ Arr_ModelIncludeNeedCompile=(
     "Common/Assertx.cpp Common/Net/*.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Common/GameUtil.cpp Common/PacketFactoryManager.cpp 
     Common/Packets/LBAskAuth.cpp Common/Packets/BWConnect.cpp Common/Packets/BLRetAuth.cpp
-    "
+    " #Billing
+    ""
+    ""
+    ""
+    "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
+    Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*
+    Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
+    Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp
+    " #ShareMemory
 )
 Arr_NotMakeFile="`pwd`"
 Arr_Dir=`find ${cBaseDir} -type d`
@@ -47,15 +55,14 @@ function arrayPos()
     echo ${iIndex}
 }
 #@desc get include need compile objs by modele index
-#@param int iModelIndex
-#@param array Arr_ModelIncludeNeedCompile
+#@param array Arr_IncludeFile
 #@return void
-function getIncludeNeedCompileObjsByModelIndex()
+function getIncludeNeedCompileObjs()
 {
-    local iModelIndex=${1}
-    local Arr_ModelIncludeNeedCompile=${2}
+#    local iModelIndex=${1}
+#    local Arr_ModelIncludeNeedCompile=${2}
     local Arr_Objs=""
-    local Arr_IncludeFile=${Arr_ModelIncludeNeedCompile[${iModelIndex}]}
+    local Arr_IncludeFile=${1}  #${Arr_ModelIncludeNeedCompile[${iModelIndex}]}
     for file in ${Arr_IncludeFile}
     do
 #        local cFileName=`echo ${file} | awk -F / '{print $NF}'`
@@ -235,7 +242,7 @@ function main()
                 Arr_Objs=""
                 Arr_IncludeObjs=""
                 iModelIndex=`arrayPos "${Arr_ModelName}" ${cModelName}`
-                Arr_IncludeObjs=`getIncludeNeedCompileObjsByModelIndex ${iModelIndex} "${Arr_ModelIncludeNeedCompile}"`
+                Arr_IncludeObjs=`getIncludeNeedCompileObjs "${Arr_ModelIncludeNeedCompile[${iModelIndex}]}"`
                 Arr_Objs+=${Arr_IncludeObjs}
                 Arr_SonDirObjs=`getSonDirObjs ${dir}`
                 if [[  "Server" != ${cModelName} ]] ; then
@@ -245,6 +252,14 @@ function main()
                     cLdFlags+=" \$(SERVER_BASE_LDS)"
                     cCFlags+=" \$(SERVER_BASE_INCLUDES)"
                 fi
+                
+                if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} ]] ; then
+                    cCFlags+=" -I\$(BASEDIR)/Server/SMU"
+                fi
+                if [[ "ShareMemory" == ${cModelName} ]] ; then
+                    cCFlags+=" -I\$(BASEDIR)/Server/Other"
+                fi
+
                 cat > ${dir}/Makefile <<EOF
 # @desc makefile for ${cModelName}
 # @author viticm<viticm.ti@gmail.com>
