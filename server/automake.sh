@@ -11,6 +11,7 @@ Arr_ModelIncludeNeedCompile=(
     ""
     ""
     "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
+    Common/GameStruct.cpp Common/DB_Struct.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
     Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp
     " #ShareMemory
@@ -244,9 +245,7 @@ function main()
                 Arr_IncludeObjs=`getIncludeNeedCompileObjs "${Arr_ModelIncludeNeedCompile[${iModelIndex}]}"`
                 Arr_Objs+=${Arr_IncludeObjs}
                 Arr_SonDirObjs=`getSonDirObjs ${dir}`
-                if [[  "Server" != ${cModelName} ]] ; then
-                    cCFlags+=" \$(SERVER_BASE_INCLUDES)"
-                fi
+
                 if [[ "Server" != ${cModelName} ]] ; then
                     cLdFlags+=" \$(SERVER_BASE_LDS)"
                     cCFlags+=" \$(SERVER_BASE_INCLUDES)"
@@ -254,7 +253,8 @@ function main()
                 
                 if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/SMU"
-                    cCFlags+=" \$(MYSQL_INCLUDES) "
+                    cCFlags+=" \$(MYSQL_INCLUDES)"
+                    cLdFlags+=" -lmysqlclient"
                 fi
                 if [[ "ShareMemory" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/Other"
