@@ -254,7 +254,7 @@ function main()
                 if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/SMU"
                     cCFlags+=" \$(MYSQL_INCLUDES)"
-                    cLdFlags+=" -lmysqlclient"
+                    cLdFlags+=" \$(MYSQL_CLIENT_LDS)"
                 fi
                 if [[ "ShareMemory" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/Other"

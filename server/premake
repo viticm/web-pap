@@ -1,6 +1,6 @@
 
-release: VFLAGS = -O2 -Wall -DRELEASE -DNDEBUG -D_FILE_OFFSET_BITS=64
-debug:   VFLAGS = -g -Wall -DDEBUG -D_FILE_OFFSET_BITS=64
+release: VFLAGS = -O2 -Wall -DRELEASE -DNDEBUG -D_FILE_OFFSET_BITS=32
+debug:   VFLAGS = -g -Wall -DDEBUG -D_FILE_OFFSET_BITS=32
 
 COMMON_INCLUDES           = -I$(BASEDIR)/Common \
                             -I$(BASEDIR)/Common/Combat \
@@ -65,6 +65,8 @@ COMMON_LDS                = -L$(BASEDIR)/Common \
 SERVER_BASE_LDS           = -L$(BASEDIR)/Server/Base
 
 OTHER_LDS                 = -lpthread -lodbc
+
+MYSQL_CLIENT_LDS          = $(MSYQL_CLIENT_LIBS) -lmysqlclient
 
 GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES) 
 
