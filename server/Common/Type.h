@@ -167,6 +167,18 @@ typedef        VOID*    DBHandle;
 #else    //linux
     #define __ENTER_FUNCTION {try{
     #define __LEAVE_FUNCTION }catch(...){AssertSpecial(FALSE,__PRETTY_FUNCTION__);}}
+    // add by viticm, fast output some debug info 
+    #define LERR(...) \
+            { \
+                CHAR  cBuffer[ 2048 ]; sprintf( cBuffer, __VA_ARGS__ ); \
+                const CHAR * cStart  = "\e[0;31;1m"; \
+                const CHAR * cEnd    = "\e[0m\n"; \
+                size_t iFormatLength = sizeof( cStart ) + sizeof( cBuffer ) + sizeof( cEnd ); \
+                CHAR * cFormatStr    = new CHAR[ iFormatLength + 1  ]; \
+                strcpy( cFormatStr, cStart ); strcat( cFormatStr, cBuffer ); strcat( cFormatStr, cEnd ); \
+                printf( cFormatStr ); \
+                delete[] cFormatStr; \
+            } 
 #endif 
 #endif
 
