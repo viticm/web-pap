@@ -1,24 +1,21 @@
-Install server engine
-=====================
+# Install server engine
 
 1.  First install unix odbc
     ```shell
-      wget -c ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.1.tar.gz.
-
-      use: ./configure --prefix=/usr/local/unixODBC --sysconfdir=/etc; make; make install.
+      wget -c ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.1.tar.gz
+      tar -xzvf unixODBC-2.3.1.tar.gz
+      cd unixODBC-2.3.1;./configure --prefix=/usr/local/unixODBC --sysconfdir=/etc; make; make install
+      cp /usr/local/unixODBC/lib/libodbc* /lib/ # if your system is 64bit then copy to /lib64/
     ```
-2. Install mysql odbc Driver
+2.  Install mysql odbc Driver
     ```shell
-      You can enter internet page: ```html http://dev.mysql.com/downloads/mirror.php?id=412796 ```
-
-      Downown a mysql-connector-odbc, and get the lib to your system .
-
-      You can copy it to a file, example: /usr/local/mysql-connector-odbc/libmyodbc5a.so .
-
-      Then you need set /etc/odbc.ini param:  Driver = /usr/local/mysql-connector-odbc/libmyodbc5a.so .
-
-      Because this lib based on odbc 1.0, so you can copy the new libodbc.so.2 and libodbcinst.so.2 
-    convert to /lib64/libodbc.so.1 /lib64/libodbcinst.so.1,
-    
-      if your system bit is 32 then copy to /lib/libodbc.so.1 /lib/libodbcinst.so.1 .
+      wget -c http://cdn.mysql.com/Downloads/Connector-ODBC/5.2/mysql-connector-odbc-5.2.5-ansi-linux-glibc2.5-x86-32bit.tar.gz
+      # if your system is 64bit then: 
+      # wget -c http://cdn.mysql.com/Downloads/Connector-ODBC/5.2/mysql-connector-odbc-5.2.5-ansi-linux-glibc2.5-x86-64bit.tar.gz
+      tar -xzvf mysql-connector-odbc-5.2.5-ansi-linux-glibc2.5-x86-32bit.tar.gz
+      cd mysql-connector-odbc-5.2.5-ansi-linux-glibc2.5-x86-32bit
+      mkdir -p /usr/local/mysql-connector-odbc; cp cp lib/libmyodbc5a.so /usr/local/mysql-connector-odbc
+      cp /usr/local/unixODBC/lib/libodbcinst.so.2 /lib/libodbcinst.so.1 # or /lib64/libodbcinst.so.1
+      cp /usr/local/unixODBC/lib/libodbc.so.2 /lib/libodbc.so.1 # or /lib64/libodbc.so.1
     ```
+    
