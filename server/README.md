@@ -3,6 +3,7 @@
 1.  First install unix odbc
     ```shell
       wget -c ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.1.tar.gz
+
       tar -xzvf unixODBC-2.3.1.tar.gz
       cd unixODBC-2.3.1;./configure --prefix=/usr/local/unixODBC --sysconfdir=/etc; make; make install
       cp /usr/local/unixODBC/lib/libodbc* /lib/ # if your system is 64bit then copy to /lib64/
