@@ -7,3 +7,10 @@ Install server engine
 
     use: ./configure --prefix=/usr/local/unixODBC --sysconfdir=/etc; make; make install
     ```
+2. Install mysql odbc Driver
+    ```shell
+    You can enter internet page: http://dev.mysql.com/downloads/mirror.php?id=412796
+    Downown a mysql-connector-odbc, and get the lib to your system
+    You can copy it to a file, example: /usr/local/mysql-connector-odbc/libmyodbc5a.so
+    Then you need set /etc/odbc.ini param:  Driver          = /usr/local/mysql-connector-odbc/libmyodbc5a.so
+    ```
