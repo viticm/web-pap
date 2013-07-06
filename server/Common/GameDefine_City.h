@@ -9,10 +9,10 @@
 #define __GAMEDEFINE_CITY_H__
 
 
-#define    MAX_CITY_PER_WORLD    255
+#define MAX_CITY_PER_WORLD   255
 #define MAX_CITY_PORT        12
-#define MAX_CITY_BUILDING    2048
-#define MAX_CITY_PORT_GROUP    54
+#define MAX_CITY_BUILDING    4096
+#define MAX_CITY_PORT_GROUP  54
 
 #define    MAX_CITY_PORT_NUM        1024
 
