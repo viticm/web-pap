@@ -196,7 +196,7 @@ VOID Config::LoadLoginInfo_Only( )
 
     Ini ini( FILE_LOGIN_INFO ) ;
 
-    m_LoginInfo.m_LoginID = (ID_t)(ini.ReadInt( "System", "LoginId" )) ;
+    m_LoginInfo.m_LoginID = (ID_t)(ini.ReadInt( "System", "LoginID" )) ;
 
     ini.ReadText( "System", "DBIP", m_LoginInfo.m_DBIP, IP_SIZE ) ;
     m_LoginInfo.m_DBPort    =    (UINT)(ini.ReadInt("System","DBPort"));
@@ -235,7 +235,7 @@ VOID Config::LoadWorldInfo_Only( )
 __ENTER_FUNCTION
 
     Ini ini( FILE_WORLD_INFO ) ;
-    m_WorldInfo.m_WorldID    =        (ID_t)(ini.ReadInt( "System", "WorldId" )) ;
+    m_WorldInfo.m_WorldID    =        (ID_t)(ini.ReadInt( "System", "WorldID" )) ;
     m_WorldInfo.m_GuildKey    =        (SM_KEY)ini.ReadInt( "System","GuildSMKey");
     m_WorldInfo.m_MailKey    =        (SM_KEY)ini.ReadInt("System","MailSMKey");
     m_WorldInfo.m_EnableShareMem    = (BOOL)ini.ReadInt("System","EnableShareMem");
@@ -379,7 +379,7 @@ __ENTER_FUNCTION
 
         //读取场景“i”
         sprintf( szSection, "Machine%d", i ) ;
-        m_MachineInfo.m_pMachine[i].m_MachineID = (ID_t)(ini.ReadInt( szSection, "MachineId" )) ;
+        m_MachineInfo.m_pMachine[i].m_MachineID = (ID_t)(ini.ReadInt( szSection, "MachineID" )) ;
     }
 
     Log::SaveLog( CONFIG_LOGFILE, "Load MachineInfo.ini ...Only OK! " ) ;
@@ -424,8 +424,8 @@ __ENTER_FUNCTION
 
         //读取场景“i”
         sprintf( szSection, "Server%d", i ) ;
-        m_ServerInfo.m_pServer[i].m_ServerID = (ID_t)(ini.ReadInt( szSection, "ServerId" )) ;
-        m_ServerInfo.m_pServer[i].m_MachineID = (ID_t)(ini.ReadInt( szSection, "MachineId" )) ;
+        m_ServerInfo.m_pServer[i].m_ServerID = (ID_t)(ini.ReadInt( szSection, "ServerID" )) ;
+        m_ServerInfo.m_pServer[i].m_MachineID = (ID_t)(ini.ReadInt( szSection, "MachineID" )) ;
         ini.ReadText( szSection, "IP0", m_ServerInfo.m_pServer[i].m_IP0, IP_SIZE ) ;
         m_ServerInfo.m_pServer[i].m_Port0 = (UINT)(ini.ReadInt( szSection, "Port0" )) ;
         ini.ReadText( szSection, "IP1", m_ServerInfo.m_pServer[i].m_IP1, IP_SIZE ) ;
@@ -502,7 +502,7 @@ __ENTER_FUNCTION
         m_SceneInfo.m_pScene[i].m_IsActive = ini.ReadInt( szSection, "active" ) ;
         ini.ReadText( szSection, "name", m_SceneInfo.m_pScene[i].m_szName, _MAX_PATH ) ;
         ini.ReadText( szSection, "file", m_SceneInfo.m_pScene[i].m_szFileName, _MAX_PATH ) ;
-        m_SceneInfo.m_pScene[i].m_ServerID = (ID_t)(ini.ReadInt( szSection, "serverId" )) ;
+        m_SceneInfo.m_pScene[i].m_ServerID = (ID_t)(ini.ReadInt( szSection, "serverid" )) ;
         m_SceneInfo.m_pScene[i].m_Type = (ID_t)(ini.ReadInt( szSection, "type" )) ;
         m_SceneInfo.m_pScene[i].m_ThreadIndex = (ID_t)(ini.ReadInt( szSection, "threadindex" )) ;
     }
