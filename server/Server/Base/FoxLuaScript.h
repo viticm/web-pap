@@ -7,13 +7,14 @@
 //---------------------------------------------------------------------------
 #include "FoxScript.h"
 #include <stdio.h>
-#include <direct.h>
 
 #ifndef __linux
     #include "Lua.h"
+    #include <dirent.h>
 #else
     #include "Lua.h"
     #include <string.h>
+    #include <direct.h>
 #endif
 
 
