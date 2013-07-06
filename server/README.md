@@ -19,4 +19,8 @@
       cp /usr/local/unixODBC/lib/libodbcinst.so.2 /lib/libodbcinst.so.1 # or /lib64/libodbcinst.so.1
       cp /usr/local/unixODBC/lib/libodbc.so.2 /lib/libodbc.so.1 # or /lib64/libodbc.so.1
     ```
-    
+3.  Install Lua
+    ```shell
+    wget -c http://www.lua.org/ftp/lua-5.2.2.tar.gz
+    tar -xzvf lua-5.2.2.tar.gz;make;make install
+    ```
