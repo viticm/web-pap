@@ -38,11 +38,11 @@ public:
     CHAR    mUserName[DB_USE_STR_LEN];
     CHAR    mPassWord[DB_PASSWORD_STR_LEN];
 
-    SQLINTEGER    mAffectCount;                        // 影响行数
+    SQLLEN      mAffectCount;                        // 影响行数
     SQLHSTMT    hStmt;                                // 状态句柄
     SQLSMALLINT mColCount;                            // Column 数量
-    SQLCHAR        ColName[MAXCOL][MAX_COLUMN_NAME];    // Column 名称
-    SQLINTEGER  mCollocate[MAXCOL];                    // Col    位置
+    SQLCHAR     ColName[MAXCOL][MAX_COLUMN_NAME];    // Column 名称
+    SQLLEN      mCollocate[MAXCOL];                    // Col    位置
 
     DB_QUERY        m_Query;                            //查询结构体
     LONG_DB_QUERY    m_LongQuery;                        //大结构体
