@@ -8,7 +8,13 @@ Arr_ModelIncludeNeedCompile=(
     Common/Packets/LBAskAuth.cpp Common/Packets/BWConnect.cpp Common/Packets/BLRetAuth.cpp
     " #Billing
     ""
-    ""
+    "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
+    Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/Packets/LW*.cpp
+    Common/DataBase/*.cpp Common/Packets/BLRetAuth.cpp Common/Packets/CL*.cpp Common/Packets/WL*.cpp
+    Common/Packets/LC*.cpp Common/Packets/LB*.cpp Common/Packets/SSConnect.cpp
+    Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
+    Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp 
+    " #Login
     ""
     "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
     Common/GameStruct.cpp Common/DB_Struct.cpp
@@ -251,7 +257,7 @@ function main()
                     cCFlags+=" \$(SERVER_BASE_INCLUDES)"
                 fi
                 
-                if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} ]] ; then
+                if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} || "Login" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/SMU"
                     cCFlags+=" \$(MYSQL_INCLUDES)"
                     cLdFlags+=" \$(MYSQL_CLIENT_LDS)"
