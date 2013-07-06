@@ -44,7 +44,7 @@ BOOL ODBCInterface::Connect(const CHAR *ConnectStr,
 
     SQLAllocHandle(SQL_HANDLE_ENV,SQL_NULL_HANDLE,&hEnv);
     SQLSetEnvAttr(hEnv,SQL_ATTR_ODBC_VERSION,(SQLPOINTER)SQL_OV_ODBC3,SQL_IS_INTEGER);
-    SQLAllocHandle(SQL_HANDLE_DBC,hEnv,&hDbc);
+    mResult=SQLAllocHandle(SQL_HANDLE_DBC,hEnv,&hDbc);
     mResult=SQLConnect(hDbc,(SQLCHAR *)mConnectStr,SQL_NTS,(SQLCHAR *)mUserName,SQL_NTS,
         (SQLCHAR *)mPassWord,SQL_NTS);
 
