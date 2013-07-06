@@ -8,7 +8,7 @@
 #include "FoxScript.h"
 #include <stdio.h>
 
-#ifndef __LINUX__
+#ifdef __LINUX__
     #include "Lua.h"
     #include <dirent.h>
 #else
