@@ -108,7 +108,7 @@ function inArray()
     local Arr_Check=${2}
     for check in ${Arr_Check}
     do
-        if [[ ${mCheck} = ${check} ]] ; then
+        if [[ ${mCheck} == ${check} ]] ; then
             return 0
         fi
     done
