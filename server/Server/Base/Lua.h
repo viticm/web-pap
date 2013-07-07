@@ -14,10 +14,10 @@
 /* definition of `size_t' */
 #include <stddef.h>
 
-#ifdef __linux
+#ifdef __LINUX__
 //
 #define LUA_API
-#define    LUALIB_API
+#define LUALIB_API
 //#else
 //
 //    #ifdef _USELUALIB

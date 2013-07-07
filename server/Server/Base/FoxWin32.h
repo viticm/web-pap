@@ -6,7 +6,7 @@
 
     
 
-#ifndef __linux
+#ifndef __LINUX__
 
         #ifdef SCRIPTENGINE_EXPORTS
         #define ENGINE_API __declspec(dllexport)
