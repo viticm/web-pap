@@ -85,8 +85,8 @@ typedef struct _GUID {          // size is 16
 #include <stdio.h>
 #include <string.h>
 #define ZeroMemory(x,y) memset(x, 0, y)
-#define max(a,b)            (((a) > (b)) ? (a) : (b))
-#define min(a,b)            (((a) < (b)) ? (a) : (b))
+//#define max(a,b)            (((a) > (b)) ? (a) : (b))
+//#define min(a,b)            (((a) < (b)) ? (a) : (b))
 #define FILE_CURRENT    1
 #define FILE_END        2
 #define FILE_BEGIN        0
