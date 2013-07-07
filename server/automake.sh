@@ -7,7 +7,9 @@ Arr_ModelIncludeNeedCompile=(
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Common/GameUtil.cpp Common/PacketFactoryManager.cpp 
     Common/Packets/LBAskAuth.cpp Common/Packets/BWConnect.cpp Common/Packets/BLRetAuth.cpp
     " #Billing
+    
     ""
+    
     "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/Packets/LW*.cpp
     Common/DataBase/*.cpp Common/Packets/BLRetAuth.cpp Common/Packets/CL*.cpp Common/Packets/WL*.cpp
@@ -15,7 +17,16 @@ Arr_ModelIncludeNeedCompile=(
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
     Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp 
     " #Login
-    ""
+    
+    "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp
+    Common/Packets/WG*.cpp Common/PacketFactoryManager.cpp Server/SMU/ShareMemAO.cpp Common/DataBase/*.cpp
+    Common/Combat/CampAndStand.cpp Common/Packets/WL*.cpp Common/Packets/LW*.cpp
+    Common/Packets/SSScenePlayerCount.cpp
+    Common/GameStruct.cpp Common/DB_Struct.cpp Common/GameStruct_Finger.cpp Common/GameStruct_Relation.cpp
+    Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
+    Server/Base/LogDefine.cpp Server/Base/IDTable.cpp Server/Base/StrTable.cpp Common/Chain.cpp
+    " #World
+    
     "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
     Common/GameStruct.cpp Common/DB_Struct.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
@@ -233,6 +244,8 @@ function main()
         cCFlags+=" -I\$(BASEDIR)/${cModelName}"
         if [[  "Server" != ${cModelName} ]] ; then
             cCFlags+=" \$(SERVER_BASE_INCLUDES)"
+        else
+            cCFlags+=" \$(LUA_INCLUDES)"
         fi
 
         if inArray ${dir} "${Arr_NotMakeFile}"
@@ -255,6 +268,8 @@ function main()
                 if [[ "Server" != ${cModelName} ]] ; then
                     cLdFlags+=" \$(SERVER_BASE_LDS)"
                     cCFlags+=" \$(SERVER_BASE_INCLUDES)"
+                else
+                    cCFlags+=" \$(LUA_INCLUDES)"
                 fi
                 
                 if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} || "Login" == ${cModelName} ]] ; then
