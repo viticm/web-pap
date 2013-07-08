@@ -19,6 +19,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <map>
+#include <limits.h>
 #include "stdarg.h"
 
 #include "BaseType.h"
