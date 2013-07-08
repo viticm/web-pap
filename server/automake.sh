@@ -34,7 +34,7 @@ Arr_ModelIncludeNeedCompile=(
     " #ShareMemory
 )
 Arr_NotMakeFile="`pwd`"
-Arr_Dir=`find ${cBaseDir} -type d`
+Arr_Dir=`find ${cBaseDir} -type d | grep -v "Run"` # exclude the Run Dirs
 cInludeFile=premake
 iSystemBit=`getconf LONG_BIT`
 
