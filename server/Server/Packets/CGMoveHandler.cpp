@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
-
-
+// -- del it by viticm
+/**
 #include "CGMove.h"
 #include "GamePlayer.h"
 #include "Scene.h"
@@ -81,3 +81,4 @@ __LEAVE_FUNCTION
 
     return PACKET_EXE_ERROR ;
 }
+**/

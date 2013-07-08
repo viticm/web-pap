@@ -1,7 +1,8 @@
 #include "stdafx.h"
 
 
-
+// del by viticm, not use code
+/**
 #include "CGCharCancelSkill.h"
 #include "OResultDef.h"
 #include "Log.h"
@@ -62,3 +63,4 @@ __LEAVE_FUNCTION
 
     return PACKET_EXE_ERROR ;
 }
+**/

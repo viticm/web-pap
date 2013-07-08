@@ -1,7 +1,9 @@
 #include "stdafx.h"
 
+// del by viticm, not use code
 // CGBuyHandler.cpp
 
+/**
 #include "CGBuy.h"
 #include "GamePlayer.h"
 #include "Scene.h"
@@ -93,3 +95,4 @@ uint CGBuyHandler::Execute( CGBuy* pPacket, Player* pPlayer )
 
     return PACKET_EXE_ERROR ;
 }
+**/

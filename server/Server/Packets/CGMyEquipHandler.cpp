@@ -1,7 +1,8 @@
 #include "stdafx.h"
 
 
-
+// not use source, del it by viticm
+/**
 #include "CGMyEquip.h"
 #include "GamePlayer.h"
 #include "Scene.h"
@@ -50,3 +51,4 @@ __LEAVE_FUNCTION
 
     return PACKET_EXE_ERROR ;
 }
+**/
