@@ -21,7 +21,7 @@ BOOL RecoverManager::Init()
     {
         GamePlayer* pPlayer = g_pPlayerPool->GetPlayer(i);
         
-        if(pPlayer->GetShareMemStatus())
+        if( TRUE )
         {
             
             g_pPlayerPool->NewPlayer(i);
@@ -58,11 +58,13 @@ BOOL RecoverManager::Tick()
         GamePlayer* pPlayer = m_PlayerPtr[i];
         Assert(pPlayer);
 
+        /**
         if(pPlayer->ShareMemSafe()) //数据库保存完毕
         {
             
 
         }
+        **/
 
     }
 
