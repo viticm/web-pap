@@ -431,11 +431,12 @@ BOOL FoxLuaScript::GetValuesFromStack(char * cFormat , ...)
                     ScriptError(LUA_SCRIPT_NOT_NUMBER_ERROR);
                     break;
                 }
+                /**
                 if(c=='n')
-                    //va_arg(args, int)=(INT)lua_tonumber(m_LuaState,Count++);
+                    va_arg(args, int)=(INT)lua_tonumber(m_LuaState,Count++);
                 else
-                    //va_arg(args, double)=lua_tonumber(m_LuaState,Count++);
-
+                    va_arg(args, double)=lua_tonumber(m_LuaState,Count++);
+                 **/
                 args+=4;
             }
         }
