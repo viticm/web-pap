@@ -420,9 +420,11 @@ BOOL FoxLuaScript::GetValuesFromStack(char * cFormat , ...)
                     break;
                 }
                 // this have some bug, viticm
-                //va_arg(args, char*)=(char*)lua_tostring(m_LuaState,Count++); 
+                /**
+                va_arg(args, char*)=(char*)lua_tostring(m_LuaState,Count++); 
 
                 args+=4;
+                **/
             }
             else if(c=='n' || c =='d'){
                 if(va_arg(args, int) == 0 )
@@ -436,8 +438,9 @@ BOOL FoxLuaScript::GetValuesFromStack(char * cFormat , ...)
                     va_arg(args, int)=(INT)lua_tonumber(m_LuaState,Count++);
                 else
                     va_arg(args, double)=lua_tonumber(m_LuaState,Count++);
-                 **/
+                
                 args+=4;
+                **/
             }
         }
     }
