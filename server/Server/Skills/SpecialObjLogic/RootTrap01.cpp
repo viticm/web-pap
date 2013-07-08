@@ -10,7 +10,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "RootTrap01.h"
 #include "Obj_Special.h"
 #include "ScanOpt_SObj_ScanChar.h"
@@ -53,3 +54,4 @@ namespace Combat_Module
         }
     }
 }
+**/

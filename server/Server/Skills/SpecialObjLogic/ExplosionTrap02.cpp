@@ -10,7 +10,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "ExplosionTrap02.h"
 #include "Obj_Special.h"
 #include "ScanOpt_SObj_ScanChar.h"
@@ -127,3 +128,4 @@ namespace Combat_Module
         }
     }
 }
+**/

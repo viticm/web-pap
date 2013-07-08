@@ -310,10 +310,10 @@ BOOL PathFinder::FindPath(WORLD_POS* startPt,WORLD_POS* endPt,WORLD_POS* posNode
 {
 __ENTER_FUNCTION    
     
+#ifdef _DEBUG
     Assert( startPt->m_fX >= 0 && startPt->m_fX <mOwner->CX() && startPt->m_fZ >= 0 && startPt->m_fZ <mOwner->CZ() );
     Assert( endPt->m_fX >= 0 &&endPt->m_fX < mOwner->CX() && endPt->m_fZ >= 0 && endPt->m_fZ < mOwner->CZ() );
 
-#ifdef _DEBUG
     if(startPt->m_fX >= 0 && startPt->m_fZ <mOwner->CZ() && endPt->m_fX >= 0 && endPt->m_fZ < mOwner->CZ() && 
         startPt->m_fZ >= 0 && startPt->m_fX <mOwner->CX() && endPt->m_fZ >= 0 && endPt->m_fX < mOwner->CX())
     {
