@@ -8,7 +8,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "Type.h"
 #include "Obj_Character.h"
 #include "GaiBangSkill004.h"
@@ -84,8 +85,4 @@ namespace Combat_Module
         }
     };
 };
-
-
-
-
-
+**/

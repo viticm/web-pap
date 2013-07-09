@@ -11,7 +11,8 @@
 /** \file ShaoLinSkill007.cpp
 *
 */
-
+// del by viticm, not use code
+/**
 #include "Type.h"
 #include "Obj_Character.h"
 #include "ShaoLinSKill007.h"
@@ -52,8 +53,4 @@ namespace Combat_Module
         }
     };
 };
-
-
-
-
-
+**/

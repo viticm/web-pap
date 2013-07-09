@@ -9,7 +9,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "Type.h"
 #include "Obj_Character.h"
 #include "TianShanSkill009.h"
@@ -77,3 +78,4 @@ namespace Combat_Module
         }
     };
 };
+**/

@@ -8,7 +8,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "Type.h"
 #include "Obj_Character.h"
 #include "ShaoLinSKill002.h"
@@ -54,7 +55,4 @@ namespace Combat_Module
         }
     };
 };
-
-
-
-
+**/

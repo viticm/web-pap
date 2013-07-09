@@ -8,7 +8,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "Type.h"
 #include "Obj_Character.h"
 #include "DaLiSkill007.h"
@@ -49,3 +50,4 @@ namespace Combat_Module
         }
     };
 };
+**/
