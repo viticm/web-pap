@@ -178,9 +178,13 @@ function getSonDirObjs()
     local cPath=${1}
     local Arr_SonDir=`getSonDirs ${cPath}`
     local Arr_SonDirObjs=""
+    local Arr_SourceFile=""
     for dir in ${Arr_SonDir}
     do
-        Arr_SonDirObjs+="${dir}/*.o "
+        Arr_SourceFile=`find ${cPath}/${dir} -type f -name "*.c" -o -name "*.cpp"`
+        if [[ "" != ${Arr_SourceFile} ]] ; then
+            Arr_SonDirObjs+="${dir}/*.o "
+        fi
     done
     echo ${Arr_SonDirObjs}
 }
