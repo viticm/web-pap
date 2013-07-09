@@ -22,5 +22,5 @@
 3.  Install Lua
     ```shell
     wget -c http://www.lua.org/ftp/lua-5.2.2.tar.gz
-    tar -xzvf lua-5.2.2.tar.gz;make;make install
+    tar -xzvf lua-5.2.2.tar.gz;cd lua-5.2.2;make linux;make install
     ```
