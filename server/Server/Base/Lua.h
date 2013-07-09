@@ -886,8 +886,7 @@ LUA_API void      (lua_setallocf) (lua_State *L, lua_Alloc f, void *ud);
 ** Debug API
 ** =======================================================================
 */
-
-//½Å±¾ÒýÇæ
+// è„šæœ¬å¼•æ“Ž
 #define Lua_CFunction                    lua_CFunction
 #define Lua_State                        lua_State
 #define Lua_Release(L)                    lua_close(L)
