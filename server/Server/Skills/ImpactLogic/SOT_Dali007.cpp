@@ -10,7 +10,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "SOT_Dali007.h"
 #include "Obj_Character.h"
 #include "GameStruct_Impact.h"
@@ -111,4 +112,4 @@ namespace Combat_Module
         }
     };
 };
-
+**/

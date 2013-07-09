@@ -10,7 +10,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "DS_WuDang010.h"
 #include "Obj_Character.h"
 #include "GameStruct_Impact.h"
@@ -185,4 +186,4 @@ namespace Combat_Module
         }
     };
 };
-
+**/
