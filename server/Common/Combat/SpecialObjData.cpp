@@ -10,7 +10,8 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+// del by viticm, not use code
+/**
 #include "SpecialObjData.h"
 #include "GameUtil.h"
 #include "TLBB_DBC.h"
@@ -89,4 +90,4 @@ namespace Combat_Module
         
     }
 }
-
+**/

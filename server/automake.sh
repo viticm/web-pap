@@ -3,14 +3,21 @@ cBaseDir=`pwd` # default use cur dir, you can define it
 Arr_BinDir="Billing Server Login World ShareMemory"
 Arr_ModelName="Billing Server Login World ShareMemory Common"
 Arr_ModelIncludeNeedCompile=(
-    "Common/Assertx.cpp Common/Net/*.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
+    "
+    Common/Assertx.cpp Common/Net/*.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Common/GameUtil.cpp Common/PacketFactoryManager.cpp 
     Common/Packets/LBAskAuth.cpp Common/Packets/BWConnect.cpp Common/Packets/BLRetAuth.cpp
     " #Billing
     
-    ""
+    "
+    Common/Assertx.cpp Common/Net/*.cpp Common/DataBase/*.cpp Common/ShareMemAPI.cpp Common/GameUtil.cpp
+    Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/GameStruct_Script.cpp
+    Common/FileDataMgr.cpp Common/GameStruct_Relation.cpp Common/Packets/GC*.cpp Common/GameStruct_Finger.cpp
+    Common/Packets/GWAskMail.cpp Common/Rand.cpp Common/Combat/*.cpp Common/SSConnect.cpp
+    " #Server
     
-    "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
+    "
+    Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/Packets/LW*.cpp
     Common/DataBase/*.cpp Common/Packets/BLRetAuth.cpp Common/Packets/CL*.cpp Common/Packets/WL*.cpp
     Common/Packets/LC*.cpp Common/Packets/LB*.cpp Common/Packets/SSConnect.cpp
@@ -18,7 +25,8 @@ Arr_ModelIncludeNeedCompile=(
     Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp 
     " #Login
     
-    "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp
+    "
+    Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp
     Common/Packets/WG*.cpp Common/PacketFactoryManager.cpp Server/SMU/ShareMemAO.cpp Common/DataBase/*.cpp
     Common/Combat/CampAndStand.cpp Common/Packets/WL*.cpp Common/Packets/LW*.cpp
     Common/Packets/SSScenePlayerCount.cpp
@@ -27,7 +35,8 @@ Arr_ModelIncludeNeedCompile=(
     Server/Base/LogDefine.cpp Server/Base/IDTable.cpp Server/Base/StrTable.cpp Common/Chain.cpp
     " #World
     
-    "Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
+    "
+    Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
     Common/GameStruct.cpp Common/DB_Struct.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
     Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp
@@ -273,7 +282,7 @@ function main()
                     cLdFlags+=" \$(SERVER_BASE_LDS)"
                     cCFlags+=" \$(SERVER_BASE_INCLUDES)"
                 else
-                    cCFlags+=" \$(LUA_INCLUDES)"
+                    cLdFlags+=" \$(LUA_LDS)"
                 fi
                 
                 if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} || "Login" == ${cModelName} ]] ; then

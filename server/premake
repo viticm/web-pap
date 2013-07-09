@@ -66,6 +66,8 @@ SERVER_BASE_LDS           = -L$(BASEDIR)/Server/Base
 
 OTHER_LDS                 = -lpthread -lodbc
 
+LUA_LDS                   = -lm -llua
+
 MYSQL_CLIENT_LDS          = $(MYSQL_CLIENT_LIBS) -lmysqlclient
 
 GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES) 
