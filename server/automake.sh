@@ -258,7 +258,7 @@ function main()
         if [[  "Server" != ${cModelName} ]] ; then
             cCFlags+=" \$(SERVER_BASE_INCLUDES)"
         else
-            cCFlags+=" \$(LUA_INCLUDES)"
+            cLdFlags+=" \$(LUA_IDS)"
         fi
 
         if inArray ${dir} "${Arr_NotMakeFile}"
