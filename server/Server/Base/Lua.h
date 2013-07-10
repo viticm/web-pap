@@ -908,6 +908,36 @@ LUA_API void      (lua_setallocf) (lua_State *L, lua_Alloc f, void *ud);
 #define Lua_ValueToCFunction(L,nIndex)    lua_tocfunction(L,nIndex)
 #define Lua_ValueToUserData(L,nIndex)    lua_touserdata(L,nIndex)
 #define Lua_ValueToPoint(L,nIndex)        lua_topointer(L,nIndex)
+
+/*
+** script engine api
+*/
+#define Lua_PushNil(L)                    lua_pushnil(L)
+#define Lua_PushNumber(L,Number)        lua_pushnumber(L,Number)
+#define Lua_PushLString(L,LString,Len)    lua_pushlstring(L,LString,Len)
+#define Lua_PushString(L,String)        lua_pushstring(L,String)
+#define Lua_PushCClosure(L,Fun,N)        lua_pushcclosure(L,Fun,N)
+#define lua_PushFunctio
+
+#define Lua_GetGlobal(L,Valuename)        lua_getglobal(L,Valuename)
+#define Lua_GetTable(L,nIndex)            lua_gettable(L,nIndex)
+#define Lua_RawGet(L,nIndex)              lua_rawget(L,nIndex)
+#define Lua_RawGetI(L,nIndex,n)           lua_rawgeti(L,nIndex,n)
+#define Lua_NewTable(L)                   lua_newtable(L)
+
+
+#define Lua_SetGlobal(L,cName)            lua_setglobal(L,cName)
+#define Lua_SetTable(L,nIndex)            lua_settable(L,nIndex)
+#define Lua_RawSet(L,nIndex)              lua_rawset(L,nIndex)
+#define Lua_RawSetI(L,nIndex,nNum)        lua_rawseti(L,nIndex,nNum)
+
+#define Lua_Call(L,nArgs,nResults)        lua_pcall(L,nArgs,nResults,0)
+
+#define Lua_Pop(L,nIndex)                lua_pop(L,nIndex)
+#define Lua_Register(L,cfname,pFun)        lua_register(L,cfname,pFun)
+#define Lua_PushCFunction(L,pFun)    lua_pushcfunction(L,pFun)
+
+
 /*
 ** Event codes
 */
