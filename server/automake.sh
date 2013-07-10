@@ -13,7 +13,7 @@ Arr_ModelIncludeNeedCompile=(
     Common/Assertx.cpp Common/Net/*.cpp Common/DataBase/*.cpp Common/ShareMemAPI.cpp Common/GameUtil.cpp
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/GameStruct_Script.cpp
     Common/FileDataMgr.cpp Common/GameStruct_Relation.cpp Common/Packets/GC*.cpp Common/GameStruct_Finger.cpp
-    Common/Packets/GWAskMail.cpp Common/Rand.cpp Common/Combat/*.cpp Common/SSConnect.cpp
+    Common/Packets/GWAskMail.cpp Common/Rand.cpp Common/Combat/*.cpp Common/Packets/SSConnect.cpp
     " #Server
     
     "
