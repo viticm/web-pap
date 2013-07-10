@@ -106,29 +106,30 @@ public:
     DWORD CreateTable();
     DWORD ModifyTable(LPSTR szTableName);
     void SetGlobalName(LPSTR szName);
-     inline void SetTableMember(int nIndex, int Id, const char * szString){Lua_SetTable_StringFromId(m_LuaState,  nIndex, Id, szString);};
-     inline void SetTableMember(int nIndex, int Id, double nNumber){Lua_SetTable_DoubleFromId(m_LuaState,  nIndex, Id, nNumber);};
-     inline void SetTableMember(int nIndex, int Id, int nNumber){Lua_SetTable_IntFromId(m_LuaState,  nIndex, Id, nNumber);};
-     inline void SetTableMember(int nIndex, const char * szMemberName, Lua_CFunction CFun){Lua_SetTable_CFunFromName(m_LuaState,  nIndex, szMemberName, CFun);};
-     inline void SetTableMember(int nIndex, int nId, Lua_CFunction CFun){Lua_SetTable_CFunFromId(m_LuaState,  nIndex, nId, CFun);};
-     inline void SetTableMember(int nIndex, const char * szMemberName, char * szString){Lua_SetTable_StringFromName(m_LuaState,  nIndex, szMemberName, szString);};
-     inline void SetTableMember(int nIndex, const char * szMemberName, int Number){Lua_SetTable_IntFromName(m_LuaState,  nIndex, szMemberName, Number);};
-     inline void SetTableMember(int nIndex, const char * szMemberName, double Number){Lua_SetTable_DoubleFromName(m_LuaState,  nIndex, szMemberName, Number);};
-     void ScriptError(int Error);
+    
+    inline void SetTableMember(int nIndex, int Id, const char * szString){/*Lua_SetTable_StringFromId(m_LuaState,  nIndex, Id, szString);*/};
+    inline void SetTableMember(int nIndex, int Id, double nNumber){/*Lua_SetTable_DoubleFromId(m_LuaState,  nIndex, Id, nNumber);*/};
+    inline void SetTableMember(int nIndex, int Id, int nNumber){/*Lua_SetTable_IntFromId(m_LuaState,  nIndex, Id, nNumber);*/};
+    inline void SetTableMember(int nIndex, const char * szMemberName, Lua_CFunction CFun){/*Lua_SetTable_CFunFromName(m_LuaState,  nIndex, szMemberName, CFun);*/};
+    inline void SetTableMember(int nIndex, int nId, Lua_CFunction CFun){/*Lua_SetTable_CFunFromId(m_LuaState,  nIndex, nId, CFun);*/};
+    inline void SetTableMember(int nIndex, const char * szMemberName, char * szString){/*Lua_SetTable_StringFromName(m_LuaState,  nIndex, szMemberName, szString);*/};
+    inline void SetTableMember(int nIndex, const char * szMemberName, int Number){/*Lua_SetTable_IntFromName(m_LuaState,  nIndex, szMemberName, Number);*/};
+    inline void SetTableMember(int nIndex, const char * szMemberName, double Number){/*Lua_SetTable_DoubleFromName(m_LuaState,  nIndex, szMemberName, Number);*/};
+    
+    void ScriptError(int Error);
     void ScriptError(int a, int b);
-     BOOL ExecuteCode();
-
-
+    BOOL ExecuteCode();
     Lua_State * m_LuaState;
 
 private:
     void RegisterStandardFunctions(){
         if(m_LuaState==NULL) return;
-        lua_baselibopen(m_LuaState);
-        lua_iolibopen(m_LuaState);
-        lua_strlibopen(m_LuaState);
-        lua_mathlibopen(m_LuaState);
-        lua_dblibopen(m_LuaState);
+        // modify to new, based on lua 5.2.2
+        luaopen_base(m_LuaState);
+        luaopen_table(m_LuaState);
+        luaopen_string(m_LuaState);
+        luaopen_math(m_LuaState);
+        luaopen_debug(m_LuaState);
     }
     BOOL m_IsRuning;//是否该脚本有效
     char m_szScriptName[100];

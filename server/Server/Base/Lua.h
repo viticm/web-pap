@@ -665,7 +665,6 @@ extern const char lua_ident[];
 LUA_API lua_State *(lua_newstate) (lua_Alloc f, void *ud);
 LUA_API void       (lua_close) (lua_State *L);
 LUA_API lua_State *(lua_newthread) (lua_State *L);
-
 LUA_API lua_CFunction (lua_atpanic) (lua_State *L, lua_CFunction panicf);
 
 
@@ -880,11 +879,10 @@ LUA_API void      (lua_setallocf) (lua_State *L, lua_Alloc f, void *ud);
 #define lua_tostring(L,i)	lua_tolstring(L, (i), NULL)
 
 
-
 /*
-** {======================================================================
-** Debug API
-** =======================================================================
+** ======================================================================
+**  Debug API
+**  =======================================================================
 */
 // 脚本引擎
 #define Lua_CFunction                    lua_CFunction
@@ -1027,9 +1025,14 @@ LUAMOD_API int (luaopen_debug) (lua_State *L);
 #define LUA_LOADLIBNAME	"package"
 LUAMOD_API int (luaopen_package) (lua_State *L);
 
-
+LUALIB_API lua_State *luaL_newstate (void);
 /* open all previous libraries */
 LUALIB_API void (luaL_openlibs) (lua_State *L);
+
+/*
+** compatibility macros and functions
+*/
+#define lua_open()  luaL_newstate()
 
 
 

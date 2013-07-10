@@ -269,7 +269,7 @@ BOOL FoxPakFile::Open(LPTSTR file)
 
 ////////////////////////////////
 FoxLuaScript::FoxLuaScript(){
-    if(m_LuaState = lua_open(1024)){
+    if(m_LuaState = lua_open()){
         m_IsRuning =TRUE;
         m_szScriptName[0]='\0';
         return;
@@ -286,11 +286,11 @@ int    FoxLuaScript::Activate(){Execute(); return 1;}
 
 BOOL FoxLuaScript::Init(){
     if(m_LuaState==NULL){
-        if((m_LuaState=lua_open(1024)) == NULL){
+        if((m_LuaState=lua_open()) == NULL){
             ScriptError(LUA_CREATE_ERROR);
             return FALSE;
         }
-        m_UserTag=lua_newtag(m_LuaState);
+        //m_UserTag=lua_newtag(m_LuaState);
     }
     RegisterStandardFunctions();
     return TRUE;
@@ -376,23 +376,25 @@ int     FoxLuaScript::GetUserTag() { return m_UserTag; };
 
 BOOL FoxLuaScript::LoadBuffer(PBYTE pBuffer, DWORD dwLen )
 {
+    /**
     if(lua_compilebuffer(m_LuaState,(const char*)pBuffer,dwLen,NULL) !=0){
         ScriptError(LUA_SCRIPT_COMPILE_ERROR);
         return FALSE;
     }
+    **/
     return TRUE;
 }
 
 void FoxLuaScript::SafeCallBegin(int * pIndex)
 {
     if(m_LuaState==NULL)return;
-    return lua_gettopindex(m_LuaState,pIndex);
+    pIndex = Lua_GetTopIndex(m_LuaState);
 }
 
 void FoxLuaScript::SafeCallEnd (int nIndex)//恢复至调用之前栈顶位置。
 {
     if(m_LuaState==NULL)return;
-    return lua_settop(m_LuaState,nIndex);
+    lua_settop(m_LuaState,nIndex);
 }
 
 BOOL FoxLuaScript::GetValuesFromStack(char * cFormat , ...)
@@ -498,7 +500,7 @@ void FoxLuaScript::ScriptError(int Error)
     f=fopen("./Log/luaerror.log","a");
     if(f==0)
         return;
-    fprintf(f,"ScriptError %d:[%d] (%s) \n",Error,m_szScriptName);
+    fprintf(f,"ScriptError %d (%s) \n",Error,m_szScriptName);
     fclose(f);
 }
 
@@ -514,7 +516,7 @@ void FoxLuaScript::ScriptError(int a, int b)
 
 BOOL FoxLuaScript::ExecuteCode()
 {
-    if(m_IsRuning ==FALSE || m_LuaState==NULL || lua_execute(m_LuaState)==0){
+    if(m_IsRuning ==FALSE || m_LuaState==NULL /*|| lua_execute(m_LuaState)==0*/){
         ScriptError(LUA_SCRIPT_EXECUTE_ERROR);
         return FALSE;
     }
@@ -542,14 +544,15 @@ BOOL FoxLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va
             case 24:lua_pushcclosure(m_LuaState,va_arg(vlist,Lua_CFunction),0);break;
             case 22:lua_pushnumber(m_LuaState,(float)va_arg(vlist,float));//4456
             case 32:lua_pushnumber(m_LuaState,va_arg(vlist,double));//442a
-            case 34:lua_pushusertag(m_LuaState,va_arg(vlist,void*),m_UserTag);break;
+            /*case 34:lua_pushusertag(m_LuaState,va_arg(vlist,void*),m_UserTag);break;*/
             case 37:lua_pushstring(m_LuaState,va_arg(vlist,char*));break;
             case 40:lua_pushvalue(m_LuaState,(int)va_arg(vlist,float));break;
             }
             narg++;
         }
     }
-    if(lua_call(m_LuaState,narg,nResults)== 0) return TRUE;
+   
+    if( 0 == lua_pcall( m_LuaState,narg,nResults,0 ) ) return TRUE;
     ScriptError(LUA_SCRIPT_EXECUTE_ERROR);
     return FALSE;        
 }
