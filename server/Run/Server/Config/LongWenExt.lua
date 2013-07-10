@@ -1,4 +1,4 @@
---½Å±¾ºÅ
+--è„šæœ¬å·
 x892003_g_scriptId = 892003
 
 --**********************************
@@ -8,33 +8,33 @@ function x892003_StudyProperty(sceneId, selfId, lwIndex)
 	local itemIndex = LuaFnGetItemTableIndexByIndex( sceneId, selfId, 30 )
 	local lw = LuaFnGetItemTableIndexByIndex( sceneId, selfId, lwIndex )
 	if itemIndex~=20310181 and itemIndex~=20310182 and itemIndex~=20310183 then
-		x892003_NotifyTip( sceneId, selfId, "²ÄÁÏ²»·û" )
+		x892003_NotifyTip( sceneId, selfId, "ææ–™ä¸ç¬¦" )
 		return
 	end
 	if LuaFnGetAvailableItemCount(sceneId, selfId, itemIndex)<10 then
-		x892003_NotifyTip( sceneId, selfId, "²ÄÁÏ²»×ã" )
+		x892003_NotifyTip( sceneId, selfId, "ææ–™ä¸è¶³" )
 		return
 	end
 	if lw~= 10157001 then
-		x892003_NotifyTip( sceneId, selfId, "´Ë×°±¸ÎŞ·¨Ñ§Ï°¼¼ÄÜ" )
+		x892003_NotifyTip( sceneId, selfId, "æ­¤è£…å¤‡æ— æ³•å­¦ä¹ æŠ€èƒ½" )
 		return
 	end
 	local longwen1 = GetMissionData( sceneId, selfId, MY_LONGWEN1 )
 	local longwen2 = GetMissionData( sceneId, selfId, MY_LONGWEN2 )
 	local longwen3 = GetMissionData( sceneId, selfId, MY_LONGWEN3 )
 	if itemIndex==20310181 and longwen1>0 then
-		x892003_NotifyTip( sceneId, selfId, "ÄúÒÑÑ§Ï°¹ı´Ë¼¼ÄÜ£¬´Ë´¦ÎŞ·¨ÌáÉıµÈ¼¶¡£" )
+		x892003_NotifyTip( sceneId, selfId, "æ‚¨å·²å­¦ä¹ è¿‡æ­¤æŠ€èƒ½ï¼Œæ­¤å¤„æ— æ³•æå‡ç­‰çº§ã€‚" )
 		return
 	elseif itemIndex==20310182 and longwen2>0 then
-		x892003_NotifyTip( sceneId, selfId, "ÄúÒÑÑ§Ï°¹ı´Ë¼¼ÄÜ£¬´Ë´¦ÎŞ·¨ÌáÉıµÈ¼¶¡£" )
+		x892003_NotifyTip( sceneId, selfId, "æ‚¨å·²å­¦ä¹ è¿‡æ­¤æŠ€èƒ½ï¼Œæ­¤å¤„æ— æ³•æå‡ç­‰çº§ã€‚" )
 		return
 	elseif itemIndex==20310183 and longwen3>0 then
-		x892003_NotifyTip( sceneId, selfId, "ÄúÒÑÑ§Ï°¹ı´Ë¼¼ÄÜ£¬´Ë´¦ÎŞ·¨ÌáÉıµÈ¼¶¡£" )
+		x892003_NotifyTip( sceneId, selfId, "æ‚¨å·²å­¦ä¹ è¿‡æ­¤æŠ€èƒ½ï¼Œæ­¤å¤„æ— æ³•æå‡ç­‰çº§ã€‚" )
 		return
 	end
 	local reply = CostMoney(sceneId,selfId,10000)
 	if reply == -1 then
-		x892003_NotifyTip( sceneId, selfId, "½ğÇ®²»×ã" )
+		x892003_NotifyTip( sceneId, selfId, "é‡‘é’±ä¸è¶³" )
 		return
 	end
 	if itemIndex==20310181 then
@@ -48,14 +48,14 @@ function x892003_StudyProperty(sceneId, selfId, lwIndex)
 		SetMissionData( sceneId, selfId, MY_LONGWEN3, 1 )
 	end
 	LuaFnSendSpecificImpactToUnit(sceneId, selfId, selfId, selfId, 152, 0)
-	x892003_NotifyTip( sceneId, selfId, "¹§Ï²£¬¼¼ÄÜÑ§Ï°³É¹¦" )
+	x892003_NotifyTip( sceneId, selfId, "æ­å–œï¼ŒæŠ€èƒ½å­¦ä¹ æˆåŠŸ" )
 end
 
 function x892003_UpdateProperty(sceneId, selfId, lwIndex)
 	x892003_NotifyTip( sceneId, selfId, "123" )
 end
 --**********************************
---ĞÑÄ¿ÌáÊ¾
+--é†’ç›®æç¤º
 --**********************************
 function x892003_NotifyTip( sceneId, selfId, Msg )
 	BeginEvent( sceneId )
@@ -65,7 +65,7 @@ function x892003_NotifyTip( sceneId, selfId, Msg )
 end
 
 --**********************************
---¶Ô»°´°¿ÚĞÅÏ¢ÌáÊ¾
+--å¯¹è¯çª—å£ä¿¡æ¯æç¤º
 --**********************************
 function x892003_MsgBox( sceneId, selfId, msg )
 	BeginEvent( sceneId )
