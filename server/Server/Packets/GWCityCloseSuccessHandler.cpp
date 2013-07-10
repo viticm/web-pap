@@ -1,5 +1,6 @@
 #include "stdafx.h"
-
+// defined in GCHandler.cpp, del by viticm
+/**
 
 
 #include "GWCityCloseSuccess.h"
@@ -15,3 +16,4 @@ uint GWCityCloseSuccessHandler::Execute( GWCityCloseSuccess* pPacket, Player* pP
 
         return PACKET_EXE_ERROR ;
 }
+**/

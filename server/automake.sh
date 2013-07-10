@@ -14,6 +14,8 @@ Arr_ModelIncludeNeedCompile=(
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/GameStruct_Script.cpp
     Common/FileDataMgr.cpp Common/GameStruct_Relation.cpp Common/Packets/GC*.cpp Common/GameStruct_Finger.cpp
     Common/Packets/GWAskMail.cpp Common/Rand.cpp Common/Combat/*.cpp Common/Packets/SSConnect.cpp
+    Common/ScriptCommandStruct.cpp Common/GameStruct_Pet.cpp Common/GameStruct_MinorPasswd.cpp
+    Common/Packets/GWSystemMsg.cpp 
     " #Server
     
     "

@@ -549,6 +549,9 @@
 ** without modifying the main part of the file.
 */
 
+#ifdef __cplusplus
+extern "C" {
+#endif 
 
 #define LUA_VERSION_MAJOR	"5"
 #define LUA_VERSION_MINOR	"2"
@@ -1070,5 +1073,8 @@ LUALIB_API void (luaL_openlibs) (lua_State *L);
 #define lua_assert(x)	((void)0)
 #endif
 
+#ifdef __cplusplus
+}
+#endif 
 
 #endif

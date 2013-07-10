@@ -1,6 +1,6 @@
 #include "stdafx.h"
-
-
+// defined in GCHandler.cpp, del by viticm
+/**
 #include "GWCityApplyNewCity.h"
 uint GWCityApplyNewCityHandler::Execute( GWCityApplyNewCity* pPacket, Player* pPlayer )
 {
@@ -12,3 +12,4 @@ uint GWCityApplyNewCityHandler::Execute( GWCityApplyNewCity* pPacket, Player* pP
 
         return PACKET_EXE_ERROR ;
 }
+**/

@@ -1,7 +1,6 @@
 #include "stdafx.h"
-
-
-
+// defined in GCHandler.cpp, del by viticm
+/**
 #include "GWCityAskInitInfo.h"
 
 
@@ -15,3 +14,4 @@ uint GWCityAskInitInfoHandler::Execute( GWCityAskInitInfo* pPacket, Player* pPla
 
         return PACKET_EXE_ERROR ;
 }
+**/
