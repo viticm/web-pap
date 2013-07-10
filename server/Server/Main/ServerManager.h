@@ -4,6 +4,7 @@
 #define __SERVERMANAGER_H__
 
 #include "Type.h"
+#include <signal.h>
 #include "Config.h"
 #include "ServerSocket.h"
 #include "SocketInputStream.h"
