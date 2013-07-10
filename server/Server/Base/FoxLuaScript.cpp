@@ -388,7 +388,7 @@ BOOL FoxLuaScript::LoadBuffer(PBYTE pBuffer, DWORD dwLen )
 void FoxLuaScript::SafeCallBegin(int * pIndex)
 {
     if(m_LuaState==NULL)return;
-    *pIndex = Lua_GetTopIndex(m_LuaState);
+    pIndex = Lua_GetTopIndex(m_LuaState);
 }
 
 void FoxLuaScript::SafeCallEnd (int nIndex)//恢复至调用之前栈顶位置。
