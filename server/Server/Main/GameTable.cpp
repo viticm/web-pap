@@ -649,11 +649,11 @@ VOID TableInit::InitPetConfigTable( )
     m_PetConfig.m_WilenessPetRate_Delta2 = ini.ReadInt("System", "WilenessPetRate_Delta2");
     m_PetConfig.m_WilenessPetRate_Delta3 = ini.ReadInt("System", "WilenessPetRate_Delta3");
 
-    m_PetConfig.m_GrowRate0 = ini.ReadInt("System", "GrowRate0");
-    m_PetConfig.m_GrowRate1 = ini.ReadInt("System", "GrowRate1");
-    m_PetConfig.m_GrowRate2 = ini.ReadInt("System", "GrowRate2");
-    m_PetConfig.m_GrowRate3 = ini.ReadInt("System", "GrowRate3");
-    m_PetConfig.m_GrowRate4 = ini.ReadInt("System", "GrowRate4");
+    m_PetConfig.m_GrowRate0 = ini.ReadInt("System", "Others_GrowRate0");
+    m_PetConfig.m_GrowRate1 = ini.ReadInt("System", "Others_GrowRate1");
+    m_PetConfig.m_GrowRate2 = ini.ReadInt("System", "Others_GrowRate2");
+    m_PetConfig.m_GrowRate3 = ini.ReadInt("System", "Others_GrowRate3");
+    m_PetConfig.m_GrowRate4 = ini.ReadInt("System", "Others_GrowRate4");
 
     CHAR szName[256];
     for (INT i = 0; i < GENGU_NUM; ++i)

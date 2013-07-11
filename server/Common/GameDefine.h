@@ -310,7 +310,7 @@
 #define TIME_TO_TRUE_QUIT 10000
 
 //怪物的种类数量最大值
-#define    MAXTYPE_NUMBER 1024 * 20
+#define    MAXTYPE_NUMBER 1024 * 100
 
 //怪物AI种类的数量最大值
 #define MAXAI_NUMBER 256

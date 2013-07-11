@@ -177,7 +177,7 @@ struct _PET_ATTRPOINT_DIS_TBL
 extern _PET_ATTRPOINT_DIS_TBL g_PetAttrPointDisTbl;
 
 // 宠物升级表
-#define PET_LEVEL_NUM (105)
+#define PET_LEVEL_NUM (255)
 struct _PET_LEVELUP_TBL
 {
     INT m_Table[PET_LEVEL_NUM];
