@@ -271,7 +271,7 @@ __ENTER_FUNCTION
 
     g_pWorldTimeInfo = new WorldTimeInfo;
     Assert(g_pWorldTimeInfo);
-    Log::SaveLog(WORLD_LOGFILE," new WorldTimeInfo....OK");
+    Log::SaveLog(WORLD_LOGFILE,"new WorldTimeInfo....OK");
     
 __LEAVE_FUNCTION
 
