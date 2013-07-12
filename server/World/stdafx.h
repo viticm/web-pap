@@ -32,3 +32,9 @@
 #include "GameStruct_Finger.h"
 #include "Packet.h"
 // TODO: 在此处引用程序需要的其他头文件
+
+// ADD PACKETS DEFINES
+#ifndef _FOX_WORLD
+    #define _FOX_WORLD
+    #define _FOX_SERVER
+#endif

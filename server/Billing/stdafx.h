@@ -32,3 +32,9 @@
 #include "GameStruct_Finger.h"
 #include "Packet.h"
 // TODO: 在此处引用程序需要的其他头文件
+
+#ifndef _FOX_BILLING
+    #define _FOX_BILLING
+    #define _FOX_WEB
+    #define _FOX_LOGIN
+#endif

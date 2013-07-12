@@ -271,7 +271,7 @@ namespace Combat_Module
             public:
                 enum
                 {
-                    MAX_ID = 16384,
+                    MAX_ID = 50000,
                 };
                 enum
                 {
@@ -327,7 +327,7 @@ namespace Combat_Module
             public:
                 enum
                 {
-                    MAX_ID = 1024,
+                    MAX_ID = 2048,
                 };
                 ImpactSEData_T()
                     :m_bInited(FALSE),m_nID(-1),m_nMutexID(-1)

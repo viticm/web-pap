@@ -6,7 +6,8 @@ Arr_ModelIncludeNeedCompile=(
     "
     Common/Assertx.cpp Common/Net/*.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Common/GameUtil.cpp Common/PacketFactoryManager.cpp 
-    Common/Packets/LBAskAuth.cpp Common/Packets/BWConnect.cpp Common/Packets/BLRetAuth.cpp
+    Common/Packets/LBAskAuth.cpp Common/Packets/BWConnect.cpp Common/Packets/BLRetAuth.cpp Common/Packets/SSConnect.cpp
+    Common/Packets/WBRetValidateUser.cpp Common/Packets/SSScenePlayerCount.cpp
     " #Billing
     
     "
@@ -22,7 +23,7 @@ Arr_ModelIncludeNeedCompile=(
     Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp 
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/Packets/LW*.cpp
     Common/DataBase/*.cpp Common/Packets/BLRetAuth.cpp Common/Packets/CL*.cpp Common/Packets/WL*.cpp
-    Common/Packets/LC*.cpp Common/Packets/LB*.cpp Common/Packets/SSConnect.cpp
+    Common/Packets/LC*.cpp Common/Packets/LB*.cpp Common/Packets/SSConnect.cpp Common/Packets/SSScenePlayerCount.cpp 
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
     Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp 
     " #Login
@@ -30,7 +31,7 @@ Arr_ModelIncludeNeedCompile=(
     "
     Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp
     Common/Packets/WG*.cpp Common/PacketFactoryManager.cpp Server/SMU/ShareMemAO.cpp Common/DataBase/*.cpp
-    Common/Combat/CampAndStand.cpp Common/Packets/WL*.cpp Common/Packets/LW*.cpp
+    Common/Combat/CampAndStand.cpp Common/Packets/WL*.cpp Common/Packets/LW*.cpp Common/Packets/SSConnect.cpp
     Common/Packets/SSScenePlayerCount.cpp
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/GameStruct_Finger.cpp Common/GameStruct_Relation.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
