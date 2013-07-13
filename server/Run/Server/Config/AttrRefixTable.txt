@@ -1,5 +1,5 @@
 INT	INT	FLOAT	FLOAT	STRING
-ID	鐢熸椿鎶�鑳絀D	涔樻硶鍙傛暟	鍔犳硶鍙傛暟 	娉ㄩ噴锛堝苟涓嶈鍏ワ級 
+ID	生活技能ID	乘法参数	加法参数 	注释（并不读入） 
 1	40	1	0	MAX HP
 2	41	1	0	MAX MP
 3	42	1	0	MAX Vigor

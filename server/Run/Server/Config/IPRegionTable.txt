@@ -1,2 +1,2 @@
 INT	INT	STRING	STRING
-Index	鍚屽煄棰戦亾缂栧彿	璧峰IP	缁撴潫IP
+Index	同城频道编号	起始IP	结束IP
