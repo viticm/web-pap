@@ -32,7 +32,7 @@ Arr_ModelIncludeNeedCompile=(
     Common/Assertx.cpp Common/Net/*.cpp Common/GameUtil.cpp Common/ShareMemAPI.cpp Common/DBSystem/DataBase/*.cpp
     Common/Packets/WG*.cpp Common/PacketFactoryManager.cpp Server/SMU/ShareMemAO.cpp Common/DataBase/*.cpp
     Common/Combat/CampAndStand.cpp Common/Packets/WL*.cpp Common/Packets/LW*.cpp Common/Packets/SSConnect.cpp
-    Common/Packets/SSScenePlayerCount.cpp
+    Common/Packets/SSScenePlayerCount.cpp Common/Packets/GW*.cpp
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/GameStruct_Finger.cpp Common/GameStruct_Relation.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
     Server/Base/LogDefine.cpp Server/Base/IDTable.cpp Server/Base/StrTable.cpp Common/Chain.cpp
