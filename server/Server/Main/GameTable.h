@@ -280,7 +280,7 @@ struct _PET_STUDYSKILL_TBL
 extern _PET_STUDYSKILL_TBL g_PetStudySkillTbl;
 
 // 宠物领悟技能几率表
-#define PET_APPERCEIVESKILLRATE_NUM (24)
+#define PET_APPERCEIVESKILLRATE_NUM (1024)
 struct _PET_APPERCEIVESKILL_TBL
 {
     INT        m_nSkillCount;                    //宠物技能总数
