@@ -91,3 +91,8 @@
 #include "AI_Monster.h"
 #include "AI_Pet.h"
 
+#ifdef _FOX_SERVER
+    #define _FOX_SERVER
+    #define _FOX_CLIENT
+    #define _FOX_WORLD
+#endif

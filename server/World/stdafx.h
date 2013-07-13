@@ -36,5 +36,6 @@
 // ADD PACKETS DEFINES
 #ifndef _FOX_WORLD
     #define _FOX_WORLD
+    #define _FOX_LOGIN
     #define _FOX_SERVER
 #endif
