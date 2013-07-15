@@ -134,8 +134,9 @@ BOOL TableInit::Init( )
     InitMissionDataTable();
     InitMissionRewardTable();
     InitMissionPunishTable();
-    InitMissionDialogTable();
-    InitMissionListTable();
+    // now will get new misson txt load func, now noted it
+    //InitMissionDialogTable();
+    //InitMissionListTable();
 
     return TRUE ;
 }

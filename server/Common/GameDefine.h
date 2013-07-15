@@ -295,16 +295,16 @@
 #define MAX_BOOTH_SOLD_NUMBER   5
 
 //
-#define MAX_PLAYER_EXP_LEVEL    100
+#define MAX_PLAYER_EXP_LEVEL    255
 
 //
-#define MAX_100_PLUS_DELTA_LEVEL    201
+#define MAX_100_PLUS_DELTA_LEVEL    401
 
 //
 #define DEFAULT_WASHPOINT_LEVEL        60
 
 //最大表定义级别属性点分配
-#define MAX_TABLE_DEFINE_LEVEL     150
+#define MAX_TABLE_DEFINE_LEVEL     255
 
 //断开网络后，服务器继续保留数据的时间（毫秒）
 #define TIME_TO_TRUE_QUIT 10000
@@ -337,7 +337,7 @@
 #define MAX_CHAR_ABILITY_NUM 64
 
 //技能配方表的条目数
-#define MAX_ABILITY_PRESCRIPTION_NUM (4 * 256)
+#define MAX_ABILITY_PRESCRIPTION_NUM (8 * 256)
 
 //技能配方表的存档字节占用数
 #define MAX_CHAR_PRESCRIPTION_BYTE (MAX_ABILITY_PRESCRIPTION_NUM>>3)

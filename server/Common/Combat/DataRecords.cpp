@@ -317,7 +317,7 @@ namespace Combat_Module
             m_nCooldownTime = pDB->Search_Posistion(nRow, 7)->iValue;
             m_nChargeTime = pDB->Search_Posistion(nRow, 8)->iValue;
             m_nChannelTime = pDB->Search_Posistion(nRow, 9)->iValue;
-            column=10;// LM修改
+            //column=10;// LM修改 /* 列数已经把第10列计算在其中 By viticm */
             for(INT i=0;CONDITION_AND_DEPLETE_TERM_NUMBER>i;++i)
             {
                 if(FALSE==m_aConDepTerms[i].InitFromDB(pDB, nRow, column))// LM修改
