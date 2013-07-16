@@ -378,7 +378,7 @@ CHAR *Ini::ReadText(INT p)
         chr = m_strData[n];
 
         //结束
-        if( chr == ';' || chr == '\r' || chr == '\t' || chr == ']' )
+        if( chr == ';' || chr == '\r' || chr == '\t' || chr == ']' || '\n' == chr ) // 增加换行 by viticm
         {
             //ShowMessage(Ret);
             return Ret;
