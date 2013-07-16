@@ -320,7 +320,7 @@ __ENTER_FUNCTION
     if(IsGrowPointExist)
     {
         memset( szGrowPointSetup, 0, _MAX_PATH ) ;
-        f.ReadText( "System", "growpointsetup", szGrowPointSetup, _MAX_PATH ) ;
+        f.ReadTextIfExist( "System", "growpointsetup", szGrowPointSetup, _MAX_PATH ) ;
     }
 
     //摊位信息
