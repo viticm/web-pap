@@ -146,7 +146,7 @@ FULLUSERDATA=%d",
         sizeof(_PRIVATE_INFO_DB_LOAD),
         sizeof(FULLUSERDATA)
         ) ;
-    if( sizeof(FULLUSERDATA) != 37157 )//36513//34977)//34081)//35325)//34013)
+    if( sizeof(FULLUSERDATA) != 37285 )//37157 )//36513//34977)//34081)//35325)//34013)
 //                                   ^技能结构 ^技能数
     {
         AssertEx(FALSE,"用户档案数据尺寸发生变化，请联系相关人员说明相关情况！") ;
