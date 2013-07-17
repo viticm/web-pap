@@ -20,8 +20,8 @@ StaticShopManager* g_pStaticShopManager =    NULL;
 //macro
 #define    SHOP_ITEM_PROPERTY_NUM            3
 #define    SHOP_ID                            0
-#define SHOP_NAME                        SHOP_ID+1
-#define SHOP_TYPE                        SHOP_NAME+1
+//#define SHOP_NAME                        SHOP_ID+1
+#define SHOP_TYPE                        SHOP_ID+1
 #define    SHOP_REPAIR_LEVEL                SHOP_TYPE+1
 #define    SHOP_BUY_LEVEL                    SHOP_REPAIR_LEVEL+1
 #define    SHOP_REPAIR_TYPE                SHOP_BUY_LEVEL+1
@@ -224,7 +224,7 @@ BOOL    StaticShopManager::LoadShopsFromFile( CHAR* filename )
     for(i =0;i<iTableCount;i++)
     {
         m_Shops[i].m_ShopId            =         ShopFile.Search_Posistion(i,SHOP_ID)->iValue;
-        strncpy( m_Shops[i].m_szShopName, ShopFile.Search_Posistion(i,SHOP_NAME)->pString, MAX_SHOP_NAME-2 );
+        //strncpy( m_Shops[i].m_szShopName, ShopFile.Search_Posistion(i,SHOP_NAME)->pString, MAX_SHOP_NAME-2 );
         m_Shops[i].m_ShopType        =        ShopFile.Search_Posistion(i,SHOP_TYPE)->iValue;
         m_Shops[i].m_nRepairLevel    =        ShopFile.Search_Posistion(i,SHOP_REPAIR_LEVEL)->iValue;
         m_Shops[i].m_nBuyLevel        =        ShopFile.Search_Posistion(i,SHOP_BUY_LEVEL)->iValue;
