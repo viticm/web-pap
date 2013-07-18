@@ -73,6 +73,7 @@ __ENTER_FUNCTION
     }
 
     SceneThread* pSceneThread=NULL ;
+    LERR( "uMaxThreadCount: %d", uMaxThreadCount );
     for( i=0; i<=uMaxThreadCount; i++ )
     {
         pSceneThread = new SceneThread ;
@@ -84,6 +85,12 @@ __ENTER_FUNCTION
         m_nThreads ++ ;
     }
 
+    for ( i = 0; i < uMaxThreadCount; i++ )
+    {
+        Thread** m_pThread = m_pThreadPool->GetThread();
+        SceneThread* pSceneThread1 = (SceneThread*)( m_pThread[ i ] );
+        LERR( "uThreadIndex: %d, obj: %d", i, pSceneThread1 );
+    }
 
     for( i=0; i<count; i++ )
     {
@@ -101,6 +108,7 @@ __ENTER_FUNCTION
             continue ;
         }
 
+        LERR( "FILE: %s, LINE: %d, m_ThreadIndex: %d", __FILE__, __LINE__, g_Config.m_SceneInfo.m_pScene[i].m_ThreadIndex );
         SceneThread* pSceneThread = (SceneThread*)(m_pThreadPool->GetThreadByIndex(g_Config.m_SceneInfo.m_pScene[i].m_ThreadIndex)) ;
         if( pSceneThread==NULL )
         {
@@ -108,12 +116,15 @@ __ENTER_FUNCTION
         }
         else
         {
-            Scene* pScene = g_pSceneManager->GetScene(SceneID) ;
 
-            pSceneThread->AddScene( pScene ) ;
+            Scene* pScene = g_pSceneManager->GetScene(SceneID) ;
+            pSceneThread->AddScene( pScene );
+
+    LERR( "FILE: %s, LINE: %d", __FILE__, __LINE__ );
         }
     }
 
+    LERR( "FILE: %s, LINE: %d", __FILE__, __LINE__ );
     if( m_pServerThread->IsActive() )
     {
         m_nThreads ++ ;

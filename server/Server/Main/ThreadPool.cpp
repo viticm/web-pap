@@ -31,6 +31,13 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
+Thread** ThreadPool::GetThread()
+{
+__ENTER_FUNCTION
+    return m_pThread;
+__LEAVE_FUNCTION
+}
+
 BOOL ThreadPool::AddThread( Thread* pThread )
 {
 __ENTER_FUNCTION
@@ -40,15 +47,15 @@ __ENTER_FUNCTION
         if( m_pThread[m_Position] == NULL )
         {
             m_pThread[m_Position] = pThread ;
-            m_Position ++ ;
+            m_Position++ ;
             Assert( m_Position<=MAX_THREAD ) ;
-            m_Count ++ ;
+            m_Count++ ;
             Assert( m_Count<=MAX_THREAD ) ;
-
+            LERR( "AddThread pThread: %d, m_Position: %d", pThread, m_Position );
             return TRUE ;
         }
 
-        m_Position ++ ;
+        m_Position++ ;
         Assert( m_Position<=MAX_THREAD ) ;
     }
 
@@ -105,6 +112,7 @@ __ENTER_FUNCTION
     if( index>=m_Count )
         return NULL ;
 
+    LERR( "%d", m_pThread[index] );
     return m_pThread[index] ; 
 
 __LEAVE_FUNCTION
