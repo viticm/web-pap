@@ -73,13 +73,13 @@ __ENTER_FUNCTION
     }
 
     SceneThread* pSceneThread=NULL ;
-    LERR( "uMaxThreadCount: %d", uMaxThreadCount );
     for( i=0; i<=uMaxThreadCount; i++ )
     {
         pSceneThread = new SceneThread ;
         Assert( pSceneThread ) ;
 
-        ret = m_pThreadPool->AddThread( pSceneThread ) ;
+        LERR( "FILE: %s, i: %d", __FILE__, i )
+        ret = m_pThreadPool->AddThread( i, pSceneThread ) ;
         Assert( ret ) ;
 
         m_nThreads ++ ;
@@ -89,7 +89,7 @@ __ENTER_FUNCTION
     {
         Thread** m_pThread = m_pThreadPool->GetThread();
         SceneThread* pSceneThread1 = (SceneThread*)( m_pThread[ i ] );
-        LERR( "uThreadIndex: %d, obj: %d", i, pSceneThread1 );
+        LERR( "uThreadIndex: %d, obj: %d , sizeof( pSceneThread1 ):%d", i, pSceneThread1, sizeof( pSceneThread1 ) );
     }
 
     for( i=0; i<count; i++ )

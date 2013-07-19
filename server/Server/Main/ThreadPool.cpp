@@ -38,26 +38,26 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-BOOL ThreadPool::AddThread( Thread* pThread )
+BOOL ThreadPool::AddThread( UINT uThreadIndex, Thread* pThread )
 {
 __ENTER_FUNCTION
 
-    for( INT i=0; i<MAX_THREAD; i++ )
-    {
-        if( m_pThread[m_Position] == NULL )
-        {
-            m_pThread[m_Position] = pThread ;
-            m_Position++ ;
-            Assert( m_Position<=MAX_THREAD ) ;
-            m_Count++ ;
-            Assert( m_Count<=MAX_THREAD ) ;
-            LERR( "AddThread pThread: %d, m_Position: %d", pThread, m_Position );
-            return TRUE ;
-        }
+    //for( INT i=0; i<MAX_THREAD; i++ )
+    //{
+    //if( NULL == m_pThread[ uThreadIndex ] )
+    //{
+    m_pThread[ uThreadIndex ] = pThread ;
+    LERR( "AddThread pThread: %d, uThreadIndex: %d", pThread, uThreadIndex );
+    m_Position++ ;
+    Assert( uThreadIndex<=MAX_THREAD ) ;
+    m_Count++ ;
+    Assert( m_Count<=MAX_THREAD ) ;
+    return TRUE ;
+    //}
 
-        m_Position++ ;
-        Assert( m_Position<=MAX_THREAD ) ;
-    }
+    //m_Position++ ;
+    //Assert( m_Position<=MAX_THREAD ) ;
+    //}
 
 __LEAVE_FUNCTION
 
