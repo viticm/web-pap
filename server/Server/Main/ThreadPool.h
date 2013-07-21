@@ -22,7 +22,7 @@ public :
     BOOL            Stop( ) ;
 
     //添加一个线程到线程池
-    BOOL            AddThread( Thread* pThread ) ;
+    BOOL            AddThread( UINT uThreadIndex, Thread* pThread ) ;
 
     //删除一个线程
     BOOL            DelThread( TID id ) ;
@@ -32,7 +32,7 @@ public :
 
     //根据线程索引取得线程指针
     Thread*            GetThreadByIndex( UINT index ) ;
-
+    Thread**            GetThread();
 
 
     VOID            Lock( ){ m_Lock.Lock() ; } ;
