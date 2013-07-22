@@ -33,9 +33,9 @@ __LEAVE_FUNCTION
 UINT CGAskActiveTimeUpdate::Execute( Player* pPlayer )
 {
 __ENTER_FUNCTION
-
-    return CGAskActiveTimeUpdateHandler::Execute( this, pPlayer ) ;
-
+    // del by viticm, not use
+    // return CGAskActiveTimeUpdateHandler::Execute( this, pPlayer ) ;
+    return TRUE;
 __LEAVE_FUNCTION
 
     return FALSE ;
