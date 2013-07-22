@@ -84,14 +84,15 @@ __ENTER_FUNCTION
         m_nThreads ++ ;
     }
     
-    /**
+    /** // my debug
     for ( i = 0; i < uMaxThreadCount; i++ )
     {
         Thread** m_pThread = m_pThreadPool->GetThread();
         SceneThread* pSceneThread1 = (SceneThread*)( m_pThread[ i ] );
+        LERR( "FILE: %s, LINE: %d, pSceneThread1: %d, index: %d", __FILE__, __LINE__, pSceneThread1, i );
     }
+    MySleep( 3600 );
     **/
-
     for( i=0; i<count; i++ )
     {
         //读取场景
@@ -142,7 +143,6 @@ __ENTER_FUNCTION
     m_pServerThread->start() ;
 
     MySleep( 5000 ) ;
-    LERR( "m_pThreadPool->Start( )" );
     ret = m_pThreadPool->Start( ) ;
     
     

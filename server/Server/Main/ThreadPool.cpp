@@ -122,10 +122,12 @@ BOOL ThreadPool::Start( )
 {
 __ENTER_FUNCTION
 
-    for( INT i=0; i<MAX_THREAD; i++ )
+    for( INT i=0; i < m_Count; i++ )
     {
         if( m_pThread[i] )
+        {
             m_pThread[i]->start() ;
+        }
     }
 
 
