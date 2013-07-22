@@ -47,7 +47,6 @@ __ENTER_FUNCTION
     //if( NULL == m_pThread[ uThreadIndex ] )
     //{
     m_pThread[ uThreadIndex ] = pThread ;
-    LERR( "AddThread pThread: %d, uThreadIndex: %d", pThread, uThreadIndex );
     m_Position++ ;
     Assert( uThreadIndex<=MAX_THREAD ) ;
     m_Count++ ;
@@ -112,7 +111,6 @@ __ENTER_FUNCTION
     if( index>=m_Count )
         return NULL ;
 
-    LERR( "%d", m_pThread[index] );
     return m_pThread[index] ; 
 
 __LEAVE_FUNCTION

@@ -14,9 +14,9 @@ Arr_ModelIncludeNeedCompile=(
     Common/Assertx.cpp Common/Net/*.cpp Common/DataBase/*.cpp Common/ShareMemAPI.cpp Common/GameUtil.cpp
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/GameStruct_Script.cpp
     Common/FileDataMgr.cpp Common/GameStruct_Relation.cpp Common/Packets/GC*.cpp Common/GameStruct_Finger.cpp
-    Common/Packets/GWAskMail.cpp Common/Rand.cpp Common/Combat/*.cpp Common/Packets/SSConnect.cpp
+    Common/Packets/CG*.cpp Common/Packets/WG*.cpp Common/Packets/GW*.cpp Common/Packets/SSScenePlayerCount.cpp
+    Common/Rand.cpp Common/Combat/*.cpp Common/Packets/SSConnect.cpp Common/Packets/GG*.cpp
     Common/ScriptCommandStruct.cpp Common/GameStruct_Pet.cpp Common/GameStruct_MinorPasswd.cpp
-    Common/Packets/GWSystemMsg.cpp 
     " #Server
     
     "

@@ -51,7 +51,7 @@ __ENTER_FUNCTION
     UINT i ;
     for( i=0; i<count; i++ )
     {
-        //读取场景“i”
+        //读取场景
         SceneID_t SceneID = (SceneID_t)(g_Config.m_SceneInfo.m_pScene[i].m_SceneID) ;
         Assert( SceneID<MAX_SCENE ) ;
 
@@ -78,23 +78,23 @@ __ENTER_FUNCTION
         pSceneThread = new SceneThread ;
         Assert( pSceneThread ) ;
 
-        LERR( "FILE: %s, i: %d", __FILE__, i )
         ret = m_pThreadPool->AddThread( i, pSceneThread ) ;
         Assert( ret ) ;
 
         m_nThreads ++ ;
     }
-
+    
+    /**
     for ( i = 0; i < uMaxThreadCount; i++ )
     {
         Thread** m_pThread = m_pThreadPool->GetThread();
         SceneThread* pSceneThread1 = (SceneThread*)( m_pThread[ i ] );
-        LERR( "uThreadIndex: %d, obj: %d , sizeof( pSceneThread1 ):%d", i, pSceneThread1, sizeof( pSceneThread1 ) );
     }
+    **/
 
     for( i=0; i<count; i++ )
     {
-        //读取场景“i”
+        //读取场景
         SceneID_t SceneID = (SceneID_t)(g_Config.m_SceneInfo.m_pScene[i].m_SceneID) ;
         Assert( SceneID<MAX_SCENE ) ;
 
@@ -108,7 +108,6 @@ __ENTER_FUNCTION
             continue ;
         }
 
-        LERR( "FILE: %s, LINE: %d, m_ThreadIndex: %d", __FILE__, __LINE__, g_Config.m_SceneInfo.m_pScene[i].m_ThreadIndex );
         SceneThread* pSceneThread = (SceneThread*)(m_pThreadPool->GetThreadByIndex(g_Config.m_SceneInfo.m_pScene[i].m_ThreadIndex)) ;
         if( pSceneThread==NULL )
         {
@@ -119,12 +118,9 @@ __ENTER_FUNCTION
 
             Scene* pScene = g_pSceneManager->GetScene(SceneID) ;
             pSceneThread->AddScene( pScene );
-
-    LERR( "FILE: %s, LINE: %d", __FILE__, __LINE__ );
         }
     }
 
-    LERR( "FILE: %s, LINE: %d", __FILE__, __LINE__ );
     if( m_pServerThread->IsActive() )
     {
         m_nThreads ++ ;
@@ -145,8 +141,8 @@ __ENTER_FUNCTION
 
     m_pServerThread->start() ;
 
-    MySleep( 500 ) ;
-
+    MySleep( 5000 ) ;
+    LERR( "m_pThreadPool->Start( )" );
     ret = m_pThreadPool->Start( ) ;
     
     

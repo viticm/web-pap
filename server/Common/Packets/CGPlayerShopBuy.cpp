@@ -3,9 +3,9 @@
 // CGStallBuy.cpp
 // 
 /////////////////////////////////////////////////////
-
+// del by viticm, repeat by CGStallBuy.cpp
 #include "CGStallBuy.h"
-
+/**
 BOOL CGStallBuy::Read( SocketInputStream& iStream ) 
 {
     __ENTER_FUNCTION
@@ -44,4 +44,4 @@ UINT CGStallBuy::Execute( Player* pPlayer )
 
         return FALSE ;
 }
-
+**/
