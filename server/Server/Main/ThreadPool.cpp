@@ -111,7 +111,6 @@ __ENTER_FUNCTION
     if( index>=m_Count )
         return NULL ;
 
-    LERR( "%d", m_pThread[index] );
     return m_pThread[index] ; 
 
 __LEAVE_FUNCTION
