@@ -141,8 +141,8 @@ __ENTER_FUNCTION
 
     m_pServerThread->start() ;
 
-    MySleep( 500 ) ;
-
+    MySleep( 5000 ) ;
+    LERR( "m_pThreadPool->Start( )" );
     ret = m_pThreadPool->Start( ) ;
     
     
