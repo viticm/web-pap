@@ -24,3 +24,5 @@
     wget -c http://www.lua.org/ftp/lua-5.2.2.tar.gz
     tar -xzvf lua-5.2.2.tar.gz;cd lua-5.2.2;make linux;make install
     ```
+4.  Help for Run
+    - exclude Billing and ShareMemory and Login, then run server will use root privileges.
