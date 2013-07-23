@@ -469,7 +469,7 @@ BOOL Obj_Character::Obj_Logic_Move( UINT uTime )
 
     // 这一帧可移动的路径长度
     FLOAT fSpeed = GetMoveSpeed() ;
-    Assert( fSpeed > 0.1 && fSpeed < 20.0 ); // 做个验证很重要
+    Assert( fSpeed >= 0.0 && fSpeed < 20.0 ); // 做个验证很重要 -- exclude zero
     UINT uLogicTime = GetLogicTime() ;
     FLOAT fMoveDist = (fSpeed*uLogicTime)/1000.0f ;
     if(fMoveDist <= 0.01f)
