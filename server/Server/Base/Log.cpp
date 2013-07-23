@@ -227,9 +227,16 @@ __ENTER_FUNCTION
         if( g_pTimeManager )
         {
             memset( szTime, 0, 64 ) ;
-            sprintf( szTime, " (%d)(T=%.4f)\r\n", 
+            #ifdef __LINUX__
+            sprintf( szTime, " (%d)(T=%.4f)\n",
                 MyGetCurrentThreadID(),
                 (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
+            #else
+            sprintf( szTime, " (%d)(T=%.4f)\r\n",
+                MyGetCurrentThreadID(),
+                (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
+            #endif
+            
             strcat( buffer, szTime ) ;
         }
         FILE* f = fopen( filename, "ab" ) ;
