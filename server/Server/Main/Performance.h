@@ -9,7 +9,7 @@
 
 #include "Type.h"
 
-#define MAX_PERFOR_SIZE 256
+#define MAX_PERFOR_SIZE 1024
 
 enum SCENE_PERFOR_TYPE
 {
