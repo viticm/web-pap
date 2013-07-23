@@ -13,6 +13,7 @@ __ENTER_FUNCTION
     }
     m_Count = 0 ;
     m_Position = 0 ;
+    m_ThreadCount = 0;
 
 __LEAVE_FUNCTION
 }
@@ -49,8 +50,9 @@ __ENTER_FUNCTION
     m_pThread[ uThreadIndex ] = pThread ;
     m_Position++ ;
     Assert( uThreadIndex<=MAX_THREAD ) ;
-    m_Count++ ;
-    Assert( m_Count<=MAX_THREAD ) ;
+    //m_Count++ ;
+    m_ThreadCount++ ;
+    Assert( m_ThreadCount<=MAX_THREAD ) ;
     return TRUE ;
     //}
 
@@ -73,8 +75,8 @@ __ENTER_FUNCTION
         {
             m_Position = i ;
             m_pThread[i] = NULL ;
-            m_Count -- ;
-            Assert( m_Count >= 0 ) ;
+            m_ThreadCount -- ;
+            Assert( m_ThreadCount >= 0 ) ;
 
             return TRUE ;
         }
@@ -108,7 +110,7 @@ Thread* ThreadPool::GetThreadByIndex( UINT index )
 {
 __ENTER_FUNCTION
 
-    if( index>=m_Count )
+    if( index>= m_ThreadCount )
         return NULL ;
 
     return m_pThread[index] ; 
@@ -122,11 +124,11 @@ BOOL ThreadPool::Start( )
 {
 __ENTER_FUNCTION
 
-    for( INT i=0; i < m_Count; i++ )
+    for( INT i=0; i < m_ThreadCount; i++ )
     {
-        if( m_pThread[i] )
+        if( m_pThread[ i ] )
         {
-            m_pThread[i]->start() ;
+            m_pThread[ i ]->start() ;
         }
     }
 
@@ -142,7 +144,7 @@ BOOL ThreadPool::Stop( )
 {
 __ENTER_FUNCTION
 
-    for( INT i=0; i<MAX_THREAD; i++ )
+    for( INT i=0; i < m_ThreadCount; i++ )
     {
         if( m_pThread[i] )
             m_pThread[i]->stop() ;

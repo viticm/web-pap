@@ -41,10 +41,11 @@ public :
 
 
 private :
-    Thread*            m_pThread[MAX_THREAD] ;
-    UINT            m_Count ;
-    UINT            m_Position ;
+    Thread*           m_pThread[MAX_THREAD] ;
+    UINT              m_Count ;
+    UINT              m_Position ;
     MyLock            m_Lock ;
+    UINT              m_ThreadCount;
 
 };
 
