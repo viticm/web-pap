@@ -142,7 +142,7 @@ __ENTER_FUNCTION
 
     m_pServerThread->start() ;
 
-    MySleep( 5000 ) ;
+    MySleep( 500 ) ;
     ret = m_pThreadPool->Start( ) ;
     
     
