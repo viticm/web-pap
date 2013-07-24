@@ -987,16 +987,6 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
 {
     __ENTER_FUNCTION
     //return strIn;
-
-
-
-
-
-
-
-
-
-    CHAR szTemp[2048] = {0};
     CHAR szNum[32];
     CHAR* pFind;
     INT nLen;
@@ -1546,30 +1536,3 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
     __LEAVE_FUNCTION
     return NULL;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
