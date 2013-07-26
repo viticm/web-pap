@@ -92,7 +92,7 @@
 
 #define FILE_AI_SCRIPT                        "../Public/Data/AIScript.dat"
 #define FILE_SCRIPT                            "../Public/Data/Script.dat"
-
+#define PATH_SCRIPT                           "../Public/data/"
 #define PATH_AI_SCRIPT                        "../Public/Data/AIScript/"
 #define PATH_SCENE                            "../Public/Scene/"
 
@@ -102,4 +102,5 @@
 
 #define GET_AI_SCRIPT_FULL_PATH(fullpath, filename) GET_FULL_PATH(fullpath, PATH_AI_SCRIPT, (filename))
 #define GET_SCENE_FULL_PATH(fullpath, filename) GET_FULL_PATH(fullpath, PATH_SCENE, (filename))
+#define GET_SCRIPT_FULL_PATH(fullpath, filename) GET_FULL_PATH(fullpath, PATH_SCRIPT, (filename))
 #endif // __FILEDEF_H__

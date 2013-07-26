@@ -2,64 +2,22 @@
 
 #include "FoxLuaScript.h"
 
-//struct tagmem{
-//    DWORD a;
-//    tagmem* pre;
-//    tagmem* next;
-//    DWORD d;//10h
-//    DWORD e;
-//};
-//tagmem* m_MemList;
-//MemAlloc(tagmem* mem){
-//    tagmem* k=ma(&(mem->e));
-//
-//    if(k==0)
-//        return 0;
-//
-//    k->pre=0;
-//    k->next=mem;
-//    k->d=1234567890;
-//    if(m_MemList->pre==0){
-//        k->pre=m_MemList->pre;
-//        k->next=m_MemList;
-//        m_MemList->pre=k;
-//        m_MemList->pre->next=k;
-//    }
-//    else{
-//        k->next=0;
-//    }
-//    return &(k->e);
-//
-//}
-//void MemFree(tagmem* p){
-//    if (p==0 || p->d !=1234567890)
-//        return;
-//    if(p->next == NULL )
-//        p->next->pre=p->pre;
-//    if(p->pre!=0)
-//        p->pre->next=p->next;
-//
-//    free p;
-//}
-//void MemCopy(void* dst,void* src,size_t size){memcpy(dst,src,size);}
-//void MemCopyMmx()(void* dst,void* src,size_t size){memcpy(dst,src,size);}
-//bool MemComp(void* buf1,void* buf2,size_t size){memcmp(buf1,buf2,size);}
-//void MemFill(void* dst,int val,size_t size){memset();}
-//void MemZero(void* buf,size_t size){memset(buf,0,size);}
-
 char szRootPath[MAX_PATH];
 char szCurrPath[MAX_PATH];
 
-int RemoveOnePointPath(LPSTR str,size_t len){
+int RemoveOnePointPath( LPSTR str, size_t len )
+{
     char* p;
     int i=len;
-    while((p = strstr(str,"/./"))!=0 ) { 
+    while( ( p = strstr(str,"/./" ) ) != 0 )
+    { 
         i-=p+2-str;
         memmove(p,p+2,i+1);
     }
     return i;
 }
-int RemoveTwoPointPath(LPSTR str,size_t len){
+int RemoveTwoPointPath(LPSTR str,size_t len)
+{
     char* p;
     int i=len;
     while((p=strstr(str,"/../"))!=0) { 
@@ -134,46 +92,6 @@ LPSTR GetFullPath(LPSTR ret,LPSTR cFileName){
 
     return strcat(ret,cFileName);
 }
-
-//
-// class FoxMemClass
-// {
-// public:
-//     FoxMemClass(){
-//         m_pBuf=0;m_Size=0;
-//     }
-//     ~FoxMemClass(){Free();}
-//     tagmem* Alloc(DWORD size){
-//         if(m_Size!=p){
-//             if(m_pBuf) Free();
-//             if(m_pBuf=MemAlloc(size))
-//                 m_Size=size;
-//         }
-//         return m_pBuf
-//     }
-//     void Free(){
-//         if(m_pBuf!=0)
-//             MemFree(m_pBuf);
-//         m_pBuf=0;
-//         m_Size=0;
-//     }
-//     void Zero(){
-//         if(m_pBuf) MemZero(m_pBuf,m_Size);
-//     }
-//     void Fill(BYTE val){
-//         if(m_pBuf) MemFill(m_pBuf,val,m_Size);
-//     }
-//     tagmem* m_pBuf;
-//     DWORD m_Size;
-// };
-//
-//class FoxNode
-//{
-//public:
-//
-//};
-
-
 
 void FoxFile::Close()
 {
@@ -270,11 +188,11 @@ BOOL FoxPakFile::Open(LPTSTR file)
 ////////////////////////////////
 FoxLuaScript::FoxLuaScript(){
     if(m_LuaState = lua_open()){
-        m_IsRuning =TRUE;
+        m_IsRuning = TRUE;
         m_szScriptName[0]='\0';
         return;
     }
-    m_IsRuning =FALSE;
+    m_IsRuning = FALSE;
     ScriptError(LUA_CREATE_ERROR);
 }
 
@@ -284,20 +202,27 @@ FoxLuaScript::~FoxLuaScript(){
 
 int    FoxLuaScript::Activate(){Execute(); return 1;}
 
-BOOL FoxLuaScript::Init(){
-    if(m_LuaState==NULL){
-        if((m_LuaState=lua_open()) == NULL){
+BOOL FoxLuaScript::Init()
+{
+    if( NULL == m_LuaState )
+    {
+        if( NULL == ( m_LuaState=lua_open() ) )
+        {
             ScriptError(LUA_CREATE_ERROR);
             return FALSE;
         }
-        //m_UserTag=lua_newtag(m_LuaState);
     }
+    if ( FALSE == m_IsRuning )
+        if ( m_LuaState = lua_open() ) m_IsRuning = TRUE;
+
     RegisterStandardFunctions();
     return TRUE;
 }
 
-void FoxLuaScript::Exit(){
-    if(m_LuaState!=NULL){
+void FoxLuaScript::Exit()
+{
+    if( m_LuaState != NULL )
+    {
         lua_close(m_LuaState);
         m_LuaState=NULL;
         m_IsRuning=FALSE;
@@ -307,8 +232,10 @@ void FoxLuaScript::Exit(){
 BOOL FoxLuaScript::Load(char* FileName,char* buf , size_t bufSize)
 {
     try{
+        char szFilePath[ _MAX_PATH ];
+        GET_SCRIPT_FULL_PATH( szFilePath, FileName );
         FoxPakFile fpk;
-        if(fpk.Open(FileName)==FALSE)
+        if( FALSE == fpk.Open( szFilePath ) )
             throw "文件打开失败";
  
         int fileSize=fpk.Size();
@@ -516,7 +443,8 @@ void FoxLuaScript::ScriptError(int a, int b)
 
 BOOL FoxLuaScript::ExecuteCode()
 {
-    if(m_IsRuning ==FALSE || m_LuaState==NULL /*|| lua_execute(m_LuaState)==0*/){
+    if( m_IsRuning ==FALSE || m_LuaState == NULL /*|| lua_execute(m_LuaState)==0*/)
+    {
         ScriptError(LUA_SCRIPT_EXECUTE_ERROR);
         return FALSE;
     }
