@@ -255,6 +255,10 @@ __LEAVE_FUNCTION
 return FALSE ;
 }
 
+/**
+ * @param VOID
+ * @uses get current format time, example: 2013-7-29 16:48:46
+ */
 CHAR* TimeManager::GetCurrentFormatTime()
 {
 __ENTER_FUNCTION
