@@ -226,14 +226,14 @@ __ENTER_FUNCTION
         CHAR szTime[64] ;
         if( g_pTimeManager )
         {
-            memset( szTime, 0, 64 ) ;
+            memset( szTime, 0, 84 ) ;
             #ifdef __LINUX__
-            sprintf( szTime, " (%d)(T=%.4f)\n",
-                MyGetCurrentThreadID(),
+            sprintf( szTime, " (%d)(T0=%s T1=%.4f)\n",
+                MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
                 (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
             #else
-            sprintf( szTime, " (%d)(T=%.4f)\r\n",
-                MyGetCurrentThreadID(),
+            sprintf( szTime, " (%d)(T0=%s T1=%.4f)\r\n",
+                MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
                 (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
             #endif
             

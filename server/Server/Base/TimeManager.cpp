@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "TimeManager.h"
+#define MAX_DATE_LENGTH 20
 
 TimeManager*    g_pTimeManager=NULL ;
 
@@ -248,6 +249,21 @@ __ENTER_FUNCTION
     }
 
     return ret;
+
+__LEAVE_FUNCTION
+
+return FALSE ;
+}
+
+CHAR* TimeManager::GetCurrentFormatTime()
+{
+__ENTER_FUNCTION
+
+    char szCurrentFormatTime[ MAX_DATE_LENGTH ];
+    SetTime();
+    sprintf( szCurrentFormatTime, "%d-%d-%d %d:%d:%d",
+               GetYear(), GetMonth(), GetDay(), GetHour(), GetMinute(), GetSecond() );  
+    return szCurrentFormatTime;
 
 __LEAVE_FUNCTION
 
