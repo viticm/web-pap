@@ -271,5 +271,5 @@ __ENTER_FUNCTION
 
 __LEAVE_FUNCTION
 
-return '';
+return "";
 }
