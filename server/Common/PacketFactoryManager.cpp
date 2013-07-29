@@ -1124,7 +1124,7 @@ __ENTER_FUNCTION
     if( packetID>=m_Size || m_Factories[packetID]==NULL ) 
     {
         char buff[256] = {0};
-        sprintf(buff,"PacketID= %d 消息没有注册到PacketFactoryManager上",packetID);
+        sprintf(buff,"PacketID= %d message not register in PacketFactoryManager",packetID);
         AssertEx(FALSE,buff) ;
         return 0 ;
     }

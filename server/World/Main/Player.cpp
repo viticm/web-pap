@@ -195,9 +195,12 @@ __ENTER_FUNCTION
                     g_pPacketFactoryManager->RemovePacket( pPacket ) ;
                     return FALSE ;
                 }
-        Log::SaveLog( "./Log/World包.txt", "接收包 [来源端口：%d, ID=%d，size=%d]", 
-            m_pSocketInputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
-
+                
+                #ifdef _DEBUG
+                Log::SaveLog( "./Log/World包.txt", "接收包 [来源端口：%d, ID=%d，size=%d]", 
+                    m_pSocketInputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
+                #endif
+                
                 BOOL bNeedRemove = TRUE ;
 
                 _MY_TRY
@@ -348,10 +351,12 @@ __ENTER_FUNCTION
         BOOL ret = pPacket->Write( *m_pSocketOutputStream ) ;
         Assert( ret ) ;
 
+        #ifdef _DEBUG
         Log::SaveLog( "./Log/World包.txt", "发送包 [目标端口：%d, ID=%d，size=%d]", 
             m_pSocketOutputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
-
-        UINT nSizeAfter = m_pSocketOutputStream->Length();
+        #endif
+      
+      UINT nSizeAfter = m_pSocketOutputStream->Length();
 
         if(pPacket->GetPacketSize() != nSizeAfter-nSizeBefore-PACKET_HEADER_SIZE)
         {

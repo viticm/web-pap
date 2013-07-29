@@ -194,8 +194,11 @@ __ENTER_FUNCTION
                     g_pPacketFactoryManager->RemovePacket( pPacket ) ;
                     return FALSE ;
                 }
-        Log::SaveLog( "./Log/Billing包.txt", "接收包 [来源端口：%d, ID=%d，size=%d]", 
-            m_pSocketInputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
+
+                #ifdef _DEBUG
+                Log::SaveLog( "./Log/Billing包.txt", "接收包 [来源端口：%d, ID=%d，size=%d]", 
+                    m_pSocketInputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
+                #endif
 
                 BOOL bNeedRemove = TRUE ;
 
@@ -335,8 +338,10 @@ __ENTER_FUNCTION
 
         w = m_pSocketOutputStream->Write( (CHAR*)&packetUINT, sizeof(UINT) ) ;
 
+        #ifdef _DEBUG
         Log::SaveLog( "./Log/Billing包.txt", "发送包 [目标端口：%d, ID=%d，size=%d]", 
             m_pSocketOutputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
+        #endif
 
         BOOL ret = pPacket->Write( *m_pSocketOutputStream ) ;
 
