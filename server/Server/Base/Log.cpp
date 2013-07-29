@@ -106,11 +106,19 @@ __ENTER_FUNCTION
 
         if( g_pTimeManager )
         {
-            CHAR szTime[64] ;
-            sprintf( szTime, " (%d)(T=%.4f)\r\n", 
-                MyGetCurrentThreadID(),
+            CHAR szTime[84] ;
+            #ifdef __LINUX__
+            sprintf( szTime, " (%d)(T0=%s T1=%.4f)\n",
+                MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
                 (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
+            #else
+            sprintf( szTime, " (%d)(T0=%s T1=%.4f)\r\n",
+                MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
+                (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
+            #endif
+            
             strcat( buffer, szTime ) ;
+     
         }
     }
     catch(...)
@@ -223,10 +231,9 @@ __ENTER_FUNCTION
         vsprintf(buffer,msg,argptr);
         va_end(argptr);
 
-        CHAR szTime[64] ;
         if( g_pTimeManager )
         {
-            memset( szTime, 0, 84 ) ;
+            CHAR szTime[84] ;
             #ifdef __LINUX__
             sprintf( szTime, " (%d)(T0=%s T1=%.4f)\n",
                 MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
