@@ -265,8 +265,7 @@ __ENTER_FUNCTION
 
     char szCurrentFormatTime[ MAX_DATE_LENGTH ];
     SetTime();
-    sprintf( szCurrentFormatTime, "%d-%d-%d %d:%d:%d",
-               GetYear(), GetMonth(), GetDay(), GetHour(), GetMinute(), GetSecond() );  
+    strftime( szCurrentFormatTime, sizeof( szCurrentFormatTime ), "%Y-%m-%d %H:%M:%S", &m_TM );
     return szCurrentFormatTime;
 
 __LEAVE_FUNCTION
