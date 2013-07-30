@@ -70,6 +70,8 @@ public :
     //得到当前是今天的什么时间2310表示23点10分
     WORD            GetTodayTime();
     BOOL            FormatTodayTime(WORD& nTime);
+    // get current format time: 2013-7-29 16:15:11
+    CHAR*           GetCurrentFormatTime();
 
 
 public :
