@@ -985,7 +985,8 @@ VOID  DumpStack(const CHAR* type)
             {
                 LERR( "LOG BASE DIR: %s, NOT EXISTS.", "./Log/" );
             }
-        free(symbols);
+            free(symbols);
+        }
     }
     else
     {
