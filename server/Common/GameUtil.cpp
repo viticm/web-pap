@@ -983,7 +983,7 @@ VOID  DumpStack(const CHAR* type)
             }
             else
             {
-                LERR( "LOG BASE DIR: %s, NOT EXISTS.", "./Log/" );
+                LERR( "LOG BASE DIR: %s NOT EXISTS, CAN NOT SAVE DUMP LOGS.", "./Log/" );
             }
             free(symbols);
         }
@@ -1002,7 +1002,7 @@ VOID  DumpStack(const CHAR* type)
         }
         else
         {
-            LERR( "LOG BASE DIR: %s, NOT EXISTS.", "./Log/" );
+            LERR( "LOG BASE DIR: %s NOT EXISTS, CAN NOT SAVE DUMP LOGS.", "./Log/" );
         }
     }
 #endif
