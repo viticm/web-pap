@@ -7,20 +7,29 @@
 
 CHAR* g_pLogFileName[] =
 {
-    "./Log/login",        //0        LOG_FILE_0
-    "./Log/debug",        //1        LOG_FILE_1
-    "./Log/error",        //2        LOG_FILE_2
-    "./Log/functions",    //3        LOG_FILE_3
-    "./Log/world",        //4        LOG_FILE_4
-    "./Log/item",        //5        LOG_FILE_5
-    "./Log/send",        //6        LOG_FILE_6
-    "./Log/money",        //7        LOG_FILE_7
-    "./Log/pet",        //8        LOG_FILE_8
-    "./Log/skill",        //9        LOG_FILE_9
-    "./Log/xinfa",        //10    LOG_FILE_10
-    "./Log/ability",    //11    LOG_FILE_11
-    "./Log/chat",        //12    LOG_FILE_12
-    "./Log/mission",    //13    LOG_FILE_13
+    "login",                //0        LOG_FILE_0
+    "debug",                //1        LOG_FILE_1
+    "error",                //2        LOG_FILE_2
+    "functions",            //3        LOG_FILE_3
+    "world",                //4        LOG_FILE_4
+    "item",                 //5        LOG_FILE_5
+    "send",                 //6        LOG_FILE_6
+    "money",                //7        LOG_FILE_7
+    "pet",                  //8        LOG_FILE_8
+    "skill",                //9        LOG_FILE_9
+    "xinfa",                //10       LOG_FILE_10
+    "ability",              //11       LOG_FILE_11
+    "chat",                 //12       LOG_FILE_12
+    "mission",              //13       LOG_FILE_13
+    "Login",                //14       LOG_FILE_14
+    "Billing",              //15       LOG_FILE_15
+    "Debug",                //16       LOG_FILE_16
+    "Error",                //17       LOG_FILE_17
+    "Functions",            //18       LOG_FILE_18
+    "World",                //19       LOG_FILE_19
+    "Config",               //20       LOG_FILE_20
+    "assert",               //21       LOG_FILE_21
+    "RecyclePlayer",        //22       LOG_FILE_22
     '\0'
 };
 
@@ -179,9 +188,12 @@ __ENTER_FUNCTION
     try
     {
         FILE* f = fopen( szName, "ab" ) ;
-        fwrite( m_LogCache[logid], 1, m_LogPos[logid], f ) ;
-        fclose(f) ;
-        m_LogPos[logid] = 0 ;
+        if ( f )
+        {
+            fwrite( m_LogCache[logid], 1, m_LogPos[logid], f ) ;
+            fclose(f) ;
+            m_LogPos[logid] = 0 ;
+        }
     }
     catch(...)
     {
@@ -209,27 +221,27 @@ VOID Log::GetLogName( INT logid, CHAR* szName )
 {
 __ENTER_FUNCTION
 
-    sprintf( szName, "%s_%d.log", g_pLogFileName[logid], m_DayTime ) ;
+    sprintf( szName, "%s%s_%d.log", LOG_SAVE_PATH, g_pLogFileName[logid], m_DayTime ) ;
 
 __LEAVE_FUNCTION
 }
 
-VOID Log::SaveLog( CHAR* filename, CHAR* msg, ... )
+VOID Log::SaveLog( CHAR* szFileName, CHAR* szMsg, ... )
 {
 __ENTER_FUNCTION
-
+    
     g_log_lock.Lock( ) ;
 
-    CHAR buffer[2048];
-    memset( buffer, 0, 2048 ) ;
+    CHAR szBuffer[ 2048 ];
+    memset( szBuffer, 0, 2048 ) ;
 
     va_list argptr;
 
     _MY_TRY
     {
-        va_start(argptr, msg);
-        vsprintf(buffer,msg,argptr);
-        va_end(argptr);
+        va_start( argptr, szMsg );
+        vsprintf( szBuffer, szMsg, argptr );
+        va_end( argptr );
 
         if( g_pTimeManager )
         {
@@ -244,13 +256,15 @@ __ENTER_FUNCTION
                 (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
             #endif
             
-            strcat( buffer, szTime ) ;
+            strcat( szBuffer, szTime ) ;
         }
-        FILE* f = fopen( filename, "ab" ) ;
-        fwrite( buffer, 1, strlen(buffer), f ) ;
-        fclose(f) ;
-
-        printf( buffer ) ;
+        FILE* f = fopen( szFileName, "ab" ) ;
+        if ( f )
+        {
+            fwrite( szBuffer, 1, strlen( szBuffer ), f ) ;
+            fclose(f) ;
+        }
+        printf( szBuffer ) ;
     }
     _MY_CATCH
     {

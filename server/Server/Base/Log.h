@@ -9,34 +9,43 @@
 
 enum LOG_FILE_NAME_ID
 {
-    LOG_FILE_0 =0 ,
-    LOG_FILE_1 =1 ,
-    LOG_FILE_2 =2 ,
-    LOG_FILE_3 =3 ,
-    LOG_FILE_4 =4 ,
-    LOG_FILE_5 =5 ,
-    LOG_FILE_6 =6 ,
-    LOG_FILE_7 =7 ,
-    LOG_FILE_8 =8 ,
-    LOG_FILE_9 =9 ,
-    LOG_FILE_10 =10,
-    LOG_FILE_11 =11,
-    LOG_FILE_12 =12,
-    LOG_FILE_13 =13,
+    LOG_FILE_0 = 0 ,
+    LOG_FILE_1 = 1 ,
+    LOG_FILE_2 = 2 ,
+    LOG_FILE_3 = 3 ,
+    LOG_FILE_4 = 4 ,
+    LOG_FILE_5 = 5 ,
+    LOG_FILE_6 = 6 ,
+    LOG_FILE_7 = 7 ,
+    LOG_FILE_8 = 8 ,
+    LOG_FILE_9 = 9 ,
+    LOG_FILE_10 = 10 ,
+    LOG_FILE_11 = 11 ,
+    LOG_FILE_12 = 12 ,
+    LOG_FILE_13 = 13 ,
+    LOG_FILE_14 = 14 ,
+    LOG_FILE_15 = 15 ,
+    LOG_FILE_16 = 16 ,
+    LOG_FILE_17 = 17 ,
+    LOG_FILE_18 = 18 ,
+    LOG_FILE_19 = 19 ,
+    LOG_FILE_20 = 20 ,
+    LOG_FILE_21 = 21 ,
+    LOG_FILE_22 = 22 ,
 
     LOG_FILE_NUMBER ,
 };
+#define LOG_SAVE_PATH                    "./Log/"
+#define LOGIN_LOGFILE                    "Login"
+#define BILLING_LOGFILE                  "Billing"
+#define SERVER_LOGFILE                   "Debug"
+#define SERVER_ERRORFILE                 "Error"
+#define WORLD_LOGFILE                    "World"
+#define CONFIG_LOGFILE                   "Config"
+#define ASSERT_LOGFILE                   "assert"
+#define RECYCLEPLAYER_LOGFILE            "RecyclePlayer"
 
-#define LOGIN_LOGFILE                    "./Log/Login.log"
-#define BILLING_LOGFILE                    "./Log/Billing.log"
-#define SERVER_LOGFILE                    "./Log/Debug.log"
-#define SERVER_ERRORFILE                "./Log/Error.log"
-#define SERVER_FUNCTIONFILE                "./Log/Functions.log"
-#define WORLD_LOGFILE                    "./Log/world.log"
-#define CONFIG_LOGFILE                    "./Log/config.log"
-#define ASSERT_LOGFILE                    "./Log/assert.log"
-#define RECYCLEPLAYER_LOGFILE            "./Log/RecyclePlayer.log"
-
+#define SERVER_FUNCTIONFILE              "./Log/Functions.log"
 
 #define DEFAULT_LOG_CACHE_SIZE 1024*1024*4
 class Log
@@ -54,7 +63,7 @@ public :
     VOID            FlushLog( INT logid ) ;
 
     //取得日志有效数据大小
-    INT                GetLogSize( INT logid ){ return m_LogPos[logid] ; }
+    INT             GetLogSize( INT logid ){ return m_LogPos[logid] ; }
 
     //取得保存日志的文件名称
     VOID            GetLogName( INT logid, CHAR* szName ) ;
@@ -69,17 +78,17 @@ public :
 
 
     //支持异步写入操作的日志写入
-    static VOID        SaveLog( CHAR* filename, CHAR* msg, ... ) ;    
+    static VOID        SaveLog( CHAR* szFileName, CHAR* szMsg, ... ) ;
     //删除日志内容
     static VOID        RemoveLog( CHAR* filename ) ;
 
 
 private :
-    CHAR*            m_LogCache[LOG_FILE_NUMBER] ;    //日志内存区
-    INT                m_LogPos[LOG_FILE_NUMBER] ;        //日志当前有效数据位置
-    MyLock            m_LogLock[LOG_FILE_NUMBER] ;    //日志读写锁
-    INT                m_CacheSize ;
-    UINT            m_DayTime ;
+    CHAR*                m_LogCache[LOG_FILE_NUMBER] ;    //日志内存区
+    INT                  m_LogPos[LOG_FILE_NUMBER] ;      //日志当前有效数据位置
+    MyLock               m_LogLock[LOG_FILE_NUMBER] ;     //日志读写锁
+    INT                  m_CacheSize ;
+    UINT                 m_DayTime ;
 };
 
 #if defined __LINUX__

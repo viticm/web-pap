@@ -967,29 +967,42 @@ VOID  DumpStack(const CHAR* type)
         if(Size>0)
         {
             FILE* f = fopen( DUMP_LOG, "a" ) ;
-            char threadinfo[256] = {0};
-            sprintf(threadinfo,"threadid = %d cause dump\r\n",MyGetCurrentThreadID());
-            fwrite(threadinfo,1,strlen(threadinfo),f);
-            fwrite(type,1,strlen(type),f);
-            for(int    i=0;i<Size;i++)
+            if( f )
             {
-                printf("%s\r\n",symbols[i]);
-                fwrite(symbols[i],1,strlen(symbols[i]),f);
-                fwrite("\r\n",1,2,f);
+                char threadinfo[256] = {0};
+                sprintf(threadinfo,"threadid = %d cause dump\r\n",MyGetCurrentThreadID());
+                fwrite(threadinfo,1,strlen(threadinfo),f);
+                fwrite(type,1,strlen(type),f);
+                for(int    i=0;i<Size;i++)
+                {
+                    printf("%s\r\n",symbols[i]);
+                    fwrite(symbols[i],1,strlen(symbols[i]),f);
+                    fwrite("\r\n",1,2,f);
+                }
+                fclose(f) ;
             }
-            fclose(f) ;
-        }
+            else
+            {
+                LERR( "LOG BASE DIR: %s, NOT EXISTS.", "./Log/" );
+            }
         free(symbols);
     }
     else
     {
         FILE* f = fopen( DUMP_LOG, "a" ) ;
-        char    buffer[256] = {0};
-        char threadinfo[256] = {0};
-        sprintf(threadinfo,"threadid = %d cause dump\r\n",MyGetCurrentThreadID());
-        fwrite(threadinfo,1,strlen(threadinfo),f);
-        fwrite(type,1,strlen(type),f);
-        fclose(f);
+        if( f )
+        {
+            char    buffer[256] = {0};
+            char threadinfo[256] = {0};
+            sprintf(threadinfo,"threadid = %d cause dump\r\n",MyGetCurrentThreadID());
+            fwrite(threadinfo,1,strlen(threadinfo),f);
+            fwrite(type,1,strlen(type),f);
+            fclose(f);
+        }
+        else
+        {
+            LERR( "LOG BASE DIR: %s, NOT EXISTS.", "./Log/" );
+        }
     }
 #endif
 }
