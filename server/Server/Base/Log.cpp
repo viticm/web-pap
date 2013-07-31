@@ -232,6 +232,7 @@ __ENTER_FUNCTION
     
     g_log_lock.Lock( ) ;
 
+    INT iLogId = GetLogId( szFileName );
     CHAR szBuffer[ 2048 ];
     memset( szBuffer, 0, 2048 ) ;
 
@@ -257,6 +258,12 @@ __ENTER_FUNCTION
             #endif
             
             strcat( szBuffer, szTime ) ;
+        }
+        if ( -1 != iLogId )
+        {
+            char szLogFileName[ _MAX_PATH ];
+            GetLogName( iLogId, szLogFileName );
+            szFileName = szLogFileName;
         }
         FILE* f = fopen( szFileName, "ab" ) ;
         if ( f )
@@ -298,3 +305,16 @@ __LEAVE_FUNCTION
     return ;
 }
 
+INT Log::GetLogId( CHAR* szBaseFileName )
+{
+    INT iLogId = -1
+    for( INT i = 0; i < LOG_FILE_NUMBER; i++ )
+    {
+        if( szBaseFileName == g_pLogFileName[ i ] )
+        {
+            iLogId = i;
+            break;
+        }
+    }
+    return iLogId;
+}

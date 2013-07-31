@@ -62,6 +62,9 @@ public :
     //将日志内存数据写入文件
     VOID            FlushLog( INT logid ) ;
 
+    // 从日志基本文件名取得对应的日志id
+    INT             GetLogId( CHAR* szBaseFileName );
+
     //取得日志有效数据大小
     INT             GetLogSize( INT logid ){ return m_LogPos[logid] ; }
 
