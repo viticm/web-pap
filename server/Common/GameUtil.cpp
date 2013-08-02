@@ -997,8 +997,8 @@ VOID  DumpStack( const CHAR* type )
         {
             CHAR buffer[256]     = {0};
             CHAR threadinfo[256] = {0};
-            sprintf(threadinfo,"threadid = %d cause dump\r\n",MyGetCurrentThreadID());
-            fwrite(threadinfo,1,strlen(threadinfo),f);
+            sprintf( threadinfo,"threadid = %d cause dump%s", MyGetCurrentThreadID(), LF );
+            fwrite( threadinfo, 1, strlen(threadinfo), f );
             fwrite(type,1,strlen(type),f);
             fclose(f);
         }
