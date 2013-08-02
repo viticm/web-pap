@@ -1,6 +1,7 @@
 
 #ifndef __TIMEMANAGER_H__
 #define __TIMEMANAGER_H__
+#define MAX_DATE_LENGTH 20
 
 #include "Type.h"
 #ifdef __LINUX__
@@ -36,12 +37,12 @@ public :
     //
 
     //取得设置时间时候的“年、月、日、小时、分、秒、星期的值”
-    INT                GetYear( ){ return m_TM.tm_year+1900 ; } ;    //[1900,????]
-    INT                GetMonth( ){ return m_TM.tm_mon ; } ;        //[0,11]
-    INT                GetDay( ){ return m_TM.tm_mday ; } ;        //[1,31]
-    INT                GetHour( ){ return m_TM.tm_hour ; } ;        //[0,23]
-    INT                GetMinute( ){ return m_TM.tm_min ; } ;        //[0,59]
-    INT                GetSecond( ){ return m_TM.tm_sec ; } ;        //[0,59]
+    INT            GetYear( ){ return m_TM.tm_year+1900 ; } ;    //[1900,????]
+    INT            GetMonth( ){ return m_TM.tm_mon ; } ;        //[0,11]
+    INT            GetDay( ){ return m_TM.tm_mday ; } ;        //[1,31]
+    INT            GetHour( ){ return m_TM.tm_hour ; } ;        //[0,23]
+    INT            GetMinute( ){ return m_TM.tm_min ; } ;        //[0,59]
+    INT            GetSecond( ){ return m_TM.tm_sec ; } ;        //[0,59]
     //取得当前是星期几；0表示：星期天，1～6表示：星期一～星期六
     UINT            GetWeek( ){ return m_TM.tm_wday ; } ;
     //将当前的时间（年、月、日、小时、分）转换成一个UINT来表示
@@ -77,8 +78,8 @@ public :
 public :
     UINT            m_StartTime ;
     UINT            m_CurrentTime ;
-    time_t            m_SetTime ;
-    tm                m_TM ;
+    time_t          m_SetTime ;
+    tm              m_TM ;
 #ifdef __LINUX__
     struct timeval _tstart, _tend;
     struct timezone tz;
@@ -89,8 +90,5 @@ public :
 };
 
 extern TimeManager* g_pTimeManager ;
-
-
-
 
 #endif

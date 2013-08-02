@@ -232,7 +232,7 @@ __ENTER_FUNCTION
     
     g_log_lock.Lock( ) ;
 
-    INT iLogId = GetLogId( szFileName );
+    INT iLogId = Log::GetStaticLogId( szFileName );
     CHAR szBuffer[ 2048 ];
     memset( szBuffer, 0, 2048 ) ;
 
@@ -246,14 +246,18 @@ __ENTER_FUNCTION
 
         if( g_pTimeManager )
         {
-            CHAR szTime[84] ;
+            CHAR szTime[ 84 ] ;
+            CHAR szCurrentFormatTime[ 20 ];
+            memset( szTime, 0, sizeof( szTime ) );
+            memset( szCurrentFormatTime, 0, sizeof( szCurrentFormatTime ) ) ;
+            sprintf( szCurrentFormatTime, "%s", g_pTimeManager->GetCurrentFormatTime() ) ;
             #ifdef __LINUX__
             sprintf( szTime, " (%d)(T0=%s T1=%.4f)\n",
-                MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
-                (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
+                MyGetCurrentThreadID(), szCurrentFormatTime,
+                (FLOAT)(g_pTimeManager->RunTime())/1000.0 );
             #else
             sprintf( szTime, " (%d)(T0=%s T1=%.4f)\r\n",
-                MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
+                MyGetCurrentThreadID(), szCurrentFormatTime,
                 (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
             #endif
             
@@ -262,7 +266,7 @@ __ENTER_FUNCTION
         if ( -1 != iLogId )
         {
             char szLogFileName[ _MAX_PATH ];
-            GetLogName( iLogId, szLogFileName );
+            Log::GetStaticLogName( iLogId, szLogFileName );
             szFileName = szLogFileName;
         }
         FILE* f = fopen( szFileName, "ab" ) ;
@@ -307,7 +311,7 @@ __LEAVE_FUNCTION
 
 INT Log::GetLogId( CHAR* szBaseFileName )
 {
-    INT iLogId = -1
+    INT iLogId = -1;
     for( INT i = 0; i < LOG_FILE_NUMBER; i++ )
     {
         if( szBaseFileName == g_pLogFileName[ i ] )
@@ -318,3 +322,36 @@ INT Log::GetLogId( CHAR* szBaseFileName )
     }
     return iLogId;
 }
+
+INT Log::GetStaticLogId( CHAR* szBaseFileName )
+{
+    INT iLogId = -1;
+    for( INT i = 0; i < LOG_FILE_NUMBER; i++ )
+    {
+        if( szBaseFileName == g_pLogFileName[ i ] )
+        {
+            iLogId = i;
+            break;
+        }
+    }
+    return iLogId;
+}
+
+VOID Log::GetStaticLogName( INT iLogId, CHAR* szName )
+{
+__ENTER_FUNCTION
+
+    if ( g_pTimeManager )
+    {
+        sprintf( szName, "%s%s_%d.log",
+            LOG_SAVE_PATH, g_pLogFileName[ iLogId ], g_pTimeManager->GetDayTime() ) ;
+    }
+    else
+    {
+        sprintf( szName, "%s%s.log",
+            LOG_SAVE_PATH, g_pLogFileName[ iLogId ] ) ;
+    }
+
+__LEAVE_FUNCTION
+}
+

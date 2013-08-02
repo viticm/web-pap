@@ -76,12 +76,20 @@ public :
 
     //取得日期天数
     UINT            GetDayTime( ){ return m_DayTime ; }
+
     //设置日期天数
     VOID            SetDayTime( UINT daytime ){ m_DayTime = daytime ; }
 
 
     //支持异步写入操作的日志写入
     static VOID        SaveLog( CHAR* szFileName, CHAR* szMsg, ... ) ;
+    
+    // 根据日志文件基本名称获得日志名称
+    static INT         GetStaticLogId( CHAR* szBaseFileName );
+
+    // 获得日志名称，不需实例化
+    static VOID        GetStaticLogName( INT iLogId, CHAR* szName );
+
     //删除日志内容
     static VOID        RemoveLog( CHAR* filename ) ;
 
