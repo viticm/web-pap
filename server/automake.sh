@@ -312,19 +312,23 @@ DEBUG_DIRS = ${Arr_SonDir}
 
 OBJS =  `echo -e "${Arr_Objs}"`
 
-debug:\$(OBJS)
+debug:special \$(OBJS)
 <TAB>for dir in \$(DEBUG_DIRS); do <SLASH>
 <TAB><TAB>\$(MAKE) debug -C <DD>dir; <SLASH>
 <TAB>done
 <TAB>\$(CPP) -o ./${cModelName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
 
 release:\$(OBJS)
+<TAB>\$(RM) -f \$(BASEDIR)/Common/PacketFactoryManager.o
 <TAB>for dir in \$(DIRS); do <SLASH>
 <TAB><TAB>\$(MAKE) release -C <DD>dir; <SLASH>
 <TAB>done
 <TAB>\$(CPP) -o ./${cModelName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
 
 all:debug
+
+special:
+<TAB>\$(RM) -f \$(BASEDIR)/Common/PacketFactoryManager.o
 
 clean:
 <TAB>for dir in \$(DIRS); do <SLASH>
