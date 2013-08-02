@@ -995,8 +995,8 @@ VOID  DumpStack( const CHAR* type )
         FILE* f = fopen( DUMP_LOG, "a" ) ;
         if( f )
         {
-            char    buffer[256] = {0};
-            char threadinfo[256] = {0};
+            CHAR buffer[256]     = {0};
+            CHAR threadinfo[256] = {0};
             sprintf(threadinfo,"threadid = %d cause dump\r\n",MyGetCurrentThreadID());
             fwrite(threadinfo,1,strlen(threadinfo),f);
             fwrite(type,1,strlen(type),f);
