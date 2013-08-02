@@ -642,41 +642,41 @@ BOOL    CheckExitFile()
 
 VOID INTHandler(INT)
 {
-    DumpStack("INT exception:\r\n");
+    DumpStack("INT exception:");
     exit(0);
 }
 VOID TERMHandler(INT)
 {
-    DumpStack("TERM exception:\r\n");
+    DumpStack("TERM exception:");
     exit(0);
 
 }
 VOID ABORTHandler(INT)
 {
-    DumpStack("ABORT exception:\r\n");
+    DumpStack("ABORT exception:");
     exit(0);
 }
 
 VOID ILLHandler(INT)
 {
-    DumpStack("ILL exception:\r\n");
+    DumpStack("ILL exception:");
     exit(0);
 }
 
 VOID FPEHandler(INT)
 {
-    DumpStack("FPE exception:\r\n");
+    DumpStack("FPE exception:");
     exit(0);
 }
 
 VOID SEGHandler(INT)
 {
-    DumpStack("SEG exception:\r\n");
+    DumpStack("SEG exception:");
     exit(0);
 }
 VOID XFSZHandler(INT)
 {
-    DumpStack("XFSZ exception:\r\n");
+    DumpStack("XFSZ exception:");
     exit(0);
 }
 

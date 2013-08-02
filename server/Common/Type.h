@@ -176,8 +176,9 @@ typedef        VOID*    DBHandle;
                 printf( cFormatStr ); \
                 delete[] cFormatStr; \
             } 
-   
-#else    //linux
+    // common define
+    #define LF "\r\n"
+#elif defined ( __LINUX__ )    //linux
     #define __ENTER_FUNCTION {try{
     #define __LEAVE_FUNCTION }catch(...){AssertSpecial(FALSE,__PRETTY_FUNCTION__);}}
     // add by viticm, fast output some debug info 
@@ -192,6 +193,9 @@ typedef        VOID*    DBHandle;
                 printf( cFormatStr ); \
                 delete[] cFormatStr; \
             } 
+
+    // common define
+    #define LF "\n"
 #endif 
 #endif
 

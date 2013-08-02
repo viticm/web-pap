@@ -835,41 +835,41 @@ __LEAVE_FUNCTION
 
 VOID INTHandler(INT)
 {
-    DumpStack("INT exception:\r\n");
+    DumpStack("INT exception:");
     g_Server.Stop();
 }
 VOID TERMHandler(INT)
 {
-    DumpStack("TERM exception:\r\n");
+    DumpStack("TERM exception:");
     g_Server.Stop();
 
 }
 VOID ABORTHandler(INT)
 {
-    DumpStack("ABORT exception:\r\n");
+    DumpStack("ABORT exception:");
     g_Server.Stop();
 }
 
 VOID ILLHandler(INT)
 {
-    DumpStack("ILL exception:\r\n");
+    DumpStack("ILL exception:");
     g_Server.Stop();
 }
 
 VOID FPEHandler(INT)
 {
-    DumpStack("FPE exception:\r\n");
+    DumpStack("FPE exception:");
     g_Server.Stop();
 }
 
 VOID SEGHandler(INT)
 {
-    DumpStack("SEG exception:\r\n");
+    DumpStack("SEG exception:");
     g_Server.Stop();
 }
 VOID XFSZHandler(INT)
 {
-    DumpStack("XFSZ exception:\r\n");
+    DumpStack("XFSZ exception:");
     g_Server.Stop();
 }
 

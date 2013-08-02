@@ -955,13 +955,15 @@ BOOL CheckIllegalString( const CHAR* strText, INT nLength, INT nLevel )
 #define DUMP_LOG    "./Log/billing_dump.log"
 #endif
 
-VOID  DumpStack(const CHAR* type)
+VOID  DumpStack( const CHAR* type )
 {
 #ifdef __LINUX__
-    void *    DumpArray[25];
-    int    Size =    backtrace(DumpArray,25);
-    char ** symbols = backtrace_symbols(DumpArray, Size);
-    if(symbols)
+    VOID*    DumpArray[ 25 ] ;
+    INT      Size = backtrace( DumpArray, 25 ) ;
+    CHAR** symbols = backtrace_symbols( DumpArray, Size ) ;
+    CHAR*    szType[ 256 ] = { 0 } ;
+    sprintf( szType, "%s%s", type, LF ) ;
+    if( symbols )
     {
         if(Size>10) Size= 10;
         if(Size>0)
@@ -969,15 +971,15 @@ VOID  DumpStack(const CHAR* type)
             FILE* f = fopen( DUMP_LOG, "a" ) ;
             if( f )
             {
-                char threadinfo[256] = {0};
-                sprintf(threadinfo,"threadid = %d cause dump\r\n",MyGetCurrentThreadID());
-                fwrite(threadinfo,1,strlen(threadinfo),f);
-                fwrite(type,1,strlen(type),f);
-                for(int    i=0;i<Size;i++)
+                CHAR threadinfo[ 256 ] = { 0 } ;
+                sprintf( threadinfo,"threadid = %d cause dump%s", MyGetCurrentThreadID(), LF ) ;
+                fwrite( threadinfo, 1, strlen(threadinfo) ,f ) ;
+                fwrite( szType, 1, strlen( szType ), f ) ;
+                for( INT i=0; i < Size; i++ )
                 {
-                    printf("%s\r\n",symbols[i]);
-                    fwrite(symbols[i],1,strlen(symbols[i]),f);
-                    fwrite("\r\n",1,2,f);
+                    printf( "%s%s", symbols[i], LF ) ;
+                    fwrite(symbols[i],1,strlen(symbols[i]),f) ;
+                    fwrite( LF, 1, 2, f ) ;
                 }
                 fclose(f) ;
             }
