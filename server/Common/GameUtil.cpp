@@ -961,7 +961,7 @@ VOID  DumpStack( const CHAR* type )
     VOID*    DumpArray[ 25 ] ;
     INT      Size = backtrace( DumpArray, 25 ) ;
     CHAR** symbols = backtrace_symbols( DumpArray, Size ) ;
-    CHAR*    szType[ 256 ] = { 0 } ;
+    CHAR    szType[ 256 ] = { 0 } ;
     sprintf( szType, "%s%s", type, LF ) ;
     if( symbols )
     {
