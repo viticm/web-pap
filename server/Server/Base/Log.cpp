@@ -116,16 +116,9 @@ __ENTER_FUNCTION
         if( g_pTimeManager )
         {
             CHAR szTime[84] ;
-            #ifdef __LINUX__
-            sprintf( szTime, " (%d)(T0=%s T1=%.4f)\n",
+            sprintf( szTime, " (%d)(T0=%s T1=%.4f)%s",
                 MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
-                (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
-            #else
-            sprintf( szTime, " (%d)(T0=%s T1=%.4f)\r\n",
-                MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
-                (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
-            #endif
-            
+                (FLOAT)(g_pTimeManager->RunTime())/1000.0, LF ) ;
             strcat( buffer, szTime ) ;
      
         }
@@ -251,16 +244,9 @@ __ENTER_FUNCTION
             memset( szTime, 0, sizeof( szTime ) );
             memset( szCurrentFormatTime, 0, sizeof( szCurrentFormatTime ) ) ;
             sprintf( szCurrentFormatTime, "%s", g_pTimeManager->GetCurrentFormatTime() ) ;
-            #ifdef __LINUX__
-            sprintf( szTime, " (%d)(T0=%s T1=%.4f)\n",
+            sprintf( szTime, " (%d)(T0=%s T1=%.4f)%s",
                 MyGetCurrentThreadID(), szCurrentFormatTime,
-                (FLOAT)(g_pTimeManager->RunTime())/1000.0 );
-            #else
-            sprintf( szTime, " (%d)(T0=%s T1=%.4f)\r\n",
-                MyGetCurrentThreadID(), szCurrentFormatTime,
-                (FLOAT)(g_pTimeManager->RunTime())/1000.0 ) ;
-            #endif
-            
+                (FLOAT)(g_pTimeManager->RunTime())/1000.0, LF );
             strcat( szBuffer, szTime ) ;
         }
         if ( -1 != iLogId )
