@@ -48,8 +48,8 @@ int main(int argc, char* argv[])
         Assert( g_pTimeManager ) ;
         g_pTimeManager->Init( ) ;
 
-        Log::SaveLog( "./Log/Billing.log", "(###) main..." ) ;
-        Log::SaveLog( "./Log/Billing.log", "Billing Start... " ) ;
+        Log::SaveLog( "Billing", "(###) main..." ) ;
+        Log::SaveLog( "Billing", "Billing Start... " ) ;
 
 
 
@@ -112,20 +112,20 @@ BOOL Billing::Init( )
 
     BOOL bRet ;
 
-    Log::SaveLog( "./Log/Billing.log", "Start Read Config Files..." ) ;
+    Log::SaveLog( "Billing", "Start Read Config Files..." ) ;
     bRet = g_Config.Init( ) ;
     Assert( bRet ) ;
-    Log::SaveLog( "./Log/Billing.log", "Read Config Files...OK!" ) ;
+    Log::SaveLog( "Billing", "Read Config Files...OK!" ) ;
 
-    Log::SaveLog( "./Log/Billing.log", "Start New Managers..." ) ;
+    Log::SaveLog( "Billing", "Start New Managers..." ) ;
     bRet = NewStaticManager( ) ;
     Assert( bRet ) ;
-    Log::SaveLog( "./Log/Billing.log", "New Managers...OK!" ) ;
+    Log::SaveLog( "Billing", "New Managers...OK!" ) ;
 
-    Log::SaveLog( "./Log/Billing.log", "Start Init Managers..." ) ;
+    Log::SaveLog( "Billing", "Start Init Managers..." ) ;
     bRet = InitStaticManager( ) ;
     Assert( bRet ) ;
-    Log::SaveLog( "./Log/Billing.log", "Init Managers...OK!" ) ;
+    Log::SaveLog( "Billing", "Init Managers...OK!" ) ;
 
     return TRUE ;
 
@@ -138,7 +138,7 @@ BOOL Billing::Loop( )
 {
     __ENTER_FUNCTION
 
-    Log::SaveLog( "./Log/Billing.log", "Loop..." ) ;
+    Log::SaveLog( "Billing", "Loop..." ) ;
     g_pServerManager->Loop( ) ;
 
     __LEAVE_FUNCTION
@@ -152,10 +152,10 @@ BOOL Billing::Exit( )
 
         BOOL bRet ;
 
-    Log::SaveLog( "./Log/Billing.log", "Start Exit..." ) ;
+    Log::SaveLog( "Billing", "Start Exit..." ) ;
     bRet = DelStaticManager( ) ;
     Assert( bRet ) ;
-    Log::SaveLog( "./Log/Billing.log", "Exit...OK!" ) ;
+    Log::SaveLog( "Billing", "Exit...OK!" ) ;
 
 
     __LEAVE_FUNCTION
@@ -170,22 +170,22 @@ BOOL Billing::NewStaticManager( )
         //
     g_pServerManager = new ServerManager ;
     Assert( g_pServerManager ) ;
-    Log::SaveLog( "./Log/Billing.log", "new ServerManager...OK" ) ;
+    Log::SaveLog( "Billing", "new ServerManager...OK" ) ;
     
     //
     g_pPlayerPool = new PlayerPool ;
     Assert( g_pPlayerPool ) ;
-    Log::SaveLog( "./Log/Billing.log", "new PlayerPool...OK" ) ;
+    Log::SaveLog( "Billing", "new PlayerPool...OK" ) ;
 
     //
     g_pWebPlayer = new WebPlayer ;
     Assert( g_pWebPlayer ) ;
-    Log::SaveLog( "./Log/Billing.log", "new g_pWebPlayer...OK" ) ;
+    Log::SaveLog( "Billing", "new g_pWebPlayer...OK" ) ;
 
     //
     g_pPacketFactoryManager = new PacketFactoryManager ;
     Assert( g_pPacketFactoryManager ) ;
-    Log::SaveLog( "./Log/Billing.log", "new PacketFactoryManager...OK" ) ;
+    Log::SaveLog( "Billing", "new PacketFactoryManager...OK" ) ;
 
     
     __LEAVE_FUNCTION
@@ -202,17 +202,17 @@ BOOL Billing::InitStaticManager( )
     //
     //ret = g_UserDBManager.Init();
     //Assert( ret ) ;
-    //Log::SaveLog( "./Log/Billing.log", "g_UserDBManager->Init()...OK" ) ;
+    //Log::SaveLog( "Billing", "g_UserDBManager->Init()...OK" ) ;
 
     //
     ret = g_pServerManager->Init( ) ;
     Assert( ret ) ;
-    Log::SaveLog( "./Log/Billing.log", "g_pServerManager->Init()...OK" ) ;
+    Log::SaveLog( "Billing", "g_pServerManager->Init()...OK" ) ;
 
     //
     ret = g_pWebPlayer->Init();
     Assert( ret ) ;
-    Log::SaveLog( "./Log/Billing.log", "g_pWebPlayer->Init()...OK" ) ;
+    Log::SaveLog( "Billing", "g_pWebPlayer->Init()...OK" ) ;
 
     //________________________________________________________
     if( g_Config.m_ConfigInfo.m_SystemModel == 0 )
@@ -225,12 +225,12 @@ BOOL Billing::InitStaticManager( )
     }
     ret = g_pPlayerPool->Init( nTemp ) ;
     Assert( ret ) ;
-    Log::SaveLog( "./Log/Billing.log", "g_pPlayerPool->Init()...OK" ) ;
+    Log::SaveLog( "Billing", "g_pPlayerPool->Init()...OK" ) ;
     
     //
     ret = g_pPacketFactoryManager->Init( ) ;
     Assert( ret ) ;
-    Log::SaveLog( "./Log/Billing.log", "g_pPacketFactoryManager->Init()...OK" ) ;
+    Log::SaveLog( "Billing", "g_pPacketFactoryManager->Init()...OK" ) ;
 
     
     __LEAVE_FUNCTION
@@ -244,21 +244,21 @@ BOOL Billing::DelStaticManager( )
 
 
     SAFE_DELETE( g_pTimeManager ) ;
-    Log::SaveLog( "./Log/Billing.log", "g_pTimeManager delete...OK" ) ;
+    Log::SaveLog( "Billing", "g_pTimeManager delete...OK" ) ;
     //
     //以下模块放后面删除
     //
     SAFE_DELETE( g_pPacketFactoryManager ) ;
-    Log::SaveLog( "./Log/Billing.log", "g_pPacketFactoryManager delete...OK" ) ;
+    Log::SaveLog( "Billing", "g_pPacketFactoryManager delete...OK" ) ;
     
     SAFE_DELETE( g_pPlayerPool ) ;
-    Log::SaveLog( "./Log/Billing.log", "g_pPlayerPool delete...OK" ) ;
+    Log::SaveLog( "Billing", "g_pPlayerPool delete...OK" ) ;
 
     SAFE_DELETE(g_pWebPlayer);
-    Log::SaveLog( "./Log/Billing.log", "g_pWebPlayer delete...OK" ) ;
+    Log::SaveLog( "Billing", "g_pWebPlayer delete...OK" ) ;
     
     SAFE_DELETE( g_pServerManager ) ;
-    Log::SaveLog( "./Log/Billing.log", "g_pServerManager delete...OK" ) ;
+    Log::SaveLog( "Billing", "g_pServerManager delete...OK" ) ;
 
     __LEAVE_FUNCTION
 

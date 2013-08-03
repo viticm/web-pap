@@ -5,6 +5,28 @@
 #include "stdarg.h"
 #include "Config.h"
 
+// defined log type for modules
+#if defined (_FOX_CLIENT) && defined (_FOX_LOGIN)  && defined (_FOX_WORLD)
+#define LOG_TYPE    "login"
+#endif
+
+#if defined (_FOX_CLIENT) && defined (_FOX_SERVER) && defined (_FOX_WORLD)
+#define LOG_TYPE    "server"
+#endif
+
+#if defined (_FOX_SERVER) && defined (_FOX_WORLD) && defined(_FOX_LOGIN)
+#define LOG_TYPE    "world"
+#endif
+
+#if (!defined(_FOX_SERVER)) && (!defined (_FOX_WORLD)) && (!defined(_FOX_LOGIN))
+#define LOG_TYPE    "shm"
+#endif
+
+#if defined(_FOX_BILLING) && defined(_FOX_LOGIN) &&(!defined(_FOX_WORLD))
+#define LOG_TYPE    "billing"
+#endif
+
+
 CHAR* g_pLogFileName[] =
 {
     "login",                //0        LOG_FILE_0

@@ -328,7 +328,8 @@ all:debug
 
 special:
 <TAB>\$(RM) -f \$(BASEDIR)/Common/PacketFactoryManager.o
-<TAB>\$(RM) -f \$(BASEDIR)/Common/Common/GameUtil.o
+<TAB>\$(RM) -f \$(BASEDIR)/Common/GameUtil.o
+<TAB>\$(RM) -f \$(BASEDIR)/Server/Base/Log.o
 
 clean:
 <TAB>for dir in \$(DIRS); do <SLASH>
