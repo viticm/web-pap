@@ -319,7 +319,6 @@ debug:special \$(OBJS)
 <TAB>\$(CPP) -o ./${cModelName} \$(OBJS) ${Arr_SonDirObjs} \$(LDFLAGS) \$(GLDFLAGS)
 
 release:\$(OBJS)
-<TAB>\$(RM) -f \$(BASEDIR)/Common/PacketFactoryManager.o
 <TAB>for dir in \$(DIRS); do <SLASH>
 <TAB><TAB>\$(MAKE) release -C <DD>dir; <SLASH>
 <TAB>done
@@ -329,6 +328,7 @@ all:debug
 
 special:
 <TAB>\$(RM) -f \$(BASEDIR)/Common/PacketFactoryManager.o
+<TAB>\$(RM) -f \$(BASEDIR)/Common/Common/GameUtil.o
 
 clean:
 <TAB>for dir in \$(DIRS); do <SLASH>

@@ -330,15 +330,20 @@ VOID Log::GetStaticLogName( INT iLogId, CHAR* szName )
 {
 __ENTER_FUNCTION
 
+    CHAR szType[ 10 ] = { 0 } ;
+    #if defined ( LOG_TYPE )
+        sprintf( szType, "_%s", LOG_TYPE ) ;
+    #endif
     if ( g_pTimeManager )
     {
-        sprintf( szName, "%s%s_%d.log",
-            LOG_SAVE_PATH, g_pLogFileName[ iLogId ], g_pTimeManager->GetDayTime() ) ;
+        sprintf( szName, "%s%s_%d-%d-%d%s.log",
+            LOG_SAVE_PATH, g_pLogFileName[ iLogId ], g_pTimeManager->GetYear(), 
+            g_pTimeManager->GetMonth(), g_pTimeManager->GetDay(), szType ) ;
     }
     else
     {
-        sprintf( szName, "%s%s.log",
-            LOG_SAVE_PATH, g_pLogFileName[ iLogId ] ) ;
+        sprintf( szName, "%s%s%s.log",
+            LOG_SAVE_PATH, g_pLogFileName[ iLogId ], szType ) ;
     }
 
 __LEAVE_FUNCTION
