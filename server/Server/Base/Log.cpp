@@ -317,7 +317,7 @@ INT Log::GetStaticLogId( CHAR* szBaseFileName )
     INT iLogId = -1;
     for( INT i = 0; i < LOG_FILE_NUMBER; i++ )
     {
-        if( szBaseFileName == g_pLogFileName[ i ] )
+        if( 0 == strcmp( szBaseFileName, g_pLogFileName[ i ] ) )
         {
             iLogId = i;
             break;
