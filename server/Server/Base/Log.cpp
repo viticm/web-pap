@@ -115,12 +115,15 @@ __ENTER_FUNCTION
 
         if( g_pTimeManager )
         {
-            CHAR szTime[84] ;
+            CHAR szTime[ 84 ] ;
+            CHAR szCurrentFormatTime[ 20 ];
+            memset( szTime, 0, sizeof( szTime ) );
+            memset( szCurrentFormatTime, 0, sizeof( szCurrentFormatTime ) ) ;
+            sprintf( szCurrentFormatTime, "%s", g_pTimeManager->GetCurrentFormatTime() ) ;
             sprintf( szTime, " (%d)(T0=%s T1=%.4f)%s",
-                MyGetCurrentThreadID(), g_pTimeManager->GetCurrentFormatTime(), 
-                (FLOAT)(g_pTimeManager->RunTime())/1000.0, LF ) ;
+                MyGetCurrentThreadID(), szCurrentFormatTime,
+                (FLOAT)(g_pTimeManager->RunTime())/1000.0, LF );
             strcat( buffer, szTime ) ;
-     
         }
     }
     catch(...)
