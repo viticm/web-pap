@@ -1,0 +1,78 @@
+PAP 系统设计，目录模块结构
+B/S模式与C/S模式的结合，运行环境为：lnmp + lua
+涉及语言：C/C++ LUA PHP SHELL
+PHP框架：zendframework 2 服务器构架：自己开发
+
+主目录结构 ( ./ )
+.
+|-- composer.json -- PHP框架 JSON
+|-- composer.phar -- PHP框架 升级脚本
+|-- config -- PHP框架配置目录
+|-- data -- PHP框架 数据目录
+|-- Docs -- 文档目录
+|-- init_autoloader.php -- PHP框架 初始化文件
+|-- LICENSE.txt 
+|-- module -- PHP框架 模块目录
+|-- public -- PHP框架 公用目录
+|-- README.md
+|-- server -- 服务器引擎目录
+`-- vendor -- PHP框架 插件、框架目录
+
+
+服务器引擎目录结构 ( ./server )
+.
+|-- automake.sh -- 自动生成服务器make文件以及环境脚本，首次搭建时运行
+|-- Billing -- 验证服务器目录
+|-- Common -- 常用共享目录
+|-- DBInit_TianLong.sql -- 服务器数据库脚本
+|-- Login -- 登陆服务器目录
+|-- Makefile 
+|-- mk_tags -- 自动生成tag脚本
+|-- myiconv.sh -- 转换文件编码脚本( 默认从GBK 转换为 UTF-8 )
+|-- premake -- 编译变量配置文件
+|-- premake.mk
+|-- README.md
+|-- Run -- 服务器运行目录
+|-- Server -- 游戏服务器目录 ( main )
+|-- ShareMemory -- 共享内存服务器目录
+`-- World -- 世界服务器目录
+
+# 下面的文件说明只针对.cpp或.c说明，至于头文件不再另外说明
+验证服务器目录结构 ( ./server/Billing ) 
+.
+|-- Main -- 主目录
+|   |-- Billing.cpp -- 验证服务器主入口 
+|   |-- Billing.h  
+|   |-- DBManager.cpp -- 数据库管理器
+|   |-- DBManager.h
+|   |-- DBTypes.h
+|   |-- Makefile
+|   |-- ODBCInterface.cpp -- ODBC 接口
+|   |-- ODBCInterface.h
+|   |-- Player.cpp -- 玩家消息处理
+|   |-- Player.h
+|   |-- PlayerManager.cpp -- 玩家管理器
+|   |-- PlayerManager.h
+|   |-- PlayerPool.cpp -- 玩家数据池
+|   |-- PlayerPool.h
+|   |-- ServerManager.cpp -- 服务管理器
+|   |-- ServerManager.h
+|   |-- ServerPlayer.cpp -- 服务器玩家消息处理
+|   |-- ServerPlayer.h
+|   |-- UserDBManager.cpp -- 用户数据管理器
+|   |-- UserDBManager.h
+|   |-- WebPlayer.cpp -- 网页用户模块
+|   `-- WebPlayer.h
+|-- Makefile
+|-- Packets -- 网络包目录
+|   |-- BLRetAuthHandler.cpp -- 验证服务器发送给登陆服务器账号登陆结果消息
+|   |-- BWConnectHandler.cpp -- 验证服务器连接世界服务器消息
+|   |-- BWValidateUserHandler.cpp -- 验证服务器发送给世界服务器验证用户的消息
+|   |-- LBAskAuthHandler.cpp -- 登陆服务器请求验证账号信息
+|   |-- Makefile
+|   |-- SSConnectHandler.cpp -- 服务器连接消息 ( 下同，一般用户内部服务器之间的通讯 )
+|   |-- SSScenePlayerCountHandler.cpp -- 统计场景玩家数量的消息
+|   `-- WBRetValidateUserHandler.cpp -- 世界服务器返回给验证服务器验证用户结果的消息
+|-- stdafx.cpp 
+`-- stdafx.h --公用头文件，基本所有的cpp文件都会包含，包含了功能模块所有必需的头文件
+
