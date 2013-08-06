@@ -1129,7 +1129,7 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- WGTeamMemberInfo.h
 |   |-- WGTeamResult.cpp -- 组队结果
 |   |-- WGTeamResult.h
-|   |-- WGWorldTime.cpp -- 时间时间
+|   |-- WGWorldTime.cpp -- 世界时间
 |   |-- WGWorldTime.h
 |   |-- WLRetCharLogin.cpp -- 角色登陆结果
 |   |-- WLRetCharLogin.h
@@ -1146,4 +1146,81 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |-- SkillDataMgr.cpp -- 技能数据管理器
 |-- SkillDataMgr.h
 `-- Type.h -- 变量类型以及常用方法定义头文件
+
+登陆服务器目录结构 ( ./server/Login )
+.
+|-- DB -- 数据目录
+|   |-- CharConfig.cpp -- 角色配置数据类
+|   |-- CharConfig.h
+|   |-- DBLogicManager.cpp -- 数据逻辑管理器 
+|   |-- DBLogicManager.h
+|   |-- DBThread.cpp -- 数据线程类
+|   |-- DBThread.h
+|   |-- DBThreadManager.cpp -- 数据线程管理器
+|   |-- DBThreadManager.h
+|   |-- LoginDBManager.cpp -- 登陆数据管理器
+|   |-- LoginDBManager.h
+|   `-- Makefile
+|-- Main -- 主目录
+|   |-- ConnectManager.cpp -- 连接管理器
+|   |-- ConnectManager.h
+|   |-- Login.cpp -- 登陆服务器登陆类
+|   |-- Login.h
+|   |-- LoginMain.cpp -- 入口文件
+|   |-- LoginMain.h
+|   |-- Makefile
+|   |-- ServerManager.cpp -- 服务器管理器
+|   |-- ServerManager.h
+|   |-- ServerThread.cpp -- 服务器线程类
+|   |-- ServerThread.h
+|   |-- ThreadManager.cpp -- 线程管理器
+|   `-- ThreadManager.h
+|-- Makefile
+|-- Packets -- 消息包
+|   |-- BLRetAuthHandler.cpp -- 验证结果
+|   |-- CLAskCharListHandler.cpp -- 请求角色列表
+|   |-- CLAskCharLoginHandler.cpp -- 角色请求登陆
+|   |-- CLAskCreateCharHander.cpp -- 请求建立角色
+|   |-- CLAskDeleteCharHandler.cpp -- 请求删除角色
+|   |-- CLAskLoginHandler.cpp -- 请求用户登陆
+|   |-- CLConnectHandler.cpp -- 连接
+|   |-- LBAskAuthHandler.cpp -- 请求账号验证
+|   |-- LCRetCharListHandler.cpp -- 返回角色列表
+|   |-- LCRetCharLoginHandler.cpp -- 返回角色登陆结果
+|   |-- LCRetConnectHandler.cpp -- 返回连接结果
+|   |-- LCRetCreateCharHandler.cpp -- 返回创角结果
+|   |-- LCRetDeleteCharHandler.cpp -- 返回删除角色结果
+|   |-- LCRetLoginHandler.cpp -- 返回用户登陆结果
+|   |-- LCStatusHandler.cpp -- 登陆状态
+|   |-- LWAskCharLoginHandler.cpp -- 请求角色登陆
+|   |-- LWAskDeleteCharHandler.cpp -- 请求删除角色
+|   |-- Makefile
+|   |-- SSConnectHandler.cpp -- 连接
+|   |-- SSScenePlayerCountHandler.cpp -- 场景用户数量
+|   |-- WLRetCharLoginHandler.cpp -- 返回角色登陆结果
+|   `-- WLRetDeleteCharHandler.cpp
+|-- Player -- 玩家类目录
+|   |-- LoginPlayer.cpp -- 玩家登陆类
+|   |-- LoginPlayer.h
+|   |-- LoginPlayerManager.cpp -- 玩家登陆管理器
+|   |-- LoginPlayerManager.h
+|   |-- Makefile
+|   |-- Player.cpp -- 玩家类
+|   |-- Player.h
+|   |-- PlayerManager.cpp -- 玩家管理器
+|   |-- PlayerManager.h
+|   |-- PlayerPool.cpp -- 玩家数据池
+|   |-- PlayerPool.h
+|   |-- ServerPlayer.cpp -- 服务器玩家类
+|   |-- ServerPlayer.h
+|   |-- TurnPlayerQueue.cpp -- 转换的玩家队列
+|   `-- TurnPlayerQueue.h
+|-- Process
+|   |-- Makefile
+|   |-- ProcessManager.cpp -- 进程管理器
+|   |-- ProcessManager.h
+|   |-- ProcessPlayerManager.cpp -- 进程玩家管理器
+|   `-- ProcessPlayerManager.h
+|-- stdafx.cpp
+`-- stdafx.h
 
