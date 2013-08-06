@@ -61,7 +61,7 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- ServerPlayer.h
 |   |-- UserDBManager.cpp -- 用户数据管理器
 |   |-- UserDBManager.h
-|   |-- WebPlayer.cpp -- 网页用户模块
+|   |-- WebPlayer.cpp -- 网页用户模块 ( 新版中该模块会废弃 )
 |   `-- WebPlayer.h
 |-- Makefile
 |-- Packets -- 网络包目录
@@ -70,9 +70,1080 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- BWValidateUserHandler.cpp -- 验证服务器发送给世界服务器验证用户的消息
 |   |-- LBAskAuthHandler.cpp -- 登陆服务器请求验证账号信息
 |   |-- Makefile
-|   |-- SSConnectHandler.cpp -- 服务器连接消息 ( 下同，一般用户内部服务器之间的通讯 )
+|   |-- SSConnectHandler.cpp -- 服务器连接消息 ( 下同，一般用于内部服务器之间的通讯 )
 |   |-- SSScenePlayerCountHandler.cpp -- 统计场景玩家数量的消息
 |   `-- WBRetValidateUserHandler.cpp -- 世界服务器返回给验证服务器验证用户结果的消息
 |-- stdafx.cpp 
 `-- stdafx.h --公用头文件，基本所有的cpp文件都会包含，包含了功能模块所有必需的头文件
+
+公用目录文件说明 ( ./server/Common )
+.
+|-- Assertx.cpp -- 异常处理器
+|-- Assertx.h
+|-- BaseType.h -- 基本类型定义（ 主要是变量类型的定义，以及系统类型的定义，服务器支持WINDOS和LINUX ）
+|-- BuffImpactMgr.cpp -- Buff管理器
+|-- BuffImpactMgr.h
+|-- CampDataMgr.cpp -- 阵营管理器
+|-- CampDataMgr.h
+|-- Chain.cpp -- 最底层的链表
+|-- Chain.h
+|-- Combat -- 战斗公用目录 ( 有待完善 )
+|   |-- CampAndStand.cpp -- 阵营数据表结构和功能实现
+|   |-- CampAndStand.h
+|   |-- DataRecords.cpp -- 技能和效果的表记录结构和具体的功能实现
+|   |-- DataRecords.h
+|   |-- Makefile
+|   |-- readme.txt
+|   |-- SpecialObjData.cpp -- 特殊对象的数据表相关
+|   |-- TemplateManager.cpp -- 数据表的通用管理器和读入器
+|   `-- TemplateManager.h
+|-- DataBase
+|   |-- Makefile
+|   |-- TLBB_DBC.cpp -- 文件数据类，读取excel直接编辑的文本
+|   `-- TLBB_DBC.h
+|-- DB_Struct.cpp
+|-- DB_Struct.h
+|-- DBSystem -- 数据系统
+|   |-- DataBase -- 数据库
+|   |   |-- DBAbilityList.cpp -- 生活技能数据类
+|   |   |-- DBAbilityList.h
+|   |   |-- DBCharFullData.cpp -- 角色所有数据类
+|   |   |-- DBCharFullData.h
+|   |   |-- DBCharList.cpp -- 角色列表类
+|   |   |-- DBCharList.h
+|   |   |-- DBCoolDownInfo.cpp -- 冷却时间类
+|   |   |-- DBCoolDownInfo.h
+|   |   |-- DBCreateCharOp.cpp -- 角色创建操作类
+|   |   |-- DBCreateCharOp.h
+|   |   |-- DBDeleteCharOp.cpp -- 角色删除操作类
+|   |   |-- DBDeleteCharOp.h
+|   |   |-- DBEquipBaseList.cpp -- 装备基本数据列表类
+|   |   |-- DBEquipBaseList.h
+|   |   |-- DBGuildInfo.cpp -- 帮会信息类
+|   |   |-- DBGuildInfo.h
+|   |   |-- DBImpactList.cpp -- 角色状态列表类
+|   |   |-- DBImpactList.h
+|   |   |-- DBInterface.cpp -- DB接口类
+|   |   |-- DBInterface.h
+|   |   |-- DBItemList.cpp -- 角色物品列表类
+|   |   |-- DBItemList.h
+|   |   |-- DBItemSerial.cpp -- 角色物品序号类
+|   |   |-- DBItemSerial.h
+|   |   |-- DBMailInfo.cpp -- 角色邮件信息类
+|   |   |-- DBMailInfo.h
+|   |   |-- DBManager.cpp -- DB管理器
+|   |   |-- DBManager.h
+|   |   |-- DBPetList.cpp -- 角色宠物列表类
+|   |   |-- DBPetList.h
+|   |   |-- DBPrivateInfo.cpp -- 角色私密信息类
+|   |   |-- DBPrivateInfo.h
+|   |   |-- DBRelationList.cpp -- 角色关系类
+|   |   |-- DBRelationList.h
+|   |   |-- DBSkillList.cpp -- 角色技能列表类
+|   |   |-- DBSkillList.h
+|   |   |-- DBTaskList.cpp -- 角色人物列表类
+|   |   |-- DBTaskList.h
+|   |   |-- DBTitleInfo.cpp -- 角色称号信息类
+|   |   |-- DBTitleInfo.h
+|   |   |-- DBTypes.h
+|   |   |-- DBWebShopInfo.cpp -- 角色商店信息类
+|   |   |-- DBWebShopInfo.h
+|   |   |-- DBXinFaList.cpp -- 角色心法列表类
+|   |   |-- DBXinFaList.h
+|   |   |-- Makefile
+|   |   |-- ODBCBase.cpp -- ODBC基础类
+|   |   |-- ODBCBase.h
+|   |   |-- ODBCInterface.cpp -- ODBC 接口类
+|   |   |-- ODBCInterface.h
+|   |   |-- SqlTemplate.cpp -- SQL 模板类
+|   |   `-- SqlTemplate.h
+|   `-- Makefile
+|-- DirectlyImpactMgr.cpp -- 角色状态字典
+|-- DirectlyImpactMgr.h
+|-- FileDataMgr.cpp -- 文件数据管理器
+|-- FileDataMgr.h
+|-- GameDefine2.h
+|-- GameDefine_Attr.h
+|-- GameDefine_City.h
+|-- GameDefine_Guild.h
+|-- GameDefine.h
+|-- GameDefine_Item.h
+|-- GameDefine_PlayerShop.h
+|-- GameDefine_Result.cpp -- 游戏结果定义类
+|-- GameDefine_Result.h
+|-- GameDefine_Scene.h
+|-- GameStruct_Camp.h
+|-- GameStruct_City.h
+|-- GameStruct.cpp -- 游戏结构
+|-- GameStruct_Finger.cpp -- 游戏查询结构
+|-- GameStruct_Finger.h
+|-- GameStruct_Guild.h
+|-- GameStruct.h
+|-- GameStruct_Impact.h
+|-- GameStruct_Item.h
+|-- GameStruct_MinorPasswd.cpp -- 二级密码结构
+|-- GameStruct_MinorPasswd.h
+|-- GameStruct_Pet.cpp -- 宠物结构
+|-- GameStruct_Pet.h
+|-- GameStruct_Relation.cpp -- 角色关系结构
+|-- GameStruct_Relation.h
+|-- GameStruct_Scene.h
+|-- GameStruct_Script.cpp -- 脚本结构
+|-- GameStruct_Script.h
+|-- GameStruct_Skill.h
+|-- GameStruct_Team.h
+|-- GameUtil.cpp -- 游戏扩展方法
+|-- GameUtil.h
+|-- KeyDog.h
+|-- KeyDog.lib
+|-- Makefile
+|-- Net -- 网络消息
+|   |-- FileAPI.cpp -- 文件操作接口
+|   |-- FileAPI.h
+|   |-- Makefile
+|   |-- Packet.cpp -- 网络包类
+|   |-- Packet.h
+|   |-- ServerSocket.cpp -- 服务器套接字类
+|   |-- ServerSocket.h
+|   |-- SocketAPI.cpp -- 套接字接口类
+|   |-- SocketAPI.h
+|   |-- Socket.cpp -- 套接字类
+|   |-- Socket.h
+|   |-- SocketInputStream.cpp -- 套接字输入流类
+|   |-- SocketInputStream.h
+|   |-- SocketOutputStream.cpp -- 套接字输出流类
+|   `-- SocketOutputStream.h
+|-- OResultDef.h
+|-- PacketDefine.h
+|-- PacketFactory.h
+|-- PacketFactoryManager.cpp -- 网络包工厂管理器类
+|-- PacketFactoryManager.h
+|-- Packets -- 网络包 ( B -> Billing, L -> Login, W -> World, C -> Client, G -> Server, S -> ShareMemory  )
+|   |-- BLRetAuth.cpp -- 返回账号验证结果
+|   |-- BLRetAuth.h
+|   |-- BWConnect.cpp -- 连接
+|   |-- BWConnect.h
+|   |-- BWValidateUser.cpp -- 验证用户
+|   |-- BWValidateUser.h
+|   |-- CGApplyPrivateInfo.cpp -- 确认隐私信息
+|   |-- CGApplyPrivateInfo.h
+|   |-- CGAskActiveTimeUpdate.cpp -- 活动时间更新 
+|   |-- CGAskActiveTimeUpdate.h
+|   |-- CGAskChangeScene.cpp -- 请求场景切换
+|   |-- CGAskChangeScene.h
+|   |-- CGAskDetailAbilityInfo.cpp -- 请求生活技能详细信息
+|   |-- CGAskDetailAbilityInfo.h
+|   |-- CGAskDetailAttrib.cpp -- 请求角色详细属性信息
+|   |-- CGAskDetailAttrib.h
+|   |-- CGAskDetailEquipList.cpp -- 请求装备列表
+|   |-- CGAskDetailEquipList.h
+|   |-- CGAskDetailSkillList.cpp -- 请求技能列表
+|   |-- CGAskDetailSkillList.h
+|   |-- CGAskDetailXinFaList.cpp -- 请求心法列表
+|   |-- CGAskDetailXinFaList.h
+|   |-- CGAskItemInfo.cpp -- 请求物品列表
+|   |-- CGAskItemInfo.h
+|   |-- CGAskJoinMenpai.cpp -- 请求加入门派
+|   |-- CGAskJoinMenpai.h
+|   |-- CGAskLeanAbility.cpp -- 请求学习生活技能
+|   |-- CGAskLeanAbility.h
+|   |-- CGAskLockObj.cpp -- 请求锁定对象
+|   |-- CGAskLockObj.h
+|   |-- CGAskMail.cpp -- 请求邮件数据
+|   |-- CGAskMail.h
+|   |-- CGAskMissionDesc.cpp -- 请求任务数据
+|   |-- CGAskMissionDesc.h
+|   |-- CGAskMissionList.cpp -- 请求任务列表
+|   |-- CGAskMissionList.h
+|   |-- CGAskMyBagList.cpp -- 请求自己的背包列表
+|   |-- CGAskMyBagList.h
+|   |-- CGAskPrivateInfo.cpp -- 请求自己的隐私信息
+|   |-- CGAskPrivateInfo.h
+|   |-- CGAskSetting.cpp -- 请求设置信息
+|   |-- CGAskSetting.h
+|   |-- CGAskStudyXinfa.cpp -- 请求学习心法
+|   |-- CGAskStudyXinfa.h
+|   |-- CGAskTeamFollow.cpp -- 请求组队跟随
+|   |-- CGAskTeamFollow.h
+|   |-- CGAskTeamInfo.cpp -- 请求队伍信息
+|   |-- CGAskTeamInfo.h
+|   |-- CGAskTeamMemberInfo.cpp -- 请求队伍成员信息
+|   |-- CGAskTeamMemberInfo.h
+|   |-- CGAttack.cpp -- 攻击消息
+|   |-- CGAttack.h
+|   |-- CGBankAcquireList.cpp -- 请求银行收购列表 
+|   |-- CGBankAcquireList.h
+|   |-- CGBankAddItem.cpp -- 请求向银行中添加物品
+|   |-- CGBankAddItem.h
+|   |-- CGBankClose.cpp -- 请求关闭银行
+|   |-- CGBankClose.h
+|   |-- CGBankMoney.cpp -- 请求银行金钱数据
+|   |-- CGBankMoney.h
+|   |-- CGBankRemoveItem.cpp -- 请求从银行中移除物品
+|   |-- CGBankRemoveItem.h
+|   |-- CGBankSwapItem.cpp -- 请求在银行中交换物品
+|   |-- CGBankSwapItem.h
+|   |-- CGBBSApply.cpp -- BBS确认
+|   |-- CGBBSApply.h
+|   |-- CGBBSSychMessages.cpp -- BBS消息
+|   |-- CGBBSSychMessages.h
+|   |-- CGChannelCreate.cpp -- 频道创建
+|   |-- CGChannelCreate.h
+|   |-- CGChannelDismiss.cpp -- 频道分开
+|   |-- CGChannelDismiss.h
+|   |-- CGChannelInvite.cpp -- 频道邀请
+|   |-- CGChannelInvite.h
+|   |-- CGChannelKick.cpp -- 频道踢出
+|   |-- CGChannelKick.h
+|   |-- CGCharAllTitles.cpp -- 角色所有称号
+|   |-- CGCharAllTitles.h
+|   |-- CGCharAskBaseAttrib.cpp -- 请求角色基本属性
+|   |-- CGCharAskBaseAttrib.h
+|   |-- CGCharAskEquipment.cpp -- 请求角色装备信息
+|   |-- CGCharAskEquipment.h
+|   |-- CGCharDefaultEvent.h
+|   |-- CGCharDefaultEvnet.cpp -- 角色默认事件
+|   |-- CGCharIdle.cpp -- 角色休息 ( 打坐 )
+|   |-- CGCharIdle.h
+|   |-- CGCharJump.cpp -- 角色跳跃
+|   |-- CGCharJump.h
+|   |-- CGCharMoodState.cpp -- 角色心情 ( 废弃 )
+|   |-- CGCharMoodState.h
+|   |-- CGCharMove.cpp -- 角色移动
+|   |-- CGCharMove.h
+|   |-- CGCharPositionWarp.cpp -- 角色位置改变 ( 自动寻路 ) 
+|   |-- CGCharPositionWarp.h
+|   |-- CGCharSit.cpp -- 角色坐下 ( 和休息有关 ？ )
+|   |-- CGCharSit.h
+|   |-- CGCharStopLogic.cpp -- 角色逻辑中断 
+|   |-- CGCharStopLogic.h
+|   |-- CGCharUpdateCurTitle.cpp -- 角色更新当前称号
+|   |-- CGCharUpdateCurTitle.h
+|   |-- CGCharUseSkill.cpp -- 角色使用技能
+|   |-- CGCharUseSkill.h
+|   |-- CGChat.cpp -- 聊天
+|   |-- CGChat.h
+|   |-- CGCityAskAttr.cpp -- 请求城市数据
+|   |-- CGCityAskAttr.h
+|   |-- CGCommand.cpp -- 命令执行
+|   |-- CGCommand.h
+|   |-- CGConnect.cpp -- 连接
+|   |-- CGConnect.h
+|   |-- CGDiscardEquip.cpp -- 装备丢弃 
+|   |-- CGDiscardEquip.h
+|   |-- CGDiscardItem.cpp -- 物品丢弃
+|   |-- CGDiscardItem.h
+|   |-- CGDispelBuffReq.cpp -- BUFF卸载
+|   |-- CGDispelBuffReq.h
+|   |-- CGDoEvent.h
+|   |-- CGDoEvnet.cpp -- 执行XX 
+|   |-- CGEnterScene.cpp -- 进入场景
+|   |-- CGEnterScene.h
+|   |-- CGEnvRequest.cpp -- 进入场景返回 
+|   |-- CGEnvRequest.h
+|   |-- CGEventRequest.cpp -- 游戏事件返回 ( 一般为脚本事件 )
+|   |-- CGEventRequest.h
+|   |-- CGExchangeApplyI.cpp -- 请求交易 1 (交易的详细说明在对应的Handler有说明 )
+|   |-- CGExchangeApplyI.h
+|   |-- CGExchangeCancel.cpp -- 交易取消
+|   |-- CGExchangeCancel.h
+|   |-- CGExchangeOkIII.cpp -- 交易成功返回 3
+|   |-- CGExchangeOkIII.h
+|   |-- CGExchangeReplyI.cpp -- 交易确认
+|   |-- CGExchangeReplyI.h
+|   |-- CGExchangeSynchItemII.cpp -- 交易 同步客户端交易盒的变化给对方
+|   |-- CGExchangeSynchItemII.h
+|   |-- CGExchangeSynchLock.cpp -- 交易 客户端通知服务器同步自己的锁变化给对方客户端
+|   |-- CGExchangeSynchLock.h
+|   |-- CGExchangeSynchMoneyII.cpp -- 交易 客户端的金钱变化通知服务器 
+|   |-- CGExchangeSynchMoneyII.h
+|   |-- CGExecuteScript.cpp -- 执行脚本
+|   |-- CGExecuteScript.h
+|   |-- CGFinger.cpp -- 角色信息查找
+|   |-- CGFinger.h
+|   |-- CGGemCompound.cpp -- 宝石合成
+|   |-- CGGemCompound.h
+|   |-- CGGuildApply.cpp -- 帮会确认
+|   |-- CGGuildApply.h
+|   |-- CGGuild.cpp -- 帮会
+|   |-- CGGuild.h
+|   |-- CGGuildJoin.cpp -- 加入帮会
+|   |-- CGGuildJoin.h
+|   |-- CGHeartBeat.cpp -- 心跳包
+|   |-- CGHeartBeat.h
+|   |-- CGIssuePetPlacard.cpp -- 发出宠物公告 
+|   |-- CGIssuePetPlacard.h
+|   |-- CGItemSynch.cpp -- 同步客户端物品变化
+|   |-- CGItemSynch.h
+|   |-- CGLeaveScene.cpp -- 离开场景
+|   |-- CGLeaveScene.h
+|   |-- CGLockTarget.cpp -- 锁定目标
+|   |-- CGLockTarget.h
+|   |-- CGMail.cpp -- 发送邮件
+|   |-- CGMail.h
+|   |-- CGManipulatePet.cpp -- 宠物操作
+|   |-- CGManipulatePet.h
+|   |-- CGMinorPasswd.cpp -- 二级密码操作
+|   |-- CGMinorPasswd.h
+|   |-- CGMissionAbandon.cpp -- 放弃任务
+|   |-- CGMissionAbandon.h
+|   |-- CGMissionAccept.cpp -- 接受任务
+|   |-- CGMissionAccept.h
+|   |-- CGMissionCheck.cpp -- 检查任务
+|   |-- CGMissionCheck.h
+|   |-- CGMissionContinue.cpp -- 继续任务
+|   |-- CGMissionContinue.h
+|   |-- CGMissionRefuse.cpp -- 拒绝任务
+|   |-- CGMissionRefuse.h
+|   |-- CGMissionSubmit.cpp -- 提交任务
+|   |-- CGMissionSubmit.h
+|   |-- CGModifySetting.cpp -- 更改设置 
+|   |-- CGModifySetting.h
+|   |-- CGOpenItemBox.cpp -- 打开物品包
+|   |-- CGOpenItemBox.h
+|   |-- CGOtherEquip.cpp -- 角色其他装备信息
+|   |-- CGOtherEquip.h
+|   |-- CGPackage_SwapItem.cpp -- 交换物品
+|   |-- CGPackage_SwapItem.h
+|   |-- CGPackUpPacket.cpp -- 掉落包更新，只做整理
+|   |-- CGPackUpPacket.h
+|   |-- CGPickBoxItem.cpp -- 掉落包拾取
+|   |-- CGPickBoxItem.h
+|   |-- CGPlayerCallOfResult.cpp -- 角色召唤结果
+|   |-- CGPlayerCallOfResult.h
+|   |-- CGPlayerDieResult.cpp -- 角色死亡结果
+|   |-- CGPlayerDieResult.h
+|   |-- CGPlayerShopAcquireItemList.cpp -- 玩家商店物品列表
+|   |-- CGPlayerShopAcquireItemList.h
+|   |-- CGPlayerShopAcquireShopList.cpp -- 玩家商店列表
+|   |-- CGPlayerShopAcquireShopList.h
+|   |-- CGPlayerShopApply.cpp -- 玩家商店确认
+|   |-- CGPlayerShopApply.h
+|   |-- CGPlayerShopAskForRecord.cpp -- 神曲摆摊
+|   |-- CGPlayerShopAskForRecord.h
+|   |-- CGPlayerShopBuy.cpp -- 玩家商店购买
+|   |-- CGPlayerShopBuy.h
+|   |-- CGPlayerShopBuyItem.cpp -- 玩家商店购买物品
+|   |-- CGPlayerShopBuyItem.h
+|   |-- CGPlayerShopBuyShop.cpp -- 收购玩家商店
+|   |-- CGPlayerShopBuyShop.h
+|   |-- CGPlayerShopDesc.cpp -- 修改玩家商店描述
+|   |-- CGPlayerShopDesc.h
+|   |-- CGPlayerShopEstablish.cpp -- 玩家商店建立
+|   |-- CGPlayerShopEstablish.h
+|   |-- CGPlayerShopFavorite.cpp -- 收藏商店
+|   |-- CGPlayerShopFavorite.h
+|   |-- CGPlayerShopMoney.cpp -- 玩家商店金钱操作
+|   |-- CGPlayerShopMoney.h
+|   |-- CGPlayerShopName.cpp -- 修改玩家商店名称
+|   |-- CGPlayerShopName.h
+|   |-- CGPlayerShopOnSale.cpp -- 玩家商店上架
+|   |-- CGPlayerShopOnSale.h
+|   |-- CGPlayerShopOpenStall.cpp -- 玩家商店店铺开张
+|   |-- CGPlayerShopOpenStall.h
+|   |-- CGPlayerShopPartner.cpp -- 玩家商店合作伙伴操作 
+|   |-- CGPlayerShopPartner.h
+|   |-- CGPlayerShopSaleOut.cpp -- 通知服务器商店已经被盘出
+|   |-- CGPlayerShopSaleOut.h
+|   |-- CGPlayerShopSize.cpp -- 扩展店铺
+|   |-- CGPlayerShopSize.h
+|   |-- CGPlayerShopType.cpp -- 玩家商店类型
+|   |-- CGPlayerShopType.h
+|   |-- CGRelation.cpp -- 角色关系
+|   |-- CGRelation.h
+|   |-- CGRemoveGem.cpp -- 宝石摘除
+|   |-- CGRemoveGem.h
+|   |-- CGReqLevelUp.cpp -- 角色升级
+|   |-- CGReqLevelUp.h
+|   |-- CGReqManualAttr.cpp -- 主属性 ( 毒、火、冰、玄 )
+|   |-- CGReqManualAttr.h
+|   |-- CGReqResetAttr.cpp -- 刷新属性 ( 洗点 ) 
+|   |-- CGReqResetAttr.h
+|   |-- CGReturnTeamFollow.cpp -- 组队跟随 
+|   |-- CGReturnTeamFollow.h
+|   |-- CGSetMoodToHead.cpp -- 设置心情称号
+|   |-- CGSetMoodToHead.h
+|   |-- CGSetPetAttrib.cpp -- 设置宠物属性
+|   |-- CGSetPetAttrib.h
+|   |-- CGShopBuy.cpp -- 商店购买物品
+|   |-- CGShopBuy.h
+|   |-- CGShopBuySold.cpp -- 废弃
+|   |-- CGShopBuySold.h
+|   |-- CGShopClose.cpp -- 关闭商店
+|   |-- CGShopClose.h
+|   |-- CGShopRepair.cpp -- 商店修理
+|   |-- CGShopRepair.h
+|   |-- CGShopSell.cpp -- 商店出售
+|   |-- CGShopSell.h
+|   |-- CGSkill.cpp -- 技能 ( 废弃 )
+|   |-- CGSkill.h
+|   |-- CGSplitItem.cpp -- 拆分物品
+|   |-- CGSplitItem.h
+|   |-- CGStallAddItem.cpp -- 客户端往摊位里放东西
+|   |-- CGStallAddItem.h
+|   |-- CGStallApply.cpp -- 客户端申请摆摊
+|   |-- CGStallApply.h
+|   |-- CGStallBuy.cpp -- 购买摊主的货物
+|   |-- CGStallBuy.h
+|   |-- CGStallClose.cpp -- 客户端收摊
+|   |-- CGStallClose.h
+|   |-- CGStallDefaultPage.cpp -- 设置默认摊位页
+|   |-- CGStallDefaultPage.h
+|   |-- CGStallEstablish.cpp -- 客户端摆摊建立
+|   |-- CGStallEstablish.h
+|   |-- CGStallItemPrice.cpp -- 客户端改变物品价格
+|   |-- CGStallItemPrice.h
+|   |-- CGStallOpen.cpp -- 客户端请求打开界面摊位
+|   |-- CGStallOpen.h
+|   |-- CGStallRemoveItem.cpp -- 客户端通知服务器从摊位中拿走此物品
+|   |-- CGStallRemoveItem.h
+|   |-- CGStallShopName.cpp -- 设置摊位名称
+|   |-- CGStallShopName.h
+|   |-- CGStopTeamFollow.cpp -- 停止组队跟随
+|   |-- CGStopTeamFollow.h
+|   |-- CGTeamApply.cpp -- 组队确认
+|   |-- CGTeamApply.h
+|   |-- CGTeamAppoint.cpp -- 转移队长
+|   |-- CGTeamAppoint.h
+|   |-- CGTeamDismiss.cpp -- 解散队伍
+|   |-- CGTeamDismiss.h
+|   |-- CGTeamInvite.cpp -- 组队邀请
+|   |-- CGTeamInvite.h
+|   |-- CGTeamKick.cpp -- 踢出队伍
+|   |-- CGTeamKick.h
+|   |-- CGTeamLeaderRetInvite.cpp -- 队长邀请结果
+|   |-- CGTeamLeaderRetInvite.h
+|   |-- CGTeamLeave.cpp -- 离开队伍
+|   |-- CGTeamLeave.h
+|   |-- CGTeamRetApply.cpp -- 组队确认结果
+|   |-- CGTeamRetApply.h
+|   |-- CGTeamRetInvite.cpp -- 组队邀请结果
+|   |-- CGTeamRetInvite.h
+|   |-- CGTest.cpp -- 测试
+|   |-- CGTest.h
+|   |-- CGUnEquip.cpp -- 卸载装备
+|   |-- CGUnEquip.h
+|   |-- CGUseAbility.cpp -- 使用生活技能
+|   |-- CGUseAbility.h
+|   |-- CGUseEquip.cpp -- 穿上装备
+|   |-- CGUseEquip.h
+|   |-- CGUseEquipSkill.cpp -- 使用装备技能
+|   |-- CGUseEquipSkill.h
+|   |-- CGUseGem.cpp -- 使用宝石
+|   |-- CGUseGem.h
+|   |-- CGUseItem.cpp -- 使用物品
+|   |-- CGUseItem.h
+|   |-- CLAskCharList.cpp -- 请求角色列表
+|   |-- CLAskCharList.h
+|   |-- CLAskCharLogin.cpp -- 请求角色登陆
+|   |-- CLAskCharLogin.h
+|   |-- CLAskCreateChar.cpp -- 请求创角
+|   |-- CLAskCreateChar.h
+|   |-- CLAskDeleteChar.cpp -- 请求删除角色
+|   |-- CLAskDeleteChar.h
+|   |-- CLAskLogin.cpp -- 请求账号登陆
+|   |-- CLAskLogin.h
+|   |-- CLConnect.cpp -- 连接
+|   |-- CLConnect.h
+|   |-- ExchangeMsgDefine.h
+|   |-- GCAbandonAbility.cpp -- 遗忘生活技能 
+|   |-- GCAbandonAbility.h
+|   |-- GCAbilityAction.cpp -- 生活技能动作
+|   |-- GCAbilityAction.h
+|   |-- GCAbilityExp.cpp -- 生活技能经验
+|   |-- GCAbilityExp.h
+|   |-- GCAbilityLevel.cpp -- 生活技能等级
+|   |-- GCAbilityLevel.h
+|   |-- GCAbilityResult.cpp -- 生活技能学习结果
+|   |-- GCAbilityResult.h
+|   |-- GCAbilitySucc.cpp -- 生活技能学习成功
+|   |-- GCAbilitySucc.h
+|   |-- GCAbilityTeacherInfo.cpp -- 生活技能学习师信息
+|   |-- GCAbilityTeacherInfo.h
+|   |-- GCAddCanPickMissionItem.cpp -- 是否能丢弃任务物品信息
+|   |-- GCAddCanPickMissionItem.h
+|   |-- GCAddLockObj.cpp -- 锁定对象 ( 废弃 )
+|   |-- GCAddLockObj.h
+|   |-- GCArrive.cpp -- 通知客户端到达
+|   |-- GCArrive.h
+|   |-- GCAskTeamFollow.cpp -- 请求组队跟随
+|   |-- GCAskTeamFollow.h
+|   |-- GCAttack.cpp -- 攻击消息
+|   |-- GCAttack.h
+|   |-- GCBankAcquireList.cpp -- 获得银行列表
+|   |-- GCBankAcquireList.h
+|   |-- GCBankAddItem.cpp -- 银行中增加物品
+|   |-- GCBankAddItem.h
+|   |-- GCBankBegin.cpp -- 开启银行
+|   |-- GCBankBegin.h
+|   |-- GCBankItemInfo.cpp -- 银行物品信息
+|   |-- GCBankItemInfo.h
+|   |-- GCBankMoney.cpp -- 银行金钱
+|   |-- GCBankMoney.h
+|   |-- GCBankRemoveItem.cpp -- 银行移除物品
+|   |-- GCBankRemoveItem.h
+|   |-- GCBankSwapItem.cpp -- 银行物品交换
+|   |-- GCBankSwapItem.h
+|   |-- GCBBSMessages.cpp -- BBS消息
+|   |-- GCBBSMessages.h
+|   |-- GCBoxItemList.cpp -- 物品包列表
+|   |-- GCBoxItemList.h
+|   |-- GCCanPickMissionItemList.cpp -- 可选任务物品列表
+|   |-- GCCanPickMissionItemList.h
+|   |-- GCChannelError.cpp -- 频道错误
+|   |-- GCChannelError.h
+|   |-- GCChannelResult.cpp -- 频道结果
+|   |-- GCChannelResult.h
+|   |-- GCCharAction.cpp -- 角色动作
+|   |-- GCCharAction.h
+|   |-- GCCharAllTitles.cpp -- 角色所有称号
+|   |-- GCCharAllTitles.h
+|   |-- GCCharBaseAttrib.cpp -- 角色基本属性
+|   |-- GCCharBaseAttrib.h
+|   |-- GCCharBUFF.cpp -- 角色BUFF
+|   |-- GCCharBUFF.h
+|   |-- GCCharDirectImpact.cpp -- 角色状态
+|   |-- GCCharDirectImpact.h
+|   |-- GCCharDoAction.cpp -- 角色开始动作
+|   |-- GCCharDoAction.h
+|   |-- GCCharEquipment.cpp -- 角色装备信息
+|   |-- GCCharEquipment.h
+|   |-- GCCharFirstLogin.cpp -- 角色首次登陆
+|   |-- GCCharFirstLogin.h
+|   |-- GCCharIdle.cpp -- 角色休息 
+|   |-- GCCharIdle.h
+|   |-- GCCharImpactListUpdate.cpp -- 角色状态列表更新
+|   |-- GCCharImpactListUpdate.h
+|   |-- GCCharJump.cpp -- 角色跳跃
+|   |-- GCCharJump.h
+|   |-- GCCharModifyAction.cpp -- 角色修改动作
+|   |-- GCCharModifyAction.h
+|   |-- GCCharMove.cpp -- 角色移动
+|   |-- GCCharMove.h
+|   |-- GCCharMoveResult.cpp -- 角色移动结果
+|   |-- GCCharMoveResult.h
+|   |-- GCCharSkill_CreateBullet.cpp -- 技能创建子弹
+|   |-- GCCharSkill_CreateBullet.h
+|   |-- GCCharSkill_Gather.cpp -- 技能聚气
+|   |-- GCCharSkill_Gather.h
+|   |-- GCCharSkill_Gather_Modify.cpp -- 技能聚气修改
+|   |-- GCCharSkill_Gather_Modify.h
+|   |-- GCCharSkill_Lead.cpp -- 技能引导
+|   |-- GCCharSkill_Lead.h
+|   |-- GCCharSkill_Lead_Modify.cpp -- 技能引导修改
+|   |-- GCCharSkill_Lead_Modify.h
+|   |-- GCCharSkill_Missed.cpp -- 技能丢失
+|   |-- GCCharSkill_Missed.h
+|   |-- GCCharSkill_Send.cpp -- 技能发送
+|   |-- GCCharSkill_Send.h
+|   |-- GCCharStopAction.cpp -- 角色停止动作
+|   |-- GCCharStopAction.h
+|   |-- GCChat.cpp -- 聊天
+|   |-- GCChat.h
+|   |-- GCCityAttr.cpp -- 城市属性
+|   |-- GCCityAttr.h
+|   |-- GCCityError.cpp -- 城市错误
+|   |-- GCCityError.h
+|   |-- GCCityNotify.cpp -- 城市消息
+|   |-- GCCityNotify.h
+|   |-- GCConnect.cpp -- 连接
+|   |-- GCConnect.h
+|   |-- GCCoolDownUpdate.cpp -- 冷却更新
+|   |-- GCCoolDownUpdate.h
+|   |-- GCDelObject.cpp -- 删除对象
+|   |-- GCDelObject.h
+|   |-- GCDetailAbilityInfo.cpp -- 生活技能详细信息
+|   |-- GCDetailAbilityInfo.h
+|   |-- GCDetailAttrib.cpp -- 角色属性详细信息
+|   |-- GCDetailAttrib.h
+|   |-- GCDetailAttrib_Pet.cpp -- 宠物属性详细信息
+|   |-- GCDetailAttrib_Pet.h
+|   |-- GCDetailBUFF.cpp -- BUFF详细信息
+|   |-- GCDetailBUFF.h
+|   |-- GCDetailEquipList.cpp -- 装备列表详细信息
+|   |-- GCDetailEquipList.h
+|   |-- GCDetailHealsAndDamages.cpp -- 治疗和伤害 ( ？ )
+|   |-- GCDetailHealsAndDamages.h
+|   |-- GCDetailImpactListUpdate.cpp -- 状态列表更新
+|   |-- GCDetailImpactListUpdate.h
+|   |-- GCDetailSkillList.cpp -- 技能列表详细信息
+|   |-- GCDetailSkillList.h
+|   |-- GCDetailSubEffectList.cpp -- 效果详细信息列表
+|   |-- GCDetailSubEffectList.h
+|   |-- GCDetailXinFaList.cpp -- 心法详细信息列表
+|   |-- GCDetailXinFaList.h
+|   |-- GCDie.cpp -- 死亡
+|   |-- GCDie.h
+|   |-- GCDiscardEquipResult.cpp -- 丢弃装备
+|   |-- GCDiscardEquipResult.h
+|   |-- GCDiscardItemResult.cpp --丢弃物品
+|   |-- GCDiscardItemResult.h
+|   |-- GCEnterScene.cpp -- 进入场景
+|   |-- GCEnterScene.h
+|   |-- GCErrorAttack.cpp -- 攻击错误
+|   |-- GCErrorAttack.h
+|   |-- GCErrorSkill.cpp -- 技能错误
+|   |-- GCErrorSkill.h
+|   |-- GCExchangeApplyI.cpp -- 交易确认
+|   |-- GCExchangeApplyI.h
+|   |-- GCExchangeCancel.cpp -- 交易取消
+|   |-- GCExchangeCancel.h
+|   |-- GCExchangeError.cpp -- 交易错误
+|   |-- GCExchangeError.h
+|   |-- GCExchangeEstablishI.cpp -- 交易建立
+|   |-- GCExchangeEstablishI.h
+|   |-- GCExchangeSuccessIII.cpp -- 交易成功
+|   |-- GCExchangeSuccessIII.h
+|   |-- GCExchangeSynchConfirmII.cpp -- 交易同步确认
+|   |-- GCExchangeSynchConfirmII.h
+|   |-- GCExchangeSynchII.cpp -- 交易同步
+|   |-- GCExchangeSynchII.h
+|   |-- GCExchangeSynchLock.cpp -- 交易同步锁定
+|   |-- GCExchangeSynchLock.h
+|   |-- GCFinger.cpp -- 角色信息查询
+|   |-- GCFinger.h
+|   |-- GCGuildApply.cpp -- 帮会确认
+|   |-- GCGuildApply.h
+|   |-- GCGuild.cpp -- 帮会信息
+|   |-- GCGuildError.cpp -- 帮会错误
+|   |-- GCGuildError.h
+|   |-- GCGuild.h
+|   |-- GCGuildReturn.cpp -- 帮会返回
+|   |-- GCGuildReturn.h
+|   |-- GCItemInfo.cpp -- 物品信息
+|   |-- GCItemInfo.h
+|   |-- GCItemList.cpp -- 物品列表
+|   |-- GCItemList.h
+|   |-- GCItemSynch.cpp -- 物品信息同步
+|   |-- GCItemSynch.h
+|   |-- GCJoinMenpai.cpp -- 加入门派
+|   |-- GCJoinMenpai.h
+|   |-- GCLeaveScene.cpp -- 离开场景
+|   |-- GCLeaveScene.h
+|   |-- GCLevelUp.cpp -- 角色升级
+|   |-- GCLevelUp.h
+|   |-- GCLevelUpResult.cpp -- 角色升级结果
+|   |-- GCLevelUpResult.h
+|   |-- GCMail.cpp -- 邮件
+|   |-- GCMail.h
+|   |-- GCManipulatePetRet.cpp -- 宠物操作
+|   |-- GCManipulatePetRet.h
+|   |-- GCManualAttrResult.cpp -- 角色特性属性结果
+|   |-- GCManualAttrResult.h
+|   |-- GCMenpaiInfo.cpp -- 门派信息
+|   |-- GCMenpaiInfo.h
+|   |-- GCMinorPasswd.cpp -- 二级密码
+|   |-- GCMinorPasswd.h
+|   |-- GCMissionAdd.cpp -- 增加任务
+|   |-- GCMissionAdd.h
+|   |-- GCMissionList.cpp -- 任务列表
+|   |-- GCMissionList.h
+|   |-- GCMissionModify.cpp -- 任务修改
+|   |-- GCMissionModify.h
+|   |-- GCMissionRemove.cpp -- 任务移除
+|   |-- GCMissionRemove.h
+|   |-- GCMissionResult.cpp -- 任务结果
+|   |-- GCMissionResult.h
+|   |-- GCModifySpeed.cpp -- 修改速度
+|   |-- GCModifySpeed.h
+|   |-- GCMonsterRealMove.cpp -- 怪物移动
+|   |-- GCMonsterRealMove.h
+|   |-- GCMonsterSpeak.cpp -- 怪物泡泡
+|   |-- GCMonsterSpeak.h
+|   |-- GCMyBagList.cpp -- 自己的背包列表
+|   |-- GCMyBagList.h
+|   |-- GCNewItemBox.cpp -- 新的物品格子 
+|   |-- GCNewItemBox.h
+|   |-- GCNewItem.cpp -- 新的物品
+|   |-- GCNewItem.h
+|   |-- GCNewMonster.cpp -- 新生产怪物
+|   |-- GCNewMonster_Death.cpp -- 新怪物死亡
+|   |-- GCNewMonster_Death.h
+|   |-- GCNewMonster.h
+|   |-- GCNewMonster_Move.cpp -- 新怪物的移动
+|   |-- GCNewMonster_Move.h
+|   |-- GCNewPet.cpp -- 新的宠物
+|   |-- GCNewPet_Death.cpp -- 新宠物死亡
+|   |-- GCNewPet_Death.h
+|   |-- GCNewPet.h
+|   |-- GCNewPet_Move.cpp -- 新宠物移动
+|   |-- GCNewPet_Move.h
+|   |-- GCNewPlatform.cpp -- 新的平台
+|   |-- GCNewPlatform.h
+|   |-- GCNewPlayer.cpp -- 新的角色
+|   |-- GCNewPlayer_Death.cpp -- 新角色死亡
+|   |-- GCNewPlayer_Death.h
+|   |-- GCNewPlayer.h
+|   |-- GCNewPlayer_Move.cpp -- 新角色移动
+|   |-- GCNewPlayer_Move.h
+|   |-- GCNewPortal.cpp -- 新门户 ( ？ )
+|   |-- GCNewPortal.h
+|   |-- GCNewSkillObj.cpp -- 新的技能对象
+|   |-- GCNewSkillObj.h
+|   |-- GCNewSpecial.cpp -- 新的特殊对象
+|   |-- GCNewSpecial.h
+|   |-- GCNotifyChangeScene.cpp -- 切换场景提示
+|   |-- GCNotifyChangeScene.h
+|   |-- GCNotifyEquip.cpp -- 装备提示
+|   |-- GCNotifyEquip.h
+|   |-- GCNotifyGoodBad.cpp -- 好坏提示 ( ？ )
+|   |-- GCNotifyGoodBad.h
+|   |-- GCNotifyMail.cpp -- 邮件提示
+|   |-- GCNotifyMail.h
+|   |-- GCNotifyTeamInfo.cpp -- 队伍提示
+|   |-- GCNotifyTeamInfo.h
+|   |-- GCObjTeleport.cpp -- 对象传送
+|   |-- GCObjTeleport.h
+|   |-- GCOperateResult.cpp -- 操作结果
+|   |-- GCOperateResult.h
+|   |-- GCOtherAttack.cpp -- 其他攻击
+|   |-- GCOtherAttack.h
+|   |-- GCOtherEquip.cpp -- 其他装备
+|   |-- GCOtherEquip.h
+|   |-- GCOtherSkill.cpp -- 其他技能
+|   |-- GCOtherSkill.h
+|   |-- GCPackage_SwapItem.cpp -- 交换物品
+|   |-- GCPackage_SwapItem.h
+|   |-- GCPackUpPacket.cpp -- 更新掉落包
+|   |-- GCPackUpPacket.h
+|   |-- GCPetPlacardList.cpp -- 宠物公告板列表
+|   |-- GCPetPlacardList.h
+|   |-- GCPickResult.cpp -- 拾取结果
+|   |-- GCPickResult.h
+|   |-- GCPlayerCallOf.cpp -- 玩家召唤
+|   |-- GCPlayerCallOf.h
+|   |-- GCPlayerDie.cpp -- 玩家死亡
+|   |-- GCPlayerDie.h
+|   |-- GCPlayerRealMove.cpp -- 角色移动
+|   |-- GCPlayerRealMove.h
+|   |-- GCPlayerRelive.cpp -- 角色复活
+|   |-- GCPlayerRelive.h
+|   |-- GCPlayerShopAcquireShopList.cpp -- 玩家商店拥有的列表
+|   |-- GCPlayerShopAcquireShopList.h
+|   |-- GCPlayerShopApply.cpp -- 玩家商店确认
+|   |-- GCPlayerShopApply.h
+|   |-- GCPlayerShopBuyShop.cpp -- 购买玩家商店
+|   |-- GCPlayerShopBuyShop.h
+|   |-- GCPlayerShopError.cpp -- 玩家商店错误
+|   |-- GCPlayerShopError.h
+|   |-- GCPlayerShopEstablish.cpp -- 玩家商店建立
+|   |-- GCPlayerShopEstablish.h
+|   |-- GCPlayerShopMoney.cpp -- 玩家商店金钱
+|   |-- GCPlayerShopMoney.h
+|   |-- GCPlayerShopOnSale.cpp -- 玩家商店上架
+|   |-- GCPlayerShopOnSale.h
+|   |-- GCPlayerShopOpenStall.cpp -- 玩家商店店铺开张
+|   |-- GCPlayerShopOpenStall.h
+|   |-- GCPlayerShopRecordList.cpp -- 玩家商店数量列表
+|   |-- GCPlayerShopRecordList.h
+|   |-- GCPlayerShopSaleOut.cpp -- 玩家商店商品下架
+|   |-- GCPlayerShopSaleOut.h
+|   |-- GCPlayerShopStallStatus.cpp -- 玩家商店店铺状态
+|   |-- GCPlayerShopStallStatus.h
+|   |-- GCPlayerShopType.cpp -- 玩家商店类型
+|   |-- GCPlayerShopType.h
+|   |-- GCPlayerShopUpdateFavorite.cpp -- 玩家商店更新收藏
+|   |-- GCPlayerShopUpdateFavorite.h
+|   |-- GCPlayerShopUpdatePartners.cpp -- 玩家商店更新合作伙伴
+|   |-- GCPlayerShopUpdatePartners.h
+|   |-- GCPrescription.cpp -- 配方
+|   |-- GCPrescription.h
+|   |-- GCPrivateInfo.cpp -- 私密信息
+|   |-- GCPrivateInfo.h
+|   |-- GCRelation.cpp -- 关系
+|   |-- GCRelation.h
+|   |-- GCRemoveCanPickMissionItem.cpp 丢弃能够丢弃的任务物品
+|   |-- GCRemoveCanPickMissionItem.h
+|   |-- GCRemoveGemResult.cpp -- 移除宝石结果
+|   |-- GCRemoveGemResult.h
+|   |-- GCRemovePet.cpp -- 丢弃宠物
+|   |-- GCRemovePet.h
+|   |-- GCReqResetAttrResult.cpp -- 重置属性结果
+|   |-- GCReqResetAttrResult.h
+|   |-- GCRetChangeScene.cpp -- 切换场景结果
+|   |-- GCRetChangeScene.h
+|   |-- GCRetMissionDesc.cpp -- 任务详细描述信息
+|   |-- GCRetMissionDesc.h
+|   |-- GCRetSetting.cpp -- 设置结果
+|   |-- GCRetSetting.h
+|   |-- GCReturnTeamFollow.cpp -- 返回组队跟随
+|   |-- GCReturnTeamFollow.h
+|   |-- GCScriptCommand.cpp -- 脚本执行
+|   |-- GCScriptCommand.h
+|   |-- GCShopBuy.cpp -- 商店购买
+|   |-- GCShopBuy.h
+|   |-- GCShopMerchandiseList.cpp -- 商店商品列表
+|   |-- GCShopMerchandiseList.h
+|   |-- GCShopRepair.cpp -- 商店修理
+|   |-- GCShopRepair.h
+|   |-- GCShopSell.cpp -- 商店出售
+|   |-- GCShopSell.h
+|   |-- GCShopSoldList.cpp -- ？
+|   |-- GCShopSoldList.h
+|   |-- GCShopUpdateMerchandiseList.cpp -- 更新商店商品列表
+|   |-- GCShopUpdateMerchandiseList.h
+|   |-- GCSkill.cpp -- 技能
+|   |-- GCSkill.h
+|   |-- GCSkillPrepare.cpp -- 技能准备
+|   |-- GCSkillPrepare.h
+|   |-- GCSpecialObj_ActNow.cpp -- 正在战斗的特殊对象
+|   |-- GCSpecialObj_ActNow.h
+|   |-- GCSpecialObj_FadeOut.cpp -- 特殊对象淡出
+|   |-- GCSpecialObj_FadeOut.h
+|   |-- GCSplitItemResult.cpp -- 分割物品结果
+|   |-- GCSplitItemResult.h
+|   |-- GCStallAddItem.cpp -- 摊位增加物品
+|   |-- GCStallAddItem.h
+|   |-- GCStallApply.cpp -- 摊位确认
+|   |-- GCStallApply.h
+|   |-- GCStallBuy.cpp -- 摊位购买
+|   |-- GCStallBuy.h
+|   |-- GCStallClose.cpp -- 摊位关闭
+|   |-- GCStallClose.h
+|   |-- GCStallError.cpp -- 摊位错误
+|   |-- GCStallError.h
+|   |-- GCStallEstablish.cpp -- 摊位建立
+|   |-- GCStallEstablish.h
+|   |-- GCStallItemPrice.cpp -- 摊位物品价格
+|   |-- GCStallItemPrice.h
+|   |-- GCStallOpen.cpp -- 摊位开启
+|   |-- GCStallOpen.h
+|   |-- GCStallRemoveItem.cpp -- 摊位移除物品
+|   |-- GCStallRemoveItem.h
+|   |-- GCStudyXinfa.cpp -- 学习心法
+|   |-- GCStudyXinfa.h
+|   |-- GCSystemMsg.cpp -- 系统信息
+|   |-- GCSystemMsg.h
+|   |-- GCTargetListAndHitFlags.cpp -- 状态列表和命中标记列表
+|   |-- GCTargetListAndHitFlags.h
+|   |-- GCTeamAskApply.cpp -- 申请组队确认
+|   |-- GCTeamAskApply.h
+|   |-- GCTeamAskInvite.cpp -- 组队申请
+|   |-- GCTeamAskInvite.h
+|   |-- GCTeamError.cpp -- 组队错误
+|   |-- GCTeamError.h
+|   |-- GCTeamFollowErr.cpp -- 组队跟随错误
+|   |-- GCTeamFollowErr.h
+|   |-- GCTeamFollowList.cpp -- 组队跟随列表
+|   |-- GCTeamFollowList.h
+|   |-- GCTeamLeaderAskInvite.cpp -- 队长发出组队申请
+|   |-- GCTeamLeaderAskInvite.h
+|   |-- GCTeamList.cpp -- 组队列表
+|   |-- GCTeamList.h
+|   |-- GCTeamMemberInfo.cpp -- 队伍成员信息
+|   |-- GCTeamMemberInfo.h
+|   |-- GCTeamResult.cpp -- 组队结果
+|   |-- GCTeamResult.h
+|   |-- GCTest.cpp -- 测试
+|   |-- GCTest.h
+|   |-- GCUICommand.cpp -- UI命令
+|   |-- GCUICommand.h
+|   |-- GCUnEquipResult.cpp -- 装备结果
+|   |-- GCUnEquipResult.h
+|   |-- GCUseEquipResult.cpp -- 使用装备结果
+|   |-- GCUseEquipResult.h
+|   |-- GCUseEquipSkillResult.cpp -- 使用装备技能结果
+|   |-- GCUseEquipSkillResult.h
+|   |-- GCUseGemResult.cpp -- 使用宝石结果
+|   |-- GCUseGemResult.h
+|   |-- GCUseItemResult.cpp -- 使用物品结果
+|   |-- GCUseItemResult.h
+|   |-- GCWorldTime.cpp -- 世界时间
+|   |-- GCWorldTime.h
+|   |-- GCXinfaStudyInfo.cpp -- 心法学习信息
+|   |-- GCXinfaStudyInfo.h
+|   |-- GGSceneNotify.cpp -- 场景消息
+|   |-- GGSceneNotify.h
+|   |-- GSAskData.cpp -- 请求数据
+|   |-- GSAskData.h
+|   |-- GWAskChangeScene.cpp -- 请求切换场景
+|   |-- GWAskChangeScene.h
+|   |-- GWAskMail.cpp -- 请求邮件
+|   |-- GWAskMail.h
+|   |-- GWAskSceneData.cpp -- 请求场景数据
+|   |-- GWAskSceneData.h
+|   |-- GWAskTeamInfo.cpp -- 请求队伍信息
+|   |-- GWAskTeamInfo.h
+|   |-- GWAskTeamMemberInfo.cpp -- 请求队伍成员信息
+|   |-- GWAskTeamMemberInfo.h
+|   |-- GWAskUserData.cpp -- 请求用户数据
+|   |-- GWAskUserData.h
+|   |-- GWBatchMail.cpp -- 批量邮件
+|   |-- GWBatchMail.h
+|   |-- GWCallOfHuman.cpp -- 呼唤角色对象
+|   |-- GWCallOfHuman.h
+|   |-- GWChangeMenpai.cpp -- 更换门派
+|   |-- GWChangeMenpai.h
+|   |-- GWChannelCreate.cpp -- 频道建立
+|   |-- GWChannelCreate.h
+|   |-- GWChannelDismiss.cpp -- 频道移除
+|   |-- GWChannelDismiss.h
+|   |-- GWChannelInvite.cpp -- 频道申请
+|   |-- GWChannelInvite.h
+|   |-- GWChannelKick.cpp -- 频道踢除
+|   |-- GWChannelKick.h
+|   |-- GWChat.cpp -- 聊天
+|   |-- GWChat.h
+|   |-- GWCityApplyNewCity.cpp -- 确认新的城市
+|   |-- GWCityApplyNewCity.h
+|   |-- GWCityAskInitInfo.cpp -- 请求初始化信息
+|   |-- GWCityAskInitInfo.h
+|   |-- GWCityClose.cpp -- 城市关闭
+|   |-- GWCityClose.h
+|   |-- GWCityCloseSuccess.cpp -- 城市成功关闭
+|   |-- GWCityCloseSuccess.h
+|   |-- GWCityOpt.cpp -- 城市操作
+|   |-- GWCityOpt.h
+|   |-- GWCommand.cpp -- 命令行
+|   |-- GWCommand.h
+|   |-- GWEnterTeamFollow.cpp -- 进入组队跟随
+|   |-- GWEnterTeamFollow.h
+|   |-- GWFinger.cpp -- 查询角色信息
+|   |-- GWFinger.h
+|   |-- GWGuild.cpp -- 帮会信息
+|   |-- GWGuild.h
+|   |-- GWHeartBeat.cpp -- 心跳包
+|   |-- GWHeartBeat.h
+|   |-- GWLevelUp.cpp -- 角色升级
+|   |-- GWLevelUp.h
+|   |-- GWMail.cpp -- 邮件
+|   |-- GWMail.h
+|   |-- GWNotifyUser.cpp -- 用户提示
+|   |-- GWNotifyUser.h
+|   |-- GWRelation.cpp -- 角色关系
+|   |-- GWRelation.h
+|   |-- GWStopTeamFollow.cpp -- 停止组队跟随
+|   |-- GWStopTeamFollow.h
+|   |-- GWSystemMsg.cpp -- 系统消息
+|   |-- GWSystemMsg.h
+|   |-- GWTeamApply.cpp -- 组队确认
+|   |-- GWTeamApply.h
+|   |-- GWTeamAppoint.cpp -- 队伍转让
+|   |-- GWTeamAppoint.h
+|   |-- GWTeamDismiss.cpp -- 队伍解散
+|   |-- GWTeamDismiss.h
+|   |-- GWTeamInvite.cpp -- 组队申请
+|   |-- GWTeamInvite.h
+|   |-- GWTeamKick.cpp -- 队伍踢除
+|   |-- GWTeamKick.h
+|   |-- GWTeamLeaderRetInvite.cpp -- 队长邀请组队
+|   |-- GWTeamLeaderRetInvite.h
+|   |-- GWTeamLeave.cpp -- 离开队伍
+|   |-- GWTeamLeave.h
+|   |-- GWTeamMemberEnterScene.cpp -- 队伍成员进入场景
+|   |-- GWTeamMemberEnterScene.h
+|   |-- GWTeamRetApply.cpp -- 组队确认结果
+|   |-- GWTeamRetApply.h
+|   |-- GWTeamRetInvite.cpp -- 组队邀请结果
+|   |-- GWTeamRetInvite.h
+|   |-- GWUpdateTitle.cpp -- 更新称号
+|   |-- GWUpdateTitle.h
+|   |-- ItemSynchStructDefine.h
+|   |-- LBAskAuth.cpp -- 请求账号验证
+|   |-- LBAskAuth.h
+|   |-- LCRetCharList.cpp -- 请求角色列表
+|   |-- LCRetCharList.h
+|   |-- LCRetCharLogin.cpp -- 请求登陆结果
+|   |-- LCRetCharLogin.h
+|   |-- LCRetConnect.cpp -- 连接结果
+|   |-- LCRetConnect.h
+|   |-- LCRetCreateChar.cpp -- 创角结果
+|   |-- LCRetCreateChar.h
+|   |-- LCRetDeleteChar.cpp -- 删除角色结果
+|   |-- LCRetDeleteChar.h
+|   |-- LCRetLogin.cpp -- 登陆结果
+|   |-- LCRetLogin.h
+|   |-- LCStatus.cpp -- 状态
+|   |-- LCStatus.h
+|   |-- LWAskCharLogin.cpp -- 请求角色登陆
+|   |-- LWAskCharLogin.h
+|   |-- LWAskDeleteChar.cpp -- 请求删除角色
+|   |-- LWAskDeleteChar.h
+|   |-- Makefile
+|   |-- PetDetailExtraStructDefine.h
+|   |-- SGRetData.cpp -- 数据结果
+|   |-- SGRetData.h
+|   |-- SSConnect.cpp -- 连接
+|   |-- SSConnect.h
+|   |-- SSScenePlayerCount.cpp -- 场景玩家数量
+|   |-- SSScenePlayerCount.h
+|   |-- WBRetValidateUser.cpp -- 验证用户结果
+|   |-- WBRetValidateUser.h
+|   |-- WGCallOfHuman.cpp -- 呼唤玩家
+|   |-- WGCallOfHuman.h
+|   |-- WGChannelError.cpp -- 频道错误
+|   |-- WGChannelError.h
+|   |-- WGChannelResult.cpp -- 频道结果
+|   |-- WGChannelResult.h
+|   |-- WGChat.cpp -- 聊天
+|   |-- WGChat.h
+|   |-- WGCityApplyNewCity.cpp -- 确认新城市
+|   |-- WGCityApplyNewCity.h
+|   |-- WGCityAttr.cpp -- 城市属性
+|   |-- WGCityAttr.h
+|   |-- WGCityClose.cpp -- 关闭城市
+|   |-- WGCityClose.h
+|   |-- WGCityCloseSuccess.cpp -- 关闭城市成功
+|   |-- WGCityCloseSuccess.h
+|   |-- WGCityError.cpp -- 城市错误
+|   |-- WGCityError.h
+|   |-- WGCityInitInfo.cpp -- 初始化城市信息
+|   |-- WGCityInitInfo.h
+|   |-- WGFinger.cpp -- 查询角色数据
+|   |-- WGFinger.h
+|   |-- WGGuild.cpp -- 帮会
+|   |-- WGGuildError.cpp -- 帮会错误
+|   |-- WGGuildError.h
+|   |-- WGGuild.h
+|   |-- WGGuildReturn.cpp -- 帮会返回
+|   |-- WGGuildReturn.h
+|   |-- WGMail.cpp -- 邮件
+|   |-- WGMail.h
+|   |-- WGNotifyMail.cpp -- 邮件提示
+|   |-- WGNotifyMail.h
+|   |-- WGNotifyUser.cpp -- 用户提示
+|   |-- WGNotifyUser.h
+|   |-- WGRelation.cpp -- 关系
+|   |-- WGRelation.h
+|   |-- WGRetChangeScene.cpp -- 切换场景
+|   |-- WGRetChangeScene.h
+|   |-- WGRetSceneData.cpp -- 场景数据结果
+|   |-- WGRetSceneData.h
+|   |-- WGRetUserData.cpp -- 用户数据结果
+|   |-- WGRetUserData.h
+|   |-- WGSystemMsg.cpp -- 系统信息
+|   |-- WGSystemMsg.h
+|   |-- WGTeamAskApply.cpp -- 请求队伍通过
+|   |-- WGTeamAskApply.h
+|   |-- WGTeamAskInvite.cpp -- 请求邀请组队
+|   |-- WGTeamAskInvite.h
+|   |-- WGTeamError.cpp -- 组队错误
+|   |-- WGTeamError.h
+|   |-- WGTeamFollowList.cpp -- 组队跟随列表
+|   |-- WGTeamFollowList.h
+|   |-- WGTeamLeaderAskInvite.cpp -- 队长邀请组队
+|   |-- WGTeamLeaderAskInvite.h
+|   |-- WGTeamList.cpp -- 队伍列表
+|   |-- WGTeamList.h
+|   |-- WGTeamMemberInfo.cpp -- 队伍成员信息
+|   |-- WGTeamMemberInfo.h
+|   |-- WGTeamResult.cpp -- 组队结果
+|   |-- WGTeamResult.h
+|   |-- WGWorldTime.cpp -- 时间时间
+|   |-- WGWorldTime.h
+|   |-- WLRetCharLogin.cpp -- 角色登陆结果
+|   |-- WLRetCharLogin.h
+|   |-- WLRetDeleteChar.cpp -- 删除角色结果
+|   `-- WLRetDeleteChar.h
+|-- PlayerStatus.h
+|-- Rand.cpp -- 随机类
+|-- Rand.h
+|-- ResultDefine.h
+|-- ScriptCommandStruct.cpp -- 脚本命令结构
+|-- ScriptCommandStruct.h
+|-- ShareMemAPI.cpp -- 共享内存接口
+|-- ShareMemAPI.h
+|-- SkillDataMgr.cpp -- 技能数据管理器
+|-- SkillDataMgr.h
+`-- Type.h -- 变量类型以及常用方法定义头文件
 
