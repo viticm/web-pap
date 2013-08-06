@@ -1149,7 +1149,7 @@ PHP框架：zendframework 2 服务器构架：自己开发
 
 登陆服务器目录结构 ( ./server/Login )
 .
-|-- DB -- 数据目录
+|-- DB -- 数据模块目录
 |   |-- CharConfig.cpp -- 角色配置数据类
 |   |-- CharConfig.h
 |   |-- DBLogicManager.cpp -- 数据逻辑管理器 
@@ -1199,7 +1199,7 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- SSScenePlayerCountHandler.cpp -- 场景用户数量
 |   |-- WLRetCharLoginHandler.cpp -- 返回角色登陆结果
 |   `-- WLRetDeleteCharHandler.cpp
-|-- Player -- 玩家类目录
+|-- Player -- 玩家模块目录
 |   |-- LoginPlayer.cpp -- 玩家登陆类
 |   |-- LoginPlayer.h
 |   |-- LoginPlayerManager.cpp -- 玩家登陆管理器
@@ -1215,7 +1215,7 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- ServerPlayer.h
 |   |-- TurnPlayerQueue.cpp -- 转换的玩家队列
 |   `-- TurnPlayerQueue.h
-|-- Process
+|-- Process -- 进程模块目录
 |   |-- Makefile
 |   |-- ProcessManager.cpp -- 进程管理器
 |   |-- ProcessManager.h
