@@ -1621,7 +1621,7 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- CGManipulatePetHandler.cpp -- 宠物操作
 |   |-- CGMinorPasswordHandler.cpp -- 二级密码
 |   |-- CGMissionAbandonHander.cpp -- 放弃任务
-|   |-- CGMissionAcceptHander.cpp -- 接人任务
+|   |-- CGMissionAcceptHander.cpp -- 接受任务
 |   |-- CGMissionCheckHandler.cpp -- 检查任务
 |   |-- CGMissionContinueHander.cpp -- 继续任务
 |   |-- CGMissionRefuseHander.cpp -- 拒绝任务
@@ -1705,7 +1705,7 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- GWCityCloseHandler.cpp -- 关闭城市
 |   |-- GWCityCloseSuccessHandler.cpp -- 关闭城市成功
 |   |-- GWCityOptHandler.cpp -- 城市操作
-|   |-- GWHandler.cpp -- 服务器与世界服务器交换
+|   |-- GWHandler.cpp -- Server -> World 消息处理类
 |   |-- Makefile
 |   |-- SSConnectHandler.cpp -- 共享内存连接
 |   |-- SSScenePlayerCountHandler.cpp -- 共享内存场景用户统计
