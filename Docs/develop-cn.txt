@@ -287,13 +287,13 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- CGBBSApply.h
 |   |-- CGBBSSychMessages.cpp -- BBS消息
 |   |-- CGBBSSychMessages.h
-|   |-- CGChannelCreate.cpp -- 频道创建
+|   |-- CGChannelCreate.cpp -- 引导创建 ( 队伍 )
 |   |-- CGChannelCreate.h
-|   |-- CGChannelDismiss.cpp -- 频道分开
+|   |-- CGChannelDismiss.cpp -- 引导分开 ( 队伍 )
 |   |-- CGChannelDismiss.h
-|   |-- CGChannelInvite.cpp -- 频道邀请
+|   |-- CGChannelInvite.cpp -- 引导邀请 ( 队伍 )
 |   |-- CGChannelInvite.h
-|   |-- CGChannelKick.cpp -- 频道踢出
+|   |-- CGChannelKick.cpp -- 引导踢出 ( 队伍 )
 |   |-- CGChannelKick.h
 |   |-- CGCharAllTitles.cpp -- 角色所有称号
 |   |-- CGCharAllTitles.h
@@ -590,9 +590,9 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- GCBoxItemList.h
 |   |-- GCCanPickMissionItemList.cpp -- 可选任务物品列表
 |   |-- GCCanPickMissionItemList.h
-|   |-- GCChannelError.cpp -- 频道错误
+|   |-- GCChannelError.cpp -- 引导错误 ( 队伍 )
 |   |-- GCChannelError.h
-|   |-- GCChannelResult.cpp -- 频道结果
+|   |-- GCChannelResult.cpp -- 引导结果 ( 队伍 )
 |   |-- GCChannelResult.h
 |   |-- GCCharAction.cpp -- 角色动作
 |   |-- GCCharAction.h
@@ -974,13 +974,13 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- GWCallOfHuman.h
 |   |-- GWChangeMenpai.cpp -- 更换门派
 |   |-- GWChangeMenpai.h
-|   |-- GWChannelCreate.cpp -- 频道建立
+|   |-- GWChannelCreate.cpp -- 引导建立 ( 队伍 )
 |   |-- GWChannelCreate.h
-|   |-- GWChannelDismiss.cpp -- 频道移除
+|   |-- GWChannelDismiss.cpp -- 引导移除 ( 队伍 )
 |   |-- GWChannelDismiss.h
-|   |-- GWChannelInvite.cpp -- 频道申请
+|   |-- GWChannelInvite.cpp -- 引导申请 ( 队伍 )
 |   |-- GWChannelInvite.h
-|   |-- GWChannelKick.cpp -- 频道踢除
+|   |-- GWChannelKick.cpp -- 引导踢除 ( 队伍 )
 |   |-- GWChannelKick.h
 |   |-- GWChat.cpp -- 聊天
 |   |-- GWChat.h
@@ -1071,9 +1071,9 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- WBRetValidateUser.h
 |   |-- WGCallOfHuman.cpp -- 呼唤玩家
 |   |-- WGCallOfHuman.h
-|   |-- WGChannelError.cpp -- 频道错误
+|   |-- WGChannelError.cpp -- 引导错误 ( 队伍 )
 |   |-- WGChannelError.h
-|   |-- WGChannelResult.cpp -- 频道结果
+|   |-- WGChannelResult.cpp -- 引导结果 ( 队伍 )
 |   |-- WGChannelResult.h
 |   |-- WGChat.cpp -- 聊天
 |   |-- WGChat.h
@@ -1223,4 +1223,861 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   `-- ProcessPlayerManager.h
 |-- stdafx.cpp
 `-- stdafx.h
+
+游戏服务器目录结构 ( ./server/Server )
+.
+|-- Ability -- 生活技能模块
+|   |-- AbilityCompound.cpp -- 材料合成类
+|   |-- AbilityCompound.h
+|   |-- Ability.cpp -- 生活技能类
+|   |-- AbilityFoundry.cpp -- 铸造类
+|   |-- AbilityFoundry.h
+|   |-- AbilityGather.cpp -- 采集类
+|   |-- AbilityGatherFish.cpp -- 采集成功类
+|   |-- AbilityGatherFish.h
+|   |-- AbilityGather.h
+|   |-- AbilityGeneric.h
+|   |-- Ability.h
+|   |-- Ability.inl
+|   |-- AbilityInlay.cpp -- 镶嵌类
+|   |-- AbilityInlay.h
+|   |-- AbilityMachining.cpp -- 材料加工类
+|   |-- AbilityMachining.h
+|   |-- AbilityManager.cpp -- 生活技能管理器
+|   |-- AbilityManager.h
+|   |-- AbilityTailor.cpp -- 裁缝类
+|   |-- AbilityTailor.h
+|   `-- Makefile
+|-- ActionModule -- 动作模块
+|   |-- ActionCallBack.cpp -- 动作回调类
+|   |-- ActionCallBackForScript.cpp -- 动作回调脚本类
+|   |-- ActionCallBackForScript.h
+|   |-- ActionCallBackForSkill.cpp -- 动作回调技能类
+|   |-- ActionCallBackForSkill.h
+|   |-- ActionCallBack.h
+|   |-- ActionDelegator.cpp --动作的代理类 
+|   |-- ActionDelegator.h
+|   |-- ActionLogic.cpp -- 动作接口类
+|   |-- ActionLogic.h
+|   |-- ChannelAction.cpp -- 引导动作类
+|   |-- ChannelAction.h
+|   |-- ChargeAction.cpp -- 聚气动作类
+|   |-- ChargeAction.h
+|   |-- InstantAction.cpp -- 瞬发动作类
+|   |-- InstantAction.h
+|   `-- Makefile
+|-- AI -- AI模块
+|   |-- AI_Character.cpp -- 角色AI类
+|   |-- AI_Character.h
+|   |-- AI_Human.cpp -- 主角AI类
+|   |-- AI_Human.h
+|   |-- AI_Monster.cpp -- 怪物AI类
+|   |-- AI_Monster_Def.h
+|   |-- AI_Monster.h
+|   |-- AI_Pet.cpp -- 宠物AI类
+|   |-- AI_PetDef.h
+|   |-- AI_Pet.h
+|   |-- AIScript.cpp -- AI脚本类
+|   |-- AIScriptDef.h
+|   |-- AIScriptFunction.cpp -- AI脚本方法
+|   |-- AIScriptFunction.h
+|   |-- AIScript.h
+|   |-- AvoidOverlap.h
+|   |-- AxTrace.cpp -- 监控窗口输出
+|   |-- AxTrace.h
+|   |-- Makefile
+|   |-- Patrol.cpp -- 怪物巡逻类
+|   |-- Patrol.h
+|   |-- SinCos.cpp -- sin cos ( math ? )
+|   |-- SinCos.h
+|   |-- State.cpp -- 状态类
+|   `-- State.h
+|-- Base -- 基础模块
+|   |-- Config.cpp -- 配置类
+|   |-- Config.h
+|   |-- File.cpp -- 文件操作类
+|   |-- FileDef.h
+|   |-- File.h
+|   |-- FoxLuaScript.cpp -- Fox Lua脚本类
+|   |-- FoxLuaScript.h
+|   |-- foxscript.h
+|   |-- FoxScript.h
+|   |-- FoxWin32.h
+|   |-- IDTable.cpp -- ID表类
+|   |-- IDTable.h
+|   |-- Ini.cpp -- ini文件操作类
+|   |-- Ini.h
+|   |-- Log.cpp -- 日志类
+|   |-- LogDefine.cpp -- 日志常用定义方法
+|   |-- LogDefine.h
+|   |-- Log.h
+|   |-- Lua.h
+|   |-- LuaLib.h
+|   |-- Makefile
+|   |-- ObjPool.cpp -- 对象池 ( 废弃 ) 
+|   |-- ObjPool.h
+|   |-- PetConfig.h
+|   |-- ScriptDef.h
+|   |-- StrTable.cpp -- 字符串表类
+|   |-- StrTable.h
+|   |-- Thread.cpp -- 线程类
+|   |-- Thread.h
+|   |-- TimeManager.cpp -- 时间管理器
+|   `-- TimeManager.h
+|-- DB -- 数据模块
+|   |-- HumanDB.cpp -- 主角数据类
+|   |-- HumanDB.h
+|   |-- HumanDB.inl
+|   `-- Makefile
+|-- EventModule -- 事件模块 
+|   |-- EventCore.cpp -- 事件缓存逻辑内核
+|   |-- EventCore.h
+|   |-- EventStruct.cpp -- 事件结构
+|   |-- EventStruct.h
+|   `-- Makefile
+|-- Item -- 物品模块
+|   |-- GrowPointManager.cpp -- 生长点管理器
+|   |-- GrowPointManager.h
+|   |-- GrowPointManager.inl
+|   |-- HumanItemContainer.cpp -- 玩家物品容器类 
+|   |-- HumanItemContainer.h
+|   |-- HumanItemLogic.cpp -- 玩家物品操作类
+|   |-- HumanItemLogic.h
+|   |-- HumanPetContainer.cpp -- 玩家宠物容器类
+|   |-- HumanPetContainer.h
+|   |-- ItemContainer.cpp -- 物品容器类
+|   |-- ItemContainer.h
+|   |-- Item.cpp -- 物品类
+|   |-- Item.h
+|   |-- ItemHelper.cpp -- 物品帮助类
+|   |-- ItemHelper.h
+|   |-- Item.inl
+|   |-- ItemManager.cpp -- 物品管理器
+|   |-- ItemManager.h
+|   |-- ItemOperator.cpp -- 物品及物品容器的操作封装类
+|   |-- ItemOperator.h
+|   |-- ItemRuler.cpp --  物品规则类
+|   |-- ItemRuler.h
+|   |-- ItemTable.cpp -- 物品基础数据表操作类
+|   |-- ItemTable.h
+|   |-- ItemTypes.h
+|   `-- Makefile
+|-- Main -- 主模块
+|   |-- ClientManager.cpp -- 客户端管理器
+|   |-- ClientManager.h
+|   |-- DaemonThread.cpp -- 守护线程类
+|   |-- DaemonThread.h
+|   |-- DiePenaltyManager.cpp -- 死亡惩罚数据管理器
+|   |-- DiePenaltyManager.h
+|   |-- GameTable.cpp -- 数据表类 ( *.txt )
+|   |-- GameTable.h
+|   |-- GUIDManager.cpp -- GUID管理器
+|   |-- GUIDManager.h
+|   |-- MachineManager.cpp -- 机器管理器
+|   |-- MachineManager.h
+|   |-- Makefile
+|   |-- Performance.cpp -- 保存和统计系统中各个模块执行效率及运行情况类
+|   |-- Performance.h
+|   |-- RecoverManager.cpp -- 数据恢复管理器
+|   |-- RecoverManager.h
+|   |-- RecoverThread.cpp -- 线程恢复类
+|   |-- RecoverThread.h
+|   |-- Server.cpp -- 游戏服务器入口
+|   |-- Server.h
+|   |-- ServerManager.cpp -- 服务器管理器
+|   |-- ServerManager.h
+|   |-- ServerThread.cpp -- 服务器线程类
+|   |-- ServerThread.h
+|   |-- ShareMemManager.cpp -- 共享内存管理器
+|   |-- ShareMemManager.h
+|   |-- ThreadManager.cpp -- 线程管理器
+|   |-- ThreadManager.h
+|   |-- ThreadPool.cpp -- 线程池管理器
+|   |-- ThreadPool.h
+|   |-- User.cpp -- 用户类
+|   |-- User.h
+|   |-- UserPool.cpp -- 用户池类
+|   |-- UserPool.h
+|   |-- WorldManager.cpp -- 世界管理器
+|   |-- WorldManager.h
+|   |-- XinfaStudySpendMgr.cpp -- 心法学习消耗管理器
+|   `-- XinfaStudySpendMgr.h
+|-- Makefile
+|-- MenPai -- 门派模块 ( job )
+|   |-- DaLi.cpp -- 大理 ( 天龙 )
+|   |-- DaLi.h
+|   |-- EMei.cpp -- 峨眉
+|   |-- EMei.h
+|   |-- GaiBang.cpp -- 丐帮
+|   |-- GaiBang.h
+|   |-- Makefile
+|   |-- MenPai.cpp -- 门派类
+|   |-- MenPai.h
+|   |-- MenPais.h
+|   |-- MingJiao.cpp -- 明教
+|   |-- MingJiao.h
+|   |-- ShaoLin.cpp -- 少林
+|   |-- ShaoLin.h
+|   |-- TianShan.cpp -- 天山
+|   |-- TianShan.h
+|   |-- WuDang.cpp -- 武当
+|   |-- WuDang.h
+|   |-- WuMenPai.cpp -- 无门派
+|   |-- WuMenPai.h
+|   |-- XiaoYao.cpp -- 逍遥
+|   |-- XiaoYao.h
+|   |-- XingXiu.cpp -- 星宿
+|   `-- XingXiu.h
+|-- Mission -- 任务模块
+|   |-- Human_Mission.cpp -- 玩家任务类 ( 废弃 待实现 )
+|   |-- Human_Mission.h
+|   |-- Makefile
+|   |-- MissionManager.cpp -- 任务管理器
+|   `-- MissionManager.h
+|-- Obj -- 对象模块
+|   |-- Attributes.h
+|   |-- CharacterManager.cpp -- 角色管理器
+|   |-- CharacterManager.h
+|   |-- HumanManager.cpp -- 角色单一管理器
+|   |-- HumanManager.h
+|   |-- ItemBoxManager.cpp -- 物品格子管理器
+|   |-- ItemBoxManager.h
+|   |-- ItemBoxPool.cpp -- 物品格子池类
+|   |-- ItemBoxPool.h
+|   |-- Makefile
+|   |-- MonsterManager.cpp -- 怪物管理器
+|   |-- MonsterManager.h
+|   |-- MonsterPool.cpp -- 怪物池类
+|   |-- MonsterPool.h
+|   |-- Obj_Character_Attributes.cpp -- 角色属性类
+|   |-- Obj_Character.cpp -- 角色对象类
+|   |-- Obj_Character_DirtyFlag.cpp -- 角色层属性的脏标记操作类
+|   |-- Obj_Character_Event.cpp -- 角色事件类
+|   |-- Obj_Character.h
+|   |-- Obj_Character_Impact.cpp -- 角色身上的效果处理类
+|   |-- Obj_Character_Logic.cpp -- 角色操作类
+|   |-- Obj_Character_MenPai.cpp -- 角色门派类
+|   |-- Obj_Character_Skill.cpp -- 角色技能类
+|   |-- Obj.cpp -- 对象类
+|   |-- Obj_Dynamic.cpp -- 对象动态类
+|   |-- Obj_Dynamic.h
+|   |-- Obj.h
+|   |-- Obj_Human_Attributes.cpp -- 角色单一属性类
+|   |-- Obj_Human_AttrRefesh.cpp -- 角色单一刷新属性类
+|   |-- Obj_Human_Calc.cpp -- 角色单一计算类
+|   |-- Obj_Human.cpp -- 角色单一类
+|   |-- Obj_Human.h
+|   |-- Obj_Human.inl
+|   |-- Obj_Human_Skill.cpp -- 角色单一技能类
+|   |-- Obj_ItemBox.cpp -- 物品格子对象类
+|   |-- Obj_ItemBox.h
+|   |-- Obj_ItemBox.inl
+|   |-- ObjList.h
+|   |-- ObjManager.cpp -- 对象管理器
+|   |-- ObjManager.h
+|   |-- Obj_Monster_Attributes.cpp -- 怪物属性类
+|   |-- Obj_Monster_AttrRefesh.cpp -- 怪物属性刷新类
+|   |-- Obj_Monster_Calc.cpp -- 怪物计算类
+|   |-- Obj_Monster.cpp -- 怪物类
+|   |-- Obj_Monster.h
+|   |-- Obj_Monster_Skill.cpp -- 怪物技能类
+|   |-- Obj_Pet_Attributes.cpp -- 宠物属性类
+|   |-- Obj_Pet_AttrRefesh.cpp -- 宠物属性刷新类
+|   |-- Obj_Pet_Calc.cpp -- 宠物计算类
+|   |-- Obj_Pet.cpp -- 宠物类
+|   |-- Obj_Pet.h
+|   |-- Obj_Pet.inl
+|   |-- Obj_Pet_Skill.cpp -- 宠物技能类
+|   |-- Obj_Platform.cpp -- 操作平台类
+|   |-- Obj_Platform.h
+|   |-- ObjSingleManager.cpp -- 单一管理器
+|   |-- ObjSingleManager.h
+|   |-- Obj_Special.cpp -- 特殊对象类
+|   |-- Obj_Special.h
+|   |-- Obj_Static.cpp -- 静态对象类
+|   |-- Obj_Static.h
+|   |-- PetManager.cpp -- 宠物管理器
+|   |-- PetManager.h
+|   |-- PetPlacard.cpp -- 宠物公告板类
+|   |-- PetPlacard.h
+|   |-- PetPool.cpp -- 宠物池类
+|   |-- PetPool.h
+|   |-- PlatformManager.cpp -- 平台管理器
+|   |-- PlatformManager.h
+|   |-- PlatformPool.cpp -- 平台池类
+|   |-- PlatformPool.h
+|   |-- SpecialManager.cpp -- 特殊管理器
+|   |-- SpecialManager.h
+|   |-- SpecialPool.cpp -- 特殊池类
+|   `-- SpecialPool.h
+|-- Other -- 其他模块
+|   |-- BBS.cpp -- BBS类
+|   |-- BBS.h
+|   |-- ExchangBox.cpp -- 交易盒类
+|   |-- ExchangBox.h
+|   |-- HumanRelation.cpp -- 角色关系类
+|   |-- HumanRelation.h
+|   |-- Makefile
+|   |-- PlayerShop.cpp -- 玩家商店类
+|   |-- PlayerShopDefine.h
+|   |-- PlayerShop.h
+|   |-- PlayerShopManager.cpp -- 玩家商店管理器
+|   |-- PlayerShopManager.h
+|   |-- PlayerShopPool.cpp -- 玩家商店池类
+|   |-- PlayerShopPool.h
+|   |-- PlayerStallBox.cpp -- 玩家摊位盒子类
+|   |-- PlayerStallBox.h
+|   |-- Record.h
+|   |-- RecordOpt.cpp -- 数据操作类
+|   |-- RecordOpt.h
+|   |-- ShopManager.cpp -- 商店管理器
+|   |-- ShopManager.h
+|   |-- StallBox.cpp -- 摊位盒子类
+|   |-- StallBox.h
+|   |-- StallInfoManager.cpp -- 摊位信息管理器
+|   |-- StallInfoManager.h
+|   |-- StoreManager.cpp -- 储存管理器
+|   `-- StoreManager.h
+|-- Packets -- 消息包模块
+|   |-- CGApplyPirvateInfoHandler.cpp -- 确认私有消息
+|   |-- CGAskChangeSceneHandler.cpp -- 请求切换场景
+|   |-- CGAskDetailAbilityInfoHandler.cpp -- 请求生活技能详细信息
+|   |-- CGAskDetailAttribHandler.cpp -- 请求属性详细信息
+|   |-- CGAskDetailEquipListHandler.cpp -- 请求装备列表详细信息
+|   |-- CGAskDetailSkillListHandler.cpp -- 请求技能列表详细信息
+|   |-- CGAskDetaiXinFaListHandler.cpp -- 请求心法列表详细信息
+|   |-- CGAskItemInfoHandler.cpp -- 请求物品信息
+|   |-- CGAskJoinMenpaiHandler.cpp -- 请求加入门派
+|   |-- CGAskLeanAbilityHandler.cpp -- 请求学习生活技能
+|   |-- CGAskLockObjHandler.cpp -- 请求锁定对象
+|   |-- CGAskMailHandler.cpp -- 请求发送邮件
+|   |-- CGAskMissionDescHander.cpp -- 请求任务详细信息
+|   |-- CGAskMissionListHandler.cpp -- 请求任务列表
+|   |-- CGAskMyBagListHandler.cpp -- 请求自己的背包列表
+|   |-- CGAskPrivateInfoHandler.cpp -- 请求私有信息
+|   |-- CGAskSettingHandler.cpp -- 请求配置信息
+|   |-- CGAskStudyXinfaHandler.cpp -- 请求学习心法
+|   |-- CGAskTeamFollowHandler.cpp -- 请求组队跟随
+|   |-- CGAskTeamInfoHandler.cpp -- 请求队伍信息
+|   |-- CGAskTeamMemberInfoHandler.cpp -- 请求队伍成员信息
+|   |-- CGAttackHandler.cpp -- 攻击
+|   |-- CGBankAcquireListHandler.cpp -- 银行拥有列表
+|   |-- CGBankAddItemHandler.cpp -- 向银行中添加物品
+|   |-- CGBankCloseHandler.cpp -- 关闭银行
+|   |-- CGBankMoneyHandler.cpp -- 银行金钱操作
+|   |-- CGBankRemoveItemHandler.cpp -- 从银行中移除物品
+|   |-- CGBankSwapItemHandler.cpp -- 在银行中交换物品
+|   |-- CGBBSApplyHandler.cpp -- BBS确认
+|   |-- CGBBSSychMessagesHandler.cpp -- BBS同步消息
+|   |-- CGBuyHandler.cpp -- 购买
+|   |-- CGChannelCreateHandler.cpp -- 引导创建  ( 队伍 ) 
+|   |-- CGChannelDismissHandler.cpp -- 引导解散 ( 队伍 )
+|   |-- CGChannelInviteHandler.cpp -- 引导申请 ( 队伍 )
+|   |-- CGChannelKickHandler.cpp -- 引导踢除 ( 队伍 )
+|   |-- CGCharAllTitlesHandler.cpp -- 角色所有称号
+|   |-- CGCharAskBaseAttribHandler.cpp -- 请求角色基本属性
+|   |-- CGCharAskEquipmentHandler.cpp -- 请求角色装备信息
+|   |-- CGCharCancelSkillHandler.cpp -- 取消技能
+|   |-- CGCharDefaultEventHander.cpp -- 角色默认事件
+|   |-- CGCharIdleHandler.cpp -- 角色空闲
+|   |-- CGCharJumpHandler.cpp -- 角色跳跃
+|   |-- CGCharMoodStateHandler.cpp -- 角色心情状态
+|   |-- CGCharMoveHandler.cpp -- 角色移动
+|   |-- CGCharPositionWarpHandler.cpp -- 角色寻路路线
+|   |-- CGCharSitHandler.cpp -- 角色打坐
+|   |-- CGCharStopLogicHandler.cpp -- 角色停止动作
+|   |-- CGCharUpdateCurTitleHandler.cpp -- 更新角色当前称号
+|   |-- CGCharUseSkillHandler.cpp -- 角色使用技能
+|   |-- CGChatHandler.cpp -- 聊天
+|   |-- CGCityAskAttrHandler.cpp -- 请求城市数据
+|   |-- CGCommandHandler.cpp -- 命令
+|   |-- CGConnectHandler.cpp -- 连接
+|   |-- CGDiscardEquipHandler.cpp -- 丢弃装备
+|   |-- CGDiscardItemHandler.cpp -- 丢弃物品
+|   |-- CGDispelBuffReqHandler.cpp --取消状态
+|   |-- CGDoEventHandler.cpp -- 触发事件
+|   |-- CGEnterSceneHandler.cpp -- 进入场景
+|   |-- CGEnvRequestHandler.cpp --  进入场景返回
+|   |-- CGEventRequestHander.cpp -- 事件返回
+|   |-- CGExchangeApplyIHandler.cpp -- 交易通过
+|   |-- CGExchangeCancelHandler.cpp -- 交易取消
+|   |-- CGExchangeOkIIIHandler.cpp -- 交易成功
+|   |-- CGExchangeReplyIHandler.cpp -- 交易确认
+|   |-- CGExchangeSynchItemIIHandler.cpp -- 交易同步物品信息
+|   |-- CGExchangeSynchLockHandler.cpp -- 同步锁定信息
+|   |-- CGExchangeSynchMoneyIIHandler.cpp -- 同步金钱信息
+|   |-- CGExecuteScriptHandler.cpp -- 执行脚本
+|   |-- CGFingerHandler.cpp -- 查询
+|   |-- CGGemCompoundHandler.cpp -- 宝石合成
+|   |-- CGGuildApplyHandler.cpp -- 帮会通过
+|   |-- CGGuildHandler.cpp -- 帮会
+|   |-- CGGuildJoinHandler.cpp -- 帮会加入
+|   |-- CGHeartBeatHandler.cpp -- 心跳包
+|   |-- CGIssuePetPlacardHandler.cpp -- 确认宠物公告板
+|   |-- CGItemSynchHandler.cpp -- 物品同步
+|   |-- CGLeaveSceneHandler.cpp -- 离开场景
+|   |-- CGLockTargetHandler.cpp -- 锁定标记
+|   |-- CGMailHandler.cpp -- 发送邮件
+|   |-- CGManipulatePetHandler.cpp -- 宠物操作
+|   |-- CGMinorPasswordHandler.cpp -- 二级密码
+|   |-- CGMissionAbandonHander.cpp -- 放弃任务
+|   |-- CGMissionAcceptHander.cpp -- 接人任务
+|   |-- CGMissionCheckHandler.cpp -- 检查任务
+|   |-- CGMissionContinueHander.cpp -- 继续任务
+|   |-- CGMissionRefuseHander.cpp -- 拒绝任务
+|   |-- CGMissionSubmitHander.cpp -- 提交任务
+|   |-- CGModifySettingHandler.cpp -- 修改配置
+|   |-- CGMoveHandler.cpp -- 移动
+|   |-- CGMyEquipHandler.cpp -- 自己的装备
+|   |-- CGOpenItemBoxHander.cpp -- 开启物品盒子
+|   |-- CGOtherEquipHandler.cpp -- 其他装备
+|   |-- CGPackage_SwipItemHandle.cpp -- 掉落包物品交换
+|   |-- CGPackUpPacketHandler.cpp -- 掉落包更新 ( 只是整理 )
+|   |-- CGPickBoxItemHandler.cpp -- 拾取物品格子
+|   |-- CGPlayerCallOfResultHandler.cpp -- 呼唤玩家结果
+|   |-- CGPlayerDieResultHandler.cpp -- 角色死亡结果
+|   |-- CGPlayerShopAcquireItemListHandler.cpp -- 玩家商店拥有物品列表
+|   |-- CGPlayerShopAcquireShopListHandler.cpp -- 玩家商店拥有商店列表
+|   |-- CGPlayerShopApplyHandler.cpp -- 玩家商店确认
+|   |-- CGPlayerShopAskForRecordHandler.cpp -- 请求恢复玩家商店
+|   |-- CGPlayerShopBuyItemHandler.cpp -- 玩家商店购买物品
+|   |-- CGPlayerShopBuyShopHandler.cpp -- 购买玩家商店
+|   |-- CGPlayerShopDescHandler.cpp -- 修改玩家商店秒速
+|   |-- CGPlayerShopEstablishHandler.cpp -- 玩家商店建立
+|   |-- CGPlayerShopFavoriteHandler.cpp -- 申请物品上架
+|   |-- CGPlayerShopMoneyHandler.cpp -- 玩家商店金钱操作
+|   |-- CGPlayerShopNameHandler.cpp -- 玩家商店名更改
+|   |-- CGPlayerShopOnSaleHandler.cpp -- 玩家商店上架
+|   |-- CGPlayerShopOpenStallHandler.cpp -- 玩家商店开启店铺
+|   |-- CGPlayerShopPartnerHandler.cpp -- 玩家商店伙伴操作
+|   |-- CGPlayerShopSaleOutHandler.cpp -- 玩家商店下架
+|   |-- CGPlayerShopSizeHandler.cpp -- 玩家商店大小
+|   |-- CGPlayerShopTypeHandler.cpp -- 玩家商店类型
+|   |-- CGRelationHandler.cpp -- 关系
+|   |-- CGRemoveGemHandler.cpp -- 摘除宝石
+|   |-- CGReqLevelUpHandler.cpp -- 升级结果
+|   |-- CGReqManualAttrHandler.cpp -- 升级属性操作
+|   |-- CGReqResetAttrHandler.cpp -- 重洗属性
+|   |-- CGReturnTeamFollowHandler.cpp -- 返回组队跟随
+|   |-- CGSetMoodToHeadHandler.cpp -- 设置心情到头顶
+|   |-- CGSetPetAttribHandler.cpp -- 设置宠物属性
+|   |-- CGShopBuyHandler.cpp -- 商店购买
+|   |-- CGShopCloseHandler.cpp -- 商店关闭
+|   |-- CGShopRepairHandler.cpp -- 商店修理
+|   |-- CGShopSellHandler.cpp -- 商店出售
+|   |-- CGSkillHandler.cpp -- 技能
+|   |-- CGSplitItemHandler.cpp -- 分割物品
+|   |-- CGStallAddItemHandler.cpp -- 摊位增加物品
+|   |-- CGStallApplyHandler.cpp -- 摊位确认
+|   |-- CGStallBuyHandler.cpp -- 摊位购买
+|   |-- CGStallCloseHandler.cpp -- 摊位关闭
+|   |-- CGStallDefaultPageHandler.cpp -- 摊位默认页
+|   |-- CGStallEstablishHandler.cpp -- 摊位建立
+|   |-- CGStallItemPriceHandler.cpp -- 摊位物品价格
+|   |-- CGStallOpenHandler.cpp -- 摊位开启
+|   |-- CGStallRemoveItemHandler.cpp -- 摊位移除物品
+|   |-- CGStallShopNameHandler.cpp -- 摊位名称
+|   |-- CGStopTeamFollowHandler.cpp -- 停止组队跟随
+|   |-- CGSystemMsgHandler.cpp -- 系统信息
+|   |-- CGTeamApplyHandler.cpp -- 队伍通过
+|   |-- CGTeamAppointHandler.cpp -- 队长转移
+|   |-- CGTeamDismissHandler.cpp -- 队伍解散
+|   |-- CGTeamInviteHandler.cpp -- 组队申请
+|   |-- CGTeamKickHandler.cpp -- 队伍踢人
+|   |-- CGTeamLeaderRetInviteHandler.cpp -- 队伍队长邀请组队
+|   |-- CGTeamLeaveHandler.cpp -- 离开队伍
+|   |-- CGTeamRetApplyHandler.cpp -- 队伍通过结果
+|   |-- CGTeamRetInviteHandler.cpp -- 队伍邀请结果
+|   |-- CGTestHandler.cpp -- 测试
+|   |-- CGUnEquipHandler.cpp -- 卸载装备
+|   |-- CGUseAbilityHandler.cpp -- 使用生活技能
+|   |-- CGUseEquipHandler.cpp -- 使用装备
+|   |-- CGUseEquipSkillHandler.cpp -- 使用装备技能
+|   |-- CGUseGemHandler.cpp -- 使用宝石
+|   |-- CGUseItemHandler.cpp -- 使用物品
+|   |-- GCCityAttrHandler.cpp -- 城市详细数据
+|   |-- GCCityErrorHandler.cpp -- 城市错误
+|   |-- GCCityNotifyHandler.cpp -- 城市消息
+|   |-- GCHandler.cpp -- 消息 ( all )
+|   |-- GGSceneNotifyHandler.cpp -- 场景消息
+|   |-- GWCityApplyNewCityHandler.cpp -- 确认新城市
+|   |-- GWCityAskInitInfoHandler.cpp -- 请求初始化城市数据
+|   |-- GWCityCloseHandler.cpp -- 关闭城市
+|   |-- GWCityCloseSuccessHandler.cpp -- 关闭城市成功
+|   |-- GWCityOptHandler.cpp -- 城市操作
+|   |-- GWHandler.cpp -- 服务器与世界服务器交换
+|   |-- Makefile
+|   |-- SSConnectHandler.cpp -- 共享内存连接
+|   |-- SSScenePlayerCountHandler.cpp -- 共享内存场景用户统计
+|   |-- WGCallOfHumanHandler.cpp -- 呼唤角色
+|   |-- WGChannelErrorHandler.cpp -- 引导错误
+|   |-- WGChannelResultHandler.cpp -- 引导结果
+|   |-- WGChatHandler.cpp -- 聊天
+|   |-- WGCityApplyNewCityHandler.cpp -- 确认新城市
+|   |-- WGCityAttrHandler.cpp -- 城市属性
+|   |-- WGCityCloseHandler.cpp -- 城市关闭
+|   |-- WGCityCloseSuccessHandler.cpp -- 城市关闭成功
+|   |-- WGCityErrorHandler.cpp -- 城市错误
+|   |-- WGCityInitInfoHandler.cpp -- 城市初始化
+|   |-- WGFingerHandler.cpp -- 查询角色
+|   |-- WGGuildErrorHandler.cpp -- 帮会错误
+|   |-- WGGuildHandler.cpp -- 帮会消息管理
+|   |-- WGGuildReturnHandler.cpp -- 帮会返回
+|   |-- WGMailHandler.cpp -- 发送邮件
+|   |-- WGNotifyMailHandler.cpp -- 邮件提示消息
+|   |-- WGNotifyUserHandler.cpp -- 用户提示消息
+|   |-- WGRelationHandler.cpp -- 关系
+|   |-- WGRetChangeSceneHandler.cpp -- 切换场景结果
+|   |-- WGRetSceneDataHandler.cpp -- 场景数据结果
+|   |-- WGRetUserDataHandler.cpp -- 用户数据结果
+|   |-- WGSystemMsgHandler.cpp -- 系统信息
+|   |-- WGTeamAskApplyHandler.cpp -- 请求组队通过
+|   |-- WGTeamAskInviteHandler.cpp -- 请求组队邀请
+|   |-- WGTeamErrorHandler.cpp -- 队伍错误
+|   |-- WGTeamFollowListHandler.cpp -- 队伍跟随列表
+|   |-- WGTeamLeaderAskInviteHandler.cpp -- 队长邀请
+|   |-- WGTeamListHandler.cpp -- 队伍列表
+|   |-- WGTeamMemberInfoHandler.cpp -- 队伍成员信息
+|   |-- WGTeamResultHandler.cpp -- 组队结果
+|   `-- WGWorldTimeHandler.cpp -- 世界时间
+|-- Player -- 玩家模块
+|   |-- GamePlayer.cpp -- 游戏玩家类
+|   |-- GamePlayer.h
+|   |-- IncomingPlayerManager.cpp -- 玩家连接管理器
+|   |-- IncomingPlayerManager.h
+|   |-- Makefile
+|   |-- Player.cpp -- 玩家类
+|   |-- Player.h
+|   |-- PlayerManager.cpp -- 玩家管理器
+|   |-- PlayerManager.h
+|   |-- PlayerPool.cpp -- 玩家池类
+|   |-- PlayerPool.h
+|   |-- RecyclePlayerManager.cpp -- 玩家回收管理器
+|   |-- RecyclePlayerManager.h
+|   |-- ServerPlayer.cpp -- 服务器玩家类
+|   `-- ServerPlayer.h
+|-- Scene -- 场景模块
+|   |-- AreaManager.cpp -- 区域管理器
+|   |-- AreaManager.h
+|   |-- ChatPipe.cpp -- 聊天类
+|   |-- ChatPipe.h
+|   |-- CopySceneManager.cpp -- 副本场景管理器
+|   |-- CopySceneManager.h
+|   |-- DynamicSceneManager.cpp -- 动态场景管理器
+|   |-- DynamicSceneManager.h
+|   |-- Makefile
+|   |-- Map.cpp -- 地图类
+|   |-- Map.h
+|   |-- MapUnit.h
+|   |-- PathFinder.cpp -- 导航类
+|   |-- PathFinder.h
+|   |-- Scan -- 搜素模块
+|   |   |-- Makefile
+|   |   |-- ScanOperator_ActiveTeammates.cpp -- 搜索周围的敌人obj类
+|   |   |-- ScanOperator_ActiveTeammates.h
+|   |   |-- ScanOperator_AEImpact.cpp -- 面积有效状态的搜索操作类
+|   |   |-- ScanOperator_AEImpact.h
+|   |   |-- ScanOperator_AESkill.cpp -- 面积有效技能的搜索操作类
+|   |   |-- ScanOperator_AESkill.h
+|   |   |-- ScanOperator_Chat.cpp -- 搜索周围的符合要求的obj，用户发送聊天信息
+|   |   |-- ScanOperator_Chat.h
+|   |   |-- ScanOperator_Enemy.cpp -- 搜索周围的敌人obj类
+|   |   |-- ScanOperator_Enemy.h
+|   |   |-- ScanOperator_Teammate.cpp -- 搜索模板
+|   |   |-- ScanOperator_Teammate.h
+|   |   |-- ScanOpt_SObj_ScanChar.cpp -- 特殊对象搜索陷阱的操作
+|   |   |-- ScanOpt_SObj_ScanChar.h
+|   |   |-- ScanOpt_SObj_ScanTrap.cpp -- 特殊对象搜索陷阱的操作
+|   |   `-- ScanOpt_SObj_ScanTrap.h
+|   |-- ScanOperator.cpp -- 场景搜索类
+|   |-- ScanOperator.h
+|   |-- Scene_Core.cpp -- 场景核心类
+|   |-- Scene.cpp
+|   |-- Scene_Event.cpp -- 场景事件类
+|   |-- SceneFile.h
+|   |-- Scene.h
+|   |-- Scene.inl
+|   |-- SceneManager.cpp -- 场景管理器
+|   |-- SceneManager.h
+|   |-- ScenePlayerManager.cpp -- 场景玩家管理器
+|   |-- ScenePlayerManager.h
+|   |-- SceneScan.cpp -- 场景搜索类
+|   |-- SceneThread.cpp -- 场景线程类
+|   |-- SceneThread.h
+|   |-- Zone.cpp -- 区域类
+|   `-- Zone.h
+|-- Script -- 脚本模块
+|   |-- ExportLuaFn.h
+|   |-- FoxScriptEngine.lib
+|   |-- LuaFnMacro.h
+|   |-- LuaFnRegister.cpp -- lua 方法注册
+|   |-- LuaFnRegister.h
+|   |-- LuaFnTbl_Ability.h
+|   |-- LuaFnTbl_Attr.h
+|   |-- LuaFnTbl_Battle.h
+|   |-- LuaFnTbl_City.h
+|   |-- LuaFnTbl_DoAction.h
+|   |-- LuaFnTbl_Guild.h
+|   |-- LuaFnTbl_Misc.h
+|   |-- LuaFnTbl_Mission.h
+|   |-- LuaFnTbl_Pet.h
+|   |-- LuaFnTbl_PetPlacard.h
+|   |-- LuaFnTbl_Relation.h
+|   |-- LuaFnTbl_Scene.h
+|   |-- LuaFnTbl_Shop.h
+|   |-- LuaFnTbl_Team.h
+|   |-- LuaInterface.cpp -- lua 接口
+|   |-- LuaInterface.h
+|   |-- lua.lib
+|   |-- LuaLibDll.lib
+|   |-- Makefile
+|   |-- MisBuf.h
+|   |-- NeedAddLuaFn.h
+|   |-- SceneTimer.cpp -- 场景定时器
+|   |-- SceneTimer.h
+|   `-- ScriptFuncForDesigner.h
+|-- Skills -- 技能模块
+|   |-- Combat_Core.cpp -- 战斗核心类
+|   |-- Combat_Core.h
+|   |-- ConditionAndDeplete_Core.cpp -- 技能基础类
+|   |-- ConditionAndDeplete_Core.h
+|   |-- Impact_Core.cpp -- 效果核心模块 
+|   |-- Impact_Core.h
+|   |-- ImpactLogic -- 效果操作模块
+|   |   |-- DS_Emei014.cpp -- 峨眉易筋锻骨效果 ( 废弃 ) 
+|   |   |-- DS_WuDang010.cpp -- 废弃
+|   |   |-- ImpactLogic.cpp -- 效果基础类
+|   |   |-- ImpactLogic.h
+|   |   |-- Makefile
+|   |   |-- SOT_Dali007.cpp -- 废弃
+|   |   |-- SOT_Dali012.cpp -- 废弃
+|   |   |-- SOT_Emei016.cpp -- 废弃
+|   |   |-- SOT_ProlongSpecificImpact.cpp -- 废弃
+|   |   |-- SOT_TianShan017.cpp -- 废弃
+|   |   |-- SOT_Unbreakable.cpp -- 无敌 ( 废弃 )
+|   |   |-- SOT_XingXiu017.cpp -- 废弃
+|   |   |-- StdImpact000.cpp -- 效果--单独通知客户端显示特效用的
+|   |   |-- StdImpact000.h
+|   |   |-- StdImpact001.cpp -- 效果--无类型的一次性伤害
+|   |   |-- StdImpact001.h
+|   |   |-- StdImpact002.cpp -- 效果--无类型的一次性百分率伤害
+|   |   |-- StdImpact002.h
+|   |   |-- StdImpact003.cpp -- 效果--分类型的一次性伤害
+|   |   |-- StdImpact003.h
+|   |   |-- StdImpact004.cpp -- 效果--生命、魔法、怒气、连击点的直接修改
+|   |   |-- StdImpact004.h
+|   |   |-- StdImpact005.cpp -- 效果--生命、魔法、怒气、连击点的百分率直接修改
+|   |   |-- StdImpact005.h
+|   |   |-- StdImpact006.cpp -- 效果--恢复宠物的生命和快乐值
+|   |   |-- StdImpact006.h
+|   |   |-- StdImpact007.cpp -- 效果--按百分比恢复宠物的生命和快乐值
+|   |   |-- StdImpact007.h
+|   |   |-- StdImpact008.cpp -- 效果--强制怪物改变攻击目标，这对非玩家有效
+|   |   |-- StdImpact008.h
+|   |   |-- StdImpact009.cpp -- 效果--传送角色到指定位置
+|   |   |-- StdImpact009.h
+|   |   |-- StdImpact010.cpp -- 效果--间隔发作的驻留效果
+|   |   |-- StdImpact010.h
+|   |   |-- StdImpact011.cpp -- 效果--State: refix all attack, Defence and MaxHP, MaxMP, MaxRage, MaxStrikePoint
+|   |   |-- StdImpact011.h
+|   |   |-- StdImpact012.cpp -- 效果--State: refix all attack, Defence and MaxHP, MaxMP, MaxRage, MaxStrikePoint
+|   |   |-- StdImpact012.h
+|   |   |-- StdImpact013.cpp -- 效果--在一定时间内，改变效果所有者的命中闪避和会心
+|   |   |-- StdImpact013.h
+|   |   |-- StdImpact014.cpp -- 效果--昏迷,沉默，定身，无敌状态
+|   |   |-- StdImpact014.h
+|   |   |-- StdImpact015.cpp -- 效果--State: 百分比修正力量、耐力、灵性、定力、敏捷
+|   |   |-- StdImpact015.h 
+|   |   |-- StdImpact016.cpp -- 效果--State: 百分比修正力量、耐力、灵性、定力、敏捷
+|   |   |-- StdImpact016.h
+|   |   |-- StdImpact017.cpp -- 效果--效果--免疫特定的效果
+|   |   |-- StdImpact017.h
+|   |   |-- StdImpact018.cpp -- 效果--效果--免疫特定的效果
+|   |   |-- StdImpact018.h
+|   |   |-- StdImpact019.cpp -- 效果--增加指定效果的威力和持续时间
+|   |   |-- StdImpact019.h
+|   |   |-- StdImpact020.cpp -- 效果--在一定时间内，效果持有者死亡后可以直接复活
+|   |   |-- StdImpact020.h
+|   |   |-- StdImpact021.cpp -- 效果--提升下n次技能的威力
+|   |   |-- StdImpact021.h
+|   |   |-- StdImpact022.cpp -- 宠物复仇技能统一效果
+|   |   |-- StdImpact022.h
+|   |   |-- StdImpact023.cpp -- 宠物防御性DS
+|   |   |-- StdImpact023.h
+|   |   |-- StdImpact024.cpp -- 效果--过滤不良效果
+|   |   |-- StdImpact024.h
+|   |   |-- StdImpact025.cpp -- 效果--抵消致命一击
+|   |   |-- StdImpact025.h
+|   |   |-- StdImpact026.cpp -- 效果--伤害盾，吸收、免疫、反弹
+|   |   |-- StdImpact026.h
+|   |   |-- StdImpact027.cpp -- 受击时将自己的一部分伤害转移到自己的宠物身上
+|   |   |-- StdImpact027.h
+|   |   |-- StdImpact028.cpp -- 特殊属性效果修正 ( 冰 、雷( 玄 ) 、火、毒 )
+|   |   |-- StdImpact028.h
+|   |   |-- StdImpact029.cpp -- 峨眉冲虚养气效果
+|   |   |-- StdImpact029.h
+|   |   |-- StdImpact030.cpp -- 效果--峨嵋技能易筋锻骨的护体效果
+|   |   |-- StdImpact030.h
+|   |   |-- StdImpact031.cpp -- 效果--武当的魔法盾:虎抱头
+|   |   |-- StdImpact031.h
+|   |   |-- StdImpact032.cpp -- 效果--武当技能相濡以沫的效果
+|   |   |-- StdImpact032.h
+|   |   |-- StdImpact033.cpp -- 效果--策反
+|   |   |-- StdImpact033.h
+|   |   |-- StdImpact034.cpp -- 效果--星宿技能恶贯满盈的效果
+|   |   |-- StdImpact034.h
+|   |   |-- StdImpact035.cpp -- 效果--恐惧状态,不能施法
+|   |   |-- StdImpact035.h
+|   |   |-- StdImpact036.cpp -- 效果--探测陷阱
+|   |   |-- StdImpact036.h
+|   |   |-- StdImpact037.cpp -- 效果--增加指定效果的持续时间
+|   |   |-- StdImpact037.h
+|   |   |-- StdImpact038.cpp -- 效果--只显示特效用, 不需要具体的实现，只要一个逻辑空壳
+|   |   |-- StdImpact038.h
+|   |   |-- StdImpact039.cpp -- 效果--在一段时间里爆击率增加，同时受到伤害将增加怒气
+|   |   |-- StdImpact039.h
+|   |   |-- StdImpact040.cpp -- 效果--在一定时间内，增加效果所有者的移动速度，并且下一次打击驱散目标怒气
+|   |   |-- StdImpact040.h
+|   |   |-- StdImpact041.cpp -- 效果--明教的五星连珠的效果
+|   |   |-- StdImpact041.h
+|   |   |-- StdImpact042.cpp -- 效果--明教七星落长空效果
+|   |   |-- StdImpact042.h
+|   |   |-- StdImpact043.cpp -- 效果--击中目标时增加自己的怒气，但在这一段时间内防御力降低
+|   |   |-- StdImpact043.h
+|   |   |-- StdImpact044.cpp -- 效果--在一定时间内，增加效果所有者的移动速度，并且下一次成功打击目标后有一定几率增加3点连击点
+|   |   |-- StdImpact044.h
+|   |   |-- StdImpact045.cpp -- 效果--在一段时间里爆击率增加，同时受到伤害将增加怒气
+|   |   |-- StdImpact045.h
+|   |   |-- StdImpact046.cpp -- 效果--大理技能007的效果
+|   |   |-- StdImpact046.h
+|   |   |-- StdImpact047.cpp -- 效果--大理技能12的效果
+|   |   |-- StdImpact047.h
+|   |   |-- StdImpact048.cpp -- 效果--在一定时间内，增加效果所有者最大连击点数
+|   |   |-- StdImpact048.h
+|   |   |-- StdImpact049.cpp -- 效果--逍遥技能11的效果
+|   |   |-- StdImpact049.h
+|   |   |-- StdImpact050.cpp -- 效果--逍遥怒气增长修正
+|   |   |-- StdImpact050.h
+|   |   |-- StdImpact051.cpp -- 效果--分身护法的纪录效果
+|   |   |-- StdImpact051.h
+|   |   |-- StdImpact052.cpp -- 效果--逍遥技能纪录陷阱用
+|   |   |-- StdImpact052.h
+|   |   |-- StdImpact053.cpp -- 效果--单独通知客户端显示特效用的
+|   |   |-- StdImpact053.h
+|   |   |-- StdImpact054.cpp -- 效果--在一定时间内，效果持有者死亡后可以直接复活
+|   |   |-- StdImpact054.h
+|   |   |-- StdImpact055.cpp -- 效果--在一定时间内，效果持有者死亡后可以直接复活
+|   |   |-- StdImpact055.h
+|   |   |-- StdImpact056.cpp -- 效果--在一定时间内修正、命中、闪避、生命上限、物理和魔法攻防
+|   |   |-- StdImpact056.h
+|   |   |-- StdImpact057.cpp -- 效果--宠物生命转换成主人的HP,MP
+|   |   `-- StdImpact057.h
+|   |-- ImpactLogics.cpp -- 状态操作类
+|   |-- ImpactLogics.h
+|   |-- LogicManager.cpp -- 操作管理器
+|   |-- LogicManager.h
+|   |-- Makefile
+|   |-- RelationshipChecker.cpp -- 目标和技能使用者的关系检测逻辑
+|   |-- RelationshipChecker.h
+|   |-- ScriptLogic.cpp -- 脚本操作类
+|   |-- ScriptLogic.h
+|   |-- Skill_Core.cpp -- 技能核心类
+|   |-- Skill_Core.h
+|   |-- SkillInfo.cpp -- 技能信息类
+|   |-- SkillInfo.h
+|   |-- SkillLogic -- 技能操作模块
+|   |   |-- ArmorMastery.cpp -- 装备效果 
+|   |   |-- ArmorMastery.h
+|   |   |-- Common -- 技能公用
+|   |   |   |-- CommonSkill001.cpp -- 扑捉宠物
+|   |   |   |-- CommonSkill001.h
+|   |   |   |-- CommonSkill002.cpp -- 召唤宠物
+|   |   |   |-- CommonSkill002.h
+|   |   |   |-- CommonSkill003.cpp -- ?
+|   |   |   |-- CommonSkill003.h
+|   |   |   `-- Makefile
+|   |   |-- Human -- 角色技能模块 ( 废弃 ) // 可以考虑去掉该模块
+|   |   |   |-- DaLiSkill001.cpp 
+|   |   |   |-- DaLiSkill001.h
+|   |   |   |-- DaLiSkill007.cpp
+|   |   |   |-- DaLiSkill014.cpp
+|   |   |   |-- EMeiSkill001.cpp
+|   |   |   |-- EMeiSkill001.h
+|   |   |   |-- GaiBangSkill001.cpp
+|   |   |   |-- GaiBangSkill001.h
+|   |   |   |-- GaiBangSkill002.cpp
+|   |   |   |-- GaiBangSkill004.cpp
+|   |   |   |-- GaiBangSkill014.cpp
+|   |   |   |-- Makefile
+|   |   |   |-- MingJiaoSkill001.cpp
+|   |   |   |-- MingJiaoSkill001.h
+|   |   |   |-- MingJiaoSkill002.cpp
+|   |   |   |-- MingJiaoSkill002.h
+|   |   |   |-- ShaoLinSKill002.cpp
+|   |   |   |-- ShaoLinSKill007.cpp
+|   |   |   |-- TianShanSkill001.cpp
+|   |   |   |-- TianShanSkill001.h
+|   |   |   |-- TianShanSkill009.cpp
+|   |   |   |-- TianShanSkill010.cpp
+|   |   |   |-- TianShanSkill013.cpp
+|   |   |   |-- WuDangSkill001.cpp
+|   |   |   |-- WuDangSkill001.h
+|   |   |   |-- XiaoYaoSkill001.cpp
+|   |   |   |-- XiaoYaoSkill001.h
+|   |   |   |-- XiaoYaoSkill002.cpp
+|   |   |   |-- XiaoYaoSkill002.h
+|   |   |   |-- XiaoYaoSkill016.cpp
+|   |   |   `-- XingXiuSkill008.cpp
+|   |   |-- ImpactsToTargetAndSelf.cpp -- 基础技能-只产生(特定效果)，1对1，不是AE
+|   |   |-- ImpactsToTargetAndSelf.h
+|   |   |-- ImpactsToTarget.cpp -- 基础技能-只产生(特定效果)，不分敌我，AE时对任何人都有效
+|   |   |-- ImpactsToTarget.h
+|   |   |-- Item -- 物品模块 ( 废弃 )
+|   |   |   |-- GeneralItem.lua
+|   |   |   |-- HorseRide.lua
+|   |   |   `-- Makefile
+|   |   |-- Makefile
+|   |   |-- Pet -- 宠物模块
+|   |   |   |-- Makefile
+|   |   |   |-- PetSkill001.cpp
+|   |   |   `-- PetSkill001.h
+|   |   |-- SkillLogic.cpp -- 技能的基础类
+|   |   |-- SkillLogic.h
+|   |   |-- TeleportAndImpacts.cpp -- 瞬移和效果
+|   |   |-- TeleportAndImpacts.h
+|   |   |-- WeaponMastery.cpp -- 装备效果
+|   |   `-- WeaponMastery.h
+|   |-- SkillLogics.cpp -- 技能操作类
+|   |-- SkillLogics.h
+|   |-- SpecialObjLogic -- 特殊对象操作模块
+|   |   |-- ExplosionTrap01.cpp -- 爆炸 ( 废弃 )
+|   |   |-- ExplosionTrap02.cpp -- 爆炸 ( 废弃 )
+|   |   |-- ExplosionTrap03.cpp -- 爆炸 ( 废弃 )
+|   |   |-- Makefile
+|   |   |-- RootTrap01.cpp -- 废弃
+|   |   |-- SpecialObjLogic.cpp -- 特殊对象的基础类，用于声明接口和实现默认操作
+|   |   |-- SpecialObjLogic.h
+|   |   |-- TotemLogic.cpp -- 图腾类似对象的基础类，用于声明接口和实现默认操作 
+|   |   |-- TotemLogic.h 
+|   |   |-- TrapLogic.cpp -- 陷阱类似对象的基础类，用于声明接口和实现默认操作
+|   |   `-- TrapLogic.h
+|   |-- SpecialObjLogics.h
+|   |-- TargetChecker.cpp -- 目标是否合法的检测逻辑
+|   |-- TargetChecker.h
+|   |-- TargetingAndDepletingParams.cpp -- 角色身上的目标和消耗临时数据的集合
+|   `-- TargetingAndDepletingParams.h
+|-- SMU -- 共享捏成管理模块
+|   |-- Makefile
+|   |-- ShareMemAO.cpp -- 共享内存访问对象类
+|   |-- ShareMemAO.h
+|   |-- SMUManager.cpp -- 共享内存管理器
+|   `-- SMUManager.h
+|-- stdafx.cpp
+|-- stdafx.h
+`-- Team -- 队伍模块
+    |-- Makefile
+    |-- Team.cpp -- 队伍类
+    |-- Team.h
+    `-- Team.inl
+
 
