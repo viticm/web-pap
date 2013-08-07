@@ -2080,4 +2080,133 @@ PHP框架：zendframework 2 服务器构架：自己开发
     |-- Team.h
     `-- Team.inl
 
+共享内存服务器目录结构说明 ( ./server/ShareMemory )
+.
+|-- DB -- 数据模块
+|   |-- Makefile
+|   |-- ShareDBManager.cpp -- 共享数据管理器
+|   `-- ShareDBManager.h
+|-- Main -- 主目录
+|   |-- CommandThread.cpp -- 命令线程类
+|   |-- CommandThread.h
+|   |-- Makefile
+|   |-- ShareMemory.cpp -- 主入口
+|   |-- ShareMemory.h
+|   |-- SMConfig.cpp -- 共享内存配置 ( 废弃 )
+|   `-- SMConfig.h
+|-- Makefile
+|-- ShareData -- 共享数据模块
+|   |-- Makefile
+|   |-- SMULogicManager.cpp -- 共享数据操作管理器
+|   `-- SMULogicManager.h
+|-- stdafx.cpp
+`-- stdafx.h
+
+世界服务器目录结构说明 ( ./server/World )
+.
+|-- Main -- 主目录
+|   |-- Makefile
+|   |-- Player.cpp -- 玩家类
+|   |-- Player.h
+|   |-- PlayerManager.cpp -- 玩家管理器
+|   |-- PlayerManager.h
+|   |-- PlayerPool.cpp -- 玩家池类
+|   |-- PlayerPool.h
+|   |-- ServerManager.cpp -- 服务器管理器
+|   |-- ServerManager.h
+|   |-- ServerPlayer.cpp -- 服务器玩家类
+|   |-- ServerPlayer.h
+|   |-- ShareMemManager.cpp -- 共享内存管理器
+|   |-- ShareMemManager.h
+|   |-- World.cpp -- 主入口
+|   |-- World.h
+|   |-- WorldTable.cpp -- 世界数据服务器所用到的资源表格类
+|   `-- WorldTable.h
+|-- Makefile
+|-- Packets -- 网络包
+|   |-- GGSceneNotifyHandler.cpp -- 场景消息
+|   |-- GSAskDataHandler.cpp -- 请求数据
+|   |-- GWAskChangeSceneHandler.cpp -- 请求切换场景
+|   |-- GWAskMailHandler.cpp -- 请求邮件
+|   |-- GWAskSceneDataHandler.cpp -- 请求场景数据
+|   |-- GWAskTeamInfoHandler.cpp -- 请求队伍信息
+|   |-- GWAskTeamMemberInfoHandler.cpp -- 请求队伍成员信息
+|   |-- GWAskUserDataHandler.cpp -- 请求用户数据
+|   |-- GWBatchMailHandler.cpp -- 批量邮件
+|   |-- GWCallOfHumanHandler.cpp -- 呼唤玩家
+|   |-- GWChangeMenpaiHandler.cpp -- 更换门派
+|   |-- GWChannelCreateHandler.cpp -- 引导建立 ( 队伍 )
+|   |-- GWChannelDismissHandler.cpp -- 引导解散 ( 队伍 )
+|   |-- GWChannelInviteHandler.cpp -- 引导申请 ( 队伍 )
+|   |-- GWChannelKickHandler.cpp -- 引导踢人 ( 队伍 )
+|   |-- GWChatHandler.cpp -- 聊天
+|   |-- GWCityApplyNewCityHandler.cpp -- 新城市通过
+|   |-- GWCityAskInitInfoHandler.cpp -- 新城市申请
+|   |-- GWCityCloseHandler.cpp -- 城市关闭
+|   |-- GWCityCloseSuccessHandler.cpp -- 城市关闭成功
+|   |-- GWCityOptHandler.cpp -- 城市操作
+|   |-- GWCommandHandler.cpp -- 命令
+|   |-- GWEnterTeamFollowHandler.cpp -- 开始组队跟随
+|   |-- GWFingerHandler.cpp -- 查询数据
+|   |-- GWGuildHandler.cpp -- 帮会
+|   |-- GWHeartBeatHandler.cpp -- 心跳
+|   |-- GWLevelUpHandler.cpp -- 升级
+|   |-- GWMailHandler.cpp -- 邮件
+|   |-- GWNotifyUserHandler.cpp -- 用户消息
+|   |-- GWRelationHandler.cpp -- 关系
+|   |-- GWStopTeamFollowHandler.cpp -- 停止组队跟随
+|   |-- GWSystemMsgHandler.cpp -- 系统消息
+|   |-- GWTeamApplyHandler.cpp -- 组队通过
+|   |-- GWTeamAppointHandler.cpp -- 队长转移
+|   |-- GWTeamDismissHandler.cpp -- 队伍解散
+|   |-- GWTeamInviteHandler.cpp -- 申请组队
+|   |-- GWTeamKickHandler.cpp -- 队伍踢人
+|   |-- GWTeamLeaderRetInviteHandler.cpp -- 队伍队长邀请组队
+|   |-- GWTeamLeaveHandler.cpp -- 离开队伍
+|   |-- GWTeamMemberEnterSceneHandler.cpp -- 队伍成员进入场景
+|   |-- GWTeamRetApplyHandler.cpp -- 组队通过结果
+|   |-- GWTeamRetInviteHandler.cpp -- 组队申请结果
+|   |-- GWUpdateTitleHandler.cpp -- 更新称号
+|   |-- LWAskCharLoginHandler.cpp -- 请求角色登陆
+|   |-- LWAskDeleteCharHandler.cpp -- 请求删除角色
+|   |-- Makefile
+|   |-- SGRetDataHandler.cpp -- 数据返回结果
+|   |-- SSConnectHandler.cpp -- 连接
+|   |-- SSScenePlayerCountHandler.cpp -- 场景玩家数量
+|   |-- WGHandler.cpp -- World -> Server 消息操作类
+|   `-- WLHandler.cpp -- World -> Login 消息操作类
+|-- stdafx.cpp
+|-- stdafx.h
+`-- WorldData -- 世界数据模块
+    |-- AllUser.cpp -- 所有用户类
+    |-- AllUser.h
+    |-- ChatCenter.cpp -- 聊天容器
+    |-- ChatCenter.h
+    |-- City.cpp -- 城市类
+    |-- City.h
+    |-- CityManager.cpp -- 城市管理器
+    |-- CityManager.h
+    |-- Guild.cpp -- 帮会类
+    |-- Guild.h
+    |-- GuildManager.cpp -- 帮会管理器
+    |-- GuildManager.h
+    |-- MailCenter.cpp -- 邮件中心类
+    |-- MailCenter.h
+    |-- MailDefine.cpp -- 邮件定义
+    |-- MailDefine.h
+    |-- MailPool.cpp -- 邮件池类
+    |-- MailPool.h
+    |-- Makefile
+    |-- OnlineUser.cpp -- 在线用户类
+    |-- OnlineUser.h
+    |-- SceneInfo.cpp -- 场景信息类
+    |-- SceneInfo.h
+    |-- Team.cpp -- 队伍类
+    |-- Team.h
+    |-- User.cpp -- 用户类
+    |-- User.h
+    |-- User.inl
+    |-- WorldTimeInfo.cpp -- 世界时间类
+    `-- WorldTimeInfo.h
+
 
