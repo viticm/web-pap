@@ -29,5 +29,12 @@ protected :
 
 extern Billing g_Billing ;
 
+class BillingExceptionHandler
+{
+public :
+    BillingExceptionHandler() ;
+} ;
+
+extern BillingExceptionHandler g_BillingExcetionHandler ;
 
 #endif

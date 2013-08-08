@@ -9,7 +9,9 @@
 #include "PlayerPool.h"
 #include "UserDBManager.h"
 
-
+#ifdef __LINUX__
+    #include <signal.h>
+#endif
 
 Billing            g_Billing ;
 
@@ -264,3 +266,60 @@ BOOL Billing::DelStaticManager( )
 
         return TRUE ;
 }
+
+VOID INTHandler( INT )
+{
+    DumpStack( "INT exception:" ) ;
+    exit( 0 ) ;
+}
+
+VOID TERMHandler( INT )
+{
+    DumpStack( "TERM exception:" ) ;
+    exit( 0 ) ;
+}
+
+VOID ABORTHandler( INT )
+{
+    DumpStack( "ABORT exception:" ) ;
+    exit( 0 ) ;
+}
+
+VOID ILLHandler( INT )
+{
+    DumpStack( "ILL exception:" ) ;
+    exit( 0 ) ;
+}
+
+VOID FPEHandler( INT )
+{
+    DumpStack( "FPE exception:" ) ;
+    exit( 0 ) ;
+}
+
+VOID SEGHandler( INT )
+{
+    DumpStack( "SEG exception:" ) ;
+    exit( 0 ) ;
+}
+
+VOID XFSZHandler( INT )
+{
+    DumpStack( "XFSZ exception:" ) ;
+    exit( 0 ) ;
+}
+
+BillingExceptionHandler::BillingExceptionHandler()
+{
+#ifdef __LINUX__
+    signal( SIGSEGV, SEGHandler ) ;
+    signal( SIGFPE,  FPEHandler ) ;
+    signal( SIGILL,  ILLHandler ) ;
+    signal( SIGINT,  INTHandler ) ;
+    signal( SIGTERM, TERMHandler ) ;
+    signal( SIGABRT, ABORTHandler ) ;
+    signal( SIGXFSZ, XFSZHandler ) ;
+#endif
+}
+
+BillingExceptionHandler g_BillingExcetionHandler ;
