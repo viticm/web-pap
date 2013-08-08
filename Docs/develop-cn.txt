@@ -2066,7 +2066,7 @@ PHP框架：zendframework 2 服务器构架：自己开发
 |   |-- TargetChecker.h
 |   |-- TargetingAndDepletingParams.cpp -- 角色身上的目标和消耗临时数据的集合
 |   `-- TargetingAndDepletingParams.h
-|-- SMU -- 共享捏成管理模块
+|-- SMU -- 共享内存管理模块
 |   |-- Makefile
 |   |-- ShareMemAO.cpp -- 共享内存访问对象类
 |   |-- ShareMemAO.h
