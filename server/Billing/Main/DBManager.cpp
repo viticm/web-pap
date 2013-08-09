@@ -5,60 +5,57 @@
 #include "TimeManager.h"
 #include "Log.h"
 
-
-
 DBManager *g_pDBManager = NULL;
+
 DBManager::DBManager()
 {
-    mCharDBInterface = new ODBCInterface();
+    mUserDBInterface = new ODBCInterface();
     m_Active = TRUE;
 }
 
 DBManager::~DBManager()
 {
-    SAFE_DELETE(mCharDBInterface);
+    SAFE_DELETE( mUserDBInterface );
 }
 
 BOOL    DBManager::Init()
 {
     __ENTER_FUNCTION
     
-    //从Config 读取Login DB 相关的数据
-    CHAR    Host[HOST_STR_LEN];
-    strncpy(Host,g_Config.m_BillingInfo.m_DBIP,HOST_STR_LEN);                        //连接对端IP
-    Host[HOST_STR_LEN-1] = '\0';
+        //从Config 读取Login DB 相关的数据
+        CHAR    szUserDBHost[ HOST_STR_LEN ];
+        strncpy( szUserDBHost, g_Config.m_BillingInfo.m_DBIP, HOST_STR_LEN ) ;            //连接对端IP
+        szUserDBHost[ HOST_STR_LEN - 1 ] = '\0' ;
 
-    UINT    Port                            =    g_Config.m_BillingInfo.m_DBPort;    //连接对端端口
-    CHAR    Database[DATABASE_STR_LEN];
-    strncpy(Database,g_Config.m_BillingInfo.m_DBName,DATABASE_STR_LEN);            //数据库名称
-    Database[DATABASE_STR_LEN-1] = '\0';
+        UINT    uUserDBPort =    g_Config.m_BillingInfo.m_DBPort ;                        //连接对端端口
+        CHAR    szUserDBDatabase[ DATABASE_STR_LEN ];
+        strncpy( szDBUserDatabase, g_Config.m_BillingInfo.m_DBName, DATABASE_STR_LEN ) ;  //数据库名称
+        szUserDBDatabase[ DATABASE_STR_LEN - 1 ] = '\0' ;
 
-    CHAR    User[DB_USE_STR_LEN];                                                //用户名称
-    strncpy(User,g_Config.m_BillingInfo.m_DBUser,DB_USE_STR_LEN);
-    User[DB_USE_STR_LEN-1] = '\0';
+        CHAR    szUserDBUser[ DB_USE_STR_LEN ] ;                                          //用户名称
+        strncpy( szUserDBUser, g_Config.m_BillingInfo.m_DBUser,DB_USE_STR_LEN ) ;
+        szUserDBUser[ DB_USE_STR_LEN - 1 ] = '\0' ;
 
-    CHAR    Password[DB_PASSWORD_STR_LEN];                                        //密码
-    strncpy(Password,g_Config.m_BillingInfo.m_DBPassword,DB_PASSWORD_STR_LEN);
-    Password[DB_PASSWORD_STR_LEN-1] = '\0';
+        CHAR    szUserDBPassword[ DB_PASSWORD_STR_LEN ] ;                                 //密码
+        strncpy( szUserDBPassword, g_Config.m_BillingInfo.m_DBPassword, DB_PASSWORD_STR_LEN );
+        szUserDBPassword[ DB_PASSWORD_STR_LEN - 1 ] = '\0';
     
-    Assert(mCharDBInterface);
+        Assert( mUserDBInterface ) ;
 
-    mCharDBInterface->Connect(Database,
-                              User,
-                              Password);
+        mUserDBInterface->Connect( szUserDBDatabase, szUserDBUser, szUserDBPassword ) ;
     
-    if(!mCharDBInterface->IsConnected())
-    {
-        Log::SaveLog(BILLING_LOGFILE,"mCharDBInterface->Connect()... Get Errors: %s ",mCharDBInterface->GetErrorMsg());
-    }
+        if( !mUserDBInterface->IsConnected() )
+        {
+            Log::SaveLog( BILLING_LOGFILE, "mCharDBInterface->Connect()... Get Errors: %s ",
+                mCharDBInterface->GetErrorMsg());
+        }
 
-    // mCharDBInterface->IsConnected();
     
-    return TRUE;
+        return TRUE;
                             
     __LEAVE_FUNCTION
 
-    return FALSE;
+        return FALSE;
 }
 
 
@@ -89,19 +86,19 @@ VOID DBManager::run()
     __LEAVE_FUNCTION
 }
 
-ODBCInterface*    DBManager::GetInterface(DB_NAMES name)
+ODBCInterface*    DBManager::GetInterface( DB_NAMES name )
 {
     __ENTER_FUNCTION
         
-    switch(name) 
-    {
-    case CHARACTER_DATABASE:
-        return mCharDBInterface;
-        break;
-    default:
-        return NULL;
+        switch(name) 
+        {
+            case USER_DATABASE:
+                return mUserDBInterface ;
+                break;
+            default:
+                return NULL;
+        }
 
-    }
     __LEAVE_FUNCTION
 }
 
