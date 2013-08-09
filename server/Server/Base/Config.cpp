@@ -265,7 +265,7 @@ VOID    Config::LoadBillingInfo_Only( )
 {
     __ENTER_FUNCTION
         
-        Ini ini( FILE_SERVER_INFO ) ;
+        Ini ini( FILE_BILLING_INFO ) ;
         m_BillingInfo.m_BillingID = (UINT)(ini.ReadInt( "Billing", "BillingId" )) ;
         ini.ReadText( "Billing", "OuterIP", m_BillingInfo.m_OuterIP, IP_SIZE ) ;
         ini.ReadText( "Billing", "IP", m_BillingInfo.m_IP, IP_SIZE ) ;
