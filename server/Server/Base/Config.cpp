@@ -266,20 +266,20 @@ VOID    Config::LoadBillingInfo_Only( )
     __ENTER_FUNCTION
         
         Ini ini( FILE_BILLING_INFO ) ;
-        m_BillingInfo.m_BillingID = (UINT)(ini.ReadInt( "Billing", "BillingId" )) ;
-        ini.ReadText( "Billing", "OuterIP", m_BillingInfo.m_OuterIP, IP_SIZE ) ;
-        ini.ReadText( "Billing", "IP", m_BillingInfo.m_IP, IP_SIZE ) ;
-        m_BillingInfo.m_Port = (UINT)(ini.ReadInt( "Billing", "Port" )) ;
+        m_BillingInfo.m_BillingID = ( UINT )( ini.ReadInt( "System", "BillingId" ) ) ;
+        ini.ReadText( "System", "OuterIP", m_BillingInfo.m_OuterIP, IP_SIZE ) ;
+        ini.ReadText( "System", "IP", m_BillingInfo.m_IP, IP_SIZE ) ;
+        m_BillingInfo.m_Port = ( UINT )( ini.ReadInt( "System", "Port" ) ) ;
 
-        ini.ReadText( "Billing", "DBIP", m_BillingInfo.m_DBIP, IP_SIZE ) ;
-        m_BillingInfo.m_DBPort = (UINT)(ini.ReadInt( "Billing", "DBPort" )) ;
-        ini.ReadText( "Billing", "DBName", m_BillingInfo.m_DBName, DATABASE_STR_LEN ) ;
-        ini.ReadText( "Billing", "DBUser", m_BillingInfo.m_DBUser, DB_USE_STR_LEN ) ;
-        ini.ReadText( "Billing", "DBPassword", m_BillingInfo.m_DBPassword, DB_PASSWORD_STR_LEN ) ;
-        ini.ReadText( "Billing", "WebIP", m_BillingInfo.m_WebIP, IP_SIZE ) ;
-        m_BillingInfo.m_WebPort = (UINT)(ini.ReadInt( "Billing", "WebPort" )) ;
-        m_BillingInfo.m_WebServerId = (UINT)(ini.ReadInt( "Billing", "WebServerId" )) ;
-        ini.ReadText( "Billing", "WebLinkWebKEY", m_BillingInfo.m_WebLinkWebKEY, KEY_SIZE ) ;
+        ini.ReadText( "System", "DBIP", m_BillingInfo.m_DBIP, IP_SIZE ) ;
+        m_BillingInfo.m_DBPort = ( UINT )( ini.ReadInt( "System", "DBPort" ) ) ;
+        ini.ReadText( "System", "DBName", m_BillingInfo.m_DBName, DATABASE_STR_LEN ) ;
+        ini.ReadText( "System", "DBUser", m_BillingInfo.m_DBUser, DB_USE_STR_LEN ) ;
+        ini.ReadText( "System", "DBPassword", m_BillingInfo.m_DBPassword, DB_PASSWORD_STR_LEN ) ;
+        ini.ReadText( "System", "WebIP", m_BillingInfo.m_WebIP, IP_SIZE ) ;
+        m_BillingInfo.m_WebPort = (UINT)(ini.ReadInt( "System", "WebPort" )) ;
+        m_BillingInfo.m_WebServerId = (UINT)( ini.ReadInt( "System", "WebServerId" ) ) ;
+        ini.ReadText( "System", "WebLinkWebKEY", m_BillingInfo.m_WebLinkWebKEY, KEY_SIZE ) ;
         Log::SaveLog( CONFIG_LOGFILE, "Load BillingInfo.ini ...Only OK! " ) ;
 
     __LEAVE_FUNCTION
