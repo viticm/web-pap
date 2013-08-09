@@ -178,6 +178,11 @@ BOOL Billing::NewStaticManager()
 {
     __ENTER_FUNCTION
 
+        
+        g_pUserDBManager = new UserDBManager ;
+        Assert( g_pUserDBManager ) ;
+        Log::SaveLog( "Billing", "new UserDBManager...OK" ) ;
+
         g_pServerManager = new ServerManager ;
         Assert( g_pServerManager ) ;
         Log::SaveLog( "Billing", "new ServerManager...OK" ) ;
@@ -188,7 +193,7 @@ BOOL Billing::NewStaticManager()
 
         g_pWebPlayer = new WebPlayer ;
         Assert( g_pWebPlayer ) ;
-        Log::SaveLog( "Billing", "new g_pWebPlayer...OK" ) ;
+        Log::SaveLog( "Billing", "new WebPlayer...OK" ) ;
 
         g_pPacketFactoryManager = new PacketFactoryManager ;
         Assert( g_pPacketFactoryManager ) ;
@@ -205,9 +210,9 @@ BOOL Billing::InitStaticManager()
 
         BOOL ret ;
         INT nTemp = 0 ;
-    //ret = g_UserDBManager.Init();
-    //Assert( ret ) ;
-    //Log::SaveLog( "Billing", "g_UserDBManager->Init()...OK" ) ;
+        ret = g_pUserDBManager->Init();
+        Assert( ret ) ;
+        Log::SaveLog( "Billing", "g_pUserDBManager->Init()...OK" ) ;
 
         ret = g_pServerManager->Init() ;
         Assert( ret ) ;
@@ -259,6 +264,9 @@ BOOL Billing::DelStaticManager()
     
         SAFE_DELETE( g_pServerManager ) ;
         Log::SaveLog( "Billing", "g_pServerManager delete...OK" ) ;
+
+        SAFE_DELETE( g_pUserDBManager ) ;
+        Log::SaveLog( "Billing", "g_pUserDBManager delete...OK" ) ;
 
     __LEAVE_FUNCTION
 

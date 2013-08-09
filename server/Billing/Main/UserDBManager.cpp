@@ -1,38 +1,39 @@
 #include "stdafx.h"
 #include "UserDBManager.h"
 
-UserDBManager g_UserDBManager;
-UserDBManager::UserDBManager(void)
+UserDBManager* g_pUserDBManager = NULL ;
+
+UserDBManager::UserDBManager( VOID )
 {
     __ENTER_FUNCTION
-        __LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
 BOOL UserDBManager::Init()
 {
     __ENTER_FUNCTION
 
-        m_pDBManager = new DBManager;
-    if(m_pDBManager->Init())
-    {    
-        sprintf( m_strSql, "USE WXSJ");
-        strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-        m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-        if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-        {
-            return TRUE;
+        m_pDBManager = new DBManager ;
+        if( m_pDBManager->Init() )
+        {    
+            sprintf( m_strSql, "USE userdb" );
+            strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
+            m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
+            if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
+            {
+                return TRUE;
+            }
         }
-    }
-    else
-    {
-        return FALSE;
-    }
+        else
+        {
+            return FALSE;
+        }
 
     __LEAVE_FUNCTION
         return FALSE;
 }
 
-UserDBManager::~UserDBManager(void)
+UserDBManager::~UserDBManager( VOID )
 {
     __ENTER_FUNCTION
 
@@ -41,107 +42,57 @@ UserDBManager::~UserDBManager(void)
     __LEAVE_FUNCTION
 }
 
-BOOL UserDBManager::AddUser(
-                            int UserId, 
-                            char* UserName, 
-                            char* PassWord, 
-                            int Authority, 
-                            int Type, 
-                            char *Sign, 
-                            int CardType, 
-                            char *CardId, 
-                            int PhoneType, 
-                            char *Phone)
+BOOL UserDBManager::AddUser( INT UserId, 
+                             CHAR* UserName, 
+                             CHAR* PassWord, 
+                             INT Authority, 
+                             INT Type, 
+                             CHAR *Sign, 
+                             INT CardType, 
+                             CHAR *CardId, 
+                             INT PhoneType, 
+                             CHAR *Phone )
 {
     __ENTER_FUNCTION
 
         sprintf( m_strSql, "EXECUTE WorldWX_User_Add @UserId = %d, @UserName = '%s', @PassWord = '%s', @Authority = %d, @Type = %d, @Sign = %s, @CardType = %d, @CardId = %s, @PhoneType = %d, @Phone = %s",
-        UserId, UserName, PassWord, Authority, Type, Sign, CardType, CardId, PhoneType, Phone);
-    strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-    m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-    if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-    {
-        if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->mAffectCount > 0)
-            return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
+            UserId, UserName, PassWord, Authority, Type, Sign, CardType, CardId, PhoneType, Phone) ;
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear();
+        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
+        {
+            if( m_pDBManager->GetInterface( USER_DATABASE )->mAffectCount > 0 )
+                return TRUE ;
+        }
+        else
+        {
+            return FALSE ;
+        }
 
     __LEAVE_FUNCTION
 
-        return FALSE;
+        return FALSE ;
 }
 
 
-BOOL UserDBManager::AmendPassWord(char* UserName, char* PassWord, char* NewPassWord)
+BOOL UserDBManager::AmendPassWord( CHAR* UserName, CHAR* PassWord, CHAR* NewPassWord )
 {
     __ENTER_FUNCTION
 
         sprintf( m_strSql, "EXECUTE WorldWX_User_AmendPassWord @UserName = '%s', @PassWord = '%s', @NewPassWord = '%s'", 
         UserName, PassWord, NewPassWord );
-    strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-    m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-    if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-    {
-        if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->mAffectCount > 0)
-            return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql);
 
-    __LEAVE_FUNCTION
-
-        return FALSE;
-}
-
-
-BOOL UserDBManager::DeleteUser(char* UserName)
-{
-    __ENTER_FUNCTION
-
-        sprintf( m_strSql, "EXECUTE WorldWX_User_Delete @UserName = '%s' ", UserName);
-    strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-    m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-    if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-    {
-        if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->mAffectCount > 0)
-            return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
-
-    __LEAVE_FUNCTION
-
-        return FALSE;
-}
-
-
-
-INT  UserDBManager::GetUserSum(void)
-{
-    __ENTER_FUNCTION
-
-        sprintf( m_strSql, "EXECUTE WorldWX_User_GetSum" );
-    strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-    m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-    if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-    {
-        m_pDBManager->GetInterface(CHARACTER_DATABASE)->Fetch();
-        if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Col[0][0] != 0)
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear();
+        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
-            return atoi(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Col[0]);
+            if( m_pDBManager->GetInterface( USER_DATABASE )->mAffectCount > 0 )
+                return TRUE;
         }
-    }
-    else
-    {
-        return FALSE;
-    }
+        else
+        {
+            return FALSE;
+        }
 
     __LEAVE_FUNCTION
 
@@ -149,73 +100,122 @@ INT  UserDBManager::GetUserSum(void)
 }
 
 
-
-BOOL UserDBManager::IsHaveUser(char* UserName)
+BOOL UserDBManager::DeleteUser( CHAR* UserName )
 {
     __ENTER_FUNCTION
 
-        sprintf( m_strSql, "EXECUTE WorldWX_User_IsHave @UserName = '%s'", UserName );
-    strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-    m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-    if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-    {
-        m_pDBManager->GetInterface(CHARACTER_DATABASE)->Fetch();
-        if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Col[0][0] != 0)
+        sprintf( m_strSql, "EXECUTE WorldWX_User_Delete @UserName = '%s' ", UserName) ;
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql) ;
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
+        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
-            return atoi(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Col[0]);
+            if( m_pDBManager->GetInterface( USER_DATABASE )->mAffectCount > 0)
+                return TRUE ;
         }
-    }
-    else
-    {
-        return FALSE;
-    }
+        else
+        {
+            return FALSE ;
+        }
 
     __LEAVE_FUNCTION
 
-        return FALSE;
+        return FALSE ;
 }
 
-BOOL UserDBManager::IsRealUser(const char* UserName, const char* PassWord)
+
+
+INT  UserDBManager::GetUserSum( VOID )
 {
     __ENTER_FUNCTION
 
-        sprintf( m_strSql, "EXECUTE WorldWX_User_IsReal @UserName = '%s', @PassWord = '%s'", UserName, PassWord );
-    strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-    m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-    if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-    {
-        m_pDBManager->GetInterface(CHARACTER_DATABASE)->Fetch();
-        if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Col[0][0] != 0)
+        sprintf( m_strSql, "EXECUTE WorldWX_User_GetSum" ) ;
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
+        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
-            return atoi(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Col[0]);
+            m_pDBManager->GetInterface( USER_DATABASE )->Fetch() ;
+            if( m_pDBManager->GetInterface( USER_DATABASE )->Col[0][0] != 0 )
+            {
+                return atoi( m_pDBManager->GetInterface( USER_DATABASE )->Col[0] ) ;
+            }
         }
-    }
-    else
-    {
-        return FALSE;
-    }
+        else
+        {
+            return FALSE;
+        }
 
     __LEAVE_FUNCTION
 
         return FALSE;
 }
 
-BOOL UserDBManager::WX_Shop_Add(
-                                INT ShopId, 
-                                INT UserId, 
-                                INT Money, 
-                                INT Item_1,
-                                INT ItemCount_1,
-                                INT Item_2,
-                                INT ItemCount_2,
-                                INT Item_3,
-                                INT ItemCount_3,
-                                INT Item_4,
-                                INT ItemCount_4,
-                                INT Item_5,
-                                INT ItemCount_5,
-                                INT IsSucceed,
-                                CHAR* CreateTime)
+
+
+BOOL UserDBManager::IsHaveUser( CHAR* UserName )
+{
+    __ENTER_FUNCTION
+
+        sprintf( m_strSql, "EXECUTE WorldWX_User_IsHave @UserName = '%s'", UserName ) ;
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql) ;
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
+        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
+        {
+            m_pDBManager->GetInterface( USER_DATABASE )->Fetch() ;
+            if( m_pDBManager->GetInterface(USER_DATABASE)->Col[0][0] != 0 )
+            {
+                return atoi( m_pDBManager->GetInterface( USER_DATABASE )->Col[0] ) ;
+            }
+        }
+        else
+        {
+            return FALSE ;
+        }
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+}
+
+BOOL UserDBManager::IsRealUser( const CHAR* UserName, const CHAR* PassWord )
+{
+    __ENTER_FUNCTION
+
+        sprintf( m_strSql, "EXECUTE WorldWX_User_IsReal @UserName = '%s', @PassWord = '%s'", UserName, PassWord ) ;
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
+        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute())
+        {
+            m_pDBManager->GetInterface( USER_DATABASE )->Fetch() ;
+            if( m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ][ 0 ] != 0 )
+            {
+                return atoi( m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ] ) ;
+            }
+        }
+        else
+        {
+            return FALSE ;
+        }
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+}
+
+BOOL UserDBManager::WX_Shop_Add( INT ShopId, 
+                                 INT UserId, 
+                                 INT Money, 
+                                 INT Item_1,
+                                 INT ItemCount_1,
+                                 INT Item_2,
+                                 INT ItemCount_2,
+                                 INT Item_3,
+                                 INT ItemCount_3,
+                                 INT Item_4,
+                                 INT ItemCount_4,
+                                 INT Item_5,
+                                 INT ItemCount_5,
+                                 INT IsSucceed,
+                                 CHAR* CreateTime)
 {
     __ENTER_FUNCTION
 
@@ -249,50 +249,50 @@ BOOL UserDBManager::WX_Shop_Add(
         Item_5,
         ItemCount_5,
         IsSucceed,
-        CreateTime);
+        CreateTime ) ;
 
-    strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-    m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-    if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-    {
-        INT aaa = m_pDBManager->GetInterface(CHARACTER_DATABASE)->mAffectCount;
-
-        if(aaa > 0)
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
+        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
-            return TRUE;
+            INT aaa = m_pDBManager->GetInterface( USER_DATABASE )->mAffectCount ;
+
+            if( aaa > 0 )
+            {
+                return TRUE ;
+            }
         }
-    }
-    else
-    {
-        return FALSE;
-    }
+        else
+        {
+            return FALSE ;
+        }
 
     __LEAVE_FUNCTION
 
-        return FALSE;
+        return FALSE ;
 }
 
-BOOL UserDBManager::WorldWX_Shop_IsHave(UINT ShopID)
+BOOL UserDBManager::WorldWX_Shop_IsHave( UINT ShopID )
 {
     __ENTER_FUNCTION
 
         sprintf( m_strSql, "EXECUTE WorldWX_Shop_IsHave @Shop_Id = %d", ShopID );
-    strcpy((char*)m_pDBManager->GetInterface(CHARACTER_DATABASE)->m_Query.m_SqlStr, m_strSql);
-    m_pDBManager->GetInterface(CHARACTER_DATABASE)->Clear();
-    if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Execute())
-    {
-        m_pDBManager->GetInterface(CHARACTER_DATABASE)->Fetch();
-        if(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Col[0][0] != 0)
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
+        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
-            return atoi(m_pDBManager->GetInterface(CHARACTER_DATABASE)->Col[0]);
+            m_pDBManager->GetInterface( USER_DATABASE )->Fetch() ;
+            if( m_pDBManager->GetInterface(USER_DATABASE)->Col[ 0 ][ 0 ] != 0 )
+            {
+                return atoi( m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ] ) ;
+            }
         }
-    }
-    else
-    {
-        return FALSE;
-    }
+        else
+        {
+            return FALSE ;
+        }
 
     __LEAVE_FUNCTION
 
-        return FALSE;
+        return FALSE ;
 }

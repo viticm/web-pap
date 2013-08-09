@@ -29,7 +29,7 @@ BOOL    DBManager::Init()
 
         UINT    uUserDBPort =    g_Config.m_BillingInfo.m_DBPort ;                        //连接对端端口
         CHAR    szUserDBDatabase[ DATABASE_STR_LEN ];
-        strncpy( szDBUserDatabase, g_Config.m_BillingInfo.m_DBName, DATABASE_STR_LEN ) ;  //数据库名称
+        strncpy( szUserDBDatabase, g_Config.m_BillingInfo.m_DBName, DATABASE_STR_LEN ) ;  //数据库名称
         szUserDBDatabase[ DATABASE_STR_LEN - 1 ] = '\0' ;
 
         CHAR    szUserDBUser[ DB_USE_STR_LEN ] ;                                          //用户名称
@@ -46,8 +46,8 @@ BOOL    DBManager::Init()
     
         if( !mUserDBInterface->IsConnected() )
         {
-            Log::SaveLog( BILLING_LOGFILE, "mCharDBInterface->Connect()... Get Errors: %s ",
-                mCharDBInterface->GetErrorMsg());
+            Log::SaveLog( BILLING_LOGFILE, "mUserDBInterface->Connect()... Get Errors: %s ",
+                mUserDBInterface->GetErrorMsg() ) ;
         }
 
     

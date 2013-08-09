@@ -16,7 +16,7 @@
 
 enum DB_NAMES
 {
-    CHARACTER_DATABASE    = 1,
+    USER_DATABASE    = 1,
 };
 
 

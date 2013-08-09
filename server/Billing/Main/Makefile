@@ -1,6 +1,6 @@
 # @desc makefile for Billing
 # @author viticm<viticm.ti@gmail.com>
-# @date 2013-06-25 20:00:12
+# @date 2013-08-08 16:15:53
 include ../../premake.mk
 
 CFLAGS  = -I$(BASEDIR)/Billing/Main -I$(BASEDIR)/Billing/Packets -I$(BASEDIR)/Billing $(SERVER_BASE_INCLUDES)
