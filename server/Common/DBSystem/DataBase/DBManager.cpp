@@ -1,11 +1,20 @@
+/**
+ * PAP Server Engine ( https://github.com/viticm/web-pap )
+ * $Id DBManager.cpp
+ * @link https://github.com/viticm/web-pap/tree/master/server for the canonical source repository
+ * @copyright Copyright (c) 2013-2013 viticm( viticm@126.com )
+ * @license
+ * @user viticm<viticm@126.com>
+ * @date 2013-8-9 15:25:01
+ * @uses the database manager
+ */
 #include "stdafx.h"
 #include "DBManager.h"
 #include "ODBCInterface.h"
 #include "TimeManager.h"
 
-
-
 DBManager *g_pDBManager = NULL;
+
 DBManager::DBManager()
 {
     mCharDBInterface = new ODBCInterface();
@@ -18,46 +27,44 @@ DBManager::~DBManager()
 }
 
 
-BOOL    DBManager::Init()
+BOOL DBManager::Init()
 {
     __ENTER_FUNCTION
     
-    //从Config 读取Login DB 相关的数据
-    CHAR    Host[HOST_STR_LEN];
-    strncpy(Host,g_Config.m_ShareMemInfo.m_DBIP,HOST_STR_LEN);                        //连接对端IP
-    Host[HOST_STR_LEN-1] = '\0';
+        //从Config 读取 Char DB 相关的数据
+        CHAR    szDBCharHost[ HOST_STR_LEN ] ;
+        strncpy( szDBCharHost, g_Config.m_ShareMemInfo.m_DBIP,HOST_STR_LEN ) ;                        //连接对端IP
+        szDBCharHost[ HOST_STR_LEN - 1 ] = '\0' ;
 
-    UINT    Port                            =    g_Config.m_ShareMemInfo.m_DBPort;    //连接对端端口
-    CHAR    Database[DATABASE_STR_LEN];
-    strncpy(Database,g_Config.m_ShareMemInfo.m_DBName,DATABASE_STR_LEN);            //数据库名称
-    Database[DATABASE_STR_LEN-1] = '\0';
+        UINT    uDBCharPort =    g_Config.m_ShareMemInfo.m_DBPort ;                                   //连接对端端口
+        
+        CHAR    szDBCharDatabase[ DATABASE_STR_LEN ] ;
+        strncpy( szDBCharDatabase, g_Config.m_ShareMemInfo.m_DBName, DATABASE_STR_LEN ) ;              //数据库名称
+        szDBCharDatabase[ DATABASE_STR_LEN - 1 ] = '\0' ;
 
-    CHAR    User[DB_USE_STR_LEN];                                                //用户名称
-    strncpy(User,g_Config.m_ShareMemInfo.m_DBUser,DB_USE_STR_LEN);
-    User[DB_USE_STR_LEN-1] = '\0';
+        CHAR    szDBCharUser[ DB_USE_STR_LEN ] ;                                                       //用户名称
+        strncpy( szDBCharUser, g_Config.m_ShareMemInfo.m_DBUser, DB_USE_STR_LEN ) ;
+        szDBCharUser[ DB_USE_STR_LEN - 1 ] = '\0' ;
 
-    CHAR    Password[DB_PASSWORD_STR_LEN];                                        //密码
-    strncpy(Password,g_Config.m_ShareMemInfo.m_DBPassword,DB_PASSWORD_STR_LEN);
-    Password[DB_PASSWORD_STR_LEN-1] = '\0';
+        CHAR    szDBCharPassword[ DB_PASSWORD_STR_LEN ] ;                                              //密码
+        strncpy( szDBCharPassword, g_Config.m_ShareMemInfo.m_DBPassword, DB_PASSWORD_STR_LEN ) ;
+        szDBCharPassword[ DB_PASSWORD_STR_LEN - 1 ] = '\0' ;
     
-    Assert(mCharDBInterface);
+        Assert( mCharDBInterface );
 
-    mCharDBInterface->Connect(Database,
-                              User,
-                              Password);
+        mCharDBInterface->Connect( szDBCharDatabase, szDBCharUser, szDBCharPassword ) ;
     
-    if(!mCharDBInterface->IsConnected())
-    {
-        Log::SaveLog(LOGIN_LOGFILE,"mCharDBInterface->Connect()... Get Errors: %s ",mCharDBInterface->GetErrorMsg());
-    }
+        if( !mCharDBInterface->IsConnected() )
+        {
+            Log::SaveLog( LOGIN_LOGFILE,"mCharDBInterface->Connect()... Get Errors: %s ",
+                mCharDBInterface->GetErrorMsg() );
+        }
 
-    // mCharDBInterface->IsConnected();
-    
-    return TRUE;
+        return TRUE;
                             
     __LEAVE_FUNCTION
 
-    return FALSE;
+        return FALSE;
 }
 
 
@@ -92,15 +99,16 @@ ODBCInterface*    DBManager::GetInterface(DB_NAMES name)
 {
     __ENTER_FUNCTION
         
-    switch(name) 
-    {
-    case CHARACTER_DATABASE:
-        return mCharDBInterface;
-        break;
-    default:
-        return NULL;
+        switch(name) 
+        {
+        case CHARACTER_DATABASE:
+            return mCharDBInterface;
+            break;
+        default:
+            return NULL;
 
-    }
+        }
+
     __LEAVE_FUNCTION
 }
 
