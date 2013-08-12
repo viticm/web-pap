@@ -8,7 +8,8 @@ COMMON_INCLUDES           = -I$(BASEDIR)/Common \
                             -I$(BASEDIR)/Common/DBSystem \
                             -I$(BASEDIR)/Common/DBSystem/DataBase \
                             -I$(BASEDIR)/Common/Net \
-                            -I$(BASEDIR)/Common/Packets
+                            -I$(BASEDIR)/Common/Packets \
+                            -I$(BASEDIR)/Common/Util
 
 SERVER_BASE_INCLUDES      = -I$(BASEDIR)/Server/Base
 
