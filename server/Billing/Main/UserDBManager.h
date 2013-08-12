@@ -19,16 +19,24 @@ public:
     UserDBManager( VOID ) ;
     virtual ~UserDBManager( VOID ) ;
     BOOL Init();
-    BOOL AddUser( INT UserId, 
-                  CHAR* UserName, 
-                  CHAR* PassWord, 
-                  INT Authority, 
-                  INT Type, 
-                  CHAR *Sign, 
-                  INT CardType, 
-                  CHAR *CardId, 
-                  INT PhoneType, 
-                  CHAR *Phone ) ;
+    BOOL AddUser( CHAR* szUserName, 
+                  CHAR* szPassWord,
+                  CHAR* szPrompt,
+                  CHAR* szAnswer,
+                  CHAR* szTrueName, 
+                  CHAR* szIdNumber,
+                  CHAR* szEmail,
+                  CHAR* szMobileNumber,
+                  CHAR* szProvince, 
+                  CHAR* szCity, 
+                  CHAR* szPhoneNumber, 
+                  CHAR* szAddress, 
+                  CHAR* szPostalCode, 
+                  INT   iGender, 
+                  CHAR* szBirthday,
+                  CHAR* szCreateTime, 
+                  CHAR* szQQ,
+                  CHAR* szPassWord2 ) ;
     BOOL AmendPassWord( CHAR* UserName, CHAR* PassWord, CHAR* NewPassWord ) ;
     BOOL DeleteUser( CHAR* UserName ) ;
     INT  GetUserSum( VOID ) ;
