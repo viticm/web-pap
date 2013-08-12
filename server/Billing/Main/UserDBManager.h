@@ -59,6 +59,7 @@ public:
                       CHAR* CreateTime ) ;
     BOOL WorldWX_Shop_IsHave( UINT ShopID ) ;
     DBManager *m_pDBManager ;
+    VOID MD5Encrypt( CHAR* szInEncryptStr, CHAR* szOutEncryptStr ) ;
     CHAR m_strSql[ MAX_SQL_LENGTH ] ;
 };
 

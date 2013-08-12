@@ -7,7 +7,7 @@ Arr_ModelIncludeNeedCompile=(
     Common/Assertx.cpp Common/Net/*.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp Server/Base/LogDefine.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Common/GameUtil.cpp Common/PacketFactoryManager.cpp 
     Common/Packets/LBAskAuth.cpp Common/Packets/BWConnect.cpp Common/Packets/BLRetAuth.cpp Common/Packets/SSConnect.cpp
-    Common/Packets/WBRetValidateUser.cpp Common/Packets/SSScenePlayerCount.cpp
+    Common/Packets/WBRetValidateUser.cpp Common/Packets/SSScenePlayerCount.cpp Common/Util/*.cpp
     " #Billing
     
     "
