@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "UserDBManager.h"
+#include "md5.h"
 
 UserDBManager* g_pUserDBManager = NULL ;
 
@@ -42,22 +43,36 @@ UserDBManager::~UserDBManager( VOID )
     __LEAVE_FUNCTION
 }
 
-BOOL UserDBManager::AddUser( INT UserId, 
-                             CHAR* UserName, 
-                             CHAR* PassWord, 
-                             INT Authority, 
-                             INT Type, 
-                             CHAR *Sign, 
-                             INT CardType, 
-                             CHAR *CardId, 
-                             INT PhoneType, 
-                             CHAR *Phone )
+BOOL UserDBManager::AddUser( CHAR* szUserName, 
+                             CHAR* szPassWord, 
+                             CHAR* szPrompt,
+                             CHAR* szAnswer,
+                             CHAR* szTrueName, 
+                             CHAR* szIdNumber, 
+                             CHAR* szEmail, 
+                             CHAR* szMobileNumber, 
+                             CHAR* szProvince, 
+                             CHAR* szCity, 
+                             CHAR* szPhoneNumber, 
+                             CHAR* szAddress, 
+                             CHAR* szPostalCode, 
+                             INT   iGender, 
+                             CHAR* szBirthday,
+                             CHAR* szCreateTime, 
+                             CHAR* szQQ, 
+                             CHAR* szPassWord2 ) 
 {
     __ENTER_FUNCTION
 
-        sprintf( m_strSql, "EXECUTE WorldWX_User_Add @UserId = %d, @UserName = '%s', @PassWord = '%s', @Authority = %d, @Type = %d, @Sign = %s, @CardType = %d, @CardId = %s, @PhoneType = %d, @Phone = %s",
-            UserId, UserName, PassWord, Authority, Type, Sign, CardType, CardId, PhoneType, Phone) ;
+        CHAR szEncryptPassWord[ 36 ]    = { 0 } ;
+        CHAR szEncryptPassWord2[ 36 ]   = { 0 } ;
+        MD5Encrypt( szPassWord, szEncryptPassWord );
+        MD5Encrypt( szPassWord2, szEncryptPassWord2 );
+        sprintf( m_strSql, "call adduser( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, '%s', '%s', '%s' )",
+            szUserName, szEncryptPassWord, szPrompt, szAnswer, szTrueName, szIdNumber, szEmail, szMobileNumber, szProvince, szCity, szPhoneNumber,
+            szAddress, szPostalCode, iGender, szBirthday, szCreateTime, szQQ, szEncryptPassWord2 ) ;
         strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
+
         m_pDBManager->GetInterface( USER_DATABASE )->Clear();
         if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
@@ -295,4 +310,11 @@ BOOL UserDBManager::WorldWX_Shop_IsHave( UINT ShopID )
     __LEAVE_FUNCTION
 
         return FALSE ;
+}
+
+VOID UserDBManager::MD5Encrypt( CHAR* szInEncryptStr, CHAR* szOutEncryptStr )
+{
+    const CHAR* szPreEncryptStr = "0x" ;
+    MD5 MD5( szInEncryptStr ) ;
+    sprintf( szOutEncryptStr, "%s%s", szPreEncryptStr, MD5.md5() ) ;
 }
