@@ -151,7 +151,8 @@ BOOL ODBCInterface::Execute()
     _MY_TRY
     {
         INT ColIndex;
-         mResult=SQLExecDirect(hStmt,(SQLCHAR *)m_Query.m_SqlStr,SQL_NTS);
+        mResult=SQLExecDirect(hStmt,(SQLCHAR *)m_Query.m_SqlStr,SQL_NTS);
+        
         if ((mResult != SQL_SUCCESS) && (mResult != SQL_SUCCESS_WITH_INFO) && (mResult != SQL_NO_DATA)) 
         {
             DiagState();

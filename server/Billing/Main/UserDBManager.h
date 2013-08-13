@@ -36,7 +36,7 @@ public:
                   CHAR* szBirthday,
                   CHAR* szQQ,
                   CHAR* szPassWord2 ) ;
-    BOOL AmendPassWord( CHAR* UserName, CHAR* PassWord, CHAR* NewPassWord ) ;
+    BOOL AmendPassWord( CHAR* szUserName, CHAR* szNewPassWord ) ;
     BOOL DeleteUser( CHAR* UserName ) ;
     INT  GetUserSum( VOID ) ;
     BOOL IsHaveUser( CHAR* UserName ) ;

@@ -90,36 +90,37 @@ BOOL UserDBManager::AddUser( CHAR* szUserName,
 }
 
 
-BOOL UserDBManager::AmendPassWord( CHAR* UserName, CHAR* PassWord, CHAR* NewPassWord )
+BOOL UserDBManager::AmendPassWord( CHAR* szUserName, CHAR* szNewPassWord )
 {
     __ENTER_FUNCTION
 
-        sprintf( m_strSql, "EXECUTE WorldWX_User_AmendPassWord @UserName = '%s', @PassWord = '%s', @NewPassWord = '%s'", 
-        UserName, PassWord, NewPassWord );
-        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql);
-
-        m_pDBManager->GetInterface( USER_DATABASE )->Clear();
+        CHAR szEncryptNewPassWord[ 36 ]    = { 0 } ;
+        MD5Encrypt( szNewPassWord, szEncryptNewPassWord ) ; 
+        sprintf( m_strSql, "call changePasswd( '%s', '%s' )", szUserName, szEncryptNewPassWord ) ;
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
+        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
         if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
-            if( m_pDBManager->GetInterface( USER_DATABASE )->mAffectCount > 0 )
-                return TRUE;
+            // PROCEDURE UPDATE MAYBE RETURN ZERO
+            if( m_pDBManager->GetInterface( USER_DATABASE )->mAffectCount >= 0 )
+                return TRUE ;
         }
         else
         {
-            return FALSE;
+            return FALSE ;
         }
 
     __LEAVE_FUNCTION
 
-        return FALSE;
+        return FALSE ;
 }
 
 
-BOOL UserDBManager::DeleteUser( CHAR* UserName )
+BOOL UserDBManager::DeleteUser( CHAR* szUserName )
 {
     __ENTER_FUNCTION
 
-        sprintf( m_strSql, "EXECUTE WorldWX_User_Delete @UserName = '%s' ", UserName) ;
+        sprintf( m_strSql, "DELETE FROM `users` WHERE `name` = '%s' ", szUserName) ;
         strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql) ;
         m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
         if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
