@@ -40,7 +40,7 @@ public:
     BOOL DeleteUser( CHAR* UserName ) ;
     INT  GetUserSum( VOID ) ;
     BOOL IsHaveUser( CHAR* UserName ) ;
-    BOOL IsRealUser( const CHAR* UserName, const CHAR* PassWord ) ;
+    BOOL IsRealUser( const CHAR* szUserName, const CHAR* szPassWord ) ;
     BOOL WX_Shop_Add( INT ShopId, 
                       INT UserId, 
                       INT Money, 

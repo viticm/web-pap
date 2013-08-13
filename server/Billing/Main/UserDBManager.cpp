@@ -138,8 +138,6 @@ BOOL UserDBManager::DeleteUser( CHAR* szUserName )
         return FALSE ;
 }
 
-
-
 INT  UserDBManager::GetUserSum( VOID )
 {
     __ENTER_FUNCTION
@@ -165,19 +163,17 @@ INT  UserDBManager::GetUserSum( VOID )
         return FALSE;
 }
 
-
-
-BOOL UserDBManager::IsHaveUser( CHAR* UserName )
+BOOL UserDBManager::IsHaveUser( CHAR* szUserName )
 {
     __ENTER_FUNCTION
 
-        sprintf( m_strSql, "EXECUTE WorldWX_User_IsHave @UserName = '%s'", UserName ) ;
-        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql) ;
+        sprintf( m_strSql, "SELECT * FROM `users` WHERE `name` = '%s'", szUserName ) ;
+        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
         m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
         if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
             m_pDBManager->GetInterface( USER_DATABASE )->Fetch() ;
-            if( m_pDBManager->GetInterface(USER_DATABASE)->Col[0][0] != 0 )
+            if( 0 != m_pDBManager->GetInterface(USER_DATABASE)->Col[0][0] )
             {
                 return atoi( m_pDBManager->GetInterface( USER_DATABASE )->Col[0] ) ;
             }
@@ -192,17 +188,20 @@ BOOL UserDBManager::IsHaveUser( CHAR* UserName )
         return FALSE ;
 }
 
-BOOL UserDBManager::IsRealUser( const CHAR* UserName, const CHAR* PassWord )
+BOOL UserDBManager::IsRealUser( const CHAR* szUserName, const CHAR* szPassWord )
 {
     __ENTER_FUNCTION
 
-        sprintf( m_strSql, "EXECUTE WorldWX_User_IsReal @UserName = '%s', @PassWord = '%s'", UserName, PassWord ) ;
+        CHAR szEncryptPassWord[ 36 ] = { 0 } ;
+        MD5Encrypt( ( CHAR* )szPassWord, szEncryptPassWord ) ;
+        sprintf( m_strSql, "SELECT `ID` FROM `users` WHERE `name` = '%s' AND `passwd` = '%s' ", szUserName, szEncryptPassWord ) ;
         strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
         m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
+
         if( m_pDBManager->GetInterface( USER_DATABASE )->Execute())
         {
             m_pDBManager->GetInterface( USER_DATABASE )->Fetch() ;
-            if( m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ][ 0 ] != 0 )
+            if( 0 != m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ][ 0 ] )
             {
                 return atoi( m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ] ) ;
             }
