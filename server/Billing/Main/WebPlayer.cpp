@@ -1,5 +1,5 @@
 #include "stdafx.h"
-//#include "WebPlayer.h"
+#include "WebPlayer.h"
 #include "Log.h"
 #include "BWConnect.h"
 #include "PacketFactoryManager.h"
