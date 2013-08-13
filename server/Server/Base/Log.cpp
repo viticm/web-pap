@@ -352,9 +352,15 @@ VOID Log::GetStaticLogName( INT iLogId, CHAR* szName )
 {
 __ENTER_FUNCTION
 
-    CHAR szType[ 10 ] = { 0 } ;
+    CHAR    szType[ 10 ] = { 0 } ;
     #if defined ( LOG_TYPE )
-        sprintf( szType, "_%s", LOG_TYPE ) ;
+        #ifdef __LINUX__
+        if ( 0 != strcasecmp( g_pLogFileName[ iLogId ], LOG_TYPE ) )
+            sprintf( szType, "_%s", LOG_TYPE ) ;
+        #else
+        if ( 0 != stricmp( g_pLogFileName[ iLogId ], LOG_TYPE ) )
+            sprintf( szType, "_%s", LOG_TYPE ) ;
+        #endif
     #endif
     if ( g_pTimeManager )
     {
