@@ -31,12 +31,12 @@ BOOL TimeManager::Init()
     #elif defined(__LINUX__)
         m_StartTime    = 0 ;
         m_CurrentTime  = 0 ;
-        gettimeofday(&_tstart, &tz);
+        gettimeofday( &_tstart, &tz ) ;
     #endif
         SetTime( ) ;
 
         // init to current format time
-        CHAR szCurrentFormatTime[ MAX_DATE_LENGTH ];
+        CHAR szCurrentFormatTime[ MAX_DATE_LENGTH ] ;
         sprintf( szCurrentFormatTime, "%s", GetCurrentFormatTime() ) ;
         return TRUE ;
 
@@ -72,7 +72,7 @@ UINT    TimeManager::CurrentDate()
 
         SetTime() ;
         UINT Date;
-        ConvertTU(&m_TM,Date);
+        ConvertTU( &m_TM, Date ) ;
 
         return Date;
 
@@ -105,7 +105,7 @@ time_t TimeManager::GetANSITime( )
         return m_SetTime;
 }
 
-UINT TimeManager::Time2DWORD( )
+UINT TimeManager::Time2DWORD()
 {
     __ENTER_FUNCTION
 
@@ -113,20 +113,20 @@ UINT TimeManager::Time2DWORD( )
 
         UINT uRet = 0 ;
 
-        uRet += GetYear( ) ;
+        uRet += GetYear() ;
         uRet -= 2000 ;
-        uRet =uRet*100 ;
+        uRet = uRet*100 ;
 
-        uRet += GetMonth( )+1 ;
-        uRet =uRet*100 ;
+        uRet += GetMonth()+1 ;
+        uRet = uRet*100 ;
 
-        uRet += GetDay( ) ;
-        uRet =uRet*100 ;
+        uRet += GetDay() ;
+        uRet = uRet*100 ;
 
-        uRet += GetHour( ) ;
-        uRet =uRet*100 ;
+        uRet += GetHour() ;
+        uRet =u Ret*100 ;
 
-        uRet += GetMinute( ) ;
+        uRet += GetMinute() ;
 
         return uRet ;
 
