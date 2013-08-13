@@ -3,14 +3,11 @@
 
 #include "Type.h"
 
-
 class Billing
 {
 public :
     Billing() ;
     ~Billing() ;
-
-
 
     BOOL        Init() ;
     BOOL        Loop() ;
@@ -21,10 +18,6 @@ protected :
     BOOL        NewStaticManager() ;
     BOOL        InitStaticManager() ;
     BOOL        DelStaticManager() ;
-
-
-
-
 };
 
 extern Billing g_Billing ;

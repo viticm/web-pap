@@ -6,7 +6,7 @@
 #include "TimeManager.h"
 #include "PacketFactoryManager.h"
 #include "PlayerPool.h"
-#include "WebPlayer.h"
+//#include "WebPlayer.h"
 
 #define ACCEPT_ONESTEP 50
 
@@ -116,20 +116,17 @@ __ENTER_FUNCTION
 
     BOOL ret = FALSE ;
 
-    //ID_t    ServerID        =    ((ServerPlayer*)pPlayer)->GetServerData()->m_ServerID ;
-    //BOOL    bUseShareMem    =   FALSE;    
-    
     //第一步：清除PlayerManager中的信息
     ret = DelPlayer( pPlayer ) ;
     Assert( ret ) ;
 
     //第二步：清除PlayerPool中的信息，注意此步骤必须放在最后，
     //当调用此操作后，当前Player就有可能会被马上分配给新接入玩家
-    ((ServerPlayer*)pPlayer)->FreeOwn( ) ;
+    ((ServerPlayer*)pPlayer)->FreeOwn() ;
 
     //第三步：处理此服务器上玩家的状态
     
-    Log::SaveLog( "./Log/Billing.log", "ServerManager::RemovePlayer(PID:%d)...OK", pPlayer->PlayerID() ) ;
+    Log::SaveLog( "Billing", "ServerManager::RemovePlayer(PID:%d)...OK", pPlayer->PlayerID() ) ;
 
     return ret ;
 
@@ -453,7 +450,7 @@ __ENTER_FUNCTION
         iStep += 100000 ;
     }
 
-    Log::SaveLog( "./Log/Billing.log", "ServerManager::AcceptNewConnection(SOCKET:%d)...OK", 
+    Log::SaveLog( "Billing", "ServerManager::AcceptNewConnection(SOCKET:%d)...OK", 
         client->GetSocket()->getSOCKET() ) ;
 
     return TRUE ;
@@ -474,8 +471,8 @@ BOOL ServerManager::AddPlayer( Player* pPlayer )
 {
 __ENTER_FUNCTION
 
-    if( m_iFDSize>=FD_SETSIZE )
-    {//已经超出能够检测的网络句柄最大数；
+    if( FD_SETSIZE <= m_iFDSize )
+    { // 已经超出能够检测的网络句柄最大数；
         Assert(FALSE) ;
         return FALSE ;
     }
@@ -735,7 +732,7 @@ while( IsActive() )
     _MY_CATCH
     {
     }
-    g_pWebPlayer->Tick();
+    //g_pWebPlayer->Tick();
 };
 
 __LEAVE_FUNCTION

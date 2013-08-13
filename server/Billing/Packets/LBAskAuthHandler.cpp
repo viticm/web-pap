@@ -2,7 +2,7 @@
 #include "LBAskAuth.h"
 #include "BLRetAuth.h"
 #include "ServerPlayer.h"
-#include "WebPlayer.h"
+//#include "WebPlayer.h"
 #include "UserDBManager.h"
 #include "BWValidateUser.h"
 #include "Log.h"

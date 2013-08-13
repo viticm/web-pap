@@ -14,7 +14,7 @@
 #include "Log.h"
 #include "Config.h"
 #include "ServerManager.h"
-#include "WebPlayer.h"
+//#include "WebPlayer.h"
 #include "PacketFactoryManager.h"
 #include "PlayerPool.h"
 #include "UserDBManager.h"
@@ -121,28 +121,28 @@ BOOL Billing::Init()
 {
     __ENTER_FUNCTION
 
-    BOOL bRet ;
+        BOOL bRet ;
 
-    Log::SaveLog( "Billing", "Start Read Config Files..." ) ;
-    bRet = g_Config.Init() ;
-    Assert( bRet ) ;
-    Log::SaveLog( "Billing", "Read Config Files...OK!" ) ;
+        Log::SaveLog( "Billing", "Start Read Config Files..." ) ;
+        bRet = g_Config.Init() ;
+        Assert( bRet ) ;
+        Log::SaveLog( "Billing", "Read Config Files...OK!" ) ;
 
-    Log::SaveLog( "Billing", "Start New Managers..." ) ;
-    bRet = NewStaticManager() ;
-    Assert( bRet ) ;
-    Log::SaveLog( "Billing", "New Managers...OK!" ) ;
+        Log::SaveLog( "Billing", "Start New Managers..." ) ;
+        bRet = NewStaticManager() ;
+        Assert( bRet ) ;
+        Log::SaveLog( "Billing", "New Managers...OK!" ) ;
 
-    Log::SaveLog( "Billing", "Start Init Managers..." ) ;
-    bRet = InitStaticManager() ;
-    Assert( bRet ) ;
-    Log::SaveLog( "Billing", "Init Managers...OK!" ) ;
+        Log::SaveLog( "Billing", "Start Init Managers..." ) ;
+        bRet = InitStaticManager() ;
+        Assert( bRet ) ;
+        Log::SaveLog( "Billing", "Init Managers...OK!" ) ;
 
-    return TRUE ;
+        return TRUE ;
 
     __LEAVE_FUNCTION
 
-    return FALSE ;
+        return FALSE ;
 }
 
 BOOL Billing::Loop()
@@ -191,9 +191,11 @@ BOOL Billing::NewStaticManager()
         Assert( g_pPlayerPool ) ;
         Log::SaveLog( "Billing", "new PlayerPool...OK" ) ;
 
+        /**
         g_pWebPlayer = new WebPlayer ;
         Assert( g_pWebPlayer ) ;
         Log::SaveLog( "Billing", "new WebPlayer...OK" ) ;
+        **/
 
         g_pPacketFactoryManager = new PacketFactoryManager ;
         Assert( g_pPacketFactoryManager ) ;
@@ -213,14 +215,16 @@ BOOL Billing::InitStaticManager()
         ret = g_pUserDBManager->Init();
         Assert( ret ) ;
         Log::SaveLog( "Billing", "g_pUserDBManager->Init()...OK" ) ;
-
+        
         ret = g_pServerManager->Init() ;
         Assert( ret ) ;
         Log::SaveLog( "Billing", "g_pServerManager->Init()...OK" ) ;
 
+        /**
         ret = g_pWebPlayer->Init();
         Assert( ret ) ;
         Log::SaveLog( "Billing", "g_pWebPlayer->Init()...OK" ) ;
+        **/
 
         if( g_Config.m_ConfigInfo.m_SystemModel == 0 )
         {
@@ -259,9 +263,11 @@ BOOL Billing::DelStaticManager()
         SAFE_DELETE( g_pPlayerPool ) ;
         Log::SaveLog( "Billing", "g_pPlayerPool delete...OK" ) ;
 
+        /**
         SAFE_DELETE(g_pWebPlayer);
         Log::SaveLog( "Billing", "g_pWebPlayer delete...OK" ) ;
-    
+        **/
+
         SAFE_DELETE( g_pServerManager ) ;
         Log::SaveLog( "Billing", "g_pServerManager delete...OK" ) ;
 

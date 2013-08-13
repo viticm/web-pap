@@ -94,7 +94,7 @@ ODBCInterface*    DBManager::GetInterface( DB_NAMES name )
         {
             case USER_DATABASE:
                 return mUserDBInterface ;
-                break;
+                break ;
             default:
                 return NULL;
         }

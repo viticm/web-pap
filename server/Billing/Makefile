@@ -1,6 +1,6 @@
 # @desc makefile for Billing
 # @author viticm<viticm.ti@gmail.com>
-# @date 2013-08-08 16:15:53
+# @date 2013-08-12 22:01:14
 include ../premake.mk
 
 CFLAGS = -I$(BASEDIR)/Billing/Main -I$(BASEDIR)/Billing/Packets -I$(BASEDIR)/Billing $(SERVER_BASE_INCLUDES) $(SERVER_BASE_INCLUDES)
@@ -31,7 +31,8 @@ OBJS =  $(BASEDIR)/Common/Assertx.o \
 		$(BASEDIR)/Common/Packets/BLRetAuth.o \
 		$(BASEDIR)/Common/Packets/SSConnect.o \
 		$(BASEDIR)/Common/Packets/WBRetValidateUser.o \
-		$(BASEDIR)/Common/Packets/SSScenePlayerCount.o
+		$(BASEDIR)/Common/Packets/SSScenePlayerCount.o \
+		$(BASEDIR)/Common/Util/md5.o
 
 debug:special $(OBJS)
 	for dir in $(DEBUG_DIRS); do \
