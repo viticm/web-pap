@@ -62,10 +62,10 @@ enum LOG_FILE_NAME_ID
 class Log
 {
 public :
-    Log( ) ;
-    ~Log( ) ;
+    Log() ;
+    ~Log() ;
 
-    BOOL            Init( ) ;
+    BOOL            Init() ;
 
     //向日志缓存写入日志信息
     VOID            FastSaveLog( INT logid, CHAR* msg, ... ) ;
@@ -83,10 +83,10 @@ public :
     VOID            GetLogName( INT logid, CHAR* szName ) ;
 
     //刷新每个日志文件
-    VOID            FlushLog_All( ) ;
+    VOID            FlushLog_All() ;
 
     //取得日期天数
-    UINT            GetDayTime( ){ return m_DayTime ; }
+    UINT            GetDayTime(){ return m_DayTime ; }
 
     //设置日期天数
     VOID            SetDayTime( UINT daytime ){ m_DayTime = daytime ; }
