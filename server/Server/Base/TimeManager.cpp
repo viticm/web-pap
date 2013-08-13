@@ -124,7 +124,7 @@ UINT TimeManager::Time2DWORD()
         uRet = uRet*100 ;
 
         uRet += GetHour() ;
-        uRet =u Ret*100 ;
+        uRet = uRet*100 ;
 
         uRet += GetMinute() ;
 

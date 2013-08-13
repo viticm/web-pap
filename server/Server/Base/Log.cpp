@@ -350,30 +350,30 @@ INT Log::GetStaticLogId( CHAR* szBaseFileName )
 
 VOID Log::GetStaticLogName( INT iLogId, CHAR* szName )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    CHAR    szType[ 10 ] = { 0 } ;
-    #if defined ( LOG_TYPE )
-        #if defined ( __LINUX__ )
-        if ( 0 != strcasecmp( g_pLogFileName[ iLogId ], LOG_TYPE ) )
-            sprintf( szType, "_%s", LOG_TYPE ) ;
-        #elif defined ( __WINDOWS__ )
-        if ( 0 != stricmp( g_pLogFileName[ iLogId ], LOG_TYPE ) )
-            sprintf( szType, "_%s", LOG_TYPE ) ;
+        CHAR szType[ 10 ] = { 0 } ;
+        #if defined ( LOG_TYPE )
+            #if defined ( __LINUX__ )
+            if ( 0 != strcasecmp( g_pLogFileName[ iLogId ], LOG_TYPE ) )
+                sprintf( szType, "_%s", LOG_TYPE ) ;
+            #elif defined ( __WINDOWS__ )
+            if ( 0 != stricmp( g_pLogFileName[ iLogId ], LOG_TYPE ) )
+                sprintf( szType, "_%s", LOG_TYPE ) ;
+            #endif
         #endif
-    #endif
-    if ( g_pTimeManager )
-    {
-        sprintf( szName, "%s%s_%d-%d-%d%s.log",
-            LOG_SAVE_PATH, g_pLogFileName[ iLogId ], g_pTimeManager->GetYear(), 
-            g_pTimeManager->GetMonth(), g_pTimeManager->GetDay(), szType ) ;
-    }
-    else
-    {
-        sprintf( szName, "%s%s%s.log",
-            LOG_SAVE_PATH, g_pLogFileName[ iLogId ], szType ) ;
-    }
+        if ( g_pTimeManager )
+        {
+            sprintf( szName, "%s%s_%d-%d-%d%s.log",
+                LOG_SAVE_PATH, g_pLogFileName[ iLogId ], g_pTimeManager->GetYear(), 
+                g_pTimeManager->GetMonth() + 1, g_pTimeManager->GetDay(), szType ) ; // remind the TimeManager what use ?
+        }
+        else
+        {
+            sprintf( szName, "%s%s%s.log",
+                LOG_SAVE_PATH, g_pLogFileName[ iLogId ], szType ) ;
+        }
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
