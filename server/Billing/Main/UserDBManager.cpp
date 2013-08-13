@@ -167,7 +167,7 @@ BOOL UserDBManager::IsHaveUser( CHAR* szUserName )
 {
     __ENTER_FUNCTION
 
-        sprintf( m_strSql, "SELECT * FROM `users` WHERE `name` = '%s'", szUserName ) ;
+        sprintf( m_strSql, "call isHaveUser( '%s' )", szUserName ) ;
         strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
         m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
         if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
@@ -202,102 +202,6 @@ BOOL UserDBManager::IsRealUser( const CHAR* szUserName, const CHAR* szPassWord )
         {
             m_pDBManager->GetInterface( USER_DATABASE )->Fetch() ;
             if( 0 != m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ][ 0 ] )
-            {
-                return atoi( m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ] ) ;
-            }
-        }
-        else
-        {
-            return FALSE ;
-        }
-
-    __LEAVE_FUNCTION
-
-        return FALSE ;
-}
-
-BOOL UserDBManager::WX_Shop_Add( INT ShopId, 
-                                 INT UserId, 
-                                 INT Money, 
-                                 INT Item_1,
-                                 INT ItemCount_1,
-                                 INT Item_2,
-                                 INT ItemCount_2,
-                                 INT Item_3,
-                                 INT ItemCount_3,
-                                 INT Item_4,
-                                 INT ItemCount_4,
-                                 INT Item_5,
-                                 INT ItemCount_5,
-                                 INT IsSucceed,
-                                 CHAR* CreateTime)
-{
-    __ENTER_FUNCTION
-
-        sprintf( m_strSql, " EXECUTE WX_Shop_Add "
-        " @Id = %d, "
-        " @UserId = %d, "
-        " @Money  = %d, "
-        " @Item_1  = %d, "
-        " @ItemCount_1 = %d, "
-        " @Item_2 = %d, "
-        " @ItemCount_2 = %d, "
-        " @Item_3 = %d, "
-        " @ItemCount_3 = %d, "
-        " @Item_4 = %d, "
-        " @ItemCount_4 = %d, "
-        " @Item_5 = %d, "
-        " @ItemCount_5 = %d, "
-        " @IsSucceed = %d, "
-        " @CreateTime = '%s'",
-        ShopId, 
-        UserId, 
-        Money, 
-        Item_1,
-        ItemCount_1,
-        Item_2,
-        ItemCount_2,
-        Item_3,
-        ItemCount_3,
-        Item_4,
-        ItemCount_4,
-        Item_5,
-        ItemCount_5,
-        IsSucceed,
-        CreateTime ) ;
-
-        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
-        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
-        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
-        {
-            INT aaa = m_pDBManager->GetInterface( USER_DATABASE )->mAffectCount ;
-
-            if( aaa > 0 )
-            {
-                return TRUE ;
-            }
-        }
-        else
-        {
-            return FALSE ;
-        }
-
-    __LEAVE_FUNCTION
-
-        return FALSE ;
-}
-
-BOOL UserDBManager::WorldWX_Shop_IsHave( UINT ShopID )
-{
-    __ENTER_FUNCTION
-
-        sprintf( m_strSql, "EXECUTE WorldWX_Shop_IsHave @Shop_Id = %d", ShopID );
-        strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
-        m_pDBManager->GetInterface( USER_DATABASE )->Clear() ;
-        if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
-        {
-            m_pDBManager->GetInterface( USER_DATABASE )->Fetch() ;
-            if( m_pDBManager->GetInterface(USER_DATABASE)->Col[ 0 ][ 0 ] != 0 )
             {
                 return atoi( m_pDBManager->GetInterface( USER_DATABASE )->Col[ 0 ] ) ;
             }

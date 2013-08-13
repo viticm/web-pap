@@ -41,22 +41,6 @@ public:
     INT  GetUserSum( VOID ) ;
     BOOL IsHaveUser( CHAR* UserName ) ;
     BOOL IsRealUser( const CHAR* szUserName, const CHAR* szPassWord ) ;
-    BOOL WX_Shop_Add( INT ShopId, 
-                      INT UserId, 
-                      INT Money, 
-                      INT Item_1,
-                      INT ItemCount_1,
-                      INT Item_2,
-                      INT ItemCount_2,
-                      INT Item_3,
-                      INT ItemCount_3,
-                      INT Item_4,
-                      INT ItemCount_4,
-                      INT Item_5,
-                      INT ItemCount_5,
-                      INT IsSucceed,
-                      CHAR* CreateTime ) ;
-    BOOL WorldWX_Shop_IsHave( UINT ShopID ) ;
     DBManager *m_pDBManager ;
     VOID MD5Encrypt( CHAR* szInEncryptStr, CHAR* szOutEncryptStr ) ;
     CHAR m_strSql[ MAX_SQL_LENGTH ] ;
