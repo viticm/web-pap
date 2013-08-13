@@ -6,43 +6,43 @@ TimeManager*    g_pTimeManager=NULL ;
 
 TimeManager::TimeManager()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    m_CurrentTime = 0 ;
+        m_CurrentTime = 0 ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
 TimeManager::~TimeManager()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
 BOOL TimeManager::Init()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-#if defined(__WINDOWS__)
-    m_StartTime = GetTickCount() ;
-    m_CurrentTime = GetTickCount() ;
-#elif defined(__LINUX__)
-    m_StartTime        = 0;
-    m_CurrentTime    = 0;
-    gettimeofday(&_tstart, &tz);
-#endif
-    SetTime( ) ;
+    #if defined(__WINDOWS__)
+        m_StartTime = GetTickCount() ;
+        m_CurrentTime = GetTickCount() ;
+    #elif defined(__LINUX__)
+        m_StartTime    = 0 ;
+        m_CurrentTime  = 0 ;
+        gettimeofday(&_tstart, &tz);
+    #endif
+        SetTime( ) ;
 
-    // init to current format time
-    CHAR szCurrentFormatTime[ MAX_DATE_LENGTH ];
-    sprintf( szCurrentFormatTime, "%s", GetCurrentFormatTime() ) ;
-    return TRUE ;
+        // init to current format time
+        CHAR szCurrentFormatTime[ MAX_DATE_LENGTH ];
+        sprintf( szCurrentFormatTime, "%s", GetCurrentFormatTime() ) ;
+        return TRUE ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-    return FALSE ;
+        return FALSE ;
 }
 
 UINT TimeManager::CurrentTime()
