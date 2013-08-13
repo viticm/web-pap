@@ -58,7 +58,6 @@ BOOL UserDBManager::AddUser( CHAR* szUserName,
                              CHAR* szPostalCode, 
                              INT   iGender, 
                              CHAR* szBirthday,
-                             CHAR* szCreateTime, 
                              CHAR* szQQ, 
                              CHAR* szPassWord2 ) 
 {
@@ -68,12 +67,13 @@ BOOL UserDBManager::AddUser( CHAR* szUserName,
         CHAR szEncryptPassWord2[ 36 ]   = { 0 } ;
         MD5Encrypt( szPassWord, szEncryptPassWord );
         MD5Encrypt( szPassWord2, szEncryptPassWord2 );
+
         sprintf( m_strSql, "call adduser( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, '%s', '%s', '%s' )",
             szUserName, szEncryptPassWord, szPrompt, szAnswer, szTrueName, szIdNumber, szEmail, szMobileNumber, szProvince, szCity, szPhoneNumber,
-            szAddress, szPostalCode, iGender, szBirthday, szCreateTime, szQQ, szEncryptPassWord2 ) ;
+            szAddress, szPostalCode, iGender, szBirthday, szQQ, szEncryptPassWord2 ) ;
         strcpy( ( CHAR* )m_pDBManager->GetInterface( USER_DATABASE )->m_Query.m_SqlStr, m_strSql ) ;
-
         m_pDBManager->GetInterface( USER_DATABASE )->Clear();
+
         if( m_pDBManager->GetInterface( USER_DATABASE )->Execute() )
         {
             if( m_pDBManager->GetInterface( USER_DATABASE )->mAffectCount > 0 )
@@ -316,5 +316,5 @@ VOID UserDBManager::MD5Encrypt( CHAR* szInEncryptStr, CHAR* szOutEncryptStr )
 {
     const CHAR* szPreEncryptStr = "0x" ;
     MD5 MD5( szInEncryptStr ) ;
-    sprintf( szOutEncryptStr, "%s%s", szPreEncryptStr, MD5.md5() ) ;
+    sprintf( szOutEncryptStr, "%s%s", szPreEncryptStr, ( MD5.md5() ).c_str() ) ;
 }

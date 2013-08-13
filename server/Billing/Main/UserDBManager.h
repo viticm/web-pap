@@ -34,7 +34,6 @@ public:
                   CHAR* szPostalCode, 
                   INT   iGender, 
                   CHAR* szBirthday,
-                  CHAR* szCreateTime, 
                   CHAR* szQQ,
                   CHAR* szPassWord2 ) ;
     BOOL AmendPassWord( CHAR* UserName, CHAR* PassWord, CHAR* NewPassWord ) ;
