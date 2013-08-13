@@ -1,209 +1,28 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.4
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- ß∑ß‡ß„ß‰: localhost
--- ß£ß‚ß÷ßﬁßÒ ß„ß‡ßŸß’ß—ßﬂß⁄ßÒ: ß™ßßﬂ 09 2008 ß‘., 02:11
--- ß£ß÷ß‚ß„ß⁄ßÒ ß„ß÷ß‚ß”ß÷ß‚ß—: 5.0.51
--- ß£ß÷ß‚ß„ß⁄ßÒ PHP: 5.2.5
+-- ‰∏ªÊú∫: localhost
+-- ÁîüÊàêÊó•Êúü: 2013 Âπ¥ 08 Êúà 13 Êó• 17:03
+-- ÊúçÂä°Âô®ÁâàÊú¨: 5.6.10
+-- PHP ÁâàÊú¨: 5.3.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
--- Original database written by Shawn. Changed by trash.
--- ß¢ß—ßŸß— ß’ß—ßﬂßﬂßÌßÁ: `dbo`
---
 
--- --------------------------------------------------------
-
---
--- ß≥ß‰ß‚ßÂß‹ß‰ßÂß‚ß— ß‰ß—ß“ß›ß⁄ßËßÌ `auth`
---
-
-CREATE TABLE IF NOT EXISTS `auth` (
-  `userid` int(11) NOT NULL default '0',
-  `zoneid` int(11) NOT NULL default '0',
-  `rid` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`userid`,`zoneid`,`rid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- ß•ß—ßﬁß· ß’ß—ßﬂßﬂßÌßÁ ß‰ß—ß“ß›ß⁄ßËßÌ `auth`
+-- Êï∞ÊçÆÂ∫ì: `userdb`
 --
-
-
--- --------------------------------------------------------
-
---
--- ß≥ß‰ß‚ßÂß‹ß‰ßÂß‚ß— ß‰ß—ß“ß›ß⁄ßËßÌ `forbid`
---
-
-CREATE TABLE IF NOT EXISTS `forbid` (
-  `userid` int(11) NOT NULL default '0',
-  `type` int(11) NOT NULL default '0',
-  `ctime` datetime NOT NULL,
-  `forbid_time` int(11) NOT NULL default '0',
-  `reason` blob NOT NULL,
-  `gmroleid` int(11) default '0',
-  PRIMARY KEY  (`userid`,`type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- ß•ß—ßﬁß· ß’ß—ßﬂßﬂßÌßÁ ß‰ß—ß“ß›ß⁄ßËßÌ `forbid`
---
-
-
--- --------------------------------------------------------
-
---
--- ß≥ß‰ß‚ßÂß‹ß‰ßÂß‚ß— ß‰ß—ß“ß›ß⁄ßËßÌ `iplimit`
---
-
-CREATE TABLE IF NOT EXISTS `iplimit` (
-  `uid` int(11) NOT NULL default '0',
-  `ipaddr1` int(11) default '0',
-  `ipmask1` varchar(2) default '',
-  `ipaddr2` int(11) default '0',
-  `ipmask2` varchar(2) default '',
-  `ipaddr3` int(11) default '0',
-  `ipmask3` varchar(2) default '',
-  `enable` char(1) default '',
-  `lockstatus` char(1) default '',
-  PRIMARY KEY  (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- ß•ß—ßﬁß· ß’ß—ßﬂßﬂßÌßÁ ß‰ß—ß“ß›ß⁄ßËßÌ `iplimit`
---
-
-
--- --------------------------------------------------------
-
---
--- ß≥ß‰ß‚ßÂß‹ß‰ßÂß‚ß— ß‰ß—ß“ß›ß⁄ßËßÌ `online`
---
-
-CREATE TABLE IF NOT EXISTS `online` (
-  `ID` int(11) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- ß•ß—ßﬁß· ß’ß—ßﬂßﬂßÌßÁ ß‰ß—ß“ß›ß⁄ßËßÌ `online`
---
-
-
--- --------------------------------------------------------
-
---
--- ß≥ß‰ß‚ßÂß‹ß‰ßÂß‚ß— ß‰ß—ß“ß›ß⁄ßËßÌ `point`
---
-
-CREATE TABLE IF NOT EXISTS `point` (
-  `uid` int(11) NOT NULL default '0',
-  `aid` int(11) NOT NULL default '0',
-  `time` int(11) NOT NULL default '0',
-  `zoneid` int(11) default '0',
-  `zonelocalid` int(11) default '0',
-  `accountstart` datetime default NULL,
-  `lastlogin` datetime default NULL,
-  `enddate` datetime default NULL,
-  PRIMARY KEY  (`uid`,`aid`),
-  KEY `IX_point_aidzoneid` (`aid`,`zoneid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- ß•ß—ßﬁß· ß’ß—ßﬂßﬂßÌßÁ ß‰ß—ß“ß›ß⁄ßËßÌ `point`
---
-
-
--- --------------------------------------------------------
-
---
--- ß≥ß‰ß‚ßÂß‹ß‰ßÂß‚ß— ß‰ß—ß“ß›ß⁄ßËßÌ `usecashlog`
---
-
-CREATE TABLE IF NOT EXISTS `usecashlog` (
-  `userid` int(11) NOT NULL default '0',
-  `zoneid` int(11) NOT NULL default '0',
-  `sn` int(11) NOT NULL default '0',
-  `aid` int(11) NOT NULL default '0',
-  `point` int(11) NOT NULL default '0',
-  `cash` int(11) NOT NULL default '0',
-  `status` int(11) NOT NULL default '0',
-  `creatime` datetime NOT NULL,
-  `fintime` datetime NOT NULL,
-  KEY `IX_usecashlog_creatime` (`creatime`),
-  KEY `IX_usecashlog_uzs` (`userid`,`zoneid`,`sn`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- ß•ß—ßﬁß· ß’ß—ßﬂßﬂßÌßÁ ß‰ß—ß“ß›ß⁄ßËßÌ `usecashlog`
---
-
-
--- --------------------------------------------------------
-
---
--- ß≥ß‰ß‚ßÂß‹ß‰ßÂß‚ß— ß‰ß—ß“ß›ß⁄ßËßÌ `usecashnow`
---
-
-CREATE TABLE IF NOT EXISTS `usecashnow` (
-  `userid` int(11) NOT NULL default '0',
-  `zoneid` int(11) NOT NULL default '0',
-  `sn` int(11) NOT NULL default '0',
-  `aid` int(11) NOT NULL default '0',
-  `point` int(11) NOT NULL default '0',
-  `cash` int(11) NOT NULL default '0',
-  `status` int(11) NOT NULL default '0',
-  `creatime` datetime NOT NULL,
-  PRIMARY KEY  (`userid`,`zoneid`,`sn`),
-  KEY `IX_usecashnow_creatime` (`creatime`),
-  KEY `IX_usecashnow_status` (`status`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- ß•ß—ßﬁß· ß’ß—ßﬂßﬂßÌßÁ ß‰ß—ß“ß›ß⁄ßËßÌ `usecashnow`
---
-
-
--- --------------------------------------------------------
-
---
--- ß≥ß‰ß‚ßÂß‹ß‰ßÂß‚ß— ß‰ß—ß“ß›ß⁄ßËßÌ `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `ID` int(11) NOT NULL default '0',
-  `name` varchar(32) NOT NULL default '',
-  `passwd` varchar(64) NOT NULL,
-  `Prompt` varchar(32) NOT NULL default '',
-  `answer` varchar(32) NOT NULL default '',
-  `truename` varchar(32) NOT NULL default '',
-  `idnumber` varchar(32) NOT NULL default '',
-  `email` varchar(64) NOT NULL default '',
-  `mobilenumber` varchar(32) default '',
-  `province` varchar(32) default '',
-  `city` varchar(32) default '',
-  `phonenumber` varchar(32) default '',
-  `address` varchar(64) default '',
-  `postalcode` varchar(8) default '',
-  `gender` int(11) default '0',
-  `birthday` datetime default NULL,
-  `creatime` datetime NOT NULL,
-  `qq` varchar(32) default '',
-  `passwd2` varchar(64) default NULL,
-  PRIMARY KEY  (`ID`),
-  UNIQUE KEY `IX_users_name` (`name`),
-  KEY `IX_users_creatime` (`creatime`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- ß•ß—ßﬁß· ß’ß—ßﬂßﬂßÌßÁ ß‰ß—ß“ß›ß⁄ßËßÌ `users`
---
-
 
 DELIMITER $$
 --
--- ß±ß‚ß‡ßËß÷ß’ßÂß‚ßÌ
+-- Â≠òÂÇ®ËøáÁ®ã
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `acquireuserpasswd`(in name1 VARCHAR(64), out uid1 INTEGER, out passwd1 VARCHAR(64))
 BEGIN
@@ -353,6 +172,11 @@ BEGIN
     INSERT INTO iplimit (uid,enable) VALUES (uid1,enable1);
   END IF;
   COMMIT;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `isHaveUser`(in name1 varchar( 32 ) )
+BEGIN
+    SELECT `ID` FROM `users` WHERE `name` = name1;                    
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `lockuser`(in uid1 INTEGER, in lockstatus1 CHAR(1))
@@ -561,7 +385,7 @@ COMMIT;
 END$$
 
 --
--- ß∂ßÂßﬂß‹ßËß⁄ß⁄
+-- ÂáΩÊï∞
 --
 CREATE DEFINER=`root`@`localhost` FUNCTION `fn_varbintohexsubstring`(fsetprefix bit,pbinin varbinary(8000),startoffset int,cbytesin int) RETURNS varchar(4000) CHARSET latin1
     READS SQL DATA
@@ -594,3 +418,155 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Ë°®ÁöÑÁªìÊûÑ `auth`
+--
+
+CREATE TABLE IF NOT EXISTS `auth` (
+  `userid` int(11) NOT NULL DEFAULT '0',
+  `zoneid` int(11) NOT NULL DEFAULT '0',
+  `rid` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`userid`,`zoneid`,`rid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Ë°®ÁöÑÁªìÊûÑ `forbid`
+--
+
+CREATE TABLE IF NOT EXISTS `forbid` (
+  `userid` int(11) NOT NULL DEFAULT '0',
+  `type` int(11) NOT NULL DEFAULT '0',
+  `ctime` datetime NOT NULL,
+  `forbid_time` int(11) NOT NULL DEFAULT '0',
+  `reason` blob NOT NULL,
+  `gmroleid` int(11) DEFAULT '0',
+  PRIMARY KEY (`userid`,`type`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Ë°®ÁöÑÁªìÊûÑ `iplimit`
+--
+
+CREATE TABLE IF NOT EXISTS `iplimit` (
+  `uid` int(11) NOT NULL DEFAULT '0',
+  `ipaddr1` int(11) DEFAULT '0',
+  `ipmask1` varchar(2) DEFAULT '',
+  `ipaddr2` int(11) DEFAULT '0',
+  `ipmask2` varchar(2) DEFAULT '',
+  `ipaddr3` int(11) DEFAULT '0',
+  `ipmask3` varchar(2) DEFAULT '',
+  `enable` char(1) DEFAULT '',
+  `lockstatus` char(1) DEFAULT '',
+  PRIMARY KEY (`uid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Ë°®ÁöÑÁªìÊûÑ `online`
+--
+
+CREATE TABLE IF NOT EXISTS `online` (
+  `ID` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Ë°®ÁöÑÁªìÊûÑ `point`
+--
+
+CREATE TABLE IF NOT EXISTS `point` (
+  `uid` int(11) NOT NULL DEFAULT '0',
+  `aid` int(11) NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
+  `zoneid` int(11) DEFAULT '0',
+  `zonelocalid` int(11) DEFAULT '0',
+  `accountstart` datetime DEFAULT NULL,
+  `lastlogin` datetime DEFAULT NULL,
+  `enddate` datetime DEFAULT NULL,
+  PRIMARY KEY (`uid`,`aid`),
+  KEY `IX_point_aidzoneid` (`aid`,`zoneid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Ë°®ÁöÑÁªìÊûÑ `usecashlog`
+--
+
+CREATE TABLE IF NOT EXISTS `usecashlog` (
+  `userid` int(11) NOT NULL DEFAULT '0',
+  `zoneid` int(11) NOT NULL DEFAULT '0',
+  `sn` int(11) NOT NULL DEFAULT '0',
+  `aid` int(11) NOT NULL DEFAULT '0',
+  `point` int(11) NOT NULL DEFAULT '0',
+  `cash` int(11) NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '0',
+  `creatime` datetime NOT NULL,
+  `fintime` datetime NOT NULL,
+  KEY `IX_usecashlog_creatime` (`creatime`),
+  KEY `IX_usecashlog_uzs` (`userid`,`zoneid`,`sn`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Ë°®ÁöÑÁªìÊûÑ `usecashnow`
+--
+
+CREATE TABLE IF NOT EXISTS `usecashnow` (
+  `userid` int(11) NOT NULL DEFAULT '0',
+  `zoneid` int(11) NOT NULL DEFAULT '0',
+  `sn` int(11) NOT NULL DEFAULT '0',
+  `aid` int(11) NOT NULL DEFAULT '0',
+  `point` int(11) NOT NULL DEFAULT '0',
+  `cash` int(11) NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '0',
+  `creatime` datetime NOT NULL,
+  PRIMARY KEY (`userid`,`zoneid`,`sn`),
+  KEY `IX_usecashnow_creatime` (`creatime`),
+  KEY `IX_usecashnow_status` (`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Ë°®ÁöÑÁªìÊûÑ `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `ID` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(32) NOT NULL DEFAULT '',
+  `passwd` varchar(64) NOT NULL,
+  `Prompt` varchar(32) NOT NULL DEFAULT '',
+  `answer` varchar(32) NOT NULL DEFAULT '',
+  `truename` varchar(32) NOT NULL DEFAULT '',
+  `idnumber` varchar(32) NOT NULL DEFAULT '',
+  `email` varchar(64) NOT NULL DEFAULT '',
+  `mobilenumber` varchar(32) DEFAULT '',
+  `province` varchar(32) DEFAULT '',
+  `city` varchar(32) DEFAULT '',
+  `phonenumber` varchar(32) DEFAULT '',
+  `address` varchar(64) DEFAULT '',
+  `postalcode` varchar(8) DEFAULT '',
+  `gender` int(11) DEFAULT '0',
+  `birthday` datetime DEFAULT NULL,
+  `creatime` datetime NOT NULL,
+  `qq` varchar(32) DEFAULT '',
+  `passwd2` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IX_users_name` (`name`),
+  KEY `IX_users_creatime` (`creatime`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
