@@ -9,56 +9,54 @@ using namespace Packets ;
 
 Player::Player( )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    m_PID = INVALID_ID ;
-    m_UID = INVALID_ID ;
-    m_PlayerManagerID = INVALID_ID ;
+        m_PID = INVALID_ID ;
+        m_UID = INVALID_ID ;
+        m_PlayerManagerID = INVALID_ID ;
 
 
-    m_pSocket = new Socket ;
-    Assert( m_pSocket ) ;
+        m_pSocket = new Socket ;
+        Assert( m_pSocket ) ;
 
-    m_pSocketInputStream = new SocketInputStream( m_pSocket ) ;
-    Assert( m_pSocketInputStream ) ;
+        m_pSocketInputStream = new SocketInputStream( m_pSocket ) ;
+        Assert( m_pSocketInputStream ) ;
 
-    m_pSocketOutputStream = new SocketOutputStream( m_pSocket ) ;
-    Assert( m_pSocketOutputStream ) ;
+        m_pSocketOutputStream = new SocketOutputStream( m_pSocket ) ;
+        Assert( m_pSocketOutputStream ) ;
 
-    m_IsEmpty        = TRUE ;
-    m_IsDisconnect    = FALSE ;
+        m_IsEmpty        = TRUE ;
+        m_IsDisconnect    = FALSE ;
 
-    m_PacketIndex     = 0 ;
+        m_PacketIndex     = 0 ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
 Player::~Player( )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    SAFE_DELETE( m_pSocketInputStream ) ;
-    SAFE_DELETE( m_pSocketOutputStream ) ;
+        SAFE_DELETE( m_pSocketInputStream ) ;
+        SAFE_DELETE( m_pSocketOutputStream ) ;
+        SAFE_DELETE( m_pSocket ) ;
 
-    SAFE_DELETE( m_pSocket ) ;
-
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
-void Player::CleanUp( )
+VOID Player::CleanUp( )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    m_pSocket->close() ;
-    m_pSocketInputStream->CleanUp() ;
-    m_pSocketOutputStream->CleanUp() ;
-    SetPlayerManagerID( INVALID_ID ) ;
-    SetUserID( INVALID_ID ) ;
-    m_PacketIndex = 0 ;
-    SetDisconnect(FALSE) ;
+        m_pSocket->close() ;
+        m_pSocketInputStream->CleanUp() ;
+        m_pSocketOutputStream->CleanUp() ;
+        SetPlayerManagerID( INVALID_ID ) ;
+        SetUserID( INVALID_ID ) ;
+        m_PacketIndex = 0 ;
+        SetDisconnect(FALSE) ;
 
-
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
 void Player::Disconnect( )
@@ -377,5 +375,3 @@ void Player::ResetKick( )
 __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
-
-

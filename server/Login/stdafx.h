@@ -34,6 +34,7 @@
 
 // packet defined
 #ifndef _FOX_LOGIN
+    #define _FOX_CLIENT
     #define _FOX_LOGIN
     #define _FOX_WORLD
 #endif
