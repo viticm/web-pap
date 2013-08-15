@@ -407,8 +407,6 @@ BOOL ShareMemory::NewStaticManager()
         
         }
 
-        //Log::SaveLog( "ShareMemory", "new SMUPool< HumanSMU >()...OK" ) ;
-
         return TRUE ;
 
     __LEAVE_FUNCTION    
@@ -592,8 +590,6 @@ BOOL ShareMemory::DelStaticManager()
            
         }
 
-        //Log::SaveLog( "ShareMemory", "new SMUPool< HumanSMU >()...OK" ) ;
-        
         return TRUE ;
 
     __LEAVE_FUNCTION    
