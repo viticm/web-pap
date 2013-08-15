@@ -343,35 +343,55 @@ BOOL ShareMemory::NewStaticManager()
                 case ST_HUMAN_SMU:
                 {
                     m_SMUPool[ i ].m_Pool = new SMUPool< HumanSMU >() ;
+                    Assert( m_SMUPool[ i ].m_Pool ) ;
+                    Log::SaveLog( "ShareMemory", "new SMUPool< HumanSMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< HumanSMU >() ;
+                    Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Log::SaveLog( "ShareMemory", "new SMULogicManager< HumanSMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_Type    =    ST_HUMAN_SMU ;
                 }
                     break ;
                 case ST_GUILD_SMU:
                 {
                     m_SMUPool[ i ].m_Pool = new SMUPool< GuildSMU >() ;
+                    Assert( m_SMUPool[ i ].m_Pool ) ;
+                    Log::SaveLog( "ShareMemory", "new SMUPool< GuildSMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< GuildSMU >() ;
+                    Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Log::SaveLog( "ShareMemory", "new SMULogicManager< GuildSMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_Type    =    ST_GUILD_SMU ;
                 }
                     break ;
                 case ST_MAIL_SMU:
                 {
                     m_SMUPool[ i ].m_Pool = new SMUPool< MailSMU >() ;
+                    Assert( m_SMUPool[ i ].m_Pool ) ;
+                    Log::SaveLog( "ShareMemory", "new SMUPool< MailSMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< MailSMU >() ;
+                    Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Log::SaveLog( "ShareMemory", "new SMULogicManager< MailSMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_Type    =    ST_MAIL_SMU ;    
                 }
                     break ;
                 case ST_PSHOP_SMU:
                 {
                     m_SMUPool[ i ].m_Pool = new SMUPool< PlayerShopSM >();
+                    Assert( m_SMUPool[ i ].m_Pool ) ;
+                    Log::SaveLog( "ShareMemory", "new SMUPool< PlayerShopSM >()...OK" ) ;
                     m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< PlayerShopSM >() ;
+                    Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Log::SaveLog( "ShareMemory", "new SMULogicManager< PlayerShopSM >()...OK" ) ;
                     m_SMULogicManager[ i ].m_Type    =    ST_PSHOP_SMU ;    
                 }
                     break ;
                 case ST_ITEMSERIAL_SMU:
                 {
                     m_SMUPool[ i ].m_Pool = new SMUPool< ItemSerialKeySMU >() ;
+                    Assert( m_SMUPool[ i ].m_Pool ) ;
+                    Log::SaveLog( "ShareMemory", "new SMUPool< ItemSerialKeySMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< ItemSerialKeySMU >() ;
+                    Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Log::SaveLog( "ShareMemory", "new SMULogicManager< ItemSerialKeySMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_Type    =    ST_ITEMSERIAL_SMU ;    
                 }
                     break ;
@@ -387,7 +407,7 @@ BOOL ShareMemory::NewStaticManager()
         
         }
 
-        Log::SaveLog( "ShareMemory", "new SMUPool< HumanSMU >()...OK" ) ;
+        //Log::SaveLog( "ShareMemory", "new SMUPool< HumanSMU >()...OK" ) ;
 
         return TRUE ;
 
@@ -572,7 +592,7 @@ BOOL ShareMemory::DelStaticManager()
            
         }
 
-        Log::SaveLog( "ShareMemory", "new SMUPool< HumanSMU >()...OK" ) ;
+        //Log::SaveLog( "ShareMemory", "new SMUPool< HumanSMU >()...OK" ) ;
         
         return TRUE ;
 
