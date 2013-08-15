@@ -15,8 +15,8 @@ BOOL    ShareDBManager::Init()
         szCharDBHost[ HOST_STR_LEN - 1 ] = '\0' ;
 
         UINT    uCharDBPort = g_Config.m_ShareMemInfo.m_DBPort ;                                     //连接对端端口
-        CHAR    szCharDBDatabase[DATABASE_STR_LEN] ;
-        strncpy( szCharDbDatabase, g_Config.m_ShareMemInfo.m_DBName, DATABASE_STR_LEN ) ;            //数据库名称
+        CHAR    szCharDBDatabase[ DATABASE_STR_LEN ] ;
+        strncpy( szCharDBDatabase, g_Config.m_ShareMemInfo.m_DBName, DATABASE_STR_LEN ) ;            //数据库名称
         szCharDBDatabase[ DATABASE_STR_LEN - 1 ] = '\0' ;
 
         CHAR    szCharDBUser[ DB_USE_STR_LEN ] ;                                                     //用户名称
