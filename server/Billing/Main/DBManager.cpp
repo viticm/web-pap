@@ -51,11 +51,11 @@ BOOL    DBManager::Init()
         }
 
     
-        return TRUE;
+        return mUserDBInterface->IsConnected() ;
                             
     __LEAVE_FUNCTION
 
-        return FALSE;
+        return FALSE ;
 }
 
 
