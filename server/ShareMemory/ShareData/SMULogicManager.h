@@ -59,7 +59,7 @@ public:
             if ( ( ver == m_OldVer ) && 0 < m_OldVer )
             {
                 m_OldVer = 0 ;   
-                Log::SaveLog("ShareMemory", "Receive Server Crash command.." ) ;
+                Log::SaveLog( "ShareMemory", "Receive Server Crash command.." ) ;
                 BOOL bRet =  DoSaveAll() ;
 
                 //清理对应的数据标志
