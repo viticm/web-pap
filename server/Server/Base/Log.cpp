@@ -52,6 +52,7 @@ CHAR* g_pLogFileName[] =
     "Config",               //20       LOG_FILE_20
     "assert",               //21       LOG_FILE_21
     "RecyclePlayer",        //22       LOG_FILE_22
+    "ShareMemory",          //23       LOG_FILE_23
     '\0'
 };
 

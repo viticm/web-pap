@@ -42,6 +42,7 @@ enum LOG_FILE_NAME_ID
     LOG_FILE_20 = 20 ,
     LOG_FILE_21 = 21 ,
     LOG_FILE_22 = 22 ,
+    LOG_FILE_23 = 23 ,
 
     LOG_FILE_NUMBER ,
 };

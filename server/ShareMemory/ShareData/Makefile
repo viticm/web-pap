@@ -1,9 +1,9 @@
 # @desc makefile for ShareMemory
 # @author viticm<viticm.ti@gmail.com>
-# @date 2013-06-25 20:00:13
+# @date 2013-08-14 11:20:20
 include ../../premake.mk
 
-CFLAGS  = -I$(BASEDIR)/ShareMemory/Main -I$(BASEDIR)/ShareMemory/DB -I$(BASEDIR)/ShareMemory/ShareData -I$(BASEDIR)/ShareMemory $(SERVER_BASE_INCLUDES)
+CFLAGS  = -I$(BASEDIR)/ShareMemory/Main -I$(BASEDIR)/ShareMemory/DB -I$(BASEDIR)/ShareMemory/ShareData -I$(BASEDIR)/ShareMemory $(SERVER_BASE_INCLUDES) -I$(BASEDIR)/Server/SMU -I$(BASEDIR)/Server/Other
 LDFLAGS =
 DIRS =  
 OBJS =  SMULogicManager.o
