@@ -323,8 +323,6 @@ BOOL ShareMemory::DoWork()
 
 }
 
-
-
 BOOL ShareMemory::NewStaticManager()
 {
     __ENTER_FUNCTION

@@ -19,7 +19,7 @@ extern BOOL g_LockTimeOutEnable ;
 //HumanSMU 的心跳
 
 template<>
-BOOL    SMULogicManager< HumanSMU >::DoSaveAll()
+BOOL SMULogicManager< HumanSMU >::DoSaveAll()
 {
     __ENTER_FUNCTION
         if ( !m_PoolSharePtr )

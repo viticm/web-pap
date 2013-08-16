@@ -5,7 +5,7 @@
 #include "TimeManager.h"
 #include "Log.h"
 
-BOOL    ShareDBManager::Init()
+BOOL ShareDBManager::Init()
 {
     __ENTER_FUNCTION
 
