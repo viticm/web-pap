@@ -21,7 +21,7 @@ VOID CommandThread::run()
 
 #define SM_CMD_SIZE 255
 
-BOOL     CmdParser::HandleInput()
+BOOL CmdParser::HandleInput()
 {
     __ENTER_FUNCTION
     
@@ -78,7 +78,7 @@ BOOL     CmdParser::HandleInput()
         return FALSE ;
 }
 
-SM_COMMANDS_STATE    CmdParser::ParserCommandType( CHAR* pBuff )
+SM_COMMANDS_STATE CmdParser::ParserCommandType( CHAR* pBuff )
 {
     __ENTER_FUNCTION
         
