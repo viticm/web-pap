@@ -597,48 +597,49 @@ BOOL    SMULogicManager< PlayerShopSM >::DoSaveAll()
 {
     __ENTER_FUNCTION
 
-    ///存盘统计数据 
-    //INT        SMUCount            =        0;
-    //INT        TotalSMUSize        =        0;
-    //UINT    uTime        =    g_pTimeManager->RunTime();
+    //存盘统计数据 
+    /**
+    INT    SMUCount        = 0 ;
+    INT    TotalSMUSize    = 0 ;
+    UINT   uTime           = g_pTimeManager->RunTime() ;
 
-    //if(!m_PoolSharePtr)
-    //{
-    //    Assert(m_PoolSharePtr);
-    //    return FALSE;
-    //}
+    if ( !m_PoolSharePtr )
+    {
+        Assert( m_PoolSharePtr ) ;
+        return FALSE ;
+    }
 
-    //SM_KEY    key                    = m_PoolSharePtr->GetKey();
-    //ID_t    ServerID            = g_Config.Key2ServerID(key);
-    //if(ServerID == INVALID_ID)
-    //{
-    //    AssertEx(FALSE,"对应Key的服务器没有EnableShareMemory");
-    //}
+    SM_KEY    key        = m_PoolSharePtr->GetKey();
+    ID_t      ServerID   = g_Config.Key2ServerID( key ) ;
+    if ( INVALID_ID == ServerID )
+    {
+        AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
+    }
 
-    //ODBCInterface* pInterface=     g_pDBManager->GetInterface(CHARACTER_DATABASE);
-    //Assert(pInterface);
-    //
-    //DBShopInfo    ShopInfoObject(pInterface);
-    //ShopInfoObject.SetServerID(ServerID);
-
-    //BOOL bRet = ShopInfoObject.Save(m_PoolSharePtr);
-    //if(bRet)
-    //{
-    //    bRet  =    ShopInfoObject.ParseResult(m_PoolSharePtr);//Parse 档案内容
-    //}
-
-    //if(bRet)
-    //{
-    //    Log::SaveLog("./Log/ShareMemory.log","End PlayerShopSM_%d SaveAll...OK!",key);
-    //    Log::SaveLog("./Log/ShareMemory.log","SMUCount = %d",SMUCount);
-    //    Log::SaveLog("./Log/ShareMemory.log","TotalSMUSize = %d",TotalSMUSize);
-    //}
-    //else
-    //{
-    //    Log::SaveLog("./Log/ShareMemory.log","End PlayerShopSM_%d SaveAll...Get Errors!",key);
-    //}
+    ODBCInterface* pInterface = g_pDBManager->GetInterface( CHARACTER_DATABASE ) ;
+    Assert( pInterface ) ;
     
+    DBShopInfo ShopInfoObject( pInterface ) ;
+    ShopInfoObject.SetServerID( ServerID ) ;
 
+    BOOL bRet = ShopInfoObject.Save(m_PoolSharePtr);
+    if ( bRet )
+    {
+        bRet = ShopInfoObject.ParseResult( m_PoolSharePtr ) ;//Parse 档案内容
+    }
+
+    if ( bRet )
+    {
+        Log::SaveLog( "ShareMemory", "End PlayerShopSM_%d SaveAll...OK!", key ) ;
+        Log::SaveLog( "ShareMemory", "SMUCount = %d", SMUCount ) ;
+        Log::SaveLog( "ShareMemory", "TotalSMUSize = %d", TotalSMUSize ) ;
+    }
+    else
+    {
+        Log::SaveLog( "ShareMemory", "End PlayerShopSM_%d SaveAll...Get Errors!", key ) ;
+    }
+    **/
+    
         return TRUE ;
 
     __LEAVE_FUNCTION
