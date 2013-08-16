@@ -1,9 +1,12 @@
 
 BASEDIR = /home/dc/develop/pap/server
 UNIX_ODBC_INCLUDES = -I/usr/local/unixODBC/include
+UNIX_ODBC_LIBS = -I/usr/local/unixODBC/lib
+MYSQL_INCLUDES = -I/usr/local/mysql/include
+MYSQL_CLIENT_LIBS = -L/usr/local/mysql/lib
 
-release: VFLAGS = -O2 -Wall -DRELEASE -DNDEBUG -D_FILE_OFFSET_BITS=64
-debug:   VFLAGS = -g -Wall -DDEBUG -D_FILE_OFFSET_BITS=64
+release: VFLAGS = -O2 -Wall -DRELEASE -DNDEBUG -D_FILE_OFFSET_BITS=32
+debug:   VFLAGS = -g -Wall -DDEBUG -D_FILE_OFFSET_BITS=32
 
 COMMON_INCLUDES           = -I$(BASEDIR)/Common \
                             -I$(BASEDIR)/Common/Combat \
@@ -11,7 +14,8 @@ COMMON_INCLUDES           = -I$(BASEDIR)/Common \
                             -I$(BASEDIR)/Common/DBSystem \
                             -I$(BASEDIR)/Common/DBSystem/DataBase \
                             -I$(BASEDIR)/Common/Net \
-                            -I$(BASEDIR)/Common/Packets
+                            -I$(BASEDIR)/Common/Packets \
+                            -I$(BASEDIR)/Common/Util
 
 SERVER_BASE_INCLUDES      = -I$(BASEDIR)/Server/Base
 
@@ -67,11 +71,16 @@ COMMON_LDS                = -L$(BASEDIR)/Common \
 
 SERVER_BASE_LDS           = -L$(BASEDIR)/Server/Base
 
+OTHER_LDS                 = -lpthread -lodbc
 
-GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES)
+LUA_LDS                   = -lm -llua
 
-release:GLDFLAGS = $(COMMON_LDS)
-debug:GLDFLAGS = $(COMMON_LDS) 
+MYSQL_CLIENT_LDS          = $(MYSQL_CLIENT_LIBS) -lmysqlclient
+
+GCFLAGS                   = $(COMMON_INCLUDES) $(UNIX_ODBC_INCLUDES) 
+
+release:GLDFLAGS = $(COMMON_LDS) $(OTHER_LDS)
+debug:GLDFLAGS = $(COMMON_LDS) $(OTHER_LDS)
 
 ARFLAGS = -sr
 AR      = ar
