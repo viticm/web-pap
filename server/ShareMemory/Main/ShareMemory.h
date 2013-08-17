@@ -59,7 +59,7 @@ protected :
     BOOL                    NewStaticManager() ;
     BOOL                    InitStaticManager() ;
     BOOL                    DelStaticManager() ;
-
+    BOOL                    CheckWorldIDZoneID() ; 
 
 private:
 

@@ -14,6 +14,7 @@
 #define WORLD_ID    "WORLD_ID"
 #define ZONE_ID     "ZONE_ID"
 #define UNUSE_SPLIT "UNUSE_SPLIT"
+#define ERROR_VALUE ( -999 )
 
 class DBGeneralSet
 {

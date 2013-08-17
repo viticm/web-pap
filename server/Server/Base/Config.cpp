@@ -235,10 +235,11 @@ VOID Config::LoadWorldInfo_Only( )
 __ENTER_FUNCTION
 
     Ini ini( FILE_WORLD_INFO ) ;
-    m_WorldInfo.m_WorldID    =        (ID_t)(ini.ReadInt( "System", "WorldID" )) ;
-    m_WorldInfo.m_GuildKey    =        (SM_KEY)ini.ReadInt( "System","GuildSMKey");
-    m_WorldInfo.m_MailKey    =        (SM_KEY)ini.ReadInt("System","MailSMKey");
-    m_WorldInfo.m_EnableShareMem    = (BOOL)ini.ReadInt("System","EnableShareMem");
+    m_WorldInfo.m_WorldID        = ( ID_t )ini.ReadInt( "System", "WorldID" ) ;
+    m_WorldInfo.m_ZoneID         = ( ID_t )ini.ReadInt( "System", "ZoneID" ) ;
+    m_WorldInfo.m_GuildKey       = ( SM_KEY )ini.ReadInt( "System", "GuildSMKey" ) ;
+    m_WorldInfo.m_MailKey        = ( SM_KEY )ini.ReadInt( "System", "MailSMKey" ) ;
+    m_WorldInfo.m_EnableShareMem = ( BOOL )ini.ReadInt( "System", "EnableShareMem" ) ;
     Log::SaveLog( CONFIG_LOGFILE, "Load WorldInfo.ini ...Only OK! " ) ;
 
 __LEAVE_FUNCTION

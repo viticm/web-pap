@@ -3,17 +3,17 @@
 #include "ODBCInterface.h"
 #include "TimeManager.h"
 
-DBManager *g_pDBManager = NULL;
+DBManager *g_pDBManager = NULL ;
 
 DBManager::DBManager()
 {
-    mCharDBInterface = new ODBCInterface();
-    m_Active = TRUE;
+    mCharDBInterface = new ODBCInterface() ;
+    m_Active = TRUE ;
 }
 
 DBManager::~DBManager()
 {
-    SAFE_DELETE(mCharDBInterface);
+    SAFE_DELETE( mCharDBInterface ) ;
 }
 
 
@@ -85,17 +85,18 @@ VOID DBManager::run()
     __LEAVE_FUNCTION
 }
 
-ODBCInterface*    DBManager::GetInterface(DB_NAMES name)
+ODBCInterface* DBManager::GetInterface( DB_NAMES name )
 {
     __ENTER_FUNCTION
         
-        switch(name) 
+        switch( name ) 
         {
         case CHARACTER_DATABASE:
-            return mCharDBInterface;
-            break;
+            mCharDBInterface->Clear() ;
+            return mCharDBInterface ;
+            break ;
         default:
-            return NULL;
+            return NULL ;
 
         }
 

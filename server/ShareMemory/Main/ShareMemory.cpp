@@ -406,7 +406,6 @@ BOOL ShareMemory::NewStaticManager()
         
         }
 
-        DBGeneralSet::GetValue( WORLD_ID ) ;
         return TRUE ;
 
     __LEAVE_FUNCTION    
@@ -430,6 +429,9 @@ BOOL ShareMemory::InitStaticManager()
         }
         else
             Log::SaveLog( "ShareMemory", "g_pDBManager->Init()...OK" ) ;
+        
+        bRet = CheckWorldIDZoneID() ;
+        Assert( bRet ) ;
 
         for ( UINT i = 0; i < g_Config.m_ShareMemInfo.m_SMUObjCount; i++ )
         {
@@ -597,7 +599,31 @@ BOOL ShareMemory::DelStaticManager()
         return FALSE;
 }
 
-BOOL    CheckSaveAllFile()
+BOOL ShareMemory::CheckWorldIDZoneID()
+{
+    INT iWorldId = DBGeneralSet::GetValue( WORLD_ID ) ;
+    INT iZoneId  = DBGeneralSet::GetValue( ZONE_ID ) ;
+    AssertEx( ERROR_VALUE != iWorldId, "DBGeneralSet::GetValue( WORLD_ID ) Failed" ) ;
+    AssertEx( ERROR_VALUE != iZoneId, "DBGeneralSet::GetValue( ZONE_ID ) Failed" ) ;
+    Log::SaveLog( "ShareMemory", "DBGeneralSet::GetValue( WORLD_ID ) = %d Successful!", iWorldId ) ;
+    Log::SaveLog( "ShareMemory", "DBGeneralSet::GetValue( ZONE_ID ) = %d Successful!", iZoneId ) ;
+
+    if ( iWorldId == g_Config.m_WorldInfo.m_WorldID && iZoneId == g_Config.m_WorldInfo.m_ZoneID )
+    {
+        Log::SaveLog( "ShareMemory", "Config::WorldID = %d, Config::ZoneID = %d......DB::WorldID = %d, DB::ZoneID = %d...Compare Pass",
+            g_Config.m_WorldInfo.m_WorldID, g_Config.m_WorldInfo.m_ZoneID, iWorldId, iZoneId ) ;
+        return TRUE ;
+    }
+    else
+    {
+        Log::SaveLog( "ShareMemory", "Config::WorldID = %d, Config::ZoneID = %d......DB::WorldID = %d, DB::ZoneID = %d...Compare Can't Pass",
+            g_Config.m_WorldInfo.m_WorldID, g_Config.m_WorldInfo.m_ZoneID, iWorldId, iZoneId ) ;
+        return FALSE ;
+    }
+
+}
+
+BOOL CheckSaveAllFile()
 {
     __ENTER_FUNCTION
     
@@ -614,7 +640,7 @@ BOOL    CheckSaveAllFile()
         return FALSE ;
 }
 
-BOOL    CheckExitFile()
+BOOL CheckExitFile()
 {
     __ENTER_FUNCTION
 
@@ -631,7 +657,6 @@ BOOL    CheckExitFile()
 
         return FALSE ;
 }
-
 
 VOID INTHandler( INT )
 {
