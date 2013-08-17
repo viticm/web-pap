@@ -1,12 +1,13 @@
 # @desc makefile for ShareMemory
 # @author viticm<viticm.ti@gmail.com>
-# @date 2013-08-16 16:18:26
+# @date 2013-08-17 10:41:56
 include ../../premake.mk
 
 CFLAGS  = -I$(BASEDIR)/ShareMemory/Main -I$(BASEDIR)/ShareMemory/DB -I$(BASEDIR)/ShareMemory/ShareData -I$(BASEDIR)/ShareMemory $(SERVER_BASE_INCLUDES) -I$(BASEDIR)/Server/SMU -I$(BASEDIR)/Server/Other
 LDFLAGS =
 DIRS =  
-OBJS =  ShareDBManager.o
+OBJS =  ShareDBManager.o \
+		DBGeneralSet.o
 
 debug:$(OBJS)
 	for dir in $(DIRS); do \

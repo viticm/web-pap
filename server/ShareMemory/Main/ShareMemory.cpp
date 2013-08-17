@@ -9,6 +9,7 @@
 #include "ODBCInterface.h"
 #include "CommandThread.h"
 #include "PlayerShopDefine.h"
+#include "DBGeneralSet.h"
 
 #if defined ( __LINUX__ )
 #include <stdlib.h>
@@ -405,6 +406,7 @@ BOOL ShareMemory::NewStaticManager()
         
         }
 
+        DBGeneralSet::GetValue( WORLD_ID ) ;
         return TRUE ;
 
     __LEAVE_FUNCTION    

@@ -20,10 +20,6 @@ class DBGeneralSet
 public:
     DBGeneralSet() ;
     virtual ~DBGeneralSet() ;
-    INT GetValue( const CHAR* szKeyName ) ;
-
-private:
-    CHAR m_szSqlStr[ MAX_SQL_LENGTH ] ;
-
+    static INT GetValue( const CHAR* szKeyName ) ;
 } ;
 
