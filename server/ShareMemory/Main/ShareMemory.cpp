@@ -432,6 +432,7 @@ BOOL ShareMemory::InitStaticManager()
         
         bRet = CheckWorldIDZoneID() ;
         Assert( bRet ) ;
+        Log::SaveLog( "ShareMemory", "heckWorldIDZoneID()...OK" ) ;
 
         for ( UINT i = 0; i < g_Config.m_ShareMemInfo.m_SMUObjCount; i++ )
         {
