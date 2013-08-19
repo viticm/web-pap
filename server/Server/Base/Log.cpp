@@ -143,7 +143,7 @@ __ENTER_FUNCTION
             memset( szTime, 0, sizeof( szTime ) );
             memset( szCurrentFormatTime, 0, sizeof( szCurrentFormatTime ) ) ;
             sprintf( szCurrentFormatTime, "%s", g_pTimeManager->GetCurrentFormatTime() ) ;
-            sprintf( szTime, " (%d)(T0=%s T1=%.4f)%s",
+            sprintf( szTime, " ( %d )( T0 = %s T1 = %.4f )%s",
                 MyGetCurrentThreadID(), szCurrentFormatTime,
                 (FLOAT)(g_pTimeManager->RunTime())/1000.0, LF );
             strcat( buffer, szTime ) ;
@@ -270,7 +270,7 @@ __ENTER_FUNCTION
             memset( szTime, 0, sizeof( szTime ) );
             memset( szCurrentFormatTime, 0, sizeof( szCurrentFormatTime ) ) ;
             sprintf( szCurrentFormatTime, "%s", g_pTimeManager->GetCurrentFormatTime() ) ;
-            sprintf( szTime, " (%d)(T0=%s T1=%.4f)%s",
+            sprintf( szTime, " ( %d )( T0 = %s T1 = %.4f )%s",
                 MyGetCurrentThreadID(), szCurrentFormatTime,
                 (FLOAT)(g_pTimeManager->RunTime())/1000.0, LF );
             strcat( szBuffer, szTime ) ;
@@ -291,7 +291,7 @@ __ENTER_FUNCTION
     }
     _MY_CATCH
     {
-        printf("a big error here");
+        printf( "a big error here" ) ;
     }
 
     g_log_lock.Unlock( ) ;
