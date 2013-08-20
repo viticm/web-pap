@@ -3,20 +3,19 @@
 #include "Type.h"
 
 
-#define CHAR_TABLE        "t_char"
-#define ITEM_TABLE        "t_iteminfo"
-#define SKILL_TABLE        "t_skill"
-#define XINFA_TABLE        "t_xinfa"
-#define ABILITY_TABLE    "t_ability"
-#define TASK_TABLE        "t_mission"
-#define RELATION_TABLE    "t_relation"
-#define IMPACT_TABLE    "t_impact"
-#define PET_TABLE        "t_pet"
-#define ISERIAL_TABLE    "t_itemkey"
-#define MAIL_TABLE        "t_mail"
-#define GUILD_TABLE        "t_guild"
-#define SHOP_TABLE        "WX_Shop"
-
+#define CHAR_TABLE            "t_char"
+#define ITEM_TABLE            "t_iteminfo"
+#define SKILL_TABLE           "t_skill"
+#define XINFA_TABLE           "t_xinfa"
+#define ABILITY_TABLE         "t_ability"
+#define TASK_TABLE            "t_mission"
+#define RELATION_TABLE        "t_relation"
+#define IMPACT_TABLE          "t_impact"
+#define PET_TABLE             "t_pet"
+#define ISERIAL_TABLE         "t_itemkey"
+#define MAIL_TABLE            "t_mail"
+#define GUILD_TABLE           "t_guild"
+#define PLAYER_SHOP_TABLE     "t_pshop_new"
 
 
 extern CHAR* LoadCharList;
@@ -97,5 +96,9 @@ extern CHAR* DeleteWorldGuildInfo;
 
 extern CHAR* LoadWebShopInfo;
 extern CHAR* SaveWebShopInfo;
+
+// player shop
+extern CHAR* LoadPlayerShopInfo ;
+extern CHAR* SavePlayerShopInfo ;
 
 #endif

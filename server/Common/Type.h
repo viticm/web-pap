@@ -31,33 +31,32 @@
 ///////////////////////////////////////////////////////////////////////
 
 
-typedef SHORT    ID_t;
-typedef USHORT    SMUID_t;
-typedef    ULONG    SM_KEY;
-typedef UINT    ObjID_t;            //场景中固定的所有OBJ拥有不同的ObjID_t
-                                    //
+typedef SHORT    ID_t ;
+typedef USHORT   SMUID_t ;
+typedef ULONG    SM_KEY ;
+typedef UINT     ObjID_t ;            // 场景中固定的所有OBJ拥有不同的ObjID_t
 
-typedef INT                PrescriptionID_t;    //合成配方的每一条有一个 ID
-typedef ID_t            AbilityID_t;        //生活技能 ID 号
-typedef ID_t            TeamID_t;            //队伍ID
-typedef ID_t            SceneID_t;            //场景ID
-typedef ID_t            PlayerID_t;            //连接玩家
-typedef ID_t            ZoneID_t;            //区域
-typedef ID_t            SkillID_t;            //技能
-typedef ID_t            ActionID_t;            //动作的ID
-typedef ID_t            ImpactID_t;            //效果ID
-typedef ID_t            ImpactClassID_t;    //效果分组ID
-typedef ID_t            Coord_t;            //网格坐标点
-typedef INT                ScriptID_t;            //脚本
-typedef INT                MissionID_t;        //任务
-typedef ID_t            GroupID_t;            //团ID
-typedef ID_t            ChannelID_t;        //频道ID
-typedef ID_t            CooldownID_t;   //冷却时间ID
-//typedef ID_t            XinFaID_t;            //心法ID
-typedef ID_t            CampID_t;                //阵营ID
-typedef ID_t            MenPaiID_t;            //门派ID
-typedef ID_t            GuildID_t;            //帮派ID
-typedef ID_t            CityID_t;            //城市ID
+typedef INT             PrescriptionID_t ;    // 合成配方的每一条有一个 ID
+typedef ID_t            AbilityID_t ;         // 生活技能 ID 号
+typedef ID_t            TeamID_t ;            // 队伍ID
+typedef ID_t            SceneID_t ;           // 场景ID
+typedef ID_t            PlayerID_t ;          // 连接玩家
+typedef ID_t            ZoneID_t ;            // 区域
+typedef ID_t            SkillID_t ;           // 技能
+typedef ID_t            ActionID_t ;          // 动作的ID
+typedef ID_t            ImpactID_t ;          // 效果ID
+typedef ID_t            ImpactClassID_t ;     // 效果分组ID
+typedef ID_t            Coord_t ;             // 网格坐标点
+typedef INT             ScriptID_t ;          // 脚本
+typedef INT             MissionID_t ;         // 任务
+typedef ID_t            GroupID_t ;           // 团ID
+typedef ID_t            ChannelID_t ;         // 频道ID
+typedef ID_t            CooldownID_t ;        // 冷却时间ID
+//typedef ID_t            XinFaID_t;           //心法ID
+typedef ID_t            CampID_t ;            // 阵营ID
+typedef ID_t            MenPaiID_t ;          // 门派ID
+typedef ID_t            GuildID_t ;           // 帮派ID
+typedef ID_t            CityID_t ;            // 城市ID
 
 
 typedef INT                Time_t; //时间类型

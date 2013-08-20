@@ -426,3 +426,21 @@ Item_5,ItemCount_5 from %s where UserId=%d and IsSucceed=%d order by CreateTime"
 */
 CHAR*    SaveWebShopInfo = 
 "update %s set IsSucceed=%d where Id=%d";
+
+/**
+ *    加载玩家商店信息
+ */
+CHAR* LoadPlayerShopInfo =
+"SELECT `sid`, `poolid`, `shopguid`, `type`, `stat`, `maxbmoney`, `basemoney`, `createtime`, `shopname`, \
+`shopdesc`, `ownername`, `ownerguid`, `isopen`, `sale`, `saleprice`, `partner`, `recoder`, `partnum`, \
+`subtype`, `profit`, `freeze`, `buydesc`, `buyreserve` \
+FROM `%s` WHERE `isvalid` = 1" ;
+
+/**
+ *    保存玩家商店信息
+ */
+CHAR* SavePlayerShopInfo =
+"save_shopinfo_new @psid = %d, @ppoolid = %d, @pshopguid = \'%s\', @ptype = %d, @pstat = %d, @pmaxbmoney = %d, \
+@pbasemoney = %d, @pprofit = %d, @pcreatetime = %d, pshopname = \'%s\', @pshopdesc = \'%s\', @pownername = \'%s\', \
+@pownerguid = %d, @pisopen = %d, @psale = %d, @psaleprice = %d, @ppartner = \'%s\', @pisvalid = %d, \
+@ppartnum = %d, @psubtype = %d, @pfreeze = %d, @pbuydesc = \'%s\', @pbuyreserve = \'%s\'" ;

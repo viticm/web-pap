@@ -489,6 +489,29 @@ enum
 #define MAX_USER_IN_GUILD 160
 #define USER_ARRAY_SIZE ( MAX_USER_IN_GUILD + MAX_PROPOSER_IN_GUILD )
 
+/* 玩家商店 */
+
+// 玩家商店GUID最大长度
+#define MAX_PLAYER_SHOP_GUID_SIZE 50
+
+// 玩家商店名称最大长度
+#define MAX_PLAYER_SHOP_NAME_SIZE 50
+
+// 玩家商店描述最大长度
+#define MAX_PLAYER_SHOP_DESC_SIZE 50
+
+// 玩家商店伙伴信息最大长度
+#define MAX_PLAYER_SHOP_PARTNER_SIZE ( 1024 * 2 )
+
+// 玩家商店recoder最大长度
+#define MAX_PLAYER_SHOP_RECODER_SIZE ( 1024 * 3 )
+
+//
+#define MAX_PLAYER_SHOP_BUY_DESC_SIZE 80
+
+//
+#define MAX_PLAYER_SHOP_BUY_RESERVER_SIZE 50
+
 #define MAX_SYSTEM_MSG_SIZE 256
 // 友好度上限
 #define MAX_FRIEND_POINT 9999
