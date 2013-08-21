@@ -550,25 +550,25 @@ ID_t Config::Key2ServerID(SM_KEY key) const
 {
     __ENTER_FUNCTION
     
-        Assert(key>0);
+        Assert( 0 < key ) ;
         
-            for( UINT i=0; i<m_ServerInfo.m_ServerCount; i++ )
+            for ( UINT i = 0; i < m_ServerInfo.m_ServerCount; i++ )
             {
 
-                if(m_ServerInfo.m_pServer[i].m_EnableShareMem)
+                if ( m_ServerInfo.m_pServer[i].m_EnableShareMem )
                 {
-                    if(m_ServerInfo.m_pServer[i].m_ItemSerialKey == key)
+                    if( m_ServerInfo.m_pServer[i].m_ItemSerialKey == key )
                     {
-                        return    m_ServerInfo.m_pServer[i].m_ServerID;
+                        return m_ServerInfo.m_pServer[i].m_ServerID ;
                     }
                 }
                 
             }
 
-    return -1;
+        return -1 ;
         
     __LEAVE_FUNCTION
 
-    return -1;    
+        return -1 ;
 }
 

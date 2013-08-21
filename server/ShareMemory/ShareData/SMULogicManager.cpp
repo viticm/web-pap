@@ -620,7 +620,7 @@ BOOL SMULogicManager< PlayerShopSM >::DoSaveAll()
         Assert( pInterface ) ;
     
         DBPlayerShopInfo PlayerShopInfoObject( pInterface ) ;
-        PlayerShopInfoObject.SetServerID( ServerID ) ;
+        //PlayerShopInfoObject.SetServerID( ServerID ) ;
 
         BOOL bRet = PlayerShopInfoObject.Save( m_PoolSharePtr ) ;
         if ( bRet )
@@ -728,7 +728,7 @@ BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
         Assert( pInterface ) ;
 
         DBPlayerShopInfo PlayerShopInfoObject( pInterface ) ;
-        PlayerShopInfoObject.SetServerID( ServerID ) ;
+        //PlayerShopInfoObject.SetServerID( ServerID ) ;
 
         bRet = PlayerShopInfoObject.Load();
         if ( bRet )
@@ -755,7 +755,7 @@ BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
 
 
 template<>
-BOOL SMULogicManager<ItemSerialKeySMU>::DoSaveAll()
+BOOL SMULogicManager< ItemSerialKeySMU >::DoSaveAll()
 {
     __ENTER_FUNCTION
 

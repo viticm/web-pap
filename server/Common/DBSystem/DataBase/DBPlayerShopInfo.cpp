@@ -98,8 +98,8 @@ BOOL DBPlayerShopInfo::Save( VOID* pSource )
                 UseStats = pSMU->GetUseStatus( SM_C_READ ) ;
         
                 pSMU->Lock( SM_C_READ ) ;
-                PLAYER_SHOP_DB* pPlayerShop = &( pSMU->m_PlayerShopSM );
-                if ( NULL = pPlayerShop )
+                PLAYER_SHOP_DB* pPlayerShop = &( pSMU->m_PlayerShop );
+                if ( NULL == pPlayerShop )
                 {
                     pSMU->UnLock( SM_C_READ ) ;
                     Assert( FALSE ) ;
@@ -145,7 +145,7 @@ BOOL DBPlayerShopInfo::Save( VOID* pSource )
                                ( ( PLAYER_SHOP_DELETE != UseStats ) ? 1 : 0 ),
                                SavePlayerShop.m_iPartNum,
                                SavePlayerShop.m_iSubType,
-                               SavePlayerShop.m_iFreeze )
+                               SavePlayerShop.m_iFreeze ) ;
 
                     if ( !ODBCBase::LongSave( &Result ) )
                         return FALSE ;
@@ -180,8 +180,8 @@ BOOL DBPlayerShopInfo::ParseResult( VOID* pResult )
         {
             case DB_LOAD:
             {
-                SMUPool<GuildSMU>* pPoolPtr = static_cast<SMUPool<GuildSMU>*>(pResult);
-                Assert(pPoolPtr);
+                SMUPool< PlayerShopSM >* pPoolPtr = static_cast< SMUPool < PlayerShopSM >* >( pResult ) ;
+                Assert( pPoolPtr ) ;
                 enum 
                 {
                     DB_SID    =    1,
@@ -224,7 +224,7 @@ BOOL DBPlayerShopInfo::ParseResult( VOID* pResult )
                     if ( i >= iSmuCount )
                         Assert( FALSE ) ;
 
-                    iPlayerShopIndex = mInterface->GetUInt( DB_SID, ErrorCode ) ;
+                    iPlayerShopIndex = mInterface->GetUInt( DB_SID, iErrorCode ) ;
 
                     if ( iPlayerShopIndex >= iSmuCount )
                         Assert( FALSE ) ;
@@ -235,7 +235,7 @@ BOOL DBPlayerShopInfo::ParseResult( VOID* pResult )
                         Assert( pSMU ) ;
                         return FALSE ;
                     }
-                    PLAYER_SHOP_DB* pPlayerShop = &pSMU->m_PlayerShopSM ;
+                    PLAYER_SHOP_DB* pPlayerShop = &pSMU->m_PlayerShop ;
                     Assert( pPlayerShop ) ;
                 
                     pPlayerShop->m_iSID         = mInterface->GetInt( DB_SID, iErrorCode ) ;
