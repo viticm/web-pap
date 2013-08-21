@@ -279,6 +279,18 @@ BOOL ShareMemory::DoWork()
                         break ;
 
                     }
+                case ST_GDATA_SMU:
+                    {
+                        SMULogicManager< GlobalDataSMU >* pGlobalDataSMULogicMgr = static_cast< SMULogicManager< GlobalDataSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                        if ( pGlobalDataSMULogicMgr )
+                            pGlobalDataSMULogicMgr->HeartBeat() ;
+                        else
+                        {
+                            AssertEx( FALSE, "Runtime Type error" ) ;
+                        }
+                        break ;
+
+                    }
                 case ST_USERDATA_SMU:
                     {
                         AssertEx( FALSE, "Unknow SMU Type" ) ;
@@ -383,6 +395,18 @@ BOOL ShareMemory::NewStaticManager()
                     m_SMULogicManager[ i ].m_Type    =    ST_PSHOP_SMU ;    
                 }
                     break ;
+                case ST_GDATA_SMU:
+                {
+                    m_SMUPool[ i ].m_Pool = new SMUPool< GlobalDataSMU >() ;
+                    Assert( m_SMUPool[ i ].m_Pool ) ;
+                    Log::SaveLog( "ShareMemory", "new SMUPool< GlobalDataSMU >()...OK" ) ;
+                    m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< GlobalDataSMU >() ;
+                    Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Log::SaveLog( "ShareMemory", "new SMULogicManager< GlobalDataSMU >()...OK" ) ;
+                    m_SMULogicManager[ i ].m_Type    =    ST_GDATA_SMU ;    
+                }
+                    break ;
+
                 case ST_ITEMSERIAL_SMU:
                 {
                     m_SMUPool[ i ].m_Pool = new SMUPool< ItemSerialKeySMU >() ;
@@ -492,6 +516,21 @@ BOOL ShareMemory::InitStaticManager()
                     Assert( bRet ) ;
                 }    
                     break ;
+
+                case ST_GDATA_SMU:
+                {
+                    SMUPool< GlobalDataSMU >* pGlobalDataSMUPool = static_cast< SMUPool< GlobalDataSMU >* >( m_SMUPool[ i ].m_Pool ) ;
+                    Assert( pGlobalDataSMUPool ) ;
+                    SM_KEY key = m_SMUPool[ i ].m_Data.m_Key ;
+                    bRet = pGlobalDataSMUPool->Init( 1, key, SMPT_SHAREMEM ) ;
+                    Assert( bRet ) ;
+                    SMULogicManager< GlobalDataSMU >* pGlobalDataSMULogicMgr = static_cast< SMULogicManager< GlobalDataSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Assert( pGlobalDataSMULogicMgr ) ;
+                    bRet = pGlobalDataSMULogicMgr->Init( pGlobalDataSMUPool ) ;
+                    Assert( bRet ) ;
+                }
+                    break ;
+
                 case ST_ITEMSERIAL_SMU:
                 {
                     SMUPool< ItemSerialKeySMU >* pItemSerialSMUPool = static_cast< SMUPool< ItemSerialKeySMU >* >( m_SMUPool[ i ].m_Pool ) ;
@@ -505,6 +544,7 @@ BOOL ShareMemory::InitStaticManager()
                     Assert( bRet ) ;
                 }
                     break ;
+
                 case ST_USERDATA_SMU:
                     AssertEx( FALSE, "Unimplement Type: ST_USERDATA_SMU" ) ;
                     break ;
@@ -569,6 +609,18 @@ BOOL ShareMemory::DelStaticManager()
 
                 }
                     break ;
+                case ST_GDATA_SMU:
+                {
+                    SMUPool< GlobalDataSMU >* pSMUPool = 
+                        static_cast< SMUPool< GlobalDataSMU >* >( m_SMUPool[ i ].m_Pool ) ;
+                    SMULogicManager< GlobalDataSMU >* pSMULogicMgr = 
+                        static_cast< SMULogicManager< GlobalDataSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+
+                    SAFE_DELETE( pSMUPool ) ;
+                    SAFE_DELETE( pSMULogicMgr ) ;
+                }
+                    break ;
+                
                 case ST_ITEMSERIAL_SMU:
                 {
                     SMUPool< ItemSerialKeySMU >* pSMUPool = 

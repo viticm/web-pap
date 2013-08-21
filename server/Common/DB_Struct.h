@@ -838,7 +838,7 @@ struct _WEB_SHOPINFO
 
 struct _PRIVATE_INFO  // 最大不能超过512
 {
-    _WEB_SHOPINFO wsInfo[ 2 ] ; // 104个char
+    //_WEB_SHOPINFO wsInfo[ 2 ] ; // 104个char
 } ;
 
 #define MAX_PRIVATE_INFO_SIZE (512)
@@ -1563,6 +1563,86 @@ struct ItemSerialKeySMU
     VOID Init()
     {
         m_ItemSerial = 0 ;
+    }
+} ;
+
+struct GlobalDataSMU
+{
+    SMUHead m_SMUHead ;
+    UINT    m_uGlobalData ;
+
+    VOID Lock( CHAR Type )
+    {
+        sm_lock( m_SMUHead.flag, Type ) ;
+    }
+
+    VOID UnLock( CHAR Type )
+    {
+        sm_unlock( m_SMUHead.flag, Type ) ;
+    }
+
+    VOID SetPoolID( UINT poolID )
+    {
+        m_SMUHead.PoolId = poolID ;
+    }    
+
+    UINT GetPoolID()
+    {
+        return m_SMUHead.PoolId ;
+    }
+
+    BOOL SetUseStatus( INT Use, CHAR Type )
+    {
+        Lock( Type ) ;
+        m_SMUHead.UseStatus = Use ;
+        UnLock( Type ) ;
+        return TRUE ;
+    }
+
+    INT GetUseStatus( CHAR Type )
+    {
+        INT iRet ;
+        Lock( Type ) ;
+        iRet = m_SMUHead.UseStatus ;
+        UnLock( Type ) ;
+        return iRet ;
+    }
+
+    UINT GetTime2Save( CHAR Type )
+    {
+        UINT uTime ;
+        Lock( Type ) ;
+        uTime = m_SMUHead.SaveTime ;
+        UnLock( Type ) ;
+        return uTime ;
+    }
+
+    VOID SetTime2Save( UINT uTime, CHAR Type )
+    {
+        Lock( Type ) ;
+        m_SMUHead.SaveTime = uTime ;
+        UnLock( Type ) ;
+    }
+
+    UINT GetData( CHAR Type )
+    {
+        UINT uData ;
+        Lock( Type ) ;
+        uData = m_uGlobalData ;
+        UnLock( Type ) ;
+        return uData ;
+    }
+
+    VOID SetData( CHAR Type, UINT uData )
+    {
+        Lock( Type ) ;
+        m_uGlobalData = uData ;
+        UnLock( Type ) ;
+    }
+
+    VOID Init()
+    {
+        m_uGlobalData = 0 ;
     }
 } ;
 

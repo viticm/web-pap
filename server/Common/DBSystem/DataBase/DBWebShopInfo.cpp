@@ -4,7 +4,7 @@
 #include "SqlTemplate.h"
 #include "DB_Struct.h"
 #include "DBManager.h"
-
+/**
 DBWebShopInfo::DBWebShopInfo(ODBCInterface* pInterface)
 {
     mDBName = CHARACTER_DATABASE;
@@ -205,3 +205,4 @@ UINT DBWebShopInfo::GetWebShopInfoId()
 {
     return m_Id;
 }
+**/

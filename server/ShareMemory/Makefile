@@ -1,6 +1,6 @@
 # @desc makefile for ShareMemory
 # @author viticm<viticm.ti@gmail.com>
-# @date 2013-08-17 10:41:56
+# @date 2013-08-21 17:42:26
 include ../premake.mk
 
 CFLAGS = -I$(BASEDIR)/ShareMemory/Main -I$(BASEDIR)/ShareMemory/DB -I$(BASEDIR)/ShareMemory/ShareData -I$(BASEDIR)/ShareMemory $(SERVER_BASE_INCLUDES) $(SERVER_BASE_INCLUDES) -I$(BASEDIR)/Server/SMU $(MYSQL_INCLUDES) -I$(BASEDIR)/Server/Other
@@ -27,6 +27,7 @@ OBJS =  $(BASEDIR)/Common/Assertx.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBCreateCharOp.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBDeleteCharOp.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBEquipBaseList.o \
+		$(BASEDIR)/Common/DBSystem/DataBase/DBGlobalData.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBGuildInfo.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBImpactList.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBInterface.o \
@@ -35,6 +36,7 @@ OBJS =  $(BASEDIR)/Common/Assertx.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBMailInfo.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBManager.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBPetList.o \
+		$(BASEDIR)/Common/DBSystem/DataBase/DBPlayerShopInfo.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBPrivateInfo.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBRelationList.o \
 		$(BASEDIR)/Common/DBSystem/DataBase/DBSkillList.o \

@@ -11,6 +11,7 @@
 #include "DBMailInfo.h"
 #include "DBGuildInfo.h"
 #include "DBPlayerShopInfo.h"
+#include "DBGlobalData.h"
 
 using namespace PLAYER_SHOP ;
 
@@ -715,12 +716,14 @@ BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
         }
 
         SM_KEY key  = m_PoolSharePtr->GetKey();
+        /**
         ID_t ServerID = g_Config.Key2ServerID( key ) ;
     
         if ( INVALID_ID == ServerID )
         {
             AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
         }
+        **/
 
         BOOL bRet = FALSE ;
 
@@ -752,6 +755,171 @@ BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
         return FALSE ;
 }
 //////////////////////////////////////////////////////////////////////////
+template<>
+BOOL SMULogicManager< GlobalDataSMU >::DoSaveAll()
+{
+    __ENTER_FUNCTION
+
+        //存盘统计数据 
+    
+        UINT    uData = 0 ;
+        UINT    uTime  = g_pTimeManager->RunTime() ;
+        if ( !m_PoolSharePtr )
+        {
+            Assert( m_PoolSharePtr ) ;
+            return FALSE ;
+        }
+        INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize() ;
+        Assert( 1 == MaxPoolSize ) ;
+        GlobalDataSMU* pSMU = m_PoolSharePtr->GetPoolObj( 0 ) ;
+        if ( !pSMU )
+        {
+            Assert( pSMU ) ;
+            return FALSE ;
+        }
+        uData = pSMU->GetData( SM_C_READ ) ;
+
+        SM_KEY    key            = m_PoolSharePtr->GetKey() ;
+        /**
+        ID_t      ServerID       = g_Config.Key2ServerID( key ) ;
+
+        if ( INVALID_ID == ServerID )
+        {
+            AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
+        }
+        **/
+        ODBCInterface* pInterface = g_pDBManager->GetInterface( CHARACTER_DATABASE ) ;
+        Assert( pInterface ) ;
+        DBGlobalData GlobalDataObject( pInterface ) ;
+        GlobalDataObject.SetPoolID( 100 ) ;
+
+        INT ErrorCode ;
+        if ( GlobalDataObject.Save( &uData ) )
+        {
+            GlobalDataObject.ParseResult( &ErrorCode ) ;
+        }
+        else
+        {
+            Log::SaveLog( "ShareMemory", "GlobalData Save...Error!" ) ;
+            Assert( FALSE ) ;
+        }
+
+    
+        Log::SaveLog( "ShareMemory", "ItemSerial Save...OK!" ) ;
+
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+
+}
+
+#define SERIALKEYTIME 30000
+
+template<>
+BOOL SMULogicManager< GlobalDataSMU >::DoNormalSave()
+{
+    __ENTER_FUNCTION
+
+        /*
+        *    临时存文件方法
+        */
+        UINT uTime = g_pTimeManager->RunTime() ;
+        if ( uTime > m_FinalSaveTime + SERIALKEYTIME )
+        {
+            if ( m_bReady )
+            {
+                DoSaveAll() ;
+            }
+            m_FinalSaveTime = uTime ;
+        }
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+
+}
+
+template<>
+BOOL SMULogicManager< GlobalDataSMU >::DoClear()
+{
+    __ENTER_FUNCTION
+
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+}
+
+template<>
+BOOL SMULogicManager< GlobalDataSMU >::DoPostInit()
+{
+    __ENTER_FUNCTION
+
+#define SERIAL_GROWUP 10000
+
+        if ( !m_PoolSharePtr )
+        {    
+            Assert( m_PoolSharePtr ) ;
+            return FALSE ;
+        }
+        
+        if ( CMD_MODE_CLEARALL == g_CmdArgv )
+        {
+            return TRUE ;
+        }
+
+        m_FinalSaveTime = g_pTimeManager->RunTime() ;
+        INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize() ;
+        SM_KEY key      = m_PoolSharePtr->GetKey() ;
+        
+        GlobalDataSMU* pSMU = m_PoolSharePtr->GetPoolObj( 0 ) ;
+        if ( !pSMU )
+        {
+            Assert( pSMU ) ;
+            return FALSE ;
+        }
+        
+        /**
+        ID_t ServerID = g_Config.Key2ServerID( key ) ;
+
+        if ( INVALID_ID == ServerID )
+        {
+            AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
+        }
+        **/
+        ODBCInterface* pInterface = g_pDBManager->GetInterface( CHARACTER_DATABASE ) ;
+        Assert( pInterface ) ;
+        UINT uData = 100 ;
+        DBGlobalData GlobalDataObject( pInterface ) ;
+        GlobalDataObject.SetPoolID( 100 ) ;
+        
+        if ( GlobalDataObject.Load() )
+        {
+            GlobalDataObject.ParseResult( &uData ) ;
+        }
+        if ( 0 < uData )
+        {
+            pSMU->SetData( SM_C_WRITE, 100 ) ;
+            uData = pSMU->GetData( SM_C_READ ) ;
+        }
+        else
+        {
+            Assert( FALSE ) ;
+        }
+        m_bReady = TRUE ;
+        
+        Log::SaveLog( "ShareMemory", "PostInit ItemSerialSMU=%d from database Ok!", key ) ;
+
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+}
 
 
 template<>
@@ -781,7 +949,7 @@ BOOL SMULogicManager< ItemSerialKeySMU >::DoSaveAll()
         SM_KEY    key            = m_PoolSharePtr->GetKey() ;
         ID_t      ServerID       = g_Config.Key2ServerID( key ) ;
 
-        if ( ServerID == INVALID_ID )
+        if ( INVALID_ID == ServerID )
         {
             AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
         }
