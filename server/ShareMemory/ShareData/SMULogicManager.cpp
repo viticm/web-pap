@@ -805,7 +805,7 @@ BOOL SMULogicManager< GlobalDataSMU >::DoSaveAll()
         }
 
     
-        Log::SaveLog( "ShareMemory", "ItemSerial Save...OK!" ) ;
+        Log::SaveLog( "ShareMemory", "GlobalData Save...OK!" ) ;
 
         return TRUE ;
 
