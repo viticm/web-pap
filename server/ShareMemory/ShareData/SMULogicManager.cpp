@@ -10,6 +10,7 @@
 #include "DBItemSerial.h"
 #include "DBMailInfo.h"
 #include "DBGuildInfo.h"
+#include "DBPlayerShopInfo.h"
 
 using namespace PLAYER_SHOP ;
 
@@ -593,52 +594,50 @@ BOOL SMULogicManager< MailSMU >::DoPostInit()
 }
 
 template<>
-BOOL    SMULogicManager< PlayerShopSM >::DoSaveAll()
+BOOL SMULogicManager< PlayerShopSM >::DoSaveAll()
 {
     __ENTER_FUNCTION
 
-    //存盘统计数据 
-    /**
-    INT    SMUCount        = 0 ;
-    INT    TotalSMUSize    = 0 ;
-    UINT   uTime           = g_pTimeManager->RunTime() ;
+        //存盘统计数据 
+        INT    SMUCount        = 0 ;
+        INT    TotalSMUSize    = 0 ;
+        UINT   uTime           = g_pTimeManager->RunTime() ;
 
-    if ( !m_PoolSharePtr )
-    {
-        Assert( m_PoolSharePtr ) ;
-        return FALSE ;
-    }
+        if ( !m_PoolSharePtr )
+        {
+            Assert( m_PoolSharePtr ) ;
+            return FALSE ;
+        }
 
-    SM_KEY    key        = m_PoolSharePtr->GetKey();
-    ID_t      ServerID   = g_Config.Key2ServerID( key ) ;
-    if ( INVALID_ID == ServerID )
-    {
-        AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
-    }
+        SM_KEY    key        = m_PoolSharePtr->GetKey();
+        ID_t      ServerID   = g_Config.Key2ServerID( key ) ;
+        if ( INVALID_ID == ServerID )
+        {
+            AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
+        }
 
-    ODBCInterface* pInterface = g_pDBManager->GetInterface( CHARACTER_DATABASE ) ;
-    Assert( pInterface ) ;
+        ODBCInterface* pInterface = g_pDBManager->GetInterface( CHARACTER_DATABASE ) ;
+        Assert( pInterface ) ;
     
-    DBShopInfo ShopInfoObject( pInterface ) ;
-    ShopInfoObject.SetServerID( ServerID ) ;
+        DBPlayerShopInfo PlayerShopInfoObject( pInterface ) ;
+        PlayerShopInfoObject.SetServerID( ServerID ) ;
 
-    BOOL bRet = ShopInfoObject.Save(m_PoolSharePtr);
-    if ( bRet )
-    {
-        bRet = ShopInfoObject.ParseResult( m_PoolSharePtr ) ;//Parse 档案内容
-    }
+        BOOL bRet = PlayerShopInfoObject.Save( m_PoolSharePtr ) ;
+        if ( bRet )
+        {
+            bRet = PlayerShopInfoObject.ParseResult( m_PoolSharePtr ) ;//Parse 档案内容
+        }
 
-    if ( bRet )
-    {
-        Log::SaveLog( "ShareMemory", "End PlayerShopSM_%d SaveAll...OK!", key ) ;
-        Log::SaveLog( "ShareMemory", "SMUCount = %d", SMUCount ) ;
-        Log::SaveLog( "ShareMemory", "TotalSMUSize = %d", TotalSMUSize ) ;
-    }
-    else
-    {
-        Log::SaveLog( "ShareMemory", "End PlayerShopSM_%d SaveAll...Get Errors!", key ) ;
-    }
-    **/
+        if ( bRet )
+        {
+            Log::SaveLog( "ShareMemory", "End PlayerShopSM_%d SaveAll...OK!", key ) ;
+            Log::SaveLog( "ShareMemory", "SMUCount = %d", SMUCount ) ;
+            Log::SaveLog( "ShareMemory", "TotalSMUSize = %d", TotalSMUSize ) ;
+        }
+        else
+        {
+            Log::SaveLog( "ShareMemory", "End PlayerShopSM_%d SaveAll...Get Errors!", key ) ;
+        }
     
         return TRUE ;
 
@@ -688,65 +687,63 @@ template<>
 BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
 {
     __ENTER_FUNCTION
-    //////////////////////////////////////////////////////////////////////////
-    //if(!m_PoolSharePtr)
-    //{    
-    //    Assert(m_PoolSharePtr);
-    //    return FALSE;
-    //}
 
-    //if(g_CmdArgv == CMD_MODE_CLEARALL)
-    //{
-    //    return TRUE;
-    //}
+        if ( !m_PoolSharePtr )
+        {    
+            Assert( m_PoolSharePtr ) ;
+            return FALSE ;
+        }
 
-    //m_FinalSaveTime    =    g_pTimeManager->RunTime();
+        if ( CMD_MODE_CLEARALL == g_CmdArgv )
+        {
+            return TRUE ;
+        }
 
-    //INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize();
+        m_FinalSaveTime = g_pTimeManager->RunTime() ;
 
-    //for(INT iIndex = 0;iIndex<MaxPoolSize;iIndex++)
-    //{
+        INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize() ;
 
-    //    PlayerShopSM* pSMU = m_PoolSharePtr->GetPoolObj(iIndex);
-    //    if(!pSMU)
-    //    {
-    //        Assert(pSMU);
-    //        return FALSE;
-    //    }
+        for ( INT iIndex = 0; iIndex < MaxPoolSize; iIndex++ )
+        {
+            PlayerShopSM* pSMU = m_PoolSharePtr->GetPoolObj( iIndex ) ;
+            if ( !pSMU )
+            {
+                Assert( pSMU ) ;
+                return FALSE ;
+            }
+            pSMU->Init() ;
+        }
 
-    //    pSMU->Init();
-    //}
+        SM_KEY key  = m_PoolSharePtr->GetKey();
+        ID_t ServerID = g_Config.Key2ServerID( key ) ;
+    
+        if ( INVALID_ID == ServerID )
+        {
+            AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
+        }
 
-    //SM_KEY key  = m_PoolSharePtr->GetKey();
-    //ID_t    ServerID            = g_Config.Key2ServerID(key);
-    //
-    //if(ServerID == INVALID_ID)
-    //{
-    //    AssertEx(FALSE,"对应Key的服务器没有EnableShareMemory");
-    //}
+        BOOL bRet = FALSE ;
 
-    //BOOL bRet = FALSE;
+        ODBCInterface* pInterface = g_pDBManager->GetInterface( CHARACTER_DATABASE ) ;
+        Assert( pInterface ) ;
 
-    //ODBCInterface* pInterface=     g_pDBManager->GetInterface(CHARACTER_DATABASE);
-    //Assert(pInterface);
+        DBPlayerShopInfo PlayerShopInfoObject( pInterface ) ;
+        PlayerShopInfoObject.SetServerID( ServerID ) ;
 
-    //DBShopInfo    ShopInfoObject(pInterface);
-    //ShopInfoObject.SetServerID(ServerID);
-
-    //bRet = ShopInfoObject.Load();
-    //if(bRet)
-    //{
-    //    bRet  =    ShopInfoObject.ParseResult(m_PoolSharePtr);//Parse 档案内容
-    //}
-    //if(!bRet)
-    //{
-    //    Log::SaveLog("./Log/ShareMemory.log","PostInit PlayerShopSM_%d from database fails",key);
-    //}
-    //if(bRet)
-    //{
-    //    m_bReady = TRUE;
-    //    Log::SaveLog("./Log/ShareMemory.log","PostInit PlayerShopSM_%d from database  Ok!",key);
-    //}
+        bRet = PlayerShopInfoObject.Load();
+        if ( bRet )
+        {
+            bRet = PlayerShopInfoObject.ParseResult( m_PoolSharePtr ) ; // Parse 档案内容
+        }
+        if ( !bRet )
+        {
+            Log::SaveLog( "ShareMemory", "PostInit PlayerShopSM_%d from database fails", key ) ;
+        }
+        if ( bRet )
+        {
+            m_bReady = TRUE;
+            Log::SaveLog( "ShareMemory", "PostInit PlayerShopSM_%d from database  Ok!", key ) ;
+        }
 
         return TRUE ;
 
@@ -758,7 +755,7 @@ BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
 
 
 template<>
-BOOL    SMULogicManager<ItemSerialKeySMU>::DoSaveAll()
+BOOL SMULogicManager<ItemSerialKeySMU>::DoSaveAll()
 {
     __ENTER_FUNCTION
 

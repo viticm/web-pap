@@ -6,6 +6,9 @@
 #include "DBManager.h"
 #include "GameStruct.h"
 #include "SMUManager.h"
+#include "PlayerShopDefine.h"
+
+using namespace PLAYER_SHOP ;
 
 DBPlayerShopInfo::DBPlayerShopInfo( ODBCInterface* pInterface )
 {
@@ -21,7 +24,7 @@ BOOL DBPlayerShopInfo::Load()
     __ENTER_FUNCTION
 
         LONG_DB_QUERY* pQuery = GetLongInterQuery() ;
-        if( !pQuery )
+        if ( !pQuery )
         {
             Assert( FALSE ) ;
         }
@@ -70,8 +73,9 @@ BOOL DBPlayerShopInfo::Save( VOID* pSource )
 
         INT Result;
     
-        SMUPool< PlayerShopSMU >* pPoolPtr = static_cast< SMUPool< PlayerShopSMU >* >( pSource ) ;
+        SMUPool< PlayerShopSM >* pPoolPtr = static_cast< SMUPool< PlayerShopSM >* >( pSource ) ;
         Assert( pPoolPtr ) ;
+
         // 保存玩家商店数据
 
         PLAYER_SHOP_DB SavePlayerShop;
@@ -84,7 +88,7 @@ BOOL DBPlayerShopInfo::Save( VOID* pSource )
             INT UseStats ;
             for (INT i = 0; i < SmuCount; i++ )
             {
-                PlayerShopSMU* pSMU = pPoolPtr->GetPoolObj( i ) ;
+                PlayerShopSM* pSMU = pPoolPtr->GetPoolObj( i ) ;
                 if ( !pSMU )
                 {
                     Assert( pSMU ) ;
@@ -120,34 +124,28 @@ BOOL DBPlayerShopInfo::Save( VOID* pSource )
                     Assert( FALSE ) ;
                 }
                 pQuery->Clear();
-                pQuery->Parse( SaveWorldGuildInfo,
-                               SaveGuild.m_GuildID,
-                               SaveGuild.m_GuildName,
-                               SaveGuild.m_Status,
-                               SaveGuild.m_ChieftainGUID,
-                               SaveGuild.m_nProposerCount,
-                               SaveGuild.m_UserCount,
-                               SaveGuild.m_MaxUserSize,
-                               SaveGuild.m_GuildPoint,
-                               SaveGuild.m_GuildMoney,
-                               SaveGuild.m_CityID,
-                               SaveGuild.m_nTime,
-                               SaveGuild.m_Longevity,
-                               SaveGuild.m_Contribute,
-                               SaveGuild.m_Honor,
-                               SaveGuild.m_nIndustryLevel,
-                               SaveGuild.m_nAgrLevel,
-                               SaveGuild.m_nComLevel,
-                               SaveGuild.m_nDefLevel,
-                               SaveGuild.m_nTechLevel,
-                               SaveGuild.m_nAmbiLevel,
-                               AdminInfo,
-                               SaveGuild.m_GuildDesc,
-                               SaveGuild.m_GuildChiefName,
-                               SaveGuild.m_GuildCreatorName,
-                               SaveGuild.m_GuildLevel,
-                               GuildUser,
-                               ( ( PLAYER_SHOP_DELETE != UseStats ) ? 1 : 0 ) ) ;
+                pQuery->Parse( SavePlayerShopInfo,
+                               SavePlayerShop.m_iSID,
+                               SavePlayerShop.m_iPoolID,
+                               SavePlayerShop.m_szShopGuid,
+                               SavePlayerShop.m_iType,
+                               SavePlayerShop.m_iStat,
+                               SavePlayerShop.m_iMaxbMoney,
+                               SavePlayerShop.m_iBaseMoney,
+                               SavePlayerShop.m_iProfit,
+                               SavePlayerShop.m_iCreateTime,
+                               SavePlayerShop.m_szShopName,
+                               SavePlayerShop.m_szShopDesc,
+                               SavePlayerShop.m_szOwnerName,
+                               SavePlayerShop.m_iOwnerGuid,
+                               SavePlayerShop.m_iIsOpen,
+                               SavePlayerShop.m_iSale,
+                               SavePlayerShop.m_iSalePrice,
+                               SavePlayerShop.m_szPartner,
+                               ( ( PLAYER_SHOP_DELETE != UseStats ) ? 1 : 0 ),
+                               SavePlayerShop.m_iPartNum,
+                               SavePlayerShop.m_iSubType,
+                               SavePlayerShop.m_iFreeze )
 
                     if ( !ODBCBase::LongSave( &Result ) )
                         return FALSE ;
@@ -167,143 +165,130 @@ BOOL DBPlayerShopInfo::Delete()
 {
     __ENTER_FUNCTION
 
-    return TRUE;
+        return TRUE;
 
     __LEAVE_FUNCTION
 
-    return FALSE;
+        return FALSE;
 }
 
-
-
-
-
-BOOL DBPlayerShopInfo::ParseResult(VOID* pResult)
+BOOL DBPlayerShopInfo::ParseResult( VOID* pResult )
 {
     __ENTER_FUNCTION
 
-    switch(mOPType)
-    {
-    case DB_LOAD:
+        switch ( mOPType )
         {
-            SMUPool<GuildSMU>* pPoolPtr = static_cast<SMUPool<GuildSMU>*>(pResult);
-            Assert(pPoolPtr);
-            enum 
+            case DB_LOAD:
             {
-                DB_GuildID    =    1,
-                DB_GuildName,
-                DB_Guildstat,
-                DB_Chiefguid,
-                DB_PCount,
-                DB_UCount,
-                DB_MUCount,
-                DB_GPoint,
-                DB_GuildMoney,
-                DB_CityID,
-                DB_Time,
-                DB_Logvity,
-                DB_Contribu,
-                DB_Honor,
-                DB_Indlvl,
-                DB_Agrlvl,
-                DB_Comlvl,
-                DB_Deflvl,
-                DB_Techlvl,
-                DB_Amblvl,
-                DB_Admin,
-                DB_GuildDesc,
-                DB_Chiefname,
-                DB_Cname,
-                DB_Glvl,
-                DB_GuildUser,
-            };
-            //加载Email属性
-            Assert(mInterface);
-            INT ErrorCode;
-            INT SmuCount = pPoolPtr->GetPoolMaxSize();
-            INT GuildIndex;
-
-            for(INT i =0;i<MAX_GUILD_SIZE;i++)
-            {
-                if(!mInterface->LongFetch())
-                    break;
-
-                if(i>= SmuCount)
-                    Assert(FALSE);
-
-                GuildIndex = mInterface->GetUInt(DB_GuildID,ErrorCode);
-
-                if(GuildIndex>= SmuCount)
-                    Assert(FALSE);
-
-                GuildSMU*    pSMU = pPoolPtr->GetPoolObj(GuildIndex);
-                if(!pSMU)
+                SMUPool<GuildSMU>* pPoolPtr = static_cast<SMUPool<GuildSMU>*>(pResult);
+                Assert(pPoolPtr);
+                enum 
                 {
-                    Assert(pSMU);
-                    return FALSE;
+                    DB_SID    =    1,
+                    DB_PoolID,
+                    DB_ShopGuid,
+                    DB_Type,
+                    DB_Stat,
+                    DB_MaxbMoney,
+                    DB_BaseMoney,
+                    DB_CreateTime,
+                    DB_ShopName,
+                    DB_ShopDesc,
+                    DB_OwnerName,
+                    DB_OwnerGuid,
+                    DB_IsOpen,
+                    DB_Sale,
+                    DB_SalePrice,
+                    DB_Partner,
+                    DB_Recoder,
+                    DB_IsValid,
+                    DB_PartNum,
+                    DB_SubType,
+                    DB_Profit,
+                    DB_Freeze,
+                    DB_BuyDesc,
+                    DB_BuyReserver,
+                } ;
+
+                // 玩家商店数据
+                Assert( mInterface ) ;
+                INT iErrorCode ;
+                INT iSmuCount = pPoolPtr->GetPoolMaxSize() ;
+                INT iPlayerShopIndex ;
+
+                for ( INT i = 0; MAX_GUILD_SIZE > i; i++ )
+                {
+                    if ( !mInterface->LongFetch() ) 
+                        break ;
+
+                    if ( i >= iSmuCount )
+                        Assert( FALSE ) ;
+
+                    iPlayerShopIndex = mInterface->GetUInt( DB_SID, ErrorCode ) ;
+
+                    if ( iPlayerShopIndex >= iSmuCount )
+                        Assert( FALSE ) ;
+
+                    PlayerShopSM* pSMU = pPoolPtr->GetPoolObj( iPlayerShopIndex ) ;
+                    if ( !pSMU )
+                    {
+                        Assert( pSMU ) ;
+                        return FALSE ;
+                    }
+                    PLAYER_SHOP_DB* pPlayerShop = &pSMU->m_PlayerShopSM ;
+                    Assert( pPlayerShop ) ;
+                
+                    pPlayerShop->m_iSID         = mInterface->GetInt( DB_SID, iErrorCode ) ;
+                    pPlayerShop->m_iPoolID      = mInterface->GetInt( DB_PoolID, iErrorCode ) ;
+                    mInterface->GetString( DB_ShopGuid, pPlayerShop->m_szShopGuid, MAX_PLAYER_SHOP_GUID_SIZE,
+                        iErrorCode ) ;
+                    pPlayerShop->m_iType        = mInterface->GetInt( DB_Type, iErrorCode ) ;
+                    pPlayerShop->m_iStat        = mInterface->GetInt( DB_Stat, iErrorCode ) ;
+                    pPlayerShop->m_iMaxbMoney   = mInterface->GetInt( DB_MaxbMoney, iErrorCode ) ;
+                    pPlayerShop->m_iBaseMoney   = mInterface->GetInt( DB_BaseMoney, iErrorCode ) ;
+                    pPlayerShop->m_iCreateTime  = mInterface->GetInt( DB_CreateTime, iErrorCode ) ;
+                    mInterface->GetString( DB_ShopName, pPlayerShop->m_szShopName, MAX_PLAYER_SHOP_NAME_SIZE,
+                        iErrorCode ) ;
+                    mInterface->GetString( DB_ShopDesc, pPlayerShop->m_szShopDesc, MAX_PLAYER_SHOP_DESC_SIZE,
+                        iErrorCode ) ;
+                    mInterface->GetString( DB_OwnerName, pPlayerShop->m_szOwnerName, MAX_CHARACTER_NAME,
+                        iErrorCode ) ;
+                    pPlayerShop->m_iOwnerGuid   = mInterface->GetInt( DB_OwnerGuid, iErrorCode ) ;
+                    pPlayerShop->m_iIsOpen      = mInterface->GetInt( DB_IsOpen, iErrorCode ) ;
+                    pPlayerShop->m_iSale        = mInterface->GetInt( DB_Sale, iErrorCode ) ;
+                    pPlayerShop->m_iSalePrice   = mInterface->GetInt( DB_SalePrice, iErrorCode ) ;
+                    mInterface->GetString( DB_Partner, pPlayerShop->m_szPartner, MAX_PLAYER_SHOP_PARTNER_SIZE,
+                        iErrorCode ) ;
+                    mInterface->GetString( DB_Recoder, pPlayerShop->m_szRecoder, MAX_PLAYER_SHOP_RECODER_SIZE,
+                        iErrorCode ) ;
+                    pPlayerShop->m_iIsValid     = mInterface->GetInt( DB_IsValid, iErrorCode ) ;
+                    pPlayerShop->m_iPartNum     = mInterface->GetInt( DB_PartNum, iErrorCode ) ;
+                    pPlayerShop->m_iSubType     = mInterface->GetInt( DB_SubType, iErrorCode ) ;
+                    pPlayerShop->m_iProfit      = mInterface->GetInt( DB_Profit, iErrorCode ) ;
+                    pPlayerShop->m_iFreeze      = mInterface->GetInt( DB_Freeze, iErrorCode ) ;
+                    mInterface->GetString( DB_BuyDesc, pPlayerShop->m_szBuyDesc, MAX_PLAYER_SHOP_BUY_DESC_SIZE,
+                        iErrorCode ) ;
+                    mInterface->GetString( DB_BuyReserver, pPlayerShop->m_szBuyReserver, MAX_PLAYER_SHOP_BUY_RESERVER_SIZE,
+                        iErrorCode ) ;
+                    pSMU->SetUseStatus( PLAYER_SHOP_SAVED, SM_C_WRITE ) ;
+
                 }
-                GUILD_DB* pGuild = &pSMU->m_GuildSM;
-                Assert(pGuild);
-                
-                pGuild->m_GuildID            = mInterface->GetInt(DB_GuildID,ErrorCode);
-
-                mInterface->GetString(DB_GuildName,pGuild->m_GuildName,
-                    MAX_GUILD_NAME_SIZE_DB,ErrorCode);
-                pGuild->m_Status            = (GUILD_STATUS)mInterface->GetInt(DB_Guildstat,ErrorCode);
-                pGuild->m_ChieftainGUID        = mInterface->GetUInt(DB_Chiefguid,ErrorCode);
-                pGuild->m_nProposerCount    = mInterface->GetInt(DB_PCount,ErrorCode);
-                pGuild->m_UserCount            = mInterface->GetInt(DB_UCount,ErrorCode);
-                pGuild->m_MaxUserSize        = mInterface->GetInt(DB_MUCount,ErrorCode);
-                pGuild->m_GuildPoint        = mInterface->GetInt(DB_GPoint,ErrorCode);
-                pGuild->m_GuildMoney        = mInterface->GetInt(DB_GuildMoney,ErrorCode);
-                pGuild->m_CityID            = mInterface->GetInt(DB_CityID,ErrorCode);
-                pGuild->m_nTime                = mInterface->GetInt(DB_Time,ErrorCode);
-                pGuild->m_Longevity            = mInterface->GetInt(DB_Logvity,ErrorCode);
-                pGuild->m_Contribute        = mInterface->GetInt(DB_Contribu,ErrorCode);
-                pGuild->m_Honor                = mInterface->GetInt(DB_Honor,ErrorCode);
-                pGuild->m_nIndustryLevel    = mInterface->GetInt(DB_Indlvl,ErrorCode);
-                pGuild->m_nAgrLevel            = mInterface->GetInt(DB_Agrlvl,ErrorCode);
-                pGuild->m_nComLevel            = mInterface->GetInt(DB_Comlvl,ErrorCode);
-                pGuild->m_nDefLevel            = mInterface->GetInt(DB_Deflvl,ErrorCode);
-                pGuild->m_nTechLevel        = mInterface->GetInt(DB_Techlvl,ErrorCode);
-                pGuild->m_nAmbiLevel        = mInterface->GetInt(DB_Amblvl,ErrorCode);
-                
-                
-                mInterface->GetField(DB_Admin,(CHAR*)(&pGuild->m_AdminLayout),sizeof(GUILD_ADMIN_t),ErrorCode);
-
-                mInterface->GetString(DB_GuildDesc,pGuild->m_GuildDesc,
-                                     MAX_GUILD_DESC_SIZE_DB,ErrorCode);
-
-                mInterface->GetString(DB_Chiefname,pGuild->m_GuildChiefName,
-                                MAX_CHARACTER_NAME,ErrorCode);
-                
-                mInterface->GetString(DB_Cname,pGuild->m_GuildCreatorName,
-                                        MAX_CHARACTER_NAME,ErrorCode);
+                mInterface->Clear() ;
         
-                pGuild->m_GuildLevel =    mInterface->GetInt(DB_Glvl,ErrorCode);    
-
-                mInterface->GetLongField(DB_GuildUser,(CHAR*)(pGuild->m_aGuildUser),
-                                         sizeof(GUILDUSER_DB)*USER_ARRAY_SIZE,
-                                         ErrorCode);
-                
-
-                pSMU->SetUseStatus(GUILD_SAVED,SM_C_WRITE);
             }
-            mInterface->Clear();
-        
-        }
-        break;
-    case DB_DELETE:
-        {
+                break ;
+            case DB_DELETE:
+            {
     
+            }
+                break ;
+            default:
+                break ;
         }
-        break;
-    default:
-        break;
-    }
-    return TRUE;
+        
+        return TRUE ;
 
     __LEAVE_FUNCTION
 
-    return FALSE;
+        return FALSE ;
 }
