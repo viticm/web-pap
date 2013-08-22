@@ -5,7 +5,7 @@
 #pragma once
 
 #include "DB_Struct.h"
-#include "DataBase\TLBB_DBC.h"
+#include "PAP_DBC.h"
 
 class DBC::DBCFile;
 class CSkillDataMgr

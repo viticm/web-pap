@@ -6,7 +6,7 @@
 #include "Player.h"
 #include "Obj_Monster.h"
 
-#include "TLBB_DBC.h"//DBC
+#include "PAP_DBC.h"//DBC
 #include "ItemHelper.h"//TSerialHelper
 #include "ItemTable.h"//_ITEM_TYPE
 #include "TimeManager.h"//g_pTimeManager

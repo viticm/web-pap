@@ -8,7 +8,7 @@
 #include "AbilityTailor.h"
 #include "AbilityGatherFish.h"
 
-#include "TLBB_DBC.h"
+#include "PAP_DBC.h"
 #include "DB_Struct.h"
 #include "Log.h"
 #include "FileDef.h"

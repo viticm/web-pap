@@ -6,7 +6,7 @@
 #include "Ini.h"
 #include "FileDataMgr.h"
 
-#include "TLBB_DBC.h"
+#include "PAP_DBC.h"
 #include "FileDef.h"
 #include "AIScript.h"
 #include "State.h"

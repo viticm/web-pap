@@ -14,7 +14,7 @@
 #include "CampAndStand.h"
 #include "GameUtil.h"
 #include "DB_Struct.h"
-#include "TLBB_DBC.h"
+#include "PAP_DBC.h"
 
 namespace Combat_Module
 {

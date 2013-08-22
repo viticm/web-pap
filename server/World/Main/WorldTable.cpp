@@ -4,7 +4,7 @@
 #include "Log.h"
 #include "Ini.h"
 #include "FileDef.h"
-#include "TLBB_DBC.h"
+#include "PAP_DBC.h"
 
 using namespace DBC;
 _GUILD_MEMBER_ACCESS    g_GuildMemberAccessTbl ;

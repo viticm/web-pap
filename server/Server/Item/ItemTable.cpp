@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ItemHelper.h"
 #include "ItemTable.h"
-#include "TLBB_DBC.h"
+#include "PAP_DBC.h"
 #include "ItemHelper.h"
 #include "Log.h"
 #include "Obj_ItemBox.h"

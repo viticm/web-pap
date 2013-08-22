@@ -14,7 +14,7 @@
 
 #include "DataRecords.h"
 #include "GameUtil.h"
-#include "TLBB_DBC.h"
+#include "PAP_DBC.h"
 
 using namespace DBC;
 

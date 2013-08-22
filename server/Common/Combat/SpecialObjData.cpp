@@ -14,7 +14,7 @@
 /**
 #include "SpecialObjData.h"
 #include "GameUtil.h"
-#include "TLBB_DBC.h"
+#include "PAP_DBC.h"
 
 namespace Combat_Module
 {
