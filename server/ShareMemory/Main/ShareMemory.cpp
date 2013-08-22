@@ -291,6 +291,19 @@ BOOL ShareMemory::DoWork()
                         break ;
 
                     }
+                    case ST_CSHOP_SMU:
+                    {
+                        SMULogicManager< CShopSMU >* pCShopSMULogicMgr = static_cast< SMULogicManager< CShopSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                        if ( pCShopSMULogicMgr )
+                            pCShopSMULogicMgr->HeartBeat() ;
+                        else
+                        {
+                            AssertEx( FALSE, "Runtime Type error" ) ;
+                        }
+                        break ;
+
+                    }
+
                 case ST_USERDATA_SMU:
                     {
                         AssertEx( FALSE, "Unknow SMU Type" ) ;
@@ -404,6 +417,17 @@ BOOL ShareMemory::NewStaticManager()
                     Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
                     Log::SaveLog( "ShareMemory", "new SMULogicManager< GlobalDataSMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_Type    =    ST_GDATA_SMU ;    
+                }
+                    break ;
+                case ST_CSHOP_SMU:
+                {
+                    m_SMUPool[ i ].m_Pool = new SMUPool< CShopSMU >() ;
+                    Assert( m_SMUPool[ i ].m_Pool ) ;
+                    Log::SaveLog( "ShareMemory", "new SMUPool< CShopSMU >()...OK" ) ;
+                    m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< CShopSMU >() ;
+                    Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Log::SaveLog( "ShareMemory", "new SMULogicManager< CShopSMU >()...OK" ) ;
+                    m_SMULogicManager[ i ].m_Type    =    ST_CSHOP_SMU ;    
                 }
                     break ;
 
@@ -527,6 +551,20 @@ BOOL ShareMemory::InitStaticManager()
                     SMULogicManager< GlobalDataSMU >* pGlobalDataSMULogicMgr = static_cast< SMULogicManager< GlobalDataSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
                     Assert( pGlobalDataSMULogicMgr ) ;
                     bRet = pGlobalDataSMULogicMgr->Init( pGlobalDataSMUPool ) ;
+                    Assert( bRet ) ;
+                }
+                    break ;
+                
+                case ST_CSHOP_SMU:
+                {
+                    SMUPool< CShopSMU >* pCShopSMUPool = static_cast< SMUPool< CShopSMU >* >( m_SMUPool[ i ].m_Pool ) ;
+                    Assert( pCShopSMUPool ) ;
+                    SM_KEY key = m_SMUPool[ i ].m_Data.m_Key ;
+                    bRet = pCShopSMUPool->Init( 1, key, SMPT_SHAREMEM ) ;
+                    Assert( bRet ) ;
+                    SMULogicManager< CShopSMU >* pCShopSMULogicMgr = static_cast< SMULogicManager< CShopSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Assert( pCShopSMULogicMgr ) ;
+                    bRet = pCShopSMULogicMgr->Init( pCShopSMUPool ) ;
                     Assert( bRet ) ;
                 }
                     break ;

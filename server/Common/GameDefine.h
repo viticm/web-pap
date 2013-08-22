@@ -19,8 +19,12 @@
 
 //玩家池上限
 #define MAX_POOL_SIZE 1280
+
 //工会上限
 #define MAX_GUILD_SIZE 1024
+
+// 委托商店上限
+#define MAX_CSHOP_SIZE 1024
 
 //没节的邮件数
 #define MAX_MAILNODE_SIZE 102400

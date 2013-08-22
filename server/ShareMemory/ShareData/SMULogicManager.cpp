@@ -12,6 +12,7 @@
 #include "DBGuildInfo.h"
 #include "DBPlayerShopInfo.h"
 #include "DBGlobalData.h"
+#include "DBCommisionShopInfo.h"
 
 using namespace PLAYER_SHOP ;
 
@@ -716,14 +717,12 @@ BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
         }
 
         SM_KEY key  = m_PoolSharePtr->GetKey();
-        /**
         ID_t ServerID = g_Config.Key2ServerID( key ) ;
     
         if ( INVALID_ID == ServerID )
         {
             AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
         }
-        **/
 
         BOOL bRet = FALSE ;
 
@@ -731,7 +730,7 @@ BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
         Assert( pInterface ) ;
 
         DBPlayerShopInfo PlayerShopInfoObject( pInterface ) ;
-        //PlayerShopInfoObject.SetServerID( ServerID ) ;
+        //PlayerShopInfoObject.SetServerId( ServerID ) ;
 
         bRet = PlayerShopInfoObject.Load();
         if ( bRet )
@@ -754,6 +753,7 @@ BOOL SMULogicManager< PlayerShopSM >::DoPostInit()
 
         return FALSE ;
 }
+
 //////////////////////////////////////////////////////////////////////////
 template<>
 BOOL SMULogicManager< GlobalDataSMU >::DoSaveAll()
@@ -913,6 +913,169 @@ BOOL SMULogicManager< GlobalDataSMU >::DoPostInit()
         m_bReady = TRUE ;
         
         Log::SaveLog( "ShareMemory", "PostInit GlobalDataSMU=%d from database Ok!", key ) ;
+
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+}
+
+//////////////////////////////////////////////////////////////////////////
+template<>
+BOOL SMULogicManager< CShopSMU >::DoSaveAll()
+{
+    __ENTER_FUNCTION
+
+        //存盘统计数据 
+    
+        UINT    uData = 0 ;
+        UINT    uTime  = g_pTimeManager->RunTime() ;
+        if ( !m_PoolSharePtr )
+        {
+            Assert( m_PoolSharePtr ) ;
+            return FALSE ;
+        }
+        INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize() ;
+        Assert( 1 == MaxPoolSize ) ;
+        CShopSMU* pSMU = m_PoolSharePtr->GetPoolObj( 0 ) ;
+        if ( !pSMU )
+        {
+            Assert( pSMU ) ;
+            return FALSE ;
+        }
+
+        SM_KEY    key            = m_PoolSharePtr->GetKey() ;
+        ID_t      ServerID       = g_Config.Key2ServerID( key ) ;
+
+        if ( INVALID_ID == ServerID )
+        {
+            AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
+        }
+        ODBCInterface* pInterface = g_pDBManager->GetInterface( CHARACTER_DATABASE ) ;
+        Assert( pInterface ) ;
+        DBCommisionShopInfo CShopInfoObject( pInterface ) ;
+        CShopInfoObject.SetServerId( 100 ) ;
+        CShopInfoObject.SetWorldId( 100 ) ;
+
+        INT ErrorCode ;
+        if ( CShopInfoObject.Save( m_PoolSharePtr ) )
+        {
+            CShopInfoObject.ParseResult( &ErrorCode ) ;
+        }
+        else
+        {
+            Log::SaveLog( "ShareMemory", "CommisionShop Save...Error!" ) ;
+            Assert( FALSE ) ;
+        }
+
+        Log::SaveLog( "ShareMemory", "CommisionShop Save...OK!" ) ;
+
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+
+}
+
+#define SERIALKEYTIME 30000
+
+template<>
+BOOL SMULogicManager< CShopSMU >::DoNormalSave()
+{
+    __ENTER_FUNCTION
+
+        /*
+        *    临时存文件方法
+        */
+        UINT uTime = g_pTimeManager->RunTime() ;
+        if ( uTime > m_FinalSaveTime + SERIALKEYTIME )
+        {
+            if ( m_bReady )
+            {
+                DoSaveAll() ;
+            }
+            m_FinalSaveTime = uTime ;
+        }
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+
+}
+
+template<>
+BOOL SMULogicManager< CShopSMU >::DoClear()
+{
+    __ENTER_FUNCTION
+
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+}
+
+template<>
+BOOL SMULogicManager< CShopSMU >::DoPostInit()
+{
+    __ENTER_FUNCTION
+
+#define SERIAL_GROWUP 10000
+
+        if ( !m_PoolSharePtr )
+        {    
+            Assert( m_PoolSharePtr ) ;
+            return FALSE ;
+        }
+        
+        if ( CMD_MODE_CLEARALL == g_CmdArgv )
+        {
+            return TRUE ;
+        }
+
+        m_FinalSaveTime = g_pTimeManager->RunTime() ;
+        INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize() ;
+        SM_KEY key      = m_PoolSharePtr->GetKey() ;
+        
+        CShopSMU* pSMU = m_PoolSharePtr->GetPoolObj( 0 ) ;
+        if ( !pSMU )
+        {
+            Assert( pSMU ) ;
+            return FALSE ;
+        }
+        
+        ID_t ServerID = g_Config.Key2ServerID( key ) ;
+
+        if ( INVALID_ID == ServerID )
+        {
+            AssertEx( FALSE, "对应Key的服务器没有EnableShareMemory" ) ;
+        }
+        ODBCInterface* pInterface = g_pDBManager->GetInterface( CHARACTER_DATABASE ) ;
+        Assert( pInterface ) ;
+
+        DBCommisionShopInfo CShopInfoObject( pInterface ) ;
+        CShopInfoObject.SetServerId( ServerID ) ;
+        CShopInfoObject.SetWorldId( 201 ) ;
+        
+        BOOL bRet ;
+        bRet = CShopInfoObject.Load() ;
+        if ( bRet )
+        {
+            bRet = CShopInfoObject.ParseResult( m_PoolSharePtr ) ;
+        }
+        
+        if ( !bRet )
+        {
+            Log::SaveLog( "ShareMemory", "PostInit CommisionShopSMU=%d from database fails", key ) ;
+        }
+        if ( bRet )
+        {
+            m_bReady = TRUE;
+            Log::SaveLog( "ShareMemory", "PostInit CommisionShopSMU=%d from database  Ok!", key ) ;
+        }
 
         return TRUE ;
 

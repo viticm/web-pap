@@ -338,6 +338,7 @@ struct _SERVER_DATA
     SM_KEY          m_HumanSMKey;
     SM_KEY          m_PlayShopSMKey;
     SM_KEY          m_ItemSerialKey;
+    SM_KEY          m_CommisionShopKey ;
     BOOL            m_EnableShareMem;
 
 

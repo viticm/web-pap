@@ -253,7 +253,7 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-VOID    Config::LoadBillingInfo( ) 
+VOID Config::LoadBillingInfo( ) 
 {
     __ENTER_FUNCTION
 
@@ -262,7 +262,8 @@ VOID    Config::LoadBillingInfo( )
 
     __LEAVE_FUNCTION
 }
-VOID    Config::LoadBillingInfo_Only( ) 
+
+VOID Config::LoadBillingInfo_Only( ) 
 {
     __ENTER_FUNCTION
         
@@ -285,7 +286,8 @@ VOID    Config::LoadBillingInfo_Only( )
 
     __LEAVE_FUNCTION
 }
-VOID    Config::LoadBillingInfo_ReLoad( ) 
+
+VOID Config::LoadBillingInfo_ReLoad( ) 
 {
     __ENTER_FUNCTION
 
@@ -305,7 +307,7 @@ VOID Config::LoadShareMemInfo()
     __LEAVE_FUNCTION
 }
 
-VOID    Config::LoadShareMemInfo_Only()
+VOID Config::LoadShareMemInfo_Only()
 {
     __ENTER_FUNCTION
 
@@ -343,7 +345,7 @@ VOID    Config::LoadShareMemInfo_Only()
     __LEAVE_FUNCTION
 }
 
-VOID    Config::LoadShareMemInfo_ReLoad()
+VOID Config::LoadShareMemInfo_ReLoad()
 {
     __ENTER_FUNCTION
 
@@ -351,12 +353,12 @@ VOID    Config::LoadShareMemInfo_ReLoad()
 }
 
 
-VOID Config::LoadMachineInfo( )
+VOID Config::LoadMachineInfo()
 {
 __ENTER_FUNCTION
 
-    LoadMachineInfo_Only( ) ;
-    LoadMachineInfo_ReLoad( ) ;
+    LoadMachineInfo_Only() ;
+    LoadMachineInfo_ReLoad() ;
 
 __LEAVE_FUNCTION
 }
@@ -387,7 +389,7 @@ __ENTER_FUNCTION
 
 __LEAVE_FUNCTION
 }
-VOID Config::LoadMachineInfo_ReLoad( )
+VOID Config::LoadMachineInfo_ReLoad()
 {
 __ENTER_FUNCTION
 
@@ -396,16 +398,17 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-VOID Config::LoadServerInfo( )
+VOID Config::LoadServerInfo()
 {
 __ENTER_FUNCTION
 
-    LoadServerInfo_Only( ) ;
-    LoadServerInfo_ReLoad( ) ;
+    LoadServerInfo_Only() ;
+    LoadServerInfo_ReLoad() ;
 
 __LEAVE_FUNCTION
 }
-VOID Config::LoadServerInfo_Only( )
+
+VOID Config::LoadServerInfo_Only()
 {
 __ENTER_FUNCTION
 
@@ -423,7 +426,7 @@ __ENTER_FUNCTION
         //初始化数据
         m_ServerInfo.m_pServer[i].Init( ) ;
 
-        //读取场景“i”
+        // 读取服务器信息
         sprintf( szSection, "Server%d", i ) ;
         m_ServerInfo.m_pServer[i].m_ServerID = (ID_t)(ini.ReadInt( szSection, "ServerID" )) ;
         m_ServerInfo.m_pServer[i].m_MachineID = (ID_t)(ini.ReadInt( szSection, "MachineID" )) ;
@@ -433,12 +436,11 @@ __ENTER_FUNCTION
         m_ServerInfo.m_pServer[i].m_Port1 = (UINT)(ini.ReadInt( szSection, "Port1" )) ;
         //enum SERVER_TYPE
         m_ServerInfo.m_pServer[i].m_Type = (UINT)(ini.ReadInt( szSection, "Type" )) ;
-        m_ServerInfo.m_pServer[i].m_HumanSMKey    =    (SM_KEY)(ini.ReadInt(szSection,"HumanSMKey"));
-        m_ServerInfo.m_pServer[i].m_PlayShopSMKey = (SM_KEY)(ini.ReadInt(szSection,"PlayShopSMKey"));
-        m_ServerInfo.m_pServer[i].m_ItemSerialKey = (SM_KEY)(ini.ReadInt(szSection,"ItemSerialKey"));
-        m_ServerInfo.m_pServer[i].m_EnableShareMem = (BOOL)(ini.ReadInt(szSection,"EnableShareMem"));
-
-
+        m_ServerInfo.m_pServer[i].m_HumanSMKey        = ( SM_KEY )( ini.ReadInt( szSection, "HumanSMKey" ) ) ;
+        m_ServerInfo.m_pServer[i].m_PlayShopSMKey     = ( SM_KEY )( ini.ReadInt( szSection, "PlayShopSMKey" ) ) ;
+        m_ServerInfo.m_pServer[i].m_CommisionShopKey  = ( SM_KEY )( ini.ReadInt( szSection, "CommisionShopKey" ) ) ;
+        m_ServerInfo.m_pServer[i].m_ItemSerialKey     = ( SM_KEY )( ini.ReadInt( szSection, "ItemSerialKey" ) ) ;
+        m_ServerInfo.m_pServer[i].m_EnableShareMem    = ( BOOL )( ini.ReadInt( szSection, "EnableShareMem" ) ) ;
     }
 
     ini.ReadText( "World", "IP", m_ServerInfo.m_World.m_IP, IP_SIZE ) ;
@@ -461,7 +463,7 @@ __ENTER_FUNCTION
 
 __LEAVE_FUNCTION
 }
-VOID Config::LoadServerInfo_ReLoad( )
+VOID Config::LoadServerInfo_ReLoad()
 {
 __ENTER_FUNCTION
 
@@ -470,16 +472,17 @@ __ENTER_FUNCTION
 __LEAVE_FUNCTION
 }
 
-VOID Config::LoadSceneInfo( )
+VOID Config::LoadSceneInfo()
 {
 __ENTER_FUNCTION
 
-    LoadSceneInfo_Only( ) ;
-    LoadSceneInfo_ReLoad( ) ;
+    LoadSceneInfo_Only() ;
+    LoadSceneInfo_ReLoad() ;
 
 __LEAVE_FUNCTION
 }
-VOID Config::LoadSceneInfo_Only( )
+
+VOID Config::LoadSceneInfo_Only()
 {
 __ENTER_FUNCTION
 
@@ -557,10 +560,22 @@ ID_t Config::Key2ServerID(SM_KEY key) const
 
                 if ( m_ServerInfo.m_pServer[i].m_EnableShareMem )
                 {
-                    if( m_ServerInfo.m_pServer[i].m_ItemSerialKey == key )
+                    if ( m_ServerInfo.m_pServer[i].m_ItemSerialKey == key )
                     {
                         return m_ServerInfo.m_pServer[i].m_ServerID ;
                     }
+                    
+                    if ( m_ServerInfo.m_pServer[i].m_PlayShopSMKey == key )
+                    {
+                        return m_ServerInfo.m_pServer[i].m_ServerID ;
+                    }
+                    
+                    if ( m_ServerInfo.m_pServer[i].m_CommisionShopKey == key )
+                    {
+                        return m_ServerInfo.m_pServer[i].m_ServerID ;
+                    }
+
+
                 }
                 
             }

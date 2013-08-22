@@ -17,6 +17,7 @@
 #define GUILD_TABLE           "t_guild"
 #define PLAYER_SHOP_TABLE     "t_pshop_new"
 #define GLOBAL_TABLE          "t_global"
+#define CSHOP_TABLE           "t_cshop"
 
 
 extern CHAR* LoadCharList;
@@ -105,5 +106,9 @@ extern CHAR* SavePlayerShopInfo ;
 // global
 extern CHAR* LoadGlobalData ;
 extern CHAR* SaveGlobalData ;
+
+// commision shop
+extern CHAR* LoadCommisionShopInfo ;
+extern CHAR* SaveCommisionShopInfo ;
 
 #endif

@@ -453,3 +453,11 @@ CHAR* LoadGlobalData =
  */ 
 CHAR* SaveGlobalData =
 "CALL save_global ( %d, %d )" ;
+
+// 加载委托商店数据
+CHAR* LoadCommisionShopInfo =
+"SELECT `worldid`, `serverid`, `poolid`,`cshopid` FROM `%s`" ;
+
+// 保存委托商店数据
+CHAR* SaveCommisionShopInfo =
+"CALL save_cshop( %d, %d, %d, %d )" ;

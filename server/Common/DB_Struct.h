@@ -1281,7 +1281,6 @@ struct GUILDUSER_DB
     }
 } ;
 
-
 struct GUILD_DB
 {
     GuildID_t                m_GuildID ;                                // 帮会ID
@@ -1415,6 +1414,127 @@ struct GuildSMU
     VOID Init()
     {
         m_GuildSM.CleanUp() ;
+    }
+} ;
+
+struct CSHOP_DB
+{
+    INT                     m_iWorldId ;                               // 世界ID
+    INT                     m_iServerId ;                              // 服务器ID
+    INT                     m_iPoolId ;                                // 区间ID
+    INT                     m_iCShopId ;                               // 商店ID
+
+    CSHOP_DB()
+    {
+        CleanUp() ;    
+    }
+
+    VOID CleanUp()
+    {
+        m_iWorldId = INVALID_ID ;
+        m_iServerId = INVALID_ID ;
+    }
+} ;
+enum CSHOP_USE_STATS
+{
+    CSHOP_ADDNEW    =0,        // 新加的需要保存
+    CSHOP_DELETE,              // 删除的需要保存
+    CSHOP_SAVED,               // 已经保存过
+} ;
+
+
+struct CShopSMU
+{
+    SMUHead    m_SMUHead ;
+    CSHOP_DB   m_CShop ;
+    UINT       m_uWorldId ;
+    UINT       m_uServerId ;
+    VOID Lock( CHAR Type )
+    {
+        sm_lock( m_SMUHead.flag, Type ) ;
+    }
+
+    VOID UnLock( CHAR Type )
+    {
+        sm_unlock( m_SMUHead.flag, Type ) ;
+    }
+    
+    VOID SetServerId( UINT poolID )
+    {
+        m_SMUHead.PoolId = poolID ;
+    }    
+
+    UINT GetPoolID()
+    {
+        return m_SMUHead.PoolId ;
+    }
+
+    BOOL SetUseStatus( INT Use, CHAR Type )
+    {
+        Lock( Type ) ;
+        m_SMUHead.UseStatus = Use ;
+        UnLock( Type ) ;
+        return TRUE ;
+    }
+    INT GetUseStatus( CHAR Type )
+    {
+        INT iRet ;
+        Lock( Type ) ;
+        iRet = m_SMUHead.UseStatus ;
+        UnLock( Type ) ;
+        return iRet ;
+    }
+    UINT GetTime2Save( CHAR Type )
+    {
+        UINT uTime ;
+        Lock( Type ) ;
+        uTime = m_SMUHead.SaveTime ;
+        UnLock( Type ) ;
+        return uTime ;
+    }
+
+    VOID SetTime2Save( UINT uTime, CHAR Type )
+    {
+        Lock( Type ) ;
+        m_SMUHead.SaveTime = uTime ;
+        UnLock( Type ) ;
+    }
+    
+    UINT GetServerId( CHAR Type )
+    {
+        UINT uServerId ;
+        Lock( Type ) ;
+        uServerId = m_uServerId ;
+        UnLock( Type ) ;
+        return uServerId ;
+    }
+
+    VOID SetServerId( CHAR Type, UINT uServerId )
+    {
+        Lock( Type ) ;
+        m_uServerId = uServerId ;
+        UnLock( Type ) ;
+    }
+    
+    UINT GetWorldId( CHAR Type )
+    {
+        UINT uWorldId ;
+        Lock( Type ) ;
+        uWorldId = m_uWorldId ;
+        UnLock( Type ) ;
+        return uWorldId ;
+    }
+
+    VOID SetWorldId( CHAR Type, UINT uWorldId )
+    {
+        Lock( Type ) ;
+        m_uWorldId = uWorldId ;
+        UnLock( Type ) ;
+    }
+
+    VOID Init()
+    {
+        m_CShop.CleanUp() ;
     }
 } ;
 

@@ -82,7 +82,7 @@ BOOL DBPlayerShopInfo::Save( VOID* pSource )
         do
         {
             INT SmuCount = pPoolPtr->GetPoolMaxSize();
-            if ( MAX_GUILD_SIZE < SmuCount )
+            if ( MAX_PLAYER_SHOP_POOL_PER_SERVER < SmuCount )
                 Assert( FALSE ) ;
 
             INT UseStats ;
@@ -106,7 +106,7 @@ BOOL DBPlayerShopInfo::Save( VOID* pSource )
                 }
                 
                 memcpy( &SavePlayerShop, pPlayerShop, sizeof( PLAYER_SHOP_DB ) ) ;
-                pSMU->m_SMUHead.UseStatus = GUILD_SAVED ;
+                pSMU->m_SMUHead.UseStatus = PLAYER_SHOP_SAVED ;
                 if ( PLAYER_SHOP_DELETE == UseStats )
                 {
                     pPlayerShop->CleanUp() ;
@@ -216,7 +216,7 @@ BOOL DBPlayerShopInfo::ParseResult( VOID* pResult )
                 INT iSmuCount = pPoolPtr->GetPoolMaxSize() ;
                 INT iPlayerShopIndex ;
 
-                for ( INT i = 0; MAX_GUILD_SIZE > i; i++ )
+                for ( INT i = 0; MAX_PLAYER_SHOP_POOL_PER_SERVER > i; i++ )
                 {
                     if ( !mInterface->LongFetch() ) 
                         break ;
