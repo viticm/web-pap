@@ -16,6 +16,7 @@
 #define MAIL_TABLE            "t_mail"
 #define GUILD_TABLE           "t_guild"
 #define PLAYER_SHOP_TABLE     "t_pshop_new"
+#define GLOBAL_TABLE          "t_global"
 
 
 extern CHAR* LoadCharList;
@@ -100,5 +101,9 @@ extern CHAR* SaveWebShopInfo;
 // player shop
 extern CHAR* LoadPlayerShopInfo ;
 extern CHAR* SavePlayerShopInfo ;
+
+// global
+extern CHAR* LoadGlobalData ;
+extern CHAR* SaveGlobalData ;
 
 #endif

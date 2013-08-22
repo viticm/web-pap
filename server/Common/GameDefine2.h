@@ -467,9 +467,10 @@ enum SHAREMEM_TYPE
     ST_GUILD_SMU        =    2,
     ST_MAIL_SMU         =    3,
     ST_PSHOP_SMU        =    4,
-    ST_USERDATA_SMU     =    5,
+    ST_GDATA_SMU        =    5,
     ST_HUMANEXT_SMU     =    6,
     ST_ITEMSERIAL_SMU   =    7,
+    ST_USERDATA_SMU     =    8,
 } ;
 
 

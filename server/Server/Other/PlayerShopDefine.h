@@ -155,7 +155,7 @@ namespace PLAYER_SHOP
     {
         INT                m_iSID ;                                                // 标识ID
         INT                m_iPoolID ;                                             // 区间ID
-        CHAR               m_szShopGuid[ MAX_PLYAER_SHOP_GUILD_SIZE ] ;            // 商店guid   
+        CHAR               m_szShopGuid[ MAX_PLAYER_SHOP_GUID_SIZE ] ;             // 商店guid   
         INT                m_iType ;                                               // 商店类型
         INT                m_iStat ;                                               // 
         INT                m_iMaxbMoney ;                                          // 
@@ -177,8 +177,6 @@ namespace PLAYER_SHOP
         INT                m_iFreeze ;                                             //
         CHAR               m_szBuyDesc[ MAX_PLAYER_SHOP_BUY_DESC_SIZE ] ;          //
         CHAR               m_szBuyReserver[ MAX_PLAYER_SHOP_BUY_RESERVER_SIZE ] ;  //
-
-
 
         PLAYER_SHOP_DB()
         {
@@ -207,7 +205,7 @@ namespace PLAYER_SHOP
     } ;
 
 
-    struct PlayerShopSMU
+    struct PlayerShopSM
     {
         SMUHead            m_SMUHead ;
         PLAYER_SHOP_DB     m_PlayerShop ;
