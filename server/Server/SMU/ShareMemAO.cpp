@@ -67,7 +67,7 @@ BOOL ShareMemAO::Attach( SM_KEY key, UINT Size )
 
     __ENTER_FUNCTION
 
-        m_hold    =    ShareMemAPI::OpenShareMem(key,Size);
+        m_hold = ShareMemAPI::OpenShareMem( key, Size ) ;
 
         if ( CMD_MODE_CLEARALL == m_CmdArg )
         {
@@ -79,7 +79,6 @@ BOOL ShareMemAO::Attach( SM_KEY key, UINT Size )
 
         if ( INVALID_SM_HANDLE == m_hold )
         {
-        
             Log::SaveLog( SHMEM_LOG_PATH, "Attach ShareMem Error SM_KET = %d", key ) ;
             return FALSE ;
         }
