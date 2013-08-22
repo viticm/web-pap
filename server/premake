@@ -1,6 +1,6 @@
 
-release: VFLAGS = -O2 -Wall -DRELEASE -DNDEBUG -D_FILE_OFFSET_BITS=32
-debug:   VFLAGS = -g -Wall -DDEBUG -D_FILE_OFFSET_BITS=32
+release: VFLAGS = -O2 -Wall -DRELEASE -DNDEBUG -D_FILE_OFFSET_BITS=64
+debug:   VFLAGS = -g -Wall -DDEBUG -D_FILE_OFFSET_BITS=64
 
 COMMON_INCLUDES           = -I$(BASEDIR)/Common \
                             -I$(BASEDIR)/Common/Combat \
