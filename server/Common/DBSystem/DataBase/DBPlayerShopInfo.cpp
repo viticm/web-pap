@@ -98,7 +98,7 @@ BOOL DBPlayerShopInfo::Save( VOID* pSource )
                 UseStats = pSMU->GetUseStatus( SM_C_READ ) ;
         
                 pSMU->Lock( SM_C_READ ) ;
-                PLAYER_SHOP_DB* pPlayerShop = &( pSMU->m_PlayerShop );
+                PLAYER_SHOP_DB* pPlayerShop = &( pSMU->m_PlayerShopDb );
                 if ( NULL == pPlayerShop )
                 {
                     pSMU->UnLock( SM_C_READ ) ;
@@ -235,7 +235,7 @@ BOOL DBPlayerShopInfo::ParseResult( VOID* pResult )
                         Assert( pSMU ) ;
                         return FALSE ;
                     }
-                    PLAYER_SHOP_DB* pPlayerShop = &pSMU->m_PlayerShop ;
+                    PLAYER_SHOP_DB* pPlayerShop = &pSMU->m_PlayerShopDb ;
                     Assert( pPlayerShop ) ;
                 
                     pPlayerShop->m_iSID         = mInterface->GetInt( DB_SID, iErrorCode ) ;
