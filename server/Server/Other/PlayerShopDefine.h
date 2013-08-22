@@ -208,7 +208,8 @@ namespace PLAYER_SHOP
     struct PlayerShopSM
     {
         SMUHead            m_SMUHead ;
-        PLAYER_SHOP_DB     m_PlayerShop ;
+        PlayerShopDB_t     m_PlayerShop ;
+        PLAYER_SHOP_DB     m_PlayerShopDb ;
 
         VOID Lock( CHAR Type )
         {
@@ -266,6 +267,7 @@ namespace PLAYER_SHOP
         VOID Init()
         {
             m_PlayerShop.CleanUp() ;
+            m_PlayerShopDb.CleanUp() ;
         }
     } ;
 };

@@ -817,7 +817,7 @@ struct _SETTING_DB_LOAD
 } ;
 typedef struct _SETTING_DB_LOAD _SETTING_LIST ;
 
-/**
+
 struct _WEB_SHOPINFO 
 {
     BOOL IsSucceed ;
@@ -834,11 +834,11 @@ struct _WEB_SHOPINFO
     UINT Item_5 ;
     UINT ItemCount_5 ;
 } ;
-**/
+
 
 struct _PRIVATE_INFO  // 最大不能超过512
 {
-    //_WEB_SHOPINFO wsInfo[ 2 ] ; // 104个char
+    _WEB_SHOPINFO wsInfo[ 2 ] ; // 104个char
 } ;
 
 #define MAX_PRIVATE_INFO_SIZE (512)
