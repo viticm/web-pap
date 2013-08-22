@@ -912,7 +912,7 @@ BOOL SMULogicManager< GlobalDataSMU >::DoPostInit()
         }
         m_bReady = TRUE ;
         
-        Log::SaveLog( "ShareMemory", "PostInit ItemSerialSMU=%d from database Ok!", key ) ;
+        Log::SaveLog( "ShareMemory", "PostInit GlobalDataSMU=%d from database Ok!", key ) ;
 
         return TRUE ;
 
