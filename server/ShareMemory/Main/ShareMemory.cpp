@@ -293,9 +293,9 @@ BOOL ShareMemory::DoWork()
                     }
                     case ST_CSHOP_SMU:
                     {
-                        SMULogicManager< CShopSMU >* pCShopSMULogicMgr = static_cast< SMULogicManager< CShopSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
-                        if ( pCShopSMULogicMgr )
-                            pCShopSMULogicMgr->HeartBeat() ;
+                        SMULogicManager< CommisionShopSMU >* pCommisionShopSMULogicMgr = static_cast< SMULogicManager< CommisionShopSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                        if ( pCommisionShopSMULogicMgr )
+                            pCommisionShopSMULogicMgr->HeartBeat() ;
                         else
                         {
                             AssertEx( FALSE, "Runtime Type error" ) ;
@@ -421,12 +421,12 @@ BOOL ShareMemory::NewStaticManager()
                     break ;
                 case ST_CSHOP_SMU:
                 {
-                    m_SMUPool[ i ].m_Pool = new SMUPool< CShopSMU >() ;
+                    m_SMUPool[ i ].m_Pool = new SMUPool< CommisionShopSMU >() ;
                     Assert( m_SMUPool[ i ].m_Pool ) ;
-                    Log::SaveLog( "ShareMemory", "new SMUPool< CShopSMU >()...OK" ) ;
-                    m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< CShopSMU >() ;
+                    Log::SaveLog( "ShareMemory", "new SMUPool< CommisionShopSMU >()...OK" ) ;
+                    m_SMULogicManager[ i ].m_SMULogicManager = new SMULogicManager< CommisionShopSMU >() ;
                     Assert( m_SMULogicManager[ i ].m_SMULogicManager ) ;
-                    Log::SaveLog( "ShareMemory", "new SMULogicManager< CShopSMU >()...OK" ) ;
+                    Log::SaveLog( "ShareMemory", "new SMULogicManager< CommisionShopSMU >()...OK" ) ;
                     m_SMULogicManager[ i ].m_Type    =    ST_CSHOP_SMU ;    
                 }
                     break ;
@@ -557,14 +557,14 @@ BOOL ShareMemory::InitStaticManager()
                 
                 case ST_CSHOP_SMU:
                 {
-                    SMUPool< CShopSMU >* pCShopSMUPool = static_cast< SMUPool< CShopSMU >* >( m_SMUPool[ i ].m_Pool ) ;
-                    Assert( pCShopSMUPool ) ;
+                    SMUPool< CommisionShopSMU >* pCommisionShopSMUPool = static_cast< SMUPool< CommisionShopSMU >* >( m_SMUPool[ i ].m_Pool ) ;
+                    Assert( pCommisionShopSMUPool ) ;
                     SM_KEY key = m_SMUPool[ i ].m_Data.m_Key ;
-                    bRet = pCShopSMUPool->Init( 1, key, SMPT_SHAREMEM ) ;
+                    bRet = pCommisionShopSMUPool->Init( 1, key, SMPT_SHAREMEM ) ;
                     Assert( bRet ) ;
-                    SMULogicManager< CShopSMU >* pCShopSMULogicMgr = static_cast< SMULogicManager< CShopSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
-                    Assert( pCShopSMULogicMgr ) ;
-                    bRet = pCShopSMULogicMgr->Init( pCShopSMUPool ) ;
+                    SMULogicManager< CommisionShopSMU >* pCommisionShopSMULogicMgr = static_cast< SMULogicManager< CommisionShopSMU >* >( m_SMULogicManager[ i ].m_SMULogicManager ) ;
+                    Assert( pCommisionShopSMULogicMgr ) ;
+                    bRet = pCommisionShopSMULogicMgr->Init( pCommisionShopSMUPool ) ;
                     Assert( bRet ) ;
                 }
                     break ;

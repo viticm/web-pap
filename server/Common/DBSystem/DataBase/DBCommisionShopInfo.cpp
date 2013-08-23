@@ -52,7 +52,7 @@ BOOL DBCommisionShopInfo::Save( VOID* pSource )
 
         INT iResult;
     
-        SMUPool< CShopSMU >* pPoolPtr = static_cast< SMUPool< CShopSMU >* >( pSource ) ;
+        SMUPool< CommisionShopSMU >* pPoolPtr = static_cast< SMUPool< CommisionShopSMU >* >( pSource ) ;
         Assert( pPoolPtr ) ;
 
         // 保存委托商店数据
@@ -67,7 +67,7 @@ BOOL DBCommisionShopInfo::Save( VOID* pSource )
             INT iUseStats ;
             for ( INT i = 0; i < iSmuCount; i++ )
             {
-                CShopSMU* pSMU = pPoolPtr->GetPoolObj( i ) ;
+                CommisionShopSMU* pSMU = pPoolPtr->GetPoolObj( i ) ;
                 if ( !pSMU )
                 {
                     Assert( pSMU ) ;
@@ -143,7 +143,7 @@ BOOL DBCommisionShopInfo::ParseResult( VOID* pResult )
         {
             case DB_LOAD:
             {
-                SMUPool< CShopSMU >* pPoolPtr = static_cast< SMUPool < CShopSMU >* >( pResult ) ;
+                SMUPool< CommisionShopSMU >* pPoolPtr = static_cast< SMUPool < CommisionShopSMU >* >( pResult ) ;
                 Assert( pPoolPtr ) ;
                 enum 
                 {
@@ -172,7 +172,7 @@ BOOL DBCommisionShopInfo::ParseResult( VOID* pResult )
                     if ( iCShopIndex >= iSmuCount )
                         Assert( FALSE ) ;
 
-                    CShopSMU* pSMU = pPoolPtr->GetPoolObj( iCShopIndex ) ;
+                    CommisionShopSMU* pSMU = pPoolPtr->GetPoolObj( iCShopIndex ) ;
                     if ( !pSMU )
                     {
                         Assert( pSMU ) ;
