@@ -22,9 +22,6 @@
 #include "FileDef.h"
 #include "SceneManager.h"
 
-
-
-
 BOOL Scene::IsCanEnter( )
 {
 __ENTER_FUNCTION
@@ -991,6 +988,8 @@ CHAR* Scene::FormatMissionString(const CHAR* strIn, CHAR* strOut, const Obj_Huma
     CHAR* pFind;
     INT nLen;
     bConvert = FALSE;
+    CHAR szTemp[ _MAX_PATH ] ;
+    memset( szTemp, 0, _MAX_PATH ) ;
 
     if( strIn == NULL || pHuman == NULL ) return NULL;
     if( pData == NULL || pReward == NULL ) return NULL;
