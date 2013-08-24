@@ -79,7 +79,7 @@ INT DBCFile::_ConvertStringToVector( const CHAR* strStrINTgSource,
 }
 
 template < DBCFile::FIELD_TYPE T>
-BOOL DBCFile::_FieldEqu( const FIELD& a, const FIELD& b )
+bool DBCFile::_FieldEqu( const FIELD& a, const FIELD& b )
 {
     __ENTER_FUNCTION
         
@@ -353,6 +353,7 @@ BOOL DBCFile::OpenFromMemoryImpl_Text( const CHAR* pMemory, const CHAR* pDeadEnd
                         else
                         {
                             const CHAR* p = vRet[i].c_str();
+                            LERR( "p: %s", p ) ;
                             std::map< std::string, INT >::iterator it = mapStringBuf.find( vRet[i] ) ;
                             if ( it == mapStringBuf.end() )
                             {

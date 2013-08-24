@@ -163,7 +163,7 @@ namespace DBC
         static const CHAR*    _GetLineFromMemory( CHAR* pStringBuf, INT nBufSize, const CHAR* pMemory, const CHAR* pDeadEnd ) ;
         //比较两个值是否相等
         template < FIELD_TYPE T>    
-        static BOOL           _FieldEqu( const FIELD& a, const FIELD& b ) ;
+        static bool           _FieldEqu( const FIELD& a, const FIELD& b ) ;
         
 
     public:
