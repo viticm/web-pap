@@ -144,6 +144,7 @@ const CHAR* DBCFile::_GetLineFromMemory( CHAR* pStringBuf, INT nBufSize, const C
 BOOL DBCFile::OpenFromMemory( const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName )
 {
     __ENTER_FUNCTION
+
         assert( pMemory && pDeadEnd ) ;
         //----------------------------------------------------
         //判断是否是二进制格式
@@ -248,7 +249,7 @@ BOOL DBCFile::OpenFromMemoryImpl_Binary( const CHAR* pMemory, const CHAR* pDeadE
 
         return TRUE ;
 
-        __LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
         return FALSE ;
 }
