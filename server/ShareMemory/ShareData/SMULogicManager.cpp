@@ -923,7 +923,7 @@ BOOL SMULogicManager< GlobalDataSMU >::DoPostInit()
 
 //////////////////////////////////////////////////////////////////////////
 template<>
-BOOL SMULogicManager< CShopSMU >::DoSaveAll()
+BOOL SMULogicManager< CommisionShopSMU >::DoSaveAll()
 {
     __ENTER_FUNCTION
 
@@ -938,7 +938,7 @@ BOOL SMULogicManager< CShopSMU >::DoSaveAll()
         }
         INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize() ;
         Assert( 1 == MaxPoolSize ) ;
-        CShopSMU* pSMU = m_PoolSharePtr->GetPoolObj( 0 ) ;
+        CommisionShopSMU* pSMU = m_PoolSharePtr->GetPoolObj( 0 ) ;
         if ( !pSMU )
         {
             Assert( pSMU ) ;
@@ -982,7 +982,7 @@ BOOL SMULogicManager< CShopSMU >::DoSaveAll()
 #define SERIALKEYTIME 30000
 
 template<>
-BOOL SMULogicManager< CShopSMU >::DoNormalSave()
+BOOL SMULogicManager< CommisionShopSMU >::DoNormalSave()
 {
     __ENTER_FUNCTION
 
@@ -1007,7 +1007,7 @@ BOOL SMULogicManager< CShopSMU >::DoNormalSave()
 }
 
 template<>
-BOOL SMULogicManager< CShopSMU >::DoClear()
+BOOL SMULogicManager< CommisionShopSMU >::DoClear()
 {
     __ENTER_FUNCTION
 
@@ -1019,7 +1019,7 @@ BOOL SMULogicManager< CShopSMU >::DoClear()
 }
 
 template<>
-BOOL SMULogicManager< CShopSMU >::DoPostInit()
+BOOL SMULogicManager< CommisionShopSMU >::DoPostInit()
 {
     __ENTER_FUNCTION
 
@@ -1040,7 +1040,7 @@ BOOL SMULogicManager< CShopSMU >::DoPostInit()
         INT MaxPoolSize = m_PoolSharePtr->GetPoolMaxSize() ;
         SM_KEY key      = m_PoolSharePtr->GetKey() ;
         
-        CShopSMU* pSMU = m_PoolSharePtr->GetPoolObj( 0 ) ;
+        CommisionShopSMU* pSMU = m_PoolSharePtr->GetPoolObj( 0 ) ;
         if ( !pSMU )
         {
             Assert( pSMU ) ;

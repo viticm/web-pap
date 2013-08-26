@@ -29,7 +29,7 @@
 
 /**
  * PAP Server Engine ( https://github.com/viticm/web-pap )
- * $Id Billing.cpp
+ * $Id PAP_DBC.h
  * @link https://github.com/viticm/web-pap/tree/master/server for the canonical source repository
  * @copyright Copyright (c) 2013-2013 viticm( viticm@126.com )
  * @license
@@ -164,8 +164,6 @@ namespace DBC
         //比较两个值是否相等
         template < FIELD_TYPE T>    
         static bool           _FieldEqu( const FIELD& a, const FIELD& b ) ;
-		INT convert(const char *from, const char *to, char* save, int savelen, char *src, int srclen) ;
-        
 
     public:
         DBCFile( UINT id ) ;

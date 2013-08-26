@@ -1443,7 +1443,7 @@ enum CSHOP_USE_STATS
 } ;
 
 
-struct CShopSMU
+struct CommisionShopSMU
 {
     SMUHead    m_SMUHead ;
     CSHOP_DB   m_CShop ;
