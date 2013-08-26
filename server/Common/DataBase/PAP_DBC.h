@@ -164,6 +164,7 @@ namespace DBC
         //比较两个值是否相等
         template < FIELD_TYPE T>    
         static bool           _FieldEqu( const FIELD& a, const FIELD& b ) ;
+		INT convert(const char *from, const char *to, char* save, int savelen, char *src, int srclen) ;
         
 
     public:
