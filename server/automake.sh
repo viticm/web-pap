@@ -17,6 +17,7 @@ Arr_ModelIncludeNeedCompile=(
     Common/Packets/CG*.cpp Common/Packets/WG*.cpp Common/Packets/GW*.cpp Common/Packets/SSScenePlayerCount.cpp
     Common/Rand.cpp Common/Combat/*.cpp Common/Packets/SSConnect.cpp Common/Packets/GG*.cpp
     Common/ScriptCommandStruct.cpp Common/GameStruct_Pet.cpp Common/GameStruct_MinorPasswd.cpp
+    Common/Util/CCUtil.cpp
     " #Server
     
     "
