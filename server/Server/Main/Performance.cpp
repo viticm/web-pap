@@ -10,153 +10,148 @@
 #include "ServerManager.h"
 
 
-PerformanceManager* g_pPerformanceManager=NULL ;
+PerformanceManager* g_pPerformanceManager = NULL ;
 
-ShareMemoryNotifyer    g_ShareMemNotifyer;
+ShareMemoryNotifyer g_ShareMemNotifyer ;
 
-PerformanceManager::PerformanceManager( )
+PerformanceManager::PerformanceManager()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    CleanUp( ) ;
+        CleanUp() ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
-PerformanceManager::~PerformanceManager( )
+PerformanceManager::~PerformanceManager()
 {
-__ENTER_FUNCTION
-__LEAVE_FUNCTION
+    __ENTER_FUNCTION
+    __LEAVE_FUNCTION
 }
 
-VOID PerformanceManager::CleanUp( )
+VOID PerformanceManager::CleanUp()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    m_PerforCount = 0 ;
+        m_PerforCount = 0 ;
     
-    for( INT i=0; i<MAX_SCENE; i++ )
-    {
-        m_aHash[i] = INVALID_INDEX ;
-    }
+        for ( INT i = 0; MAX_SCENE > i; i++ )
+        {
+            m_aHash[ i ] = INVALID_INDEX ;
+        }
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
-BOOL PerformanceManager::Init( )
+BOOL PerformanceManager::Init()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    for( INT i=0; i<MAX_SCENE; i++ )
-    {
-        Scene* pScene = g_pSceneManager->GetScene( (SceneID_t)i ) ;
-        if( pScene==NULL )
-            continue ;
+        for ( INT i = 0; MAX_SCENE > i; i++ )
+        {
+            Scene* pScene = g_pSceneManager->GetScene( ( SceneID_t )i ) ;
+            if ( NULL == pScene )
+                continue ;
+            m_aHash[ i ] = m_PerforCount ;
+            m_aPerforData[ m_PerforCount ].m_SceneID = ( SceneID_t )i ;
+            m_PerforCount ++ ;
+        }
 
-        m_aHash[i] = m_PerforCount ;
-        m_aPerforData[m_PerforCount].m_SceneID = (SceneID_t)i ;
-        m_PerforCount ++ ;
-    }
+        return TRUE ;
 
-    return TRUE ;
+    __LEAVE_FUNCTION
 
-__LEAVE_FUNCTION
-
-    return FALSE ;
+        return FALSE ;
 }
 
 BOOL PerformanceManager::HeartBeat( UINT uTime )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
 #define PERFOR_TIME 30000
 
-    if( !m_OperateTime.IsSetTimer() )
-    {
-        m_OperateTime.BeginTimer( PERFOR_TIME, uTime ) ;
+        if ( !m_OperateTime.IsSetTimer() )
+        {
+            m_OperateTime.BeginTimer( PERFOR_TIME, uTime ) ;
+            return TRUE ;
+        }
+        if ( !m_OperateTime.CountingTimer(uTime) )
+        {
+            return TRUE ;
+        }
+
+        for ( INT i = 0; i < m_PerforCount; i++ )
+        {
+            CompareScenePerformance( i ) ;
+        }
+
         return TRUE ;
-    }
-    if( !m_OperateTime.CountingTimer(uTime) )
-    {
-        return TRUE ;
-    }
 
-    for( INT i=0; i<m_PerforCount; i++ )
-    {
-        CompareScenePerformance( i ) ;
-    }
+    __LEAVE_FUNCTION
 
-    return TRUE ;
-
-__LEAVE_FUNCTION
-
-    return FALSE ;
+        return FALSE ;
 }
 
 VOID PerformanceManager::CompareScenePerformance( INT index )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    if( index<0 || index>=MAX_PERFOR_SIZE )
-    {
-        Assert(FALSE) ;
-        return ;
-    }
+        if ( 0 > index || MAX_PERFOR_SIZE < =index )
+        {
+            Assert( FALSE ) ;
+            return ;
+        }
 
-    SCENE_PERFOR* pPerfor = &m_aPerforData[index] ;
+        SCENE_PERFOR* pPerfor = &m_aPerforData[ index ] ;
     
 
-    Scene* pScene = g_pSceneManager->GetScene( pPerfor->m_SceneID ) ;
-    if( pScene==NULL )
-    {
-        Assert(FALSE) ;
-        return ;
-    }
-
-    if( pScene->GetSceneStatus()!=SCENE_STATUS_RUNNING )
-    {//未激活的场景不需要监控
-        return ;
-    }
-
-    if( memcmp(&pScene->m_Perfor, pPerfor, sizeof(SCENE_PERFOR) )==0 )
-    {//场景锁死，异常
-
-        Log::SaveLog( SERVER_ERRORFILE, "SceneID=%d Dead Lock!", pPerfor->m_SceneID ) ;
-        for( INT i=0; i<SPT_NUMBER; i++ )
+        Scene* pScene = g_pSceneManager->GetScene( pPerfor->m_SceneID ) ;
+        if ( NULL == pScene )
         {
-            Log::SaveLog( SERVER_ERRORFILE, "%d: %d", i, pPerfor->m_aPerfor[i] ) ;
+            Assert( FALSE ) ;
+            return ;
         }
-        Log::SaveLog( SERVER_ERRORFILE, "End" ) ;
 
-        return ;
-    }
+        if ( SCENE_STATUS_RUNNING != pScene->GetSceneStatus() )
+        {//未激活的场景不需要监控
+            return ;
+        }
 
-    memcpy( pPerfor, &pScene->m_Perfor, sizeof(SCENE_PERFOR) ) ;
+        if ( 0 == memcmp( &pScene->m_Perfor, pPerfor, sizeof( SCENE_PERFOR ) ) )
+        {//场景锁死，异常
 
+            Log::SaveLog( SERVER_ERRORFILE, "SceneID=%d Dead Lock!", pPerfor->m_SceneID ) ;
+            for ( INT i=0; i<SPT_NUMBER; i++ )
+            {
+                Log::SaveLog( SERVER_ERRORFILE, "%d: %d", i, pPerfor->m_aPerfor[i] ) ;
+            }
+            Log::SaveLog( SERVER_ERRORFILE, "End" ) ;
 
-__LEAVE_FUNCTION
+            return ;
+        }
+
+        memcpy( pPerfor, &pScene->m_Perfor, sizeof( SCENE_PERFOR ) ) ;
+
+    __LEAVE_FUNCTION
 }
 
-BOOL        ShareMemoryNotifyer::HeartBeat(UINT uTime)
+BOOL ShareMemoryNotifyer::HeartBeat(UINT uTime)
 {
     __ENTER_FUNCTION
 
-        const _SERVER_DATA*    pCurrentSData =    g_pServerManager->GetCurrentServerInfo();
+        const _SERVER_DATA* pCurrentSData = g_pServerManager->GetCurrentServerInfo() ;
 
-    if(pCurrentSData->m_EnableShareMem)
-    {
-        UINT Date = g_pTimeManager->CurrentDate();
-        g_HumanSMUPool.SetHeadVer(Date);
-        g_PlayerShopSMUPool.SetHeadVer(Date);
-        g_ItemSerialSMUPool.SetHeadVer(Date);
-    }
-
+        if ( pCurrentSData->m_EnableShareMem )
+        {
+            UINT Date = g_pTimeManager->CurrentDate() ;
+            g_HumanSMUPool.SetHeadVer( Date ) ;
+            g_PlayerShopSMUPool.SetHeadVer( Date ) ;
+            g_ItemSerialSMUPool.SetHeadVer( Date ) ;
+        }
     
-    
-    return TRUE;
+        return TRUE ;
 
     __LEAVE_FUNCTION
 
-    return FALSE;
+        return FALSE ;
 }
-
