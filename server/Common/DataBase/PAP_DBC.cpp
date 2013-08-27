@@ -358,9 +358,11 @@ BOOL DBCFile::OpenFromMemoryImpl_Text( const CHAR* pMemory, const CHAR* pDeadEnd
                             CHAR szSave[ 512 ] = { 0 } ;
                             INT iRet ;
                             iRet = CCUtil::charsetConvert( "GBK", "UTF-8", szSave, sizeof( szSave ), ( CHAR* )p, strlen( p )  ) ;
-                            p = ( const CHAR* )szSave ;
-                            vRet[ i ] = ( std::string )szSave ;
-                            LERR( "szSave: %s, vRet[ i ]: %s", szSave, vRet[ i ] ) ;
+                            if ( 0 < iRet )
+                            {
+                                p = ( const CHAR* )szSave ;
+                                vRet[ i ] = ( std::string )szSave ;
+                            }
                             std::map< std::string, INT >::iterator it = mapStringBuf.find( vRet[i] ) ;
                             if ( it == mapStringBuf.end() )
                             {
