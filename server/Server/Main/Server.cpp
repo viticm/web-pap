@@ -275,14 +275,12 @@ BOOL Server::ExitServer( )
 {
 __ENTER_FUNCTION
 
-    Log::SaveLog( SERVER_LOGFILE, "\r\nExitServer..." ) ;
+    Log::SaveLog( SERVER_LOGFILE, "%sExitServer...", LF ) ;
 
 
     //////////////////
     //等待所有线程完全推出后执行清除操作
-    WaitForAllThreadQuit( ) ;
-
-
+    WaitForAllThreadQuit() ;
 
     Log::SaveLog( SERVER_LOGFILE, "Begin delete..." ) ;
     //动态数据
@@ -290,7 +288,6 @@ __ENTER_FUNCTION
     Log::SaveLog( SERVER_LOGFILE, "g_pClientManager delete...OK" ) ;
     SAFE_DELETE( g_pThreadManager ) ;
     Log::SaveLog( SERVER_LOGFILE, "g_pThreadManager delete...OK" ) ;
-
 
     //静态数据
     SAFE_DELETE( g_pSceneManager ) ;
@@ -389,7 +386,7 @@ __ENTER_FUNCTION
     for( INT i=0;i<MAX_WAIT_QUIT;i++ )
     {
         iQuit = g_QuitThreadCount ;
-        printf( "Quit Thread:%d", iQuit ) ;
+        printf( "Quit Thread:%d%s", iQuit, LF ) ;
         MySleep( 1000 ) ;
         if( iQuit==g_pThreadManager->GetTotalThreads()+1 )
             break ;
