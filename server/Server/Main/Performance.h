@@ -83,7 +83,7 @@ public :
     SCENE_PERFOR       m_aPerforData[ MAX_PERFOR_SIZE ] ;
     INT                m_aHash[ MAX_SCENE ] ;
 
-    CMyTimer        m_OperateTime ;
+    CMyTimer           m_OperateTime ;
 
 };
 
