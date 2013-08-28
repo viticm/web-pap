@@ -17,7 +17,6 @@
 #include "StoreManager.h"
 #include "RecyclePlayerManager.h"
 
-
 #include "GCNewPlayer.h"
 #include "GCNewPlayer_Move.h"
 #include "GCNewPlayer_Death.h"
@@ -66,9 +65,9 @@ Scene::Scene( SceneID_t SceneID )
         Assert( m_pScenePlayerManager ) ;
         m_pScenePlayerManager->SetSceneID( SceneID ) ;
 
-        m_pRecyclePlayerManager = new RecyclePlayerManager();
-        Assert( m_pRecyclePlayerManager );
-        m_pRecyclePlayerManager->SetSceneID( SceneID );
+        m_pRecyclePlayerManager = new RecyclePlayerManager() ;
+        Assert( m_pRecyclePlayerManager ) ;
+        m_pRecyclePlayerManager->SetSceneID( SceneID ) ;
 
 
         m_pMap = new Map ;
@@ -82,93 +81,93 @@ Scene::Scene( SceneID_t SceneID )
 
         m_pObjManager = new ObjManager ;
         Assert( m_pObjManager ) ;
-        _OBJMAGAGER_INIT initObjManager;
-        initObjManager.m_aInitCount[ OBJ_ID_TYPE_NORMAL ]    = DEFAULT_MANAGER_NPC_COUNT;
-        initObjManager.m_aInitCount[ OBJ_ID_TYPE_HUMAN ]     = DEFAULT_MANAGER_HUMAN_COUNT;
-        m_pObjManager->Init( &initObjManager );
+        _OBJMAGAGER_INIT initObjManager ;
+        initObjManager.m_aInitCount[ OBJ_ID_TYPE_NORMAL ]    = DEFAULT_MANAGER_NPC_COUNT ;
+        initObjManager.m_aInitCount[ OBJ_ID_TYPE_HUMAN ]     = DEFAULT_MANAGER_HUMAN_COUNT ;
+        m_pObjManager->Init( &initObjManager ) ;
 
         {
-            m_pHumanManager = new HumanManager;
+            m_pHumanManager = new HumanManager ;
             Assert( m_pHumanManager ) ;
-            _OBJSINGLEMANAGER_INIT initHumanManager;
-            initHumanManager.m_uLength               = DEFAULT_SINGLE_MANAGER_HUMAN_COUNT;
-            initHumanManager.m_pScene                = this;
-            initHumanManager.m_uCurrentTime          = g_pTimeManager->CurrentTime();
-            initHumanManager.m_uLogicInterval        = MANAGER_HUMAN_LOGIC_INTERVAL;
+            _OBJSINGLEMANAGER_INIT initHumanManager ;
+            initHumanManager.m_uLength               = DEFAULT_SINGLE_MANAGER_HUMAN_COUNT ;
+            initHumanManager.m_pScene                = this ;
+            initHumanManager.m_uCurrentTime          = g_pTimeManager->CurrentTime() ;
+            initHumanManager.m_uLogicInterval        = MANAGER_HUMAN_LOGIC_INTERVAL ;
             m_pHumanManager->Init( &initHumanManager ) ;
         }
 
         {
             m_pMonsterManager = new MonsterManager ;
             Assert( m_pMonsterManager ) ;
-            _OBJSINGLEMANAGER_INIT initMonsterManager;
-            initMonsterManager.m_uLength            = DEFAULT_SINGLE_MANAGER_MONSTER_COUNT;
-            initMonsterManager.m_pScene             = this;
-            initMonsterManager.m_uCurrentTime       = g_pTimeManager->CurrentTime();
-            initMonsterManager.m_uLogicInterval     = MANAGER_MONSTER_LOGIC_INTERVAL;
+            _OBJSINGLEMANAGER_INIT initMonsterManager ;
+            initMonsterManager.m_uLength            = DEFAULT_SINGLE_MANAGER_MONSTER_COUNT ;
+            initMonsterManager.m_pScene             = this ;
+            initMonsterManager.m_uCurrentTime       = g_pTimeManager->CurrentTime() ;
+            initMonsterManager.m_uLogicInterval     = MANAGER_MONSTER_LOGIC_INTERVAL ;
             m_pMonsterManager->Init( &initMonsterManager ) ;
         }
 
         {
-            m_pPetManager = new PetManager;
-            Assert( m_pPetManager );
-            _OBJSINGLEMANAGER_INIT initPetManager;
-            initPetManager.m_uLength                = DEFAULT_SINGLE_MANAGER_PET_COUNT;
-            initPetManager.m_pScene                 = this;
-            initPetManager.m_uCurrentTime           = g_pTimeManager->CurrentTime();
-            initPetManager.m_uLogicInterval         = MANAGER_PET_LOGIC_INTERVAL;
-            m_pPetManager->Init( &initPetManager );
+            m_pPetManager = new PetManager ;
+            Assert( m_pPetManager ) ;
+            _OBJSINGLEMANAGER_INIT initPetManager ;
+            initPetManager.m_uLength                = DEFAULT_SINGLE_MANAGER_PET_COUNT ;
+            initPetManager.m_pScene                 = this ;
+            initPetManager.m_uCurrentTime           = g_pTimeManager->CurrentTime() ;
+            initPetManager.m_uLogicInterval         = MANAGER_PET_LOGIC_INTERVAL ;
+            m_pPetManager->Init( &initPetManager ) ;
         }
 
-        m_pItemBoxManager    =    new    ItemBoxManager;
-        Assert( m_pItemBoxManager );
-        m_pItemBoxManager->SetScene( this );
+        m_pItemBoxManager    =    new    ItemBoxManager ;
+        Assert( m_pItemBoxManager ) ;
+        m_pItemBoxManager->SetScene( this ) ;
 
         {
-            m_pPlatformManager    = new PlatformManager;
-            Assert( m_pPlatformManager );
-            _OBJSINGLEMANAGER_INIT initPlatformManager;
-            initPlatformManager.m_uLength            = DEFAULT_SINGLE_MANAGER_PLATFORM_COUNT;
-            initPlatformManager.m_pScene             = this;
-            initPlatformManager.m_uCurrentTime       = g_pTimeManager->CurrentTime();
-            initPlatformManager.m_uLogicInterval     = MANAGER_PLATFORM_LOGIC_INTERVAL;
-            m_pPlatformManager->Init( &initPlatformManager );
+            m_pPlatformManager    = new PlatformManager ;
+            Assert( m_pPlatformManager ) ;
+            _OBJSINGLEMANAGER_INIT initPlatformManager ;
+            initPlatformManager.m_uLength            = DEFAULT_SINGLE_MANAGER_PLATFORM_COUNT ;
+            initPlatformManager.m_pScene             = this ;
+            initPlatformManager.m_uCurrentTime       = g_pTimeManager->CurrentTime() ;
+            initPlatformManager.m_uLogicInterval     = MANAGER_PLATFORM_LOGIC_INTERVAL ;
+            m_pPlatformManager->Init( &initPlatformManager ) ;
         }
 
         {
-            m_pSpecialManager    = new SpecialManager;
-            Assert( m_pSpecialManager );
-            _OBJSINGLEMANAGER_INIT initSpecialManager;
-            initSpecialManager.m_uLength            = DEFAULT_SINGLE_MANAGER_SPECIAL_COUNT;
-            initSpecialManager.m_pScene             = this;
-            initSpecialManager.m_uCurrentTime       = g_pTimeManager->CurrentTime();
-            initSpecialManager.m_uLogicInterval     = MANAGER_SPECIAL_LOGIC_INTERVAL;
-            m_pSpecialManager->Init( &initSpecialManager );
+            m_pSpecialManager    = new SpecialManager ;
+            Assert( m_pSpecialManager ) ;
+            _OBJSINGLEMANAGER_INIT initSpecialManager ;
+            initSpecialManager.m_uLength            = DEFAULT_SINGLE_MANAGER_SPECIAL_COUNT ;
+            initSpecialManager.m_pScene             = this ;
+            initSpecialManager.m_uCurrentTime       = g_pTimeManager->CurrentTime() ;
+            initSpecialManager.m_uLogicInterval     = MANAGER_SPECIAL_LOGIC_INTERVAL ;
+            m_pSpecialManager->Init( &initSpecialManager ) ;
         }
 
-        m_pLuaInterface = new LuaInterface;
+        m_pLuaInterface = new LuaInterface ;
         Assert( m_pLuaInterface ) ;
 
-        m_pSceneTimers = new SceneTimer;
-        Assert( m_pSceneTimers);
+        m_pSceneTimers = new SceneTimer ;
+        Assert( m_pSceneTimers) ;
 
-        m_pScriptFileMgr = new CFileDataMgr;
+        m_pScriptFileMgr = new CFileDataMgr ;
         Assert( m_pScriptFileMgr ) ;
             
-        m_GrowPointGroup.SetScene(this);
+        m_GrowPointGroup.SetScene( this ) ;
 
-        m_pStallInfoManager = new StallInfoManager;
-        Assert( m_pStallInfoManager );
+        m_pStallInfoManager = new StallInfoManager ;
+        Assert( m_pStallInfoManager ) ;
 
-        m_pPlayerShopManager = new PlayerShopManager;
-        Assert( m_pPlayerShopManager );
+        m_pPlayerShopManager = new PlayerShopManager ;
+        Assert( m_pPlayerShopManager ) ;
 
-        m_pStoreManager = new StoreManager;
-        Assert( m_pStoreManager );
+        m_pStoreManager = new StoreManager ;
+        Assert( m_pStoreManager ) ;
         
-        m_pAreaManager = new AreaManager;
-        Assert( m_pAreaManager );
-        m_pAreaManager->SetScene( this );
+        m_pAreaManager = new AreaManager ;
+        Assert( m_pAreaManager ) ;
+        m_pAreaManager->SetScene( this ) ;
         
         m_pZone = NULL ;
 
@@ -184,32 +183,32 @@ Scene::Scene( SceneID_t SceneID )
         m_Perfor.m_SceneID = SceneID ;
 
         //城市数据
-        m_CityData.CleanUp();
+        m_CityData.CleanUp() ;
 
         //初始化巡逻路点数据
-        m_pPatrolPathMgr = new PatrolPathMgr;
-        Assert( m_pPatrolPathMgr );
-        m_pPatrolPathMgr->Init( this );
+        m_pPatrolPathMgr = new PatrolPathMgr ;
+        Assert( m_pPatrolPathMgr ) ;
+        m_pPatrolPathMgr->Init( this ) ;
 
         //战斗事件管理器初始化
-        m_EventCore.Init( this );
+        m_EventCore.Init( this ) ;
 
-        m_pPacket_NewPlayer            = new GCNewPlayer;
-        m_pPacket_NewPlayer_Move       = new GCNewPlayer_Move;
-        m_pPacket_NewPlayer_Death      = new GCNewPlayer_Death;
-        m_pPacket_NewMonster           = new GCNewMonster;
-        m_pPacket_NewMonster_Move      = new GCNewMonster_Move;
-        m_pPacket_NewMonster_Death     = new GCNewMonster_Death;
-        m_pPacket_NewPet               = new GCNewPet;
-        m_pPacket_NewPet_Move          = new GCNewPet_Move;
-        m_pPacket_NewPet_Death         = new GCNewPet_Death;
-        m_pPacket_NewPlatform          = new GCNewPlatform;
-        m_pPacket_NewSpecial           = new GCNewSpecial;
-        m_pPacket_NewItemBox           = new GCNewItemBox;
-        m_pPacket_DelObject            = new GCDelObject;
-        m_pPacket_SysMsg               = new GWSystemMsg;
+        m_pPacket_NewPlayer            = new GCNewPlayer ;
+        m_pPacket_NewPlayer_Move       = new GCNewPlayer_Move ;
+        m_pPacket_NewPlayer_Death      = new GCNewPlayer_Death ;
+        m_pPacket_NewMonster           = new GCNewMonster ;
+        m_pPacket_NewMonster_Move      = new GCNewMonster_Move ;
+        m_pPacket_NewMonster_Death     = new GCNewMonster_Death ;
+        m_pPacket_NewPet               = new GCNewPet ;
+        m_pPacket_NewPet_Move          = new GCNewPet_Move ;
+        m_pPacket_NewPet_Death         = new GCNewPet_Death ;
+        m_pPacket_NewPlatform          = new GCNewPlatform ;
+        m_pPacket_NewSpecial           = new GCNewSpecial ;
+        m_pPacket_NewItemBox           = new GCNewItemBox ;
+        m_pPacket_DelObject            = new GCDelObject ;
+        m_pPacket_SysMsg               = new GWSystemMsg ;
 
-        m_pMissionData                 = new MISSION_DATA;
+        m_pMissionData                 = new MISSION_DATA ;
 
     __LEAVE_FUNCTION
 }
@@ -218,55 +217,55 @@ Scene::~Scene()
 {
     __ENTER_FUNCTION
 
-        SAFE_DELETE( m_pMissionData );
+        SAFE_DELETE( m_pMissionData ) ;
 
-        SAFE_DELETE( m_pPacket_NewPlayer );
-        SAFE_DELETE( m_pPacket_NewPlayer_Move );
-        SAFE_DELETE( m_pPacket_NewPlayer_Death );
-        SAFE_DELETE( m_pPacket_NewMonster );
-        SAFE_DELETE( m_pPacket_NewMonster_Move );
-        SAFE_DELETE( m_pPacket_NewMonster_Death );
-        SAFE_DELETE( m_pPacket_NewPet );
-        SAFE_DELETE( m_pPacket_NewPet_Move );
-        SAFE_DELETE( m_pPacket_NewPet_Death );
-        SAFE_DELETE( m_pPacket_NewPlatform );
-        SAFE_DELETE( m_pPacket_NewSpecial );
-        SAFE_DELETE( m_pPacket_NewItemBox );
-        SAFE_DELETE( m_pPacket_DelObject );
-        SAFE_DELETE( m_pPacket_SysMsg );
+        SAFE_DELETE( m_pPacket_NewPlayer ) ;
+        SAFE_DELETE( m_pPacket_NewPlayer_Move ) ;
+        SAFE_DELETE( m_pPacket_NewPlayer_Death ) ;
+        SAFE_DELETE( m_pPacket_NewMonster ) ;
+        SAFE_DELETE( m_pPacket_NewMonster_Move ) ;
+        SAFE_DELETE( m_pPacket_NewMonster_Death ) ;
+        SAFE_DELETE( m_pPacket_NewPet ) ;
+        SAFE_DELETE( m_pPacket_NewPet_Move ) ;
+        SAFE_DELETE( m_pPacket_NewPet_Death ) ;
+        SAFE_DELETE( m_pPacket_NewPlatform ) ;
+        SAFE_DELETE( m_pPacket_NewSpecial ) ;
+        SAFE_DELETE( m_pPacket_NewItemBox ) ;
+        SAFE_DELETE( m_pPacket_DelObject ) ;
+        SAFE_DELETE( m_pPacket_SysMsg ) ;
 
         SAFE_DELETE( m_pMap ) ;
         SAFE_DELETE( m_pScenePlayerManager ) ;
-        SAFE_DELETE( m_pRecyclePlayerManager);
+        SAFE_DELETE( m_pRecyclePlayerManager) ;
         SAFE_DELETE_ARRAY( m_PacketQue ) ;
         SAFE_DELETE( m_pObjManager ) ;
         SAFE_DELETE( m_pHumanManager ) ;
         SAFE_DELETE( m_pMonsterManager ) ;
         if ( m_pMonsterManager != NULL )
         {
-            m_pMonsterManager->RemoveAllMonster();
-            SAFE_DELETE( m_pMonsterManager );
+            m_pMonsterManager->RemoveAllMonster() ;
+            SAFE_DELETE( m_pMonsterManager ) ;
         }
         if ( m_pPetManager != NULL )
         {
-            m_pPetManager->RemoveAllPet();
-            SAFE_DELETE( m_pPetManager );
+            m_pPetManager->RemoveAllPet() ;
+            SAFE_DELETE( m_pPetManager ) ;
         }
         SAFE_DELETE_ARRAY( m_pZone ) ;
         SAFE_DELETE( m_pItemBoxManager ) ;
         if ( m_pPlatformManager != NULL )
         {
-            m_pPlatformManager->RemoveAllPlatform();
-            SAFE_DELETE( m_pPlatformManager );
+            m_pPlatformManager->RemoveAllPlatform() ;
+            SAFE_DELETE( m_pPlatformManager ) ;
         }
         if ( m_pSpecialManager != NULL )
         {
-            m_pSpecialManager->RemoveAllSpecial();
-            SAFE_DELETE( m_pSpecialManager );
+            m_pSpecialManager->RemoveAllSpecial() ;
+            SAFE_DELETE( m_pSpecialManager ) ;
         }
         //SAFE_DELETE( m_pSkillObjManager ) ;
-        SAFE_DELETE( m_pLuaInterface );
-        SAFE_DELETE( m_pScriptFileMgr );
+        SAFE_DELETE( m_pLuaInterface ) ;
+        SAFE_DELETE( m_pScriptFileMgr ) ;
         SAFE_DELETE( m_pStallInfoManager ) ;
         SAFE_DELETE( m_pPlayerShopManager ) ;
         SAFE_DELETE( m_pStoreManager ) ;
@@ -290,16 +289,16 @@ BOOL Scene::SetLoadData( const CHAR* filename, SCENE_LOAD& SceneLoad )
                 szPatrolPointData[ _MAX_PATH ],
                 szArea[ _MAX_PATH ],
                 //szPet[_MAX_PATH],
-                szStallInfo[ _MAX_PATH ];
+                szStallInfo[ _MAX_PATH ] ;
                 
-        BOOL    IsPlatformExist;
-        BOOL    IsGrowPointExist;
-        BOOL    IsStallInfoExist;
+        BOOL    IsPlatformExist ;
+        BOOL    IsGrowPointExist ;
+        BOOL    IsStallInfoExist ;
 
         ////////////////////////////////////////////////////////////////////////////////
         //读取场景文件 .scn
         memset( szTemp, 0, _MAX_PATH ) ;
-        GET_SCENE_FULL_PATH( szTemp, filename );
+        GET_SCENE_FULL_PATH( szTemp, filename ) ;
 
         Ini f( szTemp ) ;
 
@@ -312,8 +311,8 @@ BOOL Scene::SetLoadData( const CHAR* filename, SCENE_LOAD& SceneLoad )
         memset( szArea, 0, _MAX_PATH ) ;
         f.ReadText( "System", "eventfile", szArea, _MAX_PATH ) ;
         
-        memset( szPlatform, 0, _MAX_PATH );
-        IsPlatformExist = f.ReadTextIfExist( "System", "platformfile", szPlatform, _MAX_PATH );
+        memset( szPlatform, 0, _MAX_PATH ) ;
+        IsPlatformExist = f.ReadTextIfExist( "System", "platformfile", szPlatform, _MAX_PATH ) ;
         
         memset( szGrowPointData, 0, _MAX_PATH ) ;
         IsGrowPointExist = f.ReadTextIfExist( "System", "growpointdata", szGrowPointData, _MAX_PATH ) ;
@@ -331,11 +330,11 @@ BOOL Scene::SetLoadData( const CHAR* filename, SCENE_LOAD& SceneLoad )
             f.ReadText( "System", "stallinfodata", szStallInfo, _MAX_PATH ) ;
         }
 
-        memset( szPatrolPointData,0,_MAX_PATH );
-        f.ReadText( "System", "patrolpoint", szPatrolPointData, _MAX_PATH );
+        memset( szPatrolPointData,0,_MAX_PATH ) ;
+        f.ReadText( "System", "patrolpoint", szPatrolPointData, _MAX_PATH ) ;
         
-        //memset(szPet, 0, _MAX_PATH);
-        //f.ReadText("System", "petfile", szPet, _MAX_PATH);
+        //memset(szPet, 0, _MAX_PATH) ;
+        //f.ReadText("System", "petfile", szPet, _MAX_PATH) ;
         
 
         SceneLoad.CleanUp() ;
@@ -372,7 +371,7 @@ BOOL Scene::Load( SCENE_LOAD* load )
                 szPatrolPointData[ _MAX_PATH ],
                 szArea[ _MAX_PATH ],
                 //szPet[_MAX_PATH],
-                szStallInfo[ _MAX_PATH ];
+                szStallInfo[ _MAX_PATH ] ;
 
         memset( szTemp, 0, _MAX_PATH ) ;
         memset( szMap, 0, _MAX_PATH ) ;
@@ -385,9 +384,9 @@ BOOL Scene::Load( SCENE_LOAD* load )
         //memset( szPet, 0, _MAX_PATH ) ;
         memset( szStallInfo, 0, _MAX_PATH ) ;
 
-        BOOL    IsPlatformExist;
-        BOOL    IsGrowPointExist;
-        BOOL    IsStallInfoExist;
+        BOOL    IsPlatformExist ;
+        BOOL    IsGrowPointExist ;
+        BOOL    IsStallInfoExist ;
 
 
         strncpy( szMap, load->m_szMap, _MAX_PATH - 1 ) ;
@@ -415,7 +414,7 @@ BOOL Scene::Load( SCENE_LOAD* load )
         ////////////////////////////////////////////////////////////////////////////////
         //读取地图信息
         memset( szTemp, 0, _MAX_PATH ) ;
-        GET_SCENE_FULL_PATH( szTemp, szMap );
+        GET_SCENE_FULL_PATH( szTemp, szMap ) ;
         
         BOOL ret = m_pMap->Load( szTemp ) ;
         if ( !ret )
@@ -441,14 +440,14 @@ BOOL Scene::Load( SCENE_LOAD* load )
                 Assert( FALSE ) ;
                 return FALSE ;
             }
-            for ( WORD i = 0; i < m_ZoneInfo.m_wZoneSize; i++ )
+            for ( WORD i = 0 ; i < m_ZoneInfo.m_wZoneSize ; i++ )
             {
                 m_pZone[i].SetZoneID( ( ZoneID_t )i ) ;
             }
         }
         else
         {
-            for( WORD i = 0; i < m_ZoneInfo.m_wZoneSize; i++ )
+            for( WORD i = 0 ; i < m_ZoneInfo.m_wZoneSize ; i++ )
             {
                 m_pZone[i].CleanUp() ;
             }
@@ -461,21 +460,21 @@ BOOL Scene::Load( SCENE_LOAD* load )
         //////////////////////////////////////////////////////////////////////////
         // 读取巡逻路线信息 
         memset( szTemp, 0, _MAX_PATH ) ;
-        GET_SCENE_FULL_PATH( szTemp, szPatrolPointData );
+        GET_SCENE_FULL_PATH( szTemp, szPatrolPointData ) ;
 
         m_pPatrolPathMgr->CleanUp() ;
-        m_pPatrolPathMgr->LoadPatrolPoint( szTemp );
+        m_pPatrolPathMgr->LoadPatrolPoint( szTemp ) ;
         Log::SaveLog( SERVER_LOGFILE, "Load %s ...OK!", szTemp ) ;
 
 
         ////////////////////////////////////////////////////////////////////////////////
         //读取怪物信息 已经包含“读取宠物信息”
         memset( szTemp, 0, _MAX_PATH ) ;
-        GET_SCENE_FULL_PATH( szTemp, szMonster );
+        GET_SCENE_FULL_PATH( szTemp, szMonster ) ;
 
         // 重置宠物信息
         m_pPetManager->RemoveAllPet() ;
-        m_pPetManager->Reset();
+        m_pPetManager->Reset() ;
 
         m_pMonsterManager->RemoveAllMonster() ;
         m_pMonsterManager->Reset() ;
@@ -491,82 +490,82 @@ BOOL Scene::Load( SCENE_LOAD* load )
         // 读取操作台
         if ( FALSE != IsPlatformExist )
         {
-            memset( szTemp, 0, _MAX_PATH );
-            GET_SCENE_FULL_PATH( szTemp, szPlatform );
+            memset( szTemp, 0, _MAX_PATH ) ;
+            GET_SCENE_FULL_PATH( szTemp, szPlatform ) ;
 
             m_pPlatformManager->RemoveAllPlatform() ;
-            ret = m_pPlatformManager->LoadPlatform( szTemp );
+            ret = m_pPlatformManager->LoadPlatform( szTemp ) ;
             if ( FALSE == ret )
             {
                 Assert( FALSE ) ;
-                Log::SaveLog( SERVER_LOGFILE, "This scene read platform error!" );
+                Log::SaveLog( SERVER_LOGFILE, "This scene read platform error!" ) ;
             }
             else
             {
-                Log::SaveLog( SERVER_LOGFILE, "Load %s ...OK!", szTemp );
+                Log::SaveLog( SERVER_LOGFILE, "Load %s ...OK!", szTemp ) ;
             }
         }
         else
         {
-            Log::SaveLog( SERVER_LOGFILE, "This scene has no platform!" );
+            Log::SaveLog( SERVER_LOGFILE, "This scene has no platform!" ) ;
         }
 
         ////////////////////////////////////////////////////////////////////////////////
         //读取摊位信息, 不能用于开辟副本
         if ( IsStallInfoExist )
         {
-            memset( szTemp, 0, _MAX_PATH );
-            GET_SCENE_FULL_PATH( szTemp, szStallInfo );
+            memset( szTemp, 0, _MAX_PATH ) ;
+            GET_SCENE_FULL_PATH( szTemp, szStallInfo ) ;
 
-            m_pStallInfoManager->CleanUp();
+            m_pStallInfoManager->CleanUp() ;
             //分配内存
-            m_pStallInfoManager->Init( m_pMap->CX(), m_pMap->CZ() );
+            m_pStallInfoManager->Init( m_pMap->CX(), m_pMap->CZ() ) ;
             //读取数据
             if ( FALSE == m_pStallInfoManager->Load( szTemp ) )
             {
-                m_pStallInfoManager->CleanUp();
+                m_pStallInfoManager->CleanUp() ;
                 Assert( FALSE ) ;
-                Log::SaveLog( SERVER_LOGFILE, "This scene read stallinfo error!" );
+                Log::SaveLog( SERVER_LOGFILE, "This scene read stallinfo error!" ) ;
             }
             else
             {
-                Log::SaveLog( SERVER_LOGFILE, "Load %s ...OK!", szTemp );
+                Log::SaveLog( SERVER_LOGFILE, "Load %s ...OK!", szTemp ) ;
             }
         }
         else
         {
-            Log::SaveLog( SERVER_LOGFILE, "This scene has no stallinfo!" );
+            Log::SaveLog( SERVER_LOGFILE, "This scene has no stallinfo!" ) ;
         }
 
         ////////////////////////////////////////////////////////////////////////////////
         //读取初始化玩家商店管理器
-        m_pPlayerShopManager->Init( this );
-        Log::SaveLog( SERVER_LOGFILE, "Init m_pPlayerShopManager OK!" );
+        m_pPlayerShopManager->Init( this ) ;
+        Log::SaveLog( SERVER_LOGFILE, "Init m_pPlayerShopManager OK!" ) ;
 
         ////////////////////////////////////////////////////////////////////////////////
         //读取初始化掉落包管理器
-        m_pItemBoxManager->Init();
-        Log::SaveLog( SERVER_LOGFILE, "Init ItemBoxManager OK!" );
+        m_pItemBoxManager->Init() ;
+        Log::SaveLog( SERVER_LOGFILE, "Init ItemBoxManager OK!" ) ;
 
         ////////////////////////////////////////////////////////////////////////////////
         //任务相关
         m_pLuaInterface->Destroy() ;
-        m_pLuaInterface->Init( this );
-        Log::SaveLog( SERVER_LOGFILE, "Init LuaInterface OK!" );
+        m_pLuaInterface->Init( this ) ;
+        Log::SaveLog( SERVER_LOGFILE, "Init LuaInterface OK!" ) ;
 
         ////////////////////////////////////////////////////////////////////////////////
         //脚本注册相关
         if ( !m_pScriptFileMgr->IsInit() )
         {
-            m_pScriptFileMgr->Init( FILE_SCRIPT, FALSE );
+            m_pScriptFileMgr->Init( FILE_SCRIPT, FALSE ) ;
         }
-        Log::SaveLog( SERVER_LOGFILE, "Load ../Public/Data/script.dat OK!" );
+        Log::SaveLog( SERVER_LOGFILE, "Load ../Public/Data/script.dat OK!" ) ;
 
         ////////////////////////////////////////////////////////////////////////////////
         //场景定时器
         if ( !m_pSceneTimers->IsInit() )
         {
-            m_pSceneTimers->CreateTimer( g_Config.m_ConfigInfo.m_MaxTimerCount, this );
+            m_pSceneTimers->CreateTimer( g_Config.m_ConfigInfo.m_MaxTimerCount, this ) ;
         }
         else
         {
@@ -578,29 +577,29 @@ BOOL Scene::Load( SCENE_LOAD* load )
         if ( IsGrowPointExist )
         {
             memset( szTemp, 0, _MAX_PATH ) ;
-            GET_SCENE_FULL_PATH( szTemp, szGrowPointData );
-            strcpy( szGrowPointData, szTemp );
+            GET_SCENE_FULL_PATH( szTemp, szGrowPointData ) ;
+            strcpy( szGrowPointData, szTemp ) ;
 
             memset( szTemp, 0, _MAX_PATH ) ;
-            GET_SCENE_FULL_PATH( szTemp, szGrowPointSetup );
-            strcpy( szGrowPointSetup, szTemp );
+            GET_SCENE_FULL_PATH( szTemp, szGrowPointSetup ) ;
+            strcpy( szGrowPointSetup, szTemp ) ;
 
             m_GrowPointGroup.CleanUp() ;
             BOOL bInitGp = m_GrowPointGroup.Load( szGrowPointData, szGrowPointSetup ) ;
             if ( !bInitGp )
             {
-                Log::SaveLog( SERVER_LOGFILE, "This scene has no growpoint!" );
+                Log::SaveLog( SERVER_LOGFILE, "This scene has no growpoint!" ) ;
             }
         }
         else
         {
-            Log::SaveLog( SERVER_LOGFILE, "This scene has no growpoint!" );
+            Log::SaveLog( SERVER_LOGFILE, "This scene has no growpoint!" ) ;
         }
 
         ////////////////////////////////////////////////////////////////////////////////
         //事件区
         memset( szTemp, 0, _MAX_PATH ) ;
-        GET_SCENE_FULL_PATH( szTemp, szArea );
+        GET_SCENE_FULL_PATH( szTemp, szArea ) ;
 
         m_pAreaManager->Term() ;
         ret = m_pAreaManager->Init( szTemp ) ;
@@ -609,10 +608,10 @@ BOOL Scene::Load( SCENE_LOAD* load )
             Assert( FALSE ) ;
             return FALSE ;
         }
-        Log::SaveLog( SERVER_LOGFILE, "Load %s ...OK!", szTemp );
+        Log::SaveLog( SERVER_LOGFILE, "Load %s ...OK!", szTemp ) ;
 
         m_EventCore.Reset() ;
-        Log::SaveLog( SERVER_LOGFILE, "Reset EventCore ...OK!" );
+        Log::SaveLog( SERVER_LOGFILE, "Reset EventCore ...OK!" ) ;
 
         Log::SaveLog( SERVER_LOGFILE, "EndLoad %d", this->SceneID() ) ;
 
@@ -621,7 +620,7 @@ BOOL Scene::Load( SCENE_LOAD* load )
     __LEAVE_FUNCTION
 
         return FALSE ;
-    }
+}
 
 BOOL Scene::Init()
 {
@@ -774,7 +773,7 @@ BOOL Scene::StatusLogic()
                 Assert( FALSE ) ;
             }
                 break ;
-        };
+        } ;
 
 
         return TRUE ;
@@ -804,7 +803,7 @@ BOOL Scene::HeartBeat()
                 m_QuitTimer.CleanUp() ;
                 m_CopyData.CleanUp() ;
                 m_CopySceneQuitTimer.CleanUp() ;
-                return TRUE;
+                return TRUE ;
             }
         }
         else
@@ -835,8 +834,8 @@ BOOL Scene::HeartBeat()
                 }
                 if ( m_CityData.m_DynamicSceneQuitTimer.CountingTimer( uTime ) )
                 {
-                    m_CityData.m_bClose = FALSE;
-                    m_CityData.m_DynamicSceneQuitTimer.CleanUp();
+                    m_CityData.m_bClose = FALSE ;
+                    m_CityData.m_DynamicSceneQuitTimer.CleanUp() ;
                     CloseScene() ;
                 }
             }
@@ -903,7 +902,7 @@ BOOL Scene::HeartBeat()
 
         _MY_TRY
         {
-            ret = m_pItemBoxManager->HeartBeat( uTime );
+            ret = m_pItemBoxManager->HeartBeat( uTime ) ;
             Assert( ret) ;
         }
         _MY_CATCH
@@ -914,7 +913,7 @@ BOOL Scene::HeartBeat()
 
         _MY_TRY
         {
-            ret = m_pSpecialManager->HeartBeat( uTime );
+            ret = m_pSpecialManager->HeartBeat( uTime ) ;
             Assert( ret ) ;
         }
         _MY_CATCH
@@ -925,8 +924,8 @@ BOOL Scene::HeartBeat()
 
         _MY_TRY
         {
-            ret = m_GrowPointGroup.HeartBeat( uTime );
-            Assert( ret );
+            ret = m_GrowPointGroup.HeartBeat( uTime ) ;
+            Assert( ret ) ;
         }
         _MY_CATCH
         {
@@ -937,7 +936,7 @@ BOOL Scene::HeartBeat()
         _MY_TRY
         {
             ret = m_pChatPipe->HeartBeat( uTime ) ;
-            Assert( ret );
+            Assert( ret ) ;
         }
         _MY_CATCH
         {
@@ -947,7 +946,7 @@ BOOL Scene::HeartBeat()
 
         _MY_TRY
         {
-            ret = m_pPlayerShopManager->HeartBeat( uTime );
+            ret = m_pPlayerShopManager->HeartBeat( uTime ) ;
             Assert( ret ) ;
         }
         _MY_CATCH
@@ -961,7 +960,7 @@ BOOL Scene::HeartBeat()
         {
             if ( m_pSceneTimers->mRefeshTimer.CountingTimer( uTime ) )
             {
-                m_pSceneTimers->OnTimer( uTime );
+                m_pSceneTimers->OnTimer( uTime ) ;
             }
         }
         _MY_CATCH
@@ -974,8 +973,8 @@ BOOL Scene::HeartBeat()
         //用户回收处理
         _MY_TRY
         {
-            ret = m_pRecyclePlayerManager->HeartBeat( uTime );
-            Assert( ret );
+            ret = m_pRecyclePlayerManager->HeartBeat( uTime ) ;
+            Assert( ret ) ;
         }
         _MY_CATCH
         {
@@ -997,7 +996,7 @@ BOOL Scene::ProcessCacheCommands()
 
         BOOL ret = FALSE ;
 
-        for ( UINT i = 0; i < m_QueSize; i++ )
+        for ( UINT i = 0 ; i < m_QueSize ; i++ )
         {
             Packet* pPacket = NULL ;
             PlayerID_t PlayerID ;
@@ -1177,7 +1176,7 @@ BOOL Scene::MovePacket( PlayerID_t PlayerID )
 
         UINT Cur = m_Head ;
 
-        for ( UINT i = 0; i < m_QueSize; i++ )
+        for ( UINT i = 0 ; i < m_QueSize ; i++ )
         {
             if ( NULL == m_PacketQue[ Cur ].m_pPacket ) break ;
 
