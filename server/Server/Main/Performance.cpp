@@ -120,7 +120,7 @@ VOID PerformanceManager::CompareScenePerformance( INT index )
         if ( 0 == memcmp( &pScene->m_Perfor, pPerfor, sizeof( SCENE_PERFOR ) ) )
         {//场景锁死，异常
 
-            Log::SaveLog( SERVER_ERRORFILE, "SceneID=%d Dead Lock!", pPerfor->m_SceneID ) ;
+            Log::SaveLog( SERVER_ERRORFILE, "SceneID = %d Dead Lock!", pPerfor->m_SceneID ) ;
             for ( INT i=0; i<SPT_NUMBER; i++ )
             {
                 Log::SaveLog( SERVER_ERRORFILE, "%d: %d", i, pPerfor->m_aPerfor[i] ) ;
