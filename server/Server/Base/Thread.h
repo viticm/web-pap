@@ -1,18 +1,17 @@
-//////////////////////////////////////////////////////////////////////
-//
-// Thread.h
-//
-//
-
-
+/**
+ * PAP Server Engine ( https://github.com/viticm/web-pap )
+ * $Id Thread.h
+ * @link https://github.com/viticm/web-pap/tree/master/server for the canonical source repository
+ * @copyright Copyright (c) 2013-2013 viticm( viticm@126.com )
+ * @license
+ * @user viticm<viticm@126.com>
+ * @date 2013-8-28 23:09:01
+ * @uses the thread base module
+ */
 
 #ifndef __THREAD_H__
 #define __THREAD_H__
 
-
-//////////////////////////////////////////////////
-// include files
-//////////////////////////////////////////////////
 #include "Type.h"
 
 
@@ -20,75 +19,45 @@
 
 //当定义此宏时，所有线程将只执行一次后就推出。
 //#define _EXEONECE 10
-
-//////////////////////////////////////////////////////////////////////
-//
-// class Thread
-//
-// POSIX Thread Class
-//
-//////////////////////////////////////////////////////////////////////
-
 class Thread 
 {
 
-//////////////////////////////////////////////////
-// constants
-//////////////////////////////////////////////////
 public :
     
     enum ThreadStatus 
     {
-        READY ,        // 当前线程处于准备状态
+        READY ,      // 当前线程处于准备状态
         RUNNING ,    // 处于运行状态
         EXITING ,    // 线程正在退出
-        EXIT        // 已经退出 
+        EXIT         // 已经退出 
     };
     
-
-//////////////////////////////////////////////////
-// constructor and destructor
-//////////////////////////////////////////////////
-
 public :
 
     // constructor
-    Thread ( ) ;
+    Thread() ;
 
     // destructor
-    virtual ~Thread () ;
+    virtual ~Thread() ;
 
 
-//////////////////////////////////////////////////
-// public methods
-//////////////////////////////////////////////////
 
 public :
 
-    VOID start () ;
-    
-    virtual VOID stop () ;
+    VOID start() ;
+    virtual VOID stop() ;
 
-    VOID exit ( VOID * retval = NULL ) ;
-
-    virtual VOID run () ;
+    VOID exit( VOID * retval = NULL ) ;
+    virtual VOID run() ;
 
 
-//////////////////////////////////////////////////
-// 
-//////////////////////////////////////////////////
 public :
     // get thread identifier
-    TID getTID () { return m_TID; }
+    TID getTID() { return m_TID; }
     
     // get/set thread's status
-    ThreadStatus getStatus () { return m_Status; }
-    VOID setStatus ( ThreadStatus status ) { m_Status = status; }
-    
-
-//////////////////////////////////////////////////
-// data members
-//////////////////////////////////////////////////
+    ThreadStatus getStatus() { return m_Status; }
+    VOID setStatus( ThreadStatus status ) { m_Status = status; }
 
 private :
 
@@ -98,7 +67,7 @@ private :
     // thread status
     ThreadStatus m_Status;
 
-#if defined(__WINDOWS__)
+#if defined( __WINDOWS__ )
     HANDLE m_hThread ;
 #endif
 
@@ -106,9 +75,9 @@ private :
 
 extern UINT g_QuitThreadCount ;
 
-#if defined(__LINUX__)
+#if defined( __LINUX__ )
 VOID * MyThreadProcess ( VOID * derivedThread ) ;
-#elif defined(__WINDOWS__)
+#elif defined( __WINDOWS__ )
 DWORD WINAPI MyThreadProcess(  VOID* derivedThread ) ;
 #endif
 
