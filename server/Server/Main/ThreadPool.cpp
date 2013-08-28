@@ -6,13 +6,13 @@ ThreadPool::ThreadPool()
 {
     __ENTER_FUNCTION
 
-        for ( INT i=0; MAX_THREAD > i; i++ )
+        for ( INT i = 0; MAX_THREAD > i; i++ )
         {
             m_pThread[i] = NULL ;
         }
         m_Count = 0 ;
         m_Position = 0 ;
-        m_ThreadCount = 0;
+        m_ThreadCount = 0 ;
 
     __LEAVE_FUNCTION
 }
@@ -21,7 +21,7 @@ ThreadPool::~ThreadPool()
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0; MAX_THREAD > i; i++ )
+        for ( INT i = 0 ; MAX_THREAD > i ; i++ )
         {
             SAFE_DELETE( m_pThread[i] ) ;
         }
@@ -34,7 +34,7 @@ ThreadPool::~ThreadPool()
 Thread** ThreadPool::GetThread()
 {
     __ENTER_FUNCTION
-        return m_pThread;
+        return m_pThread ;
     __LEAVE_FUNCTION
 }
 
@@ -42,7 +42,7 @@ BOOL ThreadPool::AddThread( UINT uThreadIndex, Thread* pThread )
 {
     __ENTER_FUNCTION
 
-        //for( INT i=0; i<MAX_THREAD; i++ )
+        //for( INT i=0 ; i<MAX_THREAD ; i++ )
         //{
         //if( NULL == m_pThread[ uThreadIndex ] )
         //{
@@ -68,7 +68,7 @@ BOOL ThreadPool::DelThread( TID id )
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0; MAX_THREAD > i; i++ )
+        for ( INT i = 0 ; MAX_THREAD > i ; i++ )
         {
             if ( m_pThread[i] && m_pThread[i]->getTID() == id )
             {
@@ -91,7 +91,7 @@ Thread* ThreadPool::GetThread( TID id )
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0; MAX_THREAD > i; i++ )
+        for ( INT i = 0 ; MAX_THREAD > i ; i++ )
         {
             if ( m_pThread[i] && m_pThread[i]->getTID() == id )
             {
@@ -122,7 +122,7 @@ BOOL ThreadPool::Start()
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0; i < m_ThreadCount; i++ )
+        for ( INT i = 0 ; i < m_ThreadCount ; i++ )
         {
             if( m_pThread[ i ] )
             {
@@ -141,7 +141,7 @@ BOOL ThreadPool::Stop()
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0; i < m_ThreadCount; i++ )
+        for ( INT i = 0 ; i < m_ThreadCount ; i++ )
         {
             if ( m_pThread[i] ) m_pThread[i]->stop() ;
         }
