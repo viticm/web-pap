@@ -85,14 +85,14 @@ BOOL ThreadManager::Init( UINT MaxSceneCount )
         }
        
         /** //my debug output
-        for ( i = 0; i <= uMaxThreadCount; i++ )
+        for ( i = 0 ; i <= uMaxThreadCount ; i++ )
         {
-            Thread** m_pThread = m_pThreadPool->GetThread();
-            SceneThread* pSceneThread1 = (SceneThread*)( m_pThread[ i ] );
-            LERR( "FILE: %s, LINE: %d, pSceneThread1: %d, index: %d", __FILE__, __LINE__, pSceneThread1, i );
+            Thread** m_pThread = m_pThreadPool->GetThread() ;
+            SceneThread* pSceneThread1 = (SceneThread*)( m_pThread[ i ] ) ;
+            LERR( "FILE: %s, LINE: %d, pSceneThread1: %d, index: %d", __FILE__, __LINE__, pSceneThread1, i ) ;
         }
         **/
-        MySleep( 3600 );
+        MySleep( 3600 ) ;
         for ( i = 0; i < count; i++ )
         {
             //读取场景
@@ -118,7 +118,7 @@ BOOL ThreadManager::Init( UINT MaxSceneCount )
             {
 
                 Scene* pScene = g_pSceneManager->GetScene( SceneID ) ;
-                pSceneThread->AddScene( pScene );
+                pSceneThread->AddScene( pScene ) ;
             }
         }
 
@@ -141,7 +141,7 @@ BOOL ThreadManager::Start()
         BOOL ret ;
         m_pServerThread->start() ;
         MySleep( 500 ) ;
-        ret = m_pThreadPool->Start( ) ;
+        ret = m_pThreadPool->Start() ;
 
         return ret ;
 
