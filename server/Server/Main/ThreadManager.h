@@ -1,5 +1,13 @@
-
-
+/**
+ * PAP Server Engine ( https://github.com/viticm/web-pap )
+ * $Id ThreadManager.h
+ * @link https://github.com/viticm/web-pap/tree/master/server for the canonical source repository
+ * @copyright Copyright (c) 2013-2013 viticm( viticm@126.com )
+ * @license
+ * @user viticm<viticm@126.com>
+ * @date 2013-8-28 19:32:47
+ * @uses thread manager
+ */
 #ifndef __THREADMANAGER_H__
 #define __THREADMANAGER_H__
 
@@ -20,35 +28,26 @@ public :
     //初始化
     BOOL                Init( UINT MaxSceneCount = MAX_SCENE ) ;
     //启动所有线程
-    BOOL                Start( ) ;
+    BOOL                Start() ;
     //停止所有线程
-    BOOL                Stop( ) ;
+    BOOL                Stop() ;
 
     //取得当前的线程池
-    ThreadPool*            GetThreadPool(){ return m_pThreadPool ; } ;
+    ThreadPool*         GetThreadPool(){ return m_pThreadPool ; } ;
 
     //取得当前的服务器线程
-    ServerThread*        GetServerThread(){ 
-        return m_pServerThread ; 
-    } ;
+    ServerThread*       GetServerThread(){ return m_pServerThread ; } ;
 
     //取得当前运行的线程总数
     UINT                GetTotalThreads(){ return m_nThreads ; } ;
 
 
 protected :
-    ThreadPool*            m_pThreadPool ;
-    ServerThread*        m_pServerThread ;
+    ThreadPool*         m_pThreadPool ;
+    ServerThread*       m_pServerThread ;
     UINT                m_nThreads ;
-
-
-
 
 };
 
 extern ThreadManager*    g_pThreadManager ;
-
-
-
-
 #endif
