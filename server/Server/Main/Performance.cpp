@@ -135,7 +135,7 @@ VOID PerformanceManager::CompareScenePerformance( INT index )
     __LEAVE_FUNCTION
 }
 
-BOOL ShareMemoryNotifyer::HeartBeat(UINT uTime)
+BOOL ShareMemoryNotifyer::HeartBeat( UINT uTime )
 {
     __ENTER_FUNCTION
 

@@ -64,7 +64,7 @@ VOID SceneThread::run()
 
         if ( 0 == m_nSceneCount )
         {
-            Log::SaveLog( SERVER_LOGFILE, "SceneThread:: no scene add! TID:%d", cTid ) ;
+            Log::SaveLog( SERVER_LOGFILE, "SceneThread:: no scene add! TID: %d", cTid ) ;
             return ;
         }
 
