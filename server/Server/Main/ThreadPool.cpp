@@ -21,7 +21,7 @@ ThreadPool::~ThreadPool()
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0 ; MAX_THREAD > i ; i++ )
+        for ( INT i = 0; MAX_THREAD > i; i++ )
         {
             SAFE_DELETE( m_pThread[i] ) ;
         }
@@ -68,7 +68,7 @@ BOOL ThreadPool::DelThread( TID id )
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0 ; MAX_THREAD > i ; i++ )
+        for ( INT i = 0; MAX_THREAD > i; i++ )
         {
             if ( m_pThread[i] && m_pThread[i]->getTID() == id )
             {
@@ -91,7 +91,7 @@ Thread* ThreadPool::GetThread( TID id )
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0 ; MAX_THREAD > i ; i++ )
+        for ( INT i = 0; MAX_THREAD > i; i++ )
         {
             if ( m_pThread[i] && m_pThread[i]->getTID() == id )
             {
@@ -122,7 +122,7 @@ BOOL ThreadPool::Start()
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0 ; i < m_ThreadCount ; i++ )
+        for ( INT i = 0; i < m_ThreadCount; i++ )
         {
             if( m_pThread[ i ] )
             {
@@ -141,7 +141,7 @@ BOOL ThreadPool::Stop()
 {
     __ENTER_FUNCTION
 
-        for ( INT i = 0 ; i < m_ThreadCount ; i++ )
+        for ( INT i = 0; i < m_ThreadCount; i++ )
         {
             if ( m_pThread[i] ) m_pThread[i]->stop() ;
         }
