@@ -18,12 +18,12 @@ BOOL WINAPI Get_Module_By_Ret_Addr( PBYTE Ret_Addr, CHAR* Module_Name, PBYTE & M
 {
     __ENTER_FUNCTION
 
-        MODULEENTRY32 M = { sizeof( M ) };
-        HANDLE hSnapshot;
+        MODULEENTRY32 M = { sizeof( M ) } ;
+        HANDLE hSnapshot ;
 
-        Module_Name[ 0 ] = 0;
+        Module_Name[ 0 ] = 0 ;
 
-        hSnapshot = ::CreateToolhelp32Snapshot( TH32CS_SNAPMODULE, 0 );
+        hSnapshot = ::CreateToolhelp32Snapshot( TH32CS_SNAPMODULE, 0 ) ;
 
         if ( ( INVALID_HANDLE_VALUE != hSnapshot ) && ::Module32First( hSnapshot, &M ) )
         {
@@ -31,16 +31,16 @@ BOOL WINAPI Get_Module_By_Ret_Addr( PBYTE Ret_Addr, CHAR* Module_Name, PBYTE & M
             {
                 if ( UINT( Ret_Addr - M.modBaseAddr ) < M.modBaseSize )
                 {
-                    lstrcpyn( Module_Name, M.szExePath, MAX_PATH );
-                    Module_Addr = M.modBaseAddr;
-                    break;
+                    lstrcpyn( Module_Name, M.szExePath, MAX_PATH ) ;
+                    Module_Addr = M.modBaseAddr ;
+                    break ;
                 }
-            } while ( ::Module32Next( hSnapshot, &M ) );
+            } while ( ::Module32Next( hSnapshot, &M ) ) ;
         }
 
-        ::CloseHandle( hSnapshot );
+        ::CloseHandle( hSnapshot ) ;
 
-        return !!Module_Name[0];
+        return !!Module_Name[0] ;
 
     __LEAVE_FUNCTION
 
@@ -49,22 +49,22 @@ BOOL WINAPI Get_Module_By_Ret_Addr( PBYTE Ret_Addr, CHAR* Module_Name, PBYTE & M
 
 VOID CreateExceptionDesc( PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastError )
 {
-    if ( !pException || !fp ) return;
+    if ( !pException || !fp ) return ;
 
-    EXCEPTION_RECORD &   E = *pException->ExceptionRecord;
-    CONTEXT &            C = *pException->ContextRecord;
+    EXCEPTION_RECORD &   E = *pException->ExceptionRecord ;
+    CONTEXT &            C = *pException->ContextRecord ;
 
     //取得异常发生地
-    TCHAR        szModeleInfo[ MAX_PATH ];
-    TCHAR        Module_Name[ MAX_PATH ];
-    PBYTE        Module_Addr;
+    TCHAR        szModeleInfo[ MAX_PATH ] ;
+    TCHAR        Module_Name[ MAX_PATH ] ;
+    PBYTE        Module_Addr ;
     if ( Get_Module_By_Ret_Addr( ( PBYTE )E.ExceptionAddress, Module_Name, Module_Addr ) )
     {
-        _sntprintf( szModeleInfo, MAX_PATH, _T( "%s" ), Module_Name );
+        _sntprintf( szModeleInfo, MAX_PATH, _T( "%s" ), Module_Name ) ;
     }
     else
     {
-        _sntprintf( szModeleInfo, MAX_PATH, _T( "%08X" ), ( DWORD_PTR )( E.ExceptionAddress ) );
+        _sntprintf( szModeleInfo, MAX_PATH, _T( "%08X" ), ( DWORD_PTR )( E.ExceptionAddress ) ) ;
     }
 
     switch ( E.ExceptionCode )
@@ -90,7 +90,7 @@ VOID CreateExceptionDesc( PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastE
                 E.ExceptionInformation[11],
                 E.ExceptionInformation[12],
                 E.ExceptionInformation[13],
-                E.ExceptionInformation[14]);
+                E.ExceptionInformation[14]) ;
         }
             break ;
 
@@ -107,9 +107,9 @@ VOID CreateExceptionDesc( PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastE
                 _T( "LastError: 0x%08X\n" ),
                 szModeleInfo,
                 ( E.ExceptionInformation[0] ) ? _T( "Write" ) : _T( "Read" ), 
-                E.ExceptionInformation[1], dwLastError );
+                E.ExceptionInformation[1], dwLastError ) ;
         }
-            break;
+            break ;
 
         default:
         {
@@ -120,7 +120,7 @@ VOID CreateExceptionDesc( PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastE
                 _T( "Code:      0x%08X\n" )
                 _T( "LastError: 0x%08X\n" ),
                 szModeleInfo,
-                E.ExceptionCode, dwLastError );
+                E.ExceptionCode, dwLastError ) ;
         }
             break ;
     }
@@ -129,22 +129,22 @@ VOID CreateExceptionDesc( PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastE
 
 VOID WINAPI Get_Version_Str( FILE* fp )
 {
-    OSVERSIONINFOEX V = { sizeof( OSVERSIONINFOEX ) };    //EX for NT 5.0 and later
+    OSVERSIONINFOEX V = { sizeof( OSVERSIONINFOEX ) } ;    //EX for NT 5.0 and later
 
     if ( !GetVersionEx( ( POSVERSIONINFO )&V ) )
     {
-        ZeroMemory( &V, sizeof( V ) );
-        V.dwOSVersionInfoSize = sizeof( OSVERSIONINFO );
-        GetVersionEx( ( POSVERSIONINFO )&V );
+        ZeroMemory( &V, sizeof( V ) ) ;
+        V.dwOSVersionInfoSize = sizeof( OSVERSIONINFO ) ;
+        GetVersionEx( ( POSVERSIONINFO )&V ) ;
     }
 
     if ( V.dwPlatformId != VER_PLATFORM_WIN32_NT )
-         V.dwBuildNumber = LOWORD(V.dwBuildNumber );    //for 9x HIWORD(dwBuildNumber) = 0x04xx
+         V.dwBuildNumber = LOWORD(V.dwBuildNumber ) ;    //for 9x HIWORD(dwBuildNumber) = 0x04xx
 
-    TCHAR dateBuf[32];
-    _tstrdate( dateBuf );
-    TCHAR timeBuf[32];
-    _tstrtime( timeBuf );
+    TCHAR dateBuf[32] ;
+    _tstrdate( dateBuf ) ;
+    TCHAR timeBuf[32] ;
+    _tstrtime( timeBuf ) ;
 
 
     _ftprintf(fp,
@@ -153,47 +153,47 @@ VOID WINAPI Get_Version_Str( FILE* fp )
         _T( "\n")
         _T( "Time:     %s %s\n" ),
         V.dwMajorVersion, V.dwMinorVersion, V.dwBuildNumber, V.wServicePackMajor, V.wServicePackMinor, V.wProductType, 
-        dateBuf, timeBuf );
+        dateBuf, timeBuf ) ;
 }
 
 VOID Get_Call_Stack( PEXCEPTION_POINTERS pException, FILE* fp )
 {
-    TCHAR    Module_Name[ MAX_PATH ];
-    PBYTE    Module_Addr = 0;
-    PBYTE    Module_Addr_1;
+    TCHAR    Module_Name[ MAX_PATH ] ;
+    PBYTE    Module_Addr = 0 ;
+    PBYTE    Module_Addr_1 ;
 
 #pragma warning(disable: 4200)    //nonstandard extension used : zero-sized array in struct/union
     typedef struct STACK
     {
-        STACK*    Ebp;
-        PBYTE      Ret_Addr;
-        UINT       Param[0];
-    } STACK, *PSTACK;
+        STACK*    Ebp ;
+        PBYTE      Ret_Addr ;
+        UINT       Param[0] ;
+    } STACK, *PSTACK ;
 #pragma warning(default: 4200)
 
-    STACK    Stack = {0, 0};
-    PSTACK   Ebp;
+    STACK    Stack = {0, 0} ;
+    PSTACK   Ebp ;
 
     if ( pException )        //fake frame for exception address
     {
-        Stack.Ebp = ( PSTACK )( DWORD_PTR )pException->ContextRecord->Ebp;
-        Stack.Ret_Addr = ( PBYTE )pException->ExceptionRecord->ExceptionAddress;
-        Ebp = &Stack;
+        Stack.Ebp = ( PSTACK )( DWORD_PTR )pException->ContextRecord->Ebp ;
+        Stack.Ret_Addr = ( PBYTE )pException->ExceptionRecord->ExceptionAddress ;
+        Ebp = &Stack ;
     }
     else
     {
-        Ebp = ( PSTACK )&pException - 1;    //frame addr of Get_Call_Stack()
+        Ebp = ( PSTACK )&pException - 1 ;    //frame addr of Get_Call_Stack()
 
         // Skip frame of Get_Call_Stack().
         if ( !IsBadReadPtr( Ebp, sizeof( PSTACK ) ) )
-            Ebp = Ebp->Ebp;        //caller ebp
+            Ebp = Ebp->Ebp ;        //caller ebp
     }
 
     // Trace CALL_TRACE_MAX calls maximum - not to exceed DUMP_SIZE_MAX.
     // Break trace on wrong stack frame.
-    for ( INT Ret_Addr_I = 0;
+    for ( INT Ret_Addr_I = 0 ;
         ( Ret_Addr_I < CALL_TRACE_MAX ) && !IsBadReadPtr( Ebp, sizeof( PSTACK ) ) 
-        && !IsBadCodePtr( FARPROC( Ebp->Ret_Addr ) );
+        && !IsBadCodePtr( FARPROC( Ebp->Ret_Addr ) ) ;
         Ret_Addr_I++, Ebp = Ebp->Ebp )
     {
         // If module with Ebp->Ret_Addr found.
@@ -202,109 +202,109 @@ VOID Get_Call_Stack( PEXCEPTION_POINTERS pException, FILE* fp )
             if ( Module_Addr_1 != Module_Addr )    //new module
             {
                 // Save module's address and full path.
-                Module_Addr = Module_Addr_1;
-                _ftprintf( fp, _T( "%08X  %s" )NL, ( LONG_PTR )Module_Addr, Module_Name );
+                Module_Addr = Module_Addr_1 ;
+                _ftprintf( fp, _T( "%08X  %s" )NL, ( LONG_PTR )Module_Addr, Module_Name ) ;
             }
 
             // Save call offset.
-            _ftprintf( fp, _T( "  +%08X" ), Ebp->Ret_Addr - Module_Addr );
+            _ftprintf( fp, _T( "  +%08X" ), Ebp->Ret_Addr - Module_Addr ) ;
 
             // Save 5 params of the call. We don't know the real number of params.
             if ( pException && !Ret_Addr_I )    //fake frame for exception address
-                _ftprintf( fp, _T( "  Exception Offset" )NL );
+                _ftprintf( fp, _T( "  Exception Offset" )NL ) ;
             else if ( !IsBadReadPtr( Ebp, sizeof( PSTACK ) + 5 * sizeof( UINT ) ) )
             {
                 _ftprintf( fp, _T( "  (%X, %X, %X, %X, %X)" )NL,
-                    Ebp->Param[0], Ebp->Param[1], Ebp->Param[2], Ebp->Param[3], Ebp->Param[4] );
+                    Ebp->Param[0], Ebp->Param[1], Ebp->Param[2], Ebp->Param[3], Ebp->Param[4] ) ;
             }
         }
         else
-            _ftprintf( fp, _T( "%08X" )NL, ( LONG_PTR )( Ebp->Ret_Addr ) );
+            _ftprintf( fp, _T( "%08X" )NL, ( LONG_PTR )( Ebp->Ret_Addr ) ) ;
     }
 
 }
 
 VOID Get_Exception_Info( PEXCEPTION_POINTERS pException, FILE* fp, UINT dwLastError )
 {
-    CHAR        Module_Name[MAX_PATH];
-    PBYTE       Module_Addr;
-    HANDLE      hFile;
-    FILETIME    Last_Write_Time;
-    FILETIME    Local_File_Time;
-    SYSTEMTIME  T;
+    CHAR        Module_Name[MAX_PATH] ;
+    PBYTE       Module_Addr ;
+    HANDLE      hFile ;
+    FILETIME    Last_Write_Time ;
+    FILETIME    Local_File_Time ;
+    SYSTEMTIME  T ;
 
-    Get_Version_Str( fp );
+    Get_Version_Str( fp ) ;
 
-    _ftprintf( fp, _T( "------------------------------------------------------------------------------\n" ) );
-    _ftprintf( fp, _T( "Process:  " ) );
+    _ftprintf( fp, _T( "------------------------------------------------------------------------------\n" ) ) ;
+    _ftprintf( fp, _T( "Process:  " ) ) ;
 
-    GetModuleFileName( NULL, Module_Name, MAX_PATH );
-    _ftprintf( fp, _T( "%s\n" ) , Module_Name );
+    GetModuleFileName( NULL, Module_Name, MAX_PATH ) ;
+    _ftprintf( fp, _T( "%s\n" ) , Module_Name ) ;
 
     // If exception occurred.
     if ( pException )
     {
-        EXCEPTION_RECORD&   E = *pException->ExceptionRecord;
-        CONTEXT&            C = *pException->ContextRecord;
+        EXCEPTION_RECORD&   E = *pException->ExceptionRecord ;
+        CONTEXT&            C = *pException->ContextRecord ;
 
         // If module with E.ExceptionAddress found - save its path and date.
         if ( Get_Module_By_Ret_Addr( ( PBYTE )E.ExceptionAddress, Module_Name, Module_Addr ) )
         {
-            _ftprintf( fp, _T( "Module:   %s\n" ) , Module_Name );
+            _ftprintf( fp, _T( "Module:   %s\n" ) , Module_Name ) ;
 
             if ( ( hFile = CreateFile( Module_Name, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
                 FILE_ATTRIBUTE_NORMAL, NULL ) ) != INVALID_HANDLE_VALUE )
             {
                 if ( GetFileTime( hFile, NULL, NULL, &Last_Write_Time ) )
                 {
-                    FileTimeToLocalFileTime( &Last_Write_Time, &Local_File_Time );
-                    FileTimeToSystemTime( &Local_File_Time, &T );
+                    FileTimeToLocalFileTime( &Last_Write_Time, &Local_File_Time ) ;
+                    FileTimeToSystemTime( &Local_File_Time, &T ) ;
 
                     _ftprintf( fp, _T( "Date Modified:  %02d/%02d/%d\n" ) , 
-                        T.wMonth, T.wDay, T.wYear );
+                        T.wMonth, T.wDay, T.wYear ) ;
                 }
-                CloseHandle( hFile );
+                CloseHandle( hFile ) ;
             }
         }
         else
         {
-            _ftprintf( fp, _T( "Exception Addr:  %08X\n" ), ( LONG_PTR )( E.ExceptionAddress ) );
+            _ftprintf( fp, _T( "Exception Addr:  %08X\n" ), ( LONG_PTR )( E.ExceptionAddress ) ) ;
         }
 
-        _ftprintf( fp, _T( "------------------------------------------------------------------------------\n" ) );
+        _ftprintf( fp, _T( "------------------------------------------------------------------------------\n" ) ) ;
 
         //加入具体异常解释信息
-        CreateExceptionDesc( pException, fp, dwLastError );
+        CreateExceptionDesc( pException, fp, dwLastError ) ;
 
     }
 
-    _ftprintf( fp, _T( "------------------------------------------------------------------------------\n" ) );
+    _ftprintf( fp, _T( "------------------------------------------------------------------------------\n" ) ) ;
 
     // Save call stack info.
-    _ftprintf( fp, _T( "Call Stack:\n" ) );
-    Get_Call_Stack( pException, fp );
+    _ftprintf( fp, _T( "Call Stack:\n" ) ) ;
+    Get_Call_Stack( pException, fp ) ;
 }
 
 BOOL CreateBigInfoFile( PEXCEPTION_POINTERS pException, CHAR* szBigFile, UINT dwLastError )
 {
     __ENTER_FUNCTION
 
-        if ( !pException ) return FALSE;
+        if ( !pException ) return FALSE ;
 
-        TCHAR szTempFile[ MAX_PATH ] = {0};
-        strcpy( szTempFile, "./Server_Dump.txt" );
+        TCHAR szTempFile[ MAX_PATH ] = {0} ;
+        strcpy( szTempFile, "./Server_Dump.txt" ) ;
 
-        FILE* fp = _tfopen( szTempFile, _T( "w" ) );
-        if ( !fp ) return FALSE;
+        FILE* fp = _tfopen( szTempFile, _T( "w" ) ) ;
+        if ( !fp ) return FALSE ;
 
-        Get_Exception_Info( pException, fp, dwLastError );
+        Get_Exception_Info( pException, fp, dwLastError ) ;
 
-        fclose( fp ); fp = NULL;
+        fclose( fp ) ; fp = NULL ;
 
-        ::GetShortPathName( szTempFile, szBigFile, MAX_PATH );
-        if ( 0 == szBigFile[0] ) return FALSE;
+        ::GetShortPathName( szTempFile, szBigFile, MAX_PATH ) ;
+        if ( 0 == szBigFile[0] ) return FALSE ;
 
-        return TRUE;
+        return TRUE ;
     
     __LEAVE_FUNCTION
 
@@ -314,19 +314,19 @@ BOOL CreateBigInfoFile( PEXCEPTION_POINTERS pException, CHAR* szBigFile, UINT dw
 VOID tProcessException( PEXCEPTION_POINTERS pException ) throw()
 {
     //保存最后的错误代码
-    UINT dwLastError = ::GetLastError();
-    if ( !pException ) return;
+    UINT dwLastError = ::GetLastError() ;
+    if ( !pException ) return ;
 
     //生成完整表述文件
-    CHAR szBigInfoFile[ MAX_PATH ] = {0};
+    CHAR szBigInfoFile[ MAX_PATH ] = {0} ;
     if ( !CreateBigInfoFile( pException, szBigInfoFile, dwLastError ) )
     {
-        return;
+        return ;
     }
 
     //生成dump报告
-    CHAR szDumpFile[ MAX_PATH ] = {0};
-    //CreateDumpHelpFile(pException, szDumpFile);
+    CHAR szDumpFile[ MAX_PATH ] = {0} ;
+    //CreateDumpHelpFile(pException, szDumpFile) ;
 }
 
 #endif
@@ -365,7 +365,7 @@ VOID Thread::start ()
         if ( Thread::READY != m_Status ) return ;
 
 #if defined( __LINUX__ )
-        pthread_create( &m_TID, NULL, MyThreadProcess, this );
+        pthread_create( &m_TID, NULL, MyThreadProcess, this ) ;
 #elif defined( __WINDOWS__ )
         m_hThread = ::CreateThread( NULL, 0, MyThreadProcess , this, 0, &m_TID ) ;
 #endif
@@ -387,7 +387,7 @@ VOID Thread::exit( VOID * retval )
     _MY_TRY
     {
         #if defined( __LINUX__ )
-            pthread_exit( retval );
+            pthread_exit( retval ) ;
         #elif defined( __WINDOWS__ )
             ::CloseHandle( m_hThread ) ;
         #endif
@@ -401,31 +401,30 @@ VOID Thread::exit( VOID * retval )
 #if defined( __LINUX__ )
 VOID * MyThreadProcess ( VOID * derivedThread )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    Thread * thread = (Thread *)derivedThread;
-    if( thread==NULL )
-        return NULL;
-    
-    // set thread's status to "RUNNING"
-    thread->setStatus(Thread::RUNNING);
+        Thread* thread = ( Thread* )derivedThread ;
+        if ( NULL == thread ) return NULL ;
+        
+        // set thread's status to "RUNNING"
+        thread->setStatus( Thread::RUNNING ) ;
 
-    // here - polymorphism used. (derived::run() called.)
-    thread->run();
-    
-    // set thread's status to "EXIT"
-    thread->setStatus(Thread::EXIT);
-    
-    //INT ret = 0;
-    //thread->exit(&ret);
+        // here - polymorphism used. (derived::run() called.)
+        thread->run() ;
+        
+        // set thread's status to "EXIT"
+        thread->setStatus( Thread::EXIT ) ;
+        
+        //INT ret = 0 ;
+        //thread->exit(&ret) ;
 
-    g_thread_lock.Lock() ;
-    g_QuitThreadCount++ ;
-    g_thread_lock.Unlock() ;
+        g_thread_lock.Lock() ;
+        g_QuitThreadCount++ ;
+        g_thread_lock.Unlock() ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-    return NULL;    // avoid compiler's warning
+        return NULL ;    // avoid compiler's warning
 }
 #elif defined ( __WINDOWS__ )
 
@@ -435,19 +434,19 @@ DWORD WINAPI MyThreadProcess( VOID* derivedThread )
 
     __try
     {
-        Thread * thread = ( Thread * )derivedThread;
-        if ( NULL == thread ) return 0;
+        Thread * thread = ( Thread * )derivedThread ;
+        if ( NULL == thread ) return 0 ;
         
         // set thread's status to "RUNNING"
-        thread->setStatus( Thread::RUNNING );
+        thread->setStatus( Thread::RUNNING ) ;
 
         // here - polymorphism used. (derived::run() called.)
-        thread->run();
+        thread->run() ;
         
         // set thread's status to "EXIT"
-        thread->setStatus( Thread::EXIT );
+        thread->setStatus( Thread::EXIT ) ;
 
-        thread->exit( NULL );
+        thread->exit( NULL ) ;
 
         g_thread_lock.Lock() ;
         g_QuitThreadCount++ ;
@@ -457,11 +456,11 @@ DWORD WINAPI MyThreadProcess( VOID* derivedThread )
 
 //__LEAVE_FUNCTION
 
-    return 0;    // avoid compiler's warning
+    return 0 ;    // avoid compiler's warning
 }
 #endif
 
-VOID Thread::run( )
+VOID Thread::run()
 {
     __ENTER_FUNCTION
 
