@@ -1,4 +1,13 @@
-
+/**
+ * PAP Server Engine ( https://github.com/viticm/web-pap )
+ * $Id SceneThread.h
+ * @link https://github.com/viticm/web-pap/tree/master/server for the canonical source repository
+ * @copyright Copyright (c) 2013-2013 viticm( viticm@126.com )
+ * @license
+ * @user viticm<viticm@126.com>
+ * @date 2013-8-28 14:54:42
+ * @uses the scene thread for scene module
+ */
 
 #ifndef __SCENETHREAD_H__
 #define __SCENETHREAD_H__
@@ -14,27 +23,27 @@
 class SceneThread : public Thread
 {
 public :
-    SceneThread( ) ;
-    ~SceneThread( ) ;
+    SceneThread() ;
+    ~SceneThread() ;
 
     //线程执行主循环
-    virtual VOID    run( ) ;
+    virtual VOID    run() ;
 
     //停止执行
     //调用此接口后不是马上线程就能停止，而且在下一个循环操作时退出
-    virtual VOID    stop( ) { m_Active = FALSE ; } ;
+    virtual VOID    stop() { m_Active = FALSE ; } ;
 
     //判断当前线程是否有效，如果无效，则退出循环
-    BOOL            IsActive( ){ return m_Active ; } ;
+    BOOL            IsActive(){ return m_Active ; } ;
 
-    VOID            Quit( ) ;
+    VOID            Quit() ;
 
     BOOL            AddScene( Scene* pScene ) ;
 
 private :
-    Scene*        m_apScene[MAX_SCENE_PER_THREAD] ;
-    INT            m_nSceneCount ;
-    BOOL        m_Active ;
+    Scene*        m_apScene[ MAX_SCENE_PER_THREAD ] ;
+    INT           m_nSceneCount ;
+    BOOL          m_Active ;
 
 
 
