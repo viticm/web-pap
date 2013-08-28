@@ -318,7 +318,7 @@ BOOL Scene::ObjZone_Register( Obj *pObj, ZoneID_t idZone )
         if( NULL == pObj )
         {
             Assert( NULL == pObj  && "Scene::ObjZone_Register" ) ;
-            return FALSEi ;
+            return FALSE ;
         }
 
         if ( 0 > idZone || idZone >= m_ZoneInfo.m_wZoneSize )
