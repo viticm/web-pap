@@ -173,9 +173,10 @@ namespace Combat_Module
                 if ( NULL == pSkillInstance )
                 {
                     // Warning Skill data don't match the template data, plz check the data table.
-                    AssertEx( FALSE,"[SkillCore_T::InstanceSkill]: Can't find skill instance!" ) ;
-                    g_pLog->FastSaveLog( LOG_FILE_1, "[SkillCore_T::InstanceSkill]: Warning Skill Data don't match SkillTemplate Data TemplateID = %d, XinFaLvl = %d, SkillDataID = %d.", 
+                    AssertEx( FALSE,"[ SkillCore_T::InstanceSkill ]: Can't find skill instance!" ) ;
+                    g_pLog->FastSaveLog( LOG_FILE_1, "[ SkillCore_T::InstanceSkill ]: Warning Skill Data don't match SkillTemplate Data TemplateID = %d, XinFaLvl = %d, SkillDataID = %d.", 
                         nSkill, rParams.GetSkillLevel() - 1, nSkillInstance ) ;
+
                     return FALSE ;
                 }
                 rSkillInfoOut = *pSkillInstance ; //transfer data from skilldata to runtime skill instance
