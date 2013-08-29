@@ -50,7 +50,7 @@ VOID sm_unlock( CHAR& flag, CHAR type )
 {
     edsm_loop:
         
-        if ( SM_FREE == )
+        if ( SM_FREE == flag )
         {
             return ;
         }
