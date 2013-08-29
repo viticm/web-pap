@@ -96,7 +96,7 @@ VOID PerformanceManager::CompareScenePerformance( INT index )
 {
     __ENTER_FUNCTION
 
-        if ( 0 > index || MAX_PERFOR_SIZE < =index )
+        if ( 0 > index || MAX_PERFOR_SIZE <= index )
         {
             Assert( FALSE ) ;
             return ;
