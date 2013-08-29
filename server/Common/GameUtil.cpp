@@ -2,108 +2,108 @@
 #include "Type.h"
 #include "GameUtil.h"
 
-#ifdef __LINUX__
+#if defined( __LINUX__ )
 #include <execinfo.h>
 #include <signal.h>
 #include <exception>
 #include <setjmp.h>
 #endif
 
-INT                    g_CmdArgv;
-INT                    g_LockTimes=0 ;
-BOOL                g_LockTimeOutEnable=FALSE;
+INT                    g_CmdArgv ;
+INT                    g_LockTimes = 0 ;
+BOOL                   g_LockTimeOutEnable = FALSE ;
 
-WORLD_TIME            g_WorldTime = WT_IND_1;
+WORLD_TIME             g_WorldTime = WT_IND_1 ;
 
-VOID    sm_lock(CHAR& flag,CHAR type)
+VOID sm_lock( CHAR& flag, CHAR type )
 {
     bgsm_loop:
-    if(flag==SM_FREE)
+    if ( SM_FREE == flag )
     {
-        flag=type;
-        if(flag!=type)
+        flag = type ;
+        if ( flag != type )
         {
-            MySleep(1);
-#ifdef __LINUX__
+            MySleep( 1 ) ;
+#if defined( __LINUX__ )
             g_LockTimes ++ ;
-            printf("lock fail %s,%d,%s",__FILE__,__LINE__,__PRETTY_FUNCTION__);
+            printf( "lock fail %s, %d, %s", __FILE__, __LINE__, __PRETTY_FUNCTION__ ) ;
 #endif
-            if((g_LockTimes>100)&&g_LockTimeOutEnable)
+            if ( ( 100 < g_LockTimes ) && g_LockTimeOutEnable )
             {
-                g_LockTimes =0;
-                return;
+                g_LockTimes = 0 ;
+                return ;
             }
-            goto bgsm_loop;
+            goto bgsm_loop ;
         }
-        return;
+        return ;
     }
     else
     {
-        MySleep(1);
-        goto    bgsm_loop;
+        MySleep( 1 ) ;
+        goto bgsm_loop ;
     }
 }
 
 
 
-VOID    sm_unlock(CHAR& flag,CHAR type)
+VOID sm_unlock( CHAR& flag, CHAR type )
 {
     edsm_loop:
         
-        if(flag==SM_FREE)
+        if ( SM_FREE == )
         {
-            return;
+            return ;
         }
         
-        flag=SM_FREE;
+        flag = SM_FREE ;
     
-        if(flag!=SM_FREE)
+        if ( SM_FREE != flag )
         {
-            MySleep(1);
-#ifdef __LINUX__
-            printf("unlock fail %s,%s,%s",__FILE__,__LINE__,__PRETTY_FUNCTION__);
-            if((g_LockTimes>100)&&g_LockTimeOutEnable)
+            MySleep( 1 ) ;
+#if defined( __LINUX__ )
+            printf( "unlock fail %s, %s, %s", __FILE__, __LINE__, __PRETTY_FUNCTION__ ) ;
+            if ( ( 100 < g_LockTimes ) && g_LockTimeOutEnable )
             {
-                g_LockTimes =0;
-                return;
+                g_LockTimes = 0 ;
+                return ;
             }
 #endif
-            goto edsm_loop;
+            goto edsm_loop ;
         }
-        return;
+        return ;
     
 }
 
-BOOL sm_trylock(CHAR& flag,CHAR type)
+BOOL sm_trylock( CHAR& flag, CHAR type )
 {
-    INT LockTimes;
+    INT LockTimes ;
 
 bgsm_loop:
 
-    if(flag==SM_FREE)
+    if ( SM_FREE == flag )
     {
-        flag=type;
-        if(flag!=type)
+        flag = type ;
+        if ( flag != type )
         {
-            LockTimes++;
-            MySleep(1);
-            if(LockTimes>10)
+            LockTimes++ ;
+            MySleep( 1 ) ;
+            if ( 10 < LockTimes )
             {
-                return FALSE;
+                return FALSE ;
             }
-            goto bgsm_loop;
+            goto bgsm_loop ;
         }
-        return TRUE;
+        return TRUE ;
     }
     else
     {
-        LockTimes++;
-        MySleep(1);
-        if(LockTimes>10)
+        LockTimes++ ;
+        MySleep( 1 ) ;
+        if( 10 < LockTimes )
         {
-            return FALSE;
+            return FALSE ;
         }
-        goto    bgsm_loop;
+        goto bgsm_loop ;
     }
 }
 
@@ -115,60 +115,60 @@ VOID MySleep( UINT millionseconds )
 #if defined(__WINDOWS__)
     Sleep( millionseconds ) ;
 #elif defined(__LINUX__)
-    usleep( millionseconds*1000 ) ;
+    usleep( millionseconds * 1000 ) ;
 #endif
 }
 
-TID MyGetCurrentThreadID( )
+TID MyGetCurrentThreadID()
 {
 #if defined(__WINDOWS__)
-    return GetCurrentThreadId( ) ;
+    return GetCurrentThreadId() ;
 #elif defined(__LINUX__)
-    return pthread_self();
+    return pthread_self() ;
 #endif
 }
 
 FLOAT MySqrt( const WORLD_POS* pCur, const WORLD_POS* pTar )
 {
-__ENTER_FUNCTION
-    Assert(pCur);
-    Assert(pTar);
-    return (FLOAT)sqrt( ((double)pCur->m_fX-(double)pTar->m_fX)*((double)pCur->m_fX-(double)pTar->m_fX)+
-                        ((double)pCur->m_fZ-(double)pTar->m_fZ)*((double)pCur->m_fZ-(double)pTar->m_fZ) ) ;
-__LEAVE_FUNCTION
-    return 0.0f;
+    __ENTER_FUNCTION
+        Assert( pCur ) ;
+        Assert( pTar ) ;
+        return ( FLOAT )sqrt( ( ( double )pCur->m_fX-(double )pTar->m_fX ) * ( ( double )pCur->m_fX-( double )pTar->m_fX )+
+                            ( ( double )pCur->m_fZ-( double )pTar->m_fZ ) * ( ( double )pCur->m_fZ-( double )pTar->m_fZ ) ) ;
+    __LEAVE_FUNCTION
+        return 0.0f ;
 }
 
 FLOAT MyLengthSq( const WORLD_POS* pCur, const WORLD_POS* pTar )
 {
-    return (FLOAT)(((double)pCur->m_fX-(double)pTar->m_fX)*((double)pCur->m_fX-(double)pTar->m_fX)+
-                        ((double)pCur->m_fZ-(double)pTar->m_fZ)*((double)pCur->m_fZ-(double)pTar->m_fZ) ) ;
+    return ( FLOAT )( ( ( double )pCur->m_fX-( double )pTar->m_fX ) * ( ( double )pCur->m_fX - ( double )pTar->m_fX )+
+                        ( ( double )pCur->m_fZ-( double )pTar->m_fZ ) * ( ( double )pCur->m_fZ - ( double )pTar->m_fZ ) ) ;
 }
 
 FLOAT MyAngle( const WORLD_POS* pCur, const WORLD_POS* pTar )
 {
     //double Sqrt = sqrt( (pCur->m_fX-pTar->m_fX)*(pCur->m_fX-pTar->m_fX)+
     //                    (pCur->m_fZ-pTar->m_fZ)*(pCur->m_fZ-pTar->m_fZ) ) ;
-    //double Acos = acos((pTar->m_fZ-pCur->m_fZ)/ Sqrt);
+    //double Acos = acos((pTar->m_fZ-pCur->m_fZ)/ Sqrt) ;
     //return (FLOAT)Acos ;
 
-    double Sqrt = (double)sqrt( (pCur->m_fX-pTar->m_fX)*(pCur->m_fX-pTar->m_fX)+
-                        (pCur->m_fZ-pTar->m_fZ)*(pCur->m_fZ-pTar->m_fZ) );
+    double Sqrt = ( double )sqrt( ( pCur->m_fX-pTar->m_fX ) * ( pCur->m_fX-pTar->m_fX )+
+                        ( pCur->m_fZ-pTar->m_fZ ) * ( pCur->m_fZ-pTar->m_fZ ) ) ;
 
-    if(Sqrt <= 0.0f) return 0.0f;
+    if ( 0.0f >= Sqrt ) return 0.0f ;
 
-    double fACos = (pTar->m_fZ-pCur->m_fZ)/ Sqrt;
-    if( fACos >  1.0) fACos = 0.0;
-    if( fACos < -1.0) fACos = __PI;
+    double fACos = ( pTar->m_fZ-pCur->m_fZ )/ Sqrt ;
+    if ( 1.0 < fACos ) fACos = 0.0 ;
+    if ( -1.0 > fACos ) fACos = __PI ;
 
-    fACos = ::acos(fACos);
+    fACos = ::acos( fACos ) ;
  
     // [0~180]
-    if(pTar->m_fX >= pCur->m_fX)
-        return (FLOAT)fACos;
+    if ( pTar->m_fX >= pCur->m_fX )
+        return ( FLOAT )fACos ;
     //(180, 360)
     else
-        return (FLOAT)(2*__PI - fACos);
+        return ( FLOAT )( 2 * __PI - fACos ) ;
 }
 
 BOOL MyPosEqual( const WORLD_POS* pA, const WORLD_POS* pB )
@@ -176,22 +176,22 @@ BOOL MyPosEqual( const WORLD_POS* pA, const WORLD_POS* pB )
 #ifndef ZERO_VALUE
 #define ZERO_VALUE 0.001
 #endif
-    if( pA->m_fX>pB->m_fX ) 
+    if ( pA->m_fX>pB->m_fX ) 
     {
-        if( pA->m_fX-pB->m_fX > ZERO_VALUE ) return FALSE ;
+        if ( pA->m_fX-pB->m_fX > ZERO_VALUE ) return FALSE ;
     }
     else
     {
-        if( pB->m_fX-pA->m_fX > ZERO_VALUE ) return FALSE ;
+        if ( pB->m_fX-pA->m_fX > ZERO_VALUE ) return FALSE ;
     }
 
-    if( pA->m_fZ>pB->m_fZ ) 
+    if ( pA->m_fZ>pB->m_fZ ) 
     {
-        if( pA->m_fZ-pB->m_fZ > ZERO_VALUE ) return FALSE ;
+        if ( pA->m_fZ-pB->m_fZ > ZERO_VALUE ) return FALSE ;
     }
     else
     {
-        if( pB->m_fZ-pA->m_fZ > ZERO_VALUE ) return FALSE ;
+        if ( pB->m_fZ-pA->m_fZ > ZERO_VALUE ) return FALSE ;
     }
 
     return TRUE ;
@@ -201,117 +201,117 @@ VOID MyRandPos( WORLD_POS* pPos, const WORLD_POS* pDir, FLOAT fRadioMax, FLOAT f
 {
 // 最大，最小角度值取的是 COS值
 #define COS_ANGLE_MIN    0.7071f
-#define COS_ANGLE_MAX   1.0f    
+#define COS_ANGLE_MAX    1.0f    
 
 #define ANGLE_MIN    0
-#define ANGLE_MAX   __PI / 4    
+#define ANGLE_MAX    __PI / 4
 
-    FLOAT fR1=fRadioMin ;
-    FLOAT fR2=fRadioMax ;
-    FLOAT fAx=pPos->m_fX ;
-    FLOAT fAz=pPos->m_fZ ;
-    FLOAT fBx=pDir->m_fX ;
-    FLOAT fBz=pDir->m_fZ ;
+    FLOAT fR1 = fRadioMin ;
+    FLOAT fR2 = fRadioMax ;
+    FLOAT fAx = pPos->m_fX ;
+    FLOAT fAz = pPos->m_fZ ;
+    FLOAT fBx = pDir->m_fX ;
+    FLOAT fBz = pDir->m_fZ ;
     FLOAT fPx, fPz ;
         
-    if((fR1 < 0)||(fR2 < 0))
+    if ( ( 0 > fR1 ) || ( 0 > fR2 ) )
     {
         // 半径是负数。  
         return ;
     }
 
-    FLOAT fVec1X = 0;        // 向量AB
-    FLOAT fVec1Y = 0;        // 
+    FLOAT fVec1X = 0 ;        // 向量AB
+    FLOAT fVec1Y = 0 ;        // 
     
-    FLOAT fRandThi    = 0; // 随机角度
-    FLOAT fRandLength = 0; // 随机长度
+    FLOAT fRandThi    = 0 ; // 随机角度
+    FLOAT fRandLength = 0 ; // 随机长度
 
     // 求整数半径
-    INT   iR1 = 0;
-    INT   iR2 = 0;
-    iR1 = (INT)(fR1 * 100);
-    iR2 = (INT)(fR2 * 100);
-    if(iR1 > iR2)
+    INT   iR1 = 0 ;
+    INT   iR2 = 0 ;
+    iR1 = ( INT )( fR1 * 100 ) ;
+    iR2 = ( INT )( fR2 * 100 ) ;
+    if ( iR1 > iR2 )
     {
-        INT iTmep = iR1;
-        iR1 = iR2;
-        iR2 = iTmep;
+        INT iTmep = iR1 ;
+        iR1 = iR2 ;
+        iR2 = iTmep ;
     }
 
     // 求随机半径长度。
-    INT iLenDeta    = iR2 - iR1;
-    INT iRandLength = 0;
-    if(0 == iR1)
+    INT iLenDeta    = iR2 - iR1 ;
+    INT iRandLength = 0 ;
+    if ( 0 == iR1 )
     {
-        iRandLength = rand() % (iR2 + 1);
+        iRandLength = rand() % ( iR2 + 1 ) ;
     }
     else
     {
-        iRandLength = rand() % iR1 + iLenDeta;
+        iRandLength = rand() % iR1 + iLenDeta ;
         
     }
 
-    fRandLength = (FLOAT)(iRandLength * 1.0) / 100;
+    fRandLength = ( FLOAT )( iRandLength * 1.0 ) / 100 ;
 
     // 求随机角度值。
-    INT iThiMin  = (INT)(ANGLE_MIN * 100);
-    INT iThiMax  = (INT)(ANGLE_MAX * 100);
-    INT iThiDeta = iThiMax - iThiMin;
-    INT iRandThi = 0;
-    if(0 == iThiMin )
+    INT iThiMin  = ( INT )( ANGLE_MIN * 100 ) ;
+    INT iThiMax  = ( INT )( ANGLE_MAX * 100 ) ;
+    INT iThiDeta = iThiMax - iThiMin ;
+    INT iRandThi = 0 ;
+    if ( 0 == iThiMin )
     {
-        iRandThi = rand() % (iThiMax + 1);
+        iRandThi = rand() % ( iThiMax + 1 ) ;
     }
     else
     {
-        iRandThi = rand() % iThiMin + iThiDeta;
+        iRandThi = rand() % iThiMin + iThiDeta ;
     }
-    fRandThi     = (FLOAT)(iRandThi * 1.0) / 100;
+    fRandThi     = ( FLOAT )( iRandThi * 1.0 ) / 100 ;
 
     // 求随机角度方向
-       INT iDir = rand() % 2;
-    if(0 == iDir)
+    INT iDir = rand() % 2 ;
+    if ( 0 == iDir )
     {
-        fRandThi = -fRandThi;
+        fRandThi = -fRandThi ;
     }
     
-    fVec1X = fBx - fAx;
-    fVec1Y = fBz - fAz;
-    FLOAT fVec1Len = ::sqrtf(fVec1X * fVec1X + fVec1Y * fVec1Y);
+    fVec1X = fBx - fAx ;
+    fVec1Y = fBz - fAz ;
+    FLOAT fVec1Len = ::sqrtf(fVec1X * fVec1X + fVec1Y * fVec1Y) ;
 
-    if(fabs(FLOAT(fVec1Len)) < 0.00001f)
+    if ( 0.00001f > fabs( FLOAT ( fVec1Len ) ) )
     {
         // A点， B点重合.
-        fPx = fAx;
-        fPz = fAz;
+        fPx = fAx ;
+        fPz = fAz ;
         return ;
     }
 
-    FLOAT fThi = ::asin(FLOAT(fVec1X / fVec1Len));
-    fThi += fRandThi;
+    FLOAT fThi = ::asin( FLOAT ( fVec1X / fVec1Len ) ) ;
+    fThi += fRandThi ;
 
-    FLOAT x = ::cos(fThi) * fRandLength;
-    FLOAT y = ::sin(fThi) * fRandLength;
+    FLOAT x = ::cos( fThi ) * fRandLength ;
+    FLOAT y = ::sin( fThi ) * fRandLength ;
 
-    fPx = x + fAx;
-    fPz = y + fAz;
+    fPx = x + fAx ;
+    fPz = y + fAz ;
 
     pPos->m_fX = fPx ;
     pPos->m_fZ = fPz ;
 }
 
-CHAR* MySocketError( )
+CHAR* MySocketError()
 {
 #ifndef _ESIZE
 #define _ESIZE 256
 #endif
 
-extern CHAR Error[_ESIZE] ;
+extern CHAR Error[ _ESIZE ] ;
     return Error ;
 }
 
 
-UINT g_aCrc32Table[256] =
+UINT g_aCrc32Table[ 256 ] =
 {
     0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA,
     0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,
@@ -380,21 +380,21 @@ UINT g_aCrc32Table[256] =
     0xBAD03605, 0xCDD70693, 0x54DE5729, 0x23D967BF,
     0xB3667A2E, 0xC4614AB8, 0x5D681B02, 0x2A6F2B94,
     0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D,
-};
+} ;
 
 UINT MyCRC( const CHAR* szString )
 {
-    if(szString==NULL || szString[0]==0) return 0;
+    if ( NULL == szString || 0 == szString[0] ) return 0 ;
 
-    UINT dwCrc32 = 0xFFFFFFFF;
-    INT nSize = (INT)strlen(szString);
-    for(INT i=0; i<nSize; i++)
+    UINT dwCrc32 = 0xFFFFFFFF ;
+    INT nSize = ( INT )strlen( szString ) ;
+    for ( INT i = 0 ; i < nSize ; i++ )
     {
-        dwCrc32 = dwCrc32*33 + (UCHAR)szString[i] ;
-//        dwCrc32 = ((dwCrc32)>>8)^g_aCrc32Table[(szString[i])^((dwCrc32)&0x000000FF)];
+        dwCrc32 = dwCrc32 * 33 + ( UCHAR )szString[i] ;
+//        dwCrc32 = ((dwCrc32)>>8)^g_aCrc32Table[(szString[i])^((dwCrc32)&0x000000FF)] ;
     }
 
-    return dwCrc32;
+    return dwCrc32 ;
 }
 
 /*
@@ -404,215 +404,217 @@ BOOL    Binary2String(const CHAR* pIn,UINT InLength,CHAR* pOut)
 
     if(InLength==0)
     {
-        return FALSE;
+        return FALSE ;
     }
-    UINT iOut = 0;
-    for(UINT i = 0 ;i<InLength;i++)
+    UINT iOut = 0 ;
+    for(UINT i = 0 ;i<InLength ;i++)
     {
         switch(pIn[i]) 
         {
         case '\0':
             {
-                pOut[iOut] = '\\';
-                iOut++;
-                pOut[iOut] = '0';
-                iOut++;
+                pOut[iOut] = '\\' ;
+                iOut++ ;
+                pOut[iOut] = '0' ;
+                iOut++ ;
             }
-            break;
+            break ;
         case '\'':
             {
-                pOut[iOut] = '\'';
-                iOut++;
-                pOut[iOut] = '\'';
-                iOut++;
+                pOut[iOut] = '\'' ;
+                iOut++ ;
+                pOut[iOut] = '\'' ;
+                iOut++ ;
             }
-            break;
+            break ;
         case '\"':
             {
-                pOut[iOut] = '\\';
-                iOut++;
-                pOut[iOut] = '\"';
-                iOut++;
+                pOut[iOut] = '\\' ;
+                iOut++ ;
+                pOut[iOut] = '\"' ;
+                iOut++ ;
             }
-            break;
+            break ;
         case '\\':
             {
-                pOut[iOut] = '\\';
-                iOut++;
-                pOut[iOut] = '\\';
-                iOut++;
+                pOut[iOut] = '\\' ;
+                iOut++ ;
+                pOut[iOut] = '\\' ;
+                iOut++ ;
             }
-            break;
+            break ;
         default:
             {
-                pOut[iOut] = pIn[i];
-                iOut++;
+                pOut[iOut] = pIn[i] ;
+                iOut++ ;
             }
-            break;
+            break ;
         }
         
     }
-    return TRUE;
+    return TRUE ;
 
     __LEAVE_FUNCTION
 
-    return FALSE;
+    return FALSE ;
 }
 */
 
-CHAR        Value2Ascii(CHAR in)
+CHAR Value2Ascii( CHAR in )
 {
     __ENTER_FUNCTION
-        switch(in) 
+
+        switch( in ) 
         {
             case 0:
-                return '0';
-                break;
+                return '0' ;
+                break ;
             case 1:
-                return '1';
+                return '1' ;
             case 2:
-                return '2';
-                break;
+                return '2' ;
+                break ;
             case 3:
-                return '3';
-                break;
+                return '3' ;
+                break ;
             case 4:
-                return '4';
-                break;
+                return '4' ;
+                break ;
             case 5:
-                return '5';
-                break;
+                return '5' ;
+                break ;
             case 6:
-                return '6';
-                break;
+                return '6' ;
+                break ;
             case 7:
-                return '7';
-                break;
+                return '7' ;
+                break ;
             case 8:
-                return '8';
-                break;
+                return '8' ;
+                break ;
             case 9:
-                return '9';
-                break;
+                return '9' ;
+                break ;
             case 10:
-                return 'A';
-                break;
+                return 'A' ;
+                break ;
             case 11:
-                return 'B';
-                break;
+                return 'B' ;
+                break ;
             case 12:
-                return 'C';
-                break;
+                return 'C' ;
+                break ;
             case 13:
-                return 'D';
-                break;
+                return 'D' ;
+                break ;
             case 14:
-                return 'E';
-                break;
+                return 'E' ;
+                break ;
             case 15:
-                return 'F';
-                break;
+                return 'F' ;
+                break ;
             default:
-                Assert(FALSE);
-                return '?';
-                break;
+                Assert( FALSE ) ;
+                return '?' ;
+                break ;
         }
 
     __LEAVE_FUNCTION
 
-        return '?';
+        return '?' ;
 }
 
-CHAR Ascii2Value(CHAR in)
-{
-    __ENTER_FUNCTION
-        switch(in) 
-    {
-        case '0':
-            return 0;
-            break;
-        case '1':
-            return 1;
-        case '2':
-            return 2;
-            break;
-        case '3':
-            return 3;
-            break;
-        case '4':
-            return 4;
-            break;
-        case '5':
-            return 5;
-            break;
-        case '6':
-            return 6;
-            break;
-        case '7':
-            return 7;
-            break;
-        case '8':
-            return 8;
-            break;
-        case '9':
-            return 9;
-            break;
-        case 'A':
-            return 10;
-            break;
-        case 'B':
-            return 11;
-            break;
-        case 'C':
-            return 12;
-            break;
-        case 'D':
-            return 13;
-            break;
-        case 'E':
-            return 14;
-            break;
-        case 'F':
-            return 15;
-            break;
-        default:
-            Assert(FALSE);
-            return '?';
-            break;
-    }
-
-    __LEAVE_FUNCTION
-
-        return '?';
-}
-
-
-BOOL    Binary2String(const CHAR* pIn,UINT InLength,CHAR* pOut)
+CHAR Ascii2Value( CHAR in )
 {
     __ENTER_FUNCTION
 
-        if(InLength==0)
+        switch( in ) 
         {
-            return FALSE;
+            case '0':
+                return 0 ;
+                break ;
+            case '1':
+                return 1 ;
+            case '2':
+                return 2 ;
+                break ;
+            case '3':
+                return 3 ;
+                break ;
+            case '4':
+                return 4 ;
+                break ;
+            case '5':
+                return 5 ;
+                break ;
+            case '6':
+                return 6 ;
+                break ;
+            case '7':
+                return 7 ;
+                break ;
+            case '8':
+                return 8 ;
+                break ;
+            case '9':
+                return 9 ;
+                break ;
+            case 'A':
+                return 10 ;
+                break ;
+            case 'B':
+                return 11 ;
+                break ;
+            case 'C':
+                return 12 ;
+                break ;
+            case 'D':
+                return 13 ;
+                break ;
+            case 'E':
+                return 14 ;
+                break ;
+            case 'F':
+                return 15 ;
+                break ;
+            default:
+                Assert(FALSE) ;
+                return '?' ;
+                break ;
         }
-        UINT iOut = 0;
+
+    __LEAVE_FUNCTION
+
+        return '?' ;
+}
+
+
+BOOL Binary2String( const CHAR* pIn, UINT InLength, CHAR* pOut )
+{
+    __ENTER_FUNCTION
+
+        if ( 0 == InLength )
+        {
+            return FALSE ;
+        }
+        UINT iOut = 0 ;
 
         
-        for(UINT i = 0 ;i<InLength;i++)
+        for ( UINT i = 0 ; i < InLength ; i++ )
         {
             
-            pOut[iOut] = Value2Ascii(((unsigned char)pIn[i]&0xF0)>>4);
-            iOut++;
-            pOut[iOut] = Value2Ascii(pIn[i]&0x0F);
-            iOut++;
+            pOut[ iOut ] = Value2Ascii( ( ( unsigned char )pIn[i] & 0xF0 ) >> 4 ) ;
+            iOut++ ;
+            pOut[ iOut ] = Value2Ascii( pIn[i] & 0x0F ) ;
+            iOut++ ;
         
 
         }
-        return TRUE;
+        return TRUE ;
 
         __LEAVE_FUNCTION
 
-            return FALSE;
+            return FALSE ;
 }
 
 /*
@@ -622,317 +624,355 @@ BOOL DBStr2Binary(const CHAR* pIn,UINT InLength,CHAR* pOut,UINT OutLimit,UINT& O
 
     if(InLength==0)
     {
-        return FALSE;
+        return FALSE ;
     }
 
-    UINT iOut = 0;
-    UINT i;
-    for( i = 0 ;i<InLength-1;)
+    UINT iOut = 0 ;
+    UINT i ;
+    for( i = 0 ;i<InLength-1 ;)
     {
             if((pIn[i]=='\\') && (pIn[i+1]=='0'))
             {
-                pOut[iOut]    =    '\0';
-                iOut++;
-                i+=2;
-                continue;
+                pOut[iOut]    =    '\0' ;
+                iOut++ ;
+                i+=2 ;
+                continue ;
             }
             else if((pIn[i]=='\\') && (pIn[i+1]=='\"'))
             {
-                pOut[iOut]    =    '\"';
-                iOut++;
-                i+=2;
-                continue;
+                pOut[iOut]    =    '\"' ;
+                iOut++ ;
+                i+=2 ;
+                continue ;
             }
             else if((pIn[i]=='\\') && (pIn[i+1]=='\\'))
             {
-                pOut[iOut]    =    '\\';
-                iOut++;
-                i+=2;
-                continue;
+                pOut[iOut]    =    '\\' ;
+                iOut++ ;
+                i+=2 ;
+                continue ;
             }
             else if(pIn[i]=='\0')
             {
-                break;
+                break ;
             }
 
-        pOut[iOut] = pIn[i];
-        iOut++;
-        i++;
+        pOut[iOut] = pIn[i] ;
+        iOut++ ;
+        i++ ;
 
         if(iOut>=OutLimit)
-            break;
+            break ;
     }
-    OutLength = iOut;
-    return TRUE;
+    OutLength = iOut ;
+    return TRUE ;
 
     __LEAVE_FUNCTION
 }
 */
 
-BOOL DBStr2Binary(const CHAR* pIn,UINT InLength,CHAR* pOut,UINT OutLimit,UINT& OutLength)
+BOOL DBStr2Binary( const CHAR* pIn,UINT InLength,CHAR* pOut,UINT OutLimit,UINT& OutLength )
 {
     __ENTER_FUNCTION
 
-        if(InLength==0)
+        if ( 0 == InLength )
         {
-            return FALSE;
+            return FALSE ;
         }
 
-        UINT iOut = 0;
-        UINT i;
-        for( i = 0 ;i<InLength-1;)
+        UINT iOut = 0 ;
+        UINT i ;
+        for ( i = 0 ; i < InLength - 1 ;)
         {
-            if(pIn[i]=='\0'||pIn[i+1]=='\0')
+            if ( '\0' == pIn[i] || '\0' == pIn[ i + 1 ] )
             {
-                break;
+                break ;
             }
             
-            pOut[iOut]    =    (Ascii2Value(pIn[i])<<4) + Ascii2Value(pIn[i+1]);
-            iOut++;
-            i+=2;
-            if(iOut>=OutLimit)
-                break;
+            pOut[ iOut ] = ( Ascii2Value( pIn[i] ) << 4 ) + Ascii2Value( pIn[ i + 1 ] ) ;
+            iOut++ ;
+            i += 2 ;
+            if ( iOut >= OutLimit )
+                break ;
         }
-        OutLength = iOut;
-        return TRUE;
-        __LEAVE_FUNCTION
-        return FALSE;
+        OutLength = iOut ;
+        return TRUE ;
+    __LEAVE_FUNCTION
+        return FALSE ;
 }
 
 
-BOOL String2Binary(const CHAR* pIn,UINT InLength,CHAR* pOut,UINT OutLimit,UINT& OutLength)
+BOOL String2Binary( const CHAR* pIn,UINT InLength,CHAR* pOut,UINT OutLimit,UINT& OutLength )
 {
     __ENTER_FUNCTION
 
-        if(InLength==0)
+        if ( 0 == InLength )
         {
-            return FALSE;
+            return FALSE ;
         }
 
-        UINT iOut = 0;
-        UINT i;
-        for( i = 0 ;i<InLength-1;)
+        UINT iOut = 0 ;
+        UINT i ;
+        for ( i = 0; i < InLength - 1; )
         {
-            if((pIn[i]=='\\') && (pIn[i+1]=='0'))
+            if ( ( '\\' == pIn[i] ) && ( '0' == pIn[ i + 1 ] ) )
             {
-                pOut[iOut]    =    '\0';
-                iOut++;
-                i+=2;
-                continue;
+                pOut[ iOut ] = '\0' ;
+                iOut++ ;
+                i += 2 ;
+                continue ;
             }
-            else if((pIn[i]=='\'') && (pIn[i+1]=='\''))
+            else if ( ( '\'' == pIn[i] ) && ( '\'' == pIn[ i + 1 ] ) )
             {
-            pOut[iOut]    =    '\'';
-            iOut++;
-            i+=2;
-            continue;
+                pOut[ iOut ] = '\'' ;
+                iOut++ ;
+                i += 2 ;
+                continue ;
             }
-            else if((pIn[i]=='\\') && (pIn[i+1]=='\"'))
+            else if ( ( '\\' == pIn[i] ) && ( '\"' == pIn[ i + 1 ] ) )
             {
-                pOut[iOut]    =    '\"';
-                iOut++;
-                i+=2;
-                continue;
+                pOut[ iOut ] = '\"' ;
+                iOut++ ;
+                i += 2 ;
+                continue ;
             }
-            else if((pIn[i]=='\\') && (pIn[i+1]=='\\'))
+            else if ( ( '\\' == pIn[i] ) && ( '\\' == pIn[ i + 1 ] ) )
             {
-                pOut[iOut]    =    '\\';
-                iOut++;
-                i+=2;
-                continue;
+                pOut[ iOut ] = '\\' ;
+                iOut++ ;
+                i += 2 ;
+                continue ;
             }
-            else if(pIn[i]=='\0')
+            else if ( '\0' == pIn[i] )
             {
-                break;
+                break ;
             }
 
-            pOut[iOut] = pIn[i];
-            iOut++;
-            i++;
+            pOut[ iOut ] = pIn[i] ;
+            iOut++ ;
+            i++ ;
 
-            if(iOut>=OutLimit)
-                break;
+            if ( iOut >= OutLimit )
+                break ;
         }
-        OutLength = iOut;
-        return TRUE;
+        OutLength = iOut ;
 
-        __LEAVE_FUNCTION
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
 }
 
-BOOL        StrSafeCheck(const CHAR* pIn,UINT InLength)
+BOOL StrSafeCheck( const CHAR* pIn, UINT InLength )
 {
-    if(InLength==0)
-    {
-        return FALSE;
-    }
-    for(UINT i = 0 ;i<InLength;i++)
-    {
-        switch(pIn[i]) 
-        {
-            case '\0':
-                {
-                    return TRUE;
-                    break;
-                }
-            case '\'':
-            case '\"':
-            case ')':
-            case '(':
-            case '=':
-            case '%':
-                {
-                    return FALSE;
-                }
-        }
-    }
+    __ENTER_FUNCTION
 
-    return TRUE;
+        if ( 0 == InLength )
+        {
+            return FALSE ;
+        }
+        for ( UINT i = 0; i < InLength; i++ )
+        {
+            switch ( pIn[i] ) 
+            {
+                case '\0':
+                {
+                    return TRUE ;
+                    break ;
+                }
+                case '\'':
+                case '\"':
+                case ')':
+                case '(':
+                case '=':
+                case '%':
+                {
+                    return FALSE ;
+                }
+            }
+        }
+
+        return TRUE ;
+
+    __LEAVE_FUNCTION
+
+        return FALSE ;
 
 }
 
-BOOL        CommandSafeCheck(const CHAR* pIn,UINT InLength)
+BOOL CommandSafeCheck( const CHAR* pIn, UINT InLength )
 {
-    if(InLength==0)
-    {
-        return FALSE;
-    }
-    for(UINT i = 0 ;i<InLength;i++)
-    {
-        switch(pIn[i]) 
+    __ENTER_FUNCTION
+
+        if ( 0 == InLength )
         {
-        case '\0':
+            return FALSE ;
+        }
+        for ( UINT i = 0; i < InLength; i++ )
+        {
+            switch ( pIn[i] ) 
             {
-                return TRUE;
-                break;
-            }
-        case '%':
-            {
-                return FALSE;
+                case '\0':
+                {
+                    return TRUE ;
+                    break ;
+                }
+                case '%':
+                {
+                    return FALSE ;
+                }
             }
         }
-    }
 
-    return TRUE;
+        return TRUE ;
+        
+    __LEAVE_FUNCTION
 
+        return FALSE ;
 }
 
 UINT GetMailSize( const MAIL& mail )
 {
-    if( mail.m_uFlag==MAIL_TYPE_SCRIPT )
-    {
-        return    sizeof(GUID_t)+
-                sizeof(BYTE)+
-                sizeof(CHAR)*mail.m_SourSize+
-                sizeof(INT)+
-                sizeof(BYTE)+
-                sizeof(CHAR)*mail.m_DestSize+
-                sizeof(WORD)+
-                sizeof(CHAR)*mail.m_ContexSize+
-                sizeof(UINT)+
-                sizeof(UINT)+
-                sizeof(CampID_t)+
-                sizeof(UINT)+
-                sizeof(UINT)+
-                sizeof(UINT)+
-                sizeof(UINT);
-    }
-    else
-    {
-        return    sizeof(GUID_t)+
-                sizeof(BYTE)+
-                sizeof(CHAR)*mail.m_SourSize+
-                sizeof(INT)+
-                sizeof(BYTE)+
-                sizeof(CHAR)*mail.m_DestSize+
-                sizeof(WORD)+
-                sizeof(CHAR)*mail.m_ContexSize+
-                sizeof(UINT)+
-                sizeof(UINT)+
-                sizeof(CampID_t);
-    }
+    __ENTER_FUNCTION
+
+        if ( MAIL_TYPE_SCRIPT == mail.m_uFlag )
+        {
+            return  sizeof( GUID_t ) +
+                    sizeof( BYTE ) +
+                    sizeof( CHAR ) * mail.m_SourSize+
+                    sizeof( INT ) +
+                    sizeof( BYTE ) +
+                    sizeof( CHAR ) * mail.m_DestSize+
+                    sizeof( WORD ) +
+                    sizeof( CHAR ) * mail.m_ContexSize+
+                    sizeof( UINT ) +
+                    sizeof( UINT ) +
+                    sizeof( CampID_t ) +
+                    sizeof( UINT ) +
+                    sizeof( UINT ) +
+                    sizeof( UINT ) +
+                    sizeof( UINT ) ;
+        }
+        else
+        {
+            return  sizeof( GUID_t ) +
+                    sizeof( BYTE ) +
+                    sizeof( CHAR ) * mail.m_SourSize+
+                    sizeof( INT ) +
+                    sizeof( BYTE ) +
+                    sizeof( CHAR ) * mail.m_DestSize+
+                    sizeof( WORD ) +
+                    sizeof( CHAR ) * mail.m_ContexSize+
+                    sizeof( UINT ) +
+                    sizeof( UINT ) +
+                    sizeof( CampID_t ) ;
+        }
+
+    __LEAVE_FUNCTION
+
+        return 0 ;
 }
 
 UINT GetMailListSize( const MAIL_LIST& maillist )
 {
-    UINT uSize = sizeof(BYTE)+sizeof(BYTE) ;
-    INT i=0; 
-    for( i=0; i<maillist.m_Count; i++ )
-    {
-        uSize += GetMailSize(maillist.m_aMail[i]) ;
-    }
-    return uSize ;
+    __ENTER_FUNCTION
+
+        UINT uSize = sizeof( BYTE ) + sizeof( BYTE ) ;
+        INT i = 0 ; 
+        for ( i = 0; i < maillist.m_Count; i++ )
+        {
+            uSize += GetMailSize( maillist.m_aMail[i] ) ;
+        }
+        return uSize ;
+
+    __LEAVE_FUNCTION
+
+        return 0 ;
 }
 
 CHAR* ReplaceIllegalString( CHAR* strText, INT nLength, INT nLevel )
 {
-    if( strText == NULL ) return NULL;
-    INT i;
-    for( i = 0; i < nLength; i ++ )
-    {
-        if( strText[i] == '%' ) strText[i] = '?';
-        if( strText[i] == '\0' ) break;
-    }
+    __ENTER_FUNCTION
 
-    return strText;
+        if ( NULL == strText ) return NULL ;
+        INT i ;
+        for ( i = 0; i < nLength; i ++ )
+        {
+            if ( '%' == strText[i] ) strText[i] = '?' ;
+            if ( '\0' == strText[i] ) break ;
+        }
+
+        return strText ;
+
+    __LEAVE_FUNCTION
+
+        return "" ;
 }
 
 BOOL CheckIllegalString( const CHAR* strText, INT nLength, INT nLevel )
 {
-    if( strText == NULL ) return FALSE;
-    INT i;
-    if( nLevel == CHECK_STRING_NORMAL )
-    {
-        for( i = 0; i < nLength; i ++ )
+    __ENTER_FUNCTION
+
+        if ( NULL == strText ) return FALSE ;
+        INT i ;
+        if ( CHECK_STRING_NORMAL == nLevel )
         {
-            if( strText[i] == '%' ) return TRUE;
-            if( strText[i] == '\0' ) return FALSE;
-        }
-    }
-    else if( nLevel == CHECK_STRING_CHARNAME )
-    {
-        for( i = 0; i < nLength; i ++ )
-        {
-            switch( strText[i] )
+            for ( i = 0; i < nLength; i ++ )
             {
-            case ' ':
-            case '#':
-            case '\\':
-            case '/':
-            case '`':
-            case '~':
-            case '!':
-            case '@':
-            case '$':
-            case '%':
-            case '^':
-            case '&':
-            case '*':
-            case '(':
-            case ')':
-            case '-':
-            case '_':
-            case '+':
-            case '|':
-            case '{':
-            case '}':
-            case '[':
-            case ']':
-            case ';':
-            case ':':
-            case '\'':
-            case '\"':
-            case '<':
-            case '>':
-            case ',':
-            case '.':
-            case '?':
-            case '0xA1':
-                return TRUE;
+                if ( '%' == strText[i] ) return TRUE ;
+                if ( '\0' == strText[i] ) return FALSE ;
             }
-            if( strText[i] == '\0' ) return FALSE;
         }
-    }
-    return FALSE;
+        else if ( CHECK_STRING_CHARNAME == nLevel )
+        {
+            for ( i = 0; i < nLength; i ++ )
+            {
+                switch( strText[i] )
+                {
+                    case ' ':
+                    case '#':
+                    case '\\':
+                    case '/':
+                    case '`':
+                    case '~':
+                    case '!':
+                    case '@':
+                    case '$':
+                    case '%':
+                    case '^':
+                    case '&':
+                    case '*':
+                    case '(':
+                    case ')':
+                    case '-':
+                    case '_':
+                    case '+':
+                    case '|':
+                    case '{':
+                    case '}':
+                    case '[':
+                    case ']':
+                    case ' ;':
+                    case ':':
+                    case '\'':
+                    case '\"':
+                    case '<':
+                    case '>':
+                    case ',':
+                    case '.':
+                    case '?':
+                    case '0xA1':
+                        return TRUE ;
+                }
+                if( '\0' == strText[i] ) return FALSE ;
+            }
+        }
+        return FALSE ;
+
+    __LEAVE_FUNCTION
+
+    return FALSE ;
 }
 
 #if defined (_FOX_CLIENT) && defined (_FOX_LOGIN)  && defined (_FOX_WORLD)
@@ -963,31 +1003,31 @@ VOID  DumpStack( const CHAR* type )
     CHAR** symbols = backtrace_symbols( DumpArray, Size ) ;
     CHAR    szType[ 256 ] = { 0 } ;
     sprintf( szType, "%s%s", type, LF ) ;
-    if( symbols )
+    if ( symbols )
     {
-        if(Size>10) Size= 10;
-        if(Size>0)
+        if ( 10 < Size ) Size = 10 ;
+        if ( 0 < Size )
         {
             FILE* f = fopen( DUMP_LOG, "a" ) ;
-            if( f )
+            if ( f )
             {
                 CHAR threadinfo[ 256 ] = { 0 } ;
                 sprintf( threadinfo,"threadid = %d cause dump%s", MyGetCurrentThreadID(), LF ) ;
                 fwrite( threadinfo, 1, strlen(threadinfo) ,f ) ;
                 fwrite( szType, 1, strlen( szType ), f ) ;
-                for( INT i=0; i < Size; i++ )
+                for ( INT i = 0; i < Size; i++ )
                 {
                     printf( "%s%s", symbols[i], LF ) ;
-                    fwrite(symbols[i],1,strlen(symbols[i]),f) ;
+                    fwrite( symbols[i], 1, strlen( symbols[i] ), f ) ;
                     fwrite( LF, 1, 2, f ) ;
                 }
-                fclose(f) ;
+                fclose( f ) ;
             }
             else
             {
-                LERR( "LOG BASE DIR: %s NOT EXISTS, CAN NOT SAVE DUMP LOGS.", "./Log/" );
+                LERR( "LOG BASE DIR: %s NOT EXISTS, CAN NOT SAVE DUMP LOGS.", "./Log/" ) ;
             }
-            free(symbols);
+            free( symbols ) ;
         }
     }
     else
@@ -995,18 +1035,17 @@ VOID  DumpStack( const CHAR* type )
         FILE* f = fopen( DUMP_LOG, "a" ) ;
         if( f )
         {
-            CHAR buffer[256]     = {0};
-            CHAR threadinfo[256] = {0};
-            sprintf( threadinfo,"threadid = %d cause dump%s", MyGetCurrentThreadID(), LF );
-            fwrite( threadinfo, 1, strlen(threadinfo), f );
-            fwrite(type,1,strlen(type),f);
-            fclose(f);
+            CHAR buffer[ 256 ]     = {0} ;
+            CHAR threadinfo[ 256 ] = {0} ;
+            sprintf( threadinfo,"threadid = %d cause dump%s", MyGetCurrentThreadID(), LF ) ;
+            fwrite( threadinfo, 1, strlen( threadinfo ), f ) ;
+            fwrite( type, 1, strlen( type ), f ) ;
+            fclose( f ) ;
         }
         else
         {
-            LERR( "LOG BASE DIR: %s NOT EXISTS, CAN NOT SAVE DUMP LOGS.", "./Log/" );
+            LERR( "LOG BASE DIR: %s NOT EXISTS, CAN NOT SAVE DUMP LOGS.", "./Log/" ) ;
         }
     }
 #endif
 }
-

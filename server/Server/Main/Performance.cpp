@@ -68,14 +68,14 @@ BOOL PerformanceManager::HeartBeat( UINT uTime )
 {
     __ENTER_FUNCTION
 
-#define PERFOR_TIME 30000
+#define PERFOR_TIME 60000 // this time will think the scene count
 
         if ( !m_OperateTime.IsSetTimer() )
         {
             m_OperateTime.BeginTimer( PERFOR_TIME, uTime ) ;
             return TRUE ;
         }
-        if ( !m_OperateTime.CountingTimer(uTime) )
+        if ( !m_OperateTime.CountingTimer( uTime ) )
         {
             return TRUE ;
         }
