@@ -16,7 +16,7 @@ SceneThread::SceneThread()
 
         m_Active = TRUE ;
         m_nSceneCount = 0 ;
-        for ( INT i = 0 ; MAX_SCENE_PER_THREAD > i ; i++ )
+        for ( INT i = 0; MAX_SCENE_PER_THREAD > i; i++ )
         {
             m_apScene[ i ] = NULL ;
         }
@@ -57,7 +57,7 @@ VOID SceneThread::run()
         INT i ;
 
         TID cTid = getTID() ;
-        for ( i = 0 ; i < m_nSceneCount ; i++ )
+        for ( i = 0; i < m_nSceneCount; i++ )
         {
             m_apScene[i]->m_ThreadID = cTid ;
         }
@@ -71,7 +71,7 @@ VOID SceneThread::run()
         _MY_TRY
         {
 
-            for ( i = 0 ; i < m_nSceneCount ; i++ )
+            for ( i = 0; i < m_nSceneCount; i++ )
             {
                 Log::SaveLog( SERVER_LOGFILE, "SceneThread::run() TID: %d SID: %d SName: %s...", 
                     cTid, m_apScene[i]->SceneID(), g_pSceneManager->GetSceneInfo( m_apScene[i]->SceneID() )->m_szName ) ;
@@ -79,7 +79,7 @@ VOID SceneThread::run()
 
             while ( IsActive() )
             {
-                for ( i = 0 ; i < m_nSceneCount ; i++ )
+                for ( i = 0; i < m_nSceneCount; i++ )
                 {
                     BOOL ret = m_apScene[i]->Tick() ;
                     Assert( ret ) ;
