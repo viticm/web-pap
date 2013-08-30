@@ -219,51 +219,51 @@ namespace Combat_Module
                 CHAR const* Description(VOID) const {return m_szDescription;};
             protected:
             private:
-                BOOL m_bInited; //该记录是否已经初始化
-                SkillID_t m_nSkillID; //技能编号
-                MenPaiID_t m_nMenPai;//门派编号
-                CHAR const* m_szName;//技能的名称
-                INT m_nSkillMaxLevel;//技能的最大等级
-                INT m_nClientOnly1; //客户端专用数据
-                BOOL m_bMustUseWeapon; //此技能必须使用武器
-                INT m_nDisableByFlag1; //受限于标记1
-                INT m_nDisableByFlag2; //受限于标记1
-                INT m_nDisableByFlag3; //受限于标记1
-                ID_t m_nSkillClass;//技能系
-                INT m_nXinFaParam_Nouse;//心法修正参数
-                INT m_nRangedSkillFlag;//是否是远程技能
-                BOOL m_bForceBreakPreSkill;//是否强制中断上一个正在执行的技能
-                ID_t m_nSkillType; // Charge, channel or instant shot skill
-                CooldownID_t m_nCooldownID; //冷却时间的ID
-                BOOL m_nTargetMustInSpecialState;// 目标必须是: 0:活的；1:死的; -1: 无效
-                ID_t m_nClassByUser;// 按使用者类型分类，0:玩家, 1:怪物, 2:宠物, 3:物品,
-                ID_t m_nPassiveFlag;// 主动还是被动技能，0:主动技能,1:被动技能;
-                ID_t m_nSelectType;//鼠标点选类型
-                ID_t m_nOperateModeForPetSkill;//宠物技能发动类型 0:主人手动点选,1:AI自动执行,2:增强自身属性的被动技能
-                ID_t m_nPetRateOfSkill; //技能发动几率,只对宠物技能有效
-                ID_t m_nTypeOfPetSkill; //宠物技能类型,0:物功,1:法功,2:护主,3:防御,4:复仇;
-                ID_t m_nImpactIDOfSkill; //宠物技能产生的效果ID
-                ID_t m_nTargetingLogic; //目标选取逻辑
-                Time_t m_nPlayActionTime;//技能动作播放的时间
-                FLOAT m_fOptimalRangeMin;//技能使用范围下界
-                FLOAT m_fOptimalRangeMax;//技能使用范围上界
-                INT m_nStandFlag; //这个是技能的立场标记，-1代表技能消弱目标，0是中性，1是技能增强目标
-                ID_t m_nTargetLogicByStand; //技能作用于什么阵营的目标，敌对，友好，中立，全部。。。
-                ID_t m_nTargetCheckByObjType; //技能的消耗及相关检查
-                BOOL m_bPartyOnly;//技能只能作用于队友
-                INT m_nChargesOrInterval;//连续生效次数和引导中的生效次数
-                BOOL m_bAutoShot;//自动连续释放技能
-                INT m_nAccuracy;//命中率
-                INT m_nCriticalRate;//会心率,或者叫暴击率
-                BOOL m_bUseNormalAttackRate;//技能的冷却是否受人物攻击速度影响
-                Time_t m_nActiveTime;//激活时间
-                FLOAT m_fRadius;//作用半径
-                FLOAT m_fAngle;//作用角度
-                INT m_nMaxTargetNumber;//最大作用目标数
-                BOOL m_bCanInterruptAutoShot; //本技能会中断自动射击技能得连续释放
-                Time_t m_nDelayTime; //延迟时间
-                ID_t m_aSkillInstance[MAX_CHAR_SKILL_LEVEL];//技能受心法影响的数据索引
-                CHAR const* m_szDescription;//技能的描述
+                BOOL m_bInited;                             // 该记录是否已经初始化
+                SkillID_t m_nSkillID;                       // 技能编号
+                MenPaiID_t m_nMenPai;                       // 门派编号
+                CHAR const* m_szName;                       // 技能的名称
+                INT m_nSkillMaxLevel;                       // 技能的最大等级
+                INT m_nClientOnly1;                         // 客户端专用数据
+                BOOL m_bMustUseWeapon;                      // 此技能必须使用武器
+                INT m_nDisableByFlag1;                      // 受限于标记1
+                INT m_nDisableByFlag2;                      // 受限于标记1
+                INT m_nDisableByFlag3;                      // 受限于标记1
+                ID_t m_nSkillClass;                         // 技能系
+                INT m_nXinFaParam_Nouse;                    // 心法修正参数
+                INT m_nRangedSkillFlag;                     // 是否是远程技能
+                BOOL m_bForceBreakPreSkill;                 // 是否强制中断上一个正在执行的技能
+                ID_t m_nSkillType;                          // Charge, channel or instant shot skill
+                CooldownID_t m_nCooldownID;                 // 冷却时间的ID
+                BOOL m_nTargetMustInSpecialState;           // 目标必须是: 0:活的；1:死的; -1: 无效
+                ID_t m_nClassByUser;                        // 按使用者类型分类，0:玩家, 1:怪物, 2:宠物, 3:物品,
+                ID_t m_nPassiveFlag;                        // 主动还是被动技能，0:主动技能,1:被动技能;
+                ID_t m_nSelectType;                         // 鼠标点选类型
+                ID_t m_nOperateModeForPetSkill;             // 宠物技能发动类型 0:主人手动点选,1:AI自动执行,2:增强自身属性的被动技能
+                ID_t m_nPetRateOfSkill;                     // 技能发动几率,只对宠物技能有效
+                ID_t m_nTypeOfPetSkill;                     // 宠物技能类型,0:物功,1:法功,2:护主,3:防御,4:复仇;
+                ID_t m_nImpactIDOfSkill;                    // 宠物技能产生的效果ID
+                ID_t m_nTargetingLogic;                     // 目标选取逻辑
+                Time_t m_nPlayActionTime;                   // 技能动作播放的时间
+                FLOAT m_fOptimalRangeMin;                   // 技能使用范围下界
+                FLOAT m_fOptimalRangeMax;                   // 技能使用范围上界
+                INT m_nStandFlag;                           // 这个是技能的立场标记，-1代表技能消弱目标，0是中性，1是技能增强目标
+                ID_t m_nTargetLogicByStand;                 // 技能作用于什么阵营的目标，敌对，友好，中立，全部。。。
+                ID_t m_nTargetCheckByObjType;               // 技能的消耗及相关检查
+                BOOL m_bPartyOnly;                          // 技能只能作用于队友
+                INT m_nChargesOrInterval;                   // 连续生效次数和引导中的生效次数
+                BOOL m_bAutoShot;                           // 自动连续释放技能
+                INT m_nAccuracy;                            // 命中率
+                INT m_nCriticalRate;                        // 会心率,或者叫暴击率
+                BOOL m_bUseNormalAttackRate;                // 技能的冷却是否受人物攻击速度影响
+                Time_t m_nActiveTime;                       // 激活时间
+                FLOAT m_fRadius;                            // 作用半径
+                FLOAT m_fAngle;                             // 作用角度
+                INT m_nMaxTargetNumber;                     // 最大作用目标数
+                BOOL m_bCanInterruptAutoShot;               // 本技能会中断自动射击技能得连续释放
+                Time_t m_nDelayTime;                        // 延迟时间
+                ID_t m_aSkillInstance[ MAX_CHAR_SKILL_LEVEL ]; // 技能受心法影响的数据索引
+                CHAR const* m_szDescription;                // 技能的描述
         };
         //SkillInstance
         class SkillInstanceData_T
