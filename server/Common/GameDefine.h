@@ -329,7 +329,7 @@
 #define MAX_CHAR_SKILL_NUM 256
 
 //技能最大级别
-#define MAX_CHAR_SKILL_LEVEL 12
+#define MAX_CHAR_SKILL_LEVEL 16
 
 //角色身上可以拥有的附加效果最大数量
 #define MAX_IMPACT_NUM 20

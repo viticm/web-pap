@@ -155,6 +155,7 @@ namespace Combat_Module
             m_fRadius(0.0f),
             m_fAngle(0.0f),
             m_nMaxTargetNumber(0),
+            m_nActiveOrInterruptPetSkillFlag(0),
             m_bCanInterruptAutoShot(FALSE),
             m_nDelayTime(0),
             m_szDescription(NULL)
@@ -204,6 +205,8 @@ namespace Combat_Module
             m_nSkillType = pDB->Search_Posistion(nRow, column++)->iValue;
             // Read the cooldown ID
             m_nCooldownID = pDB->Search_Posistion(nRow, column++)->iValue;
+            //skip starting hands effect
+            column += 3 ;
             // skip casting action ids
             ++column;
             // skip shoot action ids
@@ -263,7 +266,9 @@ namespace Combat_Module
             // read max number of the target being effected
             m_nMaxTargetNumber = pDB->Search_Posistion(nRow, column++)->iValue;
             // Skip Bullet ID
-            ++column;
+            //++column;
+            // Read can interrupt or active pet skill
+            m_nActiveOrInterruptPetSkillFlag = pDB->Search_Posistion(nRow, column++)->iValue;
             // Read Can interrupt auto shot flag
             m_bCanInterruptAutoShot= (TRUE==(pDB->Search_Posistion(nRow, column++)->iValue));
             // Read Delay Time

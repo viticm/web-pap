@@ -260,6 +260,7 @@ namespace Combat_Module
                 FLOAT m_fRadius;                            // 作用半径
                 FLOAT m_fAngle;                             // 作用角度
                 INT m_nMaxTargetNumber;                     // 最大作用目标数
+                INT m_nActiveOrInterruptPetSkillFlag;       // 中断或激活珍兽攻击
                 BOOL m_bCanInterruptAutoShot;               // 本技能会中断自动射击技能得连续释放
                 Time_t m_nDelayTime;                        // 延迟时间
                 ID_t m_aSkillInstance[ MAX_CHAR_SKILL_LEVEL ]; // 技能受心法影响的数据索引
