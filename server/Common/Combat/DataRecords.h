@@ -216,6 +216,7 @@ namespace Combat_Module
                     }
                     return m_aSkillInstance[nIdx];
                 };
+                SkillID_t GetSkillInstanceNew( INT const iIndex ) const ;
                 CHAR const* Description(VOID) const {return m_szDescription;};
             protected:
             private:

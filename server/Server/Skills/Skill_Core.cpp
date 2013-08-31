@@ -168,14 +168,17 @@ namespace Combat_Module
                 }
                 rParams.SetSkillLevel( nLevel ) ;
                 //根据心法等级,取实际技能数据
-                SkillID_t nSkillInstance = pSkillTemplate->GetSkillInstance( rParams.GetSkillLevel() - 1 ) ;
-                Skill_Module::SkillInstanceData_T const* pSkillInstance = GetSkillInstanceByID( nSkillInstance ) ;
+                // SkillID_t nSkillInstance = pSkillTemplate->GetSkillInstance( rParams.GetSkillLevel() - 1 ) ;
+                /* 使用新的方法，旧的方法暂时有问题，以后修正 */
+                SkillID_t nSkillInstanceNew = pSkillTemplate->GetSkillInstanceNew( rParams.GetSkillLevel() - 1 ) ; 
+                // LERR( "nSkillInstance: %d, nSkillInstanceNew: %d", nSkillInstance, nSkillInstanceNew ) ;
+                Skill_Module::SkillInstanceData_T const* pSkillInstance = GetSkillInstanceByID( nSkillInstanceNew ) ;
                 if ( NULL == pSkillInstance )
                 {
                     // Warning Skill data don't match the template data, plz check the data table.
                     AssertEx( FALSE,"[ SkillCore_T::InstanceSkill ]: Can't find skill instance!" ) ;
                     g_pLog->FastSaveLog( LOG_FILE_1, "[ SkillCore_T::InstanceSkill ]: Warning Skill Data don't match SkillTemplate Data TemplateID = %d, XinFaLvl = %d, SkillDataID = %d.", 
-                        nSkill, rParams.GetSkillLevel() - 1, nSkillInstance ) ;
+                        nSkill, rParams.GetSkillLevel() - 1, nSkillInstanceNew ) ;
 
                     return FALSE ;
                 }

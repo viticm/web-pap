@@ -289,6 +289,17 @@ namespace Combat_Module
             __LEAVE_FUNCTION
             return FALSE;
         }
+        
+        SkillID_t SkillTemplateData_T::GetSkillInstanceNew( INT const iIndex ) const
+        {
+            if ( 0 > iIndex || MAX_CHAR_SKILL_LEVEL <= iIndex )
+            {
+                AssertEx( FALSE, "[ SkillTemplateData_T::GetSkillInstanceNew ]: iIndex Out of range!!" );
+                return INVALID_ID;
+            }
+            return m_aSkillInstance[ iIndex ] ;
+        }
+
         //SkillInstance
         //class SkillInstanceData_T
         SkillInstanceData_T::SkillInstanceData_T() :
