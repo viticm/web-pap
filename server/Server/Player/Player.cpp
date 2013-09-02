@@ -236,9 +236,10 @@ __ENTER_FUNCTION
                     return FALSE ;
                 }
 
-        Log::SaveLog( "./Log/SERVER包.txt", "接收包 [来源端口：%d, ID=%d，size=%d]", 
-            m_pSocketInputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
-
+#if _DEBUG
+                Log::SaveLog( "./Log/SERVER包.txt", "接收包 [来源端口：%d, ID=%d，size=%d]", 
+                    m_pSocketInputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
+#endif
                 BOOL bNeedRemove = TRUE ;
                 BOOL bException = FALSE ;
 
@@ -513,9 +514,10 @@ __ENTER_FUNCTION
 
         UINT t_uTail_End = m_pSocketOutputStream->GetTail();//查询当前包尾位置。记录写包后位置
 
+#if _DEBUG
         Log::SaveLog( "./Log/SERVER包.txt", "发送包 [目标端口：%d, ID=%d，size=%d]", 
             m_pSocketOutputStream->m_pSocket->m_Port, pPacket->GetPacketID() ,pPacket->GetPacketSize ()) ;
-
+#endif
         //消息加密处理--Begin
         {
             UINT t_uSize = t_uTail_End - t_uTail_Begin;
