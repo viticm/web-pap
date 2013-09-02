@@ -1,5 +1,13 @@
-
-
+/**
+ * PAP Server Engine ( https://github.com/viticm/web-pap )
+ * $Id Config.h
+ * @link https://github.com/viticm/web-pap/tree/master/server for the canonical source repository
+ * @copyright Copyright (c) 2013-2013 viticm( viticm@126.com )
+ * @license
+ * @user viticm<viticm@126.com>
+ * @date 2013-9-2 17:32:40
+ * @uses the servers config read module
+ */
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
 
