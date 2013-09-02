@@ -105,7 +105,7 @@ __ENTER_FUNCTION
     Assert(ret) ;
 
 
-    Log::SaveLog( SERVER_LOGFILE, "\r\n(###) main..." ) ;
+    Log::SaveLog( SERVER_LOGFILE, "%s(###) main...", LF ) ;
 
     g_pTimeManager->SetTime( ) ;
     Log::SaveLog( SERVER_LOGFILE, "Server Starting... (%.10d)(%d)",
@@ -115,37 +115,36 @@ __ENTER_FUNCTION
     Log::SaveLog( SERVER_LOGFILE, "_ITEM=%d _ITEM_VALUE=%d _ITEM_GUID=%d", 
         sizeof(_ITEM), sizeof(_ITEM_VALUE), sizeof(_ITEM_GUID) ) ;
     Log::SaveLog( SERVER_LOGFILE, "_OWN_IMPACT=%d", sizeof(_OWN_IMPACT) ) ;
-    Log::SaveLog( SERVER_LOGFILE, "_HUMAN_DB_LOAD=%d \r\n\
-_EQUIP_DB_LOAD=%d \r\n\
-_BAG_DB_LOAD=%d \r\n\
-_BANK_DB_LOAD=%d \r\n\
-_SKILL_DB_LOAD=%d \r\n\
-_COOLDOWN_DB_LOAD=%d \r\n\
-_XINFA_DB_LOAD=%d \r\n\
-_IMPACT_DB_LOAD=%d \r\n\
-_ABILITY_DB_LOAD=%d \r\n\
-_MISSION_DB_LOAD=%d \r\n\
-_SETTING_DB_LOAD=%d \r\n\
-_PET_DB_LIST_LOAD=%d \r\n\
-_RELATION_DB_LOAD=%d \r\n\
-_PRIVATE_INFO_DB_LOAD=%d \r\n\
-FULLUSERDATA=%d", 
-        sizeof(_HUMAN_DB_LOAD), 
-        sizeof(_EQUIP_DB_LOAD), 
-        sizeof(_BAG_DB_LOAD) ,
-        sizeof(_BANK_DB_LOAD) ,
-        sizeof(_SKILL_DB_LOAD) ,
-        sizeof(_COOLDOWN_DB_LOAD_FOR_HUMAN) ,
-        sizeof(_XINFA_DB_LOAD) ,
-        sizeof(_IMPACT_DB_LOAD) ,
-        sizeof(_ABILITY_DB_LOAD) ,
-        sizeof(_MISSION_DB_LOAD) ,
-        sizeof(_SETTING_DB_LOAD) ,
-        sizeof(_PET_DB_LIST_LOAD) ,
-        sizeof(_RELATION_DB_LOAD) ,
-        sizeof(_PRIVATE_INFO_DB_LOAD),
-        sizeof(FULLUSERDATA)
-        ) ;
+    Log::SaveLog( SERVER_LOGFILE, "_HUMAN_DB_LOAD=%d %s
+                                   _EQUIP_DB_LOAD=%d %s
+                                   _BAG_DB_LOAD=%d %s
+                                   _BANK_DB_LOAD=%d %s
+                                   _SKILL_DB_LOAD=%d %s
+                                   _COOLDOWN_DB_LOAD=%d %s
+                                   _XINFA_DB_LOAD=%d %s
+                                   _IMPACT_DB_LOAD=%d %s
+                                   _ABILITY_DB_LOAD=%d %s
+                                   _MISSION_DB_LOAD=%d %s
+                                   _SETTING_DB_LOAD=%d %s
+                                   _PET_DB_LIST_LOAD=%d %s
+                                   _RELATION_DB_LOAD=%d %s
+                                   _PRIVATE_INFO_DB_LOAD=%d %s
+                                   FULLUSERDATA=%d", 
+                                   sizeof(_HUMAN_DB_LOAD), LF,
+                                   sizeof(_EQUIP_DB_LOAD), LF,
+                                   sizeof(_BAG_DB_LOAD), LF,
+                                   sizeof(_BANK_DB_LOAD), LF,
+                                   sizeof(_SKILL_DB_LOAD), LF, 
+                                   sizeof(_COOLDOWN_DB_LOAD_FOR_HUMAN), LF,
+                                   sizeof(_XINFA_DB_LOAD), LF,
+                                   sizeof(_IMPACT_DB_LOAD), LF,
+                                   sizeof(_ABILITY_DB_LOAD), LF,
+                                   sizeof(_MISSION_DB_LOAD), LF,
+                                   sizeof(_SETTING_DB_LOAD), LF,
+                                   sizeof(_PET_DB_LIST_LOAD), LF,
+                                   sizeof(_RELATION_DB_LOAD), LF,
+                                   sizeof(_PRIVATE_INFO_DB_LOAD), LF,
+                                   sizeof(FULLUSERDATA) ) ;
     if( sizeof(FULLUSERDATA) != 37285 )//37157 )//36513//34977)//34081)//35325)//34013)
 //                                   ^技能结构 ^技能数
     {
@@ -242,28 +241,28 @@ __LEAVE_FUNCTION
     return TRUE ;
 }
 
-BOOL Server::Loop( )
+BOOL Server::Loop()
 {
 __ENTER_FUNCTION
 
     BOOL ret = FALSE ;
 
-    Log::SaveLog( SERVER_LOGFILE, "\r\nLoop..." ) ;
+    Log::SaveLog( SERVER_LOGFILE, "%sLoop...", LF ) ;
 
 
-    Log::SaveLog( SERVER_LOGFILE, "g_pThreadManager->Start( )..." ) ;
-    ret = g_pThreadManager->Start( ) ;
+    Log::SaveLog( SERVER_LOGFILE, "g_pThreadManager->Start()..." ) ;
+    ret = g_pThreadManager->Start() ;
     Assert( ret ) ;
 
     MySleep( 1500 ) ;
 
     //主线程调度资源分给ClientManager来执行；
-    Log::SaveLog( SERVER_LOGFILE, "g_pClientManager->Loop( )..." ) ;
-    g_pClientManager->start( ) ;
+    Log::SaveLog( SERVER_LOGFILE, "g_pClientManager->Loop()..." ) ;
+    g_pClientManager->start() ;
 
 
-    Log::SaveLog( SERVER_LOGFILE, "g_pDaemonThread->Loop( )..." ) ;
-    g_pDaemonThread->Loop( ) ;
+    Log::SaveLog( SERVER_LOGFILE, "g_pDaemonThread->Loop()..." ) ;
+    g_pDaemonThread->Loop() ;
 
 
 __LEAVE_FUNCTION
