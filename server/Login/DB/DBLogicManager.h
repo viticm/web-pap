@@ -1,10 +1,20 @@
+/**
+ * PAP Server Engine ( https://github.com/viticm/web-pap )
+ * $Id CharConfig.h
+ * @link https://github.com/viticm/web-pap/tree/master/server for the canonical source repository
+ * @copyright Copyright (c) 2013-2013 viticm( viticm@126.com )
+ * @license
+ * @user viticm<viticm@126.com>
+ * @date 2013-9-2 17:35:25
+ * @uses db manager for login module
+ */
+
 /********************************************************************
     
     文件名称:    DBLogicManager
     文件功能：DB 处理异步数据的消息管理系统
     修改纪录：
 *********************************************************************/
-
 
 #ifndef _DBLOGIC_MANAGER_H_
 #define _DBLOGIC_MANAGER_H_
@@ -19,41 +29,39 @@ class DBLogicManager
 {
 public:
     
-    DBLogicManager();
-    ~DBLogicManager();
+    DBLogicManager() ;
+    ~DBLogicManager() ;
 
 
-    BOOL                    HeartBeat(UINT uTime);
+    BOOL HeartBeat( UINT uTime ) ;
 
     //处理缓存消息
-    BOOL                    ProcessCacheCommands( ) ;
+    BOOL ProcessCacheCommands() ;
 
     //读取缓存消息
-    BOOL                    RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& Flag ) ;
+    BOOL RecvPacket( Packet*& pPacket, PlayerID_t& PlayerID, UINT& Flag ) ;
 
     //删除某个Player的在消息缓存中的消息
-    BOOL                    MovePacket( PlayerID_t PlayerID ) ;
+    BOOL MovePacket( PlayerID_t PlayerID ) ;
 
     //*********
     //*********
     //此接口支持数据同步，即可以在不同线程内调用
     //此接口是异步通讯的唯一接口
     //注意：pPacket消息需要用g_pPacketFactoryManager创建出来，用完后不能删除
-    BOOL                    SendPacket( Packet* pPacket, 
-                            PlayerID_t PlayerID, 
-                            UINT Flag=PF_NONE ) ;
+    BOOL SendPacket( Packet* pPacket, PlayerID_t PlayerID, UINT Flag = PF_NONE ) ;
 
-    TID                        m_ThreadID;
+    TID                        m_ThreadID ;
 private:
-    MyLock                    m_Lock ;
+    MyLock                     m_Lock ;
 private:
     //当前模块的消息缓存
-    ASYNC_PACKET*            m_PacketQue ;
-    UINT                    m_QueSize ;
-    UINT                    m_Head ;
-    UINT                    m_Tail ;
+    ASYNC_PACKET*              m_PacketQue ;
+    UINT                       m_QueSize ;
+    UINT                       m_Head ;
+    UINT                       m_Tail ;
 };
 
-extern DBLogicManager    g_DBLogicManager;
+extern DBLogicManager g_DBLogicManager ;
 
 #endif
