@@ -74,7 +74,7 @@ VOID CharConfig::InitDefaultCharData()
         INT camp_Num = f.ReadInt( "startscene", "scenecount" ) ;
         if ( MAX_CAMP_NUM < camp_Num ) camp_Num = MAX_CAMP_NUM ;
         
-        for ( INT i = 0 ; i < camp_Num ; i++ )
+        for ( INT i = 0; i < camp_Num; i++ )
         {
             char szTemp[ 32 ] ;
             sprintf( szTemp, "scene%d", i ) ;
@@ -89,7 +89,7 @@ VOID CharConfig::InitDefaultCharData()
 
         //随机一个阵营
         INT nRand = rand() % MAX_CAMP_NUM ;
-        if ( nRand == 0 )
+        if ( 0 == nRand )
             m_pUserData->m_Human.m_CampData.m_nCampID = CAMP1_PLAYER ;
         else
             m_pUserData->m_Human.m_CampData.m_nCampID = CAMP2_PLAYER ;
@@ -121,7 +121,7 @@ VOID CharConfig::InitDefaultCharData()
         m_pUserData->m_Skill.m_Count = iTmp ;
         MAX_CHAR_SKILL_NUM < iTmp ? iTmp = MAX_CHAR_SKILL_NUM : NULL ;
 
-        for ( INT i = 0 ; i<m_pUserData->m_Skill.m_Count ; i++ ) 
+        for ( INT i = 0; i<m_pUserData->m_Skill.m_Count; i++ ) 
         {
             INT szKeyID[ 32 ] = {0} ; //szKeyActiveTime[32] ;
 
@@ -135,7 +135,7 @@ VOID CharConfig::InitDefaultCharData()
 
         //读入生活技能数据
         INT iAbliCount = f.ReadInt( "ability", "count" ) ;
-        for ( INT i = 0 ; i < iAbliCount ; i++ )
+        for ( INT i = 0; i < iAbliCount; i++ )
         {
             CHAR szAbility[ 64 ] = {0} ;
             sprintf( szAbility, "abilityskill%d", i ) ;
@@ -149,7 +149,7 @@ VOID CharConfig::InitDefaultCharData()
 
         //读入配方数据
         iTmp = f.ReadInt( "table", "number" ) ;
-        for ( INT i = 0 ; i < iTmp ; i++ )
+        for ( INT i = 0; i < iTmp; i++ )
         {
             CHAR szTmp[ 32 ] ;
             memset( szTmp,0,32 ) ;
@@ -164,7 +164,7 @@ VOID CharConfig::InitDefaultCharData()
 
         //读入快捷栏数据
         iTmp = f.ReadInt( "setting", "count" ) ;
-        for ( INT i = 0 ; i < iTmp ; i++ )
+        for ( INT i = 0; i < iTmp; i++ )
         {
             CHAR szTmp0[ 32 ],szTmp1[ 32 ],szTmp2[ 32 ] ;
             sprintf( szTmp0, "settingindex%d", i ) ;
@@ -197,7 +197,7 @@ VOID CharConfig::InitSkillData()
     INT iColumnCount   = ThirdFile.GetFieldsNum() ;
 
     INT iCount = 0 ;
-    for ( INT i = 0 ; i < iTableCount ; i ++ )
+    for ( INT i = 0; i < iTableCount; i ++ )
     {
         INT iMenPai = ThirdFile.Search_Posistion( i, 2 )->iValue ;
         INT iLevel  = ThirdFile.Search_Posistion( i, 5 )->iValue ;
@@ -222,7 +222,7 @@ VOID CharConfig::InitSkillData()
     m_SkillData_Count = iCount ;
 
     iCount = 0 ;
-    for ( INT i = 0 ; i < iTableCount ; i ++ )
+    for ( INT i = 0; i < iTableCount; i ++ )
     {
         INT iMenPai = ThirdFile.Search_Posistion( i, 2 )->iValue ;
         INT iLevel  = ThirdFile.Search_Posistion( i, 5 )->iValue ;
@@ -264,7 +264,7 @@ VOID CharConfig::InitLevel1Attr()
 
         memset( &m_Level1Attr, 0, sizeof( ATTR_DATA ) * MATTRIBUTE_NUMBER ) ;
 
-        for ( INT i = 0 ; MATTRIBUTE_NUMBER > i ; i ++ )
+        for ( INT i = 0; MATTRIBUTE_NUMBER > i; i ++ )
         {
             m_Level1Attr[i].str1 = ThirdFile.Search_Posistion( 0, iTemp )->iValue + ThirdFile.Search_Posistion( 1, iTemp++ )->iValue ;
             m_Level1Attr[i].spr1 = ThirdFile.Search_Posistion( 0, iTemp )->iValue + ThirdFile.Search_Posistion( 1, iTemp++ )->iValue ;
@@ -281,9 +281,9 @@ VOID CharConfig::InitBaseValueTable()
     __ENTER_FUNCTION
 
         Ini ini( FILE_BASE_VALUE ) ;
-        for ( INT i = 0 ; MATTRIBUTE_NUMBER > i ; i++ )
+        for ( INT i = 0; MATTRIBUTE_NUMBER > i; i++ )
         {
-            for ( INT j = 0 ; AINFOTYPE_NUMBER > j ; j++ )
+            for ( INT j = 0; AINFOTYPE_NUMBER > j; j++ )
             {
                 CHAR szSection[ 256 ], szName[ 256 ] ;
                 sprintf( szSection, "MENPAI%d", i ) ;
@@ -350,7 +350,7 @@ BOOL CharConfig::InitCharAttr( FULLUSERDATA* pData )
 
         //初始化技能数据
         INT iTemp = 0 ;
-        for ( INT i = 0 ; i < m_SkillData_Count ; i ++ )
+        for ( INT i = 0; i < m_SkillData_Count; i ++ )
         {
             if ( MenPaiID == m_SkillData[i].nMenPai || INVALID_ID == m_SkillData[i].nMenPai )
             {
