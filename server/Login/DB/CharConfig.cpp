@@ -362,17 +362,17 @@ BOOL CharConfig::InitCharAttr( FULLUSERDATA* pData )
         pData->m_Skill.m_Count = pData->m_XinFa.m_Count = iTemp ;
 
         //初始化基础属性数据
-        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_STR, m_Level1Attr[MenPaiID].str1 ) ;
-        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_SPR, m_Level1Attr[MenPaiID].spr1 ) ;
-        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_CON, m_Level1Attr[MenPaiID].con1 ) ;
-        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_INT, m_Level1Attr[MenPaiID].int1 ) ;
-        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_DEX, m_Level1Attr[MenPaiID].dex1 ) ;
+        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_STR, m_Level1Attr[ MenPaiID ].str1 ) ;
+        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_SPR, m_Level1Attr[ MenPaiID ].spr1 ) ;
+        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_CON, m_Level1Attr[ MenPaiID ].con1 ) ;
+        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_INT, m_Level1Attr[ MenPaiID ].int1 ) ;
+        pData->m_Human.m_BaseAttrLevel1.Set( CATTR_LEVEL1_DEX, m_Level1Attr[ MenPaiID ].dex1 ) ;
 
         //修正HP
         INT nInitAttr = m_BaseValueTbl.Get( AINFOTYPE_BASE_HP, MenPaiID ) ;
         INT nAttrLevel1Refix = m_BaseValueTbl.Get( AINFOTYPE_CON_HP, MenPaiID ) ;
         INT nLevelRefix = m_BaseValueTbl.Get( AINFOTYPE_LEVEL_HP, MenPaiID ) ;
-        INT nMaxValue = nInitAttr+m_Level1Attr[ MenPaiID ].con1 * nAttrLevel1Refix+nLevelRefix ;
+        INT nMaxValue = nInitAttr + m_Level1Attr[ MenPaiID ].con1 * nAttrLevel1Refix+nLevelRefix ;
         nMaxValue=Float2Int( ( nMaxValue ) / 100.0f ) ;
         pData->m_Human.m_HP = nMaxValue ;
 
