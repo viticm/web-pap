@@ -234,7 +234,7 @@ VOID CharConfig::InitSkillData()
                  MATTRIBUTE_EMEI == iMenPai ||
                  INVALID_ID == iMenPai )
             {
-                if( iLevel < 0 )
+                if ( 0 > iLevel )
                 {
                     m_SkillData[ iCount ].nSkillID = ThirdFile.Search_Posistion( i, 0 )->iValue ;
                     m_SkillData[ iCount ].nMenPai  = ThirdFile.Search_Posistion( i, 2 )->iValue ;
