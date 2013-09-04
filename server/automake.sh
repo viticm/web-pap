@@ -25,6 +25,7 @@ Arr_ModelIncludeNeedCompile=(
     Common/GameStruct.cpp Common/DB_Struct.cpp Common/PacketFactoryManager.cpp Common/Packets/LW*.cpp
     Common/DataBase/*.cpp Common/Packets/BLRetAuth.cpp Common/Packets/CL*.cpp Common/Packets/WL*.cpp
     Common/Packets/LC*.cpp Common/Packets/LB*.cpp Common/Packets/SSConnect.cpp Common/Packets/SSScenePlayerCount.cpp 
+    Common/Util/CCUtil.cpp
     Server/Base/Config.cpp Server/Base/Thread.cpp Server/Base/Ini.cpp Server/Base/Log.cpp Server/Base/TimeManager.cpp
     Server/Base/LogDefine.cpp Server/SMU/ShareMemAO.cpp 
     " #Login
