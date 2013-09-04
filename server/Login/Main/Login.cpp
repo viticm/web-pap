@@ -19,7 +19,7 @@
 Login    g_Login ;
 
 
-Login::Login() : m_bExited(FALSE)
+Login::Login() : m_bExited( FALSE )
 {
 
 }
