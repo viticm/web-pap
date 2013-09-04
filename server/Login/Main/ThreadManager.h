@@ -1,12 +1,18 @@
-
-
+/**
+ * PAP Server Engine ( https://github.com/viticm/web-pap )
+ * $Id ThreadManager.h
+ * @link https://github.com/viticm/web-pap/tree/master/server for the canonical source repository
+ * @copyright Copyright (c) 2013-2013 viticm( viticm@126.com )
+ * @license
+ * @user viticm<viticm@126.com>
+ * @date 2013-9-4 16:09:15
+ * @uses the thread manager
+ */
 #ifndef __THREADMANAGER_H__
 #define __THREADMANAGER_H__
 
 #include "Type.h"
 #include "ServerThread.h"
-
-
 
 //除了主线程以外，其他线程都由此模块来调度
 //Login 端的 ThreadManager 取消ThreadPool
@@ -14,30 +20,28 @@
 class ThreadManager
 {
 public :
-    ThreadManager( ) ;
-    ~ThreadManager( ) ;
+    ThreadManager() ;
+    ~ThreadManager() ;
 
     //初始化
-    BOOL                Init( ) ;
+    BOOL                Init() ;
     //启动所有线程
-    BOOL                Start( ) ;
+    BOOL                Start() ;
     //停止所有线程
-    BOOL                Stop( ) ;
+    BOOL                Stop() ;
     
     //取得当前的服务器线程
-    ServerThread*        GetServerThread(){ 
+    ServerThread*       GetServerThread()
+    { 
         return m_pServerThread ; 
     } ;
     //取得当前运行的线程总数
     UINT                GetTotalThreads(){ return m_nThreads ; } ;
 protected :
-    ServerThread*        m_pServerThread ;
+    ServerThread*       m_pServerThread ;
     UINT                m_nThreads ;
 
 };
-extern ThreadManager*    g_pThreadManager ;
-
-
-
+extern ThreadManager*   g_pThreadManager ;
 
 #endif

@@ -1,79 +1,75 @@
 #include "stdafx.h"
 
-
 #include "ThreadManager.h"
 #include "Ini.h"
 #include "Config.h"
 
+ThreadManager* g_pThreadManager = NULL ;
 
-
-ThreadManager*    g_pThreadManager=NULL ;
-
-ThreadManager::ThreadManager( )
+ThreadManager::ThreadManager()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    m_pServerThread = new ServerThread ;
-    Assert( m_pServerThread ) ;
+        m_pServerThread = new ServerThread ;
+        Assert( m_pServerThread ) ;
 
-    m_nThreads = 0 ;
+        m_nThreads = 0 ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
-ThreadManager::~ThreadManager( )
+ThreadManager::~ThreadManager()
 {
-__ENTER_FUNCTION
-    
-    SAFE_DELETE( m_pServerThread) ;
+    __ENTER_FUNCTION
+        
+        SAFE_DELETE( m_pServerThread ) ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
-BOOL ThreadManager::Init( )
+BOOL ThreadManager::Init()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    BOOL ret = FALSE ;
+        BOOL ret = FALSE ;
 
-    if( m_pServerThread->IsActive() )
-    {
-        m_nThreads ++ ;
-    }
+        if ( m_pServerThread->IsActive() )
+        {
+            m_nThreads ++ ;
+        }
 
-    return TRUE ;
+        return TRUE ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-    return FALSE ;
+        return FALSE ;
 }
 
-BOOL ThreadManager::Start( )
+BOOL ThreadManager::Start()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    m_pServerThread->start() ;
+        m_pServerThread->start() ;
 
-    return TRUE ;
+        return TRUE ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-    return FALSE ;
+        return FALSE ;
 }
 
-BOOL ThreadManager::Stop( )
+BOOL ThreadManager::Stop()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    if( m_pServerThread )
-    {
-        m_pServerThread->stop( ) ;
-    }
+        if ( m_pServerThread )
+        {
+            m_pServerThread->stop() ;
+        }
 
-    return TRUE;
+        return TRUE ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-    return FALSE ;
+        return FALSE ;
 }
-
