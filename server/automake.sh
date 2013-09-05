@@ -344,7 +344,7 @@ EOF
                 if [[ "World" == ${cModelName} || "ShareMemory" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/SMU"
                 fi
-                if [[ "ShareMemory" == ${cModelName} ]] ; then
+                if [[ "ShareMemory" == ${cModelName} || "Login" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/Other"
                 fi
                 cat > ${dir}/Makefile <<EOF

@@ -15,7 +15,7 @@ DBPlayerShopInfo::DBPlayerShopInfo( ODBCInterface* pInterface )
     mDBName            = CHARACTER_DATABASE ;
     mResult            = 0 ;
     mResultCount       = 0 ;
-    Assert(pInterface);
+    Assert( pInterface );
     mInterface         =    pInterface ;
 }
 
