@@ -295,7 +295,7 @@ function main()
                     cCFlags+=" \$(MYSQL_INCLUDES)"
                     cLdFlags+=" \$(MYSQL_CLIENT_LDS)"
                 fi
-                if [[ "ShareMemory" == ${cModelName} "Login" == ${cModelName} ]] ; then
+                if [[ "ShareMemory" == ${cModelName} || "Login" == ${cModelName} ]] ; then
                     cCFlags+=" -I\$(BASEDIR)/Server/Other"
                 fi
 
