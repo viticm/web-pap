@@ -121,9 +121,9 @@ VOID CharConfig::InitDefaultCharData()
         m_pUserData->m_Skill.m_Count = iTmp ;
         MAX_CHAR_SKILL_NUM < iTmp ? iTmp = MAX_CHAR_SKILL_NUM : NULL ;
 
-        for ( INT i = 0; i<m_pUserData->m_Skill.m_Count; i++ ) 
+        for ( INT i = 0; i < m_pUserData->m_Skill.m_Count; i++ ) 
         {
-            INT szKeyID[ 32 ] = {0} ; //szKeyActiveTime[32] ;
+            CHAR szKeyID[ 32 ] = {0} ; //szKeyActiveTime[32] ;
 
             sprintf( szKeyID, "id%d", i ) ;
             m_pUserData->m_Skill.m_aSkill[i].m_nSkillID = f.ReadInt( "skill", szKeyID ) ;
