@@ -1,121 +1,113 @@
 #include "stdafx.h"
 
-
 #include "PlayerManager.h"
 #include "PlayerPool.h"
 
-
-PlayerManager::PlayerManager( )
+PlayerManager::PlayerManager()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    m_nPlayers = 0 ;
-    
+        m_nPlayers = 0 ;
+        
+        for ( INT i = 0; MAX_PLAYER > i; i++ )
+        {
+            m_pPlayers[ i ] = INVALID_ID ;
+        }
+    //    m_SockTable.InitTable( MAX_PLAYER ) ;
 
-    for( INT i=0; i<MAX_PLAYER; i++ )
-    {
-        m_pPlayers[i] = INVALID_ID ;
-    }
-
-
-
-//    m_SockTable.InitTable( MAX_PLAYER ) ;
-
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
-PlayerManager::~PlayerManager( )
+PlayerManager::~PlayerManager()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    CleanUp( ) ;
+        CleanUp() ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
-VOID PlayerManager::CleanUp( )
+VOID PlayerManager::CleanUp()
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    m_nPlayers = 0 ;
-    
+        m_nPlayers = 0 ;
+        
 
-    for( INT i=0; i<MAX_PLAYER; i++ )
-    {
-        m_pPlayers[i] = INVALID_ID ;
-    }
-//    m_SockTable.CleanUp() ;
+        for ( INT i = 0; MAX_PLAYER > i; i++ )
+        {
+            m_pPlayers[i] = INVALID_ID ;
+        }
+    //    m_SockTable.CleanUp() ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
 BOOL PlayerManager::AddPlayer( Player* pPlayer )
 {
-__ENTER_FUNCTION
-
-    Assert( pPlayer ) ;
-
-    if( m_pPlayers[m_nPlayers] == INVALID_ID )
-    {
-        m_pPlayers[m_nPlayers] = pPlayer->PlayerID() ;
-        pPlayer->SetPlayerManagerID( m_nPlayers ) ;
-
-        m_nPlayers ++ ;
-        Assert( m_nPlayers<=MAX_PLAYER ) ;
-    }
-    else
-    {
-        Assert(FALSE) ;
-    }
-
-    return TRUE ;
-    
-__LEAVE_FUNCTION
-
-    return FALSE ;
-}
-
-BOOL PlayerManager::AddPlayer( Player* pPlayer,UINT MaxPlayer )
-{
     __ENTER_FUNCTION
 
-    Assert( pPlayer ) ;
+        Assert( pPlayer ) ;
 
-    if(m_nPlayers<MaxPlayer)
-    {
-        if( m_pPlayers[m_nPlayers] == INVALID_ID )
+        if ( INVALID_ID == m_pPlayers[ m_nPlayers ] )
         {
-            m_pPlayers[m_nPlayers] = pPlayer->PlayerID() ;
+            m_pPlayers[ m_nPlayers ] = pPlayer->PlayerID() ;
             pPlayer->SetPlayerManagerID( m_nPlayers ) ;
 
-            m_nPlayers ++ ;
-            Assert( m_nPlayers<=MAX_PLAYER ) ;
+            m_nPlayers++ ;
+            Assert( MAX_PLAYER >= m_nPlayers ) ;
         }
         else
         {
-            Assert(FALSE) ;
+            Assert( FALSE ) ;
         }
-        return TRUE;
-    }
-    
 
-    return FALSE;
+        return TRUE ;
+        
+    __LEAVE_FUNCTION
+
+        return FALSE ;
+}
+
+BOOL PlayerManager::AddPlayer( Player* pPlayer, UINT MaxPlayer )
+{
+    __ENTER_FUNCTION
+
+        Assert( pPlayer ) ;
+
+        if ( m_nPlayers < MaxPlayer )
+        {
+            if ( INVALID_ID == m_pPlayers[ m_nPlayers ] )
+            {
+                m_pPlayers[ m_nPlayers ] = pPlayer->PlayerID() ;
+                pPlayer->SetPlayerManagerID( m_nPlayers ) ;
+                m_nPlayers++ ;
+                Assert( MAX_PLAYER >= m_nPlayers ) ;
+            }
+            else
+            {
+                Assert( FALSE)  ;
+            }
+            return TRUE ;
+        }
+        
+        return FALSE;
 
     __LEAVE_FUNCTION
 
-    return FALSE ;
+        return FALSE ;
 }
 
 BOOL PlayerManager::AddPlayer( PlayerID_t pid )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    //未提供函数
-    Assert( FALSE ) ;
+        //未提供函数
+        Assert( FALSE ) ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-    return FALSE ;
+        return FALSE ;
 }
 
 /*
@@ -164,73 +156,71 @@ __LEAVE_FUNCTION
 
 VOID PlayerManager::RemovePlayer( PlayerID_t pid )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-    Assert( m_nPlayers > 0 ) ;
+        Assert( 0 < m_nPlayers ) ;
 
-    Player* pPlayer = g_pPlayerPool->GetPlayer(pid) ;
-    if( pPlayer==NULL )
-    {
-        Assert( FALSE ) ;
-        return ;
-    }
+        Player* pPlayer = g_pPlayerPool->GetPlayer( pid ) ;
+        if ( NULL == pPlayer )
+        {
+            Assert( FALSE ) ;
+            return ;
+        }
 
-    ID_t PlayerManagerID = pPlayer->PlayerManagerID() ;
-    if( PlayerManagerID < 0 || PlayerManagerID >= MAX_PLAYER )
-    {
-        Assert( FALSE ) ;
-        return ;
-    }
+        ID_t PlayerManagerID = pPlayer->PlayerManagerID() ;
+        if ( 0 > PlayerManagerID || MAX_PLAYER <= PlayerManagerID )
+        {
+            Assert( FALSE ) ;
+            return ;
+        }
 
-    pPlayer = g_pPlayerPool->GetPlayer( m_pPlayers[m_nPlayers-1] ) ;
-    if( pPlayer==NULL )
-    {
-        Assert( FALSE ) ;
-        return ;
-    }
+        pPlayer = g_pPlayerPool->GetPlayer( m_pPlayers[ m_nPlayers - 1 ] ) ;
+        if ( NULL == pPlayer )
+        {
+            Assert( FALSE ) ;
+            return ;
+        }
 
-    m_pPlayers[PlayerManagerID] = m_pPlayers[m_nPlayers-1] ;
-    m_pPlayers[m_nPlayers-1] = INVALID_ID ;
+        m_pPlayers[ PlayerManagerID ] = m_pPlayers[ m_nPlayers - 1 ] ;
+        m_pPlayers[ m_nPlayers - 1 ] = INVALID_ID ;
 
-    pPlayer->SetPlayerManagerID( PlayerManagerID ) ;
+        pPlayer->SetPlayerManagerID( PlayerManagerID ) ;
 
+        m_nPlayers-- ;
 
-    m_nPlayers -- ;
-    Assert( m_nPlayers>=0 ) ;
+        Assert( 0 <= m_nPlayers ) ;
 
-
-
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 }
 
 
 BOOL PlayerManager::HeartBeat( UINT uTime )
 {
-__ENTER_FUNCTION
+    __ENTER_FUNCTION
 
-/*
-    BOOL ret ;
+    /*
+        BOOL ret ;
 
-    UINT nPlayerCount = GetPlayerNumber() ;
-    for( UINT i=0; i<nPlayerCount; i++ )
-    {
-        if( m_pPlayers[i] == INVALID_ID )
-            continue ;
-
-        Player* pPlayer = g_pPlayerPool->GetPlayer(m_pPlayers[i]) ;
-        if( pPlayer==NULL )
+        UINT nPlayerCount = GetPlayerNumber() ;
+        for( UINT i=0; i<nPlayerCount; i++ )
         {
-            Assert(FALSE) ;
-            return FALSE ;
+            if( m_pPlayers[i] == INVALID_ID )
+                continue ;
+
+            Player* pPlayer = g_pPlayerPool->GetPlayer(m_pPlayers[i]) ;
+            if( pPlayer==NULL )
+            {
+                Assert(FALSE) ;
+                return FALSE ;
+            }
+            ret = pPlayer->HeartBeat( ) ;
+            Assert( ret ) ;
         }
-        ret = pPlayer->HeartBeat( ) ;
-        Assert( ret ) ;
-    }
-*/
+    */
 
-    return TRUE ;
+        return TRUE ;
 
-__LEAVE_FUNCTION
+    __LEAVE_FUNCTION
 
-    return FALSE ;
+        return FALSE ;
 }
