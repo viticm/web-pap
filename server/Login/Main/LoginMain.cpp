@@ -18,7 +18,7 @@ INT main( INT argc, CHAR* argv[] )
             {
                 for ( INT i = 1 ; i < argc ; i++ )
                 {
-                    if ( 0 == strcmp( "-ignoreassert" == argv[i] ) )
+                    if ( 0 == strcmp( "-ignoreassert", argv[i] ) )
                     {
                         g_Command_Assert = 1 ;
                     }
