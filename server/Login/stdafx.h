@@ -37,4 +37,5 @@
     #define _FOX_CLIENT
     #define _FOX_LOGIN
     #define _FOX_WORLD
+    #define _FOX_BILLING
 #endif
