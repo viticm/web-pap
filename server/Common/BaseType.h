@@ -85,11 +85,11 @@ typedef UCHAR            BYTE;
 #define TIMELENTH            23
 
 //↓这样在可执行文件中将是汉字显示，上线前要改成随机KEY↓KEY不得小于10个字节
-#define GAMESERVER_TO_CLIENT_KEY "服务器端对客户端的封包密钥"
-#define CLIENT_TO_GAMESERVER_KEY "服务器端对客户端的封包密钥"
-#define LOGIN_TO_CLIENT_KEY      "服务器端对客户端的封包密钥"
-#define CLIENT_TO_LOGIN_KEY      "服务器端对客户端的封包密钥"
-#define OSTREAM_KEY              "底层全局封包流通用密钥"        
+#define GAMESERVER_TO_CLIENT_KEY "0123456789"     // 服务器端对客户端的封包密钥
+#define CLIENT_TO_GAMESERVER_KEY "0123456789"     // 客户端对服务器端的封包密钥
+#define LOGIN_TO_CLIENT_KEY      "0123456789"     // 登陆服务器对客户端的封包密钥
+#define CLIENT_TO_LOGIN_KEY      "0123456789"     // 客户端对登陆服务器的封包密钥
+#define OSTREAM_KEY              "0123456789"     // 底层全局封包流通用密钥   
 //↑这样在可执行文件中将是汉字显示，上线前要改成随机KEY↑KEY不得小于10个字节
 
 #define PACK_COMPART "$-$"//封包分隔符
