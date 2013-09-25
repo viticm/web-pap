@@ -85,8 +85,8 @@ done:
  */
 STRING CCUtil::StrReplace( STRING str, STRING search_str, STRING replace_str )
 {
-    string::size_type pos = 0 ;
-    while( ( pos = str.find( search_str, pos ) ) != string::npos )
+    STRING::size_type pos = 0 ;
+    while( ( pos = str.find( search_str, pos ) ) != STRING::npos )
     {
         str.replace( pos, search_str.size(), replace_str ) ;
         pos++ ;
