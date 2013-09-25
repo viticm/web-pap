@@ -77,4 +77,19 @@ done:
     iconv_close( cd ) ;
     return status ;
 }
-
+/**
+ * string replace function
+ * @param string str need op string
+ * @param string old_str need replace old string
+ * @param string new_str need replace to new string
+ */
+STRING CCUtil::StrReplace( STRING str, STRING search_str, STRING replace_str )
+{
+    string::size_type pos = 0 ;
+    while( ( pos = str.find( search_str, pos ) ) != string::npos )
+    {
+        str.replace( pos, search_str.size(), replace_str ) ;
+        pos++ ;
+    }
+    return str ;
+}
