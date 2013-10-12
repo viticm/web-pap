@@ -2277,7 +2277,7 @@ CREATE TABLE IF NOT EXISTS `t_char` (
   `isolditem` smallint(6) NOT NULL DEFAULT '0',
   `uipoint` int(11) NOT NULL DEFAULT '0',
   `zengdian` int(11) NOT NULL DEFAULT '0',
-  `camp` int(11) NOT NULL,
+  `camp` text NOT NULL,
   PRIMARY KEY (`aid`),
   UNIQUE KEY `Index_char_charguid` (`charguid`),
   UNIQUE KEY `Index_char_charname` (`charname`),
