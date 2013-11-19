@@ -7,7 +7,7 @@
 #include "GameDefine.h"
 #include "Assertx.h"
 
-//#pragma pack(push, 1)
+#pragma pack(push, 1)
 
 //用来定义在世界的浮点位置
 struct WORLD_POS
@@ -1171,7 +1171,7 @@ struct GLOBAL_CONFIG
     }
     SM_COMMANDS_STATE        Commands;
 };
-
+#pragma pack(pop)
 //后面的文件会用到前面的定义
 #include "GameStruct_Item.h"
 #include "GameStruct_Skill.h"
